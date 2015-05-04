@@ -6,7 +6,7 @@ console.log('Hello World');
 var http = require('http');
 
 http.createServer(function (req, res) {
-  var html = buildHtml(req);
+  var html = buildHtml();
 
   res.writeHead(200, {
     'Content-Type': 'text/html',
@@ -16,6 +16,6 @@ http.createServer(function (req, res) {
   res.end(html);
 }).listen(80);
 
-function buildHtml(req) {
+function buildHtml() {
 	return '<!DOCTYPE html><html><header><title>Hello World</title></header><body><p>Hello World</p></body></html>';
-};
+}
