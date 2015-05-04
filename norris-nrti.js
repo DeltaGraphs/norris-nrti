@@ -17,12 +17,5 @@ http.createServer(function (req, res) {
 }).listen(80);
 
 function buildHtml(req) {
-  var header = '<title>Hello World</title>';
-  var body = '<p>Hello World</p>';
-
-  // concatenate header string
-  // concatenate body string
-
-  return '<!DOCTYPE html>'
-       + '<html><header>' + header + '</header><body>' + body + '</body></html>';
+	return '<!DOCTYPE html><html><header><title>Hello World</title></header><body><p>Hello World</p></body></html>';
 };
