@@ -1,4 +1,4 @@
 /*jshint node: true, -W106 */
-'use strict';
+"use strict";
 
-console.log('Hello World');
+console.log("Hello World");
