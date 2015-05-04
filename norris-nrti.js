@@ -4,6 +4,7 @@
 console.log('Hello World');
 
 var http = require('http');
+var port = process.env.PORT || 3000;
 
 http.createServer(function (req, res) {
   var html = buildHtml();
@@ -14,7 +15,7 @@ http.createServer(function (req, res) {
     'Expires': new Date().toUTCString()
   });
   res.end(html);
-}).listen(80);
+}).listen(port);
 
 function buildHtml() {
 	return '<!DOCTYPE html><html><header><title>Hello World</title></header><body><p>Hello World</p></body></html>';
