@@ -11,4 +11,4 @@ default: test
 test:
 	@echo "$(PROJECT)Executing JSHint..."
 	@$(JSHINT) $(JSHINT_OPTS) $(JS_FILES)
-	
+	./node_modules/mocha/bin/mocha ./test/*
