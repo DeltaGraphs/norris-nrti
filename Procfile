@@ -1,1 +1,1 @@
-﻿web: node norris-nrti.js
+﻿web: node ./example/index.js
