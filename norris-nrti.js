@@ -21,4 +21,4 @@ module.exports = function() {
 	function buildHtml() {
 		return '<!DOCTYPE html><html><header><title>Hello World</title></header><body><p>Hello World</p></body></html>';
 	}
-}
+};
