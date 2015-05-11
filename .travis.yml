@@ -6,4 +6,9 @@ node_js:
 notifications:
   hipchat: 50db91b75b5041993386a171287151@api.hipchat.com/1481531
 script: "npm run-script test-travis"
+before_install: "./clone-gh-pages.sh"
 after_script: "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+after_success: "./update-gh-pages.sh"
+env:
+  global:
+    secure: Ua4/p8tei1nOuA/4kcUMGiay5yjpzsNgcQi3dpk92c2xGupC/POq21ouZh22TY/zygOyOpvIBXlmD9OsheZ7oJilEyvKb4S4R3IMBhsqCgJdt3u5ipFfi27wKygjJzt4oFc/VyrVBl9Bwo6hQ7w9WBuvhwzxflxko2AfFWwa8Aw=
