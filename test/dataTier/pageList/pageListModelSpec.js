@@ -17,14 +17,15 @@
 var PageListModel = require('../../../lib/dataTier/pageList/pageListModel.js');
 //var assert = require('chai').assert;
 var assert = require('assert');
-
+var pageList0 = new PageListModel('name');
+console.dir(pageList0);
 describe('PageListModel', function() {
     it('returns null when passed a non-valid string', function() {
         assert.equal(new PageListModel(12), null);
         assert.equal(new PageListModel(' '), null);
     });
 
-    var pageList1=new PageListModel('name');
+    var pageList1 = new PageListModel('name');
 
     it('create object with the right name', function() {
         assert.equal(pageList1._name, 'test');
