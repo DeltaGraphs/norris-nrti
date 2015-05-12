@@ -83,4 +83,3 @@ istanbul-instrument:
 	@$(ISTANBUL) instrument $(ISTANBUL_INSTRUMENT_OPTS) --output $(REPORTS)/instrumented/index.js index.js
 	@cp -r test $(REPORTS)/instrumented/
 	@cp package.json $(REPORTS)/instrumented/
-	@cp lib/model/dslmodel/macro.sjs $(REPORTS)/instrumented/lib/model/dslmodel/macro.sjs
