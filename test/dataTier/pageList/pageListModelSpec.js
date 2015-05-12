@@ -69,6 +69,7 @@ describe('PageListModel', function() {
             assert.equal(pageList2.getData(), []);
         });
         console.dir(pageList2);
+        console.dir(page2);
         //pageList2.addPage(page1);
         it('returns json with one page', function() {
             var data=pageList2.getData();
