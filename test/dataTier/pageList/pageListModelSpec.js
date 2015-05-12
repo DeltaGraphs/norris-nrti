@@ -66,18 +66,18 @@ describe('PageListModel', function() {
     describe('#getData', function() {
         var pageList2=new PageListModel('name');
         it('returns empty json if it has no pages', function() {
-            assert.equal(pageList2.getData().length, [].length);
+            assert.equal(pageList2.getData().length, 0);
         });
         console.dir(pageList2);
         console.dir(page2);
-        //pageList2.addPage(page1);
+        pageList2.addPage(page1);
         it('returns json with one page', function() {
             var data=pageList2.getData();
             assert.equal(data.length, 1);
             assert.equal(data[0].properties, 'testProd1');
             assert.equal(data[0].data, 'testData1');
         });
-        //pageList2.addPage(page2);
+        pageList2.addPage(page2);
         it('returns json with two pages', function() {
             var data=pageList2.getData();
             assert.equal(data.length, 2);
