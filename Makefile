@@ -78,6 +78,6 @@ istanbul: istanbul-instrument
 istanbul-instrument:
 	@echo "$(PROJECT)Executing Istanbul Instrument..."
 	@$(ISTANBUL) instrument $(ISTANBUL_INSTRUMENT_OPTS) --output $(REPORTS)/instrumented/lib lib
-	@$(ISTANBUL) instrument $(ISTANBUL_INSTRUMENT_OPTS) --output $(REPORTS)/instrumented/index.js index.js
+	@$(ISTANBUL) instrument $(ISTANBUL_INSTRUMENT_OPTS) --output $(REPORTS)/instrumented/index.js norris-nrti.js
 	@cp -r test $(REPORTS)/instrumented/
 	@cp package.json $(REPORTS)/instrumented/
