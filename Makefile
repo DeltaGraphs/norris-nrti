@@ -72,10 +72,9 @@ mocha-report: istanbul-instrument
 # Code coverage
 istanbul: istanbul-instrument
 	@echo "$(PROJECT)Executing Istanbul..."
-	find ./.. -name '*.xml'
-	pwd
-	ls -la coverage
-	-@ISTANBUL_REPORTERS=html,text-summary,cobertura $(MOCHA) --reporter mocha-istanbul $(MOCHA_OPTS) $(INSTRUMENTED_TEST_FILES)
+	ls -la
+	-@ISTANBUL_REPORTERS=html,text,text-summary $(MOCHA) --reporter mocha-istanbul $(MOCHA_OPTS) $(INSTRUMENTED_TEST_FILES)
+	ls -la
 	-@mv cobertura-coverage.xml reports/cobertura.xml
 	-@cp -T -r html-report $(REPORTS)/coverage
 	-@rm -rf html-report
