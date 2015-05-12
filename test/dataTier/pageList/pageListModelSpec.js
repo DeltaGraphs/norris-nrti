@@ -20,14 +20,14 @@ var assert = require('assert');
 
 describe('PageListModel', function() {
     it('returns null when passed a non-valid string', function() {
-        assert.equal(new PageListModel(12), null);
-        assert.equal(new PageListModel(' '), null);
+        assert.equal(new PageListModel(12), {});
+        assert.equal(new PageListModel(' '), {});
     });
 
     var pageList1 = new PageListModel('name');
 
     it('create object with the right name', function() {
-        assert.equal(pageList1._name, 'test');
+        assert.equal(pageList1._name, 'name');
     });
 
     var page1={
@@ -66,7 +66,7 @@ describe('PageListModel', function() {
     describe('#getData', function() {
         var pageList2=new PageListModel('name');
         it('returns empty json if it has no pages', function() {
-            assert.equal(pageList2.getData(), []);
+            assert.equal(pageList2.getData().length, [].length);
         });
         console.dir(pageList2);
         console.dir(page2);
