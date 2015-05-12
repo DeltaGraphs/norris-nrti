@@ -29,57 +29,57 @@ INSTRUMENTED_TEST_FILES= $(shell find $(REPORTS)/instrumented/test -name '*.js')
 default: test
 
 test:
-	@$(MAKE) jshint
+	$(MAKE) jshint
 	./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- -R spec ./test/*
-	@$(MAKE) mocha
+	$(MAKE) mocha
 	$(MAKE) test-report
 
 test-report:
-	@$(MAKE) jshint-report
-	@$(MAKE) plato-report
-	@$(MAKE) complexity-report
-	@$(MAKE) mocha-report
-	@$(MAKE) istanbul
+	$(MAKE) jshint-report
+	$(MAKE) plato-report
+	$(MAKE) complexity-report
+	$(MAKE) mocha-report
+	$(MAKE) istanbul
 
 
 # Static analysis
 jshint:
-	@echo "$(PROJECT)Executing JSHint..."
-	@$(JSHINT) $(JSHINT_OPTS) $(JS_FILES)
+	echo "$(PROJECT)Executing JSHint..."
+	$(JSHINT) $(JSHINT_OPTS) $(JS_FILES)
 
 jshint-report:
-	@echo "$(PROJECT)Executing JSHint Report..."
-	-@$(JSHINT) --reporter checkstyle $(JSHINT_OPTS) $(JS_FILES) > $(REPORTS)/checkstyle-result.xml
+	echo "$(PROJECT)Executing JSHint Report..."
+	-$(JSHINT) --reporter checkstyle $(JSHINT_OPTS) $(JS_FILES) > $(REPORTS)/checkstyle-result.xml
 
 plato-report:
-	@echo "$(PROJECT)Executing Plato..."
-	-@$(PLATO) $(PLATO_OPTS) -d $(REPORTS)/metrics $(JS_FILES)
+	echo "$(PROJECT)Executing Plato..."
+	-$(PLATO) $(PLATO_OPTS) -d $(REPORTS)/metrics $(JS_FILES)
 
 complexity-report:
-	@echo "$(PROJECT)Executing Complexity Report..."
-	-@$(CR) $(CR_OPTS) --format json --output $(REPORTS)/complexity-report.json --filepattern ".*\.js" lib/
-	-@$(CR) $(CR_OPTS) --format plain --output $(REPORTS)/complexity-report.txt --filepattern ".*\.js" lib/
+	echo "$(PROJECT)Executing Complexity Report..."
+	-$(CR) $(CR_OPTS) --format json --output $(REPORTS)/complexity-report.json --filepattern ".*\.js" lib/
+	-$(CR) $(CR_OPTS) --format plain --output $(REPORTS)/complexity-report.txt --filepattern ".*\.js" lib/
 
 # Unit test
 mocha:
-	@echo "$(PROJECT)Executing Mocha..."
-	@NODE_ENV=development $(MOCHA) --reporter spec $(MOCHA_OPTS) $(TEST_FILES)
+	echo "$(PROJECT)Executing Mocha..."
+	NODE_ENV=development $(MOCHA) --reporter spec $(MOCHA_OPTS) $(TEST_FILES)
 
 mocha-report: istanbul-instrument
-	@echo "$(PROJECT)Executing Mocha Report..."
-	-@XUNIT_FILE=$(REPORTS)/test-result.xml NODE_ENV=development $(MOCHA) --reporter xunit-file $(MOCHA_OPTS) $(TEST_FILES)
+	echo "$(PROJECT)Executing Mocha Report..."
+	-XUNIT_FILE=$(REPORTS)/test-result.xml NODE_ENV=development $(MOCHA) --reporter xunit-file $(MOCHA_OPTS) $(TEST_FILES)
 
 # Code coverage
 istanbul: istanbul-instrument
-	@echo "$(PROJECT)Executing Istanbul..."
-	-@ISTANBUL_REPORTERS=html,cobertura $(MOCHA) --reporter mocha-istanbul $(MOCHA_OPTS) $(INSTRUMENTED_TEST_FILES)
-	-@mv cobertura-coverage.xml reports/cobertura.xml
-	-@cp -T -r html-report reports/coverage
-	-@rm -rf html-report
+	echo "$(PROJECT)Executing Istanbul..."
+	-ISTANBUL_REPORTERS=html,cobertura $(MOCHA) --reporter mocha-istanbul $(MOCHA_OPTS) $(INSTRUMENTED_TEST_FILES)
+	-mv cobertura-coverage.xml reports/cobertura.xml
+	-cp -T -r html-report reports/coverage
+	-rm -rf html-report
 
 istanbul-instrument:
-	@echo "$(PROJECT)Executing Istanbul Instrument..."
-	@$(ISTANBUL) instrument $(ISTANBUL_INSTRUMENT_OPTS) --output $(REPORTS)/instrumented/lib lib
-	@$(ISTANBUL) instrument $(ISTANBUL_INSTRUMENT_OPTS) --output $(REPORTS)/instrumented/index.js index.js
-	@cp -r test $(REPORTS)/instrumented/
-	@cp package.json $(REPORTS)/instrumented/
+	echo "$(PROJECT)Executing Istanbul Instrument..."
+	$(ISTANBUL) instrument $(ISTANBUL_INSTRUMENT_OPTS) --output $(REPORTS)/instrumented/lib lib
+	$(ISTANBUL) instrument $(ISTANBUL_INSTRUMENT_OPTS) --output $(REPORTS)/instrumented/index.js index.js
+	cp -r test $(REPORTS)/instrumented/
+	cp package.json $(REPORTS)/instrumented/
