@@ -5,8 +5,6 @@ pwd
 echo "$TRAVIS_PULL_REQUEST"
 if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   echo -e "Starting to cloning gh-pages\n"
-
-  cd $HOME
   pwd
   #go to home and setup git
   git config --global user.email "deltagraphs@gmail.com"

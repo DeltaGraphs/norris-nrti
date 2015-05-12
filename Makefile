@@ -1,5 +1,5 @@
 ﻿PROJECT= "norris-nrti: "
-REPORTS= reports
+REPORTS= gh-pages/reports
 ROOT= $(shell pwd)
 
 MAKE= make --no-print-directory
