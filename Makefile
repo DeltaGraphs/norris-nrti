@@ -10,7 +10,7 @@ JSHINT_OPTS= --config .jshintrc
 
 
 PLATO= ./node_modules/.bin/plato
-PLATO_OPTS= --jshint .jshintrc --title MaaP
+PLATO_OPTS= --jshint .jshintrc --title Norris-nrti
 
 CR= ./node_modules/.bin/cr
 CR_OPTS= 
