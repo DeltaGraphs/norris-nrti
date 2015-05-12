@@ -75,7 +75,7 @@ istanbul: istanbul-instrument
 	find ./.. -name '*.xml'
 	pwd
 	ls -la coverage
-	-@ISTANBUL_REPORTERS=cobertura,html,text-summary $(MOCHA) --reporter mocha-istanbul $(MOCHA_OPTS) $(INSTRUMENTED_TEST_FILES)
+	-@ISTANBUL_REPORTERS=cobertura $(MOCHA) --reporter mocha-istanbul $(MOCHA_OPTS) $(INSTRUMENTED_TEST_FILES)
 	-@mv cobertura-coverage.xml reports/cobertura.xml
 	-@cp -T -r html-report $(REPORTS)/coverage
 	-@rm -rf html-report
