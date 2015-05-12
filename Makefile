@@ -72,10 +72,7 @@ mocha-report: istanbul-instrument
 # Code coverage
 istanbul: istanbul-instrument
 	@echo "$(PROJECT)Executing Istanbul..."
-	ls -la
-	-@ISTANBUL_REPORTERS=html,text,text-summary $(MOCHA) --reporter mocha-istanbul $(MOCHA_OPTS) $(INSTRUMENTED_TEST_FILES)
-	ls -la
-	-@mv cobertura-coverage.xml reports/cobertura.xml
+	-@ISTANBUL_REPORTERS=html $(MOCHA) --reporter mocha-istanbul $(MOCHA_OPTS) $(INSTRUMENTED_TEST_FILES)
 	-@cp -T -r html-report $(REPORTS)/coverage
 	-@rm -rf html-report
 
@@ -85,4 +82,3 @@ istanbul-instrument:
 	@$(ISTANBUL) instrument $(ISTANBUL_INSTRUMENT_OPTS) --output $(REPORTS)/instrumented/index.js index.js
 	@cp -r test $(REPORTS)/instrumented/
 	@cp package.json $(REPORTS)/instrumented/
-	ls -la
