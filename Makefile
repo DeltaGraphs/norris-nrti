@@ -16,7 +16,7 @@ CR= ./node_modules/.bin/cr
 CR_OPTS= 
 
 MOCHA= ./node_modules/.bin/mocha
-MOCHA_OPTS= --check-leaks --timeout 5000
+MOCHA_OPTS= --check-leaks --colors
 
 ISTANBUL= ./node_modules/.bin/istanbul
 ISTANBUL_INSTRUMENT_OPTS= --no-compact
@@ -30,7 +30,6 @@ default: test
 
 test:
 	@$(MAKE) jshint
-	./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- -R spec ./test/*
 	@$(MAKE) mocha
 	$(MAKE) test-report
 
@@ -63,7 +62,9 @@ complexity-report:
 # Unit test
 mocha:
 	@echo "$(PROJECT)Executing Mocha..."
-	@NODE_ENV=development $(MOCHA) --reporter spec $(MOCHA_OPTS) $(TEST_FILES)
+	./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- -R spec ./test/*
+	@echo "$(PROJECT)Executing Mocha 2nd option..."
+	@NODE_ENV=development $(MOCHA) cover --reporter spec $(MOCHA_OPTS) $(TEST_FILES)
 
 mocha-report: istanbul-instrument
 	@echo "$(PROJECT)Executing Mocha Report..."
