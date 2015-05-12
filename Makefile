@@ -62,11 +62,11 @@ complexity-report:
 # Unit test
 mocha:
 	@echo "$(PROJECT)Executing Mocha..."
-	./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- -R spec $(MOCHA_OPTS) $(TEST_FILES)
+	./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- -R spec $(MOCHA_OPTS) $(TEST_FILES) > /dev/null
 
 mocha-report: istanbul-instrument
 	@echo "$(PROJECT)Executing Mocha Report..."
-	-@XUNIT_FILE=$(REPORTS)/test-result.xml NODE_ENV=development $(MOCHA) --reporter xunit-file $(MOCHA_OPTS) $(TEST_FILES)
+	-@XUNIT_FILE=$(REPORTS)/test-result.xml NODE_ENV=development $(MOCHA) --reporter xunit-file $(MOCHA_OPTS) $(TEST_FILES)  > /dev/null
 
 # Code coverage
 istanbul: istanbul-instrument
