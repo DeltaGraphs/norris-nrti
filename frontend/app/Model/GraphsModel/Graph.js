@@ -13,6 +13,7 @@
 *
 */
 
+app.factory('Graph', ['Flow', function(Flow){
 	var flowList;
 	var title;
 	var height;
