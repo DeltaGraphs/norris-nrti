@@ -2,7 +2,7 @@
   "name": "norris-nrti",
   "version": "0.0.1",
   "description": "Norris - Node Real-Time Intelligence [stay tuned] (Credits CoffeeStrap)",
-  "main": "index.js",
+  "main": "norris-nrti.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
