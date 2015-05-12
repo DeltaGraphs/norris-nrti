@@ -17,8 +17,7 @@
 var PageListModel = require('../../../lib/dataTier/pageList/pageListModel.js');
 //var assert = require('chai').assert;
 var assert = require('assert');
-var pageList0 = new PageListModel('name');
-console.dir(pageList0);
+
 describe('PageListModel', function() {
     it('returns null when passed a non-valid string', function() {
         assert.equal(new PageListModel(12), null);
