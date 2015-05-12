@@ -31,12 +31,20 @@ describe('PageListModel', function() {
     });
 
     var page1={
-        getData: {testData: 'testData1'},
-        getProperties: {testProp: 'testProp1'}
+        getData: function(){
+            return 'testData1';
+        },
+        getProperties: function(){
+            return 'testProp1';
+        }
     };
     var page2={
-        getData: {testData: 'testData2'},
-        getProperties: {testProp: 'testProp2'}
+        getData: function(){
+            return 'testData2';
+        },
+        getProperties: function(){
+            return 'testProp2';
+        }
     };
 
     describe('#addPage', function() {
@@ -60,6 +68,7 @@ describe('PageListModel', function() {
         it('returns empty json if it has no pages', function() {
             assert.equal(pageList2.getData(), []);
         });
+        console.dir(pageList2);
         pageList2.addPage(page1);
         it('returns json with one page', function() {
             var data=pageList2.getData();
