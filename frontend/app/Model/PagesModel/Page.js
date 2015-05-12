@@ -1,20 +1,18 @@
-/**
-    * Name: Page.js
-    * Package: FrontEnd::Model::PagesModel
-    * Author: Maria Giovanna Chinellato
-    * Date: 2015/05/12
-    *
-    * Changes:
-    * Version   Date        Changes 		Author
-    * {0}.{1}   2015-05-12  Creazione file  Maria Giovanna Chinellato
-    *
-    * {0}.{2}   2015-05-12  Codifica modulo Maria Giovanna Chinellato
-    *
-    * ------------------------------------------------------------
-    * Copyright (C) 2015 DeltaGraphs
-    * 
-    * This file is part of Norris.js.
-    *
+/*
+* Name :  Page.js
+* Module : FrontEnd::Model::PagesModel
+* Location : /frontend/app/Model
+*
+* History :
+* Version       Date        Programmer                  Description
+* =================================================================================================
+* 0.0.1         2015-05-12  Maria Giovanna Chinellato   Creazione file      
+*
+* 0.1.0         2015-05-12  Maria Giovanna Chinellato   Codifica di tutti gli attributi e i metodi
+*
+* 0.1.1         2015-05-12  Francesco Rossetto          Correzioni ai metodi
+* =================================================================================================
+*
 */
 
 app.factory('Page', ['Graph', function(Graph){
@@ -41,19 +39,29 @@ app.factory('Page', ['Graph', function(Graph){
                 }
             }
         },
-        updatePage: function(info){ // da cambiare DP
-            name = info.name;
-            description = info.description;
-            graphsPerRow = info.graphsPerRow;
-            graphsPerCol = info.graphsPerCol;
-            url = info.url;
+        updatePage: function(info){
+            if (info.name != null) {
+                name = info.name;
+            }
+            if (info.name != null) {
+                description = info.description;
+            }
+            if (info.name != null) {
+                graphsPerRow = info.graphsPerRow;
+            }
+            if (info.name != null) {
+                graphsPerCol = info.graphsPerCol;
+            }
+            if (info.name != null) {
+                url = info.url;
+            }
         },
-        addGraph: function(){
+        addGraph: function(graph){
             var newGraph = new Graph(graph);
             if (pagesList[graph.id] != null)
                 pagesList[graph.id] = newGraph;
             else
-                    // error
+                // error
         },
         getGraphsList: function(){
             return graphsList;
