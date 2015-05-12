@@ -13,7 +13,6 @@
 *
 */
 
-app.factory('Page', ['Graph', function(Graph){
 	var flowList;
 	var title;
 	var height;
