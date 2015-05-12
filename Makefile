@@ -64,7 +64,8 @@ mocha:
 	@echo "$(PROJECT)Executing Mocha..."
 	./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- -R spec ./test/*
 	@echo "$(PROJECT)Executing Mocha 2nd option..."
-	@NODE_ENV=development $(MOCHA) --reporter spec $(MOCHA_OPTS) $(TEST_FILES)
+	#@NODE_ENV=development $(MOCHA) --reporter spec $(MOCHA_OPTS) $(TEST_FILES)
+	./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- -R spec $(MOCHA_OPTS) $(TEST_FILES)
 
 mocha-report: istanbul-instrument
 	@echo "$(PROJECT)Executing Mocha Report..."
