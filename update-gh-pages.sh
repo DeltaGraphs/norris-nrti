@@ -1,3 +1,5 @@
+#!/bin/bash
+set -ev
 echo "Script update-gh-pages..."
 echo "$TRAVIS_PULL_REQUEST"
 pwd
