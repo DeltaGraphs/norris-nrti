@@ -14,7 +14,7 @@
 */
 
 app.factory('Graph', ['Flow', function(Flow){
-	var flowList;
+	var flowList = new Array();
 	var title;
 	var height;
 	var width;
@@ -26,7 +26,7 @@ app.factory('Graph', ['Flow', function(Flow){
 
 	var Graph = function(info) {
 		name = info.name;
-		titile = info.title;
+		title = info.title;
 		height = info.height;
 		width = info.width;
 		legend = new Legend(info.legend);
