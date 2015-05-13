@@ -19,13 +19,18 @@ var PageListModel = require('../../../lib/dataTier/pageList/pageListModel.js');
 var assert = require('assert');
 
 describe('PageListModel', function() {
+    console.dir(new PageListModel('pagina'));
+    console.dir(new PageListModel(12));
+    console.dir(new PageListModel(' '));
     it('returns null when passed a non-valid string', function() {
-        assert.equal(new PageListModel(12), null);
-        assert.equal(new PageListModel(' '), null);
+        var a = new PageListModel(12);
+        assert.instanceOf(a, PageListModel, 'a is an instance of PageListModel');
+        var b = new PageListModel(' ');
+        assert.instanceOf(b, PageListModel, 'b is an instance of PageListModel');
     });
 
     var pageList1 = new PageListModel('name');
-
+    console.dir(pageList1);
     it('create object with the right name', function() {
         assert.equal(pageList1._name, 'name');
     });
