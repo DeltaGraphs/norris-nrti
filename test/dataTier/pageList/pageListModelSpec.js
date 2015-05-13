@@ -75,6 +75,7 @@ describe('PageListModel', function() {
         });
         it('returns json with two pages', function() {
             var pageList2=new PageListModel('name2');
+            pageList2.addPage(page1);
             pageList2.addPage(page2);
             var data=pageList2.getData();
             assert.strictEqual(data.length, 2);
