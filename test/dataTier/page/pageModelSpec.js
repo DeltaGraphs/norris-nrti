@@ -14,7 +14,7 @@
 * =========================================================
 */
 
-var PageModel = require('../../../lib/dataTier/pageList/pageModel.js');
+var PageModel = require('../../../lib/dataTier/page/pageModel.js');
 //var assert = require('chai').assert;
 var assert = require('assert');
 
