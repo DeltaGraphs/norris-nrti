@@ -30,7 +30,7 @@ describe('LegendModel', function() {
         var legend=new LegendModel({
             position: 'NEE',
             fontColor: '#ZZZZZZ',
-            backgoundColor: '#ZZZZZA'
+            backgroundColor: '#ZZZZZA'
         });
         assert.strictEqual(legend._position, 'NE');
         assert.strictEqual(legend._fontColor, '#000000');
@@ -41,7 +41,7 @@ describe('LegendModel', function() {
         var legend=new LegendModel({
             position: 'NW',
             fontColor: '#111111',
-            backgoundColor: '#001122'
+            backgroundColor: '#001122'
         });
         assert.strictEqual(legend._position, 'NW');
         assert.strictEqual(legend._fontColor, '#111111');
@@ -53,7 +53,7 @@ describe('LegendModel', function() {
             var legend=new LegendModel({
                 position: 'NW',
                 fontColor: '#111111',
-                backgoundColor: '#001122'
+                backgroundColor: '#001122'
             });
             var prop=legend.getProperties();
             assert.strictEqual(prop.position, 'NW');
