@@ -21,7 +21,7 @@ var assert = require('assert');
 describe('PageListModel', function() {
     it('returns null when passed a non-valid string', function() {
         assert.strictEqual((new PageListModel(12)).hasOwnProperty('_name'), false);
-        assert.strictEqual((new PageListModel(12)).hasOwnProperty('_name'), false);
+        assert.strictEqual((new PageListModel(' ')).hasOwnProperty('_name'), false);
     });
 
     var pageList1 = new PageListModel('name');
