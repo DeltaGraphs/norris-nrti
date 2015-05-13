@@ -14,10 +14,17 @@
 * =========================================================
 */
 
-var PageListModel = require('../../../lib/dataTier/graph/barChartModel.js');
+var BarChartModel = require('../../../lib/dataTier/graph/barChartModel.js');
 //var assert = require('chai').assert;
 var assert = require('assert');
 
-describe('PageListModel', function() {
-    
+describe('BarChartModel', function() {
+    it('returns null when passed a non-valid string', function() {
+        assert.strictEqual((new BarChartModel({ID:new Date()})).hasOwnProperty('_ID'), false);
+        assert.strictEqual((new BarChartModel({ID:''})).hasOwnProperty('_ID'), false);
+    });
+    it('set default values when have wrong type', function() {
+        assert.strictEqual((new BarChartModel({ID:'grafico'}))._title, '');
+        assert.strictEqual((new BarChartModel({ID:'grafico'}))._enableLegend, '');
+    });
 });
