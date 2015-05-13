@@ -30,8 +30,8 @@ describe('PageModel', function() {
         assert.strictEqual(page1._ID, 'page1');
         assert.strictEqual(page1._name, '');
         assert.strictEqual(page1._description, '');
-        assert.strictEqual(page1._graphPerRow, 1);
-        assert.strictEqual(page1._graphPerCol, -1);
+        assert.strictEqual(page1._graphsPerRow, 1);
+        assert.strictEqual(page1._graphsPerCol, -1);
         assert.strictEqual(page1._graphs.length, 0);
 
     });
@@ -41,14 +41,14 @@ describe('PageModel', function() {
             ID: 'page1',
             name: 1,
             description: 1,
-            graphPerRow: 'a',
+            graphsPerRow: 'a',
             graphsPerCol: 'b',
         });
         assert.strictEqual(page1._ID, 'page1');
         assert.strictEqual(page1._name, '');
         assert.strictEqual(page1._description, '');
-        assert.strictEqual(page1._graphPerRow, 1);
-        assert.strictEqual(page1._graphPerCol, -1);
+        assert.strictEqual(page1._graphsPerRow, 1);
+        assert.strictEqual(page1._graphsPerCol, -1);
         assert.strictEqual(page1._graphs.length, 0);
     });
 
@@ -57,14 +57,14 @@ describe('PageModel', function() {
             ID: 'page1',
             name: 'page one',
             description: 'page with many graphs',
-            graphPerRow: 2,
+            graphsPerRow: 2,
             graphsPerCol: 3,
         });
         assert.strictEqual(page1._ID, 'page1');
         assert.strictEqual(page1._name, 'page one');
         assert.strictEqual(page1._description, 'page with many graphs');
-        assert.strictEqual(page1._graphPerRow, 2);
-        assert.strictEqual(page1._graphPerCol, 3);
+        assert.strictEqual(page1._graphsPerRow, 2);
+        assert.strictEqual(page1._graphsPerCol, 3);
         assert.strictEqual(page1._graphs.length, 0);
     });
     
@@ -74,7 +74,7 @@ describe('PageModel', function() {
                 ID: 'page1',
                 name: 'page one',
                 description: 'page with many graphs',
-                graphPerRow: 2,
+                graphsPerRow: 2,
                 graphsPerCol: 2,
             };
             var page1=new PageModel(properties);
@@ -89,30 +89,30 @@ describe('PageModel', function() {
                 ID: 'page1',
                 name: 'page one',
                 description: 'page with many graphs',
-                graphPerRow: 2,
+                graphsPerRow: 2,
                 graphsPerCol: 3,
             };
             var page1=new PageModel({ID: 'page1'});
             page1.updateProperties(properties);
             assert.strictEqual(page1._name, 'page one');
             assert.strictEqual(page1._description, 'page with many graphs');
-            assert.strictEqual(page1._graphPerRow, 2);
-            assert.strictEqual(page1._graphPerCol, 3);
+            assert.strictEqual(page1._graphsPerRow, 2);
+            assert.strictEqual(page1._graphsPerCol, 3);
         });
         it('does not update the properties with wrong param', function() {
             var properties={
                 ID: 'page1',
                 name: 1,
                 description: 1,
-                graphPerRow: 'a',
+                graphsPerRow: 'a',
                 graphsPerCol: 'b',
             };
             var page1=new PageModel({ID: 'page1'});
             page1.updateProperties(properties);
             assert.strictEqual(page1._name, '');
             assert.strictEqual(page1._description, '');
-            assert.strictEqual(page1._graphPerRow, 1);
-            assert.strictEqual(page1._graphPerCol, -1);
+            assert.strictEqual(page1._graphserRow, 1);
+            assert.strictEqual(page1._graphsPerCol, -1);
             assert.strictEqual(page1._graphs.length, 0);
         });
     });
