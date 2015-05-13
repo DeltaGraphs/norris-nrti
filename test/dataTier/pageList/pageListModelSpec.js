@@ -69,16 +69,16 @@ describe('PageListModel', function() {
             pageList2.addPage(page1);
             var data=pageList2.getData();
             assert.strictEqual(data.length, 1);
-            assert.strictEqual(data[0].properties, 'testProd1');
+            assert.strictEqual(data[0].properties, 'testProp1');
             assert.strictEqual(data[0].data, 'testData1');
         });
         it('returns json with two pages', function() {
             pageList2.addPage(page2);
             var data=pageList2.getData();
             assert.strictEqual(data.length, 2);
-            assert.strictEqual(data[0].properties, 'testProd1');
+            assert.strictEqual(data[0].properties, 'testProp1');
             assert.strictEqual(data[0].data, 'testData1');
-            assert.strictEqual(data[1].properties, 'testProd2');
+            assert.strictEqual(data[1].properties, 'testProp2');
             assert.strictEqual(data[1].data, 'testData2');
         });
     });
