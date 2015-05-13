@@ -20,12 +20,8 @@ var assert = require('assert');
 
 describe('PageListModel', function() {
     it('returns null when passed a non-valid string', function() {
-        //assert.equal(new PageListModel(12), {});
-        //assert.equal(new PageListModel(' '), {});
-        var a=new PageListModel(12);
-        assert.isNull(a, 'no PageListModel defined');
-        var b=new PageListModel(' ');
-        assert.isNull(b, 'no PageListModel defined');
+        assert.equal(new PageListModel(12), null);
+        assert.equal(new PageListModel(' '), null);
     });
 
     var pageList1 = new PageListModel('name');
