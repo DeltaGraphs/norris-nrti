@@ -6,16 +6,18 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
-* 0.0.1         2015-05-12  Maria Giovanna Chinellato   Creazione file      
+* 0.1.2         2015-05-13  Francesco Rossetto          Correzioni al costruttore
+*
+* 0.1.1         2015-05-12  Francesco Rossetto          Correzioni ai metodi
 *
 * 0.1.0         2015-05-12  Maria Giovanna Chinellato   Codifica di tutti gli attributi e i metodi
 *
-* 0.1.1         2015-05-12  Francesco Rossetto          Correzioni ai metodi
+* 0.0.1         2015-05-12  Maria Giovanna Chinellato   Creazione file      
 * =================================================================================================
 *
 */
 
-app.factory('Page', ['Graph', function(Graph){
+app.factory('Page', ['LineChart', 'BarChart', 'MapChart', 'Table', function(LineChart, BarChart, MapChart, Table){
     var graphsList = new Array();
     var name;
     var description;
@@ -31,8 +33,24 @@ app.factory('Page', ['Graph', function(Graph){
             url = info.url;
             for (var i=0; i<info.graphs.length; i++){
                 if (graphsList[info.graph[i].id] === null){
-                    var graph = new Graph(info.graph[i]);
-                    graphsList[info.graph[i].id] = graph;
+                    switch (info.graph[i].type) {
+                        case "LineChart": 
+                            var graph = new LineChart(info.graph[i]);
+                            graphsList[info.graph[i].id] = graph;
+                            break;
+                        case "BarChart": 
+                            var graph = new BarChart(info.graph[i]);
+                            graphsList[info.graph[i].id] = graph;
+                            break;
+                        case "MapChart": 
+                            var graph = new MapChart(info.graph[i]);
+                            graphsList[info.graph[i].id] = graph;
+                            break;
+                        case "Table": 
+                            var graph = new Table(info.graph[i]);
+                            graphsList[info.graph[i].id] = graph;
+                            break;
+                    }
                 }
                 else{
                     // error

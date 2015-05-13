@@ -1,19 +1,23 @@
 /*
 * Name :  Graph.js
-* Module : FrontEnd::Model::GraphModel
-* Location : /frontend/app/Model/GraphModel
+* Module : FrontEnd::Model::GraphsModel
+* Location : /frontend/app/Model/GrapshModel
 *
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
-* 0.0.1         2015-05-12  Francesco Rossetto			Creazione file      
+* 0.1.2			2015-05-13	Francesco Rossetto			Effettuate piccole correzioni al costruttore e a addFLow
+*
+* 0.1.1			2015-05-12	Maria Giovanna Chinellato	Effettuate piccole correzioni agli attributi
 *
 * 0.1.0         2015-05-12  Francesco Rossetto   		Codifica di tutti gli attributi e i metodi
+*
+* 0.0.1         2015-05-12  Francesco Rossetto			Creazione file      
 * =================================================================================================
 *
 */
 
-app.factory('Graph', ['Flow', function(Flow){
+app.factory('Graph', ['Flow', 'Legend', function(Flow, Legend){
 	var flowList = new Array();
 	var title;
 	var height;
@@ -25,22 +29,27 @@ app.factory('Graph', ['Flow', function(Flow){
 	var url;
 
 	var Graph = function(info) {
-		name = info.name;
 		title = info.title;
 		height = info.height;
 		width = info.width;
-		legend = new Legend(info.legend);
 		enabledLegend = info.enabledLegend;
+		if (enabledLegend) {
+			legend = new Legend(info.legend);
+		}
 		horizontalGrid = info.horizontalGrid;
 		verticalGrid = info.verticalGrid;
 		url = info.url;
 	};
 
 	Graph.prototype.updateParameters = function(info) { //abstract
-    	alert('Page.updateParameters not implemented');
+    	
 	};
-	Graph.prototype.addFlow = function(flow) { //abstract
-		alert('Page.addFlow not implemented');
+	Graph.prototype.addFlow = function(id, flow) { //abstract
+		if (flowList[id] === null) {
+			flowList[id] = flow;
+		} else {
+			//error
+		}
 	};
 	Graph.prototype.deleteFlow = function(flowID) {
 		delete flowList[flowID];
