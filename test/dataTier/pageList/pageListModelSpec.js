@@ -19,20 +19,14 @@ var PageListModel = require('../../../lib/dataTier/pageList/pageListModel.js');
 var assert = require('assert');
 
 describe('PageListModel', function() {
-    console.dir(new PageListModel('pagina'));
-    console.dir(new PageListModel(12));
-    console.dir(new PageListModel(' '));
     it('returns null when passed a non-valid string', function() {
-        var a = new PageListModel(12);
-        assert.instanceOf(a, PageListModel, 'a is an instance of PageListModel');
-        var b = new PageListModel(' ');
-        assert.instanceOf(b, PageListModel, 'b is an instance of PageListModel');
+        assert.strictEqual((new PageListModel(12)).hasOwnProperty('_name'), false);
+        assert.strictEqual((new PageListModel(12)).hasOwnProperty('_name'), false);
     });
 
     var pageList1 = new PageListModel('name');
-    console.dir(pageList1);
     it('create object with the right name', function() {
-        assert.equal(pageList1._name, 'name');
+        assert.strictEqual(pageList1._name, 'name');
     });
 
     function PageModel(prop, data){
@@ -49,42 +43,40 @@ describe('PageListModel', function() {
 
     describe('#addPage', function() {
         it('returns true and pushes the page if page is valid', function() {
-            assert.equal(pageList1.addPage(page1), true);
-            assert.equal(pageList1._pages.length, 1);
+            assert.strictEqual(pageList1.addPage(page1), true);
+            assert.strictEqual(pageList1._pages.length, 1);
         });
         it('returns false if page is invalid', function() {
-            assert.equal(pageList1.addPage(2), false);
+            assert.strictEqual(pageList1.addPage(2), false);
         });
     });
 
     describe('#getName', function() {
         it('returns the right name', function() {
-            assert.equal(pageList1.getName(), 'name');
+            assert.strictEqual(pageList1.getName(), 'name');
         });
     });
 
     describe('#getData', function() {
         var pageList2=new PageListModel('name');
         it('returns empty json if it has no pages', function() {
-            assert.equal(pageList2.getData().length, 0);
+            assert.strictEqual(pageList2.getData().length, 0);
         });
-        console.dir(pageList2);
-        console.dir(page2);
         pageList2.addPage(page1);
         it('returns json with one page', function() {
             var data=pageList2.getData();
-            assert.equal(data.length, 1);
-            assert.equal(data[0].properties, 'testProd1');
-            assert.equal(data[0].data, 'testData1');
+            assert.strictEqual(data.length, 1);
+            assert.strictEqual(data[0].properties, 'testProd1');
+            assert.strictEqual(data[0].data, 'testData1');
         });
         pageList2.addPage(page2);
         it('returns json with two pages', function() {
             var data=pageList2.getData();
-            assert.equal(data.length, 2);
-            assert.equal(data[0].properties, 'testProd1');
-            assert.equal(data[0].data, 'testData1');
-            assert.equal(data[1].properties, 'testProd2');
-            assert.equal(data[1].data, 'testData2');
+            assert.strictEqual(data.length, 2);
+            assert.strictEqual(data[0].properties, 'testProd1');
+            assert.strictEqual(data[0].data, 'testData1');
+            assert.strictEqual(data[1].properties, 'testProd2');
+            assert.strictEqual(data[1].data, 'testData2');
         });
     });
     
