@@ -29,7 +29,7 @@ describe('GraphModel', function() {
     });
     it('set correct values', function() {
         assert.strictEqual((new GraphModel({ID:'grafico',title:'ttl'}))._title, 'ttl');
-        //assert.strictEqual((new GraphModel({ID:'grafico',legend:true}))._enableLegend, true);
+        assert.strictEqual((new GraphModel({ID:'grafico',enableLegend:true}))._enableLegend, true);
         //assert.strictEqual((new GraphModel({ID:'grafico',legend:{color:12}}))._legend, {color:12});
     });
 });
