@@ -22,8 +22,8 @@ describe('PageListModel', function() {
     it('returns null when passed a non-valid string', function() {
         //assert.equal(new PageListModel(12), {});
         //assert.equal(new PageListModel(' '), {});
-        assert.isUndefined(new PageListModel(12), 'no PageListModel defined');
-        assert.isUndefined(new PageListModel(' '), 'no PageListModel defined');
+        assert.isNull(new PageListModel(12), 'no PageListModel defined');
+        assert.isNull(new PageListModel(' '), 'no PageListModel defined');
     });
 
     var pageList1 = new PageListModel('name');
