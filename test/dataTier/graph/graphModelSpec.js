@@ -25,5 +25,11 @@ describe('GraphModel', function() {
     it('set default values when have wrong type', function() {
         assert.strictEqual((new GraphModel({ID:'grafico'}))._title, '');
         assert.strictEqual((new GraphModel({ID:'grafico'}))._enableLegend, '');
+        assert.strictEqual((new GraphModel({ID:'grafico'}))._legend, null);
+    });
+    it('set correct values', function() {
+        assert.strictEqual((new GraphModel({ID:'grafico',title:'ttl'}))._title, 'ttl');
+        assert.strictEqual((new GraphModel({ID:'grafico',legend:true}))._enableLegend, true);
+        assert.strictEqual((new GraphModel({ID:'grafico',legend:{color:12}}))._legend, {color:12});
     });
 });
