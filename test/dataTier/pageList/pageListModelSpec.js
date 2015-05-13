@@ -35,22 +35,17 @@ describe('PageListModel', function() {
         assert.equal(pageList1._name, 'name');
     });
 
-    var page1={
-        getData: function(){
-            return 'testData1';
-        },
-        getProperties: function(){
-            return 'testProp1';
-        }
-    };
-    var page2={
-        getData: function(){
-            return 'testData2';
-        },
-        getProperties: function(){
-            return 'testProp2';
-        }
-    };
+    function PageModel(prop, data){
+        this.getData=function(){
+            return data;
+        };
+        this.getProperties=function(){
+            return prop;
+        };
+    }
+
+    var page1=new PageModel('testData1', 'testProp1');
+    var page2=new PageModel('testData2', 'testProp2');
 
     describe('#addPage', function() {
         it('returns true and pushes the page if page is valid', function() {
