@@ -42,7 +42,30 @@ app.factory('Graph', ['Flow', 'Legend', function(Flow, Legend){
 	};
 
 	Graph.prototype.updateParameters = function(info) { //abstract
-    	
+		if (info.title) {
+			title = info.title;
+		}
+		if (info.height) {
+			height = info.height;
+		}
+		if (info.width) {
+			width = info.width;
+		}
+		if (info.legend) {
+			legend = info.legend;
+		}
+		if (info.enabledLegend) {
+			enabledLegend = info.enabledLegend;
+		}
+		if (info.horizontalGrid) {
+			horizontalGrid = info.horizontalGrid;
+		}
+		if (info.verticalGrid) {
+			verticalGrid = info.verticalGrid;
+		}
+		if (info.url) {
+			url = info.url;
+		}
 	};
 	Graph.prototype.addFlow = function(id, flow) { //abstract
 		if (flowList[id] === null) {

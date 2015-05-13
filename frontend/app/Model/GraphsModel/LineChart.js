@@ -5,11 +5,11 @@
 *
 * History :
 * Version       Date        Programmer                  Description
-* =================================================================================================
-* 0.1.0         2015-06-12  Francesco Rossetto   		Codifica di tutti gli attributi e i metodi
+* ===============================================================================================================
+* 0.1.0         2015-06-12  Francesco Rossetto   		Codifica di tutti gli attributi e alcuni dei metodi
 *
 * 0.0.1         2015-06-12  Francesco Rossetto			Creazione file      
-* =================================================================================================
+* ===============================================================================================================
 *
 */
 
@@ -46,6 +46,7 @@ app.factory('LineChart', ['Graph', 'Axis', 'ViewFinder', function(Graph, Axis, V
 		if (json.url) {
 			graphJson.url = json.url;
 		}
+
 		var lineJson = {};
 		if (json.axisX) {
 			graphJson.axisX = json.axisX;
@@ -62,6 +63,7 @@ app.factory('LineChart', ['Graph', 'Axis', 'ViewFinder', function(Graph, Axis, V
 		if (json.background) {
 			graphJson.background = json.background;
 		}
+
 		return {
 			"graphJson" : graphJson,
 			"lineJson" : lineJson
@@ -89,7 +91,13 @@ app.factory('LineChart', ['Graph', 'Axis', 'ViewFinder', function(Graph, Axis, V
 
     // Now let's override our original getProfile method
     LineChart.prototype.updateParameters = function(info) {
-    	
+    	json = json = split(info);
+    	gJson = json.graphJson;
+    	lJson = json.lineJson;
+    	if (Object.keys(gJson).length != 0) {
+    		//chiamata super a graph
+    	} 
+    	//........
     };
-    return AdvancedGithubUser;
+    return LineChart;
 });
