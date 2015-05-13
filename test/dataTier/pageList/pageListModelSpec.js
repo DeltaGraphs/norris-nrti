@@ -21,11 +21,14 @@ var assert = require('assert');
 describe('PageListModel', function() {
     it('returns null when passed a non-valid string', function() {
         assert.strictEqual((new PageListModel(12)).hasOwnProperty('_name'), false);
+    });
+
+    it('returns null when passed a empty string', function() {
         assert.strictEqual((new PageListModel(' ')).hasOwnProperty('_name'), false);
     });
     
     it('create object with the right name', function() {
-        assert.strictEqual((new PageListModel('name')).name, 'name');
+        assert.strictEqual((new PageListModel('name'))._name, 'name');
     });
 
     function PageModel(prop, data){
