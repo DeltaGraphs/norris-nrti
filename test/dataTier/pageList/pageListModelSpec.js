@@ -38,8 +38,8 @@ describe('PageListModel', function() {
         };
     }
 
-    var page1=new PageModel('testData1', 'testProp1');
-    var page2=new PageModel('testData2', 'testProp2');
+    var page1=new PageModel('testProp1', 'testData1');
+    var page2=new PageModel('testProp2', 'testData2');
 
     describe('#addPage', function() {
         it('returns true and pushes the page if page is valid', function() {
@@ -60,6 +60,8 @@ describe('PageListModel', function() {
     describe('#getData', function() {
         var pageList2=new PageListModel('name');
         it('returns empty json if it has no pages', function() {
+            console.dir(pageList2);
+            console.dir(pageList2.getData());
             assert.strictEqual(pageList2.getData().length, 0);
         });
         pageList2.addPage(page1);
