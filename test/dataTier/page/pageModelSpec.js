@@ -118,7 +118,7 @@ describe('PageModel', function() {
             page1.updateProperties(properties);
             assert.strictEqual(page1._name, '');
             assert.strictEqual(page1._description, '');
-            assert.strictEqual(page1._graphserRow, 1);
+            assert.strictEqual(page1._graphsPerRow, 1);
             assert.strictEqual(page1._graphsPerCol, -1);
             assert.strictEqual(page1._graphs.length, 0);
         });
@@ -165,6 +165,7 @@ describe('PageModel', function() {
         });
         it('returns json with two pages', function() {
             var page1=new PageModel({ID: 'page1'});
+            page1.addGraph(graph1);
             page1.addGraph(graph2);
             var data=page1.getData();
             assert.strictEqual(data.length, 2);
