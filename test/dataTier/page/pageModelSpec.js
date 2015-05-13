@@ -21,8 +21,11 @@ var assert = require('assert');
 describe('PageModel', function() {
 
     it('returns null when there is no valid ID in params', function() {
-        assert.strictEqual((new PageModel({ID:' '})).hasOwnProperty('_name'), false);
         assert.strictEqual((new PageModel({})).hasOwnProperty('_name'), false);
+    });
+
+    it('returns null when there is a empty ID in params', function() {
+        assert.strictEqual((new PageModel({ID:' '})).hasOwnProperty('_name'), false);
     });
 
     it('set default values to property not specified', function() {
@@ -75,11 +78,15 @@ describe('PageModel', function() {
                 name: 'page one',
                 description: 'page with many graphs',
                 graphsPerRow: 2,
-                graphsPerCol: 2,
+                graphsPerCol: 3,
             };
             var page1=new PageModel(properties);
-            
-            assert.strictEqual(page1.getProperties(), properties);
+            var prop=page1.getProperties();
+            assert.strictEqual(prop.ID, 'page1');
+            assert.strictEqual(prop.name, 'page one');
+            assert.strictEqual(prop.description, 'page with many graphs');
+            assert.strictEqual(prop.graphsPerRow, 2);
+            assert.strictEqual(prop.graphsPerCol, 3);
         });
     });
 
