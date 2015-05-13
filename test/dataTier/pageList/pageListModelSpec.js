@@ -4,7 +4,7 @@
 /*
 * Name : pageListModelSpec.js
 * Module : UnitTest
-* Location : /test/dataTier
+* Location : /test/dataTier/pageList
 *
 * History :
 * 
@@ -23,10 +23,9 @@ describe('PageListModel', function() {
         assert.strictEqual((new PageListModel(12)).hasOwnProperty('_name'), false);
         assert.strictEqual((new PageListModel(' ')).hasOwnProperty('_name'), false);
     });
-
-    var pageList1 = new PageListModel('name');
+    
     it('create object with the right name', function() {
-        assert.strictEqual(pageList1._name, 'name');
+        assert.strictEqual((new PageListModel('name')).name, 'name');
     });
 
     function PageModel(prop, data){
@@ -43,29 +42,31 @@ describe('PageListModel', function() {
 
     describe('#addPage', function() {
         it('returns true and pushes the page if page is valid', function() {
+            var pageList1=new PageListModel('name');
             assert.strictEqual(pageList1.addPage(page1), true);
             assert.strictEqual(pageList1._pages.length, 1);
         });
         it('returns false if page is invalid', function() {
+            var pageList1=new PageListModel('name');
             assert.strictEqual(pageList1.addPage(2), false);
         });
     });
 
     describe('#getName', function() {
         it('returns the right name', function() {
+            var pageList1=new PageListModel('name');
             assert.strictEqual(pageList1.getName(), 'name');
         });
     });
 
     describe('#getData', function() {
-        var pageList2=new PageListModel('name2');
         it('returns empty json if it has no pages', function() {
-            console.dir(pageList2);
-            console.dir(pageList2.getData());
+            var pageList2=new PageListModel('name2');
             assert.strictEqual(pageList2.getData().length, 0);
         });
        
         it('returns json with one page', function() {
+            var pageList2=new PageListModel('name2');
             pageList2.addPage(page1);
             var data=pageList2.getData();
             assert.strictEqual(data.length, 1);
@@ -73,6 +74,7 @@ describe('PageListModel', function() {
             assert.strictEqual(data[0].data, 'testData1');
         });
         it('returns json with two pages', function() {
+            var pageList2=new PageListModel('name2');
             pageList2.addPage(page2);
             var data=pageList2.getData();
             assert.strictEqual(data.length, 2);
