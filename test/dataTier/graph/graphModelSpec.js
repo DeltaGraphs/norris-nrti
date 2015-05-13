@@ -15,7 +15,6 @@
 */
 
 var GraphModel = require('../../../lib/dataTier/graph/graphModel.js');
-//var assert = require('chai').assert;
 var assert = require('assert');
 
 describe('GraphModel', function() {

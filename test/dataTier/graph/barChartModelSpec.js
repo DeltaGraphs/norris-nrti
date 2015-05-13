@@ -15,7 +15,6 @@
 */
 
 var BarChartModel = require('../../../lib/dataTier/graph/barChartModel.js');
-//var assert = require('chai').assert;
 var assert = require('assert');
 
 describe('BarChartModel', function() {

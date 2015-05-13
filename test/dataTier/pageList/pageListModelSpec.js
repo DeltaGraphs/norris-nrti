@@ -15,7 +15,6 @@
 */
 
 var PageListModel = require('../../../lib/dataTier/pageList/pageListModel.js');
-//var assert = require('chai').assert;
 var assert = require('assert');
 
 describe('PageListModel', function() {
