@@ -27,19 +27,27 @@ describe('PagesList', function(){
 		PagesList = _PagesList_;
 	}));
 
+	window.mock = function( constr, name ) {
+		var keys = [];
+		for( var key in constr.prototype ) {
+			keys.push( key );
+		}
+		return keys.length > 0 ? jasmine.createSpyObj( name || "mock", keys ) : {};
+	};
+
 	describe('Constructor', function(){
 
 		var json = {
-			"name" : "name"
+			"name" : "name",
 			"data" : [
 				{ "ID" : "1" },
 				{ "ID" : "2" },
 				{ "ID" : "3" }
 			]
-		}
+		};
 		
 		var page = mock( Page );
-		spyOn(window, "Page").and.returnValue(page);
+		spyOn(Page.prototype, "Page").and.returnValue(page);
 
 		beforeEach(function(){
 			PagesList = new PagesList(json);
@@ -54,10 +62,10 @@ describe('PagesList', function(){
 	describe('addPage', function(){
 		var json = {
 			"ID" : "4"
-		}
+		};
 
 		var page = mock( Page );
-		spyOn(window, "Page").and.returnValue(page);
+		spyOn(Page.prototype, "Page").and.returnValue(page);
 
 		beforeEach(function(){
 			PagesList.addPage(json);

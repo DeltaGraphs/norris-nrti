@@ -25,38 +25,46 @@ describe('Page', function(){
 		Page = _Page_;
 	}));
 
+	window.mock = function( constr, name ) {
+		var keys = [];
+		for( var key in constr.prototype ) {
+			keys.push( key );
+		}
+		return keys.length > 0 ? jasmine.createSpyObj( name || "mock", keys ) : {};
+	};
+
 	describe('Constructor', function(){
 
 		var json = 	{
-				"ID" : "page1",
-				"name" : "Pagina Uno",
-				"description" : "questa è la pagina uno",
-				"graphsPerRow" : 4,
-				"graphsPerCol" : 4,
-				"URLSocket" : "http://localhost/page1",
-				"graphs" : [
-								{ 
-									"ID" : "grafico1", 
-									"type" : "LineChart" 
-								},
-								{ 
-									"ID" : "grafico2", 
-									"type" : "BarChart" 
-								},
-								{ 
-									"ID" : "grafico3", 
-									"type" : "MapChart" 
-								}
-							]
-		}
+			"ID" : "page1",
+			"name" : "Pagina Uno",
+			"description" : "questa è la pagina uno",
+			"graphsPerRow" : 4,
+			"graphsPerCol" : 4,
+			"URLSocket" : "http://localhost/page1",
+			"graphs" : [
+				{ 
+					"ID" : "grafico1", 
+					"type" : "LineChart" 
+				},
+				{ 
+					"ID" : "grafico2", 
+					"type" : "BarChart" 
+				},
+				{ 
+					"ID" : "grafico3", 
+					"type" : "MapChart" 
+				}
+			]
+		};
 		var lineChart = mock( LineChart );
-		spyOn(window, "LineChart").and.returnValue(lineChart);
+		spyOn(LineChart.prototype, "LineChart").and.returnValue(lineChart);
 		var barChart = mock( BarChart );
-		spyOn(window, "BarChart").and.returnValue(barChart);
+		spyOn(BarChart.prototype, "BarChart").and.returnValue(barChart);
 		var mapChart = mock( mapChart );
-		spyOn(window, "MapChart").and.returnValue(mapChart);
+		spyOn(MapChart.prototype, "MapChart").and.returnValue(mapChart);
 		var table = mock( Table );
-		spyOn(window, "Table").and.returnValue(table);
+		spyOn(Table.prototype, "Table").and.returnValue(table);
 
 		beforeEach(function(){
 			Page = new Page(json);
@@ -92,7 +100,7 @@ describe('Page', function(){
 			"graphsPerRow" : 4,
 			"graphsPerCol" : 4,
 			"URLSocket" : "http://localhost/pageN"
-		}
+		};
 
 		beforeEach(function(){
 			Page.updatePage(json);
@@ -121,15 +129,15 @@ describe('Page', function(){
 		var json = {
 			"ID" : "graficoN",
 			"type" : "Table"
-		}
+		};
 		var lineChart = mock( LineChart );
-		spyOn(window, "LineChart").and.returnValue(lineChart);
+		spyOn(LineChart.prototype, "LineChart").and.returnValue(lineChart);
 		var barChart = mock( BarChart );
-		spyOn(window, "BarChart").and.returnValue(barChart);
+		spyOn(BarChart.prototype, "BarChart").and.returnValue(barChart);
 		var mapChart = mock( mapChart );
-		spyOn(window, "MapChart").and.returnValue(mapChart);
+		spyOn(MapChart.prototype, "MapChart").and.returnValue(mapChart);
 		var table = mock( Table );
-		spyOn(window, "Table").and.returnValue(table);
+		spyOn(Table.prototype, "Table").and.returnValue(table);
 
 		beforeEach(function(){
 			Page.addGraph(json);
