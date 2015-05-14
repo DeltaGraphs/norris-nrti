@@ -89,10 +89,10 @@ describe('Graph', function(){
 
 	});
 	
-	describe('addFlow', function(){
+	/*describe('addFlow', function(){
 
 		var json = {
-			
+
 		};
 
 		beforeEach(function(){
@@ -103,6 +103,6 @@ describe('Graph', function(){
 			expect(Graph.prototype.getFlowList().length).toBeEqual(1);
 		});
 
-	});
+	});*/
 
 });
