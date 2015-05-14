@@ -25,13 +25,13 @@ describe('Page', function(){
 		Page = _Page_;
 	}));
 
-	window.mock = function( constr, name ) {
+	/*window.mock = function( constr, name ) {
 		var keys = [];
 		for( var key in constr.prototype ) {
 			keys.push( key );
 		}
 		return keys.length > 0 ? jasmine.createSpyObj( name || "mock", keys ) : {};
-	};
+	};*/
 
 	describe('Constructor', function(){
 
@@ -57,14 +57,14 @@ describe('Page', function(){
 				}
 			]
 		};
-		var lineChart = mock( LineChart );
-		spyOn(LineChart.prototype, "LineChart").and.returnValue(lineChart);
-		var barChart = mock( BarChart );
-		spyOn(BarChart.prototype, "BarChart").and.returnValue(barChart);
-		var mapChart = mock( mapChart );
-		spyOn(MapChart.prototype, "MapChart").and.returnValue(mapChart);
-		var table = mock( Table );
-		spyOn(Table.prototype, "Table").and.returnValue(table);
+		//var lineChart = mock( LineChart );
+		spyOn(LineChart.prototype, "LineChart").and.returnValue({});
+		//var barChart = mock( BarChart );
+		spyOn(BarChart.prototype, "BarChart").and.returnValue({});
+		//var mapChart = mock( mapChart );
+		spyOn(MapChart.prototype, "MapChart").and.returnValue({});
+		//var table = mock( Table );
+		spyOn(Table.prototype, "Table").and.returnValue({});
 
 		beforeEach(function(){
 			Page = new Page(json);
@@ -130,14 +130,14 @@ describe('Page', function(){
 			"ID" : "graficoN",
 			"type" : "Table"
 		};
-		var lineChart = mock( LineChart );
-		spyOn(LineChart.prototype, "LineChart").and.returnValue(lineChart);
-		var barChart = mock( BarChart );
-		spyOn(BarChart.prototype, "BarChart").and.returnValue(barChart);
-		var mapChart = mock( mapChart );
-		spyOn(MapChart.prototype, "MapChart").and.returnValue(mapChart);
-		var table = mock( Table );
-		spyOn(Table.prototype, "Table").and.returnValue(table);
+		//var lineChart = mock( LineChart );
+		spyOn(LineChart.prototype, "LineChart").and.returnValue({});
+		//var barChart = mock( BarChart );
+		spyOn(BarChart.prototype, "BarChart").and.returnValue({});
+		//var mapChart = mock( mapChart );
+		spyOn(MapChart.prototype, "MapChart").and.returnValue({});
+		//var table = mock( Table );
+		spyOn(Table.prototype, "Table").and.returnValue({});
 
 		beforeEach(function(){
 			Page.addGraph(json);
