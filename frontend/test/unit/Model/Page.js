@@ -25,6 +25,27 @@ describe('Page', function(){
 		Page = _Page_;
 	}));
 
+	beforeEach(module(function ($provide) {
+		$provide.value('LineChart', {
+			someVariable: 1
+		});
+	}));
+	beforeEach(module(function ($provide) {
+		$provide.value('BarChart', {
+			someVariable: 1
+		});
+	}));
+	beforeEach(module(function ($provide) {
+		$provide.value('MapChart', {
+			someVariable: 1
+		});
+	}));
+	beforeEach(module(function ($provide) {
+		$provide.value('Table', {
+			someVariable: 1
+		});
+	}));
+
 	/*window.mock = function( constr, name ) {
 		var keys = [];
 		for( var key in constr.prototype ) {
