@@ -15,15 +15,16 @@
 */
 
 var GraphModel = require('../../../lib/dataTier/graph/graphModel.js');
+var LegendModel = require('../../../lib/dataTier/graph/legendModel.js');
 var assert = require('assert');
 
 describe('GraphModel', function() {
     it('returns null when there is no valid ID in params', function() {
-        assert.strictEqual(new GraphModel({}), 351);
+        assert.strictEqual(new GraphModel({}), null);
     });
 
     it('returns null when there is a empty ID in params', function() {
-        assert.strictEqual(new GraphModel({ID:' '}), 351);
+        assert.strictEqual(new GraphModel({ID:' '}), null);
     });
 
     it('set default values to property not specified', function() {
@@ -56,16 +57,16 @@ describe('GraphModel', function() {
         assert.strictEqual(graph1._legend, null);
     });
 
-    function LegendModel(prop, data){
+    /*function LegendModel(prop, data){
         this.getData=function(){
             return data;
         };
         this.getProperties=function(){
             return prop;
         };
-    }
+    }*/
 
-    var legend1 = new LegendModel('testProp1', 'testData1');
+    var legend1 = new LegendModel();
     it('set param values to properties', function() {
         var graph1=new GraphModel({
             ID: 'graph1',
@@ -79,9 +80,9 @@ describe('GraphModel', function() {
         assert.strictEqual(graph1._ID, 'graph1');
         assert.strictEqual(graph1._title, 'graph one');
         assert.strictEqual(graph1._type, 'BarChart');
-        assert.strictEqual(graph1._height, 0);
-        assert.strictEqual(graph1._width, 0);
-        assert.strictEqual(graph1._enableLegend, false);
+        assert.strictEqual(graph1._height, 200);
+        assert.strictEqual(graph1._width, 350);
+        assert.strictEqual(graph1._enableLegend, true);
         assert.strictEqual(graph1._legend, legend1);
     });
 
