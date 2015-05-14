@@ -6,11 +6,11 @@
 * History :
 * Version       Date        Programmer                  Description
 * ===============================================================================================================
-* 0.1.0         2015-05-13  Maria Giovanna Chinellato	Codificati tutti i metodi
+* 0.1.0         2015-05-13  Maria Giovanna Chinellato	Add all methods
 *
-* 0.0.2         2015-05-13  Francesco Rossetto   		Codifica di tutti gli attributi e alcuni dei metodi
+* 0.0.2         2015-05-13  Francesco Rossetto   		Add all attributes and some methods
 *
-* 0.0.1         2015-05-13  Francesco Rossetto			Creazione file      
+* 0.0.1         2015-05-13  Francesco Rossetto			Initial code      
 * ===============================================================================================================
 *
 */

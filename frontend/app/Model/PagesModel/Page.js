@@ -6,15 +6,15 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
-* 0.1.3         2015-05-14  Francesco Rossetto          Correzioni al metodo addGraph
+* 0.1.3         2015-05-14  Francesco Rossetto          Fix addGraph
 *
-* 0.1.2         2015-05-13  Francesco Rossetto          Correzioni al costruttore
+* 0.1.2         2015-05-13  Francesco Rossetto          Fix constructor
 *
-* 0.1.1         2015-05-12  Francesco Rossetto          Correzioni ai metodi
+* 0.1.1         2015-05-12  Francesco Rossetto          Fix methods
 *
-* 0.1.0         2015-05-12  Maria Giovanna Chinellato   Codifica di tutti gli attributi e i metodi
+* 0.1.0         2015-05-12  Maria Giovanna Chinellato   Add all attributes and all methods
 *
-* 0.0.1         2015-05-12  Maria Giovanna Chinellato   Creazione file      
+* 0.0.1         2015-05-12  Maria Giovanna Chinellato   Initial code     
 * =================================================================================================
 *
 */

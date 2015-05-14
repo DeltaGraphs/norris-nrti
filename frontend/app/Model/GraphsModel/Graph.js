@@ -6,18 +6,17 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
-* 0.1.3			2015-05-14	Maria Giovanna Chinellato	Aggiunto metodo getFlowList
+* 0.1.3			2015-05-14	Maria Giovanna Chinellato	Add method getFlowList
 *
-* 0.1.3			2015-05-14	Francesco Rossetto			Effettuate correzioni al costruttore
+* 0.1.3			2015-05-14	Francesco Rossetto			Fix constructor
 *
-* 0.1.2			2015-05-13	Francesco Rossetto			Effettuate piccole correzioni al costruttore 
-*														e a addFLow
+* 0.1.2			2015-05-13	Francesco Rossetto			Fix constructor 
 *
-* 0.1.1			2015-05-12	Maria Giovanna Chinellato	Effettuate piccole correzioni agli attributi
+* 0.1.1			2015-05-12	Maria Giovanna Chinellato	Fix attributes
 *
-* 0.1.0         2015-05-12  Francesco Rossetto   		Codifica di tutti gli attributi e i metodi
+* 0.1.0         2015-05-12  Francesco Rossetto   		Add all attributes and all methods
 *
-* 0.0.1         2015-05-12  Francesco Rossetto			Creazione file      
+* 0.0.1         2015-05-12  Francesco Rossetto			Initial code    
 * =================================================================================================
 *
 */

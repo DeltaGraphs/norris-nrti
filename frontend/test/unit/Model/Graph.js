@@ -6,11 +6,11 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
-* 0.1.1			2015-05-14	Maria Giovanna Chinellato	Aggiunto test su metodo addFlow
+* 0.1.1			2015-05-14	Maria Giovanna Chinellato	Add test of method addFlow
 *
-* 0.1.0			2015-05-14	Francesco Rossetto			Codifica del test sul Model Graph.js
+* 0.1.0			2015-05-14	Francesco Rossetto			Add test of Model::Graph.js
 *
-* 0.0.1			2015-05-14	Francesco Rossetto			Creazione file
+* 0.0.1			2015-05-14	Francesco Rossetto			Initial code
 * =================================================================================================
 *
 */
@@ -119,7 +119,7 @@ describe('Graph', function(){
 		it('delete flow from graph', function(){
 			expect(Graph.prototype.getFlowList().length).toBeEqual(0);
 		});
-		
+
 	});
 
 });

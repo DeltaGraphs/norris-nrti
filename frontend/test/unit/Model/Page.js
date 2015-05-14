@@ -6,9 +6,9 @@
 * History :
 * Version       Date        Programmer                  Description
 * =======================================================================================================================
-* 0.1.0			2015-05-13	Rossetto Francesco			Codifica del test sul Model Page, descritti tutti i metodi
+* 0.1.0			2015-05-13	Rossetto Francesco			Add test of Model::Page, describe all method
 *
-* 0.0.1			2015-05-13	Rossetto Francesco			Creazione file
+* 0.0.1			2015-05-13	Rossetto Francesco			Initial code
 *
 * =======================================================================================================================
 *

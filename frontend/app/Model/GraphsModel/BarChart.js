@@ -1,22 +1,22 @@
 /*
-* Name :  LineChart.js
+* Name :  BarChart.js
 * Module : FrontEnd::Model::GraphsModel
 * Location : /frontend/app/Model/GraphsModel
 *
 * History :
 * Version       Date        Programmer                  Description
 * ===============================================================================================================
-* 0.0.2         2015-05-14  Maria Giovanna Chinellato   Codificati tutti i metodi
+* 0.1.0         2015-05-14  Maria Giovanna Chinellato   Add all methods and fix class
 *
-* 0.0.2         2015-05-14  Maria Giovanna Chinellato   Codifica di tutti gli attributi, della funzione
-*                                                       split e di parte del metodo updateParameters
+* 0.0.2         2015-05-14  Maria Giovanna Chinellato   Add all attributes, add methods 
+*                                                       split and updateParameter
 *
-* 0.0.1         2015-05-14  Maria Giovanna Chinellato   Creazione file      
+* 0.0.1         2015-05-14  Maria Giovanna Chinellato   Initial code      
 * ===============================================================================================================
 *
 */
 
-app.factory('BarChartFlow', function(){
+app.factory('BarChart', ['Graph', 'Axis', 'BarChartFlow', function(Graph, Axis, BarChartFlow){
     var axisX;
     var axisY;
     var barOrientation;
