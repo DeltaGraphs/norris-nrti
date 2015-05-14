@@ -28,42 +28,53 @@ default:
 	test
 
 test:
-	@echo "FRONTEND BUILDING..."
 	pwd
 	npm install
-	# Static analysis
-	### @$(MAKE) jshint-client
-	##### jshint-client:
+	@$(MAKE) jshint-client
+	@$(MAKE) jshint-server
+	@$(MAKE) karma
+	@$(MAKE) test-report
+
+test-report:
+	@$(MAKE) jshint-client-report
+	@$(MAKE) jshint-server-report
+	@$(MAKE) plato-report
+	@$(MAKE) complexity-report
+	@$(MAKE) karma-report
+
+
+# Static analysis
+
+jshint-client:
 	@echo "$(PROJECT)Executing JSHint Client..."
 	@$(JSHINT) $(JSHINT_CLIENT_OPTS) $(JS_CLIENT_FILES)
-	### @$(MAKE) jshint-server
-	##### jshint-server:
+
+jshint-server:
 	@echo "$(PROJECT)Executing JSHint Server..."
 	@$(JSHINT) $(JSHINT_SERVER_OPTS) $(JS_SERVER_FILES)
-	# Unit test
-	### @$(MAKE) karma
-	##### karma:
-	@echo "$(PROJECT)Executing Karma..."
-	@$(KARMA) start
-	#test-report:
-	### @$(MAKE) jshint-client-report
-	##### jshint-client-report:
+
+jshint-client-report:
 	@echo "$(PROJECT)Executing JSHint Client Report..."
 	-@$(JSHINT) --reporter checkstyle $(JSHINT_CLIENT_OPTS) $(JS_CLIENT_FILES) > $(REPORTS)/checkstyle-client-result.xml
-	### @$(MAKE) jshint-server-report
-	##### jshint-server-report:
+
+jshint-server-report:
 	@echo "$(PROJECT)Executing JSHint Server Report..."
 	-@$(JSHINT) --reporter checkstyle $(JSHINT_SERVER_OPTS) $(JS_SERVER_FILES) > $(REPORTS)/checkstyle-server-result.xml
-	### @$(MAKE) plato-report
-	##### plato-report:
+
+plato-report:
 	@echo "$(PROJECT)Executing Plato..."
 	-@$(PLATO) $(PLATO_OPTS) -d $(REPORTS)/metrics $(JS_CLIENT_FILES) $(JS_SERVER_FILES)
-	### @$(MAKE) complexity-report
-	##### complexity-report:
+
+complexity-report:
 	@echo "$(PROJECT)Executing Complexity Report..."
 	-@$(CR) $(CR_OPTS) --format json --output $(REPORTS)/complexity-report.json --filepattern ".*\.js" app/scripts/
 	-@$(CR) $(CR_OPTS) --format plain --output $(REPORTS)/complexity-report.txt --filepattern ".*\.js" app/scripts/
-	### @$(MAKE) karma-report
-	##### karma-report:
+
+# Unit test
+karma:
+	@echo "$(PROJECT)Executing Karma..."
+	@$(KARMA) start
+
+karma-report:
 	@echo "$(PROJECT)Executing Karma..."
 	-@$(KARMA) start
