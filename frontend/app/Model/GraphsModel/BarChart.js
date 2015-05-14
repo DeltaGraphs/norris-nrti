@@ -73,17 +73,7 @@ app.factory('BarChart', ['Graph', 'Axis', 'BarChartFlow', function(Graph, Axis, 
 
     // create our new custom object that reuse the original object constructor
     var BarChart = function(info) {
-        json = split(info);
-        gJson = json.graphJson;
-        bJson = json.barJson;
-        Graph.apply(this, gJson);
-
-        axisX = new Axis(bJson.axisX);
-        axisY = new Axis(bJson.axisY);
-        barOrientation = bJson.barOrientation;
-        background = bJson.background;
-        sortable = bJson.sortable;
-        barsGrouping = bJson.barsGrouping;
+        Graph.apply(this, info); // info has only title and url
     };
 
     // reuse the original object prototype
@@ -107,8 +97,8 @@ app.factory('BarChart', ['Graph', 'Axis', 'BarChartFlow', function(Graph, Axis, 
             if (bjson.barOrientation) {
                 barOrientation = bJson.barOrientation;
             }
-            if (lJson.background) {
-                background = lJson.background;
+            if (bJson.background) {
+                background = bJson.background;
             }
             if (bjson.sortable) {
                 sortable = bJson.sortable;
@@ -151,5 +141,5 @@ app.factory('BarChart', ['Graph', 'Axis', 'BarChartFlow', function(Graph, Axis, 
         return barsGrouping;
     };
 
-    return LineChart;
+    return BarChart;
 });

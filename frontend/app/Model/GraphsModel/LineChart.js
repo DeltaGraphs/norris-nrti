@@ -6,6 +6,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * ===============================================================================================================
+* 0.1.1         2015-05-15  Maria Giovanna Chinellato	Fix all methods
+*
 * 0.1.0         2015-05-13  Maria Giovanna Chinellato	Add all methods
 *
 * 0.0.2         2015-05-13  Francesco Rossetto   		Add all attributes and some methods
@@ -51,19 +53,19 @@ app.factory('LineChart', ['Graph', 'Axis', 'ViewFinder', 'LineChartFlow', functi
 
 		var lineJson = {};
 		if (json.axisX) {
-			graphJson.axisX = json.axisX;
+			lineJson.axisX = json.axisX;
 		}
 		if (json.axisY) {
-			graphJson.axisY = json.axisY;
+			lineJson.axisY = json.axisY;
 		}
 		if (json.viewFinder) {
-			graphJson.viewFinder = json.viewFinder;
+			lineJson.viewFinder = json.viewFinder;
 		}
 		if (json.enabledViewFinder) {
-			graphJson.enabledViewFinder = json.enabledViewFinder;
+			lineJson.enabledViewFinder = json.enabledViewFinder;
 		}
 		if (json.background) {
-			graphJson.background = json.background;
+			lineJson.background = json.background;
 		}
 
 		return {
@@ -74,7 +76,6 @@ app.factory('LineChart', ['Graph', 'Axis', 'ViewFinder', 'LineChartFlow', functi
 
     // create our new custom object that reuse the original object constructor
     var LineChart = function(info) {
-
         Graph.apply(this, info); // info has only title and url
     };
 
@@ -116,21 +117,21 @@ app.factory('LineChart', ['Graph', 'Axis', 'ViewFinder', 'LineChartFlow', functi
     };
 
     // update data
-    LineChart.prototype.inPlaceUpdate(data) {
+    LineChart.prototype.inPlaceUpdate = function(data) {
     	flowList[data.ID].inPlaceUpdate(data.records);
     };
-    LineChart.prototype.streamUpdate(data) {
+    LineChart.prototype.streamUpdate = function(data) {
     	flowList[data.ID].streamUpdate(data.records);
     };
 
     // get method
-    LineChart.prototype.getX() {
+    LineChart.prototype.getX = function() {
     	return axisX;
     };
-    LineChart.prototype.getY() {
+    LineChart.prototype.getY = function() {
     	return axisY;
     };
-    LineChart.prototype.getViewFinder() {
+    LineChart.prototype.getViewFinder = function() {
     	if (enabledViewFinder) {
     		return viewFinder;
     	}
