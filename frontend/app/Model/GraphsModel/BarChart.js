@@ -6,6 +6,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * ===============================================================================================================
+* 0.0.2         2015-05-14  Maria Giovanna Chinellato   Codificati tutti i metodi
+*
 * 0.0.2         2015-05-14  Maria Giovanna Chinellato   Codifica di tutti gli attributi, della funzione
 *                                                       split e di parte del metodo updateParameters
 *
@@ -93,9 +95,61 @@ app.factory('BarChartFlow', function(){
         gJson = json.graphJson;
         bJson = json.barJson;
         if (Object.keys(gJson).length != 0) {
-            //chiamata super a graph
+            Graph.apply(this, gJson);
         } 
-        //........
+        if (Object.keys(bJson).length != 0) {
+            if (bJson.axisX) {
+                axisX = new Axis(bJson.axisX);
+            }
+            if (bJson.axisY) {
+                axisY = new Axis(bJson.axisY);
+            }
+            if (bjson.barOrientation) {
+                barOrientation = bJson.barOrientation;
+            }
+            if (lJson.background) {
+                background = lJson.background;
+            }
+            if (bjson.sortable) {
+                sortable = bJson.sortable;
+            }
+            if (lJson.barsGrouping) {
+                barsGrouping = lJson.barsGrouping;
+            }
+        }
     };
+
+    BarChart.prototype.addFlow = function(flow) {
+        if (typeof flow === 'BarChartFlow'){
+            var newflow = new BarChartFlow(flow);
+            Graph.prototype.addFlow.call(this, flow.ID, newflow);
+        }
+    };
+
+    // update data
+    BarChart.prototype.inPlaceUpdate = function(data) {
+        flowList[data.ID].inPlaceUpdate(data.records);
+    };
+
+    // get method
+    BarChart.prototype.getX =function() {
+        return axisX;
+    };
+    BarChart.prototype.getY = function() {
+        return axisY;
+    };
+    BarChart.prototype.getBarOrientation = function() {
+        return barOrientation;
+    };
+    BarChart.prototype.getBackground = function() {
+        return background;
+    };
+    BarChart.prototype.getSortable = function() {
+        return sortable;
+    };
+    BarChart.prototype.getBarGrouping = function() {
+        return barsGrouping;
+    };
+
     return LineChart;
 });
