@@ -124,8 +124,8 @@ describe('PageModel', function() {
         });
     });
 
-    var graph1=new GraphModel('graph1');
-    var graph2=new GraphModel('graph2');
+    var graph1=new GraphModel({ID: 'graph1'});
+    var graph2=new GraphModel({ID: 'graph2'});
 
     describe('#addGraph', function() {
         it('returns true and pushes the page if graph is valid', function() {
@@ -152,7 +152,7 @@ describe('PageModel', function() {
             assert.strictEqual(data.length, 1);
             assert.strictEqual(data[0].properties.ID, 'graph1');
         });
-        it('returns json with two pages', function() {
+        it('returns json with two graphs', function() {
             var page1=new PageModel({ID: 'page1'});
             page1.addGraph(graph1);
             page1.addGraph(graph2);

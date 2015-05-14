@@ -31,8 +31,8 @@ describe('PageListModel', function() {
         assert.strictEqual((new PageListModel('name'))._name, 'name');
     });
 
-    var page1=new PageModel('page1');
-    var page2=new PageModel('page2');
+    var page1=new PageModel({ID: 'page1'});
+    var page2=new PageModel({ID: 'page2'});
 
     describe('#addPage', function() {
         it('returns true and pushes the page if page is valid', function() {
