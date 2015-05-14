@@ -6,9 +6,9 @@
 * History :
 * Version       Date        Programmer                  Description
 * ===============================================================================================================
-* 0.1.0         2015-06-12  Francesco Rossetto   		Codifica di tutti gli attributi e alcuni dei metodi
+* 0.1.0         2015-05-13  Francesco Rossetto   		Codifica di tutti gli attributi e alcuni dei metodi
 *
-* 0.0.1         2015-06-12  Francesco Rossetto			Creazione file      
+* 0.0.1         2015-05-13  Francesco Rossetto			Creazione file      
 * ===============================================================================================================
 *
 */

@@ -55,10 +55,10 @@ app.factory('Graph', ['Flow', 'Legend', function(Flow, Legend){
 				legend = new Legend(info.legend);
 			}
 		}
-		if (info.horizontalGrid) {
+		if (info.horizontalGrid != null) {
 			horizontalGrid = info.horizontalGrid;
 		}
-		if (info.verticalGrid) {
+		if (info.verticalGrid != null) {
 			verticalGrid = info.verticalGrid;
 		}
 	};

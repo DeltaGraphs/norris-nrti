@@ -17,11 +17,15 @@ describe('Graph', function(){
 	'use strict';
 
 	var Graph;
+	var Legend;
+	var Flow;
 
 	beforeEach(module('app'));
 
-	beforeEach(inject(function(_Graph_){
+	beforeEach(inject(function(_Graph_, $injector){
 		Graph = _Graph_;
+		Legend = $injector.get('Legend');
+		Flow = $injector.get('Flow');
 	}));
 
 	describe('Constructor', function(){
@@ -44,21 +48,33 @@ describe('Graph', function(){
 
 	});
 
-	/*describe('updateParameters', function(){
+	describe('updateParameters', function(){
 		var json = {
-			"ID" : "4"
+			"title" : "graficoNuovo",
+			"height" : 300,
+			"width" : 300,
+			"enabledLegend" : true,
+			"legend" : {},
+			"horizontalGrid" : true,
+			"verticalGrid" : true
 		};
 
-		spyOn(Page.prototype, "Page").and.returnValue({ "mery" : "ross" });
-
 		beforeEach(function(){
-			PagesList.addPage(json);
+			Graph.updateParameters(json);
 		});
 
-		it('page added to the pagesList', function(){
-			expect(PagesList.getPagesList().length).toBeEqual(4);
+		spyOn(Legend.prototype, "Legend").and.returnValue({});
+
+		it('graph updated with the correct name', function(){
+			expect(PagesList.getTitle()).toBeEqual("graficoNuovo");
+		});
+		it('graph updated with the correct name', function(){
+			expect(PagesList.getTitle()).toBeEqual("graficoNuovo");
+		});
+		it('graph updated with the correct name', function(){
+			expect(PagesList.getTitle()).toBeEqual("graficoNuovo");
 		});
 
-	});*/
+	});
 	
 });
