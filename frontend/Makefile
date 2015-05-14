@@ -27,69 +27,43 @@ default:
 	pwd
 	test
 
-prepare:
-	@# Fix per bower install su OpenShift
-	HOME="/tmp" && $(NPM) install
-	test -d $(REPORTS) || mkdir $(REPORTS)
-
-clean:
-	rm -rf $(REPORTS)
-	rm -rf app/bower_components
-	rm -rf node_modules
-
-
 test:
+	@echo "FRONTEND BUILDING..."
 	pwd
 	npm install
-	@$(MAKE) jshint-client
-	@$(MAKE) jshint-server
-	@$(MAKE) karma
-
-test-report:
-	@$(MAKE) jshint-client-report
-	@$(MAKE) jshint-server-report
-	@$(MAKE) plato-report
-	@$(MAKE) complexity-report
-	@$(MAKE) karma-report
-
-
-# Static analysis
-jshint: jshint-server jshint-client
-
-jshint-client:
+	# Static analysis
+	### @$(MAKE) jshint-client
+	##### jshint-client:
 	@echo "$(PROJECT)Executing JSHint Client..."
 	@$(JSHINT) $(JSHINT_CLIENT_OPTS) $(JS_CLIENT_FILES)
-
-jshint-server:
+	### @$(MAKE) jshint-server
+	##### jshint-server:
 	@echo "$(PROJECT)Executing JSHint Server..."
 	@$(JSHINT) $(JSHINT_SERVER_OPTS) $(JS_SERVER_FILES)
-
-jshint-client-report:
+	# Unit test
+	### @$(MAKE) karma
+	##### karma:
+	@echo "$(PROJECT)Executing Karma..."
+	@$(KARMA) start
+	#test-report:
+	### @$(MAKE) jshint-client-report
+	##### jshint-client-report:
 	@echo "$(PROJECT)Executing JSHint Client Report..."
 	-@$(JSHINT) --reporter checkstyle $(JSHINT_CLIENT_OPTS) $(JS_CLIENT_FILES) > $(REPORTS)/checkstyle-client-result.xml
-
-jshint-server-report:
+	### @$(MAKE) jshint-server-report
+	##### jshint-server-report:
 	@echo "$(PROJECT)Executing JSHint Server Report..."
 	-@$(JSHINT) --reporter checkstyle $(JSHINT_SERVER_OPTS) $(JS_SERVER_FILES) > $(REPORTS)/checkstyle-server-result.xml
-
-plato-report:
+	### @$(MAKE) plato-report
+	##### plato-report:
 	@echo "$(PROJECT)Executing Plato..."
 	-@$(PLATO) $(PLATO_OPTS) -d $(REPORTS)/metrics $(JS_CLIENT_FILES) $(JS_SERVER_FILES)
-
-complexity-report:
+	### @$(MAKE) complexity-report
+	##### complexity-report:
 	@echo "$(PROJECT)Executing Complexity Report..."
 	-@$(CR) $(CR_OPTS) --format json --output $(REPORTS)/complexity-report.json --filepattern ".*\.js" app/scripts/
 	-@$(CR) $(CR_OPTS) --format plain --output $(REPORTS)/complexity-report.txt --filepattern ".*\.js" app/scripts/
-
-# Unit test
-karma:
-	@echo "$(PROJECT)Executing Karma..."
-	@$(KARMA) start
-
-karma-report:
+	### @$(MAKE) karma-report
+	##### karma-report:
 	@echo "$(PROJECT)Executing Karma..."
 	-@$(KARMA) start
-
-.PHONY: default prepare clean test test-report \
-	jshint jshint-client jshint-server jshint-client-report jshint-server-report \
-	plato-report complexity-report karma karma-report
