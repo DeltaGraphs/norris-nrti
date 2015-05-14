@@ -32,6 +32,8 @@ test:
 	@$(MAKE) jshint
 	@$(MAKE) mocha
 	$(MAKE) test-report
+	cd frontend
+	make test --always-make
 
 test-report:
 	@$(MAKE) jshint-report
