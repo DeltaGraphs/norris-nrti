@@ -89,7 +89,7 @@ app.factory('LineChart', ['Graph', 'Axis', 'ViewFinder', function(Graph, Axis, V
     // reuse the original object prototype
 	LineChart.prototype = new Graph();
 
-    // Now let's override our original getProfile method
+    // Now let's override our original updateParameters method
     LineChart.prototype.updateParameters = function(info) {
     	json = json = split(info);
     	gJson = json.graphJson;

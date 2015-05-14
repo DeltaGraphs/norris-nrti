@@ -6,9 +6,12 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.1.3			2015-05-14	Maria Giovanna Chinellato	Aggiunto metodo getFlowList
+*
 * 0.1.3			2015-05-14	Francesco Rossetto			Effettuate correzioni al costruttore
 *
-* 0.1.2			2015-05-13	Francesco Rossetto			Effettuate piccole correzioni al costruttore e a addFLow
+* 0.1.2			2015-05-13	Francesco Rossetto			Effettuate piccole correzioni al costruttore 
+*														e a addFLow
 *
 * 0.1.1			2015-05-12	Maria Giovanna Chinellato	Effettuate piccole correzioni agli attributi
 *
@@ -96,6 +99,9 @@ app.factory('Graph', ['Flow', 'Legend', function(Flow, Legend){
 	};
 	Graph.prototype.getUrl = function() {
 		return url;
+	};
+	Graph.prototype.getFlowList = function() {
+		return flowList;
 	};
 	return Graph;
 });

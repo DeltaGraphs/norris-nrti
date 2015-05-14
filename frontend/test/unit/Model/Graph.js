@@ -6,6 +6,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.1.1			2015-05-14	Maria Giovanna Chinellato	Aggiunto test su metodo addFlow
+*
 * 0.1.0			2015-05-14	Francesco Rossetto			Codifica del test sul Model Graph.js
 *
 * 0.0.1			2015-05-14	Francesco Rossetto			Creazione file
@@ -89,20 +91,23 @@ describe('Graph', function(){
 
 	});
 	
-	/*describe('addFlow', function(){
+	describe('addFlow', function(){
 
 		var json = {
-
+			"ID" : 	"flusso1",
+			"name" : "sonda 1"
 		};
 
+		spyOn(Flow.prototype, "Flow").and.returnValue({});
+
 		beforeEach(function(){
-			Graph.prototype.addflow();
+			Graph.prototype.addflow(json);
 		});
 
-		it('', function(){
+		it('add flow into graph', function(){
 			expect(Graph.prototype.getFlowList().length).toBeEqual(1);
 		});
 
-	});*/
+	});
 
 });

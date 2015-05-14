@@ -87,7 +87,7 @@ app.factory('BarChartFlow', function(){
     // reuse the original object prototype
     BarChart.prototype = new Graph();
 
-    // Now let's override our original getProfile method
+    // Now let's override our original updateParameters method
     BarChart.prototype.updateParameters = function(info) {
         json = json = split(info);
         gJson = json.graphJson;
