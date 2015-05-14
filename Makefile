@@ -32,8 +32,8 @@ test:
 	@$(MAKE) jshint
 	@$(MAKE) mocha
 	$(MAKE) test-report
-	cd frontend
-	./startBuildFrontend.sh
+	cd ./frontend; \
+        ./startBuildFrontend.sh
 
 test-report:
 	@$(MAKE) jshint-report
