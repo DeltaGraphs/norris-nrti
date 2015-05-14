@@ -12,14 +12,13 @@
 *														PagesList.js
 *
 * 0.0.1			2015-05-13	Maria Giovanna Chinellato	Creazione file
-*
 * =================================================================================================
 *
 */
-'use strict';
 
 describe('PagesList', function(){
-	
+	'use strict';
+
 	var PagesList;
 
 	beforeEach(module('app'));

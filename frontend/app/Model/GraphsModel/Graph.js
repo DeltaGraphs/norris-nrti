@@ -61,9 +61,6 @@ app.factory('Graph', ['Flow', 'Legend', function(Flow, Legend){
 		if (info.verticalGrid) {
 			verticalGrid = info.verticalGrid;
 		}
-		if (info.url) {
-			url = info.url;
-		}
 	};
 	Graph.prototype.addFlow = function(id, flow) { //abstract
 		if (flowList[id] === null) {

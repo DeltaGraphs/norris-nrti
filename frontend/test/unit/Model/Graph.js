@@ -14,6 +14,7 @@
 */
 
 describe('Graph', function(){
+	'use strict';
 	
 	var Graph;
 
@@ -43,7 +44,7 @@ describe('Graph', function(){
 
 	});
 
-	describe('addPage', function(){
+	describe('updateParameters', function(){
 		var json = {
 			"ID" : "4"
 		}

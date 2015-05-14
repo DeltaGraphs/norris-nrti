@@ -13,13 +13,13 @@
 * =======================================================================================================================
 *
 */
-'use strict';
 
 describe('Page', function(){
-	
+	'use strict';
+
 	var Page;
 
-	beforEach(module('app'));
+	beforeEach(module('app'));
 
 	beforeEach(inject(function(_Page_){
 		Page = _Page_;
@@ -35,9 +35,18 @@ describe('Page', function(){
 				"graphsPerCol" : 4,
 				"URLSocket" : "http://localhost/page1",
 				"graphs" : [
-								{ "ID" : "grafico1", "type" : "LineChart" },
-								{ "ID" : "grafico2", "type" : "BarChart" },
-								{ "ID" : "grafico3", "type" : "MapChart" }
+								{ 
+									"ID" : "grafico1", 
+									"type" : "LineChart" 
+								},
+								{ 
+									"ID" : "grafico2", 
+									"type" : "BarChart" 
+								},
+								{ 
+									"ID" : "grafico3", 
+									"type" : "MapChart" 
+								}
 							]
 		}
 		var lineChart = mock( LineChart );
@@ -77,12 +86,12 @@ describe('Page', function(){
 	describe('updatePage', function(){
 
 		var json = 	{
-				"ID" : "pageN",
-				"name" : "Pagina n-esima",
-				"description" : "questa è la pagina n-esima",
-				"graphsPerRow" : 4,
-				"graphsPerCol" : 4,
-				"URLSocket" : "http://localhost/pageN"
+			"ID" : "pageN",
+			"name" : "Pagina n-esima",
+			"description" : "questa è la pagina n-esima",
+			"graphsPerRow" : 4,
+			"graphsPerCol" : 4,
+			"URLSocket" : "http://localhost/pageN"
 		}
 
 		beforeEach(function(){
