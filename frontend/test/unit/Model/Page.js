@@ -18,6 +18,10 @@ describe('Page', function(){
 	'use strict';
 
 	var Page;
+	var LineChart;
+	var BarChart;
+	var MapChart;
+	var Table;
 
 	beforeEach(module('app'));
 
