@@ -33,7 +33,7 @@ test:
 	@$(MAKE) mocha
 	$(MAKE) test-report
 	cd frontend
-	make test --always-make --ignore-errors
+	./startBuildFrontend.sh
 
 test-report:
 	@$(MAKE) jshint-report

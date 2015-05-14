@@ -1,0 +1,1 @@
+make test --always-make --ignore-errors
