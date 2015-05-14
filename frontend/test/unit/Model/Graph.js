@@ -48,7 +48,7 @@ describe('Graph', function(){
 
 	});
 
-	describe('updateParameters', function(){
+	/*describe('updateParameters', function(){
 		var json = {
 			"title" : "graficoNuovo",
 			"height" : 300,
@@ -75,6 +75,6 @@ describe('Graph', function(){
 			expect(PagesList.getTitle()).toBeEqual("graficoNuovo");
 		});
 
-	});
+	});*/
 	
 });
