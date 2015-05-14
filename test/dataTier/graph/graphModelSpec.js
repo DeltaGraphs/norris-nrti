@@ -19,11 +19,11 @@ var assert = require('assert');
 
 describe('GraphModel', function() {
     it('returns null when there is no valid ID in params', function() {
-        assert.strictEqual((new GraphModel({})).hasOwnProperty('_title'), false);
+        assert.strictEqual(new GraphModel({}), 351);
     });
 
     it('returns null when there is a empty ID in params', function() {
-        assert.strictEqual((new GraphModel({ID:' '})).hasOwnProperty('_name'), false);
+        assert.strictEqual(new GraphModel({ID:' '}), 351);
     });
 
     it('set default values to property not specified', function() {
@@ -78,7 +78,7 @@ describe('GraphModel', function() {
         });
         assert.strictEqual(graph1._ID, 'graph1');
         assert.strictEqual(graph1._title, 'graph one');
-        assert.strictEqual(graph1._type, '');
+        assert.strictEqual(graph1._type, 'BarChart');
         assert.strictEqual(graph1._height, 0);
         assert.strictEqual(graph1._width, 0);
         assert.strictEqual(graph1._enableLegend, false);
