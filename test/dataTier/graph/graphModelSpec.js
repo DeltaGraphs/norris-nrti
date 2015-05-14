@@ -20,11 +20,11 @@ var assert = require('assert');
 
 describe('GraphModel', function() {
     it('returns null when there is no valid ID in params', function() {
-        assert.strictEqual(new GraphModel({}), {});
+        assert.strictEqual((new GraphModel({})).hasOwnProperty('_ID'), true);
     });
 
     it('returns null when there is a empty ID in params', function() {
-        assert.strictEqual(new GraphModel({ID:' '}), {});
+        assert.strictEqual((new GraphModel({ID:' '})).hasOwnProperty('_ID'), true);
     });
 
     it('set default values to property not specified', function() {
