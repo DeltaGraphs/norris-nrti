@@ -20,11 +20,11 @@ var assert = require('assert');
 
 describe('GraphModel', function() {
     it('returns null when there is no valid ID in params', function() {
-        assert.strictEqual(new GraphModel({}), null);
+        assert.strictEqual(new GraphModel({}), {});
     });
 
     it('returns null when there is a empty ID in params', function() {
-        assert.strictEqual(new GraphModel({ID:' '}), null);
+        assert.strictEqual(new GraphModel({ID:' '}), {});
     });
 
     it('set default values to property not specified', function() {
@@ -56,15 +56,6 @@ describe('GraphModel', function() {
         assert.strictEqual(graph1._enableLegend, false);
         assert.strictEqual(graph1._legend, null);
     });
-
-    /*function LegendModel(prop, data){
-        this.getData=function(){
-            return data;
-        };
-        this.getProperties=function(){
-            return prop;
-        };
-    }*/
 
     var legend1 = new LegendModel();
     it('set param values to properties', function() {
