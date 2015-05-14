@@ -48,7 +48,7 @@ describe('Graph', function(){
 
 	});
 
-	/*describe('updateParameters', function(){
+	describe('updateParameters', function(){
 		var json = {
 			"title" : "graficoNuovo",
 			"height" : 300,
@@ -60,21 +60,49 @@ describe('Graph', function(){
 		};
 
 		beforeEach(function(){
-			Graph.updateParameters(json);
+			Graph.prototype.updateParameters(json);
 		});
 
 		spyOn(Legend.prototype, "Legend").and.returnValue({});
 
 		it('graph updated with the correct name', function(){
-			expect(PagesList.getTitle()).toBeEqual("graficoNuovo");
+			expect(Graph.prototype.getTitle()).toBeEqual("graficoNuovo");
 		});
 		it('graph updated with the correct name', function(){
-			expect(PagesList.getTitle()).toBeEqual("graficoNuovo");
+			expect(Graph.prototype.getHeight()).toBeEqual(300);
 		});
 		it('graph updated with the correct name', function(){
-			expect(PagesList.getTitle()).toBeEqual("graficoNuovo");
+			expect(Graph.prototype.getWidth()).toBeEqual(300));
+		});
+		it('graph updated with the correct name', function(){
+			expect(Graph.prototype.getEnabledLegend()).toBeEqual(true));
+		});
+		it('graph updated with the correct name', function(){
+			expect(Graph.prototype.getLegend()).toBeEqual({}));
+		});
+		it('graph updated with the correct name', function(){
+			expect(Graph.prototype.getHorizontalGrid()).toBeEqual(true));
+		});
+		it('graph updated with the correct name', function(){
+			expect(Graph.prototype.getVerticalGrid()).toBeEqual(true));
 		});
 
-	});*/
+	});
 	
+	describe('addFlow', function(){
+
+		var json = {
+			
+		};
+
+		beforeEach(function(){
+			Graph.prototype.addflow();
+		});
+
+		it('', function(){
+			expect(Graph.prototype.getFlowList().length).toBeEqual(1);
+		});
+
+	});
+
 });
