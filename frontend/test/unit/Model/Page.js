@@ -21,29 +21,12 @@ describe('Page', function(){
 
 	beforeEach(module('app'));
 
-	beforeEach(inject(function(_Page_){
+	beforeEach(inject(function(_Page_, $injector){
 		Page = _Page_;
-	}));
-
-	beforeEach(module(function ($provide) {
-		$provide.value('LineChart', {
-			someVariable: 1
-		});
-	}));
-	beforeEach(module(function ($provide) {
-		$provide.value('BarChart', {
-			someVariable: 1
-		});
-	}));
-	beforeEach(module(function ($provide) {
-		$provide.value('MapChart', {
-			someVariable: 1
-		});
-	}));
-	beforeEach(module(function ($provide) {
-		$provide.value('Table', {
-			someVariable: 1
-		});
+		LineChart = $injector.get('LineChart');
+		BarChart = $injector.get('BarChart');
+		MapChart = $injector.get('MapChart');
+		Table = $injector.get('Table');
 	}));
 
 	/*window.mock = function( constr, name ) {
