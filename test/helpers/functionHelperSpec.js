@@ -60,25 +60,25 @@ describe('FunctionHelper', function() {
             assert.strictEqual(FH.parseCondition('temperatura>'), 701);
         });
         it('returns correct object when passed temp>=0', function() {
-            assert.deepEqual(JSON.stringify(FH.parseCondition('temp>=0')),'{key:"temp",operator:">=",value:0}');
+            assert.deepEqual(JSON.stringify(FH.parseCondition('temp>=0')),'{"key":"temp","operator":">=","value":0}');
         });
         it('returns correct object when passed temp>=\'0\'', function() {
-            assert.deepEqual(JSON.stringify(FH.parseCondition('temp>=0')),'{key:"temp",operator:">=",value:"0"}');
+            assert.deepEqual(JSON.stringify(FH.parseCondition('temp>=0')),'{"key":"temp","operator":">=","value":"0"}');
         });
         it('returns correct object when passed temp>-1', function() {
-            assert.deepEqual(JSON.stringify(FH.parseCondition('temp>-1')),'{key:"temp",operator:">",value:-1}');
+            assert.deepEqual(JSON.stringify(FH.parseCondition('temp>-1')),'{"key":"temp","operator":">","value":-1}');
         });
         it('returns correct object when passed temp>=0', function() {
-            assert.deepEqual(JSON.stringify(FH.parseCondition('temp<=0')),'{key:"temp",operator:"<=",value:0}');
+            assert.deepEqual(JSON.stringify(FH.parseCondition('temp<=0')),'{"key":"temp","operator":"<=","value":0}');
         });
         it('returns correct object when passed temp>=\'56\'', function() {
-            assert.deepEqual(JSON.stringify(FH.parseCondition('temp<\'56\'')),'{key:"temp",operator:"<",value:56}');
+            assert.deepEqual(JSON.stringify(FH.parseCondition('temp<\'56\'')),'{"key":"temp","operator":"<","value":56}');
         });
         it('returns correct object when passed temp==10', function() {
-            assert.deepEqual(JSON.stringify(FH.parseCondition('temp==10')),'{key:"temp",operator:"==",value:10}');
+            assert.deepEqual(JSON.stringify(FH.parseCondition('temp==10')),'{"key":"temp","operator":"==","value":10}');
         });
         it('returns correct object when passed temp!=100', function() {
-            assert.deepEqual(JSON.stringify(FH.parseCondition('temp!=100')),'{key:"temp",operator:"!=",value:100}');
+            assert.deepEqual(JSON.stringify(FH.parseCondition('temp!=100')),'{"key":"temp","operator":"!=","value":100}');
         });
     });
 });
