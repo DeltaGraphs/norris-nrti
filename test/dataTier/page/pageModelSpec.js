@@ -15,6 +15,7 @@
 */
 
 var PageModel = require('../../../lib/dataTier/page/pageModel.js');
+var GraphModel = require('../../../lib/dataTier/graph/graphModel.js');
 var assert = require('assert');
 
 describe('PageModel', function() {
@@ -123,18 +124,8 @@ describe('PageModel', function() {
         });
     });
 
-    function GraphModel(prop, data){
-        this.getData=function(){
-            return data;
-        };
-        this.getProperties=function(){
-            return prop;
-        };
-    }
-
-    var graph1=new GraphModel('testProp1', 'testData1');
-    var graph2=new GraphModel('testProp2', 'testData2');
-
+    var graph1=new GraphModel({ID: 'graph1'});
+    var graph2=new GraphModel({ID: 'graph2'});
 
     describe('#addGraph', function() {
         it('returns true and pushes the page if graph is valid', function() {
@@ -144,7 +135,7 @@ describe('PageModel', function() {
         });
         it('returns false if graph is invalid', function() {
             var page1=new PageModel({ID: 'page1'});
-            assert.strictEqual(page1.addGraph(2), false);
+            assert.strictEqual(page1.addGraph(2), 411);
         });
     });
 
@@ -159,19 +150,16 @@ describe('PageModel', function() {
             page1.addGraph(graph1);
             var data=page1.getData();
             assert.strictEqual(data.length, 1);
-            assert.strictEqual(data[0].properties, 'testProp1');
-            assert.strictEqual(data[0].data, 'testData1');
+            assert.strictEqual(data[0].properties.ID, 'graph1');
         });
-        it('returns json with two pages', function() {
+        it('returns json with two graphs', function() {
             var page1=new PageModel({ID: 'page1'});
             page1.addGraph(graph1);
             page1.addGraph(graph2);
             var data=page1.getData();
             assert.strictEqual(data.length, 2);
-            assert.strictEqual(data[0].properties, 'testProp1');
-            assert.strictEqual(data[0].data, 'testData1');
-            assert.strictEqual(data[1].properties, 'testProp2');
-            assert.strictEqual(data[1].data, 'testData2');
+            assert.strictEqual(data[0].properties.ID, 'graph1');
+            assert.strictEqual(data[1].properties.ID, 'graph2');
         });
     });
     
