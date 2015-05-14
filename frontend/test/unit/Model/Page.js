@@ -33,14 +33,6 @@ describe('Page', function(){
 		Table = $injector.get('Table');
 	}));
 
-	/*window.mock = function( constr, name ) {
-		var keys = [];
-		for( var key in constr.prototype ) {
-			keys.push( key );
-		}
-		return keys.length > 0 ? jasmine.createSpyObj( name || "mock", keys ) : {};
-	};*/
-
 	describe('Constructor', function(){
 
 		var json = 	{
@@ -65,13 +57,9 @@ describe('Page', function(){
 				}
 			]
 		};
-		//var lineChart = mock( LineChart );
 		spyOn(LineChart.prototype, "LineChart").and.returnValue({});
-		//var barChart = mock( BarChart );
 		spyOn(BarChart.prototype, "BarChart").and.returnValue({});
-		//var mapChart = mock( mapChart );
 		spyOn(MapChart.prototype, "MapChart").and.returnValue({});
-		//var table = mock( Table );
 		spyOn(Table.prototype, "Table").and.returnValue({});
 
 		beforeEach(function(){
@@ -138,13 +126,9 @@ describe('Page', function(){
 			"ID" : "graficoN",
 			"type" : "Table"
 		};
-		//var lineChart = mock( LineChart );
 		spyOn(LineChart.prototype, "LineChart").and.returnValue({});
-		//var barChart = mock( BarChart );
 		spyOn(BarChart.prototype, "BarChart").and.returnValue({});
-		//var mapChart = mock( mapChart );
 		spyOn(MapChart.prototype, "MapChart").and.returnValue({});
-		//var table = mock( Table );
 		spyOn(Table.prototype, "Table").and.returnValue({});
 
 		beforeEach(function(){

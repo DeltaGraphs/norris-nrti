@@ -20,20 +20,14 @@ describe('PagesList', function(){
 	'use strict';
 
 	var PagesList;
+	var Page;
 
 	beforeEach(module('app'));
 
-	beforeEach(inject(function(_PagesList_){
+	beforeEach(inject(function(_PagesList_,$injector){
 		PagesList = _PagesList_;
+		Page = $injector.get('Page');
 	}));
-
-	window.mock = function( constr, name ) {
-		var keys = [];
-		for( var key in constr.prototype ) {
-			keys.push( key );
-		}
-		return keys.length > 0 ? jasmine.createSpyObj( name || "mock", keys ) : {};
-	};
 
 	describe('Constructor', function(){
 
@@ -46,8 +40,7 @@ describe('PagesList', function(){
 			]
 		};
 		
-		var page = mock( Page );
-		spyOn(Page.prototype, "Page").and.returnValue(page);
+		spyOn(Page.prototype, "Page").and.returnValue({});
 
 		beforeEach(function(){
 			PagesList = new PagesList(json);
@@ -64,8 +57,7 @@ describe('PagesList', function(){
 			"ID" : "4"
 		};
 
-		var page = mock( Page );
-		spyOn(Page.prototype, "Page").and.returnValue(page);
+		spyOn(Page.prototype, "Page").and.returnValue({});
 
 		beforeEach(function(){
 			PagesList.addPage(json);
