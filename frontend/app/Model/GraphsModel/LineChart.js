@@ -6,14 +6,16 @@
 * History :
 * Version       Date        Programmer                  Description
 * ===============================================================================================================
-* 0.1.0         2015-05-13  Francesco Rossetto   		Codifica di tutti gli attributi e alcuni dei metodi
+* 0.1.0         2015-05-13  Maria Giovanna Chinellato	Codificati tutti i metodi
+*
+* 0.0.2         2015-05-13  Francesco Rossetto   		Codifica di tutti gli attributi e alcuni dei metodi
 *
 * 0.0.1         2015-05-13  Francesco Rossetto			Creazione file      
 * ===============================================================================================================
 *
 */
 
-app.factory('LineChart', ['Graph', 'Axis', 'ViewFinder', function(Graph, Axis, ViewFinder){
+app.factory('LineChart', ['Graph', 'Axis', 'ViewFinder', 'LineChartFlow', function(Graph, Axis, ViewFinder, LineChartFlow){
 	var axisX;
 	var axisY;
 	var viewFinder = null;
@@ -72,18 +74,8 @@ app.factory('LineChart', ['Graph', 'Axis', 'ViewFinder', function(Graph, Axis, V
 
     // create our new custom object that reuse the original object constructor
     var LineChart = function(info) {
-    	json = split(info);
-    	gJson = json.graphJson;
-    	lJson = json.lineJson;
-        Graph.apply(this, gJson);
 
-        axisX = new Axis(lJson.axisX);
-		axisY = new Axis(lJson.axisY);
-		enabledViewFinder = lJson.enabledViewFinder;
-		if (enabledViewFinder != null) {
-			viewFinder = new ViewFinder(lJson.viewFinder);
-		}
-		background = lJson.background;
+        Graph.apply(this, info); // info has only title and url
     };
 
     // reuse the original object prototype
@@ -95,9 +87,57 @@ app.factory('LineChart', ['Graph', 'Axis', 'ViewFinder', function(Graph, Axis, V
     	gJson = json.graphJson;
     	lJson = json.lineJson;
     	if (Object.keys(gJson).length != 0) {
-    		//chiamata super a graph
+    		Graph.apply(this, gJson);
     	} 
-    	//........
+    	if (Object.keys(lJson).length != 0) {
+    		if (lJson.axisX) {
+    			axisX = new Axis(lJson.axisX);
+			}
+			if (lJson.axisY) {
+	       		axisY = new Axis(lJson.axisY);
+	       	}
+	       	if (lJson.enabledViewFinder != null) {
+        		enabledViewFinder = lJson.enabledViewFinder;
+        		if (enabledViewFinder) {
+	           		viewFinder = new ViewFinder(lJson.viewFinder);
+	           	}
+	        }
+	        if (lJson.background) {
+        		background = lJson.background;
+        	}
+    	}
     };
+
+    LineChart.prototype.addFlow = function(flow) {
+    	if (typeof flow === 'LineChartFlow'){
+    		var newflow = new LineChartFlow(flow);
+    		Graph.prototype.addFlow.call(this, flow.ID, newflow);
+    	}
+    };
+
+    // update data
+    LineChart.prototype.inPlaceUpdate(data) {
+    	flowList[data.ID].inPlaceUpdate(data.records);
+    };
+    LineChart.prototype.streamUpdate(data) {
+    	flowList[data.ID].streamUpdate(data.records);
+    };
+
+    // get method
+    LineChart.prototype.getX() {
+    	return axisX;
+    };
+    LineChart.prototype.getY() {
+    	return axisY;
+    };
+    LineChart.prototype.getViewFinder() {
+    	if (enabledViewFinder) {
+    		return viewFinder;
+    	}
+    };
+    LineChart.prototype.getBackground() {
+    	return background;
+    };
+
     return LineChart;
 });

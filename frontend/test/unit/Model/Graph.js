@@ -110,4 +110,16 @@ describe('Graph', function(){
 
 	});
 
+	describe('deleteFlow', function(){
+
+		beforeEach(function(){
+			Graph.prototype.deleteFlow("flusso1");
+		});
+
+		it('delete flow from graph', function(){
+			expect(Graph.prototype.getFlowList().length).toBeEqual(0);
+		});
+		
+	});
+
 });
