@@ -1,0 +1,58 @@
+/*
+* Name :  Legend.js
+* Module : FrontEnd::Model::GraphsModel
+* Location : /frontend/app/Model/GraphsModel
+*
+* History :
+* Version       Date        Programmer                  Description
+* ===============================================================================================================*
+* 0.1.0         2015-05-14  Maria Giovanna Chinellato   Add attributes and methods
+*
+* 0.0.1         2015-05-14  Maria Giovanna Chinellato   Initial code      
+* ===============================================================================================================
+*
+*/
+
+app.factory('Legend', function(){
+    var position;
+    var style;
+    var fontColor;
+    var background;
+
+    return {
+        Legend : function(info){
+            if (info.position)
+                position = info.position;
+            if (info.style)
+                style = info.style;
+            if (info.fontColor)
+                fontColor = info.fontColor;
+            if (info.background)
+                background = info.background;
+        };
+
+        updateParameters : function(info){
+            if (info.position)
+                position = info.position;
+            if (info.style)
+                style = info.style;
+            if (info.fontColor)
+                fontColor = info.fontColor;
+            if (info.background)
+                background = info.background;
+        };
+
+        getPosition : function(){
+            return position;
+        }
+        getStyle : function(){
+            return style;
+        }
+        getFontColor : function(){
+            return fontColor;
+        }
+        getBackground : function(){
+            return background;
+        }
+    };
+});
