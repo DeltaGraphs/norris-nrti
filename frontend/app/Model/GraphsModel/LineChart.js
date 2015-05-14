@@ -80,7 +80,7 @@ app.factory('LineChart', ['Graph', 'Axis', 'ViewFinder', function(Graph, Axis, V
         axisX = new Axis(lJson.axisX);
 		axisY = new Axis(lJson.axisY);
 		enabledViewFinder = lJson.enabledViewFinder;
-		if (enabledViewFinder) {
+		if (enabledViewFinder != null) {
 			viewFinder = new ViewFinder(lJson.viewFinder);
 		}
 		background = lJson.background;

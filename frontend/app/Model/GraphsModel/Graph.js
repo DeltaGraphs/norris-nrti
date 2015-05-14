@@ -6,6 +6,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.1.3			2015-05-14	Francesco Rossetto			Effettuate correzioni al costruttore
+*
 * 0.1.2			2015-05-13	Francesco Rossetto			Effettuate piccole correzioni al costruttore e a addFLow
 *
 * 0.1.1			2015-05-12	Maria Giovanna Chinellato	Effettuate piccole correzioni agli attributi
@@ -29,16 +31,12 @@ app.factory('Graph', ['Flow', 'Legend', function(Flow, Legend){
 	var url;
 
 	var Graph = function(info) {
-		title = info.title;
-		height = info.height;
-		width = info.width;
-		enabledLegend = info.enabledLegend;
-		if (enabledLegend) {
-			legend = new Legend(info.legend);
+		if (info.title) {
+			title = info.title;
 		}
-		horizontalGrid = info.horizontalGrid;
-		verticalGrid = info.verticalGrid;
-		url = info.url;
+		if (url) {
+			url = info.url;
+		}
 	};
 
 	Graph.prototype.updateParameters = function(info) { //abstract
@@ -51,11 +49,11 @@ app.factory('Graph', ['Flow', 'Legend', function(Flow, Legend){
 		if (info.width) {
 			width = info.width;
 		}
-		if (info.legend) {
-			legend = info.legend;
-		}
-		if (info.enabledLegend) {
+		if (info.enabledLegend != null) {
 			enabledLegend = info.enabledLegend;
+			if (enabledLegend && info.legend) {
+				legend = new Legend(info.legend);
+			}
 		}
 		if (info.horizontalGrid) {
 			horizontalGrid = info.horizontalGrid;

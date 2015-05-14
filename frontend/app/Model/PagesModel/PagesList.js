@@ -27,8 +27,8 @@ app.factory('PagesList', ['Page', function(Page){
 			}
 		},
 		addPage: function(page){ // da cambiare DP
-			var newPage = new Page(page);
-			if (pagesList[page.ID] != null)
+			if (pagesList[page.ID] === null)
+				var newPage = new Page(page);
 				pagesList[page.ID] = newPage;
 			else
 					// error

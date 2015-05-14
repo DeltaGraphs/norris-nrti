@@ -63,17 +63,17 @@ app.factory('Page', ['LineChart', 'BarChart', 'MapChart', 'Table', function(Line
             if (info.name != null) {
                 name = info.name;
             }
-            if (info.name != null) {
+            if (info.description != null) {
                 description = info.description;
             }
-            if (info.name != null) {
+            if (info.graphsPerRow != null) {
                 graphsPerRow = info.graphsPerRow;
             }
-            if (info.name != null) {
+            if (info.graphsPerCol != null) {
                 graphsPerCol = info.graphsPerCol;
             }
-            if (info.name != null) {
-                url = info.url;
+            if (info.URLSocket != null) {
+                url = info.URLSocket;
             }
         },
         addGraph: function(graph){

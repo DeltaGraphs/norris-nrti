@@ -6,13 +6,14 @@
 * History :
 * Version       Date        Programmer                  Description
 * =======================================================================================================================
-* 0.1.0			2015-05-13	Rossetto Francesco			Codifica del test sul Model Page, descritti quasi tutti i metodi
+* 0.1.0			2015-05-13	Rossetto Francesco			Codifica del test sul Model Page, descritti tutti i metodi
 *
 * 0.0.1			2015-05-13	Rossetto Francesco			Creazione file
 *
 * =======================================================================================================================
 *
 */
+'use strict';
 
 describe('Page', function(){
 	
@@ -20,7 +21,7 @@ describe('Page', function(){
 
 	beforEach(module('app'));
 
-	beforeEach(inject(function(_Pages_){
+	beforeEach(inject(function(_Page_){
 		Page = _Page_;
 	}));
 
@@ -34,15 +35,19 @@ describe('Page', function(){
 				"graphsPerCol" : 4,
 				"URLSocket" : "http://localhost/page1",
 				"graphs" : [
-								{ "ID" : "grafico1", },
-								{ "ID" : "grafico2", },
-								{ "ID" : "grafico3", }
+								{ "ID" : "grafico1", "type" : "LineChart" },
+								{ "ID" : "grafico2", "type" : "BarChart" },
+								{ "ID" : "grafico3", "type" : "MapChart" }
 							]
 		}
-		spyOn(window, "LineChart").and.returnValue({ "mery" : "ross" });
-		spyOn(window, "BarChart").and.returnValue({ "mery" : "ross" });
-		spyOn(window, "MapChart").and.returnValue({ "mery" : "ross" });
-		spyOn(window, "Table").and.returnValue({ "mery" : "ross" });
+		var lineChart = mock( LineChart );
+		spyOn(window, "LineChart").and.returnValue(lineChart);
+		var barChart = mock( BarChart );
+		spyOn(window, "BarChart").and.returnValue(barChart);
+		var mapChart = mock( mapChart );
+		spyOn(window, "MapChart").and.returnValue(mapChart);
+		var table = mock( Table );
+		spyOn(window, "Table").and.returnValue(table);
 
 		beforeEach(function(){
 			Page = new Page(json);
@@ -61,7 +66,7 @@ describe('Page', function(){
 			expect(Page.getGraphsPerCol()).toBeEqual(4);
 		});
 		it('constructor create the page with the correct URLSocket', function(){
-			expect(Pge.getUrl()).toBeEqual("http://localhost/page1");
+			expect(Page.getUrl()).toBeEqual("http://localhost/page1");
 		});
 		it('constructor create the page with the correct number of graphs', function(){
 			expect(Page.getGraphsList().length).toBeEqual(3);
@@ -85,10 +90,10 @@ describe('Page', function(){
 		});
 
 		it('page updated with the correct name', function(){
-			expect(Page.getName()).toBeEqual("Pagina Uno");
+			expect(Page.getName()).toBeEqual("Pagina n-esima");
 		});
 		it('page updated with the correct description', function(){
-			expect(Page.getDescription()).toBeEqual("questa è la pagina uno");
+			expect(Page.getDescription()).toBeEqual("questa è la pagina n-esima");
 		});
 		it('page updated with the correct number of graphsPerRow', function(){
 			expect(Page.getGraphsPerRow()).toBeEqual(4);
@@ -97,7 +102,7 @@ describe('Page', function(){
 			expect(Page.getGraphsPerCol()).toBeEqual(4);
 		});
 		it('page updated with the correct URLSocket', function(){
-			expect(Page.getUrl()).toBeEqual("http://localhost/page1");
+			expect(Page.getUrl()).toBeEqual("http://localhost/pageN");
 		});
 
 	});
@@ -106,12 +111,16 @@ describe('Page', function(){
 
 		var json = {
 			"ID" : "graficoN",
-			"type" : "LineChart"
+			"type" : "Table"
 		}
-		spyOn(window, "LineChart").and.returnValue({ "mery" : "ross" });
-		spyOn(window, "BarChart").and.returnValue({ "mery" : "ross" });
-		spyOn(window, "MapChart").and.returnValue({ "mery" : "ross" });
-		spyOn(window, "Table").and.returnValue({ "mery" : "ross" });
+		var lineChart = mock( LineChart );
+		spyOn(window, "LineChart").and.returnValue(lineChart);
+		var barChart = mock( BarChart );
+		spyOn(window, "BarChart").and.returnValue(barChart);
+		var mapChart = mock( mapChart );
+		spyOn(window, "MapChart").and.returnValue(mapChart);
+		var table = mock( Table );
+		spyOn(window, "Table").and.returnValue(table);
 
 		beforeEach(function(){
 			Page.addGraph(json);
