@@ -15,7 +15,7 @@
 */
 
 var PageModel = require('../../../lib/dataTier/page/pageModel.js');
-var GraphModel = require('../../../lib/dataTier/graph/graphModel.js');
+var BarChartModel = require('../../../lib/dataTier/graph/barChartModel.js');
 var assert = require('assert');
 
 describe('PageModel', function() {
@@ -124,8 +124,8 @@ describe('PageModel', function() {
         });
     });
 
-    var graph1=new GraphModel({ID: 'graph1'});
-    var graph2=new GraphModel({ID: 'graph2'});
+    var graph1=new BarChartModel({ID: 'graph1'});
+    var graph2=new BarChartModel({ID: 'graph2'});
 
     describe('#addGraph', function() {
         it('returns true and pushes the page if graph is valid', function() {
