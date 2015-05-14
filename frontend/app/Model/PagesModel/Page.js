@@ -6,6 +6,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.1.3         2015-05-14  Francesco Rossetto          Correzioni al metodo addGraph
+*
 * 0.1.2         2015-05-13  Francesco Rossetto          Correzioni al costruttore
 *
 * 0.1.1         2015-05-12  Francesco Rossetto          Correzioni ai metodi
@@ -30,25 +32,25 @@ app.factory('Page', ['LineChart', 'BarChart', 'MapChart', 'Table', function(Line
             description = info.description;
             graphsPerRow = info.graphsPerRow;
             graphsPerCol = info.graphsPerCol;
-            url = info.url;
+            url = info.URLSocket;
             for (var i=0; i<info.graphs.length; i++){
-                if (graphsList[info.graph[i].id] === null){
+                if (graphsList[info.graph[i].ID] === null){
                     switch (info.graph[i].type) {
                         case "LineChart": 
                             var graph = new LineChart(info.graph[i]);
-                            graphsList[info.graph[i].id] = graph;
+                            graphsList[info.graph[i].ID] = graph;
                             break;
                         case "BarChart": 
                             var graph = new BarChart(info.graph[i]);
-                            graphsList[info.graph[i].id] = graph;
+                            graphsList[info.graph[i].ID] = graph;
                             break;
                         case "MapChart": 
                             var graph = new MapChart(info.graph[i]);
-                            graphsList[info.graph[i].id] = graph;
+                            graphsList[info.graph[i].ID] = graph;
                             break;
                         case "Table": 
                             var graph = new Table(info.graph[i]);
-                            graphsList[info.graph[i].id] = graph;
+                            graphsList[info.graph[i].ID] = graph;
                             break;
                     }
                 }
@@ -75,11 +77,28 @@ app.factory('Page', ['LineChart', 'BarChart', 'MapChart', 'Table', function(Line
             }
         },
         addGraph: function(graph){
-            var newGraph = new Graph(graph);
-            if (pagesList[graph.id] != null)
-                pagesList[graph.id] = newGraph;
-            else
+            if (graphsList[graph.ID] === null) {
+                switch (graph.type) {
+                    case "LineChart": 
+                        var graph = new LineChart(graph);
+                        graphsList[graph.ID] = graph;
+                        break;
+                    case "BarChart": 
+                        var graph = new BarChart(graph);
+                        graphsList[graph.ID] = graph;
+                        break;
+                    case "MapChart": 
+                        var graph = new MapChart(graph);
+                        graphsList[graph.ID] = graph;
+                        break;
+                    case "Table": 
+                        var graph = new Table(graph);
+                        graphsList[graph.ID] = graph;
+                        break;
+                }
+            } else {
                 // error
+            }
         },
         getGraphsList: function(){
             return graphsList;

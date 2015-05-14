@@ -6,7 +6,9 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
-* 0.0.2			2015-05-13	Maria Giovanna Chinellato	Bozza di codifica del test sul Model
+* 0.1.1			2015-05-14	Francesco Rossetto			Modifiche alle descrizioni degli it
+* 
+* 0.1.0			2015-05-13	Maria Giovanna Chinellato	Codifica del test sul Model
 *														PagesList.js
 *
 * 0.0.1			2015-05-13	Maria Giovanna Chinellato	Creazione file
@@ -26,6 +28,7 @@ describe('PagesList', function(){
 	}));
 
 	describe('Constructor', function(){
+
 		var json = {
 			"name" : "name"
 			"data" : [
@@ -40,15 +43,18 @@ describe('PagesList', function(){
 			pagesList = new PagesList(json);
 		});
 
-		it('return pagesListArray', function(){
+		it('constructor create an array with the exactly number of pages', function(){
 			expect(pagesList.getPagesList().length).toBeEqual(3);
 		});
+
 	});
 
 	describe('addPage', function(){
 
-		it('add page at pagesListArray', function(){
+		it('page added to the pagesList', function(){
 			expect(PagesList.addPage());
 		});
+
 	});
+	
 });

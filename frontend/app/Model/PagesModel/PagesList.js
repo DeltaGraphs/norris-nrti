@@ -18,9 +18,9 @@ app.factory('PagesList', ['Page', function(Page){
 	return {
 		PagesList: function(info){
 			for (var i=0; i<info.data.length; i++){
-				if (pagesList[info.data[i].id] === null){
+				if (pagesList[info.data[i].ID] === null){
 					var page = new Page(info.data[i]);
-					pagesList[info.data[i].id] = page;
+					pagesList[info.data[i].ID] = page;
 				}
 				else
 					// error
@@ -28,8 +28,8 @@ app.factory('PagesList', ['Page', function(Page){
 		},
 		addPage: function(page){ // da cambiare DP
 			var newPage = new Page(page);
-			if (pagesList[page.id] != null)
-				pagesList[page.id] = newPage;
+			if (pagesList[page.ID] != null)
+				pagesList[page.ID] = newPage;
 			else
 					// error
 		},
