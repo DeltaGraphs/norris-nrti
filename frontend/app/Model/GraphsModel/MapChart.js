@@ -60,7 +60,7 @@ app.factory('MapChart',['Graph', 'MapChartFlow', function(Graph, MapChartFlow){
 
         return {
             "graphJson" : graphJson,
-            "mapJson" : barJson
+            "mapJson" : mapJson
         }
     }
 
@@ -135,4 +135,4 @@ app.factory('MapChart',['Graph', 'MapChartFlow', function(Graph, MapChartFlow){
     };
 
     return MapChart;
-});
+}]);

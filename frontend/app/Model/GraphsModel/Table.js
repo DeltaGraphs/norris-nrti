@@ -162,4 +162,4 @@ app.factory('Table', ['Graph', 'Cell', 'TableFlow', function(Graph, Cell, TableF
     };
 
     return Table;
-});
+}]);

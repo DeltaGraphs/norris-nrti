@@ -119,4 +119,4 @@ app.factory('Page', ['LineChart', 'BarChart', 'MapChart', 'Table', function(Line
             return url;
         }
     };
-});
+}]);

@@ -89,7 +89,7 @@ app.factory('LineChart', ['Graph', 'Axis', 'ViewFinder', 'LineChartFlow', functi
     	lJson = json.lineJson;
     	if (Object.keys(gJson).length != 0) {
     		Graph.apply(this, gJson);
-    	} 
+    	}
     	if (Object.keys(lJson).length != 0) {
     		if (lJson.axisX) {
     			axisX = new Axis(lJson.axisX);
@@ -141,4 +141,4 @@ app.factory('LineChart', ['Graph', 'Axis', 'ViewFinder', 'LineChartFlow', functi
     };
 
     return LineChart;
-});
+}]);

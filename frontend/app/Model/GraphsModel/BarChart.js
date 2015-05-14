@@ -142,4 +142,4 @@ app.factory('BarChart', ['Graph', 'Axis', 'BarChartFlow', function(Graph, Axis, 
     };
 
     return BarChart;
-});
+}]);

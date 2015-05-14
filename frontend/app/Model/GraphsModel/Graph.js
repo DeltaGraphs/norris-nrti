@@ -103,4 +103,4 @@ app.factory('Graph', ['Flow', 'Legend', function(Flow, Legend){
 		return flowList;
 	};
 	return Graph;
-});
+}]);
