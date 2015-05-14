@@ -40,6 +40,7 @@ clean:
 
 test:
 	pwd
+	npm install
 	@$(MAKE) jshint-client
 	@$(MAKE) jshint-server
 	@$(MAKE) karma
