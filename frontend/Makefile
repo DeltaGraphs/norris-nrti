@@ -23,7 +23,9 @@ JS_SERVER_FILES= $(shell find . -maxdepth 1 -name '*.js') $(shell find test -nam
 TEST_FILES= $(shell find test -name '*.js')
 
 
-default: test
+default: 
+	pwd
+	test
 
 prepare:
 	@# Fix per bower install su OpenShift
@@ -37,6 +39,7 @@ clean:
 
 
 test:
+	pwd
 	@$(MAKE) jshint-client
 	@$(MAKE) jshint-server
 	@$(MAKE) karma
