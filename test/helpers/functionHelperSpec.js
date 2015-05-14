@@ -41,4 +41,44 @@ describe('FunctionHelper', function() {
             assert.strictEqual(FH.isHEX('#FGF'), false);
         });
     });
+    describe('#getCorrectType', function() {
+        it('returns a string from string notation', function() {
+            assert.strictEqual(FH.getCorrectType('\'hello\''), 'hello');
+        });
+        it('returns a string from malformed string notation', function() {
+            assert.strictEqual(FH.getCorrectType('\'hello'), 'hello');
+        });
+        it('returns a string from string notation', function() {
+            assert.strictEqual(FH.getCorrectType('-3.98'), -3.98);
+        });
+    });
+    describe('#parseCondition', function() {
+        it('returns 701 when passed a non-condition', function() {
+            assert.strictEqual(FH.parseCondition(''), 701);
+        });
+        it('returns 701 when passed a semi-condition', function() {
+            assert.strictEqual(FH.parseCondition('temperatura>'), 701);
+        });
+        it('returns correct object when passed temp>=0', function() {
+            assert.strictEqual(FH.parseCondition('temp>=0'),{key: 'temp',operator: '>=',value: 0});
+        });
+        it('returns correct object when passed temp>=\'0\'', function() {
+            assert.strictEqual(FH.parseCondition('temp>=0'),{key: 'temp',operator: '>=',value: '0'});
+        });
+        it('returns correct object when passed temp>-1', function() {
+            assert.strictEqual(FH.parseCondition('temp>-1'),{key: 'temp',operator: '>',value: -1});
+        });
+        it('returns correct object when passed temp>=0', function() {
+            assert.strictEqual(FH.parseCondition('temp<=0'),{key: 'temp',operator: '<=',value: 0});
+        });
+        it('returns correct object when passed temp>=\'56\'', function() {
+            assert.strictEqual(FH.parseCondition('temp<\'56\''),{key: 'temp',operator: '<',value: '56'});
+        });
+        it('returns correct object when passed temp==10', function() {
+            assert.strictEqual(FH.parseCondition('temp==10'),{key: 'temp',operator: '==',value: 10});
+        });
+        it('returns correct object when passed temp!=100', function() {
+            assert.strictEqual(FH.parseCondition('temp!=100'),{key: 'temp',operator: '!=',value: 100});
+        });
+    });
 });
