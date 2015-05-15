@@ -40,7 +40,7 @@ describe('barChartModel', function() {
         assert.strictEqual(graph1._xAxis, '');
         assert.strictEqual(graph1._yAxis, '');
         assert.strictEqual(graph1._backgroundColor, '');
-        assert.strictEqual(graph1._headers, []);
+        assert.strictEqual(graph1._headers.length, 0);
         assert.strictEqual(graph1._barOrientation, '');
         assert.strictEqual(graph1._sortable, false);
     });
@@ -70,7 +70,7 @@ describe('barChartModel', function() {
         assert.strictEqual(graph1._xAxis, '');
         assert.strictEqual(graph1._yAxis, '');
         assert.strictEqual(graph1._backgroundColor, '');
-        assert.strictEqual(graph1._headers, []);
+        assert.strictEqual(graph1._headers.length, 0);
         assert.strictEqual(graph1._barOrientation, '');
         assert.strictEqual(graph1._sortable, false);
     });
@@ -101,9 +101,9 @@ describe('barChartModel', function() {
         assert.strictEqual(graph1._xAxis, 'x');
         assert.strictEqual(graph1._yAxis, 'y');
         assert.strictEqual(graph1._backgroundColor, '#FFFFFF');
-        assert.strictEqual(graph1._viewFinder, false);
-        assert.strictEqual(graph1._horizontalGrid, false);
-        assert.strictEqual(graph1._verticalGrid, false);
+        assert.strictEqual(graph1._headers.length, 0);
+        assert.strictEqual(graph1._barOrientation, 'V');
+        assert.strictEqual(graph1._sortable, true);
     });
 
     describe('#getProperties', function() {
@@ -134,7 +134,8 @@ describe('barChartModel', function() {
             assert.strictEqual(prop.xAxis, 'x');
             assert.strictEqual(prop.yAxis, 'y');
             assert.strictEqual(prop.backgroundColor, '#FFFFFF');
-            assert.strictEqual(prop.headers, ['h1', 'h2']);
+            assert.strictEqual(prop.headers[0], 'h1');
+            assert.strictEqual(prop.headers[1], 'h2');
             assert.strictEqual(prop.barOrientation, 'V');
             assert.strictEqual(prop.sortable, true);
         });
@@ -198,7 +199,7 @@ describe('barChartModel', function() {
 	        assert.strictEqual(graph1._xAxis, '');
 	        assert.strictEqual(graph1._yAxis, '');
 	        assert.strictEqual(graph1._backgroundColor, '');
-	        assert.strictEqual(graph1._headers, []);
+	        assert.strictEqual(graph1._headers.length, 0);
 	        assert.strictEqual(graph1._barOrientation, '');
 	        assert.strictEqual(graph1._sortable, false);
         });
