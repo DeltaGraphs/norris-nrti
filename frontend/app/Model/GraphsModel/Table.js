@@ -133,7 +133,7 @@ app.factory('Table', ['Graph', 'Cell', 'TableFlow', function(Graph, Cell, TableF
 
     Table.prototype.addFlow = function(flow) {
     	if (typeof flow === 'TableFlow') {
-    		Graph.prototype.addFlow.call(this, flow.ID, newflow);
+    		Graph.prototype.addFlow.call(this, flow.ID, flow);
     	}
     };
 

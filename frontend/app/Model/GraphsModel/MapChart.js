@@ -113,7 +113,7 @@ app.factory('MapChart',['Graph', 'MapChartFlow', function(Graph, MapChartFlow){
 
     MapChart.prototype.addFlow = function(flow) {
         if (typeof flow === 'MapChartFlow') {
-            Graph.prototype.addFlow.call(this, flow.ID, newflow);
+            Graph.prototype.addFlow.call(this, flow.ID, flow);
         }
     };
 
