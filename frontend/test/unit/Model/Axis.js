@@ -6,9 +6,11 @@
 * History :
 * Version       Date        Programmer                  Description
 * =======================================================================================================================
-* 0.1.0			2015-05-13	Rossetto Francesco			Add test of Model::Page, describe all method
+* 0.1.1			2015-05-15	Maria Giovanna Chinellato	Fix test of Model::Axis
 *
-* 0.0.1			2015-05-13	Rossetto Francesco			Initial code
+* 0.1.0			2015-05-15	Rossetto Francesco			Add test of Model::Axis, describe all method
+*
+* 0.0.1			2015-05-15	Rossetto Francesco			Initial code
 * =======================================================================================================================
 *
 */
@@ -20,7 +22,7 @@ describe('Axis', function(){
 
 	beforeEach(module('app'));
 
-	beforeEach(inject(function(_Axis_,){
+	beforeEach(inject(function(_Axis_){
 		Axis = _Axis_;
 	}));
 
