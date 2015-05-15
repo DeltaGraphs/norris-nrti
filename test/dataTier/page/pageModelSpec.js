@@ -120,7 +120,7 @@ describe('PageModel', function() {
             assert.strictEqual(page1._description, '');
             assert.strictEqual(page1._graphsPerRow, 1);
             assert.strictEqual(page1._graphsPerCol, -1);
-            assert.strictEqual(page1._graphs.length, 0);
+            assert.strictEqual(page1._graphs.sortable, 0);
         });
     });
 
