@@ -32,7 +32,7 @@ describe('barChartModel', function() {
         var graph1=new BarChartModel({ID:'graph1'});
         assert.strictEqual(graph1._ID, 'graph1');
         assert.strictEqual(graph1._title, '');
-        assert.strictEqual(graph1._type, '');
+        assert.strictEqual(graph1._type, 'BarChart');
         assert.strictEqual(graph1._height, 0);
         assert.strictEqual(graph1._width, 0);
         assert.strictEqual(graph1._enableLegend, false);
@@ -49,7 +49,6 @@ describe('barChartModel', function() {
         var graph1=new BarChartModel({
             ID: 'graph1',
             title: 1,
-            type: 1,
             height: 'a',
             width: 'b',
             enableLegend: 'abc',
@@ -63,7 +62,7 @@ describe('barChartModel', function() {
         });
         assert.strictEqual(graph1._ID, 'graph1');
         assert.strictEqual(graph1._title, '');
-        assert.strictEqual(graph1._type, '');
+        assert.strictEqual(graph1._type, 'BarChart');
         assert.strictEqual(graph1._height, 0);
         assert.strictEqual(graph1._width, 0);
         assert.strictEqual(graph1._enableLegend, false);
@@ -81,7 +80,6 @@ describe('barChartModel', function() {
         var graph1=new BarChartModel({
             ID: 'graph1',
             title: 'graph one',
-            type: 'BarChart',
             height: 200,
             width: 350,
             enableLegend: true,
@@ -113,7 +111,6 @@ describe('barChartModel', function() {
             var properties={
 	            ID: 'graph1',
 	            title: 'graph one',
-	            type: 'BarChart',
 	            height: 200,
 	            width: 350,
 	            enableLegend: true,
@@ -147,7 +144,6 @@ describe('barChartModel', function() {
             var properties={
                 ID: 'graph1',
                 title: 'graph one',
-                type: 'BarChart',
                 height: 200,
                 width: 350,
                 enableLegend: true,
@@ -170,16 +166,15 @@ describe('barChartModel', function() {
             assert.strictEqual(graph1._legend, legend1);
 	        assert.strictEqual(graph1._xAxis, 'x');
 	        assert.strictEqual(graph1._yAxis, 'y');
-	        assert.strictEqual(graph1._backgroundColor, '#FFFFFF');
-	        assert.strictEqual(graph1._viewFinder, false);
-	        assert.strictEqual(graph1._horizontalGrid, false);
-	        assert.strictEqual(graph1._verticalGrid, false);
+            assert.strictEqual(graph1._backgroundColor, '');
+            assert.strictEqual(graph1._headers, []);
+            assert.strictEqual(graph1._barOrientation, '');
+            assert.strictEqual(graph1._sortable, false);
         });
         it('does not update the properties with wrong param', function() {
             var properties={
                 ID: 'graph1',
                 title: 1,
-                type: 1,
                 height: 'a',
                 width: 'b',
                 enableLegend: 'abc',
@@ -195,7 +190,7 @@ describe('barChartModel', function() {
             graph1.updateProperties(properties);
             assert.strictEqual(graph1._ID, 'graph1');
             assert.strictEqual(graph1._title, '');
-            assert.strictEqual(graph1._type, '');
+            assert.strictEqual(graph1._type, 'BarChart');
             assert.strictEqual(graph1._height, 0);
             assert.strictEqual(graph1._width, 0);
             assert.strictEqual(graph1._enableLegend, false);
