@@ -95,6 +95,12 @@ describe('PageModel', function() {
     });
 
     describe('#updateProperties', function() {
+        it('does nothing if there are no params', function() {
+            var page1=new PageModel({ID: 'page1', name: 'page one'});
+            page1.updateProperties();
+            assert.strictEqual(page1._ID, 'page1');
+            assert.strictEqual(page1._title, 'page one');
+        });
         it('updates the properties passed as param', function() {
             var properties={
                 ID: 'page1',

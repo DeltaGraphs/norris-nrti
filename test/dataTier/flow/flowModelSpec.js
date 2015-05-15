@@ -83,4 +83,61 @@ describe('FlowModel', function() {
 			assert.strictEqual(flow1.generateNorrisRecordID(2), expected);
         });
     });
+
+	/*describe('#getProperties', function() {
+		//TODO
+    });*/
+
+	describe('#getData', function() {
+		it('returns empty array if there is no data', function() {
+			var flow1=new FlowModel({ID: 'flow1'});
+			assert.strictEqual(flow1.getData().lenght, 0);
+		});
+		it('returns the right data', function() {
+			var flow1=new FlowModel({ID: 'flow1'});
+			flow1._records=[1,2];
+			assert.strictEqual(flow1.getData(), [1,2]);
+		});
+    });
+
+ 	/*describe('#updateRecord', function() {
+		//TODO
+    });*/
+
+    /*describe('#validateData', function() {
+		//TODO
+    });*/
+
+	/*describe('#validateRecord', function() {
+		//TODO
+    });*/
+
+	describe('#updateProperties', function() {
+		it('does nothing if there are no params', function() {
+            var flow1=new FlowModel({ID: 'flow1', name: 'flow one'});
+            flow1.updateProperties();
+            assert.strictEqual(flow1._ID, 'flow1');
+            assert.strictEqual(flow1.name, 'flow one');
+        });
+		it('updates the properties passed as param', function() {
+            var properties={
+                name: 'flow one',
+                filters: 'temperature > 2',
+            };
+            var flow1=new FlowModel({ID: 'flow1'});
+			flow1.updateProperties(properties);
+			assert.strictEqual(flow1._name, 'flow one');
+			assert.strictEqual(flow1._filters, 'temperature > 2');
+        });
+        it('does not update the properties with wrong param', function() {
+            var properties={
+                name: 2,
+                filters: 2,
+            };
+            var flow1=new FlowModel({ID: 'flow1'});
+            flow1.updateProperties(properties);
+			assert.strictEqual(flow1._name, '');
+			assert.strictEqual(flow1._filters, '');
+        });
+    });
 });
