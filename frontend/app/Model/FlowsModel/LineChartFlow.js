@@ -6,6 +6,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.1.2         2015-05-15  Maria Giovanna Chinellato	Various fix
+*
 * 0.1.1			2015-05-15	Francesco Rossetto			Various fix
 *
 * 0.1.0         2015-05-12  Maria Giovanna Chinellato	Add attributes and methods
@@ -87,6 +89,8 @@ app.factory('LineChartFlow', ['Flow', function(Flow){
         }
 
 	};
+
+	var LineChartFlow.prototype = new Flow();
 
 	LineChartFlow.prototype.updateParameters = function(info) { //abstract
     	var json = split(info);

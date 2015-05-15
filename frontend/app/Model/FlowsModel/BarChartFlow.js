@@ -6,6 +6,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.1.1         2015-05-15  Maria Giovanna Chinellato	Various fix
+*
 * 0.1.0         2015-05-12  Maria Giovanna Chinellato	Add attributes and methods
 *
 * 0.0.1         2015-05-12  Maria Giovanna Chinellato	Initial code
@@ -17,10 +19,6 @@ app.factory('BarChartFlow', [ 'Flow', function(Flow){
 	var data = new Array();
 	var flowColor;
 	var legendOnPoint;
-	var marker;
-	var interpolation;
-	var areaColor;
-	var maxItem;
 
 	function split(json) {
         var flowJson = {};
@@ -62,6 +60,8 @@ app.factory('BarChartFlow', [ 'Flow', function(Flow){
         }
 
 	};
+
+	BarChartFlow.prototype = new Flow();
 
 	BarChartFlow.prototype.updateParameters = function(info) {
     	var json = split(info);

@@ -6,6 +6,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.1.1         2015-05-15  Maria Giovanna Chinellato	Various fix
+*
 * 0.1.0         2015-05-12  Maria Giovanna Chinellato	Add attributes and methods
 *
 * 0.0.1         2015-05-12  Maria Giovanna Chinellato	Initial code
@@ -50,6 +52,8 @@ app.factory('TableFlow', function(){
         }
 
 	};
+
+	TableFlow.prototype = new Flow();
 
 	TableFlow.prototype.updateParameters = function(info) { //abstract
     	var json = split(info);
