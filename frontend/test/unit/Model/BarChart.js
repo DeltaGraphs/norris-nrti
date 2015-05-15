@@ -126,7 +126,7 @@ describe('BarChart', function(){
 
 		spyOn(BarChartFlow.prototype, "BarChartFlow").and.returnValue({});
 		spyOn(BarChartFlow.prototype, "addFlow").and.callFake(function() {return;});
-		spyOn(Graph.prototype, "apply").and.callFake(function() {return;});<
+		spyOn(Graph.prototype, "apply").and.callFake(function() {return;});
 		spyOn(Axis.prototype, "Axis").and.returnValue({});
 
 		it('graph updated with the correct axisX', function(){

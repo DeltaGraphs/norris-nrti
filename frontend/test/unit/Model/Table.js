@@ -139,10 +139,10 @@ describe('Table', function(){
 			expect(LineChart.prototype.getColunms()).toBeEqual(9);
 		});
 		it('graph updated with the correct headers', function(){
-			expect(LineChart.prototype.getHeaders()).toBeEqual({}});
+			expect(LineChart.prototype.getHeaders()).toBeEqual({});
 		});
 		it('graph updated with the correct cells', function(){
-			expect(LineChart.prototype.getCells()).toBeEqual({}});
+			expect(LineChart.prototype.getCells()).toBeEqual({});
 		});
 		it('graph updated with the correct item displayed per page', function(){
 			expect(LineChart.prototype.getItemDisplayedPerPage()).toBeEqual(5);
