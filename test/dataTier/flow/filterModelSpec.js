@@ -14,7 +14,7 @@
 * =========================================================
 */
 
-var FH = require('../../../lib/dataTier/filterModel.js');
+var FH = require('../../../lib/dataTier/flow/filterModel.js');
 var assert = require('assert');
 
 describe('FilterModel', function() {
