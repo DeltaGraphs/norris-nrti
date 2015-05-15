@@ -14,8 +14,8 @@
 */
 
 app.factory('Cell', function(){
-    var background;
-    var fontColor;
+    var background = "#FFF";
+    var fontColor = "#000";
 
     return {
         Cell : function(info){

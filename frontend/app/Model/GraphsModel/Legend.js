@@ -5,7 +5,9 @@
 *
 * History :
 * Version       Date        Programmer                  Description
-* ===============================================================================================================*
+* ===============================================================================================================
+* 0.1.1         2015-05-15  Francesco Rossetto          Variuos Fix
+*
 * 0.1.0         2015-05-14  Maria Giovanna Chinellato   Add attributes and methods
 *
 * 0.0.1         2015-05-14  Maria Giovanna Chinellato   Initial code      
@@ -14,17 +16,14 @@
 */
 
 app.factory('Legend', function(){
-    var position;
-    var style;
-    var fontColor;
-    var background;
+    var position = "right";
+    var fontColor = "#000";
+    var background = "#FFF";
 
     return {
         Legend : function(info){
             if (info.position)
                 position = info.position;
-            if (info.style)
-                style = info.style;
             if (info.fontColor)
                 fontColor = info.fontColor;
             if (info.background)
@@ -34,8 +33,6 @@ app.factory('Legend', function(){
         updateParameters : function(info){
             if (info.position)
                 position = info.position;
-            if (info.style)
-                style = info.style;
             if (info.fontColor)
                 fontColor = info.fontColor;
             if (info.background)
@@ -44,9 +41,6 @@ app.factory('Legend', function(){
 
         getPosition : function(){
             return position;
-        }
-        getStyle : function(){
-            return style;
         }
         getFontColor : function(){
             return fontColor;
