@@ -67,25 +67,25 @@ describe('Graph', function(){
 
 		spyOn(Legend.prototype, "Legend").and.returnValue({});
 
-		it('graph updated with the correct name', function(){
+		it('graph updated with the correct title', function(){
 			expect(Graph.prototype.getTitle()).toBeEqual("graficoNuovo");
 		});
-		it('graph updated with the correct name', function(){
+		it('graph updated with the correct height', function(){
 			expect(Graph.prototype.getHeight()).toBeEqual(300);
 		});
-		it('graph updated with the correct name', function(){
+		it('graph updated with the correct width', function(){
 			expect(Graph.prototype.getWidth()).toBeEqual(300);
 		});
-		it('graph updated with the correct name', function(){
+		it('graph updated with the correct enabledLegend', function(){
 			expect(Graph.prototype.getEnabledLegend()).toBeEqual(true);
 		});
-		it('graph updated with the correct name', function(){
+		it('graph updated with the correct legend', function(){
 			expect(Graph.prototype.getLegend()).toBeEqual({});
 		});
-		it('graph updated with the correct name', function(){
+		it('graph updated with the correct horizontalGrid', function(){
 			expect(Graph.prototype.getHorizontalGrid()).toBeEqual(true);
 		});
-		it('graph updated with the correct name', function(){
+		it('graph updated with the correct verticalGrid', function(){
 			expect(Graph.prototype.getVerticalGrid()).toBeEqual(true);
 		});
 

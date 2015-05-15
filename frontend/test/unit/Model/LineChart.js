@@ -43,10 +43,10 @@ describe('LineChart', function(){
 			LineChart = new LineChart(json);
 		});
 
-		spyOn(Graph.prototype, "Graph").and.returnValue({});
+		spyOn(Graph.prototype, "apply").and.callFake(function() {return;});
 
 		it('constructor use the graph constructor in the correct way', function(){
-			expect(Graph.prototype.Graph()).toBeCalledWith(json);
+			expect(Graph.prototype.apply).toHaveBeenCalledWith(json);
 		});
 
 	});
@@ -55,8 +55,8 @@ describe('LineChart', function(){
 		var res;
 		var json = {};
 		var json1 = json;
-		var json = json1;
-		var json = {
+		json = json1;
+		json = {
 			"title" : "grafico",
 			"height" : 300,
 			"width" : 300,
@@ -99,45 +99,46 @@ describe('LineChart', function(){
 	});
 
 
-	/*describe('updateParameters', function(){
+	describe('updateParameters', function(){
 		var json = {
-			"title" : "graficoNuovo",
-			"height" : 300,
-			"width" : 300,
-			"enabledLegend" : true,
-			"legend" : {},
-			"horizontalGrid" : true,
-			"verticalGrid" : true
+			"title" : "graficonuovo",
+			"height" : 400,
+			"width" : 400,
+			"enabledLegend" : false,
+			"horizontalGrid" : false,
+			"verticalGrid" : false,
+			"enabledViewFinder" : true,
+			"viewFinder" : {},
+			"background" : "#000",
+			"flows" : [{},{},{}]
 		};
 
 		beforeEach(function(){
-			Graph.prototype.updateParameters(json);
+			LineChart = new LineChart(json);
 		});
 
-		spyOn(Legend.prototype, "Legend").and.returnValue({});
+		spyOn(LineChartFlow.prototype, "LineChartFlow").and.returnValue({});
+		spyOn(LineChartFlow.prototype, "addFlow").and.callFake(function() {return;});
+		spyOn(Graph.prototype, "apply").and.callFake(function() {return;});<
+		spyOn(ViewFinder.prototype, "ViewFinder").and.returnValue({});
+		spyOn(Axis.prototype, "Axis").and.returnValue({});
 
-		it('graph updated with the correct name', function(){
-			expect(Graph.prototype.getTitle()).toBeEqual("graficoNuovo");
+		it('graph updated with the correct enabledViewFinder', function(){
+			expect(LineChart.prototype.getEnabledViewFinder()).toBeEqual(false);
 		});
-		it('graph updated with the correct name', function(){
-			expect(Graph.prototype.getHeight()).toBeEqual(300);
+		it('graph updated with the correct viewFinder', function(){
+			expect(LineChart.prototype.getViewFinder()).toBeEqual({});
 		});
-		it('graph updated with the correct name', function(){
-			expect(Graph.prototype.getWidth()).toBeEqual(300));
+		it('graph updated with the correct axisX', function(){
+			expect(LineChart.prototype.getX()).toBeEqual({});
 		});
-		it('graph updated with the correct name', function(){
-			expect(Graph.prototype.getEnabledLegend()).toBeEqual(true));
+		it('graph updated with the correct axisY', function(){
+			expect(LineChart.prototype.getY()).toBeEqual({});
 		});
-		it('graph updated with the correct name', function(){
-			expect(Graph.prototype.getLegend()).toBeEqual({}));
+		it('graph updated with the correct background', function(){
+			expect(LineChart.prototype.getBackground()).toBeEqual("#000");
 		});
-		it('graph updated with the correct name', function(){
-			expect(Graph.prototype.getHorizontalGrid()).toBeEqual(true));
-		});
-		it('graph updated with the correct name', function(){
-			expect(Graph.prototype.getVerticalGrid()).toBeEqual(true));
-		});
-
+		
 	});
 	
 	describe('addFlow', function(){
@@ -169,6 +170,6 @@ describe('LineChart', function(){
 			expect(Graph.prototype.getFlowList().length).toBeEqual(0);
 		});
 
-	});*/
+	});
 
 });
