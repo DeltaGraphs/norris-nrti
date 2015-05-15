@@ -69,7 +69,18 @@ describe('FlowModel', function() {
         assert.strictEqual(flow1._records.length, 0);
     });
 
-    /*describe('#generateNorrisRecordID', function() {
-        //to do
-    });*/
+    describe('#generateNorrisRecordID', function() {
+		it('generate the right ID with no number specified', function() {
+			var flow1=new FlowModel({ID: 'flow1'});
+			var date = new Date();
+			var expected='flow1'.concat(date.getTime()).concat(0);
+			assert.strictEqual(flow1.generateNorrisRecordID(), expected);
+        });
+        it('generate the right ID with number specified', function() {
+			var flow1=new FlowModel({ID: 'flow1'});
+			var date = new Date();
+			var expected='flow1'.concat(date.getTime()).concat(2);
+			assert.strictEqual(flow1.generateNorrisRecordID(2), expected);
+        });
+    });
 });
