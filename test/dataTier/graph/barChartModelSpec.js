@@ -207,7 +207,7 @@ describe('barChartModel', function() {
         });
     });
     describe('#addFlow', function() {
-        var flow1 = new BarChartFlowModel();
+        var flow1 = new BarChartFlowModel({ID: 'flow1'});
         it('adds flow to the flows array', function() {
             var graph1=new BarChartModel({ID: 'graph1'});
             graph1.addFlow(flow1);
