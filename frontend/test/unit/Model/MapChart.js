@@ -6,6 +6,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.1.1			2015-05-15	Maria Giovanna Chinellato	Fix test of Model::MapChart
+*
 * 0.1.0			2015-05-15	Francesco Rossetto			Add test of Model::MapChart.js
 *
 * 0.0.1			2015-05-15	Francesco Rossetto			Initial code
@@ -132,7 +134,7 @@ describe('MapChart', function(){
 			expect(MapChart.prototype.getMapType()).toBeEqual("terrrain");
 		});
 		it('graph updated with the correct zoom', function(){
-			expect(MapChart.prototype.getZoom()).toBeEqual(false));
+			expect(MapChart.prototype.getZoom()).toBeEqual(false);
 		});
 		it('graph updated with the correct flows', function(){
             expect(MapChart.prototype.addFlow.calls.count()).toBeEqual(3);

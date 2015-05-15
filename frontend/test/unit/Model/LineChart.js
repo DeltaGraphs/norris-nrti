@@ -6,6 +6,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.2.2			2015-05-15	Maria Giovanna Chinellato	Fix test of Model::LineChart.js
+*
 * 0.2.1			2015-05-15	Maria Giovanna Chinellato	Fix methods test
 *
 * 0.2.0			2015-05-15	Maria Giovanna Chinellato	Add test: all the methods of LineChart classes
@@ -123,7 +125,7 @@ describe('LineChart', function(){
 
 		spyOn(LineChartFlow.prototype, "LineChartFlow").and.returnValue({});
 		spyOn(LineChartFlow.prototype, "addFlow").and.callFake(function() {return;});
-		spyOn(Graph.prototype, "apply").and.callFake(function() {return;});<
+		spyOn(Graph.prototype, "apply").and.callFake(function() {return;});
 		spyOn(ViewFinder.prototype, "ViewFinder").and.returnValue({});
 		spyOn(Axis.prototype, "Axis").and.returnValue({});
 

@@ -6,6 +6,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.2.1			2015-05-15	Maria Giovanna Chinellato	Fix test of Model::Table
+*
 * 0.2.0			2015-05-15	Maria Giovanna Chinellato	Add test of all the methods of LineChart classes
 *
 * 0.1.0			2015-05-15	Maria Giovanna Chinellato	Add test of Model::Table.js
@@ -116,7 +118,7 @@ describe('Table', function(){
 			"headers" : {},
 			"cells" : {},
 			"itemDisplayedPerPage" : 5,
-			"addDataPosition" : "up";
+			"addDataPosition" : "up",
 			"sortable" : false
 		};
 

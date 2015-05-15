@@ -6,6 +6,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.2.2			2015-05-15	Maria Giovanna Chinellato	Fix test of Model::BarChart
+*
 * 0.2.1			2015-05-15	Maria Giovanna Chinellato	Fix methods test
 *
 * 0.2.0			2015-05-15	Maria Giovanna Chinellato	Add test of all the methods of LineChart classes
@@ -114,7 +116,7 @@ describe('BarChart', function(){
 			"barOrientation" : "vertical",
 			"background" : "#F0F",
 			"sortable" : false,
-			"barsGrouping" : "stacked"
+			"barsGrouping" : "stacked",
 			"flows" : [{},{},{}]
 		};
 
