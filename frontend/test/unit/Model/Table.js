@@ -129,29 +129,28 @@ describe('Table', function(){
 		spyOn(TableFlow.prototype, "TableFlow").and.returnValue({});
 		spyOn(TableFlow.prototype, "addFlow").and.callFake(function() {return;});
 		spyOn(Graph.prototype, "apply").and.callFake(function() {return;});
-		spyOn(Axis, "Axis").and.returnValue({});
 		spyOn(Cell, "Cell").and.returnValue({});
 
 		it('graph updated with the correct row', function(){
-			expect(LineChart.prototype.getRow()).toBeEqual(6);
+			expect(Table.prototype.getRow()).toBeEqual(6);
 		});
 		it('graph updated with the correct colunms', function(){
-			expect(LineChart.prototype.getColunms()).toBeEqual(9);
+			expect(Table.prototype.getColunms()).toBeEqual(9);
 		});
 		it('graph updated with the correct headers', function(){
-			expect(LineChart.prototype.getHeaders()).toBeEqual({});
+			expect(Table.prototype.getHeaders()).toBeEqual({});
 		});
 		it('graph updated with the correct cells', function(){
-			expect(LineChart.prototype.getCells()).toBeEqual({});
+			expect(Table.prototype.getCells()).toBeEqual({});
 		});
 		it('graph updated with the correct item displayed per page', function(){
-			expect(LineChart.prototype.getItemDisplayedPerPage()).toBeEqual(5);
+			expect(Table.prototype.getItemDisplayedPerPage()).toBeEqual(5);
 		});
 		it('graph updated with the correct add data position', function(){
-			expect(LineChart.prototype.getAddDataPosition()).toBeEqual("up");
+			expect(Table.prototype.getAddDataPosition()).toBeEqual("up");
 		});
 		it('graph updated with the correct sortable', function(){
-			expect(LineChart.prototype.getSortable()).toBeEqual(false);
+			expect(Table.prototype.getSortable()).toBeEqual(false);
 		});
 		
 	});

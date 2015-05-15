@@ -57,7 +57,7 @@ describe('Axis', function(){
 			expect(Axis.getTicks()).toBeEqual(10);
 		});
 		it('constructor create the page with the correct scale', function(){
-			expect(Axis.getScale()).toBeEqual(logarithmic);
+			expect(Axis.getScale()).toBeEqual("logarithmic");
 		});
 
 	});
