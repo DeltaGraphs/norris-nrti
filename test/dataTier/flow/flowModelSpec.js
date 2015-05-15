@@ -63,7 +63,7 @@ describe('FlowModel', function() {
             type: 'BarChartFlow',
             filters: 'temperature > 2'
         });
-        var instanceOfFilterModel=flow1._filters instanceof FilterModel;
+        var instanceOfFilterModel=(flow1._filters instanceof FilterModel);
         assert.strictEqual(flow1._ID, 'flow1');
         assert.strictEqual(flow1._name, 'flow one');
         assert.strictEqual(flow1._type, 'BarChartFlow');
@@ -121,8 +121,8 @@ describe('FlowModel', function() {
                 filters: 'temperature > 2',
             };
             var flow1=new FlowModel({ID: 'flow1'});
-            var instanceOfFilterModel=flow1._filters instanceof FilterModel;
-			flow1.updateProperties(properties);
+            flow1.updateProperties(properties);
+            var instanceOfFilterModel=flow1._filters instanceof FilterModel;            
 			assert.strictEqual(flow1._name, 'flow one');
 			assert.strictEqual(instanceOfFilterModel, true);
         });
@@ -134,7 +134,7 @@ describe('FlowModel', function() {
             var flow1=new FlowModel({ID: 'flow1'});
             flow1.updateProperties(properties);
 			assert.strictEqual(flow1._name, '');
-			assert.strictEqual(flow1._filters, '');
+			assert.strictEqual(flow1._filters, null);
         });
     });
 });
