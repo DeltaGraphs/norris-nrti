@@ -20,6 +20,10 @@ var assert = require('assert');
 
 describe('PageModel', function() {
 
+    it('returns null when there are no params', function() {
+        assert.strictEqual((new PageModel()).hasOwnProperty('_name'), false);
+    });
+
     it('returns null when there is no valid ID in params', function() {
         assert.strictEqual((new PageModel({})).hasOwnProperty('_name'), false);
     });
