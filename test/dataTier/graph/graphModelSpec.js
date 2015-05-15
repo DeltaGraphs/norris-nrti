@@ -19,13 +19,13 @@ var LegendModel = require('../../../lib/dataTier/graph/legendModel.js');
 var assert = require('assert');
 
 describe('GraphModel', function() {
-    it('returns null when there is no valid ID in params', function() {
+    /*it('returns null when there is no valid ID in params', function() {
         assert.strictEqual((new GraphModel({})).hasOwnProperty('_ID'), false);
     });
 
     it('returns null when there is a empty ID in params', function() {
         assert.strictEqual((new GraphModel({ID:' '})).hasOwnProperty('_ID'), false);
-    });
+    });*/
 
     it('set default values to property not specified', function() {
         var graph1=new GraphModel({ID:'graph1'});
