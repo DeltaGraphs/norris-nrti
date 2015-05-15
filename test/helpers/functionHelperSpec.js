@@ -81,4 +81,7 @@ describe('FunctionHelper', function() {
             assert.deepEqual(JSON.stringify(FH.parseCondition('temp!=100')),'{"key":"temp","operator":"!=","value":100}');
         });
     });
+    describe('#converter', function() {
+        //to do
+    });
 });
