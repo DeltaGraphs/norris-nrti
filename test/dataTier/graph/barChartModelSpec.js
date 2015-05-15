@@ -110,18 +110,18 @@ describe('barChartModel', function() {
     describe('#getProperties', function() {
         it('returns the JSON with the properties', function() {
             var properties={
-	            ID: 'graph1',
-	            title: 'graph one',
-	            height: 200,
-	            width: 350,
-	            enableLegend: true,
-	            legend: legend1,
-	            xAxis: 'x',
-	            yAxis: 'y',
-	            backgroundColor: '#FFFFFF',
-	            headers: ['h1', 'h2'],
-	            barOrientation: 'V',
-	            sortable: true
+                ID: 'graph1',
+                title: 'graph one',
+                height: 200,
+                width: 350,
+                enableLegend: true,
+                legend: legend1,
+                xAxis: 'x',
+                yAxis: 'y',
+                backgroundColor: '#FFFFFF',
+                headers: ['h1', 'h2'],
+                barOrientation: 'V',
+                sortable: true
             };
             var graph1=new BarChartModel(properties);
             var prop=graph1.getProperties();
@@ -150,12 +150,12 @@ describe('barChartModel', function() {
                 width: 350,
                 enableLegend: true,
                 legend: legend1,
-	            xAxis: 'x',
-	            yAxis: 'y',
-	            backgroundColor: '#FFFFFF',
-	            headers: ['h1', 'h2'],
-	            barOrientation: 'V',
-	            sortable: true
+                xAxis: 'x',
+                yAxis: 'y',
+                backgroundColor: '#FFFFFF',
+                headers: ['h1', 'h2'],
+                barOrientation: 'V',
+                sortable: true
             };
             var graph1=new BarChartModel({ID: 'graph1'});
             graph1.updateProperties(properties);
@@ -166,8 +166,8 @@ describe('barChartModel', function() {
             assert.strictEqual(graph1._width, 350);
             assert.strictEqual(graph1._enableLegend, true);
             assert.strictEqual(graph1._legend, legend1);
-	        assert.strictEqual(graph1._xAxis, 'x');
-	        assert.strictEqual(graph1._yAxis, 'y');
+            assert.strictEqual(graph1._xAxis, 'x');
+            assert.strictEqual(graph1._yAxis, 'y');
             assert.strictEqual(graph1._backgroundColor, '#FFFFFF');
             assert.strictEqual(graph1._headers[0], 'h1');
             assert.strictEqual(graph1._headers[1], 'h2');
@@ -182,12 +182,12 @@ describe('barChartModel', function() {
                 width: 'b',
                 enableLegend: 'abc',
                 legend: 'def',
-	            xAxis: true,
-	            yAxis: true,
-	            backgroundColor: 222,
-	            headers: 'zzz',
-	            barOrientation: 2,
-	            sortable: 'abc'
+                xAxis: true,
+                yAxis: true,
+                backgroundColor: 222,
+                headers: 'zzz',
+                barOrientation: 2,
+                sortable: 'abc'
             };
             var graph1=new BarChartModel({ID: 'graph1'});
             graph1.updateProperties(properties);
@@ -198,54 +198,54 @@ describe('barChartModel', function() {
             assert.strictEqual(graph1._width, 0);
             assert.strictEqual(graph1._enableLegend, false);
             assert.strictEqual(graph1._legend, null);
-	        assert.strictEqual(graph1._xAxis, '');
-	        assert.strictEqual(graph1._yAxis, '');
-	        assert.strictEqual(graph1._backgroundColor, '');
-	        assert.strictEqual(graph1._headers.length, 0);
-	        assert.strictEqual(graph1._barOrientation, '');
-	        assert.strictEqual(graph1._sortable, false);
+            assert.strictEqual(graph1._xAxis, '');
+            assert.strictEqual(graph1._yAxis, '');
+            assert.strictEqual(graph1._backgroundColor, '');
+            assert.strictEqual(graph1._headers.length, 0);
+            assert.strictEqual(graph1._barOrientation, '');
+            assert.strictEqual(graph1._sortable, false);
         });
     });
     describe('#addFlow', function() {
-    	var flow1 = new BarChartFlowModel();
-    	it('adds flow to the flows array', function() {
-    		var graph1=new BarChartModel({ID: 'graph1'});
-    		graph1.addFlow(flow1);
-    		assert.strictEqual(graph1._flows.length, 1);
-    	});
-    	it('does not add an invalid flow to the flows array', function() {
-    		var graph1=new BarChartModel({ID: 'graph1'});
-    		graph1.addFlow({});
-    		assert.strictEqual(graph1._flows.length, 0);
-    	});
+        var flow1 = new BarChartFlowModel();
+        it('adds flow to the flows array', function() {
+            var graph1=new BarChartModel({ID: 'graph1'});
+            graph1.addFlow(flow1);
+            assert.strictEqual(graph1._flows.length, 1);
+        });
+        it('does not add an invalid flow to the flows array', function() {
+            var graph1=new BarChartModel({ID: 'graph1'});
+            graph1.addFlow({});
+            assert.strictEqual(graph1._flows.length, 0);
+        });
     });
     function BCFMMock(ID) {
-    	this._ID = ID;
+        this._ID = ID;
     }
     BCFMMock.prototype.getProperties = function() {
-    	return {ID: this._ID};
+        return {ID: this._ID};
     };
     describe('#deleteFlow', function() {
-    	it('deletes the flow with the given ID', function() {
-    		var graph1=new BarChartModel({ID: 'graph1'});
-    		graph1._flows[0] = new BCFMMock('flow1');
-    		graph1.deleteFlow('flow1');
-    		assert.strictEqual(graph1._flows.length, 0);
-    	});
-    	it('does not delete anything if the ID is not found', function() {
-    		var graph1=new BarChartModel({ID: 'graph1'});
-    		graph1._flows[0] = new BCFMMock('flow1');
-    		graph1.deleteFlow('flow2');
-    		assert.strictEqual(graph1._flows.length, 1);
-    	});
+        it('deletes the flow with the given ID', function() {
+            var graph1=new BarChartModel({ID: 'graph1'});
+            graph1._flows[0] = new BCFMMock('flow1');
+            graph1.deleteFlow('flow1');
+            assert.strictEqual(graph1._flows.length, 0);
+        });
+        it('does not delete anything if the ID is not found', function() {
+            var graph1=new BarChartModel({ID: 'graph1'});
+            graph1._flows[0] = new BCFMMock('flow1');
+            graph1.deleteFlow('flow2');
+            assert.strictEqual(graph1._flows.length, 1);
+        });
     });
     describe('#deleteAllFlows', function() {
-    	it('deletes all the flows', function() {
-    		var graph1=new BarChartModel({ID: 'graph1'});
-    		graph1._flows[0] = new BCFMMock('flow1');
-    		graph1._flows[1] = new BCFMMock('flow2');
-    		graph1.deleteAllFlows();
-    		assert.strictEqual(graph1._flows.length, 0);
-    	});
+        it('deletes all the flows', function() {
+            var graph1=new BarChartModel({ID: 'graph1'});
+            graph1._flows[0] = new BCFMMock('flow1');
+            graph1._flows[1] = new BCFMMock('flow2');
+            graph1.deleteAllFlows();
+            assert.strictEqual(graph1._flows.length, 0);
+        });
     });
 });
