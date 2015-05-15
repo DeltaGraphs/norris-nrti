@@ -121,7 +121,7 @@ app.factory('BarChart', ['Graph', 'Axis', 'BarChartFlow', function(Graph, Axis, 
 
     BarChart.prototype.addFlow = function(flow) {
         if (typeof flow === 'BarChartFlow') {
-            Graph.prototype.addFlow.call(this, flow.ID, newflow);
+            Graph.prototype.addFlow.call(this, flow.ID, flow);
         }
     };
 

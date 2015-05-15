@@ -110,14 +110,14 @@ app.factory('LineChart', ['Graph', 'Axis', 'ViewFinder', 'LineChartFlow', functi
     	if (info.flows) {
     		for (int i=0; i<info.flows.length; i++) {
     			var newflow = new LineChartFlow(info.flows[i]);
-    			addFlow(newflow);
+    			addFlow(flows[i].ID,newflow);
     		}
     	}
     };
 
-    LineChart.prototype.addFlow = function(flow) {
+    LineChart.prototype.addFlow = function(ID,flow) {
     	if (typeof flow === 'LineChartFlow') {
-    		Graph.prototype.addFlow.call(this, flow.ID, newflow);
+    		Graph.prototype.addFlow.call(this, ID, flow);
     	}
     };
 
@@ -147,7 +147,7 @@ app.factory('LineChart', ['Graph', 'Axis', 'ViewFinder', 'LineChartFlow', functi
     		return viewFinder;
     	}
     };
-    LineChart.prototype.getBackground() {
+    LineChart.prototype.getBackground = function() {
     	return background;
     };
 

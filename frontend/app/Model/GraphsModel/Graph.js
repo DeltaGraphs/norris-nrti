@@ -38,7 +38,7 @@ app.factory('Graph', ['Flow', 'Legend', function(Flow, Legend){
 		if (info.title) {
 			title = info.title;
 		}
-		if (url) {
+		if (info.url) {
 			url = info.url;
 		}
 

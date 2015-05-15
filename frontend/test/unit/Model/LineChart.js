@@ -6,6 +6,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.1.0			2015-05-15	Maria Giovanna Chinellato	Add test: all the methods of LineChart classes
+*
 * 0.1.0			2015-05-15	Francesco Rossetto			Add test of Model::LineChart.js
 *
 * 0.0.1			2015-05-15	Francesco Rossetto			Initial code
@@ -148,28 +150,79 @@ describe('LineChart', function(){
 			"name" : "sonda 1"
 		};
 
-		spyOn(Flow.prototype, "Flow").and.returnValue({});
+		var newflow = LineChartFlow({});
+
+		//spyOn(Graph.prototype, "addFlow").and.callFake(function() {return;});
+		spyOn(Graph.prototype, "addFlow.call").and.callFake(function() {return;});
 
 		beforeEach(function(){
-			Graph.prototype.addflow(json);
+			LineChart.prototype.addflow(json.ID, newflow);
 		});
 
-		it('add flow into graph', function(){
-			expect(Graph.prototype.getFlowList().length).toBeEqual(1);
+		it('add flow into linechart', function(){
+			expect(Graph.prototype.addFlow.call).toHaveBeenCalledWith(json.ID, newflow);
 		});
 
 	});
 
-	describe('deleteFlow', function(){
+	describe("inizializeData", function(){
+
+		var data = [
+			{
+				"ID" : "1",
+				"records" : []
+			},
+			{
+				"ID" : "2",
+				"records" : []
+			}
+		];
+
+		spyOn(LineChartFlow.prototype, "inizializeData").and.callFake(function() {return;});
 
 		beforeEach(function(){
-			Graph.prototype.deleteFlow("flusso1");
+			LineChart.prototype.inizializeData(data);
 		});
 
-		it('delete flow from graph', function(){
-			expect(Graph.prototype.getFlowList().length).toBeEqual(0);
+		it('inizialize flowList', function(){
+			expect(LineChartFlow.prototype.inizializeData.calls.count()).toEqual(2);
+		});
+	});
+
+	describe("inPlaceUpdate", function(){
+
+		var data = 	{
+			"ID" : "2",
+			"records" : []
+		};
+
+		spyOn(LineChartFlow.prototype, "inPlaceUpdate").and.callFake(function() {return;});
+
+		beforeEach(function(){
+			LineChart.prototype.inPlaceUpdate(data);
 		});
 
+		it('inizialize flowList', function(){
+			expect(LineChartFlow.prototype.inPlaceUpdate).toHaveBeenCalledWith(data);
+		});
+	});
+
+	describe("streamUpdate", function(){
+
+		var data = 	{
+			"ID" : "2",
+			"records" : []
+		};
+
+		spyOn(LineChartFlow.prototype, "streamUpdate").and.callFake(function() {return;});
+
+		beforeEach(function(){
+			LineChart.prototype.streamUpdate(data);
+		});
+
+		it('inizialize flowList', function(){
+			expect(LineChartFlow.prototype.streamUpdate).toHaveBeenCalledWith(data);
+		});
 	});
 
 });
