@@ -6,6 +6,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * ===============================================================================================================*
+* 0.1.1         2015-05-15  Francesco Rossetto          Fix attributes and methods
+*
 * 0.1.0         2015-05-14  Maria Giovanna Chinellato   Add attributes and methods
 *
 * 0.0.1         2015-05-14  Maria Giovanna Chinellato   Initial code      
@@ -15,10 +17,11 @@
 
 app.factory('Axis', function(){
     var name;
-    var color;
-    var range;
-    var ticks;
-    var scale;
+    var color = "#FFF";
+    var minValue;
+    var maxValue;
+    var ticks = 10;
+    var scale = "linear";
 
     return {
         Axis : function(info){
@@ -53,8 +56,11 @@ app.factory('Axis', function(){
         getColor : function(){
             return color;
         }
-        getRange : function(){
-            return range;
+        getMinValue : function(){
+            return minValue;
+        }
+        getMaxValue : function(){
+            return maxValue;
         }
         getTicks : function(){
             return ticks;

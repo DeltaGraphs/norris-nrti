@@ -18,7 +18,7 @@
 app.factory('MapChart',['Graph', 'MapChartFlow', function(Graph, MapChartFlow){
     var latitude = 45.4113311;
     var longitude = 11.8876318;
-    var scale = "linear";
+    var scale = 1000;
     var mapType = "terrain";
     var zoom = true;
 
@@ -60,7 +60,7 @@ app.factory('MapChart',['Graph', 'MapChartFlow', function(Graph, MapChartFlow){
         if (json.mapType) {
             mapJson.mapType = json.mapType;
         }
-        if (json.zoom) {
+        if (json.zoom != null) {
             mapJson.zoom = json.zoom;
         }
 
@@ -69,6 +69,7 @@ app.factory('MapChart',['Graph', 'MapChartFlow', function(Graph, MapChartFlow){
             "mapJson" : mapJson
         }
     }
+    LineChart.prototype.test = function _Test(expressionStr) { return eval(expressionStr); }
 
     // create our new custom object that reuse the original object constructor
     var MapChart = function(info) {
@@ -99,7 +100,7 @@ app.factory('MapChart',['Graph', 'MapChartFlow', function(Graph, MapChartFlow){
             if (mJson.mapType) {
                 mapType = mJson.mapType;
             }
-            if (mJson.zoom) {
+            if (mJson.zoom != null) {
                 zoom = mJson.zoom;
             }
         }
