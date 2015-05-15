@@ -169,7 +169,8 @@ describe('barChartModel', function() {
 	        assert.strictEqual(graph1._xAxis, 'x');
 	        assert.strictEqual(graph1._yAxis, 'y');
             assert.strictEqual(graph1._backgroundColor, '#FFFFFF');
-            assert.strictEqual(graph1._headers.length, 0);
+            assert.strictEqual(graph1._headers[0], 'h1');
+            assert.strictEqual(graph1._headers[1], 'h2');
             assert.strictEqual(graph1._barOrientation, 'V');
             assert.strictEqual(graph1._sortable, true);
         });
