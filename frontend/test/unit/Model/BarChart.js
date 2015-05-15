@@ -8,32 +8,30 @@
 * =================================================================================================
 * 0.2.1			2015-05-15	Maria Giovanna Chinellato	Fix methods test
 *
-* 0.2.0			2015-05-15	Maria Giovanna Chinellato	Add test: all the methods of LineChart classes
+* 0.2.0			2015-05-15	Maria Giovanna Chinellato	Add test of all the methods of LineChart classes
 *
-* 0.1.0			2015-05-15	Francesco Rossetto			Add test of Model::LineChart.js
+* 0.1.0			2015-05-15	Maria Giovanna Chinellato	Add test of Model::BarChart.js
 *
-* 0.0.1			2015-05-15	Francesco Rossetto			Initial code
+* 0.0.1			2015-05-15	Maria Giovanna Chinellato	Initial code
 * =================================================================================================
 *
 */
 
-describe('LineChart', function(){
+describe('BarChart', function(){
 	'use strict';
 
-	var LineChart;
+	var BarChart;
 	var Graph;
 	var Axis;
-	var ViewFinder;
-	var LineChartFlow;
+	var BarChartFlow;
 
 	beforeEach(module('app'));
 
-	beforeEach(inject(function(_LineChart_, $injector){
-		LineChart = _LineChart_;
+	beforeEach(inject(function(_BarChart_, $injector){
+		BarChart = _BarChart_;
 		Graph = $injector.get('Graph');
 		Axis = $injector.get('Axis');
-		ViewFinder = $injector.get('Legend');
-		LineChartFlow = $injector.get('LineChartFlow');
+		BarChartFlow = $injector.get('BarChartFlow');
 	}));
 
 	describe('Constructor', function(){
@@ -44,7 +42,7 @@ describe('LineChart', function(){
 		};
 
 		beforeEach(function(){
-			LineChart = new LineChart(json);
+			BarChart = new BarChart(json);
 		});
 
 		spyOn(Graph.prototype, "apply").and.callFake(function() {return;});
@@ -70,9 +68,10 @@ describe('LineChart', function(){
 			"verticalGrid" : true,
 			"axisX" : {},
 			"axisY" : {},
-			"enabledViewFinder" : true,
-			"viewFinder" : {},
-			"background" : "#FFF"
+			"barOrientation" : "horizontal",
+			"background" : "#FFF",
+			"sortable" : false,
+			"barsGrouping" : "stacked"
 		};
 		var g = {
 			"title" : "grafico",
@@ -83,21 +82,22 @@ describe('LineChart', function(){
 			"horizontalGrid" : true,
 			"verticalGrid" : true
 		};
-		var l = {
+		var b = {
 			"axisX" : {},
 			"axisY" : {},
-			"enabledViewFinder" : true,
-			"viewFinder" : {},
-			"background" : "#FFF"
+			"barOrientation" : "horizontal",
+			"background" : "#FFF",
+			"sortable" : false,
+			"barsGrouping" : "stacked"
 		};
 
 		beforeEach(function(){
-			res = LineChart.prototype.test("split(json)");
+			res = BarChart.Test("split(json)");
 		});
 
 		it('json splitted in the correct way', function(){
 			expect(res.graphJson).toBeEqual(g);
-			expect(res.lineJson).toBeEqual(l);
+			expect(res.barJson).toBeEqual(b);
 		});
 
 	});
@@ -111,39 +111,42 @@ describe('LineChart', function(){
 			"enabledLegend" : false,
 			"horizontalGrid" : false,
 			"verticalGrid" : false,
-			"enabledViewFinder" : true,
-			"viewFinder" : {},
-			"background" : "#000",
+			"barOrientation" : "vertical",
+			"background" : "#F0F",
+			"sortable" : false,
+			"barsGrouping" : "stacked"
 			"flows" : [{},{},{}]
 		};
 
 		beforeEach(function(){
-			LineChart.prototype.updateParameters(json);
+			BarChart.prototype.updateParameters(json);
 		});
 
-		spyOn(LineChartFlow.prototype, "LineChartFlow").and.returnValue({});
-		spyOn(LineChartFlow.prototype, "addFlow").and.callFake(function() {return;});
+		spyOn(BarChartFlow.prototype, "BarChartFlow").and.returnValue({});
+		spyOn(BarChartFlow.prototype, "addFlow").and.callFake(function() {return;});
 		spyOn(Graph.prototype, "apply").and.callFake(function() {return;});<
-		spyOn(ViewFinder.prototype, "ViewFinder").and.returnValue({});
 		spyOn(Axis.prototype, "Axis").and.returnValue({});
 
-		it('graph updated with the correct enabledViewFinder', function(){
-			expect(LineChart.prototype.getEnabledViewFinder()).toBeEqual(false);
-		});
-		it('graph updated with the correct viewFinder', function(){
-			expect(LineChart.prototype.getViewFinder()).toBeEqual({});
-		});
 		it('graph updated with the correct axisX', function(){
-			expect(LineChart.prototype.getX()).toBeEqual({});
+			expect(BarChart.prototype.getX()).toBeEqual({});
 		});
 		it('graph updated with the correct axisY', function(){
-			expect(LineChart.prototype.getY()).toBeEqual({});
+			expect(BarChart.prototype.getY()).toBeEqual({});
+		});
+		it('graph updated with the correct barOrientation', function(){
+			expect(BarChart.prototype.getBarOrientation()).toBeEqual("vertical");
 		});
 		it('graph updated with the correct background', function(){
-			expect(LineChart.prototype.getBackground()).toBeEqual("#000");
+			expect(BarChart.prototype.getBackground()).toBeEqual("#F0F");
+		});
+		it('graph updated with the correct sortable', function(){
+			expect(BarChart.prototype.getSortable()).toBeEqual(false);
+		});
+		it('graph updated with the correct barsGrouping', function(){
+			expect(BarChart.prototype.getBarsGrouping()).toBeEqual("stacked");
 		});
 		it('graph updated with the correct flow', function(){
-			expect(LineChart.prototype.addFlow.calls.count()).toBeEqual(3);
+			expect(BarChart.prototype.addFlow.calls.count()).toBeEqual(3);
 		});
 		
 	});
@@ -155,16 +158,16 @@ describe('LineChart', function(){
 			"name" : "sonda 1"
 		};
 
-		var newflow = LineChartFlow({});
+		var newflow = BarChartFlow({});
 
 		//spyOn(Graph.prototype, "addFlow").and.callFake(function() {return;});
 		spyOn(Graph.prototype, "addFlow.call").and.callFake(function() {return;});
 
 		beforeEach(function(){
-			LineChart.prototype.addflow(json.ID, newflow);
+			BarChart.prototype.addflow(json.ID, newflow);
 		});
 
-		it('add flow into linechart', function(){
+		it('add flow into barchart', function(){
 			expect(Graph.prototype.addFlow.call).toHaveBeenCalledWith(json.ID, newflow);
 		});
 
@@ -183,14 +186,14 @@ describe('LineChart', function(){
 			}
 		];
 
-		spyOn(LineChartFlow.prototype, "inizializeData").and.callFake(function() {return;});
+		spyOn(BarChartFlow.prototype, "inizializeData").and.callFake(function() {return;});
 
 		beforeEach(function(){
-			LineChart.prototype.inizializeData(data);
+			BarChart.prototype.inizializeData(data);
 		});
 
 		it('inizialize flowList', function(){
-			expect(LineChartFlow.prototype.inizializeData.calls.count()).toEqual(2);
+			expect(BarChartFlow.prototype.inizializeData.calls.count()).toEqual(2);
 		});
 	});
 
@@ -201,32 +204,14 @@ describe('LineChart', function(){
 			"records" : []
 		};
 
-		spyOn(LineChartFlow.prototype, "inPlaceUpdate").and.callFake(function() {return;});
+		spyOn(BarChartFlow.prototype, "inPlaceUpdate").and.callFake(function() {return;});
 
 		beforeEach(function(){
-			LineChart.prototype.inPlaceUpdate(data);
+			BarChart.prototype.inPlaceUpdate(data);
 		});
 
 		it('inizialize flowList', function(){
-			expect(LineChartFlow.prototype.inPlaceUpdate).toHaveBeenCalledWith(data);
-		});
-	});
-
-	describe("streamUpdate", function(){
-
-		var data = 	{
-			"ID" : "2",
-			"records" : []
-		};
-
-		spyOn(LineChartFlow.prototype, "streamUpdate").and.callFake(function() {return;});
-
-		beforeEach(function(){
-			LineChart.prototype.streamUpdate(data);
-		});
-
-		it('inizialize flowList', function(){
-			expect(LineChartFlow.prototype.streamUpdate).toHaveBeenCalledWith(data);
+			expect(BarChartFlow.prototype.inPlaceUpdate).toHaveBeenCalledWith(data);
 		});
 	});
 

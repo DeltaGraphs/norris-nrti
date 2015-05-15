@@ -6,6 +6,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * ===============================================================================================================
+* 0.2.1         2015-05-15  Maria Giovanna Chinellato   Fix methods test
+*
 * 0.1.1         2015-05-15  Francesco Rossetto          Various fix, insert inzializeData
 *
 * 0.1.0         2015-05-14  Maria Giovanna Chinellato   Add all attributes and all methods
@@ -20,9 +22,9 @@ app.factory('Table', ['Graph', 'Cell', 'TableFlow', function(Graph, Cell, TableF
 	var colunms;
 	var headers = new Array();
 	var cells = new Array();
-	var itemDisplayedPerPage;
-	var addDataPosition;
-	var sortable;
+	var itemDisplayedPerPage = 20;
+	var addDataPosition = "up";
+	var sortable = true;
 
 	function split(json) {
 		var graphJson = {};
