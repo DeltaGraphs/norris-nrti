@@ -1,27 +1,27 @@
-/**
-    * Name: app.js
-    * Package: FrontEnd
-    * Author: Maria Giovanna Chinellato
-    * Date: 2015/05/12
-    *
-    * Changes:
-    * Version   Date        Changes 		Author
-    * {0}.{1}   2015-05-12  Creazione file  Maria Giovanna Chinellato
-    *
-    * {0}.{2}   2015-05-12  Codifica modulo Maria Giovanna Chinellato
-    *
-    * ------------------------------------------------------------
-    * Copyright (C) 2015 DeltaGraphs
-    * 
-    * This file is part of Norris.js.
-    *
+/*
+* Name :  app.js
+* Module : FrontEnd
+* Location : /frontend/app
+*
+* History :
+* Version       Date        Programmer                  Description
+* ===============================================================================================================
+* 0.0.2         2015-05-15  Maria Giovanna Chinellato   Add code of config file
+*
+* 0.0.1         2015-05-12  Maria Giovanna Chinellato   Initial code      
+* ===============================================================================================================
+*
 */
 
-var appConfig = function($routeProvider) {
-	$routeProvider /* inizio definizione di routeProvider */
+angular.module("config", [] );
+angular.module("services", [ "ngResource", "config" ] );
+angular.module("controllers", [ "services", "utils", "config" ] );
+angular.module("utils", [ "services", "config" ] );
 
-	; /* fine definizione di routeProvider */
+var appConfig = function($routeProvider) {
+	$routeProvider
+
+	;
 };
 
-var app = angular.module('app', []).config(appConfig); /* definisce un
-namespace (chiamato modulo) */
+var app = angular.module('app', ["ngRoute", "controllers", "utils", "config"]).config(appConfig);
