@@ -13,10 +13,10 @@
 *
 */
 
-angular.module("config", [] );
+/*angular.module("config", [] );
 angular.module("services", [ "ngResource", "config" ] );
 angular.module("controllers", [ "services", "utils", "config" ] );
-angular.module("utils", [ "services", "config" ] );
+angular.module("utils", [ "services", "config" ] );*/
 
 var appConfig = function($routeProvider) {
 	/*$routeProvider
