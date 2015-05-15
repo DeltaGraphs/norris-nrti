@@ -100,12 +100,6 @@ describe('GraphModel', function() {
         });
     });
     describe('#updateProperties', function() {
-        it('does nothing if there are no params', function() {
-            var graph1=new GraphModel({ID: 'graph1', title: 'graph one'});
-            graph1.updateProperties();
-            assert.strictEqual(graph1._ID, 'graph1');
-            assert.strictEqual(graph1._title, 'graph one');
-        });
         it('updates the properties passed as param', function() {
             var properties={
                 ID: 'graph1',
