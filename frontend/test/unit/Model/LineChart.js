@@ -52,6 +52,10 @@ describe('LineChart', function(){
 	});
 
 	describe('split', function(){
+		var res;
+		var json = {};
+		var json1 = json;
+		var json = json1;
 		var json = {
 			"title" : "grafico",
 			"height" : 300,

@@ -74,19 +74,19 @@ describe('Graph', function(){
 			expect(Graph.prototype.getHeight()).toBeEqual(300);
 		});
 		it('graph updated with the correct name', function(){
-			expect(Graph.prototype.getWidth()).toBeEqual(300));
+			expect(Graph.prototype.getWidth()).toBeEqual(300);
 		});
 		it('graph updated with the correct name', function(){
-			expect(Graph.prototype.getEnabledLegend()).toBeEqual(true));
+			expect(Graph.prototype.getEnabledLegend()).toBeEqual(true);
 		});
 		it('graph updated with the correct name', function(){
-			expect(Graph.prototype.getLegend()).toBeEqual({}));
+			expect(Graph.prototype.getLegend()).toBeEqual({});
 		});
 		it('graph updated with the correct name', function(){
-			expect(Graph.prototype.getHorizontalGrid()).toBeEqual(true));
+			expect(Graph.prototype.getHorizontalGrid()).toBeEqual(true);
 		});
 		it('graph updated with the correct name', function(){
-			expect(Graph.prototype.getVerticalGrid()).toBeEqual(true));
+			expect(Graph.prototype.getVerticalGrid()).toBeEqual(true);
 		});
 
 	});
