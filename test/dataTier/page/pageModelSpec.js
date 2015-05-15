@@ -125,6 +125,7 @@ describe('PageModel', function() {
     });
 
     var graph1=new BarChartModel({ID: 'graph1'});
+    console.dir('GRAPH1 HEIGHT ' + graph1.getProperties().height);
     var graph2=new BarChartModel({ID: 'graph2'});
 
     describe('#addGraph', function() {
