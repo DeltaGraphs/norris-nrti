@@ -32,7 +32,7 @@ describe('mapChartModel', function() {
         var graph1=new MapChartModel({ID:'graph1'});
         assert.strictEqual(graph1._ID, 'graph1');
         assert.strictEqual(graph1._title, '');
-        assert.strictEqual(graph1._type, 'LineChart');
+        assert.strictEqual(graph1._type, 'MapChart');
         assert.strictEqual(graph1._height, 0);
         assert.strictEqual(graph1._width, 0);
         assert.strictEqual(graph1._enableLegend, false);
@@ -60,7 +60,7 @@ describe('mapChartModel', function() {
         });
         assert.strictEqual(graph1._ID, 'graph1');
         assert.strictEqual(graph1._title, '');
-        assert.strictEqual(graph1._type, 'LineChart');
+        assert.strictEqual(graph1._type, 'MapChart');
         assert.strictEqual(graph1._height, 0);
         assert.strictEqual(graph1._width, 0);
         assert.strictEqual(graph1._enableLegend, false);
@@ -89,7 +89,7 @@ describe('mapChartModel', function() {
         });
         assert.strictEqual(graph1._ID, 'graph1');
         assert.strictEqual(graph1._title, 'graph one');
-        assert.strictEqual(graph1._type, 'LineChart');
+        assert.strictEqual(graph1._type, 'MapChart');
         assert.strictEqual(graph1._height, 200);
         assert.strictEqual(graph1._width, 350);
         assert.strictEqual(graph1._enableLegend, true);
@@ -120,7 +120,7 @@ describe('mapChartModel', function() {
             var prop=graph1.getProperties();
             assert.strictEqual(prop.ID, 'graph1');
             assert.strictEqual(prop.title, 'graph one');
-            assert.strictEqual(prop.type, 'LineChart');
+            assert.strictEqual(prop.type, 'MapChart');
             assert.strictEqual(prop.height, 200);
             assert.strictEqual(prop.width, 350);
             assert.strictEqual(prop.enableLegend, true);
@@ -151,7 +151,7 @@ describe('mapChartModel', function() {
             graph1.updateProperties(properties);
             assert.strictEqual(graph1._ID, 'graph1');
             assert.strictEqual(graph1._title, 'graph one');
-            assert.strictEqual(graph1._type, 'LineChart');
+            assert.strictEqual(graph1._type, 'MapChart');
             assert.strictEqual(graph1._height, 200);
             assert.strictEqual(graph1._width, 350);
             assert.strictEqual(graph1._enableLegend, true);
@@ -180,7 +180,7 @@ describe('mapChartModel', function() {
             graph1.updateProperties(properties);
             assert.strictEqual(graph1._ID, 'graph1');
             assert.strictEqual(graph1._title, '');
-            assert.strictEqual(graph1._type, 'LineChart');
+            assert.strictEqual(graph1._type, 'MapChart');
             assert.strictEqual(graph1._height, 0);
             assert.strictEqual(graph1._width, 0);
             assert.strictEqual(graph1._enableLegend, false);
