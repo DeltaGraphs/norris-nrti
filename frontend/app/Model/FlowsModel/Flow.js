@@ -6,7 +6,7 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
-* 0.1.1         2015-05-12  Maria Giovanna Chinellato	Fix updateParameters
+* 0.1.1         2015-05-14  Maria Giovanna Chinellato	Fix updateParameters
 *
 * 0.1.0         2015-05-12  Maria Giovanna Chinellato	Add all attributes and all methods
 *
@@ -36,7 +36,7 @@ app.factory('Flow', function(){
 			name = info.name;
 		}
 	};
-	Flow.prototype.getDataFormat = function() { //abstract
+	Flow.prototype.getDataFormat = function() {
 		return dataFormat;
 	};
 	Flow.prototype.getName = function() {

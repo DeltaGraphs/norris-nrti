@@ -82,6 +82,9 @@ app.factory('BarChartFlow', [ 'Flow', function(Flow){
 	    }
 	};
 
+	BarChartFlow.prototype.initializeData = function(data) {
+		//
+	};
 	BarChartFlow.prototype.inPlaceUpdate = function(data) {
 		//
     };

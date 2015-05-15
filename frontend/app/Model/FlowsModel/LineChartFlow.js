@@ -6,6 +6,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.1.1			2015-05-15	Francesco Rossetto			Various fix
+*
 * 0.1.0         2015-05-12  Maria Giovanna Chinellato	Add attributes and methods
 *
 * 0.0.1         2015-05-12  Maria Giovanna Chinellato	Initial code
@@ -15,12 +17,12 @@
 
 app.factory('LineChartFlow', ['Flow', function(Flow){
 	var data = new Array();
-	var flowColor;
-	var legendOnPoint;
-	var marker;
-	var interpolation;
-	var areaColor;
-	var maxItem;
+	var flowColor = "#000";
+	var legendOnPoint = "";
+	var marker = "square";
+	var interpolation = "linear";
+	var areaColor = "#FFF";
+	var maxItem = 20;
 
 	function split(json) {
         var flowJson = {};
@@ -32,7 +34,6 @@ app.factory('LineChartFlow', ['Flow', function(Flow){
         }
 
         var lineFlowJson = {};
-        // data
         if (json.flowColor) {
             lineFlowJson.flowColor = json.flowColor;
         }
@@ -118,6 +119,9 @@ app.factory('LineChartFlow', ['Flow', function(Flow){
 	    }
 	};
 
+	LineChartFlow.prototype.initializeData = function(data) {
+		
+	};
 	LineChartFlow.prototype.inPlaceUpdate = function(data) {
 		//
     };

@@ -1,33 +1,35 @@
 /*
-* Name :  Graph.js
+* Name :  LineChart.js
 * Module : UnitTest
 * Location : /frontend/test/unit/Model
 *
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
-* 0.1.1			2015-05-14	Maria Giovanna Chinellato	Add test of method addFlow
+* 0.1.0			2015-05-15	Francesco Rossetto			Add test of Model::LineChart.js
 *
-* 0.1.0			2015-05-14	Francesco Rossetto			Add test of Model::Graph.js
-*
-* 0.0.1			2015-05-14	Francesco Rossetto			Initial code
+* 0.0.1			2015-05-15	Francesco Rossetto			Initial code
 * =================================================================================================
 *
 */
 
-describe('Graph', function(){
+describe('LineChart', function(){
 	'use strict';
 
+	var LineChart;
 	var Graph;
-	var Legend;
-	var Flow;
+	var Axis;
+	var ViewFinder;
+	var LineChartFlow;
 
 	beforeEach(module('app'));
 
-	beforeEach(inject(function(_Graph_, $injector){
-		Graph = _Graph_;
-		Legend = $injector.get('Legend');
-		Flow = $injector.get('Flow');
+	beforeEach(inject(function(_LineChart_, $injector){
+		LineChart = _LineChart_;
+		Graph = $injector.get('Graph');
+		Axis = $injector.get('Axis');
+		ViewFinder = $injector.get('Legend');
+		LineChartFlow = $injector.get('Flow');
 	}));
 
 	describe('Constructor', function(){
@@ -38,19 +40,62 @@ describe('Graph', function(){
 		};
 
 		beforeEach(function(){
-			Graph = new Graph(json);
+			LineChart = new LineChart(json);
 		});
 
-		it('constructor create the graph with the correct title', function(){
-			expect(Graph.prototype.getTitle()).toBeEqual("grafico1");
-		});
-		it('constructor create the graph with the correct url', function(){
-			expect(Graph.prototype.getUrl()).toBeEqual("http://localhost/page1/grafico1");
+		spyOn(Graph.prototype, "Graph").and.returnValue({});
+
+		it('constructor use the graph constructor in the correct way', function(){
+			expect(Graph.prototype.Graph()).toBeCalledWith(json);
 		});
 
 	});
 
-	describe('updateParameters', function(){
+	describe('split', function(){
+		var json = {
+			"title" : "grafico",
+			"height" : 300,
+			"width" : 300,
+			"enabledLegend" : true,
+			"legend" : {},
+			"horizontalGrid" : true,
+			"verticalGrid" : true,
+			"axisX" : {},
+			"axisY" : {},
+			"enabledViewFinder" : true,
+			"viewFinder" : {},
+			"background" : "#FFF"
+		};
+		var g = {
+			"title" : "grafico",
+			"height" : 300,
+			"width" : 300,
+			"enabledLegend" : true,
+			"legend" : {},
+			"horizontalGrid" : true,
+			"verticalGrid" : true
+		};
+		var l = {
+			"axisX" : {},
+			"axisY" : {},
+			"enabledViewFinder" : true,
+			"viewFinder" : {},
+			"background" : "#FFF"
+		};
+
+		beforeEach(function(){
+			res = LineChart.Test("split(json)");
+		});
+
+		it('json splitted in the correct way', function(){
+			expect(res.gJson).toBeEqual(g);
+			expect(res.lJson).toBeEqual(l);
+		});
+
+	});
+
+
+	/*describe('updateParameters', function(){
 		var json = {
 			"title" : "graficoNuovo",
 			"height" : 300,
@@ -120,6 +165,6 @@ describe('Graph', function(){
 			expect(Graph.prototype.getFlowList().length).toBeEqual(0);
 		});
 
-	});
+	});*/
 
 });

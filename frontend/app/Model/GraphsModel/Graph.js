@@ -6,6 +6,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.1.4			2015-05-15	Francesco Rossetto			Various fix
+*
 * 0.1.3			2015-05-14	Maria Giovanna Chinellato	Add method getFlowList
 *
 * 0.1.3			2015-05-14	Francesco Rossetto			Fix constructor
@@ -26,10 +28,10 @@ app.factory('Graph', ['Flow', 'Legend', function(Flow, Legend){
 	var title;
 	var height;
 	var width;
-	var legend;
-	var enabledLegend;
-	var horizontalGrid;
-	var verticalGrid;
+	var legend = null;
+	var enabledLegend = false;
+	var horizontalGrid = true;
+	var verticalGrid = true;
 	var url;
 
 	var Graph = function(info) {
@@ -39,6 +41,7 @@ app.factory('Graph', ['Flow', 'Legend', function(Flow, Legend){
 		if (url) {
 			url = info.url;
 		}
+
 	};
 
 	Graph.prototype.updateParameters = function(info) { //abstract

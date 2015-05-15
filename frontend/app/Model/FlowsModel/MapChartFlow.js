@@ -114,6 +114,9 @@ app.factory('MapChartFlow', function(){
 	    }
 	};
 
+	MapChartFlow.prototype.initializeData = function(data) {
+		//
+	};
 	MapChartFlow.prototype.inPlaceUpdate = function(data) {
 		//
     };

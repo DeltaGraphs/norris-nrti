@@ -6,10 +6,11 @@
 * History :
 * Version       Date        Programmer                  Description
 * ===============================================================================================================
-* 0.1.0         2015-05-14  Maria Giovanna Chinellato   Add all methods and fix class
+* 0.2.1         2015-05-15  Francesco Rossetto          Various fix, insert inzializeData
 *
-* 0.0.2         2015-05-14  Maria Giovanna Chinellato   Add all attributes, add methods 
-*                                                       split and updateParameter
+* 0.2.0         2015-05-14  Maria Giovanna Chinellato   Add all methods and fix class
+*
+* 0.1.0         2015-05-14  Maria Giovanna Chinellato   Add all attributes, add methods split and updateParameter
 *
 * 0.0.1         2015-05-14  Maria Giovanna Chinellato   Initial code      
 * ===============================================================================================================
@@ -17,32 +18,35 @@
 */
 
 app.factory('BarChart', ['Graph', 'Axis', 'BarChartFlow', function(Graph, Axis, BarChartFlow){
-    var axisX;
-    var axisY;
-    var barOrientation;
-    var background;
-    var sortable;
-    var barsGrouping;
+    var axisX = null;
+    var axisY = null;
+    var barOrientation = "vertical";
+    var background = "#FFF";
+    var sortable = true;
+    var barsGrouping = "grouped";
 
     function split(json) {
         var graphJson = {};
         if (json.title) {
             graphJson.title = json.title;
         }
-        if (json.legend) {
-            graphJson.legend = json.legend;
+        if (json.height) {
+            graphJson.height = json.height;
         }
-        if (json.enabledLegend) {
+        if (json.width) {
+            graphJson.width = json.width;
+        }
+        if (json.enabledLegend != null) {
             graphJson.enabledLegend = json.enabledLegend;
+            if (enabledLegend && json.legend) {
+                graphJson.legend = json.legend;
+            }
         }
-        if (json.horizontalGrid) {
+        if (json.horizontalGrid != null) {
             graphJson.horizontalGrid = json.horizontalGrid;
         }
-        if (json.verticalGrid) {
+        if (json.verticalGrid != null) {
             graphJson.verticalGrid = json.verticalGrid;
-        }
-        if (json.url) {
-            graphJson.url = json.url;
         }
 
         var barJson = {};
@@ -81,7 +85,7 @@ app.factory('BarChart', ['Graph', 'Axis', 'BarChartFlow', function(Graph, Axis, 
 
     // Now let's override our original updateParameters method
     BarChart.prototype.updateParameters = function(info) {
-        json = json = split(info);
+        json = split(info);
         gJson = json.graphJson;
         bJson = json.barJson;
         if (Object.keys(gJson).length != 0) {
@@ -107,12 +111,23 @@ app.factory('BarChart', ['Graph', 'Axis', 'BarChartFlow', function(Graph, Axis, 
                 barsGrouping = lJson.barsGrouping;
             }
         }
+        if (info.flows) {
+            for (int i=0; i<info.flows.length; i++) {
+                var newflow = new BarChartFlow(info.flows[i]);
+                addFlow(newflow);
+            }
+        }
     };
 
     BarChart.prototype.addFlow = function(flow) {
-        if (typeof flow === 'BarChartFlow'){
-            var newflow = new BarChartFlow(flow);
+        if (typeof flow === 'BarChartFlow') {
             Graph.prototype.addFlow.call(this, flow.ID, newflow);
+        }
+    };
+
+    BarChart.prototype.initializeData = function(data) {  //inizialization data of flows
+        for (var i=0; i<data.length; i++) {
+            flowList[data[i].ID].inizializeData(data[i].records);
         }
     };
 

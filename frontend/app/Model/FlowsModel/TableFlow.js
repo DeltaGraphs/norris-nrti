@@ -67,6 +67,9 @@ app.factory('TableFlow', function(){
 	    }
 	};
 
+	TableFlow.prototype.initializeData = function(data) {
+		//
+	};
 	TableFlow.prototype.inPlaceUpdate = function(data) {
 		//
     };

@@ -5,7 +5,9 @@
 *
 * History :
 * Version       Date        Programmer                  Description
-* ===============================================================================================================*
+* ===============================================================================================================
+* 0.1.1         2015-05-15  Francesco Rossetto          Various fix, insert inzializeData
+*
 * 0.1.0         2015-05-14  Maria Giovanna Chinellato   Add all attributes and methods
 *
 * 0.0.1         2015-05-14  Maria Giovanna Chinellato   Initial code      
@@ -14,32 +16,36 @@
 */
 
 app.factory('MapChart',['Graph', 'MapChartFlow', function(Graph, MapChartFlow){
-    var latitude;
-    var longitude;
-    var scale;
-    var mapType;
-    var zoom;
+    var latitude = 45.4113311;
+    var longitude = 11.8876318;
+    var scale = "linear";
+    var mapType = "terrain";
+    var zoom = true;
 
     function split(json) {
         var graphJson = {};
         if (json.title) {
             graphJson.title = json.title;
         }
-        if (json.legend) {
-            graphJson.legend = json.legend;
+        if (json.height) {
+            graphJson.height = json.height;
         }
-        if (json.enabledLegend) {
+        if (json.width) {
+            graphJson.width = json.width;
+        }
+        if (json.enabledLegend != null) {
             graphJson.enabledLegend = json.enabledLegend;
+            if (enabledLegend && json.legend) {
+                graphJson.legend = json.legend;
+            }
         }
-        if (json.horizontalGrid) {
+        if (json.horizontalGrid != null) {
             graphJson.horizontalGrid = json.horizontalGrid;
         }
-        if (json.verticalGrid) {
+        if (json.verticalGrid != null) {
             graphJson.verticalGrid = json.verticalGrid;
         }
-        if (json.url) {
-            graphJson.url = json.url;
-        }
+
 
         var mapJson = {};
         if (json.latitude) {
@@ -74,7 +80,7 @@ app.factory('MapChart',['Graph', 'MapChartFlow', function(Graph, MapChartFlow){
 
     // Now let's override our original updateParameters method
     MapChart.prototype.updateParameters = function(info) {
-        json = json = split(info);
+        json = split(info);
         gJson = json.graphJson;
         mJson = json.mapJson;
         if (Object.keys(gJson).length != 0) {
@@ -97,12 +103,23 @@ app.factory('MapChart',['Graph', 'MapChartFlow', function(Graph, MapChartFlow){
                 zoom = mJson.zoom;
             }
         }
+        if (info.flows) {
+            for (int i=0; i<info.flows.length; i++) {
+                var newflow = new MapChartFlow(info.flows[i]);
+                addFlow(newflow);
+            }
+        }
     };
 
     MapChart.prototype.addFlow = function(flow) {
-        if (typeof flow === 'MapChartFlow'){
-            var newflow = new MapChartFlow(flow);
+        if (typeof flow === 'MapChartFlow') {
             Graph.prototype.addFlow.call(this, flow.ID, newflow);
+        }
+    };
+
+    MapChart.prototype.initializeData = function(data) {  //inizialization data of flows
+        for (var i=0; i<data.length; i++) {
+            flowList[data[i].ID].inizializeData(data[i].records);
         }
     };
 

@@ -6,7 +6,9 @@
 * History :
 * Version       Date        Programmer                  Description
 * ===============================================================================================================
-* 0.0.2         2015-05-14  Maria Giovanna Chinellato   Add all attributes and all methods
+* 0.1.1         2015-05-15  Francesco Rossetto          Various fix, insert inzializeData
+*
+* 0.1.0         2015-05-14  Maria Giovanna Chinellato   Add all attributes and all methods
 *
 * 0.0.1         2015-05-14  Maria Giovanna Chinellato   Initial code          
 * ===============================================================================================================
@@ -33,21 +35,19 @@ app.factory('Table', ['Graph', 'Cell', 'TableFlow', function(Graph, Cell, TableF
 		if (json.width) {
 			graphJson.width = json.width;
 		}
-		if (json.legend) {
-			graphJson.legend = json.legend;
-		}
-		if (json.enabledLegend) {
+		if (json.enabledLegend != null) {
 			graphJson.enabledLegend = json.enabledLegend;
+			if (enabledLegend && json.legend) {
+				graphJson.legend = json.legend;
+			}
 		}
-		if (json.horizontalGrid) {
+		if (json.horizontalGrid != null) {
 			graphJson.horizontalGrid = json.horizontalGrid;
 		}
-		if (json.verticalGrid) {
+		if (json.verticalGrid != null) {
 			graphJson.verticalGrid = json.verticalGrid;
 		}
-		if (json.url) {
-			graphJson.url = json.url;
-		}
+
 
 		var tableJson = {};
 		if (json.rows) {
@@ -86,9 +86,9 @@ app.factory('Table', ['Graph', 'Cell', 'TableFlow', function(Graph, Cell, TableF
     // reuse the original object prototype
 	Table.prototype = new Graph();
 
-    // Now let's override our original getProfile method
+    // Now let's override our original updateParameters method
     Table.prototype.updateParameters = function(info) {
-    	json = json = split(info);
+    	json = split(info);
     	gJson = json.graphJson;
     	tJson = json.tableJson;
     	if (Object.keys(gJson).length != 0) {
@@ -102,13 +102,15 @@ app.factory('Table', ['Graph', 'Cell', 'TableFlow', function(Graph, Cell, TableF
 	       		colunms = tJson.colunms;
 	       	}
 	       	if (tJson.headers) {
-	       		for (var i=0; i<tJson.headers.length; i++) { // ???
+	       		for (var i=0; i<tJson.headers.length; i++) { 
 	        		headers.push(tJson.headers[i]);
 	        	}
         	}
         	if (tJson.cells) {
-        		for (var i=0; i<tJson.cells.length; i++) { // ???
-	        		cells.push(new Cell(tJson.cells[i]));
+        		for (var i=0; i<tJson.cells.length; i++) {
+	        		for (var j=0; j<tJson.cells[i].length; j++) {
+	        			cells.new Cell(tJson.cells[i][j]));
+	        		}
 	        	}
         	}
         	if (tJson.itemDisplayedPerPage) {
@@ -121,13 +123,24 @@ app.factory('Table', ['Graph', 'Cell', 'TableFlow', function(Graph, Cell, TableF
         		sortable = tJson.sortable;
         	}
     	}
+        if (info.flows) {
+            for (int i=0; i<info.flows.length; i++) {
+                var newflow = new TableFlow(info.flows[i]);
+                addFlow(newflow);
+            }
+        } 
     };
 
     Table.prototype.addFlow = function(flow) {
-    	if (typeof flow === 'TableFlow'){
-    		var newflow = new TableFlow(flow);
+    	if (typeof flow === 'TableFlow') {
     		Graph.prototype.addFlow.call(this, flow.ID, newflow);
     	}
+    };
+
+    Table.prototype.initializeData = function(data) {  //inizialization data of flows
+        for (var i=0; i<data.length; i++) {
+            flowList[data[i].ID].inizializeData(data[i].records);
+        }
     };
 
     // update data

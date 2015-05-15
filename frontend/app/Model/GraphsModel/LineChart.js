@@ -6,11 +6,13 @@
 * History :
 * Version       Date        Programmer                  Description
 * ===============================================================================================================
-* 0.1.1         2015-05-15  Maria Giovanna Chinellato	Fix all methods
+* 0.2.2			2015-05-15	Francesco Rossetto			Various fix, insert inzializeData
 *
-* 0.1.0         2015-05-13  Maria Giovanna Chinellato	Add all methods
+* 0.2.1         2015-05-15  Maria Giovanna Chinellato	Fix all methods
 *
-* 0.0.2         2015-05-13  Francesco Rossetto   		Add all attributes and some methods
+* 0.2.0         2015-05-13  Maria Giovanna Chinellato	Add all methods
+*
+* 0.1.0         2015-05-13  Francesco Rossetto   		Add all attributes and some methods
 *
 * 0.0.1         2015-05-13  Francesco Rossetto			Initial code      
 * ===============================================================================================================
@@ -18,11 +20,11 @@
 */
 
 app.factory('LineChart', ['Graph', 'Axis', 'ViewFinder', 'LineChartFlow', function(Graph, Axis, ViewFinder, LineChartFlow){
-	var axisX;
-	var axisY;
+	var axisX = null;
+	var axisY = null;
 	var viewFinder = null;
-	var enabledViewFinder;
-	var background;
+	var enabledViewFinder = false;
+	var background = "#FFF";
 
 	function split(json) {
 		var graphJson = {};
@@ -35,20 +37,17 @@ app.factory('LineChart', ['Graph', 'Axis', 'ViewFinder', 'LineChartFlow', functi
 		if (json.width) {
 			graphJson.width = json.width;
 		}
-		if (json.legend) {
-			graphJson.legend = json.legend;
-		}
-		if (json.enabledLegend) {
+		if (json.enabledLegend != null) {
 			graphJson.enabledLegend = json.enabledLegend;
+			if (enabledLegend && json.legend) {
+				graphJson.legend = json.legend;
+			}
 		}
-		if (json.horizontalGrid) {
+		if (json.horizontalGrid != null) {
 			graphJson.horizontalGrid = json.horizontalGrid;
 		}
-		if (json.verticalGrid) {
+		if (json.verticalGrid != null) {
 			graphJson.verticalGrid = json.verticalGrid;
-		}
-		if (json.url) {
-			graphJson.url = json.url;
 		}
 
 		var lineJson = {};
@@ -58,11 +57,11 @@ app.factory('LineChart', ['Graph', 'Axis', 'ViewFinder', 'LineChartFlow', functi
 		if (json.axisY) {
 			lineJson.axisY = json.axisY;
 		}
-		if (json.viewFinder) {
-			lineJson.viewFinder = json.viewFinder;
-		}
-		if (json.enabledViewFinder) {
+		if (json.enabledViewFinder != null) {
 			lineJson.enabledViewFinder = json.enabledViewFinder;
+			if (enabledViewFinder && json.viewFinder) {
+				lineJson.viewFinder = json.viewFinder;
+			}
 		}
 		if (json.background) {
 			lineJson.background = json.background;
@@ -73,6 +72,7 @@ app.factory('LineChart', ['Graph', 'Axis', 'ViewFinder', 'LineChartFlow', functi
 			"lineJson" : lineJson
 		}
 	}
+	LineChart.prototype.test = function _Test(expressionStr) { return eval(expressionStr); }
 
     // create our new custom object that reuse the original object constructor
     var LineChart = function(info) {
@@ -82,9 +82,9 @@ app.factory('LineChart', ['Graph', 'Axis', 'ViewFinder', 'LineChartFlow', functi
     // reuse the original object prototype
 	LineChart.prototype = new Graph();
 
-    // Now let's override our original updateParameters method
+    // Now let's override our method
     LineChart.prototype.updateParameters = function(info) {
-    	json = json = split(info);
+    	json = split(info);
     	gJson = json.graphJson;
     	lJson = json.lineJson;
     	if (Object.keys(gJson).length != 0) {
@@ -107,15 +107,26 @@ app.factory('LineChart', ['Graph', 'Axis', 'ViewFinder', 'LineChartFlow', functi
         		background = lJson.background;
         	}
     	}
+    	if (info.flows) {
+    		for (int i=0; i<info.flows.length; i++) {
+    			var newflow = new LineChartFlow(info.flows[i]);
+    			addFlow(newflow);
+    		}
+    	}
     };
 
     LineChart.prototype.addFlow = function(flow) {
-    	if (typeof flow === 'LineChartFlow'){
-    		var newflow = new LineChartFlow(flow);
+    	if (typeof flow === 'LineChartFlow') {
     		Graph.prototype.addFlow.call(this, flow.ID, newflow);
     	}
     };
 
+    LineChart.prototype.initializeData = function(data) {  //inizialization data of flows
+    	for (var i=0; i<data.length; i++) {
+    		flowList[data[i].ID].inizializeData(data[i].records);
+    	}
+    };
+    
     // update data
     LineChart.prototype.inPlaceUpdate = function(data) {
     	flowList[data.ID].inPlaceUpdate(data.records);
