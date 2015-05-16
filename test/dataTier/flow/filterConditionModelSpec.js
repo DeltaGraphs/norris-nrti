@@ -49,40 +49,40 @@ describe('FilterConditionModel', function() {
         it('test == valid', function() {
             assert.deepEqual(fcm3.validateRecord({xs:23}), true);
         });
-        fcm3=new FilterConditionModel('xs!=23');
+        var fcm4=new FilterConditionModel('xs!=23');
         it('test invalid !=', function() {
-            assert.deepEqual(fcm3.validateRecord({xs:23}), false);
+            assert.deepEqual(fcm4.validateRecord({xs:23}), false);
         });
         it('test valid !=', function() {
-            assert.deepEqual(fcm3.validateRecord({xs:6}), true);
+            assert.deepEqual(fcm4.validateRecord({xs:6}), true);
         });
-        fcm3=new FilterConditionModel('xs>23');
+        var fcm5=new FilterConditionModel('xs>23');
         it('test invalid >', function() {
-            assert.deepEqual(fcm3.validateRecord({xs:23}), false);
+            assert.deepEqual(fcm5.validateRecord({xs:23}), false);
         });
         it('test valid >', function() {
-            assert.deepEqual(fcm3.validateRecord({xs:25}), true);
+            assert.deepEqual(fcm5.validateRecord({xs:25}), true);
         });
-        fcm3=new FilterConditionModel('xs>=23');
+        var fcm6=new FilterConditionModel('xs>=23');
         it('test invalid >=', function() {
-            assert.deepEqual(fcm3.validateRecord({xs:22}), false);
+            assert.deepEqual(fcm6.validateRecord({xs:22}), false);
         });
         it('test valid >=', function() {
-            assert.deepEqual(fcm3.validateRecord({xs:25}), true);
+            assert.deepEqual(fcm6.validateRecord({xs:25}), true);
         });
-        fcm3=new FilterConditionModel('xs<23');
+        var fcm7=new FilterConditionModel('xs<23');
         it('test invalid <', function() {
-            assert.deepEqual(fcm3.validateRecord({xs:28}), false);
+            assert.deepEqual(fcm7.validateRecord({xs:28}), false);
         });
         it('test valid <', function() {
-            assert.deepEqual(fcm3.validateRecord({xs:2}), true);
+            assert.deepEqual(fcm7.validateRecord({xs:2}), true);
         });
-        fcm3=new FilterConditionModel('xs<=23');
+        var fcm8=new FilterConditionModel('xs<=23');
         it('test invalid <=', function() {
-            assert.deepEqual(fcm3.validateRecord({xs:24}), false);
+            assert.deepEqual(fcm8.validateRecord({xs:24}), false);
         });
         it('test valid <=', function() {
-            assert.deepEqual(fcm3.validateRecord({xs:23}), true);
+            assert.deepEqual(fcm8.validateRecord({xs:23}), true);
         });
     });
 });
