@@ -66,7 +66,7 @@ describe('GraphModel', function() {
             height: 200,
             width: 350,
             enableLegend: true,
-            legend: legend1
+            legend: legend1.getProperties()
         });
         assert.strictEqual(graph1._ID, 'graph1');
         assert.strictEqual(graph1._title, 'graph one');
@@ -74,7 +74,7 @@ describe('GraphModel', function() {
         assert.strictEqual(graph1._height, 200);
         assert.strictEqual(graph1._width, 350);
         assert.strictEqual(graph1._enableLegend, true);
-        assert.strictEqual(graph1._legend, legend1);
+        assert.strictEqual(graph1._legend, legend1.getProperties());
     });
 
     describe('#getProperties', function() {
@@ -86,7 +86,7 @@ describe('GraphModel', function() {
                 height: 200,
                 width: 350,
                 enableLegend: true,
-                legend: legend1
+                legend: legend1.getProperties()
             };
             var graph1=new GraphModel(properties);
             var prop=graph1.getProperties();
@@ -96,7 +96,7 @@ describe('GraphModel', function() {
             assert.strictEqual(prop.height, 200);
             assert.strictEqual(prop.width, 350);
             assert.strictEqual(prop.enableLegend, true);
-            assert.strictEqual(prop.legend, legend1);
+            assert.strictEqual(prop.legend, legend1.getProperties());
         });
     });
     describe('#updateProperties', function() {
@@ -108,7 +108,7 @@ describe('GraphModel', function() {
                 height: 200,
                 width: 350,
                 enableLegend: true,
-                legend: legend1
+                legend: legend1.getProperties()
             };
             var graph1=new GraphModel({ID: 'graph1'});
             graph1.updateProperties(properties);
@@ -118,7 +118,7 @@ describe('GraphModel', function() {
             assert.strictEqual(graph1._height, 200);
             assert.strictEqual(graph1._width, 350);
             assert.strictEqual(graph1._enableLegend, true);
-            assert.strictEqual(graph1._legend, legend1);
+            assert.strictEqual(graph1._legend, legend1.getProperties());
         });
         it('does not update the properties with wrong param', function() {
             var properties={

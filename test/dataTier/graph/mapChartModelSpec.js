@@ -80,7 +80,7 @@ describe('mapChartModel', function() {
             height: 200,
             width: 350,
             enableLegend: true,
-            legend: legend1,
+            legend: legend1.getProperties(),
             latitude: '33',
             longitude: '44',
             scale: 2,
@@ -93,7 +93,7 @@ describe('mapChartModel', function() {
         assert.strictEqual(graph1._height, 200);
         assert.strictEqual(graph1._width, 350);
         assert.strictEqual(graph1._enableLegend, true);
-        assert.strictEqual(graph1._legend, legend1);
+        assert.strictEqual(graph1._legend, legend1.getProperties());
         assert.strictEqual(graph1._latitude, '33');
         assert.strictEqual(graph1._longitude, '44');
         assert.strictEqual(graph1._scale, 2);
@@ -109,7 +109,7 @@ describe('mapChartModel', function() {
 	            height: 200,
 	            width: 350,
 	            enableLegend: true,
-	            legend: legend1,
+	            legend: legend1.getProperties(),
                 latitude: '33',
                 longitude: '44',
                 scale: 2,
@@ -124,7 +124,7 @@ describe('mapChartModel', function() {
             assert.strictEqual(prop.height, 200);
             assert.strictEqual(prop.width, 350);
             assert.strictEqual(prop.enableLegend, true);
-            assert.strictEqual(prop.legend, legend1);
+            assert.strictEqual(prop.legend, legend1.getProperties());
             assert.strictEqual(prop.latitude, '33');
             assert.strictEqual(prop.longitude, '44');
             assert.strictEqual(prop.scale, 2);
@@ -140,7 +140,7 @@ describe('mapChartModel', function() {
                 height: 200,
                 width: 350,
                 enableLegend: true,
-                legend: legend1,
+                legend: legend1.getProperties(),
                 latitude: '33',
                 longitude: '44',
                 scale: 2,
@@ -155,7 +155,7 @@ describe('mapChartModel', function() {
             assert.strictEqual(graph1._height, 200);
             assert.strictEqual(graph1._width, 350);
             assert.strictEqual(graph1._enableLegend, true);
-            assert.strictEqual(graph1._legend, legend1);
+            assert.strictEqual(graph1._legend, legend1.getProperties());
             assert.strictEqual(graph1._latitude, '33');
             assert.strictEqual(graph1._longitude, '44');
             assert.strictEqual(graph1._scale, 2);

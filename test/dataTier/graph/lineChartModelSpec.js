@@ -17,6 +17,7 @@
 var LineChartModel = require('../../../lib/dataTier/graph/lineChartModel.js');
 var LegendModel = require('../../../lib/dataTier/graph/legendModel.js');
 var LineChartFlowModel = require('../../../lib/dataTier/flow/lineChartFlowModel.js');
+var AxisModel = require('../../../lib/dataTier/graph/axisModel.js');
 var assert = require('assert');
 
 describe('lineChartModel', function() {
@@ -37,8 +38,8 @@ describe('lineChartModel', function() {
         assert.strictEqual(graph1._width, 0);
         assert.strictEqual(graph1._enableLegend, false);
         assert.strictEqual(graph1._legend, null);
-        assert.strictEqual(graph1._xAxis, '');
-        assert.strictEqual(graph1._yAxis, '');
+        assert.strictEqual(graph1._xAxis, null);
+        assert.strictEqual(graph1._yAxis, null);
         assert.strictEqual(graph1._backgroundColor, '');
         assert.strictEqual(graph1._viewFinder, false);
         assert.strictEqual(graph1._horizontalGrid, false);
@@ -67,8 +68,8 @@ describe('lineChartModel', function() {
         assert.strictEqual(graph1._width, 0);
         assert.strictEqual(graph1._enableLegend, false);
         assert.strictEqual(graph1._legend, null);
-        assert.strictEqual(graph1._xAxis, '');
-        assert.strictEqual(graph1._yAxis, '');
+        assert.strictEqual(graph1._xAxis, null);
+        assert.strictEqual(graph1._yAxis, null);
         assert.strictEqual(graph1._backgroundColor, '');
         assert.strictEqual(graph1._viewFinder, false);
         assert.strictEqual(graph1._horizontalGrid, false);
@@ -76,6 +77,8 @@ describe('lineChartModel', function() {
     });
 
     var legend1 = new LegendModel();
+    var xAxis1 = new AxisModel();
+    var yAxis1 = new AxisModel();
     it('set param values to properties', function() {
         var graph1=new LineChartModel({
             ID: 'graph1',
@@ -83,9 +86,9 @@ describe('lineChartModel', function() {
             height: 200,
             width: 350,
             enableLegend: true,
-            legend: legend1,
-            xAxis: 'x',
-            yAxis: 'y',
+            legend: legend1.getProperties(),
+            xAxis: xAxis1.getProperties(),
+            yAxis: yAxis1.getProperties(),
             backgroundColor: '#FFFFFF',
             viewFinder: true,
             horizontalGrid: true,
@@ -97,9 +100,9 @@ describe('lineChartModel', function() {
         assert.strictEqual(graph1._height, 200);
         assert.strictEqual(graph1._width, 350);
         assert.strictEqual(graph1._enableLegend, true);
-        assert.strictEqual(graph1._legend, legend1);
-        assert.strictEqual(graph1._xAxis, 'x');
-        assert.strictEqual(graph1._yAxis, 'y');
+        assert.strictEqual(graph1._legend, legend1.getProperties());
+        assert.strictEqual(graph1._xAxis, xAxis1.getProperties());
+        assert.strictEqual(graph1._yAxis, yAxis1.getProperties());
         assert.strictEqual(graph1._backgroundColor, '#FFFFFF');
         assert.strictEqual(graph1._viewFinder, true);
         assert.strictEqual(graph1._horizontalGrid, true);
@@ -114,9 +117,9 @@ describe('lineChartModel', function() {
 	            height: 200,
 	            width: 350,
 	            enableLegend: true,
-	            legend: legend1,
-	            xAxis: 'x',
-	            yAxis: 'y',
+	            legend: legend1.getProperties(),
+	            xAxis: xAxis1.getProperties(),
+	            yAxis: yAxis1.getProperties(),
 	            backgroundColor: '#FFFFFF',
                 viewFinder: true,
                 horizontalGrid: true,
@@ -130,9 +133,9 @@ describe('lineChartModel', function() {
             assert.strictEqual(prop.height, 200);
             assert.strictEqual(prop.width, 350);
             assert.strictEqual(prop.enableLegend, true);
-            assert.strictEqual(prop.legend, legend1);
-            assert.strictEqual(prop.xAxis, 'x');
-            assert.strictEqual(prop.yAxis, 'y');
+            assert.strictEqual(prop.legend, legend1.getProperties());
+            assert.strictEqual(prop.xAxis, xAxis1.getProperties());
+            assert.strictEqual(prop.yAxis, yAxis1.getProperties());
             assert.strictEqual(prop.backgroundColor, '#FFFFFF');
             assert.strictEqual(prop.viewFinder, true);
             assert.strictEqual(prop.horizontalGrid, true);
@@ -147,9 +150,9 @@ describe('lineChartModel', function() {
                 height: 200,
                 width: 350,
                 enableLegend: true,
-                legend: legend1,
-	            xAxis: 'x',
-	            yAxis: 'y',
+                legend: legend1.getProperties(),
+	            xAxis: xAxis1.getProperties(),
+	            yAxis: yAxis1.getProperties(),
 	            backgroundColor: '#FFFFFF',
                 viewFinder: true,
                 horizontalGrid: true,
@@ -163,9 +166,9 @@ describe('lineChartModel', function() {
             assert.strictEqual(graph1._height, 200);
             assert.strictEqual(graph1._width, 350);
             assert.strictEqual(graph1._enableLegend, true);
-            assert.strictEqual(graph1._legend, legend1);
-	        assert.strictEqual(graph1._xAxis, 'x');
-	        assert.strictEqual(graph1._yAxis, 'y');
+            assert.strictEqual(graph1._legend, legend1.getProperties());
+	        assert.strictEqual(graph1._xAxis, xAxis1.getProperties());
+	        assert.strictEqual(graph1._yAxis, yAxis1.getProperties());
             assert.strictEqual(graph1._backgroundColor, '#FFFFFF');
             assert.strictEqual(graph1._viewFinder, true);
             assert.strictEqual(graph1._horizontalGrid, true);
@@ -195,8 +198,8 @@ describe('lineChartModel', function() {
             assert.strictEqual(graph1._width, 0);
             assert.strictEqual(graph1._enableLegend, false);
             assert.strictEqual(graph1._legend, null);
-	        assert.strictEqual(graph1._xAxis, '');
-	        assert.strictEqual(graph1._yAxis, '');
+	        assert.strictEqual(graph1._xAxis, null);
+	        assert.strictEqual(graph1._yAxis, null);
 	        assert.strictEqual(graph1._backgroundColor, '');
             assert.strictEqual(graph1._viewFinder, false);
             assert.strictEqual(graph1._horizontalGrid, false);
