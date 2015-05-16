@@ -137,4 +137,28 @@ describe('FlowModel', function() {
 			assert.strictEqual(flow1._filters, null);
         });
     });
+
+    describe('#converter', function() {
+        it('updates the properties passed as param', function() {
+            var properties={
+                name: 'flow one',
+                filters: 'temperature > 2',
+            };
+            var flow1=new FlowModel({ID: 'flow1'});
+            flow1.updateProperties(properties);
+            var instanceOfFilterModel=(flow1._filters instanceof FilterModel);
+            assert.strictEqual(flow1._name, 'flow one');
+            assert.strictEqual(instanceOfFilterModel, true);
+        });
+        it('does not update the properties with wrong param', function() {
+            var properties={
+                name: 2,
+                filters: 2,
+            };
+            var flow1=new FlowModel({ID: 'flow1'});
+            flow1.updateProperties(properties);
+            assert.strictEqual(flow1._name, '');
+            assert.strictEqual(flow1._filters, null);
+        });
+    });
 });
