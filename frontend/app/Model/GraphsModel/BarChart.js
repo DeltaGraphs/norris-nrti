@@ -79,7 +79,7 @@ angular.module("services")
         };
     }
 
-    BarChart.prototype.test = function _Test(expressionStr) { return eval(expressionStr); };
+    //BarChart.prototype.test = function _Test(expressionStr) { return eval(expressionStr); };
 
     // create our new custom object that reuse the original object constructor
     var BarChart = function(info) {
