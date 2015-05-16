@@ -27,6 +27,7 @@ describe('mapChartModel', function() {
     it('returns null when there is a empty ID in params', function() {
         assert.strictEqual(new BarChartModel({ID:' '}), {});
     });*/
+    var defaultLegend = new LegendModel();
 
     it('set default values to property not specified', function() {
         var graph1=new MapChartModel({ID:'graph1'});
@@ -36,7 +37,7 @@ describe('mapChartModel', function() {
         assert.strictEqual(graph1._height, 0);
         assert.strictEqual(graph1._width, 0);
         assert.strictEqual(graph1._enableLegend, false);
-        assert.strictEqual(graph1._legend, null);
+        assert.strictEqual(graph1._legend.getProperties(), defaultLegend.getProperties());
         assert.strictEqual(graph1._latitude, '');
         assert.strictEqual(graph1._longitude, '');
         assert.strictEqual(graph1._scale, 0);
@@ -64,7 +65,7 @@ describe('mapChartModel', function() {
         assert.strictEqual(graph1._height, 0);
         assert.strictEqual(graph1._width, 0);
         assert.strictEqual(graph1._enableLegend, false);
-        assert.strictEqual(graph1._legend, null);
+        assert.strictEqual(graph1._legend.getProperties(), defaultLegend.getProperties());
         assert.strictEqual(graph1._latitude, '');
         assert.strictEqual(graph1._longitude, '');
         assert.strictEqual(graph1._scale, 0);
@@ -93,7 +94,7 @@ describe('mapChartModel', function() {
         assert.strictEqual(graph1._height, 200);
         assert.strictEqual(graph1._width, 350);
         assert.strictEqual(graph1._enableLegend, true);
-        assert.strictEqual(graph1._legend, legend1.getProperties());
+        assert.strictEqual(graph1._legend.getProperties(), legend1.getProperties());
         assert.strictEqual(graph1._latitude, '33');
         assert.strictEqual(graph1._longitude, '44');
         assert.strictEqual(graph1._scale, 2);
@@ -124,7 +125,7 @@ describe('mapChartModel', function() {
             assert.strictEqual(prop.height, 200);
             assert.strictEqual(prop.width, 350);
             assert.strictEqual(prop.enableLegend, true);
-            assert.strictEqual(prop.legend, legend1.getProperties());
+            assert.strictEqual(prop.legend.getProperties(), legend1.getProperties());
             assert.strictEqual(prop.latitude, '33');
             assert.strictEqual(prop.longitude, '44');
             assert.strictEqual(prop.scale, 2);
@@ -155,7 +156,7 @@ describe('mapChartModel', function() {
             assert.strictEqual(graph1._height, 200);
             assert.strictEqual(graph1._width, 350);
             assert.strictEqual(graph1._enableLegend, true);
-            assert.strictEqual(graph1._legend, legend1.getProperties());
+            assert.strictEqual(graph1._legend.getProperties(), legend1.getProperties());
             assert.strictEqual(graph1._latitude, '33');
             assert.strictEqual(graph1._longitude, '44');
             assert.strictEqual(graph1._scale, 2);
@@ -184,7 +185,7 @@ describe('mapChartModel', function() {
             assert.strictEqual(graph1._height, 0);
             assert.strictEqual(graph1._width, 0);
             assert.strictEqual(graph1._enableLegend, false);
-            assert.strictEqual(graph1._legend, null);
+            assert.strictEqual(graph1._legend.getProperties(), defaultLegend.getProperties());
             assert.strictEqual(graph1._latitude, '');
             assert.strictEqual(graph1._longitude, '');
             assert.strictEqual(graph1._scale, 0);
