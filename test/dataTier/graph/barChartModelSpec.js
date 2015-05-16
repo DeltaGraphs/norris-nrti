@@ -35,8 +35,8 @@ describe('barChartModel', function() {
         assert.strictEqual(graph1._ID, 'graph1');
         assert.strictEqual(graph1._title, '');
         assert.strictEqual(graph1._type, 'BarChart');
-        assert.strictEqual(graph1._height, 0);
-        assert.strictEqual(graph1._width, 0);
+        assert.strictEqual(graph1._height, 400);
+        assert.strictEqual(graph1._width, 500);
         assert.strictEqual(graph1._enableLegend, false);
         assert.deepEqual(graph1._legend.getProperties(), defaultLegend.getProperties());
         assert.deepEqual(graph1._xAxis.getProperties(), defaultAxis.getProperties());
@@ -65,13 +65,13 @@ describe('barChartModel', function() {
         assert.strictEqual(graph1._ID, 'graph1');
         assert.strictEqual(graph1._title, '');
         assert.strictEqual(graph1._type, 'BarChart');
-        assert.strictEqual(graph1._height, 0);
-        assert.strictEqual(graph1._width, 0);
+        assert.strictEqual(graph1._height, 400);
+        assert.strictEqual(graph1._width, 500);
         assert.strictEqual(graph1._enableLegend, false);
         assert.deepEqual(graph1._legend.getProperties(), defaultLegend.getProperties());
         assert.deepEqual(graph1._xAxis.getProperties(), defaultAxis.getProperties());
         assert.deepEqual(graph1._yAxis.getProperties(), defaultAxis.getProperties());
-        assert.strictEqual(graph1._backgroundColor, '');
+        assert.strictEqual(graph1._backgroundColor, '#FFFFFF');
         assert.strictEqual(graph1._headers.length, 0);
         assert.strictEqual(graph1._barOrientation, '');
         assert.strictEqual(graph1._sortable, false);
@@ -90,7 +90,7 @@ describe('barChartModel', function() {
             legend: legend1.getProperties(),
             xAxis: xAxis1.getProperties(),
             yAxis: yAxis1.getProperties(),
-            backgroundColor: '#FFFFFF',
+            backgroundColor: '#EEEEEE',
             headers: ['h1', 'h2'],
             barOrientation: 'V',
             sortable: true
@@ -104,7 +104,7 @@ describe('barChartModel', function() {
         assert.deepEqual(graph1._legend.getProperties(), legend1.getProperties());
         assert.deepEqual(graph1._xAxis.getProperties(), xAxis1.getProperties());
         assert.deepEqual(graph1._yAxis.getProperties(), yAxis1.getProperties());
-        assert.strictEqual(graph1._backgroundColor, '#FFFFFF');
+        assert.strictEqual(graph1._backgroundColor, '#EEEEEE');
         assert.strictEqual(graph1._headers[0], 'h1');
         assert.strictEqual(graph1._headers[1], 'h2');
         assert.strictEqual(graph1._barOrientation, 'V');
@@ -122,7 +122,7 @@ describe('barChartModel', function() {
                 legend: legend1.getProperties(),
                 xAxis: xAxis1.getProperties(),
                 yAxis: yAxis1.getProperties(),
-                backgroundColor: '#FFFFFF',
+                backgroundColor: '#EEEEEE',
                 headers: ['h1', 'h2'],
                 barOrientation: 'V',
                 sortable: true
@@ -138,7 +138,7 @@ describe('barChartModel', function() {
             assert.deepEqual(prop.legend, legend1.getProperties());
             assert.deepEqual(prop.xAxis, xAxis1.getProperties());
             assert.deepEqual(prop.yAxis, yAxis1.getProperties());
-            assert.strictEqual(prop.backgroundColor, '#FFFFFF');
+            assert.strictEqual(prop.backgroundColor, '#EEEEEE');
             assert.strictEqual(prop.headers[0], 'h1');
             assert.strictEqual(prop.headers[1], 'h2');
             assert.strictEqual(prop.barOrientation, 'V');
@@ -156,7 +156,7 @@ describe('barChartModel', function() {
                 legend: legend1.getProperties(),
                 xAxis: xAxis1.getProperties(),
                 yAxis: yAxis1.getProperties(),
-                backgroundColor: '#FFFFFF',
+                backgroundColor: '#EEEEEE',
                 headers: ['h1', 'h2'],
                 barOrientation: 'V',
                 sortable: true
@@ -172,7 +172,7 @@ describe('barChartModel', function() {
             assert.deepEqual(graph1._legend.getProperties(), legend1.getProperties());
             assert.deepEqual(graph1._xAxis.getProperties(), xAxis1.getProperties());
             assert.deepEqual(graph1._yAxis.getProperties(), yAxis1.getProperties());
-            assert.strictEqual(graph1._backgroundColor, '#FFFFFF');
+            assert.strictEqual(graph1._backgroundColor, '#EEEEEE');
             assert.strictEqual(graph1._headers[0], 'h1');
             assert.strictEqual(graph1._headers[1], 'h2');
             assert.strictEqual(graph1._barOrientation, 'V');
@@ -198,13 +198,13 @@ describe('barChartModel', function() {
             assert.strictEqual(graph1._ID, 'graph1');
             assert.strictEqual(graph1._title, '');
             assert.strictEqual(graph1._type, 'BarChart');
-            assert.strictEqual(graph1._height, 0);
-            assert.strictEqual(graph1._width, 0);
+            assert.strictEqual(graph1._height, 400);
+            assert.strictEqual(graph1._width, 500);
             assert.strictEqual(graph1._enableLegend, false);
             assert.deepEqual(graph1._legend.getProperties(), defaultLegend.getProperties());
             assert.deepEqual(graph1._xAxis.getProperties(), defaultAxis.getProperties());
             assert.deepEqual(graph1._yAxis.getProperties(), defaultAxis.getProperties());
-            assert.strictEqual(graph1._backgroundColor, '');
+            assert.strictEqual(graph1._backgroundColor, '#FFFFFF');
             assert.strictEqual(graph1._headers.length, 0);
             assert.strictEqual(graph1._barOrientation, '');
             assert.strictEqual(graph1._sortable, false);

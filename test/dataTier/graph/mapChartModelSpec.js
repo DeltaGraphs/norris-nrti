@@ -34,13 +34,13 @@ describe('mapChartModel', function() {
         assert.strictEqual(graph1._ID, 'graph1');
         assert.strictEqual(graph1._title, '');
         assert.strictEqual(graph1._type, 'MapChart');
-        assert.strictEqual(graph1._height, 0);
-        assert.strictEqual(graph1._width, 0);
+        assert.strictEqual(graph1._height, 400);
+        assert.strictEqual(graph1._width, 500);
         assert.strictEqual(graph1._enableLegend, false);
         assert.deepEqual(graph1._legend.getProperties(), defaultLegend.getProperties());
         assert.strictEqual(graph1._latitude, '');
         assert.strictEqual(graph1._longitude, '');
-        assert.strictEqual(graph1._scale, 0);
+        assert.strictEqual(graph1._scale, 'linear');
         assert.strictEqual(graph1._mapType, '');
         assert.strictEqual(graph1._zoom, false);
     });
@@ -55,20 +55,20 @@ describe('mapChartModel', function() {
             legend: 'def',
             latitude: 123,
             longitude: 456,
-            scale: 'abc',
+            scale: 2,
             mapType: 123,
             zoom: 'def'
         });
         assert.strictEqual(graph1._ID, 'graph1');
         assert.strictEqual(graph1._title, '');
         assert.strictEqual(graph1._type, 'MapChart');
-        assert.strictEqual(graph1._height, 0);
-        assert.strictEqual(graph1._width, 0);
+        assert.strictEqual(graph1._height, 400);
+        assert.strictEqual(graph1._width, 500);
         assert.strictEqual(graph1._enableLegend, false);
         assert.deepEqual(graph1._legend.getProperties(), defaultLegend.getProperties());
         assert.strictEqual(graph1._latitude, '');
         assert.strictEqual(graph1._longitude, '');
-        assert.strictEqual(graph1._scale, 0);
+        assert.strictEqual(graph1._scale, 'linear');
         assert.strictEqual(graph1._mapType, '');
         assert.strictEqual(graph1._zoom, false);
     });
@@ -84,7 +84,7 @@ describe('mapChartModel', function() {
             legend: legend1.getProperties(),
             latitude: '33',
             longitude: '44',
-            scale: 2,
+            scale: 'logarithmic',
             mapType: 'satellite',
             zoom: true
         });
@@ -97,7 +97,7 @@ describe('mapChartModel', function() {
         assert.deepEqual(graph1._legend.getProperties(), legend1.getProperties());
         assert.strictEqual(graph1._latitude, '33');
         assert.strictEqual(graph1._longitude, '44');
-        assert.strictEqual(graph1._scale, 2);
+        assert.strictEqual(graph1._scale, 'logarithmic');
         assert.strictEqual(graph1._mapType, 'satellite');
         assert.strictEqual(graph1._zoom, true);
     });
@@ -113,7 +113,7 @@ describe('mapChartModel', function() {
 	            legend: legend1.getProperties(),
                 latitude: '33',
                 longitude: '44',
-                scale: 2,
+                scale: 'logarithmic',
                 mapType: 'satellite',
                 zoom: true
             };
@@ -128,7 +128,7 @@ describe('mapChartModel', function() {
             assert.deepEqual(prop.legend, legend1.getProperties());
             assert.strictEqual(prop.latitude, '33');
             assert.strictEqual(prop.longitude, '44');
-            assert.strictEqual(prop.scale, 2);
+            assert.strictEqual(prop.scale, 'logarithmic');
             assert.strictEqual(prop.mapType, 'satellite');
             assert.strictEqual(prop.zoom, true);
         });
@@ -144,7 +144,7 @@ describe('mapChartModel', function() {
                 legend: legend1.getProperties(),
                 latitude: '33',
                 longitude: '44',
-                scale: 2,
+                scale: 'logarithmic',
                 mapType: 'satellite',
                 zoom: true
             };
@@ -159,7 +159,7 @@ describe('mapChartModel', function() {
             assert.deepEqual(graph1._legend.getProperties(), legend1.getProperties());
             assert.strictEqual(graph1._latitude, '33');
             assert.strictEqual(graph1._longitude, '44');
-            assert.strictEqual(graph1._scale, 2);
+            assert.strictEqual(graph1._scale, 'logarithmic');
             assert.strictEqual(graph1._mapType, 'satellite');
             assert.strictEqual(graph1._zoom, true);
         });
@@ -173,7 +173,7 @@ describe('mapChartModel', function() {
                 legend: 'def',
                 latitude: 123,
                 longitude: 456,
-                scale: 'abc',
+                scale: 2,
                 mapType: 123,
                 zoom: 'def'
             };
@@ -182,13 +182,13 @@ describe('mapChartModel', function() {
             assert.strictEqual(graph1._ID, 'graph1');
             assert.strictEqual(graph1._title, '');
             assert.strictEqual(graph1._type, 'MapChart');
-            assert.strictEqual(graph1._height, 0);
-            assert.strictEqual(graph1._width, 0);
+            assert.strictEqual(graph1._height, 400);
+            assert.strictEqual(graph1._width, 500);
             assert.strictEqual(graph1._enableLegend, false);
             assert.deepEqual(graph1._legend.getProperties(), defaultLegend.getProperties());
             assert.strictEqual(graph1._latitude, '');
             assert.strictEqual(graph1._longitude, '');
-            assert.strictEqual(graph1._scale, 0);
+            assert.strictEqual(graph1._scale, 'linear');
             assert.strictEqual(graph1._mapType, '');
             assert.strictEqual(graph1._zoom, false);
         });
