@@ -34,7 +34,7 @@ app.factory('Legend', function(){
             if (info.background) {
                 background = info.background;
             }
-        };
+        },
 
         updateParameters : function(info){
             if (info.position) {
@@ -46,16 +46,16 @@ app.factory('Legend', function(){
             if (info.background) {
                 background = info.background;
             }
-        };
+        },
 
         getPosition : function(){
             return position;
-        };
+        },
         getFontColor : function(){
             return fontColor;
-        };
+        },
         getBackground : function(){
             return background;
-        };
+        }
     };
 });

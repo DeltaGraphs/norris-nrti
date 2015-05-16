@@ -87,9 +87,9 @@ app.factory('LineChart', ['Graph', 'Axis', 'ViewFinder', 'LineChartFlow', functi
 
     // Now let's override our method
     LineChart.prototype.updateParameters = function(info) {
-    	json = split(info);
-    	gJson = json.graphJson;
-    	lJson = json.lineJson;
+    	var json = split(info);
+    	var gJson = json.graphJson;
+    	var lJson = json.lineJson;
     	if (Object.keys(gJson).length !== 0) {
     		Graph.apply(this, gJson);
     	}
@@ -113,7 +113,7 @@ app.factory('LineChart', ['Graph', 'Axis', 'ViewFinder', 'LineChartFlow', functi
     	if (info.flows) {
     		for (var i=0; i<info.flows.length; i++) {
     			var newflow = new LineChartFlow(info.flows[i]);
-    			addFlow(flows[i].ID,newflow);
+    			LineChart.prototype.addFlow(flows[i].ID,newflow);
     		}
     	}
     };

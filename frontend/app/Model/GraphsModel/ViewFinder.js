@@ -18,6 +18,6 @@
 
 app.factory('ViewFinder', function(){
     return {
-        ViewFinder : function(){};
+        ViewFinder : function(){}
     };
 });

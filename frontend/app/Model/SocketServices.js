@@ -17,8 +17,8 @@
 */
 
 app.factory('SocketServices', function ($rootScope) {
-  return {
-    on: function (eventName, callback) {
+    return {
+        on: function (eventName, callback) {
             socket.on(eventName, function () {  
                 var args = arguments;
                 $rootScope.$apply(function () {

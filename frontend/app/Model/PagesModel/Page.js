@@ -80,25 +80,26 @@ app.factory('Page', ['LineChart', 'BarChart', 'MapChart', 'Table', function(Line
         },
         addGraph: function(graph){
             if (graphsList[graph.ID] === null) {
-                var graph;
+                var newgraph;
                 switch (graph.type) {
                     case "LineChart": 
-                        graph = new LineChart(graph);
-                        graphsList[graph.ID] = graph;
+                        newgraph = new LineChart(graph);
+                        graphsList[graph.ID] = newgraph;
                         break;
                     case "BarChart": 
-                        graph = new BarChart(graph);
-                        graphsList[graph.ID] = graph;
+                        newgraph = new BarChart(graph);
+                        graphsList[graph.ID] = newgraph;
                         break;
                     case "MapChart": 
-                        graph = new MapChart(graph);
-                        graphsList[graph.ID] = graph;
+                        newgraph = new MapChart(graph);
+                        graphsList[graph.ID] = newgraph;
                         break;
                     case "Table": 
-                        graph = new Table(graph);
-                        graphsList[graph.ID] = graph;
+                        newgraph = new Table(graph);
+                        graphsList[graph.ID] = newgraph;
                         break;
                 }
+            }
             // error
         },
 

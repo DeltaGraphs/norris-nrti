@@ -43,7 +43,7 @@ app.factory('Axis', function(){
             if (info.scale) {
                 scale = info.scale;
             }
-        };
+        },
 
         updateParameters : function(info){
             if (info.name) {
@@ -61,27 +61,25 @@ app.factory('Axis', function(){
             if (info.scale) {
                 scale = info.scale;
             }
-        };
+        },
 
         getName : function(){
             return name;
-        };
+        },
         getColor : function(){
             return color;
-        };
+        },
         getMinValue : function(){
             return minValue;
-        };
+        },
         getMaxValue : function(){
             return maxValue;
-        };
+        },
         getTicks : function(){
             return ticks;
-        };
+        },
         getScale : function(){
             return scale;
-        };
-
-
+        }
     };
 });

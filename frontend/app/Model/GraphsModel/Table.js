@@ -81,7 +81,7 @@ app.factory('Table', ['Graph', 'Cell', 'TableFlow', function(Graph, Cell, TableF
 			"graphJson" : graphJson,
 			"tableJson" : lineJson
 		};
-	};
+	}
 
     // create our new custom object that reuse the original object constructor
     var Table = function(info) {
@@ -93,9 +93,10 @@ app.factory('Table', ['Graph', 'Cell', 'TableFlow', function(Graph, Cell, TableF
 
     // Now let's override our original updateParameters method
     Table.prototype.updateParameters = function(info) {
-    	json = split(info);
-    	gJson = json.graphJson;
-    	tJson = json.tableJson;
+    	var json = split(info);
+    	var gJson = json.graphJson;
+    	var tJson = json.tableJson;
+        var i;
     	if (Object.keys(gJson).length !== 0) {
     		Graph.apply(this, gJson);
     	} 
@@ -107,7 +108,7 @@ app.factory('Table', ['Graph', 'Cell', 'TableFlow', function(Graph, Cell, TableF
 	       		colunms = tJson.colunms;
 	       	}
 	       	if (tJson.headers) {
-	       		for (var i=0; i<tJson.headers.length; i++) { 
+	       		for (i=0; i<tJson.headers.length; i++) { 
 	        		headers.push(tJson.headers[i]);
 	        	}
         	}
@@ -143,7 +144,7 @@ app.factory('Table', ['Graph', 'Cell', 'TableFlow', function(Graph, Cell, TableF
     };
 
     Table.prototype.initializeData = function(data) {  //inizialization data of flows
-        for (i=0; i<data.length; i++) {
+        for (var i=0; i<data.length; i++) {
             flowList[data[i].ID].inizializeData(data[i].records);
         }
     };

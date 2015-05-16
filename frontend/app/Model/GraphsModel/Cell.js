@@ -28,7 +28,7 @@ app.factory('Cell', function(){
             if (info.fontColor) {
                 fontColor = info.fontColor;
             }
-        };
+        },
 
         updateParameters : function(info){
             if (info.background) {
@@ -37,11 +37,11 @@ app.factory('Cell', function(){
             if (info.fontColor) {
                 fontColor = info.fontColor;
             }
-        };
+        },
 
         getBackground : function(){
             return background;
-        }
+        },
         getFontColor : function(){
             return fontColor;
         }

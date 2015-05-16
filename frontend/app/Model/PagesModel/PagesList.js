@@ -27,16 +27,16 @@ app.factory('PagesList', ['Page', function(Page){
 				}
 				// error
 			}
-		};
+		},
 		addPage: function(page){ // da cambiare DP
 			if (pagesList[page.ID] === null) {
 				var newPage = new Page(page);
 				pagesList[page.ID] = newPage;
 			}
 			// error
-		};
+		},
 		getPagesList: function(){
 			return pagesList;
-		};
+		}
 	};
 }]);

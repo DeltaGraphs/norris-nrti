@@ -57,7 +57,7 @@ app.factory('MapChartFlow', ['Flow', function(){
             "flowJson" : flowJson,
             "mapFlowJson" : mapFlowJson
         };
-    }
+    };
 
     var MapChartFlow = function(info) {
 		var json = split(info);
@@ -75,12 +75,6 @@ app.factory('MapChartFlow', ['Flow', function(){
         }
         if (mfJson.marker) {
             marker = mfJson.marker;
-        }
-        if (mfJson.interpolation) {
-            interpolation = mfJson.interpolation;
-        }
-        if (mfJson.areaColor) {
-            areaColor = mfJson.areaColor;
         }
         if (mfJson.maxItem) {
             maxItem = mfJson.maxItem;
@@ -108,12 +102,6 @@ app.factory('MapChartFlow', ['Flow', function(){
 	        }
 	        if (mfJson.marker) {
 	            marker = mfJson.marker;
-	        }
-	        if (mfJson.interpolation) {
-	            interpolation = mfJson.interpolation;
-	        }
-	        if (mfJson.areaColor) {
-	            areaColor = mfJson.areaColor;
 	        }
 	        if (mfJson.maxItem) {
 	            maxItem = mfJson.maxItem;
