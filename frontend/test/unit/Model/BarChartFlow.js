@@ -28,7 +28,7 @@ describe('BarChartFlow', function(){
 
 	describe('Constructor', function(){
 
-		json = {
+		var json = {
 			"dataFormat" : "int",
 			"name" : "flusso1",
 			"flowColor" : "#F2F",
@@ -37,10 +37,6 @@ describe('BarChartFlow', function(){
 		var f = {
 			"dataFormat" : "int",
 			"name" : "flusso1"
-		};
-		var b = {
-			"flowColor" : "#F2F",
-			"legendOnPoin" : "flusso1",
 		};
 
 		beforeEach(function(){
@@ -92,12 +88,16 @@ describe('BarChartFlow', function(){
 	});
 
 	describe('updateParameters', function(){
-		json = {
+		var json = {
 			"dataFormat" : "String",
 			"name" : "flusso2",
 			"flowColor" : "#F1F",
 			"legendOnPoin" : "flusso2"
 		};
+		var f = {
+			"dataFormat" : "String",
+			"name" : "flusso2"
+		}
 
 		beforeEach(function(){
 			BarChartFlow.prototype.updateParameters(json);
@@ -117,7 +117,7 @@ describe('BarChartFlow', function(){
 
 	});
 
-	describe('inizializeData', function(){
+	/*describe('inizializeData', function(){
 		// data {}
 
 		beforeEach(function(){
@@ -125,9 +125,9 @@ describe('BarChartFlow', function(){
 		});
 
 		// it
-	});
+	});*/
 
-	describe('inPlaceUpdate', function(){
+	/*describe('inPlaceUpdate', function(){
 		// data {}
 
 		beforeEach(function(){
@@ -135,6 +135,6 @@ describe('BarChartFlow', function(){
 		});
 
 		// it
-	});
+	});*/
 
 });

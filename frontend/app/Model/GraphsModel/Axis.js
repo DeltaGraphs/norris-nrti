@@ -1,3 +1,6 @@
+/*jshint node: true */
+'use strict';
+
 /*
 * Name :  Axis.js
 * Module : FrontEnd::Model::GraphsModel
@@ -25,49 +28,59 @@ app.factory('Axis', function(){
 
     return {
         Axis : function(info){
-            if (info.name)
+            if (info.name) {
                 name = info.name;
-            if (info.color)
+            }
+            if (info.color) {
                 color = info.color;
-            if (info.range)
+            }
+            if (info.range) {
                 range = info.range;
-            if (info.ticks)
+            }
+            if (info.ticks) {
                 ticks = info.ticks;
-            if (info.scale)
+            }
+            if (info.scale) {
                 scale = info.scale;
+            }
         };
 
         updateParameters : function(info){
-            if (info.name)
+            if (info.name) {
                 name = info.name;
-            if (info.color)
+            }
+            if (info.color) {
                 color = info.color;
-            if (info.range)
+            }
+            if (info.range) {
                 range = info.range;
-            if (info.ticks)
+            }
+            if (info.ticks) {
                 ticks = info.ticks;
-            if (info.scale)
+            }
+            if (info.scale) {
                 scale = info.scale;
+            }
         };
 
         getName : function(){
             return name;
-        }
+        };
         getColor : function(){
             return color;
-        }
+        };
         getMinValue : function(){
             return minValue;
-        }
+        };
         getMaxValue : function(){
             return maxValue;
-        }
+        };
         getTicks : function(){
             return ticks;
-        }
+        };
         getScale : function(){
             return scale;
-        }
+        };
 
 
     };

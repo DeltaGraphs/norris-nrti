@@ -1,3 +1,6 @@
+/*jshint node: true */
+'use strict';
+
 /*
 * Name :  BarChartFlow.js
 * Module : FrontEnd::Model::FlowsModel
@@ -15,7 +18,7 @@
 *
 */
 
-app.factory('BarChartFlow', [ 'Flow', function(Flow){
+app.factory('BarChartFlow', ['Flow', function(Flow){
 	var data = new Array();
 	var flowColor;
 	var legendOnPoint;
@@ -41,7 +44,7 @@ app.factory('BarChartFlow', [ 'Flow', function(Flow){
         return {
             "flowJson" : flowJson,
             "barFlowJson" : barFlowJson
-        }
+        };
     }
 
     var BarChartFlow = function(info) {
@@ -68,11 +71,11 @@ app.factory('BarChartFlow', [ 'Flow', function(Flow){
 		var fJson = json.flowJson;
 		var bfJson = json.barFlowJson;
 
-		if (Object.keys(fJson).length != 0) {
+		if (Object.keys(fJson).length !== 0) {
 			Flow.apply(this, fJson);
 		}
 
-		if (Object.keys(bfJson).length != 0) {
+		if (Object.keys(bfJson).length !== 0) {
 			if (bfJson.flowColor) {
 	            flowColor = bfJson.flowColor;
 	        }
@@ -83,10 +86,10 @@ app.factory('BarChartFlow', [ 'Flow', function(Flow){
 	};
 
 	BarChartFlow.prototype.initializeData = function(data) {
-		//
+		return data;
 	};
 	BarChartFlow.prototype.inPlaceUpdate = function(data) {
-		//
+		return data;
     };
 
 	BarChartFlow.prototype.getData = function() {

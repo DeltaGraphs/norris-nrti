@@ -28,7 +28,7 @@ describe('TableFlow', function(){
 
 	describe('Constructor', function(){
 
-		json = {
+		var json = {
 			"dataFormat" : "int",
 			"name" : "flusso1",
 			"maxItem" : "20"
@@ -36,9 +36,6 @@ describe('TableFlow', function(){
 		var f = {
 			"dataFormat" : "int",
 			"name" : "flusso1"
-		};
-		var t = {
-			"maxItem" : "20"
 		};
 
 		beforeEach(function(){
@@ -91,6 +88,14 @@ describe('TableFlow', function(){
 			"name" : "flusso2",
 			"maxItem" : "15"
 		};
+		var f = {
+			"dataFormat" : "String",
+			"name" : "flusso2"
+		};
+		var t = {
+			"maxItem" : "15"
+		};
+
 
 		beforeEach(function(){
 			TableFlow.prototype.updateParameters(json);
@@ -107,7 +112,7 @@ describe('TableFlow', function(){
 
 	});
 
-	describe('inizializeData', function(){
+	/*describe('inizializeData', function(){
 		// data {}
 
 		beforeEach(function(){
@@ -135,6 +140,6 @@ describe('TableFlow', function(){
 		});
 
 		// it
-	});
+	});*/
 
 });

@@ -1,3 +1,6 @@
+/*jshint node: true */
+'use strict';
+
 /*
 * Name :  LineChartFlow.js
 * Module : FrontEnd::Model::FlowsModel
@@ -15,7 +18,7 @@
 *
 */
 
-app.factory('TableFlow', function(){
+app.factory('TableFlow', ['Flow', function(){
 	var data = new Array();
 	var maxItem;
 
@@ -37,7 +40,7 @@ app.factory('TableFlow', function(){
         return {
             "flowJson" : flowJson,
             "tableFlowJson" : tableFlowJson
-        }
+        };
     }
 
     var TableFlow = function(info) {
@@ -60,11 +63,11 @@ app.factory('TableFlow', function(){
 		var fJson = json.flowJson;
 		var mfJson = json.mapFlowJson;
 
-		if (Object.keys(fJson).length != 0) {
+		if (Object.keys(fJson).length !== 0) {
 			Flow.apply(this, fJson);
 		}
 
-		if (Object.keys(mfJson).length != 0) {
+		if (Object.keys(mfJson).length !== 0) {
 	        if (mfJson.maxItem) {
 	            maxItem = mfJson.maxItem;
 	        }
@@ -72,13 +75,13 @@ app.factory('TableFlow', function(){
 	};
 
 	TableFlow.prototype.initializeData = function(data) {
-		//
+		return data;
 	};
 	TableFlow.prototype.inPlaceUpdate = function(data) {
-		//
+		return data;
     };
     TableFlow.prototype.streamUpdate = function(data) {
-    	//
+    	return data;
     };
 
 	TableFlow.prototype.getData = function() {

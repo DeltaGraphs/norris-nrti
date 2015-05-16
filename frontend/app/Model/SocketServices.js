@@ -1,31 +1,30 @@
-/**
-    * Name: SocketServices.js
-    * Package: FrontEnd::Model
-    * Author: Maria Giovanna Chinellato
-    * Date: 2015/05/12
-    *
-    * Changes:
-    * Version   Date        Changes         Author
-    * {0}.{1}   2015-05-12  Creazione file  Maria Giovanna Chinellato
-    *
-    * {0}.{2}   2015-05-12  Codifica modulo Maria Giovanna Chinellato
-    *
-    * ------------------------------------------------------------
-    * Copyright (C) 2015 DeltaGraphs
-    * 
-    * This file is part of Norris.js.
-    *
+/*jshint node: true */
+'use strict';
+
+/*
+* Name :  SocketServices.js
+* Module : FrontEnd::Model
+* Location : /frontend/app/Model
+*
+* History :
+* Version       Date        Programmer                  Description
+* =================================================================================================
+* 0.1.0         2015-05-12  Maria Giovanna Chinellato   Add all attributes and all methods
+*
+* 0.0.1         2015-05-12  Maria Giovanna Chinellato   Initial code      
+* =================================================================================================
+*
 */
 
 app.factory('SocketServices', function ($rootScope) {
   return {
     on: function (eventName, callback) {
-          socket.on(eventName, function () {  
-            var args = arguments;
-            $rootScope.$apply(function () {
-              callback.apply(socket, args);
+            socket.on(eventName, function () {  
+                var args = arguments;
+                $rootScope.$apply(function () {
+                  callback.apply(socket, args);
+                });
             });
-          });
         }
-  };
+    };
 });

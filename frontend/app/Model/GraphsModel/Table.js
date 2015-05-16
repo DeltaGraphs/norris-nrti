@@ -1,3 +1,6 @@
+/*jshint node: true */
+'use strict';
+
 /*
 * Name :  Table.js
 * Module : FrontEnd::Model::GraphsModel
@@ -37,16 +40,16 @@ app.factory('Table', ['Graph', 'Cell', 'TableFlow', function(Graph, Cell, TableF
 		if (json.width) {
 			graphJson.width = json.width;
 		}
-		if (json.enabledLegend != null) {
+		if (json.enabledLegend !== null) {
 			graphJson.enabledLegend = json.enabledLegend;
 			if (enabledLegend && json.legend) {
 				graphJson.legend = json.legend;
 			}
 		}
-		if (json.horizontalGrid != null) {
+		if (json.horizontalGrid !== null) {
 			graphJson.horizontalGrid = json.horizontalGrid;
 		}
-		if (json.verticalGrid != null) {
+		if (json.verticalGrid !== null) {
 			graphJson.verticalGrid = json.verticalGrid;
 		}
 
@@ -77,8 +80,8 @@ app.factory('Table', ['Graph', 'Cell', 'TableFlow', function(Graph, Cell, TableF
 		return {
 			"graphJson" : graphJson,
 			"tableJson" : lineJson
-		}
-	}
+		};
+	};
 
     // create our new custom object that reuse the original object constructor
     var Table = function(info) {
@@ -93,10 +96,10 @@ app.factory('Table', ['Graph', 'Cell', 'TableFlow', function(Graph, Cell, TableF
     	json = split(info);
     	gJson = json.graphJson;
     	tJson = json.tableJson;
-    	if (Object.keys(gJson).length != 0) {
+    	if (Object.keys(gJson).length !== 0) {
     		Graph.apply(this, gJson);
     	} 
-    	if (Object.keys(tJson).length != 0) {
+    	if (Object.keys(tJson).length !== 0) {
     		if (tJson.rows) {
     			rows = tJson.rows;
 			}
@@ -109,9 +112,9 @@ app.factory('Table', ['Graph', 'Cell', 'TableFlow', function(Graph, Cell, TableF
 	        	}
         	}
         	if (tJson.cells) {
-        		for (var i=0; i<tJson.cells.length; i++) {
+        		for (i=0; i<tJson.cells.length; i++) {
 	        		for (var j=0; j<tJson.cells[i].length; j++) {
-	        			cells.new Cell(tJson.cells[i][j]));
+	        			cells[i][j] = new Cell(tJson.cells[i][j]));
 	        		}
 	        	}
         	}
@@ -140,7 +143,7 @@ app.factory('Table', ['Graph', 'Cell', 'TableFlow', function(Graph, Cell, TableF
     };
 
     Table.prototype.initializeData = function(data) {  //inizialization data of flows
-        for (var i=0; i<data.length; i++) {
+        for (i=0; i<data.length; i++) {
             flowList[data[i].ID].inizializeData(data[i].records);
         }
     };

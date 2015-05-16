@@ -1,3 +1,6 @@
+/*jshint node: true */
+'use strict';
+
 /*
 * Name :  BarChart.js
 * Module : FrontEnd::Model::GraphsModel
@@ -36,16 +39,16 @@ app.factory('BarChart', ['Graph', 'Axis', 'BarChartFlow', function(Graph, Axis, 
         if (json.width) {
             graphJson.width = json.width;
         }
-        if (json.enabledLegend != null) {
+        if (json.enabledLegend !== null) {
             graphJson.enabledLegend = json.enabledLegend;
             if (enabledLegend && json.legend) {
                 graphJson.legend = json.legend;
             }
         }
-        if (json.horizontalGrid != null) {
+        if (json.horizontalGrid !== null) {
             graphJson.horizontalGrid = json.horizontalGrid;
         }
-        if (json.verticalGrid != null) {
+        if (json.verticalGrid !== null) {
             graphJson.verticalGrid = json.verticalGrid;
         }
 
@@ -72,8 +75,8 @@ app.factory('BarChart', ['Graph', 'Axis', 'BarChartFlow', function(Graph, Axis, 
         return {
             "graphJson" : graphJson,
             "barJson" : barJson
-        }
-    }
+        };
+    };
 
     BarChart.prototype.test = function _Test(expressionStr) { return eval(expressionStr); }
 
@@ -90,10 +93,10 @@ app.factory('BarChart', ['Graph', 'Axis', 'BarChartFlow', function(Graph, Axis, 
         json = split(info);
         gJson = json.graphJson;
         bJson = json.barJson;
-        if (Object.keys(gJson).length != 0) {
+        if (Object.keys(gJson).length !== 0) {
             Graph.apply(this, gJson);
         } 
-        if (Object.keys(bJson).length != 0) {
+        if (Object.keys(bJson).length !== 0) {
             if (bJson.axisX) {
                 axisX = new Axis(bJson.axisX);
             }
@@ -114,7 +117,7 @@ app.factory('BarChart', ['Graph', 'Axis', 'BarChartFlow', function(Graph, Axis, 
             }
         }
         if (info.flows) {
-            for (int i=0; i<info.flows.length; i++) {
+            for (var i=0; i<info.flows.length; i++) {
                 var newflow = new BarChartFlow(info.flows[i]);
                 addFlow(newflow);
             }

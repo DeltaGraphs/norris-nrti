@@ -1,3 +1,6 @@
+/*jshint node: true */
+'use strict';
+
 /*
 * Name :  Cell.js
 * Module : FrontEnd::Model::GraphsModel
@@ -19,17 +22,21 @@ app.factory('Cell', function(){
 
     return {
         Cell : function(info){
-            if (info.background)
+            if (info.background) {
                 background = info.background;
-            if (info.fontColor)
+            }
+            if (info.fontColor) {
                 fontColor = info.fontColor;
+            }
         };
 
         updateParameters : function(info){
-            if (info.background)
+            if (info.background) {
                 background = info.background;
-            if (info.fontColor)
+            }
+            if (info.fontColor) {
                 fontColor = info.fontColor;
+            }
         };
 
         getBackground : function(){

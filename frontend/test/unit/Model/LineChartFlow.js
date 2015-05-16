@@ -28,7 +28,7 @@ describe('LineChartFlow', function(){
 
 	describe('Constructor', function(){
 
-		json = {
+		var json = {
 			"dataFormat" : "int",
 			"name" : "flusso1",
 			"flowColor" : "#F2F",
@@ -41,14 +41,6 @@ describe('LineChartFlow', function(){
 		var f = {
 			"dataFormat" : "int",
 			"name" : "flusso1"
-		};
-		var l = {
-			"flowColor" : "#F2F",
-			"legendOnPoin" : "flusso1", // forse da mettere nel grafico e non nel flusso
-			"marker" : "furly",
-			"interpolation" : "single",
-			"areaColor" : "#F2F",
-			"maxItem" : "20"
 		};
 
 		beforeEach(function(){
@@ -121,7 +113,7 @@ describe('LineChartFlow', function(){
 	});
 
 	describe('updateParameters', function(){
-		json = {
+		var json = {
 			"dataFormat" : "String",
 			"name" : "flusso2",
 			"flowColor" : "#F1F",
@@ -130,6 +122,10 @@ describe('LineChartFlow', function(){
 			"interpolation" : "cubic",
 			"areaColor" : "#F1F",
 			"maxItem" : "15"
+		};
+		var f = {
+			"dataFormat" : "String",
+			"name" : "flusso2"
 		};
 
 		beforeEach(function(){
@@ -162,7 +158,7 @@ describe('LineChartFlow', function(){
 
 	});
 
-	describe('inizializeData', function(){
+	/*describe('inizializeData', function(){
 		// data {}
 
 		beforeEach(function(){
@@ -190,6 +186,6 @@ describe('LineChartFlow', function(){
 		});
 
 		// it
-	});
+	});*/
 
 });

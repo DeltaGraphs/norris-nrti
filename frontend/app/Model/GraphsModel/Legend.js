@@ -1,3 +1,6 @@
+/*jshint node: true */
+'use strict';
+
 /*
 * Name :  Legend.js
 * Module : FrontEnd::Model::GraphsModel
@@ -22,31 +25,37 @@ app.factory('Legend', function(){
 
     return {
         Legend : function(info){
-            if (info.position)
+            if (info.position) {
                 position = info.position;
-            if (info.fontColor)
+            }
+            if (info.fontColor) {
                 fontColor = info.fontColor;
-            if (info.background)
+            }
+            if (info.background) {
                 background = info.background;
+            }
         };
 
         updateParameters : function(info){
-            if (info.position)
+            if (info.position) {
                 position = info.position;
-            if (info.fontColor)
+            }
+            if (info.fontColor) {
                 fontColor = info.fontColor;
-            if (info.background)
+            }
+            if (info.background) {
                 background = info.background;
+            }
         };
 
         getPosition : function(){
             return position;
-        }
+        };
         getFontColor : function(){
             return fontColor;
-        }
+        };
         getBackground : function(){
             return background;
-        }
+        };
     };
 });

@@ -1,3 +1,6 @@
+/*jshint node: true */
+'use strict';
+
 /*
 * Name :  PagesList.js
 * Module : FrontEnd::Model::PagesModel
@@ -18,23 +21,22 @@ app.factory('PagesList', ['Page', function(Page){
 	return {
 		PagesList: function(info){
 			for (var i=0; i<info.data.length; i++){
-				if (pagesList[info.data[i].ID] === null){
+				if (pagesList[info.data[i].ID] === null) {
 					var page = new Page(info.data[i]);
 					pagesList[info.data[i].ID] = page;
 				}
-				else
-					// error
+				// error
 			}
-		},
+		};
 		addPage: function(page){ // da cambiare DP
-			if (pagesList[page.ID] === null)
+			if (pagesList[page.ID] === null) {
 				var newPage = new Page(page);
 				pagesList[page.ID] = newPage;
-			else
-					// error
-		},
+			}
+			// error
+		};
 		getPagesList: function(){
 			return pagesList;
-		}
+		};
 	};
 }]);

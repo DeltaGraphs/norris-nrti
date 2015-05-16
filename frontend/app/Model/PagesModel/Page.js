@@ -1,3 +1,6 @@
+/*jshint node: true */
+'use strict';
+
 /*
 * Name :  Page.js
 * Module : FrontEnd::Model::PagesModel
@@ -35,71 +38,70 @@ app.factory('Page', ['LineChart', 'BarChart', 'MapChart', 'Table', function(Line
             url = info.URLSocket;
             for (var i=0; i<info.graphs.length; i++){
                 if (graphsList[info.graph[i].ID] === null){
+                    var graph;
                     switch (info.graph[i].type) {
                         case "LineChart": 
-                            var graph = new LineChart(info.graph[i]);
+                            graph = new LineChart(info.graph[i]);
                             graphsList[info.graph[i].ID] = graph;
                             break;
                         case "BarChart": 
-                            var graph = new BarChart(info.graph[i]);
+                            graph = new BarChart(info.graph[i]);
                             graphsList[info.graph[i].ID] = graph;
                             break;
                         case "MapChart": 
-                            var graph = new MapChart(info.graph[i]);
+                            graph = new MapChart(info.graph[i]);
                             graphsList[info.graph[i].ID] = graph;
                             break;
                         case "Table": 
-                            var graph = new Table(info.graph[i]);
+                            graph = new Table(info.graph[i]);
                             graphsList[info.graph[i].ID] = graph;
                             break;
                     }
                 }
-                else{
-                    // error
-                }
+                // error
             }
         },
         updatePage: function(info){
-            if (info.name != null) {
+            if (info.name !== null) {
                 name = info.name;
             }
-            if (info.description != null) {
+            if (info.description !== null) {
                 description = info.description;
             }
-            if (info.graphsPerRow != null) {
+            if (info.graphsPerRow !== null) {
                 graphsPerRow = info.graphsPerRow;
             }
-            if (info.graphsPerCol != null) {
+            if (info.graphsPerCol !== null) {
                 graphsPerCol = info.graphsPerCol;
             }
-            if (info.URLSocket != null) {
+            if (info.URLSocket !== null) {
                 url = info.URLSocket;
             }
         },
         addGraph: function(graph){
             if (graphsList[graph.ID] === null) {
+                var graph;
                 switch (graph.type) {
                     case "LineChart": 
-                        var graph = new LineChart(graph);
+                        graph = new LineChart(graph);
                         graphsList[graph.ID] = graph;
                         break;
                     case "BarChart": 
-                        var graph = new BarChart(graph);
+                        graph = new BarChart(graph);
                         graphsList[graph.ID] = graph;
                         break;
                     case "MapChart": 
-                        var graph = new MapChart(graph);
+                        graph = new MapChart(graph);
                         graphsList[graph.ID] = graph;
                         break;
                     case "Table": 
-                        var graph = new Table(graph);
+                        graph = new Table(graph);
                         graphsList[graph.ID] = graph;
                         break;
                 }
-            } else {
-                // error
-            }
+            // error
         },
+
         getGraphsList: function(){
             return graphsList;
         },
@@ -117,6 +119,6 @@ app.factory('Page', ['LineChart', 'BarChart', 'MapChart', 'Table', function(Line
         },
         getUrl: function(){
             return url;
-        }
+        };
     };
 }]);

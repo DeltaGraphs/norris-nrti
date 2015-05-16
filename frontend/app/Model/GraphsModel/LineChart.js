@@ -1,3 +1,6 @@
+/*jshint node: true */
+'use strict';
+
 /*
 * Name :  LineChart.js
 * Module : FrontEnd::Model::GraphsModel
@@ -37,16 +40,16 @@ app.factory('LineChart', ['Graph', 'Axis', 'ViewFinder', 'LineChartFlow', functi
 		if (json.width) {
 			graphJson.width = json.width;
 		}
-		if (json.enabledLegend != null) {
+		if (json.enabledLegend !== null) {
 			graphJson.enabledLegend = json.enabledLegend;
 			if (enabledLegend && json.legend) {
 				graphJson.legend = json.legend;
 			}
 		}
-		if (json.horizontalGrid != null) {
+		if (json.horizontalGrid !== null) {
 			graphJson.horizontalGrid = json.horizontalGrid;
 		}
-		if (json.verticalGrid != null) {
+		if (json.verticalGrid !== null) {
 			graphJson.verticalGrid = json.verticalGrid;
 		}
 
@@ -57,7 +60,7 @@ app.factory('LineChart', ['Graph', 'Axis', 'ViewFinder', 'LineChartFlow', functi
 		if (json.axisY) {
 			lineJson.axisY = json.axisY;
 		}
-		if (json.enabledViewFinder != null) {
+		if (json.enabledViewFinder !== null) {
 			lineJson.enabledViewFinder = json.enabledViewFinder;
 			if (enabledViewFinder && json.viewFinder) {
 				lineJson.viewFinder = json.viewFinder;
@@ -70,8 +73,8 @@ app.factory('LineChart', ['Graph', 'Axis', 'ViewFinder', 'LineChartFlow', functi
 		return {
 			"graphJson" : graphJson,
 			"lineJson" : lineJson
-		}
-	}
+		};
+	};
 	LineChart.prototype.test = function _Test(expressionStr) { return eval(expressionStr); }
 
     // create our new custom object that reuse the original object constructor
@@ -87,17 +90,17 @@ app.factory('LineChart', ['Graph', 'Axis', 'ViewFinder', 'LineChartFlow', functi
     	json = split(info);
     	gJson = json.graphJson;
     	lJson = json.lineJson;
-    	if (Object.keys(gJson).length != 0) {
+    	if (Object.keys(gJson).length !== 0) {
     		Graph.apply(this, gJson);
     	}
-    	if (Object.keys(lJson).length != 0) {
+    	if (Object.keys(lJson).length !== 0) {
     		if (lJson.axisX) {
     			axisX = new Axis(lJson.axisX);
 			}
 			if (lJson.axisY) {
 	       		axisY = new Axis(lJson.axisY);
 	       	}
-	       	if (lJson.enabledViewFinder != null) {
+	       	if (lJson.enabledViewFinder !== null) {
         		enabledViewFinder = lJson.enabledViewFinder;
         		if (enabledViewFinder) {
 	           		viewFinder = new ViewFinder(lJson.viewFinder);
@@ -108,7 +111,7 @@ app.factory('LineChart', ['Graph', 'Axis', 'ViewFinder', 'LineChartFlow', functi
         	}
     	}
     	if (info.flows) {
-    		for (int i=0; i<info.flows.length; i++) {
+    		for (var i=0; i<info.flows.length; i++) {
     			var newflow = new LineChartFlow(info.flows[i]);
     			addFlow(flows[i].ID,newflow);
     		}

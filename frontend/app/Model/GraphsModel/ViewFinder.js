@@ -1,3 +1,6 @@
+/*jshint node: true */
+'use strict';
+
 /*
 * Name :  ViewFinder\.js
 * Module : FrontEnd::Model::GraphsModel
@@ -15,6 +18,6 @@
 
 app.factory('ViewFinder', function(){
     return {
-        ViewFinder : function(){}
+        ViewFinder : function(){};
     };
 });

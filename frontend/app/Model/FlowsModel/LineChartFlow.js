@@ -1,3 +1,6 @@
+/*jshint node: true */
+'use strict';
+
 /*
 * Name :  LineChartFlow.js
 * Module : FrontEnd::Model::FlowsModel
@@ -58,7 +61,7 @@ app.factory('LineChartFlow', ['Flow', function(Flow){
         return {
             "flowJson" : flowJson,
             "lineFlowJson" : lineFlowJson
-        }
+        };
     }
 
 	var LineChartFlow = function(info) {
@@ -90,18 +93,18 @@ app.factory('LineChartFlow', ['Flow', function(Flow){
 
 	};
 
-	var LineChartFlow.prototype = new Flow();
+	LineChartFlow.prototype = new Flow();
 
 	LineChartFlow.prototype.updateParameters = function(info) { //abstract
     	var json = split(info);
 		var fJson = json.flowJson;
 		var lfJson = json.lineFlowJson;
 
-		if (Object.keys(fJson).length != 0) {
+		if (Object.keys(fJson).length !== 0) {
 			Flow.apply(this, fJson);
 		}
 
-		if (Object.keys(lfJson).length != 0) {
+		if (Object.keys(lfJson).length !== 0) {
 			if (lfJson.flowColor) {
 	            flowColor = lfJson.flowColor;
 	        }
@@ -124,13 +127,13 @@ app.factory('LineChartFlow', ['Flow', function(Flow){
 	};
 
 	LineChartFlow.prototype.initializeData = function(data) {
-		
+		return data;
 	};
 	LineChartFlow.prototype.inPlaceUpdate = function(data) {
-		//
+		return data;
     };
     LineChartFlow.prototype.streamUpdate = function(data) {
-    	//
+    	return data;
     };
 
 	LineChartFlow.prototype.getData = function() {

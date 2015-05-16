@@ -1,3 +1,6 @@
+/*jshint node: true */
+'use strict';
+
 /*
 * Name :  Flow.js
 * Module : FrontEnd::Model::FlowsModel

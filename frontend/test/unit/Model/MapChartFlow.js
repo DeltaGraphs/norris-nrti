@@ -28,7 +28,7 @@ describe('MapChartFlow', function(){
 
 	describe('Constructor', function(){
 
-		json = {
+		var json = {
 			"dataFormat" : "int",
 			"name" : "flusso1",
 			"flowColor" : "#F2F",
@@ -40,13 +40,6 @@ describe('MapChartFlow', function(){
 		var f = {
 			"dataFormat" : "int",
 			"name" : "flusso1"
-		};
-		var m = {
-			"flowColor" : "#F2F",
-			"legendOnPoin" : "flusso1",
-			"marker" : "furly",
-			"maxItem" : "20",
-			"trace" : "bubu"
 		};
 
 		beforeEach(function(){
@@ -114,7 +107,7 @@ describe('MapChartFlow', function(){
 	});
 
 	describe('updateParameters', function(){
-		json = {
+		var json = {
 			"dataFormat" : "String",
 			"name" : "flusso2",
 			"flowColor" : "#F3F",
@@ -122,6 +115,10 @@ describe('MapChartFlow', function(){
 			"marker" : "furly1",
 			"maxItem" : "45",
 			"trace" : "flow"
+		};
+		var f = {
+			"dataFormat" : "String",
+			"name" : "flusso2"
 		};
 		
 		beforeEach(function(){
@@ -151,7 +148,7 @@ describe('MapChartFlow', function(){
 
 	});
 
-	describe('inizializeData', function(){
+	/*describe('inizializeData', function(){
 		// data {}
 
 		beforeEach(function(){
@@ -189,6 +186,6 @@ describe('MapChartFlow', function(){
 		});
 
 		// it
-	});
+	});*/
 
 });

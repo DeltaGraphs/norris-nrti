@@ -1,3 +1,6 @@
+/*jshint node: true */
+'use strict';
+
 /*
 * Name :  MapChart.js
 * Module : FrontEnd::Model::GraphsModel
@@ -33,16 +36,16 @@ app.factory('MapChart',['Graph', 'MapChartFlow', function(Graph, MapChartFlow){
         if (json.width) {
             graphJson.width = json.width;
         }
-        if (json.enabledLegend != null) {
+        if (json.enabledLegend !== null) {
             graphJson.enabledLegend = json.enabledLegend;
             if (enabledLegend && json.legend) {
                 graphJson.legend = json.legend;
             }
         }
-        if (json.horizontalGrid != null) {
+        if (json.horizontalGrid !== null) {
             graphJson.horizontalGrid = json.horizontalGrid;
         }
-        if (json.verticalGrid != null) {
+        if (json.verticalGrid !== null) {
             graphJson.verticalGrid = json.verticalGrid;
         }
 
@@ -60,15 +63,16 @@ app.factory('MapChart',['Graph', 'MapChartFlow', function(Graph, MapChartFlow){
         if (json.mapType) {
             mapJson.mapType = json.mapType;
         }
-        if (json.zoom != null) {
+        if (json.zoom !== null) {
             mapJson.zoom = json.zoom;
         }
 
         return {
             "graphJson" : graphJson,
             "mapJson" : mapJson
-        }
-    }
+        };
+    };
+
     LineChart.prototype.test = function _Test(expressionStr) { return eval(expressionStr); }
 
     // create our new custom object that reuse the original object constructor
@@ -84,10 +88,10 @@ app.factory('MapChart',['Graph', 'MapChartFlow', function(Graph, MapChartFlow){
         json = split(info);
         gJson = json.graphJson;
         mJson = json.mapJson;
-        if (Object.keys(gJson).length != 0) {
+        if (Object.keys(gJson).length !== 0) {
             Graph.apply(this, gJson);
         } 
-        if (Object.keys(mJson).length != 0) {
+        if (Object.keys(mJson).length !== 0) {
             if (mJson.latitude) {
                 latitude = mJson.latitude;
             }
@@ -100,12 +104,12 @@ app.factory('MapChart',['Graph', 'MapChartFlow', function(Graph, MapChartFlow){
             if (mJson.mapType) {
                 mapType = mJson.mapType;
             }
-            if (mJson.zoom != null) {
+            if (mJson.zoom !== null) {
                 zoom = mJson.zoom;
             }
         }
         if (info.flows) {
-            for (int i=0; i<info.flows.length; i++) {
+            for (var i=0; i<info.flows.length; i++) {
                 var newflow = new MapChartFlow(info.flows[i]);
                 addFlow(newflow);
             }

@@ -1,3 +1,6 @@
+/*jshint node: true */
+'use strict';
+
 /*
 * Name :  LineChartFlow.js
 * Module : FrontEnd::Model::FlowsModel
@@ -15,7 +18,7 @@
 *
 */
 
-app.factory('MapChartFlow', function(){
+app.factory('MapChartFlow', ['Flow', function(){
 	var data = new Array();
 	var flowColor;
 	var legendOnPoint;
@@ -53,7 +56,7 @@ app.factory('MapChartFlow', function(){
         return {
             "flowJson" : flowJson,
             "mapFlowJson" : mapFlowJson
-        }
+        };
     }
 
     var MapChartFlow = function(info) {
@@ -92,11 +95,11 @@ app.factory('MapChartFlow', function(){
 		var fJson = json.flowJson;
 		var mfJson = json.mapFlowJson;
 
-		if (Object.keys(fJson).length != 0) {
+		if (Object.keys(fJson).length !== 0) {
 			Flow.apply(this, fJson);
 		}
 
-		if (Object.keys(mfJson).length != 0) {
+		if (Object.keys(mfJson).length !== 0) {
 			if (mfJson.flowColor) {
 	            flowColor = mfJson.flowColor;
 	        }
@@ -119,16 +122,16 @@ app.factory('MapChartFlow', function(){
 	};
 
 	MapChartFlow.prototype.initializeData = function(data) {
-		//
+		return data;
 	};
 	MapChartFlow.prototype.inPlaceUpdate = function(data) {
-		//
+		return data;
     };
     MapChartFlow.prototype.streamUpdate = function(data) {
-    	//
+    	return data;
     };
     MapChartFlow.prototype.movieUpdate = function(data) {
-    	//
+    	return data;
     };
 
 	MapChartFlow.prototype.getData = function() {

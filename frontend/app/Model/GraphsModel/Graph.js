@@ -1,3 +1,6 @@
+/*jshint node: true */
+'use strict';
+
 /*
 * Name :  Graph.js
 * Module : FrontEnd::Model::GraphsModel
@@ -54,25 +57,24 @@ app.factory('Graph', ['Flow', 'Legend', function(Flow, Legend){
 		if (info.width) {
 			width = info.width;
 		}
-		if (info.enabledLegend != null) {
+		if (info.enabledLegend !== null) {
 			enabledLegend = info.enabledLegend;
 			if (enabledLegend && info.legend) {
 				legend = new Legend(info.legend);
 			}
 		}
-		if (info.horizontalGrid != null) {
+		if (info.horizontalGrid !== null) {
 			horizontalGrid = info.horizontalGrid;
 		}
-		if (info.verticalGrid != null) {
+		if (info.verticalGrid !== null) {
 			verticalGrid = info.verticalGrid;
 		}
 	};
 	Graph.prototype.addFlow = function(id, flow) { //abstract
 		if (flowList[id] === null) {
 			flowList[id] = flow;
-		} else {
-			//error
 		}
+		// error
 	};
 	Graph.prototype.deleteFlow = function(flowID) {
 		delete flowList[flowID];
