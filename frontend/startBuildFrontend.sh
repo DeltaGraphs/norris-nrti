@@ -1,1 +1,1 @@
-make test --always-make --ignore-errors
+make test --always-make
