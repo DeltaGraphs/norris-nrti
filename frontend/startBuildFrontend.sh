@@ -1,3 +1,4 @@
+npm install -g karma-cli
 npm install bower
 bower cache clean && bower install
 npm install jshint

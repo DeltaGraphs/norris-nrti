@@ -6,8 +6,6 @@ notifications:
 script: "npm run-script test-travis-backend"
 before_script: "./clone-gh-pages.sh"
 after_script: "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
-before_install:
-  - 'npm install -g karma-cli'
 env:
   global:
     secure: Ua4/p8tei1nOuA/4kcUMGiay5yjpzsNgcQi3dpk92c2xGupC/POq21ouZh22TY/zygOyOpvIBXlmD9OsheZ7oJilEyvKb4S4R3IMBhsqCgJdt3u5ipFfi27wKygjJzt4oFc/VyrVBl9Bwo6hQ7w9WBuvhwzxflxko2AfFWwa8Aw=
