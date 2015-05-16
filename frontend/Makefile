@@ -4,13 +4,13 @@ ROOT= $(shell pwd)
 
 MAKE= make --no-print-directory
 NPM= npm
-BOWER= ./node_modules/.bin/bower
+BOWER= ../node_modules/.bin/bower
 
 JSHINT= jshint
 JSHINT_CLIENT_OPTS= --config .jshintrc-client
 JSHINT_SERVER_OPTS= --config .jshintrc-server
 
-CR= ./node_modules/.bin/cr
+CR= ../node_modules/.bin/cr
 CR_OPTS= 
 
 PLATO= ./node_modules/.bin/plato
@@ -70,6 +70,9 @@ complexity-report:
 # Unit test
 karma:
 	@echo "$(PROJECT)Executing Karma..."
+	pwd
+	ls -la ..
+	ls -la ../node_modules/.bin
 	@$(KARMA) start
 
 karma-report:
