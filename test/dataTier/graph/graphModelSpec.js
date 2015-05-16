@@ -97,7 +97,7 @@ describe('GraphModel', function() {
             assert.strictEqual(prop.height, 200);
             assert.strictEqual(prop.width, 350);
             assert.strictEqual(prop.enableLegend, true);
-            assert.deepEqual(prop.legend.getProperties(), legend1.getProperties());
+            assert.deepEqual(prop.legend, legend1.getProperties());
         });
     });
     describe('#updateProperties', function() {

@@ -125,7 +125,7 @@ describe('mapChartModel', function() {
             assert.strictEqual(prop.height, 200);
             assert.strictEqual(prop.width, 350);
             assert.strictEqual(prop.enableLegend, true);
-            assert.deepEqual(prop.legend.getProperties(), legend1.getProperties());
+            assert.deepEqual(prop.legend, legend1.getProperties());
             assert.strictEqual(prop.latitude, '33');
             assert.strictEqual(prop.longitude, '44');
             assert.strictEqual(prop.scale, 2);

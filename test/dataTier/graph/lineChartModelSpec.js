@@ -134,9 +134,9 @@ describe('lineChartModel', function() {
             assert.strictEqual(prop.height, 200);
             assert.strictEqual(prop.width, 350);
             assert.strictEqual(prop.enableLegend, true);
-            assert.deepEqual(prop.legend.getProperties(), legend1.getProperties());
-            assert.deepEqual(prop.xAxis.getProperties(), xAxis1.getProperties());
-            assert.deepEqual(prop.yAxis.getProperties(), yAxis1.getProperties());
+            assert.deepEqual(prop.legend, legend1.getProperties());
+            assert.deepEqual(prop.xAxis, xAxis1.getProperties());
+            assert.deepEqual(prop.yAxis, yAxis1.getProperties());
             assert.strictEqual(prop.backgroundColor, '#FFFFFF');
             assert.strictEqual(prop.viewFinder, true);
             assert.strictEqual(prop.horizontalGrid, true);
