@@ -14,14 +14,37 @@
 * =========================================================
 */
 
-var FH = require('../../../lib/dataTier/flow/filterConditionModel.js');
+
+var FilterConditionModel = require('../../../lib/dataTier/flow/filterConditionModel.js');
 var assert = require('assert');
 
 describe('FilterConditionModel', function() {
-    
+	it('test invalid condition 1', function() {
+		var fcm1=new FilterConditionModel('');
+        assert.deepEqual(fcm1.hasOwnProperty('_key'), false);
+    });
+	it('test invalid condition 2', function() {
+		var fcm2=new FilterConditionModel('xs>');
+        assert.deepEqual(fcm2.hasOwnProperty('_key'), false);
+    });
+    it('test invalid condition 3', function() {
+		var fcm3=new FilterConditionModel(23);
+        assert.deepEqual(fcm3.hasOwnProperty('_key'), false);
+    });
+    it('test correct condition', function() {
+		var fcm2=new FilterConditionModel('xs>23');
+        assert.deepEqual(JSON.stringify(fcm2),'{"_key":"xs","_operator":">","_value":23}');
+    });
     describe('#validateRecord', function() {
-        //to do
-        console.log(FH);
-        console.log(assert);
+		var fcm3=new FilterConditionModel('xs==23');
+        it('test invalid record', function() {
+            assert.deepEqual(fcm3.validateRecord({}), false);
+        });
+        it('test invalid key', function() {
+            assert.deepEqual(fcm3.validateRecord({xd:23}), false);
+        });
+        it('test valid', function() {
+            assert.deepEqual(fcm3.validateRecord({xs:23}), true);
+        });
     });
 });
