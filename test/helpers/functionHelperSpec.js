@@ -88,8 +88,11 @@ describe('FunctionHelper', function() {
         it('returns float from \'-14.26\'', function() {
             assert.deepEqual(JSON.stringify(FH.converter({numb:'\'-14.26\''},'numb','toFloat')), '{"numb":-14.26}');
         });
-        it('returns null from -A4.26', function() {
+        it('returns null from -A4.26 toFloat', function() {
             assert.strictEqual(FH.converter({numb:'\'-A4.26\''},'numb','toFloat'), null);
+        });
+        it('returns null from -A4.26 toInt', function() {
+            assert.strictEqual(FH.converter({numb:'\'-A4.26\''},'numb','toInt'), null);
         });
         it('returns null from toORARIO', function() {
             assert.strictEqual(FH.converter({numb:'\'-A4.26\''},'numb','toORARIO'), null);
