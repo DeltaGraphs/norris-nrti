@@ -111,7 +111,15 @@ describe('tableModel', function() {
                 headers: ['col1', 'col2'],
                 addRowOn: 'top'
             };
-            console.dir('COLUMN ORDERING ' + properties.sort.column);
+            console.dir('ORDERING CONDITIONS ' + properties.sort!==undefined && properties.sort.column!==undefined && properties.sort.ordering!==undefined && typeof properties.sort.column === 'string' && typeof properties.sort.ordering === 'string' && (properties.sort.ordering === 'ASC' || properties.sort.ordering === 'DESC'));
+            console.dir('params.sort!==undefined ' + properties.sort!==undefined);
+            console.dir('params.sort.column!==undefined' + properties.sort.column!==undefined);
+            console.dir('params.sort.ordering!==undefined ' + properties.sort.ordering!==undefined);
+            console.dir('typeof params.sort.column === \'string\' ' + typeof properties.sort.column === 'string');
+            console.dir('typeof params.sort.ordering === \'string\' ' + typeof properties.sort.ordering === 'string');
+            console.dir('params.sort.ordering === \'ASC\' ' + properties.sort.ordering === 'ASC');
+            console.dir('params.sort.ordering === \'DESC\' ' + properties.sort.ordering === 'DESC');
+
             var graph1=new TableModel(properties);
             var prop=graph1.getProperties();
             assert.strictEqual(prop.ID, 'graph1');
