@@ -19,7 +19,7 @@
 */
 
 app.factory('MapChartFlow', ['Flow', function(){
-	var data = new Array();
+	var data = [];
 	var flowColor;
 	var legendOnPoint;
 	var marker;
@@ -57,7 +57,7 @@ app.factory('MapChartFlow', ['Flow', function(){
             "flowJson" : flowJson,
             "mapFlowJson" : mapFlowJson
         };
-    };
+    }
 
     var MapChartFlow = function(info) {
 		var json = split(info);

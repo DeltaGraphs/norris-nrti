@@ -1,3 +1,6 @@
+/*jshint node: true */
+'use strict';
+
 /*
 * Name :  BarChartFlow.js
 * Module : UnitTest
@@ -14,7 +17,6 @@
 */
 
 describe('BarChartFlow', function(){
-	'use strict';
 
 	var BarChartFlow;
 	var Flow;
@@ -97,7 +99,7 @@ describe('BarChartFlow', function(){
 		var f = {
 			"dataFormat" : "String",
 			"name" : "flusso2"
-		}
+		};
 
 		beforeEach(function(){
 			BarChartFlow.prototype.updateParameters(json);

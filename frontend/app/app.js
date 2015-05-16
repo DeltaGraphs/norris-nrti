@@ -1,3 +1,6 @@
+/*jshint node: true */
+'use strict';
+
 /*
 * Name :  app.js
 * Module : FrontEnd
@@ -19,9 +22,7 @@ angular.module("controllers", [ "services", "utils", "config" ] );
 angular.module("utils", [ "services", "config" ] );*/
 
 var appConfig = function($routeProvider) {
-	/*$routeProvider
-
-	;*/
+	$routeProvider;
 };
 
 var app = angular.module('app', ["ngRoute", "controllers", "utils", "config"]).config(appConfig);
