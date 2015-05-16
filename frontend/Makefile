@@ -27,7 +27,7 @@ default:	test
 
 test:
 	pwd
-	npm install -g
+	npm install
 	@$(MAKE) jshint-client
 	@$(MAKE) jshint-server
 	@$(MAKE) karma
