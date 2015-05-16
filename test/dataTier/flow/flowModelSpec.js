@@ -82,9 +82,17 @@ describe('FlowModel', function() {
         });
     });
 
-	/*describe('#getProperties', function() {
-		//TODO
-    });*/
+	describe('#getProperties', function() {
+		it('returns the right properties', function() {
+            var prop={
+                ID: 'flow1',
+                name: 'flow one',
+                filters: 'temperature > 2'
+            };
+            var flow1=new FlowModel(prop);
+            assert.deepEqual(flow1.getProperties(), prop);
+        });
+    });
 
 	describe('#getData', function() {
 		it('returns empty array if there is no data', function() {
@@ -98,13 +106,72 @@ describe('FlowModel', function() {
 		});
     });
 
-    /*describe('#updateRecord', function() {
-		//TODO
-    });*/
+    describe('#updateRecord', function() {
+		it('return 251 if record is not valid', function() {
+            var flow1=new FlowModel({ID: 'flow1'});
+            assert.strictEqual(flow1.updateRecord(1), 251);
+            assert.strictEqual(flow1.updateRecord(1, [{asd:'asd'}]), 251);
+        });
+        it('return 252 if ID_index is not valid', function() {
+            var flow1=new FlowModel({ID: 'flow1'});
+            flow1._records=[{temperature: 2, norrisRecordID: 'flow1whatever0'}];
+            assert.strictEqual(flow1.updateRecord('flow2whaterver0', {temperature: 2}), 252);
+            assert.strictEqual(flow1.updateRecord('flow1whaterver1', {temperature: 2}), 252);
+            assert.strictEqual(flow1.updateRecord('asd', {temperature: 2}), 252);
+            assert.strictEqual(flow1.updateRecord(2, {temperature: 2}), 252);
+        });
+        it('updates and validate the record if ID and record are valid', function() {
+            var flow1=new FlowModel({
+                    ID: 'flow1',
+                    filters: 'temperature > 3'
+                });
+            flow1._records=[{temperature: 2, norrisRecordID: 'flow1whatever0'}];
+            flow1.validateRecord(0);
+            assert.strictEqual(flow1._records[0].norrisIsValid, false);
+            var update=flow1.updateRecord('flow1whatever0', {temperature: 4});
+            assert.strictEqual(update, true);
+            assert.strictEqual(flow1._records[0].temperature, 4);
+            assert.strictEqual(flow1._records[0].norrisRecordID.indexOf('flow1'), 0);
+            assert.strictEqual(flow1._records[0].norrisIsValid, true);
+        });
+        it('updates and validate the record if index and record are valid', function() {
+            var flow1=new FlowModel({
+                    ID: 'flow1',
+                    filters: 'temperature > 3'
+                });
+            flow1._records=[
+                {temperature: 6, norrisRecordID: 'flow1whatever0'},
+                {temperature: 2, norrisRecordID: 'flow1whatever1'}
+            ];
+            flow1.validateData();
+            assert.strictEqual(flow1._records[1].norrisIsValid, false);
+            var update=flow1.updateRecord(1, {temperature: 4});
+            assert.strictEqual(update, true);
+            assert.strictEqual(flow1._records[1].temperature, 4);
+            assert.strictEqual(flow1._records[1].norrisRecordID.indexOf('flow1'), 0);
+            assert.strictEqual(flow1._records[1].norrisIsValid, true);
+        });
+    });
 
-    /*describe('#validateData', function() {
-		//TODO
-    });*/
+    describe('#validateData', function() {
+		it('sets valid only valid records', function() {
+            var flow1=new FlowModel({
+                ID: 'flow1',
+                filters: 'temperature > 2, pressure != 3',
+            });
+            flow1._records=[
+                {temperature: 4},
+                {temperature: 1},
+                {pressure: 3},
+                {pressure: 2}
+            ];
+            flow1.validateData();
+            assert.strictEqual(flow1._records[0].norrisIsValid, true);
+            assert.strictEqual(flow1._records[1].norrisIsValid, false);
+            assert.strictEqual(flow1._records[2].norrisIsValid, false);
+            assert.strictEqual(flow1._records[3].norrisIsValid, true);
+        });
+    });
 
 	describe('#validateRecord', function() {
 		it('sets valid a valid record', function() {
@@ -113,7 +180,17 @@ describe('FlowModel', function() {
                 filters: 'temperature > 2, pressure != 3',
             });
             flow1._records=[{temperature: 4}];
-            assert.deepEqual(flow1.getData(), [1,2]);
+            flow1.validateRecord(0);
+            assert.strictEqual(flow1._records[0].norrisIsValid, true);
+        });
+        it('sets unvalid a valid record', function() {
+            var flow1=new FlowModel({
+                ID: 'flow1',
+                filters: 'temperature > 2, pressure != 3',
+            });
+            flow1._records=[{pressure: 3}];
+            flow1.validateRecord(0);
+            assert.strictEqual(flow1._records[0].norrisIsValid, false);
         });
     });
 
