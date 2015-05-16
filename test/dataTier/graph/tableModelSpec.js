@@ -111,14 +111,6 @@ describe('tableModel', function() {
                 headers: ['col1', 'col2'],
                 addRowOn: 'top'
             };
-            console.log('ORDERING CONDITIONS ', properties.sort!==undefined && properties.sort.column!==undefined && properties.sort.ordering!==undefined && typeof properties.sort.column === 'string' && typeof properties.sort.ordering === 'string' && (properties.sort.ordering === 'ASC' || properties.sort.ordering === 'DESC'));
-            console.log('params.sort!==undefined ', properties.sort!==undefined);
-            console.log('params.sort.column!==undefined', properties.sort.column!==undefined);
-            console.log('params.sort.ordering!==undefined ', properties.sort.ordering!==undefined);
-            console.log(typeof properties.sort.column, ' ', typeof properties.sort.column === 'string');
-            console.log(typeof properties.sort.ordering, ' ', typeof properties.sort.ordering === 'string');
-            console.log(properties.sort.ordering, ' ', properties.sort.ordering === 'ASC');
-            console.log(properties.sort.ordering, ' ', properties.sort.ordering === 'DESC');
 
             var graph1=new TableModel(properties);
             var prop=graph1.getProperties();
