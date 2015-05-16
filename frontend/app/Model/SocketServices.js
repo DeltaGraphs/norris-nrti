@@ -16,7 +16,8 @@
 *
 */
 
-app.factory('SocketServices', function ($rootScope) {
+angular.module("services")
+.factory('SocketServices', function ($rootScope) {
     return {
         on: function (eventName, callback) {
             $rootScope.socket.on(eventName, function () {  

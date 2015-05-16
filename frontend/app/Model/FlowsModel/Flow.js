@@ -18,7 +18,8 @@
 *
 */
 
-app.factory('Flow', function(){
+angular.module("services")
+.factory('Flow', function(){
 	var dataFormat;
 	var name;
 
