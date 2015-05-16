@@ -23,9 +23,7 @@ JS_SERVER_FILES= $(shell find . -maxdepth 1 -name '*.js') $(shell find test -nam
 TEST_FILES= $(shell find test -name '*.js')
 
 
-default: 
-	pwd
-	test
+default:	test
 
 test:
 	pwd
