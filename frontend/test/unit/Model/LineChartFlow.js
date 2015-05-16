@@ -1,3 +1,6 @@
+/*jshint node: true */
+'use strict';
+
 /*
 * Name :  LineChartFlow.js
 * Module : UnitTest
@@ -14,7 +17,6 @@
 */
 
 describe('LineChartFlow', function(){
-	'use strict';
 
 	var LineChartFlow;
 	var Flow;

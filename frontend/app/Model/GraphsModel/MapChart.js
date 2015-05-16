@@ -124,19 +124,19 @@ app.factory('MapChart',['Graph', 'MapChartFlow', function(Graph, MapChartFlow){
 
     MapChart.prototype.initializeData = function(data) {  //inizialization data of flows
         for (var i=0; i<data.length; i++) {
-            flowList[data[i].ID].inizializeData(data[i].records);
+            Graph.prototype.getFlowList()[data[i].ID].inizializeData(data[i].records);
         }
     };
 
     // update data
     MapChart.prototype.inPlaceUpdate = function(data) {
-        flowList[data.ID].inPlaceUpdate(data.records);
+        Graph.prototype.getFlowList()[data.ID].inPlaceUpdate(data.records);
     };
     MapChart.prototype.streamUpdate = function(data) {
-        flowList[data.ID].streamUpdate(data.records);
+        Graph.prototype.getFlowList()[data.ID].streamUpdate(data.records);
     };
     MapChart.prototype.movieUpdate = function(data) {
-        flowList[data.ID].movieUpdate(data.records);
+        Graph.prototype.getFlowList()[data.ID].movieUpdate(data.records);
     };
 
     // get method

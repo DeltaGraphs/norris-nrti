@@ -1,3 +1,6 @@
+/*jshint node: true */
+'use strict';
+
 /*
 * Name :  TableFlow.js
 * Module : UnitTest
@@ -13,8 +16,7 @@
 *
 */
 
-describe('TableFlow', function(){
-	'use strict';
+describe('TableFlow', ['Flow', function(){
 
 	var TableFlow;
 	var Flow;
@@ -83,7 +85,7 @@ describe('TableFlow', function(){
 	});
 
 	describe('updateParameters', function(){
-		json = {
+		var json = {
 			"dataFormat" : "String",
 			"name" : "flusso2",
 			"maxItem" : "15"
@@ -91,9 +93,6 @@ describe('TableFlow', function(){
 		var f = {
 			"dataFormat" : "String",
 			"name" : "flusso2"
-		};
-		var t = {
-			"maxItem" : "15"
 		};
 
 
@@ -142,4 +141,4 @@ describe('TableFlow', function(){
 		// it
 	});*/
 
-});
+}]);

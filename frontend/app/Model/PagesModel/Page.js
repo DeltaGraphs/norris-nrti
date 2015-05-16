@@ -23,7 +23,7 @@
 */
 
 app.factory('Page', ['LineChart', 'BarChart', 'MapChart', 'Table', function(LineChart, BarChart, MapChart, Table){
-    var graphsList = new Array();
+    var graphsList = [];
     var name;
     var description;
     var graphsPerRow;
@@ -120,6 +120,6 @@ app.factory('Page', ['LineChart', 'BarChart', 'MapChart', 'Table', function(Line
         },
         getUrl: function(){
             return url;
-        };
+        }
     };
 }]);

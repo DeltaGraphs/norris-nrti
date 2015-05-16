@@ -103,17 +103,17 @@ app.factory('BarChart', ['Graph', 'Axis', 'BarChartFlow', function(Graph, Axis, 
             if (bJson.axisY) {
                 axisY = new Axis(bJson.axisY);
             }
-            if (bjson.barOrientation) {
+            if (bJson.barOrientation) {
                 barOrientation = bJson.barOrientation;
             }
             if (bJson.background) {
                 background = bJson.background;
             }
-            if (bjson.sortable) {
+            if (bJson.sortable) {
                 sortable = bJson.sortable;
             }
-            if (lJson.barsGrouping) {
-                barsGrouping = lJson.barsGrouping;
+            if (bJson.barsGrouping) {
+                barsGrouping = bJson.barsGrouping;
             }
         }
         if (info.flows) {
@@ -132,13 +132,13 @@ app.factory('BarChart', ['Graph', 'Axis', 'BarChartFlow', function(Graph, Axis, 
 
     BarChart.prototype.initializeData = function(data) {  //inizialization data of flows
         for (var i=0; i<data.length; i++) {
-            flowList[data[i].ID].inizializeData(data[i].records);
+            Graph.prototype.getFlowList()[data[i].ID].inizializeData(data[i].records);
         }
     };
 
     // update data
     BarChart.prototype.inPlaceUpdate = function(data) {
-        flowList[data.ID].inPlaceUpdate(data.records);
+        Graph.prototype.getFlowList()[data.ID].inPlaceUpdate(data.records);
     };
 
     // get method

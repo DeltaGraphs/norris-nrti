@@ -1,3 +1,6 @@
+/*jshint node: true */
+'use strict';
+
 /*
 * Name :  MapChartFlow.js
 * Module : UnitTest
@@ -14,7 +17,6 @@
 */
 
 describe('MapChartFlow', function(){
-	'use strict';
 
 	var MapChartFlow;
 	var Flow;

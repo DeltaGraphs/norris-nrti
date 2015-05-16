@@ -17,7 +17,7 @@
 */
 
 app.factory('PagesList', ['Page', function(Page){
-	var pagesList = new Array();
+	var pagesList = [];
 	return {
 		PagesList: function(info){
 			for (var i=0; i<info.data.length; i++){

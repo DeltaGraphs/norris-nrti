@@ -42,7 +42,7 @@ app.factory('LineChart', ['Graph', 'Axis', 'ViewFinder', 'LineChartFlow', functi
 		}
 		if (json.enabledLegend !== null) {
 			graphJson.enabledLegend = json.enabledLegend;
-			if (enabledLegend && json.legend) {
+			if (graphJson.enabledLegend && json.legend) {
 				graphJson.legend = json.legend;
 			}
 		}
@@ -74,8 +74,9 @@ app.factory('LineChart', ['Graph', 'Axis', 'ViewFinder', 'LineChartFlow', functi
 			"graphJson" : graphJson,
 			"lineJson" : lineJson
 		};
-	};
-	LineChart.prototype.test = function _Test(expressionStr) { return eval(expressionStr); }
+	}
+
+	LineChart.prototype.test = function _Test(expressionStr) { return eval(expressionStr); };
 
     // create our new custom object that reuse the original object constructor
     var LineChart = function(info) {
@@ -113,7 +114,7 @@ app.factory('LineChart', ['Graph', 'Axis', 'ViewFinder', 'LineChartFlow', functi
     	if (info.flows) {
     		for (var i=0; i<info.flows.length; i++) {
     			var newflow = new LineChartFlow(info.flows[i]);
-    			LineChart.prototype.addFlow(flows[i].ID,newflow);
+    			LineChart.prototype.addFlow(info.flows[i].ID,newflow);
     		}
     	}
     };
@@ -126,16 +127,16 @@ app.factory('LineChart', ['Graph', 'Axis', 'ViewFinder', 'LineChartFlow', functi
 
     LineChart.prototype.initializeData = function(data) {  //inizialization data of flows
     	for (var i=0; i<data.length; i++) {
-    		flowList[data[i].ID].inizializeData(data[i].records);
+    		Graph.prototype.getFlowList()[data[i].ID].inizializeData(data[i].records);
     	}
     };
     
     // update data
     LineChart.prototype.inPlaceUpdate = function(data) {
-    	flowList[data.ID].inPlaceUpdate(data.records);
+    	Graph.prototype.getFlowList()[data.ID].inPlaceUpdate(data.records);
     };
     LineChart.prototype.streamUpdate = function(data) {
-    	flowList[data.ID].streamUpdate(data.records);
+    	Graph.prototype.getFlowList()[data.ID].streamUpdate(data.records);
     };
 
     // get method

@@ -34,8 +34,11 @@ app.factory('Axis', function(){
             if (info.color) {
                 color = info.color;
             }
-            if (info.range) {
-                range = info.range;
+            if (info.minValue) {
+                minValue = info.minValue;
+            }
+            if (info.maxValue) {
+                maxValue = info.maxValue;
             }
             if (info.ticks) {
                 ticks = info.ticks;
@@ -52,8 +55,11 @@ app.factory('Axis', function(){
             if (info.color) {
                 color = info.color;
             }
-            if (info.range) {
-                range = info.range;
+            if (info.minValue) {
+                minValue = info.minValue;
+            }
+            if (info.maxValue) {
+                maxValue = info.maxValue;
             }
             if (info.ticks) {
                 ticks = info.ticks;

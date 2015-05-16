@@ -23,8 +23,8 @@
 app.factory('Table', ['Graph', 'Cell', 'TableFlow', function(Graph, Cell, TableFlow){
 	var rows;
 	var colunms;
-	var headers = new Array();
-	var cells = new Array();
+	var headers = [];
+	var cells = [];
 	var itemDisplayedPerPage = 20;
 	var addDataPosition = "up";
 	var sortable = true;
@@ -42,7 +42,7 @@ app.factory('Table', ['Graph', 'Cell', 'TableFlow', function(Graph, Cell, TableF
 		}
 		if (json.enabledLegend !== null) {
 			graphJson.enabledLegend = json.enabledLegend;
-			if (enabledLegend && json.legend) {
+			if (graphJson.enabledLegend && json.legend) {
 				graphJson.legend = json.legend;
 			}
 		}
@@ -79,7 +79,7 @@ app.factory('Table', ['Graph', 'Cell', 'TableFlow', function(Graph, Cell, TableF
 
 		return {
 			"graphJson" : graphJson,
-			"tableJson" : lineJson
+			"tableJson" : tableJson
 		};
 	}
 
@@ -115,7 +115,7 @@ app.factory('Table', ['Graph', 'Cell', 'TableFlow', function(Graph, Cell, TableF
         	if (tJson.cells) {
         		for (i=0; i<tJson.cells.length; i++) {
 	        		for (var j=0; j<tJson.cells[i].length; j++) {
-	        			cells[i][j] = new Cell(tJson.cells[i][j]));
+	        			cells[i][j] = new Cell(tJson.cells[i][j]);
 	        		}
 	        	}
         	}
@@ -130,9 +130,9 @@ app.factory('Table', ['Graph', 'Cell', 'TableFlow', function(Graph, Cell, TableF
         	}
     	}
         if (info.flows) {
-            for (int i=0; i<info.flows.length; i++) {
+            for (var i=0; i<info.flows.length; i++) {
                 var newflow = new TableFlow(info.flows[i]);
-                addFlow(newflow);
+                Table.prototype.addFlow(newflow);
             }
         } 
     };
@@ -145,16 +145,16 @@ app.factory('Table', ['Graph', 'Cell', 'TableFlow', function(Graph, Cell, TableF
 
     Table.prototype.initializeData = function(data) {  //inizialization data of flows
         for (var i=0; i<data.length; i++) {
-            flowList[data[i].ID].inizializeData(data[i].records);
+            Graph.prototype.getFlowList()[data[i].ID].inizializeData(data[i].records);
         }
     };
 
     // update data
     Table.prototype.inPlaceUpdate = function(data) {
-    	flowList[data.ID].inPlaceUpdate(data.records);
+    	Graph.prototype.getFlowList()[data.ID].inPlaceUpdate(data.records);
     };
     Table.prototype.streamUpdate = function(data) {
-    	flowList[data.ID].streamUpdate(data.records);
+    	Graph.prototype.getFlowList()[data.ID].streamUpdate(data.records);
     };
 
     // get method

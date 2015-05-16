@@ -19,10 +19,10 @@
 app.factory('SocketServices', function ($rootScope) {
     return {
         on: function (eventName, callback) {
-            socket.on(eventName, function () {  
+            $rootScope.socket.on(eventName, function () {  
                 var args = arguments;
                 $rootScope.$apply(function () {
-                  callback.apply(socket, args);
+                    callback.apply($rootScope.socket, args);
                 });
             });
         }
