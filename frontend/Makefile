@@ -18,7 +18,7 @@ PLATO_OPTS= --title Scaffold
 
 KARMA= ./node_modules/karma/bin/karma
 
-JS_CLIENT_FILES= $(shell find app/scripts -name '*.js')
+JS_CLIENT_FILES= $(shell find app -name '*.js')
 JS_SERVER_FILES= $(shell find . -maxdepth 1 -name '*.js') $(shell find test -name '*.js')
 TEST_FILES= $(shell find test -name '*.js')
 
@@ -67,8 +67,8 @@ plato-report:
 
 complexity-report:
 	@echo "$(PROJECT)Executing Complexity Report..."
-	-@$(CR) $(CR_OPTS) --format json --output $(REPORTS)/complexity-report.json --filepattern ".*\.js" app/scripts/
-	-@$(CR) $(CR_OPTS) --format plain --output $(REPORTS)/complexity-report.txt --filepattern ".*\.js" app/scripts/
+	-@$(CR) $(CR_OPTS) --format json --output $(REPORTS)/complexity-report.json --filepattern ".*\.js" app/
+	-@$(CR) $(CR_OPTS) --format plain --output $(REPORTS)/complexity-report.txt --filepattern ".*\.js" app/
 
 # Unit test
 karma:
