@@ -221,11 +221,11 @@ describe('FlowModel', function() {
     describe('#converter', function() {
         it('return int from \'-12.76\'', function() {
             var flow1=new FlowModel({ID: 'flow1'});
-            assert.strictEqual(flow1.converter({numb:'"-12.76"'},'numb','toInt'), -12);
+            assert.deepEqual(flow1.converter({numb:'"-12.76"'},'numb','toInt'), {numb: -12});
         });
         it('returns null from -A4.26', function() {
             var flow1=new FlowModel({ID: 'flow1'});
-            assert.strictEqual(flow1.converter({numb:'\'-A4.26\''},'numb','toFloat'), null);
+            assert.deepEqual(flow1.converter({numb:'\'-A4.26\''},'numb','toFloat'), null);
         });
     });
 });
