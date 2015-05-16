@@ -7,7 +7,6 @@
   "scripts": {
     "start": "./node_modules/nodemon/bin/nodemon.js -e js,dsl --ignore app server.js",
     "postinstall": "bower cache clean && bower install"
-    //"postinstall": "./node_modules/bower/bin/bower install"
   },
   "dependencies": {
     "bower": "^1.4.1"
