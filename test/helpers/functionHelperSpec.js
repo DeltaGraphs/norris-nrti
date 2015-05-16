@@ -82,6 +82,28 @@ describe('FunctionHelper', function() {
         });
     });
     describe('#converter', function() {
-        //to do
+        it('returns int from \'-12.76\'', function() {
+            assert.strictEqual(FH.converter({numb:'"-12.76"'},'numb','toInt'), -12);
+        });
+        it('returns float from \'-14.26\'', function() {
+            assert.strictEqual(FH.converter({numb:'\'-14.26\''},'numb','toFloat'), -14.26);
+        });
+        it('returns null from -A4.26', function() {
+            assert.strictEqual(FH.converter({numb:'\'-A4.26\''},'numb','toFloat'), null);
+        });
+        it('returns null from toORARIO', function() {
+            assert.strictEqual(FH.converter({numb:'\'-A4.26\''},'numb','toORARIO'), null);
+        });
+    });
+    describe('#isValidFormat', function() {
+        it('returns true for toInt', function() {
+            assert.strictEqual(FH.converter('toInt'),true);
+        });
+        it('returns true for toFloat', function() {
+            assert.strictEqual(FH.converter('toFloat'), true);
+        });
+        it('returns false for toORARIO', function() {
+            assert.strictEqual(FH.converter('toORARIO'), false);
+        });
     });
 });
