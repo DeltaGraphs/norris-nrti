@@ -106,13 +106,13 @@ describe('FunctionHelper', function() {
     });
     describe('#isValidFormat', function() {
         it('returns true for toInt', function() {
-            assert.strictEqual(FH.converter('toInt'),true);
+            assert.strictEqual(FH.isValidFormat('toInt'),true);
         });
         it('returns true for toFloat', function() {
-            assert.strictEqual(FH.converter('toFloat'), true);
+            assert.strictEqual(FH.isValidFormat('toFloat'), true);
         });
         it('returns false for toORARIO', function() {
-            assert.strictEqual(FH.converter('toORARIO'), false);
+            assert.strictEqual(FH.isValidFormat('toORARIO'), false);
         });
     });
 });
