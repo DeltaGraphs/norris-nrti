@@ -20,8 +20,9 @@
 *
 */
 
-app.factory('LineChartFlow', ['Flow', function(Flow){
-	var data = new Array();
+angular.module("services")
+.factory('LineChartFlow', ['Flow', function(Flow){
+	var data = [];
 	var flowColor = "#000";
 	var legendOnPoint = "";
 	var marker = "square";

@@ -18,7 +18,8 @@
 *
 */
 
-app.factory('Axis', function(){
+angular.module("services")
+.factory('Axis', function(){
     var name;
     var color = "#FFF";
     var minValue;

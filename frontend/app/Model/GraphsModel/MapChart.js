@@ -18,7 +18,8 @@
 *
 */
 
-app.factory('MapChart',['Graph', 'MapChartFlow', function(Graph, MapChartFlow){
+angular.module("services")
+.factory('MapChart',['Graph', 'MapChartFlow', function(Graph, MapChartFlow){
     var latitude = 45.4113311;
     var longitude = 11.8876318;
     var scale = 1000;
@@ -117,7 +118,7 @@ app.factory('MapChart',['Graph', 'MapChartFlow', function(Graph, MapChartFlow){
     };
 
     MapChart.prototype.addFlow = function(flow) {
-        if (typeof flow === 'MapChartFlow') {
+        if (flow instanceof MapChartFlow) {
             Graph.prototype.addFlow.call(this, flow.ID, flow);
         }
     };
