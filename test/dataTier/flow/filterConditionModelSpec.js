@@ -36,6 +36,13 @@ describe('FilterConditionModel', function() {
         assert.deepEqual(JSON.stringify(fcm2),'{"_key":"xs","_operator":">","_value":23}');
     });
     describe('#validateRecord', function() {
+		var fcm2=new FilterConditionModel('xs<>23');
+        it('test invalid operator 1', function() {
+            assert.deepEqual(fcm2.validateRecord({}), false);
+        });
+        it('test invalid operator 2', function() {
+            assert.deepEqual(fcm2.validateRecord({xs:23}), false);
+        });
 		var fcm3=new FilterConditionModel('xs==23');
         it('test invalid record', function() {
             assert.deepEqual(fcm3.validateRecord({}), false);
