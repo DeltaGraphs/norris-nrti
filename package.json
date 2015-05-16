@@ -4,8 +4,7 @@
   "description": "Norris - Node Real-Time Intelligence [stay tuned] (Credits CoffeeStrap)",
   "main": "norris-nrti.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "bower cache clean && bower install"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -32,7 +31,6 @@
     "express": "^4.12.3"
   },
   "devDependencies": {
-    "bower": "^1.4.1",
     "jshint": "^2.7.0",
     "mocha": "^2.2.4",
     "istanbul": "^0.3.13",
@@ -41,19 +39,7 @@
     "mocha-istanbul": "^0.2.0",
     "plato": "^1.4.0",
     "complexity-report": "^1.4.0",
-    "xunit-file": "^0.0.6",
-    "karma": "^0.12.31",
-    "karma-jasmine": "^0.3.5",
-    "karma-junit-reporter": "^0.2.2",
-    "karma-phantomjs-launcher": "^0.1.4",
-    "karma-coverage": "^0.3.1",
-    "karma-chrome-launcher": "^0.1.12",
-    "karma-firefox-launcher": "^0.1.6",
-    "karma-html2js-preprocessor": "^0.1.0",
-    "karma-script-launcher": "^0.1.0",
-    "karma-coffee-preprocessor": "^0.2.1",
-    "requirejs": "^2.1.17",
-    "karma-requirejs": "^0.2.2"
+    "xunit-file": "^0.0.6"
   },
   "scripts": {
     "test-travis-backend": "make test --always-make --ignore-errors",
