@@ -1,5 +1,5 @@
 PROJECT= "Scaffold: "
-REPORTS= reports-frontend
+REPORTS= gh-pages/reports-frontend
 ROOT= $(shell pwd)
 
 MAKE= make --no-print-directory
