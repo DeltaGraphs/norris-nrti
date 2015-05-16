@@ -115,10 +115,10 @@ describe('tableModel', function() {
             console.dir('params.sort!==undefined ' + properties.sort!==undefined);
             console.dir('params.sort.column!==undefined' + properties.sort.column!==undefined);
             console.dir('params.sort.ordering!==undefined ' + properties.sort.ordering!==undefined);
-            console.dir('typeof params.sort.column === \'string\' ' + typeof properties.sort.column);
-            console.dir('typeof params.sort.ordering === \'string\' ' + typeof properties.sort.ordering);
-            console.dir('params.sort.ordering === \'ASC\' ' + properties.sort.ordering);
-            //console.dir('params.sort.ordering === \'DESC\' ' + properties.sort.ordering === 'DESC');
+            console.dir(typeof properties.sort.column + ' ' + typeof properties.sort.column === 'string');
+            console.dir(typeof properties.sort.ordering + ' ' + typeof properties.sort.ordering === 'string');
+            console.dir(properties.sort.ordering + ' ' + properties.sort.ordering === 'ASC');
+            console.dir(properties.sort.ordering + ' ' + properties.sort.ordering === 'DESC');
 
             var graph1=new TableModel(properties);
             var prop=graph1.getProperties();
