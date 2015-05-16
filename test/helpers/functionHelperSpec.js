@@ -83,10 +83,10 @@ describe('FunctionHelper', function() {
     });
     describe('#converter', function() {
         it('returns int from \'-12.76\'', function() {
-            assert.deepEqual(JSON.stringify(FH.converter({numb:'"-12.76"'},'numb','toInt')), '{"numb":-12"}');
+            assert.deepEqual(JSON.stringify(FH.converter({numb:'"-12.76"'},'numb','toInt')), '{"numb":-12}');
         });
         it('returns float from \'-14.26\'', function() {
-            assert.deepEqual(JSON.stringify(FH.converter({numb:'\'-14.26\''},'numb','toFloat')), '{"numb":-14.26"}');
+            assert.deepEqual(JSON.stringify(FH.converter({numb:'\'-14.26\''},'numb','toFloat')), '{"numb":-14.26}');
         });
         it('returns null from -A4.26', function() {
             assert.strictEqual(FH.converter({numb:'\'-A4.26\''},'numb','toFloat'), null);
