@@ -27,7 +27,7 @@ describe('GraphModel', function() {
         assert.strictEqual((new GraphModel({ID:' '})).hasOwnProperty('_ID'), false);
     });*/
     
-    var defaultLegend = new Legend();
+    var defaultLegend = new LegendModel();
     it('set default values to property not specified', function() {
         var graph1=new GraphModel({ID:'graph1'});
         assert.strictEqual(graph1._ID, 'graph1');
