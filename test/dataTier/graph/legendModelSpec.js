@@ -47,6 +47,31 @@ describe('LegendModel', function() {
         assert.strictEqual(legend._fontColor, '#111111');
         assert.strictEqual(legend._backgroundColor, '#001122');
     });
+
+    describe('#updateProperties', function() {
+        it('does not update the properties with wrong params', function() {
+            var legend=new LegendModel();
+            legend.updateProperties({
+                position: 'NEE',
+                fontColor: '#ZZZZZZ',
+                backgroundColor: '#ZZZZZA'
+            });
+            assert.strictEqual(legend._position, 'NE');
+            assert.strictEqual(legend._fontColor, '#000000');
+            assert.strictEqual(legend._backgroundColor, '#FFFFFF');
+        });
+        it('updates the properties with valid params', function() {
+            var legend=new LegendModel();
+            legend.updateProperties({
+                position: 'NW',
+                fontColor: '#111111',
+                backgroundColor: '#001122'
+            });
+            assert.strictEqual(legend._position, 'NW');
+            assert.strictEqual(legend._fontColor, '#111111');
+            assert.strictEqual(legend._backgroundColor, '#001122');
+        });
+    });
     
     describe('#getProperties', function() {
         it('returns the JSON with the properties', function() {
