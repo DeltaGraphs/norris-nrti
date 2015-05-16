@@ -64,8 +64,18 @@ module.exports = function(config) {
 		// configure the reporter
 		coverageReporter: {
 			reporters:[
+		        { 
+		        	type: 'text', 
+		        	dir: '../gh-pages/reports-frontend/coverage', 
+		        	file: 'text.txt' 
+		        },
+		        { 
+		        	type: 'text-summary', 
+		        	dir: '../gh-pages/reports-frontend/coverage', 
+		        	file: 'text-summary.txt' 
+		        },
 				{
-					type: 'html',
+					type: 'lcov',
 					dir: '../gh-pages/reports-frontend/coverage',
 					suite: 'frontend'
 				}
