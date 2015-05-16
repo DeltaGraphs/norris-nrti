@@ -28,7 +28,7 @@ describe('lineChartModel', function() {
     it('returns null when there is a empty ID in params', function() {
         assert.strictEqual(new BarChartModel({ID:' '}), {});
     });*/
-
+    var defaultAxis = new AxisModel();
     it('set default values to property not specified', function() {
         var graph1=new LineChartModel({ID:'graph1'});
         assert.strictEqual(graph1._ID, 'graph1');
@@ -38,8 +38,8 @@ describe('lineChartModel', function() {
         assert.strictEqual(graph1._width, 0);
         assert.strictEqual(graph1._enableLegend, false);
         assert.strictEqual(graph1._legend, null);
-        assert.strictEqual(graph1._xAxis, null);
-        assert.strictEqual(graph1._yAxis, null);
+        assert.strictEqual(graph1._xAxis, defaultAxis.getProperties());
+        assert.strictEqual(graph1._yAxis, defaultAxis.getProperties());
         assert.strictEqual(graph1._backgroundColor, '');
         assert.strictEqual(graph1._viewFinder, false);
         assert.strictEqual(graph1._horizontalGrid, false);
@@ -68,8 +68,8 @@ describe('lineChartModel', function() {
         assert.strictEqual(graph1._width, 0);
         assert.strictEqual(graph1._enableLegend, false);
         assert.strictEqual(graph1._legend, null);
-        assert.strictEqual(graph1._xAxis, null);
-        assert.strictEqual(graph1._yAxis, null);
+        assert.strictEqual(graph1._xAxis, defaultAxis.getProperties());
+        assert.strictEqual(graph1._yAxis, defaultAxis.getProperties());
         assert.strictEqual(graph1._backgroundColor, '');
         assert.strictEqual(graph1._viewFinder, false);
         assert.strictEqual(graph1._horizontalGrid, false);
@@ -198,8 +198,8 @@ describe('lineChartModel', function() {
             assert.strictEqual(graph1._width, 0);
             assert.strictEqual(graph1._enableLegend, false);
             assert.strictEqual(graph1._legend, null);
-	        assert.strictEqual(graph1._xAxis, null);
-	        assert.strictEqual(graph1._yAxis, null);
+	        assert.strictEqual(graph1._xAxis, defaultAxis.getProperties());
+	        assert.strictEqual(graph1._yAxis, defaultAxis.getProperties());
 	        assert.strictEqual(graph1._backgroundColor, '');
             assert.strictEqual(graph1._viewFinder, false);
             assert.strictEqual(graph1._horizontalGrid, false);
