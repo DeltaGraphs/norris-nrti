@@ -68,10 +68,8 @@ complexity-report:
 # Unit test
 karma:
 	@echo "$(PROJECT)Executing Karma..."
-	pwd
-	ls -la 
 	@$(KARMA) start
 
 karma-report:
-	@echo "$(PROJECT)Executing Karma..."
-	-@$(KARMA) start
+	#@echo "$(PROJECT)Executing Karma..."
+	#-@$(KARMA) start
