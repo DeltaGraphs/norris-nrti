@@ -16,7 +16,7 @@ PLATO_OPTS= --title Scaffold
 
 KARMA= karma
 
-JS_CLIENT_FILES= $(shell find app -name '*.js')
+JS_CLIENT_FILES= $(shell find app/Model -name '*.js') $(shell find app/Controller -name '*.js') $(shell find app/View -name '*.js')
 JS_SERVER_FILES= $(shell find . -maxdepth 1 -name '*.js') $(shell find test -name '*.js')
 TEST_FILES= $(shell find test -name '*.js')
 
