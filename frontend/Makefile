@@ -6,17 +6,17 @@ MAKE= make --no-print-directory
 NPM= npm
 BOWER= ./node_modules/.bin/bower
 
-JSHINT= ~/src/node_modules/.bin/jshint
+JSHINT= ./node_modules/.bin/jshint
 JSHINT_CLIENT_OPTS= --config .jshintrc-client
 JSHINT_SERVER_OPTS= --config .jshintrc-server
 
-CR= ~/src/node_modules/.bin/cr
+CR= ./node_modules/.bin/cr
 CR_OPTS= 
 
-PLATO= ~/src/node_modules/.bin/plato
+PLATO= ./node_modules/.bin/plato
 PLATO_OPTS= --title Scaffold
 
-KARMA= ~/src/node_modules/.bin/karma
+KARMA= ./node_modules/karma/bin/karma
 
 JS_CLIENT_FILES= $(shell find app -name '*.js')
 JS_SERVER_FILES= $(shell find . -maxdepth 1 -name '*.js') $(shell find test -name '*.js')
@@ -55,7 +55,7 @@ jshint-server:
 
 jshint-client-report:
 	@echo "$(PROJECT)Executing JSHint Client Report..."
-	-@$(JSHINT) --reporter checkstyle $(JSHINT_CLIENT_OPTS) $(JS_CLIENT_FILES) > $(REPORTS)/test-result.xml
+	-@$(JSHINT) --reporter checkstyle $(JSHINT_CLIENT_OPTS) $(JS_CLIENT_FILES) > $(REPORTS)/checkstyle-client-result.xml
 
 jshint-server-report:
 	@echo "$(PROJECT)Executing JSHint Server Report..."
