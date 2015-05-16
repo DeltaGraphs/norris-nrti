@@ -29,20 +29,20 @@ describe('FilterModel', function() {
 		assert.strictEqual(filters.hasOwnProperty('_filterText'), false);
     });
     it('returns the right object if filterText is valid', function() {
-		var filters=new FilterModel('temperature > 2');
-		var filters2=new FilterModel('temperature > 2, pressure != 2');
-		var filters3=new FilterModel('temperature > 2, pressure');
+		var filters=new FilterModel('temperature>2');
+		var filters2=new FilterModel('temperature>2, pressure!=2');
+		var filters3=new FilterModel('temperature>2, pressure');
 		assert.strictEqual(filters._conditions.length, 1);
 		assert.strictEqual(filters2._conditions.length, 2);
 		assert.strictEqual(filters3._conditions.length, 1);
     });
     describe('#validateRecord', function() {
 		it('returns true if record is valid', function() {
-			var filters=new FilterModel('temperature > 2, pressure != 2');
+			var filters=new FilterModel('temperature>2, pressure!=2');
 			assert.strictEqual(filters.validateRecord({temperature: 3, pressure: 3}), true);
 		});
 		it('returns false if record is valid', function() {
-			var filters=new FilterModel('temperature > 2, pressure != 2');
+			var filters=new FilterModel('temperature>2, pressure!=2');
 			assert.strictEqual(filters.validateRecord({temperature: 3, pressure: 2}), false);
 			assert.strictEqual(filters.validateRecord({temperature: 2, pressure: 2}), false);
 			assert.strictEqual(filters.validateRecord({temperature: 2}), false);
@@ -50,8 +50,8 @@ describe('FilterModel', function() {
     });
     describe('#getFilterText', function() {
 		it('returns the right string', function() {
-			var filters=new FilterModel('temperature > 2, pressure != 2');
-			assert.strictEqual(filters.getFilterText(), 'temperature > 2, pressure != 2');
+			var filters=new FilterModel('temperature>2, pressure!=2');
+			assert.strictEqual(filters.getFilterText(), 'temperature>2, pressure!=2');
 		});
     });
 });

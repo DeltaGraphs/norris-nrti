@@ -61,7 +61,7 @@ describe('FlowModel', function() {
             ID: 'flow1',
             name: 'flow one',
             type: 'BarChartFlow',
-            filters: 'temperature > 2, pressure != 3'
+            filters: 'temperature>2, pressure!=3'
         });
         var instanceOfFilterModel=(flow1._filters instanceof FilterModel);
         assert.strictEqual(flow1._ID, 'flow1');
@@ -87,7 +87,7 @@ describe('FlowModel', function() {
             var prop={
                 ID: 'flow1',
                 name: 'flow one',
-                filters: 'temperature > 2'
+                filters: 'temperature>2'
             };
             var flow1=new FlowModel(prop);
             assert.deepEqual(flow1.getProperties(), prop);
@@ -123,7 +123,7 @@ describe('FlowModel', function() {
         it('updates and validate the record if ID and record are valid', function() {
             var flow1=new FlowModel({
                     ID: 'flow1',
-                    filters: 'temperature > 3'
+                    filters: 'temperature>3'
                 });
             flow1._records=[{temperature: 2, norrisRecordID: 'flow1whatever0'}];
             flow1.validateRecord(0);
@@ -137,7 +137,7 @@ describe('FlowModel', function() {
         it('updates and validate the record if index and record are valid', function() {
             var flow1=new FlowModel({
                     ID: 'flow1',
-                    filters: 'temperature > 3'
+                    filters: 'temperature>3'
                 });
             flow1._records=[
                 {temperature: 6, norrisRecordID: 'flow1whatever0'},
@@ -157,7 +157,7 @@ describe('FlowModel', function() {
 		it('sets valid only valid records', function() {
             var flow1=new FlowModel({
                 ID: 'flow1',
-                filters: 'temperature > 2, pressure != 3',
+                filters: 'temperature>2, pressure!=3',
             });
             flow1._records=[
                 {temperature: 4},
@@ -177,7 +177,7 @@ describe('FlowModel', function() {
 		it('sets valid a valid record', function() {
             var flow1=new FlowModel({
                 ID: 'flow1',
-                filters: 'temperature > 2, pressure != 3',
+                filters: 'temperature>2, pressure!=3',
             });
             flow1._records=[{temperature: 4}];
             flow1.validateRecord(0);
@@ -186,7 +186,7 @@ describe('FlowModel', function() {
         it('sets unvalid a valid record', function() {
             var flow1=new FlowModel({
                 ID: 'flow1',
-                filters: 'temperature > 2, pressure != 3',
+                filters: 'temperature>2, pressure!=3',
             });
             flow1._records=[{pressure: 3}];
             flow1.validateRecord(0);
@@ -198,7 +198,7 @@ describe('FlowModel', function() {
 		it('updates the properties passed as param', function() {
             var properties={
                 name: 'flow one',
-                filters: 'temperature > 2',
+                filters: 'temperature>2',
             };
             var flow1=new FlowModel({ID: 'flow1'});
             flow1.updateProperties(properties);
