@@ -129,7 +129,7 @@ describe('FlowModel', function() {
             flow1.validateRecord(0);
             assert.strictEqual(flow1._records[0].norrisIsValid, false);
             var update=flow1.updateRecord('flow1whatever0', {temperature: 4});
-            assert.strictEqual(update.indexOf(this._ID), 0);
+            assert.strictEqual(update.indexOf('flow1'), 0);
             assert.strictEqual(flow1._records[0].temperature, 4);
             assert.strictEqual(flow1._records[0].norrisRecordID.indexOf('flow1'), 0);
             assert.strictEqual(flow1._records[0].norrisIsValid, true);

@@ -111,6 +111,7 @@ describe('tableModel', function() {
                 headers: ['col1', 'col2'],
                 addRowOn: 'top'
             };
+            console.dir('COLUMN ORDERING ' + properties.sort.column);
             var graph1=new TableModel(properties);
             var prop=graph1.getProperties();
             assert.strictEqual(prop.ID, 'graph1');

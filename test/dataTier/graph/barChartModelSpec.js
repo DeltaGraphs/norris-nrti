@@ -34,9 +34,9 @@ describe('barChartModel', function() {
         assert.deepEqual(graph1._legend.getProperties(), defaultLegend.getProperties());
         assert.deepEqual(graph1._xAxis.getProperties(), defaultAxis.getProperties());
         assert.deepEqual(graph1._yAxis.getProperties(), defaultAxis.getProperties());
-        assert.strictEqual(graph1._backgroundColor, '');
+        assert.strictEqual(graph1._backgroundColor, '#FFFFFF');
         assert.strictEqual(graph1._headers.length, 0);
-        assert.strictEqual(graph1._barOrientation, '');
+        assert.strictEqual(graph1._barOrientation, 'V');
         assert.strictEqual(graph1._sortable, false);
     });
 
@@ -66,7 +66,7 @@ describe('barChartModel', function() {
         assert.deepEqual(graph1._yAxis.getProperties(), defaultAxis.getProperties());
         assert.strictEqual(graph1._backgroundColor, '#FFFFFF');
         assert.strictEqual(graph1._headers.length, 0);
-        assert.strictEqual(graph1._barOrientation, '');
+        assert.strictEqual(graph1._barOrientation, 'V');
         assert.strictEqual(graph1._sortable, false);
     });
 
@@ -199,7 +199,7 @@ describe('barChartModel', function() {
             assert.deepEqual(graph1._yAxis.getProperties(), defaultAxis.getProperties());
             assert.strictEqual(graph1._backgroundColor, '#FFFFFF');
             assert.strictEqual(graph1._headers.length, 0);
-            assert.strictEqual(graph1._barOrientation, '');
+            assert.strictEqual(graph1._barOrientation, 'V');
             assert.strictEqual(graph1._sortable, false);
         });
     });
