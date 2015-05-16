@@ -74,7 +74,7 @@ angular.module("services")
         };
     }
 
-    MapChart.prototype.test = function _Test(expressionStr) { return /*eval(expressionStr)*/; };
+    //MapChart.prototype.test = function _Test(expressionStr) { return eval(expressionStr); };
 
     // create our new custom object that reuse the original object constructor
     var MapChart = function(info) {
