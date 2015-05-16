@@ -97,6 +97,9 @@ describe('FunctionHelper', function() {
         it('returns null - not found record', function() {
             assert.strictEqual(FH.converter(null,'numb','toORARIO'), null);
         });
+        it('returns null - not found record', function() {
+            assert.strictEqual(FH.converter(undefined,'numb','toORARIO'), null);
+        });
         it('returns null - not key record', function() {
             assert.strictEqual(FH.converter({numb:'\'-A4.26\''},'err','toORARIO'), null);
         });
