@@ -16,7 +16,7 @@ CR_OPTS=
 PLATO= ./node_modules/.bin/plato
 PLATO_OPTS= --title Scaffold
 
-KARMA= /home/travis/.nvm/versions/node/v0.12.3/lib/node_modules/karma-cli/bin/karma
+KARMA= ../node_modules/.bin/karma
 
 JS_CLIENT_FILES= $(shell find app -name '*.js')
 JS_SERVER_FILES= $(shell find . -maxdepth 1 -name '*.js') $(shell find test -name '*.js')
@@ -27,7 +27,6 @@ default:	test
 
 test:
 	pwd
-	npm install -g
 	@$(MAKE) jshint-client
 	@$(MAKE) jshint-server
 	@$(MAKE) karma
