@@ -10,13 +10,13 @@ JSHINT= jshint
 JSHINT_CLIENT_OPTS= --config .jshintrc-client
 JSHINT_SERVER_OPTS= --config .jshintrc-server
 
-CR= ./node_modules/.bin/cr
+CR= cr
 CR_OPTS= 
 
-PLATO= ./node_modules/.bin/plato
+PLATO= plato
 PLATO_OPTS= --title Scaffold
 
-KARMA= ./node_modules/karma/bin/karma
+KARMA= karma
 
 JS_CLIENT_FILES= $(shell find app -name '*.js')
 JS_SERVER_FILES= $(shell find . -maxdepth 1 -name '*.js') $(shell find test -name '*.js')
