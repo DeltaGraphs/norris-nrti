@@ -20,13 +20,6 @@ var MapChartFlowModel = require('../../../lib/dataTier/flow/mapChartFlowModel.js
 var assert = require('assert');
 
 describe('mapChartModel', function() {
-    /*it('returns null when there is no valid ID in params', function() {
-        assert.strictEqual(new BarChartModel({}), {});
-    });
-
-    it('returns null when there is a empty ID in params', function() {
-        assert.strictEqual(new BarChartModel({ID:' '}), {});
-    });*/
     var defaultLegend = new LegendModel();
 
     it('set default values to property not specified', function() {
@@ -41,7 +34,7 @@ describe('mapChartModel', function() {
         assert.strictEqual(graph1._latitude, '');
         assert.strictEqual(graph1._longitude, '');
         assert.strictEqual(graph1._scale, 'linear');
-        assert.strictEqual(graph1._mapType, '');
+        assert.strictEqual(graph1._mapType, 'roadmap');
         assert.strictEqual(graph1._zoom, false);
     });
 
@@ -69,7 +62,7 @@ describe('mapChartModel', function() {
         assert.strictEqual(graph1._latitude, '');
         assert.strictEqual(graph1._longitude, '');
         assert.strictEqual(graph1._scale, 'linear');
-        assert.strictEqual(graph1._mapType, '');
+        assert.strictEqual(graph1._mapType, 'roadmap');
         assert.strictEqual(graph1._zoom, false);
     });
 
@@ -189,7 +182,7 @@ describe('mapChartModel', function() {
             assert.strictEqual(graph1._latitude, '');
             assert.strictEqual(graph1._longitude, '');
             assert.strictEqual(graph1._scale, 'linear');
-            assert.strictEqual(graph1._mapType, '');
+            assert.strictEqual(graph1._mapType, 'roadmap');
             assert.strictEqual(graph1._zoom, false);
         });
     });
