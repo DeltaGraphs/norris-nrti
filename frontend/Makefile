@@ -6,7 +6,7 @@ MAKE= make --no-print-directory
 NPM= npm
 BOWER= ./node_modules/.bin/bower
 
-JSHINT= ./node_modules/.bin/jshint
+JSHINT= jshint
 JSHINT_CLIENT_OPTS= --config .jshintrc-client
 JSHINT_SERVER_OPTS= --config .jshintrc-server
 
