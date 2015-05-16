@@ -157,19 +157,15 @@ describe('FlowModel', function() {
 		it('sets valid only valid records', function() {
             var flow1=new FlowModel({
                 ID: 'flow1',
-                filters: 'temperature>2, pressure!=3',
+                filters: 'temperature>2',
             });
             flow1._records=[
                 {temperature: 4},
                 {temperature: 1},
-                {pressure: 3},
-                {pressure: 2}
             ];
             flow1.validateData();
             assert.strictEqual(flow1._records[0].norrisIsValid, true);
             assert.strictEqual(flow1._records[1].norrisIsValid, false);
-            assert.strictEqual(flow1._records[2].norrisIsValid, false);
-            assert.strictEqual(flow1._records[3].norrisIsValid, true);
         });
     });
 
