@@ -9,7 +9,9 @@
     "postinstall": "bower cache clean && bower install"
   },
   "dependencies": {
-    "bower": "^1.4.1",
+    "bower": "^1.4.1"
+  },
+  "devDependencies": {
     "jshint": "^2.7.0",
     "plato": "^1.4.0",
     "complexity-report": "^1.4.0",
