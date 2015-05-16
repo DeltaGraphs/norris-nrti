@@ -77,7 +77,7 @@ angular.module("services")
 		};
 	}
 
-	//LineChart.prototype.test = function _Test(expressionStr) { return eval(expressionStr); };
+	LineChart.prototype.test = function _Test(expressionStr) { return eval(expressionStr); };
 
     // create our new custom object that reuse the original object constructor
     var LineChart = function(info) {

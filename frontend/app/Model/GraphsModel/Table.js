@@ -84,7 +84,7 @@ angular.module("services")
 		};
 	}
 
-    //Table.prototype.test = function _Test(expressionStr) { return eval(expressionStr); };
+    Table.prototype.test = function _Test(expressionStr) { return eval(expressionStr); };
 
     // create our new custom object that reuse the original object constructor
     var Table = function(info) {
