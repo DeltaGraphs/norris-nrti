@@ -74,15 +74,11 @@ describe('FlowModel', function() {
     describe('#generateNorrisRecordID', function() {
 		it('generate the right ID with no number specified', function() {
 			var flow1=new FlowModel({ID: 'flow1'});
-			var date = new Date();
-			var expected='flow1'.concat(date.getTime()).concat(0);
-			assert.strictEqual(flow1.generateNorrisRecordID(), expected);
+			assert.strictEqual(flow1.generateNorrisRecordID().indexOf('flow1'), 0);
         });
         it('generate the right ID with number specified', function() {
 			var flow1=new FlowModel({ID: 'flow1'});
-			var date = new Date();
-			var expected='flow1'.concat(date.getTime()).concat(2);
-			assert.strictEqual(flow1.generateNorrisRecordID(2), expected);
+			assert.strictEqual(flow1.generateNorrisRecordID(2).indexOf('flow1'), 0);
         });
     });
 
@@ -116,7 +112,7 @@ describe('FlowModel', function() {
                 ID: 'flow1',
                 filters: 'temperature > 2, pressure != 3',
             });
-            flow1._records=[1,2];
+            flow1._records=[{temperature: 4}];
             assert.deepEqual(flow1.getData(), [1,2]);
         });
     });
