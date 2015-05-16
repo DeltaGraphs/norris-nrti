@@ -94,6 +94,12 @@ describe('FunctionHelper', function() {
         it('returns null from toORARIO', function() {
             assert.strictEqual(FH.converter({numb:'\'-A4.26\''},'numb','toORARIO'), null);
         });
+        it('returns null - not found record', function() {
+            assert.strictEqual(FH.converter(null,'numb','toORARIO'), null);
+        });
+        it('returns null - not key record', function() {
+            assert.strictEqual(FH.converter({numb:'\'-A4.26\''},'err','toORARIO'), null);
+        });
     });
     describe('#isValidFormat', function() {
         it('returns true for toInt', function() {
