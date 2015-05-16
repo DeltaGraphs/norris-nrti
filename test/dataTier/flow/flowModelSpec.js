@@ -61,7 +61,7 @@ describe('FlowModel', function() {
             ID: 'flow1',
             name: 'flow one',
             type: 'BarChartFlow',
-            filters: 'temperature > 2'
+            filters: 'temperature > 2, pressure != 3'
         });
         var instanceOfFilterModel=(flow1._filters instanceof FilterModel);
         assert.strictEqual(flow1._ID, 'flow1');
@@ -110,9 +110,16 @@ describe('FlowModel', function() {
 		//TODO
     });*/
 
-	/*describe('#validateRecord', function() {
-		//TODO
-    });*/
+	describe('#validateRecord', function() {
+		it('sets valid a valid record', function() {
+            var flow1=new FlowModel({
+                ID: 'flow1',
+                filters: 'temperature > 2, pressure != 3',
+            });
+            flow1._records=[1,2];
+            assert.deepEqual(flow1.getData(), [1,2]);
+        });
+    });
 
 	describe('#updateProperties', function() {
 		it('updates the properties passed as param', function() {
@@ -139,26 +146,13 @@ describe('FlowModel', function() {
     });
 
     describe('#converter', function() {
-        it('updates the properties passed as param', function() {
-            var properties={
-                name: 'flow one',
-                filters: 'temperature > 2',
-            };
+        it('return int from \'-12.76\'', function() {
             var flow1=new FlowModel({ID: 'flow1'});
-            flow1.updateProperties(properties);
-            var instanceOfFilterModel=(flow1._filters instanceof FilterModel);
-            assert.strictEqual(flow1._name, 'flow one');
-            assert.strictEqual(instanceOfFilterModel, true);
+            assert.strictEqual(flow1.converter({numb:'"-12.76"'},'numb','toInt'), -12);
         });
-        it('does not update the properties with wrong param', function() {
-            var properties={
-                name: 2,
-                filters: 2,
-            };
+        it('returns null from -A4.26', function() {
             var flow1=new FlowModel({ID: 'flow1'});
-            flow1.updateProperties(properties);
-            assert.strictEqual(flow1._name, '');
-            assert.strictEqual(flow1._filters, null);
+            assert.strictEqual(flow1.converter({numb:'\'-A4.26\''},'numb','toFloat'), null);
         });
     });
 });
