@@ -179,7 +179,7 @@ describe('FlowModel', function() {
                 ID: 'flow1',
                 filters: 'temperature>2, pressure!=3',
             });
-            flow1._records=[{temperature: 4}];
+            flow1._records=[{temperature: 4, pressure: 2}];
             flow1.validateRecord(0);
             assert.strictEqual(flow1._records[0].norrisIsValid, true);
         });
@@ -188,7 +188,7 @@ describe('FlowModel', function() {
                 ID: 'flow1',
                 filters: 'temperature>2, pressure!=3',
             });
-            flow1._records=[{pressure: 3}];
+            flow1._records=[{temperature: 4, pressure: 3}];
             flow1.validateRecord(0);
             assert.strictEqual(flow1._records[0].norrisIsValid, false);
         });
