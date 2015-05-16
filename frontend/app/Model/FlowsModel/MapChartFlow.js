@@ -18,7 +18,8 @@
 *
 */
 
-app.factory('MapChartFlow', ['Flow', function(){
+angular.module("services")
+.factory('MapChartFlow', ['Flow', function(Flow){
 	var data = [];
 	var flowColor;
 	var legendOnPoint;

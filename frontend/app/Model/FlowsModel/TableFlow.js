@@ -18,8 +18,9 @@
 *
 */
 
-app.factory('TableFlow', ['Flow', function(){
-	var data = new Array();
+angular.module("services")
+.factory('TableFlow', ['Flow', function(Flow){
+	var data = [];
 	var maxItem;
 
 	function split(json) {

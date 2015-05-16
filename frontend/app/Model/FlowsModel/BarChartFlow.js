@@ -18,8 +18,9 @@
 *
 */
 
-app.factory('BarChartFlow', ['Flow', function(Flow){
-	var data = new Array();
+angular.module("services")
+.factory('BarChartFlow', ['Flow', function(Flow){
+	var data = [];
 	var flowColor;
 	var legendOnPoint;
 

@@ -16,7 +16,8 @@
 *
 */
 
-app.factory('Cell', function(){
+angular.module("services")
+.factory('Cell', function(){
     var background = "#FFF";
     var fontColor = "#000";
 

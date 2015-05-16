@@ -22,7 +22,8 @@
 *
 */
 
-app.factory('LineChart', ['Graph', 'Axis', 'ViewFinder', 'LineChartFlow', function(Graph, Axis, ViewFinder, LineChartFlow){
+angular.module("services")
+.factory('LineChart', ['Graph', 'Axis', 'ViewFinder', 'LineChartFlow', function(Graph, Axis, ViewFinder, LineChartFlow){
 	var axisX = null;
 	var axisY = null;
 	var viewFinder = null;
@@ -120,7 +121,7 @@ app.factory('LineChart', ['Graph', 'Axis', 'ViewFinder', 'LineChartFlow', functi
     };
 
     LineChart.prototype.addFlow = function(ID,flow) {
-    	if (typeof flow === 'LineChartFlow') {
+    	if (flow instanceof LineChartFlow) {
     		Graph.prototype.addFlow.call(this, ID, flow);
     	}
     };

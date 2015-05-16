@@ -16,7 +16,8 @@
 *
 */
 
-app.factory('PagesList', ['Page', function(Page){
+angular.module("services")
+.factory('PagesList', ['Page', function(Page){
 	var pagesList = [];
 	return {
 		PagesList: function(info){

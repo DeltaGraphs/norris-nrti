@@ -20,7 +20,8 @@
 *
 */
 
-app.factory('Table', ['Graph', 'Cell', 'TableFlow', function(Graph, Cell, TableFlow){
+angular.module("services")
+.factory('Table', ['Graph', 'Cell', 'TableFlow', function(Graph, Cell, TableFlow){
 	var rows;
 	var colunms;
 	var headers = [];
@@ -83,6 +84,8 @@ app.factory('Table', ['Graph', 'Cell', 'TableFlow', function(Graph, Cell, TableF
 		};
 	}
 
+    Table.prototype.test = function _Test(expressionStr) { return eval(expressionStr); };
+
     // create our new custom object that reuse the original object constructor
     var Table = function(info) {
     	Graph.apply(this, info); // info has only title and url
@@ -130,7 +133,7 @@ app.factory('Table', ['Graph', 'Cell', 'TableFlow', function(Graph, Cell, TableF
         	}
     	}
         if (info.flows) {
-            for (var i=0; i<info.flows.length; i++) {
+            for (i=0; i<info.flows.length; i++) {
                 var newflow = new TableFlow(info.flows[i]);
                 Table.prototype.addFlow(newflow);
             }
@@ -138,7 +141,7 @@ app.factory('Table', ['Graph', 'Cell', 'TableFlow', function(Graph, Cell, TableF
     };
 
     Table.prototype.addFlow = function(flow) {
-    	if (typeof flow === 'TableFlow') {
+    	if (flow instanceof TableFlow) {
     		Graph.prototype.addFlow.call(this, flow.ID, flow);
     	}
     };

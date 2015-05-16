@@ -18,7 +18,8 @@
 *
 */
 
-app.factory('Legend', function(){
+angular.module("services")
+.factory('Legend', function(){
     var position = "right";
     var fontColor = "#000";
     var background = "#FFF";

@@ -20,7 +20,8 @@
 *
 */
 
-app.factory('BarChart', ['Graph', 'Axis', 'BarChartFlow', function(Graph, Axis, BarChartFlow){
+angular.module("services")
+.factory('BarChart', ['Graph', 'Axis', 'BarChartFlow', function(Graph, Axis, BarChartFlow){
     var axisX = null;
     var axisY = null;
     var barOrientation = "vertical";
@@ -125,7 +126,7 @@ app.factory('BarChart', ['Graph', 'Axis', 'BarChartFlow', function(Graph, Axis, 
     };
 
     BarChart.prototype.addFlow = function(flow) {
-        if (typeof flow === 'BarChartFlow') {
+        if (flow instanceof BarChartFlow) {
             Graph.prototype.addFlow.call(this, flow.ID, flow);
         }
     };

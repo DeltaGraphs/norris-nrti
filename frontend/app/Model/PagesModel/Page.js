@@ -22,7 +22,8 @@
 *
 */
 
-app.factory('Page', ['LineChart', 'BarChart', 'MapChart', 'Table', function(LineChart, BarChart, MapChart, Table){
+angular.module("services")
+.factory('Page', ['LineChart', 'BarChart', 'MapChart', 'Table', function(LineChart, BarChart, MapChart, Table){
     var graphsList = [];
     var name;
     var description;
