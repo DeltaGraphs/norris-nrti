@@ -33,8 +33,8 @@ describe('GraphModel', function() {
         assert.strictEqual(graph1._ID, 'graph1');
         assert.strictEqual(graph1._title, '');
         assert.strictEqual(graph1._type, '');
-        assert.strictEqual(graph1._height, 0);
-        assert.strictEqual(graph1._width, 0);
+        assert.strictEqual(graph1._height, 400);
+        assert.strictEqual(graph1._width, 500);
         assert.strictEqual(graph1._enableLegend, false);
         assert.deepEqual(graph1._legend.getProperties(), defaultLegend.getProperties());
     });
@@ -52,8 +52,8 @@ describe('GraphModel', function() {
         assert.strictEqual(graph1._ID, 'graph1');
         assert.strictEqual(graph1._title, '');
         assert.strictEqual(graph1._type, '');
-        assert.strictEqual(graph1._height, 0);
-        assert.strictEqual(graph1._width, 0);
+        assert.strictEqual(graph1._height, 400);
+        assert.strictEqual(graph1._width, 500);
         assert.strictEqual(graph1._enableLegend, false);
         assert.deepEqual(graph1._legend.getProperties(), defaultLegend.getProperties());
     });
@@ -136,8 +136,8 @@ describe('GraphModel', function() {
             assert.strictEqual(graph1._ID, 'graph1');
             assert.strictEqual(graph1._title, '');
             assert.strictEqual(graph1._type, '');
-            assert.strictEqual(graph1._height, 0);
-            assert.strictEqual(graph1._width, 0);
+            assert.strictEqual(graph1._height, 400);
+            assert.strictEqual(graph1._width, 500);
             assert.strictEqual(graph1._enableLegend, false);
             assert.deepEqual(graph1._legend.getProperties(), defaultLegend.getProperties());
         });
