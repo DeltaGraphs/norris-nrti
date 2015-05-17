@@ -83,8 +83,8 @@ module.exports = function(config) {
 
 		plugins: [
 		    'karma-coverage',
-		]
-		
+		],
+
 		// web server port
 		port: 15077,
 
