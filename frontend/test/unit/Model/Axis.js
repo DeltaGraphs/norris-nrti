@@ -42,9 +42,10 @@ describe('Axis', function(){
 			'ticks' : 10,
 			'scale' : 'logarithmic'
 		};
-		Axis = new Axis(json);
+		
 
 		it('instance defined', function(){
+			Axis = new Axis(json);
 			expect(Axis).toBeDefined();
 		});
 
