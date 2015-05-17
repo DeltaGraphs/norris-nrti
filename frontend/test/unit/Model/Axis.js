@@ -49,32 +49,38 @@ describe('Axis', function(){
 			expect(Axis).toBeDefined();
 		});
 
-		it('constructor create the page with the correct name', function(){	
+		it('constructor create the page with the correct name', function(){
+			Axis = new Axis(json);
 			var axisName = Axis.getName();
 			expect(axisName).toBeDefined();
 			expect(axisName).toEqual('asse nella manica');
 		});
 		it('constructor create the page with the correct color', function(){
+			Axis = new Axis(json);
 			var axisColor = Axis.getColor();
 			expect(axisColor).toBeDefined();
 			expect(axisColor).toEqual('#F0F');
 		});
 		it('constructor create the page with the correct minValue', function(){
+			Axis = new Axis(json);
 			var axisMinValue = Axis.getMinValue();
 			expect(axisMinValue).toBeDefined();
 			expect(axisMinValue).toEqual(0);
 		});
 		it('constructor create the page with the correct maxValue', function(){
+			Axis = new Axis(json);
 			var axisMaxValue = Axis.getMaxValue();
 			expect(axisMaxValue).toBeDefined();
 			expect(axisMaxValue).toEqual(100);
 		});
 		it('constructor create the page with the correct ticks', function(){
+			Axis = new Axis(json);
 			var axisTicks = Axis.getTicks();
 			expect(axisTicks).toBeDefined();
 			expect(axisTicks).toEqual(10);
 		});
 		it('constructor create the page with the correct scale', function(){
+			Axis = new Axis(json);
 			var axisScale = Axis.getScale();
 			expect(axisScale).toBeDefined();
 			expect(axisScale).toEqual('logarithmic');
