@@ -44,7 +44,7 @@ describe('Axis', function(){
 		};
 
 		beforeEach(function(){
-			Axis = new Axis.Axis(json);
+			Axis = new Axis(json);
 		});
 
 		it('constructor create the page with the correct name', function(){
