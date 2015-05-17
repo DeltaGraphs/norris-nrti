@@ -99,7 +99,7 @@ describe('Graph', function(){
 
 		beforeEach(function(){
 			Graph = new Graph();
-			Graph.updateParameters(json);
+			Graph = Graph.updateParameters(json);
 		});
 
 		afterEach(function(){

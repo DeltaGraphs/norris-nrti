@@ -81,6 +81,7 @@ angular.module('app')
 		addFlow : function(id, flow) { //abstract
 			if (this.flowList[id] === null) {
 				this.flowList[id] = flow;
+				console.log('addFlow');
 			}
 			// error
 			return this;
