@@ -37,13 +37,13 @@ describe('Axis', function(){
 			'scale' : 'logarithmic',
 		};
 
-		beforeEach(inject(function(Axis) {
-		      Axis = new Axis(json);
-		}));
+//		beforeEach(inject(function(Axis) {
+//		      Axis = new Axis(json);
+//		}));
 
-		/*beforeEach(function(){
+		beforeEach(function(){
 			Axis = new Axis(json);
-		});*/
+		});
 
 		it('constructor create the page with the correct name', function(){
 			expect(Axis.getName()).toBeEqual('asse nella manica');
