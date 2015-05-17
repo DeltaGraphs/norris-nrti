@@ -30,47 +30,47 @@ angular.module('app')
         minValue : null,
         maxValue : null,
         ticks : 10,
-        scale : 'linear'
+        scale : 'linear',
 
         // methods
         Axis : function(info){
-            if (info.name) {
+            if (info.name !== undefined) {
                 Axis.name = info.name;
             }
-            if (info.color) {
+            if (info.color !== undefined) {
                 Axis.color = info.color;
             }
-            if (info.minValue) {
+            if (info.minValue !== undefined) {
                 Axis.minValue = info.minValue;
             }
-            if (info.maxValue) {
+            if (info.maxValue !== undefined) {
                 Axis.maxValue = info.maxValue;
             }
-            if (info.ticks) {
+            if (info.ticks !== undefined) {
                 Axis.ticks = info.ticks;
             }
-            if (info.scale) {
+            if (info.scale !== undefined) {
                 Axis.scale = info.scale;
             }
         },
 
         updateParameters : function(info){
-            if (info.name) {
+            if (info.name !== undefined) {
                 Axis.name = info.name;
             }
-            if (info.color) {
+            if (info.color !== undefined) {
                 Axis.color = info.color;
             }
-            if (info.minValue) {
+            if (info.minValue !== undefined) {
                 Axis.minValue = info.minValue;
             }
-            if (info.maxValue) {
+            if (info.maxValue !== undefined) {
                 Axis.maxValue = info.maxValue;
             }
-            if (info.ticks) {
+            if (info.ticks !== undefined) {
                 Axis.ticks = info.ticks;
             }
-            if (info.scale) {
+            if (info.scale !== undefined) {
                 Axis.scale = info.scale;
             }
         },
