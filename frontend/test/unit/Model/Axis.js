@@ -32,6 +32,51 @@ describe('Axis', function(){
 		Axis = _Axis_;
 	}));
 
+	describe('Default constructor', function(){
+
+		it('instance defined', function(){
+			Axis = new Axis();
+			expect(Axis).toBeDefined();
+		});
+		it('constructor create the page with the correct name', function(){
+			Axis = new Axis();
+			var axisName = Axis.getName();
+			expect(axisName).toBeDefined();
+			expect(axisName).toEqual(null);
+		});
+		it('constructor create the page with the correct color', function(){
+			Axis = new Axis();
+			var axisColor = Axis.getColor();
+			expect(axisColor).toBeDefined();
+			expect(axisColor).toEqual('#FFF');
+		});
+		it('constructor create the page with the correct minValue', function(){
+			Axis = new Axis();
+			var axisMinValue = Axis.getMinValue();
+			expect(axisMinValue).toBeDefined();
+			expect(axisMinValue).toEqual(null);
+		});
+		it('constructor create the page with the correct maxValue', function(){
+			Axis = new Axis();
+			var axisMaxValue = Axis.getMaxValue();
+			expect(axisMaxValue).toBeDefined();
+			expect(axisMaxValue).toEqual(null);
+		});
+		it('constructor create the page with the correct ticks', function(){
+			Axis = new Axis();
+			var axisTicks = Axis.getTicks();
+			expect(axisTicks).toBeDefined();
+			expect(axisTicks).toEqual(10);
+		});
+		it('constructor create the page with the correct scale', function(){
+			Axis = new Axis();
+			var axisScale = Axis.getScale();
+			expect(axisScale).toBeDefined();
+			expect(axisScale).toEqual('linear');
+		});
+
+	});
+
 	describe('Constructor', function(){
 
 		var json = 	{
@@ -88,7 +133,7 @@ describe('Axis', function(){
 
 	});
 
-	/*describe('updateParameters', function(){
+	describe('updateParameters', function(){
 
 		var json = 	{
 			'name' : 'asso',
@@ -99,29 +144,31 @@ describe('Axis', function(){
 			'scale' : 'linear',
 		};
 
-		beforeEach(function(){
-			Axis.updateParameters(json);
-		});
-
 		it('Axis updated with the correct name', function(){
+			Axis.updateParameters(json);
 			expect(Axis.getName()).toEqual('asso');
 		});
 		it('Axis updated with the correct color', function(){
+			Axis.updateParameters(json);
 			expect(Axis.getColor()).toEqual('#AFA');
 		});
 		it('Axis updated with the correct minValue', function(){
+			Axis.updateParameters(json);
 			expect(Axis.getMinValue()).toEqual(1);
 		});
 		it('Axis updated with the correct maxValue', function(){
+			Axis.updateParameters(json);
 			expect(Axis.getMaxValue()).toEqual(101);
 		});
 		it('Axis updated with the correct getTicks', function(){
+			Axis.updateParameters(json);
 			expect(Axis.getTicks()).toEqual(10);
 		});
 		it('Axis updated with the correct scale', function(){
+			Axis.updateParameters(json);
 			expect(Axis.getScale()).toEqual('linear');
 		});
 
-	});*/
+	});
 	
 });
