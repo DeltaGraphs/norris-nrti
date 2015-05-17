@@ -82,7 +82,7 @@ module.exports = function(config) {
 		},
 
 		plugins: [
-		    'karma-coverage',
+		    'karma-coverage','junit',
 		],
 
 		// web server port
