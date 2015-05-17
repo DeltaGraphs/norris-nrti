@@ -47,34 +47,22 @@ describe('Axis', function(){
 			expect(Axis).toBeDefined();
 		});
 		it('constructor create the page with the correct name', function(){
-			var axisName = Axis.getName();
-			expect(axisName).toBeDefined();
-			expect(axisName).toEqual(null);
+			expect(Axis.getName()).toEqual(null);
 		});
 		it('constructor create the page with the correct color', function(){
-			var axisColor = Axis.getColor();
-			expect(axisColor).toBeDefined();
-			expect(axisColor).toEqual('#FFF');
+			expect(Axis.getColor()).toEqual('#FFF');
 		});
 		it('constructor create the page with the correct minValue', function(){
-			var axisMinValue = Axis.getMinValue();
-			expect(axisMinValue).toBeDefined();
-			expect(axisMinValue).toEqual(null);
+			expect(Axis.getMinValue()).toEqual(null);
 		});
 		it('constructor create the page with the correct maxValue', function(){
-			var axisMaxValue = Axis.getMaxValue();
-			expect(axisMaxValue).toBeDefined();
-			expect(axisMaxValue).toEqual(null);
+			expect(Axis.getMaxValue()).toEqual(null);
 		});
 		it('constructor create the page with the correct ticks', function(){
-			var axisTicks = Axis.getTicks();
-			expect(axisTicks).toBeDefined();
-			expect(axisTicks).toEqual(10);
+			expect(Axis.getTicks()).toEqual(10);
 		});
 		it('constructor create the page with the correct scale', function(){
-			var axisScale = Axis.getScale();
-			expect(axisScale).toBeDefined();
-			expect(axisScale).toEqual('linear');
+			expect(Axis.getScale()).toEqual('linear');
 		});
 
 	});
@@ -103,34 +91,22 @@ describe('Axis', function(){
 		});
 
 		it('constructor create the page with the correct name', function(){
-			var axisName = Axis.getName();
-			expect(axisName).toBeDefined();
-			expect(axisName).toEqual('asse nella manica');
+			expect(Axis.getName()).toEqual('asse nella manica');
 		});
 		it('constructor create the page with the correct color', function(){
-			var axisColor = Axis.getColor();
-			expect(axisColor).toBeDefined();
-			expect(axisColor).toEqual('#F0F');
+			expect(Axis.getColor()).toEqual('#F0F');
 		});
 		it('constructor create the page with the correct minValue', function(){
-			var axisMinValue = Axis.getMinValue();
-			expect(axisMinValue).toBeDefined();
-			expect(axisMinValue).toEqual(0);
+			expect(Axis.getMinValue()).toEqual(0);
 		});
 		it('constructor create the page with the correct maxValue', function(){
-			var axisMaxValue = Axis.getMaxValue();
-			expect(axisMaxValue).toBeDefined();
-			expect(axisMaxValue).toEqual(100);
+			expect(Axis.getMaxValue()).toEqual(100);
 		});
 		it('constructor create the page with the correct ticks', function(){
-			var axisTicks = Axis.getTicks();
-			expect(axisTicks).toBeDefined();
-			expect(axisTicks).toEqual(10);
+			expect(Axis.getTicks()).toEqual(10);
 		});
 		it('constructor create the page with the correct scale', function(){
-			var axisScale = Axis.getScale();
-			expect(axisScale).toBeDefined();
-			expect(axisScale).toEqual('logarithmic');
+			expect(Axis.getScale()).toEqual('logarithmic');
 		});
 
 	});
