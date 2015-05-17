@@ -33,7 +33,7 @@ angular.module('app')
         var scale = 'linear';
 
         // methods
-        Axis = function(info){
+        this.Axis = function(info){
             //if (info.name !== undefined) {
                 name = info.name;
             //}
