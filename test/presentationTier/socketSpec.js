@@ -14,7 +14,7 @@
 * =========================================================
 */
 
-var Socket = require('../../../lib/dataTier/graph/socket.js');
+var Socket = require('../../lib/dataTier/graph/socket.js');
 var assert = require('assert');
 
 describe('Socket', function() {
@@ -22,6 +22,6 @@ describe('Socket', function() {
     var nsp = require('socket.io')().of('/namespace');
     it('returns null when there are no params', function() {
         var socket1 = new Socket(nsp);
-        assert.strictEqual((new Socket())._namespace, nsp);
+        assert.strictEqual(socket1._namespace, nsp);
     });
 });
