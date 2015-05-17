@@ -14,7 +14,7 @@
 * =========================================================
 */
 
-var Socket = require('../../../lib/presentationTier/socket.js');
+var Socket = require('../../lib/presentationTier/socket.js');
 var assert = require('assert');
 
 describe('Socket', function() {
