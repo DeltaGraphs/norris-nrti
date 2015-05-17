@@ -22,13 +22,13 @@
 *
 */
 
-angular.module("services")
+angular.module('services')
 .factory('LineChart', ['Graph', 'Axis', 'ViewFinder', 'LineChartFlow', function(Graph, Axis, ViewFinder, LineChartFlow){
 	var axisX = null;
 	var axisY = null;
 	var viewFinder = null;
 	var enabledViewFinder = false;
-	var background = "#FFF";
+	var background = '#FFF';
 
 	function split(json) {
 		var graphJson = {};
@@ -72,8 +72,8 @@ angular.module("services")
 		}
 
 		return {
-			"graphJson" : graphJson,
-			"lineJson" : lineJson
+			'graphJson' : graphJson,
+			'lineJson' : lineJson
 		};
 	}
 
