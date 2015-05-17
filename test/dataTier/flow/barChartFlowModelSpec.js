@@ -77,12 +77,11 @@ describe('BarChartFlowModel', function() {
             valueKey: 'pressure',
             indexFormat: 'toInt',
             valueFormat: 'toFloat',
-            flowColor: '#FFFFFF',
-            records: [
-                {temperature: 2, pressure: 4},
-                {temperature: 2, pressure: 4}
-            ]
-        });
+            flowColor: '#FFFFFF'
+        },[
+            {temperature: 2, pressure: 4},
+            {temperature: 2, pressure: 4}
+        ]);
         assert.strictEqual(flow1._ID, 'flow1');
         assert.strictEqual(flow1._indexKey, 'temperature');
         assert.strictEqual(flow1._valueKey, 'pressure');

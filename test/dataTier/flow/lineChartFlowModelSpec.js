@@ -93,7 +93,7 @@ describe('LineChartFlowModel', function() {
             flowColor: '#FFFFFF',
             marker: 'diamond',
             interpolation: 'basis',
-            area: '#0123456',
+            area: '#012345',
             maxItems: 2,
             maxItemsSaved: 1000
         });
@@ -105,7 +105,7 @@ describe('LineChartFlowModel', function() {
         assert.strictEqual(flow1._flowColor, '#FFFFFF');
         assert.strictEqual(flow1._marker, 'diamond');
         assert.strictEqual(flow1._interpolation, 'basis');
-        assert.strictEqual(flow1._area, '#0123456');
+        assert.strictEqual(flow1._area, '#012345');
         assert.strictEqual(flow1._maxItems, 2);
         assert.strictEqual(flow1._maxItemsSaved, 1000);
     });
