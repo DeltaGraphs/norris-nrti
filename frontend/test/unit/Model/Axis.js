@@ -145,27 +145,27 @@ describe('Axis', function(){
 		};
 
 		it('Axis updated with the correct name', function(){
-			Axis.updateParameters(json);
+			Axis = Axis.updateParameters(json);
 			expect(Axis.getName()).toEqual('asso');
 		});
 		it('Axis updated with the correct color', function(){
-			Axis.updateParameters(json);
+			Axis = Axis.updateParameters(json);
 			expect(Axis.getColor()).toEqual('#AFA');
 		});
 		it('Axis updated with the correct minValue', function(){
-			Axis.updateParameters(json);
+			Axis = Axis.updateParameters(json);
 			expect(Axis.getMinValue()).toEqual(1);
 		});
 		it('Axis updated with the correct maxValue', function(){
-			Axis.updateParameters(json);
+			Axis = Axis.updateParameters(json);
 			expect(Axis.getMaxValue()).toEqual(101);
 		});
 		it('Axis updated with the correct getTicks', function(){
-			Axis.updateParameters(json);
+			Axis = Axis.updateParameters(json);
 			expect(Axis.getTicks()).toEqual(10);
 		});
 		it('Axis updated with the correct scale', function(){
-			Axis.updateParameters(json);
+			Axis = Axis.updateParameters(json);
 			expect(Axis.getScale()).toEqual('linear');
 		});
 

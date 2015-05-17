@@ -75,6 +75,7 @@ angular.module('app')
                     this.scale = info.scale;
                 }
             }
+            return this;
         },
 
         getName : function(){
