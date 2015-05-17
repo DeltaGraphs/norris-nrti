@@ -20,12 +20,13 @@ describe('Axis', function(){
 
 	beforeEach(module('app'));
 
+	var Axis;
 	var axis;
 
-	/*beforeEach(inject(function() {
+	beforeEach(inject(function() {
     	var $injector = angular.injector(['app']);
     	Axis = $injector.get('Axis');
-    }));*/
+    }));
 
 	describe('Constructor', function(){
 
