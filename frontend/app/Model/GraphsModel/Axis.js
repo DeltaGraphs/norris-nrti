@@ -22,42 +22,24 @@
 
 angular.module('app')
 .factory('Axis', function(){
-    var Axis = function(){
-        var name;
-        var color = '#FFF';
-        var minValue;
-        var maxValue;
-        var ticks = 10;
-        var scale = 'linear';
-
-        return {
-            name : name,
-            color : color,
-            minValue : minValue,
-            maxValue : maxValue,
-            ticks : ticks,
-            scale : scale
-        };
-    };
-
-    this.Axis = function(info){
+    var Axis = function(info){
         if (info.name) {
-            name = info.name;
+            this.name = info.name;
         }
         if (info.color) {
-            color = info.color;
+            this.color = info.color;
         }
         if (info.minValue) {
-            minValue = info.minValue;
+            this.minValue = info.minValue;
         }
         if (info.maxValue) {
-            maxValue = info.maxValue;
+            this.maxValue = info.maxValue;
         }
         if (info.ticks) {
-            ticks = info.ticks;
+            this.ticks = info.ticks;
         }
         if (info.scale) {
-            scale = info.scale;
+            this.scale = info.scale;
         }
     };
 
