@@ -19,7 +19,7 @@ describe('Axis', function(){
 	'use strict';
 
 	beforeEach(module('app'));
-	
+
 	var axis;
 
 	/*beforeEach(inject(function() {
@@ -39,7 +39,7 @@ describe('Axis', function(){
 		};
 
 		beforeEach(inject(function(Axis) {
-		      axis = Axis(json);
+		      axis = new Axis(json);
 		}));
 
 		/*beforeEach(function(){
