@@ -70,7 +70,7 @@ karma:
 	@echo "$(PROJECT)Executing Karma..."
 	@$(KARMA) start
 	pwd
-	sed -i 's/app/frontend\/app/g' ./gh-pages/reports-frontend/coverage/lcov.info
+	sed -i 's/app/frontend\/app/g' ../gh-pages/reports-frontend/coverage/lcov.info
 	cat ../gh-pages/reports-frontend/coverage/lcov.info
 	#cp -r app ../app
 
