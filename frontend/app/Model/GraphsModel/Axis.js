@@ -22,12 +22,14 @@
 
 angular.module('app')
 .factory('Axis', function(){
-    var name;
-    var color = "#FFF";
-    var minValue;
-    var maxValue;
-    var ticks = 10;
-    var scale = "linear";
+    var Axis = function(){
+        var name;
+        var color = "#FFF";
+        var minValue;
+        var maxValue;
+        var ticks = 10;
+        var scale = "linear";
+    }
 
     this.Axis = function(info){
         if (info.name) {
@@ -90,5 +92,5 @@ angular.module('app')
         return scale;
     };
 
-    return this;
+    return Axis;
 });
