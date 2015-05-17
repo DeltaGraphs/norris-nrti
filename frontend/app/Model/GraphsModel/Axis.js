@@ -22,78 +22,77 @@
 
 angular.module('app')
 .factory('Axis', function(){
-    var Axis = function(){
 
-        // data member
-        var name = null;
-        var color = '#FFF';
-        var minValue = null;
-        var maxValue = null;
-        var ticks = 10;
-        var scale = 'linear';
+    function Axis(info){
+        this.name = null;
+        this.color = '#FFF';
+        this.minValue = null;
+        this.maxValue = null;
+        this.ticks = 10;
+        this.scale = 'linear';
 
-        // methods
-        this.Axis = function(info){
-            //if (info.name !== undefined) {
-                name = info.name;
-            //}
-            //if (info.color !== undefined) {
-                color = info.color;
-            //}
-            //if (info.minValue !== undefined) {
-                minValue = info.minValue;
-            //}
-            //if (info.maxValue !== undefined) {
-                maxValue = info.maxValue;
-            //}
-            //if (info.ticks !== undefined) {
-                ticks = info.ticks;
-            //}
-            //if (info.scale !== undefined) {
-                scale = info.scale;
-            //}
-        };
+        if (info.name !== undefined) {
+            this.name = info.name;
+        }
+        if (info.color !== undefined) {
+            this.color = info.color;
+        }
+        if (info.minValue !== undefined) {
+            this.minValue = info.minValue;
+        }
+        if (info.maxValue !== undefined) {
+            this.maxValue = info.maxValue;
+        }
+        if (info.ticks !== undefined) {
+            this.ticks = info.ticks;
+        }
+        if (info.scale !== undefined) {
+            this.scale = info.scale;
+        }
+    }
 
-        this.updateParameters = function(info){
-            //if (info.name !== undefined) {
-                name = info.name;
-            //}
-            //if (info.color !== undefined) {
-                color = info.color;
-            //}
-            //if (info.minValue !== undefined) {
-                minValue = info.minValue;
-            //}
-            //if (info.maxValue !== undefined) {
-                maxValue = info.maxValue;
-            //}
-            //if (info.ticks !== undefined) {
-                ticks = info.ticks;
-            //}
-            //if (info.scale !== undefined) {
-                scale = info.scale;
-            //}
-        };
+    Axis.prototype = {
+        updateParameters : function(info){
+            if (info.name !== undefined) {
+                this.name = info.name;
+            }
+            if (info.color !== undefined) {
+                this.color = info.color;
+            }
+            if (info.minValue !== undefined) {
+                this.minValue = info.minValue;
+            }
+            if (info.maxValue !== undefined) {
+                this.maxValue = info.maxValue;
+            }
+            if (info.ticks !== undefined) {
+                this.ticks = info.ticks;
+            }
+            if (info.scale !== undefined) {
+                this.scale = info.scale;
+            }
+        },
 
-        this.getName = function(){
-            return name;
-        };
-        this.getColor = function(){
-            return color;
-        };
-        this.getMinValue = function(){
-            return minValue;
-        };
-        this.getMaxValue = function(){
-            return maxValue;
-        };
-        this.getTicks = function(){
-            return ticks;
-        };
-        this.getScale = function(){
-            return scale;
-        };
+        getName : function(){
+            return this.name;
+        },
+        getColor : function(){
+            return this.color;
+        },
+        getMinValue : function(){
+            return this.minValue;
+        },
+        getMaxValue : function(){
+            return this.maxValue;
+        },
+        getTicks : function(){
+            return this.ticks;
+        },
+        getScale : function(){
+            return this.scale;
+        }
+
     };
 
-    return Axis;
+    return( Axis );
 });
