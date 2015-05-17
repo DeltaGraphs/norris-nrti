@@ -18,14 +18,9 @@
 describe('Axis', function(){
 	'use strict';
 
-	var Axis;
-	var axis;
-
 	beforeEach(module('app'));
-
-	beforeEach(inject(function(_Axis_) {
-		Axis = _Axis_;
-	}));
+	
+	var axis;
 
 	/*beforeEach(inject(function() {
     	var $injector = angular.injector(['app']);
@@ -43,9 +38,13 @@ describe('Axis', function(){
 			'scale' : 'logarithmic',
 		};
 
-		beforeEach(function(){
+		beforeEach(inject(function(Axis) {
+		      axis = Axis(json);
+		}));
+
+		/*beforeEach(function(){
 			axis = new Axis(json);
-		});
+		});*/
 
 		it('constructor create the page with the correct name', function(){
 			expect(axis.getName()).toBeEqual('asse nella manica');
