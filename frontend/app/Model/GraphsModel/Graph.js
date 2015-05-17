@@ -31,9 +31,9 @@ angular.module('app')
 
 	function Graph(info){
 		this.flowList = [];
-		this.title;
-		this.height;
-		this.width;
+		this.title = null;
+		this.height = null;
+		this.width = null;
 		this.legend = null;
 		this.enabledLegend = false;
 		this.horizontalGrid = true;
@@ -76,6 +76,7 @@ angular.module('app')
 					this.verticalGrid = info.verticalGrid;
 				}
 			}
+			return this;
 		},
 		addFlow : function(id, flow) { //abstract
 			if (this.flowList[id] === null) {
