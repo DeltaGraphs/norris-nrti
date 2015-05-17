@@ -43,7 +43,7 @@ describe('Axis', function(){
 			'scale' : 'logarithmic'
 		};
 
-		beforeEach(function(json){
+		beforeEach(function(){
 			Axis = new Axis(json);
 			//Axis = Axis.Axis(json);
 		});
@@ -53,7 +53,8 @@ describe('Axis', function(){
 		});
 
 		it('constructor create the page with the correct name', function(){
-			var axisName = Axis.getName();
+			var Axis2 = new Axis(json);
+			var axisName = Axis2.getName();
 			expect(axisName).toBeDefined();
 			expect(axisName).toEqual('asse nella manica');
 		});
