@@ -5,7 +5,9 @@ notifications:
   hipchat: 50db91b75b5041993386a171287151@api.hipchat.com/1481531
 script: "npm run-script test-travis-backend"
 before_script: "./clone-gh-pages.sh"
-after_script: "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+after_script: 
+	- "pwd"
+	- "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
 after_success: "./update-gh-pages.sh"
 env:
   global:
