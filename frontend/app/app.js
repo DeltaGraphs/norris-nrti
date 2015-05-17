@@ -25,7 +25,7 @@ angular.module("utils", [ "services", "config" ] );
 
 angular.module('app', ["ngRoute", "controllers", "utils", "config"])
 	.config(
-		/*function($routeProvider) {
+		function($routeProvider) {
 			$routeProvider;
-		}*/
+		}
 	);
