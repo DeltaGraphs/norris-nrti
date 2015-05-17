@@ -6,6 +6,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.2.3         2015-05-17  Maria Giovanna Chinellato   Fix code
+*
 * 0.2.2			2015-05-15	Maria Giovanna Chinellato	Fix test of Model::BarChart
 *
 * 0.2.1			2015-05-15	Maria Giovanna Chinellato	Fix methods test
@@ -39,15 +41,15 @@ describe('BarChart', function(){
 	describe('Constructor', function(){
 
 		var json = {
-			"title" : "grafico1",
-			"URLSocket" : "http://localhost/page1/grafico1"
+			'title' : 'grafico1',
+			'URLSocket' : 'http://localhost/page1/grafico1'
 		};
 
 		beforeEach(function(){
 			BarChart = new BarChart(json);
 		});
 
-		spyOn(Graph.prototype, "apply").and.callFake(function() {return;});
+		spyOn(Graph.prototype, 'apply').and.callFake(function() {return;});
 
 		it('constructor use the graph constructor in the correct way', function(){
 			expect(Graph.prototype.apply).toHaveBeenCalledWith(json);
@@ -61,40 +63,40 @@ describe('BarChart', function(){
 		var json1 = json;
 		json = json1;
 		json = {
-			"title" : "grafico",
-			"height" : 300,
-			"width" : 300,
-			"enabledLegend" : true,
-			"legend" : {},
-			"horizontalGrid" : true,
-			"verticalGrid" : true,
-			"axisX" : {},
-			"axisY" : {},
-			"barOrientation" : "horizontal",
-			"background" : "#FFF",
-			"sortable" : false,
-			"barsGrouping" : "stacked"
+			'title' : 'grafico',
+			'height' : 300,
+			'width' : 300,
+			'enabledLegend' : true,
+			'legend' : {},
+			'horizontalGrid' : true,
+			'verticalGrid' : true,
+			'axisX' : {},
+			'axisY' : {},
+			'barOrientation' : 'horizontal',
+			'background' : '#FFF',
+			'sortable' : false,
+			'barsGrouping' : 'stacked'
 		};
 		var g = {
-			"title" : "grafico",
-			"height" : 300,
-			"width" : 300,
-			"enabledLegend" : true,
-			"legend" : {},
-			"horizontalGrid" : true,
-			"verticalGrid" : true
+			'title' : 'grafico',
+			'height' : 300,
+			'width' : 300,
+			'enabledLegend' : true,
+			'legend' : {},
+			'horizontalGrid' : true,
+			'verticalGrid' : true
 		};
 		var b = {
-			"axisX" : {},
-			"axisY" : {},
-			"barOrientation" : "horizontal",
-			"background" : "#FFF",
-			"sortable" : false,
-			"barsGrouping" : "stacked"
+			'axisX' : {},
+			'axisY' : {},
+			'barOrientation' : 'horizontal',
+			'background' : '#FFF',
+			'sortable' : false,
+			'barsGrouping' : 'stacked'
 		};
 
 		beforeEach(function(){
-			res = BarChart.Test("split(json)");
+			res = BarChart.Test('split(json)');
 		});
 
 		it('json splitted in the correct way', function(){
@@ -107,27 +109,27 @@ describe('BarChart', function(){
 
 	describe('updateParameters', function(){
 		var json = {
-			"title" : "graficonuovo",
-			"height" : 400,
-			"width" : 400,
-			"enabledLegend" : false,
-			"horizontalGrid" : false,
-			"verticalGrid" : false,
-			"barOrientation" : "vertical",
-			"background" : "#F0F",
-			"sortable" : false,
-			"barsGrouping" : "stacked",
-			"flows" : [{},{},{}]
+			'title' : 'graficonuovo',
+			'height' : 400,
+			'width' : 400,
+			'enabledLegend' : false,
+			'horizontalGrid' : false,
+			'verticalGrid' : false,
+			'barOrientation' : 'vertical',
+			'background' : '#F0F',
+			'sortable' : false,
+			'barsGrouping' : 'stacked',
+			'flows' : [{},{},{}]
 		};
 
 		beforeEach(function(){
 			BarChart.prototype.updateParameters(json);
 		});
 
-		spyOn(BarChartFlow.prototype, "BarChartFlow").and.returnValue({});
-		spyOn(BarChartFlow.prototype, "addFlow").and.callFake(function() {return;});
-		spyOn(Graph.prototype, "apply").and.callFake(function() {return;});
-		spyOn(Axis.prototype, "Axis").and.returnValue({});
+		spyOn(BarChartFlow.prototype, 'BarChartFlow').and.returnValue({});
+		spyOn(BarChartFlow.prototype, 'addFlow').and.callFake(function() {return;});
+		spyOn(Graph.prototype, 'apply').and.callFake(function() {return;});
+		spyOn(Axis.prototype, 'Axis').and.returnValue({});
 
 		it('graph updated with the correct axisX', function(){
 			expect(BarChart.prototype.getX()).toBeEqual({});
@@ -136,16 +138,16 @@ describe('BarChart', function(){
 			expect(BarChart.prototype.getY()).toBeEqual({});
 		});
 		it('graph updated with the correct barOrientation', function(){
-			expect(BarChart.prototype.getBarOrientation()).toBeEqual("vertical");
+			expect(BarChart.prototype.getBarOrientation()).toBeEqual('vertical');
 		});
 		it('graph updated with the correct background', function(){
-			expect(BarChart.prototype.getBackground()).toBeEqual("#F0F");
+			expect(BarChart.prototype.getBackground()).toBeEqual('#F0F');
 		});
 		it('graph updated with the correct sortable', function(){
 			expect(BarChart.prototype.getSortable()).toBeEqual(false);
 		});
 		it('graph updated with the correct barsGrouping', function(){
-			expect(BarChart.prototype.getBarsGrouping()).toBeEqual("stacked");
+			expect(BarChart.prototype.getBarsGrouping()).toBeEqual('stacked');
 		});
 		it('graph updated with the correct flow', function(){
 			expect(BarChart.prototype.addFlow.calls.count()).toBeEqual(3);
@@ -156,14 +158,14 @@ describe('BarChart', function(){
 	describe('addFlow', function(){
 
 		var json = {
-			"ID" : 	"flusso1",
-			"name" : "sonda 1"
+			'ID' : 	'flusso1',
+			'name' : 'sonda 1'
 		};
 
 		var newflow = BarChartFlow({});
 
-		//spyOn(Graph.prototype, "addFlow").and.callFake(function() {return;});
-		spyOn(Graph.prototype, "addFlow.call").and.callFake(function() {return;});
+		//spyOn(Graph.prototype, 'addFlow').and.callFake(function() {return;});
+		spyOn(Graph.prototype, 'addFlow.call').and.callFake(function() {return;});
 
 		beforeEach(function(){
 			BarChart.prototype.addflow(json.ID, newflow);
@@ -175,20 +177,20 @@ describe('BarChart', function(){
 
 	});
 
-	describe("inizializeData", function(){
+	describe('inizializeData', function(){
 
 		var data = [
 			{
-				"ID" : "1",
-				"records" : []
+				'ID' : '1',
+				'records' : []
 			},
 			{
-				"ID" : "2",
-				"records" : []
+				'ID' : '2',
+				'records' : []
 			}
 		];
 
-		spyOn(BarChartFlow.prototype, "inizializeData").and.callFake(function() {return;});
+		spyOn(BarChartFlow.prototype, 'inizializeData').and.callFake(function() {return;});
 
 		beforeEach(function(){
 			BarChart.prototype.inizializeData(data);
@@ -199,14 +201,14 @@ describe('BarChart', function(){
 		});
 	});
 
-	describe("inPlaceUpdate", function(){
+	describe('inPlaceUpdate', function(){
 
 		var data = 	{
-			"ID" : "2",
-			"records" : []
+			'ID' : '2',
+			'records' : []
 		};
 
-		spyOn(BarChartFlow.prototype, "inPlaceUpdate").and.callFake(function() {return;});
+		spyOn(BarChartFlow.prototype, 'inPlaceUpdate').and.callFake(function() {return;});
 
 		beforeEach(function(){
 			BarChart.prototype.inPlaceUpdate(data);

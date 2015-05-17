@@ -6,6 +6,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.1.2         2015-05-17  Maria Giovanna Chinellato   Fix code
+*
 * 0.1.1			2015-05-14	Maria Giovanna Chinellato	Add test of method addFlow
 *
 * 0.1.0			2015-05-14	Francesco Rossetto			Add test of Model::Graph.js
@@ -33,8 +35,8 @@ describe('Graph', function(){
 	describe('Constructor', function(){
 
 		var json = {
-			"title" : "grafico1",
-			"URLSocket" : "http://localhost/page1/grafico1"
+			'title' : 'grafico1',
+			'URLSocket' : 'http://localhost/page1/grafico1'
 		};
 
 		beforeEach(function(){
@@ -42,33 +44,33 @@ describe('Graph', function(){
 		});
 
 		it('constructor create the graph with the correct title', function(){
-			expect(Graph.prototype.getTitle()).toBeEqual("grafico1");
+			expect(Graph.prototype.getTitle()).toBeEqual('grafico1');
 		});
 		it('constructor create the graph with the correct url', function(){
-			expect(Graph.prototype.getUrl()).toBeEqual("http://localhost/page1/grafico1");
+			expect(Graph.prototype.getUrl()).toBeEqual('http://localhost/page1/grafico1');
 		});
 
 	});
 
 	describe('updateParameters', function(){
 		var json = {
-			"title" : "graficoNuovo",
-			"height" : 300,
-			"width" : 300,
-			"enabledLegend" : true,
-			"legend" : {},
-			"horizontalGrid" : true,
-			"verticalGrid" : true
+			'title' : 'graficoNuovo',
+			'height' : 300,
+			'width' : 300,
+			'enabledLegend' : true,
+			'legend' : {},
+			'horizontalGrid' : true,
+			'verticalGrid' : true
 		};
 
 		beforeEach(function(){
 			Graph.prototype.updateParameters(json);
 		});
 
-		spyOn(Legend.prototype, "Legend").and.returnValue({});
+		spyOn(Legend.prototype, 'Legend').and.returnValue({});
 
 		it('graph updated with the correct title', function(){
-			expect(Graph.prototype.getTitle()).toBeEqual("graficoNuovo");
+			expect(Graph.prototype.getTitle()).toBeEqual('graficoNuovo');
 		});
 		it('graph updated with the correct height', function(){
 			expect(Graph.prototype.getHeight()).toBeEqual(300);
@@ -94,11 +96,11 @@ describe('Graph', function(){
 	describe('addFlow', function(){
 
 		var json = {
-			"ID" : 	"flusso1",
-			"name" : "sonda 1"
+			'ID' : 	'flusso1',
+			'name' : 'sonda 1'
 		};
 
-		spyOn(Flow.prototype, "Flow").and.returnValue({});
+		spyOn(Flow.prototype, 'Flow').and.returnValue({});
 
 		beforeEach(function(){
 			Graph.prototype.addflow(json);
@@ -113,7 +115,7 @@ describe('Graph', function(){
 	describe('deleteFlow', function(){
 
 		beforeEach(function(){
-			Graph.prototype.deleteFlow("flusso1");
+			Graph.prototype.deleteFlow('flusso1');
 		});
 
 		it('delete flow from graph', function(){

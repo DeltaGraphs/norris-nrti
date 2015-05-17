@@ -6,6 +6,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =======================================================================================================================
+* 0.1.1         2015-05-17  Maria Giovanna Chinellato   Fix code
+*
 * 0.1.0			2015-05-13	Rossetto Francesco			Add test of Model::Page, describe all method
 *
 * 0.0.1			2015-05-13	Rossetto Francesco			Initial code
@@ -36,41 +38,41 @@ describe('Page', function(){
 	describe('Constructor', function(){
 
 		var json = 	{
-			"ID" : "page1",
-			"name" : "Pagina Uno",
-			"description" : "questa è la pagina uno",
-			"graphsPerRow" : 4,
-			"graphsPerCol" : 4,
-			"URLSocket" : "http://localhost/page1",
-			"graphs" : [
+			'ID' : 'page1',
+			'name' : 'Pagina Uno',
+			'description' : 'questa è la pagina uno',
+			'graphsPerRow' : 4,
+			'graphsPerCol' : 4,
+			'URLSocket' : 'http://localhost/page1',
+			'graphs' : [
 				{ 
-					"ID" : "grafico1", 
-					"type" : "LineChart" 
+					'ID' : 'grafico1', 
+					'type' : 'LineChart' 
 				},
 				{ 
-					"ID" : "grafico2", 
-					"type" : "BarChart" 
+					'ID' : 'grafico2', 
+					'type' : 'BarChart' 
 				},
 				{ 
-					"ID" : "grafico3", 
-					"type" : "MapChart" 
+					'ID' : 'grafico3', 
+					'type' : 'MapChart' 
 				}
 			]
 		};
-		spyOn(LineChart.prototype, "LineChart").and.returnValue({});
-		spyOn(BarChart.prototype, "BarChart").and.returnValue({});
-		spyOn(MapChart.prototype, "MapChart").and.returnValue({});
-		spyOn(Table.prototype, "Table").and.returnValue({});
+		spyOn(LineChart.prototype, 'LineChart').and.returnValue({});
+		spyOn(BarChart.prototype, 'BarChart').and.returnValue({});
+		spyOn(MapChart.prototype, 'MapChart').and.returnValue({});
+		spyOn(Table.prototype, 'Table').and.returnValue({});
 
 		beforeEach(function(){
 			Page = new Page(json);
 		});
 
 		it('constructor create the page with the correct name', function(){
-			expect(Page.getName()).toBeEqual("Pagina Uno");
+			expect(Page.getName()).toBeEqual('Pagina Uno');
 		});
 		it('constructor create the page with the correct description', function(){
-			expect(Page.getDescription()).toBeEqual("questa è la pagina uno");
+			expect(Page.getDescription()).toBeEqual('questa è la pagina uno');
 		});
 		it('constructor create the page with the correct number of graphsPerRow', function(){
 			expect(Page.getGraphsPerRow()).toBeEqual(4);
@@ -79,7 +81,7 @@ describe('Page', function(){
 			expect(Page.getGraphsPerCol()).toBeEqual(4);
 		});
 		it('constructor create the page with the correct URLSocket', function(){
-			expect(Page.getUrl()).toBeEqual("http://localhost/page1");
+			expect(Page.getUrl()).toBeEqual('http://localhost/page1');
 		});
 		it('constructor create the page with the correct number of graphs', function(){
 			expect(Page.getGraphsList().length).toBeEqual(3);
@@ -90,12 +92,12 @@ describe('Page', function(){
 	describe('updatePage', function(){
 
 		var json = 	{
-			"ID" : "pageN",
-			"name" : "Pagina n-esima",
-			"description" : "questa è la pagina n-esima",
-			"graphsPerRow" : 4,
-			"graphsPerCol" : 4,
-			"URLSocket" : "http://localhost/pageN"
+			'ID' : 'pageN',
+			'name' : 'Pagina n-esima',
+			'description' : 'questa è la pagina n-esima',
+			'graphsPerRow' : 4,
+			'graphsPerCol' : 4,
+			'URLSocket' : 'http://localhost/pageN'
 		};
 
 		beforeEach(function(){
@@ -103,10 +105,10 @@ describe('Page', function(){
 		});
 
 		it('page updated with the correct name', function(){
-			expect(Page.getName()).toBeEqual("Pagina n-esima");
+			expect(Page.getName()).toBeEqual('Pagina n-esima');
 		});
 		it('page updated with the correct description', function(){
-			expect(Page.getDescription()).toBeEqual("questa è la pagina n-esima");
+			expect(Page.getDescription()).toBeEqual('questa è la pagina n-esima');
 		});
 		it('page updated with the correct number of graphsPerRow', function(){
 			expect(Page.getGraphsPerRow()).toBeEqual(4);
@@ -115,7 +117,7 @@ describe('Page', function(){
 			expect(Page.getGraphsPerCol()).toBeEqual(4);
 		});
 		it('page updated with the correct URLSocket', function(){
-			expect(Page.getUrl()).toBeEqual("http://localhost/pageN");
+			expect(Page.getUrl()).toBeEqual('http://localhost/pageN');
 		});
 
 	});
@@ -123,13 +125,13 @@ describe('Page', function(){
 	describe('addGraph', function(){
 
 		var json = {
-			"ID" : "graficoN",
-			"type" : "Table"
+			'ID' : 'graficoN',
+			'type' : 'Table'
 		};
-		spyOn(LineChart.prototype, "LineChart").and.returnValue({});
-		spyOn(BarChart.prototype, "BarChart").and.returnValue({});
-		spyOn(MapChart.prototype, "MapChart").and.returnValue({});
-		spyOn(Table.prototype, "Table").and.returnValue({});
+		spyOn(LineChart.prototype, 'LineChart').and.returnValue({});
+		spyOn(BarChart.prototype, 'BarChart').and.returnValue({});
+		spyOn(MapChart.prototype, 'MapChart').and.returnValue({});
+		spyOn(Table.prototype, 'Table').and.returnValue({});
 
 		beforeEach(function(){
 			Page.addGraph(json);

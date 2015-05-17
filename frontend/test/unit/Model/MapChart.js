@@ -6,6 +6,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.1.2         2015-05-17  Maria Giovanna Chinellato   Fix code
+*
 * 0.1.1			2015-05-15	Maria Giovanna Chinellato	Fix test of Model::MapChart
 *
 * 0.1.0			2015-05-15	Francesco Rossetto			Add test of Model::MapChart.js
@@ -33,15 +35,15 @@ describe('MapChart', function(){
 	describe('Constructor', function(){
 
 		var json = {
-			"title" : "grafico1",
-			"URLSocket" : "http://localhost/page1/grafico1"
+			'title' : 'grafico1',
+			'URLSocket' : 'http://localhost/page1/grafico1'
 		};
 
 		beforeEach(function(){
 			MapChartFlow = new MapChartFlow(json);
 		});
 
-		spyOn(Graph.prototype, "apply").and.callFake(function() {return;});
+		spyOn(Graph.prototype, 'apply').and.callFake(function() {return;});
 
 		it('constructor use the graph constructor in the correct way', function(){
 			expect(Graph.prototype.apply).toHaveBeenCalledWith(json);
@@ -55,38 +57,38 @@ describe('MapChart', function(){
 		var json1 = json;
 		json = json1;
 		json = {
-			"title" : "grafico",
-			"height" : 300,
-			"width" : 300,
-			"enabledLegend" : true,
-			"legend" : {},
-			"horizontalGrid" : true,
-			"verticalGrid" : true,
-			"latitude" : 4,
-			"longitude" : 4,
-			"scale" : 1001,
-			"mapType" : "roadmap",
-			"zoom" : true
+			'title' : 'grafico',
+			'height' : 300,
+			'width' : 300,
+			'enabledLegend' : true,
+			'legend' : {},
+			'horizontalGrid' : true,
+			'verticalGrid' : true,
+			'latitude' : 4,
+			'longitude' : 4,
+			'scale' : 1001,
+			'mapType' : 'roadmap',
+			'zoom' : true
 		};
 		var g = {
-			"title" : "grafico",
-			"height" : 300,
-			"width" : 300,
-			"enabledLegend" : true,
-			"legend" : {},
-			"horizontalGrid" : true,
-			"verticalGrid" : true
+			'title' : 'grafico',
+			'height' : 300,
+			'width' : 300,
+			'enabledLegend' : true,
+			'legend' : {},
+			'horizontalGrid' : true,
+			'verticalGrid' : true
 		};
 		var l = {
-			"latitude" : 4,
-			"longitude" : 4,
-			"scale" : 1001,
-			"mapType" : "roadmap",
-			"zoom" : true
+			'latitude' : 4,
+			'longitude' : 4,
+			'scale' : 1001,
+			'mapType' : 'roadmap',
+			'zoom' : true
 		};
 
 		beforeEach(function(){
-			res = MapChart.prototype.test("split(json)");
+			res = MapChart.prototype.test('split(json)');
 		});
 
 		it('json splitted in the correct way', function(){
@@ -99,27 +101,27 @@ describe('MapChart', function(){
 
 	describe('updateParameters', function(){
 		var json = {
-			"title" : "graficonuovo",
-			"height" : 400,
-			"width" : 400,
-			"enabledLegend" : false,
-			"horizontalGrid" : false,
-			"verticalGrid" : false,
-			"latitude" : 3,
-			"longitude" : 3,
-			"scale" : 999,
-			"mapType" : "terrain",
-			"zoom" : false,
-			"flows" : [{},{},{}]
+			'title' : 'graficonuovo',
+			'height' : 400,
+			'width' : 400,
+			'enabledLegend' : false,
+			'horizontalGrid' : false,
+			'verticalGrid' : false,
+			'latitude' : 3,
+			'longitude' : 3,
+			'scale' : 999,
+			'mapType' : 'terrain',
+			'zoom' : false,
+			'flows' : [{},{},{}]
 		};
 
 		beforeEach(function(){
 			MapChart.prototype.updateParameters(json);
 		});
 
-		spyOn(MapChartFlow.prototype, "MapChartFlow").and.returnValue({});
-		spyOn(MapChartFlow.prototype, "addFlow").and.callFake(function() {return;});
-		spyOn(Graph.prototype, "apply").and.callFake(function() {return;});
+		spyOn(MapChartFlow.prototype, 'MapChartFlow').and.returnValue({});
+		spyOn(MapChartFlow.prototype, 'addFlow').and.callFake(function() {return;});
+		spyOn(Graph.prototype, 'apply').and.callFake(function() {return;});
 
 		it('graph updated with the correct latitude', function(){
 			expect(MapChart.prototype.getLatitude()).toBeEqual(3);
@@ -131,7 +133,7 @@ describe('MapChart', function(){
 			expect(MapChart.prototype.getScale()).toBeEqual(999);
 		});
 		it('graph updated with the correct mapType', function(){
-			expect(MapChart.prototype.getMapType()).toBeEqual("terrrain");
+			expect(MapChart.prototype.getMapType()).toBeEqual('terrrain');
 		});
 		it('graph updated with the correct zoom', function(){
 			expect(MapChart.prototype.getZoom()).toBeEqual(false);
@@ -145,14 +147,14 @@ describe('MapChart', function(){
 	describe('addFlow', function(){
 
 		var json = {
-			"ID" : 	"flusso1",
-			"name" : "sonda 1"
+			'ID' : 	'flusso1',
+			'name' : 'sonda 1'
 		};
 
 		var newflow = MapChartFlow({});
 
-		//spyOn(Graph.prototype, "addFlow").and.callFake(function() {return;});
-		spyOn(Graph.prototype, "addFlow.call").and.callFake(function() {return;});
+		//spyOn(Graph.prototype, 'addFlow').and.callFake(function() {return;});
+		spyOn(Graph.prototype, 'addFlow.call').and.callFake(function() {return;});
 
 		beforeEach(function(){
 			MapChart.prototype.addflow(json.ID, newflow);
@@ -164,20 +166,20 @@ describe('MapChart', function(){
 
 	});
 
-	describe("inizializeData", function(){
+	describe('inizializeData', function(){
 
 		var data = [
 			{
-				"ID" : "1",
-				"records" : []
+				'ID' : '1',
+				'records' : []
 			},
 			{
-				"ID" : "2",
-				"records" : []
+				'ID' : '2',
+				'records' : []
 			}
 		];
 
-		spyOn(MapChartFlow.prototype, "inizializeData").and.callFake(function() {return;});
+		spyOn(MapChartFlow.prototype, 'inizializeData').and.callFake(function() {return;});
 
 		beforeEach(function(){
 			MapChart.prototype.inizializeData(data);
@@ -188,14 +190,14 @@ describe('MapChart', function(){
 		});
 	});
 
-	describe("inPlaceUpdate", function(){
+	describe('inPlaceUpdate', function(){
 
 		var data = 	{
-			"ID" : "2",
-			"records" : []
+			'ID' : '2',
+			'records' : []
 		};
 
-		spyOn(MapChartFlow.prototype, "inPlaceUpdate").and.callFake(function() {return;});
+		spyOn(MapChartFlow.prototype, 'inPlaceUpdate').and.callFake(function() {return;});
 
 		beforeEach(function(){
 			MapChart.prototype.inPlaceUpdate(data);
@@ -206,14 +208,14 @@ describe('MapChart', function(){
 		});
 	});
 
-	describe("streamUpdate", function(){
+	describe('streamUpdate', function(){
 
 		var data = 	{
-			"ID" : "2",
-			"records" : []
+			'ID' : '2',
+			'records' : []
 		};
 
-		spyOn(MapChartFlow.prototype, "streamUpdate").and.callFake(function() {return;});
+		spyOn(MapChartFlow.prototype, 'streamUpdate').and.callFake(function() {return;});
 
 		beforeEach(function(){
 			MapChart.prototype.streamUpdate(data);
@@ -224,14 +226,14 @@ describe('MapChart', function(){
 		});
 	});
 
-	describe("movieUpdate", function(){
+	describe('movieUpdate', function(){
 
 		var data = 	{
-			"ID" : "2",
-			"records" : []
+			'ID' : '2',
+			'records' : []
 		};
 
-		spyOn(MapChartFlow.prototype, "movieUpdate").and.callFake(function() {return;});
+		spyOn(MapChartFlow.prototype, 'movieUpdate').and.callFake(function() {return;});
 
 		beforeEach(function(){
 			MapChart.prototype.movieUpdate(data);

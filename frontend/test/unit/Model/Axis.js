@@ -9,6 +9,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =======================================================================================================================
+* 0.1.2         2015-05-17  Maria Giovanna Chinellato   Fix code
+*
 * 0.1.1			2015-05-15	Francesco Rossetto			Fix test of Model::Axis
 *
 * 0.1.1			2015-05-15	Maria Giovanna Chinellato	Fix test of Model::Axis

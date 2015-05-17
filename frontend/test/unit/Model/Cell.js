@@ -6,6 +6,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =======================================================================================================================
+* 0.1.1         2015-05-17  Maria Giovanna Chinellato   Fix code
+*
 * 0.1.0			2015-05-15	Rossetto Francesco			Add test of Model::Cell, describe all method
 *
 * 0.0.1			2015-05-15	Rossetto Francesco			Initial code
@@ -27,8 +29,8 @@ describe('Cell', function(){
 	describe('Constructor', function(){
 
 		var json = 	{
-			"background" : "#AFA",
-			"fontColor" : "#F00",
+			'background' : '#AFA',
+			'fontColor' : '#F00',
 		};
 
 		beforeEach(function(){
@@ -36,10 +38,10 @@ describe('Cell', function(){
 		});
 
 		it('constructor create the page with the correct background', function(){
-			expect(Cell.getBackground()).toBeEqual("#AFA");
+			expect(Cell.getBackground()).toBeEqual('#AFA');
 		});
 		it('constructor create the page with the correct fontColor', function(){
-			expect(Cell.getFontColor()).toBeEqual("#F00");
+			expect(Cell.getFontColor()).toBeEqual('#F00');
 		});
 
 	});
@@ -47,8 +49,8 @@ describe('Cell', function(){
 	describe('updateParameters', function(){
 
 		var json = 	{
-			"background" : "#F00",
-			"fontColor" : "#AFA",
+			'background' : '#F00',
+			'fontColor' : '#AFA',
 		};
 
 		beforeEach(function(){
@@ -56,10 +58,10 @@ describe('Cell', function(){
 		});
 
 		it('Cell updated with the correct name', function(){
-			expect(Cell.getBackground()).toBeEqual("#F00");
+			expect(Cell.getBackground()).toBeEqual('#F00');
 		});
 		it('Cell updated with the correct color', function(){
-			expect(Cell.getFontColor()).toBeEqual("#AFA");
+			expect(Cell.getFontColor()).toBeEqual('#AFA');
 		});
 
 	});

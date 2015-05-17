@@ -9,6 +9,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.1.1         2015-05-17  Maria Giovanna Chinellato   Fix code
+*
 * 0.1.0			2015-05-15	Maria Giovanna Chinellato	Add test of Model::BarChartFlow.js
 *
 * 0.0.1			2015-05-15	Maria Giovanna Chinellato	Initial code
@@ -31,30 +33,30 @@ describe('BarChartFlow', function(){
 	describe('Constructor', function(){
 
 		var json = {
-			"dataFormat" : "int",
-			"name" : "flusso1",
-			"flowColor" : "#F2F",
-			"legendOnPoin" : "flusso1",
+			'dataFormat' : 'int',
+			'name' : 'flusso1',
+			'flowColor' : '#F2F',
+			'legendOnPoin' : 'flusso1',
 		};
 		var f = {
-			"dataFormat" : "int",
-			"name" : "flusso1"
+			'dataFormat' : 'int',
+			'name' : 'flusso1'
 		};
 
 		beforeEach(function(){
 			BarChartFlow = new BarChartFlow(json);
 		});
 
-		spyOn(Flow.prototype, "apply").and.callFake(function() {return;});
+		spyOn(Flow.prototype, 'apply').and.callFake(function() {return;});
 
 		it('constructor use the flow constructor in the correct way', function(){
 			expect(Flow.prototype.apply).toHaveBeenCalledWith(f); // in teoria dovrebbe essere così
 		});
 		it('constructor create the flow with the correct flowColor', function(){
-			expect(BarChartFlow.prototype.getFlowColor()).toBeEqual("#F2F");
+			expect(BarChartFlow.prototype.getFlowColor()).toBeEqual('#F2F');
 		});
 		it('constructor create the flow with the correct legend on point', function(){
-			expect(BarChartFlow.prototype.getLegendOnPoint()).toBeEqual("flusso1");
+			expect(BarChartFlow.prototype.getLegendOnPoint()).toBeEqual('flusso1');
 		});
 	});
 
@@ -64,22 +66,22 @@ describe('BarChartFlow', function(){
 		var json1 = json;
 		json = json1;
 		json = {
-			"dataFormat" : "int",
-			"name" : "flusso1",
-			"flowColor" : "#FFF",
-			"legendOnPoin" : "flusso"
+			'dataFormat' : 'int',
+			'name' : 'flusso1',
+			'flowColor' : '#FFF',
+			'legendOnPoin' : 'flusso'
 		};
 		var f = {
-			"dataFormat" : "int",
-			"name" : "flusso1"
+			'dataFormat' : 'int',
+			'name' : 'flusso1'
 		};
 		var b = {
-			"flowColor" : "#FFF",
-			"legendOnPoin" : "flusso"
+			'flowColor' : '#FFF',
+			'legendOnPoin' : 'flusso'
 		};
 
 		beforeEach(function(){
-			res = BarChartFlow.prototype.test("split(json)");
+			res = BarChartFlow.prototype.test('split(json)');
 		});
 
 		it('json splitted in the correct way', function(){
@@ -91,30 +93,30 @@ describe('BarChartFlow', function(){
 
 	describe('updateParameters', function(){
 		var json = {
-			"dataFormat" : "String",
-			"name" : "flusso2",
-			"flowColor" : "#F1F",
-			"legendOnPoin" : "flusso2"
+			'dataFormat' : 'String',
+			'name' : 'flusso2',
+			'flowColor' : '#F1F',
+			'legendOnPoin' : 'flusso2'
 		};
 		var f = {
-			"dataFormat" : "String",
-			"name" : "flusso2"
+			'dataFormat' : 'String',
+			'name' : 'flusso2'
 		};
 
 		beforeEach(function(){
 			BarChartFlow.prototype.updateParameters(json);
 		});
 
-		spyOn(Flow.prototype, "apply").and.callFake(function() {return;});
+		spyOn(Flow.prototype, 'apply').and.callFake(function() {return;});
 
 		it('flow updated with the correct parameters', function(){
 			expect(Flow.prototype.apply).toHaveBeenCalledWith(f); // in teoria dovrebbe essere così
 		});
 		it('cflow updated with the correct flowColor', function(){
-			expect(BarChartFlow.prototype.getFlowColor()).toBeEqual("#F1F");
+			expect(BarChartFlow.prototype.getFlowColor()).toBeEqual('#F1F');
 		});
 		it('flow updated with the correct legend on point', function(){
-			expect(BarChartFlow.prototype.getLegendOnPoint()).toBeEqual("flusso2");
+			expect(BarChartFlow.prototype.getLegendOnPoint()).toBeEqual('flusso2');
 		});
 
 	});

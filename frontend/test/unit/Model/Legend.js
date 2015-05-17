@@ -6,6 +6,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =======================================================================================================================
+* 0.1.1         2015-05-17  Maria Giovanna Chinellato   Fix code
+*
 * 0.1.0			2015-05-15	Rossetto Francesco			Add test of Model::Legend, describe all method
 *
 * 0.0.1			2015-05-15	Rossetto Francesco			Initial code
@@ -27,9 +29,9 @@ describe('Legend', function(){
 	describe('Constructor', function(){
 
 		var json = 	{
-			"position" : "left",
-			"fontColor" : "#AFA",
-			"background" : "#F00",
+			'position' : 'left',
+			'fontColor' : '#AFA',
+			'background' : '#F00',
 		};
 
 		beforeEach(function(){
@@ -37,13 +39,13 @@ describe('Legend', function(){
 		});
 
 		it('constructor create the page with the correct background', function(){
-			expect(Legend.getPosition()).toBeEqual("left");
+			expect(Legend.getPosition()).toBeEqual('left');
 		});
 		it('constructor create the page with the correct background', function(){
-			expect(Legend.getFontColor()).toBeEqual("#AFA");
+			expect(Legend.getFontColor()).toBeEqual('#AFA');
 		});
 		it('constructor create the page with the correct fontColor', function(){
-			expect(Legend.getBackground()).toBeEqual("#F00");
+			expect(Legend.getBackground()).toBeEqual('#F00');
 		});
 
 	});
@@ -51,10 +53,10 @@ describe('Legend', function(){
 	describe('updateParameters', function(){
 
 		var json = 	{
-			"position" : "top",
-			"style" : "",
-			"fontColor" : "#F00",
-			"background" : "#AFA",
+			'position' : 'top',
+			'style' : '',
+			'fontColor' : '#F00',
+			'background' : '#AFA',
 		};
 
 		beforeEach(function(){
@@ -62,13 +64,13 @@ describe('Legend', function(){
 		});
 
 		it('constructor create the page with the correct background', function(){
-			expect(Legend.getPosition()).toBeEqual("top");
+			expect(Legend.getPosition()).toBeEqual('top');
 		});
 		it('constructor create the page with the correct background', function(){
-			expect(Legend.getFontColor()).toBeEqual("#F00");
+			expect(Legend.getFontColor()).toBeEqual('#F00');
 		});
 		it('constructor create the page with the correct fontColor', function(){
-			expect(Legend.getBackground()).toBeEqual("#AFA");
+			expect(Legend.getBackground()).toBeEqual('#AFA');
 		});
 
 	});

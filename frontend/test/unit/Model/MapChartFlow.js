@@ -9,6 +9,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.1.1         2015-05-17  Maria Giovanna Chinellato   Fix code
+*
 * 0.1.0			2015-05-15	Maria Giovanna Chinellato	Add test of Model::MapChartFlow.js
 *
 * 0.0.1			2015-05-15	Maria Giovanna Chinellato	Initial code
@@ -31,42 +33,42 @@ describe('MapChartFlow', function(){
 	describe('Constructor', function(){
 
 		var json = {
-			"dataFormat" : "int",
-			"name" : "flusso1",
-			"flowColor" : "#F2F",
-			"legendOnPoin" : "flusso1",
-			"marker" : "furly",
-			"maxItem" : "20",
-			"trace" : "bubu"
+			'dataFormat' : 'int',
+			'name' : 'flusso1',
+			'flowColor' : '#F2F',
+			'legendOnPoin' : 'flusso1',
+			'marker' : 'furly',
+			'maxItem' : '20',
+			'trace' : 'bubu'
 		};
 		var f = {
-			"dataFormat" : "int",
-			"name" : "flusso1"
+			'dataFormat' : 'int',
+			'name' : 'flusso1'
 		};
 
 		beforeEach(function(){
 			MapChartFlow = new MapChartFlow(json);
 		});
 
-		spyOn(Flow.prototype, "apply").and.callFake(function() {return;});
+		spyOn(Flow.prototype, 'apply').and.callFake(function() {return;});
 
 		it('constructor use the flow constructor in the correct way', function(){
 			expect(Flow.prototype.apply).toHaveBeenCalledWith(f); // in teoria dovrebbe essere così
 		});
 		it('constructor create the flow with the correct flowColor', function(){
-			expect(MapChartFlow.prototype.getFlowColor()).toBeEqual("#F2F");
+			expect(MapChartFlow.prototype.getFlowColor()).toBeEqual('#F2F');
 		});
 		it('constructor create the flow with the correct legend on point', function(){
-			expect(MapChartFlow.prototype.getLegendOnPoint()).toBeEqual("flusso1");
+			expect(MapChartFlow.prototype.getLegendOnPoint()).toBeEqual('flusso1');
 		});
 		it('constructor create the flow with the correct marker', function(){
-			expect(MapChartFlow.prototype.getMarker()).toBeEqual("furly");
+			expect(MapChartFlow.prototype.getMarker()).toBeEqual('furly');
 		});
 		it('constructor create the flow with the correct max item displayed', function(){
-			expect(MapChartFlow.prototype.getMaxItem()).toBeEqual("20");
+			expect(MapChartFlow.prototype.getMaxItem()).toBeEqual('20');
 		});
 		it('constructor create the flow with the correct trace', function(){
-			expect(MapChartFlow.prototype.getTrace()).toBeEqual("bubu");
+			expect(MapChartFlow.prototype.getTrace()).toBeEqual('bubu');
 		});
 
 	});
@@ -77,28 +79,28 @@ describe('MapChartFlow', function(){
 		var json1 = json;
 		json = json1;
 		json = {
-			"dataFormat" : "int",
-			"name" : "flusso1",
-			"flowColor" : "#FFF",
-			"legendOnPoin" : "flusso",
-			"marker" : "furly",
-			"maxItem" : "15",
-			"trace" : "flux"
+			'dataFormat' : 'int',
+			'name' : 'flusso1',
+			'flowColor' : '#FFF',
+			'legendOnPoin' : 'flusso',
+			'marker' : 'furly',
+			'maxItem' : '15',
+			'trace' : 'flux'
 		};
 		var f = {
-			"dataFormat" : "int",
-			"name" : "flusso1"
+			'dataFormat' : 'int',
+			'name' : 'flusso1'
 		};
 		var m = {
-			"flowColor" : "#FFF",
-			"legendOnPoin" : "flusso",
-			"marker" : "furly",
-			"maxItem" : "15",
-			"trace" : "flux"
+			'flowColor' : '#FFF',
+			'legendOnPoin' : 'flusso',
+			'marker' : 'furly',
+			'maxItem' : '15',
+			'trace' : 'flux'
 		};
 
 		beforeEach(function(){
-			res = MapChartFlow.prototype.test("split(json)");
+			res = MapChartFlow.prototype.test('split(json)');
 		});
 
 		it('json splitted in the correct way', function(){
@@ -110,42 +112,42 @@ describe('MapChartFlow', function(){
 
 	describe('updateParameters', function(){
 		var json = {
-			"dataFormat" : "String",
-			"name" : "flusso2",
-			"flowColor" : "#F3F",
-			"legendOnPoin" : "flusso2",
-			"marker" : "furly1",
-			"maxItem" : "45",
-			"trace" : "flow"
+			'dataFormat' : 'String',
+			'name' : 'flusso2',
+			'flowColor' : '#F3F',
+			'legendOnPoin' : 'flusso2',
+			'marker' : 'furly1',
+			'maxItem' : '45',
+			'trace' : 'flow'
 		};
 		var f = {
-			"dataFormat" : "String",
-			"name" : "flusso2"
+			'dataFormat' : 'String',
+			'name' : 'flusso2'
 		};
 		
 		beforeEach(function(){
 			MapChartFlow.prototype.updateParameters(json);
 		});
 
-		spyOn(Flow.prototype, "apply").and.callFake(function() {return;});
+		spyOn(Flow.prototype, 'apply').and.callFake(function() {return;});
 
 		it('flow updated with the correct parameters', function(){
 			expect(Flow.prototype.apply).toHaveBeenCalledWith(f); // in teoria dovrebbe essere così
 		});
 		it('flow updated with the correct flowColor', function(){
-			expect(MapChartFlow.prototype.getFlowColor()).toBeEqual("#F3F");
+			expect(MapChartFlow.prototype.getFlowColor()).toBeEqual('#F3F');
 		});
 		it('flow updated with the correct legend on point', function(){
-			expect(MapChartFlow.prototype.getLegendOnPoint()).toBeEqual("flusso2");
+			expect(MapChartFlow.prototype.getLegendOnPoint()).toBeEqual('flusso2');
 		});
 		it('flow updated with the correct marker', function(){
-			expect(MapChartFlow.prototype.getMarker()).toBeEqual("furly1");
+			expect(MapChartFlow.prototype.getMarker()).toBeEqual('furly1');
 		});
 		it('flow updated with the correct max item displayed', function(){
-			expect(MapChartFlow.prototype.getMaxItem()).toBeEqual("45");
+			expect(MapChartFlow.prototype.getMaxItem()).toBeEqual('45');
 		});
 		it('flow updated with the correct trace', function(){
-			expect(MapChartFlow.prototype.getTrace()).toBeEqual("flow");
+			expect(MapChartFlow.prototype.getTrace()).toBeEqual('flow');
 		});
 
 	});
