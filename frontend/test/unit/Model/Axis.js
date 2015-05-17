@@ -42,7 +42,7 @@ describe('Axis', function(){
 		};
 
 		beforeEach(function(){
-			Axis = new Axis.Axis(json);
+			Axis = Axis.Axis(json);
 		});
 
 		it('constructor create the page with the correct name', function(){
