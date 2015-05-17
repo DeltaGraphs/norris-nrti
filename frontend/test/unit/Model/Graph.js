@@ -143,7 +143,7 @@ describe('Graph', function(){
 
 		beforeEach(function(){
 			Graph = new Graph();
-			Graph.addflow(json);
+			Graph = Graph.addflow(json);
 		});
 
 		afterEach(function(){
@@ -165,8 +165,8 @@ describe('Graph', function(){
 
 		beforeEach(function(){
 			Graph = new Graph();
-			Graph.addflow(json);
-			Graph.deleteFlow('flusso1');
+			Graph = Graph.addflow(json);
+			Graph = Graph.deleteFlow('flusso1');
 		});
 
 		afterEach(function(){

@@ -83,9 +83,11 @@ angular.module('app')
 				this.flowList[id] = flow;
 			}
 			// error
+			return this;
 		},
 		deleteFlow : function(flowID) {
 			delete this.flowList[flowID];
+			return this;
 		},
 		
 		getTitle : function() {
