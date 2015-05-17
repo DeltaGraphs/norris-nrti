@@ -17,7 +17,7 @@
 *
 */
 
-describe('axis', function(){
+describe('Axis', function(){
 	'use strict';
 
 	beforeEach(module('app'));
@@ -36,7 +36,7 @@ describe('axis', function(){
 		};
 
 		beforeEach(function(){
-			axis = new Axis(json);
+			var axis = new Axis(json);
 		});
 
 		it('constructor create the page with the correct name', function(){
