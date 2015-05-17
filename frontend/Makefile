@@ -69,6 +69,8 @@ complexity-report:
 karma:
 	@echo "$(PROJECT)Executing Karma..."
 	@$(KARMA) start
+	pwd
+	cp -r app ../app
 
 karma-report:
 	#@echo "$(PROJECT)Executing Karma..."
