@@ -104,7 +104,7 @@ describe('Graph', function(){
 
 		afterEach(function(){
 			Graph = null;
-		})
+		});
 
 		spyOn(Legend, 'Legend').and.returnValue({});
 
