@@ -47,6 +47,9 @@ module.exports = function(config) {
 			// (these files will be instrumented by Istanbul)
 			'app/app.js': ['coverage'],
 			'app/Model/*.js': ['coverage'],
+			'app/Model/GraphsModel/*.js': ['coverage'],
+			'app/Model/FlowsModel/*.js': ['coverage'],
+			'app/Model/PagesModel/*.js': ['coverage'],
 			'app/View/*.js': ['coverage'],
 			'app/Controllers/*.js': ['coverage']
 		},
