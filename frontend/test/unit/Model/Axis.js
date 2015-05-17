@@ -18,15 +18,13 @@
 describe('Axis', function(){
 	'use strict';
 
+	var Axis;
 	var axis;
 
 	beforeEach(module('app'));
 
-	// Setup the mock service in an anonymous module.
-	beforeEach(module(function ($provide) {
-		$provide.value('Axis', {
-			someVariable: 1
-	    });
+	beforeEach(inject(function(_Axis_) {
+		Axis = _Axis_;
 	}));
 
 	/*beforeEach(inject(function() {
