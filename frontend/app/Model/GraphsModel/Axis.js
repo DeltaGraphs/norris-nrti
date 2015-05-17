@@ -29,7 +29,7 @@ angular.module('app')
         var maxValue;
         var ticks = 10;
         var scale = "linear";
-    }
+    };
 
     this.Axis = function(info){
         if (info.name) {
