@@ -29,6 +29,15 @@ angular.module('app')
         var maxValue;
         var ticks = 10;
         var scale = "linear";
+
+        return {
+            name : name,
+            color : color,
+            minValue : minValue,
+            maxValue : maxValue,
+            ticks : ticks,
+            scale : scale
+        }
     };
 
     this.Axis = function(info){
