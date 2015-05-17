@@ -141,15 +141,22 @@ describe('FlowModel', function() {
                 });
             flow1._records=[
                 {temperature: 6, norrisRecordID: 'flow1whatever0'},
-                {temperature: 2, norrisRecordID: 'flow1whatever1'}
+                {temperature: 2, norrisRecordID: 'flow1whatever1'},
+                2
             ];
             flow1.validateData();
             assert.strictEqual(flow1._records[1].norrisIsValid, false);
+            assert.strictEqual(flow1._records[2].norrisIsValid, false);
             var update=flow1.updateRecord(1, {temperature: 4});
+            var update2=flow1.updateRecord(2, 4);
             assert.strictEqual(update.indexOf('flow1'), 0);
+            assert.strictEqual(update2.indexOf('flow1'), 0);
             assert.strictEqual(flow1._records[1].temperature, 4);
             assert.strictEqual(flow1._records[1].norrisRecordID.indexOf('flow1'), 0);
             assert.strictEqual(flow1._records[1].norrisIsValid, true);
+            assert.strictEqual(flow1._records[2], 2);
+            assert.strictEqual(flow1._records[2].norrisRecordID.indexOf('flow1'), 0);
+            assert.strictEqual(flow1._records[2].norrisIsValid, false);
         });
     });
 
