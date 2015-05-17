@@ -18,7 +18,7 @@
 *
 */
 
-angular.module("services")
+angular.module('app')
 .factory('Axis', function(){
     var name;
     var color = "#FFF";

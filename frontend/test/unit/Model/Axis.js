@@ -24,7 +24,7 @@ describe('Axis', function(){
 
 	var Axis;
 
-	beforeEach(angular.mock.module('services'));
+	beforeEach(angular.mock.module('app'));
 
 	beforeEach(inject(function (_Axis_) {
 		Axis = _Axis_;
