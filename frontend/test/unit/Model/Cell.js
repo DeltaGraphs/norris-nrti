@@ -84,7 +84,8 @@ describe('Cell', function(){
 		};
 
 		beforeEach(function(){
-			Cell.updateParameters(json);
+			Cell = new Cell();
+			Cell = Cell.updateParameters(json);
 		});
 
 		afterEach(function(){

@@ -44,6 +44,8 @@ angular.module('app')
                     this.fontColor = info.fontColor;
                 }
             }
+
+            return this;
         },
 
         getBackground : function(){
