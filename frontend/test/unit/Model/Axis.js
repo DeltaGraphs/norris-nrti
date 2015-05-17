@@ -55,7 +55,7 @@ describe('Axis', function(){
 		it('constructor create the page with the correct name', function(){
 			//var Axis2 = new Axis();
 			Axis = Axis.Axis(json);
-			var axisName = Axis2.getName();
+			var axisName = Axis.getName();
 			expect(axisName).toBeDefined();
 			expect(axisName).toEqual('asse nella manica');
 		});
