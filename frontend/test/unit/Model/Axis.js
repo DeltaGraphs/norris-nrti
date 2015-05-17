@@ -20,12 +20,19 @@ describe('Axis', function(){
 
 	var Axis;
 
-	beforeEach(angular.module('app'));
+	beforeEach(module('app'));
 
-	beforeEach(inject(function() {
+	// Setup the mock service in an anonymous module.
+	beforeEach(module(function ($provide) {
+		$provide.value('Axis', {
+			someVariable: 1
+	    });
+	}));
+
+	/*beforeEach(inject(function() {
     	var $injector = angular.injector(['app']);
     	Axis = $injector.get('Axis');
-    }));
+    }));*/
 
 	describe('Constructor', function(){
 
