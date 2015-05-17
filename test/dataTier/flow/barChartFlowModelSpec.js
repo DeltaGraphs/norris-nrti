@@ -78,7 +78,7 @@ describe('BarChartFlowModel', function() {
             indexFormat: 'toInt',
             valueFormat: 'toFloat',
             flowColor: '#FFFFFF',
-            records:[
+            records: [
                 {temperature: 2, pressure: 4},
                 {temperature: 2, pressure: 4}
             ]
