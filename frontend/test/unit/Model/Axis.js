@@ -43,7 +43,7 @@ describe('Axis', function(){
 			'scale' : 'logarithmic'
 		};
 
-		beforeEach(function(){
+		beforeEach(function(json){
 			Axis = new Axis(json);
 			//Axis = Axis.Axis(json);
 		});
