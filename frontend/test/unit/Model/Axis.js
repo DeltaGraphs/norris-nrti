@@ -18,12 +18,12 @@
 describe('Axis', function(){
 	'use strict';
 
-	var Axis;
+	var axis;
 
 	beforeEach(module('app'));
 
 	beforeEach(inject(function(_Axis_){
-		Axis = _Axis_;
+		axis = _Axis_;
 	}));
 
 	describe('Constructor', function(){
