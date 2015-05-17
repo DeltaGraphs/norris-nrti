@@ -46,8 +46,9 @@ describe('Socket', function() {
         });
         it('attach the object in params', function() {
             var socket1 = new Socket(nsp);
-            socket1.attachObject(new RandomObj());
-            assert.strictEqual(socket1._attachedObj, null);
+            var obj1 = new RandomObj();
+            socket1.attachObject(obj1);
+            assert.strictEqual(socket1._attachedObj, http://liamkaufman.com/blog/2012/01/28/testing-socketio-with-mocha-should-and-socketio-client/);
         });
     });
 });
