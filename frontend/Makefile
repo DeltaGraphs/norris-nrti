@@ -62,8 +62,8 @@ plato-report:
 
 complexity-report:
 	@echo "$(PROJECT)Executing Complexity Report..."
-	-@$(CR) $(CR_OPTS) --format json --output $(REPORTS)/complexity-report.json --filepattern ".*\.js" app/
-	-@$(CR) $(CR_OPTS) --format plain --output $(REPORTS)/complexity-report.txt --filepattern ".*\.js" app/
+	-@$(CR) $(CR_OPTS) --format json --output $(REPORTS)/complexity-report.json --excludepattern "bower_components" --filepattern ".*\.js" app/
+	-@$(CR) $(CR_OPTS) --format plain --output $(REPORTS)/complexity-report.txt --excludepattern "bower_components" --filepattern ".*\.js" app/
 
 # Unit test
 karma:
