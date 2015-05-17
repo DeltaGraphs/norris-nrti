@@ -28,9 +28,9 @@ describe('Axis', function(){
 
 	beforeEach(angular.mock.module('app'));
 
-	beforeEach(inject(function (_Axis_) {
+	/*beforeEach(inject(function (_Axis_) {
 		Axis = _Axis_;
-	}));
+	}));*/
 
 	describe('Constructor', function(){
 
@@ -51,28 +51,40 @@ describe('Axis', function(){
 			expect(Axis).toBeDefined();
 		});
 
-		/*it('constructor create the page with the correct name', function(){
-			expect(Axis.getName()).toBeEqual('asse nella manica');
+		it('constructor create the page with the correct name', function(){
+			var axisName = Axis.getName();
+			expect(axisName).toBeDefined();
+			expect(axisName).toBeEqual('asse nella manica');
 		});
 		it('constructor create the page with the correct color', function(){
-			expect(Axis.getColor()).toBeEqual('#F0F');
+			var axisColor = Axis.getColor();
+			expect(axisColor).toBeDefined();
+			expect(axisColor).toBeEqual('#F0F');
 		});
 		it('constructor create the page with the correct minValue', function(){
-			expect(Axis.getMinValue()).toBeEqual(0);
+			var axisMinValue = Axis.getMinValue();
+			expect(axisMinValue).toBeDefined();
+			expect(axisMinValue).toBeEqual(0);
 		});
 		it('constructor create the page with the correct maxValue', function(){
-			expect(Axis.getMaxValue()).toBeEqual(100);
+			var axisMaxValue = Axis.getMaxValue();
+			expect(axisMaxValue).toBeDefined();
+			expect(axisMaxValue).toBeEqual(100);
 		});
 		it('constructor create the page with the correct ticks', function(){
-			expect(Axis.getTicks()).toBeEqual(10);
+			var axisTicks = Axis.getTicks();
+			expect(axisTicks).toBeDefined();
+			expect(axisTicks).toBeEqual(10);
 		});
 		it('constructor create the page with the correct scale', function(){
-			expect(Axis.getScale()).toBeEqual('logarithmic');
-		});*/
+			var axisScale = Axis.getScale();
+			expect(axisScale).toBeDefined();
+			expect(axisScale).toBeEqual('logarithmic');
+		});
 
 	});
 
-	describe('updateParameters', function(){
+	/*describe('updateParameters', function(){
 
 		var json = 	{
 			'name' : 'asso',
@@ -106,6 +118,6 @@ describe('Axis', function(){
 			expect(Axis.getScale()).toBeEqual('linear');
 		});
 
-	});
+	});*/
 	
 });
