@@ -29,12 +29,12 @@ describe('Axis', function(){
 	describe('Constructor', function(){
 
 		var json = 	{
-			"name" : "asse nella manica",
-			"color" : "#F0F",
-			"minValue" : 0,
-			"maxValue" : 100,
-			"ticks" : 10,
-			"scale" : "logarithmic",
+			'name' : 'asse nella manica',
+			'color' : '#F0F',
+			'minValue' : 0,
+			'maxValue' : 100,
+			'ticks' : 10,
+			'scale' : 'logarithmic',
 		};
 
 		beforeEach(function(){
@@ -42,10 +42,10 @@ describe('Axis', function(){
 		});
 
 		it('constructor create the page with the correct name', function(){
-			expect(Axis.getName()).toBeEqual("asse nella manica");
+			expect(Axis.getName()).toBeEqual('asse nella manica');
 		});
 		it('constructor create the page with the correct color', function(){
-			expect(Axis.getColor()).toBeEqual("#F0F");
+			expect(Axis.getColor()).toBeEqual('#F0F');
 		});
 		it('constructor create the page with the correct minValue', function(){
 			expect(Axis.getMinValue()).toBeEqual(0);
@@ -57,7 +57,7 @@ describe('Axis', function(){
 			expect(Axis.getTicks()).toBeEqual(10);
 		});
 		it('constructor create the page with the correct scale', function(){
-			expect(Axis.getScale()).toBeEqual("logarithmic");
+			expect(Axis.getScale()).toBeEqual('logarithmic');
 		});
 
 	});
@@ -65,12 +65,12 @@ describe('Axis', function(){
 	describe('updateParameters', function(){
 
 		var json = 	{
-			"name" : "asse nell'altra manica",
-			"color" : "#AFA",
-			"minValue" : 1,
-			"maxValue" : 101,
-			"ticks" : 10,
-			"scale" : "linear",
+			'name' : 'asso',
+			'color' : '#AFA',
+			'minValue' : 1,
+			'maxValue' : 101,
+			'ticks' : 10,
+			'scale' : 'linear',
 		};
 
 		beforeEach(function(){
@@ -78,10 +78,10 @@ describe('Axis', function(){
 		});
 
 		it('axis updated with the correct name', function(){
-			expect(Axis.getName()).toBeEqual("asse nell'altra manica");
+			expect(Axis.getName()).toBeEqual('asso');
 		});
 		it('axis updated with the correct color', function(){
-			expect(Axis.getColor()).toBeEqual("#AFA");
+			expect(Axis.getColor()).toBeEqual('#AFA');
 		});
 		it('axis updated with the correct minValue', function(){
 			expect(Axis.getMinValue()).toBeEqual(1);
@@ -93,7 +93,7 @@ describe('Axis', function(){
 			expect(Axis.getTicks()).toBeEqual(10);
 		});
 		it('axis updated with the correct scale', function(){
-			expect(Axis.getScale()).toBeEqual("linear");
+			expect(Axis.getScale()).toBeEqual('linear');
 		});
 
 	});
