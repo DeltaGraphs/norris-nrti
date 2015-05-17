@@ -6,25 +6,23 @@
 * History :
 * Version       Date        Programmer                  Description
 * =======================================================================================================================
-* 0.1.1			2015-05-15	Maria Giovanna Chinellato	Fix test of Model::Axis
+* 0.1.1			2015-05-15	Francesco Rossetto			Fix test of Model::axis
 *
-* 0.1.0			2015-05-15	Rossetto Francesco			Add test of Model::Axis, describe all method
+* 0.1.1			2015-05-15	Maria Giovanna Chinellato	Fix test of Model::axis
 *
-* 0.0.1			2015-05-15	Rossetto Francesco			Initial code
+* 0.1.0			2015-05-15	Francesco Rossetto			Add test of Model::axis, describe all method
+*
+* 0.0.1			2015-05-15	Francesco Rossetto			Initial code
 * =======================================================================================================================
 *
 */
 
-describe('Axis', function(){
+describe('axis', function(){
 	'use strict';
 
 	beforeEach(module('app'));
 
-	var Axis;
-
-	beforeEach(inject(function(_Axis_){
-		Axis = _Axis_;
-	}));
+	var Axis = require('../../../app/Model/GraphsModel/Axis.js');
 
 	describe('Constructor', function(){
 
@@ -37,31 +35,27 @@ describe('Axis', function(){
 			'scale' : 'logarithmic',
 		};
 
-//		beforeEach(inject(function(Axis) {
-//		      Axis = new Axis(json);
-//		}));
-
 		beforeEach(function(){
-			Axis = new Axis(json);
+			axis = new Axis(json);
 		});
 
 		it('constructor create the page with the correct name', function(){
-			expect(Axis.getName()).toBeEqual('asse nella manica');
+			expect(axis.getName()).toBeEqual('asse nella manica');
 		});
 		it('constructor create the page with the correct color', function(){
-			expect(Axis.getColor()).toBeEqual('#F0F');
+			expect(axis.getColor()).toBeEqual('#F0F');
 		});
 		it('constructor create the page with the correct minValue', function(){
-			expect(Axis.getMinValue()).toBeEqual(0);
+			expect(axis.getMinValue()).toBeEqual(0);
 		});
 		it('constructor create the page with the correct maxValue', function(){
-			expect(Axis.getMaxValue()).toBeEqual(100);
+			expect(axis.getMaxValue()).toBeEqual(100);
 		});
 		it('constructor create the page with the correct ticks', function(){
-			expect(Axis.getTicks()).toBeEqual(10);
+			expect(axis.getTicks()).toBeEqual(10);
 		});
 		it('constructor create the page with the correct scale', function(){
-			expect(Axis.getScale()).toBeEqual('logarithmic');
+			expect(axis.getScale()).toBeEqual('logarithmic');
 		});
 
 	});
@@ -78,26 +72,26 @@ describe('Axis', function(){
 		};
 
 		beforeEach(function(){
-			Axis.updateParameters(json);
+			axis.updateParameters(json);
 		});
 
-		it('Axis updated with the correct name', function(){
-			expect(Axis.getName()).toBeEqual('asso');
+		it('axis updated with the correct name', function(){
+			expect(axis.getName()).toBeEqual('asso');
 		});
-		it('Axis updated with the correct color', function(){
-			expect(Axis.getColor()).toBeEqual('#AFA');
+		it('axis updated with the correct color', function(){
+			expect(axis.getColor()).toBeEqual('#AFA');
 		});
-		it('Axis updated with the correct minValue', function(){
-			expect(Axis.getMinValue()).toBeEqual(1);
+		it('axis updated with the correct minValue', function(){
+			expect(axis.getMinValue()).toBeEqual(1);
 		});
-		it('Axis updated with the correct maxValue', function(){
-			expect(Axis.getMaxValue()).toBeEqual(101);
+		it('axis updated with the correct maxValue', function(){
+			expect(axis.getMaxValue()).toBeEqual(101);
 		});
-		it('Axis updated with the correct getTicks', function(){
-			expect(Axis.getTicks()).toBeEqual(10);
+		it('axis updated with the correct getTicks', function(){
+			expect(axis.getTicks()).toBeEqual(10);
 		});
-		it('Axis updated with the correct scale', function(){
-			expect(Axis.getScale()).toBeEqual('linear');
+		it('axis updated with the correct scale', function(){
+			expect(axis.getScale()).toBeEqual('linear');
 		});
 
 	});
