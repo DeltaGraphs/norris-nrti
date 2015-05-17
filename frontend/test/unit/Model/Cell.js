@@ -21,7 +21,7 @@ describe('Cell', function(){
 
 	var Cell;
 
-	beforeEach(module('app'));
+	beforeEach(angular.mock.module('app'));
 
 	beforeEach(inject(function(_Cell_){
 		Cell = _Cell_;
@@ -37,11 +37,14 @@ describe('Cell', function(){
 			Cell = null;
 		});
 
+		it('instance defined', function(){
+			expect(Cell).toBeDefined();
+		});
 		it('constructor create the page with the correct background', function(){
-			expect(Cell.getBackground()).toBeEqual('#FFF');
+			expect(Cell.getBackground()).toEqual('#FFF');
 		});
 		it('constructor create the page with the correct fontColor', function(){
-			expect(Cell.getFontColor()).toBeEqual('#000');
+			expect(Cell.getFontColor()).toEqual('#000');
 		});
 
 	});
@@ -61,11 +64,14 @@ describe('Cell', function(){
 			Cell = null;
 		});
 
+		it('instance defined', function(){
+			expect(Cell).toBeDefined();
+		});
 		it('constructor create the page with the correct background', function(){
-			expect(Cell.getBackground()).toBeEqual('#AFA');
+			expect(Cell.getBackground()).toEqual('#AFA');
 		});
 		it('constructor create the page with the correct fontColor', function(){
-			expect(Cell.getFontColor()).toBeEqual('#F00');
+			expect(Cell.getFontColor()).toEqual('#F00');
 		});
 
 	});
@@ -86,10 +92,10 @@ describe('Cell', function(){
 		});
 
 		it('Cell updated with the correct name', function(){
-			expect(Cell.getBackground()).toBeEqual('#F00');
+			expect(Cell.getBackground()).toEqual('#F00');
 		});
 		it('Cell updated with the correct color', function(){
-			expect(Cell.getFontColor()).toBeEqual('#AFA');
+			expect(Cell.getFontColor()).toEqual('#AFA');
 		});
 
 	});
