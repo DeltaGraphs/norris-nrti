@@ -20,6 +20,19 @@ var MapChartFlowModel = require('../../../lib/dataTier/flow/mapChartFlowModel.js
 var assert = require('assert');
 
 describe('mapChartModel', function() {
+
+    it('returns null when there are no params', function() {
+        assert.strictEqual((new MapChartModel()).hasOwnProperty('_title'), false);
+    });
+
+    it('returns null when there is no valid ID in params', function() {
+        assert.strictEqual((new MapChartModel({})).hasOwnProperty('_title'), false);
+    });
+
+    it('returns null when there is a empty ID in params', function() {
+        assert.strictEqual((new MapChartModel({ID:' '})).hasOwnProperty('_title'), false);
+    });
+    
     var defaultLegend = new LegendModel();
 
     it('set default values to property not specified', function() {

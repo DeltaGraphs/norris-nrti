@@ -21,6 +21,19 @@ var AxisModel = require('../../../lib/dataTier/graph/axisModel.js');
 var assert = require('assert');
 
 describe('barChartModel', function() {
+
+    it('returns null when there are no params', function() {
+        assert.strictEqual((new BarChartModel()).hasOwnProperty('_title'), false);
+    });
+
+    it('returns null when there is no valid ID in params', function() {
+        assert.strictEqual((new BarChartModel({})).hasOwnProperty('_title'), false);
+    });
+
+    it('returns null when there is a empty ID in params', function() {
+        assert.strictEqual((new BarChartModel({ID:' '})).hasOwnProperty('_title'), false);
+    });
+    
     var defaultLegend = new LegendModel();
     var defaultAxis = new AxisModel();
     it('set default values to property not specified', function() {
