@@ -55,23 +55,25 @@ angular.module('app')
 
     Axis.prototype = {
         updateParameters : function(info){
-            if (info.name !== undefined) {
-                this.name = info.name;
-            }
-            if (info.color !== undefined) {
-                this.color = info.color;
-            }
-            if (info.minValue !== undefined) {
-                this.minValue = info.minValue;
-            }
-            if (info.maxValue !== undefined) {
-                this.maxValue = info.maxValue;
-            }
-            if (info.ticks !== undefined) {
-                this.ticks = info.ticks;
-            }
-            if (info.scale !== undefined) {
-                this.scale = info.scale;
+            if (info !== undefined)
+                if (info.name !== undefined) {
+                    this.name = info.name;
+                }
+                if (info.color !== undefined) {
+                    this.color = info.color;
+                }
+                if (info.minValue !== undefined) {
+                    this.minValue = info.minValue;
+                }
+                if (info.maxValue !== undefined) {
+                    this.maxValue = info.maxValue;
+                }
+                if (info.ticks !== undefined) {
+                    this.ticks = info.ticks;
+                }
+                if (info.scale !== undefined) {
+                    this.scale = info.scale;
+                }
             }
         },
 
