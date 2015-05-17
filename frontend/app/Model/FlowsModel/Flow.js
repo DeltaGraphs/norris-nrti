@@ -18,33 +18,41 @@
 *
 */
 
-angular.module("services")
+angular.module('app')
 .factory('Flow', function(){
-	var dataFormat;
-	var name;
 
-	var Flow = function(info) {
-		if (info.dataFormat) {
-			dataFormat = info.dataFormat;
-		}
-		if (info.name){
-			name = info.name;
-		}
-	};
+	function Flow(info){
+		this.dataFormat;
+		this.name;
 
-	Flow.prototype.updateParameters = function(info) { //abstract
-    	if (info.dataFormat) {
-			dataFormat = info.dataFormat;
+		if (info !== undefined) {
+			if (info.dataFormat !== undefined) {
+				this.dataFormat = info.dataFormat;
+			}
+			if (info.name !== undefined){
+				this.name = info.name;
+			}
 		}
-		if (info.name){
-			name = info.name;
+	}
+
+	Flow.prototype = {
+
+		updateParameters : function(info) { //abstract
+			if (info !== undefined) {
+		    	if (info.dataFormat !== undefined) {
+					this.dataFormat = info.dataFormat;
+				}
+				if (info.name !== undefined){
+					this.name = info.name;
+				}
+			}
+		},
+		getDataFormat : function() {
+			return this.dataFormat;
+		},
+		getName : function() {
+			return this.name;
 		}
 	};
-	Flow.prototype.getDataFormat = function() {
-		return dataFormat;
-	};
-	Flow.prototype.getName = function() {
-		return name;
-	};
-	return Flow;
+	return( Flow );
 });

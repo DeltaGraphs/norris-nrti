@@ -22,105 +22,127 @@
 *
 */
 
-angular.module("services")
+angular.module('app')
 .factory('Page', ['LineChart', 'BarChart', 'MapChart', 'Table', function(LineChart, BarChart, MapChart, Table){
-    var graphsList = [];
-    var name;
-    var description;
-    var graphsPerRow;
-    var graphsPerCol;
-    var url;
-    return {
-        Page: function(info){
-            name = info.name;
-            description = info.description;
-            graphsPerRow = info.graphsPerRow;
-            graphsPerCol = info.graphsPerCol;
-            url = info.URLSocket;
-            for (var i=0; i<info.graphs.length; i++){
-                if (graphsList[info.graph[i].ID] === null){
-                    var graph;
-                    switch (info.graph[i].type) {
-                        case "LineChart": 
-                            graph = new LineChart(info.graph[i]);
-                            graphsList[info.graph[i].ID] = graph;
-                            break;
-                        case "BarChart": 
-                            graph = new BarChart(info.graph[i]);
-                            graphsList[info.graph[i].ID] = graph;
-                            break;
-                        case "MapChart": 
-                            graph = new MapChart(info.graph[i]);
-                            graphsList[info.graph[i].ID] = graph;
-                            break;
-                        case "Table": 
-                            graph = new Table(info.graph[i]);
-                            graphsList[info.graph[i].ID] = graph;
-                            break;
+    
+    function Page(info){
+        this.graphsList = [];
+        this.name;
+        this.description;
+        this.graphsPerRow;
+        this.graphsPerCol;
+        this.url;
+
+        if (info !== undefined) {
+            if (info.name !== undefined) {
+                this.name = info.name;
+            }
+            if (info.description !== undefined) {
+                this.description = info.description;
+            }
+            if (info.graphsPerRow !== undefined) {
+                this.graphsPerRow = info.graphsPerRow;
+            }
+            if (info.graphsPerCol !== undefined) {
+                this.graphsPerCol = info.graphsPerCol;
+            }
+            if (info.URLSocket !== undefined) {
+                this.url = info.URLSocket;
+            }
+            if (info.graphs !== undefined) {
+                for (var i=0; i<info.graphs.length; i++){
+                    if (this.graphsList[info.graph[i].ID] === null){
+                        var graph;
+                        switch (info.graph[i].type) {
+                            case 'LineChart': 
+                                graph = new LineChart(info.graph[i]);
+                                this.graphsList[info.graph[i].ID] = graph;
+                                break;
+                            case 'BarChart': 
+                                graph = new BarChart(info.graph[i]);
+                                this.graphsList[info.graph[i].ID] = graph;
+                                break;
+                            case 'MapChart': 
+                                graph = new MapChart(info.graph[i]);
+                                this.graphsList[info.graph[i].ID] = graph;
+                                break;
+                            case 'Table': 
+                                graph = new Table(info.graph[i]);
+                                this.graphsList[info.graph[i].ID] = graph;
+                                break;
+                        }
                     }
-                }
                 // error
+                }
             }
-        },
-        updatePage: function(info){
-            if (info.name !== null) {
-                name = info.name;
-            }
-            if (info.description !== null) {
-                description = info.description;
-            }
-            if (info.graphsPerRow !== null) {
-                graphsPerRow = info.graphsPerRow;
-            }
-            if (info.graphsPerCol !== null) {
-                graphsPerCol = info.graphsPerCol;
-            }
-            if (info.URLSocket !== null) {
-                url = info.URLSocket;
+        }
+    }
+
+    Page.prototype = {
+
+        updateParameters: function(info){
+            if (info !== undefined) {
+                if (info.name !== undefined) {
+                    this.name = info.name;
+                }
+                if (info.description !== undefined) {
+                    this.description = info.description;
+                }
+                if (info.graphsPerRow !== undefined) {
+                    this.graphsPerRow = info.graphsPerRow;
+                }
+                if (info.graphsPerCol !== undefined) {
+                    this.graphsPerCol = info.graphsPerCol;
+                }
+                if (info.URLSocket !== undefined) {
+                    this.url = info.URLSocket;
+                }
             }
         },
         addGraph: function(graph){
-            if (graphsList[graph.ID] === null) {
-                var newgraph;
-                switch (graph.type) {
-                    case "LineChart": 
-                        newgraph = new LineChart(graph);
-                        graphsList[graph.ID] = newgraph;
-                        break;
-                    case "BarChart": 
-                        newgraph = new BarChart(graph);
-                        graphsList[graph.ID] = newgraph;
-                        break;
-                    case "MapChart": 
-                        newgraph = new MapChart(graph);
-                        graphsList[graph.ID] = newgraph;
-                        break;
-                    case "Table": 
-                        newgraph = new Table(graph);
-                        graphsList[graph.ID] = newgraph;
-                        break;
+            if (graph !== undefined) {
+                if (this.graphsList[graph.ID] === null) {
+                    var newgraph;
+                    switch (graph.type) {
+                        case 'LineChart': 
+                            newgraph = new LineChart(graph);
+                            this.graphsList[graph.ID] = newgraph;
+                            break;
+                        case 'BarChart': 
+                            newgraph = new BarChart(graph);
+                            this.graphsList[graph.ID] = newgraph;
+                            break;
+                        case 'MapChart': 
+                            newgraph = new MapChart(graph);
+                            this.graphsList[graph.ID] = newgraph;
+                            break;
+                        case 'Table': 
+                            newgraph = new Table(graph);
+                            this.graphsList[graph.ID] = newgraph;
+                            break;
+                    }
                 }
             }
-            // error
+                            // error
         },
 
         getGraphsList: function(){
-            return graphsList;
+            return this.graphsList;
         },
         getName: function(){
-            return name;
+            return this.name;
         },
         getDescription: function(){
-            return description;
+            return this.description;
         },
         getGraphsPerRow: function(){
-            return  graphsPerRow;
+            return  this.graphsPerRow;
         },
         getGraphsPerCol: function(){
-            return  graphsPerCol;
+            return  this.graphsPerCol;
         },
         getUrl: function(){
-            return url;
+            return this.url;
         }
     };
 }]);

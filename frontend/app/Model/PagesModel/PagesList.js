@@ -16,28 +16,39 @@
 *
 */
 
-angular.module("services")
+angular.module('app')
 .factory('PagesList', ['Page', function(Page){
-	var pagesList = [];
-	return {
-		PagesList: function(info){
-			for (var i=0; i<info.data.length; i++){
-				if (pagesList[info.data[i].ID] === null) {
-					var page = new Page(info.data[i]);
-					pagesList[info.data[i].ID] = page;
+
+	function PagesList(info) {
+		this.pagesList = [];
+
+		if (info !== undefined) {
+			if (info.data !== undefined) {
+				for (var i=0; i<info.data.length; i++){
+					if (this.pagesList[info.data[i].ID] === null) {
+						var page = new Page(info.data[i]);
+						this.pagesList[info.data[i].ID] = page;
+					}
+					// error
 				}
-				// error
 			}
-		},
+		}
+	}
+	
+	PagesList.prototype = {
+
 		addPage: function(page){ // da cambiare DP
-			if (pagesList[page.ID] === null) {
+			if (this.pagesList[page.ID] === null) {
 				var newPage = new Page(page);
-				pagesList[page.ID] = newPage;
+				this.pagesList[page.ID] = newPage;
 			}
 			// error
 		},
+
 		getPagesList: function(){
-			return pagesList;
+			return this.pagesList;
 		}
 	};
+
+	return( PagesList );
 }]);

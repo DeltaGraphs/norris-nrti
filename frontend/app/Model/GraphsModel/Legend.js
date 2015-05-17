@@ -18,45 +18,53 @@
 *
 */
 
-angular.module("services")
+angular.module('app')
 .factory('Legend', function(){
-    var position = "right";
-    var fontColor = "#000";
-    var background = "#FFF";
 
-    return {
-        Legend : function(info){
-            if (info.position) {
-                position = info.position;
+    function Legend(info){
+        this.position = 'right';
+        this.fontColor = '#000';
+        this.background = '#FFF';
+
+        if (info !== undefined){
+            if (info.position !== undefined) {
+                this.position = info.position;
             }
-            if (info.fontColor) {
-                fontColor = info.fontColor;
+            if (info.fontColor !== undefined) {
+                this.fontColor = info.fontColor;
             }
-            if (info.background) {
-                background = info.background;
+            if (info.background !== undefined) {
+                this.background = info.background;
             }
-        },
+        }
+    }
+
+    Legend.prototype = {
 
         updateParameters : function(info){
-            if (info.position) {
-                position = info.position;
-            }
-            if (info.fontColor) {
-                fontColor = info.fontColor;
-            }
-            if (info.background) {
-                background = info.background;
+            if (info !== undefined) {
+                if (info.position !== undefined) {
+                    this.position = info.position;
+                }
+                if (info.fontColor !== undefined) {
+                    this.fontColor = info.fontColor;
+                }
+                if (info.background !== undefined) {
+                    this.background = info.background;
+                }
             }
         },
 
         getPosition : function(){
-            return position;
+            return this.position;
         },
         getFontColor : function(){
-            return fontColor;
+            return this.fontColor;
         },
         getBackground : function(){
-            return background;
+            return this.background;
         }
     };
+
+    return( Legend );
 });

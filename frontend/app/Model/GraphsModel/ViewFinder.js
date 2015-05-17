@@ -16,9 +16,11 @@
 *
 */
 
-angular.module("services")
+angular.module('app')
 .factory('ViewFinder', function(){
-    return {
-        ViewFinder : function(){}
-    };
+
+	function ViewFinder(){
+
+	}
+    return( ViewFinder );
 });

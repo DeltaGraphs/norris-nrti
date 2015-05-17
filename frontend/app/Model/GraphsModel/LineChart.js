@@ -24,52 +24,59 @@
 
 angular.module('services')
 .factory('LineChart', ['Graph', 'Axis', 'ViewFinder', 'LineChartFlow', function(Graph, Axis, ViewFinder, LineChartFlow){
-	var axisX = null;
-	var axisY = null;
-	var viewFinder = null;
-	var enabledViewFinder = false;
-	var background = '#FFF';
+	
+    function LineChart(info){
+        this.axisX = null;
+        this.axisY = null;
+        this.viewFinder = null;
+        this.enabledViewFinder = false;
+        this.background = '#FFF';
+    }
+
+    
 
 	function split(json) {
 		var graphJson = {};
-		if (json.title) {
-			graphJson.title = json.title;
-		}
-		if (json.height) {
-			graphJson.height = json.height;
-		}
-		if (json.width) {
-			graphJson.width = json.width;
-		}
-		if (json.enabledLegend !== null) {
-			graphJson.enabledLegend = json.enabledLegend;
-			if (graphJson.enabledLegend && json.legend) {
-				graphJson.legend = json.legend;
-			}
-		}
-		if (json.horizontalGrid !== null) {
-			graphJson.horizontalGrid = json.horizontalGrid;
-		}
-		if (json.verticalGrid !== null) {
-			graphJson.verticalGrid = json.verticalGrid;
-		}
+        if (json !== undefined) {
+    		if (json.title) {
+    			graphJson.title = json.title;
+    		}
+    		if (json.height) {
+    			graphJson.height = json.height;
+    		}
+    		if (json.width) {
+    			graphJson.width = json.width;
+    		}
+    		if (json.enabledLegend !== null) {
+    			graphJson.enabledLegend = json.enabledLegend;
+    			if (graphJson.enabledLegend && json.legend) {
+    				graphJson.legend = json.legend;
+    			}
+    		}
+    		if (json.horizontalGrid !== null) {
+    			graphJson.horizontalGrid = json.horizontalGrid;
+    		}
+    		if (json.verticalGrid !== null) {
+    			graphJson.verticalGrid = json.verticalGrid;
+    		}
 
-		var lineJson = {};
-		if (json.axisX) {
-			lineJson.axisX = json.axisX;
-		}
-		if (json.axisY) {
-			lineJson.axisY = json.axisY;
-		}
-		if (json.enabledViewFinder !== null) {
-			lineJson.enabledViewFinder = json.enabledViewFinder;
-			if (enabledViewFinder && json.viewFinder) {
-				lineJson.viewFinder = json.viewFinder;
-			}
-		}
-		if (json.background) {
-			lineJson.background = json.background;
-		}
+    		var lineJson = {};
+    		if (json.axisX) {
+    			lineJson.axisX = json.axisX;
+    		}
+    		if (json.axisY) {
+    			lineJson.axisY = json.axisY;
+    		}
+    		if (json.enabledViewFinder !== null) {
+    			lineJson.enabledViewFinder = json.enabledViewFinder;
+    			if (enabledViewFinder && json.viewFinder) {
+    				lineJson.viewFinder = json.viewFinder;
+    			}
+    		}
+    		if (json.background) {
+    			lineJson.background = json.background;
+    		}
+        }
 
 		return {
 			'graphJson' : graphJson,

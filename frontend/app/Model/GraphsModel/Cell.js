@@ -16,36 +16,44 @@
 *
 */
 
-angular.module("services")
+angular.module('app')
 .factory('Cell', function(){
-    var background = "#FFF";
-    var fontColor = "#000";
 
-    return {
-        Cell : function(info){
-            if (info.background) {
-                background = info.background;
+    function Cell(info){
+        this.background = '#FFF';
+        this.fontColor = '#000';
+
+        if (info !== undefined) {
+            if (info.background !== undefined) {
+                this.background = info.background;
             }
-            if (info.fontColor) {
-                fontColor = info.fontColor;
+            if (info.fontColor !== undefined) {
+                this.fontColor = info.fontColor;
             }
-        },
+        }
+    }
+
+    Cell.prototype = {
 
         updateParameters : function(info){
-            if (info.background) {
-                background = info.background;
-            }
-            if (info.fontColor) {
-                fontColor = info.fontColor;
+            if (info !== undefined) {
+                if (info.background) {
+                    this.background = info.background;
+                }
+                if (info.fontColor) {
+                    this.fontColor = info.fontColor;
+                }
             }
         },
 
         getBackground : function(){
-            return background;
+            return this.background;
         },
         getFontColor : function(){
-            return fontColor;
+            return this.fontColor;
         }
-        
+
     };
+
+    return( Cell );
 });

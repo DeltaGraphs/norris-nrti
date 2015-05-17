@@ -26,87 +26,96 @@
 *
 */
 
-angular.module("services")
+angular.module('app')
 .factory('Graph', ['Flow', 'Legend', function(Flow, Legend){
-	var flowList = [];
-	var title;
-	var height;
-	var width;
-	var legend = null;
-	var enabledLegend = false;
-	var horizontalGrid = true;
-	var verticalGrid = true;
-	var url;
 
-	var Graph = function(info) {
-		if (info.title) {
-			title = info.title;
-		}
-		if (info.url) {
-			url = info.url;
-		}
+	function Graph(info){
+		this.flowList = [];
+		this.title;
+		this.height;
+		this.width;
+		this.legend = null;
+		this.enabledLegend = false;
+		this.horizontalGrid = true;
+		this.verticalGrid = true;
+		this.url = null;
 
-	};
-
-	Graph.prototype.updateParameters = function(info) { //abstract
-		if (info.title) {
-			title = info.title;
-		}
-		if (info.height) {
-			height = info.height;
-		}
-		if (info.width) {
-			width = info.width;
-		}
-		if (info.enabledLegend !== null) {
-			enabledLegend = info.enabledLegend;
-			if (enabledLegend && info.legend) {
-				legend = new Legend(info.legend);
+		if (info !== undefined) {
+			if (info.title !== undefined) {
+				this.title = info.title;
+			}
+			if (info.url !== undefined) {
+				this.url = info.url;
 			}
 		}
-		if (info.horizontalGrid !== null) {
-			horizontalGrid = info.horizontalGrid;
+	}
+
+	Graph.prototype = {
+
+		updateParameters : function(info) { //abstract
+			if (info !== undefined) {
+				if (info.title !== undefined) {
+					this.title = info.title;
+				}
+				if (info.height !== undefined) {
+					this.height = info.height;
+				}
+				if (info.width !== undefined) {
+					this.width = info.width;
+				}
+				if (info.enabledLegend !== undefined && info.enabledLegend !== null) {
+					this.enabledLegend = info.enabledLegend;
+					if (this.enabledLegend && info.legend) {
+						this.legend = new Legend(info.legend);
+					}
+				}
+				if (info.horizontalGrid !== null) {
+					this.horizontalGrid = info.horizontalGrid;
+				}
+				if (info.verticalGrid !== null) {
+					this.verticalGrid = info.verticalGrid;
+				}
+			}
+		},
+		addFlow : function(id, flow) { //abstract
+			if (this.flowList[id] === null) {
+				this.flowList[id] = flow;
+			}
+			// error
+		},
+		deleteFlow : function(flowID) {
+			delete this.flowList[flowID];
+		},
+		
+		getTitle : function() {
+			return this.title;
+		},
+		getHeight : function() {
+			return this.height;
+		},
+		getWidth : function() {
+			return this.width;
+		},
+		getLegend : function() {
+			if (this.enabledLegend) {
+				return this.legend;
+			} else {
+				return null;
+			}
+		},
+		getHGrid : function() {
+			return this.horizontalGrid;
+		},
+		getVGrid : function() {
+			return this.verticalGrid;
+		},
+		getUrl : function() {
+			return this.url;
+		},
+		getFlowList : function() {
+			return this.flowList;
 		}
-		if (info.verticalGrid !== null) {
-			verticalGrid = info.verticalGrid;
-		}
 	};
-	Graph.prototype.addFlow = function(id, flow) { //abstract
-		if (flowList[id] === null) {
-			flowList[id] = flow;
-		}
-		// error
-	};
-	Graph.prototype.deleteFlow = function(flowID) {
-		delete flowList[flowID];
-	};
-	Graph.prototype.getTitle = function() {
-		return title;
-	};
-	Graph.prototype.getHeight = function() {
-		return height;
-	};
-	Graph.prototype.getWidth = function() {
-		return width;
-	};
-	Graph.prototype.getLegend = function() {
-		if (enabledLegend) {
-			return legend;
-		} else {
-			return null;
-		}
-	};
-	Graph.prototype.getHGrid = function() {
-		return horizontalGrid;
-	};
-	Graph.prototype.getVGrid = function() {
-		return verticalGrid;
-	};
-	Graph.prototype.getUrl = function() {
-		return url;
-	};
-	Graph.prototype.getFlowList = function() {
-		return flowList;
-	};
-	return Graph;
+	
+	return( Graph );
 }]);
