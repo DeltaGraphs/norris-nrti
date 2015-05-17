@@ -53,9 +53,17 @@ describe('Axis', function(){
 		});
 
 		it('constructor create the page with the correct name', function(){
-			//var Axis2 = new Axis();
-			Axis = Axis.Axis(json);
-			var axisName = Axis.getName();
+			var json2 = 	{
+				'name' : 'asse nella manica',
+				'color' : '#F0F',
+				'minValue' : 0,
+				'maxValue' : 100,
+				'ticks' : 10,
+				'scale' : 'logarithmic'
+			};
+			var Axis2 = new Axis(json2);
+			//Axis = Axis.Axis(json);
+			var axisName = Axis2.getName();
 			expect(axisName).toBeDefined();
 			expect(axisName).toEqual('asse nella manica');
 		});
