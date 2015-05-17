@@ -18,7 +18,7 @@
 describe('Axis', function(){
 	'use strict';
 
-	var Axis;
+	var axis;
 
 	beforeEach(module('app'));
 
@@ -46,26 +46,26 @@ describe('Axis', function(){
 		};
 
 		beforeEach(function(){
-			Axis = new Axis(json);
+			axis = new Axis(json);
 		});
 
 		it('constructor create the page with the correct name', function(){
-			expect(Axis.getName()).toBeEqual('asse nella manica');
+			expect(axis.getName()).toBeEqual('asse nella manica');
 		});
 		it('constructor create the page with the correct color', function(){
-			expect(Axis.getColor()).toBeEqual('#F0F');
+			expect(axis.getColor()).toBeEqual('#F0F');
 		});
 		it('constructor create the page with the correct minValue', function(){
-			expect(Axis.getMinValue()).toBeEqual(0);
+			expect(axis.getMinValue()).toBeEqual(0);
 		});
 		it('constructor create the page with the correct maxValue', function(){
-			expect(Axis.getMaxValue()).toBeEqual(100);
+			expect(axis.getMaxValue()).toBeEqual(100);
 		});
 		it('constructor create the page with the correct ticks', function(){
-			expect(Axis.getTicks()).toBeEqual(10);
+			expect(axis.getTicks()).toBeEqual(10);
 		});
 		it('constructor create the page with the correct scale', function(){
-			expect(Axis.getScale()).toBeEqual('logarithmic');
+			expect(axis.getScale()).toBeEqual('logarithmic');
 		});
 
 	});
@@ -82,26 +82,26 @@ describe('Axis', function(){
 		};
 
 		beforeEach(function(){
-			Axis.updateParameters(json);
+			axis.updateParameters(json);
 		});
 
 		it('axis updated with the correct name', function(){
-			expect(Axis.getName()).toBeEqual('asso');
+			expect(axis.getName()).toBeEqual('asso');
 		});
 		it('axis updated with the correct color', function(){
-			expect(Axis.getColor()).toBeEqual('#AFA');
+			expect(axis.getColor()).toBeEqual('#AFA');
 		});
 		it('axis updated with the correct minValue', function(){
-			expect(Axis.getMinValue()).toBeEqual(1);
+			expect(axis.getMinValue()).toBeEqual(1);
 		});
 		it('axis updated with the correct maxValue', function(){
-			expect(Axis.getMaxValue()).toBeEqual(101);
+			expect(axis.getMaxValue()).toBeEqual(101);
 		});
 		it('axis updated with the correct getTicks', function(){
-			expect(Axis.getTicks()).toBeEqual(10);
+			expect(axis.getTicks()).toBeEqual(10);
 		});
 		it('axis updated with the correct scale', function(){
-			expect(Axis.getScale()).toBeEqual('linear');
+			expect(axis.getScale()).toBeEqual('linear');
 		});
 
 	});
