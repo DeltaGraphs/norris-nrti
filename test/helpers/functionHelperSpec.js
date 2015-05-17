@@ -114,8 +114,48 @@ describe('FunctionHelper', function() {
         it('returns true for toFloat', function() {
             assert.strictEqual(FH.isValidFormat('toFloat'), true);
         });
-        it('returns false for toORARIO', function() {
-            assert.strictEqual(FH.isValidFormat('toORARIO'), false);
+        it('returns false for toHour', function() {
+            assert.strictEqual(FH.isValidFormat('toHour'), false);
+        });
+    });
+    describe('#isValidMarker', function() {
+        it('returns true for none', function() {
+            assert.strictEqual(FH.isValidMarker('none'),true);
+        });
+        it('returns true for square', function() {
+            assert.strictEqual(FH.isValidMarker('square'), true);
+        });
+        it('returns true for triangle', function() {
+            assert.strictEqual(FH.isValidMarker('triangle'), true);
+        });
+        it('returns true for circle', function() {
+            assert.strictEqual(FH.isValidMarker('circle'), true);
+        });
+        it('returns true for diamond', function() {
+            assert.strictEqual(FH.isValidMarker('diamond'), true);
+        });
+        it('returns false for line', function() {
+            assert.strictEqual(FH.isValidMarker('line'), false);
+        });
+    });
+    describe('#isValidInterpolation', function() {
+        it('returns true for linear', function() {
+            assert.strictEqual(FH.isValidInterpolation('linear'),true);
+        });
+        it('returns true for step', function() {
+            assert.strictEqual(FH.isValidInterpolation('step'), true);
+        });
+        it('returns true for basis', function() {
+            assert.strictEqual(FH.isValidInterpolation('basis'), true);
+        });
+        it('returns true for cardinal', function() {
+            assert.strictEqual(FH.isValidInterpolation('cardinal'), true);
+        });
+        it('returns true for monotone', function() {
+            assert.strictEqual(FH.isValidInterpolation('monotone'), true);
+        });
+        it('returns false for line', function() {
+            assert.strictEqual(FH.isValidInterpolation('line'), false);
         });
     });
 });

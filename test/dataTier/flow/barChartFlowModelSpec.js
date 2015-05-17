@@ -74,7 +74,7 @@ describe('BarChartFlowModel', function() {
         var flow1=new BarChartFlowModel({
             ID: 'flow1',
             indexKey: 'temperature',
-            valuekey: 'pressure',
+            valueKey: 'pressure',
             indexFormat: 'toInt',
             valueFormat: 'toFloat',
             flowColor: '#FFFFFF',
