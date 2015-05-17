@@ -41,46 +41,48 @@ angular.module('app')
         if (info.scale) {
             this.scale = info.scale;
         }
+
+        return this;
     };
 
     this.updateParameters = function(info){
         if (info.name) {
-            name = info.name;
+            Axis.name = info.name;
         }
         if (info.color) {
-            color = info.color;
+            Axis.color = info.color;
         }
         if (info.minValue) {
-            minValue = info.minValue;
+            Axis.minValue = info.minValue;
         }
         if (info.maxValue) {
-            maxValue = info.maxValue;
+            Axis.maxValue = info.maxValue;
         }
         if (info.ticks) {
-            ticks = info.ticks;
+            Axis.ticks = info.ticks;
         }
         if (info.scale) {
-            scale = info.scale;
+            Axis.scale = info.scale;
         }
     };
 
     this.getName = function(){
-        return name;
+        return Axis.name;
     };
     this.getColor = function(){
-        return color;
+        return Axis.color;
     };
     this.getMinValue = function(){
-        return minValue;
+        return Axis.minValue;
     };
     this.getMaxValue = function(){
-        return maxValue;
+        return Axis.maxValue;
     };
     this.getTicks = function(){
-        return ticks;
+        return Axis.ticks;
     };
     this.getScale = function(){
-        return scale;
+        return Axis.scale;
     };
 
     return Axis;
