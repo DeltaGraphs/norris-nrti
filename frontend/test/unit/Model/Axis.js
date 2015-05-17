@@ -20,13 +20,15 @@
 *
 */
 
-var Axis = require('../../../app/Model/GraphsModel/Axis.js');
-
 describe('Axis', function(){
 
-	beforeEach(module('app'));
+	var Axis;
 
-	var axis;
+	beforeEach(angular.mock.module('services'));
+
+	beforeEach(inject(function (_Axis_) {
+		Axis = _Axis_;
+	}));
 
 	describe('Constructor', function(){
 
@@ -40,26 +42,26 @@ describe('Axis', function(){
 		};
 
 		beforeEach(function(){
-			axis = new Axis(json);
+			Axis = new Axis(json);
 		});
 
 		it('constructor create the page with the correct name', function(){
-			expect(axis.getName()).toBeEqual('asse nella manica');
+			expect(Axis.getName()).toBeEqual('asse nella manica');
 		});
 		it('constructor create the page with the correct color', function(){
-			expect(axis.getColor()).toBeEqual('#F0F');
+			expect(Axis.getColor()).toBeEqual('#F0F');
 		});
 		it('constructor create the page with the correct minValue', function(){
-			expect(axis.getMinValue()).toBeEqual(0);
+			expect(Axis.getMinValue()).toBeEqual(0);
 		});
 		it('constructor create the page with the correct maxValue', function(){
-			expect(axis.getMaxValue()).toBeEqual(100);
+			expect(Axis.getMaxValue()).toBeEqual(100);
 		});
 		it('constructor create the page with the correct ticks', function(){
-			expect(axis.getTicks()).toBeEqual(10);
+			expect(Axis.getTicks()).toBeEqual(10);
 		});
 		it('constructor create the page with the correct scale', function(){
-			expect(axis.getScale()).toBeEqual('logarithmic');
+			expect(Axis.getScale()).toBeEqual('logarithmic');
 		});
 
 	});
@@ -76,26 +78,26 @@ describe('Axis', function(){
 		};
 
 		beforeEach(function(){
-			axis.updateParameters(json);
+			Axis.updateParameters(json);
 		});
 
-		it('axis updated with the correct name', function(){
-			expect(axis.getName()).toBeEqual('asso');
+		it('Axis updated with the correct name', function(){
+			expect(Axis.getName()).toBeEqual('asso');
 		});
-		it('axis updated with the correct color', function(){
-			expect(axis.getColor()).toBeEqual('#AFA');
+		it('Axis updated with the correct color', function(){
+			expect(Axis.getColor()).toBeEqual('#AFA');
 		});
-		it('axis updated with the correct minValue', function(){
-			expect(axis.getMinValue()).toBeEqual(1);
+		it('Axis updated with the correct minValue', function(){
+			expect(Axis.getMinValue()).toBeEqual(1);
 		});
-		it('axis updated with the correct maxValue', function(){
-			expect(axis.getMaxValue()).toBeEqual(101);
+		it('Axis updated with the correct maxValue', function(){
+			expect(Axis.getMaxValue()).toBeEqual(101);
 		});
-		it('axis updated with the correct getTicks', function(){
-			expect(axis.getTicks()).toBeEqual(10);
+		it('Axis updated with the correct getTicks', function(){
+			expect(Axis.getTicks()).toBeEqual(10);
 		});
-		it('axis updated with the correct scale', function(){
-			expect(axis.getScale()).toBeEqual('linear');
+		it('Axis updated with the correct scale', function(){
+			expect(Axis.getScale()).toBeEqual('linear');
 		});
 
 	});
