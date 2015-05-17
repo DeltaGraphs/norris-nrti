@@ -40,11 +40,11 @@ describe('Axis', function(){
 			'minValue' : 0,
 			'maxValue' : 100,
 			'ticks' : 10,
-			'scale' : 'logarithmic',
+			'scale' : 'logarithmic'
 		};
 
 		beforeEach(function(){
-			//Axis = new Axis();
+			Axis = new Axis();
 			Axis = Axis.Axis(json);
 		});
 
