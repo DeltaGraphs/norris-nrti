@@ -18,13 +18,14 @@
 describe('Axis', function(){
 	'use strict';
 
-	var axis;
+	var Axis;
 
-	beforeEach(module('app'));
+	beforeEach(angular.module('app'));
 
-	beforeEach(inject(function(_Axis_){
-		axis = _Axis_;
-	}));
+	beforeEach(inject(function() {
+    	var $injector = angular.injector(['app']);
+    	Axis = $injector.get('Axis');
+    }));
 
 	describe('Constructor', function(){
 
@@ -38,26 +39,26 @@ describe('Axis', function(){
 		};
 
 		beforeEach(function(){
-			axis = new Axis(json);
+			Axis = new Axis(json);
 		});
 
 		it('constructor create the page with the correct name', function(){
-			expect(axis.getName()).toBeEqual('asse nella manica');
+			expect(Axis.getName()).toBeEqual('asse nella manica');
 		});
 		it('constructor create the page with the correct color', function(){
-			expect(axis.getColor()).toBeEqual('#F0F');
+			expect(Axis.getColor()).toBeEqual('#F0F');
 		});
 		it('constructor create the page with the correct minValue', function(){
-			expect(axis.getMinValue()).toBeEqual(0);
+			expect(Axis.getMinValue()).toBeEqual(0);
 		});
 		it('constructor create the page with the correct maxValue', function(){
-			expect(axis.getMaxValue()).toBeEqual(100);
+			expect(Axis.getMaxValue()).toBeEqual(100);
 		});
 		it('constructor create the page with the correct ticks', function(){
-			expect(axis.getTicks()).toBeEqual(10);
+			expect(Axis.getTicks()).toBeEqual(10);
 		});
 		it('constructor create the page with the correct scale', function(){
-			expect(axis.getScale()).toBeEqual('logarithmic');
+			expect(Axis.getScale()).toBeEqual('logarithmic');
 		});
 
 	});
