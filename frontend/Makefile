@@ -1,4 +1,4 @@
-PROJECT= "Scaffold: "
+PROJECT= "Frontend: "
 REPORTS= ../gh-pages/reports-frontend
 ROOT= $(shell pwd)
 
@@ -12,7 +12,7 @@ CR= ./node_modules/.bin/cr
 CR_OPTS= 
 
 PLATO= ./node_modules/.bin/plato
-PLATO_OPTS= --title Scaffold
+PLATO_OPTS= --title Frontend
 
 KARMA= karma
 
