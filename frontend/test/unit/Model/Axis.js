@@ -1,28 +1,31 @@
+/*jshint node: true */
+'use strict';
+
 /*
-* Name :  PagesList.js
+* Name :  Axis.js
 * Module : UnitTest
 * Location : /frontend/test/unit/Model
 *
 * History :
 * Version       Date        Programmer                  Description
 * =======================================================================================================================
-* 0.1.1			2015-05-15	Francesco Rossetto			Fix test of Model::axis
+* 0.1.1			2015-05-15	Francesco Rossetto			Fix test of Model::Axis
 *
-* 0.1.1			2015-05-15	Maria Giovanna Chinellato	Fix test of Model::axis
+* 0.1.1			2015-05-15	Maria Giovanna Chinellato	Fix test of Model::Axis
 *
-* 0.1.0			2015-05-15	Francesco Rossetto			Add test of Model::axis, describe all method
+* 0.1.0			2015-05-15	Francesco Rossetto			Add test of Model::Axis, describe all method
 *
 * 0.0.1			2015-05-15	Francesco Rossetto			Initial code
 * =======================================================================================================================
 *
 */
 
+var Axis = require('../../../app/Model/GraphsModel/Axis.js');
+
 describe('Axis', function(){
-	'use strict';
 
 	beforeEach(module('app'));
 
-	var Axis = require('../../../app/Model/GraphsModel/Axis.js');
 	var axis;
 
 	describe('Constructor', function(){
