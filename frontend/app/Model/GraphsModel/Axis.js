@@ -55,7 +55,7 @@ angular.module('app')
 
     Axis.prototype = {
         updateParameters : function(info){
-            if (info !== undefined)
+            if (info !== undefined) {
                 if (info.name !== undefined) {
                     this.name = info.name;
                 }
