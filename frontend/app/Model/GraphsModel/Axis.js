@@ -25,74 +25,74 @@ angular.module('app')
     var Axis = function(){
 
         // data member
-        name : null,
-        color : 'FFF',
-        minValue : null,
-        maxValue : null,
-        ticks : 10,
-        scale : 'linear',
+        var name = null;
+        var color = '#FFF';
+        var minValue = null;
+        var maxValue = null;
+        var ticks = 10;
+        var scale = 'linear';
 
         // methods
-        Axis : function(info){
+        Axis = function(info){
             if (info.name !== undefined) {
-                Axis.name = info.name;
+                name = info.name;
             }
             if (info.color !== undefined) {
-                Axis.color = info.color;
+                color = info.color;
             }
             if (info.minValue !== undefined) {
-                Axis.minValue = info.minValue;
+                minValue = info.minValue;
             }
             if (info.maxValue !== undefined) {
-                Axis.maxValue = info.maxValue;
+                maxValue = info.maxValue;
             }
             if (info.ticks !== undefined) {
-                Axis.ticks = info.ticks;
+                ticks = info.ticks;
             }
             if (info.scale !== undefined) {
-                Axis.scale = info.scale;
+                scale = info.scale;
             }
-        },
+        };
 
-        updateParameters : function(info){
+        this.updateParameters = function(info){
             if (info.name !== undefined) {
-                Axis.name = info.name;
+                name = info.name;
             }
             if (info.color !== undefined) {
-                Axis.color = info.color;
+                color = info.color;
             }
             if (info.minValue !== undefined) {
-                Axis.minValue = info.minValue;
+                minValue = info.minValue;
             }
             if (info.maxValue !== undefined) {
-                Axis.maxValue = info.maxValue;
+                maxValue = info.maxValue;
             }
             if (info.ticks !== undefined) {
-                Axis.ticks = info.ticks;
+                ticks = info.ticks;
             }
             if (info.scale !== undefined) {
-                Axis.scale = info.scale;
+                scale = info.scale;
             }
-        },
+        };
 
-        getName : function(){
-            return Axis.name;
-        },
-        getColor : function(){
-            return Axis.color;
-        },
-        getMinValue : function(){
-            return Axis.minValue;
-        },
-        getMaxValue : function(){
-            return Axis.maxValue;
-        },
-        getTicks : function(){
-            return Axis.ticks;
-        },
-        getScale : function(){
-            return Axis.scale;
-        }
+        this.getName = function(){
+            return name;
+        };
+        this.getColor = function(){
+            return color;
+        };
+        this.getMinValue = function(){
+            return minValue;
+        };
+        this.getMaxValue = function(){
+            return maxValue;
+        };
+        this.getTicks = function(){
+            return ticks;
+        };
+        this.getScale = function(){
+            return scale;
+        };
     };
 
     return Axis;
