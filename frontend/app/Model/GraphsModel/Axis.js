@@ -26,7 +26,7 @@ angular.module('app')
 
         // data member
         name : null,
-        color : '#FFF',
+        color : 'FFF',
         minValue : null,
         maxValue : null,
         ticks : 10,
