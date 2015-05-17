@@ -24,11 +24,11 @@ angular.module('app')
 .factory('Axis', function(){
     var Axis = function(){
         var name;
-        var color = "#FFF";
+        var color = '#FFF';
         var minValue;
         var maxValue;
         var ticks = 10;
-        var scale = "linear";
+        var scale = 'linear';
 
         return {
             name : name,
@@ -37,7 +37,7 @@ angular.module('app')
             maxValue : maxValue,
             ticks : ticks,
             scale : scale
-        }
+        };
     };
 
     this.Axis = function(info){
