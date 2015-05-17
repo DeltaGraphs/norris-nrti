@@ -52,7 +52,7 @@ describe('Axis', function(){
 		});
 
 		it('constructor create the page with the correct name', function(){
-			var axisName = Axis.prototype.getName();
+			var axisName = Axis.getName();
 			expect(axisName).toBeDefined();
 			expect(axisName).toEqual('asse nella manica');
 		});
