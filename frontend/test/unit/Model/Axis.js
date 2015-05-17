@@ -44,7 +44,7 @@ describe('Axis', function(){
 		};
 
 		beforeEach(function(){
-			Axis = new Axis(json);
+			//Axis = new Axis(json);
 		});
 
 		it('instance defined', function(){
@@ -52,7 +52,6 @@ describe('Axis', function(){
 		});
 
 		/*it('constructor create the page with the correct name', function(){
-			expect(Axis.getName()).
 			expect(Axis.getName()).toBeEqual('asse nella manica');
 		});
 		it('constructor create the page with the correct color', function(){
