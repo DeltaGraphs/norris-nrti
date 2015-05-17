@@ -24,7 +24,7 @@
 
 describe('Axis', function(){
 
-	var Axis;
+	var Axis = null;
 
 	beforeEach(angular.mock.module('app'));
 

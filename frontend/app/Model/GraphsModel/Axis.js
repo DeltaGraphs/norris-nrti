@@ -34,45 +34,45 @@ angular.module('app')
 
         // methods
         Axis = function(info){
-            if (info.name !== undefined) {
+            //if (info.name !== undefined) {
                 name = info.name;
-            }
-            if (info.color !== undefined) {
+            //}
+            //if (info.color !== undefined) {
                 color = info.color;
-            }
-            if (info.minValue !== undefined) {
+            //}
+            //if (info.minValue !== undefined) {
                 minValue = info.minValue;
-            }
-            if (info.maxValue !== undefined) {
+            //}
+            //if (info.maxValue !== undefined) {
                 maxValue = info.maxValue;
-            }
-            if (info.ticks !== undefined) {
+            //}
+            //if (info.ticks !== undefined) {
                 ticks = info.ticks;
-            }
-            if (info.scale !== undefined) {
+            //}
+            //if (info.scale !== undefined) {
                 scale = info.scale;
-            }
+            //}
         };
 
         this.updateParameters = function(info){
-            if (info.name !== undefined) {
+            //if (info.name !== undefined) {
                 name = info.name;
-            }
-            if (info.color !== undefined) {
+            //}
+            //if (info.color !== undefined) {
                 color = info.color;
-            }
-            if (info.minValue !== undefined) {
+            //}
+            //if (info.minValue !== undefined) {
                 minValue = info.minValue;
-            }
-            if (info.maxValue !== undefined) {
+            //}
+            //if (info.maxValue !== undefined) {
                 maxValue = info.maxValue;
-            }
-            if (info.ticks !== undefined) {
+            //}
+            //if (info.ticks !== undefined) {
                 ticks = info.ticks;
-            }
-            if (info.scale !== undefined) {
+            //}
+            //if (info.scale !== undefined) {
                 scale = info.scale;
-            }
+            //}
         };
 
         this.getName = function(){
