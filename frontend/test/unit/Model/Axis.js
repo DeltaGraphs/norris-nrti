@@ -28,9 +28,9 @@ describe('Axis', function(){
 
 	beforeEach(angular.mock.module('app'));
 
-	/*beforeEach(inject(function (_Axis_) {
+	beforeEach(inject(function (_Axis_) {
 		Axis = _Axis_;
-	}));*/
+	}));
 
 	describe('Constructor', function(){
 
