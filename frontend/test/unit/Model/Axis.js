@@ -23,6 +23,7 @@ describe('Axis', function(){
 	beforeEach(module('app'));
 
 	var Axis = require('../../../app/Model/GraphsModel/Axis.js');
+	var axis;
 
 	describe('Constructor', function(){
 
@@ -36,7 +37,7 @@ describe('Axis', function(){
 		};
 
 		beforeEach(function(){
-			var axis = new Axis(json);
+			axis = new Axis(json);
 		});
 
 		it('constructor create the page with the correct name', function(){
