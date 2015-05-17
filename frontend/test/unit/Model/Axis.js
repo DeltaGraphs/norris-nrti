@@ -42,11 +42,7 @@ describe('Axis', function(){
 			'ticks' : 10,
 			'scale' : 'logarithmic'
 		};
-
-		beforeEach(function(){
-			Axis = new Axis(json);
-			//Axis = Axis.Axis(json);
-		});
+		Axis = new Axis(json);
 
 		it('instance defined', function(){
 			expect(Axis).toBeDefined();
