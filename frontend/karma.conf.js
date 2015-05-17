@@ -51,7 +51,6 @@ module.exports = function(config) {
 			'app/Controllers/*.js': ['coverage']
 		},
 
-
 		// test results reporter to use
 		// possible values: 'dots', 'progress'
 		// available reporters: https://npmjs.org/browse/keyword/karma-reporter
@@ -66,22 +65,26 @@ module.exports = function(config) {
 			reporters:[
 		        { 
 		        	type: 'text', 
-		        	dir: '../gh-pages/reports-frontend/coverage', 
+		        	dir: '../gh-pages/reports-frontend/coverage/', 
 		        	file: 'text.txt' 
 		        },
 		        { 
 		        	type: 'text-summary', 
-		        	dir: '../gh-pages/reports-frontend/coverage', 
+		        	dir: '../gh-pages/reports-frontend/coverage/', 
 		        	file: 'text-summary.txt' 
 		        },
 				{
 					type: 'lcov',
-					dir: '../gh-pages/reports-frontend/coverage',
+					dir: '../gh-pages/reports-frontend/coverage/',
 					suite: 'frontend'
 				}
 			],
 		},
 
+		plugins: [
+		    'karma-coverage',
+		]
+		
 		// web server port
 		port: 15077,
 
