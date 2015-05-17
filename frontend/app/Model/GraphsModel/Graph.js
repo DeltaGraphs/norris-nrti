@@ -79,7 +79,7 @@ angular.module('app')
 			return this;
 		},
 		addFlow : function(id, flow) { //abstract
-			if (this.flowList[id] === null) {
+			if (this.flowList[id] === undefined) {
 				this.flowList[id] = flow;
 				console.log('addFlow');
 			}
