@@ -52,18 +52,8 @@ describe('Axis', function(){
 			expect(Axis).toBeDefined();
 		});
 
-		it('constructor create the page with the correct name', function(){
-			var json2 = 	{
-				'name' : 'asse nella manica',
-				'color' : '#F0F',
-				'minValue' : 0,
-				'maxValue' : 100,
-				'ticks' : 10,
-				'scale' : 'logarithmic'
-			};
-			var Axis2 = new Axis(json2);
-			//Axis = Axis.Axis(json);
-			var axisName = Axis2.getName();
+		it('constructor create the page with the correct name', function(){	
+			var axisName = Axis.getName();
 			expect(axisName).toBeDefined();
 			expect(axisName).toEqual('asse nella manica');
 		});
