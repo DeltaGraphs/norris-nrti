@@ -44,7 +44,8 @@ describe('Axis', function(){
 		};
 
 		beforeEach(function(){
-			Axis = new Axis(json);
+			Axis = new Axis();
+			Axis = Axis.Axis();
 		});
 
 		it('instance defined', function(){

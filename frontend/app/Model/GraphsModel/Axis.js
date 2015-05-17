@@ -33,7 +33,7 @@ angular.module('app')
         var scale = 'linear';
 
         // methods
-        Axis = function(info){
+        this.Axis = function(info){
             //if (info.name !== undefined) {
                 name = info.name;
             //}
@@ -54,7 +54,7 @@ angular.module('app')
             //}
         };
 
-        Axis.prototype.updateParameters = function(info){
+        this.updateParameters = function(info){
             //if (info.name !== undefined) {
                 name = info.name;
             //}
@@ -75,22 +75,22 @@ angular.module('app')
             //}
         };
 
-        Axis.prototype.getName = function(){
+        this.getName = function(){
             return name;
         };
-        Axis.prototype.getColor = function(){
+        this.getColor = function(){
             return color;
         };
-        Axis.prototype.getMinValue = function(){
+        this.getMinValue = function(){
             return minValue;
         };
-        Axis.prototype.getMaxValue = function(){
+        this.getMaxValue = function(){
             return maxValue;
         };
-        Axis.prototype.getTicks = function(){
+        this.getTicks = function(){
             return ticks;
         };
-        Axis.prototype.getScale = function(){
+        this.getScale = function(){
             return scale;
         };
     };
