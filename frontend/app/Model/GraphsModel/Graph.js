@@ -29,7 +29,7 @@
 angular.module('app')
 .factory('Graph', ['Flow', 'Legend', function(Flow, Legend){
 
-	var flowList = {};
+	var flowList = [];
 	var title = null;
 	var height = null;
 	var width = null;
@@ -40,7 +40,7 @@ angular.module('app')
 	var url = null;
 
 	function Graph(info){
-
+		//flowList.id = 'banana';
 		if (info !== undefined) {
 			if (info.title !== undefined) {
 				title = info.title;
@@ -80,8 +80,8 @@ angular.module('app')
 			return this;
 		},
 		addFlow : function(id, flow) { //abstract
-			if (flowList[id] === undefined) {
-				flowList[id] = flow;
+			if (flowList.id === undefined) {
+				flowList.id = flow;
 				console.log(flowList.length);
 			}
 			// error
