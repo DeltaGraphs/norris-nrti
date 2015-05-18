@@ -130,9 +130,7 @@ angular.module('services')
 			var fJson = json.flowJson;
 			var bfJson = json.barFlowJson;
 
-			if (Object.keys(fJson).length !== 0) {
-				this.parent.updateParameters.call(this, fJson);
-			}
+			this.parent.updateParameters.call(this, fJson);
 
 			if (Object.keys(bfJson).length !== 0) {
 				if (bfJson.flowColor !== undefined) {

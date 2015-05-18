@@ -33,6 +33,10 @@ angular.module('services')
 	var areaColor = '#FFF';
 	var maxItem = 20;
 
+	LineChartFlow.prototype = Object.create(Flow.prototype);
+	LineChartFlow.prototype.constructor = LineChartFlow;
+	LineChartFlow.prototype.parent = Flow.prototype;
+
 	function split(json) {
         var flowJson = {};
         if (json.dataFormat !== undefined) {
@@ -105,11 +109,7 @@ angular.module('services')
 
 	}
 
-	LineChartFlow.prototype = Object.create(Flow.prototype);
-	LineChartFlow.prototype.constructor = LineChartFlow;
-	LineChartFlow.prototype.parent = Flow.prototype;
-
-	LineChartFlow.prototype = {
+	/*LineChartFlow.prototype = {
 		updateParameters : function(info) { //abstract
 			if (info !== undefined) {
 		    	var json = split(info);
@@ -182,6 +182,79 @@ angular.module('services')
 		getMaxItem : function() {
 			return maxItem;
 		}
+	};*/
+
+	LineChartFlow.prototype.updateParameters = function(info) { //abstract
+		if (info !== undefined) {
+	    	var json = split(info);
+			var fJson = json.flowJson;
+			var lfJson = json.lineFlowJson;
+
+			if (Object.keys(fJson).length !== 0) {
+				this.parent.updateParameters.call(this, fJson);
+			}
+
+			if (Object.keys(lfJson).length !== 0) {
+				if (lfJson.flowColor !== undefined) {
+		            flowColor = lfJson.flowColor;
+		        }
+		        if (lfJson.legendOnPoint !== undefined) {
+		            legendOnPoint = lfJson.legendOnPoint;
+		        }
+		        if (lfJson.marker !== undefined) {
+		            marker = lfJson.marker;
+		        }
+		        if (lfJson.interpolation !== undefined) {
+		            interpolation = lfJson.interpolation;
+		        }
+		        if (lfJson.areaColor !== undefined) {
+		            areaColor = lfJson.areaColor;
+		        }
+		        if (lfJson.maxItem !== undefined) {
+		            maxItem = lfJson.maxItem;
+		        }
+		    }
+		}
+	};
+
+	LineChartFlow.prototype.initializeData = function(newData) {
+		for (var i=0; i<newData.records.length; i++) {
+			data.push(newData.records[i]);
+		}
+		return this;
+	};
+	LineChartFlow.prototype.inPlaceUpdate = function(newData) {
+		var filteredData = data.filter(function(newData) {return newData.NorrisRecordID === data.NorrisRecordID;});
+	    if(filteredData.length > 0) {
+	    	filteredData[0] = { 'NorrisRecordID' : newData.NorrisRecordID, 'value' : newData.value}; //funziona in stile riferimenti??
+		}
+		return this;
+    };
+	LineChartFlow.prototype.streamUpdate = function(newData) {
+		this.prototype.initializeData(newData);
+		return this;
+    };
+
+	LineChartFlow.prototype.getData = function() {
+		return data;
+	};
+	LineChartFlow.prototype.getFlowColor = function() {
+		return flowColor;
+	};
+	LineChartFlow.prototype.getLegendOnPoint = function() {
+		return legendOnPoint;
+	};
+	LineChartFlow.prototype.getMarker = function() {
+		return marker;
+	};
+	LineChartFlow.prototype.getInterpolation = function() {
+		return interpolation;
+	};
+	LineChartFlow.prototype.getAreaColor = function() {
+		return areaColor;
+	};
+	LineChartFlow.prototype.getMaxItem = function() {
+		return maxItem;
 	};
 
 	return( LineChartFlow );

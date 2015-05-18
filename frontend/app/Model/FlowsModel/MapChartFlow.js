@@ -29,6 +29,10 @@ angular.module('services')
 	var maxItem = 100;
 	var trace = null;
 
+	MapChartFlow.prototype = Object.create(Flow.prototype);
+	MapChartFlow.prototype.constructor = MapChartFlow;
+	MapChartFlow.prototype.parent = Flow.prototype;
+
 	function split(json) {
         var flowJson = {};
         if (json.dataFormat !== undefined) {
@@ -86,11 +90,7 @@ angular.module('services')
         }
 	}
 
-	MapChartFlow.prototype = Object.create(Flow.prototype);
-	MapChartFlow.prototype.constructor = MapChartFlow;
-	MapChartFlow.prototype.parent = Flow.prototype;
-
-	MapChartFlow.prototype = {
+	/*MapChartFlow.prototype = {
 
 		updateParameters : function(info) { //abstract
 			if (info !== undefined) {
@@ -162,8 +162,80 @@ angular.module('services')
 		},
 		getTrace : function() {
 			return trace;
-		},
+		}
 
+	};*/
+
+	MapChartFlow.prototype.updateParameters = function(info) { //abstract
+		if (info !== undefined) {
+	    	var json = split(info);
+			var fJson = json.flowJson;
+			var mfJson = json.mapFlowJson;
+
+			if (Object.keys(fJson).length !== 0) {
+				this.parent.updateParameters.call(this, fJson);
+			}
+
+			if (Object.keys(mfJson).length !== 0) {
+				if (mfJson.flowColor !== undefined) {
+		            flowColor = mfJson.flowColor;
+		        }
+		        if (mfJson.legendOnPoint !== undefined) {
+		            legendOnPoint = mfJson.legendOnPoint;
+		        }
+		        if (mfJson.marker !== undefined) {
+		            marker = mfJson.marker;
+		        }
+		        if (mfJson.maxItem !== undefined) {
+		            maxItem = mfJson.maxItem;
+		        }
+		    }
+		}
+		return this;
+	};
+
+	MapChartFlow.prototype.initializeData = function(newData) {
+		for (var i=0; i<newData.records.length; i++) {
+			data.push(newData.records[i]);
+		}
+		return this;
+	};
+	MapChartFlow.prototype.inPlaceUpdate = function(newData) {
+		var filteredData = data.filter(function(newData) {return newData.NorrisRecordID === data.NorrisRecordID;});
+	    if(filteredData.length > 0) {
+	    	filteredData[0] = { 'NorrisRecordID' : newData.NorrisRecordID, 'value' : newData.value}; //funziona in stile riferimenti??
+		}
+		return this;
+    };
+	MapChartFlow.prototype.streamUpdate = function(newData) {
+		this.prototype.initializeData(newData);
+		return this;
+    };
+    MapChartFlow.prototype.deleteData = function(delData) {
+		var filteredData = data.filter(function(delData) {return delData.NorrisRecordID === data.NorrisRecordID;});
+	    if(filteredData.length > 0) {
+	    	filteredData.splice(0,1);
+		}
+		return this;
+    };
+
+	MapChartFlow.prototype.getData = function() {
+		return data;
+	};
+	MapChartFlow.prototype.getFlowColor = function() {
+		return flowColor;
+	};
+	MapChartFlow.prototype.getLegendOnPoint = function() {
+		return legendOnPoint;
+	};
+	MapChartFlow.prototype.getMarker = function() {
+		return marker;
+	};
+	MapChartFlow.prototype.getMaxItem = function() {
+		return maxItem;
+	};
+	MapChartFlow.prototype.getTrace = function() {
+		return trace;
 	};
 
 	return MapChartFlow;

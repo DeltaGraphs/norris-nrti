@@ -60,7 +60,7 @@ describe('BarChartFlow', function(){
 			'dataFormat' : 'int',
 			'name' : 'flusso1',
 			'flowColor' : '#F2F',
-			'legendOnPoin' : 'flusso1'
+			'legendOnPoint' : 'flusso1'
 		};
 		//var f = {
 		//	'dataFormat' : 'int',
@@ -127,7 +127,7 @@ describe('BarChartFlow', function(){
 			'dataFormat' : 'String',
 			'name' : 'flusso2',
 			'flowColor' : '#F1F',
-			'legendOnPoin' : 'flusso2'
+			'legendOnPoint' : 'flusso2'
 		};
 		//var f = {
 		//	'dataFormat' : 'String',

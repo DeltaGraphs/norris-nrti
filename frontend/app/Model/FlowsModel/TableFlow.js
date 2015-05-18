@@ -26,6 +26,10 @@ angular.module('services')
 	var data = [];
 	var maxItem = 100;
 
+	TableFlow.prototype = Object.create(Flow.prototype);
+	TableFlow.prototype.constructor = TableFlow;
+	TableFlow.prototype.parent = Flow.prototype;
+
 	function split(json) {
         var flowJson = {};
         if (json.dataFormat !== undefined) {
@@ -65,11 +69,7 @@ angular.module('services')
 
 	}
 
-	TableFlow.prototype = Object.create(Flow.prototype);
-	TableFlow.prototype.constructor = TableFlow;
-	TableFlow.prototype.parent = Flow.prototype;
-
-	TableFlow.prototype = {
+	/*TableFlow.prototype = {
 		updateParameters : function(info) { // abstract
 			if (info !== undefined) {
 		    	var json = split(info);
@@ -111,6 +111,48 @@ angular.module('services')
 		getMaxItem : function() {
 			return maxItem;
 		}
+	};*/
+
+	TableFlow.prototype.updateParameters = function(info) { // abstract
+		if (info !== undefined) {
+	    	var json = split(info);
+			var fJson = json.flowJson;
+			var mfJson = json.mapFlowJson;
+
+			if (Object.keys(fJson).length !== 0) {
+				this.parent.updateParameters.call(this, fJson);
+			}
+
+			if (Object.keys(mfJson).length !== 0) {
+		        if (mfJson.maxItem) {
+		            maxItem = mfJson.maxItem;
+		        }
+		    }
+		}
+	};
+
+	TableFlow.prototype.initializeData = function(newData) {
+		for (var i=0; i<newData.records.length; i++) {
+			data.push(newData.records[i]);
+		}
+		return this;
+	};
+	TableFlow.prototype.inPlaceUpdate = function(newData) {
+		var filteredData = data.filter(function(newData) {return newData.NorrisRecordID === data.NorrisRecordID;});
+	    if(filteredData.length > 0) {
+	    	filteredData[0] = { 'NorrisRecordID' : newData.NorrisRecordID, 'value' : newData.value}; //funziona in stile riferimenti??
+		}
+		return this;
+    };
+    TableFlow.prototype.streamUpdate = function(newData) {
+		this.prototype.initializeData(newData);
+    };
+
+	TableFlow.prototype.getData = function() {
+		return data;
+	};
+	TableFlow.prototype.getMaxItem = function() {
+		return maxItem;
 	};
 
 	return( TableFlow );
