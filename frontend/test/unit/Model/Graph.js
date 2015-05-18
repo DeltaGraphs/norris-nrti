@@ -106,7 +106,7 @@ describe('Graph', function(){
 			Graph = null;
 		});
 
-		spyOn(Legend, 'Legend').and.returnValue({});
+		//spyOn(Legend, 'Legend').and.returnValue({});
 
 		it('graph updated with the correct title', function(){
 			expect(Graph.getTitle()).toEqual('graficoNuovo');
@@ -139,11 +139,11 @@ describe('Graph', function(){
 			'name' : 'sonda 1'
 		};
 
-		spyOn(Flow, 'Flow').and.returnValue({});
+		//spyOn(Flow, 'Flow').and.returnValue({});
 
 		beforeEach(function(){
 			Graph = new Graph();
-			Graph = Graph.addflow(json.ID, new Flow(json));
+			Graph = Graph.addflow(json.ID, {});
 		});
 
 		afterEach(function(){
@@ -165,7 +165,7 @@ describe('Graph', function(){
 
 		beforeEach(function(){
 			Graph = new Graph();
-			Graph = Graph.addflow(json.ID, new Flow(json));
+			Graph = Graph.addflow(json.ID, {});
 			Graph = Graph.deleteFlow('flusso1');
 		});
 
