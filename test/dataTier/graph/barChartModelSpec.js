@@ -290,7 +290,7 @@ describe('barChartModel', function() {
         it('returns true if passed valid parameters', function() {
             var graph1=new BarChartModel({ID: 'graph1'});
             graph1._flows[0] = new BarChartFlowModel({ID: 'flow1'});
-            console.dir('GRAPH1 ', graph1);
+            console.dir(graph1);
             graph1._flows[0]._records[0] = {temperature: 3};
             assert.strictEqual(graph1.updateRecord('flow4', 0, {temperature: 2}), true);
         });
