@@ -254,6 +254,33 @@ describe('lineChartModel', function() {
     LCFMMock.prototype.getProperties = function() {
     	return {ID: this._ID};
     };
+
+    describe('#getData', function() {
+        var flow1 = new LineChartFlowModel({ID: 'flow1'});
+        var flow2 = new LineChartFlowModel({ID: 'flow2'});
+        it('returns empty json if it has no flows', function() {
+            var graph1=new LineChartModel({ID: 'graph1'});
+            assert.strictEqual(graph1.getData().length, 0);
+        });
+       
+        it('returns json with one graph', function() {
+            var graph1=new LineChartModel({ID: 'graph1'});
+            graph1.addFlow(flow1);
+            var data=graph1.getData();
+            assert.strictEqual(data.length, 1);
+            assert.strictEqual(data[0].properties.ID, 'flow1');
+        });
+        it('returns json with two graphs', function() {
+            var graph1=new LineChartModel({ID: 'graph1'});
+            graph1.addFlow(flow1);
+            graph1.addFlow(flow2);
+            var data=graph1.getData();
+            assert.strictEqual(data.length, 2);
+            assert.strictEqual(data[0].properties.ID, 'flow1');
+            assert.strictEqual(data[1].properties.ID, 'flow1');
+        });
+    });    
+
     describe('#deleteFlow', function() {
     	it('deletes the flow with the given ID', function() {
     		var graph1=new LineChartModel({ID: 'graph1'});
@@ -316,7 +343,7 @@ describe('lineChartModel', function() {
         it('returns true if passed valid parameters', function() {
             var graph1=new LineChartModel({ID: 'graph1'});
             graph1._flows[0] = new LineChartFlowModel({ID: 'flow1'});
-            assert.strictEqual(graph1.addRecord('flow1', {temperature: 2}), true);
+            assert.strictEqual(graph1.addRecord('flow1', {temperature: 2}).indexOf('flow1'), 0);
         });
     });
 });

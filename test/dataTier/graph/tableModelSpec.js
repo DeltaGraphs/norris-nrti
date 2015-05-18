@@ -203,6 +203,33 @@ describe('tableModel', function() {
         assert.strictEqual(graph1._addRowOn, 'bottom');
         });
     });
+
+    describe('#getData', function() {
+        var flow1 = new TableFlowModel({ID: 'flow1'});
+        var flow2 = new TableFlowModel({ID: 'flow2'});
+        it('returns empty json if it has no flows', function() {
+            var graph1=new TableModel({ID: 'graph1'});
+            assert.strictEqual(graph1.getData().length, 0);
+        });
+       
+        it('returns json with one graph', function() {
+            var graph1=new TableModel({ID: 'graph1'});
+            graph1.addFlow(flow1);
+            var data=graph1.getData();
+            assert.strictEqual(data.length, 1);
+            assert.strictEqual(data[0].properties.ID, 'flow1');
+        });
+        it('returns json with two graphs', function() {
+            var graph1=new TableModel({ID: 'graph1'});
+            graph1.addFlow(flow1);
+            graph1.addFlow(flow2);
+            var data=graph1.getData();
+            assert.strictEqual(data.length, 2);
+            assert.strictEqual(data[0].properties.ID, 'flow1');
+            assert.strictEqual(data[1].properties.ID, 'flow1');
+        });
+    });    
+
     describe('#addFlow', function() {
         var flow1 = new TableFlowModel();
         it('adds flow to the flows array', function() {
