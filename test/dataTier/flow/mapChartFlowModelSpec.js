@@ -91,7 +91,7 @@ describe('MapChartFlowModel', function() {
 	it('set param values to properties', function() {
         var marker={
             type: 'shape',
-            shape: 'images/triangle'
+            shape: 'triangle'
         };
         var trace={
             type: 'line',
