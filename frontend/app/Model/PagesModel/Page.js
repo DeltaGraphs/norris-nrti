@@ -27,11 +27,11 @@ angular.module('app')
     
     function Page(info){
         this.graphsList = [];
-        this.name;
-        this.description;
-        this.graphsPerRow;
-        this.graphsPerCol;
-        this.url;
+        this.name = null;
+        this.description = null;
+        this.graphsPerRow = null;
+        this.graphsPerCol = null;
+        this.url = null;
 
         if (info !== undefined) {
             if (info.name !== undefined) {

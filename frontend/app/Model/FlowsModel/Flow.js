@@ -22,8 +22,8 @@ angular.module('app')
 .factory('Flow', function(){
 
 	function Flow(info){
-		this.dataFormat;
-		this.name;
+		this.dataFormat = null;
+		this.name = null;
 
 		if (info !== undefined) {
 			if (info.dataFormat !== undefined) {
