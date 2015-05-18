@@ -106,13 +106,13 @@ describe('TableFlowModel', function() {
     });
 
     describe('#updateRecord', function() {
-        it('return 223 if record is not valid', function() {
+        it('return 141 if record is not valid', function() {
             var flow1=new TableFlowModel({ID: 'flow1'});
             assert.strictEqual(flow1.updateRecord(1), 141);
             assert.strictEqual(flow1.updateRecord(1, [{asd:'asd'}]), 141);
             assert.strictEqual(flow1.updateRecord(1, 2), 141);
         });
-        it('return 252 if index is not valid', function() {
+        it('return 142 if index is not valid', function() {
             var flow1=new TableFlowModel({ID: 'flow1'});
             flow1._records=[{temperature: 2, norrisRecordID: 'flow1whatever0'}];
             assert.strictEqual(flow1.updateRecord('flow2whaterver0', {temperature: 2}), 142);

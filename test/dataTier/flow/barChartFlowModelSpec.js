@@ -92,13 +92,13 @@ describe('BarChartFlowModel', function() {
     });
 
     describe('#updateRecord', function() {
-        it('return 251 if record is not valid', function() {
+        it('return 111 if record is not valid', function() {
             var flow1=new BarChartFlowModel({ID: 'flow1'});
             assert.strictEqual(flow1.updateRecord(1), 111);
             assert.strictEqual(flow1.updateRecord(1, [{asd:'asd'}]), 111);
             assert.strictEqual(flow1.updateRecord(1, 2), 111);
         });
-        it('return 252 if ID_index is not valid', function() {
+        it('return 112 if ID_index is not valid', function() {
             var flow1=new BarChartFlowModel({ID: 'flow1'}, [{temperature: 1}]);
             assert.strictEqual(flow1.updateRecord('asd', {temperature: 2}), 112);
             assert.strictEqual(flow1.updateRecord(2, {temperature: 2}), 112);

@@ -126,13 +126,13 @@ describe('LineChartFlowModel', function() {
     });
 
     describe('#updateRecord', function() {
-        it('return 223 if record is not valid', function() {
+        it('return 121 if record is not valid', function() {
             var flow1=new LineChartFlowModel({ID: 'flow1'});
             assert.strictEqual(flow1.updateRecord(1), 121);
             assert.strictEqual(flow1.updateRecord(1, [{asd:'asd'}]), 121);
             assert.strictEqual(flow1.updateRecord(1, 2), 121);
         });
-        it('return 252 if index is not valid', function() {
+        it('return 122 if index is not valid', function() {
             var flow1=new LineChartFlowModel({ID: 'flow1'});
             flow1._records=[{temperature: 2, norrisRecordID: 'flow1whatever0'}];
             assert.strictEqual(flow1.updateRecord('flow2whaterver0', {temperature: 2}), 122);
