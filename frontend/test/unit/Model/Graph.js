@@ -20,6 +20,7 @@
 *
 */
 
+
 describe('Graph', function(){
 
 	var Graph;
@@ -28,10 +29,24 @@ describe('Graph', function(){
 
 	beforeEach(angular.mock.module('app'));
 
-	beforeEach(inject(function(_Graph_, $injector){
+	beforeEach(inject(function(_Graph_){
 		Graph = _Graph_;
-		Legend = $injector.get('Legend');
-		Flow = $injector.get('Flow');
+		Legend = {
+			return {
+				Legend : function(info){
+					return {};
+				} 
+			};
+		};
+		Flow = {
+			return {
+				Flow : function(info){
+					return {};
+				}
+			};
+		};
+		//Legend = $injector.get('Legend');
+		//Flow = $injector.get('Flow');
 	}));
 
 	describe('Default constructor', function(){
@@ -98,9 +113,6 @@ describe('Graph', function(){
 		};
 
 		beforeEach(function(){
-			spyOn(Legend.prototype, 'Legend').and.callFake(function() {
-				return {};
-			});
 			//spyOn(Graph,'Legend').returnValue({});
 			//Legend = jasmine.createSpyObj('Legend',['Legend']);
 			Graph = new Graph();
@@ -108,7 +120,6 @@ describe('Graph', function(){
 		});
 
 		afterEach(function(){
-			Legend = null;
 			Graph = null;
 		});
 
@@ -135,14 +146,14 @@ describe('Graph', function(){
 
 	});
 	
-	/*describe('addFlow', function(){
+	describe('addFlow', function(){
 
 		var json = {
 			'ID' : 	'flusso1',
 			'name' : 'sonda 1'
 		};
 
-		spyOn(Flow, 'Flow').andReturn({});
+		//spyOn(Flow, 'Flow').andReturn({});
 
 		beforeEach(function(){
 			Graph = new Graph();
@@ -166,7 +177,7 @@ describe('Graph', function(){
 			'name' : 'sonda 1'
 		};
 
-		spyOn(Flow, 'Flow').andReturn({});
+		//spyOn(Flow, 'Flow').andReturn({});
 
 		beforeEach(function(){
 			Graph = new Graph();
@@ -182,6 +193,6 @@ describe('Graph', function(){
 			expect(Graph.getFlowList().length).toEqual(0);
 		});
 
-	});*/
+	});
 
 });
