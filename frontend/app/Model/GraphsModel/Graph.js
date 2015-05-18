@@ -95,9 +95,10 @@ angular.module('app')
     		var index;
     		for (var i = 0; i<flowList.length; i++){
     			if (flowList[i].id === flowID){
-    				console.log('deleteeeeeeeee sto flussooooooooo');
+
     				index = i;
     			}
+    			console.log(flowList[i].id);
     		}
     		delete flowList[index];
 			
