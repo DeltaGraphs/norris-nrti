@@ -9,7 +9,7 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
-* 0.1.2         2015-05-18  Maria Giovanna Chinellato	Modified general structure, some fixes
+* 0.2.0         2015-05-18  Maria Giovanna Chinellato	Modified general structure, some fixes
 *
 * 0.1.1         2015-05-15  Maria Giovanna Chinellato	Various fix
 *
@@ -20,7 +20,7 @@
 *
 */
 
-angular.module("services")
+angular.module('services')
 .factory('TableFlow', ['Flow', function(Flow){
 
 	var data = [];
@@ -41,8 +41,8 @@ angular.module("services")
         }
 
         return {
-            "flowJson" : flowJson,
-            "tableFlowJson" : tableFlowJson
+            'flowJson' : flowJson,
+            'tableFlowJson' : tableFlowJson
         };
     }
 
@@ -52,7 +52,9 @@ angular.module("services")
 			var fJson = json.flowJson;
 			var tfJson = json.tableFlowJson;
 
-			this.parent.constructor.call(this, fJson);
+			if (Object.keys(fJson).length !== 0){
+				this.parent.constructor.call(this, fJson);
+			}
 
 	        if (tfJson.maxItem !== undefined) {
 	            maxItem = tfJson.maxItem;
@@ -73,7 +75,7 @@ angular.module("services")
 				var mfJson = json.mapFlowJson;
 
 				if (Object.keys(fJson).length !== 0) {
-					Flow.apply(this, fJson);
+					this.parent.updateParameters.call(this, fJson);
 				}
 
 				if (Object.keys(mfJson).length !== 0) {

@@ -9,7 +9,7 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
-* 0.1.3         2015-05-18  Maria Giovanna Chinellato	Modified general structure, some fixes
+* 0.2.0         2015-05-18  Maria Giovanna Chinellato	Modified general structure, some fixes
 *
 * 0.1.2         2015-05-15  Maria Giovanna Chinellato	Various fix
 *
@@ -24,7 +24,7 @@
 
 angular.module('services')
 .factory('LineChartFlow', ['Flow', function(Flow){
-	
+
 	var data = [];
 	var flowColor = '#000';
 	var legendOnPoint = '';
@@ -74,26 +74,31 @@ angular.module('services')
 			var fJson = json.flowJson;
 			var lfJson = json.lineFlowJson;
 
-			this.parent.constructor.call(this, fJson);
+			if (Object.keys(fJson).length !== 0) {
+				this.parent.constructor.call(this, fJson);
+			}
+
+			if (Object.keys(lfJson).length !== 0) {
 			
-			if (lfJson.flowColor !== undefined) {
-	            flowColor = lfJson.flowColor;
-	        }
-	        if (lfJson.legendOnPoint !== undefined) {
-	            legendOnPoint = lfJson.legendOnPoint;
-	        }
-	        if (lfJson.marker !== undefined) {
-	            marker = lfJson.marker;
-	        }
-	        if (lfJson.interpolation !== undefined) {
-	            interpolation = lfJson.interpolation;
-	        }
-	        if (lfJson.areaColor !== undefined) {
-	            areaColor = lfJson.areaColor;
-	        }
-	        if (lfJson.maxItem !== undefined) {
-	            maxItem = lfJson.maxItem;
-	        }
+				if (lfJson.flowColor !== undefined) {
+		            flowColor = lfJson.flowColor;
+		        }
+		        if (lfJson.legendOnPoint !== undefined) {
+		            legendOnPoint = lfJson.legendOnPoint;
+		        }
+		        if (lfJson.marker !== undefined) {
+		            marker = lfJson.marker;
+		        }
+		        if (lfJson.interpolation !== undefined) {
+		            interpolation = lfJson.interpolation;
+		        }
+		        if (lfJson.areaColor !== undefined) {
+		            areaColor = lfJson.areaColor;
+		        }
+		        if (lfJson.maxItem !== undefined) {
+		            maxItem = lfJson.maxItem;
+		        }
+		    }
 	    }
 
 	}
@@ -110,7 +115,7 @@ angular.module('services')
 				var lfJson = json.lineFlowJson;
 
 				if (Object.keys(fJson).length !== 0) {
-					Flow.apply(this, fJson);
+					this.parent.updateParameters.call(this, fJson);
 				}
 
 				if (Object.keys(lfJson).length !== 0) {
@@ -169,5 +174,5 @@ angular.module('services')
 		}
 	};
 
-	return LineChartFlow;
+	return( LineChartFlow );
 }]);
