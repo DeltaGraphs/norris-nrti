@@ -106,7 +106,7 @@ describe('Graph', function(){
 			Graph = null;
 		});
 
-		spyOn(Legend, 'Legend').andReturn({});
+		spyOn(Legend.prototype, 'Legend').andReturn({});
 
 		it('graph updated with the correct title', function(){
 			expect(Graph.getTitle()).toEqual('graficoNuovo');
@@ -136,7 +136,7 @@ describe('Graph', function(){
 			'name' : 'sonda 1'
 		};
 
-		spyOn(Flow, 'Flow').andReturn({});
+		spyOn(Flow.prototype, 'Flow').andReturn({});
 
 		beforeEach(function(){
 			Graph = new Graph();
@@ -159,6 +159,8 @@ describe('Graph', function(){
 			'ID' : 	'flusso1',
 			'name' : 'sonda 1'
 		};
+
+		spyOn(Flow.prototype, 'Flow').andReturn({});
 
 		beforeEach(function(){
 			Graph = new Graph();
