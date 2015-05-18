@@ -79,16 +79,24 @@ angular.module('app')
 			}
 			return this;
 		},
-		addFlow : function(id, flow) { //abstract
-			if (flowList.id === undefined) {
-				flowList.id = flow;
-				console.log(flowList.length);
-			}
-			// error
-			return this;
+		addFlow : function(newId, newFlow) { //abstract
+
+			var filteredFlows = flowList.filter(function(newId) {return newId === flowList.id;});
+		    if(filteredFlows.length = 0) {
+		        flowList.push({ id: newId, flow: newFlow});
+    		}
+    		// error
+    		return this;
 		},
 		deleteFlow : function(flowID) {
-			delete flowList[flowID];
+			/*var filteredFlows = flowList.filter(function(flowID) {return flowID === id;});
+		    if(filteredFlows.length > 0) {
+		    	delete filteredFlows[0];
+    		}*/
+    		var index = flowList.id.indexOf(flowID);
+
+    		delete flowList[index];
+			
 			return this;
 		},
 		
