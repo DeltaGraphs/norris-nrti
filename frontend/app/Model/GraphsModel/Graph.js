@@ -82,7 +82,7 @@ angular.module('app')
 		addFlow : function(newId, newFlow) { //abstract
 
 			var filteredFlows = flowList.filter(function(newId) {return newId === flowList.id;});
-		    if(filteredFlows.length = 0) {
+		    if(filteredFlows.length === 0) {
 		        flowList.push({ id: newId, flow: newFlow});
     		}
     		// error
@@ -93,8 +93,13 @@ angular.module('app')
 		    if(filteredFlows.length > 0) {
 		    	delete filteredFlows[0];
     		}*/
-    		var index = flowList.id.indexOf(flowID);
-
+    		var index;
+    		for (var i = 0; i<flowList.length; i++){
+    			if (flowList[i].id == flowID){
+    				index = i;
+    				return ;
+    			}
+    		}
     		delete flowList[index];
 			
 			return this;
