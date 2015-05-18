@@ -49,6 +49,8 @@ angular.module('services')
         };
     }
 
+    //BarChartFlow.prototype.test = function _Test(expressionStr) { return eval(expressionStr); };
+
     function BarChartFlow(info) {
     	if (info !== undefined) {
 			var json = split(info);
