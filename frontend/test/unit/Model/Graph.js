@@ -98,7 +98,7 @@ describe('Graph', function(){
 		};
 
 		beforeEach(function(){
-			Legend = jasmine.createSpyObj('Legend','Legend');
+			Legend = jasmine.createSpyObj('Legend',['Legend']);
 			Graph = new Graph();
 			Graph = Graph.updateParameters(json);
 		});
