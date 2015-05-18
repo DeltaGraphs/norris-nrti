@@ -55,8 +55,8 @@ describe('TableFlowModel', function() {
 	it('set default values to wrong properties', function() {
         var flow1=new TableFlowModel({
             ID: 'flow1',
-            columnsKeys: 2,
-            columnsFormats: [2, {id: 2}],
+            columnKeys: 2,
+            columnFormats: [2, {id: 2}],
             fontColorKey: 2,
             backgroungColorKey: 2,
             maxItems: -2,
@@ -74,8 +74,8 @@ describe('TableFlowModel', function() {
 	it('set param values to properties', function() {
         var flow1=new TableFlowModel({
             ID: 'flow1',
-            columnsKeys: ['213'],
-            columnsFormats: ['column1', 'column2'],
+            columnKeys: ['213'],
+            columnFormats: ['column1', 'column2'],
             fontColorKey: 'color',
             backgroungColorKey: 'back',
             maxItems: 2,
