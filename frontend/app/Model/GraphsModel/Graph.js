@@ -90,11 +90,14 @@ angular.module('app')
     		return this;
 		},
 		deleteFlow : function(flowID) {
-			var filteredFlows = flowList.filter(function(flowID) {return flowID === flowList.id;});
-		    if(filteredFlows.length > 0) {
-		    	filteredFlows.splice(0,1);
-    		}
-			return this;
+			var index;
+            for (var i = 0; i<flowList.length; i++){
+                if (flowList.id === flowID){
+                    index = i;
+                }
+            }
+            flowList.splice(index,1);
+            return this;
 		},
 		
 		getTitle : function() {
