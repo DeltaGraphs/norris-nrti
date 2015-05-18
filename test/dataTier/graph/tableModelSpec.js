@@ -245,4 +245,46 @@ describe('tableModel', function() {
             assert.strictEqual(graph1._flows.length, 0);
         });
     });
+    describe('#updateRecord', function() {
+        it('returns 241 if it doesn\'t find the wanted flow', function() {
+            var graph1=new TableModel({ID: 'graph1'});
+            graph1._flows[0] = new TableFlowModel({ID: 'flow1'});
+            assert.strictEqual(graph1.updateRecord('flow4', 0, {temperature: 2}), 241);
+        });
+        it('returns 142 if it doesn\'t find the wanted record', function() {
+            var graph1=new TableModel({ID: 'graph1'});
+            graph1._flows[0] = new TableFlowModel({ID: 'flow1'});
+            graph1._flows[0]._records[0]={temperature: 3};
+            assert.strictEqual(graph1.updateRecord('flow1', 'asd', {temperature: 2}), 142);
+        });
+        it('returns 141 if no valid record is passed', function() {
+            var graph1=new TableModel({ID: 'graph1'});
+            graph1._flows[0] = new TableFlowModel({ID: 'flow1'});
+            var ID=graph1._flows[0].addRecord({temperature: 3});
+            assert.strictEqual(graph1.updateRecord('flow1', ID, null), 141);
+        });
+        it('returns true if passed valid parameters', function() {
+            var graph1=new TableModel({ID: 'graph1'});
+            graph1._flows[0] = new TableFlowModel({ID: 'flow1'});
+            var ID=graph1._flows[0].addRecord({temperature: 3});
+            assert.strictEqual(graph1.updateRecord('flow1', ID, {temperature: 2}), true);
+        });
+    });
+    describe('#addRecord', function() {
+        it('returns 241 if it doesn\'t find the wanted flow', function() {
+            var graph1=new TableModel({ID: 'graph1'});
+            graph1._flows[0] = new TableFlowModel({ID: 'flow1'});
+            assert.strictEqual(graph1.addRecord('flow4', {temperature: 2}), 241);
+        });
+        it('returns 143 if no valid record is passed', function() {
+            var graph1=new TableModel({ID: 'graph1'});
+            graph1._flows[0] = new TableFlowModel({ID: 'flow1'});
+            assert.strictEqual(graph1.addRecord('flow1', null), 143);
+        });
+        it('returns true if passed valid parameters', function() {
+            var graph1=new TableModel({ID: 'graph1'});
+            graph1._flows[0] = new TableFlowModel({ID: 'flow1'});
+            assert.strictEqual(graph1.updateRecord('flow1', {temperature: 2}), true);
+        });
+    });
 });
