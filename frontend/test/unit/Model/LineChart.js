@@ -6,6 +6,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.3.0			2015-05-18	Francesco Rossetto			Restructured test
+*
 * 0.2.3         2015-05-17  Maria Giovanna Chinellato   Fix code
 *
 * 0.2.2			2015-05-15	Maria Giovanna Chinellato	Fix test of Model::LineChart.js
@@ -51,15 +53,20 @@ describe('LineChart', function(){
 			LineChart = new LineChart(json);
 		});
 
-		spyOn(Graph.prototype, 'apply').and.callFake(function() {return;});
+		afterEach(function(){
+			LineChart = null;
+		});		
 
-		it('constructor use the graph constructor in the correct way', function(){
-			expect(Graph.prototype.apply).toHaveBeenCalledWith(json);
+		it('LineChart created', function(){
+			expect(LineChart).toBeDefined();
+		});
+		it('graph Constructor called', function(){
+			expect(LineChart.parent.constructor.call).toHaveBeenCalledWith(this, json);
 		});
 
 	});
 
-	describe('split', function(){
+	/*describe('split', function(){
 		var res;
 		var json = {};
 		var json1 = json;
@@ -104,7 +111,7 @@ describe('LineChart', function(){
 			expect(res.lineJson).toBeEqual(l);
 		});
 
-	});
+	});*/
 
 
 	describe('updateParameters', function(){
@@ -117,37 +124,46 @@ describe('LineChart', function(){
 			'verticalGrid' : false,
 			'enabledViewFinder' : true,
 			'viewFinder' : {},
+			'axisX' : {},
+			'axisY' : {},
 			'background' : '#000',
 			'flows' : [{},{},{}]
 		};
+		var gJson = {
+			'title' : 'graficonuovo',
+			'height' : 400,
+			'width' : 400,
+			'enabledLegend' : false,
+			'horizontalGrid' : false,
+			'verticalGrid' : false,
+		};
 
 		beforeEach(function(){
-			LineChart.prototype.updateParameters(json);
+			LineChart = new LineChart();
+			LineChart = LineChart.updateParameters(json);
 		});
 
-		spyOn(LineChartFlow.prototype, 'LineChartFlow').and.returnValue({});
-		spyOn(LineChartFlow.prototype, 'addFlow').and.callFake(function() {return;});
-		spyOn(Graph.prototype, 'apply').and.callFake(function() {return;});
-		spyOn(ViewFinder.prototype, 'ViewFinder').and.returnValue({});
-		spyOn(Axis.prototype, 'Axis').and.returnValue({});
+		afterEach(function(){
+			LineChart = null;
+		});	
 
-		it('graph updated with the correct enabledViewFinder', function(){
-			expect(LineChart.prototype.getEnabledViewFinder()).toBeEqual(false);
+		it('graph updateParameters called with the correct parameters', function(){
+			expect(LineChart.parent.updateParameters.call).toHaveBeenCalledWith(gJson);
 		});
 		it('graph updated with the correct viewFinder', function(){
-			expect(LineChart.prototype.getViewFinder()).toBeEqual({});
+			expect(LineChart.getViewFinder()).toBeEqual({});
 		});
 		it('graph updated with the correct axisX', function(){
-			expect(LineChart.prototype.getX()).toBeEqual({});
+			expect(LineChart.getX()).toBeEqual({});
 		});
 		it('graph updated with the correct axisY', function(){
-			expect(LineChart.prototype.getY()).toBeEqual({});
+			expect(LineChart.getY()).toBeEqual({});
 		});
 		it('graph updated with the correct background', function(){
-			expect(LineChart.prototype.getBackground()).toBeEqual('#000');
+			expect(LineChart.getBackground()).toBeEqual('#000');
 		});
 		it('graph updated with the correct flow', function(){
-			expect(LineChart.prototype.addFlow.calls.count()).toBeEqual(3);
+			expect(LineChart.addFlow.calls.count()).toBeEqual(3);
 		});
 		
 	});
@@ -155,21 +171,22 @@ describe('LineChart', function(){
 	describe('addFlow', function(){
 
 		var json = {
-			'ID' : 	'flusso1',
-			'name' : 'sonda 1'
+			'ID' : 	'flusso1'
 		};
 
 		var newflow = LineChartFlow({});
 
-		//spyOn(Graph.prototype, 'addFlow').and.callFake(function() {return;});
-		spyOn(Graph.prototype, 'addFlow.call').and.callFake(function() {return;});
-
 		beforeEach(function(){
-			LineChart.prototype.addflow(json.ID, newflow);
+			LineChart = new LineChart();
+			LineChart = LineChart.addflow(json.ID, newflow);
 		});
 
-		it('add flow into linechart', function(){
-			expect(Graph.prototype.addFlow.call).toHaveBeenCalledWith(json.ID, newflow);
+		afterEach(function(){
+			LineChart = null;
+		});	
+
+		it('graph addFlow called with the correct parameters', function(){
+			expect(LineChart.parent.addFlow.call).toHaveBeenCalledWith(this, json.ID, newflow);
 		});
 
 	});
@@ -187,33 +204,42 @@ describe('LineChart', function(){
 			}
 		];
 
-		spyOn(LineChartFlow.prototype, 'inizializeData').and.callFake(function() {return;});
-
 		beforeEach(function(){
-			LineChart.prototype.inizializeData(data);
+			LineChart = new LineChart();
+			LineChart = LineChart.inizializeData(data);
 		});
 
-		it('inizialize flowList', function(){
+		afterEach(function(){
+			LineChart = null;
+		});	
+
+		it('LineChartFlow inizializeData called in the right way', function(){
 			expect(LineChartFlow.prototype.inizializeData.calls.count()).toEqual(2);
 		});
+
 	});
 
 	describe('inPlaceUpdate', function(){
 
 		var data = 	{
 			'ID' : '2',
-			'records' : []
+			'NorrisRecordID' : 'record2',
+			'value' : []
 		};
 
-		spyOn(LineChartFlow.prototype, 'inPlaceUpdate').and.callFake(function() {return;});
-
 		beforeEach(function(){
-			LineChart.prototype.inPlaceUpdate(data);
+			LineChart = new LineChart();
+			LineChart = LineChart.inPlaceUpdate(data);
 		});
 
-		it('inizialize flowList', function(){
-			expect(LineChartFlow.prototype.inPlaceUpdate).toHaveBeenCalledWith(data);
+		afterEach(function(){
+			LineChart = null;
+		});	
+
+		it('LineChartFlow inPlaceUpdate called in the right way', function(){
+			expect(LineChartFlow.inPlaceUpdate).toHaveBeenCalledWith(data);
 		});
+
 	});
 
 	describe('streamUpdate', function(){
@@ -223,15 +249,19 @@ describe('LineChart', function(){
 			'records' : []
 		};
 
-		spyOn(LineChartFlow.prototype, 'streamUpdate').and.callFake(function() {return;});
-
 		beforeEach(function(){
-			LineChart.prototype.streamUpdate(data);
+			LineChart = new LineChart();
+			LineChart = LineChart.streamUpdate(data);
 		});
 
-		it('inizialize flowList', function(){
-			expect(LineChartFlow.prototype.streamUpdate).toHaveBeenCalledWith(data);
+		afterEach(function(){
+			LineChart = null;
+		});	
+
+		it('LineChartFlow streamUpdate called in the right way', function(){
+			expect(LineChartFlow.streamUpdate).toHaveBeenCalledWith(data);
 		});
+
 	});
 
 });

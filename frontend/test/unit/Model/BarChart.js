@@ -1,11 +1,13 @@
 /*
-* Name :  LineChart.js
+* Name :  BarChart.js
 * Module : UnitTest
 * Location : /frontend/test/unit/Model
 *
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.3.0			2015-05-18	Francesco Rossetto			Restructured test
+*
 * 0.2.3         2015-05-17  Maria Giovanna Chinellato   Fix code
 *
 * 0.2.2			2015-05-15	Maria Giovanna Chinellato	Fix test of Model::BarChart
@@ -49,15 +51,20 @@ describe('BarChart', function(){
 			BarChart = new BarChart(json);
 		});
 
-		spyOn(Graph.prototype, 'apply').and.callFake(function() {return;});
+		afterEach(function(){
+			BarChart = null;
+		});		
 
-		it('constructor use the graph constructor in the correct way', function(){
-			expect(Graph.prototype.apply).toHaveBeenCalledWith(json);
+		it('BarChart created', function(){
+			expect(BarChart).toBeDefined();
+		});
+		it('graph Constructor called', function(){
+			expect(BarChart.parent.constructor.call()).toHaveBeenCalledWith(this, json);
 		});
 
 	});
 
-	describe('split', function(){
+	/*describe('split', function(){
 		var res;
 		var json = {};
 		var json1 = json;
@@ -100,12 +107,11 @@ describe('BarChart', function(){
 		});
 
 		it('json splitted in the correct way', function(){
-			expect(res.graphJson).toBeEqual(g);
-			expect(res.barJson).toBeEqual(b);
+			expect(res.graphJson).toEqual(g);
+			expect(res.barJson).toEqual(b);
 		});
 
-	});
-
+	});*/
 
 	describe('updateParameters', function(){
 		var json = {
@@ -115,42 +121,55 @@ describe('BarChart', function(){
 			'enabledLegend' : false,
 			'horizontalGrid' : false,
 			'verticalGrid' : false,
+			'axisX' : {},
+			'axisY' : {},
 			'barOrientation' : 'vertical',
 			'background' : '#F0F',
 			'sortable' : false,
 			'barsGrouping' : 'stacked',
 			'flows' : [{},{},{}]
 		};
+		var gJson = {
+			'title' : 'graficonuovo',
+			'height' : 400,
+			'width' : 400,
+			'enabledLegend' : false,
+			'horizontalGrid' : false,
+			'verticalGrid' : false,
+		};
 
 		beforeEach(function(){
-			BarChart.prototype.updateParameters(json);
+			BarChart = new BarChart();
+			BarChart = BarChart.updateParameters(json);
 		});
 
-		spyOn(BarChartFlow.prototype, 'BarChartFlow').and.returnValue({});
-		spyOn(BarChartFlow.prototype, 'addFlow').and.callFake(function() {return;});
-		spyOn(Graph.prototype, 'apply').and.callFake(function() {return;});
-		spyOn(Axis.prototype, 'Axis').and.returnValue({});
+		afterEach(function(){
+			BarChart = null;
+		});	
 
+		it('graph updateParameters called with the correct parameters', function(){
+			expect(BarChart.parent.updateParameters.call).toHaveBeenCalledWith(gJson);
+		});
 		it('graph updated with the correct axisX', function(){
-			expect(BarChart.prototype.getX()).toBeEqual({});
+			expect(BarChart.getX()).toEqual({});
 		});
 		it('graph updated with the correct axisY', function(){
-			expect(BarChart.prototype.getY()).toBeEqual({});
+			expect(BarChart.getY()).toEqual({});
 		});
 		it('graph updated with the correct barOrientation', function(){
-			expect(BarChart.prototype.getBarOrientation()).toBeEqual('vertical');
+			expect(BarChart.getBarOrientation()).toEqual('vertical');
 		});
 		it('graph updated with the correct background', function(){
-			expect(BarChart.prototype.getBackground()).toBeEqual('#F0F');
+			expect(BarChart.getBackground()).toEqual('#F0F');
 		});
 		it('graph updated with the correct sortable', function(){
-			expect(BarChart.prototype.getSortable()).toBeEqual(false);
+			expect(BarChart.getSortable()).toEqual(false);
 		});
 		it('graph updated with the correct barsGrouping', function(){
-			expect(BarChart.prototype.getBarsGrouping()).toBeEqual('stacked');
+			expect(BarChart.getBarsGrouping()).toEqual('stacked');
 		});
 		it('graph updated with the correct flow', function(){
-			expect(BarChart.prototype.addFlow.calls.count()).toBeEqual(3);
+			expect(BarChart.addFlow.calls.count()).toEqual(3);
 		});
 		
 	});
@@ -158,21 +177,22 @@ describe('BarChart', function(){
 	describe('addFlow', function(){
 
 		var json = {
-			'ID' : 	'flusso1',
-			'name' : 'sonda 1'
+			'ID' : 	'flusso1'
 		};
 
 		var newflow = BarChartFlow({});
 
-		//spyOn(Graph.prototype, 'addFlow').and.callFake(function() {return;});
-		spyOn(Graph.prototype, 'addFlow.call').and.callFake(function() {return;});
-
 		beforeEach(function(){
-			BarChart.prototype.addflow(json.ID, newflow);
+			BarChart = new BarChart();
+			BarChart = BarChart.addflow(json.ID, newflow);
 		});
 
-		it('add flow into barchart', function(){
-			expect(Graph.prototype.addFlow.call).toHaveBeenCalledWith(json.ID, newflow);
+		afterEach(function(){
+			BarChart = null;
+		});	
+
+		it('graph addFlow called with the correct parameters', function(){
+			expect(BarChart.parent.addFlow.call).toHaveBeenCalledWith(this, json.ID, newflow);
 		});
 
 	});
@@ -190,32 +210,40 @@ describe('BarChart', function(){
 			}
 		];
 
-		spyOn(BarChartFlow.prototype, 'inizializeData').and.callFake(function() {return;});
-
 		beforeEach(function(){
-			BarChart.prototype.inizializeData(data);
+			BarChart = new BarChart();
+			BarChart = BarChart.inizializeData(data);
 		});
 
-		it('inizialize flowList', function(){
-			expect(BarChartFlow.prototype.inizializeData.calls.count()).toEqual(2);
+		afterEach(function(){
+			BarChart = null;
+		});	
+
+		it('BarChartFlow inizializeData called in the right way', function(){
+			expect(BarChartFlow.inizializeData.calls.count()).toEqual(2);
 		});
+
 	});
 
 	describe('inPlaceUpdate', function(){
 
 		var data = 	{
 			'ID' : '2',
-			'records' : []
+			'NorrisRecordID' : 'record2',
+			'value' : []
 		};
 
-		spyOn(BarChartFlow.prototype, 'inPlaceUpdate').and.callFake(function() {return;});
-
 		beforeEach(function(){
-			BarChart.prototype.inPlaceUpdate(data);
+			BarChart = new BarChart();
+			BarChart = BarChart.inPlaceUpdate(data);
 		});
 
-		it('inizialize flowList', function(){
-			expect(BarChartFlow.prototype.inPlaceUpdate).toHaveBeenCalledWith(data);
+		afterEach(function(){
+			BarChart = null;
+		});	
+
+		it('BarChartFlow inPlaceUpdate called in the right way', function(){
+			expect(BarChartFlow.inPlaceUpdate).toHaveBeenCalledWith(data);
 		});
 	});
 

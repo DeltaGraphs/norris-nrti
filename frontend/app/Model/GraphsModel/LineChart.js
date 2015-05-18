@@ -149,7 +149,7 @@ angular.module('services')
         // update data
         inPlaceUpdate : function(newData) {
             if (newData !== undefined) {
-        	   this.parent.getFlowList()[newData.ID].inPlaceUpdate(newData);
+                this.parent.getFlowList()[newData.ID].inPlaceUpdate(newData);
             }
             return this;
         },
