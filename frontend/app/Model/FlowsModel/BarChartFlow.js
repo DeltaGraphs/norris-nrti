@@ -71,7 +71,7 @@ angular.module('services')
 	        }
         }
 	}
-	
+
 
 	/*BarChartFlow.prototype = {
 
@@ -153,11 +153,17 @@ angular.module('services')
 		return this;
 	};
 	BarChartFlow.prototype.inPlaceUpdate = function(newData) {
-		var filteredData = data.filter(function(newData) {return newData.NorrisRecordID === data.NorrisRecordID;});
+        for (var i = 0; i<data.length; i++){
+            if (data[i].NorrisRecordID === newData.NorrisRecordID){
+                data[i] = newData;
+            }
+        }
+        return this;
+		/*var filteredData = data.filter(function(newData) {return newData.NorrisRecordID === data.NorrisRecordID;});
 	    if (filteredData.length > 0) {
 	    	filteredData[0] = { 'NorrisRecordID' : newData.NorrisRecordID, 'value' : newData.value}; //funziona in stile riferimenti??
 		}
-		return this;
+		return this;*/
     };
 
 	BarChartFlow.prototype.getData = function() {
