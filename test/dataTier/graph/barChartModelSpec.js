@@ -272,24 +272,24 @@ describe('barChartModel', function() {
     describe('#updateRecord', function() {
         it('returns 211 if it doesn\'t find the wanted flow', function() {
             var graph1=new BarChartModel({ID: 'graph1'});
-            graph1._flows[0] = new BCFMMock('flow1');
+            graph1._flows[0] = new BarChartFlowModel('flow1');
             assert.strictEqual(graph1.updateRecord('flow4', 0, {temperature: 2}), 211);
         });
         it('returns 112 if it doesn\'t find the wanted record', function() {
             var graph1=new BarChartModel({ID: 'graph1'});
-            graph1._flows[0] = new BCFMMock('flow1');
+            graph1._flows[0] = new BarChartFlowModel('flow1');
             graph1._flows[0]._records[0] = {temperature: 3};
             assert.strictEqual(graph1.updateRecord('flow4', 1, {temperature: 2}), 112);
         });
         it('returns 111 if no valid record is passed', function() {
             var graph1=new BarChartModel({ID: 'graph1'});
-            graph1._flows[0] = new BCFMMock('flow1');
+            graph1._flows[0] = new BarChartFlowModel('flow1');
             graph1._flows[0]._records[0] = {temperature: 3};
             assert.strictEqual(graph1.updateRecord('flow4', 0, null), 111);
         });
         it('returns true if passed valid parameters', function() {
             var graph1=new BarChartModel({ID: 'graph1'});
-            graph1._flows[0] = new BCFMMock('flow1');
+            graph1._flows[0] = new BarChartFlowModel('flow1');
             graph1._flows[0]._records[0] = {temperature: 3};
             assert.strictEqual(graph1.updateRecord('flow4', 0, {temperature: 2}), true);
         });
