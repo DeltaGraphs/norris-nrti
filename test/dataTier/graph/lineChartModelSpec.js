@@ -297,7 +297,7 @@ describe('lineChartModel', function() {
         });
         it('returns true if passed valid parameters', function() {
             var graph1=new LineChartModel({ID: 'graph1'});
-            graph1._flows[0] = new lineChartFlowModel({ID: 'flow1'});
+            graph1._flows[0] = new LineChartFlowModel({ID: 'flow1'});
             graph1._flows[0]._records[0] = {temperature: 3};
             assert.strictEqual(graph1.updateRecord('flow1', 0, {temperature: 2}), true);
         });
