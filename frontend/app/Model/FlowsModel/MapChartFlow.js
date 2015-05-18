@@ -59,7 +59,7 @@ angular.module('services')
         };
     }
 
-    var MapChartFlow = function(info) {
+    function MapChartFlow(info) {
     	if (info !== undefined) {
 			var json = split(info);
 			var fJson = json.flowJson;
@@ -80,46 +80,60 @@ angular.module('services')
 	            maxItem = mfJson.maxItem;
 	        }
         }
-	};
+	}
+
+	MapChartFlow.prototype = Object.create(Flow.prototype);
+	MapChartFlow.prototype.constructor = MapChartFlow;
+	MapChartFlow.prototype.parent = Flow.prototype;
 
 	MapChartFlow.prototype = {
 
 		updateParameters : function(info) { //abstract
-	    	var json = split(info);
-			var fJson = json.flowJson;
-			var mfJson = json.mapFlowJson;
+			if (info !== undefined) {
+		    	var json = split(info);
+				var fJson = json.flowJson;
+				var mfJson = json.mapFlowJson;
 
-			if (Object.keys(fJson).length !== 0) {
-				Flow.apply(this, fJson);
+				if (Object.keys(fJson).length !== 0) {
+					Flow.apply(this, fJson);
+				}
+
+				if (Object.keys(mfJson).length !== 0) {
+					if (mfJson.flowColor) {
+			            flowColor = mfJson.flowColor;
+			        }
+			        if (mfJson.legendOnPoint) {
+			            legendOnPoint = mfJson.legendOnPoint;
+			        }
+			        if (mfJson.marker) {
+			            marker = mfJson.marker;
+			        }
+			        if (mfJson.maxItem) {
+			            maxItem = mfJson.maxItem;
+			        }
+			    }
 			}
-
-			if (Object.keys(mfJson).length !== 0) {
-				if (mfJson.flowColor) {
-		            flowColor = mfJson.flowColor;
-		        }
-		        if (mfJson.legendOnPoint) {
-		            legendOnPoint = mfJson.legendOnPoint;
-		        }
-		        if (mfJson.marker) {
-		            marker = mfJson.marker;
-		        }
-		        if (mfJson.maxItem) {
-		            maxItem = mfJson.maxItem;
-		        }
-		    }
 		},
 
 		initializeData : function(data) {
-			return data;
+			if (data !== undefined) {
+				return data;
+			}
 		},
 		inPlaceUpdate : function(data) {
-			return data;
+			if (data !== undefined) {
+				return data;
+			}
 	    },
 		streamUpdate : function(data) {
-	    	return data;
+			if (data !== undefined) {
+				return data;
+			}
 	    },
 	    movieUpdate : function(data) {
-	    	return data;
+			if (data !== undefined) {
+				return data;
+			}
 	    },
 
 		getData : function() {

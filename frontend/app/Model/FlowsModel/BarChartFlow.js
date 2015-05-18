@@ -71,29 +71,35 @@ angular.module('services')
 	BarChartFlow.prototype = {
 
 		updateParameters : function(info) {
-	    	var json = split(info);
-			var fJson = json.flowJson;
-			var bfJson = json.barFlowJson;
+			if (info !== undefined) {
+		    	var json = split(info);
+				var fJson = json.flowJson;
+				var bfJson = json.barFlowJson;
 
-			if (Object.keys(fJson).length !== 0) {
-				Flow.apply(this, fJson);
-			}
+				if (Object.keys(fJson).length !== 0) {
+					Flow.apply(this, fJson);
+				}
 
-			if (Object.keys(bfJson).length !== 0) {
-				if (bfJson.flowColor) {
-		            flowColor = bfJson.flowColor;
-		        }
-		        if (bfJson.legendOnPoint) {
-		            legendOnPoint = bfJson.legendOnPoint;
-		        }
+				if (Object.keys(bfJson).length !== 0) {
+					if (bfJson.flowColor) {
+			            flowColor = bfJson.flowColor;
+			        }
+			        if (bfJson.legendOnPoint) {
+			            legendOnPoint = bfJson.legendOnPoint;
+			        }
+			    }
 		    }
 		},
 
 		initializeData : function(data) {
-			return data;
+			if (data !== undefined) {
+				return data;
+			}
 		},
 		inPlaceUpdate : function(data) {
-			return data;
+			if (data !== undefined) {
+				return data;
+			}
 	    },
 
 		getData : function() {
