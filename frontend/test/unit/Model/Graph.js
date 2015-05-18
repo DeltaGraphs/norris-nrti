@@ -28,10 +28,10 @@ describe('Graph', function(){
 
 	beforeEach(angular.mock.module('app'));
 
-	beforeEach(inject(function(_Graph_){
+	beforeEach(inject(function(_Graph_, $injector){
 		Graph = _Graph_;
-		Legend = new Legend();
-		Flow = new Flow();
+		Legend = $injector.get('Legend');
+		Flow = $injector.get('Flow');
 	}));
 
 	describe('Default constructor', function(){
