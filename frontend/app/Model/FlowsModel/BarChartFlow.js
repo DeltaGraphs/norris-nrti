@@ -71,6 +71,7 @@ angular.module('services')
 	        }
         }
 	}
+	
 
 	/*BarChartFlow.prototype = {
 
