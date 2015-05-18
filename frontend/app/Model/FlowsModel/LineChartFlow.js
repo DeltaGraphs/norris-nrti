@@ -9,6 +9,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.1.3         2015-05-18  Maria Giovanna Chinellato	Modified general structure, some fixes
+*
 * 0.1.2         2015-05-15  Maria Giovanna Chinellato	Various fix
 *
 * 0.1.1			2015-05-15	Francesco Rossetto			Various fix
@@ -22,6 +24,7 @@
 
 angular.module('services')
 .factory('LineChartFlow', ['Flow', function(Flow){
+	
 	var data = [];
 	var flowColor = '#000';
 	var legendOnPoint = '';
@@ -32,30 +35,30 @@ angular.module('services')
 
 	function split(json) {
         var flowJson = {};
-        if (json.dataFormat) {
+        if (json.dataFormat !== undefined) {
             flowJson.dataFormat = json.dataFormat;
         }
-        if (json.name) {
+        if (json.name !== undefined) {
             flowJson.name = json.name;
         }
 
         var lineFlowJson = {};
-        if (json.flowColor) {
+        if (json.flowColor !== undefined) {
             lineFlowJson.flowColor = json.flowColor;
         }
-        if (json.legendOnPoint) {
+        if (json.legendOnPoint !== undefined) {
             lineFlowJson.legendOnPoint = json.legendOnPoint;
         }
-        if (json.marker) {
+        if (json.marker !== undefined) {
             lineFlowJson.marker = json.marker;
         }
-        if (json.interpolation) {
+        if (json.interpolation !== undefined) {
             lineFlowJson.interpolation = json.interpolation;
         }
-        if (json.areaColor) {
+        if (json.areaColor !== undefined) {
             lineFlowJson.areaColor = json.areaColor;
         }
-        if (json.maxItem) {
+        if (json.maxItem !== undefined) {
             lineFlowJson.maxItem = json.maxItem;
         }
 
@@ -73,22 +76,22 @@ angular.module('services')
 
 			this.parent.constructor.call(this, fJson);
 			
-			if (lfJson.flowColor) {
+			if (lfJson.flowColor !== undefined) {
 	            flowColor = lfJson.flowColor;
 	        }
-	        if (lfJson.legendOnPoint) {
+	        if (lfJson.legendOnPoint !== undefined) {
 	            legendOnPoint = lfJson.legendOnPoint;
 	        }
-	        if (lfJson.marker) {
+	        if (lfJson.marker !== undefined) {
 	            marker = lfJson.marker;
 	        }
-	        if (lfJson.interpolation) {
+	        if (lfJson.interpolation !== undefined) {
 	            interpolation = lfJson.interpolation;
 	        }
-	        if (lfJson.areaColor) {
+	        if (lfJson.areaColor !== undefined) {
 	            areaColor = lfJson.areaColor;
 	        }
-	        if (lfJson.maxItem) {
+	        if (lfJson.maxItem !== undefined) {
 	            maxItem = lfJson.maxItem;
 	        }
 	    }
@@ -111,22 +114,22 @@ angular.module('services')
 				}
 
 				if (Object.keys(lfJson).length !== 0) {
-					if (lfJson.flowColor) {
+					if (lfJson.flowColor !== undefined) {
 			            flowColor = lfJson.flowColor;
 			        }
-			        if (lfJson.legendOnPoint) {
+			        if (lfJson.legendOnPoint !== undefined) {
 			            legendOnPoint = lfJson.legendOnPoint;
 			        }
-			        if (lfJson.marker) {
+			        if (lfJson.marker !== undefined) {
 			            marker = lfJson.marker;
 			        }
-			        if (lfJson.interpolation) {
+			        if (lfJson.interpolation !== undefined) {
 			            interpolation = lfJson.interpolation;
 			        }
-			        if (lfJson.areaColor) {
+			        if (lfJson.areaColor !== undefined) {
 			            areaColor = lfJson.areaColor;
 			        }
-			        if (lfJson.maxItem) {
+			        if (lfJson.maxItem !== undefined) {
 			            maxItem = lfJson.maxItem;
 			        }
 			    }
