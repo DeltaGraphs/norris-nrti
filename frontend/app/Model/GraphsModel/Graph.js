@@ -11,7 +11,7 @@
 * =================================================================================================
 * 0.1.5			2015-05-18	Maria Giovanna Chinellato	Fix methods addFlow and deleteFlow
 *
-* 0.1.4			2015-05-15	Francesco Rossetto			Various fix
+* 0.1.4			2015-05-15	Francesco Rossetto			Various fixes
 *
 * 0.1.3			2015-05-14	Maria Giovanna Chinellato	Add method getFlowList
 *
@@ -42,7 +42,6 @@ angular.module('app')
 	var url = null;
 
 	function Graph(info){
-		//flowList.id = 'banana';
 		if (info !== undefined) {
 			if (info.title !== undefined) {
 				title = info.title;
@@ -66,16 +65,16 @@ angular.module('app')
 				if (info.width !== undefined) {
 					width = info.width;
 				}
-				if (info.enabledLegend !== undefined && info.enabledLegend !== null) {
+				if (info.enabledLegend !== undefined) {
 					enabledLegend = info.enabledLegend;
-					if (enabledLegend && info.legend) {
+					if (enabledLegend && info.legend !== undefined) {
 						legend = new Legend(info.legend);
 					}
 				}
-				if (info.horizontalGrid !== null) {
+				if (info.horizontalGrid !== undefined) {
 					horizontalGrid = info.horizontalGrid;
 				}
-				if (info.verticalGrid !== null) {
+				if (info.verticalGrid !== undefined) {
 					verticalGrid = info.verticalGrid;
 				}
 			}
@@ -91,16 +90,10 @@ angular.module('app')
     		return this;
 		},
 		deleteFlow : function(flowID) {
-
-    		var index;
-    		for (var i = 0; i<flowList.length; i++){
-    			if (flowList[i].id === flowID){
-
-    				index = i;
-    			}
+			var filteredFlows = flowList.filter(function(flowID) {return flowID === flowList.id;});
+		    if(filteredFlows.length > 0) {
+		    	filteredFlows.splice(0,1);
     		}
-    		flowList.splice(index,1);
-			
 			return this;
 		},
 		
