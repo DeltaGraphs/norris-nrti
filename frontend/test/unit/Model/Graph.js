@@ -27,6 +27,9 @@ describe('Graph', function(){
 	var Legend;
 	var Flow;
 
+	var Flow1;
+	var Flow2;
+
 	beforeEach(angular.mock.module('app'));
 
 	beforeEach(inject(function(_Graph_, $injector){
@@ -81,7 +84,7 @@ describe('Graph', function(){
 			expect(Graph.getTitle()).toEqual('grafico1');
 		});
 		it('constructor create the graph with the correct url', function(){
-			expect(Graph.getUrl()).toEqual('http://localhost/page1/grafico1');
+			expect(Graph.url).toEqual('http://localhost/page1/grafico1');
 		});
 
 	});
@@ -136,12 +139,13 @@ describe('Graph', function(){
 		};
 
 		beforeEach(function(){
-			Flow = new Flow();
+			Flow1 = new Flow();
 			Graph = new Graph();
-			Graph = Graph.addFlow(json.ID, Flow);
+			Graph = Graph.addFlow(json.ID, Flow1);
 		});
 
 		afterEach(function(){
+			Flow1 = null;
 			Graph = null;
 		});
 
@@ -164,20 +168,22 @@ describe('Graph', function(){
 		};
 
 		beforeEach(function(){
-			Flow = new Flow();
-			var Flow2 = new Flow()
+			Flow1 = new Flow();
+			Flow2 = new Flow();
 			Graph = new Graph();
-			Graph = Graph.addFlow(json1.ID, Flow);
+			Graph = Graph.addFlow(json1.ID, Flow1);
 			Graph = Graph.addFlow(json2.ID, Flow2);
 			Graph = Graph.deleteFlow('flusso1');
 		});
 
 		afterEach(function(){
+			Flow1 = null;
+			Flow2 = null;
 			Graph = null;
 		});
 
 		it('delete flow from graph', function(){
-			expect(Graph.getFlowList().length).toEqual(0);
+			expect(Graph.getFlowList().length).toEqual(1);
 		});
 
 	});
