@@ -136,8 +136,9 @@ describe('Graph', function(){
 		};
 
 		beforeEach(function(){
+			Flow = new Flow();
 			Graph = new Graph();
-			Graph = Graph.addFlow(json.ID, {});
+			Graph = Graph.addFlow(json.ID, Flow);
 		});
 
 		afterEach(function(){
@@ -163,9 +164,11 @@ describe('Graph', function(){
 		};
 
 		beforeEach(function(){
+			Flow = new Flow();
+			var Flow2 = new Flow()
 			Graph = new Graph();
-			Graph = Graph.addFlow(json1.ID, {});
-			Graph = Graph.addFlow(json2.ID, {});
+			Graph = Graph.addFlow(json1.ID, Flow);
+			Graph = Graph.addFlow(json2.ID, Flow2);
 			Graph = Graph.deleteFlow('flusso1');
 		});
 
