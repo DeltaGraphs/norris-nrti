@@ -60,7 +60,7 @@ describe('BarChartFlow', function(){
 			'dataFormat' : 'int',
 			'name' : 'flusso1',
 			'flowColor' : '#F2F',
-			'legendOnPoin' : 'flusso1',
+			'legendOnPoin' : 'flusso1'
 		};
 		//var f = {
 		//	'dataFormat' : 'int',
@@ -166,7 +166,7 @@ describe('BarChartFlow', function(){
 
 		beforeEach(function(){
 			BarChartFlow = new BarChartFlow();
-			BarChartFlow = BarChartFlow.inizializeData(data);
+			BarChartFlow = BarChartFlow.initializeData(data);
 		});
 
 		afterEach(function(){
@@ -196,7 +196,7 @@ describe('BarChartFlow', function(){
 
 		beforeEach(function(){
 			BarChartFlow = new BarChartFlow();
-			BarChartFlow = BarChartFlow.inizializeData(data);
+			BarChartFlow = BarChartFlow.initializeData(data);
 			BarChartFlow = BarChartFlow.inPlaceUpdate(update);
 		});
 
