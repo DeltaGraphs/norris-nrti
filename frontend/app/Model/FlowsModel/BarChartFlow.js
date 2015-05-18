@@ -34,7 +34,6 @@ angular.module("services")
         }
 
         var barFlowJson = {};
-        // data
         if (json.flowColor) {
             barFlowJson.flowColor = json.flowColor;
         }
@@ -48,60 +47,66 @@ angular.module("services")
         };
     }
 
-    var BarChartFlow = function(info) {
-		var json = split(info);
-		var fJson = json.flowJson;
-		var bfJson = json.barFlowJson;
+    function BarChartFlow(info) {
+    	if (info !== undefined) {
+			var json = split(info);
+			var fJson = json.flowJson;
+			var bfJson = json.barFlowJson;
+			
+			this.parent.constructor.call(this, fJson);
+			//Flow.apply(this, fJson);
 
-		Flow.apply(this, fJson);
-
-		// data
-		if (bfJson.flowColor) {
-            flowColor = bfJson.flowColor;
-        }
-        if (bfJson.legendOnPoint) {
-            legendOnPoint = bfJson.legendOnPoint;
-        }
-
-	};
-
-	BarChartFlow.prototype = new Flow();
-
-	BarChartFlow.prototype.updateParameters = function(info) {
-    	var json = split(info);
-		var fJson = json.flowJson;
-		var bfJson = json.barFlowJson;
-
-		if (Object.keys(fJson).length !== 0) {
-			Flow.apply(this, fJson);
-		}
-
-		if (Object.keys(bfJson).length !== 0) {
 			if (bfJson.flowColor) {
 	            flowColor = bfJson.flowColor;
 	        }
 	        if (bfJson.legendOnPoint) {
 	            legendOnPoint = bfJson.legendOnPoint;
 	        }
-	    }
+        }
 	};
 
-	BarChartFlow.prototype.initializeData = function(data) {
-		return data;
-	};
-	BarChartFlow.prototype.inPlaceUpdate = function(data) {
-		return data;
-    };
+	BarChartFlow.prototype = Object.create(Flow.prototype);
+	BarChartFlow.prototype.constructor = BarChartFlow;
+	BarChartFlow.prototype.parent = Flow.prototype;
 
-	BarChartFlow.prototype.getData = function() {
-		return data;
-	};
-	BarChartFlow.prototype.getFlowColor = function() {
-		return flowColor;
-	};
-	BarChartFlow.prototype.getLegendOnPoint = function() {
-		return legendOnPoint;
-	};
+	BarChartFlow.prototype = {
+		
+		updateParameters : function(info) {
+	    	var json = split(info);
+			var fJson = json.flowJson;
+			var bfJson = json.barFlowJson;
+
+			if (Object.keys(fJson).length !== 0) {
+				Flow.apply(this, fJson);
+			}
+
+			if (Object.keys(bfJson).length !== 0) {
+				if (bfJson.flowColor) {
+		            flowColor = bfJson.flowColor;
+		        }
+		        if (bfJson.legendOnPoint) {
+		            legendOnPoint = bfJson.legendOnPoint;
+		        }
+		    }
+		};
+
+		initializeData : function(data) {
+			return data;
+		};
+		inPlaceUpdate : function(data) {
+			return data;
+	    };
+
+		getData : function() {
+			return data;
+		};
+		getFlowColor : function() {
+			return flowColor;
+		};
+		getLegendOnPoint : function() {
+			return legendOnPoint;
+		};
+	}
 
 	return BarChartFlow;
 
