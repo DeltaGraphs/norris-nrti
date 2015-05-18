@@ -80,7 +80,7 @@ describe('BarChartFlow', function(){
 		});
 
 		//it('constructor use the flow constructor in the correct way', function(){
-		//	expect(Flow.prototype.apply).toHaveBeenCalledWith(this, f);
+		//	expect(Flow.prototype.call).toHaveBeenCalledWith(this, f);
 		//});
 		it('constructor create the flow with the correct flowColor', function(){
 			expect(BarChartFlow.getFlowColor()).toEqual('#F2F');
@@ -144,7 +144,7 @@ describe('BarChartFlow', function(){
 		});
 
 		//it('flow updated with the correct parameters', function(){
-		//	expect(Flow.prototype.updateParameters.apply).toHaveBeenCalledWith(f); // in teoria dovrebbe essere così
+		//	expect(Flow.prototype.updateParameters.call).toHaveBeenCalledWith(f); // in teoria dovrebbe essere così
 		//});
 		it('cflow updated with the correct flowColor', function(){
 			expect(BarChartFlow.getFlowColor()).toEqual('#F1F');
