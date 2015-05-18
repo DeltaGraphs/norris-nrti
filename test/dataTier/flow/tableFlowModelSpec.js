@@ -93,8 +93,8 @@ describe('TableFlowModel', function() {
     describe('#addRecord', function() {
         it('does not add a invalid record', function() {
             var flow1=new TableFlowModel({ID: 'flow1'});
-            assert.strictEqual(flow1.addRecord(), 121);
-            assert.strictEqual(flow1.addRecord(2), 121);
+            assert.strictEqual(flow1.addRecord(), 143);
+            assert.strictEqual(flow1.addRecord(2), 143);
         });
         it('adds a valid record', function() {
             var flow1=new TableFlowModel({ID: 'flow1'});
@@ -108,16 +108,16 @@ describe('TableFlowModel', function() {
     describe('#updateRecord', function() {
         it('return 223 if record is not valid', function() {
             var flow1=new TableFlowModel({ID: 'flow1'});
-            assert.strictEqual(flow1.updateRecord(1), 223);
-            assert.strictEqual(flow1.updateRecord(1, [{asd:'asd'}]), 223);
-            assert.strictEqual(flow1.updateRecord(1, 2), 223);
+            assert.strictEqual(flow1.updateRecord(1), 141);
+            assert.strictEqual(flow1.updateRecord(1, [{asd:'asd'}]), 141);
+            assert.strictEqual(flow1.updateRecord(1, 2), 141);
         });
         it('return 252 if index is not valid', function() {
             var flow1=new TableFlowModel({ID: 'flow1'});
             flow1._records=[{temperature: 2, norrisRecordID: 'flow1whatever0'}];
-            assert.strictEqual(flow1.updateRecord('flow2whaterver0', {temperature: 2}), 224);
-            assert.strictEqual(flow1.updateRecord('flow1whaterver1', {temperature: 2}), 224);
-            assert.strictEqual(flow1.updateRecord('asd', {temperature: 2}), 224);
+            assert.strictEqual(flow1.updateRecord('flow2whaterver0', {temperature: 2}), 142);
+            assert.strictEqual(flow1.updateRecord('flow1whaterver1', {temperature: 2}), 142);
+            assert.strictEqual(flow1.updateRecord('asd', {temperature: 2}), 142);
         });
         it('updates and validate the record if ID and record are valid', function() {
             var flow1=new TableFlowModel({

@@ -127,8 +127,8 @@ describe('MapChartFlowModel', function() {
     describe('#addRecord', function() {
         it('does not add a invalid record', function() {
             var flow1=new MapChartFlowModel({ID: 'flow1'});
-            assert.strictEqual(flow1.addRecord(), 121);
-            assert.strictEqual(flow1.addRecord(2), 121);
+            assert.strictEqual(flow1.addRecord(), 133);
+            assert.strictEqual(flow1.addRecord(2), 133);
         });
         it('adds a valid record', function() {
             var flow1=new MapChartFlowModel({ID: 'flow1'});
@@ -142,16 +142,16 @@ describe('MapChartFlowModel', function() {
     describe('#updateRecord', function() {
         it('return 223 if record is not valid', function() {
             var flow1=new MapChartFlowModel({ID: 'flow1'});
-            assert.strictEqual(flow1.updateRecord(1), 233);
-            assert.strictEqual(flow1.updateRecord(1, [{asd:'asd'}]), 233);
-            assert.strictEqual(flow1.updateRecord(1, 2), 233);
+            assert.strictEqual(flow1.updateRecord(1), 131);
+            assert.strictEqual(flow1.updateRecord(1, [{asd:'asd'}]), 131);
+            assert.strictEqual(flow1.updateRecord(1, 2), 131);
         });
         it('return 252 if index is not valid', function() {
             var flow1=new MapChartFlowModel({ID: 'flow1'});
             flow1._records=[{temperature: 2, norrisRecordID: 'flow1whatever0'}];
             assert.strictEqual(flow1.updateRecord('flow2whaterver0', {temperature: 2}), 234);
             assert.strictEqual(flow1.updateRecord('flow1whaterver1', {temperature: 2}), 234);
-            assert.strictEqual(flow1.updateRecord('asd', {temperature: 2}), 234);
+            assert.strictEqual(flow1.updateRecord('asd', {temperature: 2}), 132);
         });
         it('updates and validate the record if ID and record are valid', function() {
             var flow1=new MapChartFlowModel({
@@ -165,6 +165,22 @@ describe('MapChartFlowModel', function() {
             assert.strictEqual(update, true);
             assert.strictEqual(flow1._records[0].temperature, 4);
             assert.strictEqual(flow1._records[0].norrisRecordIsValid, true);
+        });
+    });
+    describe('#deleteRecord', function() {
+        it('return 134 if ID is not valid', function() {
+            var flow1=new MapChartFlowModel({ID: 'flow1'});
+            flow1.addRecord({temperature: 1});
+            assert.strictEqual(flow1.deleteRecord(), 134);
+            assert.strictEqual(flow1.deleteRecord('ads'), 134);
+        });
+        it('removes the record and return true if index is valid', function() {
+            var flow1=new MapChartFlowModel({ID: 'flow1'});
+            var ID1=flow1.addRecord({temperature: 1});
+            flow1.addRecord({temperature: 2});
+            assert.strictEqual(flow1.deleteRecord(ID1), true);
+            assert.strictEqual(flow1._records.length, 1);
+            assert.strictEqual(flow1._records[0].temperature, 2);
         });
     });
 });
