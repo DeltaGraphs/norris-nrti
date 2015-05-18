@@ -84,7 +84,7 @@ describe('Graph', function(){
 			expect(Graph.getTitle()).toEqual('grafico1');
 		});
 		it('constructor create the graph with the correct url', function(){
-			expect(Graph.url).toEqual('http://localhost/page1/grafico1');
+			expect(Graph.getUrl()).toEqual('http://localhost/page1/grafico1');
 		});
 
 	});
