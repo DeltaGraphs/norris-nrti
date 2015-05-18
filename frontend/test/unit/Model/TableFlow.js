@@ -35,7 +35,7 @@ describe('TableFlow', ['Flow', function(){
 	describe('Default constructor', function(){
 
 		beforeEach(function(){
-			TableFlow = new TableFlow(json);
+			TableFlow = new TableFlow();
 		});
 
 		afterEach(function(){

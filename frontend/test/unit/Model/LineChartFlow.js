@@ -35,7 +35,7 @@ describe('LineChartFlow', function(){
 	describe('Constructor', function(){
 
 		beforeEach(function() {
-			LineChartFlow = new LineChartFlow(json);
+			LineChartFlow = new LineChartFlow();
 		});
 
 		afterEach(function() {
@@ -236,7 +236,7 @@ describe('LineChartFlow', function(){
 			LineChartFlow = null;
 		});
 
-		it('data inizialized in the correct way'), function(){
+		it('data inizialized in the correct way', function(){
 			expect(LineChartFlow.getData().length).toEqual(3);
 		});
 
