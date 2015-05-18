@@ -53,6 +53,7 @@ angular.module('app')
                     this.background = info.background;
                 }
             }
+            return this;
         },
 
         getPosition : function(){
