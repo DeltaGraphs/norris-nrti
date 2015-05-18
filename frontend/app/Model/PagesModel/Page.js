@@ -98,6 +98,7 @@ angular.module('app')
                     this.url = info.URLSocket;
                 }
             }
+            return this;
         },
         addGraph: function(graph){
             if (graph !== undefined) {
@@ -123,7 +124,8 @@ angular.module('app')
                     }
                 }
             }
-                            // error
+            // error
+            return this;
         },
 
         getGraphsList: function(){

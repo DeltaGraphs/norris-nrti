@@ -43,6 +43,7 @@ angular.module('app')
 				this.pagesList[page.ID] = newPage;
 			}
 			// error
+			return this;
 		},
 
 		getPagesList: function(){

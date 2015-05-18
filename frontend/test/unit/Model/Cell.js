@@ -40,6 +40,7 @@ describe('Cell', function(){
 		it('instance defined', function(){
 			expect(Cell).toBeDefined();
 		});
+		
 		it('constructor create the page with the correct background', function(){
 			expect(Cell.getBackground()).toEqual('#FFF');
 		});
