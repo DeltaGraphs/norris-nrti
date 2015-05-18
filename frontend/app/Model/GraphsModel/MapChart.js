@@ -155,21 +155,30 @@ angular.module('services')
             }
         },
 
-        initializeData : function(data) {  //inizialization data of flows
-            for (var i=0; i<data.length; i++) {
-                this.parent.getFlowList()[data[i].ID].inizializeData(data[i].records);
+        initializeData : function(newData) {  //inizialization data of flows
+            if (newData !== undefined) {
+                for (var i=0; i<newData.length; i++) {
+                    this.parent.getFlowList()[newData[i].ID].inizializeData(newData[i]);
+                }
             }
         },
 
         // update data
-        inPlaceUpdate : function(data) {
-            this.parent.getFlowList()[data.ID].inPlaceUpdate(data.records);
+        inPlaceUpdate : function(newData) {
+            if (newData !== undefined) {
+                this.parent.getFlowList()[newData.ID].inPlaceUpdate(newData);
+            }
+            return this;
         },
-        streamUpdate : function(data) {
-            this.parent.getFlowList()[data.ID].streamUpdate(data.records);
+        streamUpdate : function(newData) {
+            if (newData !== undefined) {
+                this.parent.getFlowList()[newData.ID].streamUpdate(newData);
+            }
+            return this;
         },
-        movieUpdate : function(data) {
-            this.parent.getFlowList()[data.ID].movieUpdate(data.records);
+        deleteData : function(delData) {
+            this.parent.getFlowList()[delData.ID].deleteData(delData);
+            return this;
         },
 
         // get method

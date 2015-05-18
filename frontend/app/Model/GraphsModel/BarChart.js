@@ -144,15 +144,19 @@ angular.module('services')
         },
 
         initializeData : function(newData) {  //inizialization data of flows
-            for (var i=0; i<newData.length; i++) {
-                this.parent.getFlowList()[newData[i].ID].inizializeData(newData[i].records);
-            }
+            if (newData !== undefined) {
+                for (var i=0; i<newData.length; i++) {
+                    this.parent.getFlowList()[newData[i].ID].inizializeData(newData[i]);
+                }
+            }   
             return this;
         },
 
         // update data
         inPlaceUpdate : function(newData) {
-            this.parent.getFlowList()[newData.ID].inPlaceUpdate(newData);
+            if (newData !== undefined) {
+                this.parent.getFlowList()[newData.ID].inPlaceUpdate(newData);
+            }   
             return this;
         },
 

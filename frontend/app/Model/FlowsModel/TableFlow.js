@@ -87,20 +87,16 @@ angular.module('services')
 		},
 
 		initializeData : function(newData) {
-			if (newData !== undefined) {
-				for (var i=0, i<newData.records.length; i++) {
-					data.push(newData.records[i]);
-				}
+			for (var i=0, i<newData.records.length; i++) {
+				data.push(newData.records[i]);
 			}
 			return this;
 		},
 		inPlaceUpdate : function(newData) {
-			if (newData !== undefined) {
-				var filteredData = data.filter(function(newData.NorrisRecordID) {return newData.NorrisRecordID === data.NorrisRecordID;});
-			    if(filteredData.length > 0) {
-			    	filteredData[0] = newData; //funziona in stile riferimenti??
-	    		}
-			}
+			var filteredData = data.filter(function(newData.NorrisRecordID) {return newData.NorrisRecordID === data.NorrisRecordID;});
+		    if(filteredData.length > 0) {
+		    	filteredData[0] = { 'NorrisRecordID' : newData.NorrisRecordID, 'value' : newData.value}; //funziona in stile riferimenti??
+    		}
 			return this;
 	    },
 	    streamUpdate : function(newData) {

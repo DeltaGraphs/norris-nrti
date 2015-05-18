@@ -119,33 +119,27 @@ angular.module('services')
 		},
 
 		initializeData : function(newData) {
-			if (newData !== undefined) {
-				for (var i=0, i<newData.records.length; i++) {
-					data.push(newData.records[i]);
-				}
+			for (var i=0, i<newData.records.length; i++) {
+				data.push(newData.records[i]);
 			}
 			return this;
 		},
 		inPlaceUpdate : function(newData) {
-			if (newData !== undefined) {
-				var filteredData = data.filter(function(newData.NorrisRecordID) {return newData.NorrisRecordID === data.NorrisRecordID;});
-			    if(filteredData.length > 0) {
-			    	filteredData[0] = newData; //funziona in stile riferimenti??
-	    		}
-			}
+			var filteredData = data.filter(function(newData.NorrisRecordID) {return newData.NorrisRecordID === data.NorrisRecordID;});
+		    if(filteredData.length > 0) {
+		    	filteredData[0] = { 'NorrisRecordID' : newData.NorrisRecordID, 'value' : newData.value}; //funziona in stile riferimenti??
+    		}
 			return this;
 	    },
 		streamUpdate : function(newData) {
 			this.prototype.initializeData(newData);
 			return this;
 	    },
-	    deleteData : function() {
-			if (data !== undefined) {
-				var filteredFlows = flowList.filter(function(flowID) {return flowID === flowList.id;});
-			    if(filteredFlows.length > 0) {
-			    	filteredFlows.splice(0,1);
-	    		}
-			}
+	    deleteData : function(delData) {
+			var filteredData = data.filter(function(delData.NorrisRecordID) {return delData.NorrisRecordID === data.NorrisRecordID;});
+		    if(filteredData.length > 0) {
+		    	filteredData.splice(0,1);
+    		}
 			return this;
 	    },
 
