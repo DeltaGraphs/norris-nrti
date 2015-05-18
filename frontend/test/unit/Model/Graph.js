@@ -27,6 +27,9 @@ describe('Graph', function(){
 	var Legend;
 	var Flow;
 
+	var Flow1;
+	var Flow2;
+
 	beforeEach(angular.mock.module('app'));
 
 	beforeEach(inject(function(_Graph_, $injector){
@@ -136,7 +139,7 @@ describe('Graph', function(){
 		};
 
 		beforeEach(function(){
-			var Flow1 = new Flow();
+			Flow1 = new Flow();
 			Graph = new Graph();
 			Graph = Graph.addFlow(json.ID, Flow1);
 		});
@@ -165,8 +168,8 @@ describe('Graph', function(){
 		};
 
 		beforeEach(function(){
-			var Flow1 = new Flow();
-			var Flow2 = new Flow();
+			Flow1 = new Flow();
+			Flow2 = new Flow();
 			Graph = new Graph();
 			Graph = Graph.addFlow(json1.ID, Flow1);
 			Graph = Graph.addFlow(json2.ID, Flow2);
