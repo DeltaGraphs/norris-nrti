@@ -28,10 +28,10 @@ describe('Graph', function(){
 
 	beforeEach(angular.mock.module('app'));
 
-	beforeEach(inject(function(_Graph_, $injector){
+	beforeEach(inject(function(_Graph_){
 		Graph = _Graph_;
-		Legend = $injector.get('Legend');
-		Flow = $injector.get('Flow');
+		Legend = new Legend();
+		Flow = new Flow();
 	}));
 
 	describe('Default constructor', function(){
@@ -106,7 +106,7 @@ describe('Graph', function(){
 			Graph = null;
 		});
 
-		spyOn(Legend.prototype, 'Legend').andReturn({});
+		spyOn(Legend, 'Legend').andReturn({});
 
 		it('graph updated with the correct title', function(){
 			expect(Graph.getTitle()).toEqual('graficoNuovo');
@@ -136,7 +136,7 @@ describe('Graph', function(){
 			'name' : 'sonda 1'
 		};
 
-		spyOn(Flow.prototype, 'Flow').andReturn({});
+		spyOn(Flow, 'Flow').andReturn({});
 
 		beforeEach(function(){
 			Graph = new Graph();
@@ -160,7 +160,7 @@ describe('Graph', function(){
 			'name' : 'sonda 1'
 		};
 
-		spyOn(Flow.prototype, 'Flow').andReturn({});
+		spyOn(Flow, 'Flow').andReturn({});
 
 		beforeEach(function(){
 			Graph = new Graph();
