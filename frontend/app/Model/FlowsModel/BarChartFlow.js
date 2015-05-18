@@ -57,7 +57,7 @@ angular.module('services')
 			var fJson = json.flowJson;
 			var bfJson = json.barFlowJson;
 			
-			BarChartFlow.prototype.parent.call(this, fJson);
+			Flow.prototype.call(this, fJson);
 
 			if (bfJson.flowColor !== undefined) {
 	            flowColor = bfJson.flowColor;
@@ -69,8 +69,8 @@ angular.module('services')
 	}
 
 	BarChartFlow.prototype = Object.create(Flow.prototype);
-	BarChartFlow.prototype.constructor = BarChartFlow;
-	BarChartFlow.prototype.parent = Flow.prototype;
+	/*BarChartFlow.prototype.constructor = BarChartFlow;
+	BarChartFlow.prototype.parent = Flow.prototype;*/
 
 	BarChartFlow.prototype = {
 
@@ -81,7 +81,7 @@ angular.module('services')
 				var bfJson = json.barFlowJson;
 
 				if (Object.keys(fJson).length !== 0) {
-					BarChartFlow.prototype.parent.updateParameters.call(this, fJson);
+					Flow.prototype.updateParameters.call(this, fJson);
 				}
 
 				if (Object.keys(bfJson).length !== 0) {
