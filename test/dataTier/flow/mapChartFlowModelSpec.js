@@ -14,7 +14,7 @@
 * =========================================================
 */
 
-var MapChartFlowModel = require('../../../lib/dataTier/flow/lineChartFlowModel.js');
+var MapChartFlowModel = require('../../../lib/dataTier/flow/mapChartFlowModel.js');
 var assert = require('assert');
 
 describe('MapChartFlowModel', function() {

@@ -150,9 +150,6 @@ describe('FunctionHelper', function() {
         });
     });
     describe('#isValidMapMarker', function() {
-        it('returns true for none', function() {
-            assert.strictEqual(FH.isValidMapMarker('none'),true);
-        });
         it('returns true for valid shape', function() {
             assert.strictEqual(FH.isValidMapMarker({type: 'shape', shape: 'square'}), true);
             assert.strictEqual(FH.isValidMapMarker({type: 'shape', shape: 'triangle'}), true);
@@ -160,7 +157,7 @@ describe('FunctionHelper', function() {
             assert.strictEqual(FH.isValidMapMarker({type: 'shape', shape: 'diamond'}), true);
         });
         it('returns false for invalid shape', function() {
-            assert.strictEqual(FH.isValidMapMarker({type: 'shape'}), true);
+            assert.strictEqual(FH.isValidMapMarker({type: 'shape'}), false);
             assert.strictEqual(FH.isValidMapMarker({type: 'shape', shape: 'line'}), false);
         });
         it('returns true for valid icon', function() {
