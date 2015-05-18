@@ -98,7 +98,7 @@ describe('Graph', function(){
 		};
 
 		beforeEach(function(){
-			spyOn(Legend, 'new Legend').and.callFake(function() {
+			spyOn(Legend.prototype, 'Legend').and.callFake(function() {
 				return {};
 			});
 			//spyOn(Graph,'Legend').returnValue({});
