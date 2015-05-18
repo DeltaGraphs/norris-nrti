@@ -47,22 +47,22 @@ describe('LineChartFlow', function(){
 		});
 
 		it('constructor create the flow with the correct flowColor', function(){
-			expect(LineChartFlow.prototype.getFlowColor()).toEqual('#000');
+			expect(LineChartFlow.getFlowColor()).toEqual('#000');
 		});
 		it('constructor create the flow with the correct legend on point', function(){
-			expect(LineChartFlow.prototype.getLegendOnPoint()).toEqual('');
+			expect(LineChartFlow.getLegendOnPoint()).toEqual('');
 		});
 		it('constructor create the flow with the correct marker', function(){
-			expect(LineChartFlow.prototype.getMarker()).toEqual('square');
+			expect(LineChartFlow.getMarker()).toEqual('square');
 		});
 		it('constructor create the flow with the correct interpolation', function(){
-			expect(LineChartFlow.prototype.getInterpolation()).toEqual('linear');
+			expect(LineChartFlow.getInterpolation()).toEqual('linear');
 		});
 		it('constructor create the flow with the correct area color', function(){
-			expect(LineChartFlow.prototype.getAreaColor()).toEqual('#FFF');
+			expect(LineChartFlow.getAreaColor()).toEqual('#FFF');
 		});
 		it('constructor create the flow with the correct max item displayed', function(){
-			expect(LineChartFlow.prototype.getMaxItem()).toEqual('20');
+			expect(LineChartFlow.getMaxItem()).toEqual('20');
 		});
 
 	});
@@ -100,22 +100,22 @@ describe('LineChartFlow', function(){
 			expect(LineChartFlow.parent.constructor.call).toHaveBeenCalledWith(f); // in teoria dovrebbe essere così
 		});
 		it('constructor create the flow with the correct flowColor', function(){
-			expect(LineChartFlow.prototype.getFlowColor()).toEqual('#F2F');
+			expect(LineChartFlow.getFlowColor()).toEqual('#F2F');
 		});
 		it('constructor create the flow with the correct legend on point', function(){
-			expect(LineChartFlow.prototype.getLegendOnPoint()).toEqual('flusso1');
+			expect(LineChartFlow.getLegendOnPoint()).toEqual('flusso1');
 		});
 		it('constructor create the flow with the correct marker', function(){
-			expect(LineChartFlow.prototype.getMarker()).toEqual('furly');
+			expect(LineChartFlow.getMarker()).toEqual('furly');
 		});
 		it('constructor create the flow with the correct interpolation', function(){
-			expect(LineChartFlow.prototype.getInterpolation()).toEqual('single');
+			expect(LineChartFlow.getInterpolation()).toEqual('single');
 		});
 		it('constructor create the flow with the correct area color', function(){
-			expect(LineChartFlow.prototype.getAreaColor()).toEqual('#F2F');
+			expect(LineChartFlow.getAreaColor()).toEqual('#F2F');
 		});
 		it('constructor create the flow with the correct max item displayed', function(){
-			expect(LineChartFlow.prototype.getMaxItem()).toEqual('20');
+			expect(LineChartFlow.getMaxItem()).toEqual('20');
 		});
 
 	});
@@ -188,22 +188,22 @@ describe('LineChartFlow', function(){
 			expect(LineChartFlow.parent.updateParameters.call).toHaveBeenCalledWith(f); // in teoria dovrebbe essere così
 		});
 		it('flow updated with the correct flowColor', function(){
-			expect(LineChartFlow.prototype.getFlowColor()).toEqual('#F1F');
+			expect(LineChartFlow.getFlowColor()).toEqual('#F1F');
 		});
 		it('flow updated with the correct legend on point', function(){
-			expect(LineChartFlow.prototype.getLegendOnPoint()).toEqual('flusso2');
+			expect(LineChartFlow.getLegendOnPoint()).toEqual('flusso2');
 		});
 		it('flow updated with the correct marker', function(){
-			expect(LineChartFlow.prototype.getMarker()).toEqual('furly1');
+			expect(LineChartFlow.getMarker()).toEqual('furly1');
 		});
 		it('flow updated with the correct interpolation', function(){
-			expect(LineChartFlow.prototype.getInterpolation()).toEqual('cubic');
+			expect(LineChartFlow.getInterpolation()).toEqual('cubic');
 		});
 		it('flow updated with the correct area color', function(){
-			expect(LineChartFlow.prototype.getAreaColor()).toEqual('#F1F');
+			expect(LineChartFlow.getAreaColor()).toEqual('#F1F');
 		});
 		it('flow updated with the correct max item displayed', function(){
-			expect(LineChartFlow.prototype.getMaxItem()).toEqual('15');
+			expect(LineChartFlow.getMaxItem()).toEqual('15');
 		});
 
 	});
@@ -212,9 +212,18 @@ describe('LineChartFlow', function(){
 
 		var data = {
 			records: [
-				{},
-				{},
-				{}
+				{ 
+					'NorrisRecordID' : 'record1',
+					'value' : [ 12.5464546515, 11.15468766]
+				},
+				{ 
+					'NorrisRecordID' : 'record2',
+					'value' : [ 12.5464546515, 11.15468766]
+				},
+				{ 
+					'NorrisRecordID' : 'record3',
+					'value' : [ 12.5464546515, 11.15468766]
+				}
 			]
 		};
 

@@ -47,10 +47,10 @@ describe('BarChartFlow', function(){
 		});
 
 		it('constructor create the flow with the correct flowColor', function(){
-			expect(BarChartFlow.prototype.getFlowColor()).toEqual('#000');
+			expect(BarChartFlow.getFlowColor()).toEqual('#000');
 		});
 		it('constructor create the flow with the correct legend on point', function(){
-			expect(BarChartFlow.prototype.getLegendOnPoint()).toEqual('null');
+			expect(BarChartFlow.getLegendOnPoint()).toEqual('null');
 		});
 	});
 
@@ -83,10 +83,10 @@ describe('BarChartFlow', function(){
 			expect(BarChartFlow.parent.constructor.call).toHaveBeenCalledWith(this, f); // in teoria dovrebbe essere così
 		});
 		it('constructor create the flow with the correct flowColor', function(){
-			expect(BarChartFlow.prototype.getFlowColor()).toEqual('#F2F');
+			expect(BarChartFlow.getFlowColor()).toEqual('#F2F');
 		});
 		it('constructor create the flow with the correct legend on point', function(){
-			expect(BarChartFlow.prototype.getLegendOnPoint()).toEqual('flusso1');
+			expect(BarChartFlow.getLegendOnPoint()).toEqual('flusso1');
 		});
 	});
 

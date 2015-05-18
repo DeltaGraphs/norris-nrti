@@ -47,19 +47,19 @@ describe('MapChartFlow', function(){
 		});
 
 		it('constructor create the flow with the correct flowColor', function(){
-			expect(MapChartFlow.prototype.getFlowColor()).toBeEqual('#000');
+			expect(MapChartFlow.getFlowColor()).toBeEqual('#000');
 		});
 		it('constructor create the flow with the correct legend on point', function(){
-			expect(MapChartFlow.prototype.getLegendOnPoint()).toBeEqual(null);
+			expect(MapChartFlow.getLegendOnPoint()).toBeEqual(null);
 		});
 		it('constructor create the flow with the correct marker', function(){
-			expect(MapChartFlow.prototype.getMarker()).toBeEqual('circle');
+			expect(MapChartFlow.getMarker()).toBeEqual('circle');
 		});
 		it('constructor create the flow with the correct max item displayed', function(){
-			expect(MapChartFlow.prototype.getMaxItem()).toBeEqual('100');
+			expect(MapChartFlow.getMaxItem()).toBeEqual('100');
 		});
 		it('constructor create the flow with the correct trace', function(){
-			expect(MapChartFlow.prototype.getTrace()).toBeEqual(null);
+			expect(MapChartFlow.getTrace()).toBeEqual(null);
 		});
 
 	});
@@ -96,19 +96,19 @@ describe('MapChartFlow', function(){
 			expect(MapChartFlow.parent.constructor.call).toHaveBeenCalledWith(f);
 		});
 		it('constructor create the flow with the correct flowColor', function(){
-			expect(MapChartFlow.prototype.getFlowColor()).toBeEqual('#F2F');
+			expect(MapChartFlow.getFlowColor()).toBeEqual('#F2F');
 		});
 		it('constructor create the flow with the correct legend on point', function(){
-			expect(MapChartFlow.prototype.getLegendOnPoint()).toBeEqual('flusso1');
+			expect(MapChartFlow.getLegendOnPoint()).toBeEqual('flusso1');
 		});
 		it('constructor create the flow with the correct marker', function(){
-			expect(MapChartFlow.prototype.getMarker()).toBeEqual('furly');
+			expect(MapChartFlow.getMarker()).toBeEqual('furly');
 		});
 		it('constructor create the flow with the correct max item displayed', function(){
-			expect(MapChartFlow.prototype.getMaxItem()).toBeEqual('20');
+			expect(MapChartFlow.getMaxItem()).toBeEqual('20');
 		});
 		it('constructor create the flow with the correct trace', function(){
-			expect(MapChartFlow.prototype.getTrace()).toBeEqual('bubu');
+			expect(MapChartFlow.getTrace()).toBeEqual('bubu');
 		});
 
 	});
@@ -178,19 +178,19 @@ describe('MapChartFlow', function(){
 			expect(MapChartFlow.parent.updateParameters.call).toHaveBeenCalledWith(f);
 		});
 		it('flow updated with the correct flowColor', function(){
-			expect(MapChartFlow.prototype.getFlowColor()).toBeEqual('#F3F');
+			expect(MapChartFlow.getFlowColor()).toBeEqual('#F3F');
 		});
 		it('flow updated with the correct legend on point', function(){
-			expect(MapChartFlow.prototype.getLegendOnPoint()).toBeEqual('flusso2');
+			expect(MapChartFlow.getLegendOnPoint()).toBeEqual('flusso2');
 		});
 		it('flow updated with the correct marker', function(){
-			expect(MapChartFlow.prototype.getMarker()).toBeEqual('furly1');
+			expect(MapChartFlow.getMarker()).toBeEqual('furly1');
 		});
 		it('flow updated with the correct max item displayed', function(){
-			expect(MapChartFlow.prototype.getMaxItem()).toBeEqual('45');
+			expect(MapChartFlow.getMaxItem()).toBeEqual('45');
 		});
 		it('flow updated with the correct trace', function(){
-			expect(MapChartFlow.prototype.getTrace()).toBeEqual('flow');
+			expect(MapChartFlow.getTrace()).toBeEqual('flow');
 		});
 
 	});

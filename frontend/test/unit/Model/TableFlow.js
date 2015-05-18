@@ -43,7 +43,7 @@ describe('TableFlow', ['Flow', function(){
 		});
 
 		it('default constructor create the flow in the correct way', function(){
-			expect(TableFlow.prototype.getMaxItem()).toBeEqual(100);
+			expect(TableFlow.getMaxItem()).toBeEqual(100);
 		});
 
 	});
@@ -72,7 +72,7 @@ describe('TableFlow', ['Flow', function(){
 			expect(Flow.parent.constructor.call).toHaveBeenCalledWith(f);
 		});
 		it('constructor create the flow with the correct max item displayed', function(){
-			expect(TableFlow.prototype.getMaxItem()).toBeEqual('20');
+			expect(TableFlow.getMaxItem()).toBeEqual('20');
 		});
 
 	});
@@ -131,7 +131,7 @@ describe('TableFlow', ['Flow', function(){
 			expect(Flow.parent.updateParameters.call).toHaveBeenCalledWith(f); // in teoria dovrebbe essere così
 		});
 		it('flow updated with the correct max item displayed', function(){
-			expect(TableFlow.prototype.getMaxItem()).toBeEqual('15');
+			expect(TableFlow.getMaxItem()).toBeEqual('15');
 		});
 
 	});
