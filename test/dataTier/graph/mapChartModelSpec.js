@@ -291,7 +291,7 @@ describe('mapChartModel', function() {
         it('returns true if passed valid parameters', function() {
             var graph1=new MapChartModel({ID: 'graph1'});
             graph1._flows[0] = new MapChartFlowModel({ID: 'flow1'});
-            assert.strictEqual(graph1.addRecord('flow1', {temperature: 2}), true);
+            assert.strictEqual(graph1.addRecord('flow1', {temperature: 2}).indexOf('flow1'), 0);
         });
     });
     describe('#deleteRecord', function() {
@@ -304,7 +304,7 @@ describe('mapChartModel', function() {
         it('returns 134 if no valid ID is passed', function() {
             var graph1=new MapChartModel({ID: 'graph1'});
             graph1._flows[0] = new MapChartFlowModel({ID: 'flow1'});
-            assert.strictEqual(graph1.deleteRecord('flow1', null), 133);
+            assert.strictEqual(graph1.deleteRecord('flow1', null), 134);
         });
         it('returns true if passed valid parameters', function() {
             var graph1=new MapChartModel({ID: 'graph1'});
