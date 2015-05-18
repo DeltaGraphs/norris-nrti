@@ -20,14 +20,14 @@
 *
 */
 
-angular.module("services")
+angular.module('services')
 .factory('LineChartFlow', ['Flow', function(Flow){
 	var data = [];
-	var flowColor = "#000";
-	var legendOnPoint = "";
-	var marker = "square";
-	var interpolation = "linear";
-	var areaColor = "#FFF";
+	var flowColor = '#000';
+	var legendOnPoint = '';
+	var marker = 'square';
+	var interpolation = 'linear';
+	var areaColor = '#FFF';
 	var maxItem = 20;
 
 	function split(json) {
@@ -60,52 +60,19 @@ angular.module("services")
         }
 
         return {
-            "flowJson" : flowJson,
-            "lineFlowJson" : lineFlowJson
+            'flowJson' : flowJson,
+            'lineFlowJson' : lineFlowJson
         };
     }
 
-	var LineChartFlow = function(info) {
-		var json = split(info);
-		var fJson = json.flowJson;
-		var lfJson = json.lineFlowJson;
+	function LineChartFlow(info) {
+		if (info !== undefined) {
+			var json = split(info);
+			var fJson = json.flowJson;
+			var lfJson = json.lineFlowJson;
 
-		Flow.apply(this, fJson);
-
-		// data
-		if (lfJson.flowColor) {
-            flowColor = lfJson.flowColor;
-        }
-        if (lfJson.legendOnPoint) {
-            legendOnPoint = lfJson.legendOnPoint;
-        }
-        if (lfJson.marker) {
-            marker = lfJson.marker;
-        }
-        if (lfJson.interpolation) {
-            interpolation = lfJson.interpolation;
-        }
-        if (lfJson.areaColor) {
-            areaColor = lfJson.areaColor;
-        }
-        if (lfJson.maxItem) {
-            maxItem = lfJson.maxItem;
-        }
-
-	};
-
-	LineChartFlow.prototype = new Flow();
-
-	LineChartFlow.prototype.updateParameters = function(info) { //abstract
-    	var json = split(info);
-		var fJson = json.flowJson;
-		var lfJson = json.lineFlowJson;
-
-		if (Object.keys(fJson).length !== 0) {
-			Flow.apply(this, fJson);
-		}
-
-		if (Object.keys(lfJson).length !== 0) {
+			this.parent.constructor.call(this, fJson);
+			
 			if (lfJson.flowColor) {
 	            flowColor = lfJson.flowColor;
 	        }
@@ -125,38 +92,78 @@ angular.module("services")
 	            maxItem = lfJson.maxItem;
 	        }
 	    }
-	};
 
-	LineChartFlow.prototype.initializeData = function(data) {
-		return data;
-	};
-	LineChartFlow.prototype.inPlaceUpdate = function(data) {
-		return data;
-    };
-    LineChartFlow.prototype.streamUpdate = function(data) {
-    	return data;
-    };
+	}
 
-	LineChartFlow.prototype.getData = function() {
-		return data;
-	};
-	LineChartFlow.prototype.getFlowColor = function() {
-		return flowColor;
-	};
-	LineChartFlow.prototype.getLegendOnPoint = function() {
-		return legendOnPoint;
-	};
-	LineChartFlow.prototype.getMarker = function() {
-		return marker;
-	};
-	LineChartFlow.prototype.getInterpolation = function() {
-		return interpolation;
-	};
-	LineChartFlow.prototype.getAreaColor = function() {
-		return areaColor;
-	};
-	LineChartFlow.prototype.getMaxItem = function() {
-		return maxItem;
+	LineChartFlow.prototype = Object.create(Flow.prototype);
+	LineChartFlow.prototype.constructor = LineChartFlow;
+	LineChartFlow.prototype.parent = Flow.prototype;
+
+	LineChartFlow.prototype = {
+		updateParameters : function(info) { //abstract
+			if (info !== undefined) {
+		    	var json = split(info);
+				var fJson = json.flowJson;
+				var lfJson = json.lineFlowJson;
+
+				if (Object.keys(fJson).length !== 0) {
+					Flow.apply(this, fJson);
+				}
+
+				if (Object.keys(lfJson).length !== 0) {
+					if (lfJson.flowColor) {
+			            flowColor = lfJson.flowColor;
+			        }
+			        if (lfJson.legendOnPoint) {
+			            legendOnPoint = lfJson.legendOnPoint;
+			        }
+			        if (lfJson.marker) {
+			            marker = lfJson.marker;
+			        }
+			        if (lfJson.interpolation) {
+			            interpolation = lfJson.interpolation;
+			        }
+			        if (lfJson.areaColor) {
+			            areaColor = lfJson.areaColor;
+			        }
+			        if (lfJson.maxItem) {
+			            maxItem = lfJson.maxItem;
+			        }
+			    }
+			}
+		},
+
+		initializeData : function(data) {
+			return data;
+		},
+		inPlaceUpdate : function(data) {
+			return data;
+	    },
+    	streamUpdate : function(data) {
+	    	return data;
+	    },
+
+		getData : function() {
+			return data;
+		},
+		getFlowColor : function() {
+			return flowColor;
+		},
+		getLegendOnPoint : function() {
+			return legendOnPoint;
+		},
+		getMarker : function() {
+			return marker;
+		},
+		getInterpolation : function() {
+			return interpolation;
+		},
+		getAreaColor : function() {
+			return areaColor;
+		},
+		getMaxItem : function() {
+			return maxItem;
+		}
 	};
 
 	return LineChartFlow;
