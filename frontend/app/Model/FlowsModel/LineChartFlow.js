@@ -68,6 +68,8 @@ angular.module('services')
         };
     }
 
+    //LineChartFlow.prototype.test = function _Test(expressionStr) { return eval(expressionStr); };
+
 	function LineChartFlow(info) {
 		if (info !== undefined) {
 			var json = split(info);

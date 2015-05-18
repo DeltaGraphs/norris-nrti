@@ -24,7 +24,7 @@ angular.module('services')
 .factory('TableFlow', ['Flow', function(Flow){
 
 	var data = [];
-	var maxItem;
+	var maxItem = 100;
 
 	function split(json) {
         var flowJson = {};
@@ -45,6 +45,8 @@ angular.module('services')
             'tableFlowJson' : tableFlowJson
         };
     }
+
+    //TableFlow.prototype.test = function _Test(expressionStr) { return eval(expressionStr); };
 
     function TableFlow(info) {
     	if (info !== undefined) {

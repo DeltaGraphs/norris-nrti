@@ -61,6 +61,8 @@ angular.module('services')
         };
     }
 
+    //MapChartFlow.prototype.test = function _Test(expressionStr) { return eval(expressionStr); };
+
     function MapChartFlow(info) {
     	if (info !== undefined) {
 			var json = split(info);

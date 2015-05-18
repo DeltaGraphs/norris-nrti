@@ -9,6 +9,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.2.0         2015-05-18  Maria Giovanna Chinellato	Modified general structure, some fixes
+*
 * 0.1.1         2015-05-17  Maria Giovanna Chinellato   Fix code
 *
 * 0.1.0			2015-05-15	Maria Giovanna Chinellato	Add test of Model::LineChartFlow.js
@@ -23,12 +25,47 @@ describe('LineChartFlow', function(){
 	var LineChartFlow;
 	var Flow;
 
-	beforeEach(module('app'));
+	beforeEach(angular.mock.module('app'));
 
 	beforeEach(inject(function(_LineChartFlow_, $injector){
 		LineChartFlow = _LineChartFlow_;
 		Flow = $injector.get('Flow');
 	}));
+
+	describe('Constructor', function(){
+
+		beforeEach(function() {
+			LineChartFlow = new LineChartFlow(json);
+		});
+
+		afterEach(function() {
+			LineChartFlow = null;
+		});
+
+		it('instance defined', function(){
+			expect(LineChartFlow).toBeDefined();
+		});
+
+		it('constructor create the flow with the correct flowColor', function(){
+			expect(LineChartFlow.prototype.getFlowColor()).toEqual('#000');
+		});
+		it('constructor create the flow with the correct legend on point', function(){
+			expect(LineChartFlow.prototype.getLegendOnPoint()).toEqual('');
+		});
+		it('constructor create the flow with the correct marker', function(){
+			expect(LineChartFlow.prototype.getMarker()).toEqual('square');
+		});
+		it('constructor create the flow with the correct interpolation', function(){
+			expect(LineChartFlow.prototype.getInterpolation()).toEqual('linear');
+		});
+		it('constructor create the flow with the correct area color', function(){
+			expect(LineChartFlow.prototype.getAreaColor()).toEqual('#FFF');
+		});
+		it('constructor create the flow with the correct max item displayed', function(){
+			expect(LineChartFlow.prototype.getMaxItem()).toEqual('20');
+		});
+
+	});
 
 	describe('Constructor', function(){
 
@@ -47,37 +84,43 @@ describe('LineChartFlow', function(){
 			'name' : 'flusso1'
 		};
 
-		beforeEach(function(){
+		beforeEach(function() {
 			LineChartFlow = new LineChartFlow(json);
 		});
 
-		spyOn(Flow.prototype, 'apply').and.callFake(function() {return;});
+		afterEach(function() {
+			LineChartFlow = null;
+		});
+
+		it('instance defined', function(){
+			expect(LineChartFlow).toBeDefined();
+		});
 
 		it('constructor use the flow constructor in the correct way', function(){
-			expect(Flow.prototype.apply).toHaveBeenCalledWith(f); // in teoria dovrebbe essere così
+			expect(LineChartFlow.parent.constructor.call).toHaveBeenCalledWith(f); // in teoria dovrebbe essere così
 		});
 		it('constructor create the flow with the correct flowColor', function(){
-			expect(LineChartFlow.prototype.getFlowColor()).toBeEqual('#F2F');
+			expect(LineChartFlow.prototype.getFlowColor()).toEqual('#F2F');
 		});
 		it('constructor create the flow with the correct legend on point', function(){
-			expect(LineChartFlow.prototype.getLegendOnPoint()).toBeEqual('flusso1');
+			expect(LineChartFlow.prototype.getLegendOnPoint()).toEqual('flusso1');
 		});
 		it('constructor create the flow with the correct marker', function(){
-			expect(LineChartFlow.prototype.getMarker()).toBeEqual('furly');
+			expect(LineChartFlow.prototype.getMarker()).toEqual('furly');
 		});
 		it('constructor create the flow with the correct interpolation', function(){
-			expect(LineChartFlow.prototype.getInterpolation()).toBeEqual('single');
+			expect(LineChartFlow.prototype.getInterpolation()).toEqual('single');
 		});
 		it('constructor create the flow with the correct area color', function(){
-			expect(LineChartFlow.prototype.getAreaColor()).toBeEqual('#F2F');
+			expect(LineChartFlow.prototype.getAreaColor()).toEqual('#F2F');
 		});
 		it('constructor create the flow with the correct max item displayed', function(){
-			expect(LineChartFlow.prototype.getMaxItem()).toBeEqual('20');
+			expect(LineChartFlow.prototype.getMaxItem()).toEqual('20');
 		});
 
 	});
 
-	describe('split', function(){
+	/*describe('split', function(){
 		var res;
 		var json = {};
 		var json1 = json;
@@ -110,11 +153,11 @@ describe('LineChartFlow', function(){
 		});
 
 		it('json splitted in the correct way', function(){
-			expect(res.flowJson).toBeEqual(f);
-			expect(res.lineFlowJson).toBeEqual(l);
+			expect(res.flowJson).toEqual(f);
+			expect(res.lineFlowJson).toEqual(l);
 		});
 
-	});
+	});*/
 
 	describe('updateParameters', function(){
 		var json = {
@@ -133,63 +176,120 @@ describe('LineChartFlow', function(){
 		};
 
 		beforeEach(function(){
-			LineChartFlow.prototype.updateParameters(json);
+			LineChartFlow = new LineChartFlow();
+			LineChartFlow = LineChartFlow.updateParameters(json);
 		});
 
-		spyOn(Flow.prototype, 'apply').and.callFake(function() {return;});
+		afterEach(function(){
+			LineChartFlow = null;
+		});
 
 		it('flow updated with the correct parameters', function(){
-			expect(Flow.prototype.apply).toHaveBeenCalledWith(f); // in teoria dovrebbe essere così
+			expect(LineChartFlow.parent.updateParameters.call).toHaveBeenCalledWith(f); // in teoria dovrebbe essere così
 		});
 		it('flow updated with the correct flowColor', function(){
-			expect(LineChartFlow.prototype.getFlowColor()).toBeEqual('#F1F');
+			expect(LineChartFlow.prototype.getFlowColor()).toEqual('#F1F');
 		});
 		it('flow updated with the correct legend on point', function(){
-			expect(LineChartFlow.prototype.getLegendOnPoint()).toBeEqual('flusso2');
+			expect(LineChartFlow.prototype.getLegendOnPoint()).toEqual('flusso2');
 		});
 		it('flow updated with the correct marker', function(){
-			expect(LineChartFlow.prototype.getMarker()).toBeEqual('furly1');
+			expect(LineChartFlow.prototype.getMarker()).toEqual('furly1');
 		});
 		it('flow updated with the correct interpolation', function(){
-			expect(LineChartFlow.prototype.getInterpolation()).toBeEqual('cubic');
+			expect(LineChartFlow.prototype.getInterpolation()).toEqual('cubic');
 		});
 		it('flow updated with the correct area color', function(){
-			expect(LineChartFlow.prototype.getAreaColor()).toBeEqual('#F1F');
+			expect(LineChartFlow.prototype.getAreaColor()).toEqual('#F1F');
 		});
 		it('flow updated with the correct max item displayed', function(){
-			expect(LineChartFlow.prototype.getMaxItem()).toBeEqual('15');
+			expect(LineChartFlow.prototype.getMaxItem()).toEqual('15');
 		});
 
 	});
 
-	/*describe('inizializeData', function(){
-		// data {}
+	describe('inizializeData', function(){
+
+		var data = {
+			records: [
+				{},
+				{},
+				{}
+			]
+		};
 
 		beforeEach(function(){
-			LineChartFlow.prototype.inizializeData(data);
+			LineChartFlow = new LineChartFlow();
+			LineChartFlow = LineChartFlow.inizializeData(data);
 		});
 
-		// it
+		afterEach(function(){
+			LineChartFlow = null;
+		});
+
+		it('data inizialized in the correct way'), function(){
+			expect(LineChartFlow.getData().length).toEqual(3);
+		});
+
 	});
 
 	describe('inPlaceUpdate', function(){
-		// data {}
+		
+		var data = {
+			records: [
+				{ 
+					'NorrisRecordID' : 'record1',
+					'value' : [ 1, 1]
+				}
+			]
+		};
+
+		var update = {
+			'NorrisRecordID' : 'record1',
+			'value' : [ 1, 2]
+		};
 
 		beforeEach(function(){
-			LineChartFlow.prototype.inPlaceUpdate(data);
+			LineChartFlow = new LineChartFlow();
+			LineChartFlow = LineChartFlow.inizializeData(data);
+			LineChartFlow = LineChartFlow.inPlaceUpdate(update);
 		});
 
-		// it
+		afterEach(function(){
+			LineChartFlow = null;
+		});
+
+		it('data updated in the correct way', function(){
+			expect(LineChartFlow.getData()[0].value[0]).toEqual(1);
+			expect(LineChartFlow.getData()[0].value[1]).toEqual(2);
+		});
+
+		
 	});
 
 	describe('streamUpdate', function(){
-		// data {}
+		
+		var data = {
+			records: [
+				{ 
+					'NorrisRecordID' : 'record1',
+					'value' : [ 1, 1]
+				}
+			]
+		};
 
 		beforeEach(function(){
-			LineChartFlow.prototype.streamUpdate(data);
+			LineChartFlow = new LineChartFlow();
+			LineChartFlow = LineChartFlow.streamUpdate(data);
 		});
 
-		// it
-	});*/
+		afterEach(function(){
+			LineChartFlow = null;
+		});
+
+		it('streamUpdate call inizializedData in the correct way', function(){
+			expect(LineChartFlow.inizializedData()).toHaveBeenCalledWith(data);
+		});
+	});
 
 });

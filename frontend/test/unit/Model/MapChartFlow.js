@@ -9,6 +9,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.2.0         2015-05-18  Maria Giovanna Chinellato	Modified general structure, some fixes
+*
 * 0.1.1         2015-05-17  Maria Giovanna Chinellato   Fix code
 *
 * 0.1.0			2015-05-15	Maria Giovanna Chinellato	Add test of Model::MapChartFlow.js
@@ -23,12 +25,44 @@ describe('MapChartFlow', function(){
 	var MapChartFlow;
 	var Flow;
 
-	beforeEach(module('app'));
+	beforeEach(angular.mock.module('app'));
 
 	beforeEach(inject(function(_MapChartFlow_, $injector){
 		MapChartFlow = _MapChartFlow_;
 		Flow = $injector.get('Flow');
 	}));
+
+	describe('Default constructor', function(){
+
+		beforeEach(function(){
+			MapChartFlow = new MapChartFlow();
+		});
+
+		afterEach(function(){
+			MapChartFlow = null;
+		});
+
+		it('instance defined', function(){
+			expect(MapChartFlow).toBeDefined();
+		});
+
+		it('constructor create the flow with the correct flowColor', function(){
+			expect(MapChartFlow.prototype.getFlowColor()).toBeEqual('#000');
+		});
+		it('constructor create the flow with the correct legend on point', function(){
+			expect(MapChartFlow.prototype.getLegendOnPoint()).toBeEqual(null);
+		});
+		it('constructor create the flow with the correct marker', function(){
+			expect(MapChartFlow.prototype.getMarker()).toBeEqual('circle');
+		});
+		it('constructor create the flow with the correct max item displayed', function(){
+			expect(MapChartFlow.prototype.getMaxItem()).toBeEqual('100');
+		});
+		it('constructor create the flow with the correct trace', function(){
+			expect(MapChartFlow.prototype.getTrace()).toBeEqual(null);
+		});
+
+	});
 
 	describe('Constructor', function(){
 
@@ -50,10 +84,16 @@ describe('MapChartFlow', function(){
 			MapChartFlow = new MapChartFlow(json);
 		});
 
-		spyOn(Flow.prototype, 'apply').and.callFake(function() {return;});
+		afterEach(function(){
+			MapChartFlow = null;
+		});
+
+		it('instance defined', function(){
+			expect(MapChartFlow).toBeDefined();
+		});
 
 		it('constructor use the flow constructor in the correct way', function(){
-			expect(Flow.prototype.apply).toHaveBeenCalledWith(f); // in teoria dovrebbe essere così
+			expect(MapChartFlow.parent.constructor.call).toHaveBeenCalledWith(f);
 		});
 		it('constructor create the flow with the correct flowColor', function(){
 			expect(MapChartFlow.prototype.getFlowColor()).toBeEqual('#F2F');
@@ -73,7 +113,7 @@ describe('MapChartFlow', function(){
 
 	});
 
-	describe('split', function(){
+	/*describe('split', function(){
 		var res;
 		var json = {};
 		var json1 = json;
@@ -108,7 +148,7 @@ describe('MapChartFlow', function(){
 			expect(res.mapFlowJson).toBeEqual(m);
 		});
 
-	});
+	});*/
 
 	describe('updateParameters', function(){
 		var json = {
@@ -126,13 +166,16 @@ describe('MapChartFlow', function(){
 		};
 		
 		beforeEach(function(){
-			MapChartFlow.prototype.updateParameters(json);
+			MapChartFlow = new MapChartFlow();
+			MapChartFlow = MapChartFlow.updateParameters(json);
 		});
 
-		spyOn(Flow.prototype, 'apply').and.callFake(function() {return;});
+		afterEach(function(){
+			MapChartFlow = null;
+		});
 
 		it('flow updated with the correct parameters', function(){
-			expect(Flow.prototype.apply).toHaveBeenCalledWith(f); // in teoria dovrebbe essere così
+			expect(MapChartFlow.parent.updateParameters.call).toHaveBeenCalledWith(f);
 		});
 		it('flow updated with the correct flowColor', function(){
 			expect(MapChartFlow.prototype.getFlowColor()).toBeEqual('#F3F');
@@ -152,44 +195,121 @@ describe('MapChartFlow', function(){
 
 	});
 
-	/*describe('inizializeData', function(){
-		// data {}
+	describe('inizializeData', function(){
+		var data = {
+			records: [
+				{ 
+					'NorrisRecordID' : 'record1',
+					'value' : [ 12.5464546515, 11.15468766]
+				},
+				{ 
+					'NorrisRecordID' : 'record2',
+					'value' : [ 12.5464546515, 11.15468766]
+				},
+				{ 
+					'NorrisRecordID' : 'record3',
+					'value' : [ 12.5464546515, 11.15468766]
+				}
+			]
+		};
 
 		beforeEach(function(){
-			MapChartFlow.prototype.inizializeData(data);
+			MapChartFlow = new MapChartFlow();
+			MapChartFlow = MapChartFlow.inizializeData(data);
 		});
 
-		// it
+		afterEach(function(){
+			MapChartFlow = null;
+		});
+
+		it('data inizialize in the correct way', function(){
+			expect(MapChartFlow.getData().length).toEqual(3);
+		});
 	});
 
 	describe('inPlaceUpdate', function(){
-		// data {}
+		var data = {
+			records: [
+				{ 
+					'NorrisRecordID' : 'record1',
+					'value' : [ 12.5464546515, 11.15468766]
+				}
+			]
+		};
+
+		var update = {
+			'NorrisRecordID' : 'record1',
+			'value' : [ 14.5364864646, 11.5646546516]
+		};
 
 		beforeEach(function(){
-			MapChartFlow.prototype.inPlaceUpdate(data);
+			MapChartFlow = new MapChartFlow();
+			MapChartFlow = MapChartFlow.inizializeData(data);
+			MapChartFlow = MapChartFlow.inPlaceUpdate(update);
 		});
 
-		// it
+		afterEach(function(){
+			MapChartFlow = null;
+		});
+
+		it('data updated in the correct way', function(){
+			expect(MapChartFlow.getData()[0].value[0]).toEqual(14.5364864646);
+			expect(MapChartFlow.getData()[0].value[1]).toEqual(11.5646546516);
+		});
 	});
 
 	describe('streamUpdate', function(){
-		// data {}
+		var data = {
+			records: [
+				{ 
+					'NorrisRecordID' : 'record1',
+					'value' : [ 1, 1]
+				}
+			]
+		};
 
 		beforeEach(function(){
-			MapChartFlow.prototype.streamUpdate(data);
+			MapChartFlow = new MapChartFlow();
+			MapChartFlow = MapChartFlow.streamUpdate(data);
 		});
 
-		// it
+		afterEach(function(){
+			MapChartFlow = null;
+		});
+
+		it('streamUpdate call inizializeData in the correct way', function(){
+			expect(MapChartFlow.inizializeData()).toHaveBeenCalledWith(data);
+		});
 	});
 
-	describe('movieUpdate', function(){
-		// data {}
+	describe('deleteData', function(){
 
+		var data = {
+			records: [
+				{ 
+					'NorrisRecordID' : 'record1',
+					'value' : [ 14.5364864646, 11.5646546516]
+				}
+			]
+		};
+
+		var delData = {
+			'NorrisRecordID' : 'record1',
+			'value' : [ 14.5364864646, 11.5646546516]
+		};
 		beforeEach(function(){
-			MapChartFlow.prototype.movieUpdate(data);
+			MapChartFlow = new MapChartFlow();
+			MapChartFlow = MapChartFlow.inizializeData(data);
+			MapChartFlow = MapChartFlow.deleteData(delData);
 		});
 
-		// it
-	});*/
+		afterEach(function(){
+			MapChartFlow = null;
+		});
+
+		it('data removed in the correct way', function(){
+			expect(MapChartFlow.getData().length).toEqual(0);
+		});
+	});
 
 });

@@ -9,6 +9,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.2.0         2015-05-18  Maria Giovanna Chinellato	Modified general structure, some fixes
+*
 * 0.1.1         2015-05-17  Maria Giovanna Chinellato   Fix code
 *
 * 0.1.0			2015-05-15	Maria Giovanna Chinellato	Add test of Model::BarChartFlow.js
@@ -40,6 +42,10 @@ describe('BarChartFlow', function(){
 			BarChartFlow = null;
 		});
 
+		it('instance defined', function(){
+			expect(BarChartFlow).toBeDefined();
+		});
+
 		it('constructor create the flow with the correct flowColor', function(){
 			expect(BarChartFlow.prototype.getFlowColor()).toEqual('#000');
 		});
@@ -69,8 +75,12 @@ describe('BarChartFlow', function(){
 			BarChartFlow = null;
 		});
 
+		it('instance defined', function(){
+			expect(BarChartFlow).toBeDefined();
+		});
+
 		it('constructor use the flow constructor in the correct way', function(){
-			expect(this.parent.constructor.call).toHaveBeenCalledWith(this, f); // in teoria dovrebbe essere così
+			expect(BarChartFlow.parent.constructor.call).toHaveBeenCalledWith(this, f); // in teoria dovrebbe essere così
 		});
 		it('constructor create the flow with the correct flowColor', function(){
 			expect(BarChartFlow.prototype.getFlowColor()).toEqual('#F2F');
@@ -134,7 +144,7 @@ describe('BarChartFlow', function(){
 		});
 
 		it('flow updated with the correct parameters', function(){
-			expect(this.parent.constructor.call).toHaveBeenCalledWith(f); // in teoria dovrebbe essere così
+			expect(BarChartFlow.parent.updateParameters.call).toHaveBeenCalledWith(f); // in teoria dovrebbe essere così
 		});
 		it('cflow updated with the correct flowColor', function(){
 			expect(BarChartFlow.getFlowColor()).toEqual('#F1F');
@@ -163,7 +173,7 @@ describe('BarChartFlow', function(){
 			BarChartFlow = null;
 		});
 
-		it('data inizialized in the correct way'), function(){
+		it('data inizialized in the correct way', function(){
 			expect(BarChartFlow.getData().length).toEqual(3);
 		});
 
@@ -198,7 +208,7 @@ describe('BarChartFlow', function(){
 			expect(BarChartFlow.getData()[0].value[0]).toEqual(1);
 			expect(BarChartFlow.getData()[0].value[1]).toEqual(2);
 		});
-		
+
 	});
 
 });

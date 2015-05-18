@@ -9,6 +9,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.2.0         2015-05-18  Maria Giovanna Chinellato	Modified general structure, some fixes
+*
 * 0.1.1         2015-05-17  Maria Giovanna Chinellato   Fix code
 *
 * 0.1.0			2015-05-15	Maria Giovanna Chinellato	Add test of Model::TableFlow.js
@@ -23,12 +25,28 @@ describe('TableFlow', ['Flow', function(){
 	var TableFlow;
 	var Flow;
 
-	beforeEach(module('app'));
+	beforeEach(angular.mock.module('app'));
 
 	beforeEach(inject(function(_TableFlow_, $injector){
 		TableFlow = _TableFlow_;
 		Flow = $injector.get('Flow');
 	}));
+
+	describe('Default constructor', function(){
+
+		beforeEach(function(){
+			TableFlow = new TableFlow(json);
+		});
+
+		afterEach(function(){
+			TableFlow = null;
+		});
+
+		it('default constructor create the flow in the correct way', function(){
+			expect(TableFlow.prototype.getMaxItem()).toBeEqual(100);
+		});
+
+	});
 
 	describe('Constructor', function(){
 
@@ -46,10 +64,12 @@ describe('TableFlow', ['Flow', function(){
 			TableFlow = new TableFlow(json);
 		});
 
-		spyOn(Flow.prototype, 'apply').and.callFake(function() {return;});
+		afterEach(function(){
+			TableFlow = null;
+		});
 
 		it('constructor use the flow constructor in the correct way', function(){
-			expect(Flow.prototype.apply).toHaveBeenCalledWith(f); // in teoria dovrebbe essere così
+			expect(Flow.parent.constructor.call).toHaveBeenCalledWith(f);
 		});
 		it('constructor create the flow with the correct max item displayed', function(){
 			expect(TableFlow.prototype.getMaxItem()).toBeEqual('20');
@@ -57,7 +77,7 @@ describe('TableFlow', ['Flow', function(){
 
 	});
 
-	describe('split', function(){
+	/*describe('split', function(){
 		var res;
 		var json = {};
 		var json1 = json;
@@ -84,7 +104,7 @@ describe('TableFlow', ['Flow', function(){
 			expect(res.tableFlowJson).toBeEqual(t);
 		});
 
-	});
+	});*/
 
 	describe('updateParameters', function(){
 		var json = {
@@ -99,13 +119,16 @@ describe('TableFlow', ['Flow', function(){
 
 
 		beforeEach(function(){
-			TableFlow.prototype.updateParameters(json);
+			TableFlow = new TableFlow();
+			TableFlow = TableFlow.updateParameters(json);
 		});
 
-		spyOn(Flow.prototype, 'apply').and.callFake(function() {return;});
+		afterEach(function(){
+			TableFlow = null;
+		});
 
 		it('flow updated with the correct parameters', function(){
-			expect(Flow.prototype.apply).toHaveBeenCalledWith(f); // in teoria dovrebbe essere così
+			expect(Flow.parent.updateParameters.call).toHaveBeenCalledWith(f); // in teoria dovrebbe essere così
 		});
 		it('flow updated with the correct max item displayed', function(){
 			expect(TableFlow.prototype.getMaxItem()).toBeEqual('15');
@@ -113,34 +136,95 @@ describe('TableFlow', ['Flow', function(){
 
 	});
 
-	/*describe('inizializeData', function(){
-		// data {}
+	describe('inizializeData', function(){
+		var data = {
+			records: [
+				{ 
+					'NorrisRecordID' : 'record1',
+					'value' : [ 'Oggi' , 'ho', 'mangiato']
+				},
+				{ 
+					'NorrisRecordID' : 'record2',
+					'value' : [ 'una', 'buonissima', 'pizza']
+				},
+				{ 
+					'NorrisRecordID' : 'record3',
+					'value' : [ 'con', 'la', 'ricotta']
+				}
+			]
+		};
 
 		beforeEach(function(){
-			TableFlow.prototype.inizializeData(data);
+			TableFlow = new TableFlow();
+			TableFlow = TableFlow.inizializeData(data);
 		});
 
-		// it
+		afterEach(function(){
+			TableFlow = null;
+		});
+
+		it('data inizialize in the correct way', function(){
+			expect(TableFlow.getData().length).toEqual(3);
+		});
+
 	});
 
 	describe('inPlaceUpdate', function(){
-		// data {}
+
+		var data = {
+			records: [
+				{ 
+					'NorrisRecordID' : 'record1',
+					'value' : [ 'Oggi' , 'ho', 'mangiato']
+				}
+			]
+		};
+
+		var update = {
+			'NorrisRecordID' : 'record2',
+			'value' : [ 'una', 'buonissima', 'pizza']
+		};
 
 		beforeEach(function(){
-			TableFlow.prototype.inPlaceUpdate(data);
+			TableFlow = new TableFlow();
+			TableFlow = TableFlow.inizializeData(data);
+			TableFlow = TableFlow.inPlaceUpdate(update);
 		});
 
-		// it
+		afterEach(function(){
+			TableFlow = null;
+		});
+
+		it('data updated in the correct way', function(){
+			expect(TableFlow.getData()[0].value[0]).toEqual('una');
+			expect(TableFlow.getData()[0].value[1]).toEqual('buonissima');
+			expect(TableFlow.getData()[0].value[2]).toEqual('pizza');
+		});
+
 	});
 
 	describe('streamUpdate', function(){
-		// data {}
+		var data = {
+			records: [
+				{ 
+					'NorrisRecordID' : 'record1',
+					'value' : [ 1, 1]
+				}
+			]
+		};
 
 		beforeEach(function(){
-			TableFlow.prototype.streamUpdate(data);
+			TableFlow = new TableFlow();
+			TableFlow = TableFlow.streamUpdate(data);
 		});
 
-		// it
-	});*/
+		afterEach(function(){
+			TableFlow = null;
+		});
+
+		it('streamUpdate call inizializeData in the correct way', function(){
+			expect(TableFlow.inizializeData()).toHaveBeenCalledWith(data);
+		});
+	});
 
 }]);
