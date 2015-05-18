@@ -43,10 +43,10 @@ describe('Flow', function(){
 		});
 
 		it('constructor create the flow with the correct dataFormat', function(){
-			expect(Flow.getDataFormat()).toEqual('int');
+			expect(Flow.getDataFormat()).toEqual(null);
 		});
 		it('constructor create the flow with the correct name', function(){
-			expect(Flow.getName()).toEqual('flusso1');
+			expect(Flow.getName()).toEqual(null);
 		});
 
 	});
