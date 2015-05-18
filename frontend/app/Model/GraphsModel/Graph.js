@@ -89,13 +89,10 @@ angular.module('app')
     		return this;
 		},
 		deleteFlow : function(flowID) {
-			/*var filteredFlows = flowList.filter(function(flowID) {return flowID === id;});
-		    if(filteredFlows.length > 0) {
-		    	delete filteredFlows[0];
-    		}*/
+
     		var index;
     		for (var i = 0; i<flowList.length; i++){
-    			if (flowList[i].id == flowID){
+    			if (flowList[i].id === flowID){
     				index = i;
     				return ;
     			}
