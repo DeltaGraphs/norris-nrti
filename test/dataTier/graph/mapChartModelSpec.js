@@ -46,9 +46,8 @@ describe('mapChartModel', function() {
         assert.deepEqual(graph1._legend.getProperties(), defaultLegend.getProperties());
         assert.strictEqual(graph1._latitude, '');
         assert.strictEqual(graph1._longitude, '');
-        assert.strictEqual(graph1._scale, 'linear');
         assert.strictEqual(graph1._mapType, 'roadmap');
-        assert.strictEqual(graph1._zoom, false);
+        assert.strictEqual(graph1._zoom, 14);
     });
 
     it('set default values to wrong properties', function() {
@@ -61,7 +60,6 @@ describe('mapChartModel', function() {
             legend: 'def',
             latitude: 123,
             longitude: 456,
-            scale: 2,
             mapType: 123,
             zoom: 'def'
         });
@@ -74,9 +72,8 @@ describe('mapChartModel', function() {
         assert.deepEqual(graph1._legend.getProperties(), defaultLegend.getProperties());
         assert.strictEqual(graph1._latitude, '');
         assert.strictEqual(graph1._longitude, '');
-        assert.strictEqual(graph1._scale, 'linear');
         assert.strictEqual(graph1._mapType, 'roadmap');
-        assert.strictEqual(graph1._zoom, false);
+        assert.strictEqual(graph1._zoom, 14);
     });
 
     var legend1 = new LegendModel();
@@ -90,9 +87,8 @@ describe('mapChartModel', function() {
             legend: legend1.getProperties(),
             latitude: '33',
             longitude: '44',
-            scale: 'logarithmic',
             mapType: 'satellite',
-            zoom: true
+            zoom: 10
         });
         assert.strictEqual(graph1._ID, 'graph1');
         assert.strictEqual(graph1._title, 'graph one');
@@ -103,9 +99,8 @@ describe('mapChartModel', function() {
         assert.deepEqual(graph1._legend.getProperties(), legend1.getProperties());
         assert.strictEqual(graph1._latitude, '33');
         assert.strictEqual(graph1._longitude, '44');
-        assert.strictEqual(graph1._scale, 'logarithmic');
         assert.strictEqual(graph1._mapType, 'satellite');
-        assert.strictEqual(graph1._zoom, true);
+        assert.strictEqual(graph1._zoom, 10);
     });
 
     describe('#getProperties', function() {
@@ -119,9 +114,8 @@ describe('mapChartModel', function() {
 	            legend: legend1.getProperties(),
                 latitude: '33',
                 longitude: '44',
-                scale: 'logarithmic',
                 mapType: 'satellite',
-                zoom: true
+                zoom: 10
             };
             var graph1=new MapChartModel(properties);
             var prop=graph1.getProperties();
@@ -134,9 +128,8 @@ describe('mapChartModel', function() {
             assert.deepEqual(prop.legend, legend1.getProperties());
             assert.strictEqual(prop.latitude, '33');
             assert.strictEqual(prop.longitude, '44');
-            assert.strictEqual(prop.scale, 'logarithmic');
             assert.strictEqual(prop.mapType, 'satellite');
-            assert.strictEqual(prop.zoom, true);
+            assert.strictEqual(prop.zoom, 10);
         });
     });
     describe('#updateProperties', function() {
@@ -150,9 +143,8 @@ describe('mapChartModel', function() {
                 legend: legend1.getProperties(),
                 latitude: '33',
                 longitude: '44',
-                scale: 'logarithmic',
                 mapType: 'satellite',
-                zoom: true
+                zoom: 10
             };
             var graph1=new MapChartModel({ID: 'graph1'});
             graph1.updateProperties(properties);
@@ -165,9 +157,8 @@ describe('mapChartModel', function() {
             assert.deepEqual(graph1._legend.getProperties(), legend1.getProperties());
             assert.strictEqual(graph1._latitude, '33');
             assert.strictEqual(graph1._longitude, '44');
-            assert.strictEqual(graph1._scale, 'logarithmic');
             assert.strictEqual(graph1._mapType, 'satellite');
-            assert.strictEqual(graph1._zoom, true);
+            assert.strictEqual(graph1._zoom, 10);
         });
         it('does not update the properties with wrong param', function() {
             var properties={
@@ -179,7 +170,6 @@ describe('mapChartModel', function() {
                 legend: 'def',
                 latitude: 123,
                 longitude: 456,
-                scale: 2,
                 mapType: 123,
                 zoom: 'def'
             };
@@ -194,9 +184,8 @@ describe('mapChartModel', function() {
             assert.deepEqual(graph1._legend.getProperties(), defaultLegend.getProperties());
             assert.strictEqual(graph1._latitude, '');
             assert.strictEqual(graph1._longitude, '');
-            assert.strictEqual(graph1._scale, 'linear');
             assert.strictEqual(graph1._mapType, 'roadmap');
-            assert.strictEqual(graph1._zoom, false);
+            assert.strictEqual(graph1._zoom, 14);
         });
     });
     describe('#addFlow', function() {
