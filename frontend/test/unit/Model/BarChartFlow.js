@@ -23,12 +23,30 @@ describe('BarChartFlow', function(){
 	var BarChartFlow;
 	var Flow;
 
-	beforeEach(module('app'));
+	beforeEach(angular.mock.module('app'));
 
 	beforeEach(inject(function(_BarChartFlow_, $injector){
 		BarChartFlow = _BarChartFlow_;
 		Flow = $injector.get('Flow');
 	}));
+
+	describe('Default constructor', function(){
+
+		beforeEach(function(){
+			BarChartFlow = new BarChartFlow();
+		});
+
+		afterEach(function(){
+			BarChartFlow = null;
+		});
+
+		it('constructor create the flow with the correct flowColor', function(){
+			expect(BarChartFlow.prototype.getFlowColor()).toEqual('#000');
+		});
+		it('constructor create the flow with the correct legend on point', function(){
+			expect(BarChartFlow.prototype.getLegendOnPoint()).toEqual('null');
+		});
+	});
 
 	describe('Constructor', function(){
 
@@ -47,20 +65,22 @@ describe('BarChartFlow', function(){
 			BarChartFlow = new BarChartFlow(json);
 		});
 
-		spyOn(Flow.prototype, 'apply').and.callFake(function() {return;});
+		afterEach(function(){
+			BarChartFlow = null;
+		});
 
 		it('constructor use the flow constructor in the correct way', function(){
-			expect(Flow.prototype.apply).toHaveBeenCalledWith(f); // in teoria dovrebbe essere così
+			expect(this.parent.constructor.call).toHaveBeenCalledWith(this, f); // in teoria dovrebbe essere così
 		});
 		it('constructor create the flow with the correct flowColor', function(){
-			expect(BarChartFlow.prototype.getFlowColor()).toBeEqual('#F2F');
+			expect(BarChartFlow.prototype.getFlowColor()).toEqual('#F2F');
 		});
 		it('constructor create the flow with the correct legend on point', function(){
-			expect(BarChartFlow.prototype.getLegendOnPoint()).toBeEqual('flusso1');
+			expect(BarChartFlow.prototype.getLegendOnPoint()).toEqual('flusso1');
 		});
 	});
 
-	describe('split', function(){
+	/*describe('split', function(){
 		var res;
 		var json = {};
 		var json1 = json;
@@ -85,13 +105,14 @@ describe('BarChartFlow', function(){
 		});
 
 		it('json splitted in the correct way', function(){
-			expect(res.flowJson).toBeEqual(f);
-			expect(res.barFlowJson).toBeEqual(b);
+			expect(res.flowJson).toEqual(f);
+			expect(res.barFlowJson).toEqual(b);
 		});
 
-	});
+	});*/
 
 	describe('updateParameters', function(){
+		
 		var json = {
 			'dataFormat' : 'String',
 			'name' : 'flusso2',
@@ -104,41 +125,80 @@ describe('BarChartFlow', function(){
 		};
 
 		beforeEach(function(){
-			BarChartFlow.prototype.updateParameters(json);
+			BarChartFlow = new BarChartFlow();
+			BarChartFlow = BarChartFlow.updateParameters(json);
 		});
 
-		spyOn(Flow.prototype, 'apply').and.callFake(function() {return;});
+		afterEach(function(){
+			BarChartFlow = null;
+		});
 
 		it('flow updated with the correct parameters', function(){
-			expect(Flow.prototype.apply).toHaveBeenCalledWith(f); // in teoria dovrebbe essere così
+			expect(this.parent.constructor.call).toHaveBeenCalledWith(f); // in teoria dovrebbe essere così
 		});
 		it('cflow updated with the correct flowColor', function(){
-			expect(BarChartFlow.prototype.getFlowColor()).toBeEqual('#F1F');
+			expect(BarChartFlow.getFlowColor()).toEqual('#F1F');
 		});
 		it('flow updated with the correct legend on point', function(){
-			expect(BarChartFlow.prototype.getLegendOnPoint()).toBeEqual('flusso2');
+			expect(BarChartFlow.getLegendOnPoint()).toEqual('flusso2');
 		});
 
 	});
 
-	/*describe('inizializeData', function(){
-		// data {}
+	describe('inizializeData', function(){
+		var data = {
+			records: [
+				{},
+				{},
+				{}
+			]
+		};
 
 		beforeEach(function(){
-			BarChartFlow.prototype.inizializeData(data);
+			BarChartFlow = new BarChartFlow();
+			BarChartFlow = BarChartFlow.inizializeData(data);
 		});
 
-		// it
-	});*/
+		afterEach(function(){
+			BarChartFlow = null;
+		});
 
-	/*describe('inPlaceUpdate', function(){
-		// data {}
+		it('data inizialized in the correct way'), function(){
+			expect(BarChartFlow.getData().length).toEqual(3);
+		});
+
+	});
+
+	describe('inPlaceUpdate', function(){
+		var data = {
+			records: [
+				{ 
+					'NorrisRecordID' : 'record1',
+					'value' : [ 1, 1]
+				}
+			]
+		};
+
+		var update = {
+			'NorrisRecordID' : 'record1',
+			'value' : [ 1, 2]
+		};
 
 		beforeEach(function(){
-			BarChartFlow.prototype.inPlaceUpdate(data);
+			BarChartFlow = new BarChartFlow();
+			BarChartFlow = BarChartFlow.inizializeData(data);
+			BarChartFlow = BarChartFlow.inPlaceUpdate(update);
 		});
 
-		// it
-	});*/
+		afterEach(function(){
+			BarChartFlow = null;
+		});
+
+		it('data updated in the correct way', function(){
+			expect(BarChartFlow.getData()[0].value[0]).toEqual(1);
+			expect(BarChartFlow.getData()[0].value[1]).toEqual(2);
+		});
+		
+	});
 
 });
