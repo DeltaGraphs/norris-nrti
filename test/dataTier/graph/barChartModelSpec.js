@@ -250,7 +250,7 @@ describe('barChartModel', function() {
             var data=graph1.getData();
             assert.strictEqual(data.length, 2);
             assert.strictEqual(data[0].properties.ID, 'flow1');
-            assert.strictEqual(data[1].properties.ID, 'flow1');
+            assert.strictEqual(data[1].properties.ID, 'flow2');
         });
     });    
 

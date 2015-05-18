@@ -233,33 +233,7 @@ describe('mapChartModel', function() {
             var data=graph1.getData();
             assert.strictEqual(data.length, 2);
             assert.strictEqual(data[0].properties.ID, 'flow1');
-            assert.strictEqual(data[1].properties.ID, 'flow1');
-        });
-    });
-
-    describe('#getData', function() {
-        var flow1 = new MapChartFlowModel({ID: 'flow1'});
-        var flow2 = new MapChartFlowModel({ID: 'flow2'});
-        it('returns empty json if it has no flows', function() {
-            var graph1=new MapChartModel({ID: 'graph1'});
-            assert.strictEqual(graph1.getData().length, 0);
-        });
-       
-        it('returns json with one graph', function() {
-            var graph1=new MapChartModel({ID: 'graph1'});
-            graph1.addFlow(flow1);
-            var data=graph1.getData();
-            assert.strictEqual(data.length, 1);
-            assert.strictEqual(data[0].properties.ID, 'flow1');
-        });
-        it('returns json with two graphs', function() {
-            var graph1=new MapChartModel({ID: 'graph1'});
-            graph1.addFlow(flow1);
-            graph1.addFlow(flow2);
-            var data=graph1.getData();
-            assert.strictEqual(data.length, 2);
-            assert.strictEqual(data[0].properties.ID, 'flow1');
-            assert.strictEqual(data[1].properties.ID, 'flow1');
+            assert.strictEqual(data[1].properties.ID, 'flow2');
         });
     });   
 
