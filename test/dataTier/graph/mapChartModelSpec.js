@@ -274,7 +274,7 @@ describe('mapChartModel', function() {
             var graph1=new MapChartModel({ID: 'graph1'});
             graph1._flows[0] = new MapChartModel({ID: 'flow1'});
             var ID=graph1._flows[0].addRecord({temperature: 3});
-            assert.strictEqual(graph1.updateRecord('flow4', ID, {temperature: 2}), true);
+            assert.strictEqual(graph1.updateRecord('flow1', ID, {temperature: 2}), true);
         });
     });
 });
