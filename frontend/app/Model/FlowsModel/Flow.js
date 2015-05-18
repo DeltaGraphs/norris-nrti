@@ -46,6 +46,7 @@ angular.module('app')
 					this.name = info.name;
 				}
 			}
+			return this;
 		},
 		getDataFormat : function() {
 			return this.dataFormat;

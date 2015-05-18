@@ -45,10 +45,10 @@ describe('Legend', function(){
 		it('constructor create the page with the correct position', function(){
 			expect(Legend.getPosition()).toEqual('right');
 		});
-		it('constructor create the page with the correct background', function(){
+		it('constructor create the page with the correct font color', function(){
 			expect(Legend.getFontColor()).toEqual('#000');
 		});
-		it('constructor create the page with the correct fontColor', function(){
+		it('constructor create the page with the correct background', function(){
 			expect(Legend.getBackground()).toEqual('#FFF');
 		});
 
@@ -77,10 +77,10 @@ describe('Legend', function(){
 		it('constructor create the page with the correct position', function(){
 			expect(Legend.getPosition()).toEqual('left');
 		});
-		it('constructor create the page with the correct background', function(){
+		it('constructor create the page with the correct font color', function(){
 			expect(Legend.getFontColor()).toEqual('#AFA');
 		});
-		it('constructor create the page with the correct fontColor', function(){
+		it('constructor create the page with the correct background', function(){
 			expect(Legend.getBackground()).toEqual('#F00');
 		});
 
@@ -106,10 +106,10 @@ describe('Legend', function(){
 		it('constructor create the page with the correct position', function(){
 			expect(Legend.getPosition()).toEqual('top');
 		});
-		it('constructor create the page with the correct background', function(){
+		it('constructor create the page with the correct font color', function(){
 			expect(Legend.getFontColor()).toEqual('#F00');
 		});
-		it('constructor create the page with the correct fontColor', function(){
+		it('constructor create the page with the correct background', function(){
 			expect(Legend.getBackground()).toEqual('#AFA');
 		});
 

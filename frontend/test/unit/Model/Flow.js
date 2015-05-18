@@ -43,10 +43,10 @@ describe('Flow', function(){
 		});
 
 		it('constructor create the flow with the correct dataFormat', function(){
-			expect(Flow.prototype.getDataFormat()).toEqual('int');
+			expect(Flow.getDataFormat()).toEqual('int');
 		});
 		it('constructor create the flow with the correct name', function(){
-			expect(Flow.prototype.getName()).toEqual('flusso1');
+			expect(Flow.getName()).toEqual('flusso1');
 		});
 
 	});
@@ -71,10 +71,10 @@ describe('Flow', function(){
 		});
 
 		it('constructor create the flow with the correct dataFormat', function(){
-			expect(Flow.prototype.getDataFormat()).toEqual('int');
+			expect(Flow.getDataFormat()).toEqual('int');
 		});
 		it('constructor create the flow with the correct name', function(){
-			expect(Flow.prototype.getName()).toEqual('flusso1');
+			expect(Flow.getName()).toEqual('flusso1');
 		});
 
 	});
@@ -87,7 +87,7 @@ describe('Flow', function(){
 
 		beforeEach(function(){
 			Flow = new Flow();
-			Flow = Flow.prototype.updateParameters(json);
+			Flow = Flow.updateParameters(json);
 		});
 
 		afterEach(function(){
@@ -95,10 +95,10 @@ describe('Flow', function(){
 		});
 
 		it('flow updated with the correct dataFormat', function(){
-			expect(Flow.prototype.getDataFormat()).toEqual('String');
+			expect(Flow.getDataFormat()).toEqual('String');
 		});
 		it('flow updated with the correct name', function(){
-			expect(Flow.prototype.getName()).toEqual('flussoString1');
+			expect(Flow.getName()).toEqual('flussoString1');
 		});
 
 	});
