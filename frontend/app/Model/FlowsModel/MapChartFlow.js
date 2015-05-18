@@ -18,7 +18,7 @@
 *
 */
 
-angular.module("services")
+angular.module('services')
 .factory('MapChartFlow', ['Flow', function(Flow){
 	var data = [];
 	var flowColor;
@@ -37,7 +37,6 @@ angular.module("services")
         }
 
         var mapFlowJson = {};
-        // data
         if (json.flowColor) {
             mapFlowJson.flowColor = json.flowColor;
         }
@@ -55,46 +54,19 @@ angular.module("services")
         }
 
         return {
-            "flowJson" : flowJson,
-            "mapFlowJson" : mapFlowJson
+            'flowJson' : flowJson,
+            'mapFlowJson' : mapFlowJson
         };
     }
 
     var MapChartFlow = function(info) {
-		var json = split(info);
-		var fJson = json.flowJson;
-		var mfJson = json.mapFlowJson;
+    	if (info !== undefined) {
+			var json = split(info);
+			var fJson = json.flowJson;
+			var mfJson = json.mapFlowJson;
 
-		Flow.apply(this, fJson);
+			this.parent.constructor.call(this, fJson);
 
-		// data
-		if (mfJson.flowColor) {
-            flowColor = mfJson.flowColor;
-        }
-        if (mfJson.legendOnPoint) {
-            legendOnPoint = mfJson.legendOnPoint;
-        }
-        if (mfJson.marker) {
-            marker = mfJson.marker;
-        }
-        if (mfJson.maxItem) {
-            maxItem = mfJson.maxItem;
-        }
-
-	};
-
-	MapChartFlow.prototype = Flow();
-
-	MapChartFlow.prototype.updateParameters = function(info) { //abstract
-    	var json = split(info);
-		var fJson = json.flowJson;
-		var mfJson = json.mapFlowJson;
-
-		if (Object.keys(fJson).length !== 0) {
-			Flow.apply(this, fJson);
-		}
-
-		if (Object.keys(mfJson).length !== 0) {
 			if (mfJson.flowColor) {
 	            flowColor = mfJson.flowColor;
 	        }
@@ -107,39 +79,68 @@ angular.module("services")
 	        if (mfJson.maxItem) {
 	            maxItem = mfJson.maxItem;
 	        }
-	    }
+        }
 	};
 
-	MapChartFlow.prototype.initializeData = function(data) {
-		return data;
-	};
-	MapChartFlow.prototype.inPlaceUpdate = function(data) {
-		return data;
-    };
-    MapChartFlow.prototype.streamUpdate = function(data) {
-    	return data;
-    };
-    MapChartFlow.prototype.movieUpdate = function(data) {
-    	return data;
-    };
+	MapChartFlow.prototype = {
 
-	MapChartFlow.prototype.getData = function() {
-		return data;
-	};
-	MapChartFlow.prototype.getFlowColor = function() {
-		return flowColor;
-	};
-	MapChartFlow.prototype.getLegendOnPoint = function() {
-		return legendOnPoint;
-	};
-	MapChartFlow.prototype.getMarker = function() {
-		return marker;
-	};
-	MapChartFlow.prototype.getMaxItem = function() {
-		return maxItem;
-	};
-	MapChartFlow.prototype.getTrace = function() {
-		return trace;
+		updateParameters : function(info) { //abstract
+	    	var json = split(info);
+			var fJson = json.flowJson;
+			var mfJson = json.mapFlowJson;
+
+			if (Object.keys(fJson).length !== 0) {
+				Flow.apply(this, fJson);
+			}
+
+			if (Object.keys(mfJson).length !== 0) {
+				if (mfJson.flowColor) {
+		            flowColor = mfJson.flowColor;
+		        }
+		        if (mfJson.legendOnPoint) {
+		            legendOnPoint = mfJson.legendOnPoint;
+		        }
+		        if (mfJson.marker) {
+		            marker = mfJson.marker;
+		        }
+		        if (mfJson.maxItem) {
+		            maxItem = mfJson.maxItem;
+		        }
+		    }
+		},
+
+		initializeData : function(data) {
+			return data;
+		},
+		inPlaceUpdate : function(data) {
+			return data;
+	    },
+		streamUpdate : function(data) {
+	    	return data;
+	    },
+	    movieUpdate : function(data) {
+	    	return data;
+	    },
+
+		getData : function() {
+			return data;
+		},
+		getFlowColor : function() {
+			return flowColor;
+		},
+		getLegendOnPoint : function() {
+			return legendOnPoint;
+		},
+		getMarker : function() {
+			return marker;
+		},
+		getMaxItem : function() {
+			return maxItem;
+		},
+		getTrace : function() {
+			return trace;
+		},
+
 	};
 
 	return MapChartFlow;

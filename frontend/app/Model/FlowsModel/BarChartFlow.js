@@ -18,7 +18,7 @@
 *
 */
 
-angular.module("services")
+angular.module('services')
 .factory('BarChartFlow', ['Flow', function(Flow){
 	var data = [];
 	var flowColor;
@@ -42,8 +42,8 @@ angular.module("services")
         }
 
         return {
-            "flowJson" : flowJson,
-            "barFlowJson" : barFlowJson
+            'flowJson' : flowJson,
+            'barFlowJson' : barFlowJson
         };
     }
 
@@ -54,7 +54,6 @@ angular.module("services")
 			var bfJson = json.barFlowJson;
 			
 			this.parent.constructor.call(this, fJson);
-			//Flow.apply(this, fJson);
 
 			if (bfJson.flowColor) {
 	            flowColor = bfJson.flowColor;
@@ -63,14 +62,14 @@ angular.module("services")
 	            legendOnPoint = bfJson.legendOnPoint;
 	        }
         }
-	};
+	}
 
 	BarChartFlow.prototype = Object.create(Flow.prototype);
 	BarChartFlow.prototype.constructor = BarChartFlow;
 	BarChartFlow.prototype.parent = Flow.prototype;
 
 	BarChartFlow.prototype = {
-		
+
 		updateParameters : function(info) {
 	    	var json = split(info);
 			var fJson = json.flowJson;
@@ -88,25 +87,25 @@ angular.module("services")
 		            legendOnPoint = bfJson.legendOnPoint;
 		        }
 		    }
-		};
+		},
 
 		initializeData : function(data) {
 			return data;
-		};
+		},
 		inPlaceUpdate : function(data) {
 			return data;
-	    };
+	    },
 
 		getData : function() {
 			return data;
-		};
+		},
 		getFlowColor : function() {
 			return flowColor;
-		};
+		},
 		getLegendOnPoint : function() {
 			return legendOnPoint;
-		};
-	}
+		},
+	};
 
 	return BarChartFlow;
 
