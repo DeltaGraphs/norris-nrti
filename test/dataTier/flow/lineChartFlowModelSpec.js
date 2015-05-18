@@ -2,7 +2,7 @@
 'use strict';
 
 /*
-* Name : filterModelSpec.js
+* Name : lineChartFlowModelSpec.js
 * Module : UnitTest
 * Location : /test/dataTier/flow
 *
@@ -10,7 +10,7 @@
 * 
 * Version   Date         Programmer         Description
 * =========================================================
-* 0.0.1     2015-05-14   Matteo Furlan    Initial code
+* 0.0.1     2015-05-14   Filippo Rampado    Initial code
 * =========================================================
 */
 
@@ -122,6 +122,35 @@ describe('LineChartFlowModel', function() {
             assert.strictEqual(ID.indexOf('flow1'), 0);
             assert.strictEqual(flow1._records.length, 1);
             assert.strictEqual(flow1._records[0].norrisRecordID.indexOf('flow1'), 0);
+        });
+    });
+
+    describe('#updateRecord', function() {
+        it('return 223 if record is not valid', function() {
+            var flow1=new LineChartFlowModel({ID: 'flow1'});
+            assert.strictEqual(flow1.updateRecord(1), 223);
+            assert.strictEqual(flow1.updateRecord(1, [{asd:'asd'}]), 223);
+            assert.strictEqual(flow1.updateRecord(1, 2), 223);
+        });
+        it('return 252 if index is not valid', function() {
+            var flow1=new LineChartFlowModel({ID: 'flow1'});
+            flow1._records=[{temperature: 2, norrisRecordID: 'flow1whatever0'}];
+            assert.strictEqual(flow1.updateRecord('flow2whaterver0', {temperature: 2}), 224);
+            assert.strictEqual(flow1.updateRecord('flow1whaterver1', {temperature: 2}), 224);
+            assert.strictEqual(flow1.updateRecord('asd', {temperature: 2}), 224);
+        });
+        it('updates and validate the record if ID and record are valid', function() {
+            var flow1=new LineChartFlowModel({
+                    ID: 'flow1',
+                    filters: 'temperature>3'
+                });
+            flow1._records=[{temperature: 2, norrisRecordID: 'flow1whatever0'}];
+            flow1.validateRecord(0);
+            assert.strictEqual(flow1._records[0].norrisRecordIsValid, false);
+            var update=flow1.updateRecord('flow1whatever0', {temperature: 4});
+            assert.strictEqual(update.indexOf('flow1'), 0);
+            assert.strictEqual(flow1._records[0].temperature, 4);
+            assert.strictEqual(flow1._records[0].norrisRecordIsValid, true);
         });
     });
 });

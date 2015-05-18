@@ -118,6 +118,17 @@ describe('FunctionHelper', function() {
             assert.strictEqual(FH.isValidFormat('toHour'), false);
         });
     });
+    describe('#isValidMapFormat', function() {
+        it('returns true for coordinate', function() {
+            assert.strictEqual(FH.isValidFormat('coordinate'),true);
+        });
+        it('returns true for degree', function() {
+            assert.strictEqual(FH.isValidFormat('degree'), true);
+        });
+        it('returns false for Hour', function() {
+            assert.strictEqual(FH.isValidFormat('Hour'), false);
+        });
+    });
     describe('#isValidMarker', function() {
         it('returns true for none', function() {
             assert.strictEqual(FH.isValidMarker('none'),true);

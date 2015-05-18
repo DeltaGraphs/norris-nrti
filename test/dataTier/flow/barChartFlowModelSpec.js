@@ -90,4 +90,31 @@ describe('BarChartFlowModel', function() {
         assert.strictEqual(flow1._flowColor, '#FFFFFF');
         assert.strictEqual(flow1._records.length, 2);
     });
+
+    describe('#updateRecord', function() {
+        it('return 251 if record is not valid', function() {
+            var flow1=new BarChartFlowModel({ID: 'flow1'});
+            assert.strictEqual(flow1.updateRecord(1), 213);
+            assert.strictEqual(flow1.updateRecord(1, [{asd:'asd'}]), 213);
+            assert.strictEqual(flow1.updateRecord(1, 2), 213);
+        });
+        it('return 252 if ID_index is not valid', function() {
+            var flow1=new BarChartFlowModel({ID: 'flow1'}, [{temperature: 1}]);
+            assert.strictEqual(flow1.updateRecord('asd', {temperature: 2}), 214);
+            assert.strictEqual(flow1.updateRecord(2, {temperature: 2}), 214);
+        });
+        it('updates and validate the record if index and record are valid', function() {
+            var flow1=new BarChartFlowModel({
+                    ID: 'flow1',
+                    filters: 'temperature>3'
+                },[{temperature: 1}]);
+            flow1.validateRecord(0);
+            assert.strictEqual(flow1._records[0].norrisRecordIsValid, false);
+            var update=flow1.updateRecord(0, {temperature: 4});
+            assert.strictEqual(update, true);
+            assert.strictEqual(flow1._records[0].temperature, 4);
+            assert.strictEqual(flow1._records[0].norrisRecordIsValid, true);
+        });
+    });
+
 });
