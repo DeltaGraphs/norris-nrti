@@ -59,7 +59,7 @@ describe('BarChart', function(){
 			expect(BarChart).toBeDefined();
 		});
 		it('graph Constructor called', function(){
-			expect(BarChart.parent.constructor.call()).toHaveBeenCalledWith(this, json);
+			expect(BarChart.parent.constructor.call).toHaveBeenCalledWith(this, json);
 		});
 
 	});
