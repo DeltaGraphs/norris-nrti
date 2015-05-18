@@ -9,7 +9,9 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
-* 0.1.1         2015-05-15  Maria Giovanna Chinellato	Various fix
+* 0.2.0			2015-05-18	Francesco Rossetto			Modified general structure, some fixes
+*
+* 0.1.1         2015-05-15  Maria Giovanna Chinellato	Various fixes
 *
 * 0.1.0         2015-05-12  Maria Giovanna Chinellato	Add attributes and methods
 *
@@ -21,23 +23,23 @@
 angular.module('services')
 .factory('BarChartFlow', ['Flow', function(Flow){
 	var data = [];
-	var flowColor;
-	var legendOnPoint;
+	var flowColor = '#000';
+	var legendOnPoint = null;
 
 	function split(json) {
         var flowJson = {};
-        if (json.dataFormat) {
+        if (json.dataFormat !== undefined) {
             flowJson.dataFormat = json.dataFormat;
         }
-        if (json.name) {
+        if (json.name !== undefined) {
             flowJson.name = json.name;
         }
 
         var barFlowJson = {};
-        if (json.flowColor) {
+        if (json.flowColor !== undefined) {
             barFlowJson.flowColor = json.flowColor;
         }
-        if (json.legendOnPoint) {
+        if (json.legendOnPoint !== undefined) {
             barFlowJson.legendOnPoint = json.legendOnPoint;
         }
 
@@ -55,10 +57,10 @@ angular.module('services')
 			
 			this.parent.constructor.call(this, fJson);
 
-			if (bfJson.flowColor) {
+			if (bfJson.flowColor !== undefined) {
 	            flowColor = bfJson.flowColor;
 	        }
-	        if (bfJson.legendOnPoint) {
+	        if (bfJson.legendOnPoint !== undefined) {
 	            legendOnPoint = bfJson.legendOnPoint;
 	        }
         }
@@ -77,18 +79,19 @@ angular.module('services')
 				var bfJson = json.barFlowJson;
 
 				if (Object.keys(fJson).length !== 0) {
-					Flow.apply(this, fJson);
+					this.parent.updateParameters.call(this, fJson);
 				}
 
 				if (Object.keys(bfJson).length !== 0) {
-					if (bfJson.flowColor) {
+					if (bfJson.flowColor !== undefined) {
 			            flowColor = bfJson.flowColor;
 			        }
-			        if (bfJson.legendOnPoint) {
+			        if (bfJson.legendOnPoint !== undefined) {
 			            legendOnPoint = bfJson.legendOnPoint;
 			        }
 			    }
 		    }
+		    return this;
 		},
 
 		initializeData : function(data) {

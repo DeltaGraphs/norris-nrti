@@ -2,14 +2,16 @@
 'use strict';
 
 /*
-* Name :  LineChartFlow.js
+* Name :  MapChartFlow.js
 * Module : FrontEnd::Model::FlowsModel
 * Location : /frontend/app/Model/FlowsModel
 *
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
-* 0.1.1         2015-05-15  Maria Giovanna Chinellato	Various fix
+* 0.2.0			2015-05-18	Francesco Rossetto			Modified general structure, some fixes
+*
+* 0.1.1         2015-05-15  Maria Giovanna Chinellato	Various fixes
 *
 * 0.1.0         2015-05-12  Maria Giovanna Chinellato	Add attributes and methods
 *
@@ -21,35 +23,35 @@
 angular.module('services')
 .factory('MapChartFlow', ['Flow', function(Flow){
 	var data = [];
-	var flowColor;
-	var legendOnPoint;
-	var marker;
-	var maxItem;
-	var trace;
+	var flowColor = '#000';
+	var legendOnPoint = null;
+	var marker = 'circle';
+	var maxItem = 100;
+	var trace = null;
 
 	function split(json) {
         var flowJson = {};
-        if (json.dataFormat) {
+        if (json.dataFormat !== undefined) {
             flowJson.dataFormat = json.dataFormat;
         }
-        if (json.name) {
+        if (json.name !== undefined) {
             flowJson.name = json.name;
         }
 
         var mapFlowJson = {};
-        if (json.flowColor) {
+        if (json.flowColor !== undefined) {
             mapFlowJson.flowColor = json.flowColor;
         }
-        if (json.legendOnPoint) {
+        if (json.legendOnPoint !== undefined) {
             mapFlowJson.legendOnPoint = json.legendOnPoint;
         }
-        if (json.marker) {
+        if (json.marker !== undefined) {
             mapFlowJson.marker = json.marker;
         }
-        if (json.maxItem) {
+        if (json.maxItem !== undefined) {
             mapFlowJson.maxItem = json.maxItem;
         }
-        if (json.trace) {
+        if (json.trace !== undefined) {
             mapFlowJson.trace = json.trace;
         }
 
@@ -67,16 +69,16 @@ angular.module('services')
 
 			this.parent.constructor.call(this, fJson);
 
-			if (mfJson.flowColor) {
+			if (mfJson.flowColor !== undefined) {
 	            flowColor = mfJson.flowColor;
 	        }
-	        if (mfJson.legendOnPoint) {
+	        if (mfJson.legendOnPoint !== undefined) {
 	            legendOnPoint = mfJson.legendOnPoint;
 	        }
-	        if (mfJson.marker) {
+	        if (mfJson.marker !== undefined) {
 	            marker = mfJson.marker;
 	        }
-	        if (mfJson.maxItem) {
+	        if (mfJson.maxItem !== undefined) {
 	            maxItem = mfJson.maxItem;
 	        }
         }
@@ -95,24 +97,25 @@ angular.module('services')
 				var mfJson = json.mapFlowJson;
 
 				if (Object.keys(fJson).length !== 0) {
-					Flow.apply(this, fJson);
+					this.parent.updateParameters.call(this, fJson);
 				}
 
 				if (Object.keys(mfJson).length !== 0) {
-					if (mfJson.flowColor) {
+					if (mfJson.flowColor !== undefined) {
 			            flowColor = mfJson.flowColor;
 			        }
-			        if (mfJson.legendOnPoint) {
+			        if (mfJson.legendOnPoint !== undefined) {
 			            legendOnPoint = mfJson.legendOnPoint;
 			        }
-			        if (mfJson.marker) {
+			        if (mfJson.marker !== undefined) {
 			            marker = mfJson.marker;
 			        }
-			        if (mfJson.maxItem) {
+			        if (mfJson.maxItem !== undefined) {
 			            maxItem = mfJson.maxItem;
 			        }
 			    }
 			}
+			return this;
 		},
 
 		initializeData : function(data) {
