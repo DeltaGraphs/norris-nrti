@@ -309,7 +309,8 @@ describe('mapChartModel', function() {
         it('returns true if passed valid parameters', function() {
             var graph1=new MapChartModel({ID: 'graph1'});
             graph1._flows[0] = new MapChartFlowModel({ID: 'flow1'});
-            var ID=graph1._flows[0].addRecord({temperature: 3});
+            graph1._flows[0].addRecord({temperature: 3});
+            var ID=graph1._flows[0].addRecord({temperature: 4});
             assert.strictEqual(graph1.deleteRecord('flow1', ID), true);
         });
     });

@@ -55,7 +55,7 @@ describe('TableFlowModel', function() {
 	it('set default values to wrong properties', function() {
         var flow1=new TableFlowModel({
             ID: 'flow1',
-            columnKeys: 2,
+            columnKeys: [2, {id: 2}],
             columnFormats: [2, {id: 2}],
             fontColorKey: 2,
             backgroungColorKey: 2,
