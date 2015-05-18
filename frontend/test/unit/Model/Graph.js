@@ -98,9 +98,10 @@ describe('Graph', function(){
 		};
 
 		beforeEach(function(){
-			spyOn(Legend, 'Legend').and.callFake(function() {
+			/*spyOn(Legend, 'Legend').and.callFake(function() {
 				return {};
-			});
+			});*/
+			spyOn(Graph,'Legend').returnValue({});
 			//Legend = jasmine.createSpyObj('Legend',['Legend']);
 			Graph = new Graph();
 			Graph = Graph.updateParameters(json);
