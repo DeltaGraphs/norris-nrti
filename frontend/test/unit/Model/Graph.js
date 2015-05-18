@@ -175,9 +175,7 @@ describe('Graph', function(){
 			Graph = new Graph();
 			Graph = Graph.addFlow(json1.ID, Flow1);
 			Graph = Graph.addFlow(json2.ID, Flow2);
-			console.log(Graph.getFlowList().length);
 			Graph = Graph.deleteFlow('flusso1');
-			console.log(Graph.getFlowList().length);
 		});
 
 		afterEach(function(){

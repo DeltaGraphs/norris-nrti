@@ -98,9 +98,8 @@ angular.module('app')
 
     				index = i;
     			}
-    			console.log(flowList[i].id);
     		}
-    		delete flowList[index];
+    		flowList.splice(index,1);
 			
 			return this;
 		},
