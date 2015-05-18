@@ -31,16 +31,18 @@ describe('Graph', function(){
 
 	beforeEach(inject(function(_Graph_){
 		Graph = _Graph_;
-		Legend = {
+		Legend = function() {
 			return {
 				Legend : function(info){
+					info = info;
 					return {};
 				} 
 			};
 		};
-		Flow = {
+		Flow = function() {
 			return {
 				Flow : function(info){
+					info = info;
 					return {};
 				}
 			};
