@@ -119,14 +119,14 @@ describe('FunctionHelper', function() {
         });
     });
     describe('#isValidMapFormat', function() {
-        it('returns true for coordinate', function() {
-            assert.strictEqual(FH.isValidFormat('coordinate'),true);
+        it('returns true for coordinates', function() {
+            assert.strictEqual(FH.isValidMapFormat('coordinates'),true);
         });
-        it('returns true for degree', function() {
-            assert.strictEqual(FH.isValidFormat('degree'), true);
+        it('returns true for geographic', function() {
+            assert.strictEqual(FH.isValidMapFormat('geographic'), true);
         });
         it('returns false for Hour', function() {
-            assert.strictEqual(FH.isValidFormat('Hour'), false);
+            assert.strictEqual(FH.isValidMapFormat('Hour'), false);
         });
     });
     describe('#isValidMarker', function() {
@@ -149,6 +149,38 @@ describe('FunctionHelper', function() {
             assert.strictEqual(FH.isValidMarker('line'), false);
         });
     });
+    describe('#isValidMapMarker', function() {
+        it('returns true for none', function() {
+            assert.strictEqual(FH.isValidMapMarker('none'),true);
+        });
+        it('returns true for valid shape', function() {
+            assert.strictEqual(FH.isValidMapMarker({type: 'shape', shape: 'square'}), true);
+            assert.strictEqual(FH.isValidMapMarker({type: 'shape', shape: 'triangle'}), true);
+            assert.strictEqual(FH.isValidMapMarker({type: 'shape', shape: 'circle'}), true);
+            assert.strictEqual(FH.isValidMapMarker({type: 'shape', shape: 'diamond'}), true);
+        });
+        it('returns false for invalid shape', function() {
+            assert.strictEqual(FH.isValidMapMarker({type: 'shape'}), true);
+            assert.strictEqual(FH.isValidMapMarker({type: 'shape', shape: 'line'}), false);
+        });
+        it('returns true for valid icon', function() {
+            assert.strictEqual(FH.isValidMapMarker({type: 'icon', icon: 'images/mark.png'}), true);
+        });
+        it('returns false for invalid icon', function() {
+            assert.strictEqual(FH.isValidMapMarker({type: 'icon'}), false);
+            assert.strictEqual(FH.isValidMapMarker({type: 'icon', icon: 2}), false);
+        });
+        it('returns true for valid text', function() {
+            assert.strictEqual(FH.isValidMapMarker({type: 'text', text: 'flow1'}), true);
+        });
+        it('returns false for invalid text', function() {
+            assert.strictEqual(FH.isValidMapMarker({type: 'text'}), false);
+            assert.strictEqual(FH.isValidMapMarker({type: 'text', text: 2}), false);
+        });
+        it('returns false for 2', function() {
+            assert.strictEqual(FH.isValidMapMarker('2'), false);
+        });
+    });
     describe('#isValidInterpolation', function() {
         it('returns true for linear', function() {
             assert.strictEqual(FH.isValidInterpolation('linear'),true);
@@ -167,6 +199,60 @@ describe('FunctionHelper', function() {
         });
         it('returns false for line', function() {
             assert.strictEqual(FH.isValidInterpolation('line'), false);
+        });
+    });
+    describe('#isValidTrace', function() {
+        it('returns true for none', function() {
+            assert.strictEqual(FH.isValidTrace({type: 'none'}),true);
+        });
+        it('returns true for valid line', function() {
+            assert.strictEqual(FH.isValidTrace({
+                type: 'line',
+                coordinates: [
+                    [12.43, -2],
+                    [1, 0],
+                    [1, 2]
+                ]
+            }), true);
+        });
+        it('returns true for valid poly', function() {
+            assert.strictEqual(FH.isValidTrace({
+                type: 'poly',
+                coordinates: [
+                    [12.43, -2],
+                    [1, 0],
+                    [1, 2]
+                ]
+            }), true);
+        });
+        it('returns false for invalid line', function() {
+            assert.strictEqual(FH.isValidTrace({
+                type: 'line',
+                coordinates: [
+                    [12.43, -2]
+                ]
+            }), false);
+        });
+        it('returns false for invalid line', function() {
+            assert.strictEqual(FH.isValidTrace({
+                type: 'line',
+                coordinates: [
+                    [12.43, -2],
+                    [1, '2'],
+                ]
+            }), false);
+        });
+        it('returns false for invalid line', function() {
+            assert.strictEqual(FH.isValidTrace({
+                type: 'line',
+                coordinates: [
+                    [12.43, -2],
+                    [1, 2, 4],
+                ]
+            }), false);
+        });
+        it('returns false for square', function() {
+            assert.strictEqual(FH.isValidTrace({type: 'square'}), false);
         });
     });
 });
