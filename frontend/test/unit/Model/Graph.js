@@ -118,7 +118,7 @@ describe('Graph', function(){
 			expect(Graph.getWidth()).toEqual(300);
 		});
 		it('graph updated with the correct enabledLegend', function(){
-			expect(Graph.getEnabledLegend()).toEqual(true);
+			expect(Graph.enabledLegend).toEqual(true);
 		});
 		it('graph updated with the correct legend', function(){
 			expect(Graph.getLegend()).toEqual({});
