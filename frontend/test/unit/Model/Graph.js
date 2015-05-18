@@ -122,7 +122,7 @@ describe('Graph', function(){
 			expect(Graph.getWidth()).toEqual(300);
 		});
 		it('graph updated with the correct legend', function(){
-			expect(Graph.getLegend()).toEqual({ position: 'right', fontColor: '#000', background: '#FFF' });
+			expect(Graph.getLegend()).toEqual({});
 		});
 		it('graph updated with the correct horizontalGrid', function(){
 			expect(Graph.getHGrid()).toEqual(true);
@@ -175,7 +175,9 @@ describe('Graph', function(){
 			Graph = new Graph();
 			Graph = Graph.addFlow(json1.ID, Flow1);
 			Graph = Graph.addFlow(json2.ID, Flow2);
+			console.log(Graph.getFlowList().length);
 			Graph = Graph.deleteFlow('flusso1');
+			console.log(Graph.getFlowList().length);
 		});
 
 		afterEach(function(){
