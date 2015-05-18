@@ -29,23 +29,24 @@
 angular.module('app')
 .factory('Graph', ['Flow', 'Legend', function(Flow, Legend){
 
+	var flowList = {};
+	var title = null;
+	var height = null;
+	var width = null;
+	var legend = null;
+	var enabledLegend = false;
+	var horizontalGrid = true;
+	var verticalGrid = true;
+	var url = null;
+
 	function Graph(info){
-		this.flowList = [];
-		this.title = null;
-		this.height = null;
-		this.width = null;
-		this.legend = null;
-		this.enabledLegend = false;
-		this.horizontalGrid = true;
-		this.verticalGrid = true;
-		this.url = null;
 
 		if (info !== undefined) {
 			if (info.title !== undefined) {
-				this.title = info.title;
+				title = info.title;
 			}
 			if (info.url !== undefined) {
-				this.url = info.url;
+				url = info.url;
 			}
 		}
 	}
@@ -55,69 +56,69 @@ angular.module('app')
 		updateParameters : function(info) { //abstract
 			if (info !== undefined) {
 				if (info.title !== undefined) {
-					this.title = info.title;
+					title = info.title;
 				}
 				if (info.height !== undefined) {
-					this.height = info.height;
+					height = info.height;
 				}
 				if (info.width !== undefined) {
-					this.width = info.width;
+					width = info.width;
 				}
 				if (info.enabledLegend !== undefined && info.enabledLegend !== null) {
-					this.enabledLegend = info.enabledLegend;
-					if (this.enabledLegend && info.legend) {
-						this.legend = new Legend(info.legend);
+					enabledLegend = info.enabledLegend;
+					if (enabledLegend && info.legend) {
+						legend = new Legend(info.legend);
 					}
 				}
 				if (info.horizontalGrid !== null) {
-					this.horizontalGrid = info.horizontalGrid;
+					horizontalGrid = info.horizontalGrid;
 				}
 				if (info.verticalGrid !== null) {
-					this.verticalGrid = info.verticalGrid;
+					verticalGrid = info.verticalGrid;
 				}
 			}
 			return this;
 		},
 		addFlow : function(id, flow) { //abstract
-			if (this.flowList[id] === undefined) {
-				this.flowList[id] = flow;
-				console.log(this.flowList.length);
+			if (flowList[id] === undefined) {
+				flowList[id] = flow;
+				console.log(flowList.length);
 			}
 			// error
 			return this;
 		},
 		deleteFlow : function(flowID) {
-			delete this.flowList[flowID];
+			delete flowList[flowID];
 			return this;
 		},
 		
 		getTitle : function() {
-			return this.title;
+			return title;
 		},
 		getHeight : function() {
-			return this.height;
+			return height;
 		},
 		getWidth : function() {
-			return this.width;
+			return width;
 		},
 		getLegend : function() {
-			if (this.enabledLegend) {
-				return this.legend;
+			if (enabledLegend) {
+				return legend;
 			} else {
 				return null;
 			}
 		},
 		getHGrid : function() {
-			return this.horizontalGrid;
+			return horizontalGrid;
 		},
 		getVGrid : function() {
-			return this.verticalGrid;
+			return verticalGrid;
 		},
 		getUrl : function() {
-			return this.url;
+			return url;
 		},
 		getFlowList : function() {
-			return this.flowList;
+			return flowList;
 		}
 	};
 	
