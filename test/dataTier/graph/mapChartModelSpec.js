@@ -47,7 +47,9 @@ describe('mapChartModel', function() {
         assert.strictEqual(graph1._latitude, '');
         assert.strictEqual(graph1._longitude, '');
         assert.strictEqual(graph1._mapType, 'roadmap');
-        assert.strictEqual(graph1._zoom, 14);
+        assert.strictEqual(graph1._legendOnPoint, false);
+        assert.strictEqual(graph1._mapWidth, 3000);
+        assert.strictEqual(graph1._mapHeight, 2000);
     });
 
     it('set default values to wrong properties', function() {
@@ -61,7 +63,9 @@ describe('mapChartModel', function() {
             latitude: 123,
             longitude: 456,
             mapType: 123,
-            zoom: 'def'
+            legendOnPoint: 'abc',
+            mapWidth: 'abc',
+            mapHeight: 'def'
         });
         assert.strictEqual(graph1._ID, 'graph1');
         assert.strictEqual(graph1._title, '');
@@ -73,7 +77,9 @@ describe('mapChartModel', function() {
         assert.strictEqual(graph1._latitude, '');
         assert.strictEqual(graph1._longitude, '');
         assert.strictEqual(graph1._mapType, 'roadmap');
-        assert.strictEqual(graph1._zoom, 14);
+        assert.strictEqual(graph1._legendOnPoint, false);
+        assert.strictEqual(graph1._mapWidth, 3000);
+        assert.strictEqual(graph1._mapHeight, 2000);
     });
 
     var legend1 = new LegendModel();
@@ -88,7 +94,9 @@ describe('mapChartModel', function() {
             latitude: '33',
             longitude: '44',
             mapType: 'satellite',
-            zoom: 10
+            legendOnPoint: true,
+            mapWidth: 1500,
+            mapHeight: 1000
         });
         assert.strictEqual(graph1._ID, 'graph1');
         assert.strictEqual(graph1._title, 'graph one');
@@ -100,7 +108,9 @@ describe('mapChartModel', function() {
         assert.strictEqual(graph1._latitude, '33');
         assert.strictEqual(graph1._longitude, '44');
         assert.strictEqual(graph1._mapType, 'satellite');
-        assert.strictEqual(graph1._zoom, 10);
+        assert.strictEqual(graph1._legendOnPoint, true);
+        assert.strictEqual(graph1._mapWidth, 1500);
+        assert.strictEqual(graph1._mapHeight, 1000);
     });
 
     describe('#getProperties', function() {
@@ -115,7 +125,9 @@ describe('mapChartModel', function() {
                 latitude: '33',
                 longitude: '44',
                 mapType: 'satellite',
-                zoom: 10
+                legendOnPoint: true,
+                mapWidth: 1500,
+                mapHeight: 1000
             };
             var graph1=new MapChartModel(properties);
             var prop=graph1.getProperties();
@@ -129,7 +141,9 @@ describe('mapChartModel', function() {
             assert.strictEqual(prop.latitude, '33');
             assert.strictEqual(prop.longitude, '44');
             assert.strictEqual(prop.mapType, 'satellite');
-            assert.strictEqual(prop.zoom, 10);
+            assert.strictEqual(prop.legendOnPoint, true);
+            assert.strictEqual(prop.mapWidth, 1500);
+            assert.strictEqual(prop.mapHeight, 1000);
         });
     });
     describe('#updateProperties', function() {
@@ -144,7 +158,9 @@ describe('mapChartModel', function() {
                 latitude: '33',
                 longitude: '44',
                 mapType: 'satellite',
-                zoom: 10
+                legendOnPoint: true,
+                mapWidth: 1500,
+                mapHeight: 1000
             };
             var graph1=new MapChartModel({ID: 'graph1'});
             graph1.updateProperties(properties);
@@ -158,7 +174,9 @@ describe('mapChartModel', function() {
             assert.strictEqual(graph1._latitude, '33');
             assert.strictEqual(graph1._longitude, '44');
             assert.strictEqual(graph1._mapType, 'satellite');
-            assert.strictEqual(graph1._zoom, 10);
+            assert.strictEqual(graph1._legendOnPoint, true);
+            assert.strictEqual(graph1._mapWidth, 1500);
+            assert.strictEqual(graph1._mapHeight, 1000);
         });
         it('does not update the properties with wrong param', function() {
             var properties={
@@ -171,7 +189,9 @@ describe('mapChartModel', function() {
                 latitude: 123,
                 longitude: 456,
                 mapType: 123,
-                zoom: 'def'
+                legendOnPoint: 'abc',
+                mapWidth: 'abc',
+                mapHeight: 'def'
             };
             var graph1=new MapChartModel({ID: 'graph1'});
             graph1.updateProperties(properties);
@@ -185,7 +205,9 @@ describe('mapChartModel', function() {
             assert.strictEqual(graph1._latitude, '');
             assert.strictEqual(graph1._longitude, '');
             assert.strictEqual(graph1._mapType, 'roadmap');
-            assert.strictEqual(graph1._zoom, 14);
+            assert.strictEqual(graph1._legendOnPoint, false);
+            assert.strictEqual(graph1._mapWidth, 3000);
+            assert.strictEqual(graph1._mapHeight, 2000);
         });
     });
     describe('#addFlow', function() {
