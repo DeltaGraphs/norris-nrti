@@ -29,26 +29,10 @@ describe('Graph', function(){
 
 	beforeEach(angular.mock.module('app'));
 
-	beforeEach(inject(function(_Graph_){
+	beforeEach(inject(function(_Graph_, $injector){
 		Graph = _Graph_;
-		Legend = function() {
-			return {
-				Legend : function(info){
-					info = info;
-					return {};
-				} 
-			};
-		};
-		Flow = function() {
-			return {
-				Flow : function(info){
-					info = info;
-					return {};
-				}
-			};
-		};
-		//Legend = $injector.get('Legend');
-		//Flow = $injector.get('Flow');
+		Legend = $injector.get('Legend');
+		Flow = $injector.get('Flow');
 	}));
 
 	describe('Default constructor', function(){
@@ -115,8 +99,6 @@ describe('Graph', function(){
 		};
 
 		beforeEach(function(){
-			//spyOn(Graph,'Legend').returnValue({});
-			//Legend = jasmine.createSpyObj('Legend',['Legend']);
 			Graph = new Graph();
 			Graph = Graph.updateParameters(json);
 		});
@@ -124,8 +106,6 @@ describe('Graph', function(){
 		afterEach(function(){
 			Graph = null;
 		});
-
-		//spyOn(Legend, 'Legend').andReturn({});
 
 		it('graph updated with the correct title', function(){
 			expect(Graph.getTitle()).toEqual('graficoNuovo');
@@ -137,7 +117,7 @@ describe('Graph', function(){
 			expect(Graph.getWidth()).toEqual(300);
 		});
 		it('graph updated with the correct legend', function(){
-			expect(Graph.getLegend()).toEqual({});
+			expect(Graph.getLegend()).toEqual({ position: 'right', fontColor: '#000', background: '#FFF' });
 		});
 		it('graph updated with the correct horizontalGrid', function(){
 			expect(Graph.getHorizontalGrid()).toEqual(true);
@@ -154,8 +134,6 @@ describe('Graph', function(){
 			'ID' : 	'flusso1',
 			'name' : 'sonda 1'
 		};
-
-		//spyOn(Flow, 'Flow').andReturn({});
 
 		beforeEach(function(){
 			Graph = new Graph();
@@ -174,16 +152,20 @@ describe('Graph', function(){
 
 	describe('deleteFlow', function(){
 
-		var json = {
+		var json1 = {
 			'ID' : 	'flusso1',
 			'name' : 'sonda 1'
 		};
 
-		//spyOn(Flow, 'Flow').andReturn({});
+		var json2 = {
+			'ID' : 	'flusso2',
+			'name' : 'sonda 2'
+		};
 
 		beforeEach(function(){
 			Graph = new Graph();
-			Graph = Graph.addflow(json.ID, {});
+			Graph = Graph.addflow(json1.ID, {});
+			Graph = Graph.addflow(json2.ID, {});
 			Graph = Graph.deleteFlow('flusso1');
 		});
 
