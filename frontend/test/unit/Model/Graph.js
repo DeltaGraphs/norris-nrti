@@ -106,7 +106,7 @@ describe('Graph', function(){
 			Graph = null;
 		});
 
-		//spyOn(Legend, 'Legend').and.returnValue({});
+		spyOn(Legend, 'Legend').andReturn({});
 
 		it('graph updated with the correct title', function(){
 			expect(Graph.getTitle()).toEqual('graficoNuovo');
@@ -116,9 +116,6 @@ describe('Graph', function(){
 		});
 		it('graph updated with the correct width', function(){
 			expect(Graph.getWidth()).toEqual(300);
-		});
-		it('graph updated with the correct enabledLegend', function(){
-			expect(Graph.enabledLegend).toEqual(true);
 		});
 		it('graph updated with the correct legend', function(){
 			expect(Graph.getLegend()).toEqual({});
@@ -139,7 +136,7 @@ describe('Graph', function(){
 			'name' : 'sonda 1'
 		};
 
-		//spyOn(Flow, 'Flow').and.returnValue({});
+		spyOn(Flow, 'Flow').andReturn({});
 
 		beforeEach(function(){
 			Graph = new Graph();
