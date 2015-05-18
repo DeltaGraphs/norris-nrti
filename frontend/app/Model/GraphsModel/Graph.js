@@ -81,7 +81,7 @@ angular.module('app')
 		addFlow : function(id, flow) { //abstract
 			if (this.flowList[id] === undefined) {
 				this.flowList[id] = flow;
-				console.log('addFlow');
+				console.log(this.flowList.length);
 			}
 			// error
 			return this;
