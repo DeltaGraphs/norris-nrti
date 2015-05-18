@@ -261,7 +261,7 @@ describe('mapChartModel', function() {
         it('returns 132 if it doesn\'t find the wanted record', function() {
             var graph1=new MapChartModel({ID: 'graph1'});
             graph1._flows[0] = new MapChartModel({ID: 'flow1'});
-            graph1._flows[0].addRecord({temperature: 3});
+            graph1._flows[0]._records[0]={temperature: 3};
             assert.strictEqual(graph1.updateRecord('flow1', 'asd', {temperature: 2}), 132);
         });
         it('returns 131 if no valid record is passed', function() {
