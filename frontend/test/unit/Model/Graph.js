@@ -61,7 +61,7 @@ describe('Graph', function(){
 
 		var json = {
 			'title' : 'grafico1',
-			'URLSocket' : 'http://localhost/page1/grafico1'
+			'url' : 'http://localhost/page1/grafico1'
 		};
 
 		beforeEach(function(){
@@ -98,14 +98,15 @@ describe('Graph', function(){
 		};
 
 		beforeEach(function(){
-			Legend = jasmine.createSpyObj('Legend',['Legend']);
+			spyOn(Legend, 'Legend').andReturn({});
+			//Legend = jasmine.createSpyObj('Legend',['Legend']);
 			Graph = new Graph();
 			Graph = Graph.updateParameters(json);
 		});
 
 		afterEach(function(){
-			Graph = null;
 			Legend = null;
+			Graph = null;
 		});
 
 		//spyOn(Legend, 'Legend').andReturn({});
