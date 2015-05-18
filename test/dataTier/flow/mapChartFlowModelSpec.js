@@ -90,7 +90,7 @@ describe('MapChartFlowModel', function() {
 
 	it('set param values to properties', function() {
         var marker={
-            type: 'icon',
+            type: 'shape',
             shape: 'images/triangle'
         };
         var trace={
@@ -162,7 +162,7 @@ describe('MapChartFlowModel', function() {
             flow1.validateRecord(0);
             assert.strictEqual(flow1._records[0].norrisRecordIsValid, false);
             var update=flow1.updateRecord('flow1whatever0', {temperature: 4});
-            assert.strictEqual(update.indexOf('flow1'), 0);
+            assert.strictEqual(update, true);
             assert.strictEqual(flow1._records[0].temperature, 4);
             assert.strictEqual(flow1._records[0].norrisRecordIsValid, true);
         });
