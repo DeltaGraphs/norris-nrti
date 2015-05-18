@@ -119,13 +119,13 @@ angular.module('services')
 		},
 
 		initializeData : function(newData) {
-			for (var i=0, i<newData.records.length; i++) {
+			for (var i=0; i<newData.records.length; i++) {
 				data.push(newData.records[i]);
 			}
 			return this;
 		},
 		inPlaceUpdate : function(newData) {
-			var filteredData = data.filter(function(newData.NorrisRecordID) {return newData.NorrisRecordID === data.NorrisRecordID;});
+			var filteredData = data.filter(function(newData) {return newData.NorrisRecordID === data.NorrisRecordID;});
 		    if(filteredData.length > 0) {
 		    	filteredData[0] = { 'NorrisRecordID' : newData.NorrisRecordID, 'value' : newData.value}; //funziona in stile riferimenti??
     		}
@@ -136,7 +136,7 @@ angular.module('services')
 			return this;
 	    },
 	    deleteData : function(delData) {
-			var filteredData = data.filter(function(delData.NorrisRecordID) {return delData.NorrisRecordID === data.NorrisRecordID;});
+			var filteredData = data.filter(function(delData) {return delData.NorrisRecordID === data.NorrisRecordID;});
 		    if(filteredData.length > 0) {
 		    	filteredData.splice(0,1);
     		}
