@@ -9,6 +9,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.1.5			2015-05-18	Maria Giovanna Chinellato	Fix methods addFlow and deleteFlow
+*
 * 0.1.4			2015-05-15	Francesco Rossetto			Various fix
 *
 * 0.1.3			2015-05-14	Maria Giovanna Chinellato	Add method getFlowList
@@ -94,7 +96,6 @@ angular.module('app')
     		for (var i = 0; i<flowList.length; i++){
     			if (flowList[i].id === flowID){
     				index = i;
-    				return ;
     			}
     		}
     		delete flowList[index];

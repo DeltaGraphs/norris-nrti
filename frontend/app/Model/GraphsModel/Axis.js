@@ -8,7 +8,9 @@
 *
 * History :
 * Version       Date        Programmer                  Description
-* ===============================================================================================================
+* ===============================================================================================================7
+* 0.1.3         2015-05-18  Maria Giovanna Chinellato   Fix attributes
+*
 * 0.1.2         2015-05-17  Maria Giovanna Chinellato   Fix code
 *
 * 0.1.1         2015-05-15  Francesco Rossetto          Fix attributes and methods
@@ -23,32 +25,34 @@
 angular.module('app')
 .factory('Axis', function(){
 
+    var name = null;
+    var color = '#FFF';
+    var minValue = null;
+    var maxValue = null;
+    var ticks = 10;
+    var scale = 'linear';
+
+
     function Axis(info){
-        this.name = null;
-        this.color = '#FFF';
-        this.minValue = null;
-        this.maxValue = null;
-        this.ticks = 10;
-        this.scale = 'linear';
 
         if (info !== undefined) {
             if (info.name !== undefined) {
-                this.name = info.name;
+                name = info.name;
             }
             if (info.color !== undefined) {
-                this.color = info.color;
+                color = info.color;
             }
             if (info.minValue !== undefined) {
-                this.minValue = info.minValue;
+                minValue = info.minValue;
             }
             if (info.maxValue !== undefined) {
-                this.maxValue = info.maxValue;
+                maxValue = info.maxValue;
             }
             if (info.ticks !== undefined) {
-                this.ticks = info.ticks;
+                ticks = info.ticks;
             }
             if (info.scale !== undefined) {
-                this.scale = info.scale;
+                scale = info.scale;
             }
         }
     }
@@ -57,44 +61,44 @@ angular.module('app')
         updateParameters : function(info){
             if (info !== undefined) {
                 if (info.name !== undefined) {
-                    this.name = info.name;
+                    name = info.name;
                 }
                 if (info.color !== undefined) {
-                    this.color = info.color;
+                    color = info.color;
                 }
                 if (info.minValue !== undefined) {
-                    this.minValue = info.minValue;
+                    minValue = info.minValue;
                 }
                 if (info.maxValue !== undefined) {
-                    this.maxValue = info.maxValue;
+                    maxValue = info.maxValue;
                 }
                 if (info.ticks !== undefined) {
-                    this.ticks = info.ticks;
+                    ticks = info.ticks;
                 }
                 if (info.scale !== undefined) {
-                    this.scale = info.scale;
+                    scale = info.scale;
                 }
             }
             return this;
         },
 
         getName : function(){
-            return this.name;
+            return name;
         },
         getColor : function(){
-            return this.color;
+            return color;
         },
         getMinValue : function(){
-            return this.minValue;
+            return minValue;
         },
         getMaxValue : function(){
-            return this.maxValue;
+            return maxValue;
         },
         getTicks : function(){
-            return this.ticks;
+            return ticks;
         },
         getScale : function(){
-            return this.scale;
+            return scale;
         }
 
     };

@@ -9,6 +9,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * ===============================================================================================================
+* 0.1.2         2015-05-18  Maria Giovanna Chinellato   Fix attributes
+*
 * 0.1.1         2015-05-15  Francesco Rossetto          Variuos Fix
 *
 * 0.1.0         2015-05-14  Maria Giovanna Chinellato   Add attributes and methods
@@ -21,20 +23,21 @@
 angular.module('app')
 .factory('Legend', function(){
 
+    var position = 'right';
+    var fontColor = '#000';
+    var background = '#FFF';
+
     function Legend(info){
-        this.position = 'right';
-        this.fontColor = '#000';
-        this.background = '#FFF';
 
         if (info !== undefined){
             if (info.position !== undefined) {
-                this.position = info.position;
+                position = info.position;
             }
             if (info.fontColor !== undefined) {
-                this.fontColor = info.fontColor;
+                fontColor = info.fontColor;
             }
             if (info.background !== undefined) {
-                this.background = info.background;
+                background = info.background;
             }
         }
     }
@@ -44,26 +47,26 @@ angular.module('app')
         updateParameters : function(info){
             if (info !== undefined) {
                 if (info.position !== undefined) {
-                    this.position = info.position;
+                    position = info.position;
                 }
                 if (info.fontColor !== undefined) {
-                    this.fontColor = info.fontColor;
+                    fontColor = info.fontColor;
                 }
                 if (info.background !== undefined) {
-                    this.background = info.background;
+                    background = info.background;
                 }
             }
             return this;
         },
 
         getPosition : function(){
-            return this.position;
+            return position;
         },
         getFontColor : function(){
-            return this.fontColor;
+            return fontColor;
         },
         getBackground : function(){
-            return this.background;
+            return background;
         }
     };
 

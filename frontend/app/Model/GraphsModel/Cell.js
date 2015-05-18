@@ -8,7 +8,9 @@
 *
 * History :
 * Version       Date        Programmer                  Description
-* ===============================================================================================================*
+* ===============================================================================================================
+* 0.1.1         2015-05-18  Maria Giovanna Chinellato   Fix attributes
+*
 * 0.1.0         2015-05-14  Maria Giovanna Chinellato   Add attributes and methods
 *
 * 0.0.1         2015-05-14  Maria Giovanna Chinellato   Initial code      
@@ -19,16 +21,17 @@
 angular.module('app')
 .factory('Cell', function(){
 
+    var background = '#FFF';
+    var fontColor = '#000';
+
     function Cell(info){
-        this.background = '#FFF';
-        this.fontColor = '#000';
 
         if (info !== undefined) {
             if (info.background !== undefined) {
-                this.background = info.background;
+                background = info.background;
             }
             if (info.fontColor !== undefined) {
-                this.fontColor = info.fontColor;
+                fontColor = info.fontColor;
             }
         }
     }
@@ -38,10 +41,10 @@ angular.module('app')
         updateParameters : function(info){
             if (info !== undefined) {
                 if (info.background) {
-                    this.background = info.background;
+                    background = info.background;
                 }
                 if (info.fontColor) {
-                    this.fontColor = info.fontColor;
+                    fontColor = info.fontColor;
                 }
             }
 
@@ -49,10 +52,10 @@ angular.module('app')
         },
 
         getBackground : function(){
-            return this.background;
+            return background;
         },
         getFontColor : function(){
-            return this.fontColor;
+            return fontColor;
         }
 
     };

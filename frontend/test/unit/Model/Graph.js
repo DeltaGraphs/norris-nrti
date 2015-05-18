@@ -9,6 +9,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.1.3			2015-05-18	Maria Giovanna Chinellato	Fix test
+*
 * 0.1.2         2015-05-17  Maria Giovanna Chinellato   Fix code
 *
 * 0.1.1			2015-05-14	Maria Giovanna Chinellato	Add test of method addFlow

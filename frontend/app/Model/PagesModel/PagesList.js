@@ -9,6 +9,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.1.1         2015-05-18  Maria Giovanna Chinellato	Fix attributes
+*
 * 0.1.0         2015-05-12  Maria Giovanna Chinellato   Add all attributes and all methods
 *
 * 0.0.1         2015-05-12  Maria Giovanna Chinellato   Initial code      
@@ -19,8 +21,9 @@
 angular.module('app')
 .factory('PagesList', ['Page', function(Page){
 
+	var pagesList = [];
+
 	function PagesList(info) {
-		this.pagesList = [];
 
 		if (info !== undefined) {
 			if (info.data !== undefined) {
