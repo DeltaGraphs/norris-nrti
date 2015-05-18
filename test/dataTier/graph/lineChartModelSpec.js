@@ -277,4 +277,29 @@ describe('lineChartModel', function() {
     		assert.strictEqual(graph1._flows.length, 0);
     	});
     });
+    describe('#updateRecord', function() {
+        it('returns 211 if it doesn\'t find the wanted flow', function() {
+            var graph1=new LineChartModel({ID: 'graph1'});
+            graph1._flows[0] = new LineChartFlowModel({ID: 'flow1'});
+            assert.strictEqual(graph1.updateRecord('flow4', 0, {temperature: 2}), 221);
+        });
+        it('returns 112 if it doesn\'t find the wanted record', function() {
+            var graph1=new LineChartModel({ID: 'graph1'});
+            graph1._flows[0] = new LineChartFlowModel({ID: 'flow1'});
+            graph1._flows[0]._records[0] = {temperature: 3};
+            assert.strictEqual(graph1.updateRecord('flow4', 1, {temperature: 2}), 122);
+        });
+        it('returns 111 if no valid record is passed', function() {
+            var graph1=new LineChartModel({ID: 'graph1'});
+            graph1._flows[0] = new LineChartFlowModel({ID: 'flow1'});
+            graph1._flows[0]._records[0] = {temperature: 3};
+            assert.strictEqual(graph1.updateRecord('flow4', 0, null), 121);
+        });
+        it('returns true if passed valid parameters', function() {
+            var graph1=new LineChartModel({ID: 'graph1'});
+            graph1._flows[0] = new LineChartFlowModel({ID: 'flow1'});
+            graph1._flows[0]._records[0] = {temperature: 3};
+            assert.strictEqual(graph1.updateRecord('flow4', 0, {temperature: 2}), true);
+        });
+    });
 });
