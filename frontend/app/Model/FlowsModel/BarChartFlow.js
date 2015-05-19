@@ -32,20 +32,24 @@ angular.module('services')
 
 	function split(json) {
         var flowJson = {};
-        if (json.dataFormat !== undefined) {
-            flowJson.dataFormat = json.dataFormat;
-        }
-        if (json.name !== undefined) {
-            flowJson.name = json.name;
-        }
-
         var barFlowJson = {};
-        if (json.flowColor !== undefined) {
-            barFlowJson.flowColor = json.flowColor;
-        }
-        if (json.legendOnPoint !== undefined) {
-            barFlowJson.legendOnPoint = json.legendOnPoint;
-        }
+
+        if (json !== undefined){
+	        if (json.dataFormat !== undefined) {
+	            flowJson.dataFormat = json.dataFormat;
+	        }
+	        if (json.name !== undefined) {
+	            flowJson.name = json.name;
+	        }
+
+	       
+	        if (json.flowColor !== undefined) {
+	            barFlowJson.flowColor = json.flowColor;
+	        }
+	        if (json.legendOnPoint !== undefined) {
+	            barFlowJson.legendOnPoint = json.legendOnPoint;
+	        }
+	    }
 
         return {
             'flowJson' : flowJson,
