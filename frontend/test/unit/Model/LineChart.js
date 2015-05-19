@@ -147,27 +147,15 @@ describe('LineChart', function(){
 			'background' : '#000',
 			'flows' : [{},{},{}]
 		};
-		/*var gJson = {
-			'title' : 'graficonuovo',
-			'height' : 400,
-			'width' : 400,
-			'enabledLegend' : false,
-			'horizontalGrid' : false,
-			'verticalGrid' : false,
-		};*/
 
 		beforeEach(function(){
 			LineChart = new LineChart();
-			LineChart = LineChart.updateParameters(json);
+			LineChart.updateParameters(json);
 		});
 
 		afterEach(function(){
 			LineChart = null;
-		});	
-
-		/*it('graph updateParameters called with the correct parameters', function(){
-			expect(LineChart.parent.updateParameters.call).toHaveBeenCalledWith(gJson);
-		});*/
+		});
 		
 		it('graph updated with the correct axisX', function(){
 			expect(LineChart.getX()).toBeEqual({});
@@ -191,28 +179,39 @@ describe('LineChart', function(){
 	});
 	
 	describe('addFlow', function(){
-
 		var json = {
-			'ID' : 	'flusso1'
+			'ID' : 	'flusso1',
+		};
+
+		var fJson = {
+			'dataFormat' : 'int',
+			'name' : 'flusso1',
+			'legendOnPoint' : '',
+			'marker' : 'furly',
+			'interpolation' : 'linear',
+			'areaColor' : '#FFF',
+			'maxItem' : '5'
 		};
 
 		var newFlow;
 
 		beforeEach(function(){
-			newFlow = LineChartFlow({});
+			newFlow = LineChartFlow(fJson);
 			LineChart = new LineChart();
-			LineChart = LineChart.addFlow(json.ID, newFlow);
+			LineChart.addFlow(json.ID, newFlow);
 		});
 
 		afterEach(function(){
 			LineChart = null;
 		});	
 
-		
+		it('graph addFlow called with the correct parameters', function(){
+			expect(LineChart.getFlowList().length).toEqual(1);
+		});
 
 	});
 
-	/*describe('inizializeData', function(){
+	describe('inizializeData', function(){
 
 		var data = [
 			{
@@ -283,6 +282,6 @@ describe('LineChart', function(){
 			expect(LineChartFlow.streamUpdate).toHaveBeenCalledWith(data);
 		});
 
-	});*/
+	});
 
 });

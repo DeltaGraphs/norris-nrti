@@ -104,7 +104,7 @@ angular.module('services')
             var json = split(info);
             var gJson = json.graphJson;
             var tJson = json.tableJson;
-            var i;
+            
             if (Object.keys(gJson).length !== 0) {
                 this.parent.updateParameters.call(this, gJson);
             } 
@@ -116,12 +116,12 @@ angular.module('services')
                     colunms = tJson.colunms;
                 }
                 if (tJson.headers !== undefined) {
-                    for (i=0; i<tJson.headers.length; i++) { 
-                        headers.push(tJson.headers[i]);
+                    for (var z=0; z<tJson.headers.length; z++) { 
+                        headers.push(tJson.headers[z]);
                     }
                 }
                 if (tJson.cells !== undefined) {
-                    for (i=0; i<tJson.cells.length; i++) {
+                    for (var i=0; i<tJson.cells.length; i++) {
                         for (var j=0; j<tJson.cells[i].length; j++) {
                             cells[i][j] = new Cell(tJson.cells[i][j]);
                         }
@@ -138,9 +138,9 @@ angular.module('services')
                 }
             }
             if (info.flows !== undefined) {
-                for (i=0; i<info.flows.length; i++) {
-                    var newflow = new TableFlow(info.flows[i]);
-                    this.addFlow(info.flows[i].ID, newflow);
+                for (var y=0; y<info.flows.length; y++) {
+                    var newflow = new TableFlow(info.flows[y]);
+                    this.addFlow(info.flows[y].ID, newflow);
                 }
             }
         }

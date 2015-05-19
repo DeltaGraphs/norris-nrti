@@ -144,7 +144,7 @@ describe('Table', function(){
 			'enabledLegend' : false,
 			'horizontalGrid' : false,
 			'verticalGrid' : false,
-			'row' : 6,
+			'rows' : 6,
 			'colunms' : 9,
 			'headers' : {},
 			'cells' : {},
@@ -160,6 +160,9 @@ describe('Table', function(){
 
 		afterEach(function(){
 			Table = null;
+		});
+		it('Table created', function(){
+			expect(Table).toBeDefined();
 		});
 
 		it('graph updated with the correct row', function(){
