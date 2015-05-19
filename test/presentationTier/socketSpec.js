@@ -38,9 +38,11 @@ describe('Socket', function() {
 
     describe('#sendMessage', function() {
 
-        var server = require('socket.io').listen(5000);
+        var server = require('socket.io')();
+        var nspp = server.of('/namespace');
+        server.listen(5000);
 
-        var socketURL = 'http://0.0.0.0:5000';
+        var socketURL = 'http://0.0.0.0:5000/namespace';
         var options ={
             transports: ['websocket'],
             'force new connection': true
@@ -49,7 +51,7 @@ describe('Socket', function() {
         var client1 = io.connect(socketURL, options);
 
         it('emits a message if given valid params', function() {
-            var socket1 = new Socket(server);
+            var socket1 = new Socket(nspp);
             socket1.sendMessage('event', 'message');
             client1.on('event', function(message) {
                 assert.strictEqual(message, 'message');
