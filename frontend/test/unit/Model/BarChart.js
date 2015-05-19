@@ -249,7 +249,7 @@ describe('BarChart', function(){
 		});	
 
 		it('BarChartFlow inizializeData called in the right way', function(){
-			expect(BarChart.getFlowList()[0].getData().length).toEqual(2);
+			expect(BarChart.getFlowList()[0].flow.getData().length).toEqual(2);
 		});
 
 	});
@@ -280,9 +280,9 @@ describe('BarChart', function(){
 		});	
 
 		it('BarChartFlow inPlaceUpdate called in the right way', function(){
-			expect(BarChart.getFlowList()[0].getData()[0].value).toEqual([3,3]);
+			expect(BarChart.getFlowList()[0].flow.getData()[0].value).toEqual([3,3]);
 			BarChart.inPlaceUpdate(data1);
-			expect(BarChart.getFlowList()[0].getData()[0].value).toEqual([4,4]);
+			expect(BarChart.getFlowList()[0].flow.getData()[0].value).toEqual([4,4]);
 		});
 	});
 
