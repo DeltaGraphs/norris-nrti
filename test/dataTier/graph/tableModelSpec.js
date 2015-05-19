@@ -34,6 +34,99 @@ describe('tableModel', function() {
     });
     
     var defaultLegend = new LegendModel();
+    var defaultAppearance = {
+        border: {
+            color: '#000000',
+            width: 1
+        },
+        rowEven: {
+            textColor: [],
+            backgroundColor: []
+        },
+        rowOdd: {
+            textColor: [],
+            backgroundColor: []
+        },
+        headers: {
+            textColor: [],
+            backgroundColor: []         
+        }
+    };
+    var default2colAppearance = {
+        border: {
+            color: '#000000',
+            width: 1
+        },
+        rowEven: {
+            textColor: ['#000000', '#000000'],
+            backgroundColor: ['#FFFFFF', '#FFFFFF']
+        },
+        rowOdd: {
+            textColor: ['#000000', '#000000'],
+            backgroundColor: ['#FFFFFF', '#FFFFFF']
+        },
+        headers: {
+            textColor: ['#000000', '#000000'],
+            backgroundColor: ['#FFFFFF', '#FFFFFF']      
+        }
+    };
+
+    var example2colAppearance = {
+        border: {
+            color: '#111111',
+            width: 1
+        },
+        rowEven: {
+            textColor: ['#222222', '#333333'],
+            backgroundColor: ['#444444', '#555555']
+        },
+        rowOdd: {
+            textColor: ['#555555', '#666666'],
+            backgroundColor: ['#777777', '#888888']
+        },
+        headers: {
+            textColor: ['#333333', '#999999'],
+            backgroundColor: ['#123456', '#654321']      
+        }
+    };
+
+    var  example2colAppearanceSV = {
+        border: {
+            color: '#111111',
+            width: 1
+        },
+        rowEven: {
+            textColor: '#222222',
+            backgroundColor: '#444444'
+        },
+        rowOdd: {
+            textColor: '#555555',
+            backgroundColor: '#777777'
+        },
+        headers: {
+            textColor: '#333333',
+            backgroundColor: '#123456'      
+        }        
+    };
+
+    var  example2colAppearanceSVspread = {
+        border: {
+            color: '#111111',
+            width: 1
+        },
+        rowEven: {
+            textColor: ['#222222', '#222222'],
+            backgroundColor: ['#444444', '#444444']
+        },
+        rowOdd: {
+            textColor: ['#555555', '#555555'],
+            backgroundColor: ['#777777', '#777777']
+        },
+        headers: {
+            textColor: ['#333333', '#333333'],
+            backgroundColor: ['#123456', '#123456']      
+        }     
+    };
 
     it('set default values to property not specified', function() {
         var graph1=new TableModel({ID:'graph1'});
@@ -48,6 +141,7 @@ describe('tableModel', function() {
         assert.strictEqual(graph1._sort, null);
         assert.strictEqual(graph1._maxItemsPage, 10);
         assert.strictEqual(graph1._headers.length, 0);
+        assert.deepEqual(graph1._appearance, defaultAppearance);
         assert.strictEqual(graph1._addRowOn, 'bottom');
     });
 
@@ -76,11 +170,12 @@ describe('tableModel', function() {
         assert.strictEqual(graph1._sort, null);
         assert.strictEqual(graph1._maxItemsPage, 10);
         assert.strictEqual(graph1._headers.length, 0);
+        assert.deepEqual(graph1._appearance, defaultAppearance);
         assert.strictEqual(graph1._addRowOn, 'bottom');
     });
 
     var legend1 = new LegendModel();
-    it('set param values to properties', function() {
+    it('set param values to properties with no appearance specified', function() {
         var graph1=new TableModel({
             ID: 'graph1',
             title: 'graph one',
@@ -106,9 +201,72 @@ describe('tableModel', function() {
         assert.strictEqual(graph1._maxItemsPage, 15);
         assert.strictEqual(graph1._headers[0], 'col1');
         assert.strictEqual(graph1._headers[1], 'col2');
+        assert.deepEqual(graph1._appearance, default2colAppearance);
         assert.strictEqual(graph1._addRowOn, 'top');
     });
 
+    it('set param values to properties with the appearance specified', function() {
+        var graph1=new TableModel({
+            ID: 'graph1',
+            title: 'graph one',
+            height: 200,
+            width: 350,
+            enableLegend: true,
+            legend: legend1.getProperties(),
+            sortable: true,
+            sort: {column: 'col1', ordering:'DESC'},
+            maxItemsPage: 15,
+            headers: ['col1', 'col2'],
+            appearance: example2colAppearance,
+            addRowOn: 'top'
+        });
+        assert.strictEqual(graph1._ID, 'graph1');
+        assert.strictEqual(graph1._title, 'graph one');
+        assert.strictEqual(graph1._type, 'Table');
+        assert.strictEqual(graph1._height, 200);
+        assert.strictEqual(graph1._width, 350);
+        assert.strictEqual(graph1._enableLegend, true);
+        assert.deepEqual(graph1._legend.getProperties(), legend1.getProperties());
+        assert.strictEqual(graph1._sortable, true);
+        assert.deepEqual(graph1._sort, {column: 'col1', ordering:'DESC'});
+        assert.strictEqual(graph1._maxItemsPage, 15);
+        assert.strictEqual(graph1._headers[0], 'col1');
+        assert.strictEqual(graph1._headers[1], 'col2');
+        assert.deepEqual(graph1._appearance, example2colAppearance);
+        assert.strictEqual(graph1._addRowOn, 'top');
+    });
+
+    it('set param values to properties with the appearance specified in a compact way', function() {
+        var graph1=new TableModel({
+            ID: 'graph1',
+            title: 'graph one',
+            height: 200,
+            width: 350,
+            enableLegend: true,
+            legend: legend1.getProperties(),
+            sortable: true,
+            sort: {column: 'col1', ordering:'DESC'},
+            maxItemsPage: 15,
+            headers: ['col1', 'col2'],
+            appearance: example2colAppearanceSV,
+            addRowOn: 'top'
+        });
+        assert.strictEqual(graph1._ID, 'graph1');
+        assert.strictEqual(graph1._title, 'graph one');
+        assert.strictEqual(graph1._type, 'Table');
+        assert.strictEqual(graph1._height, 200);
+        assert.strictEqual(graph1._width, 350);
+        assert.strictEqual(graph1._enableLegend, true);
+        assert.deepEqual(graph1._legend.getProperties(), legend1.getProperties());
+        assert.strictEqual(graph1._sortable, true);
+        assert.deepEqual(graph1._sort, {column: 'col1', ordering:'DESC'});
+        assert.strictEqual(graph1._maxItemsPage, 15);
+        assert.strictEqual(graph1._headers[0], 'col1');
+        assert.strictEqual(graph1._headers[1], 'col2');
+        assert.deepEqual(graph1._appearance, example2colAppearanceSVspread);
+        assert.strictEqual(graph1._addRowOn, 'top');
+    });    
+    
     describe('#getProperties', function() {
         it('returns the JSON with the properties', function() {
             var properties={
@@ -139,11 +297,12 @@ describe('tableModel', function() {
             assert.strictEqual(prop.maxItemsPage, 15);
             assert.strictEqual(prop.headers[0], 'col1');
             assert.strictEqual(prop.headers[1], 'col2');
+            assert.deepEqual(graph1._appearance, default2colAppearance);
             assert.strictEqual(prop.addRowOn, 'top');
         });
     });
     describe('#updateProperties', function() {
-        it('updates the properties passed as param', function() {
+        it('updates the properties passed as param without specifying any appearance', function() {
             var properties={
                 ID: 'graph1',
                 title: 'graph one',
@@ -171,6 +330,7 @@ describe('tableModel', function() {
             assert.strictEqual(graph1._maxItemsPage, 15);
             assert.strictEqual(graph1._headers[0], 'col1');
             assert.strictEqual(graph1._headers[1], 'col2');
+            assert.deepEqual(graph1._appearance, default2colAppearance);
             assert.strictEqual(graph1._addRowOn, 'top');
         });
         it('does not update the properties with wrong param', function() {
@@ -185,6 +345,7 @@ describe('tableModel', function() {
                 sort: 456,
                 maxItemsPage: -5,
                 headers: 123,
+                appearance: 456,
                 addRowOn: 'def'
             };
             var graph1=new TableModel({ID: 'graph1'});
@@ -196,11 +357,45 @@ describe('tableModel', function() {
             assert.strictEqual(graph1._width, 500);
             assert.strictEqual(graph1._enableLegend, false);
             assert.deepEqual(graph1._legend.getProperties(), defaultLegend.getProperties());
-        assert.strictEqual(graph1._sortable, false);
-        assert.strictEqual(graph1._sort, null);
-        assert.strictEqual(graph1._maxItemsPage, 10);
-        assert.strictEqual(graph1._headers.length, 0);
-        assert.strictEqual(graph1._addRowOn, 'bottom');
+            assert.strictEqual(graph1._sortable, false);
+            assert.strictEqual(graph1._sort, null);
+            assert.strictEqual(graph1._maxItemsPage, 10);
+            assert.strictEqual(graph1._headers.length, 0);
+            assert.deepEqual(graph1._appearance, defaultAppearance);
+            assert.strictEqual(graph1._addRowOn, 'bottom');
+        });
+        it('increases the number of appearance columns if the number of headers is increased', function() {
+            var properties={
+                headers: ['col1', 'col2']
+            };
+            var graph1=new TableModel({ID: 'graph1', headers:['col1']});
+            graph1.updateProperties(properties);
+            assert.strictEqual(graph1._headers[0], 'col1');
+            assert.strictEqual(graph1._headers[1], 'col2');
+            assert.deepEqual(graph1._appearance, default2colAppearance);
+            assert.strictEqual(graph1._addRowOn, 'top');
+        });
+        it('decreases the number of appearance columns if the number of headers is decreased', function() {
+            var properties={
+                headers: ['col1', 'col2']
+            };
+            var graph1=new TableModel({ID: 'graph1', headers:['col1', 'col2', 'col3']});
+            graph1.updateProperties(properties);
+            assert.strictEqual(graph1._headers[0], 'col1');
+            assert.strictEqual(graph1._headers[1], 'col2');
+            assert.deepEqual(graph1._appearance, default2colAppearance);
+            assert.strictEqual(graph1._addRowOn, 'top');
+        });
+        it('leaves the number of appearance columns untouched if the number of headers doesn\' change', function() {
+            var properties={
+                headers: ['cola', 'colb']
+            };
+            var graph1=new TableModel({ID: 'graph1', headers:['col1', 'col2']});
+            graph1.updateProperties(properties);
+            assert.strictEqual(graph1._headers[0], 'col1');
+            assert.strictEqual(graph1._headers[1], 'col2');
+            assert.deepEqual(graph1._appearance, default2colAppearance);
+            assert.strictEqual(graph1._addRowOn, 'top');
         });
     });
 
