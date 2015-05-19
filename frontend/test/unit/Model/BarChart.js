@@ -248,9 +248,9 @@ describe('BarChart', function(){
 			BarChart = null;
 		});	
 
-		/*it('BarChartFlow inizializeData called in the right way', function(){
-			expect(BarChart.getFlowList()[0].getData().length).toEqual(2);
-		});*/
+		it('BarChartFlow inizializeData called in the right way', function(){
+			expect(BarChart.parent.getFlowList()[0].getData().length).toEqual(2);
+		});
 
 	});
 
