@@ -89,6 +89,8 @@ angular.module('app')
 
     Page.prototype = {
 
+        constructor : Page,
+
         updateParameters: function(info){
             if (info !== undefined) {
                 if (info.name !== undefined) {
