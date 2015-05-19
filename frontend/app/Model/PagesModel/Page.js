@@ -25,7 +25,7 @@
 */
 
 angular.module('app')
-.factory('Page', ['LineChart', 'BarChart', 'MapChart', 'Table', function(LineChart, BarChart, MapChart, Table){
+.factory('Page', function(LineChart, BarChart, MapChart, Table){
     
     var graphsList = [];
     var name = null;
@@ -161,4 +161,4 @@ angular.module('app')
             return url;
         }
     };
-}]);
+});
