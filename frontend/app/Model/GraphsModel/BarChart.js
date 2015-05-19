@@ -127,7 +127,7 @@ angular.module('services')
                     this.addFlow(info.flows[i].ID, newflow);
                 }
             }
-        }♣
+        }
         
     };
 
