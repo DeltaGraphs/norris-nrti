@@ -225,7 +225,7 @@ angular.module('services')
                 zoom = mJson.zoom;
             }
         }
-        if (info.flows) {
+        if (info.flows !== undefined) {
             for (var i=0; i<info.flows.length; i++) {
                 var newflow = new MapChartFlow(info.flows[i]);
                 this.addFlow(info.flows[i].ID, newflow);
@@ -242,7 +242,7 @@ angular.module('services')
     MapChart.prototype.initializeData = function(newData) {  //inizialization data of flows
         if (newData !== undefined) {
             for (var i=0; i<newData.length; i++) {
-                this.parent.getFlowList()[newData[i].ID].inizializeData(newData[i]);
+                this.getFlowList()[newData[i].ID].initializeData(newData[i]);
             }
         }
     };
@@ -250,18 +250,18 @@ angular.module('services')
     // update data
     MapChart.prototype.inPlaceUpdate = function(newData) {
         if (newData !== undefined) {
-            this.parent.getFlowList()[newData.ID].inPlaceUpdate(newData);
+            this.getFlowList()[newData.ID].inPlaceUpdate(newData);
         }
         return this;
     };
     MapChart.prototype.streamUpdate = function(newData) {
         if (newData !== undefined) {
-            this.parent.getFlowList()[newData.ID].streamUpdate(newData);
+            this.getFlowList()[newData.ID].streamUpdate(newData);
         }
         return this;
     };
     MapChart.prototype.deleteData = function(delData) {
-        this.parent.getFlowList()[delData.ID].deleteData(delData);
+        this.getFlowList()[delData.ID].deleteData(delData);
         return this;
     };
 

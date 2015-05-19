@@ -289,15 +289,16 @@ describe('LineChart', function(){
 			LineChart = new LineChart();
 			LineChart.addFlow(data[0].ID, newFlow);
 			LineChart.initializeData(data);
+			LineChart.streamUpdate(data1);
 		});
 
 		afterEach(function(){
 			LineChart = null;
 		});	
 
-		it('inizialize flowList', function(){
-			expect(LineChart.getFlowList()[0].flow.getData().length).toEqual(1);
-			LineChart.streamUpdate(data1);
+		it('LineChartFlow streamUpdate called in the right way', function(){
+			//expect(LineChart.getFlowList()[0].flow.getData().length).toEqual(1);
+			
 			expect(LineChart.getFlowList()[0].flow.getData().length).toEqual(2);
 		});
 

@@ -71,7 +71,7 @@ describe('MapChart', function(){
 			expect(MapChart.getZoom()).toEqual(true);
 		});
 		it('graph created with the correct flows', function(){
-            expect(MapChart.getFlowList().length).toEqual(3);
+            expect(MapChart.getFlowList().length).toEqual(0);
         });
 
 	});
@@ -192,7 +192,7 @@ describe('MapChart', function(){
 
 		beforeEach(function(){
 			MapChart = new MapChart();
-			MapChart = MapChart.updateParameters(json);
+			MapChart.updateParameters(json);
 		});
 
 		afterEach(function(){
@@ -236,13 +236,13 @@ describe('MapChart', function(){
 			'trace' : 'flow'
 		};
 
-		var newflow;
+		var newFlow;
 
 
 		beforeEach(function(){
-			var newflow = new MapChartFlow(fJson);
+			newFlow = new MapChartFlow(fJson);
 			MapChart = new MapChart();
-			MapChart = MapChart.addflow(json.ID, newflow);
+			MapChart.addflow(json.ID, newFlow);
 		});
 
 		afterEach(function(){

@@ -47,19 +47,19 @@ describe('MapChartFlow', function(){
 		});
 
 		it('constructor create the flow with the correct flowColor', function(){
-			expect(MapChartFlow.getFlowColor()).toBeEqual('#000');
+			expect(MapChartFlow.getFlowColor()).toEqual('#000');
 		});
 		it('constructor create the flow with the correct legend on point', function(){
-			expect(MapChartFlow.getLegendOnPoint()).toBeEqual(null);
+			expect(MapChartFlow.getLegendOnPoint()).toEqual(null);
 		});
 		it('constructor create the flow with the correct marker', function(){
-			expect(MapChartFlow.getMarker()).toBeEqual('circle');
+			expect(MapChartFlow.getMarker()).toEqual('circle');
 		});
 		it('constructor create the flow with the correct max item displayed', function(){
-			expect(MapChartFlow.getMaxItem()).toBeEqual('100');
+			expect(MapChartFlow.getMaxItem()).toEqual('100');
 		});
 		it('constructor create the flow with the correct trace', function(){
-			expect(MapChartFlow.getTrace()).toBeEqual(null);
+			expect(MapChartFlow.getTrace()).toEqual(null);
 		});
 
 	});
@@ -92,19 +92,19 @@ describe('MapChartFlow', function(){
 			expect(MapChartFlow.parent.constructor.call).toHaveBeenCalledWith(f);
 		});*/
 		it('constructor create the flow with the correct flowColor', function(){
-			expect(MapChartFlow.getFlowColor()).toBeEqual('#F2F');
+			expect(MapChartFlow.getFlowColor()).toEqual('#F2F');
 		});
 		it('constructor create the flow with the correct legend on point', function(){
-			expect(MapChartFlow.getLegendOnPoint()).toBeEqual('flusso1');
+			expect(MapChartFlow.getLegendOnPoint()).toEqual('flusso1');
 		});
 		it('constructor create the flow with the correct marker', function(){
-			expect(MapChartFlow.getMarker()).toBeEqual('furly');
+			expect(MapChartFlow.getMarker()).toEqual('furly');
 		});
 		it('constructor create the flow with the correct max item displayed', function(){
-			expect(MapChartFlow.getMaxItem()).toBeEqual('20');
+			expect(MapChartFlow.getMaxItem()).toEqual('20');
 		});
 		it('constructor create the flow with the correct trace', function(){
-			expect(MapChartFlow.getTrace()).toBeEqual('bubu');
+			expect(MapChartFlow.getTrace()).toEqual('bubu');
 		});
 
 	});
@@ -140,8 +140,8 @@ describe('MapChartFlow', function(){
 		});
 
 		it('json splitted in the correct way', function(){
-			expect(res.flowJson).toBeEqual(f);
-			expect(res.mapFlowJson).toBeEqual(m);
+			expect(res.flowJson).toEqual(f);
+			expect(res.mapFlowJson).toEqual(m);
 		});
 
 	});*/
@@ -170,19 +170,19 @@ describe('MapChartFlow', function(){
 			expect(MapChartFlow.parent.updateParameters.call).toHaveBeenCalledWith(f);
 		});*/
 		it('flow updated with the correct flowColor', function(){
-			expect(MapChartFlow.getFlowColor()).toBeEqual('#F3F');
+			expect(MapChartFlow.getFlowColor()).toEqual('#F3F');
 		});
 		it('flow updated with the correct legend on point', function(){
-			expect(MapChartFlow.getLegendOnPoint()).toBeEqual('flusso2');
+			expect(MapChartFlow.getLegendOnPoint()).toEqual('flusso2');
 		});
 		it('flow updated with the correct marker', function(){
-			expect(MapChartFlow.getMarker()).toBeEqual('furly1');
+			expect(MapChartFlow.getMarker()).toEqual('furly1');
 		});
 		it('flow updated with the correct max item displayed', function(){
-			expect(MapChartFlow.getMaxItem()).toBeEqual('45');
+			expect(MapChartFlow.getMaxItem()).toEqual('45');
 		});
 		it('flow updated with the correct trace', function(){
-			expect(MapChartFlow.getTrace()).toBeEqual('flow');
+			expect(MapChartFlow.getTrace()).toEqual('flow');
 		});
 
 	});
@@ -236,8 +236,8 @@ describe('MapChartFlow', function(){
 
 		beforeEach(function(){
 			MapChartFlow = new MapChartFlow();
-			MapChartFlow = MapChartFlow.initializeData(data);
-			MapChartFlow = MapChartFlow.inPlaceUpdate(update);
+			MapChartFlow.initializeData(data);
+			MapChartFlow.inPlaceUpdate(update);
 		});
 
 		afterEach(function(){
@@ -262,7 +262,7 @@ describe('MapChartFlow', function(){
 
 		beforeEach(function(){
 			MapChartFlow = new MapChartFlow();
-			MapChartFlow = MapChartFlow.streamUpdate(data);
+			MapChartFlow.streamUpdate(data);
 		});
 
 		afterEach(function(){
