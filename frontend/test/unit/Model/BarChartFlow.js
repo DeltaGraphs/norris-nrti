@@ -147,7 +147,7 @@ describe('BarChartFlow', function(){
 
 	describe('inizializeData', function(){
 		var data = {
-			records: [
+			'records' : [
 				{},
 				{},
 				{}
@@ -171,7 +171,7 @@ describe('BarChartFlow', function(){
 
 	describe('inPlaceUpdate', function(){
 		var data = {
-			records: [
+			'records' : [
 				{ 
 					'NorrisRecordID' : 'record1',
 					'value' : [ 1, 1]

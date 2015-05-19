@@ -92,9 +92,6 @@ describe('LineChartFlow', function(){
 			expect(LineChartFlow).toBeDefined();
 		});
 
-		/*it('constructor use the flow constructor in the correct way', function(){
-			expect(LineChartFlow.parent.constructor.call).toHaveBeenCalledWith(f); // in teoria dovrebbe essere così
-		});*/
 		it('constructor create the flow with the correct flowColor', function(){
 			expect(LineChartFlow.getFlowColor()).toEqual('#F2F');
 		});
@@ -176,9 +173,6 @@ describe('LineChartFlow', function(){
 			LineChartFlow = null;
 		});
 
-		/*it('flow updated with the correct parameters', function(){
-			expect(LineChartFlow.parent.updateParameters.call).toHaveBeenCalledWith(f); // in teoria dovrebbe essere così
-		});*/
 		it('flow updated with the correct flowColor', function(){
 			expect(LineChartFlow.getFlowColor()).toEqual('#F1F');
 		});
@@ -203,7 +197,7 @@ describe('LineChartFlow', function(){
 	describe('initializeData', function(){
 
 		var data = {
-			records: [
+			'records' : [
 				{ 
 					'NorrisRecordID' : 'record1',
 					'value' : [ 12.5464546515, 11.15468766]
@@ -237,7 +231,7 @@ describe('LineChartFlow', function(){
 	describe('inPlaceUpdate', function(){
 		
 		var data = {
-			records: [
+			'records' : [
 				{ 
 					'NorrisRecordID' : 'record1',
 					'value' : [ 1, 1]
@@ -271,7 +265,7 @@ describe('LineChartFlow', function(){
 	describe('streamUpdate', function(){
 		
 		var data = {
-			records: [
+			'records' : [
 				{ 
 					'NorrisRecordID' : 'record1',
 					'value' : [ 1, 1]
@@ -289,7 +283,7 @@ describe('LineChartFlow', function(){
 		});
 
 		it('streamUpdate call initializedData in the correct way', function(){
-			expect(LineChartFlow.initializeData()).toHaveBeenCalledWith(data);
+			expect(LineChartFlow.getData().length).toEqual(1);
 		});
 	});
 
