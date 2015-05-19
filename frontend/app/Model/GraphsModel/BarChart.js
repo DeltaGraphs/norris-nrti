@@ -147,7 +147,8 @@ angular.module('services')
                 for (var j=0; j<flowList.length; j++) {
                     if (flowList[j].id === newData[i].ID) {
                         console.log('flowlist[j].id ' + flowList[j].id);
-                        flowList[j] = flowList[j].initializeData(newData[i]);
+                        console.log('low list stampa ' + flowList[j]);
+                        flowList[j].initializeData(newData[i]);
                     }
                 }
             }
