@@ -216,8 +216,8 @@ describe('MapChartFlowModel', function() {
             assert.strictEqual(result.longitudeFormat, prop.longitudeFormat);
             assert.strictEqual(result.latitudeFormat, prop.latitudeFormat);
             assert.strictEqual(result.flowColor, prop.flowColor);
-            assert.strictEqual(result.marker, prop.marker);
-            assert.strictEqual(result.trace, prop.trace);
+            assert.deepEqual(result.marker, prop.marker);
+            assert.deepEqual(result.trace, prop.trace);
             assert.strictEqual(result.maxItems, prop.maxItems);
             assert.strictEqual(result.maxItemsSaved, prop.maxItemsSaved);
         });
