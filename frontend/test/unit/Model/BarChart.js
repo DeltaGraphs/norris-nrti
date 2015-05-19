@@ -31,7 +31,7 @@ describe('BarChart', function(){
 	var Axis;
 	var BarChartFlow;
 
-	beforeEach(module('services'));
+	beforeEach(angular.mock.module('app'));
 
 	beforeEach(inject(function(_BarChart_, $injector){
 		BarChart = _BarChart_;
@@ -249,7 +249,7 @@ describe('BarChart', function(){
 		});	
 
 		it('BarChartFlow inizializeData called in the right way', function(){
-			expect(BarChart.parent.getFlowList()[0].getData().length).toEqual(2);
+			expect(BarChart.getFlowList()[0].getData().length).toEqual(2);
 		});
 
 	});
@@ -271,7 +271,7 @@ describe('BarChart', function(){
 
 		beforeEach(function(){
 			BarChart = new BarChart();
-			newFlow = new BarChartFlow();
+			newFlow = new BarChartFlow({});
 			BarChart = BarChart.addFlow(data[0].ID, newFlow);
 			BarChart = BarChart.inPlaceUpdate(data1);
 		});
@@ -282,7 +282,7 @@ describe('BarChart', function(){
 
 		it('BarChartFlow inPlaceUpdate called in the right way', function(){
 			//expect(BarChart.parent.getFlowList()[0].getData()[0].value).toEqual([3,3]);
-			expect(BarChart.parent.getFlowList()[0].getData()[0].value).toEqual([4,4]);
+			expect(BarChart.getFlowList()[0].getData()[0].value).toEqual([4,4]);
 		});
 	});
 

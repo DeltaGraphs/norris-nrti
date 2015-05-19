@@ -90,9 +90,7 @@ angular.module('services')
 
     // create our new custom object that reuse the original object constructor
     function BarChart(info) {
-        if (info !== undefined) {
-            this.parent.constructor.call(this, info);
-        }
+        this.parent.constructor.call(this, info);
     }
 
     BarChart.prototype.updateParameters = function(info) {
