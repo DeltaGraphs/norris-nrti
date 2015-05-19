@@ -158,8 +158,6 @@ describe('LineChartFlowModel', function() {
         it('returns the param properties', function() {
             var prop={
                 ID: 'flow1',
-                name: 'flow one',
-                filters: null,
                 xKey: 'temperature',
                 yKey: 'pressure',
                 xFormat: 'toInt',
@@ -172,7 +170,18 @@ describe('LineChartFlowModel', function() {
                 maxItemsSaved: 1000
             };
             var flow1=new LineChartFlowModel(prop);
-            assert.deepEqual(flow1.getProperties(), prop);
+            var result=flow1.getProperties();
+            assert.strictEqual(result.ID, prop.ID);
+            assert.strictEqual(result.xKey, prop.xKey);
+            assert.strictEqual(result.yKey, prop.yKey);
+            assert.strictEqual(result.xFormat, prop.xFormat);
+            assert.strictEqual(result.yFormat, prop.yFormat);
+            assert.strictEqual(result.flowColor, prop.flowColor);
+            assert.strictEqual(result.marker, prop.marker);
+            assert.strictEqual(result.interpolation, prop.interpolation);
+            assert.strictEqual(result.area, prop.area);
+            assert.strictEqual(result.maxItems, prop.maxItems);
+            assert.strictEqual(result.maxItemsSaved, prop.maxItemsSaved);
         });
     });
 });

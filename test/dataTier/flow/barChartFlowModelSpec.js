@@ -121,8 +121,6 @@ describe('BarChartFlowModel', function() {
         it('returns the param properties', function() {
             var prop={
                 ID: 'flow1',
-                name: 'flow one',
-                filters: null,
                 indexKey: 'temperature',
                 valueKey: 'pressure',
                 indexFormat: 'toInt',
@@ -133,7 +131,13 @@ describe('BarChartFlowModel', function() {
                 {temperature: 2, pressure: 4},
                 {temperature: 2, pressure: 4}
             ]);
-            assert.deepEqual(flow1.getProperties(), prop);
+            var result=flow1.getProperties();
+            assert.strictEqual(result.ID, prop.ID);
+            assert.strictEqual(result.indexKey, prop.indexKey);
+            assert.strictEqual(result.valueKey, prop.valueKey);
+            assert.strictEqual(result.indexFormat, prop.indexFormat);
+            assert.strictEqual(result.valueFormat, prop.valueFormat);
+            assert.strictEqual(result.flowColor, prop.flowColor);
         });
     });
 

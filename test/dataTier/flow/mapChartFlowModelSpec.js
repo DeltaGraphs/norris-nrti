@@ -198,8 +198,6 @@ describe('MapChartFlowModel', function() {
             };
             var prop={
                 ID: 'flow1',
-                name: 'flow one',
-                filters: null,
                 longitudeKey: 'x',
                 latitudeKey: 'y',
                 longitudeFormat: 'coordinates',
@@ -211,7 +209,17 @@ describe('MapChartFlowModel', function() {
                 maxItemsSaved: 1000
             };
             var flow1=new MapChartFlowModel(prop);
-            assert.deepEqual(flow1.getProperties(), prop);
+            var result=flow1.getProperties();
+            assert.strictEqual(result.ID, prop.ID);
+            assert.strictEqual(result.longitudeKey, prop.longitudeKey);
+            assert.strictEqual(result.latitudeKey, prop.latitudeKey);
+            assert.strictEqual(result.longitudeFormat, prop.longitudeFormat);
+            assert.strictEqual(result.latitudeFormat, prop.latitudeFormat);
+            assert.strictEqual(result.flowColor, prop.flowColor);
+            assert.strictEqual(result.marker, prop.marker);
+            assert.strictEqual(result.trace, prop.trace);
+            assert.strictEqual(result.maxItems, prop.maxItems);
+            assert.strictEqual(result.maxItemsSaved, prop.maxItemsSaved);
         });
     });
 });

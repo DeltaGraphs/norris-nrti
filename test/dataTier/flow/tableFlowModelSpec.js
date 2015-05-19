@@ -131,15 +131,18 @@ describe('TableFlowModel', function() {
         it('returns the param properties', function() {
             var prop={
                 ID: 'flow1',
-                name: 'flow one',
-                filters: null,
                 columnKeys: ['213'],
                 columnFormats: {'213':'toInt'},
                 maxItems: 2,
                 maxItemsSaved: 1000
             };
             var flow1=new TableFlowModel(prop);
-            assert.deepEqual(flow1.getProperties(), prop);
+            var result=flow1.getProperties();
+            assert.strictEqual(result.ID, prop.ID);
+            assert.strictEqual(result.columnKeys, prop.columnKeys);
+            assert.strictEqual(result.columnFormats, prop.columnFormats);
+            assert.strictEqual(result.maxItems, prop.maxItems);
+            assert.strictEqual(result.maxItemsSaved, prop.maxItemsSaved);
         });
     });
 
