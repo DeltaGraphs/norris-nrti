@@ -20,7 +20,7 @@
 *
 */
 
-angular.module('services')
+angular.module('app')
 .factory('Flow', function(){
 
 	var dataFormat = null;

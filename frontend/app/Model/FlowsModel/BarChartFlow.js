@@ -20,7 +20,7 @@
 *
 */
 
-angular.module('services')
+angular.module('app')
 .factory('BarChartFlow', ['Flow', function(Flow){
 	var data = [];
 	var flowColor = '#000';
@@ -91,14 +91,12 @@ angular.module('services')
 		        }
 		    }
 	    }
-	    return this;
 	};
 
 	BarChartFlow.prototype.initializeData = function(newData) {
 		for (var i=0; i<newData.records.length; i++) {
 			data.push(newData.records[i]);
 		}
-		return this;
 	};
 	BarChartFlow.prototype.inPlaceUpdate = function(newData) {
         for (var i = 0; i<data.length; i++){
@@ -106,12 +104,6 @@ angular.module('services')
                 data[i] = { 'NorrisRecordID' : newData.NorrisRecordID, 'value' : newData.value };
             }
         }
-        return this;
-		/*var filteredData = data.filter(function(newData) {return newData.NorrisRecordID === data.NorrisRecordID;});
-	    if (filteredData.length > 0) {
-	    	filteredData[0] = { 'NorrisRecordID' : newData.NorrisRecordID, 'value' : newData.value}; //funziona in stile riferimenti??
-		}
-		return this;*/
     };
 
 	BarChartFlow.prototype.getData = function() {

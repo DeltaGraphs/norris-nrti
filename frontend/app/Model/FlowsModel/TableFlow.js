@@ -20,7 +20,7 @@
 *
 */
 
-angular.module('services')
+angular.module('app')
 .factory('TableFlow', ['Flow', function(Flow){
 
 	var data = [];
@@ -32,17 +32,21 @@ angular.module('services')
 
 	function split(json) {
         var flowJson = {};
-        if (json.dataFormat !== undefined) {
-            flowJson.dataFormat = json.dataFormat;
-        }
-        if (json.name !== undefined) {
-            flowJson.name = json.name;
-        }
-
         var tableFlowJson = {};
-        if (json.maxItem !== undefined) {
-            tableFlowJson.maxItem = json.maxItem;
-        }
+
+        if(json !== undefined) {
+	        if (json.dataFormat !== undefined) {
+	            flowJson.dataFormat = json.dataFormat;
+	        }
+	        if (json.name !== undefined) {
+	            flowJson.name = json.name;
+	        }
+
+	        
+	        if (json.maxItem !== undefined) {
+	            tableFlowJson.maxItem = json.maxItem;
+	        }
+	    }
 
         return {
             'flowJson' : flowJson,
@@ -53,65 +57,16 @@ angular.module('services')
     //TableFlow.prototype.test = function _Test(expressionStr) { return eval(expressionStr); };
 
     function TableFlow(info) {
-    	if (info !== undefined) {
-			var json = split(info);
-			var fJson = json.flowJson;
-			var tfJson = json.tableFlowJson;
+		var json = split(info);
+		var fJson = json.flowJson;
+		var tfJson = json.tableFlowJson;
 
-			if (Object.keys(fJson).length !== 0){
-				this.parent.constructor.call(this, fJson);
-			}
+		this.parent.constructor.call(this, fJson);
 
-	        if (tfJson.maxItem !== undefined) {
-	            maxItem = tfJson.maxItem;
-	        }
-	    }
-
+        if (tfJson.maxItem !== undefined) {
+            maxItem = tfJson.maxItem;
+        }
 	}
-
-	/*TableFlow.prototype = {
-		updateParameters : function(info) { // abstract
-			if (info !== undefined) {
-		    	var json = split(info);
-				var fJson = json.flowJson;
-				var mfJson = json.mapFlowJson;
-
-				if (Object.keys(fJson).length !== 0) {
-					this.parent.updateParameters.call(this, fJson);
-				}
-
-				if (Object.keys(mfJson).length !== 0) {
-			        if (mfJson.maxItem) {
-			            maxItem = mfJson.maxItem;
-			        }
-			    }
-			}
-		},
-
-		initializeData : function(newData) {
-			for (var i=0; i<newData.records.length; i++) {
-				data.push(newData.records[i]);
-			}
-			return this;
-		},
-		inPlaceUpdate : function(newData) {
-			var filteredData = data.filter(function(newData) {return newData.NorrisRecordID === data.NorrisRecordID;});
-		    if(filteredData.length > 0) {
-		    	filteredData[0] = { 'NorrisRecordID' : newData.NorrisRecordID, 'value' : newData.value}; //funziona in stile riferimenti??
-    		}
-			return this;
-	    },
-	    streamUpdate : function(newData) {
-			this.prototype.initializeData(newData);
-	    },
-
-		getData : function() {
-			return data;
-		},
-		getMaxItem : function() {
-			return maxItem;
-		}
-	};*/
 
 	TableFlow.prototype.updateParameters = function(info) { // abstract
 		if (info !== undefined) {
@@ -135,14 +90,13 @@ angular.module('services')
 		for (var i=0; i<newData.records.length; i++) {
 			data.push(newData.records[i]);
 		}
-		return this;
 	};
 	TableFlow.prototype.inPlaceUpdate = function(newData) {
-		var filteredData = data.filter(function(newData) {return newData.NorrisRecordID === data.NorrisRecordID;});
-	    if(filteredData.length > 0) {
-	    	filteredData[0] = { 'NorrisRecordID' : newData.NorrisRecordID, 'value' : newData.value}; //funziona in stile riferimenti??
-		}
-		return this;
+		for (var i = 0; i<data.length; i++){
+            if (data[i].NorrisRecordID === newData.NorrisRecordID){
+                data[i] = { 'NorrisRecordID' : newData.NorrisRecordID, 'value' : newData.value };
+            }
+        }
     };
     TableFlow.prototype.streamUpdate = function(newData) {
 		this.prototype.initializeData(newData);

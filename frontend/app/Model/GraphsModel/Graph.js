@@ -28,7 +28,7 @@
 *
 */
 
-angular.module('services')
+angular.module('app')
 .factory('Graph', ['Flow', 'Legend', function(Flow, Legend){
 
 	var flowList = [];

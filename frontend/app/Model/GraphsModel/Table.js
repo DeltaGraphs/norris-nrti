@@ -22,7 +22,7 @@
 *
 */
 
-angular.module('services')
+angular.module('app')
 .factory('Table', ['Graph', 'Cell', 'TableFlow', function(Graph, Cell, TableFlow){
 	
     var rows = 0;

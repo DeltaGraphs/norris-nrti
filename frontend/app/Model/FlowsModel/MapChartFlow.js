@@ -20,7 +20,7 @@
 *
 */
 
-angular.module('services')
+angular.module('app')
 .factory('MapChartFlow', ['Flow', function(Flow){
 	var data = [];
 	var flowColor = '#000';
@@ -35,29 +35,32 @@ angular.module('services')
 
 	function split(json) {
         var flowJson = {};
-        if (json.dataFormat !== undefined) {
-            flowJson.dataFormat = json.dataFormat;
-        }
-        if (json.name !== undefined) {
-            flowJson.name = json.name;
-        }
-
         var mapFlowJson = {};
-        if (json.flowColor !== undefined) {
-            mapFlowJson.flowColor = json.flowColor;
-        }
-        if (json.legendOnPoint !== undefined) {
-            mapFlowJson.legendOnPoint = json.legendOnPoint;
-        }
-        if (json.marker !== undefined) {
-            mapFlowJson.marker = json.marker;
-        }
-        if (json.maxItem !== undefined) {
-            mapFlowJson.maxItem = json.maxItem;
-        }
-        if (json.trace !== undefined) {
-            mapFlowJson.trace = json.trace;
-        }
+
+        if (json !== undefined) {
+	        if (json.dataFormat !== undefined) {
+	            flowJson.dataFormat = json.dataFormat;
+	        }
+	        if (json.name !== undefined) {
+	            flowJson.name = json.name;
+	        }
+
+	        if (json.flowColor !== undefined) {
+	            mapFlowJson.flowColor = json.flowColor;
+	        }
+	        if (json.legendOnPoint !== undefined) {
+	            mapFlowJson.legendOnPoint = json.legendOnPoint;
+	        }
+	        if (json.marker !== undefined) {
+	            mapFlowJson.marker = json.marker;
+	        }
+	        if (json.maxItem !== undefined) {
+	            mapFlowJson.maxItem = json.maxItem;
+	        }
+	        if (json.trace !== undefined) {
+	            mapFlowJson.trace = json.trace;
+	        }
+	    }
 
         return {
             'flowJson' : flowJson,
@@ -68,13 +71,13 @@ angular.module('services')
     //MapChartFlow.prototype.test = function _Test(expressionStr) { return eval(expressionStr); };
 
     function MapChartFlow(info) {
-    	if (info !== undefined) {
-			var json = split(info);
-			var fJson = json.flowJson;
-			var mfJson = json.mapFlowJson;
+		var json = split(info);
+		var fJson = json.flowJson;
+		var mfJson = json.mapFlowJson;
 
-			this.parent.constructor.call(this, fJson);
+		this.parent.constructor.call(this, fJson);
 
+		if (Object.keys(lfJson).length !== 0) {
 			if (mfJson.flowColor !== undefined) {
 	            flowColor = mfJson.flowColor;
 	        }
@@ -87,84 +90,8 @@ angular.module('services')
 	        if (mfJson.maxItem !== undefined) {
 	            maxItem = mfJson.maxItem;
 	        }
-        }
+	    }
 	}
-
-	/*MapChartFlow.prototype = {
-
-		updateParameters : function(info) { //abstract
-			if (info !== undefined) {
-		    	var json = split(info);
-				var fJson = json.flowJson;
-				var mfJson = json.mapFlowJson;
-
-				if (Object.keys(fJson).length !== 0) {
-					this.parent.updateParameters.call(this, fJson);
-				}
-
-				if (Object.keys(mfJson).length !== 0) {
-					if (mfJson.flowColor !== undefined) {
-			            flowColor = mfJson.flowColor;
-			        }
-			        if (mfJson.legendOnPoint !== undefined) {
-			            legendOnPoint = mfJson.legendOnPoint;
-			        }
-			        if (mfJson.marker !== undefined) {
-			            marker = mfJson.marker;
-			        }
-			        if (mfJson.maxItem !== undefined) {
-			            maxItem = mfJson.maxItem;
-			        }
-			    }
-			}
-			return this;
-		},
-
-		initializeData : function(newData) {
-			for (var i=0; i<newData.records.length; i++) {
-				data.push(newData.records[i]);
-			}
-			return this;
-		},
-		inPlaceUpdate : function(newData) {
-			var filteredData = data.filter(function(newData) {return newData.NorrisRecordID === data.NorrisRecordID;});
-		    if(filteredData.length > 0) {
-		    	filteredData[0] = { 'NorrisRecordID' : newData.NorrisRecordID, 'value' : newData.value}; //funziona in stile riferimenti??
-    		}
-			return this;
-	    },
-		streamUpdate : function(newData) {
-			this.prototype.initializeData(newData);
-			return this;
-	    },
-	    deleteData : function(delData) {
-			var filteredData = data.filter(function(delData) {return delData.NorrisRecordID === data.NorrisRecordID;});
-		    if(filteredData.length > 0) {
-		    	filteredData.splice(0,1);
-    		}
-			return this;
-	    },
-
-		getData : function() {
-			return data;
-		},
-		getFlowColor : function() {
-			return flowColor;
-		},
-		getLegendOnPoint : function() {
-			return legendOnPoint;
-		},
-		getMarker : function() {
-			return marker;
-		},
-		getMaxItem : function() {
-			return maxItem;
-		},
-		getTrace : function() {
-			return trace;
-		}
-
-	};*/
 
 	MapChartFlow.prototype.updateParameters = function(info) { //abstract
 		if (info !== undefined) {
@@ -172,10 +99,8 @@ angular.module('services')
 			var fJson = json.flowJson;
 			var mfJson = json.mapFlowJson;
 
-			if (Object.keys(fJson).length !== 0) {
-				this.parent.updateParameters.call(this, fJson);
-			}
-
+			this.parent.updateParameters.call(this, fJson);
+	
 			if (Object.keys(mfJson).length !== 0) {
 				if (mfJson.flowColor !== undefined) {
 		            flowColor = mfJson.flowColor;
@@ -191,32 +116,28 @@ angular.module('services')
 		        }
 		    }
 		}
-		return this;
 	};
 
 	MapChartFlow.prototype.initializeData = function(newData) {
 		for (var i=0; i<newData.records.length; i++) {
 			data.push(newData.records[i]);
 		}
-		return this;
 	};
 	MapChartFlow.prototype.inPlaceUpdate = function(newData) {
-		var filteredData = data.filter(function(newData) {return newData.NorrisRecordID === data.NorrisRecordID;});
-	    if(filteredData.length > 0) {
-	    	filteredData[0] = { 'NorrisRecordID' : newData.NorrisRecordID, 'value' : newData.value}; //funziona in stile riferimenti??
-		}
-		return this;
+		for (var i = 0; i<data.length; i++){
+            if (data[i].NorrisRecordID === newData.NorrisRecordID){
+                data[i] = { 'NorrisRecordID' : newData.NorrisRecordID, 'value' : newData.value };
+            }
+        }
     };
 	MapChartFlow.prototype.streamUpdate = function(newData) {
 		this.prototype.initializeData(newData);
-		return this;
     };
     MapChartFlow.prototype.deleteData = function(delData) {
 		var filteredData = data.filter(function(delData) {return delData.NorrisRecordID === data.NorrisRecordID;});
 	    if(filteredData.length > 0) {
 	    	filteredData.splice(0,1);
 		}
-		return this;
     };
 
 	MapChartFlow.prototype.getData = function() {
