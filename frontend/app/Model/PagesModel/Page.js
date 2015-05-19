@@ -120,15 +120,15 @@ angular.module('app')
                     var newGraph;
                     switch (graph.type) {
                         case 'LineChart': 
-                            newGraph = new LineChart(graphs);
+                            newGraph = new LineChart(graph);
                             graphsList.push( {'id' : graph.ID, 'graph' : newGraph} );
                             break;
                         case 'BarChart': 
-                            newGraph = new BarChart(graphs);
+                            newGraph = new BarChart(graph);
                             graphsList.push( {'id' : graph.ID, 'graph' : newGraph} );
                             break;
                         case 'MapChart': 
-                            newGraph = new MapChart(graphs);
+                            newGraph = new MapChart(graph);
                             graphsList.push( {'id' : graph.ID, 'graph' : newGraph} );
                             break;
                         case 'Table': 
