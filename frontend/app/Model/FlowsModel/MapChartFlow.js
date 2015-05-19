@@ -141,7 +141,7 @@ angular.module('app')
     };
     MapChartFlow.prototype.deleteData = function(delData) {
     	for (var i = 0; i<data.length; i++){
-            if (data[i].NorrisRecordID === newData.NorrisRecordID){
+            if (data[i].NorrisRecordID === delData.NorrisRecordID){
                 data.splice(i,1);
             }
         }

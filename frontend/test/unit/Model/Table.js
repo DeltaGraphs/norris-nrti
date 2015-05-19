@@ -150,7 +150,8 @@ describe('Table', function(){
 			'cells' : [{'background' : '#FFF','fontColor' : '#000'}],
 			'itemDisplayedPerPage' : 5,
 			'addDataPosition' : 'up',
-			'sortable' : false
+			'sortable' : false,
+			'flows' : [{},{},{}]
 		};
 
 		beforeEach(function(){
@@ -176,7 +177,7 @@ describe('Table', function(){
 			expect(Table.getHeaders().length).toEqual(2);
 		});
 		it('graph updated with the correct cells', function(){
-			expect(Table.getCells().length).toEqual(1);
+			expect(Table.getCells()[0].length).toEqual(1);
 		});
 		it('graph updated with the correct item displayed per page', function(){
 			expect(Table.getItemDisplayedPerPage()).toEqual(5);

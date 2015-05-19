@@ -43,7 +43,7 @@ describe('TableFlow', ['Flow', function(){
 		});
 
 		it('default constructor create the flow in the correct way', function(){
-			expect(TableFlow.getMaxItem()).toBeEqual(100);
+			expect(TableFlow.getMaxItem()).toEqual(100);
 		});
 
 	});
@@ -64,11 +64,8 @@ describe('TableFlow', ['Flow', function(){
 			TableFlow = null;
 		});
 
-		/*it('constructor use the flow constructor in the correct way', function(){
-			expect(Flow.parent.constructor.call).toHaveBeenCalledWith(f);
-		});*/
 		it('constructor create the flow with the correct max item displayed', function(){
-			expect(TableFlow.getMaxItem()).toBeEqual('20');
+			expect(TableFlow.getMaxItem()).toEqual('20');
 		});
 
 	});
@@ -96,8 +93,8 @@ describe('TableFlow', ['Flow', function(){
 		});
 
 		it('json splitted in the correct way', function(){
-			expect(res.flowJson).toBeEqual(f);
-			expect(res.tableFlowJson).toBeEqual(t);
+			expect(res.flowJson).toEqual(f);
+			expect(res.tableFlowJson).toEqual(t);
 		});
 
 	});*/
@@ -106,23 +103,20 @@ describe('TableFlow', ['Flow', function(){
 		var json = {
 			'dataFormat' : 'String',
 			'name' : 'flusso2',
-			'maxItem' : '15'
+			'maxItem' : 15
 		};
 		
 		beforeEach(function(){
 			TableFlow = new TableFlow();
-			TableFlow = TableFlow.updateParameters(json);
+			TableFlow.updateParameters(json);
 		});
 
 		afterEach(function(){
 			TableFlow = null;
 		});
 
-		/*it('flow updated with the correct parameters', function(){
-			expect(Flow.parent.updateParameters.call).toHaveBeenCalledWith(f); // in teoria dovrebbe essere così
-		});*/
 		it('flow updated with the correct max item displayed', function(){
-			expect(TableFlow.getMaxItem()).toBeEqual('15');
+			expect(TableFlow.getMaxItem()).toEqual(15);
 		});
 
 	});
@@ -147,7 +141,7 @@ describe('TableFlow', ['Flow', function(){
 
 		beforeEach(function(){
 			TableFlow = new TableFlow();
-			TableFlow = TableFlow.initializeData(data);
+			TableFlow.initializeData(data);
 		});
 
 		afterEach(function(){
@@ -178,8 +172,8 @@ describe('TableFlow', ['Flow', function(){
 
 		beforeEach(function(){
 			TableFlow = new TableFlow();
-			TableFlow = TableFlow.initializeData(data);
-			TableFlow = TableFlow.inPlaceUpdate(update);
+			TableFlow.initializeData(data);
+			TableFlow.inPlaceUpdate(update);
 		});
 
 		afterEach(function(){
@@ -206,15 +200,15 @@ describe('TableFlow', ['Flow', function(){
 
 		beforeEach(function(){
 			TableFlow = new TableFlow();
-			TableFlow = TableFlow.streamUpdate(data);
+			TableFlow.streamUpdate(data);
 		});
 
 		afterEach(function(){
 			TableFlow = null;
 		});
 
-		it('streamUpdate call inizializeData in the correct way', function(){
-			expect(TableFlow.initializeData()).toHaveBeenCalledWith(data);
+		it('streamUpdate call initializedData in the correct way', function(){
+			expect(TableFlow.getData().length).toEqual(1);
 		});
 	});
 

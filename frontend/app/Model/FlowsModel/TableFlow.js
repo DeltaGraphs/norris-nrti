@@ -99,7 +99,7 @@ angular.module('app')
         }
     };
     TableFlow.prototype.streamUpdate = function(newData) {
-		this.prototype.initializeData(newData);
+		this.initializeData(newData);
     };
 
 	TableFlow.prototype.getData = function() {
