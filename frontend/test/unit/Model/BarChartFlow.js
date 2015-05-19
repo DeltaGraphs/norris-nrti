@@ -79,9 +79,6 @@ describe('BarChartFlow', function(){
 			expect(BarChartFlow).toBeDefined();
 		});
 
-		//it('constructor use the flow constructor in the correct way', function(){
-		//	expect(Flow.prototype.call).toHaveBeenCalledWith(this, f);
-		//});
 		it('constructor create the flow with the correct flowColor', function(){
 			expect(BarChartFlow.getFlowColor()).toEqual('#F2F');
 		});

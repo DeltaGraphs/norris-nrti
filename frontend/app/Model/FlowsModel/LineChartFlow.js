@@ -151,7 +151,7 @@ angular.module('app')
         }
     };
 	LineChartFlow.prototype.streamUpdate = function(newData) {
-		this.prototype.initializeData(newData);
+		this.initializeData(newData);
     };
 
 	LineChartFlow.prototype.getData = function() {

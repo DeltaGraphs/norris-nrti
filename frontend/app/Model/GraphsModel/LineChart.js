@@ -49,7 +49,7 @@ angular.module('services')
 		}
 		if (json.enabledLegend !== undefined) {
 			graphJson.enabledLegend = json.enabledLegend;
-			if (graphJson.enabledLegend && json.legend !== undefined) {
+			if (graphJson.enabledLegend === true && json.legend !== undefined) {
 				graphJson.legend = json.legend;
 			}
 		}
@@ -107,7 +107,7 @@ angular.module('services')
                 }
                 if (lJson.enabledViewFinder !== undefined) {
                     enabledViewFinder = lJson.enabledViewFinder;
-                    if (enabledViewFinder && lJson.viewFinder !== undefined) {
+                    if (enabledViewFinder === true && lJson.viewFinder !== undefined) {
                         viewFinder = new ViewFinder(lJson.viewFinder);
                     }
                 }
@@ -173,7 +173,7 @@ angular.module('services')
         return axisY;
     };
     LineChart.prototype.getViewFinder = function() {
-        if (enabledViewFinder) {
+        if (enabledViewFinder === true) {
             return viewFinder;
         }
     };

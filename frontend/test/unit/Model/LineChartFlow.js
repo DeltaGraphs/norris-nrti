@@ -32,7 +32,7 @@ describe('LineChartFlow', function(){
 		Flow = $injector.get('Flow');
 	}));
 
-	describe('Constructor', function(){
+	describe('Default constructor', function(){
 
 		beforeEach(function() {
 			LineChartFlow = new LineChartFlow();
@@ -289,7 +289,7 @@ describe('LineChartFlow', function(){
 		});
 
 		it('streamUpdate call initializedData in the correct way', function(){
-			expect(LineChartFlow.initializedData()).toHaveBeenCalledWith(data);
+			expect(LineChartFlow.initializeData()).toHaveBeenCalledWith(data);
 		});
 	});
 
