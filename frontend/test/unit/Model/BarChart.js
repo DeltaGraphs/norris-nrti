@@ -271,7 +271,7 @@ describe('BarChart', function(){
 
 		beforeEach(function(){
 			BarChart = new BarChart();
-			newFlow = new BarChartFlow({});
+			newFlow = new BarChartFlow();
 			BarChart.addFlow(data[0].ID, newFlow);
 		});
 
@@ -280,9 +280,9 @@ describe('BarChart', function(){
 		});	
 
 		it('BarChartFlow inPlaceUpdate called in the right way', function(){
-			expect(BarChart.getFlowList()[0].flow.getData()[0].value).toEqual([3,3]);
+			expect(BarChart.getFlowList()[0].flow.getData()[0].value[0]).toEqual(3);
 			BarChart.inPlaceUpdate(data1);
-			expect(BarChart.getFlowList()[0].flow.getData()[0].value).toEqual([4,4]);
+			expect(BarChart.getFlowList()[0].flow.getData()[0].value[0]).toEqual(4);
 		});
 	});
 
