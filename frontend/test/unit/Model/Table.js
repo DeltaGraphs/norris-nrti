@@ -147,7 +147,18 @@ describe('Table', function(){
 			'rows' : 6,
 			'colunms' : 9,
 			'headers' : ['ciao','amici'],
-			'cells' : [[{'background' : '#FFF','fontColor' : '#000'}],[{'background' : '#000','fontColor' : '#FFF'}]],
+			'cells' : [
+				[
+					{'background' : '#FFF','fontColor' : '#000'},
+					{'background' : '#FFF','fontColor' : '#000'},
+					{'background' : '#FFF','fontColor' : '#000'}
+				],
+				[
+					{'background' : '#000','fontColor' : '#FFF'},
+					{'background' : '#000','fontColor' : '#FFF'},
+					{'background' : '#000','fontColor' : '#FFF'}
+				]
+			],
 			'itemDisplayedPerPage' : 5,
 			'addDataPosition' : 'up',
 			'sortable' : false,
