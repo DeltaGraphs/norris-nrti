@@ -52,9 +52,9 @@ angular.module('app')
 		}
 	}
 
-	Graph.prototype.constructor = Graph;
-
 	Graph.prototype = {
+
+		constructor : Graph,
 
 		updateParameters : function(info) { //abstract
 			if (info !== undefined) {
