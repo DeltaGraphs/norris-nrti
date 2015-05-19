@@ -122,14 +122,16 @@ describe('BarChartFlowModel', function() {
             ID: 'flow1',
             name: 'flow one',
             filters: null,
-            indexKey: 1,
-            valuekey: 2,
-            indexFormat: 'tooooInt',
-            valueFormat: 2,
-            flowColor: 'asd',
-            records: 2
+            indexKey: 'temperature',
+            valueKey: 'pressure',
+            indexFormat: 'toInt',
+            valueFormat: 'toFloat',
+            flowColor: '#FFFFFF'
         };
-        var flow1=new BarChartFlowModel(prop);
+        var flow1=new BarChartFlowModel(prop,[
+            {temperature: 2, pressure: 4},
+            {temperature: 2, pressure: 4}
+        ]);
         assert.deepEqual(flow1.getProperties(), prop);
     });
 

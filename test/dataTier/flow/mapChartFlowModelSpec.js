@@ -197,6 +197,8 @@ describe('MapChartFlowModel', function() {
         };
         var prop={
             ID: 'flow1',
+            name: 'flow one',
+            filters: null,
             longitudeKey: 'x',
             latitudeKey: 'y',
             longitudeFormat: 'coordinates',

@@ -157,6 +157,8 @@ describe('LineChartFlowModel', function() {
     describe('#getProperties', function() {
         var prop={
             ID: 'flow1',
+            name: 'flow one',
+            filters: null,
             xKey: 'temperature',
             yKey: 'pressure',
             xFormat: 'toInt',
