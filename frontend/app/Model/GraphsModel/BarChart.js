@@ -142,8 +142,13 @@ angular.module('services')
 
     BarChart.prototype.initializeData = function(newData) {  //inizialization data of flows
         if (newData !== undefined) {
+            var flowList = this.parent.getFlowList();
             for (var i=0; i<newData.length; i++) {
-                this.parent.getFlowList()[newData[i].ID].inizializeData(newData[i]);
+                for (var j=0; j<flowList.length; j++) {
+                    if (flowList[j].id = newData[i].ID) {
+                        flowList[j].initializeData(newData[i]);
+                    }
+                }
             }
         }   
         return this;
@@ -152,7 +157,12 @@ angular.module('services')
     // update data
     BarChart.prototype.inPlaceUpdate = function(newData) {
         if (newData !== undefined) {
-            this.parent.getFlowList()[newData.ID].inPlaceUpdate(newData);
+            var flowList = this.parent.getFlowList();
+            for (var j=0; j<flowList.length; j++) {
+                if (flowList[j].id = newData.ID) {
+                    flowList[j].inPlaceUpdate(newData);
+                }
+            }
         }   
         return this;
     };
