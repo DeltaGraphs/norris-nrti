@@ -153,7 +153,7 @@ angular.module('services')
 	BarChartFlow.prototype.inPlaceUpdate = function(newData) {
         for (var i = 0; i<data.length; i++){
             if (data[i].NorrisRecordID === newData.NorrisRecordID){
-                data[i] = newData;
+                data[i] = { 'NorrisRecordID' : newData.NorrisRecordID, 'value' : newData.value };
             }
         }
         return this;

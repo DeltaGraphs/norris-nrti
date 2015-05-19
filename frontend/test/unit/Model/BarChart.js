@@ -203,10 +203,16 @@ describe('BarChart', function(){
 		var json = {
 			'ID' : 	'flusso1'
 		};
+		var fJson = {
+			'dataFormat' : 'int',
+			'name' : 'flusso1',
+			'flowColor' : '#F2F',
+			'legendOnPoint' : 'flusso1'
+		};
 		var newflow;
 
 		beforeEach(function(){
-			newflow = BarChartFlow({});
+			newflow = BarChartFlow(fJson);
 			BarChart = new BarChart();
 			BarChart = BarChart.addflow(json.ID, newflow);
 		});
