@@ -18,7 +18,7 @@
 *
 */
 
-angular.module('app')
+angular.module('services')
 .factory('Cell', function(){
 
     var background = '#FFF';

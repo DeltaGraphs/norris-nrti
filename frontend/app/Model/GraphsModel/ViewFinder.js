@@ -16,7 +16,7 @@
 *
 */
 
-angular.module('app')
+angular.module('services')
 .factory('ViewFinder', function(){
 
 	function ViewFinder(){

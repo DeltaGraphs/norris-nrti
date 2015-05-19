@@ -20,7 +20,7 @@
 *
 */
 
-angular.module('app')
+angular.module('services')
 .factory('Legend', function(){
 
     var position = 'right';
