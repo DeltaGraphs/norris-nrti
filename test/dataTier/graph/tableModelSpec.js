@@ -373,7 +373,6 @@ describe('tableModel', function() {
             assert.strictEqual(graph1._headers[0], 'col1');
             assert.strictEqual(graph1._headers[1], 'col2');
             assert.deepEqual(graph1._appearance, default2colAppearance);
-            assert.strictEqual(graph1._addRowOn, 'top');
         });
         it('decreases the number of appearance columns if the number of headers is decreased', function() {
             var properties={
@@ -384,13 +383,12 @@ describe('tableModel', function() {
             assert.strictEqual(graph1._headers[0], 'col1');
             assert.strictEqual(graph1._headers[1], 'col2');
             assert.deepEqual(graph1._appearance, default2colAppearance);
-            assert.strictEqual(graph1._addRowOn, 'top');
         });
         it('leaves the number of appearance columns untouched if the number of headers doesn\' change', function() {
             var properties={
-                headers: ['cola', 'colb']
+                headers: ['col1', 'col2']
             };
-            var graph1=new TableModel({ID: 'graph1', headers:['col1', 'col2']});
+            var graph1=new TableModel({ID: 'graph1', headers:['cola', 'colb']});
             graph1.updateProperties(properties);
             assert.strictEqual(graph1._headers[0], 'col1');
             assert.strictEqual(graph1._headers[1], 'col2');
