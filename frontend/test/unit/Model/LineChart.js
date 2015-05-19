@@ -73,7 +73,7 @@ describe('LineChart', function(){
 			expect(LineChart.getY()).toEqual(null);
 		});
 		it('graph created with the correct enabledLegend', function(){
-			expect(LineChart.getEnableViewFinder()).toEqual(false);
+			expect(LineChart.getEnabledViewFinder()).toEqual(false);
 		});
 		it('graph created with the correct viewFinder', function(){
 			expect(LineChart.getViewFinder()).toEqual(null);
@@ -164,7 +164,7 @@ describe('LineChart', function(){
 			expect(LineChart.getY()).toEqual({});
 		});
 		it('graph updated with the correct enabledViewFinder', function(){
-			expect(LineChart.getEnableViewFinder()).toEqual(true);
+			expect(LineChart.getEnabledViewFinder()).toEqual(true);
 		});
 		it('graph updated with the correct viewFinder', function(){
 			expect(LineChart.getViewFinder()).toEqual({});

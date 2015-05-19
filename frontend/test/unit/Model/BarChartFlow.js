@@ -129,23 +129,16 @@ describe('BarChartFlow', function(){
 			'flowColor' : '#F1F',
 			'legendOnPoint' : 'flusso2'
 		};
-		//var f = {
-		//	'dataFormat' : 'String',
-		//	'name' : 'flusso2'
-		//};
 
 		beforeEach(function(){
 			BarChartFlow = new BarChartFlow();
-			BarChartFlow = BarChartFlow.updateParameters(json);
+			BarChartFlow.updateParameters(json);
 		});
 
 		afterEach(function(){
 			BarChartFlow = null;
 		});
 
-		//it('flow updated with the correct parameters', function(){
-		//	expect(Flow.prototype.updateParameters.call).toHaveBeenCalledWith(f); // in teoria dovrebbe essere così
-		//});
 		it('cflow updated with the correct flowColor', function(){
 			expect(BarChartFlow.getFlowColor()).toEqual('#F1F');
 		});
@@ -166,7 +159,7 @@ describe('BarChartFlow', function(){
 
 		beforeEach(function(){
 			BarChartFlow = new BarChartFlow();
-			BarChartFlow = BarChartFlow.initializeData(data);
+			BarChartFlow.initializeData(data);
 		});
 
 		afterEach(function(){
@@ -196,8 +189,8 @@ describe('BarChartFlow', function(){
 
 		beforeEach(function(){
 			BarChartFlow = new BarChartFlow();
-			BarChartFlow = BarChartFlow.initializeData(data);
-			BarChartFlow = BarChartFlow.inPlaceUpdate(update);
+			BarChartFlow.initializeData(data);
+			BarChartFlow.inPlaceUpdate(update);
 		});
 
 		afterEach(function(){

@@ -118,7 +118,7 @@ angular.module('services')
             if (info.flows !== undefined) {
                 for (var i=0; i<info.flows.length; i++) {
                     var newflow = new LineChartFlow(info.flows[i]);
-                    this.prototype.addFlow(info.flows[i].ID, newflow);
+                    this.addFlow(info.flows[i].ID, newflow);
                 }
             }
         }
