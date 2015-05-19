@@ -55,11 +55,13 @@ describe('BarChart', function(){
 			BarChart = null;
 		});
 
+		spyOn(BarChart.parent, 'constructor');
+
 		it('BarChart created', function(){
 			expect(BarChart).toBeDefined();
 		});
 		it('graph Constructor called', function(){
-			expect(BarChart.parent.constructor.call).toHaveBeenCalledWith(this, json);
+			expect(BarChart.parent.constructor).toHaveBeenCalledWith(this, json);
 		});
 		it('graph created with the correct axisX', function(){
 			expect(BarChart.getX()).toEqual(null);
