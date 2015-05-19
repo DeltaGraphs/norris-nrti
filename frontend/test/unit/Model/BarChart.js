@@ -55,13 +55,14 @@ describe('BarChart', function(){
 			BarChart = null;
 		});
 
-		spyOn(BarChart.parent, 'constructor');
-
 		it('BarChart created', function(){
 			expect(BarChart).toBeDefined();
 		});
 		it('graph Constructor called', function(){
-			expect(BarChart.parent.constructor).toHaveBeenCalledWith(this, json);
+			expect(BarChart.getTitle()).toEqual('fottutissimografico');
+		});
+		it('graph Constructor called', function(){
+			expect(BarChart.getUrl()).toEqual('localhost/page1/grafico1');
 		});
 		it('graph created with the correct axisX', function(){
 			expect(BarChart.getX()).toEqual(null);
@@ -229,10 +230,6 @@ describe('BarChart', function(){
 		it('BarChart created', function(){
 			expect(BarChart).toBeDefined();
 		});
-
-		/*it('graph updateParameters called with the correct parameters', function(){
-			expect(BarChart.parent.updateParameters.call).toHaveBeenCalledWith(gJson);
-		});*/
 		it('graph updated with the correct axisX', function(){
 			expect(BarChart.getX()).toEqual({});
 		});
@@ -252,7 +249,7 @@ describe('BarChart', function(){
 			expect(BarChart.getBarsGrouping()).toEqual('stacked');
 		});
 		it('graph updated with the correct flow', function(){
-			expect(BarChart.addFlow.calls.count()).toEqual(3);
+			expect(BarChart.getFlowList().length).toEqual(3);
 		});
 		
 	});
@@ -275,7 +272,7 @@ describe('BarChart', function(){
 		});	
 
 		it('graph addFlow called with the correct parameters', function(){
-			expect(BarChart.parent.addFlow.call).toHaveBeenCalledWith(this, json.ID, newflow);
+			expect(BarChart.getFlowList().length).toEqual(1);
 		});
 
 	});
@@ -285,16 +282,15 @@ describe('BarChart', function(){
 		var data = [
 			{
 				'ID' : '1',
-				'records' : []
-			},
-			{
-				'ID' : '2',
-				'records' : []
+				'records' : [{},{}]
 			}
 		];
+		var newFlow;
 
 		beforeEach(function(){
 			BarChart = new BarChart();
+			newFlow = new BarChartFlow(data[0]);
+			BarChart = BarChart.addFlow(data[0].ID, newFlow);
 			BarChart = BarChart.inizializeData(data);
 		});
 
@@ -303,22 +299,30 @@ describe('BarChart', function(){
 		});	
 
 		it('BarChartFlow inizializeData called in the right way', function(){
-			expect(BarChartFlow.inizializeData.calls.count()).toEqual(2);
+			expect(BarChart.getFlowList()[0].getData().length).toEqual(2);
 		});
 
 	});
 
 	describe('inPlaceUpdate', function(){
 
-		var data = 	{
+		var data = [
+			{
+				'ID' : '2',
+				'records' : [{'NorrisRecordID' : 'record2', 'value' : [3,3] }]
+			}
+		];
+		var data1 = 	{
 			'ID' : '2',
 			'NorrisRecordID' : 'record2',
-			'value' : []
+			'value' : [4,4]
 		};
+		var newFlow;
 
 		beforeEach(function(){
 			BarChart = new BarChart();
-			BarChart = BarChart.inPlaceUpdate(data);
+			newFlow = new BarChartFlow(data[0]);
+			BarChart = BarChart.addFlow(data[0].ID, newFlow);
 		});
 
 		afterEach(function(){
@@ -326,7 +330,9 @@ describe('BarChart', function(){
 		});	
 
 		it('BarChartFlow inPlaceUpdate called in the right way', function(){
-			expect(BarChartFlow.inPlaceUpdate).toHaveBeenCalledWith(data);
+			expect(BarChart.getFlowList()[0].getData().value).toEqual([3,3]);
+			BarChart = BarChart.inPlaceUpdate(data1);
+			expect(BarChart.getFlowList()[0].getData().value).toEqual([4,4]);
 		});
 	});
 
