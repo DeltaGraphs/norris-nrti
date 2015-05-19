@@ -176,6 +176,7 @@ angular.module('services')
         if (enabledViewFinder === true) {
             return viewFinder;
         }
+        return null;
     };
     LineChart.prototype.getBackground = function() {
         return background;

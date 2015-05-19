@@ -86,33 +86,7 @@ angular.module('services')
 
     // create our new custom object that reuse the original object constructor
     function MapChart(info) {
-        if (info !== undefined) {
-            var json = split(info);
-            var fJson = json.graphJson;
-            var mJson = json.mapJson;
-
-            if (Object.keys(fJson).length !== 0) {
-                this.parent.constructor.call(this, fJson);
-            }
-
-            if (Object.keys(mJson).length !== 0) {
-                if (mJson.latitude !== undefined) {
-                    latitude = mJson.latitude;
-                }
-                if (mJson.longitude !== undefined) {
-                    longitude = mJson.longitude;
-                }
-                if (mJson.scale !== undefined) {
-                    scale = mJson.scale;
-                }
-                if (mJson.mapType !== undefined) {
-                    mapType = mJson.mapType;
-                }
-                if (mJson.zoom !== undefined) {
-                    zoom = mJson.zoom;
-                }
-            }
-        }
+        this.parent.constructor.call(this, fJson);
     }
 
     

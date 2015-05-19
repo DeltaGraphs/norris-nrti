@@ -276,8 +276,8 @@ describe('LineChart', function(){
 			}
 		];
 		var data1 = 	{
+			'ID' : '2',
 			'records' : [{
-				'ID' : '2',
 				'NorrisRecordID' : 'record2',
 				'value' : [4,4]
 			}]
@@ -289,7 +289,7 @@ describe('LineChart', function(){
 			LineChart = new LineChart();
 			LineChart.addFlow(data[0].ID, newFlow);
 			LineChart.initializeData(data);
-			LineChart.streamUpdate(data1);
+			
 		});
 
 		afterEach(function(){
@@ -297,8 +297,8 @@ describe('LineChart', function(){
 		});	
 
 		it('LineChartFlow streamUpdate called in the right way', function(){
-			//expect(LineChart.getFlowList()[0].flow.getData().length).toEqual(1);
-			
+			expect(LineChart.getFlowList()[0].flow.getData().length).toEqual(1);
+			LineChart.streamUpdate(data1);
 			expect(LineChart.getFlowList()[0].flow.getData().length).toEqual(2);
 		});
 

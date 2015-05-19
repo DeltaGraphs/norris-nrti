@@ -32,19 +32,15 @@ describe('MapChart', function(){
 		MapChartFlow = $injector.get('MapChartFlow');
 	}));
 
-	describe('Default constructor', function(){
+	describe('Constructor', function(){
 
-		/*var f ={
-			'title' : 'graficonuovo',
-			'height' : 400,
-			'width' : 400,
-			'enabledLegend' : false,
-			'horizontalGrid' : false,
-			'verticalGrid' : false
-		};*/
+		var json = {
+			'title' : 'fottutissimografico',
+			'url' : 'localhost/page1/grafico1'
+		};
 
 		beforeEach(function(){
-			MapChart = new MapChart();
+			MapChart = new MapChart(json);
 		});
 
 		afterEach(function(){
@@ -55,6 +51,12 @@ describe('MapChart', function(){
 			expect(MapChart).toBeDefined();
 		});
 
+		it('graph Constructor called', function(){
+			expect(MapChart.getTitle()).toEqual('fottutissimografico');
+		});
+		it('graph Constructor called', function(){
+			expect(MapChart.getUrl()).toEqual('localhost/page1/grafico1');
+		});
 		it('graph created with the correct latitude', function(){
 			expect(MapChart.getLatitude()).toEqual(45.4113311);
 		});
@@ -70,59 +72,6 @@ describe('MapChart', function(){
 		it('graph created with the correct zoom', function(){
 			expect(MapChart.getZoom()).toEqual(true);
 		});
-		it('graph created with the correct flows', function(){
-            expect(MapChart.getFlowList().length).toEqual(0);
-        });
-
-	});
-
-	describe('Constructor', function(){
-
-		var json = {
-			'title' : 'graficonuovo',
-			'height' : 400,
-			'width' : 400,
-			'enabledLegend' : false,
-			'horizontalGrid' : false,
-			'verticalGrid' : false,
-			'latitude' : 3,
-			'longitude' : 3,
-			'scale' : 999,
-			'mapType' : 'terrain',
-			'zoom' : false,
-			'flows' : [{},{},{}]
-		};
-
-		beforeEach(function(){
-			MapChart = new MapChart(json);
-		});
-
-		afterEach(function(){
-			MapChart = null;
-		});
-
-		it('MapChart created', function(){
-			expect(MapChart).toBeDefined();
-		});
-
-		it('graph created with the correct latitude', function(){
-			expect(MapChart.getLatitude()).toEqual(3);
-		});
-		it('graph created with the correct longitude', function(){
-			expect(MapChart.getLongitude()).toEqual(3);
-		});
-		it('graph created with the correct scale', function(){
-			expect(MapChart.getScale()).toEqual(999);
-		});
-		it('graph created with the correct mapType', function(){
-			expect(MapChart.getMapType()).toEqual('terrain');
-		});
-		it('graph created with the correct zoom', function(){
-			expect(MapChart.getZoom()).toEqual(false);
-		});
-		it('graph created with the correct flows', function(){
-            expect(MapChart.getFlowList.length).toEqual(3);
-        });
 
 	});
 
@@ -199,6 +148,10 @@ describe('MapChart', function(){
 			MapChart = null;
 		});
 
+		it('MapChart created', function(){
+			expect(MapChart).toBeDefined();
+		});
+
 		it('graph updated with the correct latitude', function(){
 			expect(MapChart.getLatitude()).toEqual(3);
 		});
@@ -209,7 +162,7 @@ describe('MapChart', function(){
 			expect(MapChart.getScale()).toEqual(999);
 		});
 		it('graph updated with the correct mapType', function(){
-			expect(MapChart.getMapType()).toEqual('terrrain');
+			expect(MapChart.getMapType()).toEqual('terrain');
 		});
 		it('graph updated with the correct zoom', function(){
 			expect(MapChart.getZoom()).toEqual(false);
@@ -323,8 +276,8 @@ describe('MapChart', function(){
 			}
 		];
 		var data1 = 	{
+			'ID' : '2',
 			'records' : [{
-				'ID' : '2',
 				'NorrisRecordID' : 'record2',
 				'value' : [4,4]
 			}]
