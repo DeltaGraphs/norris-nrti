@@ -242,7 +242,6 @@ describe('BarChart', function(){
 			newFlow = new BarChartFlow();
 			BarChart.addFlow(data[0].ID, newFlow);
 			BarChart.initializeData(data);
-			console.log(BarChart.getFlowList()[0].getData()[0].NorrisRecordID);
 		});
 
 		afterEach(function(){
