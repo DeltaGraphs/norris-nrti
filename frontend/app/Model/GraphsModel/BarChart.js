@@ -127,15 +127,14 @@ angular.module('services')
                     this.addFlow(info.flows[i].ID, newflow);
                 }
             }
-        }
-        return this;
+        }♣
+        
     };
 
     BarChart.prototype.addFlow = function(newId, newFlow) {
         if (newFlow instanceof BarChartFlow) {
             this.parent.addFlow.call(this, newId, newFlow);
         }
-        return this;
     };
 
     BarChart.prototype.initializeData = function(newData) {  //inizialization data of flows
@@ -149,7 +148,6 @@ angular.module('services')
                 }
             }
         }   
-        return this;
     };
 
     // update data
@@ -162,7 +160,6 @@ angular.module('services')
                 }
             }
         }   
-        return this;
     };
 
     // get method

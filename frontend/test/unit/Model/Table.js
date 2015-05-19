@@ -158,7 +158,7 @@ describe('Table', function(){
 
 		beforeEach(function(){
 			Table = new Table();
-			Table = Table.updateParameters(json);
+			Table.updateParameters(json);
 		});
 
 		afterEach(function(){
@@ -193,83 +193,112 @@ describe('Table', function(){
 
 		var json = {
 			'ID' : 	'flusso1',
-			'name' : 'sonda 1'
 		};
 
+		var fJson = {
+			'dataFormat' : 'int',
+			'name' : 'flusso1',
+			'maxItem' : '5'
+		};
+
+		var newFlow;
+
 		beforeEach(function(){
-			var newFlow = new TableFlow(json);
+			newFlow = new TableFlow(fJson);
 			Table = new Table();
-			Table = Table.addflow(json.ID, newFlow);
+			Table.addflow(json.ID, newFlow);
 		});
 
 		afterEach(function(){
 			Table = null;
 		});
 
-		/*it('add flow into linechart', function(){
-			expect(Graph.prototype.addFlow.call).toHaveBeenCalledWith(json.ID, newflow);
-		});*/
+		it('graph addFlow called with the correct parameters', function(){
+			expect(Table.getFlowList().length).toEqual(1);
+		});
 
 	});
 
-	/*describe('inizializeData', function(){
+	describe('inizializeData', function(){
 
 		var data = [
 			{
 				'ID' : '1',
 				'records' : []
-			},
-			{
-				'ID' : '2',
-				'records' : []
 			}
 		];
 
+		var newFlow;
+
 		beforeEach(function(){
+			newFlow = new TableFlow();
 			Table = new Table();
-			Table = Table.inizializeData(data);
+			Table.addFlow(data[0].ID, newFlow);
+			Table.initializeData(data);
 		});
 
 		afterEach(function(){
 			Table = null;
 		});
 
-		it('inizialize flowList', function(){
-			expect(TableFlow.inizializeData.calls.count()).toEqual(2);
+		it('BarChartFlow inizializeData called in the right way', function(){
+			expect(Table.getFlowList()[0].flow.getData().length).toEqual(2);
 		});
 	});
 
 	describe('inPlaceUpdate', function(){
 
-		var data = 	{
+		var data = [
+			{
+				'ID' : '2',
+				'records' : [{'NorrisRecordID' : 'record2', 'value' : [3,3] }]
+			}
+		];
+		var data1 = 	{
 			'ID' : '2',
-			'records' : []
+			'NorrisRecordID' : 'record2',
+			'value' : [4,4]
 		};
+		var newFlow;
 
 		beforeEach(function(){
+			newFlow = new TableFlow();
 			Table = new Table();
-			Table = Table.inPlaceUpdate(data);
+			Table.addFlow(data[0].ID, newFlow);
+			Table = Table.initializeData(data);
 		});
 
 		afterEach(function(){
 			Table = null;
 		});
 
-		it('inizialize flowList', function(){
-			expect(TableFlow.inPlaceUpdate).toHaveBeenCalledWith(data);
+		it('BarChartFlow inPlaceUpdate called in the right way', function(){
+			expect(Table.getFlowList()[0].flow.getData()[0].value[0]).toEqual(3);
+			Table.inPlaceUpdate(data1);
+			expect(Table.getFlowList()[0].flow.getData()[0].value[0]).toEqual(4);
 		});
 	});
 
 	describe('streamUpdate', function(){
 
-		var data = 	{
+		var data = [
+			{
+				'ID' : '2',
+				'records' : [{'NorrisRecordID' : 'record2', 'value' : [3,3] }]
+			}
+		];
+		var data1 = 	{
 			'ID' : '2',
-			'records' : []
+			'NorrisRecordID' : 'record2',
+			'value' : [4,4]
 		};
+		var newFlow;
 
 		beforeEach(function(){
+			newFlow = new TableFlow();
 			Table = new Table();
-			Table = Table.streamUpdate(data);
+			Table.addFlow(data[0].ID, newFlow);
+			Table = Table.initializeData(data);
 		});
 
 		afterEach(function(){
@@ -277,8 +306,11 @@ describe('Table', function(){
 		});
 
 		it('inizialize flowList', function(){
-			expect(TableFlow.streamUpdate).toHaveBeenCalledWith(data);
+			expect(Table.getFlowList()[0].flow.getData().length).toEqual(1);
+			Table.streamUpdate(data1);
+			expect(Table.getFlowList()[0].flow.getData().length).toEqual(2);
 		});
-	});*/
+		});
+	});
 
 });

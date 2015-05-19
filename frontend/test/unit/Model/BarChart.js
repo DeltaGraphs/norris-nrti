@@ -153,14 +153,6 @@ describe('BarChart', function(){
 			'barsGrouping' : 'stacked',
 			'flows' : [{},{},{}]
 		};
-		/*var gJson = {
-			'title' : 'graficonuovo',
-			'height' : 400,
-			'width' : 400,
-			'enabledLegend' : false,
-			'horizontalGrid' : false,
-			'verticalGrid' : false,
-		};*/
 
 		beforeEach(function(){
 			BarChart = new BarChart();
@@ -238,8 +230,8 @@ describe('BarChart', function(){
 		var newFlow;
 
 		beforeEach(function(){
-			BarChart = new BarChart();
 			newFlow = new BarChartFlow();
+			BarChart = new BarChart();
 			BarChart.addFlow(data[0].ID, newFlow);
 			BarChart.initializeData(data);
 		});
@@ -270,8 +262,8 @@ describe('BarChart', function(){
 		var newFlow;
 
 		beforeEach(function(){
-			BarChart = new BarChart();
 			newFlow = new BarChartFlow();
+			BarChart = new BarChart();
 			BarChart.addFlow(data[0].ID, newFlow);
 			BarChart.initializeData(data);
 		});
