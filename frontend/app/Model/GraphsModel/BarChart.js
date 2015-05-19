@@ -141,14 +141,14 @@ angular.module('services')
 
     BarChart.prototype.initializeData = function(newData) {  //inizialization data of flows
         if (newData !== undefined) {
-            var flowList = this.parent.getFlowList();
-            console.log('flowlist length ' + flowList.length + 'newData length ' + newData.length);
+            var fList = this.parent.getFlowList();
+            console.log('flowlist length ' + fList.length + 'newData length ' + newData.length);
             for (var i=0; i<newData.length; i++) {
-                for (var j=0; j<flowList.length; j++) {
-                    if (flowList[j].id === newData[i].ID) {
-                        console.log('flowlist[j].id ' + flowList[j].id);
-                        flowList[j].initializeData(newData[i]);
-                        console.log('flow list stampa ' + flowList[j].toString());
+                for (var j=0; j<fList.length; j++) {
+                    if (fList[j].id === newData[i].ID) {
+                        console.log('flowlist[j].id ' + fList[j].id);
+                        fList[j].initializeData(newData[i]);
+                        console.log('flow list stampa ' + fList[j].toString());
                     }
                 }
             }
@@ -159,10 +159,10 @@ angular.module('services')
     // update data
     BarChart.prototype.inPlaceUpdate = function(newData) {
         if (newData !== undefined) {
-            var flowList = this.parent.getFlowList();
-            for (var j=0; j<flowList.length; j++) {
-                if (flowList[j].id === newData.ID) {
-                    flowList[j].inPlaceUpdate(newData);
+            var fList = this.parent.getFlowList();
+            for (var j=0; j<fList.length; j++) {
+                if (fList[j].id === newData.ID) {
+                    fList[j].inPlaceUpdate(newData);
                 }
             }
         }   
