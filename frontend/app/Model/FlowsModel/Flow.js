@@ -40,6 +40,8 @@ angular.module('services')
 
 	Flow.prototype = {
 
+		constructor : Flow,
+
 		updateParameters : function(info) { //abstract
 			if (info !== undefined) {
 		    	if (info.dataFormat !== undefined) {

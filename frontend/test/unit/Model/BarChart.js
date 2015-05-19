@@ -88,62 +88,6 @@ describe('BarChart', function(){
 
 	});
 
-	/*describe('Constructor', function(){
-
-		var json = {
-			'title' : 'graficonuovo',
-			'height' : 400,
-			'width' : 400,
-			'enabledLegend' : false,
-			'horizontalGrid' : false,
-			'verticalGrid' : false,
-			'axisX' : {},
-			'axisY' : {},
-			'barOrientation' : 'vertical',
-			'background' : '#F0F',
-			'sortable' : false,
-			'barsGrouping' : 'stacked',
-			'flows' : [{},{},{}]
-		};
-
-		beforeEach(function(){
-			BarChart = new BarChart(json);
-		});
-
-		afterEach(function(){
-			BarChart = null;
-		});		
-
-		it('BarChart created', function(){
-			expect(BarChart).toBeDefined();
-		});
-		it('graph Constructor called', function(){
-			expect(BarChart.parent.constructor.call).toHaveBeenCalledWith(this, json);
-		});
-		it('graph created with the correct axisX', function(){
-			expect(BarChart.getX()).toEqual({});
-		});
-		it('graph created with the correct axisY', function(){
-			expect(BarChart.getY()).toEqual({});
-		});
-		it('graph created with the correct barOrientation', function(){
-			expect(BarChart.getBarOrientation()).toEqual('vertical');
-		});
-		it('graph created with the correct background', function(){
-			expect(BarChart.getBackground()).toEqual('#F0F');
-		});
-		it('graph created with the correct sortable', function(){
-			expect(BarChart.getSortable()).toEqual(false);
-		});
-		it('graph created with the correct barsGrouping', function(){
-			expect(BarChart.getBarsGrouping()).toEqual('stacked');
-		});
-		it('graph created with the correct flow', function(){
-			expect(BarChart.addFlow.calls.count()).toEqual(3);
-		});
-
-	});*/
-
 	/*describe('split', function(){
 		var res;
 		var json = {};
