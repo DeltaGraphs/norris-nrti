@@ -273,6 +273,7 @@ describe('BarChart', function(){
 			BarChart = new BarChart();
 			newFlow = new BarChartFlow();
 			BarChart = BarChart.addFlow(data[0].ID, newFlow);
+			BarChart = BarChart.inPlaceUpdate(data1);
 		});
 
 		afterEach(function(){
@@ -280,8 +281,7 @@ describe('BarChart', function(){
 		});	
 
 		it('BarChartFlow inPlaceUpdate called in the right way', function(){
-			expect(BarChart.parent.getFlowList()[0].getData()[0].value).toEqual([3,3]);
-			BarChart = BarChart.inPlaceUpdate(data1);
+			//expect(BarChart.parent.getFlowList()[0].getData()[0].value).toEqual([3,3]);
 			expect(BarChart.parent.getFlowList()[0].getData()[0].value).toEqual([4,4]);
 		});
 	});
