@@ -86,6 +86,7 @@ angular.module('services')
 
 			var filteredFlows = flowList.filter(function(newId) {return newId === flowList.id;});
 		    if(filteredFlows.length === 0) {
+		    	console.log('graph add flow');
 		        flowList.push({ id: newId, flow: newFlow});
     		}
     		// error

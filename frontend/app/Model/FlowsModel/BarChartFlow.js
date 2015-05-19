@@ -56,19 +56,17 @@ angular.module('services')
     //BarChartFlow.prototype.test = function _Test(expressionStr) { return eval(expressionStr); };
 
     function BarChartFlow(info) {
-    	if (info !== undefined) {
-			var json = split(info);
-			var fJson = json.flowJson;
-			var bfJson = json.barFlowJson;
-			
-			this.parent.constructor.call(this, fJson);
+		var json = split(info);
+		var fJson = json.flowJson;
+		var bfJson = json.barFlowJson;
+		
+		this.parent.constructor.call(this, fJson);
 
-			if (bfJson.flowColor !== undefined) {
-	            flowColor = bfJson.flowColor;
-	        }
-	        if (bfJson.legendOnPoint !== undefined) {
-	            legendOnPoint = bfJson.legendOnPoint;
-	        }
+		if (bfJson.flowColor !== undefined) {
+            flowColor = bfJson.flowColor;
+        }
+        if (bfJson.legendOnPoint !== undefined) {
+            legendOnPoint = bfJson.legendOnPoint;
         }
 	}
 

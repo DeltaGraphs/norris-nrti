@@ -133,6 +133,7 @@ angular.module('services')
 
     BarChart.prototype.addFlow = function(newId, newFlow) {
         if (newFlow instanceof BarChartFlow) {
+            console.log('bar chart add flow');
             this.parent.addFlow.call(this, newId, newFlow);
         }
         return this;
