@@ -34,12 +34,12 @@ describe('Socket', function() {
         var socket1 = new Socket(nsp);
         assert.strictEqual(socket1._namespace, nsp);
         assert.strictEqual(socket1._attachedObj, null);
+        assert.strictEqual(socket1._onConnectionEvent, '');
     });
 
     describe('#sendMessage', function() {
 
         var server = require('socket.io')();
-        var nspp = server.of('/namespace');
         server.listen(5000);
 
         var socketURL = 'http://0.0.0.0:5000/namespace';
@@ -47,15 +47,23 @@ describe('Socket', function() {
             transports: ['websocket'],
             'force new connection': true
         };
-
         var client1 = io.connect(socketURL, options);
 
+        function Mock() {}
+        Mock.prototype.getConfigJSON = function() {
+            return 'configJSON';
+        };
+
         it('emits a message if given valid params', function() {
-            var socket1 = new Socket(nspp);
-            socket1.sendMessage('event', 'this is my message');
+            var socket1 = new Socket(server, '/namespace');
+            var object = new Mock();
+            socket1.attachObject(object, 'onEvent');
+            socket1.sendMessage('event', 'message');
+            client1.on('connection', function(configJSON) {
+                assert.strictEqual(configJSON, object.getConfigJSON());
+            });
             client1.on('event', function(message) {
-                console.dir(message);
-                assert.strictEqual(message, 'this is my message');
+                assert.strictEqual(message, 'message');
             });
         });
     });
@@ -66,15 +74,17 @@ describe('Socket', function() {
     }
     describe('#attachObject', function() {
         it('does nothing if there are no params', function() {
-            var socket1 = new Socket(nsp);
+            var socket1 = new Socket('/namespace');
             socket1.attachObject();
             assert.strictEqual(socket1._attachedObj, null);
+            assert.strictEqual(socket1._onConnectionEvent, '');
         });
         it('attach the object in params', function() {
-            var socket1 = new Socket(nsp);
+            var socket1 = new Socket('/namespace');
             var obj1 = new RandomObj();
-            socket1.attachObject(obj1);
+            socket1.attachObject(obj1, 'onEvent');
             assert.strictEqual(socket1._attachedObj, obj1);
+            assert.strictEqual(socket1._onConnectionEvent, 'onEvent');
         });
     });
 });
