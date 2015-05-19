@@ -164,7 +164,7 @@ describe('BarChart', function(){
 
 		beforeEach(function(){
 			BarChart = new BarChart();
-			BarChart = BarChart.updateParameters(json);
+			BarChart.updateParameters(json);
 		});
 
 		afterEach(function(){
