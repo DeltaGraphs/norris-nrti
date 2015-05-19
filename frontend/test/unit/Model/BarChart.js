@@ -239,7 +239,7 @@ describe('BarChart', function(){
 
 		beforeEach(function(){
 			BarChart = new BarChart();
-			newFlow = new BarChartFlow(data[0]);
+			newFlow = new BarChartFlow();
 			BarChart = BarChart.addFlow(data[0].ID, newFlow);
 			BarChart = BarChart.initializeData(data);
 		});
