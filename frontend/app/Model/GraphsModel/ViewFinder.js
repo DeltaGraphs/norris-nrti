@@ -18,9 +18,6 @@
 
 angular.module('app')
 .factory('ViewFinder', function(){
-
-	var title;
-
 	function ViewFinder(info){
 
 	}

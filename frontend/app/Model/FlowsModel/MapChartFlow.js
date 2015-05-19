@@ -90,7 +90,10 @@ angular.module('app')
 	        if (mfJson.maxItem !== undefined) {
 	            maxItem = mfJson.maxItem;
 	        }
-	    }
+	        if (mfJson.trace !== undefined) {
+	        	trace = mfJson.trace;
+	        }
+ 	    }
 	}
 
 	MapChartFlow.prototype.updateParameters = function(info) { //abstract
@@ -114,6 +117,9 @@ angular.module('app')
 		        if (mfJson.maxItem !== undefined) {
 		            maxItem = mfJson.maxItem;
 		        }
+		        if (mfJson.trace !== undefined) {
+	        		trace = mfJson.trace;
+	        	}
 		    }
 		}
 	};

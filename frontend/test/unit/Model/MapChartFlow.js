@@ -88,9 +88,6 @@ describe('MapChartFlow', function(){
 			expect(MapChartFlow).toBeDefined();
 		});
 
-		/*it('constructor use the flow constructor in the correct way', function(){
-			expect(MapChartFlow.parent.constructor.call).toHaveBeenCalledWith(f);
-		});*/
 		it('constructor create the flow with the correct flowColor', function(){
 			expect(MapChartFlow.getFlowColor()).toEqual('#F2F');
 		});
@@ -159,16 +156,13 @@ describe('MapChartFlow', function(){
 				
 		beforeEach(function(){
 			MapChartFlow = new MapChartFlow();
-			MapChartFlow = MapChartFlow.updateParameters(json);
+			MapChartFlow.updateParameters(json);
 		});
 
 		afterEach(function(){
 			MapChartFlow = null;
 		});
 
-		/*it('flow updated with the correct parameters', function(){
-			expect(MapChartFlow.parent.updateParameters.call).toHaveBeenCalledWith(f);
-		});*/
 		it('flow updated with the correct flowColor', function(){
 			expect(MapChartFlow.getFlowColor()).toEqual('#F3F');
 		});
@@ -207,7 +201,7 @@ describe('MapChartFlow', function(){
 
 		beforeEach(function(){
 			MapChartFlow = new MapChartFlow();
-			MapChartFlow = MapChartFlow.initializeData(data);
+			MapChartFlow.initializeData(data);
 		});
 
 		afterEach(function(){
@@ -291,8 +285,8 @@ describe('MapChartFlow', function(){
 		};
 		beforeEach(function(){
 			MapChartFlow = new MapChartFlow();
-			MapChartFlow = MapChartFlow.initializeData(data);
-			MapChartFlow = MapChartFlow.deleteData(delData);
+			MapChartFlow.initializeData(data);
+			MapChartFlow.deleteData(delData);
 		});
 
 		afterEach(function(){

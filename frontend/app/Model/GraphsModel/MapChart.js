@@ -162,11 +162,12 @@ angular.module('services')
         }
     };
     MapChart.prototype.deleteData = function(delData) {
-        if (delData !== undefined)
-        var fList = this.parent.getFlowList();
-        for (var j=0; j<fList.length; j++) {
-            if (fList[j].id === delData.ID) {
-                fList[j].flow.deleteData(delData);
+        if (delData !== undefined){
+            var fList = this.parent.getFlowList();
+            for (var j=0; j<fList.length; j++) {
+                if (fList[j].id === delData.ID) {
+                    fList[j].flow.deleteData(delData);
+                }
             }
         }
     };
