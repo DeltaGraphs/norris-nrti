@@ -51,6 +51,7 @@ describe('barChartModel', function() {
         assert.strictEqual(graph1._legendOnPoint, false);
         assert.strictEqual(graph1._headers.length, 0);
         assert.strictEqual(graph1._barOrientation, 'V');
+        assert.strictEqual(graph1._grid, false);
         assert.strictEqual(graph1._sortable, false);
     });
 
@@ -68,6 +69,7 @@ describe('barChartModel', function() {
             legendOnPoint: 'abc',
             headers: 'zzz',
             barOrientation: 2,
+            grid: 123,
             sortable: 'abc'
         });
         assert.strictEqual(graph1._ID, 'graph1');
@@ -83,6 +85,7 @@ describe('barChartModel', function() {
         assert.strictEqual(graph1._legendOnPoint, false);
         assert.strictEqual(graph1._headers.length, 0);
         assert.strictEqual(graph1._barOrientation, 'V');
+        assert.strictEqual(graph1._grid, false);
         assert.strictEqual(graph1._sortable, false);
     });
 
@@ -103,6 +106,7 @@ describe('barChartModel', function() {
             legendOnPoint: true,
             headers: ['h1', 'h2'],
             barOrientation: 'V',
+            grid: true,
             sortable: true
         });
         assert.strictEqual(graph1._ID, 'graph1');
@@ -119,6 +123,7 @@ describe('barChartModel', function() {
         assert.strictEqual(graph1._headers[0], 'h1');
         assert.strictEqual(graph1._headers[1], 'h2');
         assert.strictEqual(graph1._barOrientation, 'V');
+        assert.strictEqual(graph1._grid, true);
         assert.strictEqual(graph1._sortable, true);
     });
 
@@ -137,6 +142,7 @@ describe('barChartModel', function() {
                 legendOnPoint: true,
                 headers: ['h1', 'h2'],
                 barOrientation: 'V',
+                grid: true,
                 sortable: true
             };
             var graph1=new BarChartModel(properties);
@@ -155,6 +161,7 @@ describe('barChartModel', function() {
             assert.strictEqual(prop.headers[0], 'h1');
             assert.strictEqual(prop.headers[1], 'h2');
             assert.strictEqual(prop.barOrientation, 'V');
+            assert.strictEqual(prop.grid, false);
             assert.strictEqual(prop.sortable, true);
         });
     });
@@ -173,6 +180,7 @@ describe('barChartModel', function() {
                 legendOnPoint: true,
                 headers: ['h1', 'h2'],
                 barOrientation: 'V',
+                grid: true,
                 sortable: true
             };
             var graph1=new BarChartModel({ID: 'graph1'});
@@ -190,6 +198,7 @@ describe('barChartModel', function() {
             assert.strictEqual(graph1._legendOnPoint, true);
             assert.strictEqual(graph1._headers[0], 'h1');
             assert.strictEqual(graph1._headers[1], 'h2');
+            assert.strictEqual(graph1._grid, true);
             assert.strictEqual(graph1._barOrientation, 'V');
             assert.strictEqual(graph1._sortable, true);
         });
@@ -207,6 +216,7 @@ describe('barChartModel', function() {
                 legendOnPoint: 'abc',
                 headers: 'zzz',
                 barOrientation: 2,
+                grid: 123,
                 sortable: 'abc'
             };
             var graph1=new BarChartModel({ID: 'graph1'});
@@ -224,6 +234,7 @@ describe('barChartModel', function() {
             assert.strictEqual(graph1._legendOnPoint, false);
             assert.strictEqual(graph1._headers.length, 0);
             assert.strictEqual(graph1._barOrientation, 'V');
+            assert.strictEqual(graph1._grid, false);
             assert.strictEqual(graph1._sortable, false);
         });
     });
