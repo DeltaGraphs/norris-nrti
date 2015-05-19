@@ -146,8 +146,8 @@ describe('Table', function(){
 			'verticalGrid' : false,
 			'rows' : 6,
 			'colunms' : 9,
-			'headers' : {},
-			'cells' : {},
+			'headers' : ['ciao','amici'],
+			'cells' : ['field','color'],
 			'itemDisplayedPerPage' : 5,
 			'addDataPosition' : 'up',
 			'sortable' : false
@@ -161,6 +161,7 @@ describe('Table', function(){
 		afterEach(function(){
 			Table = null;
 		});
+
 		it('Table created', function(){
 			expect(Table).toBeDefined();
 		});
@@ -172,10 +173,10 @@ describe('Table', function(){
 			expect(Table.getColunms()).toEqual(9);
 		});
 		it('graph updated with the correct headers', function(){
-			expect(Table.getHeaders()).toEqual({});
+			expect(Table.getHeaders().length).toEqual(2);
 		});
 		it('graph updated with the correct cells', function(){
-			expect(Table.getCells()).toEqual({});
+			expect(Table.getCells().length).toEqual(2);
 		});
 		it('graph updated with the correct item displayed per page', function(){
 			expect(Table.getItemDisplayedPerPage()).toEqual(5);
@@ -185,6 +186,9 @@ describe('Table', function(){
 		});
 		it('graph updated with the correct sortable', function(){
 			expect(Table.getSortable()).toEqual(false);
+		});
+		it('graph updated with the correct flow', function(){
+			expect(Table.getFlowList().length).toEqual(3);
 		});
 		
 	});
@@ -206,7 +210,7 @@ describe('Table', function(){
 		beforeEach(function(){
 			newFlow = new TableFlow(fJson);
 			Table = new Table();
-			Table.addflow(json.ID, newFlow);
+			Table.addFlow(json.ID, newFlow);
 		});
 
 		afterEach(function(){
@@ -224,7 +228,7 @@ describe('Table', function(){
 		var data = [
 			{
 				'ID' : '1',
-				'records' : []
+				'records' : [{ 'NorrisRecordID' : '234321', 'value' : [0,1]},{}]
 			}
 		];
 
@@ -241,7 +245,7 @@ describe('Table', function(){
 			Table = null;
 		});
 
-		it('BarChartFlow inizializeData called in the right way', function(){
+		it('TableFlow inizializeData called in the right way', function(){
 			expect(Table.getFlowList()[0].flow.getData().length).toEqual(2);
 		});
 	});
@@ -272,7 +276,7 @@ describe('Table', function(){
 			Table = null;
 		});
 
-		it('BarChartFlow inPlaceUpdate called in the right way', function(){
+		it('TableFlow inPlaceUpdate called in the right way', function(){
 			expect(Table.getFlowList()[0].flow.getData()[0].value[0]).toEqual(3);
 			Table.inPlaceUpdate(data1);
 			expect(Table.getFlowList()[0].flow.getData()[0].value[0]).toEqual(4);
