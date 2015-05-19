@@ -128,17 +128,19 @@ describe('TableFlowModel', function() {
         });
     });
     describe('#getProperties', function() {
-        var prop={
-            ID: 'flow1',
-            name: 'flow one',
-            filters: null,
-            columnKeys: ['213'],
-            columnFormats: {'213':'toInt'},
-            maxItems: 2,
-            maxItemsSaved: 1000
-        };
-        var flow1=new TableFlowModel(prop);
-        assert.deepEqual(flow1.getProperties(), prop);
+        it('returns the param properties', function() {
+            var prop={
+                ID: 'flow1',
+                name: 'flow one',
+                filters: null,
+                columnKeys: ['213'],
+                columnFormats: {'213':'toInt'},
+                maxItems: 2,
+                maxItemsSaved: 1000
+            };
+            var flow1=new TableFlowModel(prop);
+            assert.deepEqual(flow1.getProperties(), prop);
+        });
     });
 
 });

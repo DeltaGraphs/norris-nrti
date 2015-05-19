@@ -155,22 +155,24 @@ describe('LineChartFlowModel', function() {
     });
 
     describe('#getProperties', function() {
-        var prop={
-            ID: 'flow1',
-            name: 'flow one',
-            filters: null,
-            xKey: 'temperature',
-            yKey: 'pressure',
-            xFormat: 'toInt',
-            yFormat: 'toFloat',
-            flowColor: '#FFFFFF',
-            marker: 'diamond',
-            interpolation: 'basis',
-            area: '#012345',
-            maxItems: 2,
-            maxItemsSaved: 1000
-        };
-        var flow1=new LineChartFlowModel(prop);
-        assert.deepEqual(flow1.getProperties(), prop);
+        it('returns the param properties', function() {
+            var prop={
+                ID: 'flow1',
+                name: 'flow one',
+                filters: null,
+                xKey: 'temperature',
+                yKey: 'pressure',
+                xFormat: 'toInt',
+                yFormat: 'toFloat',
+                flowColor: '#FFFFFF',
+                marker: 'diamond',
+                interpolation: 'basis',
+                area: '#012345',
+                maxItems: 2,
+                maxItemsSaved: 1000
+            };
+            var flow1=new LineChartFlowModel(prop);
+            assert.deepEqual(flow1.getProperties(), prop);
+        });
     });
 });

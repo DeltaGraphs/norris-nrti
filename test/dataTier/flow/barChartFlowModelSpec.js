@@ -118,21 +118,23 @@ describe('BarChartFlowModel', function() {
     });
 
     describe('#getProperties', function() {
-        var prop={
-            ID: 'flow1',
-            name: 'flow one',
-            filters: null,
-            indexKey: 'temperature',
-            valueKey: 'pressure',
-            indexFormat: 'toInt',
-            valueFormat: 'toFloat',
-            flowColor: '#FFFFFF'
-        };
-        var flow1=new BarChartFlowModel(prop,[
-            {temperature: 2, pressure: 4},
-            {temperature: 2, pressure: 4}
-        ]);
-        assert.deepEqual(flow1.getProperties(), prop);
+        it('returns the param properties', function() {
+            var prop={
+                ID: 'flow1',
+                name: 'flow one',
+                filters: null,
+                indexKey: 'temperature',
+                valueKey: 'pressure',
+                indexFormat: 'toInt',
+                valueFormat: 'toFloat',
+                flowColor: '#FFFFFF'
+            };
+            var flow1=new BarChartFlowModel(prop,[
+                {temperature: 2, pressure: 4},
+                {temperature: 2, pressure: 4}
+            ]);
+            assert.deepEqual(flow1.getProperties(), prop);
+        });
     });
 
 
