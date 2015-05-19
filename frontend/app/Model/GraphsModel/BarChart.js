@@ -133,7 +133,6 @@ angular.module('services')
 
     BarChart.prototype.addFlow = function(newId, newFlow) {
         if (newFlow instanceof BarChartFlow) {
-            console.log('bar chart add flow');
             this.parent.addFlow.call(this, newId, newFlow);
         }
         return this;
@@ -142,13 +141,10 @@ angular.module('services')
     BarChart.prototype.initializeData = function(newData) {  //inizialization data of flows
         if (newData !== undefined) {
             var fList = this.parent.getFlowList();
-            console.log('flowlist length ' + fList.length + 'newData length ' + newData.length);
             for (var i=0; i<newData.length; i++) {
                 for (var j=0; j<fList.length; j++) {
                     if (fList[j].id === newData[i].ID) {
-                        console.log('flowlist[j].id ' + fList[j].id);
                         fList[j].flow.initializeData(newData[i]);
-                        console.log('flow list stampa ' + fList[j].toString());
                     }
                 }
             }
