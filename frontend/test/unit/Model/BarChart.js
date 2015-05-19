@@ -214,7 +214,7 @@ describe('BarChart', function(){
 		beforeEach(function(){
 			newflow = new BarChartFlow(fJson);
 			BarChart = new BarChart();
-			BarChart = BarChart.addflow(json.ID, newflow);
+			BarChart = BarChart.addFlow(json.ID, newflow);
 		});
 
 		afterEach(function(){
@@ -241,7 +241,7 @@ describe('BarChart', function(){
 			BarChart = new BarChart();
 			newFlow = new BarChartFlow(data[0]);
 			BarChart = BarChart.addFlow(data[0].ID, newFlow);
-			BarChart = BarChart.inizializeData(data);
+			BarChart = BarChart.initializeData(data);
 		});
 
 		afterEach(function(){
@@ -280,9 +280,9 @@ describe('BarChart', function(){
 		});	
 
 		it('BarChartFlow inPlaceUpdate called in the right way', function(){
-			expect(BarChart.getFlowList()[0].getData().value).toEqual([3,3]);
+			expect(BarChart.getFlowList()[0].getData()[0].value).toEqual([3,3]);
 			BarChart = BarChart.inPlaceUpdate(data1);
-			expect(BarChart.getFlowList()[0].getData().value).toEqual([4,4]);
+			expect(BarChart.getFlowList()[0].getData()[0].value).toEqual([4,4]);
 		});
 	});
 
