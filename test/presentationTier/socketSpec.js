@@ -15,6 +15,8 @@
 */
 
 var Socket = require('../../lib/presentationTier/socket.js');
+var io = require('socket.io-client');
+
 var assert = require('assert');
 
 describe('Socket', function() {
@@ -32,6 +34,27 @@ describe('Socket', function() {
         var socket1 = new Socket(nsp);
         assert.strictEqual(socket1._namespace, nsp);
         assert.strictEqual(socket1._attachedObj, null);
+    });
+
+    describe('#sendMessage', function() {
+
+        var server = require('socket.io').listen(5000);
+
+        var socketURL = 'http://0.0.0.0:5000';
+        var options ={
+            transports: ['websocket'],
+            'force new connection': true
+        };
+
+        var client1 = io.connect(socketURL, options);
+
+        it('emits a message if given valid params', function() {
+            var socket1 = new Socket(server);
+            socket1.sendMessage('event', 'message');
+            client1.on('event', function(message) {
+                assert.strictEqual(message, 'message');
+            });
+        });
     });
 
     function RandomObj() {
