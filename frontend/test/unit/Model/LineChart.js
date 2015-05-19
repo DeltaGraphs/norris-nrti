@@ -161,7 +161,7 @@ describe('LineChart', function(){
 			expect(LineChart.getY()).toEqual({});
 		});
 		it('graph updated with the correct viewFinder', function(){
-			expect(LineChart.getViewFinder()).toEqual({ 'viewFinder' : 'sono un viewFinder' });
+			expect(LineChart.getViewFinder()).not.tuBe(null);
 		});
 		it('graph updated with the correct background', function(){
 			expect(LineChart.getBackground()).toEqual('#000');

@@ -168,7 +168,7 @@ describe('MapChart', function(){
 			expect(MapChart.getZoom()).toEqual(false);
 		});
 		it('graph updated with the correct flows', function(){
-            expect(MapChart.addFlow.calls.count()).toEqual(3);
+            expect(MapChart.getFlowList().length).toEqual(3);
         });
 		
 	});
@@ -195,7 +195,7 @@ describe('MapChart', function(){
 		beforeEach(function(){
 			newFlow = new MapChartFlow(fJson);
 			MapChart = new MapChart();
-			MapChart.addflow(json.ID, newFlow);
+			MapChart.addFlow(json.ID, newFlow);
 		});
 
 		afterEach(function(){

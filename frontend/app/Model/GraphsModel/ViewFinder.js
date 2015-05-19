@@ -16,10 +16,12 @@
 *
 */
 
-angular.module('services')
+angular.module('app')
 .factory('ViewFinder', function(){
 
-	function ViewFinder(){
+	var title;
+
+	function ViewFinder(info){
 
 	}
     return( ViewFinder );
