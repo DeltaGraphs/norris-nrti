@@ -50,6 +50,8 @@ describe('BarChart', function(){
 			BarChart = null;
 		});		
 
+		spyOn(BarChart.parent, 'addFlow');
+
 		it('BarChart created', function(){
 			expect(BarChart).toBeDefined();
 		});
@@ -72,7 +74,7 @@ describe('BarChart', function(){
 			expect(BarChart.getBarsGrouping()).toEqual('grouped');
 		});
 		it('graph created with the correct flow', function(){
-			expect(BarChart.addFlow.call.count()).toEqual(0);
+			expect(BarChart.addFlow.calls.count()).toEqual(0);
 		});
 
 	});
