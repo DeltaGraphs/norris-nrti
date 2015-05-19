@@ -87,7 +87,38 @@ angular.module('services')
     // create our new custom object that reuse the original object constructor
     function BarChart(info) {
         if (info !== undefined) {
-            this.parent.constructor.call(this, info); // info has only title and url
+            var json = split(info);
+            var gJson = json.graphJson;
+            var bJson = json.barJson;
+            if (Object.keys(gJson).length !== 0) {
+                this.parent.updateParameters.call(this, gJson);
+            } 
+            if (Object.keys(bJson).length !== 0) {
+                if (bJson.axisX !== undefined) {
+                    axisX = new Axis(bJson.axisX);
+                }
+                if (bJson.axisY !== undefined) {
+                    axisY = new Axis(bJson.axisY);
+                }
+                if (bJson.barOrientation !== undefined) {
+                    barOrientation = bJson.barOrientation;
+                }
+                if (bJson.background !== undefined) {
+                    background = bJson.background;
+                }
+                if (bJson.sortable !== undefined) {
+                    sortable = bJson.sortable;
+                }
+                if (bJson.barsGrouping !== undefined) {
+                    barsGrouping = bJson.barsGrouping;
+                }
+            }
+            if (info.flows !== undefined) {
+                for (var i=0; i<info.flows.length; i++) {
+                    var newflow = new BarChartFlow(info.flows[i]);
+                    this.addFlow(info.flows[i].ID, newflow);
+                }
+            }
         }
     }
 

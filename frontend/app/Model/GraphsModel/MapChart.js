@@ -29,6 +29,11 @@ angular.module('services')
     var mapType = 'terrain';
     var zoom = true;
 
+    // reuse the original object prototype
+    MapChart.prototype = Object.create(Graph.prototype);
+    MapChart.prototype.constructor = MapChart;
+    MapChart.prototype.parent = Graph.prototype;
+
     function split(json) {
         var graphJson = {};
         if (json.title !== undefined) {
@@ -110,13 +115,10 @@ angular.module('services')
         }
     }
 
-    // reuse the original object prototype
-    MapChart.prototype = Object.create(Graph.prototype);
-    MapChart.prototype.constructor = MapChart;
-    MapChart.prototype.parent = Graph.prototype;
+    
 
     // Now let's override our original updateParameters method
-    MapChart.prototype = {
+    /*MapChart.prototype = {
         updateParameters : function(info) {
             var json = split(info);
             var gJson = json.graphJson;
@@ -197,6 +199,87 @@ angular.module('services')
         getSortable : function() {
             return zoom;
         }
+    };*/
+
+    MapChart.prototype.updateParameters = function(info) {
+        var json = split(info);
+        var gJson = json.graphJson;
+        var mJson = json.mapJson;
+        if (Object.keys(gJson).length !== 0) {
+            this.parent.updateParameters.call(this, gJson);
+        } 
+        if (Object.keys(mJson).length !== 0) {
+            if (mJson.latitude !== undefined) {
+                latitude = mJson.latitude;
+            }
+            if (mJson.longitude !== undefined) {
+                longitude = mJson.longitude;
+            }
+            if (mJson.scale !== undefined) {
+                scale = mJson.scale;
+            }
+            if (mJson.mapType !== undefined) {
+                mapType = mJson.mapType;
+            }
+            if (mJson.zoom !== undefined) {
+                zoom = mJson.zoom;
+            }
+        }
+        if (info.flows) {
+            for (var i=0; i<info.flows.length; i++) {
+                var newflow = new MapChartFlow(info.flows[i]);
+                this.addFlow(info.flows[i].ID, newflow);
+            }
+        }
+    };
+
+    MapChart.prototype.addFlow = function(ID, newFlow) {
+        if (newFlow instanceof MapChartFlow) {
+            this.parent.addFlow.call(this, ID, newFlow);
+        }
+    };
+
+    MapChart.prototype.initializeData = function(newData) {  //inizialization data of flows
+        if (newData !== undefined) {
+            for (var i=0; i<newData.length; i++) {
+                this.parent.getFlowList()[newData[i].ID].inizializeData(newData[i]);
+            }
+        }
+    };
+
+    // update data
+    MapChart.prototype.inPlaceUpdate = function(newData) {
+        if (newData !== undefined) {
+            this.parent.getFlowList()[newData.ID].inPlaceUpdate(newData);
+        }
+        return this;
+    };
+    MapChart.prototype.streamUpdate = function(newData) {
+        if (newData !== undefined) {
+            this.parent.getFlowList()[newData.ID].streamUpdate(newData);
+        }
+        return this;
+    };
+    MapChart.prototype.deleteData = function(delData) {
+        this.parent.getFlowList()[delData.ID].deleteData(delData);
+        return this;
+    };
+
+    // get method
+    MapChart.prototype.getLatitude = function() {
+        return latitude;
+    };
+    MapChart.prototype.getLongitude = function() {
+        return longitude;
+    };
+    MapChart.prototype.getBarOrientation = function() {
+        return scale;
+    };
+    MapChart.prototype.getBackground = function() {
+        return mapType;
+    };
+    MapChart.prototype.getSortable = function() {
+        return zoom;
     };
 
     return MapChart;

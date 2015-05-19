@@ -32,6 +32,10 @@ angular.module('services')
     var enabledViewFinder = false;
     var background = '#FFF';
 
+    LineChart.prototype = Object.create(Graph.prototype);
+    LineChart.prototype.constructor = LineChart;
+    LineChart.prototype.parent = Graph.prototype;
+
 	function split(json) {
 		var graphJson = {};
 		if (json.title !== undefined) {
@@ -82,18 +86,40 @@ angular.module('services')
 	//LineChart.prototype.test = function _Test(expressionStr) { return eval(expressionStr); };
 
     // create our new custom object that reuse the original object constructor
-    var LineChart = function(info) {
-        if (info !== undefined) {
-            this.parent.constructor.call(this, info); // info has only title and url
+    function LineChart(info) {
+        var json = split(info);
+        var gJson = json.graphJson;
+        var lJson = json.lineJson;
+        if (Object.keys(gJson).length !== 0) {
+            this.parent.updateParameters.call(this, gJson);
         }
-    };
-
-    LineChart.prototype = Object.create(Graph.prototype);
-    LineChart.prototype.constructor = LineChart;
-    LineChart.prototype.parent = Graph.prototype;
+        if (Object.keys(lJson).length !== 0) {
+            if (lJson.axisX !== undefined) {
+                axisX = new Axis(lJson.axisX);
+            }
+            if (lJson.axisY !== undefined) {
+                axisY = new Axis(lJson.axisY);
+            }
+            if (lJson.enabledViewFinder !== undefined) {
+                enabledViewFinder = lJson.enabledViewFinder;
+                if (enabledViewFinder && lJson.viewFinder !== undefined) {
+                    viewFinder = new ViewFinder(lJson.viewFinder);
+                }
+            }
+            if (lJson.background !== undefined) {
+                background = lJson.background;
+            }
+        }
+        if (info.flows !== undefined) {
+            for (var i=0; i<info.flows.length; i++) {
+                var newflow = new LineChartFlow(info.flows[i]);
+                this.prototype.addFlow(info.flows[i].ID, newflow);
+            }
+        }
+    }
 
     // Now let's override our method
-    LineChart.prototype = {
+    /*LineChart.prototype = {
 
         updateParameters : function(info) {
             if (info !== undefined) {
@@ -176,6 +202,87 @@ angular.module('services')
         	return background;
         }
 
+    };*/
+
+    LineChart.prototype.updateParameters = function(info) {
+        if (info !== undefined) {
+            var json = split(info);
+            var gJson = json.graphJson;
+            var lJson = json.lineJson;
+            if (Object.keys(gJson).length !== 0) {
+                this.parent.updateParameters.call(this, gJson);
+            }
+            if (Object.keys(lJson).length !== 0) {
+                if (lJson.axisX !== undefined) {
+                    axisX = new Axis(lJson.axisX);
+                }
+                if (lJson.axisY !== undefined) {
+                    axisY = new Axis(lJson.axisY);
+                }
+                if (lJson.enabledViewFinder !== undefined) {
+                    enabledViewFinder = lJson.enabledViewFinder;
+                    if (enabledViewFinder && lJson.viewFinder !== undefined) {
+                        viewFinder = new ViewFinder(lJson.viewFinder);
+                    }
+                }
+                if (lJson.background !== undefined) {
+                    background = lJson.background;
+                }
+            }
+            if (info.flows !== undefined) {
+                for (var i=0; i<info.flows.length; i++) {
+                    var newflow = new LineChartFlow(info.flows[i]);
+                    this.prototype.addFlow(info.flows[i].ID, newflow);
+                }
+            }
+        }
+        return this;
+    };
+
+    LineChart.prototype.addFlow = function(newId, newFlow) {
+        if (newFlow instanceof LineChartFlow) {
+            this.parent.addFlow.call(this, newId, newFlow);
+        }
+        return this;
+    };
+
+    LineChart.prototype.initializeData = function(newData) {  //inizialization data of flows
+        if (newData !== undefined) {
+            for (var i=0; i<newData.length; i++) {
+                this.parent.getFlowList()[newData[i].ID].inizializeData(newData[i]);
+            }
+        }
+        return this;
+    };
+    
+    // update data
+    LineChart.prototype.inPlaceUpdate = function(newData) {
+        if (newData !== undefined) {
+            this.parent.getFlowList()[newData.ID].inPlaceUpdate(newData);
+        }
+        return this;
+    };
+    LineChart.prototype.streamUpdate = function(newData) {
+        if (newData !== undefined) {
+           this.parent.getFlowList()[newData.ID].streamUpdate(newData);
+        }
+        return this;
+    };
+
+    // get method
+    LineChart.prototype.getX = function() {
+        return axisX;
+    };
+    LineChart.prototype.getY = function() {
+        return axisY;
+    };
+    LineChart.prototype.getViewFinder = function() {
+        if (enabledViewFinder) {
+            return viewFinder;
+        }
+    };
+    LineChart.prototype.getBackground = function() {
+        return background;
     };
 
     return LineChart;
