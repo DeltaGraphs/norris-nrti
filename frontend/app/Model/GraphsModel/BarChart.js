@@ -126,7 +126,7 @@ angular.module('services')
             if (info.flows !== undefined) {
                 for (var i=0; i<info.flows.length; i++) {
                     var newflow = new BarChartFlow(info.flows[i]);
-                    this.addFlow(info.flows[i].ID, newflow); //aaa
+                    this.addFlow(info.flows[i].ID, newflow);
                 }
             }
         }

@@ -72,58 +72,6 @@ angular.module('services')
         }
 	}
 
-
-	/*BarChartFlow.prototype = {
-
-		//BarChartFlow : Object.create(Flow.prototype),
-
-		updateParameters : function(info) {
-			if (info !== undefined) {
-		    	var json = split(info);
-				var fJson = json.flowJson;
-				var bfJson = json.barFlowJson;
-
-				if (Object.keys(fJson).length !== 0) {
-					this.parent.updateParameters.call(this, fJson);
-				}
-
-				if (Object.keys(bfJson).length !== 0) {
-					if (bfJson.flowColor !== undefined) {
-			            flowColor = bfJson.flowColor;
-			        }
-			        if (bfJson.legendOnPoint !== undefined) {
-			            legendOnPoint = bfJson.legendOnPoint;
-			        }
-			    }
-		    }
-		    return this;
-		},
-
-		initializeData : function(newData) {
-			for (var i=0; i<newData.records.length; i++) {
-				data.push(newData.records[i]);
-			}
-			return this;
-		},
-		inPlaceUpdate : function(newData) {
-			var filteredData = data.filter(function(newData) {return newData.NorrisRecordID === data.NorrisRecordID;});
-		    if (filteredData.length > 0) {
-		    	filteredData[0] = { 'NorrisRecordID' : newData.NorrisRecordID, 'value' : newData.value}; //funziona in stile riferimenti??
-    		}
-			return this;
-	    },
-
-		getData : function() {
-			return data;
-		},
-		getFlowColor : function() {
-			return flowColor;
-		},
-		getLegendOnPoint : function() {
-			return legendOnPoint;
-		},
-	};*/
-
 	BarChartFlow.prototype.updateParameters = function(info) {
 		if (info !== undefined) {
 	    	var json = split(info);

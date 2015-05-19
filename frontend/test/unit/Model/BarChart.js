@@ -212,7 +212,7 @@ describe('BarChart', function(){
 		var newflow;
 
 		beforeEach(function(){
-			newflow = BarChartFlow(fJson);
+			newflow = new BarChartFlow(fJson);
 			BarChart = new BarChart();
 			BarChart = BarChart.addflow(json.ID, newflow);
 		});
