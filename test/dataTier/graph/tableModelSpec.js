@@ -393,7 +393,6 @@ describe('tableModel', function() {
             assert.strictEqual(graph1._headers[0], 'col1');
             assert.strictEqual(graph1._headers[1], 'col2');
             assert.deepEqual(graph1._appearance, default2colAppearance);
-            assert.strictEqual(graph1._addRowOn, 'top');
         });
     });
 
