@@ -27,7 +27,7 @@ describe('Page', function(){
 	var MapChart;
 	var Table;
 
-	beforeEach(module('app'));
+	beforeEach(angular.mock.module('app'));
 
 	beforeEach(inject(function(_Page_, $injector){
 		Page = _Page_;
@@ -36,6 +36,41 @@ describe('Page', function(){
 		MapChart = $injector.get('MapChart');
 		Table = $injector.get('Table');
 	}));
+
+	describe('Default constructor', function(){
+
+		beforeEach(function(){
+			Page = new Page();
+		});
+
+		afterEach(function(){
+			Page = null;
+		});
+
+		it('instance defined', function(){
+			expect(Page).toBeDefined();
+		});
+
+		it('constructor create the page with the correct name', function(){
+			expect(Page.getName()).toEqual(null);
+		});
+		it('constructor create the page with the correct description', function(){
+			expect(Page.getDescription()).toEqual(null);
+		});
+		it('constructor create the page with the correct number of graphsPerRow', function(){
+			expect(Page.getGraphsPerRow()).toEqual(null);
+		});
+		it('constructor create the page with the correct number of graphsPerCol', function(){
+			expect(Page.getGraphsPerCol()).toEqual(null);
+		});
+		it('constructor create the page with the correct URLSocket', function(){
+			expect(Page.getUrl()).toEqual(null);
+		});
+		it('constructor create the page with the correct number of graphs', function(){
+			expect(Page.getGraphsList().length).toEqual(0);
+		});
+
+	});
 
 	describe('Constructor', function(){
 
@@ -61,11 +96,7 @@ describe('Page', function(){
 				}
 			]
 		};
-		spyOn(LineChart.prototype, 'LineChart').and.returnValue({});
-		spyOn(BarChart.prototype, 'BarChart').and.returnValue({});
-		spyOn(MapChart.prototype, 'MapChart').and.returnValue({});
-		spyOn(Table.prototype, 'Table').and.returnValue({});
-
+		
 		beforeEach(function(){
 			Page = new Page(json);
 		});
@@ -99,46 +130,7 @@ describe('Page', function(){
 
 	});
 
-	describe('Constructor', function(){
-
-		spyOn(LineChart.prototype, 'LineChart').and.returnValue({});
-		spyOn(BarChart.prototype, 'BarChart').and.returnValue({});
-		spyOn(MapChart.prototype, 'MapChart').and.returnValue({});
-		spyOn(Table.prototype, 'Table').and.returnValue({});
-
-		beforeEach(function(){
-			Page = new Page();
-		});
-
-		afterEach(function(){
-			Page = null;
-		});
-
-		it('instance defined', function(){
-			expect(Page).toBeDefined();
-		});
-
-		it('constructor create the page with the correct name', function(){
-			expect(Page.getName()).toEqual(null);
-		});
-		it('constructor create the page with the correct description', function(){
-			expect(Page.getDescription()).toEqual(null);
-		});
-		it('constructor create the page with the correct number of graphsPerRow', function(){
-			expect(Page.getGraphsPerRow()).toEqual(null);
-		});
-		it('constructor create the page with the correct number of graphsPerCol', function(){
-			expect(Page.getGraphsPerCol()).toEqual(null);
-		});
-		it('constructor create the page with the correct URLSocket', function(){
-			expect(Page.getUrl()).toEqual(null);
-		});
-		it('constructor create the page with the correct number of graphs', function(){
-			expect(Page.getGraphsList().length).toEqual(null);
-		});
-
-	});
-
+	
 	describe('updateParameters', function(){
 
 		var json = 	{
@@ -152,7 +144,7 @@ describe('Page', function(){
 
 		beforeEach(function(){
 			Page = new Page();
-			Page = Page.updateParameters(json);
+			Page.updateParameters(json);
 		});
 
 		afterEach(function(){
@@ -183,11 +175,6 @@ describe('Page', function(){
 			'ID' : 'graficoN',
 			'type' : 'Table'
 		};
-
-		spyOn(LineChart.prototype, 'LineChart').and.returnValue({});
-		spyOn(BarChart.prototype, 'BarChart').and.returnValue({});
-		spyOn(MapChart.prototype, 'MapChart').and.returnValue({});
-		spyOn(Table.prototype, 'Table').and.returnValue({});
 
 		beforeEach(function(){
 			Page = new Page();

@@ -147,7 +147,7 @@ describe('Table', function(){
 			'rows' : 6,
 			'colunms' : 9,
 			'headers' : ['ciao','amici'],
-			'cells' : [{'background' : '#FFF','fontColor' : '#000'}],
+			'cells' : [[{'background' : '#FFF','fontColor' : '#000'}],[{'background' : '#000','fontColor' : '#FFF'}],
 			'itemDisplayedPerPage' : 5,
 			'addDataPosition' : 'up',
 			'sortable' : false,
@@ -294,8 +294,10 @@ describe('Table', function(){
 		];
 		var data1 = 	{
 			'ID' : '2',
-			'NorrisRecordID' : 'record2',
-			'value' : [4,4]
+			'records' : [{
+				'NorrisRecordID' : 'record2',
+				'value' : [4,4]
+			}]
 		};
 		var newFlow;
 

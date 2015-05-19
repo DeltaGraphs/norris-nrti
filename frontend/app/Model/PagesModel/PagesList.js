@@ -18,7 +18,7 @@
 *
 */
 
-angular.module('services')
+angular.module('app')
 .factory('PagesList', ['Page', function(Page){
 
 	var pagesList = [];
@@ -28,9 +28,15 @@ angular.module('services')
 		if (info !== undefined) {
 			if (info.data !== undefined) {
 				for (var i=0; i<info.data.length; i++){
-					if (this.pagesList[info.data[i].ID] === null) {
-						var page = new Page(info.data[i]);
-						this.pagesList[info.data[i].ID] = page;
+					var count = 0;
+					for (var j=0; j<pagesList.length; j++) {
+						if (pagesList[j].id === info.data[i].ID){
+							count++;
+						}
+					}
+	    			if(count === 0) {
+	    				var page = new Page(info.data[i]);
+	       				pagesList.push({ 'id' : info.data[i].ID, 'page' : page});
 					}
 					// error
 				}
@@ -40,17 +46,19 @@ angular.module('services')
 	
 	PagesList.prototype = {
 
-		addPage: function(page){ // da cambiare DP
-			if (this.pagesList[page.ID] === null) {
+		constructor : PagesList,
+
+		addPage: function(page) { // da cambiare DP
+			var filteredPages = pagesList.filter(function(page) {return page.ID === pagesList.id;});
+			if(filteredPages.length === 0) {
 				var newPage = new Page(page);
-				this.pagesList[page.ID] = newPage;
+   				pagesList.push({ 'id' : page.ID, 'page' : newPage});
 			}
 			// error
-			return this;
 		},
 
 		getPagesList: function(){
-			return this.pagesList;
+			return pagesList;
 		}
 	};
 

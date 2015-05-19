@@ -26,7 +26,7 @@ describe('PagesList', function(){
 	var PagesList;
 	var Page;
 
-	beforeEach(module('app'));
+	beforeEach(angular.mock.module('app'));
 
 	beforeEach(inject(function(_PagesList_,$injector){
 		PagesList = _PagesList_;
@@ -34,8 +34,6 @@ describe('PagesList', function(){
 	}));
 
 	describe('Default constructor', function(){
-		
-		spyOn(Page.prototype, 'Page').and.returnValue({});
 
 		beforeEach(function(){
 			PagesList = new PagesList();
@@ -46,11 +44,10 @@ describe('PagesList', function(){
 		});
 
 		it('instance defined', function(){
-			expect(Page).toBeDefined();
+			expect(PagesList).toBeDefined();
 		});
-
 		it('constructor create an array with the exactly number of pages', function(){
-			expect(PagesList.getPagesList().length).toEqual(3);
+			expect(PagesList.getPagesList().length).toEqual(0);
 		});
 
 	});
@@ -66,8 +63,6 @@ describe('PagesList', function(){
 			]
 		};
 		
-		spyOn(Page.prototype, 'Page').and.returnValue({});
-
 		beforeEach(function(){
 			PagesList = new PagesList(json);
 		});
@@ -77,26 +72,22 @@ describe('PagesList', function(){
 		});
 
 		it('instance defined', function(){
-			expect(Page).toBeDefined();
+			expect(PagesList).toBeDefined();
 		});
-
 		it('constructor create an array with the exactly number of pages', function(){
 			expect(PagesList.getPagesList().length).toEqual(3);
 		});
 
 	});
 
-
 	describe('addPage', function(){
 		var json = {
 			'ID' : '4'
 		};
 
-		spyOn(Page.prototype, 'Page').and.returnValue({});
-
 		beforeEach(function(){
 			PagesList = new PagesList();
-			PagesList = PagesList.addPage(json);
+			PagesList.addPage(json);
 		});
 
 		afterEach(function(){
@@ -104,7 +95,7 @@ describe('PagesList', function(){
 		});
 
 		it('page added to the pagesList', function(){
-			expect(PagesList.getPagesList().length).toEqual(4);
+			expect(PagesList.getPagesList().length).toEqual(1);
 		});
 
 	});

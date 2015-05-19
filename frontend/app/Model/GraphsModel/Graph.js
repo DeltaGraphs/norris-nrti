@@ -80,7 +80,6 @@ angular.module('app')
 					verticalGrid = info.verticalGrid;
 				}
 			}
-			return this;
 		},
 		addFlow : function(newId, newFlow) { //abstract
 
@@ -89,7 +88,6 @@ angular.module('app')
 		        flowList.push({ id: newId, flow: newFlow});
     		}
     		// error
-    		return this;
 		},
 		deleteFlow : function(flowID) {
 			var index;
@@ -99,7 +97,6 @@ angular.module('app')
                 }
             }
             flowList.splice(index,1);
-            return this;
 		},
 		
 		getTitle : function() {

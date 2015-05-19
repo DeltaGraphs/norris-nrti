@@ -24,7 +24,7 @@
 *
 */
 
-angular.module('services')
+angular.module('app')
 .factory('Page', ['LineChart', 'BarChart', 'MapChart', 'Table', function(LineChart, BarChart, MapChart, Table){
     
     var graphsList = [];
@@ -54,24 +54,30 @@ angular.module('services')
             }
             if (info.graphs !== undefined) {
                 for (var i=0; i<info.graphs.length; i++){
-                    if (graphsList[info.graph[i].ID] === null){
+                    var count = 0;
+                    for (var j=0; j<graphsList.length; j++) {
+                        if (graphsList[j].id === info.graphs[i].ID){
+                            count++;
+                        }
+                    }
+                    if (count === 0){
                         var graph;
-                        switch (info.graph[i].type) {
+                        switch (info.graphs[i].type) {
                             case 'LineChart': 
-                                graph = new LineChart(info.graph[i]);
-                                graphsList[info.graph[i].ID] = graph;
+                                graph = new LineChart(info.graphs[i]);
+                                graphsList.push( {'id' : info.graphs[i].ID, 'graph' : graph} );
                                 break;
                             case 'BarChart': 
-                                graph = new BarChart(info.graph[i]);
-                                graphsList[info.graph[i].ID] = graph;
+                                graph = new BarChart(info.graphs[i]);
+                                graphsList.push( {'id' : info.graphs[i].ID, 'graph' : graph} );
                                 break;
                             case 'MapChart': 
-                                graph = new MapChart(info.graph[i]);
-                                graphsList[info.graph[i].ID] = graph;
+                                graph = new MapChart(info.graphs[i]);
+                                graphsList.push( {'id' : info.graphs[i].ID, 'graph' : graph} );
                                 break;
                             case 'Table': 
-                                graph = new Table(info.graph[i]);
-                                graphsList[info.graph[i].ID] = graph;
+                                graph = new Table(info.graphs[i]);
+                                graphsList.push( {'id' : info.graphs[i].ID, 'graph' : graph} );
                                 break;
                         }
                     }
@@ -101,34 +107,39 @@ angular.module('services')
                     url = info.URLSocket;
                 }
             }
-            return this;
         },
         addGraph: function(graph){
             if (graph !== undefined) {
-                if (graphsList[graph.ID] === null) {
-                    var newgraph;
+                var count = 0;
+                for (var j=0; j<graphsList.length; j++) {
+                    if (graphsList[j].id === graph.ID){
+                        count++;
+                    }
+                }
+                if (count === 0){
+                    var newGraph;
                     switch (graph.type) {
                         case 'LineChart': 
-                            newgraph = new LineChart(graph);
-                            graphsList[graph.ID] = newgraph;
+                            newGraph = new LineChart(graphs);
+                            graphsList.push( {'id' : graph.ID, 'graph' : newGraph} );
                             break;
                         case 'BarChart': 
-                            newgraph = new BarChart(graph);
-                            graphsList[graph.ID] = newgraph;
+                            newGraph = new BarChart(graphs);
+                            graphsList.push( {'id' : graph.ID, 'graph' : newGraph} );
                             break;
                         case 'MapChart': 
-                            newgraph = new MapChart(graph);
-                            graphsList[graph.ID] = newgraph;
+                            newGraph = new MapChart(graphs);
+                            graphsList.push( {'id' : graph.ID, 'graph' : newGraph} );
                             break;
                         case 'Table': 
-                            newgraph = new Table(graph);
-                            graphsList[graph.ID] = newgraph;
+                            newGraph = new Table(graph);
+                            graphsList.push( {'id' : graph.ID, 'graph' : newGraph} );
                             break;
                     }
                 }
+            // error
             }
             // error
-            return this;
         },
 
         getGraphsList: function(){

@@ -20,7 +20,7 @@
 *
 */
 
-describe('TableFlow', ['Flow', function(){
+describe('TableFlow', function(){
 
 	var TableFlow;
 	var Flow;
@@ -212,4 +212,4 @@ describe('TableFlow', ['Flow', function(){
 		});
 	});
 
-}]);
+});
