@@ -67,19 +67,19 @@ describe('LineChart', function(){
 			expect(LineChart.getUrl()).toEqual('localhost/page1/grafico1');
 		});
 		it('graph created with the correct axisX', function(){
-			expect(LineChart.getX()).toBeEqual(null);
+			expect(LineChart.getX()).toEqual(null);
 		});
 		it('graph created with the correct axisY', function(){
-			expect(LineChart.getY()).toBeEqual(null);
+			expect(LineChart.getY()).toEqual(null);
 		});
 		it('graph created with the correct enabledLegend', function(){
-			expect(LineChart.getEnableViewFinder()).toBeEqual(false);
+			expect(LineChart.getEnableViewFinder()).toEqual(false);
 		});
 		it('graph created with the correct viewFinder', function(){
-			expect(LineChart.getViewFinder()).toBeEqual(null);
+			expect(LineChart.getViewFinder()).toEqual(null);
 		});
 		it('graph created with the correct background', function(){
-			expect(LineChart.getBackground()).toBeEqual('#FFF');
+			expect(LineChart.getBackground()).toEqual('#FFF');
 		});
 
 	});
@@ -125,8 +125,8 @@ describe('LineChart', function(){
 		});
 
 		it('json splitted in the correct way', function(){
-			expect(res.graphJson).toBeEqual(g);
-			expect(res.lineJson).toBeEqual(l);
+			expect(res.graphJson).toEqual(g);
+			expect(res.lineJson).toEqual(l);
 		});
 
 	});*/
@@ -158,19 +158,19 @@ describe('LineChart', function(){
 		});
 		
 		it('graph updated with the correct axisX', function(){
-			expect(LineChart.getX()).toBeEqual({});
+			expect(LineChart.getX()).toEqual({});
 		});
 		it('graph updated with the correct axisY', function(){
-			expect(LineChart.getY()).toBeEqual({});
+			expect(LineChart.getY()).toEqual({});
 		});
 		it('graph updated with the correct enabledViewFinder', function(){
-			expect(LineChart.getEnableViewFinder()).toBeEqual(true);
+			expect(LineChart.getEnableViewFinder()).toEqual(true);
 		});
 		it('graph updated with the correct viewFinder', function(){
-			expect(LineChart.getViewFinder()).toBeEqual({});
+			expect(LineChart.getViewFinder()).toEqual({});
 		});
 		it('graph updated with the correct background', function(){
-			expect(LineChart.getBackground()).toBeEqual('#000');
+			expect(LineChart.getBackground()).toEqual('#000');
 		});
 		it('graph updated with the correct flow', function(){
 			expect(LineChart.getFlowList().length).toEqual(3);

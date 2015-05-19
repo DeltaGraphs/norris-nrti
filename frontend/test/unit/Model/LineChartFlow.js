@@ -62,7 +62,7 @@ describe('LineChartFlow', function(){
 			expect(LineChartFlow.getAreaColor()).toEqual('#FFF');
 		});
 		it('constructor create the flow with the correct max item displayed', function(){
-			expect(LineChartFlow.getMaxItem()).toEqual('20');
+			expect(LineChartFlow.getMaxItem()).toEqual(20);
 		});
 
 	});
@@ -77,7 +77,7 @@ describe('LineChartFlow', function(){
 			'marker' : 'furly',
 			'interpolation' : 'single',
 			'areaColor' : '#F2F',
-			'maxItem' : '20'
+			'maxItem' : 20
 		};
 		var f = {
 			'dataFormat' : 'int',
@@ -168,7 +168,7 @@ describe('LineChartFlow', function(){
 			'marker' : 'furly1',
 			'interpolation' : 'cubic',
 			'areaColor' : '#F1F',
-			'maxItem' : '15'
+			'maxItem' : 15
 		};
 		var f = {
 			'dataFormat' : 'String',
@@ -177,7 +177,7 @@ describe('LineChartFlow', function(){
 
 		beforeEach(function(){
 			LineChartFlow = new LineChartFlow();
-			LineChartFlow = LineChartFlow.updateParameters(json);
+			LineChartFlow.updateParameters(json);
 		});
 
 		afterEach(function(){
@@ -203,7 +203,7 @@ describe('LineChartFlow', function(){
 			expect(LineChartFlow.getAreaColor()).toEqual('#F1F');
 		});
 		it('flow updated with the correct max item displayed', function(){
-			expect(LineChartFlow.getMaxItem()).toEqual('15');
+			expect(LineChartFlow.getMaxItem()).toEqual(15);
 		});
 
 	});
@@ -229,7 +229,7 @@ describe('LineChartFlow', function(){
 
 		beforeEach(function(){
 			LineChartFlow = new LineChartFlow();
-			LineChartFlow = LineChartFlow.initializeData(data);
+			LineChartFlow.initializeData(data);
 		});
 
 		afterEach(function(){
@@ -260,8 +260,8 @@ describe('LineChartFlow', function(){
 
 		beforeEach(function(){
 			LineChartFlow = new LineChartFlow();
-			LineChartFlow = LineChartFlow.initializeData(data);
-			LineChartFlow = LineChartFlow.inPlaceUpdate(update);
+			LineChartFlow.initializeData(data);
+			LineChartFlow.inPlaceUpdate(update);
 		});
 
 		afterEach(function(){
@@ -289,7 +289,7 @@ describe('LineChartFlow', function(){
 
 		beforeEach(function(){
 			LineChartFlow = new LineChartFlow();
-			LineChartFlow = LineChartFlow.streamUpdate(data);
+			LineChartFlow.streamUpdate(data);
 		});
 
 		afterEach(function(){

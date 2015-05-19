@@ -56,22 +56,22 @@ describe('MapChart', function(){
 		});
 
 		it('graph created with the correct latitude', function(){
-			expect(MapChart.getLatitude()).toBeEqual(45.4113311);
+			expect(MapChart.getLatitude()).toEqual(45.4113311);
 		});
 		it('graph created with the correct longitude', function(){
-			expect(MapChart.getLongitude()).toBeEqual(11.8876318);
+			expect(MapChart.getLongitude()).toEqual(11.8876318);
 		});
 		it('graph created with the correct scale', function(){
-			expect(MapChart.getScale()).toBeEqual(1000);
+			expect(MapChart.getScale()).toEqual(1000);
 		});
 		it('graph created with the correct mapType', function(){
-			expect(MapChart.getMapType()).toBeEqual('terrain');
+			expect(MapChart.getMapType()).toEqual('terrain');
 		});
 		it('graph created with the correct zoom', function(){
-			expect(MapChart.getZoom()).toBeEqual(true);
+			expect(MapChart.getZoom()).toEqual(true);
 		});
 		it('graph created with the correct flows', function(){
-            expect(MapChart.addFlow.calls.count()).toBeEqual(3);
+            expect(MapChart.addFlow.calls.count()).toEqual(3);
         });
 
 	});
@@ -115,22 +115,22 @@ describe('MapChart', function(){
 		});
 
 		it('graph created with the correct latitude', function(){
-			expect(MapChart.getLatitude()).toBeEqual(3);
+			expect(MapChart.getLatitude()).toEqual(3);
 		});
 		it('graph created with the correct longitude', function(){
-			expect(MapChart.getLongitude()).toBeEqual(3);
+			expect(MapChart.getLongitude()).toEqual(3);
 		});
 		it('graph created with the correct scale', function(){
-			expect(MapChart.getScale()).toBeEqual(999);
+			expect(MapChart.getScale()).toEqual(999);
 		});
 		it('graph created with the correct mapType', function(){
-			expect(MapChart.getMapType()).toBeEqual('terrain');
+			expect(MapChart.getMapType()).toEqual('terrain');
 		});
 		it('graph created with the correct zoom', function(){
-			expect(MapChart.getZoom()).toBeEqual(false);
+			expect(MapChart.getZoom()).toEqual(false);
 		});
 		it('graph created with the correct flows', function(){
-            expect(MapChart.addFlow.calls.count()).toBeEqual(3);
+            expect(MapChart.addFlow.calls.count()).toEqual(3);
         });
 
 	});
@@ -176,8 +176,8 @@ describe('MapChart', function(){
 		});
 
 		it('json splitted in the correct way', function(){
-			expect(res.graphJson).toBeEqual(g);
-			expect(res.mapJson).toBeEqual(l);
+			expect(res.graphJson).toEqual(g);
+			expect(res.mapJson).toEqual(l);
 		});
 
 	});*/
@@ -209,22 +209,22 @@ describe('MapChart', function(){
 		});
 
 		it('graph updated with the correct latitude', function(){
-			expect(MapChart.prototype.getLatitude()).toBeEqual(3);
+			expect(MapChart.prototype.getLatitude()).toEqual(3);
 		});
 		it('graph updated with the correct longitude', function(){
-			expect(MapChart.prototype.getLongitude()).toBeEqual(3);
+			expect(MapChart.prototype.getLongitude()).toEqual(3);
 		});
 		it('graph updated with the correct scale', function(){
-			expect(MapChart.prototype.getScale()).toBeEqual(999);
+			expect(MapChart.prototype.getScale()).toEqual(999);
 		});
 		it('graph updated with the correct mapType', function(){
-			expect(MapChart.prototype.getMapType()).toBeEqual('terrrain');
+			expect(MapChart.prototype.getMapType()).toEqual('terrrain');
 		});
 		it('graph updated with the correct zoom', function(){
-			expect(MapChart.prototype.getZoom()).toBeEqual(false);
+			expect(MapChart.prototype.getZoom()).toEqual(false);
 		});
 		it('graph updated with the correct flows', function(){
-            expect(MapChart.prototype.addFlow.calls.count()).toBeEqual(3);
+            expect(MapChart.prototype.addFlow.calls.count()).toEqual(3);
         });
 		
 	});
