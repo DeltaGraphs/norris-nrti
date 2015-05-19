@@ -72,9 +72,6 @@ describe('LineChart', function(){
 		it('graph created with the correct axisY', function(){
 			expect(LineChart.getY()).toEqual(null);
 		});
-		it('graph created with the correct enabledLegend', function(){
-			expect(LineChart.getEnabledViewFinder()).toEqual(false);
-		});
 		it('graph created with the correct viewFinder', function(){
 			expect(LineChart.getViewFinder()).toEqual(null);
 		});
@@ -141,7 +138,7 @@ describe('LineChart', function(){
 			'horizontalGrid' : false,
 			'verticalGrid' : false,
 			'enabledViewFinder' : true,
-			'viewFinder' : {},
+			'viewFinder' : { 'sono un viewFinder' },
 			'axisX' : {},
 			'axisY' : {},
 			'background' : '#000',
@@ -163,11 +160,8 @@ describe('LineChart', function(){
 		it('graph updated with the correct axisY', function(){
 			expect(LineChart.getY()).toEqual({});
 		});
-		it('graph updated with the correct enabledViewFinder', function(){
-			expect(LineChart.getEnabledViewFinder()).toEqual(true);
-		});
 		it('graph updated with the correct viewFinder', function(){
-			expect(LineChart.getViewFinder()).toEqual({});
+			expect(LineChart.getViewFinder()).toEqual({ 'sono un viewFinder' });
 		});
 		it('graph updated with the correct background', function(){
 			expect(LineChart.getBackground()).toEqual('#000');
@@ -196,7 +190,7 @@ describe('LineChart', function(){
 		var newFlow;
 
 		beforeEach(function(){
-			newFlow = LineChartFlow(fJson);
+			newFlow = new LineChartFlow(fJson);
 			LineChart = new LineChart();
 			LineChart.addFlow(json.ID, newFlow);
 		});
@@ -292,8 +286,7 @@ describe('LineChart', function(){
 			newFlow = new LineChartFlow();
 			LineChart = new LineChart();
 			LineChart.addFlow(data[0].ID, newFlow);
-			LineChart = LineChart.initializeData(data);
-			LineChart.streamUpdate(data);
+			LineChart.initializeData(data);
 		});
 
 		afterEach(function(){
