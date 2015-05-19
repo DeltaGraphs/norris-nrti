@@ -44,7 +44,6 @@ describe('BarChart', function(){
 
 		beforeEach(function(){
 			BarChart = new BarChart();
-			console.log(BarChart.protoype.toString());
 		});
 
 		afterEach(function(){
