@@ -32,6 +32,10 @@ angular.module('services')
     var sortable = true;
     var barsGrouping = 'grouped';
 
+    BarChart.prototype = Object.create(Graph.prototype);
+    BarChart.prototype.constructor = BarChart;
+    BarChart.prototype.parent = Graph.prototype;
+
     function split(json) {
         var graphJson = {};
         if (json.title !== undefined) {
@@ -91,7 +95,7 @@ angular.module('services')
             var gJson = json.graphJson;
             var bJson = json.barJson;
             if (Object.keys(gJson).length !== 0) {
-                this.parent.updateParameters.call(this, gJson);
+                this.parent.constructor.call(this, gJson);
             } 
             if (Object.keys(bJson).length !== 0) {
                 if (bJson.axisX !== undefined) {
@@ -121,10 +125,6 @@ angular.module('services')
             }
         }
     }
-
-    BarChart.prototype = Object.create(Graph.prototype);
-    BarChart.prototype.constructor = BarChart;
-    BarChart.prototype.parent = Graph.prototype;
 
     // Now let's override our original updateParameters method
     BarChart.prototype = {

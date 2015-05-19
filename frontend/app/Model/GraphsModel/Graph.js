@@ -52,6 +52,8 @@ angular.module('app')
 		}
 	}
 
+	Graph.prototype.constructor = Graph;
+
 	Graph.prototype = {
 
 		updateParameters : function(info) { //abstract

@@ -50,7 +50,7 @@ describe('BarChart', function(){
 			BarChart = null;
 		});		
 
-		spyOn(BarChart.parent, 'addFlow');
+		spyOn(this.parent, 'addFlow');
 
 		it('BarChart created', function(){
 			expect(BarChart).toBeDefined();
