@@ -49,7 +49,6 @@ describe('lineChartModel', function() {
         assert.deepEqual(graph1._yAxis.getProperties(), defaultAxis.getProperties());
         assert.strictEqual(graph1._backgroundColor, '#FFFFFF');
         assert.strictEqual(graph1._legendOnPoint, false);
-        assert.strictEqual(graph1._scale, 'linear');
         assert.strictEqual(graph1._viewFinder, false);
         assert.strictEqual(graph1._horizontalGrid, false);
         assert.strictEqual(graph1._verticalGrid, false);
@@ -67,7 +66,6 @@ describe('lineChartModel', function() {
             yAxis: true,
             backgroundColor: 222,
             legendOnPoint: 'abc',
-            scale: 2,
             viewFinder: 12,
             horizontalGrid: 'abc',
             verticalGrid: 'def'
@@ -83,7 +81,6 @@ describe('lineChartModel', function() {
         assert.deepEqual(graph1._yAxis.getProperties(), defaultAxis.getProperties());
         assert.strictEqual(graph1._backgroundColor, '#FFFFFF');
         assert.strictEqual(graph1._legendOnPoint, false);
-        assert.strictEqual(graph1._scale, 'linear');
         assert.strictEqual(graph1._viewFinder, false);
         assert.strictEqual(graph1._horizontalGrid, false);
         assert.strictEqual(graph1._verticalGrid, false);
@@ -104,7 +101,6 @@ describe('lineChartModel', function() {
             yAxis: yAxis1.getProperties(),
             backgroundColor: '#EEEEEE',
             legendOnPoint: true,
-            scale: 'logarithmic',
             viewFinder: true,
             horizontalGrid: true,
             verticalGrid: true
@@ -120,7 +116,6 @@ describe('lineChartModel', function() {
         assert.deepEqual(graph1._yAxis.getProperties(), yAxis1.getProperties());
         assert.strictEqual(graph1._backgroundColor, '#EEEEEE');
         assert.strictEqual(graph1._legendOnPoint, true);
-        assert.strictEqual(graph1._scale, 'logarithmic');
         assert.strictEqual(graph1._viewFinder, true);
         assert.strictEqual(graph1._horizontalGrid, true);
         assert.strictEqual(graph1._verticalGrid, true);
@@ -139,7 +134,6 @@ describe('lineChartModel', function() {
 	            yAxis: yAxis1.getProperties(),
 	            backgroundColor: '#EEEEEE',
                 legendOnPoint: true,
-                scale: 'logarithmic',
                 viewFinder: true,
                 horizontalGrid: true,
                 verticalGrid: true
@@ -157,7 +151,6 @@ describe('lineChartModel', function() {
             assert.deepEqual(prop.yAxis, yAxis1.getProperties());
             assert.strictEqual(prop.backgroundColor, '#EEEEEE');
             assert.strictEqual(prop.legendOnPoint, true);
-            assert.strictEqual(prop.scale, 'logarithmic');
             assert.strictEqual(prop.viewFinder, true);
             assert.strictEqual(prop.horizontalGrid, true);
             assert.strictEqual(prop.verticalGrid, true);
@@ -176,7 +169,6 @@ describe('lineChartModel', function() {
 	            yAxis: yAxis1.getProperties(),
 	            backgroundColor: '#EEEEEE',
                 legendOnPoint: true,
-                scale: 'logarithmic',
                 viewFinder: true,
                 horizontalGrid: true,
                 verticalGrid: true
@@ -211,7 +203,6 @@ describe('lineChartModel', function() {
 	            yAxis: true,
 	            backgroundColor: 222,
                 legendOnPoint: 'abc',
-                scale: 2,
                 viewFinder: 12,
                 horizontalGrid: 'abc',
                 verticalGrid: 'def'
