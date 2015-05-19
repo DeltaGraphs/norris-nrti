@@ -44,6 +44,7 @@ describe('BarChart', function(){
 
 		beforeEach(function(){
 			BarChart = new BarChart();
+			console.log(BarChart.protoype.toString());
 		});
 
 		afterEach(function(){
@@ -252,9 +253,10 @@ describe('BarChart', function(){
 		var json = {
 			'ID' : 	'flusso1'
 		};
+		var newflow;
 
 		beforeEach(function(){
-			var newflow = BarChartFlow({});
+			newflow = BarChartFlow({});
 			BarChart = new BarChart();
 			BarChart = BarChart.addflow(json.ID, newflow);
 		});
