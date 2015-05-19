@@ -46,8 +46,8 @@ describe('TableFlowModel', function() {
         assert.strictEqual(flow1._ID, 'flow1');
         assert.strictEqual(flow1._columnKeys.length, 0);
         assert.strictEqual(flow1._columnFormats.length, 0);
-        assert.strictEqual(flow1._fontColorKey, null);
-        assert.strictEqual(flow1._backgroungColorKey, null);
+        assert.strictEqual(flow1._fontColorKey, '#000000');
+        assert.strictEqual(flow1._backgroungColorKey, '#FFFFFF');
         assert.strictEqual(flow1._maxItems, 50);
         assert.strictEqual(flow1._maxItemsSaved, 500);
     });
@@ -65,8 +65,8 @@ describe('TableFlowModel', function() {
 		assert.strictEqual(flow1._ID, 'flow1');
         assert.strictEqual(flow1._columnKeys.length, 0);
         assert.strictEqual(flow1._columnFormats.length, 0);
-        assert.strictEqual(flow1._fontColorKey, null);
-        assert.strictEqual(flow1._backgroungColorKey, null);
+        assert.strictEqual(flow1._fontColorKey, '#000000');
+        assert.strictEqual(flow1._backgroungColorKey, '#FFFFFF');
         assert.strictEqual(flow1._maxItems, 50);
         assert.strictEqual(flow1._maxItemsSaved, 500);
     });
