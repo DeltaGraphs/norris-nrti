@@ -147,7 +147,7 @@ describe('Table', function(){
 			'rows' : 6,
 			'colunms' : 9,
 			'headers' : ['ciao','amici'],
-			'cells' : ['field','color'],
+			'cells' : [{'background' : '#FFF','fontColor' : '#000'}],
 			'itemDisplayedPerPage' : 5,
 			'addDataPosition' : 'up',
 			'sortable' : false
@@ -176,7 +176,7 @@ describe('Table', function(){
 			expect(Table.getHeaders().length).toEqual(2);
 		});
 		it('graph updated with the correct cells', function(){
-			expect(Table.getCells().length).toEqual(2);
+			expect(Table.getCells().length).toEqual(1);
 		});
 		it('graph updated with the correct item displayed per page', function(){
 			expect(Table.getItemDisplayedPerPage()).toEqual(5);
@@ -269,7 +269,7 @@ describe('Table', function(){
 			newFlow = new TableFlow();
 			Table = new Table();
 			Table.addFlow(data[0].ID, newFlow);
-			Table = Table.initializeData(data);
+			Table.initializeData(data);
 		});
 
 		afterEach(function(){
@@ -302,7 +302,7 @@ describe('Table', function(){
 			newFlow = new TableFlow();
 			Table = new Table();
 			Table.addFlow(data[0].ID, newFlow);
-			Table = Table.initializeData(data);
+			Table.initializeData(data);
 		});
 
 		afterEach(function(){

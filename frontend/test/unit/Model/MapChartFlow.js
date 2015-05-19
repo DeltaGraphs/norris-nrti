@@ -263,8 +263,8 @@ describe('MapChartFlow', function(){
 			MapChartFlow = null;
 		});
 
-		it('streamUpdate call initializeData in the correct way', function(){
-			expect(MapChartFlow.initializeData()).toHaveBeenCalledWith(data);
+		it('streamUpdate call initializedData in the correct way', function(){
+			expect(MapChart.getData().length).toEqual(1);
 		});
 	});
 

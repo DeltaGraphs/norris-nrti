@@ -140,10 +140,11 @@ angular.module('app')
 		this.initializeData(newData);
     };
     MapChartFlow.prototype.deleteData = function(delData) {
-		var filteredData = data.filter(function(delData) {return delData.NorrisRecordID === data.NorrisRecordID;});
-	    if(filteredData.length > 0) {
-	    	filteredData.splice(0,1);
-		}
+    	for (var i = 0; i<data.length; i++){
+            if (data[i].NorrisRecordID === newData.NorrisRecordID){
+                data.splice(i,1);
+            }
+        }
     };
 
 	MapChartFlow.prototype.getData = function() {
