@@ -232,7 +232,7 @@ describe('BarChart', function(){
 		var data = [
 			{
 				'ID' : '1',
-				'records' : [{},{}]
+				'records' : [{ 'NorrisRecordID' : '234321', 'value' : [0,1]},{}]
 			}
 		];
 		var newFlow;
@@ -242,6 +242,7 @@ describe('BarChart', function(){
 			newFlow = new BarChartFlow();
 			BarChart = BarChart.addFlow(data[0].ID, newFlow);
 			BarChart = BarChart.initializeData(data);
+			console.log(BarChart.getFlowList()[0].getData()[0].NorrisRecordID);
 		});
 
 		afterEach(function(){
