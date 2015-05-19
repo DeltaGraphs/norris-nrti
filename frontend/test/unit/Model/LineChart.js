@@ -173,7 +173,7 @@ describe('LineChart', function(){
 			expect(LineChart.getBackground()).toBeEqual('#000');
 		});
 		it('graph updated with the correct flow', function(){
-			expect(LineChart.addFlow.calls.count()).toBeEqual(3);
+			expect(LineChart.getFlowList().length).toEqual(3);
 		});
 		
 	});
@@ -216,17 +216,17 @@ describe('LineChart', function(){
 		var data = [
 			{
 				'ID' : '1',
-				'records' : []
-			},
-			{
-				'ID' : '2',
-				'records' : []
+				'records' : [{ 'NorrisRecordID' : '234321', 'value' : [0,1]},{}]
 			}
 		];
 
+		var newFlow;
+
 		beforeEach(function(){
+			newFlow = new LineChartFlow();
 			LineChart = new LineChart();
-			LineChart = LineChart.inizializeData(data);
+			LineChart.addFlow(data[0].ID, newFlow);
+			LineChart.initializeData(data);
 		});
 
 		afterEach(function(){
@@ -234,30 +234,41 @@ describe('LineChart', function(){
 		});	
 
 		it('LineChartFlow inizializeData called in the right way', function(){
-			expect(LineChartFlow.prototype.inizializeData.calls.count()).toEqual(2);
+			expect(LineChart.getFlowList()[0].flow.getData().length).toEqual(2);
 		});
 
 	});
 
 	describe('inPlaceUpdate', function(){
 
-		var data = 	{
+		var data = [
+			{
+				'ID' : '2',
+				'records' : [{'NorrisRecordID' : 'record2', 'value' : [3,3] }]
+			}
+		];
+		var data1 = 	{
 			'ID' : '2',
 			'NorrisRecordID' : 'record2',
-			'value' : []
+			'value' : [4,4]
 		};
+		var newFlow;
 
 		beforeEach(function(){
+			newFlow = new LineChartFlow();
 			LineChart = new LineChart();
-			LineChart = LineChart.inPlaceUpdate(data);
+			LineChart.addFlow(data[0].ID, newFlow);
+			LineChart.initializeData(data);
 		});
 
 		afterEach(function(){
 			LineChart = null;
 		});	
 
-		it('LineChartFlow inPlaceUpdate called in the right way', function(){
-			expect(LineChartFlow.inPlaceUpdate).toHaveBeenCalledWith(data);
+		it('BarChartFlow inPlaceUpdate called in the right way', function(){
+			expect(LineChart.getFlowList()[0].flow.getData()[0].value[0]).toEqual(3);
+			LineChart.inPlaceUpdate(data1);
+			expect(LineChart.getFlowList()[0].flow.getData()[0].value[0]).toEqual(4);
 		});
 
 	});
