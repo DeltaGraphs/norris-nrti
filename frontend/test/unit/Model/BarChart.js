@@ -53,7 +53,6 @@ describe('BarChart', function(){
 		it('BarChart created', function(){
 			expect(BarChart).toBeDefined();
 		});
-
 		it('graph created with the correct axisX', function(){
 			expect(BarChart.getX()).toEqual(null);
 		});
@@ -73,7 +72,7 @@ describe('BarChart', function(){
 			expect(BarChart.getBarsGrouping()).toEqual('grouped');
 		});
 		it('graph created with the correct flow', function(){
-			expect(BarChart.addFlow.calls.count()).toEqual(0);
+			expect(BarChart.addFlow.call.count()).toEqual(0);
 		});
 
 	});
@@ -97,7 +96,7 @@ describe('BarChart', function(){
 		};
 
 		beforeEach(function(){
-			BarChart = new BarChart();
+			BarChart = new BarChart(json);
 		});
 
 		afterEach(function(){
@@ -107,10 +106,9 @@ describe('BarChart', function(){
 		it('BarChart created', function(){
 			expect(BarChart).toBeDefined();
 		});
-		/*it('graph Constructor called', function(){
+		it('graph Constructor called', function(){
 			expect(BarChart.parent.constructor.call).toHaveBeenCalledWith(this, json);
-		});*/
-
+		});
 		it('graph created with the correct axisX', function(){
 			expect(BarChart.getX()).toEqual({});
 		});

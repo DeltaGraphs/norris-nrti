@@ -207,7 +207,7 @@ angular.module('services')
         getSortable : function() {
             return sortable;
         },
-        getBarGrouping : function() {
+        getBarsGrouping : function() {
             return barsGrouping;
         },
 
