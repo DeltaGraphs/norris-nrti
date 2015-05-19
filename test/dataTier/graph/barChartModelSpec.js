@@ -161,7 +161,7 @@ describe('barChartModel', function() {
             assert.strictEqual(prop.headers[0], 'h1');
             assert.strictEqual(prop.headers[1], 'h2');
             assert.strictEqual(prop.barOrientation, 'V');
-            assert.strictEqual(prop.grid, false);
+            assert.strictEqual(prop.grid, true);
             assert.strictEqual(prop.sortable, true);
         });
     });

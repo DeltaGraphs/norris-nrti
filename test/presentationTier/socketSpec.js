@@ -52,9 +52,10 @@ describe('Socket', function() {
 
         it('emits a message if given valid params', function() {
             var socket1 = new Socket(nspp);
-            socket1.sendMessage('event', 'message');
+            socket1.sendMessage('event', 'this is my message');
             client1.on('event', function(message) {
-                assert.strictEqual(message, 'message');
+                console.dir(message);
+                assert.strictEqual(message, 'this is my message');
             });
         });
     });
