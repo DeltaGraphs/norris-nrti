@@ -214,7 +214,7 @@ describe('BarChart', function(){
 		beforeEach(function(){
 			newflow = new BarChartFlow(fJson);
 			BarChart = new BarChart();
-			BarChart = BarChart.addFlow(json.ID, newflow);
+			BarChart.addFlow(json.ID, newflow);
 		});
 
 		afterEach(function(){
@@ -240,8 +240,8 @@ describe('BarChart', function(){
 		beforeEach(function(){
 			BarChart = new BarChart();
 			newFlow = new BarChartFlow();
-			BarChart = BarChart.addFlow(data[0].ID, newFlow);
-			BarChart = BarChart.initializeData(data);
+			BarChart.addFlow(data[0].ID, newFlow);
+			BarChart.initializeData(data);
 			console.log(BarChart.getFlowList()[0].getData()[0].NorrisRecordID);
 		});
 
@@ -273,8 +273,8 @@ describe('BarChart', function(){
 		beforeEach(function(){
 			BarChart = new BarChart();
 			newFlow = new BarChartFlow({});
-			BarChart = BarChart.addFlow(data[0].ID, newFlow);
-			BarChart = BarChart.inPlaceUpdate(data1);
+			BarChart.addFlow(data[0].ID, newFlow);
+			BarChart.inPlaceUpdate(data1);
 		});
 
 		afterEach(function(){
