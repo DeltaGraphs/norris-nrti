@@ -276,9 +276,11 @@ describe('LineChart', function(){
 			}
 		];
 		var data1 = 	{
-			'ID' : '2',
-			'NorrisRecordID' : 'record2',
-			'value' : [4,4]
+			'records' : [{
+				'ID' : '2',
+				'NorrisRecordID' : 'record2',
+				'value' : [4,4]
+			}]
 		};
 		var newFlow;
 
