@@ -273,6 +273,7 @@ describe('BarChart', function(){
 			BarChart = new BarChart();
 			newFlow = new BarChartFlow();
 			BarChart.addFlow(data[0].ID, newFlow);
+			BarChart.initializeData(data);
 		});
 
 		afterEach(function(){
