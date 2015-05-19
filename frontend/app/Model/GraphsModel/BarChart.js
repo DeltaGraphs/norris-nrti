@@ -147,7 +147,7 @@ angular.module('services')
                 for (var j=0; j<fList.length; j++) {
                     if (fList[j].id === newData[i].ID) {
                         console.log('flowlist[j].id ' + fList[j].id);
-                        fList[j].initializeData(newData[i]);
+                        fList[j].flow.initializeData(newData[i]);
                         console.log('flow list stampa ' + fList[j].toString());
                     }
                 }
@@ -162,7 +162,7 @@ angular.module('services')
             var fList = this.parent.getFlowList();
             for (var j=0; j<fList.length; j++) {
                 if (fList[j].id === newData.ID) {
-                    fList[j].inPlaceUpdate(newData);
+                    fList[j].flow.inPlaceUpdate(newData);
                 }
             }
         }   
