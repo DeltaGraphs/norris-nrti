@@ -144,7 +144,7 @@ angular.module('services')
             var flowList = this.parent.getFlowList();
             for (var i=0; i<newData.length; i++) {
                 for (var j=0; j<flowList.length; j++) {
-                    if (flowList[j].id = newData[i].ID) {
+                    if (flowList[j].id === newData[i].ID) {
                         flowList[j].initializeData(newData[i]);
                     }
                 }
@@ -158,7 +158,7 @@ angular.module('services')
         if (newData !== undefined) {
             var flowList = this.parent.getFlowList();
             for (var j=0; j<flowList.length; j++) {
-                if (flowList[j].id = newData.ID) {
+                if (flowList[j].id === newData.ID) {
                     flowList[j].inPlaceUpdate(newData);
                 }
             }
