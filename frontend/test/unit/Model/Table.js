@@ -51,7 +51,7 @@ describe('Table', function(){
 			Table = null;
 		});
 
-		it('BarChart created', function(){
+		it('Table created', function(){
 			expect(Table).toBeDefined();
 		});
 		it('graph Constructor called', function(){
@@ -80,9 +80,6 @@ describe('Table', function(){
 		});
 		it('graph created with the correct sortable', function(){
 			expect(Table.getSortable()).toEqual(true);
-		});
-		it('graph created with the correct flow', function(){
-			expect(Table.getFlowList().length).toEqual(3);
 		});
 
 	});
@@ -309,7 +306,6 @@ describe('Table', function(){
 			expect(Table.getFlowList()[0].flow.getData().length).toEqual(1);
 			Table.streamUpdate(data1);
 			expect(Table.getFlowList()[0].flow.getData().length).toEqual(2);
-		});
 		});
 	});
 

@@ -122,37 +122,47 @@ angular.module('services')
                 }
             }
         }
-        return this;
     };
 
     LineChart.prototype.addFlow = function(newId, newFlow) {
         if (newFlow instanceof LineChartFlow) {
             this.parent.addFlow.call(this, newId, newFlow);
         }
-        return this;
     };
 
     LineChart.prototype.initializeData = function(newData) {  //inizialization data of flows
         if (newData !== undefined) {
+            var fList = this.parent.getFlowList();
             for (var i=0; i<newData.length; i++) {
-                this.parent.getFlowList()[newData[i].ID].inizializeData(newData[i]);
+                for (var j=0; j<fList.length; j++) {
+                    if (fList[j].id === newData[i].ID) {
+                        fList[j].flow.initializeData(newData[i]);
+                    }
+                }
             }
         }
-        return this;
     };
     
     // update data
     LineChart.prototype.inPlaceUpdate = function(newData) {
         if (newData !== undefined) {
-            this.parent.getFlowList()[newData.ID].inPlaceUpdate(newData);
+            var fList = this.parent.getFlowList();
+            for (var j=0; j<fList.length; j++) {
+                if (fList[j].id === newData.ID) {
+                    fList[j].flow.inPlaceUpdate(newData);
+                }
+            }
         }
-        return this;
     };
     LineChart.prototype.streamUpdate = function(newData) {
         if (newData !== undefined) {
-           this.parent.getFlowList()[newData.ID].streamUpdate(newData);
+           var fList = this.parent.getFlowList();
+            for (var j=0; j<fList.length; j++) {
+                if (fList[j].id === newData.ID) {
+                    fList[j].flow.streamUpdate(newData);
+                }
+            }
         }
-        return this;
     };
 
     // get method

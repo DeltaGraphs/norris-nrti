@@ -41,24 +41,31 @@ describe('LineChart', function(){
 		ViewFinder = $injector.get('Legend');
 		LineChartFlow = $injector.get('LineChartFlow');
 	}));
-	describe('Default constructor', function(){
+
+	describe('Constructor', function(){
+
+		var json = {
+			'title' : 'fottutissimografico',
+			'url' : 'localhost/page1/grafico1'
+		};
 
 		beforeEach(function(){
-			LineChart = new LineChart();
+			LineChart = new LineChart(json);
 		});
 
 		afterEach(function(){
 			LineChart = null;
 		});	
 
-		/*it('graph updateParameters called with the correct parameters', function(){
-			expect(LineChart.parent.updateParameters.call).toHaveBeenCalledWith(gJson);
-		});*/
-
 		it('LineChart created', function(){
 			expect(LineChart).toBeDefined();
 		});
-		
+		it('graph Constructor called', function(){
+			expect(LineChart.getTitle()).toEqual('fottutissimografico');
+		});
+		it('graph Constructor called', function(){
+			expect(LineChart.getUrl()).toEqual('localhost/page1/grafico1');
+		});
 		it('graph created with the correct axisX', function(){
 			expect(LineChart.getX()).toBeEqual(null);
 		});
@@ -73,70 +80,6 @@ describe('LineChart', function(){
 		});
 		it('graph created with the correct background', function(){
 			expect(LineChart.getBackground()).toBeEqual('#FFF');
-		});
-		it('graph created with the correct flow', function(){
-			expect(LineChart.addFlow.calls.count()).toBeEqual(null);
-		});
-
-	});
-
-	describe('Constructor', function(){
-
-		var json = {
-			'title' : 'graficonuovo',
-			'height' : 400,
-			'width' : 400,
-			'enabledLegend' : false,
-			'horizontalGrid' : false,
-			'verticalGrid' : false,
-			'enabledViewFinder' : true,
-			'viewFinder' : {},
-			'axisX' : {},
-			'axisY' : {},
-			'background' : '#000',
-			'flows' : [{},{},{}]
-		};
-		/*var gJson = {
-			'title' : 'graficonuovo',
-			'height' : 400,
-			'width' : 400,
-			'enabledLegend' : false,
-			'horizontalGrid' : false,
-			'verticalGrid' : false,
-		};*/
-
-		beforeEach(function(){
-			LineChart = new LineChart(json);
-		});
-
-		afterEach(function(){
-			LineChart = null;
-		});	
-
-		/*it('graph updateParameters called with the correct parameters', function(){
-			expect(LineChart.parent.updateParameters.call).toHaveBeenCalledWith(gJson);
-		});*/
-		it('LineChart created', function(){
-			expect(LineChart).toBeDefined();
-		});
-		
-		it('graph created with the correct axisX', function(){
-			expect(LineChart.getX()).toBeEqual({});
-		});
-		it('graph created with the correct axisY', function(){
-			expect(LineChart.getY()).toBeEqual({});
-		});
-		it('graph created with the correct enabledLegend', function(){
-			expect(LineChart.getEnableViewFinder()).toBeEqual(true);
-		});
-		it('graph created with the correct viewFinder', function(){
-			expect(LineChart.getViewFinder()).toBeEqual({});
-		});
-		it('graph created with the correct background', function(){
-			expect(LineChart.getBackground()).toBeEqual('#000');
-		});
-		it('graph created with the correct flow', function(){
-			expect(LineChart.addFlow.calls.count()).toBeEqual(3);
 		});
 
 	});
@@ -253,19 +196,19 @@ describe('LineChart', function(){
 			'ID' : 	'flusso1'
 		};
 
+		var newFlow;
+
 		beforeEach(function(){
-			var newflow = LineChartFlow({});
+			newFlow = LineChartFlow({});
 			LineChart = new LineChart();
-			LineChart = LineChart.addflow(json.ID, newflow);
+			LineChart = LineChart.addFlow(json.ID, newFlow);
 		});
 
 		afterEach(function(){
 			LineChart = null;
 		});	
 
-		it('graph addFlow called with the correct parameters', function(){
-			expect(LineChart.parent.addFlow.call).toHaveBeenCalledWith(this, json.ID, newflow);
-		});
+		
 
 	});
 
