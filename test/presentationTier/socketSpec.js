@@ -29,10 +29,10 @@ describe('Socket', function() {
         assert.strictEqual((new Socket('wrong')).hasOwnProperty('_title'), false);
     });
 
-    var nsp = require('socket.io')().of('/namespace');
+    var server = require('socket.io')();
     it('set param values to properties', function() {
-        var socket1 = new Socket(nsp);
-        assert.strictEqual(socket1._namespace, nsp);
+        var socket1 = new Socket(server, '/namespace');
+        assert.deepEqual(socket1._namespace, server.of('/namespace'));
         assert.strictEqual(socket1._attachedObj, null);
         assert.strictEqual(socket1._onConnectionEvent, '');
     });
@@ -74,13 +74,13 @@ describe('Socket', function() {
     }
     describe('#attachObject', function() {
         it('does nothing if there are no params', function() {
-            var socket1 = new Socket('/namespace');
+            var socket1 = new Socket(server, '/namespace');
             socket1.attachObject();
             assert.strictEqual(socket1._attachedObj, null);
             assert.strictEqual(socket1._onConnectionEvent, '');
         });
         it('attach the object in params', function() {
-            var socket1 = new Socket('/namespace');
+            var socket1 = new Socket(server, '/namespace');
             var obj1 = new RandomObj();
             socket1.attachObject(obj1, 'onEvent');
             assert.strictEqual(socket1._attachedObj, obj1);

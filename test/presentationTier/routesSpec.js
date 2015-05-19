@@ -22,7 +22,7 @@ var Express = require('express');
 describe('Routes', function() {
     var expr = new Express();
     console.dir('printing express type');
-    console.dir(expr.prototype.constructor);
+    console.dir(expr.prototype.constructor.name);
     it('returns null when there are no params', function() {
         assert.strictEqual((new Routes()).hasOwnProperty('_app'), false);
     });
