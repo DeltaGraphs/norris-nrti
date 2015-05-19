@@ -71,7 +71,7 @@ describe('MapChart', function(){
 			expect(MapChart.getZoom()).toEqual(true);
 		});
 		it('graph created with the correct flows', function(){
-            expect(MapChart.addFlow.calls.count()).toEqual(3);
+            expect(MapChart.getFlowList().length).toEqual(3);
         });
 
 	});
@@ -121,7 +121,7 @@ describe('MapChart', function(){
 			expect(MapChart.getZoom()).toEqual(false);
 		});
 		it('graph created with the correct flows', function(){
-            expect(MapChart.addFlow.calls.count()).toEqual(3);
+            expect(MapChart.getFlowList.length).toEqual(3);
         });
 
 	});
@@ -200,22 +200,22 @@ describe('MapChart', function(){
 		});
 
 		it('graph updated with the correct latitude', function(){
-			expect(MapChart.prototype.getLatitude()).toEqual(3);
+			expect(MapChart.getLatitude()).toEqual(3);
 		});
 		it('graph updated with the correct longitude', function(){
-			expect(MapChart.prototype.getLongitude()).toEqual(3);
+			expect(MapChart.getLongitude()).toEqual(3);
 		});
 		it('graph updated with the correct scale', function(){
-			expect(MapChart.prototype.getScale()).toEqual(999);
+			expect(MapChart.getScale()).toEqual(999);
 		});
 		it('graph updated with the correct mapType', function(){
-			expect(MapChart.prototype.getMapType()).toEqual('terrrain');
+			expect(MapChart.getMapType()).toEqual('terrrain');
 		});
 		it('graph updated with the correct zoom', function(){
-			expect(MapChart.prototype.getZoom()).toEqual(false);
+			expect(MapChart.getZoom()).toEqual(false);
 		});
 		it('graph updated with the correct flows', function(){
-            expect(MapChart.prototype.addFlow.calls.count()).toEqual(3);
+            expect(MapChart.addFlow.calls.count()).toEqual(3);
         });
 		
 	});
@@ -224,14 +224,23 @@ describe('MapChart', function(){
 
 		var json = {
 			'ID' : 	'flusso1',
-			'name' : 'sonda 1'
 		};
 
-		var newflow = MapChartFlow({});
+		var fJson = {
+			'dataFormat' : 'String',
+			'name' : 'flusso1',
+			'flowColor' : '#F3F',
+			'legendOnPoint' : 'flusso1',
+			'marker' : 'furly1',
+			'maxItem' : '45',
+			'trace' : 'flow'
+		};
+
+		var newflow;
 
 
 		beforeEach(function(){
-			var newflow =  MapChartFlow({});
+			var newflow = new MapChartFlow(fJson);
 			MapChart = new MapChart();
 			MapChart = MapChart.addflow(json.ID, newflow);
 		});
@@ -241,7 +250,7 @@ describe('MapChart', function(){
 		});
 
 		it('add flow into mapchart', function(){
-			expect(Graph.prototype.addFlow.call).toHaveBeenCalledWith(json.ID, newflow);
+			expect(MapChart.getFlowList().length).toEqual(1);
 		});
 
 	});
@@ -251,40 +260,47 @@ describe('MapChart', function(){
 		var data = [
 			{
 				'ID' : '1',
-				'records' : []
-			},
-			{
-				'ID' : '2',
-				'records' : []
+				'records' : [{ 'NorrisRecordID' : '234321', 'value' : [0,1]},{}]
 			}
 		];
 
-		
+		var newFlow;
 
 		beforeEach(function(){
+			newFlow = new MapChartFlow();
 			MapChart = new MapChart();
-			MapChart = MapChart.inizializeData(data);
+			MapChart.addFlow(data[0].ID, newFlow);
+			MapChart.initializeData(data);
 		});
-
 		afterEach(function(){
 			MapChart = null;
 		});
 
 		it('inizialize flowList', function(){
-			expect(MapChartFlow.prototype.inizializeData.calls.count()).toEqual(2);
+			expect(MapChart.getFlowList()[0].flow.getData().length).toEqual(2);
 		});
 	});
 
 	describe('inPlaceUpdate', function(){
 
-		var data = 	{
+		var data = [
+			{
+				'ID' : '2',
+				'records' : [{'NorrisRecordID' : 'record2', 'value' : [3,3] }]
+			}
+		];
+		var data1 = 	{
 			'ID' : '2',
-			'records' : []
+			'NorrisRecordID' : 'record2',
+			'value' : [4,4]
 		};
+		var newFlow;
 
 		beforeEach(function(){
+			newFlow = new MapChartFlow();
 			MapChart = new MapChart();
-			MapChart = MapChart.inPlaceUpdate(data);
+			MapChart.addFlow(data[0].ID, newFlow);
+			MapChart.initializeData(data);
 		});
 
 		afterEach(function(){
@@ -292,20 +308,34 @@ describe('MapChart', function(){
 		});
 
 		it('inizialize flowList', function(){
-			expect(MapChartFlow.prototype.inPlaceUpdate).toHaveBeenCalledWith(data);
+			expect(MapChart.getFlowList()[0].flow.getData()[0].value[0]).toEqual(3);
+			MapChart.inPlaceUpdate(data1);
+			expect(MapChart.getFlowList()[0].flow.getData()[0].value[0]).toEqual(4);
 		});
 	});
 
 	describe('streamUpdate', function(){
 
-		var data = 	{
-			'ID' : '2',
-			'records' : []
+		var data = [
+			{
+				'ID' : '2',
+				'records' : [{'NorrisRecordID' : 'record2', 'value' : [3,3] }]
+			}
+		];
+		var data1 = 	{
+			'records' : [{
+				'ID' : '2',
+				'NorrisRecordID' : 'record2',
+				'value' : [4,4]
+			}]
 		};
+		var newFlow;
 
 		beforeEach(function(){
+			newFlow = new MapChartFlow();
 			MapChart = new MapChart();
-			MapChart = MapChart.streamUpdate(data);
+			MapChart.addFlow(data[0].ID, newFlow);
+			MapChart.initializeData(data);
 		});
 
 		afterEach(function(){
@@ -313,11 +343,13 @@ describe('MapChart', function(){
 		});
 
 		it('inizialize flowList', function(){
-			expect(MapChartFlow.streamUpdate).toHaveBeenCalledWith(data);
+			expect(MapChart.getFlowList()[0].flow.getData().length).toEqual(1);
+			MapChart.streamUpdate(data1);
+			expect(MapChart.getFlowList()[0].flow.getData().length).toEqual(2);
 		});
 	});
 
-	describe('movieUpdate', function(){
+	/*describe('movieUpdate', function(){
 
 		var data = 	{
 			'ID' : '2',
@@ -336,6 +368,6 @@ describe('MapChart', function(){
 		it('inizialize flowList', function(){
 			expect(MapChartFlow.movieUpdate).toHaveBeenCalledWith(data);
 		});
-	});
+	});*/
 
 });

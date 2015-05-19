@@ -272,13 +272,13 @@ angular.module('services')
     MapChart.prototype.getLongitude = function() {
         return longitude;
     };
-    MapChart.prototype.getBarOrientation = function() {
+    MapChart.prototype.getScale = function() {
         return scale;
     };
-    MapChart.prototype.getBackground = function() {
+    MapChart.prototype.getMapType = function() {
         return mapType;
     };
-    MapChart.prototype.getSortable = function() {
+    MapChart.prototype.getZoom = function() {
         return zoom;
     };
 

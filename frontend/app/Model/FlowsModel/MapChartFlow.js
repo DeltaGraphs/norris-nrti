@@ -77,7 +77,7 @@ angular.module('app')
 
 		this.parent.constructor.call(this, fJson);
 
-		if (Object.keys(lfJson).length !== 0) {
+		if (Object.keys(mfJson).length !== 0) {
 			if (mfJson.flowColor !== undefined) {
 	            flowColor = mfJson.flowColor;
 	        }
@@ -131,7 +131,7 @@ angular.module('app')
         }
     };
 	MapChartFlow.prototype.streamUpdate = function(newData) {
-		this.prototype.initializeData(newData);
+		this.initializeData(newData);
     };
     MapChartFlow.prototype.deleteData = function(delData) {
 		var filteredData = data.filter(function(delData) {return delData.NorrisRecordID === data.NorrisRecordID;});
