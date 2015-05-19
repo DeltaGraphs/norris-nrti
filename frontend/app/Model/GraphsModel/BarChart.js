@@ -91,11 +91,11 @@ angular.module('services')
     // create our new custom object that reuse the original object constructor
     function BarChart(info) {
         if (info !== undefined) {
-            this.parent.constructor.call(this, gJson);
+            this.parent.constructor.call(this, info);
         }
     }
 
-    // Now let's override our original updateParameters method
+    /*// Now let's override our original updateParameters method
     BarChart.prototype = {
 
         updateParameters : function(info) {
@@ -180,7 +180,90 @@ angular.module('services')
             return barsGrouping;
         },
 
+    };*/
+
+    BarChart.prototype.updateParameters = function(info) {
+        if (info !== undefined) {
+            var json = split(info);
+            var gJson = json.graphJson;
+            var bJson = json.barJson;
+            if (Object.keys(gJson).length !== 0) {
+                this.parent.updateParameters.call(this, gJson);
+            } 
+            if (Object.keys(bJson).length !== 0) {
+                if (bJson.axisX !== undefined) {
+                    axisX = new Axis(bJson.axisX);
+                }
+                if (bJson.axisY !== undefined) {
+                    axisY = new Axis(bJson.axisY);
+                }
+                if (bJson.barOrientation !== undefined) {
+                    barOrientation = bJson.barOrientation;
+                }
+                if (bJson.background !== undefined) {
+                    background = bJson.background;
+                }
+                if (bJson.sortable !== undefined) {
+                    sortable = bJson.sortable;
+                }
+                if (bJson.barsGrouping !== undefined) {
+                    barsGrouping = bJson.barsGrouping;
+                }
+            }
+            if (info.flows !== undefined) {
+                for (var i=0; i<info.flows.length; i++) {
+                    var newflow = new BarChartFlow(info.flows[i]);
+                    this.prototype.addFlow(info.flows[i].ID, newflow);
+                }
+            }
+        }
+        return this;
     };
+
+    BarChart.prototype.addFlow = function(newId, newFlow) {
+        if (newFlow instanceof BarChartFlow) {
+            this.parent.addFlow.call(this, newId, newFlow);
+        }
+        return this;
+    };
+
+    BarChart.prototype.initializeData = function(newData) {  //inizialization data of flows
+        if (newData !== undefined) {
+            for (var i=0; i<newData.length; i++) {
+                this.parent.getFlowList()[newData[i].ID].inizializeData(newData[i]);
+            }
+        }   
+        return this;
+    };
+
+    // update data
+    BarChart.prototype.inPlaceUpdate = function(newData) {
+        if (newData !== undefined) {
+            this.parent.getFlowList()[newData.ID].inPlaceUpdate(newData);
+        }   
+        return this;
+    };
+
+    // get method
+    BarChart.prototype.getX = function() {
+        return axisX;
+    };
+    BarChart.prototype.getY = function() {
+        return axisY;
+    };
+    BarChart.prototype.getBarOrientation = function() {
+        return barOrientation;
+    };
+    BarChart.prototype.getBackground = function() {
+        return background;
+    };
+    BarChart.prototype.getSortable = function() {
+        return sortable;
+    };
+    BarChart.prototype.getBarsGrouping = function() {
+        return barsGrouping;
+    };
+
 
     return BarChart;
 

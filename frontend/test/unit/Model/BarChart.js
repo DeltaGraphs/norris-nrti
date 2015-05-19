@@ -31,7 +31,7 @@ describe('BarChart', function(){
 	var Axis;
 	var BarChartFlow;
 
-	beforeEach(module('app'));
+	beforeEach(module('services'));
 
 	beforeEach(inject(function(_BarChart_, $injector){
 		BarChart = _BarChart_;
@@ -42,8 +42,13 @@ describe('BarChart', function(){
 
 	describe('Constructor', function(){
 
+		var json = {
+			'title' : 'fottutissimografico',
+			'url' : 'localhost/page1/grafico1'
+		};
+
 		beforeEach(function(){
-			BarChart = new BarChart();
+			BarChart = new BarChart(json);
 		});
 
 		afterEach(function(){
@@ -52,6 +57,9 @@ describe('BarChart', function(){
 
 		it('BarChart created', function(){
 			expect(BarChart).toBeDefined();
+		});
+		it('graph Constructor called', function(){
+			expect(BarChart.parent.constructor.call).toHaveBeenCalledWith(this, json);
 		});
 		it('graph created with the correct axisX', function(){
 			expect(BarChart.getX()).toEqual(null);
@@ -77,7 +85,7 @@ describe('BarChart', function(){
 
 	});
 
-	describe('Constructor', function(){
+	/*describe('Constructor', function(){
 
 		var json = {
 			'title' : 'graficonuovo',
@@ -131,7 +139,7 @@ describe('BarChart', function(){
 			expect(BarChart.addFlow.calls.count()).toEqual(3);
 		});
 
-	});
+	});*/
 
 	/*describe('split', function(){
 		var res;
