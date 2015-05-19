@@ -24,7 +24,7 @@ describe('MapChart', function(){
 	var Graph;
 	var MapChartFlow;
 
-	beforeEach(module('app'));
+	beforeEach(angular.mock.module('app'));
 
 	beforeEach(inject(function(_MapChart_, $injector){
 		MapChart = _MapChart_;

@@ -27,7 +27,7 @@ describe('Table', function(){
 	var Cell;
 	var TableFlow;
 
-	beforeEach(module('app'));
+	beforeEach(angular.mock.module('app'));
 
 	beforeEach(inject(function(_Table_, $injector){
 		Table = _Table_;
@@ -36,20 +36,30 @@ describe('Table', function(){
 		TableFlow = $injector.get('TableFlow');
 	}));
 
-	describe('Default constructor', function(){
+	describe('Constructor', function(){
+
+		var json = {
+			'title' : 'fottutissimografico',
+			'url' : 'localhost/page1/grafico1'
+		};
 
 		beforeEach(function(){
-			Table = new Table();
+			Table = new Table(json);
 		});
 
 		afterEach(function(){
-			Tabel = null;
+			Table = null;
 		});
 
-		it('Table created', function(){
+		it('BarChart created', function(){
 			expect(Table).toBeDefined();
 		});
-
+		it('graph Constructor called', function(){
+			expect(Table.getTitle()).toEqual('fottutissimografico');
+		});
+		it('graph Constructor called', function(){
+			expect(Table.getUrl()).toEqual('localhost/page1/grafico1');
+		});
 		it('graph created with the correct row', function(){
 			expect(Table.getRows()).toEqual(0);
 		});
@@ -72,61 +82,7 @@ describe('Table', function(){
 			expect(Table.getSortable()).toEqual(true);
 		});
 		it('graph created with the correct flow', function(){
-			expect(BarChart.addFlow.calls.count()).toEqual(0);
-		});
-
-	});
-
-	describe('Default constructor', function(){
-
-		var json = {
-			'title' : 'graficonuovo',
-			'height' : 400,
-			'width' : 400,
-			'enabledLegend' : false,
-			'horizontalGrid' : false,
-			'verticalGrid' : false,
-			'rows' : 6,
-			'colunms' : 9,
-			'headers' : {},
-			'cells' : {},
-			'itemDisplayedPerPage' : 5,
-			'addDataPosition' : 'up',
-			'sortable' : false,
-			'flows' : [{},{},{}]
-		};
-
-		beforeEach(function(){
-			Table = new Table();
-		});
-
-		afterEach(function(){
-			Tabel = null;
-		})
-
-		it('graph created with the correct row', function(){
-			expect(Table.getRows()).toEqual(6);
-		});
-		it('graph created with the correct colunms', function(){
-			expect(Table.getColunms()).toEqual(9);
-		});
-		it('graph created with the correct headers', function(){
-			expect(Table.getHeaders()).toEqual({});
-		});
-		it('graph created with the correct cells', function(){
-			expect(Table.getCells()).toEqual({});
-		});
-		it('graph created with the correct item displayed per page', function(){
-			expect(Table.getItemDisplayedPerPage()).toEqual(5);
-		});
-		it('graph created with the correct add data position', function(){
-			expect(Table.getAddDataPosition()).toEqual('up');
-		});
-		it('graph created with the correct sortable', function(){
-			expect(Table.getSortable()).toEqual(false);
-		});
-		it('graph created with the correct flow', function(){
-			expect(BarChart.addFlow.calls.count()).toEqual(3);
+			expect(Table.getFlowList().length).toEqual(3);
 		});
 
 	});
@@ -206,8 +162,8 @@ describe('Table', function(){
 		});
 
 		afterEach(function(){
-			Tabel = null;
-		})
+			Table = null;
+		});
 
 		it('graph updated with the correct row', function(){
 			expect(Table.getRows()).toEqual(6);
@@ -243,12 +199,12 @@ describe('Table', function(){
 		beforeEach(function(){
 			var newFlow = new TableFlow(json);
 			Table = new Table();
-			Table = Table.addflow(json.ID, newflow);
+			Table = Table.addflow(json.ID, newFlow);
 		});
 
 		afterEach(function(){
-			Tabel = null;
-		})
+			Table = null;
+		});
 
 		/*it('add flow into linechart', function(){
 			expect(Graph.prototype.addFlow.call).toHaveBeenCalledWith(json.ID, newflow);
@@ -256,7 +212,7 @@ describe('Table', function(){
 
 	});
 
-	describe('inizializeData', function(){
+	/*describe('inizializeData', function(){
 
 		var data = [
 			{
@@ -275,8 +231,8 @@ describe('Table', function(){
 		});
 
 		afterEach(function(){
-			Tabel = null;
-		})
+			Table = null;
+		});
 
 		it('inizialize flowList', function(){
 			expect(TableFlow.inizializeData.calls.count()).toEqual(2);
@@ -296,8 +252,8 @@ describe('Table', function(){
 		});
 
 		afterEach(function(){
-			Tabel = null;
-		})
+			Table = null;
+		});
 
 		it('inizialize flowList', function(){
 			expect(TableFlow.inPlaceUpdate).toHaveBeenCalledWith(data);
@@ -317,12 +273,12 @@ describe('Table', function(){
 		});
 
 		afterEach(function(){
-			Tabel = null;
-		})
+			Table = null;
+		});
 
 		it('inizialize flowList', function(){
 			expect(TableFlow.streamUpdate).toHaveBeenCalledWith(data);
 		});
-	});
+	});*/
 
 });
