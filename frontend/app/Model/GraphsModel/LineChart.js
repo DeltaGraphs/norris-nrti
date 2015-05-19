@@ -87,7 +87,7 @@ angular.module('services')
 
     // create our new custom object that reuse the original object constructor
     function LineChart(info) {
-        this.parent.updateParameters.call(this, info);
+        this.parent.constructor.call(this, info);
     }
 
     LineChart.prototype.updateParameters = function(info) {

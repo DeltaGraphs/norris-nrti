@@ -265,7 +265,7 @@ describe('LineChart', function(){
 			LineChart = null;
 		});	
 
-		it('BarChartFlow inPlaceUpdate called in the right way', function(){
+		it('LineChartFlow inPlaceUpdate called in the right way', function(){
 			expect(LineChart.getFlowList()[0].flow.getData()[0].value[0]).toEqual(3);
 			LineChart.inPlaceUpdate(data1);
 			expect(LineChart.getFlowList()[0].flow.getData()[0].value[0]).toEqual(4);
@@ -275,22 +275,35 @@ describe('LineChart', function(){
 
 	describe('streamUpdate', function(){
 
-		var data = 	{
+		var data = [
+			{
+				'ID' : '2',
+				'records' : [{'NorrisRecordID' : 'record2', 'value' : [3,3] }]
+			}
+		];
+		var data1 = 	{
 			'ID' : '2',
-			'records' : []
+			'NorrisRecordID' : 'record2',
+			'value' : [4,4]
 		};
+		var newFlow;
 
 		beforeEach(function(){
+			newFlow = new LineChartFlow();
 			LineChart = new LineChart();
-			LineChart = LineChart.streamUpdate(data);
+			LineChart.addFlow(data[0].ID, newFlow);
+			LineChart = LineChart.initializeData(data);
+			LineChart.streamUpdate(data);
 		});
 
 		afterEach(function(){
 			LineChart = null;
 		});	
 
-		it('LineChartFlow streamUpdate called in the right way', function(){
-			expect(LineChartFlow.streamUpdate).toHaveBeenCalledWith(data);
+		it('inizialize flowList', function(){
+			expect(LineChart.getFlowList()[0].flow.getData().length).toEqual(1);
+			LineChart.streamUpdate(data1);
+			expect(LineChart.getFlowList()[0].flow.getData().length).toEqual(2);
 		});
 
 	});
