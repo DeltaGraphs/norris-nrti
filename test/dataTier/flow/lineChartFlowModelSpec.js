@@ -153,4 +153,22 @@ describe('LineChartFlowModel', function() {
             assert.strictEqual(flow1._records[0].norrisRecordIsValid, true);
         });
     });
+
+    describe('#getProperties', function() {
+        var prop={
+            ID: 'flow1',
+            xKey: 'temperature',
+            yKey: 'pressure',
+            xFormat: 'toInt',
+            yFormat: 'toFloat',
+            flowColor: '#FFFFFF',
+            marker: 'diamond',
+            interpolation: 'basis',
+            area: '#012345',
+            maxItems: 2,
+            maxItemsSaved: 1000
+        };
+        var flow1=new LineChartFlowModel(prop);
+        assert.deepEqual(flow1.getProperties(), prop);
+    });
 });

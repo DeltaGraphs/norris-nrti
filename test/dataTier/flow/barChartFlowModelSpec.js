@@ -117,4 +117,21 @@ describe('BarChartFlowModel', function() {
         });
     });
 
+    describe('#getProperties', function() {
+        var prop={
+            ID: 'flow1',
+            name: 'flow one',
+            filters: null,
+            indexKey: 1,
+            valuekey: 2,
+            indexFormat: 'tooooInt',
+            valueFormat: 2,
+            flowColor: 'asd',
+            records: 2
+        };
+        var flow1=new BarChartFlowModel(prop);
+        assert.deepEqual(flow1.getProperties(), prop);
+    });
+
+
 });

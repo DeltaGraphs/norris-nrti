@@ -45,9 +45,7 @@ describe('TableFlowModel', function() {
         var flow1=new TableFlowModel({ID:'flow1'});
         assert.strictEqual(flow1._ID, 'flow1');
         assert.strictEqual(flow1._columnKeys.length, 0);
-        assert.strictEqual(flow1._columnFormats.length, 0);
-        assert.strictEqual(flow1._fontColorKey, '#000000');
-        assert.strictEqual(flow1._backgroungColorKey, '#FFFFFF');
+        assert.strictEqual(flow1._columnFormats, null);
         assert.strictEqual(flow1._maxItems, 50);
         assert.strictEqual(flow1._maxItemsSaved, 500);
     });
@@ -56,36 +54,32 @@ describe('TableFlowModel', function() {
         var flow1=new TableFlowModel({
             ID: 'flow1',
             columnKeys: [2, {id: 2}],
-            columnFormats: [2, {id: 2}],
-            fontColorKey: 2,
-            backgroungColorKey: 2,
             maxItems: -2,
             maxItemsSaved: 'a'
         });
+        var flow2=new TableFlowModel({
+            ID: 'flow1',
+            columnKeys: ['temp'],
+            columnFormats: {'temp':'ttt'}
+        });
 		assert.strictEqual(flow1._ID, 'flow1');
         assert.strictEqual(flow1._columnKeys.length, 0);
-        assert.strictEqual(flow1._columnFormats.length, 0);
-        assert.strictEqual(flow1._fontColorKey, '#000000');
-        assert.strictEqual(flow1._backgroungColorKey, '#FFFFFF');
         assert.strictEqual(flow1._maxItems, 50);
         assert.strictEqual(flow1._maxItemsSaved, 500);
+        assert.strictEqual(flow2._columnFormats, null);
     });
 
 	it('set param values to properties', function() {
         var flow1=new TableFlowModel({
             ID: 'flow1',
             columnKeys: ['213'],
-            columnFormats: ['column1', 'column2'],
-            fontColorKey: 'color',
-            backgroungColorKey: 'back',
+            columnFormats: {'213':'toInt'},
             maxItems: 2,
             maxItemsSaved: 1000
         });
         assert.strictEqual(flow1._ID, 'flow1');
         assert.strictEqual(flow1._columnKeys.length, 1);
-        assert.strictEqual(flow1._columnFormats.length, 2);
-        assert.strictEqual(flow1._fontColorKey, 'color');
-        assert.strictEqual(flow1._backgroungColorKey, 'back');
+        assert.deepEqual(flow1._columnFormats, {'213':'toInt'});
         assert.strictEqual(flow1._maxItems, 2);
         assert.strictEqual(flow1._maxItemsSaved, 1000);
     });
@@ -133,4 +127,16 @@ describe('TableFlowModel', function() {
             assert.strictEqual(flow1._records[0].norrisRecordIsValid, true);
         });
     });
+    describe('#getProperties', function() {
+        var prop={
+            ID: 'flow1',
+            columnKeys: ['213'],
+            columnFormats: {'213':'toInt'},
+            maxItems: 2,
+            maxItemsSaved: 1000
+        };
+        var flow1=new TableFlowModel(prop);
+        assert.deepEqual(flow1.getProperties(), prop);
+    });
+
 });

@@ -183,4 +183,31 @@ describe('MapChartFlowModel', function() {
             assert.strictEqual(flow1._records[0].temperature, 2);
         });
     });
+    describe('#getProperties', function() {
+        var marker={
+            type: 'shape',
+            shape: 'triangle'
+        };
+        var trace={
+            type: 'line',
+            coordinates:[
+                [1,2],
+                [3,4],
+            ]
+        };
+        var prop={
+            ID: 'flow1',
+            longitudeKey: 'x',
+            latitudeKey: 'y',
+            longitudeFormat: 'coordinates',
+            latitudeFormat: 'geographic',
+            flowColor: '#123456',
+            marker: marker,
+            trace: trace,
+            maxItems: 2,
+            maxItemsSaved: 1000
+        };
+        var flow1=new MapChartFlowModel(prop);
+        assert.deepEqual(flow1.getProperties(), prop);
+    });
 });
