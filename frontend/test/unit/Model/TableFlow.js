@@ -55,10 +55,6 @@ describe('TableFlow', ['Flow', function(){
 			'name' : 'flusso1',
 			'maxItem' : '20'
 		};
-		var f = {
-			'dataFormat' : 'int',
-			'name' : 'flusso1'
-		};
 
 		beforeEach(function(){
 			TableFlow = new TableFlow(json);
@@ -112,12 +108,7 @@ describe('TableFlow', ['Flow', function(){
 			'name' : 'flusso2',
 			'maxItem' : '15'
 		};
-		var f = {
-			'dataFormat' : 'String',
-			'name' : 'flusso2'
-		};
-
-
+		
 		beforeEach(function(){
 			TableFlow = new TableFlow();
 			TableFlow = TableFlow.updateParameters(json);

@@ -44,7 +44,7 @@ describe('MapChart', function(){
 		};*/
 
 		beforeEach(function(){
-			MapChart = new MapChart;
+			MapChart = new MapChart();
 		});
 
 		afterEach(function(){
@@ -93,17 +93,8 @@ describe('MapChart', function(){
 			'flows' : [{},{},{}]
 		};
 
-		/*var f ={
-			'title' : 'graficonuovo',
-			'height' : 400,
-			'width' : 400,
-			'enabledLegend' : false,
-			'horizontalGrid' : false,
-			'verticalGrid' : false
-		};*/
-
 		beforeEach(function(){
-			MapChart = new MapChart;
+			MapChart = new MapChart(json);
 		});
 
 		afterEach(function(){
@@ -290,8 +281,6 @@ describe('MapChart', function(){
 			'ID' : '2',
 			'records' : []
 		};
-
-		spyOn(MapChartFlow.prototype, 'inPlaceUpdate').and.callFake(function() {return;});
 
 		beforeEach(function(){
 			MapChart = new MapChart();

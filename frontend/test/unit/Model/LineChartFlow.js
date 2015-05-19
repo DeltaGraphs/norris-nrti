@@ -79,10 +79,6 @@ describe('LineChartFlow', function(){
 			'areaColor' : '#F2F',
 			'maxItem' : 20
 		};
-		var f = {
-			'dataFormat' : 'int',
-			'name' : 'flusso1'
-		};
 
 		beforeEach(function() {
 			LineChartFlow = new LineChartFlow(json);
@@ -169,10 +165,6 @@ describe('LineChartFlow', function(){
 			'interpolation' : 'cubic',
 			'areaColor' : '#F1F',
 			'maxItem' : 15
-		};
-		var f = {
-			'dataFormat' : 'String',
-			'name' : 'flusso2'
 		};
 
 		beforeEach(function(){

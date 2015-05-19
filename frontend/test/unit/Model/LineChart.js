@@ -138,7 +138,7 @@ describe('LineChart', function(){
 			'horizontalGrid' : false,
 			'verticalGrid' : false,
 			'enabledViewFinder' : true,
-			'viewFinder' : { 'sono un viewFinder' },
+			'viewFinder' : { 'viewFinder' : 'sono un viewFinder' },
 			'axisX' : {},
 			'axisY' : {},
 			'background' : '#000',
@@ -161,7 +161,7 @@ describe('LineChart', function(){
 			expect(LineChart.getY()).toEqual({});
 		});
 		it('graph updated with the correct viewFinder', function(){
-			expect(LineChart.getViewFinder()).toEqual({ 'sono un viewFinder' });
+			expect(LineChart.getViewFinder()).toEqual({ 'viewFinder' : 'sono un viewFinder' });
 		});
 		it('graph updated with the correct background', function(){
 			expect(LineChart.getBackground()).toEqual('#000');

@@ -75,10 +75,6 @@ describe('MapChartFlow', function(){
 			'maxItem' : '20',
 			'trace' : 'bubu'
 		};
-		var f = {
-			'dataFormat' : 'int',
-			'name' : 'flusso1'
-		};
 
 		beforeEach(function(){
 			MapChartFlow = new MapChartFlow(json);
@@ -160,11 +156,7 @@ describe('MapChartFlow', function(){
 			'maxItem' : '45',
 			'trace' : 'flow'
 		};
-		var f = {
-			'dataFormat' : 'String',
-			'name' : 'flusso2'
-		};
-		
+				
 		beforeEach(function(){
 			MapChartFlow = new MapChartFlow();
 			MapChartFlow = MapChartFlow.updateParameters(json);
