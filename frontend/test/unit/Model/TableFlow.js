@@ -166,7 +166,7 @@ describe('TableFlow', function(){
 		};
 
 		var update = {
-			'NorrisRecordID' : 'record2',
+			'NorrisRecordID' : 'record1',
 			'value' : [ 'una', 'buonissima', 'pizza']
 		};
 

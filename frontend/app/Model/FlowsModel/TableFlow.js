@@ -79,7 +79,7 @@ angular.module('app')
 			}
 
 			if (Object.keys(mfJson).length !== 0) {
-		        if (mfJson.maxItem) {
+		        if (mfJson.maxItem !== undefined) {
 		            maxItem = mfJson.maxItem;
 		        }
 		    }
