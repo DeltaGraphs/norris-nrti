@@ -144,7 +144,7 @@ describe('LineChart', function(){
 			'viewFinder' : true,
 			'axisX' : {},
 			'axisY' : {},
-			'background' : '#000',
+			'backgroundColor' : '#000',
 			'flows' : [{},{},{}]
 		};
 
@@ -161,10 +161,10 @@ describe('LineChart', function(){
 			expect(LineChart.getLegendOnPoint()).toEqual(true);
 		});
 		it('graph updated with the correct axisX', function(){
-			expect(LineChart.getX()).toEqual({});
+			expect(LineChart.getX()).toEqual(null);
 		});
 		it('graph updated with the correct axisY', function(){
-			expect(LineChart.getY()).toEqual({});
+			expect(LineChart.getY()).toEqual(null);
 		});
 		it('graph updated with the correct viewFinder', function(){
 			expect(LineChart.getViewFinder()).toEqual(true);

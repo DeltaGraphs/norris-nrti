@@ -47,7 +47,7 @@ describe('MapChartFlow', function(){
 		});
 
 		it('constructor create the flow with the correct marker', function(){
-			expect(MapChartFlow.getMarker()).toEqual('circle');
+			expect(MapChartFlow.getMarker()).toEqual(null);
 		});
 		it('constructor create the flow with the correct max item displayed', function(){
 			expect(MapChartFlow.getMaxItem()).toEqual(100);

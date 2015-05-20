@@ -54,7 +54,7 @@ angular.module('services')
                 if (info.fontColor !== undefined) {
                     fontColor = info.fontColor;
                 }
-                if (info.background !== undefined) {
+                if (info.backgroundColor !== undefined) {
                     backgroundColor = info.backgroundColor;
                 }
             }
