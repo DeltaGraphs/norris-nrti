@@ -1,1 +1,1 @@
-﻿web: node ./example/index.js
+﻿web: npm install socket.io && node ./example/index.js
