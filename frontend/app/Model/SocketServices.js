@@ -16,16 +16,26 @@
 *
 */
 
-angular.module("services")
-.factory('SocketServices', function ($rootScope) {
+angular.module('app')
+.factory('SocketServices', function ($scope, $rootScope) {
     return {
         on: function (eventName, callback) {
-            $rootScope.socket.on(eventName, function () {  
+            $scope.socket.on(eventName, function () {  
                 var args = arguments;
                 $rootScope.$apply(function () {
-                    callback.apply($rootScope.socket, args);
+                    callback.apply($scope.socket, args);
                 });
             });
+        },
+        emit: function (eventName, data, callback) {
+            $scope.socket.emit(eventName, data, function () {
+                var args = arguments;
+                $rootScope.$apply(function () {
+                    if (callback) {
+                        callback.apply($rootScope.socket, args);
+                    }
+                });
+            })
         }
     };
 });

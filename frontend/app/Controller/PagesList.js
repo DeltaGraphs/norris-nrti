@@ -17,6 +17,28 @@
 */
 
 angular.module('app')
-.controller('PagesList', function($root,$location,PagesList,SocketServices){
+.controller('PagesListController', function($scope, $location, PagesList, SocketServices){
+
+	var pagesList = new PagesList();
+	var socket;
+	
+	this.socketConnection = function(socketUrl){
+		socket = io.connect(socketUrl);
+		$scope.socket = socket;
+		// listenOnEvents();
+	};
+
+	this.listenOnEvents = function(){
+		socket.on('configPageList', function(info){
+			pagesList = new PagesList(info);
+		});
+		socket.on('insertPage', function(info){
+			pagesList.addPage(info);
+		});
+	};
+
+	$scope.socketConnection = this.socketConnection;
+	$scope.listenOnEvents = this.listenOnEvents;
+	$scope.pagesList = pagesList.getPagesList();
 	
 });
