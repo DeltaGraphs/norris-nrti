@@ -18,8 +18,8 @@ var Routes = require('../../lib/presentationTier/routes.js');
 
 var assert = require('assert');
 var Express = require('express');
-//var request = require('superagent');
-var request = require('supertest');
+var request = require('superagent');
+//var request = require('supertest');
 var http = require('http');
 
 var app = new Express();
@@ -60,8 +60,8 @@ describe('Routes', function() {
             routes3.addRoutingPath('/page', 'page');
             var server = app2.listen(3000);
             console.dir('RESBODY ext');
-            assert(request(server).get('/page'), 200);
-            /*request.post('localhost:3000/page').end(function(res){
+            //assert(request(server).get('/page'), 200);
+            request.post('localhost:3000/page').end(function(res){
                 assert.strictEqual(res.status,200);
                 //expect(res).to.exist;
                 //expect(res.status).to.equal(200);
@@ -69,7 +69,7 @@ describe('Routes', function() {
                 console.dir('RESBODY');
                 console.dir(res.body);
                 assert.strictEqual(res.status,404);
-            });*/
+            });
         });
     });
 });
