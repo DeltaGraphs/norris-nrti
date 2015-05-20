@@ -188,6 +188,9 @@ angular.module('services')
     BarChart.prototype.getBarsGrouping = function() {
         return barsGrouping;
     };
+    BarChart.prototype.getLegendOnPoint = function() {
+        return legendOnPoint;
+    };
 
 
     return BarChart;

@@ -31,7 +31,7 @@ angular.module('services')
     var axisX = null;
     var axisY = null;
     var viewFinder = false;
-    var background = '#FFF';
+    var backgroundColor = '#FFF';
 
     LineChart.prototype = Object.create(Graph.prototype);
     LineChart.prototype.constructor = LineChart;
@@ -63,7 +63,7 @@ angular.module('services')
 
 		var lineJson = {};
         if (json.legendOnPoint !== undefined) {
-            lineJson = json.legendOnPoint;
+            lineJson.legendOnPoint = json.legendOnPoint;
         }
 		if (json.axisX !== undefined) {
 			lineJson.axisX = json.axisX;
@@ -174,10 +174,13 @@ angular.module('services')
         return axisY;
     };
     LineChart.prototype.getViewFinder = function() {
-        return enableViewFinder;
+        return viewFinder;
     };
     LineChart.prototype.getBackground = function() {
-        return background;
+        return backgroundColor;
+    };
+    LineChart.prototype.getLegendOnPoint = function() {
+        return legendOnPoint;
     };
 
     return LineChart;
