@@ -153,6 +153,47 @@ describe('BarChart', function(){
 			'verticalGrid' : false,
 			'axisX' : {},
 			'axisY' : {},
+			'barOrientation' : 'ciao',
+			'headers' : ['colonna1'],
+			'backgroundColor' : '#F0F',
+			'sortable' : false,
+			'barsGrouping' : 'stacked',
+			'legendOnPoint' : true,
+			'flows' : [{},{},{}]
+		};
+
+		var b1, b2;
+		beforeEach(function(){
+			b1 = new BarChart();
+			b2 = new BarChart();
+			b2.updateParameters(json);
+		});
+
+		afterEach(function(){
+			b1 = null;
+			b2 = null;
+		});	
+
+		it('primo', function(){
+			expect(b1.getBarOrientation()).toEqual('vertical');
+		});
+		it('secondo', function(){
+			expect(b2.getBarOrientation()).toEqual('ciao');
+		});
+
+
+	});
+
+	describe('updateParameters', function(){
+		var json = {
+			'title' : 'graficonuovo',
+			'height' : 400,
+			'width' : 400,
+			'enabledLegend' : false,
+			'horizontalGrid' : false,
+			'verticalGrid' : false,
+			'axisX' : {},
+			'axisY' : {},
 			'barOrientation' : 'vertical',
 			'headers' : ['colonna1'],
 			'backgroundColor' : '#F0F',
