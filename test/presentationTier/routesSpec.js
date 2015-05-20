@@ -56,11 +56,11 @@ describe('Routes', function() {
         it('behaves correctly if passed valid parameters', function() {
             var app2 = new Express();
             var routes3 = new Routes(app2, '/norris');
-            routes3.addRoutingPath('/norris', 'page');
+            routes3.addRoutingPath('/page', 'page');
             var server = http.createServer(app2);
             server.listen(3000);
             console.dir('RESBODY ext');
-            request.post('localhost:3000/norris').end(function(res){
+            request.post('localhost:3000/page').end(function(res){
                 assert.strictEqual(res.status,200);
                 //expect(res).to.exist;
                 //expect(res.status).to.equal(200);
