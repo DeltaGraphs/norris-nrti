@@ -29,19 +29,19 @@
 */
 
 angular.module('app')
-.factory('Graph', ['Flow', 'Legend', function(Flow, Legend){
+.value('Graph', ['Flow', 'Legend', function(Flow, Legend){
+
+	var flowList = [];
+	var title = null;
+	var height = null;
+	var width = null;
+	var legend = null;
+	var enabledLegend = false;
+	var horizontalGrid = true;
+	var verticalGrid = true;
+	var url = null;
 
 	function Graph(info){
-		var flowList = [];
-		var title = null;
-		var height = null;
-		var width = null;
-		var legend = null;
-		var enabledLegend = false;
-		var horizontalGrid = true;
-		var verticalGrid = true;
-		var url = null;
-
 		if (info !== undefined) {
 			if (info.title !== undefined) {
 				title = info.title;
@@ -49,12 +49,12 @@ angular.module('app')
 			if (info.url !== undefined) {
 				url = info.url;
 			}
-		}
-
-		
+		}		
 	}
 
 	Graph.prototype = {
+
+		constructor : Graph,
 
 		updateParameters : function(info) { //abstract
 			if (info !== undefined) {
@@ -127,10 +127,6 @@ angular.module('app')
 		getFlowList : function() {
 			return flowList;
 		}
-	};
-
-	Graph.instance = function(info) {
-		return new Graph(info);
 	};
 
 	return( Graph );

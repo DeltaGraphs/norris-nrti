@@ -23,7 +23,7 @@
 */
 
 angular.module('services')
-.factory('Axis', function(){
+.value('Axis', function(){
 
     var name = null;
     var color = '#FFF';

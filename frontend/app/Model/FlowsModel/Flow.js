@@ -21,7 +21,7 @@
 */
 
 angular.module('app')
-.factory('Flow', function(){
+.value('Flow', function(){
 
 	var name = null;
 

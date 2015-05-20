@@ -21,7 +21,7 @@
 */
 
 angular.module('services')
-.factory('Legend', function(){
+.value('Legend', function(){
 
     var position = 'right';
     var fontColor = '#000';
