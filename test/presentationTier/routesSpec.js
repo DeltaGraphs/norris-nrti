@@ -64,6 +64,8 @@ describe('Routes', function() {
                 //expect(res).to.exist;
                 //expect(res.status).to.equal(200);
                 //expect(res.body).to.contain('world');
+                console.dir('RESBODY');
+                console.dir(res.body);
             });
         });
     });
