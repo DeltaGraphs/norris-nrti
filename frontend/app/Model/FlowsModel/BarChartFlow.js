@@ -21,7 +21,7 @@
 */
 
 angular.module('app')
-.value('BarChartFlow', ['Flow', function(Flow){
+.factory('BarChartFlow', ['Flow', function(Flow){
 	var data = [];
 	var flowColor = '#000';
 

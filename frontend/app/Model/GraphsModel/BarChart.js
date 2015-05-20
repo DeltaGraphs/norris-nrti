@@ -23,16 +23,7 @@
 */
 
 angular.module('app')
-.value('BarChart', ['Graph', 'Axis', 'BarChartFlow', function(Graph, Axis, BarChartFlow){
-
-    var axisX = null;
-    var axisY = null;
-    var barOrientation = 'vertical';
-    var headers = [];
-    var background = '#FFF';
-    var sortable = true;
-    var barsGrouping = 'grouped';
-    var legendOnPoint = false;
+.factory('BarChart', ['Graph', 'Axis', 'BarChartFlow', function(Graph, Axis, BarChartFlow){
 
     BarChart.prototype = Object.create(Graph.prototype);
     BarChart.prototype.constructor = BarChart;
@@ -97,6 +88,14 @@ angular.module('app')
 
 
     function BarChart(info) {
+        this.axisX = null;
+        this.axisY = null;
+        this.barOrientation = 'vertical';
+        this.headers = [];
+        this.background = '#FFF';
+        this.sortable = true;
+        this.barsGrouping = 'grouped';
+        this.legendOnPoint = false;
         this.parent.constructor.call(this, info);
     }
 
@@ -110,28 +109,28 @@ angular.module('app')
             } 
             if (Object.keys(bJson).length !== 0) {
                 if (bJson.axisX !== undefined) {
-                    axisX = new Axis(bJson.axisX);
+                    this.axisX = new Axis(bJson.axisX);
                 }
                 if (bJson.axisY !== undefined) {
-                    axisY = new Axis(bJson.axisY);
+                    this.axisY = new Axis(bJson.axisY);
                 }
                 if (bJson.barOrientation !== undefined) {
-                    barOrientation = bJson.barOrientation;
+                    this.barOrientation = bJson.barOrientation;
                 }
                 if (bJson.headers !== undefined) {
-                    headers = bJson.headers;
+                    this.headers = bJson.headers;
                 }
                 if (bJson.backgroundColor !== undefined) {
-                    background = bJson.backgroundColor;
+                    this.background = bJson.backgroundColor;
                 }
                 if (bJson.sortable !== undefined) {
-                    sortable = bJson.sortable;
+                    this.sortable = bJson.sortable;
                 }
                 if (bJson.barsGrouping !== undefined) {
-                    barsGrouping = bJson.barsGrouping;
+                    this.barsGrouping = bJson.barsGrouping;
                 }
                 if (bJson.legendOnPoint !== undefined) {
-                    legendOnPoint = bJson.legendOnPoint;
+                    this.legendOnPoint = bJson.legendOnPoint;
                 }
             }
             if (info.flows !== undefined) {
@@ -177,31 +176,31 @@ angular.module('app')
 
     // get method
     BarChart.prototype.getX = function() {
-        return axisX;
+        return this.axisX;
     };
     BarChart.prototype.getY = function() {
-        return axisY;
+        return this.axisY;
     };
     BarChart.prototype.getBarOrientation = function() {
-        return barOrientation;
+        return this.barOrientation;
     };
     BarChart.prototype.getHeaders = function() {
-        return headers;
+        return this.headers;
     };
     BarChart.prototype.getBackground = function() {
-        return background;
+        return this.background;
     };
     BarChart.prototype.getSortable = function() {
-        return sortable;
+        return this.sortable;
     };
     BarChart.prototype.getBarsGrouping = function() {
-        return barsGrouping;
+        return this.barsGrouping;
     };
     BarChart.prototype.getLegendOnPoint = function() {
-        return legendOnPoint;
+        return this.legendOnPoint;
     };
 
-    BarChart.instance = function(info) {
+    BarChart.newInstance = function(info) {
         return new BarChart(info);
     };
 

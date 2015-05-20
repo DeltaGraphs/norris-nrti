@@ -19,7 +19,7 @@
 */
 
 angular.module('services')
-.value('Cell', function(){
+.factory('Cell', function(){
 
     var background = '#FFF';
     var fontColor = '#000';

@@ -25,7 +25,7 @@
 */
 
 angular.module('app')
-.value('Page', ['LineChart', 'BarChart', 'MapChart', 'Table', function(LineChart, BarChart, MapChart, Table){
+.factory('Page', ['LineChart', 'BarChart', 'MapChart', 'Table', function(LineChart, BarChart, MapChart, Table){
     
     var graphsList = [];
     var name = null;

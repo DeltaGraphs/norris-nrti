@@ -31,103 +31,107 @@
 angular.module('app')
 .value('Graph', ['Flow', 'Legend', function(Flow, Legend){
 
-	var flowList = [];
-	var title = null;
-	var height = null;
-	var width = null;
-	var legend = null;
-	var enabledLegend = false;
-	var horizontalGrid = true;
-	var verticalGrid = true;
-	var url = null;
-
 	function Graph(info){
+		this.flowList = [];
+		this.title = null;
+		this.height = null;
+		this.width = null;
+		this.legend = null;
+		this.enabledLegend = false;
+		this.horizontalGrid = true;
+		this.verticalGrid = true;
+		this.url = null;
 		if (info !== undefined) {
 			if (info.title !== undefined) {
-				title = info.title;
+				this.title = info.title;
 			}
 			if (info.url !== undefined) {
-				url = info.url;
+				this.url = info.url;
 			}
 		}		
 	}
 
+	Graph.newInstance = function(info) {
+		return new Graph(info);
+	};
+
 	Graph.prototype = {
 
-		constructor : Graph,
+		constructor : newInstance,
 
 		updateParameters : function(info) { //abstract
 			if (info !== undefined) {
 				if (info.title !== undefined) {
-					title = info.title;
+					this.title = info.title;
 				}
 				if (info.height !== undefined) {
-					height = info.height;
+					this.height = info.height;
 				}
 				if (info.width !== undefined) {
-					width = info.width;
+					this.width = info.width;
 				}
 				if (info.enabledLegend !== undefined) {
-					enabledLegend = info.enabledLegend;
+					this.enabledLegend = info.enabledLegend;
 					if (enabledLegend && info.legend !== undefined) {
-						legend = new Legend(info.legend);
+						this.legend = new Legend(info.legend);
 					}
 				}
 				if (info.horizontalGrid !== undefined) {
-					horizontalGrid = info.horizontalGrid;
+					this.horizontalGrid = info.horizontalGrid;
 				}
 				if (info.verticalGrid !== undefined) {
-					verticalGrid = info.verticalGrid;
+					this.verticalGrid = info.verticalGrid;
 				}
 			}
 		},
 		addFlow : function(newId, newFlow) { //abstract
 
-			var filteredFlows = flowList.filter(function(newId) {return newId === flowList.id;});
+			var filteredFlows = this.flowList.filter(function(newId) {return newId === flowList.id;});
 		    if(filteredFlows.length === 0) {
-		        flowList.push({ id: newId, flow: newFlow});
+		        this.flowList.push({ id: newId, flow: newFlow});
     		}
     		// error
 		},
 		deleteFlow : function(flowID) {
 			var index;
-            for (var i = 0; i<flowList.length; i++){
-                if (flowList.id === flowID){
+            for (var i = 0; i<this.flowList.length; i++){
+                if (this.flowList.id === flowID){
                     index = i;
                 }
             }
-            flowList.splice(index,1);
+            this.flowList.splice(index,1);
 		},
 		
 		getTitle : function() {
-			return title;
+			return this.title;
 		},
 		getHeight : function() {
-			return height;
+			return this.height;
 		},
 		getWidth : function() {
-			return width;
+			return this.width;
 		},
 		getLegend : function() {
-			if (enabledLegend) {
-				return legend;
+			if (this.enabledLegend) {
+				return this.legend;
 			} else {
 				return null;
 			}
 		},
 		getHGrid : function() {
-			return horizontalGrid;
+			return this.horizontalGrid;
 		},
 		getVGrid : function() {
-			return verticalGrid;
+			return this.verticalGrid;
 		},
 		getUrl : function() {
-			return url;
+			return this.url;
 		},
 		getFlowList : function() {
-			return flowList;
+			return this.flowList;
 		}
 	};
 
+	
 	return( Graph );
 }]);

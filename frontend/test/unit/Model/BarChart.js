@@ -165,8 +165,8 @@ describe('BarChart', function(){
 
 		var b1, b2;
 		beforeEach(function(){
-			b1 = BarChart.instance(json);
-			b2 = BarChart.instance(json1);
+			b1 = BarChart.newInstance(json);
+			b2 = BarChart.newInstance(json1);
 		});
 
 		afterEach(function(){

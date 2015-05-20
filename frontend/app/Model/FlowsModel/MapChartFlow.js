@@ -21,7 +21,7 @@
 */
 
 angular.module('app')
-.value('MapChartFlow', ['Flow', function(Flow){
+.factory('MapChartFlow', ['Flow', function(Flow){
 	var data = [];
 	var marker = null;
 	var maxItem = 100;

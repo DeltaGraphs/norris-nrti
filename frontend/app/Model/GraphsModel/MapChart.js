@@ -21,7 +21,7 @@
 */
 
 angular.module('services')
-.value('MapChart',['Graph', 'MapChartFlow', function(Graph, MapChartFlow){
+.factory('MapChart',['Graph', 'MapChartFlow', function(Graph, MapChartFlow){
 
     var legendOnPoint = false;
     var latitude = 45.4113311;

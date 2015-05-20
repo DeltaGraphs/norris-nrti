@@ -25,7 +25,7 @@
 */
 
 angular.module('services')
-.value('LineChart', ['Graph', 'Axis', 'LineChartFlow', function(Graph, Axis, LineChartFlow){
+.factory('LineChart', ['Graph', 'Axis', 'LineChartFlow', function(Graph, Axis, LineChartFlow){
     
     var legendOnPoint = false;
     var axisX = null;
