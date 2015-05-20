@@ -93,8 +93,8 @@ angular.module('app')
         var barsGrouping = 'grouped';
         var legendOnPoint = false;
     
-        this.prototype = Object.create(Graph.instance(info).prototype);
-        this.prototype.parent.updateParameters = this.prototype.updateParameters;
+        this.prototype = Graph.instance(info);
+        this.prototype.GUpdate = this.prototype.updateParameters;
 
         this.prototype.updateParameters = function(info) {
             if (info !== undefined) {
@@ -102,7 +102,7 @@ angular.module('app')
                 var gJson = json.graphJson;
                 var bJson = json.barJson;
                 if (Object.keys(gJson).length !== 0) {
-                    this.parent.updateParameters.call(this, gJson);
+                    this.GUpdate.call(this, gJson);
                 } 
                 if (Object.keys(bJson).length !== 0) {
                     if (bJson.axisX !== undefined) {
