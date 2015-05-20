@@ -51,8 +51,6 @@ describe('MapChartFlowModel', function() {
         assert.strictEqual(flow1._flowColor, null);
         assert.strictEqual(flow1._marker.type, 'shape');
         assert.strictEqual(flow1._marker.shape, 'circle');
-        assert.strictEqual(flow1._marker.icon, null);
-        assert.strictEqual(flow1._marker.text, null);
         assert.strictEqual(flow1._trace.type, 'none');
         assert.strictEqual(flow1._trace.coordinates.length, 0);
         assert.strictEqual(flow1._maxItems, 50);
@@ -80,8 +78,6 @@ describe('MapChartFlowModel', function() {
         assert.strictEqual(flow1._flowColor, null);
         assert.strictEqual(flow1._marker.type, 'shape');
         assert.strictEqual(flow1._marker.shape, 'circle');
-        assert.strictEqual(flow1._marker.icon, null);
-        assert.strictEqual(flow1._marker.text, null);
         assert.strictEqual(flow1._trace.type, 'none');
         assert.strictEqual(flow1._trace.coordinates.length, 0);
         assert.strictEqual(flow1._maxItems, 50);
