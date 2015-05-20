@@ -198,9 +198,6 @@ angular.module('app')
     Table.prototype.getHeaders = function() {
     return headers;
     };
-    Table.prototype.getCells = function() {
-        return cells;
-    };
     Table.prototype.getItemDisplayedPerPage = function() {
         return itemDisplayedPerPage;
     };

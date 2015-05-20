@@ -150,9 +150,6 @@ angular.module('app')
 	LineChartFlow.prototype.getFlowColor = function() {
 		return flowColor;
 	};
-	LineChartFlow.prototype.getLegendOnPoint = function() {
-		return legendOnPoint;
-	};
 	LineChartFlow.prototype.getMarker = function() {
 		return marker;
 	};
