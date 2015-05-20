@@ -60,12 +60,6 @@ describe('Table', function(){
 		it('graph Constructor called', function(){
 			expect(Table.getUrl()).toEqual('localhost/page1/grafico1');
 		});
-		it('graph created with the correct row', function(){
-			expect(Table.getRows()).toEqual(0);
-		});
-		it('graph created with the correct colunms', function(){
-			expect(Table.getColunms()).toEqual(0);
-		});
 		it('graph created with the correct headers', function(){
 			expect(Table.getHeaders()).toEqual([]);
 		});
@@ -187,12 +181,6 @@ describe('Table', function(){
 			expect(Table).toBeDefined();
 		});
 
-		it('graph updated with the correct row', function(){
-			expect(Table.getRows()).toEqual(6);
-		});
-		it('graph updated with the correct colunms', function(){
-			expect(Table.getColunms()).toEqual(9);
-		});
 		it('graph updated with the correct headers', function(){
 			expect(Table.getHeaders().length).toEqual(2);
 		});
