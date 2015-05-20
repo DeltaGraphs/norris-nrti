@@ -29,7 +29,7 @@
 */
 
 angular.module('app')
-.value('Graph', ['Flow', 'Legend', function(Flow, Legend){
+.factory('Graph', ['Flow', 'Legend', function(Flow, Legend){
 
 	function Graph(info){
 		this.flowList = [];
