@@ -13,8 +13,6 @@ var io = require('socket.io')(server);
 var Norris = require('../norris-nrti.js');
 var norris = new Norris(app,io,'/norris');
 
-console.log(norris);
-
 app.get('/', function (req, res) {
 	var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
 	console.log(' HOME APS - expressEsempio.js '+ fullUrl);
