@@ -35,9 +35,6 @@ angular.module('app')
         var tableFlowJson = {};
 
         if(json !== undefined) {
-	        if (json.dataFormat !== undefined) {
-	            flowJson.dataFormat = json.dataFormat;
-	        }
 	        if (json.name !== undefined) {
 	            flowJson.name = json.name;
 	        }
@@ -72,15 +69,15 @@ angular.module('app')
 		if (info !== undefined) {
 	    	var json = split(info);
 			var fJson = json.flowJson;
-			var mfJson = json.mapFlowJson;
+			var tfJson = json.tableFlowJson;
 
 			if (Object.keys(fJson).length !== 0) {
 				this.parent.updateParameters.call(this, fJson);
 			}
 
-			if (Object.keys(mfJson).length !== 0) {
-		        if (mfJson.maxItem !== undefined) {
-		            maxItem = mfJson.maxItem;
+			if (Object.keys(tfJson).length !== 0) {
+		        if (tfJson.maxItem !== undefined) {
+		            maxItem = tfJson.maxItem;
 		        }
 		    }
 		}

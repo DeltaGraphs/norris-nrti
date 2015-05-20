@@ -70,10 +70,10 @@ describe('LineChart', function(){
 			expect(LineChart.getLegendOnPoint()).toEqual(false);
 		});
 		it('graph created with the correct axisX', function(){
-			expect(LineChart.getX()).toEqual(null);
+			expect(LineChart.getX()).toEqual({});
 		});
 		it('graph created with the correct axisY', function(){
-			expect(LineChart.getY()).toEqual(null);
+			expect(LineChart.getY()).toEqual({});
 		});
 		it('graph created with the correct viewFinder', function(){
 			expect(LineChart.getViewFinder()).toEqual(false);

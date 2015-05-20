@@ -112,7 +112,7 @@ angular.module('services')
                 if (lJson.viewFinder !== undefined) {
                     viewFinder = lJson.viewFinder;
                 }
-                if (lJson.background !== undefined) {
+                if (lJson.backgroundColor !== undefined) {
                     backgroundColor = lJson.backgroundColor;
                 }
             }

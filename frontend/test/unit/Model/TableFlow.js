@@ -101,7 +101,6 @@ describe('TableFlow', function(){
 
 	describe('updateParameters', function(){
 		var json = {
-			'dataFormat' : 'String',
 			'name' : 'flusso2',
 			'maxItem' : 15
 		};
