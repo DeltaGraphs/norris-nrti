@@ -21,7 +21,7 @@
 */
 
 angular.module('app')
-.factory('TableFlow', ['Flow', function(Flow){
+.value('TableFlow', ['Flow', function(Flow){
 
 	var data = [];
 	var maxItem = 100;

@@ -23,7 +23,7 @@
 */
 
 angular.module('app')
-.factory('Table', ['Graph', 'Cell', 'TableFlow', function(Graph, Cell, TableFlow){
+.value('Table', ['Graph', 'Cell', 'TableFlow', function(Graph, Cell, TableFlow){
 	
 	var headers = [];
 	var maxItemsPage = 20;

@@ -23,7 +23,7 @@
 */
 
 angular.module('app')
-.factory('LineChartFlow', ['Flow', function(Flow){
+.value('LineChartFlow', ['Flow', function(Flow){
 
 	var data = [];
 	var flowColor = '#000';

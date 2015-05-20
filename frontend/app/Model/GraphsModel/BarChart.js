@@ -23,7 +23,20 @@
 */
 
 angular.module('app')
-.factory('BarChart', ['Graph', 'Axis', 'BarChartFlow', function(Graph, Axis, BarChartFlow){
+.value('BarChart', ['Graph', 'Axis', 'BarChartFlow', function(Graph, Axis, BarChartFlow){
+
+    var axisX = null;
+    var axisY = null;
+    var barOrientation = 'vertical';
+    var headers = [];
+    var background = '#FFF';
+    var sortable = true;
+    var barsGrouping = 'grouped';
+    var legendOnPoint = false;
+
+    BarChart.prototype = Object.create(Graph.prototype);
+    BarChart.prototype.constructor = BarChart;
+    BarChart.prototype.parent = Graph.prototype;
 
     function split(json) {
         var graphJson = {};
@@ -84,20 +97,8 @@ angular.module('app')
 
 
     function BarChart(info) {
-        var axisX = null;
-        var axisY = null;
-        var barOrientation = 'vertical';
-        var headers = [];
-        var background = '#FFF';
-        var sortable = true;
-        var barsGrouping = 'grouped';
-        var legendOnPoint = false;
-
-        this.prototype = Graph.instance(info);
+        this.parent.constructor.call(this, info);
     }
-
-    
-    this.prototype.GUpdate = this.prototype.updateParameters;
 
     BarChart.prototype.updateParameters = function(info) {
         if (info !== undefined) {
@@ -105,32 +106,32 @@ angular.module('app')
             var gJson = json.graphJson;
             var bJson = json.barJson;
             if (Object.keys(gJson).length !== 0) {
-                this.GUpdate.call(this, gJson);
+                this.parent.updateParameters.call(this, gJson);
             } 
             if (Object.keys(bJson).length !== 0) {
                 if (bJson.axisX !== undefined) {
-                    this.axisX = new Axis(bJson.axisX);
+                    axisX = new Axis(bJson.axisX);
                 }
                 if (bJson.axisY !== undefined) {
-                    this.axisY = new Axis(bJson.axisY);
+                    axisY = new Axis(bJson.axisY);
                 }
                 if (bJson.barOrientation !== undefined) {
-                    this.barOrientation = bJson.barOrientation;
+                    barOrientation = bJson.barOrientation;
                 }
                 if (bJson.headers !== undefined) {
-                    this.headers = bJson.headers;
+                    headers = bJson.headers;
                 }
                 if (bJson.backgroundColor !== undefined) {
-                    this.background = bJson.backgroundColor;
+                    background = bJson.backgroundColor;
                 }
                 if (bJson.sortable !== undefined) {
-                    this.sortable = bJson.sortable;
+                    sortable = bJson.sortable;
                 }
                 if (bJson.barsGrouping !== undefined) {
-                    this.barsGrouping = bJson.barsGrouping;
+                    barsGrouping = bJson.barsGrouping;
                 }
                 if (bJson.legendOnPoint !== undefined) {
-                    this.legendOnPoint = bJson.legendOnPoint;
+                    legendOnPoint = bJson.legendOnPoint;
                 }
             }
             if (info.flows !== undefined) {
@@ -176,28 +177,28 @@ angular.module('app')
 
     // get method
     BarChart.prototype.getX = function() {
-        return this.axisX;
+        return axisX;
     };
     BarChart.prototype.getY = function() {
-        return this.axisY;
+        return axisY;
     };
     BarChart.prototype.getBarOrientation = function() {
-        return this.barOrientation;
+        return barOrientation;
     };
     BarChart.prototype.getHeaders = function() {
-        return this.headers;
+        return headers;
     };
     BarChart.prototype.getBackground = function() {
-        return this.background;
+        return background;
     };
     BarChart.prototype.getSortable = function() {
-        return this.sortable;
+        return sortable;
     };
     BarChart.prototype.getBarsGrouping = function() {
-        return this.barsGrouping;
+        return barsGrouping;
     };
     BarChart.prototype.getLegendOnPoint = function() {
-        return this.legendOnPoint;
+        return legendOnPoint;
     };
 
     BarChart.instance = function(info) {
