@@ -60,7 +60,7 @@ describe('Routes', function() {
             var server = http.createServer(app2);
             server.listen(3000);
             console.dir('RESBODY ext');
-            request.post('localhost:3000/page').end(function(res){
+            request.post('localhost:3000').end(function(res){
                 assert.strictEqual(res.status,200);
                 //expect(res).to.exist;
                 //expect(res.status).to.equal(200);
