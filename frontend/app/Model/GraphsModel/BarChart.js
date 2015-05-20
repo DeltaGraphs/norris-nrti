@@ -93,9 +93,10 @@ angular.module('app')
         var barsGrouping = 'grouped';
         var legendOnPoint = false;
     
-        this.prototype = Graph.instance(info);
-        this.prototype.GUpdate = this.prototype.updateParameters;
     }
+
+    this.prototype = Graph.instance(info);
+    this.prototype.GUpdate = this.prototype.updateParameters;
 
     BarChart.prototype.updateParameters = function(info) {
         if (info !== undefined) {
