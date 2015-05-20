@@ -69,9 +69,6 @@ describe('Table', function(){
 		it('graph created with the correct headers', function(){
 			expect(Table.getHeaders()).toEqual([]);
 		});
-		it('graph created with the correct cells', function(){
-			expect(Table.getCells()).toEqual([]);
-		});
 		it('graph created with the correct item displayed per page', function(){
 			expect(Table.getItemDisplayedPerPage()).toEqual(20);
 		});
@@ -153,14 +150,6 @@ describe('Table', function(){
 			'rows' : 6,
 			'colunms' : 9,
 			'headers' : ['ciao','amici'],
-			'cells' : [
-				[
-					{'background' : '#FFF','fontColor' : '#000'}
-				],
-				[
-					{'background' : '#000','fontColor' : '#FFF'}
-				]
-			],
 			'itemDisplayedPerPage' : 5,
 			'addDataPosition' : 'up',
 			'sortable' : false,
@@ -206,9 +195,6 @@ describe('Table', function(){
 		});
 		it('graph updated with the correct headers', function(){
 			expect(Table.getHeaders().length).toEqual(2);
-		});
-		it('graph updated with the correct cells', function(){
-			expect(Table.getCells()[0].length).toEqual(1);
 		});
 		it('graph updated with the correct item displayed per page', function(){
 			expect(Table.getItemDisplayedPerPage()).toEqual(5);
