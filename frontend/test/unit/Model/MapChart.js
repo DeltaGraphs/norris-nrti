@@ -57,20 +57,26 @@ describe('MapChart', function(){
 		it('graph Constructor called', function(){
 			expect(MapChart.getUrl()).toEqual('localhost/page1/grafico1');
 		});
+		it('graph created with the correct legendOnPoint', function(){
+			expect(MapChart.getLegendOnPoint()).toEqual(false);
+		});
 		it('graph created with the correct latitude', function(){
 			expect(MapChart.getLatitude()).toEqual(45.4113311);
 		});
 		it('graph created with the correct longitude', function(){
 			expect(MapChart.getLongitude()).toEqual(11.8876318);
 		});
-		it('graph created with the correct scale', function(){
-			expect(MapChart.getScale()).toEqual(1000);
-		});
 		it('graph created with the correct mapType', function(){
 			expect(MapChart.getMapType()).toEqual('terrain');
 		});
 		it('graph created with the correct zoom', function(){
 			expect(MapChart.getZoom()).toEqual(true);
+		});
+		it('graph created with the correct mapWidth', function(){
+			expect(MapChart.getMapWidth()).toEqual(0);
+		});
+		it('graph created with the correct mapHeigth', function(){
+			expect(MapChart.getMapHeigth()).toEqual(0);
 		});
 
 	});
@@ -131,6 +137,7 @@ describe('MapChart', function(){
 			'enabledLegend' : false,
 			'horizontalGrid' : false,
 			'verticalGrid' : false,
+			'legendOnPoint' : false,
 			'latitude' : 3,
 			'longitude' : 3,
 			'scale' : 999,
@@ -152,14 +159,14 @@ describe('MapChart', function(){
 			expect(MapChart).toBeDefined();
 		});
 
+		it('graph updated with the correct legendOnPoint', function(){
+			expect(MapChart.getLegendOnPoint()).toEqual(false);
+		});
 		it('graph updated with the correct latitude', function(){
 			expect(MapChart.getLatitude()).toEqual(3);
 		});
 		it('graph updated with the correct longitude', function(){
 			expect(MapChart.getLongitude()).toEqual(3);
-		});
-		it('graph updated with the correct scale', function(){
-			expect(MapChart.getScale()).toEqual(999);
 		});
 		it('graph updated with the correct mapType', function(){
 			expect(MapChart.getMapType()).toEqual('terrain');
@@ -170,6 +177,13 @@ describe('MapChart', function(){
 		it('graph updated with the correct flows', function(){
             expect(MapChart.getFlowList().length).toEqual(3);
         });
+        it('graph updated with the correct mapWidth', function(){
+			expect(MapChart.getMapWidth()).toEqual(0);
+		});
+		it('graph updated with the correct mapHeigth', function(){
+			expect(MapChart.getMapHeigth()).toEqual(0);
+		});
+
 		
 	});
 	
@@ -180,13 +194,10 @@ describe('MapChart', function(){
 		};
 
 		var fJson = {
-			'dataFormat' : 'String',
 			'name' : 'flusso1',
-			'flowColor' : '#F3F',
-			'legendOnPoint' : 'flusso1',
-			'marker' : 'furly1',
-			'maxItem' : '45',
-			'trace' : 'flow'
+			'marker' : {'type' : 'shape', 'shape' : 'circle', 'icon' : null, 'text' : null},
+			'maxItems' : '45',
+			'trace' : {'type' : 'none'}
 		};
 
 		var newFlow;

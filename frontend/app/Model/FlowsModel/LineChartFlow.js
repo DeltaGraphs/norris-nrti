@@ -27,7 +27,6 @@ angular.module('app')
 
 	var data = [];
 	var flowColor = '#000';
-	var legendOnPoint = '';
 	var marker = 'square';
 	var interpolation = 'linear';
 	var areaColor = '#FFF';
@@ -52,17 +51,14 @@ angular.module('app')
 	        if (json.flowColor !== undefined) {
 	            lineFlowJson.flowColor = json.flowColor;
 	        }
-	        if (json.legendOnPoint !== undefined) {
-	            lineFlowJson.legendOnPoint = json.legendOnPoint;
-	        }
 	        if (json.marker !== undefined) {
 	            lineFlowJson.marker = json.marker;
 	        }
 	        if (json.interpolation !== undefined) {
 	            lineFlowJson.interpolation = json.interpolation;
 	        }
-	        if (json.areaColor !== undefined) {
-	            lineFlowJson.areaColor = json.areaColor;
+	        if (json.area !== undefined) {
+	            lineFlowJson.area = json.area;
 	        }
 	        if (json.maxItem !== undefined) {
 	            lineFlowJson.maxItem = json.maxItem;
@@ -89,17 +85,14 @@ angular.module('app')
 			if (lfJson.flowColor !== undefined) {
 	            flowColor = lfJson.flowColor;
 	        }
-	        if (lfJson.legendOnPoint !== undefined) {
-	            legendOnPoint = lfJson.legendOnPoint;
-	        }
 	        if (lfJson.marker !== undefined) {
 	            marker = lfJson.marker;
 	        }
 	        if (lfJson.interpolation !== undefined) {
 	            interpolation = lfJson.interpolation;
 	        }
-	        if (lfJson.areaColor !== undefined) {
-	            areaColor = lfJson.areaColor;
+	        if (lfJson.area !== undefined) {
+	            areaColor = lfJson.area;
 	        }
 	        if (lfJson.maxItem !== undefined) {
 	            maxItem = lfJson.maxItem;
@@ -119,17 +112,14 @@ angular.module('app')
 				if (lfJson.flowColor !== undefined) {
 		            flowColor = lfJson.flowColor;
 		        }
-		        if (lfJson.legendOnPoint !== undefined) {
-		            legendOnPoint = lfJson.legendOnPoint;
-		        }
 		        if (lfJson.marker !== undefined) {
 		            marker = lfJson.marker;
 		        }
 		        if (lfJson.interpolation !== undefined) {
 		            interpolation = lfJson.interpolation;
 		        }
-		        if (lfJson.areaColor !== undefined) {
-		            areaColor = lfJson.areaColor;
+		        if (lfJson.area !== undefined) {
+		            areaColor = lfJson.area;
 		        }
 		        if (lfJson.maxItem !== undefined) {
 		            maxItem = lfJson.maxItem;

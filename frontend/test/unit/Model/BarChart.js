@@ -82,6 +82,9 @@ describe('BarChart', function(){
 		it('graph created with the correct barsGrouping', function(){
 			expect(BarChart.getBarsGrouping()).toEqual('grouped');
 		});
+		it('graph created with the correct legendOnPoint', function(){
+			expect(BarChart.getLegendOnPoint()).toEqual(false);
+		});
 		it('graph created with the correct flow', function(){
 			expect(BarChart.getFlowList().length).toEqual(0);
 		});
@@ -148,9 +151,10 @@ describe('BarChart', function(){
 			'axisX' : {},
 			'axisY' : {},
 			'barOrientation' : 'vertical',
-			'background' : '#F0F',
+			'backgroundColor' : '#F0F',
 			'sortable' : false,
 			'barsGrouping' : 'stacked',
+			'legendOnPoint' : true,
 			'flows' : [{},{},{}]
 		};
 
@@ -184,6 +188,9 @@ describe('BarChart', function(){
 		it('graph updated with the correct barsGrouping', function(){
 			expect(BarChart.getBarsGrouping()).toEqual('stacked');
 		});
+		it('graph updated with the correct legendOnPoint', function(){
+			expect(BarChart.getLegendOnPoint()).toEqual(true);
+		});
 		it('graph updated with the correct flow', function(){
 			expect(BarChart.getFlowList().length).toEqual(3);
 		});
@@ -196,10 +203,8 @@ describe('BarChart', function(){
 			'ID' : 	'flusso1'
 		};
 		var fJson = {
-			'dataFormat' : 'int',
 			'name' : 'flusso1',
-			'flowColor' : '#F2F',
-			'legendOnPoint' : 'flusso1'
+			'flowColor' : '#F2F'
 		};
 		var newflow;
 

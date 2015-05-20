@@ -81,6 +81,12 @@ describe('Table', function(){
 		it('graph created with the correct sortable', function(){
 			expect(Table.getSortable()).toEqual(true);
 		});
+		it('graph created with the correct sort', function(){
+			expect(Table.getSort()).toEqual(null);
+		});
+		it('graph created with the correct appearance', function(){
+			expect(Table.getAppearance()).toEqual(null);
+		});
 
 	});
 
@@ -149,19 +155,33 @@ describe('Table', function(){
 			'headers' : ['ciao','amici'],
 			'cells' : [
 				[
-					{'background' : '#FFF','fontColor' : '#000'},
-					{'background' : '#FFF','fontColor' : '#000'},
 					{'background' : '#FFF','fontColor' : '#000'}
 				],
 				[
-					{'background' : '#000','fontColor' : '#FFF'},
-					{'background' : '#000','fontColor' : '#FFF'},
 					{'background' : '#000','fontColor' : '#FFF'}
 				]
 			],
 			'itemDisplayedPerPage' : 5,
 			'addDataPosition' : 'up',
 			'sortable' : false,
+			'appearance' : { 
+				border: {
+					color: '#000000',
+					width: 1
+				},
+				rowEven: {
+					textColor: ['#000000', '#000000'],
+					backgroundColor: ['#FFFFFF', '#FFFFFF']
+				},
+				rowOdd: {
+					textColor: ['#000000', '#000000'],
+					backgroundColor: ['#FFFFFF', '#FFFFFF']
+				},
+				headers: {
+					textColor: ['#000000', '#000000'],
+					backgroundColor: ['#FFFFFF', '#FFFFFF']
+				}
+			},
 			'flows' : [{},{},{}]
 		};
 
@@ -199,6 +219,12 @@ describe('Table', function(){
 		it('graph updated with the correct sortable', function(){
 			expect(Table.getSortable()).toEqual(false);
 		});
+		it('graph updated with the correct sort', function(){
+			expect(Table.getSort()).toEqual(null);
+		});
+		it('graph updated with the correct appearance', function(){
+			expect(Table.getAppearance().border.color).toEqual('#000000');
+		});
 		it('graph updated with the correct flow', function(){
 			expect(Table.getFlowList().length).toEqual(3);
 		});
@@ -212,7 +238,6 @@ describe('Table', function(){
 		};
 
 		var fJson = {
-			'dataFormat' : 'int',
 			'name' : 'flusso1',
 			'maxItem' : '5'
 		};

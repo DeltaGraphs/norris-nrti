@@ -49,18 +49,13 @@ describe('BarChartFlow', function(){
 		it('constructor create the flow with the correct flowColor', function(){
 			expect(BarChartFlow.getFlowColor()).toEqual('#000');
 		});
-		it('constructor create the flow with the correct legend on point', function(){
-			expect(BarChartFlow.getLegendOnPoint()).toEqual(null);
-		});
 	});
 
 	describe('Constructor', function(){
 
 		var json = {
-			'dataFormat' : 'int',
 			'name' : 'flusso1',
-			'flowColor' : '#F2F',
-			'legendOnPoint' : 'flusso1'
+			'flowColor' : '#F2F'
 		};
 		//var f = {
 		//	'dataFormat' : 'int',
@@ -81,9 +76,6 @@ describe('BarChartFlow', function(){
 
 		it('constructor create the flow with the correct flowColor', function(){
 			expect(BarChartFlow.getFlowColor()).toEqual('#F2F');
-		});
-		it('constructor create the flow with the correct legend on point', function(){
-			expect(BarChartFlow.getLegendOnPoint()).toEqual('flusso1');
 		});
 	});
 
@@ -121,10 +113,8 @@ describe('BarChartFlow', function(){
 	describe('updateParameters', function(){
 		
 		var json = {
-			'dataFormat' : 'String',
 			'name' : 'flusso2',
-			'flowColor' : '#F1F',
-			'legendOnPoint' : 'flusso2'
+			'flowColor' : '#F1F'
 		};
 
 		beforeEach(function(){
@@ -138,9 +128,6 @@ describe('BarChartFlow', function(){
 
 		it('cflow updated with the correct flowColor', function(){
 			expect(BarChartFlow.getFlowColor()).toEqual('#F1F');
-		});
-		it('flow updated with the correct legend on point', function(){
-			expect(BarChartFlow.getLegendOnPoint()).toEqual('flusso2');
 		});
 
 	});

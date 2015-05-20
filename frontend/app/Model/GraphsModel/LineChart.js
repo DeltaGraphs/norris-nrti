@@ -26,10 +26,11 @@
 
 angular.module('services')
 .factory('LineChart', ['Graph', 'Axis', 'ViewFinder', 'LineChartFlow', function(Graph, Axis, ViewFinder, LineChartFlow){
+    
+    var legendOnPoint = false;
     var axisX = null;
     var axisY = null;
-    var viewFinder = null;
-    var enabledViewFinder = false;
+    var viewFinder = false;
     var background = '#FFF';
 
     LineChart.prototype = Object.create(Graph.prototype);
@@ -47,9 +48,9 @@ angular.module('services')
 		if (json.width !== undefined) {
 			graphJson.width = json.width;
 		}
-		if (json.enabledLegend !== undefined) {
-			graphJson.enabledLegend = json.enabledLegend;
-			if (graphJson.enabledLegend === true && json.legend !== undefined) {
+		if (json.enableLegend !== undefined) {
+			graphJson.enableLegend = json.enabledLegend;
+			if (graphJson.enableLegend === true && json.legend !== undefined) {
 				graphJson.legend = json.legend;
 			}
 		}
@@ -61,20 +62,20 @@ angular.module('services')
 		}
 
 		var lineJson = {};
+        if (json.legendOnPoint !== undefined) {
+            lineJson = json.legendOnPoint;
+        }
 		if (json.axisX !== undefined) {
 			lineJson.axisX = json.axisX;
 		}
 		if (json.axisY !== undefined) {
 			lineJson.axisY = json.axisY;
 		}
-		if (json.enabledViewFinder !== undefined) {
-			lineJson.enabledViewFinder = json.enabledViewFinder;
-			if (enabledViewFinder && json.viewFinder !== undefined) {
-				lineJson.viewFinder = json.viewFinder;
-			}
+		if (json.viewFinder !== undefined) {
+			lineJson.viewFinder = json.viewFinder;
 		}
-		if (json.background !== undefined) {
-			lineJson.background = json.background;
+		if (json.backgroundColor !== undefined) {
+			lineJson.backgroundColor = json.backgroundColor;
 		}
 
 		return {
@@ -99,20 +100,20 @@ angular.module('services')
                 this.parent.updateParameters.call(this, gJson);
             }
             if (Object.keys(lJson).length !== 0) {
+                if (lJson.legendOnPoint !== undefined) {
+                    legendOnPoint = lJson.legendOnPoint;
+                }
                 if (lJson.axisX !== undefined) {
                     axisX = new Axis(lJson.axisX);
                 }
                 if (lJson.axisY !== undefined) {
                     axisY = new Axis(lJson.axisY);
                 }
-                if (lJson.enabledViewFinder !== undefined) {
-                    enabledViewFinder = lJson.enabledViewFinder;
-                    if (enabledViewFinder === true && lJson.viewFinder !== undefined) {
-                        viewFinder = new ViewFinder(lJson.viewFinder);
-                    }
+                if (lJson.viewFinder !== undefined) {
+                    viewFinder = lJson.viewFinder;
                 }
                 if (lJson.background !== undefined) {
-                    background = lJson.background;
+                    backgroundColor = lJson.backgroundColor;
                 }
             }
             if (info.flows !== undefined) {
@@ -173,10 +174,7 @@ angular.module('services')
         return axisY;
     };
     LineChart.prototype.getViewFinder = function() {
-        if (enabledViewFinder === true) {
-            return viewFinder;
-        }
-        return null;
+        return enableViewFinder;
     };
     LineChart.prototype.getBackground = function() {
         return background;

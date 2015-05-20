@@ -42,11 +42,11 @@ angular.module('services')
             if (info.color !== undefined) {
                 color = info.color;
             }
-            if (info.minValue !== undefined) {
-                minValue = info.minValue;
+            if (info.minIndex !== undefined) {
+                minValue = info.minIndex;
             }
-            if (info.maxValue !== undefined) {
-                maxValue = info.maxValue;
+            if (info.maxIndex !== undefined) {
+                maxValue = info.maxIndex;
             }
             if (info.ticks !== undefined) {
                 ticks = info.ticks;
@@ -66,11 +66,11 @@ angular.module('services')
                 if (info.color !== undefined) {
                     color = info.color;
                 }
-                if (info.minValue !== undefined) {
-                    minValue = info.minValue;
+                if (info.minIndex !== undefined) {
+                    minValue = info.minIndex;
                 }
-                if (info.maxValue !== undefined) {
-                    maxValue = info.maxValue;
+                if (info.maxIndex !== undefined) {
+                    maxValue = info.maxIndex;
                 }
                 if (info.ticks !== undefined) {
                     ticks = info.ticks;
@@ -79,7 +79,6 @@ angular.module('services')
                     scale = info.scale;
                 }
             }
-            return this;
         },
 
         getName : function(){

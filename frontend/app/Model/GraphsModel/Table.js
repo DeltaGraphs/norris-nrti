@@ -28,10 +28,11 @@ angular.module('app')
     var rows = 0;
 	var colunms = 0;
 	var headers = [];
-	var cells = [];
 	var itemDisplayedPerPage = 20;
 	var addDataPosition = 'up';
 	var sortable = true;
+    var sort = null;
+    var appearance = null;
 
     // reuse the original object prototype
     Table.prototype = Object.create(Graph.prototype);
@@ -73,18 +74,21 @@ angular.module('app')
 		if (json.headers !== undefined) {
 			tableJson.headers = json.headers;
 		}
-		if (json.cells !== undefined) {
-			tableJson.cells = json.cells;
+		if (json.maxItemsPage !== undefined) {
+			tableJson.maxItemsPage = json.maxItemsPage;
 		}
-		if (json.itemDisplayedPerPage !== undefined) {
-			tableJson.itemDisplayedPerPage = json.itemDisplayedPerPage;
-		}
-		if (json.addDataPosition !== undefined) {
-			tableJson.addDataPosition = json.addDataPosition;
+		if (json.addRowOn !== undefined) {
+			tableJson.addRowOn = json.addRowOn;
 		}
 		if (json.sortable !== undefined) {
 			tableJson.sortable = json.sortable;
 		}
+        if (json.sort !== undefined) {
+            tableJson.sort = json.sort;
+        }
+        if (json.appearance !== undefined) {
+            tableJson.appearance = json.appearance;
+        }
 
 		return {
 			'graphJson' : graphJson,
@@ -120,21 +124,20 @@ angular.module('app')
                         headers.push(tJson.headers[z]);
                     }
                 }
-                if (tJson.cells !== undefined) {
-                    for (var i=0; i<tJson.cells.length; i++) {
-                        for (var j=0; j<tJson.cells[i].length; j++) {
-                            cells[i][j] = new Cell(tJson.cells[i][j]);
-                        }
-                    }
+                if (tJson.maxItemsPage !== undefined) {
+                    itemDisplayedPerPage = tJson.maxItemsPage;
                 }
-                if (tJson.itemDisplayedPerPage !== undefined) {
-                    itemDisplayedPerPage = tJson.itemDisplayedPerPage;
-                }
-                if (tJson.addDataPosition !== undefined) {
-                    addDataPosition = tJson.addDataPosition;
+                if (tJson.addRowOn !== undefined) {
+                    addDataPosition = tJson.addRowOn;
                 }
                 if (tJson.sortable !== undefined) {
                     sortable = tJson.sortable;
+                }
+                if (tJson.sort !== undefined) {
+                    sort = tJson.sort;
+                }
+                if (tJson.appearance !== undefined) {
+                    appearance = tJson.appearance;
                 }
             }
             if (info.flows !== undefined) {
@@ -206,6 +209,12 @@ angular.module('app')
     };
     Table.prototype.getSortable = function() {
         return sortable;
+    };
+    Table.prototype.getSort = function() {
+        return sort;
+    };
+    Table.prototype.getAppearance = function() {
+        return appearance;
     };
 
     return( Table );

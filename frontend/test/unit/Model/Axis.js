@@ -72,8 +72,8 @@ describe('Axis', function(){
 		var json = 	{
 			'name' : 'asse nella manica',
 			'color' : '#F0F',
-			'minValue' : 0,
-			'maxValue' : 100,
+			'minIndex' : 0,
+			'maxIndex' : 100,
 			'ticks' : 10,
 			'scale' : 'logarithmic'
 		};
@@ -116,15 +116,15 @@ describe('Axis', function(){
 		var json = 	{
 			'name' : 'asso',
 			'color' : '#AFA',
-			'minValue' : 1,
-			'maxValue' : 101,
+			'minIndex' : 1,
+			'maxIndex' : 101,
 			'ticks' : 10,
 			'scale' : 'linear',
 		};
 
 		beforeEach(function(){
 			Axis = new Axis();
-			Axis = Axis.updateParameters(json);
+			Axis.updateParameters(json);
 		});
 
 		afterEach(function(){

@@ -66,6 +66,9 @@ describe('LineChart', function(){
 		it('graph Constructor called', function(){
 			expect(LineChart.getUrl()).toEqual('localhost/page1/grafico1');
 		});
+		it('graph created with the correct legendOnPoint', function(){
+			expect(LineChart.getLegendOnPoint()).toEqual(false);
+		});
 		it('graph created with the correct axisX', function(){
 			expect(LineChart.getX()).toEqual(null);
 		});
@@ -73,7 +76,7 @@ describe('LineChart', function(){
 			expect(LineChart.getY()).toEqual(null);
 		});
 		it('graph created with the correct viewFinder', function(){
-			expect(LineChart.getViewFinder()).toEqual(null);
+			expect(LineChart.getViewFinder()).toEqual(false);
 		});
 		it('graph created with the correct background', function(){
 			expect(LineChart.getBackground()).toEqual('#FFF');
@@ -137,8 +140,8 @@ describe('LineChart', function(){
 			'enabledLegend' : false,
 			'horizontalGrid' : false,
 			'verticalGrid' : false,
-			'enabledViewFinder' : true,
-			'viewFinder' : {},
+			'legendOnPoint' : true,
+			'viewFinder' : true,
 			'axisX' : {},
 			'axisY' : {},
 			'background' : '#000',
@@ -154,6 +157,9 @@ describe('LineChart', function(){
 			LineChart = null;
 		});
 		
+		it('graph updated with the correct legendOnPoint', function(){
+			expect(LineChart.getLegendOnPoint()).toEqual(true);
+		});
 		it('graph updated with the correct axisX', function(){
 			expect(LineChart.getX()).toEqual({});
 		});
@@ -161,7 +167,7 @@ describe('LineChart', function(){
 			expect(LineChart.getY()).toEqual({});
 		});
 		it('graph updated with the correct viewFinder', function(){
-			expect(LineChart.getViewFinder()).toEqual(null);
+			expect(LineChart.getViewFinder()).toEqual(true);
 		});
 		it('graph updated with the correct background', function(){
 			expect(LineChart.getBackground()).toEqual('#000');
@@ -178,12 +184,11 @@ describe('LineChart', function(){
 		};
 
 		var fJson = {
-			'dataFormat' : 'int',
 			'name' : 'flusso1',
-			'legendOnPoint' : '',
-			'marker' : 'furly',
+			'flowColor' : '#000',
+			'marker' : 'none',
 			'interpolation' : 'linear',
-			'areaColor' : '#FFF',
+			'area' : '#FFF',
 			'maxItem' : '5'
 		};
 

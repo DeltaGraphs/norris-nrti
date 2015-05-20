@@ -25,7 +25,7 @@ angular.module('services')
 
     var position = 'right';
     var fontColor = '#000';
-    var background = '#FFF';
+    var backgroundColor = '#FFF';
 
     function Legend(info){
 
@@ -36,13 +36,15 @@ angular.module('services')
             if (info.fontColor !== undefined) {
                 fontColor = info.fontColor;
             }
-            if (info.background !== undefined) {
-                background = info.background;
+            if (info.backgroundColor !== undefined) {
+                backgroundColor = info.backgroundColor;
             }
         }
     }
 
     Legend.prototype = {
+
+        contructor : Legend,
 
         updateParameters : function(info){
             if (info !== undefined) {
@@ -53,10 +55,9 @@ angular.module('services')
                     fontColor = info.fontColor;
                 }
                 if (info.background !== undefined) {
-                    background = info.background;
+                    backgroundColor = info.backgroundColor;
                 }
             }
-            return this;
         },
 
         getPosition : function(){
@@ -65,8 +66,8 @@ angular.module('services')
         getFontColor : function(){
             return fontColor;
         },
-        getBackground : function(){
-            return background;
+        getBackgroundColor : function(){
+            return backgroundColor;
         }
     };
 

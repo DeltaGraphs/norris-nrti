@@ -23,9 +23,7 @@
 angular.module('app')
 .factory('MapChartFlow', ['Flow', function(Flow){
 	var data = [];
-	var flowColor = '#000';
-	var legendOnPoint = null;
-	var marker = 'circle';
+	var marker = null;
 	var maxItem = 100;
 	var trace = null;
 
@@ -38,19 +36,10 @@ angular.module('app')
         var mapFlowJson = {};
 
         if (json !== undefined) {
-	        if (json.dataFormat !== undefined) {
-	            flowJson.dataFormat = json.dataFormat;
-	        }
 	        if (json.name !== undefined) {
 	            flowJson.name = json.name;
 	        }
 
-	        if (json.flowColor !== undefined) {
-	            mapFlowJson.flowColor = json.flowColor;
-	        }
-	        if (json.legendOnPoint !== undefined) {
-	            mapFlowJson.legendOnPoint = json.legendOnPoint;
-	        }
 	        if (json.marker !== undefined) {
 	            mapFlowJson.marker = json.marker;
 	        }
@@ -78,12 +67,6 @@ angular.module('app')
 		this.parent.constructor.call(this, fJson);
 
 		if (Object.keys(mfJson).length !== 0) {
-			if (mfJson.flowColor !== undefined) {
-	            flowColor = mfJson.flowColor;
-	        }
-	        if (mfJson.legendOnPoint !== undefined) {
-	            legendOnPoint = mfJson.legendOnPoint;
-	        }
 	        if (mfJson.marker !== undefined) {
 	            marker = mfJson.marker;
 	        }
@@ -105,13 +88,7 @@ angular.module('app')
 			this.parent.updateParameters.call(this, fJson);
 	
 			if (Object.keys(mfJson).length !== 0) {
-				if (mfJson.flowColor !== undefined) {
-		            flowColor = mfJson.flowColor;
-		        }
-		        if (mfJson.legendOnPoint !== undefined) {
-		            legendOnPoint = mfJson.legendOnPoint;
-		        }
-		        if (mfJson.marker !== undefined) {
+				if (mfJson.marker !== undefined) {
 		            marker = mfJson.marker;
 		        }
 		        if (mfJson.maxItem !== undefined) {
@@ -149,12 +126,6 @@ angular.module('app')
 
 	MapChartFlow.prototype.getData = function() {
 		return data;
-	};
-	MapChartFlow.prototype.getFlowColor = function() {
-		return flowColor;
-	};
-	MapChartFlow.prototype.getLegendOnPoint = function() {
-		return legendOnPoint;
 	};
 	MapChartFlow.prototype.getMarker = function() {
 		return marker;

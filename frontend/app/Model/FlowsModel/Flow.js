@@ -23,15 +23,11 @@
 angular.module('app')
 .factory('Flow', function(){
 
-	var dataFormat = null;
 	var name = null;
 
 	function Flow(info){
 
 		if (info !== undefined) {
-			if (info.dataFormat !== undefined) {
-				dataFormat = info.dataFormat;
-			}
 			if (info.name !== undefined){
 				name = info.name;
 			}
@@ -44,9 +40,6 @@ angular.module('app')
 
 		updateParameters : function(info) { //abstract
 			if (info !== undefined) {
-		    	if (info.dataFormat !== undefined) {
-					dataFormat = info.dataFormat;
-				}
 				if (info.name !== undefined){
 					name = info.name;
 				}

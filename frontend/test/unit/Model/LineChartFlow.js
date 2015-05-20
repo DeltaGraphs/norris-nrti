@@ -49,9 +49,6 @@ describe('LineChartFlow', function(){
 		it('constructor create the flow with the correct flowColor', function(){
 			expect(LineChartFlow.getFlowColor()).toEqual('#000');
 		});
-		it('constructor create the flow with the correct legend on point', function(){
-			expect(LineChartFlow.getLegendOnPoint()).toEqual('');
-		});
 		it('constructor create the flow with the correct marker', function(){
 			expect(LineChartFlow.getMarker()).toEqual('square');
 		});
@@ -70,13 +67,11 @@ describe('LineChartFlow', function(){
 	describe('Constructor', function(){
 
 		var json = {
-			'dataFormat' : 'int',
 			'name' : 'flusso1',
 			'flowColor' : '#F2F',
-			'legendOnPoint' : 'flusso1',
 			'marker' : 'furly',
 			'interpolation' : 'single',
-			'areaColor' : '#F2F',
+			'area' : '#F2F',
 			'maxItem' : 20
 		};
 
@@ -94,9 +89,6 @@ describe('LineChartFlow', function(){
 
 		it('constructor create the flow with the correct flowColor', function(){
 			expect(LineChartFlow.getFlowColor()).toEqual('#F2F');
-		});
-		it('constructor create the flow with the correct legend on point', function(){
-			expect(LineChartFlow.getLegendOnPoint()).toEqual('flusso1');
 		});
 		it('constructor create the flow with the correct marker', function(){
 			expect(LineChartFlow.getMarker()).toEqual('furly');
@@ -154,13 +146,11 @@ describe('LineChartFlow', function(){
 
 	describe('updateParameters', function(){
 		var json = {
-			'dataFormat' : 'String',
 			'name' : 'flusso2',
 			'flowColor' : '#F1F',
-			'legendOnPoint' : 'flusso2',
 			'marker' : 'furly1',
 			'interpolation' : 'cubic',
-			'areaColor' : '#F1F',
+			'area' : '#F1F',
 			'maxItem' : 15
 		};
 
@@ -175,9 +165,6 @@ describe('LineChartFlow', function(){
 
 		it('flow updated with the correct flowColor', function(){
 			expect(LineChartFlow.getFlowColor()).toEqual('#F1F');
-		});
-		it('flow updated with the correct legend on point', function(){
-			expect(LineChartFlow.getLegendOnPoint()).toEqual('flusso2');
 		});
 		it('flow updated with the correct marker', function(){
 			expect(LineChartFlow.getMarker()).toEqual('furly1');

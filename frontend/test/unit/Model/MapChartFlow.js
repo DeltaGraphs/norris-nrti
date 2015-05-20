@@ -46,12 +46,6 @@ describe('MapChartFlow', function(){
 			expect(MapChartFlow).toBeDefined();
 		});
 
-		it('constructor create the flow with the correct flowColor', function(){
-			expect(MapChartFlow.getFlowColor()).toEqual('#000');
-		});
-		it('constructor create the flow with the correct legend on point', function(){
-			expect(MapChartFlow.getLegendOnPoint()).toEqual(null);
-		});
 		it('constructor create the flow with the correct marker', function(){
 			expect(MapChartFlow.getMarker()).toEqual('circle');
 		});
@@ -67,10 +61,7 @@ describe('MapChartFlow', function(){
 	describe('Constructor', function(){
 
 		var json = {
-			'dataFormat' : 'int',
 			'name' : 'flusso1',
-			'flowColor' : '#F2F',
-			'legendOnPoint' : 'flusso1',
 			'marker' : 'furly',
 			'maxItem' : '20',
 			'trace' : 'bubu'
@@ -88,12 +79,6 @@ describe('MapChartFlow', function(){
 			expect(MapChartFlow).toBeDefined();
 		});
 
-		it('constructor create the flow with the correct flowColor', function(){
-			expect(MapChartFlow.getFlowColor()).toEqual('#F2F');
-		});
-		it('constructor create the flow with the correct legend on point', function(){
-			expect(MapChartFlow.getLegendOnPoint()).toEqual('flusso1');
-		});
 		it('constructor create the flow with the correct marker', function(){
 			expect(MapChartFlow.getMarker()).toEqual('furly');
 		});
@@ -145,10 +130,7 @@ describe('MapChartFlow', function(){
 
 	describe('updateParameters', function(){
 		var json = {
-			'dataFormat' : 'String',
 			'name' : 'flusso2',
-			'flowColor' : '#F3F',
-			'legendOnPoint' : 'flusso2',
 			'marker' : 'furly1',
 			'maxItem' : '45',
 			'trace' : 'flow'
@@ -163,12 +145,6 @@ describe('MapChartFlow', function(){
 			MapChartFlow = null;
 		});
 
-		it('flow updated with the correct flowColor', function(){
-			expect(MapChartFlow.getFlowColor()).toEqual('#F3F');
-		});
-		it('flow updated with the correct legend on point', function(){
-			expect(MapChartFlow.getLegendOnPoint()).toEqual('flusso2');
-		});
 		it('flow updated with the correct marker', function(){
 			expect(MapChartFlow.getMarker()).toEqual('furly1');
 		});

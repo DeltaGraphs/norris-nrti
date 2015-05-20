@@ -23,11 +23,13 @@
 angular.module('services')
 .factory('MapChart',['Graph', 'MapChartFlow', function(Graph, MapChartFlow){
 
+    var legendOnPoint = false;
     var latitude = 45.4113311;
     var longitude = 11.8876318;
-    var scale = 1000;
     var mapType = 'terrain';
     var zoom = true;
+    var mapWidth = 0;
+    var mapHeight = 0;
 
     // reuse the original object prototype
     MapChart.prototype = Object.create(Graph.prototype);
@@ -45,9 +47,9 @@ angular.module('services')
         if (json.width !== undefined) {
             graphJson.width = json.width;
         }
-        if (json.enabledLegend !== undefined) {
-            graphJson.enabledLegend = json.enabledLegend;
-            if (json.legend !== undefined && graphJson.enabledLegend !== false) {
+        if (json.enableLegend !== undefined) {
+            graphJson.enableLegend = json.enableLegend;
+            if (json.legend !== undefined && graphJson.enableLegend !== false) {
                 graphJson.legend = json.legend;
             }
         }
@@ -60,14 +62,14 @@ angular.module('services')
 
 
         var mapJson = {};
+        if (json.legendOnPoint !== undefined) {
+            mapJson.legendOnPoint = json.legendOnPoint;
+        }
         if (json.latitude !== undefined) {
             mapJson.latitude = json.latitude;
         }
         if (json.longitude !== undefined) {
             mapJson.longitude = json.longitude;
-        }
-        if (json.scale !== undefined) {
-            mapJson.scale = json.scale;
         }
         if (json.mapType !== undefined) {
             mapJson.mapType = json.mapType;
@@ -75,6 +77,13 @@ angular.module('services')
         if (json.zoom !== undefined) {
             mapJson.zoom = json.zoom;
         }
+        if (json.mapWidth !== undefined) {
+            mapJson.mapWidth = json.mapWidth;
+        }
+        if (json.mapHeight !== undefined) {
+            mapJson.mapHeight = json.mapHeight;
+        }
+
 
         return {
             'graphJson' : graphJson,
@@ -97,20 +106,26 @@ angular.module('services')
             this.parent.updateParameters.call(this, gJson);
         } 
         if (Object.keys(mJson).length !== 0) {
+            if (mJson.legendOnPoint !== undefined) {
+                legendOnPoint = mJson.legendOnPoint;
+            }
             if (mJson.latitude !== undefined) {
                 latitude = mJson.latitude;
             }
             if (mJson.longitude !== undefined) {
                 longitude = mJson.longitude;
             }
-            if (mJson.scale !== undefined) {
-                scale = mJson.scale;
-            }
             if (mJson.mapType !== undefined) {
                 mapType = mJson.mapType;
             }
             if (mJson.zoom !== undefined) {
                 zoom = mJson.zoom;
+            }
+            if (mJson.mapWidth !== undefined) {
+                mapWidth = mJson.mapWidth;
+            }
+            if (mJson.mapHeight !== undefined) {
+                mapHeight = mJson.mapHeight;
             }
         }
         if (info.flows !== undefined) {
@@ -173,6 +188,9 @@ angular.module('services')
     };
 
     // get method
+    MapChart.prototype.getLegendOnPoint = function() {
+        return legendOnPoint;
+    };
     MapChart.prototype.getLatitude = function() {
         return latitude;
     };
@@ -187,6 +205,12 @@ angular.module('services')
     };
     MapChart.prototype.getZoom = function() {
         return zoom;
+    };
+    MapChart.prototype.getMapWidth = function() {
+        return mapWidth;
+    };
+    MapChart.prototype.getMapHeight = function() {
+        return mapHeight;
     };
 
     return MapChart;

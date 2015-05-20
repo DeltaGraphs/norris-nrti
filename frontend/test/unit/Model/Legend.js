@@ -49,7 +49,7 @@ describe('Legend', function(){
 			expect(Legend.getFontColor()).toEqual('#000');
 		});
 		it('constructor create the page with the correct background', function(){
-			expect(Legend.getBackground()).toEqual('#FFF');
+			expect(Legend.getBackgroundColor()).toEqual('#FFF');
 		});
 
 	});
@@ -59,7 +59,7 @@ describe('Legend', function(){
 		var json = 	{
 			'position' : 'left',
 			'fontColor' : '#AFA',
-			'background' : '#F00',
+			'backgroundColor' : '#F00',
 		};
 
 		beforeEach(function(){
@@ -81,7 +81,7 @@ describe('Legend', function(){
 			expect(Legend.getFontColor()).toEqual('#AFA');
 		});
 		it('constructor create the page with the correct background', function(){
-			expect(Legend.getBackground()).toEqual('#F00');
+			expect(Legend.getBackgroundColor()).toEqual('#F00');
 		});
 
 	});
@@ -91,12 +91,12 @@ describe('Legend', function(){
 		var json = 	{
 			'position' : 'top',
 			'fontColor' : '#F00',
-			'background' : '#AFA',
+			'backgroundColor' : '#AFA',
 		};
 
 		beforeEach(function(){
 			Legend = new Legend();
-			Legend = Legend.updateParameters(json);
+			Legend.updateParameters(json);
 		});
 
 		afterEach(function(){
@@ -110,7 +110,7 @@ describe('Legend', function(){
 			expect(Legend.getFontColor()).toEqual('#F00');
 		});
 		it('constructor create the page with the correct background', function(){
-			expect(Legend.getBackground()).toEqual('#AFA');
+			expect(Legend.getBackgroundColor()).toEqual('#AFA');
 		});
 
 	});

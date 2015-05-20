@@ -41,10 +41,6 @@ describe('Flow', function(){
 		it('instance defined', function(){
 			expect(Flow).toBeDefined();
 		});
-
-		it('constructor create the flow with the correct dataFormat', function(){
-			expect(Flow.getDataFormat()).toEqual(null);
-		});
 		it('constructor create the flow with the correct name', function(){
 			expect(Flow.getName()).toEqual(null);
 		});
@@ -54,7 +50,6 @@ describe('Flow', function(){
 	describe('Constructor', function(){
 
 		var json = {
-			'dataFormat' : 'int',
 			'name' : 'flusso1'
 		};
 
@@ -69,10 +64,6 @@ describe('Flow', function(){
 		it('instance defined', function(){
 			expect(Flow).toBeDefined();
 		});
-
-		it('constructor create the flow with the correct dataFormat', function(){
-			expect(Flow.getDataFormat()).toEqual('int');
-		});
 		it('constructor create the flow with the correct name', function(){
 			expect(Flow.getName()).toEqual('flusso1');
 		});
@@ -81,7 +72,6 @@ describe('Flow', function(){
 
 	describe('updateParameters', function(){
 		var json = {
-			'dataFormat' : 'String',
 			'name' : 'flussoString1'
 		};
 
@@ -92,10 +82,6 @@ describe('Flow', function(){
 
 		afterEach(function(){
 			Flow = null;
-		});
-
-		it('flow updated with the correct dataFormat', function(){
-			expect(Flow.getDataFormat()).toEqual('String');
 		});
 		it('flow updated with the correct name', function(){
 			expect(Flow.getName()).toEqual('flussoString1');

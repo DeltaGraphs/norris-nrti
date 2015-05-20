@@ -31,6 +31,7 @@ angular.module('services')
     var background = '#FFF';
     var sortable = true;
     var barsGrouping = 'grouped';
+    var legendOnPoint = false;
 
     BarChart.prototype = Object.create(Graph.prototype);
     BarChart.prototype.constructor = BarChart;
@@ -70,14 +71,17 @@ angular.module('services')
         if (json.barOrientation !== undefined) {
             barJson.barOrientation = json.barOrientation;
         }
-        if (json.background !== undefined) {
-            barJson.background = json.background;
+        if (json.backgroundColor !== undefined) {
+            barJson.backgroundColor = json.backgroundColor;
         }
         if (json.sortable !== undefined) {
             barJson.sortable = json.sortable;
         }
         if (json.barsGrouping !== undefined) {
             barJson.barsGrouping = json.barsGrouping;
+        }
+        if (json.legendOnPoint !== undefined) {
+            barJson.legendOnPoint = json.legendOnPoint;
         }
 
         return {
@@ -111,14 +115,17 @@ angular.module('services')
                 if (bJson.barOrientation !== undefined) {
                     barOrientation = bJson.barOrientation;
                 }
-                if (bJson.background !== undefined) {
-                    background = bJson.background;
+                if (bJson.backgroundColor !== undefined) {
+                    background = bJson.backgroundColor;
                 }
                 if (bJson.sortable !== undefined) {
                     sortable = bJson.sortable;
                 }
                 if (bJson.barsGrouping !== undefined) {
                     barsGrouping = bJson.barsGrouping;
+                }
+                if (bJson.legendOnPoint !== undefined) {
+                    legendOnPoint = bJson.legendOnPoint;
                 }
             }
             if (info.flows !== undefined) {

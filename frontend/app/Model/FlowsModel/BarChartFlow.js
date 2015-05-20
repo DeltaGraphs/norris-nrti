@@ -24,7 +24,6 @@ angular.module('app')
 .factory('BarChartFlow', ['Flow', function(Flow){
 	var data = [];
 	var flowColor = '#000';
-	var legendOnPoint = null;
 
 	BarChartFlow.prototype = Object.create(Flow.prototype);
 	BarChartFlow.prototype.constructor = BarChartFlow;
@@ -35,9 +34,6 @@ angular.module('app')
         var barFlowJson = {};
 
         if (json !== undefined){
-	        if (json.dataFormat !== undefined) {
-	            flowJson.dataFormat = json.dataFormat;
-	        }
 	        if (json.name !== undefined) {
 	            flowJson.name = json.name;
 	        }
@@ -45,9 +41,6 @@ angular.module('app')
 	       
 	        if (json.flowColor !== undefined) {
 	            barFlowJson.flowColor = json.flowColor;
-	        }
-	        if (json.legendOnPoint !== undefined) {
-	            barFlowJson.legendOnPoint = json.legendOnPoint;
 	        }
 	    }
 
@@ -69,9 +62,6 @@ angular.module('app')
 		if (bfJson.flowColor !== undefined) {
             flowColor = bfJson.flowColor;
         }
-        if (bfJson.legendOnPoint !== undefined) {
-            legendOnPoint = bfJson.legendOnPoint;
-        }
 	}
 
 	BarChartFlow.prototype.updateParameters = function(info) {
@@ -84,9 +74,6 @@ angular.module('app')
 		if (Object.keys(bfJson).length !== 0) {
 			if (bfJson.flowColor !== undefined) {
 	            flowColor = bfJson.flowColor;
-	        }
-	        if (bfJson.legendOnPoint !== undefined) {
-	            legendOnPoint = bfJson.legendOnPoint;
 	        }
 	    }
 	};
@@ -109,9 +96,6 @@ angular.module('app')
 	};
 	BarChartFlow.prototype.getFlowColor = function() {
 		return flowColor;
-	};
-	BarChartFlow.prototype.getLegendOnPoint = function() {
-		return legendOnPoint;
 	};
 
 	return BarChartFlow;
