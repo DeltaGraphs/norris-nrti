@@ -59,6 +59,7 @@ describe('Routes', function() {
             routes3.addRoutingPath('/page', 'page');
             var server = http.createServer(app2);
             server.listen(3000);
+            console.dir('RESBODY ext');
             request.post('localhost:3000/page').end(function(res){
                 assert.strictEqual(res.status,200);
                 //expect(res).to.exist;
@@ -66,6 +67,7 @@ describe('Routes', function() {
                 //expect(res.body).to.contain('world');
                 console.dir('RESBODY');
                 console.dir(res.body);
+                assert.strictEqual(res.status,404);
             });
         });
     });
