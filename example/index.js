@@ -21,9 +21,9 @@ app.get('/', function (req, res) {
 
 // questo middleware non permetterà di raggiungere altre richieste scritte al di sotto di questa funzione
 // utilizzabile come 404
-//app.use(function(req, res, next) {
-//	res.status(404).send('404 Not Found');
-//});
+app.use(function(req, res, next) {
+	res.status(404).send('404 Not Found');
+});
 
 //app.listen(3000); // si mette in ascolto su http://127.0.0.1:3000/
 var port = process.env.PORT || 3000;
