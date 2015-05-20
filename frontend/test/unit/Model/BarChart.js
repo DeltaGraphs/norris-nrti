@@ -143,7 +143,7 @@ describe('BarChart', function(){
 
 	});*/
 
-	describe('updateParameters', function(){
+	describe('prove', function(){
 		var json = {
 			'title' : 'graficonuovo',
 			'height' : 400,
@@ -175,10 +175,10 @@ describe('BarChart', function(){
 		});	
 
 		it('primo titolo', function(){
-			expect(b1.getBarOrientation()).toEqual('graficonuovo');
+			expect(b1.getTitle()).toEqual('graficonuovo');
 		});
 		it('secondo titolo', function(){
-			expect(b2.getBarOrientation()).toEqual('grafico2');
+			expect(b2.getTitle()).toEqual('grafico2');
 		});
 		it('primo barre', function(){
 			expect(b1.getBarOrientation()).toEqual('ciao');

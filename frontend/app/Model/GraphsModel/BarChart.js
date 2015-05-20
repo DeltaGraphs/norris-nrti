@@ -59,7 +59,7 @@ angular.module('app')
         if (json.barOrientation !== undefined) {
             barJson.barOrientation = json.barOrientation;
         }
-        if (headers !== undefined) {
+        if (json.headers !== undefined) {
             barJson.headers = json.headers;
         }
         if (json.backgroundColor !== undefined) {
@@ -95,108 +95,108 @@ angular.module('app')
     
         this.prototype = Graph.instance(info);
         this.prototype.GUpdate = this.prototype.updateParameters;
-
-        this.prototype.updateParameters = function(info) {
-            if (info !== undefined) {
-                var json = split(info);
-                var gJson = json.graphJson;
-                var bJson = json.barJson;
-                if (Object.keys(gJson).length !== 0) {
-                    this.GUpdate.call(this, gJson);
-                } 
-                if (Object.keys(bJson).length !== 0) {
-                    if (bJson.axisX !== undefined) {
-                        axisX = new Axis(bJson.axisX);
-                    }
-                    if (bJson.axisY !== undefined) {
-                        axisY = new Axis(bJson.axisY);
-                    }
-                    if (bJson.barOrientation !== undefined) {
-                        barOrientation = bJson.barOrientation;
-                    }
-                    if (bJson.headers !== undefined) {
-                        headers = bJson.headers;
-                    }
-                    if (bJson.backgroundColor !== undefined) {
-                        background = bJson.backgroundColor;
-                    }
-                    if (bJson.sortable !== undefined) {
-                        sortable = bJson.sortable;
-                    }
-                    if (bJson.barsGrouping !== undefined) {
-                        barsGrouping = bJson.barsGrouping;
-                    }
-                    if (bJson.legendOnPoint !== undefined) {
-                        legendOnPoint = bJson.legendOnPoint;
-                    }
-                }
-                if (info.flows !== undefined) {
-                    for (var i=0; i<info.flows.length; i++) {
-                        var newflow = new BarChartFlow(info.flows[i]);
-                        this.addFlow(info.flows[i].ID, newflow);
-                    }
-                }
-            }
-            
-        };
-
-        this.prototype.addFlow = function(newId, newFlow) {
-            if (newFlow instanceof BarChartFlow) {
-                this.parent.addFlow.call(this, newId, newFlow);
-            }
-        };
-
-        this.prototype.initializeData = function(newData) {  //inizialization data of flows
-            if (newData !== undefined) {
-                var fList = this.parent.getFlowList();
-                for (var i=0; i<newData.length; i++) {
-                    for (var j=0; j<fList.length; j++) {
-                        if (fList[j].id === newData[i].ID) {
-                            fList[j].flow.initializeData(newData[i]);
-                        }
-                    }
-                }
-            }   
-        };
-
-        // update data
-        this.prototype.inPlaceUpdate = function(newData) {
-            if (newData !== undefined) {
-                var fList = this.parent.getFlowList();
-                for (var j=0; j<fList.length; j++) {
-                    if (fList[j].id === newData.ID) {
-                        fList[j].flow.inPlaceUpdate(newData);
-                    }
-                }
-            }   
-        };
-
-        // get method
-        this.prototype.getX = function() {
-            return axisX;
-        };
-        this.prototype.getY = function() {
-            return axisY;
-        };
-        this.prototype.getBarOrientation = function() {
-            return barOrientation;
-        };
-        this.prototype.getHeaders = function() {
-            return headers;
-        };
-        this.prototype.getBackground = function() {
-            return background;
-        };
-        this.prototype.getSortable = function() {
-            return sortable;
-        };
-        this.prototype.getBarsGrouping = function() {
-            return barsGrouping;
-        };
-        this.prototype.getLegendOnPoint = function() {
-            return legendOnPoint;
-        };
     }
+
+    BarChart.prototype.updateParameters = function(info) {
+        if (info !== undefined) {
+            var json = split(info);
+            var gJson = json.graphJson;
+            var bJson = json.barJson;
+            if (Object.keys(gJson).length !== 0) {
+                this.GUpdate.call(this, gJson);
+            } 
+            if (Object.keys(bJson).length !== 0) {
+                if (bJson.axisX !== undefined) {
+                    axisX = new Axis(bJson.axisX);
+                }
+                if (bJson.axisY !== undefined) {
+                    axisY = new Axis(bJson.axisY);
+                }
+                if (bJson.barOrientation !== undefined) {
+                    barOrientation = bJson.barOrientation;
+                }
+                if (bJson.headers !== undefined) {
+                    headers = bJson.headers;
+                }
+                if (bJson.backgroundColor !== undefined) {
+                    background = bJson.backgroundColor;
+                }
+                if (bJson.sortable !== undefined) {
+                    sortable = bJson.sortable;
+                }
+                if (bJson.barsGrouping !== undefined) {
+                    barsGrouping = bJson.barsGrouping;
+                }
+                if (bJson.legendOnPoint !== undefined) {
+                    legendOnPoint = bJson.legendOnPoint;
+                }
+            }
+            if (info.flows !== undefined) {
+                for (var i=0; i<info.flows.length; i++) {
+                    var newflow = new BarChartFlow(info.flows[i]);
+                    this.addFlow(info.flows[i].ID, newflow);
+                }
+            }
+        }
+        
+    };
+
+    BarChart.prototype.addFlow = function(newId, newFlow) {
+        if (newFlow instanceof BarChartFlow) {
+            this.parent.addFlow.call(this, newId, newFlow);
+        }
+    };
+
+    BarChart.prototype.initializeData = function(newData) {  //inizialization data of flows
+        if (newData !== undefined) {
+            var fList = this.parent.getFlowList();
+            for (var i=0; i<newData.length; i++) {
+                for (var j=0; j<fList.length; j++) {
+                    if (fList[j].id === newData[i].ID) {
+                        fList[j].flow.initializeData(newData[i]);
+                    }
+                }
+            }
+        }   
+    };
+
+    // update data
+    BarChart.prototype.inPlaceUpdate = function(newData) {
+        if (newData !== undefined) {
+            var fList = this.parent.getFlowList();
+            for (var j=0; j<fList.length; j++) {
+                if (fList[j].id === newData.ID) {
+                    fList[j].flow.inPlaceUpdate(newData);
+                }
+            }
+        }   
+    };
+
+    // get method
+    BarChart.prototype.getX = function() {
+        return axisX;
+    };
+    BarChart.prototype.getY = function() {
+        return axisY;
+    };
+    BarChart.prototype.getBarOrientation = function() {
+        return barOrientation;
+    };
+    BarChart.prototype.getHeaders = function() {
+        return headers;
+    };
+    BarChart.prototype.getBackground = function() {
+        return background;
+    };
+    BarChart.prototype.getSortable = function() {
+        return sortable;
+    };
+    BarChart.prototype.getBarsGrouping = function() {
+        return barsGrouping;
+    };
+    BarChart.prototype.getLegendOnPoint = function() {
+        return legendOnPoint;
+    };
 
     BarChart.instance = function(info) {
         return new BarChart(info);
