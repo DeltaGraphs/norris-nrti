@@ -35,25 +35,23 @@ angular.module('services')
 
     function Axis(info){
 
-        if (info !== undefined) {
-            if (info.name !== undefined) {
-                name = info.name;
-            }
-            if (info.color !== undefined) {
-                color = info.color;
-            }
-            if (info.minIndex !== undefined) {
-                minValue = info.minIndex;
-            }
-            if (info.maxIndex !== undefined) {
-                maxValue = info.maxIndex;
-            }
-            if (info.ticks !== undefined) {
-                ticks = info.ticks;
-            }
-            if (info.scale !== undefined) {
-                scale = info.scale;
-            }
+        if (info.name !== undefined) {
+            name = info.name;
+        }
+        if (info.color !== undefined) {
+            color = info.color;
+        }
+        if (info.minIndex !== undefined) {
+            minValue = info.minIndex;
+        }
+        if (info.maxIndex !== undefined) {
+            maxValue = info.maxIndex;
+        }
+        if (info.ticks !== undefined) {
+            ticks = info.ticks;
+        }
+        if (info.scale !== undefined) {
+            scale = info.scale;
         }
     }
 

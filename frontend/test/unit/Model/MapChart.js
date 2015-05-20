@@ -75,8 +75,8 @@ describe('MapChart', function(){
 		it('graph created with the correct mapWidth', function(){
 			expect(MapChart.getMapWidth()).toEqual(0);
 		});
-		it('graph created with the correct mapHeigth', function(){
-			expect(MapChart.getMapHeigth()).toEqual(0);
+		it('graph created with the correct mapHeight', function(){
+			expect(MapChart.getMapHeight()).toEqual(0);
 		});
 
 	});
@@ -180,8 +180,8 @@ describe('MapChart', function(){
         it('graph updated with the correct mapWidth', function(){
 			expect(MapChart.getMapWidth()).toEqual(0);
 		});
-		it('graph updated with the correct mapHeigth', function(){
-			expect(MapChart.getMapHeigth()).toEqual(0);
+		it('graph updated with the correct mapHeight', function(){
+			expect(MapChart.getMapHeight()).toEqual(0);
 		});
 
 		

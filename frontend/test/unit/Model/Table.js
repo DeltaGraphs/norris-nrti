@@ -197,7 +197,7 @@ describe('Table', function(){
 			expect(Table.getHeaders().length).toEqual(2);
 		});
 		it('graph updated with the correct item displayed per page', function(){
-			expect(Table.getItemDisplayedPerPage()).toEqual(5);
+			expect(Table.getItemDisplayedPerPage()).toEqual(20);
 		});
 		it('graph updated with the correct add data position', function(){
 			expect(Table.getAddDataPosition()).toEqual('up');

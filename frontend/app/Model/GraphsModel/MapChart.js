@@ -197,9 +197,6 @@ angular.module('services')
     MapChart.prototype.getLongitude = function() {
         return longitude;
     };
-    MapChart.prototype.getScale = function() {
-        return scale;
-    };
     MapChart.prototype.getMapType = function() {
         return mapType;
     };
