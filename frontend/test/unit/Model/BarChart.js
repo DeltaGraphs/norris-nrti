@@ -151,22 +151,22 @@ describe('BarChart', function(){
 			'enabledLegend' : false,
 			'horizontalGrid' : false,
 			'verticalGrid' : false,
-			'axisX' : {},
-			'axisY' : {},
 			'barOrientation' : 'ciao',
-			'headers' : ['colonna1'],
-			'backgroundColor' : '#F0F',
-			'sortable' : false,
-			'barsGrouping' : 'stacked',
-			'legendOnPoint' : true,
-			'flows' : [{},{},{}]
+		};
+		var json1 = {
+			'title' : 'grafico2',
+			'height' : 400,
+			'width' : 400,
+			'enabledLegend' : false,
+			'horizontalGrid' : false,
+			'verticalGrid' : false,
+			'barOrientation' : 'ciaociao',
 		};
 
 		var b1, b2;
 		beforeEach(function(){
-			b1 = new BarChart();
-			b2 = new BarChart();
-			b2.updateParameters(json);
+			b1 = BarChart.instance(json);
+			b2 = BarChart.instance(json1);
 		});
 
 		afterEach(function(){
@@ -174,11 +174,17 @@ describe('BarChart', function(){
 			b2 = null;
 		});	
 
-		it('primo', function(){
-			expect(b1.getBarOrientation()).toEqual('vertical');
+		it('primo titolo', function(){
+			expect(b1.getBarOrientation()).toEqual('graficonuovo');
 		});
-		it('secondo', function(){
-			expect(b2.getBarOrientation()).toEqual('ciao');
+		it('secondo titolo', function(){
+			expect(b2.getBarOrientation()).toEqual('grafico2');
+		});
+		it('primo barre', function(){
+			expect(b1.getBarOrientation()).toEqual('ciao');
+		});
+		it('secondo barre', function(){
+			expect(b2.getBarOrientation()).toEqual('ciaociao');
 		});
 
 

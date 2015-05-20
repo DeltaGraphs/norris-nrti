@@ -31,17 +31,17 @@
 angular.module('app')
 .factory('Graph', ['Flow', 'Legend', function(Flow, Legend){
 
-	var flowList = [];
-	var title = null;
-	var height = null;
-	var width = null;
-	var legend = null;
-	var enabledLegend = false;
-	var horizontalGrid = true;
-	var verticalGrid = true;
-	var url = null;
-
 	function Graph(info){
+		var flowList = [];
+		var title = null;
+		var height = null;
+		var width = null;
+		var legend = null;
+		var enabledLegend = false;
+		var horizontalGrid = true;
+		var verticalGrid = true;
+		var url = null;
+
 		if (info !== undefined) {
 			if (info.title !== undefined) {
 				title = info.title;
@@ -50,84 +50,86 @@ angular.module('app')
 				url = info.url;
 			}
 		}
-	}
 
-	Graph.prototype = {
+		this.prototype = {
 
-		constructor : Graph,
-
-		updateParameters : function(info) { //abstract
-			if (info !== undefined) {
-				if (info.title !== undefined) {
-					title = info.title;
-				}
-				if (info.height !== undefined) {
-					height = info.height;
-				}
-				if (info.width !== undefined) {
-					width = info.width;
-				}
-				if (info.enabledLegend !== undefined) {
-					enabledLegend = info.enabledLegend;
-					if (enabledLegend && info.legend !== undefined) {
-						legend = new Legend(info.legend);
+			updateParameters : function(info) { //abstract
+				if (info !== undefined) {
+					if (info.title !== undefined) {
+						title = info.title;
+					}
+					if (info.height !== undefined) {
+						height = info.height;
+					}
+					if (info.width !== undefined) {
+						width = info.width;
+					}
+					if (info.enabledLegend !== undefined) {
+						enabledLegend = info.enabledLegend;
+						if (enabledLegend && info.legend !== undefined) {
+							legend = new Legend(info.legend);
+						}
+					}
+					if (info.horizontalGrid !== undefined) {
+						horizontalGrid = info.horizontalGrid;
+					}
+					if (info.verticalGrid !== undefined) {
+						verticalGrid = info.verticalGrid;
 					}
 				}
-				if (info.horizontalGrid !== undefined) {
-					horizontalGrid = info.horizontalGrid;
-				}
-				if (info.verticalGrid !== undefined) {
-					verticalGrid = info.verticalGrid;
-				}
-			}
-		},
-		addFlow : function(newId, newFlow) { //abstract
+			},
+			addFlow : function(newId, newFlow) { //abstract
 
-			var filteredFlows = flowList.filter(function(newId) {return newId === flowList.id;});
-		    if(filteredFlows.length === 0) {
-		        flowList.push({ id: newId, flow: newFlow});
-    		}
-    		// error
-		},
-		deleteFlow : function(flowID) {
-			var index;
-            for (var i = 0; i<flowList.length; i++){
-                if (flowList.id === flowID){
-                    index = i;
-                }
-            }
-            flowList.splice(index,1);
-		},
-		
-		getTitle : function() {
-			return title;
-		},
-		getHeight : function() {
-			return height;
-		},
-		getWidth : function() {
-			return width;
-		},
-		getLegend : function() {
-			if (enabledLegend) {
-				return legend;
-			} else {
-				return null;
+				var filteredFlows = flowList.filter(function(newId) {return newId === flowList.id;});
+			    if(filteredFlows.length === 0) {
+			        flowList.push({ id: newId, flow: newFlow});
+	    		}
+	    		// error
+			},
+			deleteFlow : function(flowID) {
+				var index;
+	            for (var i = 0; i<flowList.length; i++){
+	                if (flowList.id === flowID){
+	                    index = i;
+	                }
+	            }
+	            flowList.splice(index,1);
+			},
+			
+			getTitle : function() {
+				return title;
+			},
+			getHeight : function() {
+				return height;
+			},
+			getWidth : function() {
+				return width;
+			},
+			getLegend : function() {
+				if (enabledLegend) {
+					return legend;
+				} else {
+					return null;
+				}
+			},
+			getHGrid : function() {
+				return horizontalGrid;
+			},
+			getVGrid : function() {
+				return verticalGrid;
+			},
+			getUrl : function() {
+				return url;
+			},
+			getFlowList : function() {
+				return flowList;
 			}
-		},
-		getHGrid : function() {
-			return horizontalGrid;
-		},
-		getVGrid : function() {
-			return verticalGrid;
-		},
-		getUrl : function() {
-			return url;
-		},
-		getFlowList : function() {
-			return flowList;
-		}
+		};
+	}
+
+	Graph.instance = function(info) {
+		return new Graph(info);
 	};
-	
+
 	return( Graph );
 }]);
