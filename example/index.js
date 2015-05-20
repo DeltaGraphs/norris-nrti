@@ -28,4 +28,6 @@ app.use(function(req, res, next) {
 });
 
 //app.listen(3000); // si mette in ascolto su http://127.0.0.1:3000/
-server.listen(3000);
+var port = process.env.PORT || 3000;
+
+server.listen(port);
