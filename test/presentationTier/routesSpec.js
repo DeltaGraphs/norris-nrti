@@ -43,7 +43,7 @@ describe('Routes', function() {
     });
 
     describe('#addRoutingPath', function() {
-        var routes2 = new Routes(app, '/namespace'); 
+        var routes2 = new Routes(app, '/namespace');
         it('returns false if passed an invalid namespace', function() {
             assert.strictEqual(routes2.addRoutingPath(123, 'page'), false);
         });
@@ -56,11 +56,11 @@ describe('Routes', function() {
         it('behaves correctly if passed valid parameters', function() {
             var app2 = new Express();
             var routes3 = new Routes(app2, '/norris');
-            routes3.addRoutingPath('/page', 'page');
+            routes3.addRoutingPath('/norris', 'page');
             var server = http.createServer(app2);
             server.listen(3000);
             console.dir('RESBODY ext');
-            request.post('localhost:3000/page').end(function(res){
+            request.post('localhost:3000/norris').end(function(res){
                 assert.strictEqual(res.status,200);
                 //expect(res).to.exist;
                 //expect(res.status).to.equal(200);
