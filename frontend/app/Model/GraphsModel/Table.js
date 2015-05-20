@@ -25,11 +25,9 @@
 angular.module('app')
 .factory('Table', ['Graph', 'Cell', 'TableFlow', function(Graph, Cell, TableFlow){
 	
-    var rows = 0;
-	var colunms = 0;
 	var headers = [];
-	var itemDisplayedPerPage = 20;
-	var addDataPosition = 'up';
+	var maxItemsPage = 20;
+	var addRowOn = 'up';
 	var sortable = true;
     var sort = null;
     var appearance = null;
@@ -65,12 +63,6 @@ angular.module('app')
 
 
 		var tableJson = {};
-		if (json.rows !== undefined) {
-			tableJson.rows = json.rows;
-		}
-		if (json.colunms !== undefined) {
-			tableJson.colunms = json.colunms;
-		}
 		if (json.headers !== undefined) {
 			tableJson.headers = json.headers;
 		}
@@ -113,22 +105,16 @@ angular.module('app')
                 this.parent.updateParameters.call(this, gJson);
             } 
             if (Object.keys(tJson).length !== 0) {
-                if (tJson.rows) {
-                    rows = tJson.rows;
-                }
-                if (tJson.colunms !== undefined) {
-                    colunms = tJson.colunms;
-                }
                 if (tJson.headers !== undefined) {
                     for (var z=0; z<tJson.headers.length; z++) { 
                         headers.push(tJson.headers[z]);
                     }
                 }
                 if (tJson.maxItemsPage !== undefined) {
-                    itemDisplayedPerPage = tJson.maxItemsPage;
+                    maxItemsPage = tJson.maxItemsPage;
                 }
                 if (tJson.addRowOn !== undefined) {
-                    addDataPosition = tJson.addRowOn;
+                    addRowOn = tJson.addRowOn;
                 }
                 if (tJson.sortable !== undefined) {
                     sortable = tJson.sortable;
@@ -189,20 +175,14 @@ angular.module('app')
         }
     };
 
-    Table.prototype.getRows = function() {
-        return rows;
-    };
-    Table.prototype.getColunms = function() {
-        return colunms;
-    }; 
     Table.prototype.getHeaders = function() {
     return headers;
     };
-    Table.prototype.getItemDisplayedPerPage = function() {
-        return itemDisplayedPerPage;
+    Table.prototype.getMaxItemsPage = function() {
+        return maxItemsPage;
     };
-    Table.prototype.getAddDataPosition = function() {
-        return addDataPosition;
+    Table.prototype.getAddRowOn = function() {
+        return addRowOn;
     };
     Table.prototype.getSortable = function() {
         return sortable;

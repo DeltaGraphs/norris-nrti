@@ -29,7 +29,6 @@ describe('LineChart', function(){
 	var LineChart;
 	var Graph;
 	var Axis;
-	var ViewFinder;
 	var LineChartFlow;
 
 	beforeEach(angular.mock.module('app'));
@@ -38,7 +37,6 @@ describe('LineChart', function(){
 		LineChart = _LineChart_;
 		Graph = $injector.get('Graph');
 		Axis = $injector.get('Axis');
-		ViewFinder = $injector.get('Legend');
 		LineChartFlow = $injector.get('LineChartFlow');
 	}));
 

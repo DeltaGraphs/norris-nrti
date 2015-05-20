@@ -73,6 +73,9 @@ describe('BarChart', function(){
 		it('graph created with the correct barOrientation', function(){
 			expect(BarChart.getBarOrientation()).toEqual('vertical');
 		});
+		it('graph created with the correct headers', function(){
+			expect(BarChart.getHeaders()).toEqual([]);
+		});
 		it('graph created with the correct background', function(){
 			expect(BarChart.getBackground()).toEqual('#FFF');
 		});
@@ -151,6 +154,7 @@ describe('BarChart', function(){
 			'axisX' : {},
 			'axisY' : {},
 			'barOrientation' : 'vertical',
+			'headers' : ['colonna1'],
 			'backgroundColor' : '#F0F',
 			'sortable' : false,
 			'barsGrouping' : 'stacked',
@@ -178,6 +182,9 @@ describe('BarChart', function(){
 		});
 		it('graph updated with the correct barOrientation', function(){
 			expect(BarChart.getBarOrientation()).toEqual('vertical');
+		});
+		it('graph updated with the correct headers', function(){
+			expect(BarChart.getHeaders().length).toEqual(1);
 		});
 		it('graph updated with the correct background', function(){
 			expect(BarChart.getBackground()).toEqual('#F0F');

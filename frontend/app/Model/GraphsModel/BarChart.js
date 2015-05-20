@@ -28,6 +28,7 @@ angular.module('services')
     var axisX = null;
     var axisY = null;
     var barOrientation = 'vertical';
+    var headers = [];
     var background = '#FFF';
     var sortable = true;
     var barsGrouping = 'grouped';
@@ -70,6 +71,9 @@ angular.module('services')
         }
         if (json.barOrientation !== undefined) {
             barJson.barOrientation = json.barOrientation;
+        }
+        if (headers !== undefined) {
+            barJson.headers = json.headers;
         }
         if (json.backgroundColor !== undefined) {
             barJson.backgroundColor = json.backgroundColor;
@@ -114,6 +118,9 @@ angular.module('services')
                 }
                 if (bJson.barOrientation !== undefined) {
                     barOrientation = bJson.barOrientation;
+                }
+                if (bJson.headers !== undefined) {
+                    headers = bJson.headers;
                 }
                 if (bJson.backgroundColor !== undefined) {
                     background = bJson.backgroundColor;
@@ -178,6 +185,9 @@ angular.module('services')
     };
     BarChart.prototype.getBarOrientation = function() {
         return barOrientation;
+    };
+    BarChart.prototype.getHeaders = function() {
+        return headers;
     };
     BarChart.prototype.getBackground = function() {
         return background;

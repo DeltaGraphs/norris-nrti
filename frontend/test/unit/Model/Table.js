@@ -70,10 +70,10 @@ describe('Table', function(){
 			expect(Table.getHeaders()).toEqual([]);
 		});
 		it('graph created with the correct item displayed per page', function(){
-			expect(Table.getItemDisplayedPerPage()).toEqual(20);
+			expect(Table.getMaxItemsPage()).toEqual(20);
 		});
 		it('graph created with the correct add data position', function(){
-			expect(Table.getAddDataPosition()).toEqual('up');
+			expect(Table.getAddRowOn()).toEqual('up');
 		});
 		it('graph created with the correct sortable', function(){
 			expect(Table.getSortable()).toEqual(true);
@@ -197,10 +197,10 @@ describe('Table', function(){
 			expect(Table.getHeaders().length).toEqual(2);
 		});
 		it('graph updated with the correct item displayed per page', function(){
-			expect(Table.getItemDisplayedPerPage()).toEqual(20);
+			expect(Table.getMaxItemsPage()).toEqual(20);
 		});
 		it('graph updated with the correct add data position', function(){
-			expect(Table.getAddDataPosition()).toEqual('up');
+			expect(Table.getAddRowOn()).toEqual('up');
 		});
 		it('graph updated with the correct sortable', function(){
 			expect(Table.getSortable()).toEqual(false);
