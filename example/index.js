@@ -38,25 +38,17 @@ app.configure(function() {
 var Norris = require('../norris-nrti.js');
 var norris = new Norris(app,io,'/norris');
 
-var page1=norris.createPage({
-      ID:'page1',
-      name: 'Pagina 1',
-      description: 'Questa è una bella pagina',
-      graphsPerRow: 2,
-      graphsPerCol: 10
-  });
-  console.log('Pagina inserita: '+page1);
-
+var page1;
 setInterval(function () {
-  var page2=norris.createPage({
-      ID:'page2',
-      name: 'Pagina 2',
-      description: 'Questa è una bella pagina',
-      graphsPerRow: 2,
-      graphsPerCol: 10
-  });
-  console.log('Pagina inserita: '+page2);
-}, 10000);
+    page1=norris.createPage({
+        ID:'page1',
+        name: 'Pagina 1',
+        description: 'Questa è una bella pagina',
+        graphsPerRow: 2,
+        graphsPerCol: 10
+    });
+    console.log('Pagina inserita: '+page1);
+}, 5000);
 
 
 
