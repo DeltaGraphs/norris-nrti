@@ -39,7 +39,7 @@ var Norris = require('../norris-nrti.js');
 var norris = new Norris(app,io,'/norris');
 
 var page1;
-setInterval(function () {
+//setInterval(function () {
     page1=norris.createPage({
         ID:'page1',
         name: 'Pagina 1',
@@ -48,8 +48,27 @@ setInterval(function () {
         graphsPerCol: 10
     });
     console.log('Pagina inserita: '+page1);
-}, 5000);
+//}, 5000);
 
+console.log('secondo tentativo di aggiunta page1');
+page1=norris.createPage({
+    ID:'page1',
+    name: 'Pagina 1',
+    description: 'Questa è una bella pagina',
+    graphsPerRow: 2,
+    graphsPerCol: 10
+});
+console.log('Pagina inserita: '+page1);
+
+console.log('terzo tentativo di aggiunta page1');
+page1=norris.createPage({
+    ID:'page1',
+    name: 'Pagina 1',
+    description: 'Questa è una bella pagina',
+    graphsPerRow: 2,
+    graphsPerCol: 10
+});
+console.log('Pagina inserita: '+page1);
 
 
 app.get('/', function (req, res) {
