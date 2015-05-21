@@ -48,7 +48,6 @@ describe('MapChartFlowModel', function() {
         assert.strictEqual(flow1._latitudeKey, null);
         assert.strictEqual(flow1._longitudeFormat, 'coordinates');
         assert.strictEqual(flow1._latitudeFormat, 'coordinates');
-        assert.strictEqual(flow1._flowColor, null);
         assert.strictEqual(flow1._marker.type, 'shape');
         assert.strictEqual(flow1._marker.shape, 'circle');
         assert.strictEqual(flow1._trace.type, 'none');
@@ -64,7 +63,6 @@ describe('MapChartFlowModel', function() {
             latitudeKey: {},
             longitudeFormat: 'ttt',
             latitudeFormat: 2,
-            flowColor: 2,
             marker: 2,
             trace: 3,
             maxItems: -2,
@@ -75,7 +73,6 @@ describe('MapChartFlowModel', function() {
         assert.strictEqual(flow1._latitudeKey, null);
         assert.strictEqual(flow1._longitudeFormat, 'coordinates');
         assert.strictEqual(flow1._latitudeFormat, 'coordinates');
-        assert.strictEqual(flow1._flowColor, null);
         assert.strictEqual(flow1._marker.type, 'shape');
         assert.strictEqual(flow1._marker.shape, 'circle');
         assert.strictEqual(flow1._trace.type, 'none');
@@ -94,7 +91,9 @@ describe('MapChartFlowModel', function() {
             coordinates:[
                 [1,2],
                 [3,4],
-            ]
+            ],
+            strokeColor: '#FFF',
+            fillColor: '#FFF'
         };
         var flow1=new MapChartFlowModel({
             ID: 'flow1',
@@ -102,7 +101,6 @@ describe('MapChartFlowModel', function() {
             latitudeKey: 'y',
             longitudeFormat: 'coordinates',
             latitudeFormat: 'geographic',
-            flowColor: '#123456',
             marker: marker,
             trace: trace,
             maxItems: 2,
@@ -113,7 +111,6 @@ describe('MapChartFlowModel', function() {
         assert.strictEqual(flow1._latitudeKey, 'y');
         assert.strictEqual(flow1._longitudeFormat, 'coordinates');
         assert.strictEqual(flow1._latitudeFormat, 'geographic');
-        assert.strictEqual(flow1._flowColor, '#123456');
         assert.deepEqual(flow1._marker, marker);
         assert.deepEqual(flow1._trace, trace);
         assert.strictEqual(flow1._maxItems, 2);
@@ -190,7 +187,9 @@ describe('MapChartFlowModel', function() {
                 coordinates:[
                     [1,2],
                     [3,4],
-                ]
+                ],
+                strokeColor: '#FFF',
+                fillColor: '#FFF'
             };
             var prop={
                 ID: 'flow1',
@@ -198,7 +197,6 @@ describe('MapChartFlowModel', function() {
                 latitudeKey: 'y',
                 longitudeFormat: 'coordinates',
                 latitudeFormat: 'geographic',
-                flowColor: '#123456',
                 marker: marker,
                 trace: trace,
                 maxItems: 2,
@@ -211,7 +209,6 @@ describe('MapChartFlowModel', function() {
             assert.strictEqual(result.latitudeKey, prop.latitudeKey);
             assert.strictEqual(result.longitudeFormat, prop.longitudeFormat);
             assert.strictEqual(result.latitudeFormat, prop.latitudeFormat);
-            assert.strictEqual(result.flowColor, prop.flowColor);
             assert.deepEqual(result.marker, prop.marker);
             assert.deepEqual(result.trace, prop.trace);
             assert.strictEqual(result.maxItems, prop.maxItems);

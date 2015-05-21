@@ -168,11 +168,12 @@ describe('FunctionHelper', function() {
             assert.strictEqual(FH.isValidMapMarker({type: 'icon', icon: 2}), false);
         });
         it('returns true for valid text', function() {
-            assert.strictEqual(FH.isValidMapMarker({type: 'text', text: 'flow1'}), true);
+            assert.strictEqual(FH.isValidMapMarker({type: 'text', text: 'flow1', color: '#000'}), true);
         });
         it('returns false for invalid text', function() {
             assert.strictEqual(FH.isValidMapMarker({type: 'text'}), false);
             assert.strictEqual(FH.isValidMapMarker({type: 'text', text: 2}), false);
+            assert.strictEqual(FH.isValidMapMarker({type: 'text', text: 'flow1', color: 'a'}), true);
         });
         it('returns false for 2', function() {
             assert.strictEqual(FH.isValidMapMarker('2'), false);
@@ -209,7 +210,9 @@ describe('FunctionHelper', function() {
                     [12.43, -2],
                     [1, 0],
                     [1, 2]
-                ]
+                ],
+                strokeColor: '#FFF',
+                fillColor: '#000'
             }), true);
         });
         it('returns true for valid poly', function() {
@@ -219,7 +222,9 @@ describe('FunctionHelper', function() {
                     [12.43, -2],
                     [1, 0],
                     [1, 2]
-                ]
+                ],
+                strokeColor: '#FFF',
+                fillColor: '#000'
             }), true);
         });
         it('returns false for invalid line', function() {
@@ -229,6 +234,14 @@ describe('FunctionHelper', function() {
                     [12.43, -2]
                 ]
             }), false);
+            assert.strictEqual(FH.isValidTrace({
+                type: 'line',
+                coordinates: [
+                    [12.43, -2]
+                ],
+                strokeColor: '#FFF',
+                fillColor: '#000'
+            }), false);
         });
         it('returns false for invalid line', function() {
             assert.strictEqual(FH.isValidTrace({
@@ -236,7 +249,9 @@ describe('FunctionHelper', function() {
                 coordinates: [
                     [12.43, -2],
                     [1, '2'],
-                ]
+                ],
+                strokeColor: '#FFz',
+                fillColor: '#000'
             }), false);
         });
         it('returns false for invalid line', function() {
