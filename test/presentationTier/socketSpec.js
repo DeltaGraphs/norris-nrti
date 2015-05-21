@@ -39,10 +39,8 @@ describe('Socket', function() {
         var socket1 = new Socket(server, '/namespace', obj1, 'event');
         var obj1 = new RandomObj();
         assert.strictEqual(socket1._namespace, server.of('/namespace'));
-        assert.strictEqual(socket1._attachedObj, null);
-        assert.strictEqual(socket1._onConnectionEvent, '');
         assert.strictEqual(socket1._attachedObj, obj1);
-        assert.strictEqual(socket1._onConnectionEvent, 'onEvent');
+        assert.strictEqual(socket1._onConnectionEvent, 'event');
     });
 
     describe('#sendMessage', function() {
