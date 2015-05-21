@@ -50,7 +50,7 @@ var page1;
     console.log('Pagina inserita: '+page1);
 //}, 5000);
 
-setTimeout(function () {
+//setTimeout(function () {
   console.log('secondo tentativo di aggiunta page1');
   page1=norris.createPage({
       ID:'page1',
@@ -60,9 +60,9 @@ setTimeout(function () {
       graphsPerCol: 10
   });
   console.log('Pagina inserita: '+page1);
-}, 10000);
+//}, 10000);
 
-setTimeout(function () {
+//setTimeout(function () {
   console.log('terzo tentativo di aggiunta page1');
   page1=norris.createPage({
       ID:'page1',
@@ -72,9 +72,9 @@ setTimeout(function () {
       graphsPerCol: 10
   });
   console.log('Pagina inserita: '+page1);
-}, 20000);
+//}, 20000);
 
-setTimeout(function () {
+//setTimeout(function () {
   console.log('terzo tentativo di aggiunta page1');
   page1=norris.createPage({
       ID:'page2',
@@ -84,9 +84,9 @@ setTimeout(function () {
       graphsPerCol: 3
   });
   console.log('Pagina inserita: '+page1);
-}, 30000);
+//}, 30000);
 
-setTimeout(function () {
+//setTimeout(function () {
   console.log('terzo tentativo di aggiunta page1');
   page1=norris.createPage({
       ID:'page3',
@@ -96,7 +96,7 @@ setTimeout(function () {
       graphsPerCol: 7
   });
   console.log('Pagina inserita: '+page1);
-}, 40000);
+//}, 40000);
 
 app.get('/', function (req, res) {
 	var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
