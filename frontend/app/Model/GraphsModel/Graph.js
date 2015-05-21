@@ -53,8 +53,6 @@ angular.module('app')
 
 	Graph.prototype = {
 
-		//constructor : newInstance,
-
 		updateParameters : function(info) { //abstract
 			if (info !== undefined) {
 				if (info.title !== undefined) {
