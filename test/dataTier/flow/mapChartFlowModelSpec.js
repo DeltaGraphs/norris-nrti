@@ -215,4 +215,22 @@ describe('MapChartFlowModel', function() {
             assert.strictEqual(result.maxItemsSaved, prop.maxItemsSaved);
         });
     });
+    describe('#getRecordByID', function() {
+        it('returns 135 if ID is not valid', function() {
+            var flow1=new MapChartFlowModel({ID: 'flow1'});
+            flow1.addRecord({temperature: 2});
+            assert.strictEqual(flow1.getRecordByID(2), 135);
+            assert.strictEqual(flow1.getRecordByID('flow2asd'), 135);
+            assert.strictEqual(flow1.getRecordByID('flow1asd'), 135);
+        });
+        it('returns the record if ID is valid', function() {
+            var flow1=new MapChartFlowModel({ID: 'flow1'});
+            var record={temperature: 2};
+            var record2={temperature: 2};
+            var ID=flow1.addRecord(record);
+            var ID2=flow1.addRecord(record);
+            assert.deepEqual(flow1.getRecordByID(ID), record);
+            assert.deepEqual(flow1.getRecordByID(ID2), record2);
+        });
+    });
 });

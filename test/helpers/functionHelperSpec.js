@@ -173,7 +173,7 @@ describe('FunctionHelper', function() {
         it('returns false for invalid text', function() {
             assert.strictEqual(FH.isValidMapMarker({type: 'text'}), false);
             assert.strictEqual(FH.isValidMapMarker({type: 'text', text: 2}), false);
-            assert.strictEqual(FH.isValidMapMarker({type: 'text', text: 'flow1', color: 'a'}), true);
+            assert.strictEqual(FH.isValidMapMarker({type: 'text', text: 'flow1', color: 'a'}), false);
         });
         it('returns false for 2', function() {
             assert.strictEqual(FH.isValidMapMarker('2'), false);
