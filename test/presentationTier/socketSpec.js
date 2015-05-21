@@ -29,12 +29,20 @@ describe('Socket', function() {
         assert.strictEqual((new Socket('wrong')).hasOwnProperty('_title'), false);
     });
 
+    function RandomObj() {
+        this.prop1 = 'prop1';
+        this.prop2 = 'prop2';
+    }
+
     var server = require('socket.io')();
     it('set param values to properties', function() {
         var socket1 = new Socket(server, '/namespace');
-        assert.deepEqual(socket1._namespace, server.of('/namespace'));
+        var obj1 = new RandomObj();
+        assert.deepEqual(socket1._namespace, server.of('/namespace', obj1, 'event'));
         assert.strictEqual(socket1._attachedObj, null);
         assert.strictEqual(socket1._onConnectionEvent, '');
+        assert.strictEqual(socket1._attachedObj, obj1);
+        assert.strictEqual(socket1._onConnectionEvent, 'onEvent');
     });
 
     describe('#sendMessage', function() {
@@ -67,11 +75,6 @@ describe('Socket', function() {
             });
         });
     });
-
-    function RandomObj() {
-        this.prop1 = 'prop1';
-        this.prop2 = 'prop2';
-    }
     describe('#attachObject', function() {
         it('does nothing if there are no params', function() {
             var socket1 = new Socket(server, '/namespace');
@@ -81,9 +84,9 @@ describe('Socket', function() {
         });
         it('attach the object in params', function() {
             var socket1 = new Socket(server, '/namespace');
-            var obj1 = new RandomObj();
-            socket1.attachObject(obj1, 'onEvent');
-            assert.strictEqual(socket1._attachedObj, obj1);
+            var obj2 = new RandomObj();
+            socket1.attachObject(obj2, 'onEvent');
+            assert.strictEqual(socket1._attachedObj, obj2);
             assert.strictEqual(socket1._onConnectionEvent, 'onEvent');
         });
     });
