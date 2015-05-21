@@ -36,9 +36,10 @@ describe('Socket', function() {
 
     var server = require('socket.io')();
     it('set param values to properties', function() {
+        var server1 = require('socket.io')();
         var socket1 = new Socket(server, '/namespace');
         var obj1 = new RandomObj();
-        assert.deepEqual(socket1._namespace, server, obj1, 'event');
+        assert.deepEqual(socket1._namespace, server1, obj1, 'event');
         assert.strictEqual(socket1._attachedObj, null);
         assert.strictEqual(socket1._onConnectionEvent, '');
         assert.strictEqual(socket1._attachedObj, obj1);
