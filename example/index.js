@@ -72,7 +72,31 @@ setTimeout(function () {
       graphsPerCol: 10
   });
   console.log('Pagina inserita: '+page1);
-}, 10000);
+}, 20000);
+
+setTimeout(function () {
+  console.log('terzo tentativo di aggiunta page1');
+  page1=norris.createPage({
+      ID:'page2',
+      name: 'Pagina 2',
+      description: 'Questa è 2',
+      graphsPerRow: 3,
+      graphsPerCol: 3
+  });
+  console.log('Pagina inserita: '+page1);
+}, 30000);
+
+setTimeout(function () {
+  console.log('terzo tentativo di aggiunta page1');
+  page1=norris.createPage({
+      ID:'page3',
+      name: 'Pagina 3',
+      description: 'Questa 3',
+      graphsPerRow: 7,
+      graphsPerCol: 7
+  });
+  console.log('Pagina inserita: '+page1);
+}, 40000);
 
 app.get('/', function (req, res) {
 	var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
