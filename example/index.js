@@ -28,7 +28,6 @@ var allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Headers', 'Content-Type');
     next();
 };
-
 app.configure(function() {
     app.use(allowCrossDomain);
     //some other code
@@ -38,6 +37,13 @@ app.configure(function() {
 // Includo e creo l'ustanza di Norris
 var Norris = require('../norris-nrti.js');
 var norris = new Norris(app,io,'/norris');
+norris.createPage({
+    ID:'page1',
+    name: 'Pagina 1',
+    description: 'Questa è una bella pagina',
+    graphsPerRow: 2,
+    graphsPerCol: 10
+});
 
 app.get('/', function (req, res) {
 	var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
