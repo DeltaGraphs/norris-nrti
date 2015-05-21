@@ -72,7 +72,7 @@ angular.module('app')
 				}
 				if (info.enabledLegend !== undefined) {
 					this.enabledLegend = info.enabledLegend;
-					if (enabledLegend && info.legend !== undefined) {
+					if (this.enabledLegend && info.legend !== undefined) {
 						this.legend = new Legend(info.legend);
 					}
 				}
@@ -86,7 +86,7 @@ angular.module('app')
 		},
 		addFlow : function(newId, newFlow) { //abstract
 
-			var filteredFlows = this.flowList.filter(function(newId) {return newId === flowList.id;});
+			var filteredFlows = this.flowList.filter(function(newId) {return newId === this.flowList.id;});
 		    if(filteredFlows.length === 0) {
 		        this.flowList.push({ id: newId, flow: newFlow});
     		}
