@@ -242,8 +242,24 @@ describe('FunctionHelper', function() {
                 strokeColor: '#FFF',
                 fillColor: '#000'
             }), false);
-        });
-        it('returns false for invalid line', function() {
+            assert.strictEqual(FH.isValidTrace({
+                type: 'line',
+                coordinates: [
+                    [12.43, -2],,
+                    [1, 2]
+                ],
+                strokeColor: '#FFF',
+                fillColor: '#000'
+            }), false);
+            assert.strictEqual(FH.isValidTrace({
+                type: 'line',
+                coordinates: [
+                    [12.43, -2],
+                    [1, '2']
+                ],
+                strokeColor: '#FFF',
+                fillColor: '#000'
+            }), false);
             assert.strictEqual(FH.isValidTrace({
                 type: 'line',
                 coordinates: [
@@ -253,8 +269,6 @@ describe('FunctionHelper', function() {
                 strokeColor: '#FFz',
                 fillColor: '#000'
             }), false);
-        });
-        it('returns false for invalid line', function() {
             assert.strictEqual(FH.isValidTrace({
                 type: 'line',
                 coordinates: [
