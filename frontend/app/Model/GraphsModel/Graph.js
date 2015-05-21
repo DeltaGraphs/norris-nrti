@@ -29,7 +29,7 @@
 */
 
 angular.module('app')
-.factory('GraphFactory', ['Flow', 'Legend', function(Flow, Legend){
+.factory('Graph', ['Flow', 'Legend', function(Flow, Legend){
 
 	function Graph(info){
 		this.flowList = [];
@@ -128,9 +128,9 @@ angular.module('app')
 		}
 	};
 
-	GraphFactory.build = function(info) {
+	Graph.build = function(info) {
 		return new Graph(info);
 	};
 	
-	return( GraphFactory );
+	return( Graph );
 }]);

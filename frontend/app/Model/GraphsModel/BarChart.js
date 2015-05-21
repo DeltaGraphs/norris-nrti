@@ -23,7 +23,7 @@
 */
 
 angular.module('app')
-.factory('BarChartFactory', ['GraphFactory', 'Axis', 'BarChartFlow', function(GraphFactory, Axis, BarChartFlow){
+.factory('BarChart', ['Graph', 'Axis', 'BarChartFlow', function(Graph, Axis, BarChartFlow){
 
     function split(json) {
         var graphJson = {};
@@ -94,9 +94,13 @@ angular.module('app')
         this.legendOnPoint = false;
         this.parent.constructor.call(this, info);
     }
+    
+    //angular.extend(BarChart.prototype, Graph.build().prototype);
 
-    BarChart.prototype = Object.create(GraphFactory.build().prototype);
-    BarChart.prototype.parent = BarChart.prototype;
+    //BarChart.prototype = 
+    BarChart.prototype = Object.create(Graph.build().prototype);
+    BarChart.prototype.parent = Graph.build().prototype;
+
 
     BarChart.prototype.updateParameters = function(info) {
         if (info !== undefined) {
@@ -199,10 +203,10 @@ angular.module('app')
         return this.legendOnPoint;
     };
 
-    BarChartFactory.build = function(info) {
+    BarChart.build = function(info) {
         return new BarChart(info);
     };
 
-    return BarChartFactory;
+    return BarChart;
 
 }]);
