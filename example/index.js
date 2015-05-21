@@ -52,10 +52,6 @@ var page1;
 
 var myVar=setInterval(function () {myTimer()}, 10000);
 
-//var grafico1 = new norris.Graph("Grafico Linee", "graficoLinee");
-var chart1 = new norris.Graph("Line Chart", "lineChart");
-page1.addGraph(chart1);
-
 var i=1;
 function myTimer() {
   page1=norris.createPage({
