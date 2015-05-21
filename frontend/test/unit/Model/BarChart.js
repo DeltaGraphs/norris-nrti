@@ -38,7 +38,7 @@ describe('BarChart', function(){
 		Graph = $injector.get('Graph');
 		Axis = $injector.get('Axis');
 		BarChartFlow = $injector.get('BarChartFlow');
-	});
+	}));
 
 	describe('prove', function(){
 		var json = {
@@ -48,7 +48,7 @@ describe('BarChart', function(){
 			'enabledLegend' : false,
 			'horizontalGrid' : false,
 			'verticalGrid' : false,
-			'barOrientation' : 'ciao',
+			'barOrientation' : 'ciao'
 		};
 		var json1 = {
 			'title' : 'grafico2',
@@ -57,7 +57,7 @@ describe('BarChart', function(){
 			'enabledLegend' : false,
 			'horizontalGrid' : false,
 			'verticalGrid' : false,
-			'barOrientation' : 'ciaociao',
+			'barOrientation' : 'ciaociao'
 		};
 
 		var b1, b2;
@@ -83,8 +83,6 @@ describe('BarChart', function(){
 		it('secondo barre', function(){
 			expect(b2.getBarOrientation()).toEqual('ciaociao');
 		});
-
-
 	});
 
 	describe('Constructor', function(){
