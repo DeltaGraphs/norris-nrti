@@ -50,53 +50,27 @@ var page1;
     console.log('Pagina inserita: '+page1);
 //}, 5000);
 
-//setTimeout(function () {
-  console.log('secondo tentativo di aggiunta page1');
-  page1=norris.createPage({
-      ID:'page1',
-      name: 'Pagina 1',
-      description: 'Questa è una bella pagina',
-      graphsPerRow: 2,
-      graphsPerCol: 10
-  });
-  console.log('Pagina inserita: '+page1);
-//}, 10000);
+var myVar=setInterval(function () {myTimer()}, 10000);
 
-//setTimeout(function () {
-  console.log('terzo tentativo di aggiunta page1');
-  page1=norris.createPage({
-      ID:'page1',
-      name: 'Pagina 1',
-      description: 'Questa è una bella pagina',
-      graphsPerRow: 2,
-      graphsPerCol: 10
-  });
-  console.log('Pagina inserita: '+page1);
-//}, 20000);
+//var grafico1 = new norris.Graph("Grafico Linee", "graficoLinee");
+var chart1 = new norris.Graph("Line Chart", "lineChart");
+page1.addGraph(chart1);
 
-//setTimeout(function () {
-  console.log('terzo tentativo di aggiunta page1');
+var i=1;
+function myTimer() {
   page1=norris.createPage({
-      ID:'page2',
-      name: 'Pagina 2',
-      description: 'Questa è 2',
-      graphsPerRow: 3,
-      graphsPerCol: 3
-  });
-  console.log('Pagina inserita: '+page1);
-//}, 30000);
+        ID:'page'+i,
+        name: 'Pagina '+i,
+        description: 'Questa è una bella pagina'+i,
+        graphsPerRow: i,
+        graphsPerCol: i
+    });
+    console.log('Pagina inserita: page'+i);
+  i++;
+}
 
-//setTimeout(function () {
-  console.log('terzo tentativo di aggiunta page1');
-  page1=norris.createPage({
-      ID:'page3',
-      name: 'Pagina 3',
-      description: 'Questa 3',
-      graphsPerRow: 7,
-      graphsPerCol: 7
-  });
-  console.log('Pagina inserita: '+page1);
-//}, 40000);
+
+
 
 app.get('/', function (req, res) {
 	var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
