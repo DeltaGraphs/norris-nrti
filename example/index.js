@@ -50,26 +50,29 @@ var page1;
     console.log('Pagina inserita: '+page1);
 //}, 5000);
 
-console.log('secondo tentativo di aggiunta page1');
-page1=norris.createPage({
-    ID:'page1',
-    name: 'Pagina 1',
-    description: 'Questa è una bella pagina',
-    graphsPerRow: 2,
-    graphsPerCol: 10
-});
-console.log('Pagina inserita: '+page1);
+setTimeout(function () {
+  console.log('secondo tentativo di aggiunta page1');
+  page1=norris.createPage({
+      ID:'page1',
+      name: 'Pagina 1',
+      description: 'Questa è una bella pagina',
+      graphsPerRow: 2,
+      graphsPerCol: 10
+  });
+  console.log('Pagina inserita: '+page1);
+}, 10000);
 
-console.log('terzo tentativo di aggiunta page1');
-page1=norris.createPage({
-    ID:'page1',
-    name: 'Pagina 1',
-    description: 'Questa è una bella pagina',
-    graphsPerRow: 2,
-    graphsPerCol: 10
-});
-console.log('Pagina inserita: '+page1);
-
+setTimeout(function () {
+  console.log('terzo tentativo di aggiunta page1');
+  page1=norris.createPage({
+      ID:'page1',
+      name: 'Pagina 1',
+      description: 'Questa è una bella pagina',
+      graphsPerRow: 2,
+      graphsPerCol: 10
+  });
+  console.log('Pagina inserita: '+page1);
+}, 10000);
 
 app.get('/', function (req, res) {
 	var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
