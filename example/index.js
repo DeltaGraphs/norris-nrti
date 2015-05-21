@@ -49,7 +49,7 @@ var page1;
     });
     console.log('Pagina inserita: '+page1);
 //}, 5000);
-
+/*
 var myVar=setInterval(function () {myTimer()}, 10000);
 
 var i=1;
@@ -64,8 +64,26 @@ function myTimer() {
     console.log('Pagina inserita: page'+i);
   i++;
 }
+*/
+page1=norris.createPage({
+        ID:'page2',
+        name: 'Pagina 2',
+        description: 'Questa2',
+        graphsPerRow: 2,
+        graphsPerCol: 2
+    });
+    console.log('Pagina inserita: '+page1);
 
 
+
+    page1=norris.createPage({
+        ID:'page3',
+        name: 'Pagina 3',
+        description: 'Questa è 3',
+        graphsPerRow: 4,
+        graphsPerCol: 4
+    });
+    console.log('Pagina inserita: '+page1);
 
 
 app.get('/', function (req, res) {
