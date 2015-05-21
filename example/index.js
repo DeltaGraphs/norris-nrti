@@ -37,13 +37,18 @@ app.configure(function() {
 // Includo e creo l'ustanza di Norris
 var Norris = require('../norris-nrti.js');
 var norris = new Norris(app,io,'/norris');
-norris.createPage({
-    ID:'page1',
-    name: 'Pagina 1',
-    description: 'Questa è una bella pagina',
-    graphsPerRow: 2,
-    graphsPerCol: 10
-});
+
+setInterval(function () {
+    norris.createPage({
+        ID:'page1',
+        name: 'Pagina 1',
+        description: 'Questa è una bella pagina',
+        graphsPerRow: 2,
+        graphsPerCol: 10
+    });
+}, 5000);
+
+
 
 app.get('/', function (req, res) {
 	var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
