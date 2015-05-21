@@ -92,14 +92,15 @@ angular.module('app')
         this.sortable = true;
         this.barsGrouping = 'grouped';
         this.legendOnPoint = false;
-        this.parent.constructor.call(this, info);
+        this.graph = Graph.build.call(this,info);
+        //this.parent.constructor.call(this, info);
     }
     
     //angular.extend(BarChart.prototype, Graph.build().prototype);
 
     //BarChart.prototype = 
     //BarChart.prototype = Object.create(Graph.build().prototype);
-    BarChart.prototype.parent = Graph.build().prototype;
+    //BarChart.prototype.parent = Graph.build().prototype;
 
 
     BarChart.prototype.updateParameters = function(info) {
@@ -108,7 +109,7 @@ angular.module('app')
             var gJson = json.graphJson;
             var bJson = json.barJson;
             if (Object.keys(gJson).length !== 0) {
-                this.parent.updateParameters.call(this, gJson);
+                this.graph.updateParameters.call(this, gJson);
             } 
             if (Object.keys(bJson).length !== 0) {
                 if (bJson.axisX !== undefined) {
