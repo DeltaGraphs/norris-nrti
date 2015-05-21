@@ -23,7 +23,7 @@
 *
 */
 
-describe('BarChart', function(){
+describe('BarChartFactory', function(){
 	'use strict';
 
 	var BarChart;
@@ -33,12 +33,59 @@ describe('BarChart', function(){
 
 	beforeEach(angular.mock.module('app'));
 
-	beforeEach(inject(function(_BarChart_, $injector){
-		BarChart = _BarChart_;
-		Graph = $injector.get('Graph');
+	beforeEach(inject(function(_BarChartFactory_, $injector){
+		BarChart = _BarChartFactory_;
+		Graph = $injector.get('GraphFactory');
 		Axis = $injector.get('Axis');
 		BarChartFlow = $injector.get('BarChartFlow');
-	}));
+	});
+
+	describe('prove', function(){
+		var json = {
+			'title' : 'graficonuovo',
+			'height' : 400,
+			'width' : 400,
+			'enabledLegend' : false,
+			'horizontalGrid' : false,
+			'verticalGrid' : false,
+			'barOrientation' : 'ciao',
+		};
+		var json1 = {
+			'title' : 'grafico2',
+			'height' : 400,
+			'width' : 400,
+			'enabledLegend' : false,
+			'horizontalGrid' : false,
+			'verticalGrid' : false,
+			'barOrientation' : 'ciaociao',
+		};
+
+		var b1, b2;
+		beforeEach(function(){
+			b1 = BarChart.build(json);
+			b2 = BarChart.build(json1);
+		});
+
+		afterEach(function(){
+			b1 = null;
+			b2 = null;
+		});	
+
+		it('primo titolo', function(){
+			expect(b1.getTitle()).toEqual('graficonuovo');
+		});
+		it('secondo titolo', function(){
+			expect(b2.getTitle()).toEqual('grafico2');
+		});
+		it('primo barre', function(){
+			expect(b1.getBarOrientation()).toEqual('ciao');
+		});
+		it('secondo barre', function(){
+			expect(b2.getBarOrientation()).toEqual('ciaociao');
+		});
+
+
+	});
 
 	describe('Constructor', function(){
 
@@ -142,53 +189,6 @@ describe('BarChart', function(){
 		});
 
 	});*/
-
-	describe('prove', function(){
-		var json = {
-			'title' : 'graficonuovo',
-			'height' : 400,
-			'width' : 400,
-			'enabledLegend' : false,
-			'horizontalGrid' : false,
-			'verticalGrid' : false,
-			'barOrientation' : 'ciao',
-		};
-		var json1 = {
-			'title' : 'grafico2',
-			'height' : 400,
-			'width' : 400,
-			'enabledLegend' : false,
-			'horizontalGrid' : false,
-			'verticalGrid' : false,
-			'barOrientation' : 'ciaociao',
-		};
-
-		var b1, b2;
-		beforeEach(function(){
-			b1 = BarChart.newInstance(json);
-			b2 = BarChart.newInstance(json1);
-		});
-
-		afterEach(function(){
-			b1 = null;
-			b2 = null;
-		});	
-
-		it('primo titolo', function(){
-			expect(b1.getTitle()).toEqual('graficonuovo');
-		});
-		it('secondo titolo', function(){
-			expect(b2.getTitle()).toEqual('grafico2');
-		});
-		it('primo barre', function(){
-			expect(b1.getBarOrientation()).toEqual('ciao');
-		});
-		it('secondo barre', function(){
-			expect(b2.getBarOrientation()).toEqual('ciaociao');
-		});
-
-
-	});
 
 	describe('updateParameters', function(){
 		var json = {
