@@ -53,7 +53,7 @@ describe('MapChartFlowModel', function() {
         assert.strictEqual(flow1._marker.shape, 'circle');
         assert.strictEqual(flow1._trace.type, 'none');
         assert.strictEqual(flow1._trace.coordinates.length, 0);
-        assert.strictEqual(flow1._maxItems, 50);
+        assert.strictEqual(flow1._trailLength, 3);
         assert.strictEqual(flow1._maxItemsSaved, 500);
     });
 
@@ -67,7 +67,7 @@ describe('MapChartFlowModel', function() {
             latitudeFormat: 2,
             marker: 2,
             trace: 3,
-            maxItems: -2,
+            trailLength: -2,
             maxItemsSaved: '123'
         });
 		assert.strictEqual(flow1._ID, 'flow1');
@@ -80,7 +80,7 @@ describe('MapChartFlowModel', function() {
         assert.strictEqual(flow1._marker.shape, 'circle');
         assert.strictEqual(flow1._trace.type, 'none');
         assert.strictEqual(flow1._trace.coordinates.length, 0);
-        assert.strictEqual(flow1._maxItems, 50);
+        assert.strictEqual(flow1._trailLength, 3);
         assert.strictEqual(flow1._maxItemsSaved, 500);
     });
 
@@ -107,7 +107,7 @@ describe('MapChartFlowModel', function() {
             latitudeFormat: 'geographic',
             marker: marker,
             trace: trace,
-            maxItems: 2,
+            trailLength: 2,
             maxItemsSaved: 1000
         });
         assert.strictEqual(flow1._ID, 'flow1');
@@ -118,7 +118,7 @@ describe('MapChartFlowModel', function() {
         assert.strictEqual(flow1._latitudeFormat, 'geographic');
         assert.deepEqual(flow1._marker, marker);
         assert.deepEqual(flow1._trace, trace);
-        assert.strictEqual(flow1._maxItems, 2);
+        assert.strictEqual(flow1._trailLength, 2);
         assert.strictEqual(flow1._maxItemsSaved, 1000);
     });
 
@@ -205,7 +205,7 @@ describe('MapChartFlowModel', function() {
                 latitudeFormat: 'geographic',
                 marker: marker,
                 trace: trace,
-                maxItems: 2,
+                trailLength: 2,
                 maxItemsSaved: 1000
             };
             var flow1=new MapChartFlowModel(prop);
@@ -218,7 +218,7 @@ describe('MapChartFlowModel', function() {
             assert.strictEqual(result.latitudeFormat, prop.latitudeFormat);
             assert.deepEqual(result.marker, prop.marker);
             assert.deepEqual(result.trace, prop.trace);
-            assert.strictEqual(result.maxItems, prop.maxItems);
+            assert.strictEqual(result.trailLength, prop.trailLength);
             assert.strictEqual(result.maxItemsSaved, prop.maxItemsSaved);
         });
     });
