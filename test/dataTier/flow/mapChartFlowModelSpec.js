@@ -226,9 +226,9 @@ describe('MapChartFlowModel', function() {
         it('returns the record if ID is valid', function() {
             var flow1=new MapChartFlowModel({ID: 'flow1'});
             var record={temperature: 2};
-            var record2={temperature: 2};
+            var record2={temperature: 4};
             var ID=flow1.addRecord(record);
-            var ID2=flow1.addRecord(record);
+            var ID2=flow1.addRecord(record2);
             assert.deepEqual(flow1.getRecordByID(ID), record);
             assert.deepEqual(flow1.getRecordByID(ID2), record2);
         });
