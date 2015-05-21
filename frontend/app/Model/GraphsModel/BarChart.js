@@ -96,7 +96,7 @@ angular.module('app')
         this.sortable = true;
         this.barsGrouping = 'grouped';
         this.legendOnPoint = false;
-        this.parent.constructor.call(this, info);
+        this.parent.newInstance.call(this, info);
     }
 
     BarChart.prototype.updateParameters = function(info) {

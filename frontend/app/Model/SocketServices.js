@@ -35,7 +35,7 @@ angular.module('app')
                         callback.apply($rootScope.socket, args);
                     }
                 });
-            })
+            });
         }
     };
 });
