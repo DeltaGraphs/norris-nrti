@@ -46,6 +46,7 @@ describe('MapChartFlowModel', function() {
         assert.strictEqual(flow1._ID, 'flow1');
         assert.strictEqual(flow1._longitudeKey, null);
         assert.strictEqual(flow1._latitudeKey, null);
+        assert.strictEqual(flow1._objectKey, null);
         assert.strictEqual(flow1._longitudeFormat, 'coordinates');
         assert.strictEqual(flow1._latitudeFormat, 'coordinates');
         assert.strictEqual(flow1._marker.type, 'shape');
@@ -61,6 +62,7 @@ describe('MapChartFlowModel', function() {
             ID: 'flow1',
             longitudeKey: 1,
             latitudeKey: {},
+            objectKey: {},
             longitudeFormat: 'ttt',
             latitudeFormat: 2,
             marker: 2,
@@ -70,7 +72,8 @@ describe('MapChartFlowModel', function() {
         });
 		assert.strictEqual(flow1._ID, 'flow1');
         assert.strictEqual(flow1._longitudeKey, null);
-        assert.strictEqual(flow1._latitudeKey, null);
+        assert.strictEqual(flow1._latitudeKey, null);        
+        assert.strictEqual(flow1._objectKey, null);
         assert.strictEqual(flow1._longitudeFormat, 'coordinates');
         assert.strictEqual(flow1._latitudeFormat, 'coordinates');
         assert.strictEqual(flow1._marker.type, 'shape');
@@ -99,6 +102,7 @@ describe('MapChartFlowModel', function() {
             ID: 'flow1',
             longitudeKey: 'x',
             latitudeKey: 'y',
+            objectKey: 'ID',
             longitudeFormat: 'coordinates',
             latitudeFormat: 'geographic',
             marker: marker,
@@ -109,6 +113,7 @@ describe('MapChartFlowModel', function() {
         assert.strictEqual(flow1._ID, 'flow1');
         assert.strictEqual(flow1._longitudeKey, 'x');
         assert.strictEqual(flow1._latitudeKey, 'y');
+        assert.strictEqual(flow1._objectKey, 'ID');
         assert.strictEqual(flow1._longitudeFormat, 'coordinates');
         assert.strictEqual(flow1._latitudeFormat, 'geographic');
         assert.deepEqual(flow1._marker, marker);
@@ -195,6 +200,7 @@ describe('MapChartFlowModel', function() {
                 ID: 'flow1',
                 longitudeKey: 'x',
                 latitudeKey: 'y',
+                objectKey: 'ID',
                 longitudeFormat: 'coordinates',
                 latitudeFormat: 'geographic',
                 marker: marker,
@@ -207,6 +213,7 @@ describe('MapChartFlowModel', function() {
             assert.strictEqual(result.ID, prop.ID);
             assert.strictEqual(result.longitudeKey, prop.longitudeKey);
             assert.strictEqual(result.latitudeKey, prop.latitudeKey);
+            assert.strictEqual(result.objectKey, prop.objectKey);
             assert.strictEqual(result.longitudeFormat, prop.longitudeFormat);
             assert.strictEqual(result.latitudeFormat, prop.latitudeFormat);
             assert.deepEqual(result.marker, prop.marker);
