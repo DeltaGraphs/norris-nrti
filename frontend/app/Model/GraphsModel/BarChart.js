@@ -84,14 +84,14 @@ angular.module('app')
 
 
     function BarChart(info) {
-        this.axisX = null;
-        this.axisY = null;
-        this.barOrientation = 'vertical';
-        this.headers = [];
-        this.background = '#FFF';
-        this.sortable = true;
-        this.barsGrouping = 'grouped';
-        this.legendOnPoint = false;
+        this._axisX = null;
+        this._axisY = null;
+        this._barOrientation = 'vertical';
+        this._headers = [];
+        this._background = '#FFF';
+        this._sortable = true;
+        this._barsGrouping = 'grouped';
+        this._legendOnPoint = false;
         //this.graph = Graph.build.call(this,info);
         this.parent.constructor.call(this, info);
     }
@@ -104,7 +104,7 @@ angular.module('app')
 
     //BarChart.prototype = Object.create(Graph.prototype);
     //BarChart.prototype.constructor = BarChart;
-    BarChart.prototype.parent = Graph.prototype;
+    BarChart.prototype.parent = Object.create(Graph.prototype);
     BarChart.prototype.parent.constructor = Graph.build;
 
     BarChart.prototype.updateParameters = function(info) {
@@ -117,34 +117,34 @@ angular.module('app')
             } 
             if (Object.keys(bJson).length !== 0) {
                 if (bJson.axisX !== undefined) {
-                    this.axisX = new Axis(bJson.axisX);
+                    this._axisX = new Axis(bJson.axisX);
                 }
                 if (bJson.axisY !== undefined) {
-                    this.axisY = new Axis(bJson.axisY);
+                    this._axisY = new Axis(bJson.axisY);
                 }
                 if (bJson.barOrientation !== undefined) {
-                    this.barOrientation = bJson.barOrientation;
+                    this._barOrientation = bJson.barOrientation;
                 }
                 if (bJson.headers !== undefined) {
-                    this.headers = bJson.headers;
+                    this._headers = bJson.headers;
                 }
                 if (bJson.backgroundColor !== undefined) {
-                    this.background = bJson.backgroundColor;
+                    this._background = bJson.backgroundColor;
                 }
                 if (bJson.sortable !== undefined) {
-                    this.sortable = bJson.sortable;
+                    this._sortable = bJson.sortable;
                 }
                 if (bJson.barsGrouping !== undefined) {
-                    this.barsGrouping = bJson.barsGrouping;
+                    this._barsGrouping = bJson.barsGrouping;
                 }
                 if (bJson.legendOnPoint !== undefined) {
-                    this.legendOnPoint = bJson.legendOnPoint;
+                    this._legendOnPoint = bJson.legendOnPoint;
                 }
             }
             if (info.flows !== undefined) {
                 for (var i=0; i<info.flows.length; i++) {
                     var newflow = new BarChartFlow(info.flows[i]);
-                    this.addFlow(info.flows[i].ID, newflow);
+                    this._addFlow(info.flows[i].ID, newflow);
                 }
             }
         }
@@ -184,28 +184,28 @@ angular.module('app')
 
     // get method
     BarChart.prototype.getX = function() {
-        return this.axisX;
+        return this._axisX;
     };
     BarChart.prototype.getY = function() {
-        return this.axisY;
+        return this._axisY;
     };
     BarChart.prototype.getBarOrientation = function() {
-        return this.barOrientation;
+        return this._barOrientation;
     };
     BarChart.prototype.getHeaders = function() {
-        return this.headers;
+        return this._headers;
     };
     BarChart.prototype.getBackground = function() {
-        return this.background;
+        return this._background;
     };
     BarChart.prototype.getSortable = function() {
-        return this.sortable;
+        return this._sortable;
     };
     BarChart.prototype.getBarsGrouping = function() {
-        return this.barsGrouping;
+        return this._barsGrouping;
     };
     BarChart.prototype.getLegendOnPoint = function() {
-        return this.legendOnPoint;
+        return this._legendOnPoint;
     };
 
     BarChart.build = function(info) {

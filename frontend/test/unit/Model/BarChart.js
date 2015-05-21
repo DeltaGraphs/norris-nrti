@@ -77,12 +77,12 @@ describe('BarChart', function(){
 		it('secondo titolo', function(){
 			expect(b2.getTitle()).toEqual('grafico2');
 		});
-		it('primo barre', function(){
+		/*it('primo barre', function(){
 			expect(b1.getBarOrientation()).toEqual('ciao');
 		});
 		it('secondo barre', function(){
 			expect(b2.getBarOrientation()).toEqual('ciaociao');
-		});
+		});*/
 	});
 
 	describe('Constructor', function(){
