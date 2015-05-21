@@ -39,7 +39,7 @@ describe('Socket', function() {
         var server1 = require('socket.io')();
         var socket1 = new Socket(server, '/namespace', obj1, 'event');
         var obj1 = new RandomObj();
-        assert.deepEqual(socket1._namespace, server1);
+        assert.deepEqual(socket1._namespace, server1.of('/namespace'));
         assert.strictEqual(socket1._attachedObj, null);
         assert.strictEqual(socket1._onConnectionEvent, '');
         assert.strictEqual(socket1._attachedObj, obj1);
