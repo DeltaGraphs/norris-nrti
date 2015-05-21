@@ -81,9 +81,14 @@ angular.module('app')
 			}
 		},
 		addFlow : function(newId, newFlow) { //abstract
+			var count = 0;
+			for (var i = 0; i<this.flowList.length; i++) {
+				if (this.flowList.id === newId) {
+					count++;
+				}
+			}
 
-			var filteredFlows = this.flowList.filter(function(newId) {return newId === this.flowList.id;});
-		    if(filteredFlows.length === 0) {
+		    if(count === 0) {
 		        this.flowList.push({ id: newId, flow: newFlow});
     		}
     		// error

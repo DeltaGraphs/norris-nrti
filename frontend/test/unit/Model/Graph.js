@@ -40,6 +40,43 @@ describe('Graph', function(){
 		Flow = $injector.get('Flow');
 	}));
 
+	describe('prove', function(){
+		var json = {
+			'title' : 'graficonuovo',
+			'height' : 400,
+			'width' : 400,
+			'enabledLegend' : false,
+			'horizontalGrid' : false,
+			'verticalGrid' : false
+		};
+		var json1 = {
+			'title' : 'grafico2',
+			'height' : 400,
+			'width' : 400,
+			'enabledLegend' : false,
+			'horizontalGrid' : false,
+			'verticalGrid' : false
+		};
+
+		var g1, g2;
+		beforeEach(function(){
+			g1 = Graph.build(json);
+			g2 = Graph.build(json1);
+		});
+
+		afterEach(function(){
+			g1 = null;
+			g2 = null;
+		});	
+
+		it('primo titolo', function(){
+			expect(g1.getTitle()).toEqual('graficonuovo');
+		});
+		it('secondo titolo', function(){
+			expect(g2.getTitle()).toEqual('grafico2');
+		});
+	});
+
 	describe('Default constructor', function(){
 
 		beforeEach(function(){
