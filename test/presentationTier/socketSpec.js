@@ -38,7 +38,7 @@ describe('Socket', function() {
     it('set param values to properties', function() {
         var socket1 = new Socket(server, '/namespace');
         var obj1 = new RandomObj();
-        assert.deepEqual(socket1._namespace, server.of('/namespace', obj1, 'event'));
+        assert.deepEqual(socket1._namespace, server, obj1, 'event');
         assert.strictEqual(socket1._attachedObj, null);
         assert.strictEqual(socket1._onConnectionEvent, '');
         assert.strictEqual(socket1._attachedObj, obj1);
