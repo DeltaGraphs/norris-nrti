@@ -26,7 +26,7 @@ describe('Socket', function() {
     });
 
     it('returns null when there is a non-valid namespace in params', function() {
-        assert.strictEqual((new Socket('wrong')).hasOwnProperty('_title'), false);
+        assert.strictEqual((new Socket('wrong')).hasOwnProperty('_namespace'), false);
     });
 
     function RandomObj() {
@@ -36,10 +36,9 @@ describe('Socket', function() {
 
     var server = require('socket.io')();
     it('set param values to properties', function() {
-        var server1 = require('socket.io')();
         var socket1 = new Socket(server, '/namespace', obj1, 'event');
         var obj1 = new RandomObj();
-        assert.deepEqual(socket1._namespace, server1.of('/namespace'));
+        assert.strictEqual(socket1._namespace, server.of('/namespace'));
         assert.strictEqual(socket1._attachedObj, null);
         assert.strictEqual(socket1._onConnectionEvent, '');
         assert.strictEqual(socket1._attachedObj, obj1);
