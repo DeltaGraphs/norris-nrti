@@ -263,7 +263,7 @@ describe('barChartModel', function() {
             assert.strictEqual(data[0].properties.ID, 'flow1');
             assert.strictEqual(data[1].properties.ID, 'flow2');
         });
-    });    
+    });
 
     describe('#addFlow', function() {
         var flow1 = new BarChartFlowModel({ID: 'flow1'});

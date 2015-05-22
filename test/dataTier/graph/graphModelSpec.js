@@ -105,7 +105,7 @@ describe('GraphModel', function() {
             assert.deepEqual(prop.legend, legend1.getProperties());
         });
     });
-    describe('#updateProperties', function() {
+    describe('#updateBaseProperties', function() {
         it('updates the properties passed as param', function() {
             var properties={
                 ID: 'graph1',
@@ -117,7 +117,7 @@ describe('GraphModel', function() {
                 legend: legend1.getProperties()
             };
             var graph1=new GraphModel({ID: 'graph1'});
-            graph1.updateProperties(properties);
+            graph1.updateBaseProperties(properties);
             assert.strictEqual(graph1._ID, 'graph1');
             assert.strictEqual(graph1._title, 'graph one');
             assert.strictEqual(graph1._type, 'BarChart');
@@ -137,7 +137,7 @@ describe('GraphModel', function() {
                 legend: 'def'
             };
             var graph1=new GraphModel({ID: 'graph1'});
-            graph1.updateProperties(properties);
+            graph1.updateBaseProperties(properties);
             assert.strictEqual(graph1._ID, 'graph1');
             assert.strictEqual(graph1._title, '');
             assert.strictEqual(graph1._type, '');
