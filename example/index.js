@@ -47,7 +47,24 @@ var page1=norris.createPage({
 });
 console.log('Pagina inserita: '+page1);
 
-page1=norris.createPage({
+var mapChart=page1.createMapChart({
+    ID: 'map1',
+    title: 'APS',
+    height: 600,
+    width: 1000,
+    enableLegend: true,
+    legend: {
+        position: 'NE',
+    },
+    latitude: 45.42533493042,
+    longitude: 45.42533493042,
+    mapType: 'roadMap',
+    mapWidth: 2000,
+    mapHeight: 2000,
+    legendOnPoint: true
+});
+console.log('Grafico inserito: '+mapChart);
+/*page1=norris.createPage({
     ID:'page2',
     name: 'Pagina 2',
     description: 'Questa2',
@@ -56,8 +73,6 @@ page1=norris.createPage({
 });
 console.log('Pagina inserita: '+page1);
 
-
-
 page1=norris.createPage({
     ID:'page3',
     name: 'Pagina 3',
@@ -65,7 +80,7 @@ page1=norris.createPage({
     graphsPerRow: 4,
     graphsPerCol: 4
 });
-console.log('Pagina inserita: '+page1);
+console.log('Pagina inserita: '+page1);*/
 
 
 app.get('/', function (req, res) {
