@@ -104,8 +104,9 @@ angular.module('app')
 
     //BarChart.prototype = Object.create(Graph.prototype);
     //BarChart.prototype.constructor = BarChart;
-    angular.extend(BarChart.prototype, Graph.prototype);
     //BarChart.prototype.parent = Object.create(Graph.prototype);
+    //angular.extend(BarChart.prototype, Graph.prototype);
+    BarChart.prototype.parent.getTitle = Graph.prototype.getTitle;
     BarChart.prototype.parent.constructor = Graph.build;
 
     BarChart.prototype.updateParameters = function(info) {
