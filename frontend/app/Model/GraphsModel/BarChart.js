@@ -100,7 +100,7 @@ angular.module('app')
 
     BarChart.prototype.updateParameters = function(info) {
         if (info !== undefined) {
-            var json = this.split(info);
+            var json = split(info);
             var gJson = json.graphJson;
             var bJson = json.barJson;
             if (Object.keys(gJson).length !== 0) {
