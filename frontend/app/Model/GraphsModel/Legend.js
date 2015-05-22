@@ -20,56 +20,49 @@
 *
 */
 
-angular.module('services')
-.factory('Legend', function(){
+function Legend(info){
+    this._position = 'right';
+    this._fontColor = '#000';
+    this._backgroundColor = '#FFF';
 
-    var position = 'right';
-    var fontColor = '#000';
-    var backgroundColor = '#FFF';
-
-    function Legend(info){
-
-        if (info !== undefined){
-            if (info.position !== undefined) {
-                position = info.position;
-            }
-            if (info.fontColor !== undefined) {
-                fontColor = info.fontColor;
-            }
-            if (info.backgroundColor !== undefined) {
-                backgroundColor = info.backgroundColor;
-            }
+    if (info !== undefined){
+        if (info.position !== undefined) {
+            this._position = info.position;
+        }
+        if (info.fontColor !== undefined) {
+            this._fontColor = info.fontColor;
+        }
+        if (info.backgroundColor !== undefined) {
+            this._backgroundColor = info.backgroundColor;
         }
     }
+}
 
-    Legend.prototype = {
+Legend.prototype = {
 
-        contructor : Legend,
+    contructor : Legend,
 
-        updateParameters : function(info){
-            if (info !== undefined) {
-                if (info.position !== undefined) {
-                    position = info.position;
-                }
-                if (info.fontColor !== undefined) {
-                    fontColor = info.fontColor;
-                }
-                if (info.backgroundColor !== undefined) {
-                    backgroundColor = info.backgroundColor;
-                }
+    updateParameters : function(info){
+        if (info !== undefined) {
+            if (info.position !== undefined) {
+                this._position = info.position;
             }
-        },
-
-        getPosition : function(){
-            return position;
-        },
-        getFontColor : function(){
-            return fontColor;
-        },
-        getBackgroundColor : function(){
-            return backgroundColor;
+            if (info.fontColor !== undefined) {
+                this._fontColor = info.fontColor;
+            }
+            if (info.backgroundColor !== undefined) {
+                this._backgroundColor = info.backgroundColor;
+            }
         }
-    };
+    },
 
-    return( Legend );
-});
+    getPosition : function(){
+        return this._position;
+    },
+    getFontColor : function(){
+        return this._fontColor;
+    },
+    getBackgroundColor : function(){
+        return this._backgroundColor;
+    }
+};

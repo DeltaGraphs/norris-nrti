@@ -23,7 +23,24 @@
 */
 
 angular.module('app')
-.factory('BarChart', ['Graph', 'Axis', 'BarChartFlow', function(Graph, Axis, BarChartFlow){
+.factory('BarChart', ['Axis', 'BarChartFlow', function(Axis, BarChartFlow){
+
+    function BarChart(info) {
+        this._axisX = null;
+        this._axisY = null;
+        this._barOrientation = 'vertical';
+        this._headers = [];
+        this._background = '#FFF';
+        this._sortable = true;
+        this._barsGrouping = 'grouped';
+        this._legendOnPoint = false;
+
+        this.parent.constructor.call(this, info);
+    }
+
+    BarChart.prototype = Object.create(Graph.prototype);
+    BarChart.prototype.constructor = BarChart;
+    BarChart.prototype.parent = Graph.prototype;
 
     function split(json) {
         var graphJson = {};
@@ -80,40 +97,10 @@ angular.module('app')
             'barJson' : barJson
         };
     }
-    //BarChart.prototype.test = function _Test(expressionStr) { return eval(expressionStr); };
-
-
-    function BarChart(info) {
-        this._axisX = null;
-        this._axisY = null;
-        this._barOrientation = 'vertical';
-        this._headers = [];
-        this._background = '#FFF';
-        this._sortable = true;
-        this._barsGrouping = 'grouped';
-        this._legendOnPoint = false;
-        //this.graph = Graph.build.call(this,info);
-        this.parent.constructor.call(this, info);
-    }
-    
-    //angular.extend(BarChart.prototype, Graph.build().prototype);
-
-    //BarChart.prototype = 
-    //BarChart.prototype = Object.create(Graph.build().prototype);
-    //BarChart.prototype.parent = Graph.build().prototype;
-
-    //BarChart.prototype = Object.create(Graph.prototype);
-    //BarChart.prototype.constructor = BarChart;
-    //BarChart.prototype.parent = Object.create(Graph.prototype);
-    //angular.extend(BarChart.prototype, Graph.prototype);
-    //BarChart.prototype.parent.getTitle = Graph.getTitle;
-
-    BarChart.prototype.parent = new Graph();
-    BarChart.prototype.parent.constructor = Graph.build;
 
     BarChart.prototype.updateParameters = function(info) {
         if (info !== undefined) {
-            var json = split(info);
+            var json = this.split(info);
             var gJson = json.graphJson;
             var bJson = json.barJson;
             if (Object.keys(gJson).length !== 0) {
@@ -211,6 +198,7 @@ angular.module('app')
     BarChart.prototype.getLegendOnPoint = function() {
         return this._legendOnPoint;
     };
+
 
     BarChart.build = function(info) {
         return new BarChart(info);

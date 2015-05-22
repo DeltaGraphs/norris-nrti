@@ -28,112 +28,105 @@
 *
 */
 
-angular.module('app')
-.factory('Graph', ['Flow', 'Legend', function(Flow, Legend){
 
-	function Graph(info){
-		this._flowList = [];
-		this._title = null;
-		this._height = null;
-		this._width = null;
-		this._legend = null;
-		this._enabledLegend = false;
-		this._horizontalGrid = true;
-		this._verticalGrid = true;
-		this._url = null;
+function Graph(info){
+	this._flowList = [];
+	this._title = null;
+	this._height = null;
+	this._width = null;
+	this._legend = null;
+	this._enabledLegend = false;
+	this._horizontalGrid = true;
+	this._verticalGrid = true;
+	this._url = null;
+	if (info !== undefined) {
+		if (info.title !== undefined) {
+			this._title = info.title;
+		}
+		if (info.url !== undefined) {
+			this._url = info.url;
+		}
+	}		
+}
+
+Graph.prototype = {
+
+	constructor : Graph,
+
+	updateParameters : function(info) { //abstract
 		if (info !== undefined) {
 			if (info.title !== undefined) {
 				this._title = info.title;
 			}
-			if (info.url !== undefined) {
-				this._url = info.url;
+			if (info.height !== undefined) {
+				this._height = info.height;
 			}
-		}		
-	}
-
-	Graph.prototype = {
-
-		updateParameters : function(info) { //abstract
-			if (info !== undefined) {
-				if (info.title !== undefined) {
-					this._title = info.title;
-				}
-				if (info.height !== undefined) {
-					this._height = info.height;
-				}
-				if (info.width !== undefined) {
-					this._width = info.width;
-				}
-				if (info.enabledLegend !== undefined) {
-					this._enabledLegend = info.enabledLegend;
-					if (this.enabledLegend && info.legend !== undefined) {
-						this._legend = new Legend(info.legend);
-					}
-				}
-				if (info.horizontalGrid !== undefined) {
-					this._horizontalGrid = info.horizontalGrid;
-				}
-				if (info.verticalGrid !== undefined) {
-					this._verticalGrid = info.verticalGrid;
+			if (info.width !== undefined) {
+				this._width = info.width;
+			}
+			if (info.enabledLegend !== undefined) {
+				this._enabledLegend = info.enabledLegend;
+				if (this.enabledLegend && info.legend !== undefined) {
+					this._legend = new Legend(info.legend);
 				}
 			}
-		},
-		addFlow : function(newId, newFlow) { //abstract
-			var count = 0;
-			for (var i = 0; i<this._flowList.length; i++) {
-				if (this._flowList.id === newId) {
-					count++;
-				}
+			if (info.horizontalGrid !== undefined) {
+				this._horizontalGrid = info.horizontalGrid;
 			}
-
-		    if(count === 0) {
-		        this._flowList.push({ id: newId, flow: newFlow});
-    		}
-    		// error
-		},
-		deleteFlow : function(flowID) {
-			var index;
-            for (var i = 0; i<this._flowList.length; i++){
-                if (this._flowList.id === flowID){
-                    index = i;
-                }
-            }
-            this._flowList.splice(index,1);
-		},
-		
-		getTitle : function() {
-			return this._title;
-		},
-		getHeight : function() {
-			return this._height;
-		},
-		getWidth : function() {
-			return this._width;
-		},
-		getLegend : function() {
-			if (this._enabledLegend) {
-				return this._legend;
-			} else {
-				return null;
+			if (info.verticalGrid !== undefined) {
+				this._verticalGrid = info.verticalGrid;
 			}
-		},
-		getHGrid : function() {
-			return this._horizontalGrid;
-		},
-		getVGrid : function() {
-			return this._verticalGrid;
-		},
-		getUrl : function() {
-			return this._url;
-		},
-		getFlowList : function() {
-			return this._flowList;
 		}
-	};
+	},
+	addFlow : function(newId, newFlow) { //abstract
+		var count = 0;
+		for (var i = 0; i<this._flowList.length; i++) {
+			if (this._flowList.id === newId) {
+				count++;
+			}
+		}
 
-	Graph.build = function(info) {
-		return new Graph(info);
-	};
+	    if(count === 0) {
+	        this._flowList.push({ id: newId, flow: newFlow});
+		}
+		// error
+	},
+	deleteFlow : function(flowID) {
+		var index;
+        for (var i = 0; i<this._flowList.length; i++){
+            if (this._flowList.id === flowID){
+                index = i;
+            }
+        }
+        this._flowList.splice(index,1);
+	},
 	
-	return( Graph );
-}]);
+	getTitle : function() {
+		return this._title;
+	},
+	getHeight : function() {
+		return this._height;
+	},
+	getWidth : function() {
+		return this._width;
+	},
+	getLegend : function() {
+		if (this._enabledLegend) {
+			return this._legend;
+		} else {
+			return null;
+		}
+	},
+	getHGrid : function() {
+		return this._horizontalGrid;
+	},
+	getVGrid : function() {
+		return this._verticalGrid;
+	},
+	getUrl : function() {
+		return this._url;
+	},
+	getFlowList : function() {
+		return this._flowList;
+	}
+};
