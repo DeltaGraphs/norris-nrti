@@ -144,7 +144,7 @@ angular.module('app')
             if (info.flows !== undefined) {
                 for (var i=0; i<info.flows.length; i++) {
                     var newflow = new BarChartFlow(info.flows[i]);
-                    this._addFlow(info.flows[i].ID, newflow);
+                    this.addFlow(info.flows[i].ID, newflow);
                 }
             }
         }
