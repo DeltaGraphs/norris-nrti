@@ -64,6 +64,15 @@ var mapChart=page1.createMapChart({
     legendOnPoint: true
 });
 console.log('Grafico inserito: '+mapChart);
+
+var index=0;
+var repeat=function(){
+    console.log(index);
+    index++;
+};
+
+var myVar=setInterval(function () {repeat();}, 5000);
+
 /*page1=norris.createPage({
     ID:'page2',
     name: 'Pagina 2',
