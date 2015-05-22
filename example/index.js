@@ -49,8 +49,8 @@ var page1;
     });
     console.log('Pagina inserita: '+page1);
 //}, 5000);
-/*
-var myVar=setInterval(function () {myTimer()}, 10000);
+
+var myVar=setInterval(myTimer, 10000);
 
 var i=1;
 function myTimer() {
@@ -64,7 +64,7 @@ function myTimer() {
     console.log('Pagina inserita: page'+i);
   i++;
 }
-*/
+
 page1=norris.createPage({
         ID:'page2',
         name: 'Pagina 2',
