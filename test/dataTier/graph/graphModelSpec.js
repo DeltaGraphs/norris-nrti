@@ -106,7 +106,12 @@ describe('GraphModel', function() {
         });
     });
     describe('#updateBaseProperties', function() {
-        it('updates the properties passed as param', function() {
+        it('returns 252 if there are no params specified', function() {
+            var graph1=new GraphModel({ID: 'graph1'});
+            var updates=graph1.updateBaseProperties();
+            assert.strictEqual(updates, 351);
+        });
+        it('updates and returns the properties passed as param', function() {
             var properties={
                 ID: 'graph1',
                 title: 'graph one',
@@ -117,7 +122,7 @@ describe('GraphModel', function() {
                 legend: legend1.getProperties()
             };
             var graph1=new GraphModel({ID: 'graph1'});
-            graph1.updateBaseProperties(properties);
+            var updates=graph1.updateBaseProperties(properties);
             assert.strictEqual(graph1._ID, 'graph1');
             assert.strictEqual(graph1._title, 'graph one');
             assert.strictEqual(graph1._type, 'BarChart');
@@ -125,6 +130,13 @@ describe('GraphModel', function() {
             assert.strictEqual(graph1._width, 350);
             assert.strictEqual(graph1._enableLegend, true);
             assert.deepEqual(graph1._legend.getProperties(), legend1.getProperties());
+
+            assert.strictEqual(updates.title, 'graph one');
+            assert.strictEqual(updates.type, 'BarChart');
+            assert.strictEqual(updates.height, 200);
+            assert.strictEqual(updates.width, 350);
+            assert.strictEqual(updates.enableLegend, true);
+            assert.deepEqual(updates.legend.getProperties(), legend1.getProperties());
         });
         it('does not update the properties with wrong param', function() {
             var properties={

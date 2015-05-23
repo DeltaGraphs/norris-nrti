@@ -147,7 +147,12 @@ describe('mapChartModel', function() {
         });
     });
     describe('#updateProperties', function() {
-        it('updates the properties passed as param', function() {
+        it('returns 331 if there are no params specified', function() {
+            var graph1=new MapChartModel({ID: 'graph1'});
+            var updates=graph1.updateProperties();
+            assert.strictEqual(updates, 331);
+        });
+        it('updates and returns the properties passed as param', function() {
             var properties={
                 ID: 'graph1',
                 title: 'graph one',
@@ -163,7 +168,7 @@ describe('mapChartModel', function() {
                 mapHeight: 1000
             };
             var graph1=new MapChartModel({ID: 'graph1'});
-            graph1.updateProperties(properties);
+            var updates=graph1.updateProperties(properties);
             assert.strictEqual(graph1._ID, 'graph1');
             assert.strictEqual(graph1._title, 'graph one');
             assert.strictEqual(graph1._type, 'MapChart');
@@ -177,6 +182,19 @@ describe('mapChartModel', function() {
             assert.strictEqual(graph1._legendOnPoint, true);
             assert.strictEqual(graph1._mapWidth, 1500);
             assert.strictEqual(graph1._mapHeight, 1000);
+
+            assert.strictEqual(updates.title, 'graph one');
+            assert.strictEqual(updates.type, 'MapChart');
+            assert.strictEqual(updates.height, 200);
+            assert.strictEqual(updates.width, 350);
+            assert.strictEqual(updates.enableLegend, true);
+            assert.deepEqual(updates.legend.getProperties(), legend1.getProperties());
+            assert.strictEqual(updates.latitude, '33');
+            assert.strictEqual(updates.longitude, '44');
+            assert.strictEqual(updates.mapType, 'satellite');
+            assert.strictEqual(updates.legendOnPoint, true);
+            assert.strictEqual(updates.mapWidth, 1500);
+            assert.strictEqual(updates.mapHeight, 1000);
         });
         it('does not update the properties with wrong param', function() {
             var properties={

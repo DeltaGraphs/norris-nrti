@@ -144,16 +144,24 @@ describe('FlowModel', function() {
     });
 
 	describe('#updateProperties', function() {
-		it('updates the properties passed as param', function() {
+        it('returns 252 if there are no params specified', function() {
+            var flow1=new FlowModel({ID: 'flow1'});
+            var updates=flow1.updateProperties();
+            assert.strictEqual(updates, 252);
+        });
+		it('updates and returns the properties passed as param', function() {
             var properties={
                 name: 'flow one',
                 filters: 'temperature>2',
             };
             var flow1=new FlowModel({ID: 'flow1'});
-            flow1.updateProperties(properties);
+            var updates=flow1.updateProperties(properties);
             var instanceOfFilterModel=(flow1._filters instanceof FilterModel);
 			assert.strictEqual(flow1._name, 'flow one');
 			assert.strictEqual(instanceOfFilterModel, true);
+
+            assert.strictEqual(updates.name, 'flow one');
+            assert.strictEqual(updates.filters, 'temperature>2');
         });
         it('does not update the properties with wrong param', function() {
             var properties={

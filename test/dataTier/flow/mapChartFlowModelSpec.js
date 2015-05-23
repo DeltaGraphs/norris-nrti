@@ -122,6 +122,90 @@ describe('MapChartFlowModel', function() {
         assert.strictEqual(flow1._maxItemsSaved, 1000);
     });
 
+    describe('#updateProperties', function() {
+        it('returns 233 if there are no params specified', function() {
+            var flow1=new MapChartFlowModel({ID: 'graph1'});
+            var updates=flow1.updateProperties();
+            assert.strictEqual(updates, 233);
+        });
+        it('updates and returns the properties passed as param', function() {
+            var marker={
+            type: 'shape',
+            shape: 'triangle'
+            };
+            var trace={
+                type: 'line',
+                coordinates:[
+                    [1,2],
+                    [3,4],
+                ],
+                strokeColor: '#FFF',
+                fillColor: '#FFF'
+            };
+            var properties={
+                longitudeKey: 'x',
+                latitudeKey: 'y',
+                objectKey: 'ID',
+                longitudeFormat: 'coordinates',
+                latitudeFormat: 'geographic',
+                marker: marker,
+                trace: trace,
+                trailLength: 2,
+                maxItemsSaved: 1000
+            };
+            var flow1=new MapChartFlowModel({ID: 'flow1'});
+            var updates=flow1.updateProperties(properties);
+            assert.strictEqual(flow1._ID, 'flow1');
+            assert.strictEqual(flow1._longitudeKey, 'x');
+            assert.strictEqual(flow1._latitudeKey, 'y');
+            assert.strictEqual(flow1._objectKey, 'ID');
+            assert.strictEqual(flow1._longitudeFormat, 'coordinates');
+            assert.strictEqual(flow1._latitudeFormat, 'geographic');
+            assert.deepEqual(flow1._marker, marker);
+            assert.deepEqual(flow1._trace, trace);
+            assert.strictEqual(flow1._trailLength, 2);
+            assert.strictEqual(flow1._maxItemsSaved, 1000);
+
+            assert.strictEqual(updates.longitudeKey, 'x');
+            assert.strictEqual(updates.latitudeKey, 'y');
+            assert.strictEqual(updates.objectKey, 'ID');
+            assert.strictEqual(updates.longitudeFormat, 'coordinates');
+            assert.strictEqual(updates.latitudeFormat, 'geographic');
+            assert.deepEqual(updates.marker, marker);
+            assert.deepEqual(updates.trace, trace);
+            assert.strictEqual(updates.trailLength, 2);
+            assert.strictEqual(updates.maxItemsSaved, 1000);
+        });
+        it('does not update the properties with wrong param', function() {
+            var properties={
+                ID: 'flow1',
+                longitudeKey: 1,
+                latitudeKey: {},
+                objectKey: {},
+                longitudeFormat: 'ttt',
+                latitudeFormat: 2,
+                marker: 2,
+                trace: 3,
+                trailLength: -2,
+                maxItemsSaved: '123'
+            };
+            var flow1=new MapChartFlowModel({ID: 'flow1'});
+            flow1.updateProperties(properties);
+            assert.strictEqual(flow1._ID, 'flow1');
+            assert.strictEqual(flow1._longitudeKey, null);
+            assert.strictEqual(flow1._latitudeKey, null);
+            assert.strictEqual(flow1._objectKey, null);
+            assert.strictEqual(flow1._longitudeFormat, 'coordinates');
+            assert.strictEqual(flow1._latitudeFormat, 'coordinates');
+            assert.strictEqual(flow1._marker.type, 'shape');
+            assert.strictEqual(flow1._marker.shape, 'circle');
+            assert.strictEqual(flow1._trace.type, 'none');
+            assert.strictEqual(flow1._trace.coordinates.length, 0);
+            assert.strictEqual(flow1._trailLength, 3);
+            assert.strictEqual(flow1._maxItemsSaved, 500);
+        });
+    });
+
     describe('#addRecord', function() {
         it('does not add a invalid record', function() {
             var flow1=new MapChartFlowModel({ID: 'flow1'});
