@@ -23,18 +23,19 @@
 *
 */
 
-describe('BarChart', function(){
+describe('BarChartFactory', function(){
 	'use strict';
 
-	var BarChart;
+	var BarChartFactory;
 	var Graph;
 	var Axis;
 	var BarChartFlow;
+	var BarChart;
 
 	beforeEach(angular.mock.module('app'));
 
-	beforeEach(inject(function(_BarChart_, $injector){
-		BarChart = _BarChart_;
+	beforeEach(inject(function(_BarChartFactory_, $injector){
+		BarChartFactory = _BarChartFactory_;
 		Graph = $injector.get('Graph');
 		Axis = $injector.get('Axis');
 		BarChartFlow = $injector.get('BarChartFlow');
@@ -62,8 +63,8 @@ describe('BarChart', function(){
 
 		var b1, b2;
 		beforeEach(function(){
-			b1 = BarChart.build(json);
-			b2 = BarChart.build(json1);
+			b1 = BarChartFactory.build(json);
+			b2 = BarChartFactory.build(json1);
 		});
 
 		afterEach(function(){

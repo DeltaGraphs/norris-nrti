@@ -23,7 +23,7 @@
 */
 
 angular.module('app')
-.factory('BarChart', ['Axis', 'BarChartFlow', function(Axis, BarChartFlow){
+.factory('BarChartFactory', ['GraphFactory','Axis', 'BarChartFlow', function(GraphFactory, Axis, BarChartFlow){
 
     function BarChart(info) {
         this._axisX = null;
@@ -34,13 +34,8 @@ angular.module('app')
         this._sortable = true;
         this._barsGrouping = 'grouped';
         this._legendOnPoint = false;
-
-        this.parent.constructor.call(this, info);
+        this.g = GraphFactory.build(info);
     }
-
-    BarChart.prototype = Object.create(Graph.prototype);
-    BarChart.prototype.constructor = BarChart;
-    BarChart.prototype.parent = Graph.prototype;
 
     function split(json) {
         var graphJson = {};
@@ -104,7 +99,7 @@ angular.module('app')
             var gJson = json.graphJson;
             var bJson = json.barJson;
             if (Object.keys(gJson).length !== 0) {
-                this.parent.updateParameters.call(this, gJson);
+                this.g.updateParameters(gJson);
             } 
             if (Object.keys(bJson).length !== 0) {
                 if (bJson.axisX !== undefined) {
@@ -141,13 +136,13 @@ angular.module('app')
         }
         
     };
-
+/*
     BarChart.prototype.addFlow = function(newId, newFlow) {
         if (newFlow instanceof BarChartFlow) {
             this.parent.addFlow.call(this, newId, newFlow);
         }
     };
-
+*/
     BarChart.prototype.initializeData = function(newData) {  //inizialization data of flows
         if (newData !== undefined) {
             var fList = this.parent.getFlowList();
@@ -174,6 +169,9 @@ angular.module('app')
     };
 
     // get method
+    BarChart.prototype.getTitle = function() {
+        return this.g.getTitle();
+    };
     BarChart.prototype.getX = function() {
         return this._axisX;
     };
@@ -199,11 +197,12 @@ angular.module('app')
         return this._legendOnPoint;
     };
 
+    function BarChartFactory(){}
 
-    BarChart.build = function(info) {
+    BarChartFactory.build = function(info) {
         return new BarChart(info);
     };
 
-    return BarChart;
+    return BarChartFactory;
 
 }]);
