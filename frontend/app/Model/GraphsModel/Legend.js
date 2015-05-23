@@ -20,30 +20,15 @@
 *
 */
 
-function Legend(info){
-    this._position = 'right';
-    this._fontColor = '#000';
-    this._backgroundColor = '#FFF';
+angular.module('app')
+.factory('Legend', function(){
 
-    if (info !== undefined){
-        if (info.position !== undefined) {
-            this._position = info.position;
-        }
-        if (info.fontColor !== undefined) {
-            this._fontColor = info.fontColor;
-        }
-        if (info.backgroundColor !== undefined) {
-            this._backgroundColor = info.backgroundColor;
-        }
-    }
-}
+    function Legend(info){
+        this._position = 'right';
+        this._fontColor = '#000';
+        this._backgroundColor = '#FFF';
 
-Legend.prototype = {
-
-    contructor : Legend,
-
-    updateParameters : function(info){
-        if (info !== undefined) {
+        if (info !== undefined){
             if (info.position !== undefined) {
                 this._position = info.position;
             }
@@ -54,15 +39,36 @@ Legend.prototype = {
                 this._backgroundColor = info.backgroundColor;
             }
         }
-    },
-
-    getPosition : function(){
-        return this._position;
-    },
-    getFontColor : function(){
-        return this._fontColor;
-    },
-    getBackgroundColor : function(){
-        return this._backgroundColor;
     }
-};
+
+    Legend.prototype = {
+
+        contructor : Legend,
+
+        updateParameters : function(info){
+            if (info !== undefined) {
+                if (info.position !== undefined) {
+                    this._position = info.position;
+                }
+                if (info.fontColor !== undefined) {
+                    this._fontColor = info.fontColor;
+                }
+                if (info.backgroundColor !== undefined) {
+                    this._backgroundColor = info.backgroundColor;
+                }
+            }
+        },
+
+        getPosition : function(){
+            return this._position;
+        },
+        getFontColor : function(){
+            return this._fontColor;
+        },
+        getBackgroundColor : function(){
+            return this._backgroundColor;
+        }
+    };
+
+    return( Legend );
+});
