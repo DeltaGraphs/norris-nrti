@@ -28,7 +28,7 @@ angular.module('app')
 
 		if (info !== undefined) {
 			if (info.name !== undefined){
-				name = info.name;
+				this._name = info.name;
 			}
 		}
 	}
@@ -45,7 +45,7 @@ angular.module('app')
 			}
 		},
 		getName : function() {
-			return name;
+			return this._name;
 		}
 	};
 

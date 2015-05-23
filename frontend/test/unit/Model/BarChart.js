@@ -219,7 +219,7 @@ describe('BarChartFactory', function(){
 			expect(BarChart.getX()).toEqual({ _name: null, _color: '#FFF', _minValue: null, _maxValue: null, _ticks: 10, _scale: 'linear' });
 		});
 		it('graph updated with the correct axisY', function(){
-			expect(BarChart.getY()).toEqual(_name: null, _color: '#FFF', _minValue: null, _maxValue: null, _ticks: 10, _scale: 'linear' });
+			expect(BarChart.getY()).toEqual({_name: null, _color: '#FFF', _minValue: null, _maxValue: null, _ticks: 10, _scale: 'linear' });
 		});
 		it('graph updated with the correct barOrientation', function(){
 			expect(BarChart.getBarOrientation()).toEqual('vertical');
