@@ -27,7 +27,7 @@ describe('BarChartFactory', function(){
 	'use strict';
 
 	var BarChartFactory;
-	var Graph;
+	var GraphFactory;
 	var Axis;
 	var BarChartFlow;
 	var BarChart;
@@ -36,7 +36,7 @@ describe('BarChartFactory', function(){
 
 	beforeEach(inject(function(_BarChartFactory_, $injector){
 		BarChartFactory = _BarChartFactory_;
-		Graph = $injector.get('Graph');
+		GraphFactory = $injector.get('GraphFactory');
 		Axis = $injector.get('Axis');
 		BarChartFlow = $injector.get('BarChartFlow');
 	}));
