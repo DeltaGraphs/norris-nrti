@@ -204,7 +204,7 @@ describe('BarChartFactory', function(){
 		var BarChart;
 
 		beforeEach(function(){
-			BarChart = BarChartFactory.build(json);
+			BarChart = BarChartFactory.build();
 			BarChart.updateParameters(json);
 		});
 

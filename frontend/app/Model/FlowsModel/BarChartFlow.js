@@ -32,7 +32,6 @@ angular.module('app')
 	            flowJson.name = json.name;
 	        }
 
-	       
 	        if (json.flowColor !== undefined) {
 	            barFlowJson.flowColor = json.flowColor;
 	        }
@@ -99,6 +98,12 @@ angular.module('app')
 		return this._flowColor;
 	};
 
-	return BarChartFlow;
+    function BarChartFlowFactory(){}
+
+    BarChartFlowFactory.build = function(info) {
+        return new BarChartFlow(info);
+    };
+
+	return BarChartFlowFactory;
 
 }]);
