@@ -18,20 +18,22 @@
 *
 */
 
-describe('Legend', function(){
+describe('LegendFactory', function(){
 
-	var Legend;
+	var LegendFactory;
 
 	beforeEach(angular.mock.module('app'));
 
-	beforeEach(inject(function(_Legend_){
-		Legend = _Legend_;
+	beforeEach(inject(function(_LegendFactory_){
+		LegendFactory = _LegendFactory_;
 	}));
 
 	describe('Default constructor', function(){
 
+		var Legend;
+
 		beforeEach(function(){
-			Legend = new Legend();
+			Legend = LegendFactory.build();
 		});
 
 		afterEach(function(){
@@ -61,9 +63,10 @@ describe('Legend', function(){
 			'fontColor' : '#AFA',
 			'backgroundColor' : '#F00',
 		};
+		var Legend;
 
 		beforeEach(function(){
-			Legend = new Legend(json);
+			Legend = LegendFactory.build(json);
 		});
 
 		afterEach(function(){
@@ -93,9 +96,10 @@ describe('Legend', function(){
 			'fontColor' : '#F00',
 			'backgroundColor' : '#AFA',
 		};
+		var Legend;
 
 		beforeEach(function(){
-			Legend = new Legend();
+			Legend = LegendFactory.build();
 			Legend.updateParameters(json);
 		});
 

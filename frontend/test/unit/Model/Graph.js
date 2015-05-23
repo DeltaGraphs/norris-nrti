@@ -23,21 +23,18 @@
 */
 
 
-describe('Graph', function(){
+describe('GraphFactory', function(){
 
-	var Graph;
-	var Legend;
-	var Flow;
-
-	var Flow1;
-	var Flow2;
+	var GraphFactory;
+	var LegendFactory;
+	var FlowFactory;
 
 	beforeEach(angular.mock.module('app'));
 
-	beforeEach(inject(function(_Graph_, $injector){
-		Graph = _Graph_;
-		Legend = $injector.get('Legend');
-		Flow = $injector.get('Flow');
+	beforeEach(inject(function(_GraphFactory_, $injector){
+		GraphFactory = _GraphFactory_;
+		LegendFactory = $injector.get('LegendFactory');
+		FlowFactory = $injector.get('FlowFactory');
 	}));
 
 	describe('prove', function(){
@@ -57,11 +54,11 @@ describe('Graph', function(){
 			'horizontalGrid' : false,
 			'verticalGrid' : false
 		};
-
 		var g1, g2;
+
 		beforeEach(function(){
-			g1 = Graph.build(json);
-			g2 = Graph.build(json1);
+			g1 = GraphFactory.build(json);
+			g2 = GraphFactory.build(json1);
 		});
 
 		afterEach(function(){
@@ -79,8 +76,10 @@ describe('Graph', function(){
 
 	describe('Default constructor', function(){
 
+		var Graph;
+
 		beforeEach(function(){
-			Graph = new Graph();
+			Graph = GraphFactory.build();
 		});
 
 		afterEach(function(){
@@ -106,9 +105,10 @@ describe('Graph', function(){
 			'title' : 'grafico1',
 			'url' : 'http://localhost/page1/grafico1'
 		};
+		var Graph;
 
 		beforeEach(function(){
-			Graph = new Graph(json);
+			Graph = GraphFactory.build(json);
 		});
 
 		afterEach(function(){
@@ -139,9 +139,10 @@ describe('Graph', function(){
 			'horizontalGrid' : true,
 			'verticalGrid' : true
 		};
+		var Graph;
 
 		beforeEach(function(){
-			Graph = new Graph();
+			Graph = GraphFactory.build();
 			Graph.updateParameters(json);
 		});
 
@@ -176,10 +177,11 @@ describe('Graph', function(){
 			'ID' : 	'flusso1',
 			'name' : 'sonda 1'
 		};
+		var Graph, Flow1;
 
 		beforeEach(function(){
-			Flow1 = new Flow();
-			Graph = new Graph();
+			Flow1 = FlowFactory.build();
+			Graph = GraphFactory.build();
 			Graph.addFlow(json.ID, Flow1);
 		});
 
@@ -205,11 +207,12 @@ describe('Graph', function(){
 			'ID' : 	'flusso2',
 			'name' : 'sonda 2'
 		};
+		var Graph, Flow1, Flow2;
 
 		beforeEach(function(){
-			Flow1 = new Flow();
-			Flow2 = new Flow();
-			Graph = new Graph();
+			Flow1 = FlowFactory.build();
+			Flow2 = FlowFactory.build();
+			Graph = GraphFactory.build();
 			Graph.addFlow(json1.ID, Flow1);
 			Graph.addFlow(json2.ID, Flow2);
 			Graph.deleteFlow('flusso1');

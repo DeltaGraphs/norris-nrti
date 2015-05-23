@@ -4,7 +4,7 @@
 /*
 * Name :  Flow.js
 * Module : FrontEnd::Model::FlowsModel
-* Location : /frontend/app/Model/FlowsModel
+* Location : /frontend/app/Model/FlFactory.buildowsModel
 *
 * History :
 * Version       Date        Programmer                  Description
@@ -21,11 +21,10 @@
 */
 
 angular.module('app')
-.factory('Flow', function(){
-
-	var name = null;
+.factory('FlowFactory', function(){
 
 	function Flow(info){
+		this._name;
 
 		if (info !== undefined) {
 			if (info.name !== undefined){
@@ -41,14 +40,19 @@ angular.module('app')
 		updateParameters : function(info) { //abstract
 			if (info !== undefined) {
 				if (info.name !== undefined){
-					name = info.name;
+					this._name = info.name;
 				}
 			}
-			return this;
 		},
 		getName : function() {
 			return name;
 		}
 	};
-	return( Flow );
+
+	function FlowFactory(){}
+
+    FlowFactory.build = function(info) {
+        return new Flow(info);
+    };
+	return( FlowFactory );
 });

@@ -22,21 +22,22 @@
 *
 */
 
-describe('Axis', function(){
+describe('AxisFactory', function(){
 
-	var Axis = null;
+	var AxisFactory = null;
 
 	beforeEach(angular.mock.module('app'));
 
-	beforeEach(inject(function (_Axis_) {
-		Axis = _Axis_;
+	beforeEach(inject(function (_AxisFactory_) {
+		AxisFactory = _AxisFactory_;
 	}));
 
 	describe('Default constructor', function(){
 
+		var Axis;
 
 		beforeEach(function(){
-			Axis = new Axis();
+			Axis = AxisFactory.build();
 		});
 
 		afterEach(function(){
@@ -77,9 +78,10 @@ describe('Axis', function(){
 			'ticks' : 10,
 			'scale' : 'logarithmic'
 		};
-		
+		var Axis;
+
 		beforeEach(function(){
-			Axis = new Axis(json);
+			Axis = AxisFactory.build(json);
 		});
 
 		afterEach(function(){
@@ -121,9 +123,10 @@ describe('Axis', function(){
 			'ticks' : 10,
 			'scale' : 'linear',
 		};
+		var Axis;
 
 		beforeEach(function(){
-			Axis = new Axis();
+			Axis = AxisFactory.build();
 			Axis.updateParameters(json);
 		});
 

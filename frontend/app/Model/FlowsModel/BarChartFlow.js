@@ -21,13 +21,7 @@
 */
 
 angular.module('app')
-.factory('BarChartFlow', ['Flow', function(Flow){
-	var data = [];
-	var flowColor = '#000';
-
-	BarChartFlow.prototype = Object.create(Flow.prototype);
-	BarChartFlow.prototype.constructor = BarChartFlow;
-	BarChartFlow.prototype.parent = Flow.prototype;
+.factory('BarChartFlowFactory', ['FlowFactory', function(FlowFactory){
 
 	function split(json) {
         var flowJson = {};
@@ -53,14 +47,18 @@ angular.module('app')
     //BarChartFlow.prototype.test = function _Test(expressionStr) { return eval(expressionStr); };
 
     function BarChartFlow(info) {
+    	this._data = [];
+		this._flowColor = '#000';
+		this._flow;
+
 		var json = split(info);
 		var fJson = json.flowJson;
 		var bfJson = json.barFlowJson;
-		
-		this.parent.constructor.call(this, fJson);
+
+		this._flow = FlowFactory.build(fJson);
 
 		if (bfJson.flowColor !== undefined) {
-            flowColor = bfJson.flowColor;
+            this._flowColor = bfJson.flowColor;
         }
 	}
 
@@ -69,33 +67,36 @@ angular.module('app')
 		var fJson = json.flowJson;
 		var bfJson = json.barFlowJson;
 
-		this.parent.updateParameters.call(this, fJson);
+		this._flow.updateParameters(fJson);
 
 		if (Object.keys(bfJson).length !== 0) {
 			if (bfJson.flowColor !== undefined) {
-	            flowColor = bfJson.flowColor;
+	            this._flowColor = bfJson.flowColor;
 	        }
 	    }
 	};
 
 	BarChartFlow.prototype.initializeData = function(newData) {
 		for (var i=0; i<newData.records.length; i++) {
-			data.push(newData.records[i]);
+			this._data.push(newData.records[i]);
 		}
 	};
 	BarChartFlow.prototype.inPlaceUpdate = function(newData) {
-        for (var i = 0; i<data.length; i++){
-            if (data[i].NorrisRecordID === newData.NorrisRecordID){
-                data[i] = { 'NorrisRecordID' : newData.NorrisRecordID, 'value' : newData.value };
+        for (var i = 0; i<this._data.length; i++){
+            if (this._data[i].NorrisRecordID === newData.NorrisRecordID){
+                this._data[i] = { 'NorrisRecordID' : newData.NorrisRecordID, 'value' : newData.value };
             }
         }
     };
 
+    BarChartFlow.prototype.getName = function() {
+    	return this._flow.getName();
+    };
 	BarChartFlow.prototype.getData = function() {
-		return data;
+		return this._data;
 	};
 	BarChartFlow.prototype.getFlowColor = function() {
-		return flowColor;
+		return this._flowColor;
 	};
 
 	return BarChartFlow;
