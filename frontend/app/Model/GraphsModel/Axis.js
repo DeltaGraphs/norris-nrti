@@ -23,36 +23,34 @@
 */
 
 angular.module('services')
-.factory('Axis', function(){
-
-    var name = null;
-    var color = '#FFF';
-    var minValue = null;
-    var maxValue = null;
-    var ticks = 10;
-    var scale = 'linear';
-
+.factory('AxisFactory', function(){
 
     function Axis(info){
+        this._name = null;
+        this._color = '#FFF';
+        this._minValue = null;
+        this._maxValue = null;
+        this._ticks = 10;
+        this._scale = 'linear';
 
         if (info !== undefined) {
             if (info.name !== undefined) {
-                name = info.name;
+                this._name = info.name;
             }
             if (info.color !== undefined) {
-                color = info.color;
+                this._color = info.color;
             }
             if (info.minIndex !== undefined) {
-                minValue = info.minIndex;
+                this._minValue = info.minIndex;
             }
             if (info.maxIndex !== undefined) {
-                maxValue = info.maxIndex;
+                this._maxValue = info.maxIndex;
             }
             if (info.ticks !== undefined) {
-                ticks = info.ticks;
+                this._ticks = info.ticks;
             }
             if (info.scale !== undefined) {
-                scale = info.scale;
+                this._scale = info.scale;
             }
         }
     }
@@ -61,46 +59,51 @@ angular.module('services')
         updateParameters : function(info){
             if (info !== undefined) {
                 if (info.name !== undefined) {
-                    name = info.name;
+                    this._name = info.name;
                 }
                 if (info.color !== undefined) {
-                    color = info.color;
+                    this._color = info.color;
                 }
                 if (info.minIndex !== undefined) {
-                    minValue = info.minIndex;
+                    this._minValue = info.minIndex;
                 }
                 if (info.maxIndex !== undefined) {
-                    maxValue = info.maxIndex;
+                    this._maxValue = info.maxIndex;
                 }
                 if (info.ticks !== undefined) {
-                    ticks = info.ticks;
+                    this._ticks = info.ticks;
                 }
                 if (info.scale !== undefined) {
-                    scale = info.scale;
+                    this._scale = info.scale;
                 }
             }
         },
 
         getName : function(){
-            return name;
+            return this._name;
         },
         getColor : function(){
-            return color;
+            return this._color;
         },
         getMinValue : function(){
-            return minValue;
+            return this._minValue;
         },
         getMaxValue : function(){
-            return maxValue;
+            return this._maxValue;
         },
         getTicks : function(){
-            return ticks;
+            return this._ticks;
         },
         getScale : function(){
-            return scale;
+            return this._scale;
         }
 
     };
 
-    return( Axis );
+    function AxisFactory() {}
+
+    AxisFactory.build = function(info) {
+        return new Axis(info);
+    };
+    return( AxisFactory );
 });
