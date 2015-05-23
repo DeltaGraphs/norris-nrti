@@ -216,10 +216,10 @@ describe('BarChartFactory', function(){
 			expect(BarChart).toBeDefined();
 		});
 		it('graph updated with the correct axisX', function(){
-			expect(BarChart.getX()).toEqual({});
+			expect(BarChart.getX()).toEqual({ _name: null, _color: '#FFF', _minValue: null, _maxValue: null, _ticks: 10, _scale: 'linear' });
 		});
 		it('graph updated with the correct axisY', function(){
-			expect(BarChart.getY()).toEqual({});
+			expect(BarChart.getY()).toEqual(_name: null, _color: '#FFF', _minValue: null, _maxValue: null, _ticks: 10, _scale: 'linear' });
 		});
 		it('graph updated with the correct barOrientation', function(){
 			expect(BarChart.getBarOrientation()).toEqual('vertical');
@@ -259,7 +259,7 @@ describe('BarChartFactory', function(){
 
 		beforeEach(function(){
 			newflow = BarChartFlowFactory.build(fJson);
-			BarChart = BarChartFactory.build(json);
+			BarChart = BarChartFactory.build();
 			BarChart.addFlow(json.ID, newflow);
 		});
 

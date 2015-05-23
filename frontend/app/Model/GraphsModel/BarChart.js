@@ -128,7 +128,9 @@ angular.module('app')
                 }
             }
             if (info.flows !== undefined) {
+                console.log('info.flows !== undefined');
                 for (var i=0; i<info.flows.length; i++) {
+                    console.log('sono nel for');
                     var newflow = BarChartFlowFactory.build(info.flows[i]);
                     this.addFlow(info.flows[i].ID, newflow);
                 }
