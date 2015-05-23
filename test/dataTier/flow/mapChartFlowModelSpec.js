@@ -248,6 +248,9 @@ describe('MapChartFlowModel', function() {
             assert.strictEqual(flow1._records[0].norrisRecordIsValid, true);
         });
     });
+    describe('#updateMovie', function() {
+        
+    });
     describe('#deleteRecord', function() {
         it('return 134 if ID is not valid', function() {
             var flow1=new MapChartFlowModel({ID: 'flow1'});
