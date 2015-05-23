@@ -33,7 +33,7 @@ describe('MapChartFlow', function() {
 
     it('calls the parent constructor with the params specified', function() {
         var flow1=new MapChartFlow({ID: 'flow1'},{_namespace: 'flow1'});
-        assert.strictEqual(flow1._dataMapChartFlow.ID, 'flow1');
+        assert.strictEqual(flow1._dataMapChartFlow._ID, 'flow1');
         assert.strictEqual(flow1._graphSocket._namespace, 'flow1');
     });
 });
