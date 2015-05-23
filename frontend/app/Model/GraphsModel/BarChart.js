@@ -23,7 +23,7 @@
 */
 
 angular.module('app')
-.factory('BarChartFactory', ['GraphFactory','Axis', 'BarChartFlow', function(GraphFactory, Axis, BarChartFlow){
+.factory('BarChartFactory', ['GraphFactory','AxisFactory', 'BarChartFlowFactory', function(GraphFactory, AxisFactory, BarChartFlowFactory){
 
     function BarChart(info) {
         this._axisX = null;
@@ -34,7 +34,7 @@ angular.module('app')
         this._sortable = true;
         this._barsGrouping = 'grouped';
         this._legendOnPoint = false;
-        this.g = GraphFactory.build(info);
+        this._graph = GraphFactory.build(info);
     }
 
     function split(json) {
@@ -99,14 +99,14 @@ angular.module('app')
             var gJson = json.graphJson;
             var bJson = json.barJson;
             if (Object.keys(gJson).length !== 0) {
-                this.g.updateParameters(gJson);
+                this._graph.updateParameters(gJson);
             } 
             if (Object.keys(bJson).length !== 0) {
                 if (bJson.axisX !== undefined) {
-                    this._axisX = new Axis(bJson.axisX);
+                    this._axisX = AxisFactory.build(bJson.axisX);
                 }
                 if (bJson.axisY !== undefined) {
-                    this._axisY = new Axis(bJson.axisY);
+                    this._axisY = AxisFactory.build(bJson.axisY);
                 }
                 if (bJson.barOrientation !== undefined) {
                     this._barOrientation = bJson.barOrientation;
@@ -129,23 +129,23 @@ angular.module('app')
             }
             if (info.flows !== undefined) {
                 for (var i=0; i<info.flows.length; i++) {
-                    var newflow = new BarChartFlow(info.flows[i]);
+                    var newflow = BarChartFlowFactory.build(info.flows[i]);
                     this.addFlow(info.flows[i].ID, newflow);
                 }
             }
         }
         
     };
-/*
+
     BarChart.prototype.addFlow = function(newId, newFlow) {
         if (newFlow instanceof BarChartFlow) {
-            this.parent.addFlow.call(this, newId, newFlow);
+            this._graph.addFlow(newId, newFlow);
         }
     };
-*/
+
     BarChart.prototype.initializeData = function(newData) {  //inizialization data of flows
         if (newData !== undefined) {
-            var fList = this.parent.getFlowList();
+            var fList = this._graph.getFlowList();
             for (var i=0; i<newData.length; i++) {
                 for (var j=0; j<fList.length; j++) {
                     if (fList[j].id === newData[i].ID) {
@@ -159,7 +159,7 @@ angular.module('app')
     // update data
     BarChart.prototype.inPlaceUpdate = function(newData) {
         if (newData !== undefined) {
-            var fList = this.parent.getFlowList();
+            var fList = this._graph.getFlowList();
             for (var j=0; j<fList.length; j++) {
                 if (fList[j].id === newData.ID) {
                     fList[j].flow.inPlaceUpdate(newData);
@@ -170,7 +170,28 @@ angular.module('app')
 
     // get method
     BarChart.prototype.getTitle = function() {
-        return this.g.getTitle();
+        return this._graph.getTitle();
+    };
+    BarChart.prototype.getHeight = function() {
+        return this._graph.getHeight();
+    };
+    BarChart.prototype.getWidth = function() {
+        return this._graph.getWidth();
+    };
+    BarChart.prototype.getLegend = function() {
+        return this._graph.getLegend();
+    };
+    BarChart.prototype.getHGrid = function() {
+        return this._graph.getHGrid();
+    };
+    BarChart.prototype.getVGrid = function() {
+        return this._graph.getVGrid();
+    };
+    BarChart.prototype.getUrl = function() {
+        return this._graph.getUrl();
+    };
+    BarChart.prototype.getFlowList = function() {
+        return this._graph.getFlowList();
     };
     BarChart.prototype.getX = function() {
         return this._axisX;

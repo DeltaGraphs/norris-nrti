@@ -29,7 +29,7 @@
 */
 
 angular.module('app')
-.factory('GraphFactory', ['Flow', 'Legend', function(Flow, Legend){
+.factory('GraphFactory', ['LegendFactory', function(LegendFactory){
 
 
 	function Graph(info){
@@ -70,7 +70,7 @@ angular.module('app')
 				if (info.enabledLegend !== undefined) {
 					this._enabledLegend = info.enabledLegend;
 					if (this.enabledLegend && info.legend !== undefined) {
-						this._legend = new Legend(info.legend);
+						this._legend = LegendFactory.build(info.legend);
 					}
 				}
 				if (info.horizontalGrid !== undefined) {

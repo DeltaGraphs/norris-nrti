@@ -28,17 +28,16 @@ describe('BarChartFactory', function(){
 
 	var BarChartFactory;
 	var GraphFactory;
-	var Axis;
-	var BarChartFlow;
-	var BarChart;
+	var AxisFactory;
+	var BarChartFlowFactory;
 
 	beforeEach(angular.mock.module('app'));
 
 	beforeEach(inject(function(_BarChartFactory_, $injector){
 		BarChartFactory = _BarChartFactory_;
 		GraphFactory = $injector.get('GraphFactory');
-		Axis = $injector.get('Axis');
-		BarChartFlow = $injector.get('BarChartFlow');
+		AxisFactory = $injector.get('AxisFactory');
+		BarChartFlowFactory = $injector.get('BarChartFlowFactory');
 	}));
 
 	describe('prove', function(){
@@ -78,12 +77,6 @@ describe('BarChartFactory', function(){
 		it('secondo titolo', function(){
 			expect(b2.getTitle()).toEqual('grafico2');
 		});
-		/*it('primo barre', function(){
-			expect(b1.getBarOrientation()).toEqual('ciao');
-		});
-		it('secondo barre', function(){
-			expect(b2.getBarOrientation()).toEqual('ciaociao');
-		});*/
 	});
 
 	describe('Constructor', function(){
@@ -92,9 +85,10 @@ describe('BarChartFactory', function(){
 			'title' : 'fottutissimografico',
 			'url' : 'localhost/page1/grafico1'
 		};
+		var BarChart;
 
 		beforeEach(function(){
-			BarChart = new BarChart(json);
+			BarChart = BarChartFactory.build(json);
 		});
 
 		afterEach(function(){
@@ -207,9 +201,10 @@ describe('BarChartFactory', function(){
 			'legendOnPoint' : true,
 			'flows' : [{},{},{}]
 		};
+		var BarChart;
 
 		beforeEach(function(){
-			BarChart = new BarChart();
+			BarChart = BarChartFactory.build(json);
 			BarChart.updateParameters(json);
 		});
 
@@ -260,10 +255,11 @@ describe('BarChartFactory', function(){
 			'flowColor' : '#F2F'
 		};
 		var newflow;
+		var BarChart;
 
 		beforeEach(function(){
-			newflow = new BarChartFlow(fJson);
-			BarChart = new BarChart();
+			newflow = BarChartFlowFactory.build(fJson);
+			BarChart = BarChartFactory.build(json);
 			BarChart.addFlow(json.ID, newflow);
 		});
 
@@ -286,10 +282,11 @@ describe('BarChartFactory', function(){
 			}
 		];
 		var newFlow;
+		var BarChart;
 
 		beforeEach(function(){
-			newFlow = new BarChartFlow();
-			BarChart = new BarChart();
+			newFlow = BarChartFlowFactory.build();
+			BarChart = BarChartFactory.build();
 			BarChart.addFlow(data[0].ID, newFlow);
 			BarChart.initializeData(data);
 		});
@@ -318,10 +315,11 @@ describe('BarChartFactory', function(){
 			'value' : [4,4]
 		};
 		var newFlow;
+		var BarChart;
 
 		beforeEach(function(){
-			newFlow = new BarChartFlow();
-			BarChart = new BarChart();
+			newFlow = BarChartFlowFactory.build();
+			BarChart = BarChartFactory.build();
 			BarChart.addFlow(data[0].ID, newFlow);
 			BarChart.initializeData(data);
 		});

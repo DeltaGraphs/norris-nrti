@@ -21,7 +21,7 @@
 */
 
 angular.module('app')
-.factory('Legend', function(){
+.factory('LegendFactory', function(){
 
     function Legend(info){
         this._position = 'right';
@@ -70,5 +70,11 @@ angular.module('app')
         }
     };
 
-    return( Legend );
+    function LegendFactory() {}
+
+    LegendFactory.build = function(info) {
+        return new Legend(info);
+    };
+    
+    return( LegendFactory );
 });
