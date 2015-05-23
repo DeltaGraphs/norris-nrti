@@ -184,7 +184,6 @@ describe('mapChartModel', function() {
             assert.strictEqual(graph1._mapHeight, 1000);
 
             assert.strictEqual(updates.title, 'graph one');
-            assert.strictEqual(updates.type, 'MapChart');
             assert.strictEqual(updates.height, 200);
             assert.strictEqual(updates.width, 350);
             assert.strictEqual(updates.enableLegend, true);

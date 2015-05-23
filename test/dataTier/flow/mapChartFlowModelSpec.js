@@ -226,7 +226,6 @@ describe('MapChartFlowModel', function() {
             var flow1=new MapChartFlowModel({ID: 'flow1'});
             assert.strictEqual(flow1.updateRecord(1), 131);
             assert.strictEqual(flow1.updateRecord(1, [{asd:'asd'}]), 131);
-            assert.strictEqual(flow1.updateRecord(1, 2), 131);
         });
         it('return 132 if index is not valid', function() {
             var flow1=new MapChartFlowModel({ID: 'flow1'});
