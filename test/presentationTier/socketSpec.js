@@ -36,11 +36,8 @@ describe('Socket', function() {
 
     var server = require('socket.io')();
     it('set param values to properties', function() {
-        var obj1 = new RandomObj();
-        var socket1 = new Socket(server, '/namespace', obj1, 'event');
+        var socket1 = new Socket(server, '/namespace');
         assert.strictEqual(socket1._namespace, server.of('/namespace'));
-        assert.strictEqual(socket1._attachedObj, obj1);
-        assert.strictEqual(socket1._onConnectionEvent, 'event');
     });
 
     describe('#sendMessage', function() {
