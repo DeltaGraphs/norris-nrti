@@ -14,8 +14,8 @@
 * =========================================================
 */
 
-var Page = require('../../lib/businessTier/page/page.js');
-var PageModel = require('../../lib/dataTier/page/pageModel.js');
+var Page = require('../../../lib/businessTier/page/page.js');
+var PageModel = require('../../../lib/dataTier/page/pageModel.js');
 var assert = require('assert');
 
 function ParamMock() {
