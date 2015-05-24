@@ -17,20 +17,20 @@
 *
 */
 
-describe('Cell', function(){
+describe('CellFactory', function(){
 
-	var Cell;
+	var CellFactory;
 
 	beforeEach(angular.mock.module('app'));
 
-	beforeEach(inject(function(_Cell_){
-		Cell = _Cell_;
+	beforeEach(inject(function(_CellFactory_){
+		CellFactory = _CellFactory_;
 	}));
 
 	describe('Default constructor', function(){
 
 		beforeEach(function(){
-			Cell = new Cell();
+			Cell = CellFactory.build();
 		});
 
 		afterEach(function(){
@@ -58,7 +58,7 @@ describe('Cell', function(){
 		};
 
 		beforeEach(function(){
-			Cell = new Cell(json);
+			Cell = CellFactory.build(json);
 		});
 
 		afterEach(function(){
@@ -85,8 +85,8 @@ describe('Cell', function(){
 		};
 
 		beforeEach(function(){
-			Cell = new Cell();
-			Cell = Cell.updateParameters(json);
+			Cell = CellFactory.build();
+			Cell.updateParameters(json);
 		});
 
 		afterEach(function(){

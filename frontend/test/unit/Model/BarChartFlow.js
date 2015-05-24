@@ -20,22 +20,20 @@
 *
 */
 
-describe('BarChartFlow', function(){
+describe('BarChartFlowFactory', function(){
 
-	var BarChartFlow;
-	var Flow;
+	var BarChartFlowFactory;
 
 	beforeEach(angular.mock.module('app'));
 
-	beforeEach(inject(function(_BarChartFlow_, $injector){
-		BarChartFlow = _BarChartFlow_;
-		Flow = $injector.get('Flow');
+	beforeEach(inject(function(_BarChartFlowFactory_){
+		BarChartFlowFactory = _BarChartFlowFactory_;
 	}));
 
 	describe('Default constructor', function(){
 
 		beforeEach(function(){
-			BarChartFlow = new BarChartFlow();
+			BarChartFlow = BarChartFlowFactory.build();
 		});
 
 		afterEach(function(){
@@ -63,7 +61,7 @@ describe('BarChartFlow', function(){
 		//};
 
 		beforeEach(function(){
-			BarChartFlow = new BarChartFlow(json);
+			BarChartFlow = BarChartFlowFactory.build(json);
 		});
 
 		afterEach(function(){
@@ -118,7 +116,7 @@ describe('BarChartFlow', function(){
 		};
 
 		beforeEach(function(){
-			BarChartFlow = new BarChartFlow();
+			BarChartFlow = BarChartFlowFactory.build();
 			BarChartFlow.updateParameters(json);
 		});
 
@@ -142,7 +140,7 @@ describe('BarChartFlow', function(){
 		};
 
 		beforeEach(function(){
-			BarChartFlow = new BarChartFlow();
+			BarChartFlow = BarChartFlowFactory.build();
 			BarChartFlow.initializeData(data);
 		});
 
@@ -172,7 +170,7 @@ describe('BarChartFlow', function(){
 		};
 
 		beforeEach(function(){
-			BarChartFlow = new BarChartFlow();
+			BarChartFlow = BarChartFlowFactory.build();
 			BarChartFlow.initializeData(data);
 			BarChartFlow.inPlaceUpdate(update);
 		});

@@ -69,7 +69,7 @@ angular.module('app')
 				}
 				if (info.enabledLegend !== undefined) {
 					this._enabledLegend = info.enabledLegend;
-					if (this.enabledLegend && info.legend !== undefined) {
+					if (this._enabledLegend && info.legend !== undefined) {
 						this._legend = LegendFactory.build(info.legend);
 					}
 				}

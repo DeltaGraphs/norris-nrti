@@ -18,20 +18,20 @@
 *
 */
 
-describe('Flow', function(){
+describe('FlowFactory', function(){
 
-	var Flow;
+	var FlowFactory;
 
 	beforeEach(angular.mock.module('app'));
 
-	beforeEach(inject(function(_Flow_){
-		Flow = _Flow_;
+	beforeEach(inject(function(_FlowFactory_){
+		FlowFactory = _FlowFactory_;
 	}));
 
 	describe('Constructor', function(){
 
 		beforeEach(function(){
-			Flow = new Flow();
+			Flow = FlowFactory.build();
 		});
 
 		afterEach(function(){
@@ -54,7 +54,7 @@ describe('Flow', function(){
 		};
 
 		beforeEach(function(){
-			Flow = new Flow(json);
+			Flow = FlowFactory.build(json);
 		});
 
 		afterEach(function(){
@@ -76,8 +76,8 @@ describe('Flow', function(){
 		};
 
 		beforeEach(function(){
-			Flow = new Flow();
-			Flow = Flow.updateParameters(json);
+			Flow = FlowFactory.build();
+			Flow.updateParameters(json);
 		});
 
 		afterEach(function(){
