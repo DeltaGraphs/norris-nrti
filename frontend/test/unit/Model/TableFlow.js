@@ -26,7 +26,7 @@ describe('TableFlowFactory', function(){
 
 	beforeEach(angular.mock.module('app'));
 
-	beforeEach(inject(function(_TTableFlowFactory_){
+	beforeEach(inject(function(_TableFlowFactory_){
 		TableFlowFactory = _TableFlowFactory_;
 	}));
 
@@ -200,7 +200,7 @@ describe('TableFlowFactory', function(){
 			]
 		};
 		var TableFlow;
-		
+
 		beforeEach(function(){
 			TableFlow = TableFlowFactory.build();
 			TableFlow.streamUpdate(data);
