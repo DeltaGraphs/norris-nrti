@@ -36,45 +36,6 @@ describe('BarChartFactory', function(){
 		BarChartFlowFactory = $injector.get('BarChartFlowFactory');
 	}));
 
-	describe('prove', function(){
-		var json = {
-			'title' : 'graficonuovo',
-			'height' : 400,
-			'width' : 400,
-			'enabledLegend' : false,
-			'horizontalGrid' : false,
-			'verticalGrid' : false,
-			'barOrientation' : 'ciao'
-		};
-		var json1 = {
-			'title' : 'grafico2',
-			'height' : 400,
-			'width' : 400,
-			'enabledLegend' : false,
-			'horizontalGrid' : false,
-			'verticalGrid' : false,
-			'barOrientation' : 'ciaociao'
-		};
-
-		var b1, b2;
-		beforeEach(function(){
-			b1 = BarChartFactory.build(json);
-			b2 = BarChartFactory.build(json1);
-		});
-
-		afterEach(function(){
-			b1 = null;
-			b2 = null;
-		});	
-
-		it('primo titolo', function(){
-			expect(b1.getTitle()).toEqual('graficonuovo');
-		});
-		it('secondo titolo', function(){
-			expect(b2.getTitle()).toEqual('grafico2');
-		});
-	});
-
 	describe('Constructor', function(){
 
 		var json = {
