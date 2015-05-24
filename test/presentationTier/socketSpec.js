@@ -32,6 +32,9 @@ describe('Socket', function() {
     function RandomObj() {
         this.prop1 = 'prop1';
         this.prop2 = 'prop2';
+        function getConfigJSON(){
+            return 'prop1-prop2';
+        }
     }
 
     var server = require('socket.io')();
@@ -77,12 +80,26 @@ describe('Socket', function() {
             assert.strictEqual(socket1._attachedObj, null);
             assert.strictEqual(socket1._onConnectionEvent, '');
         });
+
+        var server = require('socket.io')();
+        server.listen(5000);
+
+        var socketURL = 'http://0.0.0.0:5000/namespace';
+        var options ={
+            transports: ['websocket'],
+            'force new connection': true
+        };
+        var client1 = io.connect(socketURL, options);
+
         it('attach the object in params', function() {
             var socket1 = new Socket(server, '/namespace');
             var obj2 = new RandomObj();
             socket1.attachObject(obj2, 'onEvent');
             assert.strictEqual(socket1._attachedObj, obj2);
             assert.strictEqual(socket1._onConnectionEvent, 'onEvent');
+            client1.on('connection', function(message) {
+                assert.strictEqual(message, 'prop1-prop2');
+            });
         });
     });
 });
