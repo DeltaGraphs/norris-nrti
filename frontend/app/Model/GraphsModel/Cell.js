@@ -19,19 +19,18 @@
 */
 
 angular.module('services')
-.factory('Cell', function(){
-
-    var background = '#FFF';
-    var fontColor = '#000';
+.factory('CellFactory', function(){
 
     function Cell(info){
 
+        this._background = '#FFF';
+        this._fontColor = '#000';
         if (info !== undefined) {
             if (info.background !== undefined) {
-                background = info.background;
+                this._background = info.background;
             }
             if (info.fontColor !== undefined) {
-                fontColor = info.fontColor;
+                this._fontColor = info.fontColor;
             }
         }
     }
@@ -41,10 +40,10 @@ angular.module('services')
         updateParameters : function(info){
             if (info !== undefined) {
                 if (info.background) {
-                    background = info.background;
+                    this._background = info.background;
                 }
                 if (info.fontColor) {
-                    fontColor = info.fontColor;
+                    this._fontColor = info.fontColor;
                 }
             }
 
@@ -52,13 +51,19 @@ angular.module('services')
         },
 
         getBackground : function(){
-            return background;
+            return this._background;
         },
         getFontColor : function(){
-            return fontColor;
+            return this._fontColor;
         }
 
     };
 
-    return( Cell );
+    function CellFactory() {}
+
+    CellFactory.build = function(info){
+        return new Cell(info);
+    };
+
+    return CellFactory;
 });

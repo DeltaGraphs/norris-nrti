@@ -25,7 +25,7 @@
 */
 
 angular.module('services')
-.factory('LineChart', ['Graph', 'Axis', 'LineChartFlow', function(Graph, Axis, LineChartFlow){
+.factory('LineChartFactory', ['GraphFactory', 'AxisFactory', 'LineChartFlowFactory', function(GraphFactory, AxisFactory, LineChartFlowFactory){
 
 	function split(json) {
 		var graphJson = {};
@@ -83,8 +83,7 @@ angular.module('services')
         this._axisY = null;
         this._viewFinder = false;
         this._backgroundColor = '#FFF';
-
-        this.parent.constructor.call(this, info);
+        this._graph = GraphFactory.build(info);
     }
 
     LineChart.prototype = Object.create(Graph.prototype);
@@ -183,5 +182,11 @@ angular.module('services')
         return this._legendOnPoint;
     };
 
-    return LineChart;
+    function LineChartFactory(){}
+
+    LineChartFactory.build = function(info) {
+        return new LineChart(info);
+    };
+
+    return LineChartFactory;
 }]);
