@@ -29,7 +29,7 @@ describe('TableFactory', function(){
 
 	beforeEach(inject(function(_TableFactory_, $injector){
 		TableFactory = _TableFactory_;
-		TableFlowFactory = $injector.get('TableFlow');
+		TableFlowFactory = $injector.get('TableFlowFactory');
 	}));
 
 	describe('Constructor', function(){

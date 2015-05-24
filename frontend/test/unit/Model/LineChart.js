@@ -141,7 +141,7 @@ describe('LineChartFactory', function(){
 			'axisX' : {},
 			'axisY' : {},
 			'backgroundColor' : '#000',
-			'flows' : [{},{},{}]
+			'flows' : [{'ID' : 'f1'},{'ID' : 'f2'},{'ID' : 'f3'}]
 		};
 
 		var LineChart;
@@ -159,10 +159,10 @@ describe('LineChartFactory', function(){
 			expect(LineChart.getLegendOnPoint()).toEqual(true);
 		});
 		it('graph updated with the correct axisX', function(){
-			expect(LineChart.getX()).toEqual({});
+			expect(LineChart.getX()).toEqual({ _name: null, _color: '#FFF', _minValue: null, _maxValue: null, _ticks: 10, _scale: 'linear' });
 		});
 		it('graph updated with the correct axisY', function(){
-			expect(LineChart.getY()).toEqual({});
+			expect(LineChart.getY()).toEqual({ _name: null, _color: '#FFF', _minValue: null, _maxValue: null, _ticks: 10, _scale: 'linear' });
 		});
 		it('graph updated with the correct viewFinder', function(){
 			expect(LineChart.getViewFinder()).toEqual(true);

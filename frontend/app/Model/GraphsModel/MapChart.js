@@ -82,7 +82,7 @@ angular.module('app')
 
     // create our new custom object that reuse the original object constructor
     function MapChart(info) {
-        this._latitude = false;
+        this._legendOnPoint = false;
         this._latitude = 45.4113311;
         this._longitude = 11.8876318;
         this._mapType = 'terrain';
@@ -133,7 +133,7 @@ angular.module('app')
 
     MapChart.prototype.addFlow = function(ID, newFlow) {
         if (newFlow.constructor.name === 'MapChartFlow') {
-            this.graph.addFlow(ID, newFlow);
+            this._graph.addFlow(ID, newFlow);
         }
     };
 

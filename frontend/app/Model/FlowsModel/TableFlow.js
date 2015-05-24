@@ -111,6 +111,6 @@ angular.module('app')
 		return new TableFlow(info);
 	};
 
-	return( TableFlow );
+	return TableFlowFactory;
 
 }]);
