@@ -140,7 +140,7 @@ angular.module('app')
     };
 
     BarChart.prototype.addFlow = function(newId, newFlow) {
-        if (newFlow instanceof BarChartFlowFactory) {
+        if (newFlow instanceof BarChartFlow) {
             console.log('instanceof funziona');
             this._graph.addFlow(newId, newFlow);
         }
