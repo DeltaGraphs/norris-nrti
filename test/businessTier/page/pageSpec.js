@@ -71,4 +71,21 @@ describe('PageModel', function() {
         assert.strictEqual(page1._pageSocket, new ParamMock());
         assert.strictEqual(page1._graphs.length, 0);
     });
+
+    describe('#getConfigJSON', function() {
+        it('returns the JSON to send to clients when they connect', function() {
+            var page1=new Page({ID:'page1', name:'page1', description:'page one', graphsPerRow: 3, graphsPerCol: 5}, new ParamMock(), new ParamMock());
+            var expectedJSON = {
+                properties: {
+                    ID: 'page1',
+                    name: 'page1',
+                    description: 'page one',
+                    graphsPerRow: 3,
+                    graphsPerCol: 5
+                },
+                data: []
+            };
+            assert.strictEqual(page1.getConfigJSON(), expectedJSON);
+        });
+    });
 });
