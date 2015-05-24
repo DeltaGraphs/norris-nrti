@@ -199,7 +199,9 @@ describe('BarChartFactory', function(){
 			'sortable' : false,
 			'barsGrouping' : 'stacked',
 			'legendOnPoint' : true,
-			'flows' : [{},{},{}]
+			'flows' : [{ 'ID' : 'flusso1', 'name' : 'flusso1', 'flowColor' : '#000'},
+			{ 'ID' : 'flusso2', 'name' : 'flusso2', 'flowColor' : '#000'},
+			{ 'ID' : 'flusso3', 'name' : 'flusso3', 'flowColor' : '#000'}]
 		};
 		var BarChart;
 
