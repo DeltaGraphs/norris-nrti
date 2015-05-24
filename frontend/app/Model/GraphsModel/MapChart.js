@@ -132,7 +132,7 @@ angular.module('app')
     };
 
     MapChart.prototype.addFlow = function(ID, newFlow) {
-        if (newFlow instanceof MapChartFlow) {
+        if (newFlow.constructor.name === 'MapChartFlow') {
             this.graph.addFlow(ID, newFlow);
         }
     };

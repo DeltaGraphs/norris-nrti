@@ -165,7 +165,7 @@ angular.module('app')
 	function LineChartFlowFactory() {}
 
 	LineChartFlowFactory.build = function(info){
-		return new LineChart(info);
+		return new LineChartFlow(info);
 	};
 
 	return LineChartFlowFactory;

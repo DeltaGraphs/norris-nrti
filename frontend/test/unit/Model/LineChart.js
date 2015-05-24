@@ -26,7 +26,7 @@
 describe('LineChartFactory', function(){
 	'use strict';
 
-	var LineChartFactory
+	var LineChartFactory;
 	var LineChartFlowFactory;
 
 	beforeEach(angular.mock.module('app'));

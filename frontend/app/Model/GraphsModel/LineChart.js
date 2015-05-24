@@ -99,10 +99,10 @@ angular.module('services')
                     this._legendOnPoint = lJson.legendOnPoint;
                 }
                 if (lJson.axisX !== undefined) {
-                    this._axisX = new Axis(lJson.axisX);
+                    this._axisX = AxisFactory.build(lJson.axisX);
                 }
                 if (lJson.axisY !== undefined) {
-                    this._axisY = new Axis(lJson.axisY);
+                    this._axisY = AxisFactory.build(lJson.axisY);
                 }
                 if (lJson.viewFinder !== undefined) {
                     this._viewFinder = lJson.viewFinder;
@@ -121,7 +121,7 @@ angular.module('services')
     };
 
     LineChart.prototype.addFlow = function(newId, newFlow) {
-        if (newFlow instanceof LineChartFlow) {
+        if (newFlow.constructor.name === 'LineChartFlow') {
             this._graph.addFlow(newId, newFlow);
         }
     };

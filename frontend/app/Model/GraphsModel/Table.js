@@ -130,7 +130,7 @@ angular.module('app')
     };
 
     Table.prototype.addFlow = function(ID, newFlow) {
-        if (newFlow instanceof TableFlow) {
+        if (newFlow.constructor.name === 'TableFlow') {
             this._graph.addFlow(ID, newFlow);
         }
     };
