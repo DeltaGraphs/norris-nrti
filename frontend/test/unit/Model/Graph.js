@@ -28,6 +28,7 @@ describe('GraphFactory', function(){
 	var GraphFactory;
 	var LegendFactory;
 	var FlowFactory;
+	var LineChartFlowFactory;
 
 	beforeEach(angular.mock.module('app'));
 
@@ -35,6 +36,7 @@ describe('GraphFactory', function(){
 		GraphFactory = _GraphFactory_;
 		LegendFactory = $injector.get('LegendFactory');
 		FlowFactory = $injector.get('FlowFactory');
+		LineChartFlowFactory = $injector.get('LineChartFlowFactory');
 	}));
 
 	describe('Default constructor', function(){
@@ -209,10 +211,10 @@ describe('GraphFactory', function(){
 		var Graph, Flow1;
 
 		beforeEach(function(){
-			Flow1 = FlowFactory.build();
+			Flow1 = LineChartFlowFactory.build();
+			Flow1.initializeData(json1);
 			Graph = GraphFactory.build();
 			Graph.addFlow(json1.ID, Flow1);
-			Graph.initializeData(json1);
 			Graph.replaceData(json);
 		});
 

@@ -318,7 +318,7 @@ describe('MapChartFactory', function(){
 		});
 	});
 
-	/*describe('deleteData', function(){
+	describe('deleteData', function(){
 
 		var data = [
 			{
@@ -326,6 +326,11 @@ describe('MapChartFactory', function(){
 				'records' : [{'NorrisRecordID' : 'record2', 'value' : [3,3] }]
 			}
 		];
+
+		var delData = {
+			'ID' : '2',
+			'NorrisRecordID' : 'record2'
+		};
 		
 		var newFlow;
 		var MapChart;
@@ -335,15 +340,16 @@ describe('MapChartFactory', function(){
 			MapChart = MapChartFactory.build();
 			MapChart.addFlow(data[0].ID, newFlow);
 			MapChart.initializeData(data);
+			MapChart.deleteData(delData);
 		});
 
 		afterEach(function(){
 			MapChart = null;
 		});
 
-		it('inizialize flowList', function(){
-			expect(MapChartFlow.movieUpdate).toHaveBeenCalledWith(data);
+		it('deleteData in the correct way', function(){
+			expect(MapChart.getFlowList()[0].getData.length).toEqual(0);
 		});
-	});*/
+	});
 
 });
