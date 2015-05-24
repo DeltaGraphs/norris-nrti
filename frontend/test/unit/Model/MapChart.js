@@ -17,19 +17,17 @@
 *
 */
 
-describe('MapChart', function(){
+describe('MapChartFactory', function(){
 	'use strict';
 
-	var MapChart;
-	var Graph;
-	var MapChartFlow;
+	var MapChartFactory;
+	var MapChartFlowFactory;
 
 	beforeEach(angular.mock.module('app'));
 
-	beforeEach(inject(function(_MapChart_, $injector){
-		MapChart = _MapChart_;
-		Graph = $injector.get('Graph');
-		MapChartFlow = $injector.get('MapChartFlow');
+	beforeEach(inject(function(_MapChartFactory_, $injector){
+		MapChartFactory = _MapChartFactory_;
+		MapChartFlowFactory = $injector.get('MapChartFlowFactory');
 	}));
 
 	describe('Constructor', function(){
@@ -39,8 +37,10 @@ describe('MapChart', function(){
 			'url' : 'localhost/page1/grafico1'
 		};
 
+		var MapChart;
+
 		beforeEach(function(){
-			MapChart = new MapChart(json);
+			MapChart = MapChartFactory.build(json);
 		});
 
 		afterEach(function(){
@@ -145,9 +145,10 @@ describe('MapChart', function(){
 			'zoom' : false,
 			'flows' : [{},{},{}]
 		};
+		var MapChart;
 
 		beforeEach(function(){
-			MapChart = new MapChart();
+			MapChart = MapChartFactory.build();
 			MapChart.updateParameters(json);
 		});
 
@@ -201,11 +202,12 @@ describe('MapChart', function(){
 		};
 
 		var newFlow;
+		var MapChart;
 
 
 		beforeEach(function(){
-			newFlow = new MapChartFlow(fJson);
-			MapChart = new MapChart();
+			newFlow = MapChartFlowFactory.build(fJson);
+			MapChart = MapChartFactory.build();
 			MapChart.addFlow(json.ID, newFlow);
 		});
 
@@ -229,10 +231,11 @@ describe('MapChart', function(){
 		];
 
 		var newFlow;
+		var MapChart;
 
 		beforeEach(function(){
-			newFlow = new MapChartFlow();
-			MapChart = new MapChart();
+			newFlow = MapChartFlowFactory.build();
+			MapChart = MapChartFactory.build();
 			MapChart.addFlow(data[0].ID, newFlow);
 			MapChart.initializeData(data);
 		});
@@ -259,10 +262,11 @@ describe('MapChart', function(){
 			'value' : [4,4]
 		};
 		var newFlow;
+		var MapChart;
 
 		beforeEach(function(){
-			newFlow = new MapChartFlow();
-			MapChart = new MapChart();
+			newFlow = MapChartFlowFactory.build();
+			MapChart = MapChartFactory.build();
 			MapChart.addFlow(data[0].ID, newFlow);
 			MapChart.initializeData(data);
 		});
@@ -294,10 +298,11 @@ describe('MapChart', function(){
 			}]
 		};
 		var newFlow;
+		var MapChart;
 
 		beforeEach(function(){
-			newFlow = new MapChartFlow();
-			MapChart = new MapChart();
+			newFlow = MapChartFlowFactory.build();
+			MapChart = MapChartFactory.build();
 			MapChart.addFlow(data[0].ID, newFlow);
 			MapChart.initializeData(data);
 		});
@@ -313,16 +318,23 @@ describe('MapChart', function(){
 		});
 	});
 
-	/*describe('movieUpdate', function(){
+	/*describe('deleteData', function(){
 
-		var data = 	{
-			'ID' : '2',
-			'records' : []
-		};
+		var data = [
+			{
+				'ID' : '2',
+				'records' : [{'NorrisRecordID' : 'record2', 'value' : [3,3] }]
+			}
+		];
+		
+		var newFlow;
+		var MapChart;
 
 		beforeEach(function(){
-			MapChart = new MapChart();
-			MapChart = MapChart.movieUpdate(data);
+			newFlow = MapChartFlowFactory.build();
+			MapChart = MapChartFactory.build();
+			MapChart.addFlow(data[0].ID, newFlow);
+			MapChart.initializeData(data);
 		});
 
 		afterEach(function(){

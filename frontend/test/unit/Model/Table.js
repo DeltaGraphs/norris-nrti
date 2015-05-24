@@ -19,21 +19,17 @@
 *
 */
 
-describe('Table', function(){
+describe('TableFactory', function(){
 	'use strict';
 
-	var Table;
-	var Graph;
-	var Cell;
-	var TableFlow;
+	var TableFactory;
+	var TableFlowFactory;
 
 	beforeEach(angular.mock.module('app'));
 
-	beforeEach(inject(function(_Table_, $injector){
-		Table = _Table_;
-		Graph = $injector.get('Graph');
-		Cell = $injector.get('Cell');
-		TableFlow = $injector.get('TableFlow');
+	beforeEach(inject(function(_TableFactory_, $injector){
+		TableFactory = _TableFactory_;
+		TableFlowFactory = $injector.get('TableFlow');
 	}));
 
 	describe('Constructor', function(){
@@ -42,9 +38,10 @@ describe('Table', function(){
 			'title' : 'fottutissimografico',
 			'url' : 'localhost/page1/grafico1'
 		};
+		var Table;
 
 		beforeEach(function(){
-			Table = new Table(json);
+			Table = TableFactory.build(json);
 		});
 
 		afterEach(function(){
@@ -167,9 +164,10 @@ describe('Table', function(){
 			},
 			'flows' : [{},{},{}]
 		};
+		var Table;
 
 		beforeEach(function(){
-			Table = new Table();
+			Table = TableFactory.build();
 			Table.updateParameters(json);
 		});
 
@@ -217,10 +215,11 @@ describe('Table', function(){
 		};
 
 		var newFlow;
+		var Table;
 
 		beforeEach(function(){
-			newFlow = new TableFlow(fJson);
-			Table = new Table();
+			newFlow = TableFlowFactory.build(fJson);
+			Table = TableFactory.build();
 			Table.addFlow(json.ID, newFlow);
 		});
 
@@ -244,10 +243,11 @@ describe('Table', function(){
 		];
 
 		var newFlow;
+		var Table;
 
 		beforeEach(function(){
-			newFlow = new TableFlow();
-			Table = new Table();
+			newFlow = TableFlowFactory.build();
+			Table = TableFactory.build();
 			Table.addFlow(data[0].ID, newFlow);
 			Table.initializeData(data);
 		});
@@ -275,10 +275,11 @@ describe('Table', function(){
 			'value' : [4,4]
 		};
 		var newFlow;
+		var Table;
 
 		beforeEach(function(){
-			newFlow = new TableFlow();
-			Table = new Table();
+			newFlow = TableFlowFactory.build();
+			Table = TableFactory.build();
 			Table.addFlow(data[0].ID, newFlow);
 			Table.initializeData(data);
 		});
@@ -310,10 +311,11 @@ describe('Table', function(){
 			}]
 		};
 		var newFlow;
+		var Table;
 
 		beforeEach(function(){
-			newFlow = new TableFlow();
-			Table = new Table();
+			newFlow = TableFlowFactory.build();
+			Table = TableFactory.build();
 			Table.addFlow(data[0].ID, newFlow);
 			Table.initializeData(data);
 		});

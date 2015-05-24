@@ -19,28 +19,21 @@
 *
 */
 
-describe('Page', function(){
+describe('PageFactory', function(){
 
-	var Page;
-	var LineChart;
-	var BarChart;
-	var MapChart;
-	var Table;
+	var PageFactory;
 
 	beforeEach(angular.mock.module('app'));
 
-	beforeEach(inject(function(_Page_, $injector){
-		Page = _Page_;
-		LineChart = $injector.get('LineChart');
-		BarChart = $injector.get('BarChart');
-		MapChart = $injector.get('MapChart');
-		Table = $injector.get('Table');
+	beforeEach(inject(function(_PageFactory_){
+		PageFactory = _PageFactory_;
 	}));
 
 	describe('Default constructor', function(){
+		var Page;
 
 		beforeEach(function(){
-			Page = new Page();
+			Page = PageFactory.build();
 		});
 
 		afterEach(function(){
@@ -97,8 +90,10 @@ describe('Page', function(){
 			]
 		};
 		
+		var Page;
+
 		beforeEach(function(){
-			Page = new Page(json);
+			Page = PageFactory.build(json);
 		});
 
 		afterEach(function(){
@@ -141,9 +136,10 @@ describe('Page', function(){
 			'graphsPerCol' : 4,
 			'URLSocket' : 'http://localhost/pageN'
 		};
+		var Page;
 
 		beforeEach(function(){
-			Page = new Page();
+			Page = PageFactory.build();
 			Page.updateParameters(json);
 		});
 
@@ -176,8 +172,10 @@ describe('Page', function(){
 			'type' : 'Table'
 		};
 
+		var Page;
+		
 		beforeEach(function(){
-			Page = new Page();
+			Page = PageFactory.build();
 			Page.addGraph(json);
 		});
 

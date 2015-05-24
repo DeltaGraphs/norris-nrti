@@ -23,21 +23,17 @@
 *
 */
 
-describe('LineChart', function(){
+describe('LineChartFactory', function(){
 	'use strict';
 
-	var LineChart;
-	var Graph;
-	var Axis;
-	var LineChartFlow;
+	var LineChartFactory
+	var LineChartFlowFactory;
 
 	beforeEach(angular.mock.module('app'));
 
-	beforeEach(inject(function(_LineChart_, $injector){
-		LineChart = _LineChart_;
-		Graph = $injector.get('Graph');
-		Axis = $injector.get('Axis');
-		LineChartFlow = $injector.get('LineChartFlow');
+	beforeEach(inject(function(_LineChartFactory_, $injector){
+		LineChartFactory = _LineChartFactory_;
+		LineChartFlowFactory = $injector.get('LineChartFlowFactory');
 	}));
 
 	describe('Constructor', function(){
@@ -47,8 +43,10 @@ describe('LineChart', function(){
 			'url' : 'localhost/page1/grafico1'
 		};
 
+		var LineChart;
+
 		beforeEach(function(){
-			LineChart = new LineChart(json);
+			LineChart = LineChartFactory.build(json);
 		});
 
 		afterEach(function(){
@@ -146,8 +144,10 @@ describe('LineChart', function(){
 			'flows' : [{},{},{}]
 		};
 
+		var LineChart;
+
 		beforeEach(function(){
-			LineChart = new LineChart();
+			LineChart = LineChartFactory.build();
 			LineChart.updateParameters(json);
 		});
 
@@ -191,10 +191,11 @@ describe('LineChart', function(){
 		};
 
 		var newFlow;
+		var LineChart;
 
 		beforeEach(function(){
-			newFlow = new LineChartFlow(fJson);
-			LineChart = new LineChart();
+			newFlow = LineChartFlowFactory.build(fJson);
+			LineChart = LineChartFactory.build();
 			LineChart.addFlow(json.ID, newFlow);
 		});
 
@@ -218,10 +219,11 @@ describe('LineChart', function(){
 		];
 
 		var newFlow;
+		var LineChart;
 
 		beforeEach(function(){
-			newFlow = new LineChartFlow();
-			LineChart = new LineChart();
+			newFlow = LineChartFlowFactory.build();
+			LineChart = LineChartFactory.build();
 			LineChart.addFlow(data[0].ID, newFlow);
 			LineChart.initializeData(data);
 		});
@@ -250,10 +252,11 @@ describe('LineChart', function(){
 			'value' : [4,4]
 		};
 		var newFlow;
+		var LineChart;
 
 		beforeEach(function(){
-			newFlow = new LineChartFlow();
-			LineChart = new LineChart();
+			newFlow = LineChartFlowFactory.build();
+			LineChart = LineChartFactory.build();
 			LineChart.addFlow(data[0].ID, newFlow);
 			LineChart.initializeData(data);
 		});
@@ -286,10 +289,11 @@ describe('LineChart', function(){
 			}]
 		};
 		var newFlow;
+		var LineChart;
 
 		beforeEach(function(){
-			newFlow = new LineChartFlow();
-			LineChart = new LineChart();
+			newFlow = LineChartFlowFactory.build();
+			LineChart = LineChartFactory.build();
 			LineChart.addFlow(data[0].ID, newFlow);
 			LineChart.initializeData(data);
 			

@@ -86,17 +86,13 @@ angular.module('services')
         this._graph = GraphFactory.build(info);
     }
 
-    LineChart.prototype = Object.create(Graph.prototype);
-    LineChart.prototype.constructor = LineChart;
-    LineChart.prototype.parent = Graph.prototype;
-
     LineChart.prototype.updateParameters = function(info) {
         if (info !== undefined) {
             var json = split(info);
             var gJson = json.graphJson;
             var lJson = json.lineJson;
             if (Object.keys(gJson).length !== 0) {
-                this.parent.updateParameters.call(this, gJson);
+                this._graph.updateParameters(gJson);
             }
             if (Object.keys(lJson).length !== 0) {
                 if (lJson.legendOnPoint !== undefined) {
@@ -117,7 +113,7 @@ angular.module('services')
             }
             if (info.flows !== undefined) {
                 for (var i=0; i<info.flows.length; i++) {
-                    var newflow = new LineChartFlow(info.flows[i]);
+                    var newflow = LineChartFlowFactory.build(info.flows[i]);
                     this.addFlow(info.flows[i].ID, newflow);
                 }
             }
@@ -126,13 +122,13 @@ angular.module('services')
 
     LineChart.prototype.addFlow = function(newId, newFlow) {
         if (newFlow instanceof LineChartFlow) {
-            this.parent.addFlow.call(this, newId, newFlow);
+            this._graph.addFlow(newId, newFlow);
         }
     };
 
     LineChart.prototype.initializeData = function(newData) {  //inizialization data of flows
         if (newData !== undefined) {
-            var fList = this.parent.getFlowList();
+            var fList = this._graph.getFlowList();
             for (var i=0; i<newData.length; i++) {
                 for (var j=0; j<fList.length; j++) {
                     if (fList[j].id === newData[i].ID) {
@@ -146,7 +142,7 @@ angular.module('services')
     // update data
     LineChart.prototype.inPlaceUpdate = function(newData) {
         if (newData !== undefined) {
-            var fList = this.parent.getFlowList();
+            var fList = this._graph.getFlowList();
             for (var j=0; j<fList.length; j++) {
                 if (fList[j].id === newData.ID) {
                     fList[j].flow.inPlaceUpdate(newData);
@@ -156,7 +152,7 @@ angular.module('services')
     };
     LineChart.prototype.streamUpdate = function(newData) {
         if (newData !== undefined) {
-           var fList = this.parent.getFlowList();
+           var fList = this._graph.getFlowList();
             for (var j=0; j<fList.length; j++) {
                 if (fList[j].id === newData.ID) {
                     fList[j].flow.streamUpdate(newData);
@@ -165,7 +161,30 @@ angular.module('services')
         }
     };
 
-    // get method
+    LineChart.prototype.getTitle = function() {
+        return this._graph.getTitle();
+    };
+    LineChart.prototype.getHeight = function() {
+        return this._graph.getHeight();
+    };
+    LineChart.prototype.getWidth = function() {
+        return this._graph.getWidth();
+    };
+    LineChart.prototype.getLegend = function() {
+        return this._graph.getLegend();
+    };
+    LineChart.prototype.getHGrid = function() {
+        return this._graph.getHGrid();
+    };
+    LineChart.prototype.getVGrid = function() {
+        return this._graph.getVGrid();
+    };
+    LineChart.prototype.getUrl = function() {
+        return this._graph.getUrl();
+    };
+    LineChart.prototype.getFlowList = function() {
+        return this._graph.getFlowList();
+    };
     LineChart.prototype.getX = function() {
         return this._axisX;
     };

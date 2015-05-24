@@ -27,16 +27,12 @@ describe('BarChartFactory', function(){
 	'use strict';
 
 	var BarChartFactory;
-	var GraphFactory;
-	var AxisFactory;
 	var BarChartFlowFactory;
 
 	beforeEach(angular.mock.module('app'));
 
 	beforeEach(inject(function(_BarChartFactory_, $injector){
 		BarChartFactory = _BarChartFactory_;
-		GraphFactory = $injector.get('GraphFactory');
-		AxisFactory = $injector.get('AxisFactory');
 		BarChartFlowFactory = $injector.get('BarChartFlowFactory');
 	}));
 

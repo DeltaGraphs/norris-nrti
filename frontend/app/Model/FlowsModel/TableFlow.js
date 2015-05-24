@@ -21,14 +21,7 @@
 */
 
 angular.module('app')
-.factory('TableFlow', ['Flow', function(Flow){
-
-	var data = [];
-	var maxItem = 100;
-
-	TableFlow.prototype = Object.create(Flow.prototype);
-	TableFlow.prototype.constructor = TableFlow;
-	TableFlow.prototype.parent = Flow.prototype;
+.factory('TableFlowFactory', ['FlowFactory', function(FlowFactory){
 
 	function split(json) {
         var flowJson = {};
@@ -54,14 +47,17 @@ angular.module('app')
     //TableFlow.prototype.test = function _Test(expressionStr) { return eval(expressionStr); };
 
     function TableFlow(info) {
+    	this._data = [];
+		this._maxItem = 100;
+
 		var json = split(info);
 		var fJson = json.flowJson;
 		var tfJson = json.tableFlowJson;
 
-		this.parent.constructor.call(this, fJson);
+		this._flow = FlowFactory.build(fJson);
 
         if (tfJson.maxItem !== undefined) {
-            maxItem = tfJson.maxItem;
+            this._maxItem = tfJson.maxItem;
         }
 	}
 
@@ -72,12 +68,12 @@ angular.module('app')
 			var tfJson = json.tableFlowJson;
 
 			if (Object.keys(fJson).length !== 0) {
-				this.parent.updateParameters.call(this, fJson);
+				this._flow.updateParameters(fJson);
 			}
 
 			if (Object.keys(tfJson).length !== 0) {
 		        if (tfJson.maxItem !== undefined) {
-		            maxItem = tfJson.maxItem;
+		            this._maxItem = tfJson.maxItem;
 		        }
 		    }
 		}
@@ -85,13 +81,13 @@ angular.module('app')
 
 	TableFlow.prototype.initializeData = function(newData) {
 		for (var i=0; i<newData.records.length; i++) {
-			data.push(newData.records[i]);
+			this._data.push(newData.records[i]);
 		}
 	};
 	TableFlow.prototype.inPlaceUpdate = function(newData) {
-		for (var i = 0; i<data.length; i++){
-            if (data[i].NorrisRecordID === newData.NorrisRecordID){
-                data[i] = { 'NorrisRecordID' : newData.NorrisRecordID, 'value' : newData.value };
+		for (var i = 0; i<this._data.length; i++){
+            if (this._data[i].NorrisRecordID === newData.NorrisRecordID){
+                this._data[i] = { 'NorrisRecordID' : newData.NorrisRecordID, 'value' : newData.value };
             }
         }
     };
@@ -99,11 +95,20 @@ angular.module('app')
 		this.initializeData(newData);
     };
 
+    TableFlow.prototype.getName = function() {
+    	return this._flow.getName();
+    };
 	TableFlow.prototype.getData = function() {
-		return data;
+		return this._data;
 	};
 	TableFlow.prototype.getMaxItem = function() {
-		return maxItem;
+		return this._maxItem;
+	};
+
+	function TableFlowFactory() {}
+
+	TableFlowFactory.build = function(info) {
+		return new TableFlow(info);
 	};
 
 	return( TableFlow );

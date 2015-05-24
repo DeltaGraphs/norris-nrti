@@ -20,22 +20,22 @@
 *
 */
 
-describe('LineChartFlow', function(){
+describe('LineChartFlowFactory', function(){
 
-	var LineChartFlow;
-	var Flow;
+	var LineChartFlowFactory;
 
 	beforeEach(angular.mock.module('app'));
 
-	beforeEach(inject(function(_LineChartFlow_, $injector){
-		LineChartFlow = _LineChartFlow_;
-		Flow = $injector.get('Flow');
+	beforeEach(inject(function(_LineChartFlowFactory_){
+		LineChartFlowFactory = _LineChartFlowFactory_;
 	}));
 
 	describe('Default constructor', function(){
 
+		var LineChartFlow;
+
 		beforeEach(function() {
-			LineChartFlow = new LineChartFlow();
+			LineChartFlow = LineChartFlowFactory.build();
 		});
 
 		afterEach(function() {
@@ -75,8 +75,10 @@ describe('LineChartFlow', function(){
 			'maxItem' : 20
 		};
 
+		var LineChartFlow;
+
 		beforeEach(function() {
-			LineChartFlow = new LineChartFlow(json);
+			LineChartFlow = LineChartFlowFactory.build(json);
 		});
 
 		afterEach(function() {
@@ -153,9 +155,10 @@ describe('LineChartFlow', function(){
 			'area' : '#F1F',
 			'maxItem' : 15
 		};
+		var LineChartFlow;
 
 		beforeEach(function(){
-			LineChartFlow = new LineChartFlow();
+			LineChartFlow = LineChartFlowFactory.build();
 			LineChartFlow.updateParameters(json);
 		});
 
@@ -200,8 +203,10 @@ describe('LineChartFlow', function(){
 			]
 		};
 
+		var LineChartFlow;
+
 		beforeEach(function(){
-			LineChartFlow = new LineChartFlow();
+			LineChartFlow = LineChartFlowFactory.build();
 			LineChartFlow.initializeData(data);
 		});
 
@@ -230,9 +235,10 @@ describe('LineChartFlow', function(){
 			'NorrisRecordID' : 'record1',
 			'value' : [ 1, 2]
 		};
+		var LineChartFlow;
 
 		beforeEach(function(){
-			LineChartFlow = new LineChartFlow();
+			LineChartFlow = LineChartFlowFactory.build();
 			LineChartFlow.initializeData(data);
 			LineChartFlow.inPlaceUpdate(update);
 		});
@@ -259,9 +265,10 @@ describe('LineChartFlow', function(){
 				}
 			]
 		};
+		var LineChartFlow;
 
 		beforeEach(function(){
-			LineChartFlow = new LineChartFlow();
+			LineChartFlow = LineChartFlowFactory.build();
 			LineChartFlow.streamUpdate(data);
 		});
 

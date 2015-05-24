@@ -24,13 +24,11 @@
 describe('PagesList', function(){
 
 	var PagesList;
-	var Page;
 
 	beforeEach(angular.mock.module('app'));
 
-	beforeEach(inject(function(_PagesList_,$injector){
+	beforeEach(inject(function(_PagesList_){
 		PagesList = _PagesList_;
-		Page = $injector.get('Page');
 	}));
 
 	describe('Default constructor', function(){

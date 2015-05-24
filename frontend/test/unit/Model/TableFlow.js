@@ -20,22 +20,21 @@
 *
 */
 
-describe('TableFlow', function(){
+describe('TableFlowFactory', function(){
 
-	var TableFlow;
-	var Flow;
+	var TableFlowFactory;
 
 	beforeEach(angular.mock.module('app'));
 
-	beforeEach(inject(function(_TableFlow_, $injector){
-		TableFlow = _TableFlow_;
-		Flow = $injector.get('Flow');
+	beforeEach(inject(function(_TTableFlowFactory_){
+		TableFlowFactory = _TableFlowFactory_;
 	}));
 
 	describe('Default constructor', function(){
+		var TableFlow;
 
 		beforeEach(function(){
-			TableFlow = new TableFlow();
+			TableFlow = TableFlowFactory.build();
 		});
 
 		afterEach(function(){
@@ -55,9 +54,10 @@ describe('TableFlow', function(){
 			'name' : 'flusso1',
 			'maxItem' : '20'
 		};
+		var TableFlow;
 
 		beforeEach(function(){
-			TableFlow = new TableFlow(json);
+			TableFlow = TableFlowFactory.build(json);
 		});
 
 		afterEach(function(){
@@ -104,9 +104,10 @@ describe('TableFlow', function(){
 			'name' : 'flusso2',
 			'maxItem' : 15
 		};
-		
+		var TableFlow;
+
 		beforeEach(function(){
-			TableFlow = new TableFlow();
+			TableFlow = TableFlowFactory.build();
 			TableFlow.updateParameters(json);
 		});
 
@@ -137,9 +138,10 @@ describe('TableFlow', function(){
 				}
 			]
 		};
+		var TableFlow;
 
 		beforeEach(function(){
-			TableFlow = new TableFlow();
+			TableFlow = TableFlowFactory.build();
 			TableFlow.initializeData(data);
 		});
 
@@ -168,9 +170,10 @@ describe('TableFlow', function(){
 			'NorrisRecordID' : 'record1',
 			'value' : [ 'una', 'buonissima', 'pizza']
 		};
+		var TableFlow;
 
 		beforeEach(function(){
-			TableFlow = new TableFlow();
+			TableFlow = TableFlowFactory.build();
 			TableFlow.initializeData(data);
 			TableFlow.inPlaceUpdate(update);
 		});
@@ -196,9 +199,10 @@ describe('TableFlow', function(){
 				}
 			]
 		};
-
+		var TableFlow;
+		
 		beforeEach(function(){
-			TableFlow = new TableFlow();
+			TableFlow = TableFlowFactory.build();
 			TableFlow.streamUpdate(data);
 		});
 

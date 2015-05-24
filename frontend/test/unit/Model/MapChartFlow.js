@@ -20,22 +20,21 @@
 *
 */
 
-describe('MapChartFlow', function(){
+describe('MapChartFlowFactory', function(){
 
-	var MapChartFlow;
-	var Flow;
+	var MapChartFlowFactory;
 
 	beforeEach(angular.mock.module('app'));
 
-	beforeEach(inject(function(_MapChartFlow_, $injector){
-		MapChartFlow = _MapChartFlow_;
-		Flow = $injector.get('Flow');
+	beforeEach(inject(function(_MapChartFlowFactory_){
+		MapChartFlowFactory = _MapChartFlowFactory_;
 	}));
 
 	describe('Default constructor', function(){
+		var MapChartFlow;
 
 		beforeEach(function(){
-			MapChartFlow = new MapChartFlow();
+			MapChartFlow = MapChartFlowFactory.build();
 		});
 
 		afterEach(function(){
@@ -67,8 +66,10 @@ describe('MapChartFlow', function(){
 			'trace' : 'bubu'
 		};
 
+		var MapChartFlow;
+
 		beforeEach(function(){
-			MapChartFlow = new MapChartFlow(json);
+			MapChartFlow = MapChartFlowFactory.build(json);
 		});
 
 		afterEach(function(){
@@ -135,9 +136,10 @@ describe('MapChartFlow', function(){
 			'maxItem' : '45',
 			'trace' : 'flow'
 		};
+		var MapChartFlow;
 				
 		beforeEach(function(){
-			MapChartFlow = new MapChartFlow();
+			MapChartFlow = MapChartFlowFactory.build();
 			MapChartFlow.updateParameters(json);
 		});
 
@@ -175,8 +177,10 @@ describe('MapChartFlow', function(){
 			]
 		};
 
+		var MapChartFlow;
+
 		beforeEach(function(){
-			MapChartFlow = new MapChartFlow();
+			MapChartFlow = MapChartFlowFactory.build();
 			MapChartFlow.initializeData(data);
 		});
 
@@ -203,9 +207,10 @@ describe('MapChartFlow', function(){
 			'NorrisRecordID' : 'record1',
 			'value' : [ 14.5364864646, 11.5646546516]
 		};
+		var MapChartFlow;
 
 		beforeEach(function(){
-			MapChartFlow = new MapChartFlow();
+			MapChartFlow = MapChartFlowFactory.build();
 			MapChartFlow.initializeData(data);
 			MapChartFlow.inPlaceUpdate(update);
 		});
@@ -229,9 +234,10 @@ describe('MapChartFlow', function(){
 				}
 			]
 		};
+		var MapChartFlow;
 
 		beforeEach(function(){
-			MapChartFlow = new MapChartFlow();
+			MapChartFlow = MapChartFlowFactory.build();
 			MapChartFlow.streamUpdate(data);
 		});
 
@@ -259,8 +265,11 @@ describe('MapChartFlow', function(){
 			'NorrisRecordID' : 'record1',
 			'value' : [ 14.5364864646, 11.5646546516]
 		};
+
+		var MapChartFlow;
+
 		beforeEach(function(){
-			MapChartFlow = new MapChartFlow();
+			MapChartFlow = MapChartFlowFactory.build();
 			MapChartFlow.initializeData(data);
 			MapChartFlow.deleteData(delData);
 		});

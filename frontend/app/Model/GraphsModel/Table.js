@@ -23,19 +23,7 @@
 */
 
 angular.module('app')
-.factory('Table', ['Graph', 'Cell', 'TableFlow', function(Graph, Cell, TableFlow){
-	
-	var headers = [];
-	var maxItemsPage = 20;
-	var addRowOn = 'up';
-	var sortable = true;
-    var sort = null;
-    var appearance = null;
-
-    // reuse the original object prototype
-    Table.prototype = Object.create(Graph.prototype);
-    Table.prototype.constructor = Table;
-    Table.prototype.parent = Graph.prototype;
+.factory('TableFactory', ['GraphFactory', 'CellFactory', 'TableFlowFactory', function(GraphFactory, CellFactory, TableFlowFactory){
 
 	function split(json) {
 		var graphJson = {};
@@ -92,7 +80,13 @@ angular.module('app')
 
     // create our new custom object that reuse the original object constructor
     function Table(info) {
-        this.parent.constructor.call(this, info);
+        this._headers = [];
+        this._maxItemsPage = 20;
+        this._addRowOn = 'up';
+        this._sortable = true;
+        this._sort = null;
+        this._appearance = null;
+        this._graph = GraphFactory.build(info);
     }
 
     Table.prototype.updateParameters = function(info) {
@@ -102,33 +96,33 @@ angular.module('app')
             var tJson = json.tableJson;
             
             if (Object.keys(gJson).length !== 0) {
-                this.parent.updateParameters.call(this, gJson);
+                this._graph.updateParameters(gJson);
             } 
             if (Object.keys(tJson).length !== 0) {
                 if (tJson.headers !== undefined) {
                     for (var z=0; z<tJson.headers.length; z++) { 
-                        headers.push(tJson.headers[z]);
+                        this._headers.push(tJson.headers[z]);
                     }
                 }
                 if (tJson.maxItemsPage !== undefined) {
-                    maxItemsPage = tJson.maxItemsPage;
+                    this._maxItemsPage = tJson.maxItemsPage;
                 }
                 if (tJson.addRowOn !== undefined) {
-                    addRowOn = tJson.addRowOn;
+                    this._addRowOn = tJson.addRowOn;
                 }
                 if (tJson.sortable !== undefined) {
-                    sortable = tJson.sortable;
+                    this._sortable = tJson.sortable;
                 }
                 if (tJson.sort !== undefined) {
-                    sort = tJson.sort;
+                    this._sort = tJson.sort;
                 }
                 if (tJson.appearance !== undefined) {
-                    appearance = tJson.appearance;
+                    this._appearance = tJson.appearance;
                 }
             }
             if (info.flows !== undefined) {
                 for (var y=0; y<info.flows.length; y++) {
-                    var newflow = new TableFlow(info.flows[y]);
+                    var newflow = TableFlowFactory.build(info.flows[y]);
                     this.addFlow(info.flows[y].ID, newflow);
                 }
             }
@@ -137,13 +131,13 @@ angular.module('app')
 
     Table.prototype.addFlow = function(ID, newFlow) {
         if (newFlow instanceof TableFlow) {
-            this.parent.addFlow.call(this, ID, newFlow);
+            this._graph.addFlow(ID, newFlow);
         }
     };
 
     Table.prototype.initializeData = function(newData) {  //inizialization data of flows
         if (newData !== undefined) {
-            var fList = this.parent.getFlowList();
+            var fList = this._graph.getFlowList();
             for (var i=0; i<newData.length; i++) {
                 for (var j=0; j<fList.length; j++) {
                     if (fList[j].id === newData[i].ID) {
@@ -156,7 +150,7 @@ angular.module('app')
 
     Table.prototype.inPlaceUpdate = function(newData) {
         if (newData !== undefined) {
-            var fList = this.parent.getFlowList();
+            var fList = this._graph.getFlowList();
             for (var j=0; j<fList.length; j++) {
                 if (fList[j].id === newData.ID) {
                     fList[j].flow.inPlaceUpdate(newData);
@@ -166,7 +160,7 @@ angular.module('app')
     };
     Table.prototype.streamUpdate = function(newData) {
         if (newData !== undefined) {
-            var fList = this.parent.getFlowList();
+            var fList = this._graph.getFlowList();
             for (var j=0; j<fList.length; j++) {
                 if (fList[j].id === newData.ID) {
                     fList[j].flow.streamUpdate(newData);
@@ -175,24 +169,54 @@ angular.module('app')
         }
     };
 
+    Table.prototype.getTitle = function() {
+        return this._graph.getTitle();
+    };
+    Table.prototype.getHeight = function() {
+        return this._graph.getHeight();
+    };
+    Table.prototype.getWidth = function() {
+        return this._graph.getWidth();
+    };
+    Table.prototype.getLegend = function() {
+        return this._graph.getLegend();
+    };
+    Table.prototype.getHGrid = function() {
+        return this._graph.getHGrid();
+    };
+    Table.prototype.getVGrid = function() {
+        return this._graph.getVGrid();
+    };
+    Table.prototype.getUrl = function() {
+        return this._graph.getUrl();
+    };
+    Table.prototype.getFlowList = function() {
+        return this._graph.getFlowList();
+    };
     Table.prototype.getHeaders = function() {
-    return headers;
+    return this._headers;
     };
     Table.prototype.getMaxItemsPage = function() {
-        return maxItemsPage;
+        return this._maxItemsPage;
     };
     Table.prototype.getAddRowOn = function() {
-        return addRowOn;
+        return this._addRowOn;
     };
     Table.prototype.getSortable = function() {
-        return sortable;
+        return this._sortable;
     };
     Table.prototype.getSort = function() {
-        return sort;
+        return this._sort;
     };
     Table.prototype.getAppearance = function() {
-        return appearance;
+        return this._appearance;
     };
 
-    return( Table );
+    function TableFactory() {}
+
+    TableFactory.build = function(info) {
+        return new Table(info);
+    };
+
+    return TableFactory;
 }]);

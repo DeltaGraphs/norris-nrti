@@ -20,21 +20,8 @@
 *
 */
 
-angular.module('services')
-.factory('MapChart',['Graph', 'MapChartFlow', function(Graph, MapChartFlow){
-
-    var legendOnPoint = false;
-    var latitude = 45.4113311;
-    var longitude = 11.8876318;
-    var mapType = 'terrain';
-    var zoom = true;
-    var mapWidth = 0;
-    var mapHeight = 0;
-
-    // reuse the original object prototype
-    MapChart.prototype = Object.create(Graph.prototype);
-    MapChart.prototype.constructor = MapChart;
-    MapChart.prototype.parent = Graph.prototype;
+angular.module('app')
+.factory('MapChartFactory',['GraphFactory', 'MapChartFlowFactory', function(GraphFactory, MapChartFlowFactory){
 
     function split(json) {
         var graphJson = {};
@@ -95,7 +82,15 @@ angular.module('services')
 
     // create our new custom object that reuse the original object constructor
     function MapChart(info) {
-        this.parent.constructor.call(this, info);
+        this._latitude = false;
+        this._latitude = 45.4113311;
+        this._longitude = 11.8876318;
+        this._mapType = 'terrain';
+        this._zoom = true;
+        this._mapWidth = 0;
+        this._mapHeight = 0;
+
+        this._graph = GraphFactory.build(info);
     }
 
     MapChart.prototype.updateParameters = function(info) {
@@ -103,34 +98,34 @@ angular.module('services')
         var gJson = json.graphJson;
         var mJson = json.mapJson;
         if (Object.keys(gJson).length !== 0) {
-            this.parent.updateParameters.call(this, gJson);
+            this._graph.updateParameters.call(this, gJson);
         } 
         if (Object.keys(mJson).length !== 0) {
             if (mJson.legendOnPoint !== undefined) {
-                legendOnPoint = mJson.legendOnPoint;
+                this._legendOnPoint = mJson.legendOnPoint;
             }
             if (mJson.latitude !== undefined) {
-                latitude = mJson.latitude;
+                this._latitude = mJson.latitude;
             }
             if (mJson.longitude !== undefined) {
-                longitude = mJson.longitude;
+                this._longitude = mJson.longitude;
             }
             if (mJson.mapType !== undefined) {
-                mapType = mJson.mapType;
+                this._mapType = mJson.mapType;
             }
             if (mJson.zoom !== undefined) {
-                zoom = mJson.zoom;
+                this._zoom = mJson.zoom;
             }
             if (mJson.mapWidth !== undefined) {
-                mapWidth = mJson.mapWidth;
+                this._mapWidth = mJson.mapWidth;
             }
             if (mJson.mapHeight !== undefined) {
-                mapHeight = mJson.mapHeight;
+                this._mapHeight = mJson.mapHeight;
             }
         }
         if (info.flows !== undefined) {
             for (var i=0; i<info.flows.length; i++) {
-                var newflow = new MapChartFlow(info.flows[i]);
+                var newflow = MapChartFlowFactory.build(info.flows[i]);
                 this.addFlow(info.flows[i].ID, newflow);
             }
         }
@@ -138,13 +133,13 @@ angular.module('services')
 
     MapChart.prototype.addFlow = function(ID, newFlow) {
         if (newFlow instanceof MapChartFlow) {
-            this.parent.addFlow.call(this, ID, newFlow);
+            this.graph.addFlow(ID, newFlow);
         }
     };
 
     MapChart.prototype.initializeData = function(newData) {  //inizialization data of flows
         if (newData !== undefined) {
-            var fList = this.parent.getFlowList();
+            var fList = this._graph.getFlowList();
             for (var i=0; i<newData.length; i++) {
                 for (var j=0; j<fList.length; j++) {
                     if (fList[j].id === newData[i].ID) {
@@ -158,7 +153,7 @@ angular.module('services')
     // update data
     MapChart.prototype.inPlaceUpdate = function(newData) {
         if (newData !== undefined) {
-            var fList = this.parent.getFlowList();
+            var fList = this._graph.getFlowList();
             for (var j=0; j<fList.length; j++) {
                 if (fList[j].id === newData.ID) {
                     fList[j].flow.inPlaceUpdate(newData);
@@ -168,7 +163,7 @@ angular.module('services')
     };
     MapChart.prototype.streamUpdate = function(newData) {
         if (newData !== undefined) {
-            var fList = this.parent.getFlowList();
+            var fList = this._graph.getFlowList();
             for (var j=0; j<fList.length; j++) {
                 if (fList[j].id === newData.ID) {
                     fList[j].flow.streamUpdate(newData);
@@ -178,7 +173,7 @@ angular.module('services')
     };
     MapChart.prototype.deleteData = function(delData) {
         if (delData !== undefined){
-            var fList = this.parent.getFlowList();
+            var fList = this._graph.getFlowList();
             for (var j=0; j<fList.length; j++) {
                 if (fList[j].id === delData.ID) {
                     fList[j].flow.deleteData(delData);
@@ -187,28 +182,57 @@ angular.module('services')
         }
     };
 
-    // get method
+    MapChart.prototype.getTitle = function() {
+        return this._graph.getTitle();
+    };
+    MapChart.prototype.getHeight = function() {
+        return this._graph.getHeight();
+    };
+    MapChart.prototype.getWidth = function() {
+        return this._graph.getWidth();
+    };
+    MapChart.prototype.getLegend = function() {
+        return this._graph.getLegend();
+    };
+    MapChart.prototype.getHGrid = function() {
+        return this._graph.getHGrid();
+    };
+    MapChart.prototype.getVGrid = function() {
+        return this._graph.getVGrid();
+    };
+    MapChart.prototype.getUrl = function() {
+        return this._graph.getUrl();
+    };
+    MapChart.prototype.getFlowList = function() {
+        return this._graph.getFlowList();
+    };
     MapChart.prototype.getLegendOnPoint = function() {
-        return legendOnPoint;
+        return this._legendOnPoint;
     };
     MapChart.prototype.getLatitude = function() {
-        return latitude;
+        return this._latitude;
     };
     MapChart.prototype.getLongitude = function() {
-        return longitude;
+        return this._longitude;
     };
     MapChart.prototype.getMapType = function() {
-        return mapType;
+        return this._mapType;
     };
     MapChart.prototype.getZoom = function() {
-        return zoom;
+        return this._zoom;
     };
     MapChart.prototype.getMapWidth = function() {
-        return mapWidth;
+        return this._mapWidth;
     };
     MapChart.prototype.getMapHeight = function() {
-        return mapHeight;
+        return this._mapHeight;
     };
 
-    return MapChart;
+    function MapChartFactory() {}
+
+    MapChartFactory.build = function(info) {
+        return new MapChart(info);
+    };
+
+    return MapChartFactory;
 }]);

@@ -19,7 +19,7 @@
 */
 
 angular.module('app')
-.factory('PagesList', ['Page', function(Page){
+.factory('PagesList', ['PageFactory', function(PageFactory){
 
 	var pagesList = [];
 
@@ -35,7 +35,7 @@ angular.module('app')
 						}
 					}
 	    			if(count === 0) {
-	    				var page = new Page(info.data[i]);
+	    				var page = PageFactory.build(info.data[i]);
 	       				pagesList.push({ 'id' : info.data[i].ID, 'page' : page});
 					}
 					// error
@@ -46,12 +46,10 @@ angular.module('app')
 	
 	PagesList.prototype = {
 
-		constructor : PagesList,
-
 		addPage: function(page) { // da cambiare DP
 			var filteredPages = pagesList.filter(function(page) {return page.ID === pagesList.id;});
 			if(filteredPages.length === 0) {
-				var newPage = new Page(page);
+				var newPage = PageFactory.build(page);
    				pagesList.push({ 'id' : page.ID, 'page' : newPage});
 			}
 			// error

@@ -23,18 +23,7 @@
 */
 
 angular.module('app')
-.factory('LineChartFlow', ['Flow', function(Flow){
-
-	var data = [];
-	var flowColor = '#000';
-	var marker = 'square';
-	var interpolation = 'linear';
-	var areaColor = '#FFF';
-	var maxItem = 20;
-
-	LineChartFlow.prototype = Object.create(Flow.prototype);
-	LineChartFlow.prototype.constructor = LineChartFlow;
-	LineChartFlow.prototype.parent = Flow.prototype;
+.factory('LineChartFlowFactory', ['FlowFactory', function(FlowFactory){
 
 	function split(json) {
         var flowJson = {};
@@ -74,28 +63,35 @@ angular.module('app')
     //LineChartFlow.prototype.test = function _Test(expressionStr) { return eval(expressionStr); };
 
 	function LineChartFlow(info) {
+		this._data = [];
+		this._flowColor = '#000';
+		this._marker = 'square';
+		this._interpolation = 'linear';
+		this._areaColor = '#FFF';
+		this._maxItem = 20;
+
 		var json = split(info);
 		var fJson = json.flowJson;
 		var lfJson = json.lineFlowJson;
 
-		this.parent.constructor.call(this, fJson);
+		this._flow = FlowFactory.build(fJson);
 
 		if (Object.keys(lfJson).length !== 0) {
 		
 			if (lfJson.flowColor !== undefined) {
-	            flowColor = lfJson.flowColor;
+	            this._flowColor = lfJson.flowColor;
 	        }
 	        if (lfJson.marker !== undefined) {
-	            marker = lfJson.marker;
+	            this._marker = lfJson.marker;
 	        }
 	        if (lfJson.interpolation !== undefined) {
-	            interpolation = lfJson.interpolation;
+	            this._interpolation = lfJson.interpolation;
 	        }
 	        if (lfJson.area !== undefined) {
-	            areaColor = lfJson.area;
+	            this._areaColor = lfJson.area;
 	        }
 	        if (lfJson.maxItem !== undefined) {
-	            maxItem = lfJson.maxItem;
+	            this._maxItem = lfJson.maxItem;
 	        }
 	    }
 	}
@@ -106,23 +102,23 @@ angular.module('app')
 			var fJson = json.flowJson;
 			var lfJson = json.lineFlowJson;
 
-			this.parent.updateParameters.call(this, fJson);
+			this._flow.updateParameters(fJson);
 
 			if (Object.keys(lfJson).length !== 0) {
 				if (lfJson.flowColor !== undefined) {
-		            flowColor = lfJson.flowColor;
+		            this._flowColor = lfJson.flowColor;
 		        }
 		        if (lfJson.marker !== undefined) {
-		            marker = lfJson.marker;
+		            this._marker = lfJson.marker;
 		        }
 		        if (lfJson.interpolation !== undefined) {
-		            interpolation = lfJson.interpolation;
+		            this._interpolation = lfJson.interpolation;
 		        }
 		        if (lfJson.area !== undefined) {
-		            areaColor = lfJson.area;
+		            this._areaColor = lfJson.area;
 		        }
 		        if (lfJson.maxItem !== undefined) {
-		            maxItem = lfJson.maxItem;
+		            this._maxItem = lfJson.maxItem;
 		        }
 		    }
 		}
@@ -130,13 +126,13 @@ angular.module('app')
 
 	LineChartFlow.prototype.initializeData = function(newData) {
 		for (var i=0; i<newData.records.length; i++) {
-			data.push(newData.records[i]);
+			this._data.push(newData.records[i]);
 		}
 	};
 	LineChartFlow.prototype.inPlaceUpdate = function(newData) {
-		for (var i = 0; i<data.length; i++){
-            if (data[i].NorrisRecordID === newData.NorrisRecordID){
-                data[i] = { 'NorrisRecordID' : newData.NorrisRecordID, 'value' : newData.value };
+		for (var i = 0; i<this._data.length; i++){
+            if (this._data[i].NorrisRecordID === newData.NorrisRecordID){
+                this._data[i] = { 'NorrisRecordID' : newData.NorrisRecordID, 'value' : newData.value };
             }
         }
     };
@@ -144,24 +140,33 @@ angular.module('app')
 		this.initializeData(newData);
     };
 
+    LineChartFlow.prototype.getName = function() {
+    	return this._flow.getName();
+    };
 	LineChartFlow.prototype.getData = function() {
-		return data;
+		return this._data;
 	};
 	LineChartFlow.prototype.getFlowColor = function() {
-		return flowColor;
+		return this._flowColor;
 	};
 	LineChartFlow.prototype.getMarker = function() {
-		return marker;
+		return this._marker;
 	};
 	LineChartFlow.prototype.getInterpolation = function() {
-		return interpolation;
+		return this._interpolation;
 	};
 	LineChartFlow.prototype.getAreaColor = function() {
-		return areaColor;
+		return this._areaColor;
 	};
 	LineChartFlow.prototype.getMaxItem = function() {
-		return maxItem;
+		return this._maxItem;
 	};
 
-	return( LineChartFlow );
+	function LineChartFlowFactory() {}
+
+	LineChartFlowFactory.build = function(info){
+		return new LineChart(info);
+	};
+
+	return LineChartFlowFactory;
 }]);

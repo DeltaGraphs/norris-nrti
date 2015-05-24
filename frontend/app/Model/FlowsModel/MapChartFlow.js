@@ -21,15 +21,7 @@
 */
 
 angular.module('app')
-.factory('MapChartFlow', ['Flow', function(Flow){
-	var data = [];
-	var marker = null;
-	var maxItem = 100;
-	var trace = null;
-
-	MapChartFlow.prototype = Object.create(Flow.prototype);
-	MapChartFlow.prototype.constructor = MapChartFlow;
-	MapChartFlow.prototype.parent = Flow.prototype;
+.factory('MapChartFlowFactory', ['FlowFactory', function(FlowFactory){
 
 	function split(json) {
         var flowJson = {};
@@ -60,21 +52,26 @@ angular.module('app')
     //MapChartFlow.prototype.test = function _Test(expressionStr) { return eval(expressionStr); };
 
     function MapChartFlow(info) {
+    	this._data = [];
+		this._marker = null;
+		this._maxItem = 100;
+		this._trace = null;
+
 		var json = split(info);
 		var fJson = json.flowJson;
 		var mfJson = json.mapFlowJson;
 
-		this.parent.constructor.call(this, fJson);
+		this._flow = FlowFactory.build(fJson);
 
 		if (Object.keys(mfJson).length !== 0) {
 	        if (mfJson.marker !== undefined) {
-	            marker = mfJson.marker;
+	            this._marker = mfJson.marker;
 	        }
 	        if (mfJson.maxItem !== undefined) {
-	            maxItem = mfJson.maxItem;
+	            this._maxItem = mfJson.maxItem;
 	        }
 	        if (mfJson.trace !== undefined) {
-	        	trace = mfJson.trace;
+	        	this._trace = mfJson.trace;
 	        }
  	    }
 	}
@@ -85,17 +82,18 @@ angular.module('app')
 			var fJson = json.flowJson;
 			var mfJson = json.mapFlowJson;
 
-			this.parent.updateParameters.call(this, fJson);
+			this._flow = FlowFactory.build(fJson);
+			this._flow.updateParameters(fJson);
 	
 			if (Object.keys(mfJson).length !== 0) {
 				if (mfJson.marker !== undefined) {
-		            marker = mfJson.marker;
+		            this._marker = mfJson.marker;
 		        }
 		        if (mfJson.maxItem !== undefined) {
-		            maxItem = mfJson.maxItem;
+		            this._maxItem = mfJson.maxItem;
 		        }
 		        if (mfJson.trace !== undefined) {
-	        		trace = mfJson.trace;
+	        		this._trace = mfJson.trace;
 	        	}
 		    }
 		}
@@ -103,13 +101,13 @@ angular.module('app')
 
 	MapChartFlow.prototype.initializeData = function(newData) {
 		for (var i=0; i<newData.records.length; i++) {
-			data.push(newData.records[i]);
+			this._data.push(newData.records[i]);
 		}
 	};
 	MapChartFlow.prototype.inPlaceUpdate = function(newData) {
-		for (var i = 0; i<data.length; i++){
-            if (data[i].NorrisRecordID === newData.NorrisRecordID){
-                data[i] = { 'NorrisRecordID' : newData.NorrisRecordID, 'value' : newData.value };
+		for (var i = 0; i<this._data.length; i++){
+            if (this._data[i].NorrisRecordID === newData.NorrisRecordID){
+                this._data[i] = { 'NorrisRecordID' : newData.NorrisRecordID, 'value' : newData.value };
             }
         }
     };
@@ -118,25 +116,34 @@ angular.module('app')
     };
     MapChartFlow.prototype.deleteData = function(delData) {
     	for (var i = 0; i<data.length; i++){
-            if (data[i].NorrisRecordID === delData.NorrisRecordID){
-                data.splice(i,1);
+            if (this._data[i].NorrisRecordID === delData.NorrisRecordID){
+                this._data.splice(i,1);
             }
         }
     };
 
+    MapChartFlow.prototype.getName = function() {
+    	return this._flow.getName();
+    };
 	MapChartFlow.prototype.getData = function() {
-		return data;
+		return this._data;
 	};
 	MapChartFlow.prototype.getMarker = function() {
-		return marker;
+		return this._marker;
 	};
 	MapChartFlow.prototype.getMaxItem = function() {
-		return maxItem;
+		return this._maxItem;
 	};
 	MapChartFlow.prototype.getTrace = function() {
-		return trace;
+		return this._trace;
 	};
 
-	return MapChartFlow;
+	function MapChartFlowFactory() {}
+
+	MapChartFlowFactory.build = function(info) {
+		return new MapChartFlow(info);
+	};
+
+	return MapChartFlowFactory;
 
 }]);
