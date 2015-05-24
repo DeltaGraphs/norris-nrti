@@ -162,7 +162,7 @@ describe('TableFactory', function(){
 					backgroundColor: ['#FFFFFF', '#FFFFFF']
 				}
 			},
-			'flows' : [{},{},{}]
+			'flows' : [{'ID' : 'f1'},{'ID' : 'f2'},{'ID' : 'f3'}]
 		};
 		var Table;
 

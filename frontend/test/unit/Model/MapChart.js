@@ -143,7 +143,7 @@ describe('MapChartFactory', function(){
 			'scale' : 999,
 			'mapType' : 'terrain',
 			'zoom' : false,
-			'flows' : [{},{},{}]
+			'flows' : [{'ID' : 'f1'},{'ID' : 'f2'},{'ID' : 'f3'}]
 		};
 		var MapChart;
 
