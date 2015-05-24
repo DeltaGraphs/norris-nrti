@@ -220,6 +220,44 @@ describe('LineChartFlowFactory', function(){
 
 	});
 
+	describe('emptyData', function(){
+
+		var data = {
+			'records' : [
+				{ 
+					'NorrisRecordID' : 'record1',
+					'value' : [ 12.5464546515, 11.15468766]
+				},
+				{ 
+					'NorrisRecordID' : 'record2',
+					'value' : [ 12.5464546515, 11.15468766]
+				},
+				{ 
+					'NorrisRecordID' : 'record3',
+					'value' : [ 12.5464546515, 11.15468766]
+				}
+			]
+		};
+
+		var LineChartFlow;
+
+		beforeEach(function(){
+			LineChartFlow = LineChartFlowFactory.build();
+			LineChartFlow.initializeData(data);
+		});
+
+		afterEach(function(){
+			LineChartFlow = null;
+		});
+
+		it('data empty in the correct way', function(){
+			expect(LineChartFlow.getData().length).toEqual(3);
+			LineChartFlow.emptyData();
+			expect(LineChartFlow.getData().length).toEqual(0);
+		});
+
+	});
+
 	describe('inPlaceUpdate', function(){
 		
 		var data = {

@@ -161,6 +161,44 @@ describe('BarChartFlowFactory', function(){
 
 	});
 
+	describe('emptyData', function(){
+
+		var data = {
+			'records' : [
+				{ 
+					'NorrisRecordID' : 'record1',
+					'value' : [ 12.5464546515, 11.15468766]
+				},
+				{ 
+					'NorrisRecordID' : 'record2',
+					'value' : [ 12.5464546515, 11.15468766]
+				},
+				{ 
+					'NorrisRecordID' : 'record3',
+					'value' : [ 12.5464546515, 11.15468766]
+				}
+			]
+		};
+
+		var BarChartFlow;
+
+		beforeEach(function(){
+			BarChartFlow = BarChartFlowFactory.build();
+			BarChartFlow.initializeData(data);
+		});
+
+		afterEach(function(){
+			BarChartFlow = null;
+		});
+
+		it('data empty in the correct way', function(){
+			expect(BarChartFlow.getData().length).toEqual(3);
+			BarChartFlow.emptyData();
+			expect(BarChartFlow.getData().length).toEqual(0);
+		});
+
+	});
+
 	describe('inPlaceUpdate', function(){
 		var data = {
 			'records' : [
@@ -177,7 +215,7 @@ describe('BarChartFlowFactory', function(){
 		};
 
 		var BarChartFlow;
-		
+
 		beforeEach(function(){
 			BarChartFlow = BarChartFlowFactory.build();
 			BarChartFlow.initializeData(data);

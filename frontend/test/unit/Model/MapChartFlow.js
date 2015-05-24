@@ -193,6 +193,44 @@ describe('MapChartFlowFactory', function(){
 		});
 	});
 
+	describe('emptyData', function(){
+
+		var data = {
+			'records' : [
+				{ 
+					'NorrisRecordID' : 'record1',
+					'value' : [ 12.5464546515, 11.15468766]
+				},
+				{ 
+					'NorrisRecordID' : 'record2',
+					'value' : [ 12.5464546515, 11.15468766]
+				},
+				{ 
+					'NorrisRecordID' : 'record3',
+					'value' : [ 12.5464546515, 11.15468766]
+				}
+			]
+		};
+
+		var MapChartFlow;
+
+		beforeEach(function(){
+			MapChartFlow = MapChartFlowFactory.build();
+			MapChartFlow.initializeData(data);
+		});
+
+		afterEach(function(){
+			MapChartFlow = null;
+		});
+
+		it('data empty in the correct way', function(){
+			expect(MapChartFlow.getData().length).toEqual(3);
+			MapChartFlow.emptyData();
+			expect(MapChartFlow.getData().length).toEqual(0);
+		});
+
+	});
+
 	describe('inPlaceUpdate', function(){
 		var data = {
 			records: [

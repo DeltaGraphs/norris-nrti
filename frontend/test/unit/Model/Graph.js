@@ -193,4 +193,39 @@ describe('GraphFactory', function(){
 
 	});
 
+	describe('replaceData', function(){
+
+		var json1 = {
+			'ID' : 	'flusso1',
+			'name' : 'sonda 1',
+			'records' : [{'NorrisRecordID' : 'record2', 'value' : [3,3] }, {'NorrisRecordID' : 'record3', 'value' : [4,4] }]
+		};
+
+		var json = {
+			'ID' : 'flusso1',
+			'records' :	[{'NorrisRecordID' : 'record4', 'value' : [5,5] }, {'NorrisRecordID' : 'record5', 'value' : [6,6] }]
+		};
+
+		var Graph, Flow1;
+
+		beforeEach(function(){
+			Flow1 = FlowFactory.build();
+			Graph = GraphFactory.build();
+			Graph.addFlow(json1.ID, Flow1);
+			Graph.initializeData(json1);
+			Graph.replaceData(json);
+		});
+
+		afterEach(function(){
+			Flow1 = null;
+			Graph = null;
+		});
+
+		it('delete flow from graph', function(){
+			expect(Graph.getFlowList()[0].getData()[0].value[0]).toEqual(5);
+			expect(Graph.getFlowList()[0].getData()[1].value[0]).toEqual(6);
+		});
+
+	});
+
 });

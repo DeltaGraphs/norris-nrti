@@ -129,6 +129,9 @@ angular.module('app')
 			this._data.push(newData.records[i]);
 		}
 	};
+	LineChartFlow.prototype.emptyData = function() {
+		this._data.splice(0);
+	};
 	LineChartFlow.prototype.inPlaceUpdate = function(newData) {
 		for (var i = 0; i<this._data.length; i++){
             if (this._data[i].NorrisRecordID === newData.NorrisRecordID){

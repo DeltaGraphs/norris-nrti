@@ -104,6 +104,9 @@ angular.module('app')
 			this._data.push(newData.records[i]);
 		}
 	};
+	MapChartFlow.prototype.emptyData = function() {
+		this._data.splice(0);
+	};
 	MapChartFlow.prototype.inPlaceUpdate = function(newData) {
 		for (var i = 0; i<this._data.length; i++){
             if (this._data[i].NorrisRecordID === newData.NorrisRecordID){

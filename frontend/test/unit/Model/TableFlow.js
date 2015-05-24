@@ -155,6 +155,44 @@ describe('TableFlowFactory', function(){
 
 	});
 
+	describe('emptyData', function(){
+
+		var data = {
+			'records' : [
+				{ 
+					'NorrisRecordID' : 'record1',
+					'value' : [ 12.5464546515, 11.15468766]
+				},
+				{ 
+					'NorrisRecordID' : 'record2',
+					'value' : [ 12.5464546515, 11.15468766]
+				},
+				{ 
+					'NorrisRecordID' : 'record3',
+					'value' : [ 12.5464546515, 11.15468766]
+				}
+			]
+		};
+
+		var TableFlow;
+
+		beforeEach(function(){
+			TableFlow = TableFlowFactory.build();
+			TableFlow.initializeData(data);
+		});
+
+		afterEach(function(){
+			TableFlow = null;
+		});
+
+		it('data empty in the correct way', function(){
+			expect(TableFlow.getData().length).toEqual(3);
+			TableFlow.emptyData();
+			expect(TableFlow.getData().length).toEqual(0);
+		});
+
+	});
+
 	describe('inPlaceUpdate', function(){
 
 		var data = {
