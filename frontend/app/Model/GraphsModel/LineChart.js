@@ -125,6 +125,9 @@ angular.module('services')
             this._graph.addFlow(newId, newFlow);
         }
     };
+    LineChart.prototype.replaceData = function(newData){
+        this._graph.replaceData(newData);
+    };
 
     LineChart.prototype.initializeData = function(newData) {  //inizialization data of flows
         if (newData !== undefined) {

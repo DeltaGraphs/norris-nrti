@@ -134,6 +134,9 @@ angular.module('app')
             this._graph.addFlow(ID, newFlow);
         }
     };
+    Table.prototype.replaceData = function(newData){
+        this._graph.replaceData(newData);
+    };
 
     Table.prototype.initializeData = function(newData) {  //inizialization data of flows
         if (newData !== undefined) {

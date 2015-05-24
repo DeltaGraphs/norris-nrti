@@ -142,6 +142,9 @@ angular.module('app')
             this._graph.addFlow(newId, newFlow);
         }
     };
+    BarChart.prototype.replaceData = function(newData){
+        this._graph.replaceData(newData);
+    };
 
     BarChart.prototype.initializeData = function(newData) {  //inizialization data of flows
         if (newData !== undefined) {
