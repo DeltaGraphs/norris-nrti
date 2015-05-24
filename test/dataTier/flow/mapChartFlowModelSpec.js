@@ -251,8 +251,8 @@ describe('MapChartFlowModel', function() {
     describe('#updateMovie', function() {
         it('return 131 if record is not valid', function() {
             var flow1=new MapChartFlowModel({ID: 'flow1'});
-            assert.strictEqual(flow1.updateRecord(1), 131);
-            assert.strictEqual(flow1.updateRecord(1, [{asd:'asd'}]), 131);
+            assert.strictEqual(flow1.updateMovie(1), 131);
+            assert.strictEqual(flow1.updateMovie(null), 131);
         });
         it('insert only correct records', function() {
             var flow1=new MapChartFlowModel({ID: 'flow1', latitudeKey: 'WGS84La', longitudeKey: 'WGS84Fi', objectKey: 'IdMezzo'});
