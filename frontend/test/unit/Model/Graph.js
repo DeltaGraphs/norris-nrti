@@ -160,7 +160,7 @@ describe('GraphFactory', function(){
 			expect(Graph.getWidth()).toEqual(300);
 		});
 		it('graph updated with the correct legend', function(){
-			expect(Graph.getLegend()).toEqual({});
+			expect(Graph.getLegend()).toEqual({ _position: 'right', _fontColor: '#000', _backgroundColor: '#FFF' });
 		});
 		it('graph updated with the correct horizontalGrid', function(){
 			expect(Graph.getHGrid()).toEqual(true);

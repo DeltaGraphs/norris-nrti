@@ -28,6 +28,7 @@ describe('CellFactory', function(){
 	}));
 
 	describe('Default constructor', function(){
+		var Cell;
 
 		beforeEach(function(){
 			Cell = CellFactory.build();
@@ -56,6 +57,7 @@ describe('CellFactory', function(){
 			'background' : '#AFA',
 			'fontColor' : '#F00',
 		};
+		var Cell;
 
 		beforeEach(function(){
 			Cell = CellFactory.build(json);
@@ -83,6 +85,7 @@ describe('CellFactory', function(){
 			'background' : '#F00',
 			'fontColor' : '#AFA',
 		};
+		var Cell;
 
 		beforeEach(function(){
 			Cell = CellFactory.build();

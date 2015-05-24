@@ -199,7 +199,7 @@ describe('BarChartFactory', function(){
 			'sortable' : false,
 			'barsGrouping' : 'stacked',
 			'legendOnPoint' : true,
-			'flows' : [{'id' : 'f1'},{ 'id' : 'f2'},{'id' : 'f3'}]
+			'flows' : [{'ID' : 'f1'},{ 'ID' : 'f2'},{'ID' : 'f3'}]
 		};
 		var BarChart;
 

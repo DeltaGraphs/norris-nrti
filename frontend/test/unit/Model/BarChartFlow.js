@@ -32,6 +32,8 @@ describe('BarChartFlowFactory', function(){
 
 	describe('Default constructor', function(){
 
+		var BarChartFlow;
+
 		beforeEach(function(){
 			BarChartFlow = BarChartFlowFactory.build();
 		});
@@ -59,6 +61,8 @@ describe('BarChartFlowFactory', function(){
 		//	'dataFormat' : 'int',
 		//	'name' : 'flusso1'
 		//};
+
+		var BarChartFlow;
 
 		beforeEach(function(){
 			BarChartFlow = BarChartFlowFactory.build(json);
@@ -115,6 +119,8 @@ describe('BarChartFlowFactory', function(){
 			'flowColor' : '#F1F'
 		};
 
+		var BarChartFlow;
+
 		beforeEach(function(){
 			BarChartFlow = BarChartFlowFactory.build();
 			BarChartFlow.updateParameters(json);
@@ -138,6 +144,7 @@ describe('BarChartFlowFactory', function(){
 				{}
 			]
 		};
+		var BarChartFlow;
 
 		beforeEach(function(){
 			BarChartFlow = BarChartFlowFactory.build();
@@ -169,6 +176,8 @@ describe('BarChartFlowFactory', function(){
 			'value' : [ 1, 2]
 		};
 
+		var BarChartFlow;
+		
 		beforeEach(function(){
 			BarChartFlow = BarChartFlowFactory.build();
 			BarChartFlow.initializeData(data);

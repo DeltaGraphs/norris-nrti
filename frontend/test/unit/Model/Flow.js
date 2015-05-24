@@ -30,6 +30,8 @@ describe('FlowFactory', function(){
 
 	describe('Constructor', function(){
 
+		var Flow;
+
 		beforeEach(function(){
 			Flow = FlowFactory.build();
 		});
@@ -52,6 +54,7 @@ describe('FlowFactory', function(){
 		var json = {
 			'name' : 'flusso1'
 		};
+		var Flow;
 
 		beforeEach(function(){
 			Flow = FlowFactory.build(json);
@@ -74,6 +77,7 @@ describe('FlowFactory', function(){
 		var json = {
 			'name' : 'flussoString1'
 		};
+		var Flow;
 
 		beforeEach(function(){
 			Flow = FlowFactory.build();

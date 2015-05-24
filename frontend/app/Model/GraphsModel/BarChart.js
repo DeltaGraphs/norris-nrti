@@ -128,9 +128,7 @@ angular.module('app')
                 }
             }
             if (info.flows !== undefined) {
-                console.log('info.flows !== undefined');
                 for (var i=0; i<info.flows.length; i++) {
-                    console.log('sono nel for');
                     var newflow = BarChartFlowFactory.build(info.flows[i]);
                     this.addFlow(info.flows[i].ID, newflow);
                 }
@@ -141,7 +139,6 @@ angular.module('app')
 
     BarChart.prototype.addFlow = function(newId, newFlow) {
         if (newFlow.constructor.name === 'BarChartFlow') {
-            console.log('instanceof funziona');
             this._graph.addFlow(newId, newFlow);
         }
     };
