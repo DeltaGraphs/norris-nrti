@@ -8,10 +8,12 @@
 		"bootstrap": "~3.3.4",
 		"angular-resource": "latest",
 		"angular-sanitize": "latest",
-		"angular-route": "latest"
+		"angular-route": "latest",
+		"angular-socket-io": "latest"
 	},
 	"devDependencies": {
 		"angular-mocks": "latest",
-		"angular-scenario": "latest"
+		"angular-scenario": "latest",
+		"angular-socket.io-mock": "latest"
 	}
 }

@@ -2,7 +2,7 @@
 'use strict';
 
 /*
-* Name :  MapChart.js
+* Name :  MapChartController.js
 * Module : UnitTest
 * Location : /frontend/test/unit/Controller
 *
@@ -20,9 +20,7 @@ describe('MapChartController', function(){
 	var scope;
 	var controller;
 
-	beforeEach(function () {
-        module('app');
-    });
+	beforeEach(angular.mock.module('app'));
 
     beforeEach(inject(function ($rootScope, $controller) {
         scope = $rootScope.$new();
