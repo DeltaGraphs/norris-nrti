@@ -37,7 +37,6 @@ describe('GraphFactory', function(){
 		LegendFactory = $injector.get('LegendFactory');
 		FlowFactory = $injector.get('FlowFactory');
 		LineChartFlowFactory = $injector.get('LineChartFlowFactory');
-		LineChartFactory = $injector.get('LineChartFactory');
 	}));
 
 	describe('Default constructor', function(){
