@@ -136,6 +136,9 @@ angular.module('app')
             this._graph.addFlow(ID, newFlow);
         }
     };
+    MapChart.prototype.deleteFlow = function(ID) {
+        this._graph.deleteFlow(ID);
+    };
     MapChart.prototype.replaceData = function(newData){
         this._graph.replaceData(newData);
     };

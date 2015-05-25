@@ -233,6 +233,40 @@ describe('TableFactory', function(){
 
 	});
 
+	describe('deleteFlow', function(){
+
+		var json1 = {
+			'ID' : 	'flusso1',
+			'name' : 'sonda 1'
+		};
+
+		var json2 = {
+			'ID' : 	'flusso2',
+			'name' : 'sonda 2'
+		};
+		var Table, Flow1, Flow2;
+
+		beforeEach(function(){
+			Flow1 = TableFlowFactory.build();
+			Flow2 = TableFlowFactory.build();
+			Table = TableFactory.build();
+			Table.addFlow(json1.ID, Flow1);
+			Table.addFlow(json2.ID, Flow2);
+			Table.deleteFlow('flusso1');
+		});
+
+		afterEach(function(){
+			Flow1 = null;
+			Flow2 = null;
+			Table = null;
+		});
+
+		it('delete flow from graph', function(){
+			expect(Table.getFlowList().length).toEqual(1);
+		});
+
+	});
+
 	describe('inizializeData', function(){
 
 		var data = [

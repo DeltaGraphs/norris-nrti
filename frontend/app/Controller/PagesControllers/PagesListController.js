@@ -2,7 +2,7 @@
 'use strict';
 
 /*
-* Name :  PagesList.js
+* Name :  PagesListController.js
 * Module : FrontEnd::Controller::PagesController
 * Location : /frontend/app/Controller/PagesController
 *

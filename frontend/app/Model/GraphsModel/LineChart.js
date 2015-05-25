@@ -125,6 +125,9 @@ angular.module('services')
             this._graph.addFlow(newId, newFlow);
         }
     };
+    LineChart.prototype.deleteFlow = function(ID) {
+        this._graph.deleteFlow(ID);
+    };
     LineChart.prototype.replaceData = function(newData){
         this._graph.replaceData(newData);
     };

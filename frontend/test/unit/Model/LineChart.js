@@ -209,6 +209,40 @@ describe('LineChartFactory', function(){
 
 	});
 
+	describe('deleteFlow', function(){
+
+		var json1 = {
+			'ID' : 	'flusso1',
+			'name' : 'sonda 1'
+		};
+
+		var json2 = {
+			'ID' : 	'flusso2',
+			'name' : 'sonda 2'
+		};
+		var LineChart, Flow1, Flow2;
+
+		beforeEach(function(){
+			Flow1 = LineChartFlowFactory.build();
+			Flow2 = LineChartFlowFactory.build();
+			LineChart = LineChartFactory.build();
+			LineChart.addFlow(json1.ID, Flow1);
+			LineChart.addFlow(json2.ID, Flow2);
+			LineChart.deleteFlow('flusso1');
+		});
+
+		afterEach(function(){
+			Flow1 = null;
+			Flow2 = null;
+			LineChart = null;
+		});
+
+		it('delete flow from graph', function(){
+			expect(LineChart.getFlowList().length).toEqual(1);
+		});
+
+	});
+
 	describe('inizializeData', function(){
 
 		var data = [

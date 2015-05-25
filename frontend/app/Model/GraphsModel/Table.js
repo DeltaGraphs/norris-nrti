@@ -134,6 +134,9 @@ angular.module('app')
             this._graph.addFlow(ID, newFlow);
         }
     };
+    Table.prototype.deleteFlow = function(ID) {
+        this._graph.deleteFlow(ID);
+    };
     Table.prototype.replaceData = function(newData){
         this._graph.replaceData(newData);
     };

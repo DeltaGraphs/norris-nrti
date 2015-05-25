@@ -142,6 +142,9 @@ angular.module('app')
             this._graph.addFlow(newId, newFlow);
         }
     };
+    BarChart.prototype.deleteFlow = function(ID) {
+        this._graph.deleteFlow(ID);
+    };
     BarChart.prototype.replaceData = function(newData){
         this._graph.replaceData(newData);
     };

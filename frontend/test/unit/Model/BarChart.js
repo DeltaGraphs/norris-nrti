@@ -230,6 +230,40 @@ describe('BarChartFactory', function(){
 
 	});
 
+	describe('deleteFlow', function(){
+
+		var json1 = {
+			'ID' : 	'flusso1',
+			'name' : 'sonda 1'
+		};
+
+		var json2 = {
+			'ID' : 	'flusso2',
+			'name' : 'sonda 2'
+		};
+		var BarChart, Flow1, Flow2;
+
+		beforeEach(function(){
+			Flow1 = BarChartFlowFactory.build();
+			Flow2 = BarChartFlowFactory.build();
+			BarChart = BarChartFactory.build();
+			BarChart.addFlow(json1.ID, Flow1);
+			BarChart.addFlow(json2.ID, Flow2);
+			BarChart.deleteFlow('flusso1');
+		});
+
+		afterEach(function(){
+			Flow1 = null;
+			Flow2 = null;
+			BarChart = null;
+		});
+
+		it('delete flow from graph', function(){
+			expect(BarChart.getFlowList().length).toEqual(1);
+		});
+
+	});
+
 	describe('inizializeData', function(){
 
 		var data = [
