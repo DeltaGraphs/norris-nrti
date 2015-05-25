@@ -29,7 +29,6 @@ describe('GraphFactory', function(){
 	var LegendFactory;
 	var FlowFactory;
 	var LineChartFlowFactory;
-	var LineChartFactory;
 
 	beforeEach(angular.mock.module('app'));
 
@@ -210,24 +209,24 @@ describe('GraphFactory', function(){
 			'records' :	[{'NorrisRecordID' : 'record4', 'value' : [5,5] }, {'NorrisRecordID' : 'record5', 'value' : [6,6] }]
 		};
 
-		var LineChart, Flow;
+		var Graph, Flow;
 
 		beforeEach(function(){
 			Flow = LineChartFlowFactory.build();
 			Flow.initializeData(json1);
-			LineChart = LineChartFactory.build();
-			LineChart.addFlow(json1.ID, Flow);
-			LineChart.replaceData(json);
+			Graph = GraphFactory.build();
+			Graph.addFlow(json1.ID, Flow);
+			Graph.replaceData(json);
 		});
 
 		afterEach(function(){
 			Flow = null;
-			LineChart = null;
+			Graph = null;
 		});
 
 		it('delete flow from graph', function(){
-			expect(LineChart.getFlowList()[0].getData()[0].value[0]).toEqual(5);
-			expect(LineChart.getFlowList()[0].getData()[1].value[0]).toEqual(6);
+			expect(Graph.getFlowList()[0].getData()[0].value[0]).toEqual(5);
+			expect(Graph.getFlowList()[0].getData()[1].value[0]).toEqual(6);
 		});
 
 	});

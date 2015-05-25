@@ -348,7 +348,7 @@ describe('MapChartFactory', function(){
 		});
 
 		it('deleteData in the correct way', function(){
-			expect(MapChart.getFlowList()[0].getData().length).toEqual(0);
+			expect(MapChart.getFlowList()[0].flow.getData().length).toEqual(0);
 		});
 	});
 

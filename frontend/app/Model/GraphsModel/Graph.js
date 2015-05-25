@@ -104,8 +104,8 @@ angular.module('app')
 		replaceData : function(newData) {
 			for (var i = 0;i<this._flowList.length; i++) {
 				if (this._flowList[i].id === newData.ID){
-	                this._flowList[i].emptyData();
-	                this._flowList[i].initializeData(newData);
+	                this._flowList[i].flow.emptyData();
+	                this._flowList[i].flow.initializeData(newData);
 	            }
 			}
 		},
