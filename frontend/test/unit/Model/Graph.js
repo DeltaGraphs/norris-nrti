@@ -224,8 +224,8 @@ describe('GraphFactory', function(){
 		});
 
 		it('delete flow from graph', function(){
-			expect(Graph.getFlowList()[0].getData()[0].value[0]).toEqual(5);
-			expect(Graph.getFlowList()[0].getData()[1].value[0]).toEqual(6);
+			expect(Graph.getFlowList()[0].flow.getData()[0].value[0]).toEqual(5);
+			expect(Graph.getFlowList()[0].flow.getData()[1].value[0]).toEqual(6);
 		});
 
 	});
