@@ -36,16 +36,17 @@ describe('MapChartController', function(){
 			'zoom' : false,
 			'flows' : [{'ID' : '1'},{'ID' : '2'},{'ID' : '3'}]
 	};
+	var MapChartFactory;
 
 	beforeEach(angular.mock.module('app'));
 
     beforeEach(inject(function ($rootScope, $controller, _notify_, $injector) {
         MapChartFactory = $injector.get('MapChartFactory');
         scope = $rootScope.$new();
+        scope.mapChart = MapChartFactory.build(json);
         notify = _notify_;
         controller = $controller('MapChartController', {
-            $scope : scope,
-            $scope.mapChart = MapChartFactory.build(json);
+            $scope : scope
         });
     }));
 
@@ -61,15 +62,15 @@ describe('MapChartController', function(){
 	];
 
 	describe('listenOnEvent', function(){
-		$scope.mapChart.getTitle().toEqual('graficonuovo');
+		scope.mapChart.getTitle().toEqual('graficonuovo');
 		notify.receive('configGraph',{
 			'properties' : {
 				'title' : 'titolocambiato'
-			}
+			},
 			'data' : data
 		});
-		$scope.mapChart.getTitle().toEqual('titolocambiato');
-		$scope.mapChart.getFlowList()[0].flow.getData()[0].value[0].toEqual(0);
+		scope.mapChart.getTitle().toEqual('titolocambiato');
+		scope.mapChart.getFlowList()[0].flow.getData()[0].value[0].toEqual(0);
 	});
 
 });

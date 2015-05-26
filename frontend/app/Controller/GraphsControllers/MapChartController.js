@@ -23,7 +23,7 @@ angular.module('app')
 	var socket;
 	var url = $scope.mapChart.getUrl();
 
-	this.socketConnection = function(url){
+	this.socketConnection = function(){
 		socket = io.connect(url);
 		$scope.socket = socket;
 		// listenOnEvents();
@@ -57,12 +57,16 @@ angular.module('app')
 			switch (data.action){
 				case 'insertRecords':
 					$scope.mapChart.streamUpdate(data);
+					break;
 				case 'deleteRecord':
 					$scope.mapChart.deleteData(data);
+					break;
 				case 'updateRecord':
 					$scope.mapChart.inPlaceUpdate(data);
+					break;
 				case 'replaceData':
 					$scope.mapChart.replaceData(data);
+					break;
 			}
 		});
 
