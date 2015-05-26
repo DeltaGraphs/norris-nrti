@@ -19,7 +19,7 @@
 describe('MapChartController', function(){
 	var scope;
 	var controller;
-	var notify;
+	var socket;
 	var json = {
 			'title' : 'graficonuovo',
 			'url' : 'localhost',
@@ -40,11 +40,11 @@ describe('MapChartController', function(){
 
 	beforeEach(angular.mock.module('app'));
 
-    beforeEach(inject(function ($rootScope, $controller, _notify_, $injector) {
+    beforeEach(inject(function ($rootScope, $controller, _SocketServices_, $injector) {
         MapChartFactory = $injector.get('MapChartFactory');
         scope = $rootScope.$new();
         scope.mapChart = MapChartFactory.build(json);
-        notify = _notify_;
+        socket = _SocketServices_;
         controller = $controller('MapChartController', {
             $scope : scope
         });
@@ -63,7 +63,7 @@ describe('MapChartController', function(){
 
 	describe('listenOnEvent', function(){
 		scope.mapChart.getTitle().toEqual('graficonuovo');
-		notify.receive('configGraph',{
+		socket.receive('configGraph',{
 			'properties' : {
 				'title' : 'titolocambiato'
 			},
