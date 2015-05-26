@@ -50,11 +50,11 @@ describe('MapChartController', function(){
         });
     }));
 
-	describe('socketConnection', function(){
+	/*describe('socketConnection', function(){
 
 	});
 
-	describe('listenOnEvent', function(){
+	describe('listenOnEvent', function(){*/
 
 		var data = [
 			{
@@ -74,6 +74,6 @@ describe('MapChartController', function(){
 			expect(scope.mapChart.getTitle()).toEqual('titolocambiato');
 			expect(scope.mapChart.getFlowList()[0].flow.getData()[0].value[0]).toEqual(0);
 		});
-	});
+	//});
 
 });
