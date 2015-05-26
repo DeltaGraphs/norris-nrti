@@ -40,11 +40,11 @@ describe('MapChartController', function(){
 
 	beforeEach(angular.mock.module('app'));
 
-    beforeEach(inject(function ($rootScope, $controller, $injector) {
+    beforeEach(inject(function ($rootScope, $controller, _notify_ $injector) {
         MapChartFactory = $injector.get('MapChartFactory');
         scope = $rootScope.$new();
         scope.mapChart = MapChartFactory.build(json);
-        socket = $injector.get('SocketServices');
+        notify = _notify_;
         controller = $controller('MapChartController', {
             $scope : scope
         });
@@ -62,10 +62,10 @@ describe('MapChartController', function(){
 				'records' : [{ 'NorrisRecordID' : '234321', 'value' : [0,1]},{}]
 			}
 		];
-		
+
 		it ('listenOnEvent works fine', function(){
 			expect(scope.mapChart.getTitle()).toEqual('graficonuovo');
-			socket.receive('configGraph',{
+			notify.receive('configGraph',{
 				'properties' : {
 					'title' : 'titolocambiato'
 				},
