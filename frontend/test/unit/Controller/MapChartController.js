@@ -54,23 +54,26 @@ describe('MapChartController', function(){
 
 	});
 
-	var data = [
-		{
-			'ID' : '1',
-			'records' : [{ 'NorrisRecordID' : '234321', 'value' : [0,1]},{}]
-		}
-	];
-
 	describe('listenOnEvent', function(){
-		scope.mapChart.getTitle().toEqual('graficonuovo');
-		socket.receive('configGraph',{
-			'properties' : {
-				'title' : 'titolocambiato'
-			},
-			'data' : data
+
+		var data = [
+			{
+				'ID' : '1',
+				'records' : [{ 'NorrisRecordID' : '234321', 'value' : [0,1]},{}]
+			}
+		];
+		
+		it ('listenOnEvent works fine', function(){
+			expect(scope.mapChart.getTitle()).toEqual('graficonuovo');
+			socket.receive('configGraph',{
+				'properties' : {
+					'title' : 'titolocambiato'
+				},
+				'data' : data
+			});
+			expect(scope.mapChart.getTitle()).toEqual('titolocambiato');
+			expect(scope.mapChart.getFlowList()[0].flow.getData()[0].value[0]).toEqual(0);
 		});
-		scope.mapChart.getTitle().toEqual('titolocambiato');
-		scope.mapChart.getFlowList()[0].flow.getData()[0].value[0].toEqual(0);
 	});
 
 });
