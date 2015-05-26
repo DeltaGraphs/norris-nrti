@@ -19,7 +19,7 @@
 describe('MapChartController', function(){
 	var scope;
 	var controller;
-	var socket;
+	var notify;
 	var json = {
 			'title' : 'graficonuovo',
 			'url' : 'localhost',
@@ -40,7 +40,7 @@ describe('MapChartController', function(){
 
 	beforeEach(angular.mock.module('app'));
 
-    beforeEach(inject(function ($rootScope, $controller, _notify_ $injector) {
+    beforeEach(inject(function ($rootScope, $controller, _notify_, $injector) {
         MapChartFactory = $injector.get('MapChartFactory');
         scope = $rootScope.$new();
         scope.mapChart = MapChartFactory.build(json);
