@@ -1,7 +1,6 @@
 /*jshint node: true */
-'use strict';
+/*'use strict';
 
-/*
 * Name :  MapChart.js
 * Module : FrontEnd::View
 * Location : /frontend/app/View
@@ -12,7 +11,7 @@
 * 0.0.1         2015-05-25  Maria Giovanna Chinellato   Initial code      
 * =================================================================================================
 *
-*/
+
 
 angular.module('app')
 .directive('mapChart', function(){
@@ -29,4 +28,4 @@ angular.module('app')
 		},
 		template: // google map
 	}
-});
+});*/
