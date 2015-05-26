@@ -12,6 +12,7 @@
 		"angular-socket-io": "latest"
 	},
 	"devDependencies": {
+		"socket.io-client": "latest",
 		"angular-mocks": "latest",
 		"angular-scenario": "latest",
 		"angular-socket.io-mock": "latest"
