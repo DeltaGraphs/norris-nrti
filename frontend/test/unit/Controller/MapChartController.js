@@ -40,11 +40,11 @@ describe('MapChartController', function(){
 
 	beforeEach(angular.mock.module('app'));
 
-    beforeEach(inject(function ($rootScope, $controller, _SocketServices_, $injector) {
+    beforeEach(inject(function ($rootScope, $controller, $injector) {
         MapChartFactory = $injector.get('MapChartFactory');
         scope = $rootScope.$new();
         scope.mapChart = MapChartFactory.build(json);
-        socket = _SocketServices_;
+        socket = $injector.get('SocketServices');
         controller = $controller('MapChartController', {
             $scope : scope
         });
