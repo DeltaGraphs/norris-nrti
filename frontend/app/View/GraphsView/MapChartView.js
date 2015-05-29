@@ -28,34 +28,68 @@ angular.module('app')
 		link: function (scope, element, attrs) {
 			scope.socketConnection();
 			scope.listenOnEvent();
-			render = function() {
+			var render = function() {
 
 				var mapOptions = {
-          			center: { lat: , lng: },
-          			zoom: zoom,
+          			center: { lat: scope.mapChart.getLatitude() , lng: scope.mapChart.getLongitude()},
+          			zoom: 8
         		};
         		var map = new google.maps.Map(document.getElementById(scope.id), mapOptions);
-        		switch (scope.mapType) {
-        			case roadMap: 
+        		switch (scope.mapChart.getMapType()) {
+        			case 'roadMap': 
         				map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
         				break;
-        			case satellite:
+        			case 'satellite':
         				map.setMapTypeId(google.maps.MapTypeId.SATELLITE);
         				break;
-        			case hybrid:
+        			case 'hybrid':
         				map.setMapTypeId(google.maps.MapTypeId.HYBRID);
         				break;
-        			case terrain:
+        			case 'terrain':
         				map.setMapTypeId(google.maps.MapTypeId.TERRAIN);
         				break;
-        		};
+        		}
 
+        		var markers = [];
 
-      		};
+        		for (var i=0; i<scope.mapChart.getFlowList().length; i++){
+        			for (var j=0; i<scope.mapChart.getFlowList()[i].flow.getData().length; i++){
+        				var latLng = new google.maps.LatLng(scope.mapChart.getFlowList()[i].flow.getData()[j].value[0], scope.mapChart.getFlowList()[i].flow.getData()[j].value[0]);
 
-			showMarker = function() {};
+        				switch (scope.matChart.getFlowList()[i].flow.getMarker().type) {
+        					case 'shape':
+        						var type = { type: scope.mapChart.getFlowList()[i].flow.getMarker().shape };
+        						markers.push(new google.maps.Marker({
+		    						position: latLng,
+		    						map: map,
+		    						shape: type
+								}));
+								break;
+        					case 'icon':
+        						markers.push(new google.maps.Marker({
+		    						position: latLng,
+		    						map: map,
+		    						icon: scope.mapChart.getFlowList()[i].flow.getMarker().icon
+								}));
+								break;
+        					case 'text':
+        						markers.push(new google.maps.Marker({
+	    							position: latLng,
+	    							map: map,
+		    						title: 'flusso' + scope.mapChart.getFlowList()[i].flow.getMarker().text
+								}));
+								break;
+        				}
+        			}
+        		}
+
+      		}; // shape icon text
+
+      		render();
+      		
+			/*showMarker = function() {};
 			zoom = function() {};
-			drag = function() {};
+			drag = function() {};*/
 		}
 	};
 });
