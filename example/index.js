@@ -56,8 +56,8 @@ var mapChart=page1.createMapChart({
     legend: {
         position: 'NE',
     },
-    latitude: '45.42533493042',
-    longitude: '45.42533493042',
+    latitude: 45.42533493042,
+    longitude: 45.42533493042,
     mapType: 'roadMap',
     mapWidth: 2000,
     mapHeight: 2000,
