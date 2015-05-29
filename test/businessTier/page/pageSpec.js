@@ -48,7 +48,7 @@ ParamMock.prototype.pageChanged = function(param1) {
     return param1;
 };
 
-describe('PageModel', function() {
+describe('Page', function() {
 
     it('returns null when there are no params', function() {
         assert.strictEqual((new Page()).hasOwnProperty('_page'), false);
@@ -86,6 +86,29 @@ describe('PageModel', function() {
                 data: []
             };
             assert.deepEqual(page1.getConfigJSON(), expectedJSON);
+        });
+    });
+
+    describe('#updateProperties', function() {
+        it('does nothing when passed no valid parameter', function() {
+            var page1=new Page({ID:'page1'}, new ParamMock(), new ParamMock());
+            page1.updateProperties();
+            assert.deepEqual(page1._page, new PageModel({ID:'page1'}));
+            assert.deepEqual(page1._networkHandler, new ParamMock());
+            assert.deepEqual(page1._norris, new ParamMock());
+            assert.strictEqual(page1._pageNamespace, '/page1');
+            assert.deepEqual(page1._pageSocket, new ParamMock());
+            assert.strictEqual(page1._graphs.length, 0);
+        });
+        it('updates the properties to the passed parameters', function() {
+            var page1=new Page({ID:'page1'}, new ParamMock(), new ParamMock());
+            page1.updateProperties({name:'p1', description:'ppp', graphsPerRow: 5, graphsPerCol: 7});
+            assert.deepEqual(page1._page._ID, 'page1');
+            assert.deepEqual(page1._page._name, 'p1');
+            assert.deepEqual(page1._page._description, 'ppp');
+            assert.deepEqual(page1._page._graphsPerRow, 5);
+            assert.deepEqual(page1._page._graphsPerCol, 7);
+            assert.strictEqual(page1._graphs.length, 0);
         });
     });
 });
