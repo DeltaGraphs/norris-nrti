@@ -68,7 +68,14 @@ console.log('Grafico inserito: '+mapChart);
 var mapChartFlow=mapChart.createMapChartFlow({
     ID:'flow1',
     name: 'linea 22',
-    //marker
+    'marker':{
+        'type': 'shape',//shape, icon, text
+        //gli attributi qui sotto dipendono dal tipo di marker!!!!!
+        'shape': 'circle',//circle, triangle, square, diamond
+        'icon': 'null',//path
+        'text': 'null',//string
+        'color' : '#000'
+    },
     //trace
     latitudeKey: '1',
     longitudeKey: '2',
