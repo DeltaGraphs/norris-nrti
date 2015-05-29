@@ -43,8 +43,9 @@ describe('MapChartController', function(){
     beforeEach(inject(function ($rootScope, $controller, $injector) {
     	MapChartFactory = $injector.get('MapChartFactory');
         scope = $rootScope.$new();
+        scope.mapChart = MapChartFactory.build(json);
         //notify = _notify_;
-        controller = $controller;
+        controller = $controller('MapChartController', {$scope : scope});
     }));
 
     afterEach(function(){
@@ -55,33 +56,31 @@ describe('MapChartController', function(){
 
 	//});
 
-	describe('listenOnEvent', function(){
+	/*describe('listenOnEvent', function(){
 
-		/*var data = [
+		var data = [
 			{
 				'ID' : '1',
 				'records' : [{ 'NorrisRecordID' : '234321', 'value' : [0,1]},{}]
 			}
-		];*/
+		];
 
 		beforeEach(function(){
 			scope.mapChart = MapChartFactory.build(json);
 		});
 		
 		it ('listenOnEvent works fine', function(){
-			controller('MapChartController', {
-	            $scope : scope
-	        });
+			controller('MapChartController', {$scope : scope});
 			expect(scope.mapChart.getTitle()).toEqual('graficonuovo');
-			/*notify.receive('configGraph',{
+			notify.receive('configGraph',{
 				'properties' : {
 					'title' : 'titolocambiato'
 				},
 				'data' : data
 			});
 			expect(scope.mapChart.getTitle()).toEqual('titolocambiato');
-			expect(scope.mapChart.getFlowList()[0].flow.getData()[0].value[0]).toEqual(0);*/
+			expect(scope.mapChart.getFlowList()[0].flow.getData()[0].value[0]).toEqual(0);
 		});
-	});
+	});*/
 
 });
