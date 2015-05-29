@@ -44,8 +44,8 @@ describe('mapChartModel', function() {
         assert.strictEqual(graph1._width, 500);
         assert.strictEqual(graph1._enableLegend, false);
         assert.deepEqual(graph1._legend.getProperties(), defaultLegend.getProperties());
-        assert.strictEqual(graph1._latitude, '');
-        assert.strictEqual(graph1._longitude, '');
+        assert.strictEqual(graph1._latitude, 0);
+        assert.strictEqual(graph1._longitude, 0);
         assert.strictEqual(graph1._mapType, 'roadmap');
         assert.strictEqual(graph1._legendOnPoint, false);
         assert.strictEqual(graph1._mapWidth, 3000);
@@ -60,8 +60,8 @@ describe('mapChartModel', function() {
             width: 'b',
             enableLegend: 'abc',
             legend: 'def',
-            latitude: 123,
-            longitude: 456,
+            latitude: 'abv',
+            longitude: 'def',
             mapType: 123,
             legendOnPoint: 'abc',
             mapWidth: 'abc',
@@ -74,8 +74,8 @@ describe('mapChartModel', function() {
         assert.strictEqual(graph1._width, 500);
         assert.strictEqual(graph1._enableLegend, false);
         assert.deepEqual(graph1._legend.getProperties(), defaultLegend.getProperties());
-        assert.strictEqual(graph1._latitude, '');
-        assert.strictEqual(graph1._longitude, '');
+        assert.strictEqual(graph1._latitude, 0);
+        assert.strictEqual(graph1._longitude, 0);
         assert.strictEqual(graph1._mapType, 'roadmap');
         assert.strictEqual(graph1._legendOnPoint, false);
         assert.strictEqual(graph1._mapWidth, 3000);
@@ -91,8 +91,8 @@ describe('mapChartModel', function() {
             width: 350,
             enableLegend: true,
             legend: legend1.getProperties(),
-            latitude: '33',
-            longitude: '44',
+            latitude: 33,
+            longitude: 44,
             mapType: 'satellite',
             legendOnPoint: true,
             mapWidth: 1500,
@@ -105,8 +105,8 @@ describe('mapChartModel', function() {
         assert.strictEqual(graph1._width, 350);
         assert.strictEqual(graph1._enableLegend, true);
         assert.deepEqual(graph1._legend.getProperties(), legend1.getProperties());
-        assert.strictEqual(graph1._latitude, '33');
-        assert.strictEqual(graph1._longitude, '44');
+        assert.strictEqual(graph1._latitude, 33);
+        assert.strictEqual(graph1._longitude, 44);
         assert.strictEqual(graph1._mapType, 'satellite');
         assert.strictEqual(graph1._legendOnPoint, true);
         assert.strictEqual(graph1._mapWidth, 1500);
@@ -122,8 +122,8 @@ describe('mapChartModel', function() {
 	            width: 350,
 	            enableLegend: true,
 	            legend: legend1.getProperties(),
-                latitude: '33',
-                longitude: '44',
+                latitude: 33,
+                longitude: 44,
                 mapType: 'satellite',
                 legendOnPoint: true,
                 mapWidth: 1500,
@@ -138,8 +138,8 @@ describe('mapChartModel', function() {
             assert.strictEqual(prop.width, 350);
             assert.strictEqual(prop.enableLegend, true);
             assert.deepEqual(prop.legend, legend1.getProperties());
-            assert.strictEqual(prop.latitude, '33');
-            assert.strictEqual(prop.longitude, '44');
+            assert.strictEqual(prop.latitude, 33);
+            assert.strictEqual(prop.longitude, 44);
             assert.strictEqual(prop.mapType, 'satellite');
             assert.strictEqual(prop.legendOnPoint, true);
             assert.strictEqual(prop.mapWidth, 1500);
@@ -160,8 +160,8 @@ describe('mapChartModel', function() {
                 width: 350,
                 enableLegend: true,
                 legend: legend1.getProperties(),
-                latitude: '33',
-                longitude: '44',
+                latitude: 33,
+                longitude: 44,
                 mapType: 'satellite',
                 legendOnPoint: true,
                 mapWidth: 1500,
@@ -176,8 +176,8 @@ describe('mapChartModel', function() {
             assert.strictEqual(graph1._width, 350);
             assert.strictEqual(graph1._enableLegend, true);
             assert.deepEqual(graph1._legend.getProperties(), legend1.getProperties());
-            assert.strictEqual(graph1._latitude, '33');
-            assert.strictEqual(graph1._longitude, '44');
+            assert.strictEqual(graph1._latitude, 33);
+            assert.strictEqual(graph1._longitude, 44);
             assert.strictEqual(graph1._mapType, 'satellite');
             assert.strictEqual(graph1._legendOnPoint, true);
             assert.strictEqual(graph1._mapWidth, 1500);
@@ -188,12 +188,6 @@ describe('mapChartModel', function() {
             assert.strictEqual(updates.width, 350);
             assert.strictEqual(updates.enableLegend, true);
             assert.deepEqual(updates.legend.getProperties(), legend1.getProperties());
-            assert.strictEqual(updates.latitude, '33');
-            assert.strictEqual(updates.longitude, '44');
-            assert.strictEqual(updates.mapType, 'satellite');
-            assert.strictEqual(updates.legendOnPoint, true);
-            assert.strictEqual(updates.mapWidth, 1500);
-            assert.strictEqual(updates.mapHeight, 1000);
         });
         it('does not update the properties with wrong param', function() {
             var properties={
@@ -203,8 +197,8 @@ describe('mapChartModel', function() {
                 width: 'b',
                 enableLegend: 'abc',
                 legend: 'def',
-                latitude: 123,
-                longitude: 456,
+                latitude: 'abc',
+                longitude: 'def',
                 mapType: 123,
                 legendOnPoint: 'abc',
                 mapWidth: 'abc',
@@ -219,8 +213,8 @@ describe('mapChartModel', function() {
             assert.strictEqual(graph1._width, 500);
             assert.strictEqual(graph1._enableLegend, false);
             assert.deepEqual(graph1._legend.getProperties(), defaultLegend.getProperties());
-            assert.strictEqual(graph1._latitude, '');
-            assert.strictEqual(graph1._longitude, '');
+            assert.strictEqual(graph1._latitude, 0);
+            assert.strictEqual(graph1._longitude, 0);
             assert.strictEqual(graph1._mapType, 'roadmap');
             assert.strictEqual(graph1._legendOnPoint, false);
             assert.strictEqual(graph1._mapWidth, 3000);
