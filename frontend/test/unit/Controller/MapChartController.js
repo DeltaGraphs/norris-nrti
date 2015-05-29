@@ -20,6 +20,7 @@ describe('MapChartController', function(){
 	var scope;
 	var controller;
 	var notify;
+	var MapChartFactory;
 	var json = {
 			'title' : 'graficonuovo',
 			'url' : 'localhost',
@@ -36,25 +37,15 @@ describe('MapChartController', function(){
 			'zoom' : false,
 			'flows' : [{'ID' : '1'},{'ID' : '2'},{'ID' : '3'}]
 	};
-	var MapChartFactory;
-	var MapChartFlowFactory;
-	var SocketServices;
 
-	beforeEach(angular.mock.module('app'));
+	beforeEach(angular.mock.module('app', ['MapChartFactory', 'angular-socket.io-mock']));
 
-    beforeEach(inject(function ($rootScope, $controller, _notify_, MapChartFactory, MapChartFlowFactory, SocketServices) {
-        MapChartFactory = $injector.get('MapChartFactory');
-        MapChartFlowFactory = $injector.get('MapChartFlowFactory');
-        SocketServices = $injector.get('SocketServices');
-        scope = $rootScope.$new();
+    beforeEach(inject(function ($rootScope, $controller, _notify_, MapChartFactory) {
+        scope.mapChart = $rootScope.$new();
         scope.mapChart = MapChartFactory.build(json);
         notify = _notify_;
         controller = $controller('MapChartController', {
-            $scope : scope,
-            MapChartFactory : MapChartFactory,
-            MapChartFlowFactory : MapChartFlowFactory,
-            SocketServices : SocketServices,
-            notify: notify
+            $scope : scope.mapChart
         });
     }));
 
