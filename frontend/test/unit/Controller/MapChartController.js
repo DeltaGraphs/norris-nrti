@@ -18,7 +18,7 @@
 
 describe('MapChartController', function(){
 
-	beforeEach(module('app'));
+	beforeEach(angular.mock.module('app'));
 
 	var scope;
 	var controller;
@@ -47,7 +47,7 @@ describe('MapChartController', function(){
 	        scope = $rootScope.$new();
 	        scope.mapChart = MapChartFactory.build(json);
 	        //notify = _notify_;
-	        controller = $controller('MapChartController', {
+	        controller = $controller('MapChartController', {    // "lo conosci il MapChartController?" cit. Barney
 	        	$scope : scope
 	        });
 	    }));

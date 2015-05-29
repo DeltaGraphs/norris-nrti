@@ -75,5 +75,5 @@ angular.module('app')
 	$scope.socketConnection = this.socketConnection;
 	$scope.listenOnEvents = this.listenOnEvents;
 	
-	$controllerProvider.register('MapChartController', this);
+	//$controllerProvider.register('MapChartController', this);
 }]);
