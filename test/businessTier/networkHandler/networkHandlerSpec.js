@@ -25,7 +25,7 @@ var http = require('http');
 var server = http.createServer(app);
 var io = require('socket.io')(server);
 io.listen(5000);
-var Routes=require('../../presentationTier/routes.js');
+var Routes=require('../../../lib/presentationTier/routes.js');
 
 describe('NetworkHandler', function() {
 
