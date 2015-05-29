@@ -52,6 +52,17 @@ describe('MapChartController', function(){
     	scope = null;
     });
 
+    it ('listenOnEvent works fine', function(){
+		expect(scope.mapChart.getTitle()).toEqual('graficonuovo');
+		/*notify.receive('configGraph',{
+			'properties' : {
+				'title' : 'titolocambiato'
+			},
+			'data' : data
+		});
+		expect(scope.mapChart.getTitle()).toEqual('titolocambiato');
+		expect(scope.mapChart.getFlowList()[0].flow.getData()[0].value[0]).toEqual(0);*/
+	});
 	//describe('socketConnection', function(){
 
 	//});
