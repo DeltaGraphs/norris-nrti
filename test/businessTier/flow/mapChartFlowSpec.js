@@ -10,7 +10,7 @@
 * 
 * Version   Date         Programmer         Description
 * =========================================================
-* 0.0.1     2015-05-14   Filippo Rampado    Initial code
+* 0.0.1     2015-05-29   Filippo Rampado    Initial code
 * =========================================================
 */
 
@@ -35,5 +35,30 @@ describe('MapChartFlow', function() {
         var flow1=new MapChartFlow({ID: 'flow1'},{_namespace: 'flow1'});
         assert.strictEqual(flow1._dataMapChartFlow._ID, 'flow1');
         assert.strictEqual(flow1._graphSocket._namespace, 'flow1');
+    });
+
+    describe('#addRecord', function() {
+        it('returns 133 if record is invalid', function() {
+            var flow1=new MapChartFlow({ID: 'flow1'},{_namespace: 'flow1'});
+            assert.strictEqual(flow1.addRecord(), 133);
+        });
+        it('returns valid norrisRecordID if record is valid', function() {
+            var flow1=new MapChartFlow({ID: 'flow1'},{_namespace: 'flow1'});
+            assert.strictEqual(flow1.addRecord({temperature: 2}).indexOf('flow1'), 0);
+        });
+    });
+
+    describe('#deleteRecord', function() {
+        it('returns 135 if ID is invalid', function() {
+            var flow1=new MapChartFlow({ID: 'flow1'},{_namespace: 'flow1'});
+            flow1.addRecord({temperature: 2});
+            assert.strictEqual(flow1.deleteRecord(), 135);
+            assert.strictEqual(flow1.deleteRecord('flow1asd'), 135);
+        });
+        it('returns true if ID is valid', function() {
+            var flow1=new MapChartFlow({ID: 'flow1'},{_namespace: 'flow1'});
+            var ID=flow1.addRecord({temperature: 2});
+            assert.strictEqual(flow1.deleteRecord(ID), true);
+        });
     });
 });

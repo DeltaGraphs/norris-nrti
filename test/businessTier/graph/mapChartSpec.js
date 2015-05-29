@@ -2,38 +2,37 @@
 'use strict';
 
 /*
-* Name : mapChartFlowSpec.js
+* Name : mapChartSpec.js
 * Module : UnitTest
-* Location : /test/businessTier/flow
+* Location : /test/businessTier/graph
 *
 * History :
 * 
 * Version   Date         Programmer         Description
 * =========================================================
-* 0.0.1     2015-05-14   Filippo Rampado    Initial code
+* 0.0.1     2015-05-29   Filippo Rampado    Initial code
 * =========================================================
 */
 
-var MapChartFlow = require('../../../lib/businessTier/flow/mapChartFlow.js');
+var MapChart = require('../../../lib/businessTier/graph/mapChart.js');
 var assert = require('assert');
 
-describe('MapChartFlow', function() {
-    
-    it('returns null when there are no params', function() {
-        assert.strictEqual((new MapChartFlow()).hasOwnProperty('_dataMapChartFlow'), false);
+describe('MapChart', function() {
+    /*it('returns null when there are no params', function() {
+        assert.strictEqual((new MapChart()).hasOwnProperty('_dataMapChartFlow'), false);
     });
 
     it('returns null when there is no valid graphsocket in params', function() {
-        assert.strictEqual((new MapChartFlow(2, 3)).hasOwnProperty('_dataMapChartFlow'), false);
+        assert.strictEqual((new MapChart(2, 3)).hasOwnProperty('_dataMapChartFlow'), false);
     });
 
     it('returns null when params are not valid', function() {
-        assert.strictEqual((new MapChartFlow(2, {_namespace: 2})).hasOwnProperty('_dataMapChartFlow'), false);
+        assert.strictEqual((new MapChart(2, {_namespace: 2})).hasOwnProperty('_dataMapChartFlow'), false);
     });
 
     it('calls the parent constructor with the params specified', function() {
         var flow1=new MapChartFlow({ID: 'flow1'},{_namespace: 'flow1'});
         assert.strictEqual(flow1._dataMapChartFlow._ID, 'flow1');
         assert.strictEqual(flow1._graphSocket._namespace, 'flow1');
-    });
+    });*/
 });

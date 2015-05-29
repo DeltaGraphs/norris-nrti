@@ -2,27 +2,33 @@
 'use strict';
 
 /*
-* Name : flowSpec.js
+* Name : graphSpec.js
 * Module : UnitTest
-* Location : /test/businessTier/flow
+* Location : /test/businessTier/graph
 *
 * History :
 * 
 * Version   Date         Programmer         Description
 * =========================================================
-* 0.0.1     2015-05-14   Matteo Furlan    Initial code
+* 0.0.1     2015-05-29   Filippo Rampado    Initial code
 * =========================================================
 */
 
-var Flow = require('../../../lib/businessTier/flow/flow.js');
+var Graph = require('../../../lib/businessTier/graph/graph.js');
 var assert = require('assert');
 
-describe('Flow', function() {
-    it('returns if socket passed is invalid', function() {
-        assert.strictEqual((new Flow()).hasOwnProperty('_graphSocket'), false);
-        assert.strictEqual((new Flow(3)).hasOwnProperty('_graphSocket'), false);
+describe('Graph', function() {
+	var paramMock={
+		_page:null,
+		_namespace:null
+	};
+
+    it('returns if params passed are invalid', function() {
+        assert.strictEqual((new Graph()).hasOwnProperty('_graphSocket'), false);
+        assert.strictEqual((new Graph(3)).hasOwnProperty('_graphSocket'), false);
+        assert.strictEqual((new Graph(paramMock, 3)).hasOwnProperty('_graphSocket'), false);
     });
-    it('creates the object if graphSocket is valid', function() {
-        assert.strictEqual((new Flow({_namespace: 2})).hasOwnProperty('_graphSocket'), true);
+    it('creates the object params passed are valid', function() {
+        assert.strictEqual((new Graph(paramMock, paramMock)).hasOwnProperty('_graphSocket'), true);
     });
 });
