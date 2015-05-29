@@ -16,7 +16,7 @@
 *
 */
 
-describe('MapChartView', function(){
+describe('mapChart', function(){
 	beforeEach(angular.mock.module('app'));
 
 	var scope;
