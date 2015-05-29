@@ -67,10 +67,6 @@ describe('MapChartController', function(){
 		beforeEach(function(){
 			scope.mapChart = MapChartFactory.build(json);
 		});
-
-		afterEach(function(){
-			scope.mapChart = null;
-		});
 		
 		it ('listenOnEvent works fine', function(){
 			controller('MapChartController', {
