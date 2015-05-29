@@ -15,7 +15,7 @@
 */
 
 var NetworkHandler = require('../../../lib/businessTier/networkHandler/networkHandler.js');
-var Socket=require('../../../presentationTier/socket.js');
+var Socket=require('../../../lib/presentationTier/socket.js');
 var assert = require('assert');
 var request = require('superagent');
 
