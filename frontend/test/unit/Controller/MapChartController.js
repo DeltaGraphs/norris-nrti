@@ -47,9 +47,9 @@ describe('MapChartController', function(){
 	        scope = $rootScope.$new();
 	        scope.mapChart = MapChartFactory.build(json);
 	        //notify = _notify_;
-	        /*controller = $controller('MapChartController', {
+	        controller = $controller('MapChartController', {
 	        	$scope : scope
-	        });*/
+	        });
 	    }));
 
 	    it ('listenOnEvent works fine', function(){
