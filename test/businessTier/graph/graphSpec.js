@@ -20,7 +20,8 @@ var assert = require('assert');
 describe('Graph', function() {
 	var paramMock={
 		_page:null,
-		_namespace:null
+		_namespace:null,
+        attachObject: function(){}
 	};
 
     it('returns if params passed are invalid', function() {
