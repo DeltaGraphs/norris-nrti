@@ -17,9 +17,11 @@
 */
 
 describe('MapChartController', function(){
+	beforeEach(angular.mock.module('app', ['MapChartFactory']));
+
 	var scope;
 	var controller;
-	var notify;
+	//var notify;
 	var json = {
 			'title' : 'graficonuovo',
 			'url' : 'localhost',
@@ -35,43 +37,45 @@ describe('MapChartController', function(){
 			'mapType' : 'terrain',
 			'zoom' : false,
 			'flows' : [{'ID' : '1'},{'ID' : '2'},{'ID' : '3'}]
-	};
+	};	
 
-	beforeEach(angular.mock.module('app', ['MapChartFactory']));
-
-    beforeEach(inject(function ($rootScope, $controller, _notify_, MapChartFactory) {
+    beforeEach(inject(function ($rootScope, $controller, MapChartFactory) {
         scope = $rootScope.$new();
         scope.mapChart = MapChartFactory.build(json);
-        notify = _notify_;
+        //notify = _notify_;
         controller = $controller('MapChartController', {
             $scope : scope
         });
     }));
 
-	/*describe('socketConnection', function(){
+    afterEach(function(){
+    	$scope = null;
+    });
 
-	});
+	//describe('socketConnection', function(){
 
-	describe('listenOnEvent', function(){*/
+	//});
 
-		var data = [
+	describe('listenOnEvent', function(){
+
+		/*var data = [
 			{
 				'ID' : '1',
 				'records' : [{ 'NorrisRecordID' : '234321', 'value' : [0,1]},{}]
 			}
-		];
+		];*/
 
 		it ('listenOnEvent works fine', function(){
 			expect(scope.mapChart.getTitle()).toEqual('graficonuovo');
-			notify.receive('configGraph',{
+			/*notify.receive('configGraph',{
 				'properties' : {
 					'title' : 'titolocambiato'
 				},
 				'data' : data
 			});
 			expect(scope.mapChart.getTitle()).toEqual('titolocambiato');
-			expect(scope.mapChart.getFlowList()[0].flow.getData()[0].value[0]).toEqual(0);
+			expect(scope.mapChart.getFlowList()[0].flow.getData()[0].value[0]).toEqual(0);*/
 		});
-	//});
+	});
 
 });
