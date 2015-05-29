@@ -38,34 +38,34 @@ describe('MapChartController', function(){
 			'mapType' : 'terrain',
 			'zoom' : false,
 			'flows' : [{'ID' : '1'},{'ID' : '2'},{'ID' : '3'}]
-	};	
+	};
 
-    beforeEach(inject(function ($rootScope, $controller, $injector) {
-    	MapChartFactory = $injector.get('MapChartFactory');
-        scope = $rootScope.$new();
-        scope.mapChart = MapChartFactory.build(json);
-        //notify = _notify_;
-        controller = $controller('MapChartController', {
-        	$scope : scope
-        });
-    }));
+    describe('listenOnEvent', function(){
+		beforeEach(inject(function ($rootScope, $controller, $injector) {
+	    	MapChartFactory = $injector.get('MapChartFactory');
+	        scope = $rootScope.$new();
+	        scope.mapChart = MapChartFactory.build(json);
+	        //notify = _notify_;
+	        controller = $controller('MapChartController', {
+	        	$scope : scope
+	        });
+	    }));
 
-    afterEach(function(){
-    	scope = null;
-    });
+	    it ('listenOnEvent works fine', function(){
 
-    it ('listenOnEvent works fine', function(){
-    	expect(scope.mapChart).toBeDefined();
-		//expect(scope.mapChart.getTitle()).toEqual('graficonuovo');
-		/*notify.receive('configGraph',{
-			'properties' : {
-				'title' : 'titolocambiato'
-			},
-			'data' : data
+	    	expect(scope.mapChart).toBeDefined();
+			//expect(scope.mapChart.getTitle()).toEqual('graficonuovo');
+			/*notify.receive('configGraph',{
+				'properties' : {
+					'title' : 'titolocambiato'
+				},
+				'data' : data
+			});
+			expect(scope.mapChart.getTitle()).toEqual('titolocambiato');
+			expect(scope.mapChart.getFlowList()[0].flow.getData()[0].value[0]).toEqual(0);*/
 		});
-		expect(scope.mapChart.getTitle()).toEqual('titolocambiato');
-		expect(scope.mapChart.getFlowList()[0].flow.getData()[0].value[0]).toEqual(0);*/
-	});
+    });
+    
 	//describe('socketConnection', function(){
 
 	//});
