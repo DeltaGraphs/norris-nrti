@@ -42,9 +42,13 @@ describe('NetworkHandler', function() {
         assert.deepEqual(nh1._app, app);
         assert.deepEqual(nh1._io, io);
         assert.deepEqual(nh1._norrisNamespace, '/norris');
-        console.dir('Stored routes object ', nh1._routes);
-        console.dir('New routes object ', new Routes(app, '/norris'));
-        console.dir('Are they equal? ', (nh1._routes === new Routes(app, '/norris')));
+        //console.dir('Stored routes object ', nh1._routes);
+        console.dir('Printing routes');
+        console.dir(nh1._routes);
+        //console.dir('New routes object ', new Routes(app, '/norris'));
+        console.dir(new Routes(app, '/norris'));
+        //console.dir('Are they equal? ', (nh1._routes === new Routes(app, '/norris')));
+        console.dir((nh1._routes === new Routes(app, '/norris')));
         assert.strictEqual(nh1._routes, new Routes(app, '/norris'));
     });
 
