@@ -291,7 +291,7 @@ describe('MapChartFlowModel', function() {
             assert.strictEqual(recIDs_new[4],recIDs[4]);
             assert.strictEqual(recIDs_new[5],recIDs[5]);
             assert.strictEqual(recIDs_new[6],recIDs[6]);
-            assert.notStrictEqua(recIDs_new[7],recIDs[7]);
+            assert.notStrictEqual(recIDs_new[7],recIDs[7]);
         });
     });
     describe('#deleteRecord', function() {
