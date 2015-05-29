@@ -64,11 +64,11 @@ describe('PageModel', function() {
 
     it('set param values to properties', function() {
         var page1=new Page({ID:'page1'}, new ParamMock(), new ParamMock());
-        assert.strictEqual(page1._page, new PageModel('page1'));
-        assert.strictEqual(page1._networkHandler, new ParamMock());
-        assert.strictEqual(page1._norris, new ParamMock());
+        assert.deepEqual(page1._page, new PageModel('page1'));
+        assert.deepEqual(page1._networkHandler, new ParamMock());
+        assert.deepEqual(page1._norris, new ParamMock());
         assert.strictEqual(page1._pageNamespace, '/page1');
-        assert.strictEqual(page1._pageSocket, new ParamMock());
+        assert.deepEqual(page1._pageSocket, new ParamMock());
         assert.strictEqual(page1._graphs.length, 0);
     });
 
@@ -85,7 +85,7 @@ describe('PageModel', function() {
                 },
                 data: []
             };
-            assert.strictEqual(page1.getConfigJSON(), expectedJSON);
+            assert.deepEqual(page1.getConfigJSON(), expectedJSON);
         });
     });
 });
