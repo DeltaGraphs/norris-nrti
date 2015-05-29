@@ -17,7 +17,7 @@
 */
 
 angular.module('app')
-.controller('MapChartController', ['$scope', 'location', 'MapChartFactory', 'MapChartFlowFactory', 'SocketServices', function($scope, $location, MapChartFactory, MapChartFlowFactory, SocketServices){
+.controller('MapChartController', ['$scope', 'location', 'MapChartFactory', 'MapChartFlowFactory', 'SocketServices' function($scope, $location, MapChartFactory, MapChartFlowFactory, SocketServices){
 
 	//var mapChart = $scope.mapChart;
 	var socket;
@@ -75,4 +75,4 @@ angular.module('app')
 	$scope.socketConnection = this.socketConnection;
 	$scope.listenOnEvents = this.listenOnEvents;
 	
-}]);
+});
