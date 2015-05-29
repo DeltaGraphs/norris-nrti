@@ -52,9 +52,42 @@ describe('NetworkHandler', function() {
         });
     });
     describe('#addPageToRouting', function() {
+        it('does nothing when given a non-string parameter', function() {
+            var nh1=new NetworkHandler(app, io, '/norris');
+            assert.strictEqual(nh1.addPageToRouting(123), false);
+        });
+        it('does nothing when given an empty string as a parameter', function() {
+            var nh1=new NetworkHandler(app, io, '/norris');
+            assert.strictEqual(nh1.addPageToRouting(''), false);
+        });
+        it('does nothing when given an incorrect string as a parameter', function() {
+            var nh1=new NetworkHandler(app, io, '/norris');
+            assert.strictEqual(nh1.addPageToRouting('noslash'), false);
+        });
         it('adds the given page to the application routing', function() {
             var nh1=new NetworkHandler(app, io, '/norris');
-            nh1.addPageToRouting('/page1');
+            assert.strictEqual(nh1.addPageToRouting('/page1'), true);
+            request.post('localhost:3000/page').end(function(res){
+                assert.strictEqual(res.status,200);
+            });
+        });
+    });
+    describe('#addGraphToRouting', function() {
+        it('does nothing when given a non-string parameter', function() {
+            var nh1=new NetworkHandler(app, io, '/norris');
+            assert.strictEqual(nh1.addGraphToRouting(123), false);
+        });
+        it('does nothing when given an empty string as a parameter', function() {
+            var nh1=new NetworkHandler(app, io, '/norris');
+            assert.strictEqual(nh1.addGraphToRouting(''), false);
+        });
+        it('does nothing when given an incorrect string as a parameter', function() {
+            var nh1=new NetworkHandler(app, io, '/norris');
+            assert.strictEqual(nh1.addGraphToRouting('noslash'), false);
+        });
+        it('adds the given page to the application routing', function() {
+            var nh1=new NetworkHandler(app, io, '/norris');
+            assert.strictEqual(nh1.addGraphToRouting('/page1'), true);
             request.post('localhost:3000/page').end(function(res){
                 assert.strictEqual(res.status,200);
             });
