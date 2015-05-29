@@ -14,8 +14,8 @@
 * =========================================================
 */
 
-var MapChart = require('../../../lib/businessTier/graph/mapChart.js');
-var assert = require('assert');
+/*var MapChart = require('../../../lib/businessTier/graph/mapChart.js');
+var assert = require('assert');*/
 
 describe('MapChart', function() {
     /*it('returns null when there are no params', function() {

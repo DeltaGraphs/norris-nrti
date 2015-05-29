@@ -245,7 +245,7 @@ describe('FunctionHelper', function() {
             assert.strictEqual(FH.isValidTrace({
                 type: 'line',
                 coordinates: [
-                    , [12.43, -2],
+                    undefined, [12.43, -2],
                     [1, 2]
                 ],
                 strokeColor: '#FFF',
