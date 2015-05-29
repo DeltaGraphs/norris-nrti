@@ -17,7 +17,7 @@
 */
 
 describe('MapChartController', function(){
-	beforeEach(angular.mock.module('app'));
+	beforeEach(angular.mock.module('app', ['MapChartController']));
 
 	var scope;
 	var controller;
