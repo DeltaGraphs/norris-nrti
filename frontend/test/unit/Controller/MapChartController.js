@@ -66,9 +66,6 @@ describe('MapChartController', function(){
 
 		beforeEach(function(){
 			scope.mapChart = MapChartFactory.build(json);
-			controller('MapChartController', {
-	            $scope : scope
-	        });
 		});
 
 		afterEach(function(){
@@ -76,6 +73,9 @@ describe('MapChartController', function(){
 		});
 		
 		it ('listenOnEvent works fine', function(){
+			controller('MapChartController', {
+	            $scope : scope
+	        });
 			expect(scope.mapChart.getTitle()).toEqual('graficonuovo');
 			/*notify.receive('configGraph',{
 				'properties' : {
