@@ -1,6 +1,7 @@
 /*jshint node: true */
-/*'use strict';
+'use strict';
 
+/*
 * Name :  MapChart.js
 * Module : FrontEnd::View
 * Location : /frontend/app/View
@@ -10,7 +11,7 @@
 * =================================================================================================
 * 0.0.1         2015-05-25  Maria Giovanna Chinellato   Initial code      
 * =================================================================================================
-*
+*/
 
 
 angular.module('app')
@@ -20,12 +21,12 @@ angular.module('app')
 		controller : 'MapChartController',
 		replace: false,
 		scope: {
-			grafico: '@',
+			grafico: '@'
 		},
 		link: function (scope, element, attrs) {
 			scope.socketConnection();
 			scope.listenOnEvent();
 		},
-		template: // google map
-	}
-});*/
+		//template: // google map
+	};
+});
