@@ -49,7 +49,7 @@ describe('MapChartController', function(){
     }));
 
     afterEach(function(){
-    	$scope = null;
+    	scope = null;
     });
 
 	//describe('socketConnection', function(){
