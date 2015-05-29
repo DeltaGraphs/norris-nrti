@@ -17,10 +17,11 @@
 */
 
 describe('MapChartController', function(){
-	beforeEach(angular.mock.module('app', ['MapChartFactory']));
+	beforeEach(angular.mock.module('app'));
 
 	var scope;
 	var controller;
+	var MapChartFactory;
 	//var notify;
 	var json = {
 			'title' : 'graficonuovo',
@@ -39,13 +40,11 @@ describe('MapChartController', function(){
 			'flows' : [{'ID' : '1'},{'ID' : '2'},{'ID' : '3'}]
 	};	
 
-    beforeEach(inject(function ($rootScope, $controller, MapChartFactory) {
+    beforeEach(inject(function ($rootScope, $controller, $injector) {
+    	MapChartFactory = $injector.get('MapChartFactory');
         scope = $rootScope.$new();
-        scope.mapChart = MapChartFactory.build(json);
         //notify = _notify_;
-        controller = $controller('MapChartController', {
-            $scope : scope
-        });
+        controller = $controller;
     }));
 
     afterEach(function(){
@@ -65,6 +64,17 @@ describe('MapChartController', function(){
 			}
 		];*/
 
+		beforeEach(function(){
+			scope.mapChart = MapChartFactory.build(json);
+			controller('MapChartController', {
+	            $scope : scope
+	        });
+		});
+
+		afterEach(function(){
+			scope.mapChart = null;
+		});
+		
 		it ('listenOnEvent works fine', function(){
 			expect(scope.mapChart.getTitle()).toEqual('graficonuovo');
 			/*notify.receive('configGraph',{
