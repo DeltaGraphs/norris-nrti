@@ -15,6 +15,7 @@
 */
 
 var Norris = require('../../../lib/businessTier/norris/norris.js');
+var Page = require('../../../lib/businessTier/page/page.js');
 //var Socket=require('../../../lib/presentationTier/socket.js');
 var NetworkHandler = require('../../../lib/businessTier/networkHandler/networkHandler.js');
 var PageListModel = require('../../../lib/dataTier/pageList/pageListModel.js');
@@ -51,20 +52,48 @@ describe('Norris', function() {
     });
 
     describe('#createPage', function() {
-        it('does nothing if no parameter is passed', function() {
+        it('returns null if no parameter is passed', function() {
             var nor=new Norris(app, io, '/norris');
             assert.deepEqual(nor.createPage(), null);
         });
 
-        it('does nothing if the passed parameter does not contain an ID', function() {
+        it('returns null if the passed parameter does not contain an ID', function() {
             var nor=new Norris(app, io, '/norris');
-            assert.deepEqual(nor.createPage({p: 'abc'}), null);
+            assert.strictEqual(nor.createPage({p: 'abc'}), null);
         });
 
-        it('does nothing if the passed ID is already used', function() {
+        it('returns null if the passed ID is already used', function() {
             var nor=new Norris(app, io, '/norris');
             nor._pages.push({_page: {_ID: 'abc'}});
-            assert.deepEqual(nor.createPage({ID: 'abc'}), null);
+            assert.strictEqual(nor.createPage({ID: 'abc'}), null);
+        });
+
+        it('returns null if the PageModel is not created', function() {
+            var nor=new Norris(app, io, '/norris');
+            assert.strictEqual(nor.createPage({ID: ''}), null);
+        });
+
+         it('behaves correctly with the right parameters', function() {
+            var nor=new Norris(app, io, '/norris');
+            var socketURL = 'http://0.0.0.0:5000/norris';
+            var options ={
+                transports: ['websocket'],
+                'force new connection': true
+            };
+            var client1 = io.connect(socketURL, options);
+            var expJSON = {
+                ID: 'page1',
+                name: '',
+                description: '',
+                URLSocket: 'http://0.0.0.0:5000/page1',
+                graphs: []
+            };
+            client1.on('insertPage', function(message) {
+                assert.strictEqual(message, expJSON);
+            });
+            assert.deepEqual(nor.createPage({ID: 'page1'}), new Page({ID: 'page1'}));
+            assert.strictEqual(nor._pages.length, 1);
+            assert.strictEqual(nor._pageList._pages.length, 1);
         });
     });
 });
