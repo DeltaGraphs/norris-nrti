@@ -15,11 +15,11 @@
 */
 
 var Norris = require('../../../lib/businessTier/norris/norris.js');
-var Socket=require('../../../lib/presentationTier/socket.js');
+//var Socket=require('../../../lib/presentationTier/socket.js');
 var NetworkHandler = require('../../../lib/businessTier/networkHandler/networkHandler.js');
-var PageListModel = require('../../../lib/businessTier/pageList/pageListModel.js');
+var PageListModel = require('../../../lib/dataTier/pageList/pageListModel.js');
 var assert = require('assert');
-var request = require('superagent');
+//var request = require('superagent');
 
 var express = require('express');
 var app = express();
