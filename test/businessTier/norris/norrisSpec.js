@@ -92,8 +92,8 @@ describe('Norris', function() {
             client1.on('insertPage', function(message) {
                 assert.strictEqual(message, expJSON);
             });
-            var stPage = new Page({ID: 'page1'}, nor._networkHandler, nor);
-            assert.deepEqual(nor.createPage({ID: 'page1'}), stPage);
+            //var stPage = new Page({ID: 'page1'}, nor._networkHandler, nor);
+            assert.deepEqual(nor.createPage({ID: 'page1'}) instanceof Page, true);
             assert.strictEqual(nor._pages.length, 1);
             assert.strictEqual(nor._pageList._pages.length, 1);
         });
