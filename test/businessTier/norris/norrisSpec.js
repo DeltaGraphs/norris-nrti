@@ -49,4 +49,22 @@ describe('Norris', function() {
         assert.deepEqual(nor._pageListSocket, plm);
         assert.strictEqual(nor._pages.length, 0);
     });
+
+    describe('#createPage', function() {
+        it('does nothing if no parameter is passed', function() {
+            var nor=new Norris(app, io, '/norris');
+            assert.deepEqual(nor.createPage(), null);
+        });
+
+        it('does nothing if the passed parameter does not contain an ID', function() {
+            var nor=new Norris(app, io, '/norris');
+            assert.deepEqual(nor.createPage({p: 'abc'}), null);
+        });
+
+        it('does nothing if the passed ID is already used', function() {
+            var nor=new Norris(app, io, '/norris');
+            nor._pages.push({_page: {_ID: 'abc'}});
+            assert.deepEqual(nor.createPage({ID: 'abc'}), null);
+        });
+    });
 });
