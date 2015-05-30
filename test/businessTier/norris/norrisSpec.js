@@ -28,6 +28,7 @@ var http = require('http');
 var server = http.createServer(app);
 var io = require('socket.io')(server);
 io.listen(5000);
+var ioclient = require('socket.io-client');
 
 describe('Norris', function() {
 
@@ -80,7 +81,7 @@ describe('Norris', function() {
                 transports: ['websocket'],
                 'force new connection': true
             };
-            var client1 = io.connect(socketURL, options);
+            var client1 = ioclient.connect(socketURL, options);
             var expJSON = {
                 ID: 'page1',
                 name: '',
