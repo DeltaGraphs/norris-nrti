@@ -44,7 +44,7 @@ describe('Norris', function() {
         assert.deepEqual(nor._io, io);
         assert.deepEqual(nor._pageList, new PageListModel('norris'));
         assert.deepEqual(nor._networkHandler, new NetworkHandler(app, io, '/norris'));
-        assert.deepEqual(nor._pageListSocket, new NetworkHandler(app, io, '/norris').createSocket('/norris').attachObject(nor, 'configPageList'));
+        assert.deepEqual(nor._pageListSocket, ((new NetworkHandler(app, io, '/norris')).createSocket('/norris')).attachObject(nor, 'configPageList'));
         assert.strictEqual(nor._pages.length, 0);
     });
 });
