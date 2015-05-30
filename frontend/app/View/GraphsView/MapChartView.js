@@ -30,10 +30,13 @@ angular.module('app')
 			scope.listenOnEvent();
 			var render = function() {
 
+                // Set map option
 				var mapOptions = {
           			center: { lat: scope.mapChart.getLatitude() , lng: scope.mapChart.getLongitude()},
           			zoom: 8
         		};
+
+                // Create map
         		var map = new google.maps.Map(document.getElementById(scope.id), mapOptions);
         		switch (scope.mapChart.getMapType()) {
         			case 'roadMap': 
@@ -50,42 +53,74 @@ angular.module('app')
         				break;
         		}
 
+                // Instantiate an info window to hold step text.
+                stepDisplay = new google.maps.InfoWindow();
+
+                // Create markers
         		var markers = [];
 
         		for (var i=0; i<scope.mapChart.getFlowList().length; i++){
         			for (var j=0; i<scope.mapChart.getFlowList()[i].flow.getData().length; i++){
         				var latLng = new google.maps.LatLng(scope.mapChart.getFlowList()[i].flow.getData()[j].value[0], scope.mapChart.getFlowList()[i].flow.getData()[j].value[0]);
+                        var marker;
 
         				switch (scope.matChart.getFlowList()[i].flow.getMarker().type) {
         					case 'shape':
-        						var type = { type: scope.mapChart.getFlowList()[i].flow.getMarker().shape };
-        						markers.push(new google.maps.Marker({
+                                var type;
+        						switch (scope.matChart.getFlowList()[i].flow.getMarker().shape) { //circle, triangle, square, diamond
+                                    case 'circle':
+
+                                    case 'triangle':
+
+                                    case 'square':
+
+                                    case 'diamond':
+
+                                }
+        						marker = new google.maps.Marker({
 		    						position: latLng,
 		    						map: map,
 		    						shape: type
-								}));
+								});
 								break;
         					case 'icon':
-        						markers.push(new google.maps.Marker({
+        						marker = new google.maps.Marker({
 		    						position: latLng,
 		    						map: map,
 		    						icon: scope.mapChart.getFlowList()[i].flow.getMarker().icon
-								}));
+								});
 								break;
         					case 'text':
-        						markers.push(new google.maps.Marker({
+        						marker = new google.maps.Marker({
 	    							position: latLng,
 	    							map: map,
-		    						title: 'flusso' + scope.mapChart.getFlowList()[i].flow.getMarker().text
-								}));
+		    						title: scope.mapChart.getFlowList()[i].flow.getMarker().text
+								});
 								break;
         				}
+
+                        addLegendOnPoint(marker, scope.mapChart.getFlowList()[i].flow.getMarker().text);
+                        markers.push(marker);
+
         			}
+
         		}
+
+                // add egend On Point
+                function addLegendOnPoint(marker,text) {
+
+                    google.maps.event.addListener(marker, 'click', function() {
+                        // Open an info window when the marker is clicked on,
+                        // containing the text of the step.
+                        stepDisplay.setContent(text);
+                        stepDisplay.open(map, marker);
+                    });
+                }
 
       		}; // shape icon text
 
       		render();
+            
       		
 			/*showMarker = function() {};
 			zoom = function() {};
