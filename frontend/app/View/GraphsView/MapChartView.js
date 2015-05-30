@@ -98,15 +98,16 @@ angular.module('app')
 								});
 								break;
         				}
-
-                        addLegendOnPoint(marker, scope.mapChart.getFlowList()[i].flow.getMarker().text);
+                        if (scope.mapChart.getLegendOnPoint() === true){
+                            addLegendOnPoint(marker, scope.mapChart.getFlowList()[i].flow.getName());
+                        }
                         markers.push(marker);
 
         			}
 
         		}
 
-                // add egend On Point
+                // add legend on point
                 function addLegendOnPoint(marker,text) {
 
                     google.maps.event.addListener(marker, 'click', function() {

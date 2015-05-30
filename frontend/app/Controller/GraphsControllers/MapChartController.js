@@ -20,6 +20,22 @@ angular.module('app')
 .controller('MapChartController', ['$scope', '$controllerProvider', 'location', 'MapChartFactory', 'MapChartFlowFactory', 'SocketServices', function($scope, $controllerProvider, $location, MapChartFactory, MapChartFlowFactory, SocketServices){
 
 	//var mapChart = $scope.mapChart;
+
+	var json = {
+			'title' : 'graficonuovo',
+			'url' : 'https://norris-nrti-dev.herokuapp.com/page1/map1',
+			'height' : 400,
+			'width' : 400,
+			'enabledLegend' : false,
+			'horizontalGrid' : false,
+			'verticalGrid' : false,
+			'legendOnPoint' : true,
+			'scale' : 999,
+			'mapType' : 'roadMap',
+			'zoom' : false,
+	};
+
+	$scope.mapChart = MapChartFactory.build(json);
 	var socket;
 	var url = $scope.mapChart.getUrl();
 
