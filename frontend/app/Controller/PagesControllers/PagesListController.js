@@ -25,15 +25,16 @@ angular.module('app')
 	this.socketConnection = function(socketUrl){
 		socket = io.connect(socketUrl);
 		$scope.socket = socket;
+		$scope.pagesList = pagesList;
 		// listenOnEvents();
 	};
 
 	this.listenOnEvents = function(){
 		socket.on('configPageList', function(info){
-			pagesList = new PagesList(info);
+			$scope.pagesList.updateParameters(info);
 		});
 		socket.on('insertPage', function(info){
-			pagesList.addPage(info);
+			$scope.pagesList.addPage(info);
 		});
 	};
 

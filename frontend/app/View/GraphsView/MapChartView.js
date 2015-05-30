@@ -66,28 +66,28 @@ angular.module('app')
 
         				switch (scope.matChart.getFlowList()[i].flow.getMarker().type) {
         					case 'shape':
-                                var type;
+                                /*var type;
         						switch (scope.matChart.getFlowList()[i].flow.getMarker().shape) { //circle, triangle, square, diamond
                                     case 'circle':
-
+                                        type = 
                                     case 'triangle':
 
                                     case 'square':
 
                                     case 'diamond':
 
-                                }
+                                }*/
         						marker = new google.maps.Marker({
 		    						position: latLng,
 		    						map: map,
-		    						shape: type
+		    						icon: scope.matChart.getFlowList()[i].flow.getMarker().shape
 								});
 								break;
         					case 'icon':
         						marker = new google.maps.Marker({
 		    						position: latLng,
 		    						map: map,
-		    						icon: scope.mapChart.getFlowList()[i].flow.getMarker().icon
+		    						icon: { scope.mapChart.getFlowList()[i].flow.getMarker().icon
 								});
 								break;
         					case 'text':
