@@ -31,7 +31,7 @@ angular.module('app')
 				for(var i=0; i<scope.pagesList.getPagesList().length; i++){
 					var div = document.createElement('div');
 
-					div.innerHTML = '<p> <a> {{ scope.pagesList.getPagesList()[i].get }} </a> </p>';
+					div.innerHTML = '<p> <a href="{{ scope.pagesList.getPagesList()[i].id }}">  </a> </p>';
 
 					document.getElementById('pagesList')
 				}
