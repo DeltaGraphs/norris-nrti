@@ -17,7 +17,7 @@
 */
 
 angular.module('app')
-.controller('PagesListController', function($scope, $location, PagesList, SocketServicesFactory){
+.controller('PagesListController', ['$scope', '$location', 'PagesList', 'SocketServicesFactory', function($scope, $location, PagesList, SocketServicesFactory){
 
 	var pagesList = new PagesList();
 	var socket;
@@ -40,4 +40,4 @@ angular.module('app')
 	$scope.socketConnection = this.socketConnection;
 	$scope.listenOnEvents = this.listenOnEvents;
 	
-});
+}]);
