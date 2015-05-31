@@ -59,16 +59,18 @@ describe('Routes', function() {
             var routes3 = new Routes(app2, '/norris');
             routes3.addRoutingPath('/page', 'page');
             var server = app2.listen(3000);
-            console.dir('RESBODY ext');
+            console.dir('RESBODY ext'+server);
             //assert(request(server).get('/page'), 200);
             request.post('localhost:3000/page').end(function(res){
                 assert.strictEqual(res.status,200);
+                console.log('localhost:3000/page');
                 //expect(res).to.exist;
                 //expect(res.status).to.equal(200);
                 //expect(res.body).to.contain('world');
                 console.dir('RESBODY');
                 console.dir(res.body);
                 assert.strictEqual(res.status,404);
+                done();
             });
         });
     });
