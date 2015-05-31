@@ -43,7 +43,7 @@ angular.module('app')
 				}
        		};
 
-       		//render();
+       		render();
 
        		scope.$watch('scope.pagesList.getPagesList()', function(){
 	          	scope.render();

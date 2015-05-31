@@ -9,10 +9,11 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
-* 0.0.1         2015-05-30  Rossetto Francesco		   Initial code      
+* 0.1.0			2015-05-30	Francesco Rossetto			Add all attributes and all methods	
+*
+* 0.0.1         2015-05-30  Francesco Rossetto			Initial code      
 * =================================================================================================
 */
-
 
 angular.module('app')
 .directive('page', function(){
@@ -24,7 +25,7 @@ angular.module('app')
 			
 		},
 		template: '<div id="page"></div>',
-		link: function (scope, element, attrs) {
+		link: function (scope) {
 			scope.socketConnection();
 
 			scope.render = function() {
@@ -53,7 +54,7 @@ angular.module('app')
 				}
        		};
 
-       		//render();
+       		scope.render();
 
        		scope.$watch('scope.page.getGraphsList()', function(){
 	          	scope.render();

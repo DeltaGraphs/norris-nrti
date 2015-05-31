@@ -9,6 +9,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * ===============================================================================================================
+* 0.1.0			2015-05-31	Rossetto Francesco			Modified structure of appConfig
+*
 * 0.0.2         2015-05-15  Maria Giovanna Chinellato   Add code of config file
 *
 * 0.0.1         2015-05-12  Maria Giovanna Chinellato   Initial code      
@@ -16,16 +18,18 @@
 *
 */
 
-angular.module("config", [] );
-angular.module("services", [ "ngResource", "config" ] );
-angular.module("controllers", [ "services", "utils", "config" ] );
-angular.module("utils", [ "services", "config" ] );
+var appConfig = function($routeProvider) {
+    $routeProvider /* inizio definizione di routeProvider */
+        .when('/', {
+            controller: 'PagesListController',
+             templateUrl: 'index.html'
+        })
+        .when('/page/:pageId' {
+        	controller : 'PageController',
+        	templateUrl: 'page.html'
+        })
+    ; /* fine definizione di routeProvider */
+};
 
-
-
-angular.module('app', ["ngRoute", "controllers", "utils", "config"])
-	.config(
-		function($routeProvider) {
-			$routeProvider;
-		}
-	);
+var app = angular.module('app', []).config(appConfig); /* definisce un
+namespace (chiamato modulo) */

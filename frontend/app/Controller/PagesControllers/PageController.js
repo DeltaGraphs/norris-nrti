@@ -17,8 +17,9 @@
 */
 
 angular.module('app')
-.controller('PageController', function($scope, $location, PageFactory, SocketServicesFactory){
+.controller('PageController', ['$scope', '$location', '$routeParams', 'PagesList', 'PageFactory', 'SocketServicesFactory', function($scope, $location, $routeParams, PagesList, PageFactory, SocketServicesFactory){
 
+	$scope.page = PagesList.getPagesList()[$routeParams.pageId];
 	var url = $scope.page.getUrl();
 	var socket;
 	
