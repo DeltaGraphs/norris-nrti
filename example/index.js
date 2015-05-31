@@ -192,10 +192,10 @@ var repeatLine=function(){
             //other stuff
         });
     }
-    console.log(lineChartFlow.addRecord(lineData[index]));
+    console.log(lineChart.addRecord('flow1', lineData[index]));
     console.log('lineChart index: '+index2);
     index2++;
-    if (index2>10){
+    if (index2>=12){
         index2=0;
         lineChart.deleteAllFlows();
     }
