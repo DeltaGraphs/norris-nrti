@@ -2,9 +2,9 @@
 'use strict';
 
 /*
-* Name :  MapChart.js
+* Name :  PagesListView.js
 * Module : FrontEnd::View
-* Location : /frontend/app/View
+* Location : /frontend/app/PagesView
 *
 * History :
 * Version       Date        Programmer                  Description
@@ -27,24 +27,27 @@ angular.module('app')
 		link: function (scope, element, attrs) {
 			scope.socketConnection(attrs.url);
 
-			var render = function() {
+			scope.render = function() {
+				var parent = document.getElementById('pagesList');
+				while(parent.firstChild) {
+				    parent.removeChild(parent.firstChild);
+				}
 				for(var i=0; i<scope.pagesList.getPagesList().length; i++){
 					var div = document.createElement('div');
 					div.className = 'page';
 
-					div.innerHTML = '<p> <a href="{{ scope.pagesList.getPagesList()[i].id }}"> {{ scope.pagesList.getPagesList()[i].page.getName() }} </a> </p>\
-									<p>  </p>';
+					div.innerHTML = '<p> <a href="#/page/{{i}}"> {{ scope.pagesList.getPagesList()[i].page.getName() }} </a> </p>\n' +
+									'<p> {{ scope.pagesList.getPagesList()[i].page.getDescription() }} </p>';
 
-					document.getElementById('pagesList').appendChild(div);
+					parent.appendChild(div);
 				}
-       		}
+       		};
 
-       		/*scope.$watch('data', function(){
-       			if (scope.data)
-	          		scope.render();
-        	}, true);*/
-	
-			render();
+       		//render();
+
+       		scope.$watch('scope.pagesList.getPagesList()', function(){
+	          	scope.render();
+        	}, true);
 				
 		}
 

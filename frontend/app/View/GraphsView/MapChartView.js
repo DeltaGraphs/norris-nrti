@@ -25,7 +25,7 @@ angular.module('app')
 			id: '@'
 		},
 		bindToController: true,
-		link: function (scope, element, attrs) {
+    	link: function (scope, element, attrs) {
 			scope.socketConnection();
 			scope.listenOnEvent();
 			var render = function() {

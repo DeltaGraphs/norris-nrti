@@ -17,25 +17,36 @@
 */
 
 angular.module('app')
-.factory('SocketServices', function ($scope, $rootScope) {
-    return {
-        on: function (eventName, callback) {
-            $scope.socket.on(eventName, function () {  
-                var args = arguments;
-                $rootScope.$apply(function () {
-                    callback.apply($scope.socket, args);
+.factory('SocketServicesFactory', function ($rootScope) {
+
+    function SocketServices(url) {
+        var socket = io.connect(url);
+        return {
+            on: function (eventName, callback) {
+                socket.on(eventName, function () {  
+                    var args = arguments;
+                    $rootScope.$apply(function () {
+                        callback.apply(socket, args);
+                    });
                 });
-            });
-        },
-        emit: function (eventName, data, callback) {
-            $scope.socket.emit(eventName, data, function () {
-                var args = arguments;
-                $rootScope.$apply(function () {
-                    if (callback) {
-                        callback.apply($rootScope.socket, args);
-                    }
+            },
+            emit: function (eventName, data, callback) {
+                socket.emit(eventName, data, function () {
+                    var args = arguments;
+                    $rootScope.$apply(function () {
+                        if (callback) {
+                            callback.apply(socket, args);
+                        }
+                    });
                 });
-            });
-        }
-    };
+            }
+        };
+    }
+
+    function SocketServicesFactory() {}
+
+    SocketServicesFactory.build = function (url) {
+        return new SocketServices(url);
+    }
+
 });

@@ -36,47 +36,47 @@ angular.module('app')
         this._url = null;
 
         if (info !== undefined) {
-            if (info.name !== undefined) {
-                this._name = info.name;
+            if (info.properties.name !== undefined) {
+                this._name = info.properties.name;
             }
-            if (info.description !== undefined) {
-                this._description = info.description;
+            if (info.properties.description !== undefined) {
+                this._description = info.properties.description;
             }
-            if (info.graphsPerRow !== undefined) {
-                this._graphsPerRow = info.graphsPerRow;
+            if (info.properties.graphsPerRow !== undefined) {
+                this._graphsPerRow = info.properties.graphsPerRow;
             }
-            if (info.graphsPerCol !== undefined) {
-                this._graphsPerCol = info.graphsPerCol;
+            if (info.properties.graphsPerCol !== undefined) {
+                this._graphsPerCol = info.properties.graphsPerCol;
             }
-            if (info.URLSocket !== undefined) {
-                this._url = info.URLSocket;
+            if (info.properties.URLSocket !== undefined) {
+                this._url = info.properties.URLSocket;
             }
-            if (info.graphs !== undefined) {
-                for (var i=0; i<info.graphs.length; i++){
+            if (info.data.graphs !== undefined) {
+                for (var i=0; i<info.data.graphs.length; i++){
                     var count = 0;
                     for (var j=0; j<this._graphsList.length; j++) {
-                        if (this._graphsList[j].id === info.graphs[i].ID){
+                        if (this._graphsList[j].id === info.data.graphs[i].ID){
                             count++;
                         }
                     }
                     if (count === 0){
                         var graph;
-                        switch (info.graphs[i].type) {
+                        switch (info.data.graphs[i].type) {
                             case 'LineChart': 
-                                graph = LineChartFactory.build(info.graphs[i]);
-                                this._graphsList.push( {'id' : info.graphs[i].ID, 'graph' : graph} );
+                                graph = LineChartFactory.build(info.data.graphs[i]);
+                                this._graphsList.push( {'id' : info.data.graphs[i].ID, 'graph' : graph} );
                                 break;
                             case 'BarChart': 
-                                graph = BarChartFactory.build(info.graphs[i]);
-                                this._graphsList.push( {'id' : info.graphs[i].ID, 'graph' : graph} );
+                                graph = BarChartFactory.build(info.data.graphs[i]);
+                                this._graphsList.push( {'id' : info.data.graphs[i].ID, 'graph' : graph} );
                                 break;
                             case 'MapChart': 
-                                graph = MapChartFactory.build(info.graphs[i]);
-                                this._graphsList.push( {'id' : info.graphs[i].ID, 'graph' : graph} );
+                                graph = MapChartFactory.build(info.data.graphs[i]);
+                                this._graphsList.push( {'id' : info.data.graphs[i].ID, 'graph' : graph} );
                                 break;
                             case 'Table': 
-                                graph = TableFactory.build(info.graphs[i]);
-                                this._graphsList.push( {'id' : info.graphs[i].ID, 'graph' : graph} );
+                                graph = TableFactory.build(info.data.graphs[i]);
+                                this._graphsList.push( {'id' : info.data.graphs[i].ID, 'graph' : graph} );
                                 break;
                         }
                     }

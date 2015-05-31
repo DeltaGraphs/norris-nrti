@@ -17,14 +17,13 @@
 */
 
 angular.module('app')
-.controller('PagesListController', function($scope, $location, PagesList, SocketServices){
+.controller('PagesListController', function($scope, $location, PagesList, SocketServicesFactory){
 
 	var pagesList = new PagesList();
 	var socket;
 	
-	this.socketConnection = function(socketUrl){
-		socket = io.connect(socketUrl);
-		$scope.socket = socket;
+	this.socketConnection = function(url){
+		socket = SocketServicesFactory.build(url);
 		$scope.pagesList = pagesList;
 		// listenOnEvents();
 	};
@@ -40,6 +39,5 @@ angular.module('app')
 
 	$scope.socketConnection = this.socketConnection;
 	$scope.listenOnEvents = this.listenOnEvents;
-	$scope.pagesList = pagesList.getPagesList();
 	
 });
