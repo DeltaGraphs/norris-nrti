@@ -61,13 +61,13 @@ describe('Routes', function() {
             var server = app2.listen(3000);
             console.dir('RESBODY ext'+server);
 
-            app.get('/', function (req, res) {
+            app2.get('/', function (req, res) {
                 var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
                 console.log(' HOME APS - expressEsempio.js '+ fullUrl);
                 res.send('HOME APS - expressEsempio.js '+ fullUrl);
             });
-            request(app).get('localhost:3000').expect(200, done);
-            request(app).get('localhost:3000/page').expect(200, done);
+            request(app2).get('localhost:3000').expect(200, done);
+            request(app2).get('localhost:3000/page').expect(200, done);
 /*            
             console.dir(request(server).get('/page'));
             assert(request(server).get('/page'), 200);
