@@ -81,7 +81,6 @@ describe('Norris', function() {
                 transports: ['websocket'],
                 'force new connection': true
             };
-            var client1 = ioclient.connect(socketURL, options);
             /*var expJSON = {
                 ID: 'page1',
                 name: '',
@@ -89,16 +88,17 @@ describe('Norris', function() {
                 URLSocket: 'http://0.0.0.0:5000/page1',
                 graphs: []
             };*/
-            client1.on('insertPage', function(message) {
-                console.dir('Received message');
-                //console.dir(message);
-                //assert.strictEqual(message, expJSON);
-                assert.strictEqual(message, 'ciao');
-            });
             //var stPage = new Page({ID: 'page1'}, nor._networkHandler, nor);
             assert.deepEqual(nor.createPage({ID: 'page1'}) instanceof Page, true);
             assert.strictEqual(nor._pages.length, 1);
             assert.strictEqual(nor._pageList._pages.length, 1);
+            var client1 = ioclient.connect(socketURL, options);
+            client1.on('insertPage', function(message) {
+                console.dir('Received message');
+                console.dir(message);
+                //assert.strictEqual(message, expJSON);
+                assert.strictEqual(message, 'ciao');
+            });
         });
     });
 
@@ -138,7 +138,6 @@ describe('Norris', function() {
                 transports: ['websocket'],
                 'force new connection': true
             };
-            var client1 = ioclient.connect(socketURL, options);
             var params = {
                 eventType: 'updatePage',
                 params: {
@@ -146,10 +145,11 @@ describe('Norris', function() {
                     description: 'newDesc'
                 }
             };
+            nor.pageChanged(params);
+            var client1 = ioclient.connect(socketURL, options);
             client1.on('updatePage', function(message) {
                 assert.strictEqual(message, params);
             });
-            nor.pageChanged(params);
         });
     });
 });
