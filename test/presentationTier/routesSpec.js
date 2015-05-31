@@ -18,9 +18,9 @@ var Routes = require('../../lib/presentationTier/routes.js');
 
 var assert = require('assert');
 var Express = require('express');
-var request = require('superagent');
-//var request = require('supertest');
-var http = require('http');
+//var request = require('superagent');
+var request = require('supertest');
+//var http = require('http');
 
 var app = new Express();
 
@@ -54,12 +54,14 @@ describe('Routes', function() {
         it('returns true if passed valid parameters', function() {
             assert.strictEqual(routes2.addRoutingPath('/page', 'page'), true);
         });
-        it('behaves correctly if passed valid parameters', function() {
+        it('behaves correctly if passed valid parameters', function(done) {
             var app2 = new Express();
             var routes3 = new Routes(app2, '/norris');
             routes3.addRoutingPath('/page', 'page');
             var server = app2.listen(3000);
             console.dir('RESBODY ext'+server);
+            request(app).get('/').expect(200, done);
+/*            
             console.dir(request(server).get('/page'));
             assert(request(server).get('/page'), 200);
             /*request.post('localhost:3000/page').end(function(res){
