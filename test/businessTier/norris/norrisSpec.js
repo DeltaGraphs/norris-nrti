@@ -92,6 +92,7 @@ describe('Norris', function() {
             client1.on('insertPage', function(message) {
                 assert.strictEqual(message, expJSON);
             });
+            console.dir(nor._networkHandler._routes);
             //var stPage = new Page({ID: 'page1'}, nor._networkHandler, nor);
             assert.deepEqual(nor.createPage({ID: 'page1'}) instanceof Page, true);
             assert.strictEqual(nor._pages.length, 1);
@@ -123,7 +124,6 @@ describe('Norris', function() {
                     }
                 ]
             };
-            console.dir(nor._networkHandler._routes);
             assert.deepEqual(nor.getConfigJSON(), expJSON);
         });
     });
