@@ -192,7 +192,7 @@ var repeatLine=function(){
             //other stuff
         });
     }
-    lineChartFlow.addRecord(data[index]);
+    console.log(lineChartFlow.addRecord(lineData[index]));
     console.log('lineChart index: '+index2);
     index2++;
     if (index2>10){
