@@ -123,8 +123,8 @@ var data=[[{'0':875,'IdMezzo':875,'1':45.42533493042,'WGS84Fi':45.42533493042,'2
 
 var index=0;
 var repeat=function(){
-    //mapChartFlow.updateMovie(data[index]);
-    console.log(index);
+    mapChartFlow.updateMovie(data[index]);
+    console.log('map index:'+index);
     index++;
     if (index>30){
         index=0;
