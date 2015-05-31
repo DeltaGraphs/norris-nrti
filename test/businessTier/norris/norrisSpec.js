@@ -98,4 +98,55 @@ describe('Norris', function() {
             assert.strictEqual(nor._pageList._pages.length, 1);
         });
     });
+
+    describe('#getConfigJSON', function() {
+        it('returns the correct JSON', function() {
+            var nor = new Norris(app, io, '/norris');
+            nor.createPage({ID: 'p1', name:'page1'});
+            nor.createPage({ID: 'p2', name:'page2'});
+            var expJSON = {
+                name: 'norris',
+                data: [
+                    {
+                        ID: 'p1',
+                        name: 'page1',
+                        description: '',
+                        URLSocket: 'http://0.0.0.0:5000/p1',
+                        graphs: []
+                    },
+                    {
+                        ID: 'p2',
+                        name: 'page2',
+                        description: '',
+                        URLSocket: 'http://0.0.0.0:5000/p2',
+                        graphs: []
+                    }
+                ]
+            };
+            assert.deepEqual(nor.getConfigJSON(), expJSON);
+        });
+    });
+
+    describe('#pageChanged', function() {
+        it('returns the correct JSON', function() {
+            var nor = new Norris(app, io, '/norris');
+            var socketURL = 'http://0.0.0.0:5000/norris';
+            var options ={
+                transports: ['websocket'],
+                'force new connection': true
+            };
+            var client1 = ioclient.connect(socketURL, options);
+            var params = {
+                eventType: 'updatePage',
+                params: {
+                    name: 'page1',
+                    description: 'newDesc'
+                }
+            };
+            client1.on('updatePage', function(message) {
+                assert.strictEqual(message, params);
+            });
+            nor.pageChanged(params);
+        });
+    });
 });
