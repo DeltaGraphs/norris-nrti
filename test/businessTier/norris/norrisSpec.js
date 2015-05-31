@@ -123,7 +123,7 @@ describe('Norris', function() {
                     }
                 ]
             };
-            console.dir(nor.getConfigJSON());
+            console.dir(nor._networkHandler._routes._baseURL);
             assert.deepEqual(nor.getConfigJSON(), expJSON);
         });
     });
