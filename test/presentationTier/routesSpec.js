@@ -60,6 +60,13 @@ describe('Routes', function() {
             routes3.addRoutingPath('/page', 'page');
             var server = app2.listen(3000);
             console.dir('RESBODY ext'+server);
+
+            app.get('/', function (req, res) {
+                var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+                console.log(' HOME APS - expressEsempio.js '+ fullUrl);
+                res.send('HOME APS - expressEsempio.js '+ fullUrl);
+            });
+            request(app).get('/').expect(200, done);
             request(app).get('localhost:3000/page').expect(200, done);
 /*            
             console.dir(request(server).get('/page'));
