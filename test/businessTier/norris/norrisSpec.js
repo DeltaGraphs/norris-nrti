@@ -82,17 +82,18 @@ describe('Norris', function() {
                 'force new connection': true
             };
             var client1 = ioclient.connect(socketURL, options);
-            var expJSON = {
+            /*var expJSON = {
                 ID: 'page1',
                 name: '',
                 description: '',
                 URLSocket: 'http://0.0.0.0:5000/page1',
                 graphs: []
-            };
+            };*/
             client1.on('insertPage', function(message) {
                 console.dir('Received message');
                 console.dir(message);
-                assert.strictEqual(message, expJSON);
+                //assert.strictEqual(message, expJSON);
+                assert.strictEqual(message, 'ciao');
             });
             //var stPage = new Page({ID: 'page1'}, nor._networkHandler, nor);
             assert.deepEqual(nor.createPage({ID: 'page1'}) instanceof Page, true);
