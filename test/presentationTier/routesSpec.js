@@ -60,8 +60,9 @@ describe('Routes', function() {
             routes3.addRoutingPath('/page', 'page');
             var server = app2.listen(3000);
             console.dir('RESBODY ext'+server);
-            //assert(request(server).get('/page'), 200);
-            request.post('localhost:3000/page').end(function(res){
+            console.dir(request(server).get('/page'));
+            assert(request(server).get('/page'), 200);
+            /*request.post('localhost:3000/page').end(function(res){
                 assert.strictEqual(res.status,200);
                 console.log('localhost:3000/page');
                 //expect(res).to.exist;
@@ -71,7 +72,7 @@ describe('Routes', function() {
                 console.dir(res.body);
                 assert.strictEqual(res.status,404);
                 done();
-            });
+            });*/
         });
     });
 });
