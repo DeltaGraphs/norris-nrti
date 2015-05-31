@@ -91,7 +91,7 @@ describe('Norris', function() {
             };*/
             client1.on('insertPage', function(message) {
                 console.dir('Received message');
-                console.dir(message);
+                //console.dir(message);
                 //assert.strictEqual(message, expJSON);
                 assert.strictEqual(message, 'ciao');
             });
