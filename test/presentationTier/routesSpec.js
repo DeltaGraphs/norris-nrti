@@ -60,7 +60,7 @@ describe('Routes', function() {
             routes3.addRoutingPath('/page', 'page');
             var server = app2.listen(3000);
             console.dir('RESBODY ext'+server);
-            request(app).get('/').expect(200, done);
+            request(app).get('localhost:3000/page').expect(200, done);
 /*            
             console.dir(request(server).get('/page'));
             assert(request(server).get('/page'), 200);
