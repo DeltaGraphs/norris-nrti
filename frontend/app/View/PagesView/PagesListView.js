@@ -30,24 +30,15 @@ angular.module('app')
 			var render = function() {
 				for(var i=0; i<scope.pagesList.getPagesList().length; i++){
 					var div = document.createElement('div');
+					div.className = 'page';
 
-					div.innerHTML = '<p> <a href="{{ scope.pagesList.getPagesList()[i].id }}">  </a> </p>';
+					div.innerHTML = '<p> <a href="{{ scope.pagesList.getPagesList()[i].id }}"> {{ scope.pagesList.getPagesList()[i].page.getName() }} </a> </p>\
+									<p>  </p>';
 
-					document.getElementById('pagesList')
+					document.getElementById('pagesList').appendChild(div);
 				}
        		}
 
-
-var div = document.createElement('div');
-
-    div.className = 'row';
-
-    div.innerHTML = '<input type="text" name="name" value="" />\
-        <input type="text" name="value" value="" />\
-        <label> <input type="checkbox" name="check" value="1" /> Checked? </label>\
-        <input type="button" value="-" onclick="removeRow(this)">';
-
-     document.getElementById('content').appendChild(div);
        		/*scope.$watch('data', function(){
        			if (scope.data)
 	          		scope.render();
