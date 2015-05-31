@@ -47,6 +47,10 @@ var page1=norris.createPage({
 });
 console.log('Pagina inserita: '+page1);
 
+
+/////////////////////////////////////////////////
+//TEST MAP CHART
+/////////////////////////////////////////////////
 var mapChart=page1.createMapChart({
     ID: 'map1',
     title: 'APS',
@@ -68,7 +72,7 @@ console.log('Grafico inserito: '+mapChart);
 var mapChartFlow=mapChart.createMapChartFlow({
     ID:'flow1',
     name: 'linea 22',
-    'marker':{
+    marker:{
         'type': 'shape',//shape, icon, text
         //gli attributi qui sotto dipendono dal tipo di marker!!!!!
         'shape': 'circle',//circle, triangle, square, diamond
@@ -117,12 +121,6 @@ var data=[[{'0':875,'IdMezzo':875,'1':45.42533493042,'WGS84Fi':45.42533493042,'2
 [{'0':880,'IdMezzo':880,'1':45.433990478516,'WGS84Fi':45.433990478516,'2':11.916083335876,'WGS84La':11.916083335876,'3':75,'Girometro':75,'4':0,'StatoPorte':0,'capolinea':'Capolinea Torre'},{'0':867,'IdMezzo':867,'1':45.37548828125,'WGS84Fi':45.37548828125,'2':11.847896575928,'WGS84La':11.847896575928,'3':54,'Girometro':54,'4':0,'StatoPorte':0,'capolinea':'Capolinea Torre'},{'0':805,'IdMezzo':805,'1':45.415977478027,'WGS84Fi':45.415977478027,'2':11.882206916809,'WGS84La':11.882206916809,'3':17,'Girometro':17,'4':0,'StatoPorte':0},{'0':837,'IdMezzo':837,'1':45.425231933594,'WGS84Fi':45.425231933594,'2':11.901452064514,'WGS84La':11.901452064514,'3':14,'Girometro':14,'4':0,'StatoPorte':0,'capolinea':'Capolinea Torre'},{'0':875,'IdMezzo':875,'1':45.424133300781,'WGS84Fi':45.424133300781,'2':11.884558677673,'WGS84La':11.884558677673,'3':246,'Girometro':246,'4':0,'StatoPorte':0,'capolinea':'Capolinea Giarre Via Olmi'},{'0':835,'IdMezzo':835,'1':45.391250610352,'WGS84Fi':45.391250610352,'2':11.870534896851,'WGS84La':11.870534896851,'3':260,'Girometro':260,'4':0,'StatoPorte':0,'capolinea':'Capolinea Mandria via Monselice'},{'0':814,'IdMezzo':814,'1':45.410614013672,'WGS84Fi':45.410614013672,'2':11.877920150757,'WGS84La':11.877920150757,'3':322,'Girometro':322,'4':0,'StatoPorte':0,'capolinea':'Capolinea Mandria via Monselice'},{'0':845,'IdMezzo':845,'1':45.4006690979,'WGS84Fi':45.4006690979,'2':11.877795219421,'WGS84La':11.877795219421,'3':239,'Girometro':239,'4':0,'StatoPorte':0,'capolinea':'Capolinea Torre'}]
 ];
 
-
-
-
-
-
-
 var index=0;
 var repeat=function(){
     mapChartFlow.updateMovie(data[index]);
@@ -135,23 +133,76 @@ var repeat=function(){
 
 var myVar=setInterval(function () {repeat();}, 5000);
 
-/*page1=norris.createPage({
-    ID:'page2',
-    name: 'Pagina 2',
-    description: 'Questa2',
-    graphsPerRow: 2,
-    graphsPerCol: 2
+/////////////////////////////////////////////////
+//TEST LINE CHART
+/////////////////////////////////////////////////
+var lineChart=page1.createLineChart({
+    ID: 'line1',
+    title: 'LINEE',
+    height: 600,
+    width: 1000,
+    enableLegend: true,
+    legend: {
+        position: 'NE',
+    },
+    xAxis:{
+        name: 'TEMPO',
+        color: '#000000'
+        //ecc
+    },
+    yAxis:{
+        name: 'TEMPERATURA',
+        color: '#000000'
+        //ecc
+    },
+    backGroundColor: '#FFFFFF',
+    viewFinde: true,
+    horizontalGrid: true,
+    verticalGrid: true,
+    legendOnPoint: true,
+    scale: 'linear'
 });
-console.log('Pagina inserita: '+page1);
+console.log('Grafico inserito: '+lineChart);
 
-page1=norris.createPage({
-    ID:'page3',
-    name: 'Pagina 3',
-    description: 'Questa è 3',
-    graphsPerRow: 4,
-    graphsPerCol: 4
-});
-console.log('Pagina inserita: '+page1);*/
+var lineData=[
+    {'tempo': 1, 'temperatura': 25},
+    {'tempo': 2, 'temperatura': 20},
+    {'tempo': 3, 'temperatura': 15},
+    {'tempo': 4, 'temperatura': 10},
+    {'tempo': 5, 'temperatura': 5},
+    {'tempo': 6, 'temperatura': 10},
+    {'tempo': 7, 'temperatura': 21},
+    {'tempo': 8, 'temperatura': 18},
+    {'tempo': 9, 'temperatura': 10},
+    {'tempo': 10, 'temperatura': 0},
+    {'tempo': 11, 'temperatura': 6},
+    {'tempo': 12, 'temperatura': 19}
+];
+
+var lineChartFlow;
+
+var index=0;
+var repeatLine=function(){
+    if (index===0){
+        lineChartFlow=lineChart.createLineChartFlow({
+            ID:'flow1',
+            name: 'grafico tempo-temperatura',
+            xKey: 'tempo',
+            yKey: 'temperatura',
+            //other stuff
+        });
+    }
+    lineChartFlow.addRecord(data[index]);
+    console.log(index);
+    index++;
+    if (index>30){
+        index=0;
+        lineChart.deleteAllFlows();
+    }
+};
+
+var myVar2=setInterval(function () {repeatLine();}, 5000);
+
 
 
 app.get('/', function (req, res) {
