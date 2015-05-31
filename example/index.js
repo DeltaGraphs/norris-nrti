@@ -146,12 +146,12 @@ var lineChart=page1.createLineChart({
         position: 'NE',
     },
     xAxis:{
-        name: 'TEMPO',
+        name: 'tempo',
         color: '#000000'
         //ecc
     },
     yAxis:{
-        name: 'TEMPERATURA',
+        name: 'temperatura',
         color: '#000000'
         //ecc
     },
