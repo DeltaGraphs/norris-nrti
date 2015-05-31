@@ -204,7 +204,6 @@ var repeatLine=function(){
 var myVar2=setInterval(function () {repeatLine();}, 5000);
 
 
-
 app.get('/', function (req, res) {
 	var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
 	console.log(' HOME APS - expressEsempio.js '+ fullUrl);
