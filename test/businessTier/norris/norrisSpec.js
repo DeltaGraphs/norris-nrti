@@ -90,6 +90,7 @@ describe('Norris', function() {
                 graphs: []
             };
             client1.on('insertPage', function(message) {
+                console.dir('Received message');
                 console.dir(message);
                 assert.strictEqual(message, expJSON);
             });
