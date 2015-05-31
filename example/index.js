@@ -181,9 +181,9 @@ var lineData=[
 
 var lineChartFlow;
 
-var index=0;
+var index2=0;
 var repeatLine=function(){
-    if (index===0){
+    if (index2===0){
         lineChartFlow=lineChart.createLineChartFlow({
             ID:'flow1',
             name: 'grafico tempo-temperatura',
@@ -193,10 +193,10 @@ var repeatLine=function(){
         });
     }
     lineChartFlow.addRecord(data[index]);
-    console.log(index);
-    index++;
-    if (index>30){
-        index=0;
+    console.log('lineChart index: '+index2);
+    index2++;
+    if (index2>30){
+        index2=0;
         lineChart.deleteAllFlows();
     }
 };
