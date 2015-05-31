@@ -21,7 +21,7 @@ var app = express();
 var http = require('http');
 var server = http.createServer(app);
 var io = require('socket.io')(server);
-
+/*
 //CORS middleware
 var allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
@@ -30,7 +30,7 @@ var allowCrossDomain = function(req, res, next) {
     next();
 };
 
-app.use(allowCrossDomain);
+app.use(allowCrossDomain);*/
 
 // Includo e creo l'ustanza di Norris
 var Norris = require('../norris-nrti.js');
