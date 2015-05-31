@@ -192,7 +192,6 @@ var repeatLine=function(){
             //other stuff
         });
     }
-    console.log(lineChart.addRecord('flow1', lineData[index2]));
     console.log('lineChart index: '+index2);
     index2++;
     if (index2>=12){
