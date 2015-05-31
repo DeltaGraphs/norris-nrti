@@ -123,12 +123,13 @@ describe('Norris', function() {
                     }
                 ]
             };
+            console.dir(nor.getConfigJSON());
             assert.deepEqual(nor.getConfigJSON(), expJSON);
         });
     });
 
     describe('#pageChanged', function() {
-        it('returns the correct JSON', function() {
+        it('sends the message over the socket', function() {
             var nor = new Norris(app, io, '/norris');
             var socketURL = 'http://0.0.0.0:5000/norris';
             var options ={
