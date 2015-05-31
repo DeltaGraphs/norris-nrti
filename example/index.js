@@ -195,7 +195,7 @@ var repeatLine=function(){
     lineChartFlow.addRecord(data[index]);
     console.log('lineChart index: '+index2);
     index2++;
-    if (index2>30){
+    if (index2>10){
         index2=0;
         lineChart.deleteAllFlows();
     }
