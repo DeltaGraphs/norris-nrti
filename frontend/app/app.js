@@ -31,5 +31,5 @@ var appConfig = function($routeProvider) {
     ; /* fine definizione di routeProvider */
 };
 
-var app = angular.module('app', []).config(appConfig); /* definisce un
+var app = angular.module('app', ['ngRoute']).config(appConfig); /* definisce un
 namespace (chiamato modulo) */
