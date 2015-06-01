@@ -44,6 +44,8 @@ describe('MapChartFlow', function() {
         });
         it('returns valid norrisRecordID if record is valid', function() {
             var flow1=new MapChartFlow({ID: 'flow1'},{_namespace: 'flow1'});
+            console.log(flow1.addRecord({temperature: 2}));
+            console.log(flow1.addRecord({temperature: 2}).indexOf('flow1'));
             assert.strictEqual(flow1.addRecord({temperature: 2}).indexOf('flow1'), 0);
         });
     });
