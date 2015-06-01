@@ -21,6 +21,7 @@ angular.module('app')
 
     function SocketServices(url) {
         var socket = io.connect(url);
+        console.log(socket.constructor.name);
         return {
             on: function (eventName, callback) {
                 socket.on(eventName, function () {  
@@ -47,7 +48,7 @@ angular.module('app')
 
     SocketServicesFactory.build = function (url) {
         return new SocketServices(url);
-    }
+    };
 
     return SocketServicesFactory;
 

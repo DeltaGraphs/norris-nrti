@@ -20,14 +20,14 @@
 
 var appConfig = function($routeProvider) {
     $routeProvider /* inizio definizione di routeProvider */
-        .when('/', {
+        /*.when('/', {
             controller: 'PagesListController',
             templateUrl: 'index.html'
         })
         .when('/page/:pageId', {
         	controller : 'PageController',
         	templateUrl: 'View/page.html'
-        })
+        })*/
     ; /* fine definizione di routeProvider */
 };
 

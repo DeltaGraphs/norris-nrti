@@ -36,7 +36,7 @@ angular.module('app')
 			$scope.lineChart.updateParameters(info);
 		});
 		socket.on('insertFlow', function(info){
-			var flow = BarChartFlowFactory.build(info.properties);
+			var flow = LineChartFlowFactory.build(info.properties);
 			flow.initializeData(info);
 			$scope.lineChart.addFlow(info.properties.ID, flow);
 		});

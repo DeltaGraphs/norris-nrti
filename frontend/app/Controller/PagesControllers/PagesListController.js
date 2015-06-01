@@ -22,18 +22,20 @@ angular.module('app')
 	var socket;
 	var pagesList;
 	
-	this.socketConnection = function(url){
-		console.log(url);
-		socket = SocketServicesFactory.build(url);
+	this.socketConnection = function(ciao){
+		console.log(ciao);
+		socket = SocketServicesFactory.build(ciao);
+		console.log(socket.constructor.name);
 		//this.listenOnEvents();
 	};
 
 	this.listenOnEvents = function(){
 		console.log('listen on event');
+		console.log(JSON.stringify(socket));
 		socket.on('configPageList', function(info){
 			console.log('configPageList');
 			console.log(JSON.stringify(info));
-			pagesList = new PagesList(info)
+			pagesList = new PagesList(info);
 			$scope.pagesList = pagesList.getPagesList();
 		});
 		socket.on('insertPage', function(info){

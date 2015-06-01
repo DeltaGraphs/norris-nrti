@@ -23,7 +23,7 @@ angular.module('app')
 		scope: {
 			url: '@'
 		},
-		bindToController: true,
+		//bindToController: true,
 		template: '<div id="pagesList"></div>',
 		link: function (scope, element, attrs) {
 			scope.socketConnection(attrs.url);
@@ -46,7 +46,11 @@ angular.module('app')
        		};
 
        		scope.$watch('scope.pagesList', function(){
-	          	scope.render();
+       			if (scope.pagesList){
+		          	console.log('watch render');
+		          	scope.render();
+	    	      	console.log('watch render fine');
+	    	    }
         	}, true);
 				
 		}
