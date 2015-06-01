@@ -35,12 +35,12 @@ angular.module('app')
 		socket.on('configPageList', function(info){
 			console.log('configPageList');
 			console.log(JSON.stringify(info));
-			pagesList = new PagesList(info);
-			$scope.pagesList = pagesList.getPagesList();
+			//pagesList = new PagesList(info);
+			//$scope.pagesList = pagesList.getPagesList();
 		});
 		socket.on('insertPage', function(info){
-			pagesList.addPage(info);
-			$scope.pagesList = pagesList.getPagesList();
+			//pagesList.addPage(info);
+			//$scope.pagesList = pagesList.getPagesList();
 		});
 	};
 
