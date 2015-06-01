@@ -32,20 +32,18 @@ angular.module('app')
 				while(parent.firstChild) {
 				    parent.removeChild(parent.firstChild);
 				}
-				for(var i=0; i<scope.pagesList.getPagesList().length; i++){
+				for(var i=0; i<scope.pagesList.length; i++){
 					var div = document.createElement('div');
 					div.className = 'page';
 
-					div.innerHTML = '<p> <a href="#/page/{{i}}"> {{ scope.pagesList.getPagesList()[i].page.getName() }} </a> </p>\n' +
-									'<p> {{ scope.pagesList.getPagesList()[i].page.getDescription() }} </p>';
+					div.innerHTML = '<p> <a href="#/page/{{i}}"> {{ scope.pagesList[i].page.getName() }} </a> </p>\n' +
+									'<p> {{ scope.pagesList[i].page.getDescription() }} </p>';
 
 					parent.appendChild(div);
 				}
        		};
 
-       		render();
-
-       		scope.$watch('scope.pagesList.getPagesList()', function(){
+       		scope.$watch('scope.pagesList', function(){
 	          	scope.render();
         	}, true);
 				

@@ -18,7 +18,7 @@
 *
 */
 
-angular.module('services')
+angular.module('app')
 .factory('CellFactory', function(){
 
     function Cell(info){

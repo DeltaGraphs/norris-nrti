@@ -18,17 +18,18 @@ angular.module('app')
 .directive('mapChart', function(){
 	return {
 		restrict: 'E',
-		controller : 'MapChartController',
+		//controller : 'MapChartController',
 		replace: false,
 		scope: {
 			mapChart1: '@',
 			id: '@'
 		},
 		bindToController: true,
+        template: '<div>Ciao</div>',
     	link: function (scope, element, attrs) {
             console.log('link');
 			scope.socketConnection();
-			scope.listenOnEvents();
+			//scope.listenOnEvents();
 			scope.render = function() {
 
                 console.log('render');

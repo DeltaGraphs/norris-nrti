@@ -43,4 +43,4 @@ angular.module('app')
 	$scope.socketConnection = this.socketConnection;
 	$scope.listenOnEvents = this.listenOnEvents;
 	
-});
+}]);

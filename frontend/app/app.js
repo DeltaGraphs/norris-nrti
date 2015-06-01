@@ -22,15 +22,11 @@ var appConfig = function($routeProvider) {
     $routeProvider /* inizio definizione di routeProvider */
         .when('/', {
             controller: 'PagesListController',
-             templateUrl: 'index.html'
+            templateUrl: 'index.html'
         })
         .when('/page/:pageId', {
         	controller : 'PageController',
         	templateUrl: 'View/page.html'
-        })
-        .when('/m', {
-            controller : 'MapChartController',
-            templateUrl: 'View/mapchart.html'
         })
     ; /* fine definizione di routeProvider */
 };

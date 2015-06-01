@@ -43,7 +43,7 @@ angular.module('app')
 	this.socketConnection = function(){
 		console.log('socketConnection ' + url);
 		socket = SocketServicesFactory.build(url);
-		// listenOnEvents();
+		this.listenOnEvents();
 	};
 
 	this.listenOnEvents = function(){
