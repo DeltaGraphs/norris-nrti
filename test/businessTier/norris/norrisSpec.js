@@ -40,6 +40,10 @@ describe('Norris', function() {
         assert.strictEqual((new Norris('abc', 'def', 2)).hasOwnProperty('_app'), false);
     });
 
+    it('returns null when passed invalid route', function() {
+        assert.strictEqual((new Norris('abc', 'def', '/')).hasOwnProperty('_app'), false);
+    });
+
     it('set param values to properties', function() {
         var nor=new Norris(app, io, '/norris');
         assert.deepEqual(nor._app, app);
@@ -105,8 +109,53 @@ describe('Norris', function() {
     describe('#getConfigJSON', function() {
         it('returns the correct JSON', function() {
             var nor = new Norris(app, io, '/norris');
-            nor.createPage({ID: 'p1', name:'page1'});
-            nor.createPage({ID: 'p2', name:'page2'});
+            var p1=nor.createPage({ID: 'p1', name:'page1'});
+            var p2=nor.createPage({ID: 'p2', name:'page2'});
+
+            var mapChart=p1.createMapChart({
+                ID: 'map1',
+                title: 'APS',
+                height: 600,
+                width: 1000,
+                enableLegend: true,
+                legend: {
+                    position: 'NE',
+                },
+                latitude: 45.42533493042,
+                longitude: 45.42533493042,
+                mapType: 'roadMap',
+                mapWidth: 2000,
+                mapHeight: 2000,
+                legendOnPoint: true
+            });
+
+            var lineChart=p1.createLineChart({
+                ID: 'line1',
+                title: 'LINEE',
+                height: 600,
+                width: 1000,
+                enableLegend: true,
+                legend: {
+                    position: 'NE',
+                },
+                xAxis:{
+                    name: 'tempo',
+                    color: '#000000'
+                    //ecc
+                },
+                yAxis:{
+                    name: 'temperatura',
+                    color: '#000000'
+                    //ecc
+                },
+                backGroundColor: '#FFFFFF',
+                viewFinde: true,
+                horizontalGrid: true,
+                verticalGrid: true,
+                legendOnPoint: true,
+                scale: 'linear'
+            });
+
             var expJSON = {
                 name: 'norris',
                 data: [
@@ -126,6 +175,8 @@ describe('Norris', function() {
                     }
                 ]
             };
+            console.log('stampaaaa');
+            console.dir(nor.getConfigJSON());
             assert.deepEqual(nor.getConfigJSON(), expJSON);
         });
     });
