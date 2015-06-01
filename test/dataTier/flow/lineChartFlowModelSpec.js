@@ -184,4 +184,19 @@ describe('LineChartFlowModel', function() {
             assert.strictEqual(result.maxItemsSaved, prop.maxItemsSaved);
         });
     });
+
+    describe('#getRecordByID', function() {
+        it('returns 135 with no string', function() {
+
+        });
+        it('returns 135 with no record that belong to this flow', function() {
+            
+        });
+        it('returns 135 with no record found', function() {
+            
+        });
+        it('returns the correct record', function() {
+            
+        });
+    });
 });
