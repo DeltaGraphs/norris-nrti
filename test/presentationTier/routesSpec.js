@@ -59,30 +59,9 @@ describe('Routes', function() {
             var routes3 = new Routes(app2, '/norris');
             routes3.addRoutingPath('/page', 'page');
             var server = app2.listen(3000);
-            console.dir('RESBODY ext'+server);
+            
+            request(app2).get('/page').expect(200, done);
 
-            /*app2.get('/', function (req, res) {
-                var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
-                console.log(' HOME APS - expressEsempio.js '+ fullUrl);
-                res.send('HOME APS - expressEsempio.js '+ fullUrl);
-                done();
-            });
-            request(app2).get('/').expect(200, done);*/
-            request(app2).get('/pages').expect(200, done);
-/*            
-            console.dir(request(server).get('/page'));
-            assert(request(server).get('/page'), 200);
-            /*request.post('localhost:3000/page').end(function(res){
-                assert.strictEqual(res.status,200);
-                console.log('localhost:3000/page');
-                //expect(res).to.exist;
-                //expect(res.status).to.equal(200);
-                //expect(res.body).to.contain('world');
-                console.dir('RESBODY');
-                console.dir(res.body);
-                assert.strictEqual(res.status,404);
-                done();
-            });*/
         });
     });
 });
