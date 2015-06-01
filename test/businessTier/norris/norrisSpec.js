@@ -176,7 +176,7 @@ describe('Norris', function() {
                 ]
             };
             console.log('stampaaaa');
-            console.dir(nor.getConfigJSON());
+            console.dir(JSON.stringify(nor.getConfigJSON()));
             assert.deepEqual(nor.getConfigJSON(), expJSON);
         });
     });
