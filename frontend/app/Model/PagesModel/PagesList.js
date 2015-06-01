@@ -35,6 +35,7 @@ angular.module('app')
 						}
 					}
 	    			if(count === 0) {
+	    				console.log('pages list factory');
 	    				var page = PageFactory.build(info.data[i]);
 	       				pagesList.push({ 'id' : info.data[i].ID, 'page' : page});
 					}

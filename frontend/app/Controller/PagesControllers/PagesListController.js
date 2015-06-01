@@ -20,21 +20,25 @@ angular.module('app')
 .controller('PagesListController', ['$scope', '$location', 'PagesList', 'SocketServicesFactory', function($scope, $location, PagesList, SocketServicesFactory){
 
 	var socket;
+	var pagesList;
 	
 	this.socketConnection = function(url){
+		console.log(url);
 		socket = SocketServicesFactory.build(url);
-		$scope.pagesList = PagesList.getPagesList();
-		this.listenOnEvents();
+		//this.listenOnEvents();
 	};
 
 	this.listenOnEvents = function(){
+		console.log('listen on event');
 		socket.on('configPageList', function(info){
-			PagesList.updateParameters(info);
-			$scope.pagesList = PagesList.getPagesList();
+			console.log('configPageList');
+			console.log(JSON.stringify(info));
+			pagesList = new PagesList(info)
+			$scope.pagesList = pagesList.getPagesList();
 		});
 		socket.on('insertPage', function(info){
-			PagesList.addPage(info);
-			$scope.pagesList = PagesList.getPagesList();
+			pagesList.addPage(info);
+			$scope.pagesList = pagesList.getPagesList();
 		});
 	};
 
