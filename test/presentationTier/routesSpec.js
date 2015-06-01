@@ -68,7 +68,7 @@ describe('Routes', function() {
                 done();
             });
             request(app2).get('/').expect(200, done);*/
-            request(app2).get('/page').expect(200, done);
+            request(app2).get('/pages').expect(200, done);
 /*            
             console.dir(request(server).get('/page'));
             assert(request(server).get('/page'), 200);
