@@ -78,7 +78,7 @@ describe('Norris', function() {
             assert.strictEqual(nor.createPage({ID: ''}), null);
         });
 
-         it('behaves correctly with the right parameters', function() {
+        it('behaves correctly with the right parameters', function() {
             var nor=new Norris(app, io, '/norris');
             var socketURL = 'http://0.0.0.0:5000/norris';
             var options ={
@@ -156,27 +156,38 @@ describe('Norris', function() {
                 scale: 'linear'
             });
 
-            var expJSON = {
-                name: 'norris',
-                data: [
+            var expJSON = {'name':'norris',
+                'data':[
                     {
-                        ID: 'p1',
-                        name: 'page1',
-                        description: '',
-                        URLSocket: 'http://0.0.0.0:5000/p1',
-                        graphs: []
+                        'ID':'page1',
+                        'name':'Page one',
+                        'description':'',
+                        'URLSocket':'/page1',
+                        'graphs':[
+                            {
+                                'ID':'map1',
+                                'title':'APS',
+                                'type':'MapChart',
+                                'URLSocket':'/page1/map1'
+                            },
+                            {
+                                'ID':'line1',
+                                'title':'LINEE',
+                                'type':'LineChart',
+                                'URLSocket':'/page1/line1'
+                            }
+                        ]
                     },
                     {
-                        ID: 'p2',
-                        name: 'page2',
-                        description: '',
-                        URLSocket: 'http://0.0.0.0:5000/p2',
-                        graphs: []
+                        'ID':'page2',
+                        'name':'Page two',
+                        'description':
+                        '',
+                        'URLSocket':'/page2',
+                        'graphs':[]
                     }
                 ]
             };
-            console.log('stampaaaa');
-            console.dir(JSON.stringify(nor.getConfigJSON()));
             assert.deepEqual(nor.getConfigJSON(), expJSON);
         });
     });
