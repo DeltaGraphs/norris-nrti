@@ -41,7 +41,7 @@ describe('Norris', function() {
     });
 
     it('returns null when passed invalid route', function() {
-        assert.strictEqual((new Norris('abc', 'def', '/')).hasOwnProperty('_app'), false);
+        assert.strictEqual((new Norris(app, io, '/')).hasOwnProperty('_app'), false);
     });
 
     it('set param values to properties', function() {
@@ -109,10 +109,10 @@ describe('Norris', function() {
     describe('#getConfigJSON', function() {
         it('returns the correct JSON', function() {
             var nor = new Norris(app, io, '/norris');
-            var p1=nor.createPage({ID: 'p1', name:'page1'});
-            var p2=nor.createPage({ID: 'p2', name:'page2'});
+            var p1=nor.createPage({ID: 'page1', name:'Page one'});
+            nor.createPage({ID: 'page2', name:'Page two'});
 
-            var mapChart=p1.createMapChart({
+            p1.createMapChart({
                 ID: 'map1',
                 title: 'APS',
                 height: 600,
@@ -129,7 +129,7 @@ describe('Norris', function() {
                 legendOnPoint: true
             });
 
-            var lineChart=p1.createLineChart({
+            p1.createLineChart({
                 ID: 'line1',
                 title: 'LINEE',
                 height: 600,
