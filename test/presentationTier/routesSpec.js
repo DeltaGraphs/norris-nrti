@@ -43,7 +43,7 @@ describe('Routes', function() {
         assert.strictEqual(routes1._norrisNamespace, '/namespace');
     });
 
-    describe('#addRoutingPath', function() {
+    describe('#addRoutingPath', function(done) {
         var routes2 = new Routes(app, '/namespace');
         it('returns false if passed an invalid namespace', function() {
             assert.strictEqual(routes2.addRoutingPath(123, 'page'), false);
@@ -65,9 +65,10 @@ describe('Routes', function() {
                 var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
                 console.log(' HOME APS - expressEsempio.js '+ fullUrl);
                 res.send('HOME APS - expressEsempio.js '+ fullUrl);
+                done();
             });
-            request(app2).get('localhost:3000').expect(200, done);
-            request(app2).get('localhost:3000/page').expect(200, done);
+            request(app2).get('/').expect(200, done);
+            request(app2).get('/page').expect(200, done);
 /*            
             console.dir(request(server).get('/page'));
             assert(request(server).get('/page'), 200);
