@@ -60,7 +60,7 @@ describe('Routes', function() {
             routes3.addRoutingPath('/page', 'page');
             var server = app2.listen(3000);
             
-            request(app2).get('/page').expect(200, done);
+            request(app2).get('/page/').expect(200, done);
 
         });
     });
