@@ -197,6 +197,8 @@ var repeatLine=function(){
     if (index2>=12){
         index2=0;
         lineChart.deleteAllFlows();
+    }else{
+        lineChartFlow.addRecord(lineData[index2-1]);
     }
 };
 
