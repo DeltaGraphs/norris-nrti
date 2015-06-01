@@ -53,13 +53,12 @@ angular.module('app')
 		});
 		socket.on('updateFlowData', function(data){
 			switch (data.action){
-				/*case 'insertRecords':
+				case 'insertRecords':
 					$scope.lineChart.streamUpdate(data);
 					break;
 				case 'deleteRecord':
 					$scope.lineChart.deleteData(data);
-					break;*/
-				//qualche modifica da fare sul model per gestire queste cose qua sopra
+					break;
 				case 'updateRecord':
 					$scope.lineChart.inPlaceUpdate(data);
 					break;

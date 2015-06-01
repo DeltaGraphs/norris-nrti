@@ -175,6 +175,17 @@ angular.module('app')
         }
     };
 
+    Table.prototype.deleteData = function(delData) {
+        if (delData !== undefined){
+            var fList = this._graph.getFlowList();
+            for (var j=0; j<fList.length; j++) {
+                if (fList[j].id === delData.ID) {
+                    fList[j].flow.deleteData(delData);
+                }
+            }
+        }
+    };
+
     Table.prototype.getTitle = function() {
         return this._graph.getTitle();
     };

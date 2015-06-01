@@ -90,6 +90,16 @@ angular.module('app')
             }
         }
     };
+    BarChartFlow.prototype.addRecords = function(newData) {
+		this.initializeData(newData);
+    };
+    BarChartFlow.prototype.deleteData = function(delData) {
+    	for (var i = 0; i<this._data.length; i++){
+            if (this._data[i].NorrisRecordID === delData.NorrisRecordID){
+                this._data.splice(i,1);
+            }
+        }
+    };
 
     BarChartFlow.prototype.getName = function() {
     	return this._flow.getName();

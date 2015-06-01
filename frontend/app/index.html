@@ -1,0 +1,25 @@
+<html>
+	<head>
+		<script src='https://cdn.socket.io/socket.io-1.3.5.js'></script>
+		<script src='http://ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.js'></script>
+		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+		<!--<script src="http://d3js.org/d3.v2.js"></script>-->
+		<script src="http://d3js.org/d3.v3.min.js"></script>
+		<script src='app.js'></script>
+		<script src='Model/GraphsModel/Graph.js'></script>
+		<script src='Model/GraphsModel/MapChart.js'></script>
+		<script src='Model/GraphsModel/Legend.js'></script>
+		<script src='Model/FlowsModel/Flow.js'></script>
+		<script src='Model/FlowsModel/MapChartFlow.js'></script>
+		<script src='Controller/GraphsControllers/MapChartController.js'></script>
+		<script src='Model/SocketServices.js'></script>
+		<script src='View/GraphsView/MapChartView.js'></script>
+	</head>
+
+	<body ng-app='app'>
+		<div ng-view>
+			<pages-list url=''> </pages-list> <!-- url da definire -->
+		</div>
+	</body>
+
+</html>

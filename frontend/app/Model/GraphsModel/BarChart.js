@@ -173,6 +173,26 @@ angular.module('app')
             }
         }   
     };
+    BarChart.prototype.addRecords = function(newData) {
+        if (newData !== undefined) {
+            var fList = this._graph.getFlowList();
+            for (var j=0; j<fList.length; j++) {
+                if (fList[j].id === newData.ID) {
+                    fList[j].flow.addRecords(newData);
+                }
+            }
+        }
+    };
+    BarChart.prototype.deleteData = function(delData) {
+        if (delData !== undefined){
+            var fList = this._graph.getFlowList();
+            for (var j=0; j<fList.length; j++) {
+                if (fList[j].id === delData.ID) {
+                    fList[j].flow.deleteData(delData);
+                }
+            }
+        }
+    };
 
     // get method
     BarChart.prototype.getTitle = function() {

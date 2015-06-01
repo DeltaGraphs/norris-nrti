@@ -142,6 +142,13 @@ angular.module('app')
 	LineChartFlow.prototype.streamUpdate = function(newData) {
 		this.initializeData(newData);
     };
+    LineChartFlow.prototype.deleteData = function(delData) {
+    	for (var i = 0; i<this._data.length; i++){
+            if (this._data[i].NorrisRecordID === delData.NorrisRecordID){
+                this._data.splice(i,1);
+            }
+        }
+    };
 
     LineChartFlow.prototype.getName = function() {
     	return this._flow.getName();

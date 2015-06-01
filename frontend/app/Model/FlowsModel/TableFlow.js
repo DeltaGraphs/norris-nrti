@@ -97,6 +97,13 @@ angular.module('app')
     TableFlow.prototype.streamUpdate = function(newData) {
 		this.initializeData(newData);
     };
+    TableFlow.prototype.deleteData = function(delData) {
+    	for (var i = 0; i<this._data.length; i++){
+            if (this._data[i].NorrisRecordID === delData.NorrisRecordID){
+                this._data.splice(i,1);
+            }
+        }
+    };
 
     TableFlow.prototype.getName = function() {
     	return this._flow.getName();

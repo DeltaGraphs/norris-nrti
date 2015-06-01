@@ -37,7 +37,7 @@ angular.module('app')
         		};
 
                 // Create map
-        		var map = new google.maps.Map(document.getElementById(scope.id), mapOptions);
+        		var map = new google.maps.Map(document.getElementById('ciao'), mapOptions); // 'ciao' da cambiare
         		switch (scope.mapChart.getMapType()) {
         			case 'roadMap': 
         				map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
@@ -54,7 +54,7 @@ angular.module('app')
         		}
 
                 // Instantiate an info window to hold step text.
-                stepDisplay = new google.maps.InfoWindow();
+                var stepDisplay = new google.maps.InfoWindow();
 
                 // Create markers
         		var markers = [];
@@ -80,14 +80,14 @@ angular.module('app')
         						marker = new google.maps.Marker({
 		    						position: latLng,
 		    						map: map,
-		    						icon: scope.matChart.getFlowList()[i].flow.getMarker().shape
+		    						icon: { path: scope.matChart.getFlowList()[i].flow.getMarker().shape }
 								});
 								break;
         					case 'icon':
         						marker = new google.maps.Marker({
 		    						position: latLng,
 		    						map: map,
-		    						icon: { scope.mapChart.getFlowList()[i].flow.getMarker().icon
+		    						icon: { path: scope.mapChart.getFlowList()[i].flow.getMarker().icon }
 								});
 								break;
         					case 'text':
