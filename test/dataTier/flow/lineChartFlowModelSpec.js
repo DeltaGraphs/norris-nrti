@@ -200,9 +200,7 @@ describe('LineChartFlowModel', function() {
            assert.strictEqual(flow1.getRecordByID('flow133242'), 135); 
         });
         it('returns the correct record', function() {
-            console.log('vaaaalore del record');
-            console.dir(flow1.getRecordByID(ID));
-            assert.strictEqual(flow1.getRecordByID(ID), 135);
+            assert.deepEqual(flow1.getRecordByID(ID), { temperature: 2,norrisRecordID: ID,norrisRecordIsValid: true });
         });
     });
 });
