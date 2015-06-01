@@ -24,7 +24,7 @@
 *
 */
 
-angular.module('app')
+angular.module('services')
 .factory('LineChartFactory', ['GraphFactory', 'AxisFactory', 'LineChartFlowFactory', function(GraphFactory, AxisFactory, LineChartFlowFactory){
 
 	function split(json) {

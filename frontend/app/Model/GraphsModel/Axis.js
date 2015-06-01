@@ -22,7 +22,7 @@
 *
 */
 
-angular.module('app')
+angular.module('services')
 .factory('AxisFactory', function(){
 
     function Axis(info){
