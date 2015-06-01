@@ -27,7 +27,7 @@ angular.module('app')
 		template: '<div id="pagesList"></div>',
 		link: function (scope, element, attrs) {
 			scope.socketConnection(attrs.url);
-			scope.listenOnEvents();
+			//scope.listenOnEvents();
 
 			scope.render = function() {
 				var parent = document.getElementById('pagesList');

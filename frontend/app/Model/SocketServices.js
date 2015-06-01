@@ -21,10 +21,12 @@ angular.module('app')
 
     function SocketServices(url) {
         var socket = io.connect(url);
-        console.log(socket.constructor.name);
+        console.log(socket.constructor.name); 
         return {
             on: function (eventName, callback) {
-                socket.on(eventName, function () {  
+                console.log('on in socket SocketServices');
+                socket.on(eventName, function () {
+                    console.log(eventName);
                     var args = arguments;
                     $rootScope.$apply(function () {
                         callback.apply(socket, args);

@@ -19,29 +19,30 @@
 angular.module('app')
 .controller('PagesListController', ['$scope', '$location', 'PagesList', 'SocketServicesFactory', function($scope, $location, PagesList, SocketServicesFactory){
 
-	var socket;
+	var s;
 	var pagesList;
 	
 	this.socketConnection = function(ciao){
 		console.log(ciao);
-		socket = SocketServicesFactory.build(ciao);
-		console.log(socket.constructor.name);
-		//this.listenOnEvents();
+		s = SocketServicesFactory.build(ciao);
+		console.log(s.constructor.name);
+		this.listenOnEvents();
 	};
 
 	this.listenOnEvents = function(){
 		console.log('listen on event');
-		console.log(JSON.stringify(socket));
-		socket.on('configPageList', function(info){
+		console.log(JSON.stringify(s));
+		s.on('configPageList', function(info){
 			console.log('configPageList');
 			console.log(JSON.stringify(info));
 			//pagesList = new PagesList(info);
 			//$scope.pagesList = pagesList.getPagesList();
 		});
-		socket.on('insertPage', function(info){
+		s.on('insertPage', function(info){
 			//pagesList.addPage(info);
 			//$scope.pagesList = pagesList.getPagesList();
 		});
+		console.log('fine events');
 	};
 
 	$scope.socketConnection = this.socketConnection;

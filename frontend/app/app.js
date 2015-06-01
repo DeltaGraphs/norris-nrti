@@ -21,15 +21,19 @@
 var appConfig = function($routeProvider) {
     $routeProvider /* inizio definizione di routeProvider */
         .when('/', {
-            controller: 'PagesListController',
+            //controller: 'PagesListController',
             templateUrl: 'index.html'
         })
         .when('/page/:pageId', {
         	controller : 'PageController',
         	templateUrl: 'View/page.html'
         })
+        .when('/m', {
+            controller: 'MapChartController',
+            templateUrl: 'View/mapchart.html'
+        })
     ; /* fine definizione di routeProvider */
 };
 
-var app = angular.module('app', ['ngRoute']).config(appConfig); /* definisce un
+var app = angular.module('app', []).config(appConfig); /* definisce un
 namespace (chiamato modulo) */
