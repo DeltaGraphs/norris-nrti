@@ -49,4 +49,6 @@ angular.module('app')
         return new SocketServices(url);
     }
 
+    return SocketServicesFactory;
+
 });

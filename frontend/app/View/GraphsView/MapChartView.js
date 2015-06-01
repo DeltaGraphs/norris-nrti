@@ -21,18 +21,20 @@ angular.module('app')
 		controller : 'MapChartController',
 		replace: false,
 		scope: {
-			mapChart: '@',
+			mapChart1: '@',
 			id: '@'
 		},
 		bindToController: true,
     	link: function (scope, element, attrs) {
+            console.log('link');
 			scope.socketConnection();
-			scope.listenOnEvent();
-			var render = function() {
+			scope.listenOnEvents();
+			scope.render = function() {
 
+                console.log('render');
                 // Set map option
 				var mapOptions = {
-          			center: { lat: scope.mapChart.getLatitude() , lng: scope.mapChart.getLongitude()},
+          			center: { lat: scope.mapChart.getLatitude() , lng: scope.mapChart.getLongitude() },
           			zoom: 8
         		};
 
@@ -40,6 +42,7 @@ angular.module('app')
         		var map = new google.maps.Map(document.getElementById('ciao'), mapOptions); // 'ciao' da cambiare
         		switch (scope.mapChart.getMapType()) {
         			case 'roadMap': 
+                        console.log('render: roadMap');
         				map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
         				break;
         			case 'satellite':
@@ -117,11 +120,16 @@ angular.module('app')
                         stepDisplay.open(map, marker);
                     });
                 }
+                console.log('fine render');
 
       		}; // shape icon text
 
-      		render();
-            
+            console.log('link chiama render');
+      		scope.$watch('scope.mapChart', function(){
+                scope.render();
+            }, true);
+            console.log('link ha chiamato render');
+
       		
 			/*showMarker = function() {};
 			zoom = function() {};

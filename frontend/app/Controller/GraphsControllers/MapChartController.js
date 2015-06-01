@@ -19,8 +19,6 @@
 angular.module('app')
 .controller('MapChartController', ['$scope', '$location', 'MapChartFactory', 'MapChartFlowFactory', 'SocketServicesFactory', function($scope, $location, MapChartFactory, MapChartFlowFactory, SocketServicesFactory){
 
-	//var mapChart = $scope.mapChart;
-
 	var json = {
 			'title' : 'graficonuovo',
 			'url' : 'https://norris-nrti-dev.herokuapp.com/page1/map1',
@@ -35,52 +33,59 @@ angular.module('app')
 			'zoom' : false
 	};
 
-	$scope.mapChart = MapChartFactory.build(json);
+	var mapChart = MapChartFactory.build(json);
+	$scope.mapChart = mapChart;
 	var socket;
 	var url = $scope.mapChart.getUrl();
 
+	console.log(url);
+
 	this.socketConnection = function(){
+		console.log('socketConnection ' + url);
 		socket = SocketServicesFactory.build(url);
 		// listenOnEvents();
 	};
 
 	this.listenOnEvents = function(){
 		socket.on('configGraph', function(info){
-			$scope.mapChart.updateParameters(info.properties);
-			$scope.mapChart.initializeData(info.data);
+			console.log(JSON.stringify(info));
+			console.log(mapChart.getLatitude());
+			$scope.mapChart = mapChart.updateParameters(info.properties);
+			$scope.mapChart = mapChart.initializeData(info.data);
 		});
 		socket.on('updateGraphProp', function(info){
-			$scope.mapChart.updateParameters(info);
+			$scope.mapChart = mapChart.updateParameters(info);
 		});
 		socket.on('insertFlow', function(info){
 			var flow = MapChartFlowFactory.build(info.properties);
 			flow.initializeData(info);
-			$scope.mapChart.addFlow(info.properties.ID, flow);
+			$scope.mapChart = mapChart.addFlow(info.properties.ID, flow);
 		});
 		socket.on('deleteFlow', function(info){
-			$scope.mapChart.deleteFlow(info.ID);
+			$scope.mapChart = mapChart.deleteFlow(info.ID);
 		});
 		socket.on('updateFlowProp', function(info){
-			var flowList = $scope.mapChart.getFlowList();
+			var flowList = mapChart.getFlowList();
 			for (var i=0; i<flowList.length; i++){
 				if (flowList[i].id === info.ID){
 					flowList[i].flow.updateParameters(info);
 				}
 			}
+			$scope.mapChart = mapChart;
 		});
 		socket.on('updateFlowData', function(data){
 			switch (data.action){
 				case 'insertRecords':
-					$scope.mapChart.streamUpdate(data);
+					$scope.mapChart = mapChart.streamUpdate(data);
 					break;
 				case 'deleteRecord':
-					$scope.mapChart.deleteData(data);
+					$scope.mapChart = mapChart.deleteData(data);
 					break;
 				case 'updateRecord':
-					$scope.mapChart.inPlaceUpdate(data);
+					$scope.mapChart = mapChart.inPlaceUpdate(data);
 					break;
 				case 'replaceData':
-					$scope.mapChart.replaceData(data);
+					$scope.mapChart = mapChart.replaceData(data);
 					break;
 			}
 		});
