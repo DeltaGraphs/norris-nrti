@@ -44,9 +44,9 @@ describe('MapChartFlowModel', function() {
     it('set default values to property not specified', function() {
         var flow1=new MapChartFlowModel({ID:'flow1'});
         assert.strictEqual(flow1._ID, 'flow1');
-        assert.strictEqual(flow1._longitudeKey, undefined);
-        assert.strictEqual(flow1._latitudeKey, undefined);
-        assert.strictEqual(flow1._objectKey, undefined);
+        assert.strictEqual(flow1._longitudeKey, null);
+        assert.strictEqual(flow1._latitudeKey, null);
+        assert.strictEqual(flow1._objectKey, null);
         assert.strictEqual(flow1._longitudeFormat, 'coordinates');
         assert.strictEqual(flow1._latitudeFormat, 'coordinates');
         assert.strictEqual(flow1._marker.type, 'shape');
@@ -71,9 +71,9 @@ describe('MapChartFlowModel', function() {
             maxItemsSaved: '123'
         });
 		assert.strictEqual(flow1._ID, 'flow1');
-        assert.strictEqual(flow1._longitudeKey, undefined);
-        assert.strictEqual(flow1._latitudeKey, undefined);
-        assert.strictEqual(flow1._objectKey, undefined);
+        assert.strictEqual(flow1._longitudeKey, null);
+        assert.strictEqual(flow1._latitudeKey, null);
+        assert.strictEqual(flow1._objectKey, null);
         assert.strictEqual(flow1._longitudeFormat, 'coordinates');
         assert.strictEqual(flow1._latitudeFormat, 'coordinates');
         assert.strictEqual(flow1._marker.type, 'shape');
@@ -192,9 +192,9 @@ describe('MapChartFlowModel', function() {
             var flow1=new MapChartFlowModel({ID: 'flow1'});
             flow1.updateProperties(properties);
             assert.strictEqual(flow1._ID, 'flow1');
-            assert.strictEqual(flow1._longitudeKey, undefined);
-            assert.strictEqual(flow1._latitudeKey, undefined);
-            assert.strictEqual(flow1._objectKey, undefined);
+            assert.strictEqual(flow1._longitudeKey, null);
+            assert.strictEqual(flow1._latitudeKey, null);
+            assert.strictEqual(flow1._objectKey, null);
             assert.strictEqual(flow1._longitudeFormat, 'coordinates');
             assert.strictEqual(flow1._latitudeFormat, 'coordinates');
             assert.strictEqual(flow1._marker.type, 'shape');
