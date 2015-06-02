@@ -82,7 +82,7 @@ describe('LineChartFlow', function() {
     });
 
     describe('#getReplaceDataJSON', function() {
-        var flow1=new LineChartFlow({ID: 'flow1'},new socketMock);
+        var flow1=new LineChartFlow({ID: 'flow1', name: 'grafico tempo-temperatura',xKey: 'tempo',yKey: 'temperatura'},new socketMock);
         flow1.addRecord({'tempo': 4, 'temperatura': 4});
         flow1.addRecord({'tempo': 9, 'temperatura': 23});
         flow1.addRecord({'tempo': 6, 'temperatura': 7});
