@@ -122,7 +122,7 @@ describe('LineChartFlow', function() {
 
     describe('#updateProperties', function() {
         var flow1=new LineChartFlow({ID: 'flow1'},new socketMock());
-        flow1.updateProperties({name: 'grafico tempo-temperatura',xKey: 'tempo',yKey: 'temperatura'});
+        flow1.updateProperties({name: 'grafico tempo-temperatura',xKey: 'tempo',yKey: 'temperatura',filters: 'temperature>3',});
         assert.strictEqual(flow1._dataLineChartFlow._xKey,'tempo');
         assert.strictEqual(flow1._dataLineChartFlow._yKey,'temperatura');
         assert.strictEqual(flow1._dataLineChartFlow._name,'grafico tempo-temperatura');
