@@ -26,6 +26,10 @@ describe('MapChart', function() {
             this.p1=p1;
             this.p2=p2;
         };
+        this.sendMessage=function(p1, p2){
+            this.p1=p1;
+            this.p2=p2;
+        };
     };
     it('returns null when there are no params', function() {
         assert.strictEqual((new MapChart()).hasOwnProperty('_dataMapChart'), false);
@@ -45,7 +49,7 @@ describe('MapChart', function() {
 
     it('calls the parent constructor with the params specified', function() {
         var flow1=new MapChart({ID: 'map1'}, {_page:2}, new socketMock());
-        assert.strictEqual(flow1._dataMapChartFlow._ID, 'flow1');
+        assert.strictEqual(flow1._dataMapChart._ID, 'flow1');
         assert.strictEqual(flow1._graphSocket._namespace, 'flow1');
     });
 

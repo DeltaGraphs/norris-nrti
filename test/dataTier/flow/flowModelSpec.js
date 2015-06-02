@@ -204,8 +204,8 @@ describe('FlowModel', function() {
                 {temperature: 4, norrisRecordID: ID},
                 {pressure: 3, norrisRecordID: ID2}
             ];
-            assert.strictEqual(flow1.getRecordByID(ID).temperature, 2);
-            assert.strictEqual(flow1.getRecordByID(ID2).pressure, 4);
+            assert.strictEqual(flow1.getRecordByID(ID).temperature, 4);
+            assert.strictEqual(flow1.getRecordByID(ID2).pressure, 3);
         });
     });
 });
