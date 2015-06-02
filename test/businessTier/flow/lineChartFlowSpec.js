@@ -76,7 +76,7 @@ describe('LineChartFlow', function() {
         });
         it('returns true with correct update', function() {
             var mock=new socketMock();
-            var flow1=new MapChartFlow({
+            var flow1=new LineChartFlow({
                     ID: 'flow1',
                     filters: 'temperature>3',
                     xKey: 'a',
