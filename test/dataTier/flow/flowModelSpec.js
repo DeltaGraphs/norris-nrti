@@ -39,7 +39,7 @@ describe('FlowModel', function() {
         assert.strictEqual(flow1._type, '');
         assert.strictEqual(flow1._filters, null);
         assert.strictEqual(flow1._records.length, 0);
-
+        assert.strictEqual(flow1._progressiveIndex, 0);
     });
 
 	it('set default values to wrong properties', function() {
@@ -54,6 +54,7 @@ describe('FlowModel', function() {
         assert.strictEqual(flow1._type, '');
         assert.strictEqual(flow1._filters, null);
         assert.strictEqual(flow1._records.length, 0);
+        assert.strictEqual(flow1._progressiveIndex, 0);
     });
 
 	it('set param values to properties', function() {
@@ -69,16 +70,14 @@ describe('FlowModel', function() {
         assert.strictEqual(flow1._type, 'BarChartFlow');
         assert.strictEqual(instanceOfFilterModel, true);
         assert.strictEqual(flow1._records.length, 0);
+        assert.strictEqual(flow1._progressiveIndex, 0);
     });
 
     describe('#generateNorrisRecordID', function() {
 		it('generate the right ID with no number specified', function() {
 			var flow1=new FlowModel({ID: 'flow1'});
-			assert.strictEqual(flow1.generateNorrisRecordID().indexOf('flow1'), 0);
-        });
-        it('generate the right ID with number specified', function() {
-			var flow1=new FlowModel({ID: 'flow1'});
-			assert.strictEqual(flow1.generateNorrisRecordID(2).indexOf('flow1'), 0);
+			assert.strictEqual(flow1.generateNorrisRecordID(), 'flow1_1');
+            assert.strictEqual(flow1.generateNorrisRecordID(), 'flow1_2');
         });
     });
 
