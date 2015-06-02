@@ -43,11 +43,11 @@ describe('MapChartFlow', function() {
             assert.strictEqual(flow1.addRecord(), 133);
         });
         it('returns valid norrisRecordID if record is valid', function() {
-            var flow1=new MapChartFlow({ID: 'flow1'},{_namespace: 'flow1'});
-            console.dir(flow1);
-            console.log(flow1.addRecord({temperature: 2}));
-            console.log(flow1.addRecord({temperature: 2}).indexOf('flow1'));
-            assert.strictEqual(flow1.addRecord({temperature: 2}).indexOf('flow1'), 0);
+            var flow2=new MapChartFlow({ID: 'flow2'},{_namespace: 'flow2'});
+            console.dir(flow2);
+            console.log(flow2.addRecord({temperature: 2}));
+            console.log(flow2.addRecord({temperature: 2}).indexOf('flow2'));
+            assert.strictEqual(flow2.addRecord({temperature: 2}).indexOf('flow2'), 0);
         });
     });
 

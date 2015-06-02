@@ -74,7 +74,7 @@ describe('FlowModel', function() {
     });
 
     describe('#generateNorrisRecordID', function() {
-		it('generate the right ID with no number specified', function() {
+		it('generate the right ID', function() {
 			var flow1=new FlowModel({ID: 'flow1'});
 			assert.strictEqual(flow1.generateNorrisRecordID(), 'flow1_1');
             assert.strictEqual(flow1.generateNorrisRecordID(), 'flow1_2');
