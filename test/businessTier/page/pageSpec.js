@@ -185,6 +185,13 @@ describe('Page', function() {
             assert.deepEqual(pg.createMapChart({ID: 'm1'}), null);
         });
 
+        it('returns null if the mapChartModel is not created', function() {
+            var nor=new Norris(app, io, '/norris');
+            var pg = nor.createPage({ID:'page1'});
+            pg.createMapChart({ID: 'm1'});
+            assert.deepEqual(pg.createMapChart({ID: ''}), null);
+        });
+
         it('behaves correctly with the right parameters', function() {
             var nor=new Norris(app, io, '/norris');
             var socketURL = 'http://0.0.0.0:5000/page1';
