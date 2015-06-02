@@ -76,10 +76,8 @@ describe('FlowModel', function() {
     describe('#generateNorrisRecordID', function() {
 		it('generate the right ID', function() {
 			var flow1=new FlowModel({ID: 'flow1'});
-			assert.strictEqual(flow1.generateNorrisRecordID(), 'flow1_1');
-            assert.strictEqual(flow1.generateNorrisRecordID(), 'flow1_2');
-            flow1._progressiveIndex=1001;
-            assert.strictEqual(flow1.generateNorrisRecordID(), 'flow1_1');
+			assert.strictEqual(flow1.generateNorrisRecordID().indexOf('flow1', 0));
+            assert.notStrictEqual(flow1.generateNorrisRecordID().indexOf('_2', -1));
         });
     });
 
@@ -144,10 +142,10 @@ describe('FlowModel', function() {
         });
     });
 
-	describe('#updateProperties', function() {
+	describe('#updateBaseProperties', function() {
         it('returns 252 if there are no params specified', function() {
             var flow1=new FlowModel({ID: 'flow1'});
-            var updates=flow1.updateProperties();
+            var updates=flow1.updateBaseProperties();
             assert.strictEqual(updates, 252);
         });
 		it('updates and returns the properties passed as param', function() {
@@ -156,7 +154,7 @@ describe('FlowModel', function() {
                 filters: 'temperature>2',
             };
             var flow1=new FlowModel({ID: 'flow1'});
-            var updates=flow1.updateProperties(properties);
+            var updates=flow1.updateBaseProperties(properties);
             var instanceOfFilterModel=(flow1._filters instanceof FilterModel);
 			assert.strictEqual(flow1._name, 'flow one');
 			assert.strictEqual(instanceOfFilterModel, true);
@@ -170,7 +168,7 @@ describe('FlowModel', function() {
                 filters: 2,
             };
             var flow1=new FlowModel({ID: 'flow1'});
-            flow1.updateProperties(properties);
+            flow1.updateBaseProperties(properties);
 			assert.strictEqual(flow1._name, '');
 			assert.strictEqual(flow1._filters, null);
         });

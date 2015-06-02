@@ -207,7 +207,7 @@ var myVar2=setInterval(function () {repeatLine();}, 5000);
 /////////////////////////////////////////////////
 //TEST BAR CHART
 /////////////////////////////////////////////////
-/*var barChart=page1.createBarChart({
+var barChart=page1.createBarChart({
     ID: 'line1',
     title: 'BARRE',
     height: 600,
@@ -278,7 +278,7 @@ var repeatBar=function(){
     }
 };
 
-var myVar3=setInterval(function () {repeatBar();}, 5000);*/
+var myVar3=setInterval(function () {repeatBar();}, 5000);
 
 
 

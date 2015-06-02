@@ -232,6 +232,7 @@ describe('MapChartFlow', function() {
             flow1.updateProperties({
                 filters: 'temperature>0'
             });
+            console.dir(hMock.p1);
             assert.strictEqual(hMock.p1[2], 'updateFlowData');
             assert.strictEqual(hMock.p1[3], 'updateFlowProp');
             assert.deepEqual(hMock.p2[2], {
