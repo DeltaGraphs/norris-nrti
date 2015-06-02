@@ -242,31 +242,31 @@ var index3=0;
 var repeatBar=function(){
     if (index3===0){
         barChartFlow1=barChart.createBarChartFlow({
-            ID:'flow1',
-            name: 'grafico tempo-pressione',
-            indexKey: 'tempo',
-            valueKey: 'pressione',
-            records: [
+                ID:'flow1',
+                name: 'grafico tempo-pressione',
+                indexKey: 'tempo',
+                valueKey: 'pressione',
+            },[
                 {tempo: 1, pressione: 3},
                 {tempo: 2, pressione: 10},
                 {tempo: 3, pressione: 1},
                 {tempo: 4, pressione: 5},
                 {tempo: 5, pressione: 7}
             ]
-        });
+        );
         barChartFlow2=barChart.createBarChartFlow({
-            ID:'flow2',
-            name: 'grafico tempo-umidita',
-            indexKey: 'tempo',
-            valueKey: 'pressione',
-            records: [
+                ID:'flow2',
+                name: 'grafico tempo-umidita',
+                indexKey: 'tempo',
+                valueKey: 'pressione',
+            },[
                 {tempo: 1, umidita: 7},
                 {tempo: 2, umidita: 20},
                 {tempo: 3, umidita: 10},
                 {tempo: 4, umidita: 2},
                 {tempo: 5, umidita: 4}
             ]
-        });
+        );
     }
     console.log('barchart index: '+index3);
     index3++;
