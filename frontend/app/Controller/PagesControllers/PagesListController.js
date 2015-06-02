@@ -21,6 +21,12 @@ angular.module('app')
 
 	var socket;
 	var pagesList;
+
+	$scope.graphs =  [
+		['nsk','fsefw'],
+		['fsf','dsf'],
+		['sfs','fwef']
+	];
 	
 	this.socketConnection = function(ciao){
 		socket = SocketServicesFactory.build(ciao);

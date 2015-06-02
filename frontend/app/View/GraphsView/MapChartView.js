@@ -20,13 +20,14 @@ angular.module('app')
 		restrict: 'E',
 		//controller : 'MapChartController',
 		replace: false,
+        require: '^page',
 		scope: {
-			mapChart1: '@',
+			//mapChart1: '@',
 			id: '@'
 		},
 		bindToController: true,
-        template: '<div>Ciao</div>',
-    	link: function (scope, element, attrs) {
+        template: '<div>mapchart {{id}}</div>',
+    	/*link: function (scope, element, attrs) {
             console.log('link');
 			scope.socketConnection();
 			//scope.listenOnEvents();
@@ -70,7 +71,7 @@ angular.module('app')
 
         				switch (scope.matChart.getFlowList()[i].flow.getMarker().type) {
         					case 'shape':
-                                /*var type;
+                                var type;
         						switch (scope.matChart.getFlowList()[i].flow.getMarker().shape) { //circle, triangle, square, diamond
                                     case 'circle':
                                         type = 
@@ -80,7 +81,7 @@ angular.module('app')
 
                                     case 'diamond':
 
-                                }*/
+                                }
         						marker = new google.maps.Marker({
 		    						position: latLng,
 		    						map: map,
@@ -132,9 +133,9 @@ angular.module('app')
             console.log('link ha chiamato render');
 
       		
-			/*showMarker = function() {};
+			showMarker = function() {};
 			zoom = function() {};
-			drag = function() {};*/
-		}
+			drag = function() {};
+		}*/
 	};
 });

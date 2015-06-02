@@ -20,8 +20,14 @@ angular.module('app')
 .controller('PageController', ['$scope', '$location', '$routeParams', 'PagesList', 'PageFactory', 'SocketServicesFactory', function($scope, $location, $routeParams, PagesList, PageFactory, SocketServicesFactory){
 
 	$scope.page = PagesList.prototype.getPagesList()[$routeParams.pageId].page;
-	var url =  $scope.page.getUrl();
+	//var url =  $scope.page.getUrl();
+	var url = 'http://norris-nrti-dev.herokuapp.com/page1';
 	var socket;
+	/*$scope.graphs =  [
+		['nsk','fsefw'],
+		['fsf','dsf'],
+		['sfs','fwef']
+	];*/
 
 	console.log($scope.page.getName());
 	console.log($scope.page.getGraphsList().length);
@@ -37,9 +43,7 @@ angular.module('app')
 			console.log('configPage');
 			console.log(JSON.stringify(info));
 			$scope.page.updateParameters(info.properties);
-			console.log('a');
 			$scope.page.initializeData(info.data);
-			console.log('b');
 			$scope.graphs = matrix($scope.page.getGraphsList());
 			console.log('c');
 
@@ -56,11 +60,15 @@ angular.module('app')
 	};
 
 	function matrix(list) {
-		var array = new Array($scope.page.getGraphsPerRow());
-		for (var i=0; i<array.length; i++) {
-			array[i] = new Array($scope.page.getGraphsPerCol());
-			for (var j=0; j<array[i].length; j++) {
+		var array = [];
+		var count = 0,
+			max = $scope.page.getGraphsList().length;
+		for (var i=0; i<$scope.page.getGraphsPerCol() && count<max; i++) {
+			array[i] = [];
+			for (var j=0; j<$scope.page.getGraphsPerRow() && count<max; j++) {
+				console.log(list[$scope.page.getGraphsPerRow()*i+j].graph.constructor.name);
 				array[i].push(list[$scope.page.getGraphsPerRow()*i+j]);
+				count++;
 			}
 		}
 		return array;

@@ -29,7 +29,14 @@ angular.module('app')
 					'<table>' +
 						'<tr ng-repeat="line in graphs">' +
 							'<td ng-repeat="graph in line">' +
-								'<div> ohi ({{$index}},{{$parent.$index}})</div>' +
+								'<div ng-show="graph.graph.constructor.name == \'LineChart\'" class="ng-hide">' +
+								'<line-chart id="{{$index}}"></line-chart> </div>' +
+								'<div ng-show="graph.graph.constructor.name == \'BarChart\'" class="ng-hide">' +
+								'<bar-chart id="{{$index}}">  </bar-chart> </div>' +
+								'<div ng-show="graph.graph.constructor.name == \'MapChart\'" class="ng-hide">' +
+								'<map-chart id="{{$index}}">  </map-chart> </div>' +
+								'<div ng-show="graph.graph.constructor.name == \'Table\'" class="ng-hide">' + 
+								'<table-chart id="{{$index}}">  </table-chart> </div>' +
 							'</td>' +
 						'</tr>' +
 					'</table>' +
