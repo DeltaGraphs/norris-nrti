@@ -192,7 +192,6 @@ describe('Page', function() {
                 transports: ['websocket'],
                 'force new connection': true
             };
-            nor.createPage({ID: 'page1'});
             var expJSON = {
                 ID: 'page1',
                 graph: {
