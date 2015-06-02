@@ -208,7 +208,7 @@ var myVar2=setInterval(function () {repeatLine();}, 5000);
 //TEST BAR CHART
 /////////////////////////////////////////////////
 var barChart=page1.createBarChart({
-    ID: 'line1',
+    ID: 'bar1',
     title: 'BARRE',
     height: 600,
     width: 1000,
@@ -255,7 +255,7 @@ var repeatBar=function(){
             ]
         });
         barChartFlow2=barChart.createBarChartFlow({
-            ID:'flow21',
+            ID:'flow2',
             name: 'grafico tempo-umidita',
             indexKey: 'tempo',
             valueKey: 'pressione',
