@@ -105,7 +105,7 @@ describe('MapChartFlow', function() {
                 ID: 'flow1',
                 norrisRecordID: ID
             });
-            flow1.updateRecord(ID, {temperature: 5});
+            flow1.addRecord({temperature: 5, a:1, b:2});
             assert.strictEqual(mock.p1, 'updateFlowData');
             assert.deepEqual(mock.p2, {
                 action: 'insertRecords',
@@ -116,7 +116,7 @@ describe('MapChartFlow', function() {
                     value: [1,2]
                 }]
             });
-            flow1.updateRecord(ID, {temperature: 6});
+            flow1.addRecord({temperature: 6, a:1, b:2});
             assert.strictEqual(mock.p1, 'updateFlowData');
             assert.deepEqual(mock.p2, {
                 action: 'updateRecord',
@@ -129,6 +129,36 @@ describe('MapChartFlow', function() {
     });
 
     describe('#getReplaceDataJSON', function() {
+        it('returns correct JSON', function() {
+            var flow1=new MapChartFlow({
+                    ID: 'flow1',
+                    filters: 'temperature>3',
+                    objectKey: 'temperature',
+                    latitudeKey: 'a',
+                    longitudeKey: 'b'
+                }, new socketMock());
+            var ID=flow1.addRecord({temperature: 5, a:1, b:2});
+            var ID2=flow1.addRecord({temperature: 6, a:3, b:4});
+            assert.deepEqual(flow1.getReplaceDataJSON(), {
+                action: 'replaceData',
+                ID: 'flow1',
+                records: [
+                    {
+                        norrisRecordID : ID,
+                        markerID: 5,
+                        value: [1,2]
+                    },
+                    {
+                        norrisRecordID : ID2,
+                        markerID: 6,
+                        value: [3,4]
+                    },
+                ]
+            });
+        });
+    });
+
+    describe('#updateMovie', function() {
         it('returns correct JSON', function() {
             var flow1=new MapChartFlow({
                     ID: 'flow1',
@@ -158,4 +188,50 @@ describe('MapChartFlow', function() {
         });
     });
 
+    describe('#updateProperties', function() {
+        it('sends right updateFlowProp event', function() {
+            var mock=new socketMock();
+            var flow1=new MapChartFlow({
+                    ID: 'flow1',
+                    filters: 'temperature>3',
+                    objectKey: 'temperature',
+                    latitudeKey: 'a',
+                    longitudeKey: 'b'
+                }, mock);
+            flow1.addRecord({temperature: 2, a:1, b:2});
+            flow1.addRecord({temperature: 6, a:3, b:4});
+
+            flow1.updateProperties({
+                name: 'f1'
+            });
+            assert.strictEqual(mock.p1, 'updateFlowProp');
+            assert.deepEqual(mock.p2, {name: 'f1'});
+        });
+        /*it('sends right updateFlowData event', function() {
+            var withHistoryMock=function(){
+                this.p1=[];
+                this.p2=[];
+                this._namespace='flow1';
+                this.sendMessage=function(p1, p2){
+                    this.p1.push(p1);
+                    this.p2.push(p2);
+                };
+            };
+            var flow1=new MapChartFlow({
+                    ID: 'flow1',
+                    filters: 'temperature>3',
+                    objectKey: 'temperature',
+                    latitudeKey: 'a',
+                    longitudeKey: 'b'
+                }, new withHistoryMock());
+            flow1.addRecord({temperature: 2, a:1, b:2});
+            flow1.addRecord({temperature: 6, a:3, b:4});
+
+            /*flow1.updateProperties({
+                name: 'f1'
+            });
+            assert.strictEqual(mock.p1, 'updateFlowData');
+            assert.deepEqual(mock.p2, {name: 'f1'});
+        });*/
+    });
 });
