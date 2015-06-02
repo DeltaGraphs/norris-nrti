@@ -39,9 +39,4 @@ describe('BarChart', function() {
         assert.strictEqual(bar1._dataMapChartFlow._ID, 'bar1');
         assert.strictEqual(bar1._graphSocket._namespace, 'bar1');
     });
-
-    describe('#getFlowByID', function() {
-        it('returns 262 when params are not valid', function() {
-        assert.strictEqual((new BarChart(2, {_namespace: 2})).hasOwnProperty('_dataBarChart'), 262);
-    });
 });
