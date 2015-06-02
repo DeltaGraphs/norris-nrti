@@ -366,8 +366,8 @@ describe('MapChartFlowModel', function() {
             var flow1=new MapChartFlowModel({ID: 'flow1'});
             var ID=flow1.addRecord({temperature: 2});
             var ID2=flow1.addRecord({temperature: 4});
-            assert.deepEqual(flow1.getRecordByID(ID), {temperature: 2, norrisRecordIsValid: true});
-            assert.deepEqual(flow1.getRecordByID(ID2), {temperature: 4, norrisRecordIsValid: true});
+            assert.deepEqual(flow1.getRecordByID(ID).temperature, 2);
+            assert.deepEqual(flow1.getRecordByID(ID2).temperature, 4);
         });
     });
 });
