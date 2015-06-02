@@ -168,19 +168,19 @@ describe('Page', function() {
     describe('#createMapChart', function() {
         it('returns null if no parameter is passed', function() {
             var nor=new Norris(app, io, '/norris');
-            var pg = nor.createPage('page1');
+            var pg = nor.createPage({ID:'page1'});
             assert.deepEqual(pg.createMapChart(), null);
         });
 
         it('returns null if the passed parameter does not contain an ID', function() {
             var nor=new Norris(app, io, '/norris');
-            var pg = nor.createPage('page1');
+            var pg = nor.createPage({ID:'page1'});
             assert.deepEqual(pg.createMapChart({p: 'abvs'}), null);
         });
 
         it('returns null if the passed ID is already used', function() {
             var nor=new Norris(app, io, '/norris');
-            var pg = nor.createPage('page1');
+            var pg = nor.createPage({ID:'page1'});
             pg.createMapChart({ID: 'm1'});
             assert.deepEqual(pg.createMapChart({ID: 'm1'}), null);
         });
@@ -203,7 +203,8 @@ describe('Page', function() {
                 }
             };
             //var stPage = new Page({ID: 'page1'}, nor._networkHandler, nor);
-            assert.deepEqual(nor.createMapChart({ID: 'map1'}) instanceof MapChart, true);
+            var pg = nor.createPage({ID:'page1'});
+            assert.deepEqual(pg.createMapChart({ID: 'map1'}) instanceof MapChart, true);
             assert.strictEqual(nor._pages[0]._graphs.length, 1);
             assert.strictEqual(nor._pageList._pages[0]._graphs.length, 1);
             var client1 = ioclient.connect(socketURL, options);
