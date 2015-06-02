@@ -78,6 +78,8 @@ describe('FlowModel', function() {
 			var flow1=new FlowModel({ID: 'flow1'});
 			assert.strictEqual(flow1.generateNorrisRecordID(), 'flow1_1');
             assert.strictEqual(flow1.generateNorrisRecordID(), 'flow1_2');
+            flow1._progressiveIndex=1001;
+            assert.strictEqual(flow1.generateNorrisRecordID(), 'flow1_1');
         });
     });
 

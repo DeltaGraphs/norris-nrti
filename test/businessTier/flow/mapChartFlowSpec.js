@@ -18,9 +18,14 @@ var MapChartFlow = require('../../../lib/businessTier/flow/mapChartFlow.js');
 var assert = require('assert');
 
 describe('MapChartFlow', function() {
-    var socketMock={
-        _namespace: 'flow1',
-        sendMessage: function(){}
+    var socketMock=function(){
+        this.p1=null;
+        this.p2=null;
+        this._namespace='flow1';
+        this.sendMessage=function(p1, p2){
+            this.p1=p1;
+            this.p2=p2;
+        };
     };
     it('returns null when there are no params', function() {
         assert.strictEqual((new MapChartFlow()).hasOwnProperty('_dataMapChartFlow'), false);
@@ -35,18 +40,18 @@ describe('MapChartFlow', function() {
     });
 
     it('calls the parent constructor with the params specified', function() {
-        var flow1=new MapChartFlow({ID: 'flow1'},socketMock);
+        var flow1=new MapChartFlow({ID: 'flow1'}, new socketMock());
         assert.strictEqual(flow1._dataMapChartFlow._ID, 'flow1');
         assert.strictEqual(flow1._graphSocket._namespace, 'flow1');
     });
 
     describe('#addRecord', function() {
         it('returns 133 if record is invalid', function() {
-            var flow1=new MapChartFlow({ID: 'flow1'},socketMock);
+            var flow1=new MapChartFlow({ID: 'flow1'}, new socketMock());
             assert.strictEqual(flow1.addRecord(), 133);
         });
         it('returns valid norrisRecordID if record is valid', function() {
-            var flow2=new MapChartFlow({ID: 'flow2'},socketMock);
+            var flow2=new MapChartFlow({ID: 'flow2'}, new socketMock());
             console.dir(flow2);
             console.log(flow2.addRecord({temperature: 2}));
             console.log(flow2.addRecord({temperature: 2}).indexOf('flow2'));
@@ -56,15 +61,71 @@ describe('MapChartFlow', function() {
 
     describe('#deleteRecord', function() {
         it('returns 135 if ID is invalid', function() {
-            var flow1=new MapChartFlow({ID: 'flow1'},socketMock);
+            var flow1=new MapChartFlow({ID: 'flow1'}, new socketMock());
             flow1.addRecord({temperature: 2});
             assert.strictEqual(flow1.deleteRecord(), 135);
             assert.strictEqual(flow1.deleteRecord('flow1asd'), 135);
         });
         it('returns true if ID is valid', function() {
-            var flow1=new MapChartFlow({ID: 'flow1'},socketMock);
+            var flow1=new MapChartFlow({ID: 'flow1'}, new socketMock());
             var ID=flow1.addRecord({temperature: 2});
             assert.strictEqual(flow1.deleteRecord(ID), true);
         });
     });
+
+    describe('#updateRecord', function() {
+        it('return 131 if record is not valid', function() {
+            var flow1=new MapChartFlow({ID: 'flow1'}, new socketMock());
+            flow1.addRecord({temperature: 2});
+            assert.strictEqual(flow1.updateRecord(1), 131);
+            assert.strictEqual(flow1.updateRecord(1, [{asd:'asd'}]), 131);
+        });
+        it('return 132 if index is not valid', function() {
+            var flow1=new MapChartFlow({ID: 'flow1'}, new socketMock());
+            flow1.addRecord({temperature: 2});
+            assert.strictEqual(flow1.updateRecord('flow2whaterver0', {temperature: 2}), 132);
+            assert.strictEqual(flow1.updateRecord('flow1whaterver1', {temperature: 2}), 132);
+            assert.strictEqual(flow1.updateRecord('asd', {temperature: 2}), 132);
+        });
+        it('updates and validate the record if ID and record are valid', function() {
+            var mock=new socketMock();
+            var flow1=new MapChartFlow({
+                    ID: 'flow1',
+                    filters: 'temperature>3',
+                    objectKey: 'temperature',
+                    latitudeKey: 'a',
+                    longitudeKey: 'b'
+                }, mock);
+            var ID=flow1.addRecord({temperature: 5, a:1, b:2});
+            flow1.addRecord({temperature: 6, a:1, b:2});
+            flow1.updateRecord(ID, {temperature: 0});
+            assert.strictEqual(mock.p1, 'updateFlowData');
+            assert.deepEqual(mock.p2, {
+                action: 'deleteRecord',
+                ID: 'flow1',
+                norrisRecordID: ID
+            });
+            flow1.updateRecord(ID, {temperature: 5});
+            assert.strictEqual(mock.p1, 'updateFlowData');
+            assert.deepEqual(mock.p2, {
+                action: 'insertRecords',
+                ID: 'flow1',
+                records: [{
+                    norrisRecordID: ID,
+                    markerID: 5,
+                    value: [1,2]
+                }]
+            });
+            flow1.updateRecord(ID, {temperature: 6});
+            assert.strictEqual(mock.p1, 'updateFlowData');
+            assert.deepEqual(mock.p2, {
+                action: 'updateRecord',
+                ID: 'flow1',
+                norrisRecordID: ID,
+                markerID: 6,
+                value: [1,2]
+            });
+        });
+    });
+
 });
