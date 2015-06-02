@@ -76,8 +76,8 @@ describe('FlowModel', function() {
     describe('#generateNorrisRecordID', function() {
 		it('generate the right ID', function() {
 			var flow1=new FlowModel({ID: 'flow1'});
-			assert.strictEqual(flow1.generateNorrisRecordID().indexOf('flow1', 0));
-            assert.notStrictEqual(flow1.generateNorrisRecordID().indexOf('_2', -1));
+			assert.strictEqual(flow1.generateNorrisRecordID().indexOf('flow1'), 0);
+            assert.notStrictEqual(flow1.generateNorrisRecordID().indexOf('_2'), -1);
         });
     });
 
@@ -182,6 +182,30 @@ describe('FlowModel', function() {
         it('returns null from -A4.26', function() {
             var flow1=new FlowModel({ID: 'flow1'});
             assert.deepEqual(flow1.converter({numb:'\'-A4.26\''},'numb','toFloat'), null);
+        });
+    });
+
+    describe('#getRecordByID', function() {
+        it('returns 155 if ID is not valid', function() {
+            var flow1=new FlowModel({ID: 'flow1'});
+            flow1._records=[
+                {temperature: 4, norrisRecordID: flow1.generateNorrisRecordID()},
+                {pressure: 3, norrisRecordID: flow1.generateNorrisRecordID()}
+            ];
+            assert.strictEqual(flow1.getRecordByID(2), 155);
+            assert.strictEqual(flow1.getRecordByID('flow2asd'), 155);
+            assert.strictEqual(flow1.getRecordByID('flow1asd'), 155);
+        });
+        it('returns the record if ID is valid', function() {
+            var flow1=new FlowModel({ID: 'flow1'});
+            var ID=flow1.generateNorrisRecordID();
+            var ID2=flow1.generateNorrisRecordID();
+            flow1._records=[
+                {temperature: 4, norrisRecordID: ID},
+                {pressure: 3, norrisRecordID: ID2}
+            ];
+            assert.strictEqual(flow1.getRecordByID(ID).temperature, 2);
+            assert.strictEqual(flow1.getRecordByID(ID2).pressure, 4);
         });
     });
 });

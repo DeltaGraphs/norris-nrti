@@ -185,22 +185,4 @@ describe('LineChartFlowModel', function() {
         });
     });
 
-    describe('#getRecordByID', function() {
-        var flow1=new LineChartFlowModel({ID: 'flow1'});
-        var ID=flow1.addRecord({temperature: 6});
-        ID=flow1.addRecord({temperature: 4});
-        ID=flow1.addRecord({temperature: 2});
-        it('returns 135 with no string', function() {
-            assert.strictEqual(flow1.getRecordByID(23), 135);
-        });
-        it('returns 135 with no record that belong to this flow', function() {
-            assert.strictEqual(flow1.getRecordByID('flow5234342432'), 135);
-        });
-        it('returns 135 with no record found', function() {
-           assert.strictEqual(flow1.getRecordByID('flow133242'), 135); 
-        });
-        it('returns the correct record', function() {
-            assert.deepEqual(flow1.getRecordByID(ID), { temperature: 2,norrisRecordID: ID,norrisRecordIsValid: true });
-        });
-    });
 });
