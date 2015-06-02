@@ -114,10 +114,10 @@ describe('LineChartFlow', function() {
 
     describe('#getReplaceDataJSON', function() {
         var flow1=new LineChartFlow({ID: 'flow1', name: 'grafico tempo-temperatura',xKey: 'tempo',yKey: 'temperatura'},new socketMock());
-        flow1.addRecord({'tempo': 4, 'temperatura': 4});
-        flow1.addRecord({'tempo': 9, 'temperatura': 23});
-        flow1.addRecord({'tempo': 6, 'temperatura': 7});
-        assert.deepEqual(flow1.getReplaceDataJSON(),{'action':'replaceData','ID':'flow1','records':[{'norrisRecordID':'flow1_1','value':[4,4]},{'norrisRecordID':'flow1_2','value':[9,23]},{'norrisRecordID':'flow1_3','value':[6,7]}]});
+        var ID1=flow1.addRecord({'tempo': 4, 'temperatura': 4});
+        var ID2=flow1.addRecord({'tempo': 9, 'temperatura': 23});
+        var ID3=flow1.addRecord({'tempo': 6, 'temperatura': 7});
+        assert.deepEqual(flow1.getReplaceDataJSON(),{'action':'replaceData','ID':'flow1','records':[{'norrisRecordID':ID1,'value':[4,4]},{'norrisRecordID':ID2,'value':[9,23]},{'norrisRecordID':ID3,'value':[6,7]}]});
     });
 
     describe('#updateProperties', function() {
