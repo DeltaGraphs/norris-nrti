@@ -76,6 +76,7 @@ describe('FlowModel', function() {
     describe('#generateNorrisRecordID', function() {
 		it('generate the right ID', function() {
 			var flow1=new FlowModel({ID: 'flow1'});
+            flow1._progressiveIndex=100;
 			assert.strictEqual(flow1.generateNorrisRecordID().indexOf('flow1'), 0);
             assert.notStrictEqual(flow1.generateNorrisRecordID().indexOf('_2'), -1);
         });

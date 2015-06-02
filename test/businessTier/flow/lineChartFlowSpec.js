@@ -91,6 +91,7 @@ describe('LineChartFlow', function() {
                 ID: 'flow1',
                 norrisRecordID: ID
             });
+            console.log();
             flow1.updateRecord(ID, {temperature: 5, a:1, b:2});
             assert.strictEqual(mock.p1, 'updateFlowData');
             assert.deepEqual(mock.p2, {

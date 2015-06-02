@@ -228,7 +228,7 @@ describe('MapChartFlow', function() {
                 }, hMock);
             var ID=flow1.addRecord({temperature: 2, a:1, b:2});
             var ID2=flow1.addRecord({temperature: 6, a:3, b:4});
-
+            console.dir(hMock.p1);
             flow1.updateProperties({
                 filters: 'temperature>0'
             });
