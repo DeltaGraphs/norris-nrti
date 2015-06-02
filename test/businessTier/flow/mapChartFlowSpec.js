@@ -207,7 +207,7 @@ describe('MapChartFlow', function() {
             assert.strictEqual(mock.p1, 'updateFlowProp');
             assert.deepEqual(mock.p2, {name: 'f1'});
         });
-        /*it('sends right updateFlowData event', function() {
+        it('sends right updateFlowData event', function() {
             var withHistoryMock=function(){
                 this.p1=[];
                 this.p2=[];
@@ -217,21 +217,39 @@ describe('MapChartFlow', function() {
                     this.p2.push(p2);
                 };
             };
+            var hMock=new withHistoryMock();
             var flow1=new MapChartFlow({
                     ID: 'flow1',
                     filters: 'temperature>3',
                     objectKey: 'temperature',
                     latitudeKey: 'a',
                     longitudeKey: 'b'
-                }, new withHistoryMock());
-            flow1.addRecord({temperature: 2, a:1, b:2});
-            flow1.addRecord({temperature: 6, a:3, b:4});
+                }, hMock);
+            var ID=flow1.addRecord({temperature: 2, a:1, b:2});
+            var ID2=flow1.addRecord({temperature: 6, a:3, b:4});
 
-            /*flow1.updateProperties({
-                name: 'f1'
+            flow1.updateProperties({
+                filters: 'temperature>0'
             });
-            assert.strictEqual(mock.p1, 'updateFlowData');
-            assert.deepEqual(mock.p2, {name: 'f1'});
-        });*/
+            assert.strictEqual(hMock.p1[0], 'updateFlowData');
+            assert.strictEqual(hMock.p1[1], 'updateFlowProp');
+            assert.deepEqual(hMock.p2[0], {
+                action: 'replaceData',
+                ID: 'flow1',
+                records: [
+                    {
+                        norrisRecordID : ID,
+                        markerID: 2,
+                        value: [1,2]
+                    },
+                    {
+                        norrisRecordID : ID2,
+                        markerID: 6,
+                        value: [3,4]
+                    },
+                ]
+            });
+            assert.deepEqual(hMock.p2[1], {filters: 'temperature>0'});
+        });
     });
 });
