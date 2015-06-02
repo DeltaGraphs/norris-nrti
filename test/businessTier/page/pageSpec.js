@@ -232,4 +232,59 @@ describe('Page', function() {
             });
         });
     });
+
+    describe('#createLineChart', function() {
+        it('returns null if no parameter is passed', function() {
+            var nor=new Norris(app, io, '/norris');
+            var pg = nor.createPage({ID:'page1'});
+            assert.deepEqual(pg.createLineChart(), null);
+        });
+
+        it('returns null if the passed parameter does not contain an ID', function() {
+            var nor=new Norris(app, io, '/norris');
+            var pg = nor.createPage({ID:'page1'});
+            assert.deepEqual(pg.createLineChart({p: 'abvs'}), null);
+        });
+
+        it('returns null if the passed ID is already used', function() {
+            var nor=new Norris(app, io, '/norris');
+            var pg = nor.createPage({ID:'page1'});
+            pg.createMapChart({ID: 'l1'});
+            assert.deepEqual(pg.createLineChart({ID: 'l1'}), null);
+        });
+
+        it('returns null if the createLineChart is not created', function() {
+            var nor=new Norris(app, io, '/norris');
+            var pg = nor.createPage({ID:'page1'});
+            pg.createMapChart({ID: 'l1'});
+            assert.deepEqual(pg.createMapChart({ID: ''}), null);
+        });
+
+        it('behaves correctly with the right parameters', function() {
+            var nor=new Norris(app, io, '/norris');
+            var socketURL = 'http://0.0.0.0:5000/page1';
+            var options ={
+                transports: ['websocket'],
+                'force new connection': true
+            };
+            var expJSON = {
+                ID: 'page1',
+                graph: {
+                    ID: 'line1',
+                    title: '',
+                    type: 'LineChart',
+                    socketURL: '/page1/line1'
+                }
+            };
+            //var stPage = new Page({ID: 'page1'}, nor._networkHandler, nor);
+            var pg = nor.createPage({ID:'page1'});
+            assert.deepEqual(pg.createLineChart({ID: 'line'}) instanceof LineChart, true);
+            assert.strictEqual(nor._pages[0]._graphs.length, 1);
+            assert.strictEqual(nor._pageList._pages[0]._graphs.length, 1);
+            var client1 = ioclient.connect(socketURL, options);
+            client1.on('insertGraph', function(message) {
+                assert.strictEqual(message, expJSON);
+            });
+        });
+    });
 });
