@@ -16,11 +16,11 @@
 
 var Page = require('../../../lib/businessTier/page/page.js');
 var PageModel = require('../../../lib/dataTier/page/pageModel.js');
+var MapChart = require('../../../lib/businessTier/graph/mapChartModel.js');
 var assert = require('assert');
 
 var Norris = require('../../../lib/businessTier/norris/norris.js');
 var Page = require('../../../lib/businessTier/page/page.js');
-var NetworkHandler = require('../../../lib/businessTier/networkHandler/networkHandler.js');
 var express = require('express');
 var app = express();
 var http = require('http');
@@ -161,6 +161,54 @@ describe('Page', function() {
             });
             client2.on('updateGraph', function(message) {
                 assert.strictEqual(message, params.params);
+            });
+        });
+    });
+
+    describe('#createMapChart', function() {
+        it('returns null if no parameter is passed', function() {
+            var nor=new Norris(app, io, '/norris');
+            var pg = nor.createPage('page1');
+            assert.deepEqual(pg.createMapChart(), null);
+        });
+
+        it('returns null if the passed parameter does not contain an ID', function() {
+            var nor=new Norris(app, io, '/norris');
+            var pg = nor.createPage('page1');
+            assert.deepEqual(pg.createMapChart({p: 'abvs'}), null);
+        });
+
+        it('returns null if the passed ID is already used', function() {
+            var nor=new Norris(app, io, '/norris');
+            var pg = nor.createPage('page1');
+            pg.createMapChart({ID: 'm1'});
+            assert.deepEqual(pg.createMapChart({ID: 'm1'}), null);
+        });
+
+        it('behaves correctly with the right parameters', function() {
+            var nor=new Norris(app, io, '/norris');
+            var socketURL = 'http://0.0.0.0:5000/page1';
+            var options ={
+                transports: ['websocket'],
+                'force new connection': true
+            };
+            nor.createPage({ID: 'page1'});
+            var expJSON = {
+                ID: 'page1',
+                graph: {
+                    ID: 'map1',
+                    title: '',
+                    type: 'MapChart',
+                    socketURL: '/page1/map1'
+                }
+            };
+            //var stPage = new Page({ID: 'page1'}, nor._networkHandler, nor);
+            assert.deepEqual(nor.createMapChart({ID: 'map1'}) instanceof MapChart, true);
+            assert.strictEqual(nor._pages[0]._graphs.length, 1);
+            assert.strictEqual(nor._pageList._pages[0]._graphs.length, 1);
+            var client1 = ioclient.connect(socketURL, options);
+            client1.on('insertGraph', function(message) {
+                assert.strictEqual(message, expJSON);
             });
         });
     });
