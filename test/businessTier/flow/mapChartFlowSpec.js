@@ -128,4 +128,34 @@ describe('MapChartFlow', function() {
         });
     });
 
+    describe('#getReplaceDataJSON', function() {
+        it('returns correct JSON', function() {
+            var flow1=new MapChartFlow({
+                    ID: 'flow1',
+                    filters: 'temperature>3',
+                    objectKey: 'temperature',
+                    latitudeKey: 'a',
+                    longitudeKey: 'b'
+                }, new socketMock());
+            var ID=flow1.addRecord({temperature: 5, a:1, b:2});
+            var ID2=flow1.addRecord({temperature: 6, a:3, b:4});
+            assert.strictEqual(flow1.getReplaceDataJSON(), {
+                action: 'replaceData',
+                ID: 'flow1',
+                records: [
+                    {
+                        norrisRecordID : ID,
+                        markerID: 5,
+                        value: [1,2]
+                    },
+                    {
+                        norrisRecordID : ID2,
+                        markerID: 6,
+                        value: [3,4]
+                    },
+                ]
+            });
+        });
+    });
+
 });
