@@ -34,12 +34,13 @@ angular.module('app')
 			console.log(JSON.stringify(info));
 			pagesList = new PagesList(info);
 			$scope.pagesList = pagesList.getPagesList();
-			$scope.render();
+			//$scope.render();
 		});
 		socket.on('insertPage', function(info){
+			console.log('insertPage');
 			pagesList.addPage(info);
 			$scope.pagesList = pagesList.getPagesList();
-			$scope.render();
+			//$scope.render();
 		});
 		socket.on('updatePage', function(info){
 			pagesList.updatePage(info);

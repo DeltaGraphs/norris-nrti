@@ -36,8 +36,8 @@ angular.module('app')
 					}
 	    			if(count === 0) {
 	    				var page = PageFactory.build(info.data[i]);
-	       				pagesList.push({ 'id' : info.data[i].ID, 'page' : page});
-					}
+	       				pagesList.push({ 'id' : info.data[i].properties.ID, 'page' : page});
+					} 
 					// error
 				}
 			}

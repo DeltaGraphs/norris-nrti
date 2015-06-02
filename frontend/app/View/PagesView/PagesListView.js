@@ -23,17 +23,23 @@ angular.module('app')
 		scope: {
 			url: '@'
 		},
-		template: '<div id="pagesList"></div>',
+		template: '<div id="pagesList">' + 
+					'<ul>' +
+					'<li ng-repeat="page in pagesList">' +
+						'<a ng-href="#/page/{{$index}}"> {{ page.page.getName() }} </a>' +
+						'<p> {{ page.page.getDescription() }} </p>' +
+					'</li>' +
+					'</ul>' +
+		'</div>',
 		link: function (scope, element, attrs) {
 			scope.socketConnection(attrs.url);
-
+/*
 			scope.render = function() {
 				var parent = document.getElementById('pagesList');
 				while(parent.firstChild) {
 				    parent.removeChild(parent.firstChild);
 				}
 				for(var i=0; i<scope.pagesList.length; i++){
-					var name = scope.pagesList[i].page.getName();
 					var div = document.createElement('div');
 					div.className = 'page';
 					div.innerHTML = '<p> <a href="#/page/'+ i +'" > {{ scope.pagesList['+ i +'].page.getName() }} </a> </p>\n' +
@@ -41,7 +47,7 @@ angular.module('app')
 					parent.appendChild(div);
 				}
        		};
-/*
+
        		scope.$watch('scope.pagesList', function(){
        			if (scope.pagesList){
 		          	console.log('watch render');

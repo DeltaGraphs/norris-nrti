@@ -29,10 +29,10 @@ angular.module('app')
 
     function Page(info){
         this._graphsList = [];
-        this._name = null;
-        this._description = null;
-        this._graphsPerRow = null;
-        this._graphsPerCol = null;
+        this._name = 'Titolo di default';
+        this._description = '';
+        this._graphsPerRow = 1;
+        this._graphsPerCol = 5;
         this._url = null;
 
         if (info !== undefined) {
@@ -51,36 +51,9 @@ angular.module('app')
             if (info.properties.socketURL !== undefined) {
                 this._url = info.properties.socketURL;
             }
-            if (info.data.graphs !== undefined) {
-                for (var i=0; i<info.data.graphs.length; i++){
-                    var count = 0;
-                    for (var j=0; j<this._graphsList.length; j++) {
-                        if (this._graphsList[j].id === info.data.graphs[i].ID){
-                            count++;
-                        }
-                    }
-                    if (count === 0){
-                        var graph;
-                        switch (info.data.graphs[i].type) {
-                            case 'LineChart': 
-                                graph = LineChartFactory.build(info.data.graphs[i]);
-                                this._graphsList.push( {'id' : info.data.graphs[i].ID, 'graph' : graph} );
-                                break;
-                            case 'BarChart': 
-                                graph = BarChartFactory.build(info.data.graphs[i]);
-                                this._graphsList.push( {'id' : info.data.graphs[i].ID, 'graph' : graph} );
-                                break;
-                            case 'MapChart': 
-                                graph = MapChartFactory.build(info.data.graphs[i]);
-                                this._graphsList.push( {'id' : info.data.graphs[i].ID, 'graph' : graph} );
-                                break;
-                            case 'Table': 
-                                graph = TableFactory.build(info.data.graphs[i]);
-                                this._graphsList.push( {'id' : info.data.graphs[i].ID, 'graph' : graph} );
-                                break;
-                        }
-                    }
-                // error
+            if (info.data !== undefined) {
+                for (var i=0; i<info.data.length; i++){
+                    this.addGraph(info.data[i]);
                 }
             }
         }
@@ -104,8 +77,12 @@ angular.module('app')
                 if (info.graphsPerCol !== undefined) {
                     this._graphsPerCol = info.graphsPerCol;
                 }
-                if (info.socketURL !== undefined) {
-                    this._url = info.socketURL;
+            }
+        },
+        initializeData: function(data) {
+            if (data !== undefined) {
+                for (var i=0; i<data.length; i++) {
+                    this.addGraph(data[i]);
                 }
             }
         },

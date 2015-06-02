@@ -24,10 +24,19 @@ angular.module('app')
 		scope: {
 			
 		},
-		template: '<div id="page"></div>',
+		template: '<div id="page">' +
+					'<h1> ciao </h1>' +
+					'<table>' +
+						'<tr ng-repeat="line in graphs">' +
+							'<td ng-repeat="graph in line">' +
+								'<div> ohi ({{$index}},{{$parent.$index}})</div>' +
+							'</td>' +
+						'</tr>' +
+					'</table>' +
+				'</div>',
 		link: function (scope) {
 			scope.socketConnection();
-
+/*
 			scope.render = function() {
 				var parent = document.getElementById('page');
 				while(parent.firstChild) {
@@ -71,7 +80,7 @@ angular.module('app')
        		scope.$watch('scope.page.getGraphsList()', function(){
 	          	scope.render();
         	}, true);
-				
+*/
 		}
 
 	};
