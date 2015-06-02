@@ -52,9 +52,6 @@ describe('MapChartFlow', function() {
         });
         it('returns valid norrisRecordID if record is valid', function() {
             var flow2=new MapChartFlow({ID: 'flow2'}, new socketMock());
-            console.dir(flow2);
-            console.log(flow2.addRecord({temperature: 2}));
-            console.log(flow2.addRecord({temperature: 2}).indexOf('flow2'));
             assert.strictEqual(flow2.addRecord({temperature: 2}).indexOf('flow2'), 0);
         });
     });
@@ -235,7 +232,6 @@ describe('MapChartFlow', function() {
             flow1.updateProperties({
                 filters: 'temperature>0'
             });
-            console.dir(hMock.p1);
             assert.strictEqual(hMock.p1[2], 'updateFlowData');
             assert.strictEqual(hMock.p1[3], 'updateFlowProp');
             assert.deepEqual(hMock.p2[2], {
