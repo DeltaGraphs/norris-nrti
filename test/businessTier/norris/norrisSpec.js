@@ -159,11 +159,13 @@ describe('Norris', function() {
             var expJSON = {'name':'norris',
                 'data':[
                     {
-                        'ID':'page1',
-                        'name':'Page one',
-                        'description':'',
-                        'URLSocket':'/page1',
-                        'graphs':[
+                        'properties': {
+                            'ID':'page1',
+                            'name':'Page one',
+                            'description':'',
+                            'URLSocket':'/page1'
+                        },
+                        'data':[
                             {
                                 'ID':'map1',
                                 'title':'APS',
@@ -179,12 +181,13 @@ describe('Norris', function() {
                         ]
                     },
                     {
-                        'ID':'page2',
-                        'name':'Page two',
-                        'description':
-                        '',
-                        'URLSocket':'/page2',
-                        'graphs':[]
+                        'properties': {
+                            'ID':'page2',
+                            'name':'Page two',
+                            'description': '',
+                            'URLSocket':'/page2'
+                        },
+                        'data':[]
                     }
                 ]
             };
