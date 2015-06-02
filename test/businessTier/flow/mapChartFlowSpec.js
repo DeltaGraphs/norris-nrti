@@ -98,7 +98,7 @@ describe('MapChartFlow', function() {
                 }, mock);
             var ID=flow1.addRecord({temperature: 5, a:1, b:2});
             flow1.addRecord({temperature: 6, a:1, b:2});
-            flow1.updateRecord(ID, {temperature: 0});
+            flow1.updateRecord(ID, {temperature: 0, a:1, b:2});
             assert.strictEqual(mock.p1, 'updateFlowData');
             assert.deepEqual(mock.p2, {
                 action: 'deleteRecord',
@@ -235,9 +235,9 @@ describe('MapChartFlow', function() {
             flow1.updateProperties({
                 filters: 'temperature>0'
             });
-            /*assert.strictEqual(hMock.p1[1], 'updateFlowData');
-            assert.strictEqual(hMock.p1[0], 'updateFlowProp');*/
-            assert.deepEqual(hMock.p2[1], {
+            assert.strictEqual(hMock.p1[2], 'updateFlowData');
+            assert.strictEqual(hMock.p1[3], 'updateFlowProp');
+            assert.deepEqual(hMock.p2[2], {
                 action: 'replaceData',
                 ID: 'flow1',
                 records: [
@@ -253,7 +253,7 @@ describe('MapChartFlow', function() {
                     },
                 ]
             });
-            assert.deepEqual(hMock.p2[0], {filters: 'temperature>0'});
+            assert.deepEqual(hMock.p2[3], {filters: 'temperature>0'});
         });
     });
 });
