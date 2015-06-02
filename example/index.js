@@ -156,7 +156,7 @@ var lineChart=page1.createLineChart({
         //ecc
     },
     backGroundColor: '#FFFFFF',
-    viewFinde: true,
+    viewFinder: true,
     horizontalGrid: true,
     verticalGrid: true,
     legendOnPoint: true,
@@ -203,6 +203,83 @@ var repeatLine=function(){
 };
 
 var myVar2=setInterval(function () {repeatLine();}, 5000);
+
+/////////////////////////////////////////////////
+//TEST BAR CHART
+/////////////////////////////////////////////////
+var barChart=page1.createBarChart({
+    ID: 'line1',
+    title: 'BARRE',
+    height: 600,
+    width: 1000,
+    enableLegend: true,
+    legend: {
+        position: 'NE',
+    },
+    xAxis:{
+        name: 'tempo',
+        color: '#000000'
+        //ecc
+    },
+    yAxis:{
+        name: 'pressione',
+        color: '#000000'
+        //ecc
+    },
+    backGroundColor: '#FFFFFF',
+    viewFinder: true,
+    grid: true,
+    legendOnPoint: true,
+    //ecc
+    
+});
+console.log('Grafico inserito: '+barChart);
+
+var barChartFlow1;
+var barChartFlow2;
+
+var index3=0;
+var repeatBar=function(){
+    if (index3===0){
+        barChartFlow1=barChart.createBarChartFlow({
+            ID:'flow1',
+            name: 'grafico tempo-pressione',
+            indexKey: 'tempo',
+            valueKey: 'pressione',
+            records: [
+                {tempo: 1, pressione: 3},
+                {tempo: 2, pressione: 10},
+                {tempo: 3, pressione: 1},
+                {tempo: 4, pressione: 5},
+                {tempo: 5, pressione: 7}
+            ]
+        });
+        barChartFlow2=barChart.createBarChartFlow({
+            ID:'flow21',
+            name: 'grafico tempo-umidita',
+            indexKey: 'tempo',
+            valueKey: 'pressione',
+            records: [
+                {tempo: 1, umidita: 7},
+                {tempo: 2, umidita: 20},
+                {tempo: 3, umidita: 10},
+                {tempo: 4, umidita: 2},
+                {tempo: 5, umidita: 4}
+            ]
+        });
+    }
+    console.log('barchart index: '+index3);
+    index3++;
+    if (index3>=4){
+        index3=0;
+        barChart.deleteAllFlows();
+    }else{
+        barChartFlow1.updateRecord(index3, {tempo: index3, umidita: index3});
+    }
+};
+
+var myVar3=setInterval(function () {repeatBar();}, 5000);
+
 
 
 app.get('/', function (req, res) {
