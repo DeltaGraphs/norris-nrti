@@ -25,7 +25,7 @@ angular.module('app')
 	
 	this.socketConnection = function(){
 		socket = SocketServicesFactory.build(url);
-		// listenOnEvents();
+		this.listenOnEvents();
 	};
 
 	this.listenOnEvents = function(){

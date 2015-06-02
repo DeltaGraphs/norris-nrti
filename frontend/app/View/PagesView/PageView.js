@@ -33,7 +33,12 @@ angular.module('app')
 				while(parent.firstChild) {
 				    parent.removeChild(parent.firstChild);
 				}
-				for(var i=0; i<scope.page.getGraphsList().length; i++){
+
+				var table = document.createElement('div');
+				table.className = 'graphstable';
+				table.appendChild('table');
+				arrayDiv = [];
+				for(var i=0; i<scope.page.getGraphsList().length; i++) {
 					var div = document.createElement('div');
 					div.className = 'graph';
 					switch (scope.page.getGraphsList()[i].graph.contructor.name) {
@@ -50,7 +55,14 @@ angular.module('app')
 							div.innerHTML = '<table id=table"'+ i +'" table="{{ scope.page.getGraphsList()[i].graph }}">';
 							break;
 					}
-					parent.appendChild(div);
+					arrayDiv.push(div);
+				}
+				
+				for (var i=0; i<scope.page.getGraphsPerRow(); i++) {
+					for (var j=0; j<scope.page.getGraphsPerCol(); j++) {
+						div = arrayDiv[i*scope.page.getGraphsPerRow() + j];
+						parent.appendChild(div);
+					}
 				}
        		};
 

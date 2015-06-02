@@ -18,16 +18,14 @@ angular.module('app')
 .directive('pagesList', function(){
 	return {
 		restrict: 'E',
-		controller : 'PagesListController',
 		replace: false,
+		controller: 'PagesListController',
 		scope: {
 			url: '@'
 		},
-		//bindToController: true,
 		template: '<div id="pagesList"></div>',
 		link: function (scope, element, attrs) {
 			scope.socketConnection(attrs.url);
-			//scope.listenOnEvents();
 
 			scope.render = function() {
 				var parent = document.getElementById('pagesList');
@@ -35,16 +33,15 @@ angular.module('app')
 				    parent.removeChild(parent.firstChild);
 				}
 				for(var i=0; i<scope.pagesList.length; i++){
+					var name = scope.pagesList[i].page.getName();
 					var div = document.createElement('div');
 					div.className = 'page';
-
-					div.innerHTML = '<p> <a href="#/page/{{i}}"> {{ scope.pagesList[i].page.getName() }} </a> </p>\n' +
-									'<p> {{ scope.pagesList[i].page.getDescription() }} </p>';
-
+					div.innerHTML = '<p> <a href="#/page/'+ i +'" > {{ scope.pagesList['+ i +'].page.getName() }} </a> </p>\n' +
+									'<p> {{ scope.pagesList['+ i +'].page.getDescription() }} </p>';
 					parent.appendChild(div);
 				}
        		};
-
+/*
        		scope.$watch('scope.pagesList', function(){
        			if (scope.pagesList){
 		          	console.log('watch render');
@@ -52,7 +49,7 @@ angular.module('app')
 	    	      	console.log('watch render fine');
 	    	    }
         	}, true);
-				
+*/
 		}
 
 	};

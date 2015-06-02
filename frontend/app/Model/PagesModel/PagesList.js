@@ -35,7 +35,6 @@ angular.module('app')
 						}
 					}
 	    			if(count === 0) {
-	    				console.log('pages list factory');
 	    				var page = PageFactory.build(info.data[i]);
 	       				pagesList.push({ 'id' : info.data[i].ID, 'page' : page});
 					}
@@ -54,6 +53,14 @@ angular.module('app')
    				pagesList.push({ 'id' : page.ID, 'page' : newPage});
 			}
 			// error
+		},
+
+		updatePage: function(info) {
+			for (var j=0; j<pagesList.length; j++) {
+				if (pagesList[j].id === info.ID){
+					pagesList[j].updateParameters(info);
+				}
+			}
 		},
 
 		getPagesList: function(){
