@@ -17,18 +17,16 @@
 var Page = require('../../../lib/businessTier/page/page.js');
 var PageModel = require('../../../lib/dataTier/page/pageModel.js');
 var MapChart = require('../../../lib/businessTier/graph/mapChart.js');
+var LineChart = require('../../../lib/businessTier/graph/LineChart.js');
 var assert = require('assert');
 
 var Norris = require('../../../lib/businessTier/norris/norris.js');
 var Page = require('../../../lib/businessTier/page/page.js');
 var express = require('express');
-var app = express();
-var http = require('http');
-var server = http.createServer(app);
-var io = require('socket.io')(server);
 io.listen(5000);
 var ioclient = require('socket.io-client');
 var nor = new Norris(app, io, '/norris');
+var page1 = nor.createPage('page1');
 
 function ParamMock() {
     this._app = null;
@@ -86,14 +84,14 @@ describe('Page', function() {
 
     describe('#getConfigJSON', function() {
         it('returns the JSON to send to clients when they connect', function() {
-            var page1=new Page({ID:'page1', name:'page1', description:'page one', graphsPerRow: 3, graphsPerCol: 5}, new ParamMock(), new ParamMock());
-            page1.createMapChart({ID:'map1'});
-            page1.createLineChart({ID:'line1'});
+            var pg = nor.createPage({ID:'page2', name:'page2', description:'page two', graphsPerRow: 3, graphsPerCol: 5});
+            page2.createMapChart({ID:'map1'});
+            page2.createLineChart({ID:'line1'});
             var expectedJSON = {
                 properties: {
-                    ID: 'page1',
-                    name: 'page1',
-                    description: 'page one',
+                    ID: 'page2',
+                    name: 'page2',
+                    description: 'page two',
                     graphsPerRow: 3,
                     graphsPerCol: 5
                 },
@@ -110,7 +108,7 @@ describe('Page', function() {
                     }
                 ]
             };
-            assert.deepEqual(page1.getConfigJSON(), expectedJSON);
+            assert.deepEqual(page2.getConfigJSON(), expectedJSON);
         });
     });
 
@@ -180,33 +178,23 @@ describe('Page', function() {
 
     describe('#createMapChart', function() {
         it('returns null if no parameter is passed', function() {
-            var nor=new Norris(app, io, '/norris');
-            var pg = nor.createPage({ID:'page1'});
-            assert.deepEqual(pg.createMapChart(), null);
+            assert.deepEqual(page1.createMapChart(), null);
         });
 
         it('returns null if the passed parameter does not contain an ID', function() {
-            var nor=new Norris(app, io, '/norris');
-            var pg = nor.createPage({ID:'page1'});
-            assert.deepEqual(pg.createMapChart({p: 'abvs'}), null);
+            assert.deepEqual(page1.createMapChart({p: 'abvs'}), null);
         });
 
         it('returns null if the passed ID is already used', function() {
-            var nor=new Norris(app, io, '/norris');
-            var pg = nor.createPage({ID:'page1'});
             pg.createMapChart({ID: 'm1'});
-            assert.deepEqual(pg.createMapChart({ID: 'm1'}), null);
+            assert.deepEqual(page1.createMapChart({ID: 'm1'}), null);
         });
 
         it('returns null if the mapChartModel is not created', function() {
-            var nor=new Norris(app, io, '/norris');
-            var pg = nor.createPage({ID:'page1'});
-            pg.createMapChart({ID: 'm1'});
-            assert.deepEqual(pg.createMapChart({ID: ''}), null);
+            assert.deepEqual(page1.createMapChart({ID: ''}), null);
         });
 
         it('behaves correctly with the right parameters', function() {
-            var nor=new Norris(app, io, '/norris');
             var socketURL = 'http://0.0.0.0:5000/page1';
             var options ={
                 transports: ['websocket'],
@@ -222,8 +210,7 @@ describe('Page', function() {
                 }
             };
             //var stPage = new Page({ID: 'page1'}, nor._networkHandler, nor);
-            var pg = nor.createPage({ID:'page1'});
-            assert.deepEqual(pg.createMapChart({ID: 'map1'}) instanceof MapChart, true);
+            assert.deepEqual(page1.createMapChart({ID: 'map1'}) instanceof MapChart, true);
             assert.strictEqual(nor._pages[0]._graphs.length, 1);
             assert.strictEqual(nor._pageList._pages[0]._graphs.length, 1);
             var client1 = ioclient.connect(socketURL, options);
@@ -235,33 +222,23 @@ describe('Page', function() {
 
     describe('#createLineChart', function() {
         it('returns null if no parameter is passed', function() {
-            var nor=new Norris(app, io, '/norris');
-            var pg = nor.createPage({ID:'page1'});
-            assert.deepEqual(pg.createLineChart(), null);
+            assert.deepEqual(page1.createLineChart(), null);
         });
 
-        it('returns null if the passed parameter does not contain an ID', function() {
-            var nor=new Norris(app, io, '/norris');
-            var pg = nor.createPage({ID:'page1'});
-            assert.deepEqual(pg.createLineChart({p: 'abvs'}), null);
+        it('returns null if the passed parameter does not contain an ID', function() {page1
+            assert.deepEqual(page1.createLineChart({p: 'abvs'}), null);
         });
 
         it('returns null if the passed ID is already used', function() {
-            var nor=new Norris(app, io, '/norris');
-            var pg = nor.createPage({ID:'page1'});
-            pg.createMapChart({ID: 'l1'});
-            assert.deepEqual(pg.createLineChart({ID: 'l1'}), null);
+            page1.createMapChart({ID: 'l1'});
+            assert.deepEqual(page1.createLineChart({ID: 'l1'}), null);
         });
 
         it('returns null if the createLineChart is not created', function() {
-            var nor=new Norris(app, io, '/norris');
-            var pg = nor.createPage({ID:'page1'});
-            pg.createMapChart({ID: 'l1'});
-            assert.deepEqual(pg.createMapChart({ID: ''}), null);
+            assert.deepEqual(page1.createMapChart({ID: ''}), null);
         });
 
         it('behaves correctly with the right parameters', function() {
-            var nor=new Norris(app, io, '/norris');
             var socketURL = 'http://0.0.0.0:5000/page1';
             var options ={
                 transports: ['websocket'],
@@ -277,8 +254,7 @@ describe('Page', function() {
                 }
             };
             //var stPage = new Page({ID: 'page1'}, nor._networkHandler, nor);
-            var pg = nor.createPage({ID:'page1'});
-            assert.deepEqual(pg.createLineChart({ID: 'line'}) instanceof LineChart, true);
+            assert.deepEqual(page1.createLineChart({ID: 'line1'}) instanceof LineChart, true);
             assert.strictEqual(nor._pages[0]._graphs.length, 1);
             assert.strictEqual(nor._pageList._pages[0]._graphs.length, 1);
             var client1 = ioclient.connect(socketURL, options);
