@@ -57,11 +57,11 @@ describe('MapChartFlow', function() {
     });
 
     describe('#deleteRecord', function() {
-        it('returns 135 if ID is invalid', function() {
+        it('returns 155 if ID is invalid', function() {
             var flow1=new MapChartFlow({ID: 'flow1'}, new socketMock());
             flow1.addRecord({temperature: 2});
-            assert.strictEqual(flow1.deleteRecord(), 135);
-            assert.strictEqual(flow1.deleteRecord('flow1asd'), 135);
+            assert.strictEqual(flow1.deleteRecord(), 155);
+            assert.strictEqual(flow1.deleteRecord('flow1asd'), 155);
         });
         it('returns true if ID is valid', function() {
             var flow1=new MapChartFlow({ID: 'flow1'}, new socketMock());
@@ -228,14 +228,12 @@ describe('MapChartFlow', function() {
                 }, hMock);
             var ID=flow1.addRecord({temperature: 2, a:1, b:2});
             var ID2=flow1.addRecord({temperature: 6, a:3, b:4});
-            console.dir(hMock.p1);
             flow1.updateProperties({
                 filters: 'temperature>0'
             });
-            console.dir(hMock.p1);
-            assert.strictEqual(hMock.p1[2], 'updateFlowData');
-            assert.strictEqual(hMock.p1[3], 'updateFlowProp');
-            assert.deepEqual(hMock.p2[2], {
+            assert.strictEqual(hMock.p1[1], 'updateFlowData');
+            assert.strictEqual(hMock.p1[2], 'updateFlowProp');
+            assert.deepEqual(hMock.p2[1], {
                 action: 'replaceData',
                 ID: 'flow1',
                 records: [
@@ -251,7 +249,7 @@ describe('MapChartFlow', function() {
                     },
                 ]
             });
-            assert.deepEqual(hMock.p2[3], {filters: 'temperature>0'});
+            assert.deepEqual(hMock.p2[2], {filters: 'temperature>0'});
         });
     });
 });
