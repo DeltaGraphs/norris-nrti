@@ -130,7 +130,6 @@ describe('LineChartFlowModel', function() {
             var flow1=new LineChartFlowModel({ID: 'flow1'});
             assert.strictEqual(flow1.updateRecord(1), 121);
             assert.strictEqual(flow1.updateRecord(1, [{asd:'asd'}]), 121);
-            assert.strictEqual(flow1.updateRecord(1, 2), 121);
         });
         it('return 122 if index is not valid', function() {
             var flow1=new LineChartFlowModel({ID: 'flow1'});

@@ -249,7 +249,7 @@ describe('MapChartFlow', function() {
                     },
                 ]
             });
-            assert.deepEqual(hMock.p2[2], {filters: 'temperature>0'});
+            assert.strictEqual(hMock.p2[2].filters, 'temperature>0');
         });
     });
 });
