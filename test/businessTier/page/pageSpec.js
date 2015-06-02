@@ -137,4 +137,31 @@ describe('Page', function() {
             assert.deepEqual(page1._page._graphsPerCol, 7);
         });
     });
+
+    describe('#graphChanged', function() {
+        it('sends the message over the socket', function() {
+            var page1=new Page({ID:'page1'}, nor._networkHandler, nor);
+            var pSocketURL = 'http://0.0.0.0:5000/page1';
+            var nSocketURL = 'http://0.0.0.0:5000/norris';
+            var options ={
+                transports: ['websocket'],
+                'force new connection': true
+            };
+            var params = {
+                eventType: 'updateGraph',
+                params: {
+                    name: 'newName'
+                }
+            };
+            page1.graphChanged(params);
+            var client1 = ioclient.connect(pSocketURL, options);
+            var client2 = ioclient.connect(nSocketURL, options);
+            client1.on('updateGraph', function(message) {
+                assert.strictEqual(message, params.params);
+            });
+            client2.on('updateGraph', function(message) {
+                assert.strictEqual(message, params.params);
+            });
+        });
+    });
 });
