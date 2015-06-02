@@ -18,6 +18,18 @@ var Page = require('../../../lib/businessTier/page/page.js');
 var PageModel = require('../../../lib/dataTier/page/pageModel.js');
 var assert = require('assert');
 
+var Norris = require('../../../lib/businessTier/norris/norris.js');
+var Page = require('../../../lib/businessTier/page/page.js');
+var NetworkHandler = require('../../../lib/businessTier/networkHandler/networkHandler.js');
+var express = require('express');
+var app = express();
+var http = require('http');
+var server = http.createServer(app);
+var io = require('socket.io')(server);
+io.listen(5000);
+var ioclient = require('socket.io-client');
+var nor = new Norris(app, io, '/norris');
+
 function ParamMock() {
     this._app = null;
     this._io = null;
@@ -91,24 +103,38 @@ describe('Page', function() {
 
     describe('#updateProperties', function() {
         it('does nothing when passed no valid parameter', function() {
-            var page1=new Page({ID:'page1'}, new ParamMock(), new ParamMock());
+            var page1=new Page({ID:'page1'}, nor._networkHandler, nor);
             page1.updateProperties();
             assert.deepEqual(page1._page, new PageModel({ID:'page1'}));
-            assert.deepEqual(page1._networkHandler, new ParamMock());
-            assert.deepEqual(page1._norris, new ParamMock());
-            assert.strictEqual(page1._pageNamespace, '/page1');
-            assert.deepEqual(page1._pageSocket, new ParamMock());
-            assert.strictEqual(page1._graphs.length, 0);
         });
         it('updates the properties to the passed parameters', function() {
-            var page1=new Page({ID:'page1'}, new ParamMock(), new ParamMock());
-            page1.updateProperties({name:'p1', description:'ppp', graphsPerRow: 5, graphsPerCol: 7});
+            var page1=new Page({ID:'page1'}, nor._networkHandler, nor);
+            var pSocketURL = 'http://0.0.0.0:5000/page1';
+            var nSocketURL = 'http://0.0.0.0:5000/norris';
+            var options ={
+                transports: ['websocket'],
+                'force new connection': true
+            };
+            var params = {
+                name:'p1', 
+                description:'ppp', 
+                graphsPerRow: 5, 
+                graphsPerCol: 7
+            };
+            page1.updateProperties(params);
+            var client1 = ioclient.connect(pSocketURL, options);
+            var client2 = ioclient.connect(nSocketURL, options);
+            client1.on('updatePageProp', function(message) {
+                assert.strictEqual(message, params);
+            });
+            client2.on('updatePage', function(message) {
+                assert.strictEqual(message, params);
+            });
             assert.deepEqual(page1._page._ID, 'page1');
             assert.deepEqual(page1._page._name, 'p1');
             assert.deepEqual(page1._page._description, 'ppp');
             assert.deepEqual(page1._page._graphsPerRow, 5);
             assert.deepEqual(page1._page._graphsPerCol, 7);
-            assert.strictEqual(page1._graphs.length, 0);
         });
     });
 });
