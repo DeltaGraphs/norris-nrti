@@ -87,6 +87,8 @@ describe('Page', function() {
     describe('#getConfigJSON', function() {
         it('returns the JSON to send to clients when they connect', function() {
             var page1=new Page({ID:'page1', name:'page1', description:'page one', graphsPerRow: 3, graphsPerCol: 5}, new ParamMock(), new ParamMock());
+            page1.createMapChart({ID:'map1'});
+            page1.createLineChart({ID:'line1'});
             var expectedJSON = {
                 properties: {
                     ID: 'page1',
@@ -95,7 +97,18 @@ describe('Page', function() {
                     graphsPerRow: 3,
                     graphsPerCol: 5
                 },
-                data: []
+                data: [
+                    {
+                        ID: 'map1',
+                        title: '',
+                        socketURL: 'page1/map1'
+                    },
+                    {
+                        ID: 'line1',
+                        title: '',
+                        socketURL: 'page1/line1'
+                    }
+                ]
             };
             assert.deepEqual(page1.getConfigJSON(), expectedJSON);
         });
