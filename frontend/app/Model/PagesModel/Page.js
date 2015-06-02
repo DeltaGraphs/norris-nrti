@@ -48,8 +48,8 @@ angular.module('app')
             if (info.properties.graphsPerCol !== undefined) {
                 this._graphsPerCol = info.properties.graphsPerCol;
             }
-            if (info.properties.URLSocket !== undefined) {
-                this._url = info.properties.URLSocket;
+            if (info.properties.socketURL !== undefined) {
+                this._url = info.properties.socketURL;
             }
             if (info.data.graphs !== undefined) {
                 for (var i=0; i<info.data.graphs.length; i++){
@@ -104,8 +104,8 @@ angular.module('app')
                 if (info.graphsPerCol !== undefined) {
                     this._graphsPerCol = info.graphsPerCol;
                 }
-                if (info.URLSocket !== undefined) {
-                    this._url = info.URLSocket;
+                if (info.socketURL !== undefined) {
+                    this._url = info.socketURL;
                 }
             }
         },

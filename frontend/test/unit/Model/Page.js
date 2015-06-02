@@ -56,7 +56,7 @@ describe('PageFactory', function(){
 		it('constructor create the page with the correct number of graphsPerCol', function(){
 			expect(Page.getGraphsPerCol()).toEqual(null);
 		});
-		it('constructor create the page with the correct URLSocket', function(){
+		it('constructor create the page with the correct socketURL', function(){
 			expect(Page.getUrl()).toEqual(null);
 		});
 		it('constructor create the page with the correct number of graphs', function(){
@@ -73,7 +73,7 @@ describe('PageFactory', function(){
 			'description' : 'questa è la pagina uno',
 			'graphsPerRow' : 4,
 			'graphsPerCol' : 4,
-			'URLSocket' : 'http://localhost/page1',
+			'socketURL' : 'http://localhost/page1',
 			'graphs' : [
 				{ 
 					'ID' : 'grafico1', 
@@ -116,7 +116,7 @@ describe('PageFactory', function(){
 		it('constructor create the page with the correct number of graphsPerCol', function(){
 			expect(Page.getGraphsPerCol()).toEqual(4);
 		});
-		it('constructor create the page with the correct URLSocket', function(){
+		it('constructor create the page with the correct socketURL', function(){
 			expect(Page.getUrl()).toEqual('http://localhost/page1');
 		});
 		it('constructor create the page with the correct number of graphs', function(){
@@ -134,7 +134,7 @@ describe('PageFactory', function(){
 			'description' : 'questa è la pagina n-esima',
 			'graphsPerRow' : 4,
 			'graphsPerCol' : 4,
-			'URLSocket' : 'http://localhost/pageN'
+			'socketURL' : 'http://localhost/pageN'
 		};
 		var Page;
 
@@ -159,7 +159,7 @@ describe('PageFactory', function(){
 		it('page updated with the correct number of graphsPerCol', function(){
 			expect(Page.getGraphsPerCol()).toEqual(4);
 		});
-		it('page updated with the correct URLSocket', function(){
+		it('page updated with the correct socketURL', function(){
 			expect(Page.getUrl()).toEqual('http://localhost/pageN');
 		});
 

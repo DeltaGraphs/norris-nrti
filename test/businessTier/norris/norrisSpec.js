@@ -89,7 +89,7 @@ describe('Norris', function() {
                 ID: 'page1',
                 name: '',
                 description: '',
-                URLSocket: 'http://0.0.0.0:5000/page1',
+                socketURL: 'http://0.0.0.0:5000/page1',
                 graphs: []
             };*/
             //var stPage = new Page({ID: 'page1'}, nor._networkHandler, nor);
@@ -163,20 +163,20 @@ describe('Norris', function() {
                             'ID':'page1',
                             'name':'Page one',
                             'description':'',
-                            'URLSocket':'/page1'
+                            'socketURL':'/page1'
                         },
                         'data':[
                             {
                                 'ID':'map1',
                                 'title':'APS',
                                 'type':'MapChart',
-                                'URLSocket':'/page1/map1'
+                                'socketURL':'/page1/map1'
                             },
                             {
                                 'ID':'line1',
                                 'title':'LINEE',
                                 'type':'LineChart',
-                                'URLSocket':'/page1/line1'
+                                'socketURL':'/page1/line1'
                             }
                         ]
                     },
@@ -185,7 +185,7 @@ describe('Norris', function() {
                             'ID':'page2',
                             'name':'Page two',
                             'description': '',
-                            'URLSocket':'/page2'
+                            'socketURL':'/page2'
                         },
                         'data':[]
                     }
