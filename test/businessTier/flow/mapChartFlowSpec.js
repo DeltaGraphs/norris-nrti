@@ -19,7 +19,7 @@ var assert = require('assert');
 
 describe('MapChartFlow', function() {
     var socketMock={
-        _namespace: 2,
+        _namespace: 'flow1',
         sendMessage: function(){}
     };
     it('returns null when there are no params', function() {
