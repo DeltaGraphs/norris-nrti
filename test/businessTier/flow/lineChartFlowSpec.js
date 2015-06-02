@@ -62,7 +62,7 @@ describe('LineChartFlow', function() {
         it('returns 123 if record is invalid', function() {
             var flow1=new LineChartFlow({ID: 'flow1'},new socketMock);
             flow1.addRecord({'tempo': 1, 'temperatura': 25});
-            assert.strictEqual(flow1.updateRecord(), 123);
+            assert.strictEqual(flow1.updateRecord(), 121);
         });
         it('returns 122 if no ID in records', function() {
             var flow1=new LineChartFlow({ID: 'flow1'},new socketMock);
@@ -87,7 +87,7 @@ describe('LineChartFlow', function() {
         flow1.addRecord({'tempo': 9, 'temperatura': 23});
         flow1.addRecord({'tempo': 6, 'temperatura': 7});
         console.log('getReplaceDataJSONgetReplaceDataJSONgetReplaceDataJSON');
-        console.dir(flow1.getReplaceDataJSON());
+        console.log(JSON.stringify(flow1.getReplaceDataJSON()));
     });
 
     describe('#updateProperties', function() {
