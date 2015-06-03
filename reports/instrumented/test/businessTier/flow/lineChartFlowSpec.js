@@ -135,20 +135,20 @@ describe('LineChartFlow', function() {
         it('update correct properties', function() {
             var mock=new socketMockHistory();
             var flow1=new LineChartFlow({ID: 'flow1'},mock);
-            flow1.updateProperties({name: 'grafico tempo-temperatura',xKey: 'tempo',yKey: 'temperatura',filters: 'temperature>3',});
             flow1.addRecord({'tempo': 4, 'temperatura': 4});
             flow1.addRecord({'tempo': 9, 'temperatura': 23});
             flow1.addRecord({'tempo': 6, 'temperatura': 7});
             flow1.addRecord({'tempo': 6, 'temperatura': 0});
             flow1.addRecord({'time': 6, 'temp': 0});
+            flow1.updateProperties({name: 'grafico tempo-temperatura',xKey: 'tempo',yKey: 'temperatura',filters: 'temperature>3',});
             assert.strictEqual(flow1._dataLineChartFlow._xKey,'tempo');
             assert.strictEqual(flow1._dataLineChartFlow._yKey,'temperatura');
             assert.strictEqual(flow1._dataLineChartFlow._name,'grafico tempo-temperatura');
             assert.strictEqual(mock.p1[0],'updateFlowData');
             console.log('#updateProperties##updateFlowData '+ JSON.stringify(mock.p2[0]));
+            console.log('#updateProperties##updateFlowProp '+ JSON.stringify(mock.p2[1]));
             assert.strictEqual(mock.p2[0],{});
             assert.strictEqual(mock.p1[1],'updateFlowProp');
-            console.log('#updateProperties##updateFlowProp '+ JSON.stringify(mock.p2[1]));
             assert.strictEqual(mock.p2[1],{});
         });
     });

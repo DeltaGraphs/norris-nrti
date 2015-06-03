@@ -226,20 +226,20 @@ describe(&#039;LineChartFlow&#039;, function() {
         it(&#039;update correct properties&#039;, function() {
             var mock=new socketMockHistory();
             var flow1=new LineChartFlow({ID: &#039;flow1&#039;},mock);
-            flow1.updateProperties({name: &#039;grafico tempo-temperatura&#039;,xKey: &#039;tempo&#039;,yKey: &#039;temperatura&#039;,filters: &#039;temperature&gt;3&#039;,});
             flow1.addRecord({&#039;tempo&#039;: 4, &#039;temperatura&#039;: 4});
             flow1.addRecord({&#039;tempo&#039;: 9, &#039;temperatura&#039;: 23});
             flow1.addRecord({&#039;tempo&#039;: 6, &#039;temperatura&#039;: 7});
             flow1.addRecord({&#039;tempo&#039;: 6, &#039;temperatura&#039;: 0});
             flow1.addRecord({&#039;time&#039;: 6, &#039;temp&#039;: 0});
+            flow1.updateProperties({name: &#039;grafico tempo-temperatura&#039;,xKey: &#039;tempo&#039;,yKey: &#039;temperatura&#039;,filters: &#039;temperature&gt;3&#039;,});
             assert.strictEqual(flow1._dataLineChartFlow._xKey,&#039;tempo&#039;);
             assert.strictEqual(flow1._dataLineChartFlow._yKey,&#039;temperatura&#039;);
             assert.strictEqual(flow1._dataLineChartFlow._name,&#039;grafico tempo-temperatura&#039;);
             assert.strictEqual(mock.p1[0],&#039;updateFlowData&#039;);
             console.log(&#039;#updateProperties##updateFlowData &#039;+ JSON.stringify(mock.p2[0]));
+            console.log(&#039;#updateProperties##updateFlowProp &#039;+ JSON.stringify(mock.p2[1]));
             assert.strictEqual(mock.p2[0],{});
             assert.strictEqual(mock.p1[1],&#039;updateFlowProp&#039;);
-            console.log(&#039;#updateProperties##updateFlowProp &#039;+ JSON.stringify(mock.p2[1]));
             assert.strictEqual(mock.p2[1],{});
         });
     });
