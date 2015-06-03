@@ -129,6 +129,8 @@ describe('LineChartFlow', function() {
             flow1.addRecord({'tempo': 4, 'temperatura': 4});
             flow1.addRecord({'tempo': 9, 'temperatura': 23});
             flow1.addRecord({'tempo': 6, 'temperatura': 7});
+            flow1.addRecord({'tempo': 6, 'temperatura': 0});
+            flow1.addRecord({'time': 6, 'temp': 0});
             assert.strictEqual(flow1._dataLineChartFlow._xKey,'tempo');
             assert.strictEqual(flow1._dataLineChartFlow._yKey,'temperatura');
             assert.strictEqual(flow1._dataLineChartFlow._name,'grafico tempo-temperatura');
