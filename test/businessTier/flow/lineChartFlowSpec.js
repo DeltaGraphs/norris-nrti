@@ -16,7 +16,6 @@
 
 var LineChartFlow = require('../../../lib/businessTier/flow/lineChartFlow.js');
 var assert = require('assert');
-var Socket = require('../../../lib/presentationTier/socket.js');
 var socketMock=function(){
     this.p1=null;
     this.p2=null;
@@ -24,6 +23,16 @@ var socketMock=function(){
     this.sendMessage=function(p1, p2){
         this.p1=p1;
         this.p2=p2;
+    };
+};
+
+var socketMockHistory=function(){
+    this.p1=[];
+    this.p2=[];
+    this._namespace='flow1';
+    this.sendMessage=function(p1, p2){
+        this.p1.push(p1);
+        this.p2.push(p2);
     };
 };
 
@@ -51,10 +60,14 @@ describe('LineChartFlow', function() {
         it('returns 123 if record is invalid', function() {
             var flow1=new LineChartFlow({ID: 'flow1'},new socketMock());
             assert.strictEqual(flow1.addRecord(), 123);
+            
         });
         it('returns valid norrisRecordID if record is valid', function() {
-            var flow1=new LineChartFlow({ID: 'flow1'},new socketMock());
+            var mock=new socketMock();
+            var flow1=new LineChartFlow({ID: 'flow1'},mock);
             assert.strictEqual(flow1.addRecord({'tempo': 1, 'temperatura': 25}).indexOf('flow1'), 0);
+            assert.strictEqual(mock.p1,'updateFlowData');
+            assert.strictEqual(typeof mock.p2,'string');
         });
     });
 
@@ -124,36 +137,22 @@ describe('LineChartFlow', function() {
 
     describe('#updateProperties', function() {
         it('update correct properties', function() {
-            var io = require('socket.io-client');
-            var server = require('socket.io')();
-            server.listen(5000);
-
-            var socketURL = 'http://0.0.0.0:5000/namespace';
-            var options ={
-                transports: ['websocket'],
-                'force new connection': true
-            };
-            var client1 = io.connect(socketURL, options);
-
-            var socket1 = new Socket(server, '/namespace');
-            var flow1=new LineChartFlow({ID: 'flow1'},socket1);
-            flow1.updateProperties({name: 'grafico tempo-temperatura',xKey: 'tempo',yKey: 'temperatura',filters: 'temperature>3',});
+            var mock=new socketMockHistory();
+            var flow1=new LineChartFlow({ID: 'flow1',filters: 'temperature>5'},mock);
             flow1.addRecord({'tempo': 4, 'temperatura': 4});
             flow1.addRecord({'tempo': 9, 'temperatura': 23});
             flow1.addRecord({'tempo': 6, 'temperatura': 7});
             flow1.addRecord({'tempo': 6, 'temperatura': 0});
             flow1.addRecord({'time': 6, 'temp': 0});
-            //assert.strictEqual(flow1._dataLineChartFlow._xKey,'tempo');
-            //assert.strictEqual(flow1._dataLineChartFlow._yKey,'temperatura');
-            //assert.strictEqual(flow1._dataLineChartFlow._name,'grafico tempo-temperatura');
-            client1.on('updateFlowData', function(message) {
-                console.log('STAMPAAAAA#updateFlowData '+message);
-                assert.strictEqual(message, 'message');
-            });
-            client1.on('updateFlowProp', function(message) {
-                console.log('STAMPAAAAA#updateFlowProp '+message);
-                assert.strictEqual(message, 'message');
-            });
+            flow1.updateProperties({name: 'grafico tempo-temperatura',xKey: 'tempo',yKey: 'temperatura',filters: 'temperature>3',});
+            assert.strictEqual(flow1._dataLineChartFlow._xKey,'tempo');
+            assert.strictEqual(flow1._dataLineChartFlow._yKey,'temperatura');
+            assert.strictEqual(flow1._dataLineChartFlow._name,'grafico tempo-temperatura');
+            assert.strictEqual(mock.p1[0],'updateFlowData');
+            console.log('#updateProperties##updateFlowData '+ JSON.stringify(mock.p2[0]));
+            assert.strictEqual(mock.p2[0],{});
+            assert.strictEqual(mock.p1[1],'updateFlowProp');
+            assert.strictEqual(mock.p2[1],{'name':'grafico tempo-temperatura','filters':'temperature>3','xKey':'tempo','yKey':'temperatura'});
         });
     });
 });
