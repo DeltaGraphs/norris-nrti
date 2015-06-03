@@ -47,6 +47,7 @@ describe('LineChart', function() {
 
     it('returns a correct LineChart', function() {
         var mock=new socketMock();
+        console.log('Piedino');
         var lc=new LineChart({ID: 'dada'}, {_page: 'dssada'}, mock);
         assert.strictEqual(lc.hasOwnProperty('_dataLineChart'),true);
     });
