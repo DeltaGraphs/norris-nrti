@@ -151,7 +151,7 @@ Routes.prototype.addRoutingPath = function(namespace, filename) {
 	};
 	app.get(&#039;/&#039;, handle);
 
-	app.use(&#039;/&#039;,Express.static(__dirname + &#039;/../../frontend/app/views&#039;));
+	app.use(&#039;/&#039;,Express.static(__dirname + &#039;/../../frontend/app&#039;));
 	
 	
 	this._exprApp.use(namespace, app);
