@@ -27,22 +27,25 @@ angular.module('app')
 		bindToController: true,
         template: '<div id="map-canvas" style="height:500px;width:500px"></div>',
     	link: function (scope, element, attrs) {
-            //console.log(scope.$parent.page.getGraphsList().length);
+            scope.$watch('scope.mapChart', function(){
+                //console.log('watch ' + scope.mapChart.getFlowList().length);
+                if(scope.mapChart && (scope.mapChart.getFlowList().length>0)){
+                    scope.render();
+                }
+            }, true);
+
             attrs.$observe('id', function(value) {
                 if (value) {
                     if(scope.$parent.page.getGraphsList()[value].graph.constructor.name === 'MapChart'){
                         scope.mapChart = scope.$parent.page.getGraphsList()[value].graph;
-                        console.log(scope.mapChart.getUrl());
+                        console.log('mapchart ' + JSON.stringify(scope.mapChart));
                         scope.socketConnection();
-                        scope.$watch('scope.mapChart', function(){
-                            if(scope.mapChart){
-                                scope.render();
-                            }
-                        }, true);
                     }
                 }
             });
             
+            
+
             scope.render = function(){
                 console.log('render');
 

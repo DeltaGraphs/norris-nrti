@@ -25,13 +25,18 @@ angular.module('app')
 		socket = SocketServicesFactory.build($scope.mapChart.getUrl());
 		this.listenOnEvents();
 	};
-
+	var count = 0;
 	this.listenOnEvents = function(){
 		console.log('listen ON EVENTS');
 		socket.on('configGraph', function(info){
-			console.log('configGraph');
-			$scope.mapChart.updateParameters(info.properties);
-			$scope.mapChart.initializeData(info.data);
+			if (count	=== 0) {
+				console.log('configGraph');
+				$scope.mapChart.updateParameters(info.properties);
+				$scope.mapChart.initializeData(info.data);
+				console.log('configGraph lunghezza flussi ' + $scope.mapChart.getFlowList().length);
+	            console.log('configGraph lung record ' + $scope.mapChart.getFlowList()[0].flow.getData().length);
+	            count++;
+	        }
 		});
 		socket.on('updateGraphProp', function(info){
 			console.log('updateGraphProp');
@@ -55,7 +60,7 @@ angular.module('app')
 				}
 			}
 		});
-		/*socket.on('updateFlowData', function(data){
+		socket.on('updateFlowData', function(data){
 			console.log('updateFlowData ' + data.action);
 			switch (data.action){
 				case 'insertRecords':
@@ -71,7 +76,7 @@ angular.module('app')
 					$scope.mapChart.replaceData(data);
 					break;
 			}
-		});*/
+		});
 
 	};
 
