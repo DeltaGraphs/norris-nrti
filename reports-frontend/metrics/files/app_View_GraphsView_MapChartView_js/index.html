@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">57.81</p>
+      <p class="stat">56.57</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">148</p>
+      <p class="stat">155</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">27.15</p>
+      <p class="stat">27.50</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">1.15</p>
+      <p class="stat">1.52</p>
     </div>
   </div>
 </div>
@@ -118,12 +118,6 @@ angular.module(&#039;app&#039;)
 		bindToController: true,
         template: &#039;&lt;div id=&quot;map-canvas&quot; style=&quot;height:500px;width:500px&quot;&gt;&lt;/div&gt;&#039;,
     	link: function (scope, element, attrs) {
-            scope.$watch(&#039;mapChart&#039;, function(){
-                console.log(&#039;watch &#039; + scope.mapChart.getFlowList().length);
-                if(scope.mapChart &amp;&amp; (scope.mapChart.getFlowList().length&gt;0)){
-                    scope.render();
-                }
-            }, true);
 
             attrs.$observe(&#039;id&#039;, function(value) {
                 if (value) {
@@ -134,18 +128,27 @@ angular.module(&#039;app&#039;)
                     }
                 }
             });
+
+            scope.$watch(&#039;mapChart._mapWidth&#039;, function(newValue, oldValue){
+                if (newValue !== oldValue) {
+                    scope.init();
+                }
+            }, true);
+
+            scope.$watch(&#039;mapChart._graph._flowList&#039;, function(newValue, oldValue){
+                if(newValue !== oldValue){
+                    scope.render();
+                }
+            }, true);
+
+            var map;
             
-            
-
-            scope.render = function(){
-                console.log(&#039;render&#039;);
-
-                var map;
-                var latLng = new google.maps.LatLng(scope.mapChart.getLatitude(), scope.mapChart.getLongitude());
-
+            scope.init = function(){
                 // map config
+                console.log(&#039;init &#039; + JSON.stringify(scope.mapChart));
+
                 var mapOptions = {
-                    center: latLng,
+                    center: new google.maps.LatLng(scope.mapChart.getLatitude(), scope.mapChart.getLongitude()),
                     zoom: 18,
                     mapTypeId: google.maps.MapTypeId.ROADMAP,
                     scrollwheel: scope.mapChart.getZoom()
@@ -167,25 +170,29 @@ angular.module(&#039;app&#039;)
                         map.setMapTypeId(google.maps.MapTypeId.TERRAIN);
                         break;
                 }
-                var marker = new google.maps.Marker({
-                    position: latLng,
-                    map: map,
-                    title: &#039;marker&#039;
-                });
-                var markers = [];
-                console.log(&#039;lunghezza flussi &#039; + scope.mapChart.getFlowList().length);
-                console.log(&#039;lung record &#039; + scope.mapChart.getFlowList()[0].flow.getData().length);
+            };
+
+            var markers = [];
+
+            scope.render = function(){
+                console.log(&#039;render&#039;);
+
+                for (var z = 0; z &lt; markers.length; z++) {
+                    markers[z].setMap(null);
+                }
+                markers = [];
+                
+
+                var latLng = new google.maps.LatLng(scope.mapChart.getLatitude(), scope.mapChart.getLongitude());
+                
+                //console.log(&#039;lunghezza flussi &#039; + scope.mapChart.getFlowList().length);
+                //console.log(&#039;lung record &#039; + scope.mapChart.getFlowList()[0].flow.getData().length);
                 for (var i=0; i&lt;scope.mapChart.getFlowList().length; i++){
                     for (var j=0; j&lt;scope.mapChart.getFlowList()[i].flow.getData().length; j++){
+                        //console.log(j + &#039; lat: &#039; + scope.mapChart.getFlowList()[i].flow.getData()[j].value[0] + &#039; , lng: &#039; + scope.mapChart.getFlowList()[i].flow.getData()[j].value[1]);
                         var coordinates = new google.maps.LatLng(scope.mapChart.getFlowList()[i].flow.getData()[j].value[0], scope.mapChart.getFlowList()[i].flow.getData()[j].value[1]);
-                        markers.push(new google.maps.Marker({
-                            position: coordinates,
-                            map: map,
-                            title: &#039;merkerrrr&#039;
-                        }));
-                        console.log(&#039;type &#039; + scope.mapChart.getFlowList()[i].flow.getMarker().type);
-                        console.log(&#039;shape &#039; + scope.mapChart.getFlowList()[i].flow.getMarker().shape);
-                        /*switch (scope.mapChart.getFlowList()[i].flow.getMarker().type) {
+                        
+                        switch (scope.mapChart.getFlowList()[i].flow.getMarker().type) {
                             case &#039;shape&#039;:
                                 console.log(&#039;shape type&#039;);
                                 var type;
@@ -228,7 +235,7 @@ angular.module(&#039;app&#039;)
                                 });
                                 break;
                         }
-                        markers.push(marker);*/
+                        markers.push(marker);
 
                     }
                 }
