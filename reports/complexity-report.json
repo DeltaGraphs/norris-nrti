@@ -3027,14 +3027,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 20,
-                    "physical": 53
+                    "logical": 36,
+                    "physical": 72
                 },
-                "cyclomatic": 4,
+                "cyclomatic": 6,
                 "halstead": {
                     "operators": {
-                        "distinct": 11,
-                        "total": 60,
+                        "distinct": 18,
+                        "total": 110,
                         "identifiers": [
                             "var",
                             "=",
@@ -3046,12 +3046,19 @@
                             "! (prefix)",
                             ".",
                             "return",
-                            "new"
+                            "new",
+                            "&&",
+                            "!==",
+                            "[]",
+                            "forin",
+                            "typeof (prefix)",
+                            "{}",
+                            ":"
                         ]
                     },
                     "operands": {
-                        "distinct": 34,
-                        "total": 71,
+                        "distinct": 54,
+                        "total": 125,
                         "identifiers": [
                             "\"use strict\"",
                             "TableFlowModel",
@@ -3081,25 +3088,45 @@
                             "addRecord",
                             "<anonymous>",
                             "record",
-                            "updateRecord",
+                            "res",
+                            143,
+                            "getRecordByID",
+                            "norrisRecordIsValid",
+                            "columnKeys",
+                            "_columnKeys",
+                            "newValue",
+                            "key",
+                            "\"number\"",
+                            "push",
+                            "data",
+                            "action",
+                            "\"insertRecords\"",
                             "ID",
+                            "_ID",
+                            "records",
+                            "norrisRecordID",
+                            "value",
+                            "\"updateFlowData\"",
+                            "_graphSocket",
+                            "sendMessage",
+                            "updateRecord",
                             "getReplaceDataJSON",
                             "updateProperties",
                             "module",
                             "exports"
                         ]
                     },
-                    "length": 131,
-                    "vocabulary": 45,
-                    "difficulty": 11.48529411764706,
-                    "volume": 719.4327556191874,
-                    "effort": 8262.896796155668,
-                    "bugs": 0.23981091853972916,
-                    "time": 459.0498220086482
+                    "length": 235,
+                    "vocabulary": 72,
+                    "difficulty": 20.833333333333336,
+                    "volume": 1449.9323753389433,
+                    "effort": 30206.92448622799,
+                    "bugs": 0.48331079177964775,
+                    "time": 1678.1624714571105
                 },
                 "params": 6,
                 "line": 2,
-                "cyclomaticDensity": 20
+                "cyclomaticDensity": 16.666666666666664
             },
             "functions": [
                 {
@@ -3163,34 +3190,75 @@
                 {
                     "name": "<anonymous>.addRecord",
                     "sloc": {
-                        "logical": 0,
-                        "physical": 3
+                        "logical": 16,
+                        "physical": 22
                     },
-                    "cyclomatic": 1,
+                    "cyclomatic": 3,
                     "halstead": {
                         "operators": {
-                            "distinct": 0,
-                            "total": 0,
-                            "identifiers": []
-                        },
-                        "operands": {
-                            "distinct": 1,
-                            "total": 1,
+                            "distinct": 14,
+                            "total": 50,
                             "identifiers": [
-                                "record"
+                                "var",
+                                "=",
+                                "()",
+                                ".",
+                                "if",
+                                "&&",
+                                "!==",
+                                "[]",
+                                "forin",
+                                "===",
+                                "typeof (prefix)",
+                                "{}",
+                                ":",
+                                "return"
                             ]
                         },
-                        "length": 1,
-                        "vocabulary": 1,
-                        "difficulty": 0,
-                        "volume": 0,
-                        "effort": 0,
-                        "bugs": 0,
-                        "time": 0
+                        "operands": {
+                            "distinct": 27,
+                            "total": 55,
+                            "identifiers": [
+                                "record",
+                                "res",
+                                "this",
+                                "_dataTableFlow",
+                                "addRecord",
+                                143,
+                                "getRecordByID",
+                                "norrisRecordIsValid",
+                                "columnKeys",
+                                "_columnKeys",
+                                "newValue",
+                                "<anonymous>",
+                                "key",
+                                "undefined",
+                                "\"number\"",
+                                "push",
+                                "data",
+                                "action",
+                                "\"insertRecords\"",
+                                "ID",
+                                "_ID",
+                                "records",
+                                "norrisRecordID",
+                                "value",
+                                "\"updateFlowData\"",
+                                "_graphSocket",
+                                "sendMessage"
+                            ]
+                        },
+                        "length": 105,
+                        "vocabulary": 41,
+                        "difficulty": 14.25925925925926,
+                        "volume": 562.5429604848988,
+                        "effort": 8021.445918025409,
+                        "bugs": 0.18751432016163294,
+                        "time": 445.63588433474496
                     },
                     "params": 1,
                     "line": 37,
-                    "cyclomaticDensity": null
+                    "cyclomaticDensity": 18.75
                 },
                 {
                     "name": "<anonymous>.updateRecord",
@@ -3222,7 +3290,7 @@
                         "time": 0
                     },
                     "params": 2,
-                    "line": 41,
+                    "line": 60,
                     "cyclomaticDensity": null
                 },
                 {
@@ -3252,7 +3320,7 @@
                         "vocabulary": 0
                     },
                     "params": 0,
-                    "line": 45,
+                    "line": 64,
                     "cyclomaticDensity": null
                 },
                 {
@@ -3284,7 +3352,7 @@
                         "time": 0
                     },
                     "params": 1,
-                    "line": 49,
+                    "line": 68,
                     "cyclomaticDensity": null
                 }
             ],
@@ -3300,10 +3368,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 143.21904729324075,
-            "loc": 1.6,
-            "cyclomatic": 1.6,
-            "effort": 352.5329788605819,
+            "maintainability": 119.50855462793464,
+            "loc": 4.8,
+            "cyclomatic": 2,
+            "effort": 1956.822162465664,
             "params": 1.2,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/flow/tableFlow.js"
         },
@@ -3989,42 +4057,45 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 12,
-                    "physical": 33
+                    "logical": 15,
+                    "physical": 36
                 },
                 "cyclomatic": 5,
                 "halstead": {
                     "operators": {
                         "distinct": 9,
-                        "total": 28,
+                        "total": 34,
                         "identifiers": [
                             "function",
+                            "()",
+                            ".",
                             "if",
                             "||",
                             "===",
                             "! (prefix)",
-                            "()",
-                            ".",
                             "return",
                             "="
                         ]
                     },
                     "operands": {
-                        "distinct": 19,
-                        "total": 34,
+                        "distinct": 22,
+                        "total": 43,
                         "identifiers": [
                             "\"use strict\"",
                             "Graph",
                             "page",
                             "graphSocket",
+                            "\"Piedino4-1\"",
+                            "console",
+                            "log",
                             "undefined",
                             "\"_page\"",
                             "_hasOwnProperty",
                             "\"Error: 302\"",
-                            "console",
-                            "log",
+                            "\"Piedino4-2\"",
                             "\"_namespace\"",
                             "\"Error: 301\"",
+                            "\"Piedino4-3\"",
                             "this",
                             "_page",
                             "_graphSocket",
@@ -4034,55 +4105,58 @@
                             "exports"
                         ]
                     },
-                    "length": 62,
-                    "vocabulary": 28,
-                    "difficulty": 8.052631578947368,
-                    "volume": 298.0560051675714,
-                    "effort": 2400.1351995072855,
-                    "bugs": 0.0993520017225238,
-                    "time": 133.34084441707142
+                    "length": 77,
+                    "vocabulary": 31,
+                    "difficulty": 8.795454545454545,
+                    "volume": 381.47311589978943,
+                    "effort": 3355.2294512095114,
+                    "bugs": 0.1271577052999298,
+                    "time": 186.40163617830618
                 },
                 "params": 2,
                 "line": 2,
-                "cyclomaticDensity": 41.66666666666667
+                "cyclomaticDensity": 33.33333333333333
             },
             "functions": [
                 {
                     "name": "Graph",
                     "sloc": {
-                        "logical": 9,
-                        "physical": 14
+                        "logical": 12,
+                        "physical": 17
                     },
                     "cyclomatic": 5,
                     "halstead": {
                         "operators": {
                             "distinct": 8,
-                            "total": 25,
+                            "total": 31,
                             "identifiers": [
+                                "()",
+                                ".",
                                 "if",
                                 "||",
                                 "===",
                                 "! (prefix)",
-                                "()",
-                                ".",
                                 "return",
                                 "="
                             ]
                         },
                         "operands": {
-                            "distinct": 15,
-                            "total": 29,
+                            "distinct": 18,
+                            "total": 38,
                             "identifiers": [
                                 "page",
                                 "graphSocket",
+                                "\"Piedino4-1\"",
+                                "console",
+                                "log",
                                 "undefined",
                                 "\"_page\"",
                                 "_hasOwnProperty",
                                 "\"Error: 302\"",
-                                "console",
-                                "log",
+                                "\"Piedino4-2\"",
                                 "\"_namespace\"",
                                 "\"Error: 301\"",
+                                "\"Piedino4-3\"",
                                 "this",
                                 "_page",
                                 "_graphSocket",
@@ -4090,38 +4164,38 @@
                                 "attachObject"
                             ]
                         },
-                        "length": 54,
-                        "vocabulary": 23,
-                        "difficulty": 7.733333333333333,
-                        "volume": 244.2723456270787,
-                        "effort": 1889.0394728494086,
-                        "bugs": 0.08142411520902623,
-                        "time": 104.9466373805227
+                        "length": 69,
+                        "vocabulary": 26,
+                        "difficulty": 8.444444444444445,
+                        "volume": 324.3303405517354,
+                        "effort": 2738.7895424368767,
+                        "bugs": 0.10811011351724513,
+                        "time": 152.15497457982647
                     },
                     "params": 2,
                     "line": 19,
-                    "cyclomaticDensity": 55.55555555555556
+                    "cyclomaticDensity": 41.66666666666667
                 }
             ],
             "dependencies": [],
-            "maintainability": 109.23491385631196,
-            "loc": 9,
+            "maintainability": 103.3041136086049,
+            "loc": 12,
             "cyclomatic": 5,
-            "effort": 1889.0394728494086,
+            "effort": 2738.7895424368767,
             "params": 2,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/graph/graph.js"
         },
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 105,
-                    "physical": 170
+                    "logical": 110,
+                    "physical": 175
                 },
                 "cyclomatic": 18,
                 "halstead": {
                     "operators": {
                         "distinct": 22,
-                        "total": 334,
+                        "total": 344,
                         "identifiers": [
                             "var",
                             "=",
@@ -4148,8 +4222,8 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 96,
-                        "total": 370,
+                        "distinct": 101,
+                        "total": 385,
                         "identifiers": [
                             "\"use strict\"",
                             "Graph",
@@ -4167,17 +4241,22 @@
                             "\"Error: 371\"",
                             "console",
                             "log",
+                            "\"Piedino1\"",
                             "\"_namespace\"",
                             "_hasOwnProperty",
                             "\"Error: 372\"",
+                            "\"Piedino2\"",
                             "\"_page\"",
                             "\"Error: 373\"",
+                            "\"Piedino3\"",
                             "lc",
                             "\"_ID\"",
+                            "\"Piedino4\"",
                             "this",
                             "parent",
                             "_constructor",
                             "call",
+                            "\"Piedino5\"",
                             "_dataLineChart",
                             "_flows",
                             "<anonymous>",
@@ -4249,30 +4328,30 @@
                             "exports"
                         ]
                     },
-                    "length": 704,
-                    "vocabulary": 118,
-                    "difficulty": 42.39583333333333,
-                    "volume": 4845.380706750737,
-                    "effort": 205423.95287995308,
-                    "bugs": 1.6151269022502457,
-                    "time": 11412.44182666406
+                    "length": 729,
+                    "vocabulary": 123,
+                    "difficulty": 41.930693069306926,
+                    "volume": 5061.093074392305,
+                    "effort": 212215.14029753872,
+                    "bugs": 1.6870310247974352,
+                    "time": 11789.73001652993
                 },
                 "params": 12,
                 "line": 2,
-                "cyclomaticDensity": 17.142857142857142
+                "cyclomaticDensity": 16.363636363636363
             },
             "functions": [
                 {
                     "name": "LineChart",
                     "sloc": {
-                        "logical": 15,
-                        "physical": 21
+                        "logical": 20,
+                        "physical": 26
                     },
                     "cyclomatic": 5,
                     "halstead": {
                         "operators": {
                             "distinct": 10,
-                            "total": 36,
+                            "total": 46,
                             "identifiers": [
                                 "if",
                                 "===",
@@ -4287,8 +4366,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 22,
-                            "total": 39,
+                            "distinct": 27,
+                            "total": 54,
                             "identifiers": [
                                 "params",
                                 "page",
@@ -4297,34 +4376,39 @@
                                 "\"Error: 371\"",
                                 "console",
                                 "log",
+                                "\"Piedino1\"",
                                 "\"_namespace\"",
                                 "_hasOwnProperty",
                                 "\"Error: 372\"",
+                                "\"Piedino2\"",
                                 "\"_page\"",
                                 "\"Error: 373\"",
+                                "\"Piedino3\"",
                                 "lc",
                                 "LineChartModel",
                                 "\"_ID\"",
+                                "\"Piedino4\"",
                                 "this",
                                 "parent",
                                 "_constructor",
                                 "call",
+                                "\"Piedino5\"",
                                 "_dataLineChart",
                                 "_flows",
                                 "<anonymous>"
                             ]
                         },
-                        "length": 75,
-                        "vocabulary": 32,
-                        "difficulty": 8.863636363636363,
-                        "volume": 375,
-                        "effort": 3323.863636363636,
-                        "bugs": 0.125,
-                        "time": 184.65909090909088
+                        "length": 100,
+                        "vocabulary": 37,
+                        "difficulty": 10,
+                        "volume": 520.945336562895,
+                        "effort": 5209.45336562895,
+                        "bugs": 0.173648445520965,
+                        "time": 289.414075868275
                     },
                     "params": 3,
                     "line": 23,
-                    "cyclomaticDensity": 33.33333333333333
+                    "cyclomaticDensity": 25
                 },
                 {
                     "name": "<anonymous>.getFlowByID",
@@ -4382,7 +4466,7 @@
                         "time": 195.7428688390628
                     },
                     "params": 1,
-                    "line": 49,
+                    "line": 54,
                     "cyclomaticDensity": 41.66666666666667
                 },
                 {
@@ -4453,7 +4537,7 @@
                         "time": 298.22882019930233
                     },
                     "params": 1,
-                    "line": 70,
+                    "line": 75,
                     "cyclomaticDensity": 13.333333333333334
                 },
                 {
@@ -4516,7 +4600,7 @@
                         "time": 265.7618707026162
                     },
                     "params": 1,
-                    "line": 91,
+                    "line": 96,
                     "cyclomaticDensity": 35.714285714285715
                 },
                 {
@@ -4567,7 +4651,7 @@
                         "time": 39.2116385856331
                     },
                     "params": 0,
-                    "line": 114,
+                    "line": 119,
                     "cyclomaticDensity": 50
                 },
                 {
@@ -4607,7 +4691,7 @@
                         "time": 4.199999999999999
                     },
                     "params": 2,
-                    "line": 123,
+                    "line": 128,
                     "cyclomaticDensity": 100
                 },
                 {
@@ -4648,7 +4732,7 @@
                         "time": 5.547368752524047
                     },
                     "params": 3,
-                    "line": 127,
+                    "line": 132,
                     "cyclomaticDensity": 100
                 },
                 {
@@ -4696,7 +4780,7 @@
                         "time": 38.400000000000006
                     },
                     "params": 1,
-                    "line": 132,
+                    "line": 137,
                     "cyclomaticDensity": 50
                 },
                 {
@@ -4734,7 +4818,7 @@
                         "time": 1.5078947920873411
                     },
                     "params": 0,
-                    "line": 140,
+                    "line": 145,
                     "cyclomaticDensity": 100
                 },
                 {
@@ -4802,7 +4886,7 @@
                         "time": 902.3242435850648
                     },
                     "params": 0,
-                    "line": 144,
+                    "line": 149,
                     "cyclomaticDensity": 15
                 }
             ],
@@ -4823,10 +4907,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 107.83236690134254,
-            "loc": 8.7,
+            "maintainability": 106.74684594979303,
+            "loc": 9.2,
             "cyclomatic": 2.7,
-            "effort": 3484.0508334576866,
+            "effort": 3672.6098063842173,
             "params": 1.2,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/graph/lineChart.js"
         },
@@ -16821,9 +16905,9 @@
     ],
     "changeCost": 21.22788761706556,
     "coreSize": 29.03225806451613,
-    "loc": 10.043952284274868,
-    "cyclomatic": 4.245401909918041,
-    "effort": 7810.910727462017,
+    "loc": 10.260081316532933,
+    "cyclomatic": 4.258305135724492,
+    "effort": 7896.155831530376,
     "params": 1.119795079472499,
-    "maintainability": 106.76269620995684
+    "maintainability": 105.7715086659387
 }
