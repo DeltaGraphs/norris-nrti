@@ -134,7 +134,7 @@ describe('LineChartFlow', function() {
     describe('#updateProperties', function() {
         it('update correct properties', function() {
             var mock=new socketMockHistory();
-            var flow1=new LineChartFlow({ID: 'flow1'},mock);
+            var flow1=new LineChartFlow({ID: 'flow1',filters: 'temperature>5'},mock);
             flow1.addRecord({'tempo': 4, 'temperatura': 4});
             flow1.addRecord({'tempo': 9, 'temperatura': 23});
             flow1.addRecord({'tempo': 6, 'temperatura': 7});
