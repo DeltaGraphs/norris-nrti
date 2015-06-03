@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">64.13</p>
+      <p class="stat">62.87</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">254</p>
+      <p class="stat">284</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">30.52</p>
+      <p class="stat">33.62</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">2.82</p>
+      <p class="stat">3.09</p>
     </div>
   </div>
 </div>
@@ -141,9 +141,26 @@ describe(&#039;MapChartFlow&#039;, function() {
             var flow1=new MapChartFlow({ID: &#039;flow1&#039;}, new socketMock());
             assert.strictEqual(flow1.addRecord(), 133);
         });
-        it(&#039;returns valid norrisRecordID if record is valid&#039;, function() {
-            var flow2=new MapChartFlow({ID: &#039;flow2&#039;}, new socketMock());
-            assert.strictEqual(flow2.addRecord({temperature: 2}).indexOf(&#039;flow2&#039;), 0);
+        it(&#039;returns valid norrisRecordID if record is valid and sends right message&#039;, function() {
+            var mock=new socketMock();
+            var flow2=new MapChartFlow({
+                ID: &#039;flow2&#039;,
+                objectKey: &#039;temperature&#039;,
+                latitudeKey: &#039;a&#039;,
+                longitudeKey: &#039;b&#039;
+            }, mock);
+            var ID=flow2.addRecord({temperature: 2, a:1, b:2});
+            assert.strictEqual(ID.indexOf(&#039;flow2&#039;), 0);
+            assert.strictEqual(mock.p1, &#039;updateFlowData&#039;);
+            assert.deepEqual(mock.p2,{
+                action: &#039;insertRecords&#039;,
+                ID: &#039;flow2&#039;,
+                records: [{
+                    norrisRecordID: ID,
+                    markerID: 2,
+                    value: [1,2]
+                }]
+            });
         });
     });
 
@@ -154,10 +171,23 @@ describe(&#039;MapChartFlow&#039;, function() {
             assert.strictEqual(flow1.deleteRecord(), 155);
             assert.strictEqual(flow1.deleteRecord(&#039;flow1asd&#039;), 155);
         });
-        it(&#039;returns true if ID is valid&#039;, function() {
-            var flow1=new MapChartFlow({ID: &#039;flow1&#039;}, new socketMock());
-            var ID=flow1.addRecord({temperature: 2});
+        it(&#039;returns true if ID is valid and sends right message&#039;, function() {
+            var mock=new socketMock();
+            var flow1=new MapChartFlow({ID: &#039;flow1&#039;}, mock);
+            var flow2=new MapChartFlow({
+                ID: &#039;flow2&#039;,
+                objectKey: &#039;temperature&#039;,
+                latitudeKey: &#039;a&#039;,
+                longitudeKey: &#039;b&#039;
+            }, mock);
+            var ID=flow2.addRecord({temperature: 2, a:1, b:2});
             assert.strictEqual(flow1.deleteRecord(ID), true);
+            assert.strictEqual(mock.p1, &#039;updateFlowData&#039;);
+            assert.deepEqual(mock.p2,{
+                action: &#039;deleteRecord&#039;,
+                ID: &#039;flow1&#039;,
+                norrisRecordID: ID,
+            });
         });
     });
 

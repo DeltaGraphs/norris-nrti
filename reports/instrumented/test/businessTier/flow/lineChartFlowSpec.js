@@ -64,11 +64,22 @@ describe('LineChartFlow', function() {
         });
         it('returns valid norrisRecordID if record is valid', function() {
             var mock=new socketMock();
-            var flow1=new LineChartFlow({ID: 'flow1'},mock);
-            assert.strictEqual(flow1.addRecord({'tempo': 1, 'temperatura': 25}).indexOf('flow1'), 0);
-            assert.strictEqual(mock.p1,'updateFlowData');
-            console.log('STAMPAAAA#addRecord '+JSON.stringify(mock.p2));
-            assert.deepEqual(mock.p2,{});
+            var flow1=new LineChartFlow({
+                ID: 'flow1',
+                xKey: 'a',
+                yKey: 'b'
+            },mock);
+            var ID=flow1.addRecord({'a': 1, 'b': 25});
+            assert.strictEqual(ID.indexOf('flow1'), 0);
+            assert.strictEqual(mock.p1, 'updateFlowData');
+            assert.deepEqual(mock.p2,{
+                action: 'insertRecords',
+                ID: 'flow1',
+                records: [{
+                    norrisRecordID: ID,
+                    value: [1,25]
+                }]
+            });
         });
     });
 
