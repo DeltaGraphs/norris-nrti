@@ -140,6 +140,22 @@ describe('BarChartFlowModel', function() {
             assert.strictEqual(result.flowColor, prop.flowColor);
         });
     });
-
-
+    describe('#getRecordByIndex', function() {
+        it('returns correct record', function() {
+            var flow1=new BarChartFlowModel({
+                ID: 'flow1',
+                indexKey: 'temperature',
+                valueKey: 'pressure',
+                indexFormat: 'toInt',
+                valueFormat: 'toFloat',
+                flowColor: '#FFFFFF'
+            },[
+                {temperature: 2, pressure: 4},
+                {temperature: 1, pressure: 5}
+            ]);
+            var rec=flow1.getRecordByIndex(0);
+            console.dir('STAMPAAAA#getRecordByIndex '+JSON.stringify(rec));
+            assert.deepEqual(rec,{temperature: 2, pressure: 4});
+        });
+    });
 });
