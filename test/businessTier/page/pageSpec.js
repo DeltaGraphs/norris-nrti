@@ -30,7 +30,6 @@ var io = require('socket.io')(server);
 io.listen(5000);
 var ioclient = require('socket.io-client');
 var nor = new Norris(app, io, '/norris');
-var page1 = nor.createPage('page1');
 
 function ParamMock() {
     this._app = null;
@@ -88,7 +87,7 @@ describe('Page', function() {
 
     describe('#getConfigJSON', function() {
         it('returns the JSON to send to clients when they connect', function() {
-            var pg = nor.createPage({ID:'page2', name:'page2', description:'page two', graphsPerRow: 3, graphsPerCol: 5});
+            var page2 = nor.createPage({ID:'page2', name:'page2', description:'page two', graphsPerRow: 3, graphsPerCol: 5});
             page2.createMapChart({ID:'map1'});
             page2.createLineChart({ID:'line1'});
             var expectedJSON = {
@@ -181,6 +180,8 @@ describe('Page', function() {
     });
 
     describe('#createMapChart', function() {
+        var nor = new Norris(app, io, '/norris');
+        var page1 = nor.createPage('page1');
         it('returns null if no parameter is passed', function() {
             assert.deepEqual(page1.createMapChart(), null);
         });
@@ -225,6 +226,8 @@ describe('Page', function() {
     });
 
     describe('#createLineChart', function() {
+        var nor = new Norris(app, io, '/norris');
+        var page1 = nor.createPage('page1');
         it('returns null if no parameter is passed', function() {
             assert.deepEqual(page1.createLineChart(), null);
         });
