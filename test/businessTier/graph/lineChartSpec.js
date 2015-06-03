@@ -65,9 +65,7 @@ describe('LineChart', function() {
 
     it('returns a correct LineChart', function() {
         var mock=new socketMock();
-        console.log('Piedino');
         var lc=new LineChart({ID: 'dada'}, {_page: 'dssada'}, mock);
-        //console.log('PIEDONE '+JSON.stringify(lc));
         assert.strictEqual(lc.hasOwnProperty('_dataLineChart'),true);
     });
 
@@ -82,8 +80,7 @@ describe('LineChart', function() {
             var mock=new socketMock();
             var lineChart=new LineChart({ID: 'dada'}, {_page: 'dssada'}, mock);
             lineChart.createLineChartFlow({ ID:'flow1', name: 'grafico tempo-temperatura', xKey: 'tempo', yKey: 'temperatura'});
-            lineChart.createLineChartFlow({ ID:'flow2', name: 'grafico tempo-temperatura', xKey: 'tempo', yKey: 'temperatura'});
-            console.log('SOSTITUIREgetFlowByIDgetFlowByID '+JSON.stringify(lineChart.getFlowByID('flow1')));
+            lineChart.createLineChartFlow({ ID:'flow2', name: 'grafico tempo-temperatura', xKey: 'tempo', yKey: 'temperatura'});            
             assert.deepEqual(lineChart.getFlowByID('flow2')._dataLineChartFlow._ID, 'flow2');
         });
     });
@@ -134,9 +131,9 @@ describe('LineChart', function() {
             lineChart.createLineChartFlow({ ID:'flow2', name: 'grafico tempo-temperatura', xKey: 'tempo', yKey: 'temperatura'});
             lineChart.deleteAllFlows();
             assert.strictEqual(mock.p1[mock.p1.length-2],'deleteFlow');
-            assert.strictEqual(mock.p2[mock.p2.length-2], {ID: 'flow1'});
+            assert.deepEqual(mock.p2[mock.p2.length-2], {ID: 'flow1'});
             assert.strictEqual(mock.p1[mock.p1.length-1],'deleteFlow');
-            assert.strictEqual(mock.p2[mock.p2.length-1], {ID: 'flow2'});
+            assert.deepEqual(mock.p2[mock.p2.length-1], {ID: 'flow2'});
             assert.strictEqual(lineChart._flows.length,0);
         });
     });
@@ -144,7 +141,7 @@ describe('LineChart', function() {
         it('returned 123 - undefined record', function() {
             var mock=new socketMock();
             var lineChart=new LineChart({ID: 'dada'}, {_page: 'dssada'}, mock);
-            assert.strictEqual( lineChart.addRecord(),123);
+            assert.strictEqual(lineChart.addRecord(),123);
         });
         it('returned correct ID - record added correctly', function() {
             var mock=new socketMock();
@@ -173,7 +170,7 @@ describe('LineChart', function() {
             var lineChart=new LineChart({ID: 'dada'}, {_page: 'dssada'}, mock);
             lineChart.updateProperties();
             assert.strictEqual(mock.p1,null);
-            assert.deepEqual(mock.p2,null);
+            assert.strictEqual(mock.p2,null);
         });
         it('updated properties', function() {
             var mock = new socketMock();
