@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for norris-nrti/lib/businessTier/flow/barChartFlow.js</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../../../prettify.css">
+    <link rel="stylesheet" href="../../../../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1>Code coverage report for <span class="entity">norris-nrti/lib/businessTier/flow/barChartFlow.js</span></h1>
+    <h2>
+        Statements: <span class="metric">17.54% <small>(10 / 57)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">0% <small>(0 / 34)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">0% <small>(0 / 4)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">17.54% <small>(10 / 57)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../../index.html">All files</a> &#187; <a href="index.html">norris-nrti/lib/businessTier/flow/</a> &#187; barChartFlow.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*jshint node: true, -W106 */
+'use strict';
+&nbsp;
+/*
+* Name : lineChartFlow.js
+* Module : Lib::BusinessTier::LineChartFlow
+* Location : /lib/businessTier/flow
+*
+* History :
+* 
+* Version   Date         Programmer         Description
+* =========================================================
+* 0.0.1     2015-05-25   Filippo Rampado    Initial code
+* =========================================================
+*/
+&nbsp;
+var BarChartFlowModel=require('../../dataTier/flow/barChartFlowModel.js');
+var Flow=require('./flow.js');
+&nbsp;
+<span class="fstat-no" title="function not covered" >function BarChartFlow(params, graphSocket, records) {</span>
+<span class="cstat-no" title="statement not covered" >	if (graphSocket===undefined || !(graphSocket.hasOwnProperty('_namespace'))){</span>
+<span class="cstat-no" title="statement not covered" >		console.log('Error: 201');</span>
+<span class="cstat-no" title="statement not covered" >		return;</span>
+	}
+<span class="cstat-no" title="statement not covered" >	var bc=new BarChartFlowModel(params, records);</span>
+<span class="cstat-no" title="statement not covered" >	if (!bc.hasOwnProperty('_ID')){</span>
+<span class="cstat-no" title="statement not covered" >		return;</span>
+	}
+<span class="cstat-no" title="statement not covered" >	this.parent.constructor.call(this, graphSocket);</span>
+<span class="cstat-no" title="statement not covered" >	this._dataBarChartFlow=bc;</span>
+}
+&nbsp;
+BarChartFlow.prototype = Object.create(Flow.prototype);
+BarChartFlow.prototype.constructor = Flow;
+BarChartFlow.prototype.parent = Flow.prototype;
+&nbsp;
+BarChartFlow.prototype.updateRecord = <span class="fstat-no" title="function not covered" >function(index, record){</span>
+<span class="cstat-no" title="statement not covered" >	var oldValid=this._dataBarChartFlow.getRecordByIndex(index).norrisRecordIsValid;</span>
+<span class="cstat-no" title="statement not covered" >	var res=this._dataBarChartFlow.updateRecord(index, record);</span>
+<span class="cstat-no" title="statement not covered" >	var newValid=this._dataBarChartFlow.getRecordByIndex(index).norrisRecordIsValid;</span>
+<span class="cstat-no" title="statement not covered" >	if (res===true ){</span>
+<span class="cstat-no" title="statement not covered" >		if (oldValid &amp;&amp; !newValid){</span>
+<span class="cstat-no" title="statement not covered" >			var data={</span>
+				action: 'deleteRecord',
+				ID: this._dataBarChartFlow._ID,
+				norrisRecordID: this._dataBarChartFlow.getRecordByIndex(index)._ID
+			};
+<span class="cstat-no" title="statement not covered" >			this._graphSocket.sendMessage('updateFlowData', data);</span>
+		}
+<span class="cstat-no" title="statement not covered" >		if (newValid){</span>
+<span class="cstat-no" title="statement not covered" >			var indexKey=this._dataBarChartFlow._indexKey;</span>
+<span class="cstat-no" title="statement not covered" >			var valueKey=this._dataBarChartFlow._valueKey;</span>
+<span class="cstat-no" title="statement not covered" >			var newValue=[null, null];</span>
+<span class="cstat-no" title="statement not covered" >			if (record[indexKey]!==undefined &amp;&amp; typeof record[indexKey]==='number' &amp;&amp; record[valueKey]!==undefined &amp;&amp; typeof record[valueKey]==='number'){</span>
+<span class="cstat-no" title="statement not covered" >				newValue=[record[indexKey], record[valueKey]];</span>
+			}
+<span class="cstat-no" title="statement not covered" >			if (!oldValid){</span>
+<span class="cstat-no" title="statement not covered" >				var data2={</span>
+					action: 'insertRecords',
+					ID: this._dataBarChartFlow._ID,
+					records: [{
+						norrisRecordID: res,
+						value: newValue
+					}]
+				};
+<span class="cstat-no" title="statement not covered" >				this._graphSocket.sendMessage('updateFlowData', data2);</span>
+			}
+<span class="cstat-no" title="statement not covered" >			if (oldValid){</span>
+<span class="cstat-no" title="statement not covered" >				var data3={</span>
+					action: 'updateRecord',
+					ID: this._dataBarChartFlow._ID,
+					norrisRecordID: this._dataBarChartFlow.getRecordByIndex(index)._ID,
+					value: newValue
+				};
+<span class="cstat-no" title="statement not covered" >				this._graphSocket.sendMessage('updateFlowData', data3);</span>
+			}
+		}
+	}
+<span class="cstat-no" title="statement not covered" >	return res;</span>
+};
+&nbsp;
+BarChartFlow.prototype.getReplaceDataJSON = <span class="fstat-no" title="function not covered" >function(){</span>
+<span class="cstat-no" title="statement not covered" >	var records=[];</span>
+	/*for(var key in this._dataBarChartFlow._records){
+		records.push({
+			norrisRecordID : this._dataBarChartFlow._records[key].norrisRecordID,
+			markerID: this._dataBarChartFlow._records[key][this._dataBarChartFlow._objectKey],
+			value: [ //lat,long
+				this._dataBarChartFlow._records[key][this._dataBarChartFlow._xKey],
+				this._dataBarChartFlow._records[key][this._dataBarChartFlow._yKey]
+			]
+		});
+	}*/
+<span class="cstat-no" title="statement not covered" >	var dataRecords=this._dataBarChartFlow._records;</span>
+<span class="cstat-no" title="statement not covered" >	for (var i=0; i&lt;dataRecords.length; i++){</span>
+<span class="cstat-no" title="statement not covered" >		records.push({</span>
+			norrisRecordID : dataRecords[i].norrisRecordID,
+			value: [ //lat,long
+				dataRecords[i][this._dataBarChartFlow._indexKey],
+				dataRecords[i][this._dataBarChartFlow._valueKey]
+			]
+		});
+	}
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	return {</span>
+		action: 'replaceData',
+		ID: this._dataBarChartFlow._ID,
+		records: records
+	};
+};
+&nbsp;
+BarChartFlow.prototype.updateProperties = <span class="fstat-no" title="function not covered" >function(params){</span>
+<span class="cstat-no" title="statement not covered" >	if (params!==undefined){</span>
+<span class="cstat-no" title="statement not covered" >		var prop=this._dataBarChartFlow.updateProperties(params);</span>
+<span class="cstat-no" title="statement not covered" >		prop.ID=this._dataBarChartFlow.ID;</span>
+<span class="cstat-no" title="statement not covered" >		if (prop.filters !== undefined){//filters changed</span>
+<span class="cstat-no" title="statement not covered" >			var indexKey=this._dataBarChartFlow._indexKey;</span>
+<span class="cstat-no" title="statement not covered" >			var records=[];</span>
+<span class="cstat-no" title="statement not covered" >			var recordsModel=this._dataBarChartFlow._records;</span>
+<span class="cstat-no" title="statement not covered" >			var nRecords=this._dataBarChartFlow._records.length;</span>
+<span class="cstat-no" title="statement not covered" >			for (var i=0; i&lt;nRecords; i++){</span>
+<span class="cstat-no" title="statement not covered" >				if (recordsModel[i][indexKey]!==undefined &amp;&amp;</span>
+				typeof recordsModel[i][indexKey]==='number'){
+<span class="cstat-no" title="statement not covered" >					if (recordsModel[i].norrisIsValid){</span>
+<span class="cstat-no" title="statement not covered" >						records.push({</span>
+							norrisRecordID: recordsModel[i].norrisRecordID,
+							markerID: params[this._dataBarChartFlow._objectKey],
+							value: [recordsModel[i][indexKey]]
+						});
+					}
+				}
+			}
+<span class="cstat-no" title="statement not covered" >			this._graphSocket.sendMessage('updateFlowData', this.getReplaceDataJSON());</span>
+		}
+<span class="cstat-no" title="statement not covered" >		this._graphSocket.sendMessage('updateFlowProp', prop);</span>
+	}
+};
+&nbsp;
+module.exports = BarChartFlow;
+&nbsp;</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Jun 03 2015 00:19:18 GMT+0000 (UTC)</div>
+</div>
+<script src="../../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../../sorter.js"></script>
+</body>
+</html>

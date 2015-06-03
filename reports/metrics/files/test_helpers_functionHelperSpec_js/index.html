@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Plato - test/helpers/functionHelperSpec.js</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link href="../../assets/css/vendor/morris.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet">
+  <link href="../../assets/css/plato.css" rel="stylesheet">
+  <link href="../../assets/css/plato-file.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="http://github.com/es-analysis/plato">Plato on Github</a>
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="../../index.html">Report Home</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>test/helpers/functionHelperSpec.js</h1>
+  </div>
+</div>
+
+<div class="container aggregate-stats">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
+      <p class="stat">78.19</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
+      <p class="stat">283</p>
+    </div>
+  </div>
+  <div class="row historical">
+    <div class="col-md-6">
+      <p id="chart_historical_maint" class="chart"></p>
+    </div>
+    <div class="col-md-6">
+      <p id="chart_historical_sloc" class="chart"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
+      <p class="stat">22.80</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
+      <p class="stat">3.44</p>
+    </div>
+  </div>
+</div>
+
+<div class="container charts">
+  <div class="row">
+    <h2 class="header">Function weight</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="chart-header">By Complexity <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="This metric counts the number of distinct paths through a block of code. Lower values are better." data-original-title="Cyclomatic Complexity" data-container="body"></i></a></h3>
+      <div id="fn-by-complexity" class="stat"></div>
+    </div>
+    <div class="col-md-6">
+      <h3 class="chart-header">By SLOC  <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h3>
+      <div id="fn-by-sloc" class="stat"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <textarea id="file-source" class="col-md-12">/*jshint node: true, -W106 */
+&#039;use strict&#039;;
+
+/*
+* Name : functionHelperSpec.js
+* Module : UnitTest
+* Location : /test/helpers
+*
+* History :
+* 
+* Version   Date         Programmer         Description
+* =========================================================
+* 0.0.1     2015-05-14   Matteo Furlan    Initial code
+* =========================================================
+*/
+
+var FH = require(&#039;../../lib/helpers/functionHelper.js&#039;);
+var assert = require(&#039;assert&#039;);
+
+describe(&#039;FunctionHelper&#039;, function() {
+    describe(&#039;#isHEX&#039;, function() {
+        it(&#039;returns false when passed a non-string&#039;, function() {
+            assert.strictEqual(FH.isHEX(12), false);
+        });
+        it(&#039;returns false when passed a non-string&#039;, function() {
+            assert.strictEqual(FH.isHEX(true), false);
+        });
+        it(&#039;returns false when passed AbA9A0 without #&#039;, function() {
+            assert.strictEqual(FH.isHEX(&#039;AbA9A0&#039;), false);
+        });
+        it(&#039;returns TRUE when passed #AbA9A0&#039;, function() {
+            assert.strictEqual(FH.isHEX(&#039;#AbA9A0&#039;), true);
+        });
+        it(&#039;returns TRUE when passed #FFF&#039;, function() {
+            assert.strictEqual(FH.isHEX(&#039;#FFF&#039;), true);
+        });
+        it(&#039;returns FALSE when passed #AbA9AG&#039;, function() {
+            assert.strictEqual(FH.isHEX(&#039;#AbA9AG&#039;), false);
+        });
+        it(&#039;returns FALSE when passed #FGF&#039;, function() {
+            assert.strictEqual(FH.isHEX(&#039;#FGF&#039;), false);
+        });
+    });
+    describe(&#039;#getCorrectType&#039;, function() {
+        it(&#039;returns a string from string notation&#039;, function() {
+            assert.strictEqual(FH.getCorrectType(&#039;\&#039;hello\&#039;&#039;), &#039;hello&#039;);
+        });
+        it(&#039;returns a string from malformed string notation&#039;, function() {
+            assert.strictEqual(FH.getCorrectType(&#039;\&#039;hello&#039;), &#039;hello&#039;);
+        });
+        it(&#039;returns a string from string notation&#039;, function() {
+            assert.strictEqual(FH.getCorrectType(&#039;-3.98&#039;), -3.98);
+        });
+    });
+    describe(&#039;#parseCondition&#039;, function() {
+        it(&#039;returns 701 when passed a non-condition&#039;, function() {
+            assert.strictEqual(FH.parseCondition(&#039;&#039;), 701);
+        });
+        it(&#039;returns 701 when passed a semi-condition&#039;, function() {
+            assert.strictEqual(FH.parseCondition(&#039;temperatura&gt;&#039;), 701);
+        });
+        it(&#039;returns correct object when passed temp&gt;=0&#039;, function() {
+            assert.deepEqual(JSON.stringify(FH.parseCondition(&#039;temp&gt;=0&#039;)),&#039;{&quot;key&quot;:&quot;temp&quot;,&quot;operator&quot;:&quot;&gt;=&quot;,&quot;value&quot;:0}&#039;);
+        });
+        it(&#039;returns correct object when passed temp&gt;=\&#039;0\&#039;&#039;, function() {
+            assert.deepEqual(JSON.stringify(FH.parseCondition(&#039;temp&gt;=0&#039;)),&#039;{&quot;key&quot;:&quot;temp&quot;,&quot;operator&quot;:&quot;&gt;=&quot;,&quot;value&quot;:0}&#039;);
+        });
+        it(&#039;returns correct object when passed temp&gt;-1&#039;, function() {
+            assert.deepEqual(JSON.stringify(FH.parseCondition(&#039;temp&gt;-1&#039;)),&#039;{&quot;key&quot;:&quot;temp&quot;,&quot;operator&quot;:&quot;&gt;&quot;,&quot;value&quot;:-1}&#039;);
+        });
+        it(&#039;returns correct object when passed temp&gt;=0&#039;, function() {
+            assert.deepEqual(JSON.stringify(FH.parseCondition(&#039;temp&lt;=0&#039;)),&#039;{&quot;key&quot;:&quot;temp&quot;,&quot;operator&quot;:&quot;&lt;=&quot;,&quot;value&quot;:0}&#039;);
+        });
+        it(&#039;returns correct object when passed temp&gt;=\&#039;56\&#039;&#039;, function() {
+            assert.deepEqual(JSON.stringify(FH.parseCondition(&#039;temp&lt;\&#039;56\&#039;&#039;)),&#039;{&quot;key&quot;:&quot;temp&quot;,&quot;operator&quot;:&quot;&lt;&quot;,&quot;value&quot;:&quot;56&quot;}&#039;);
+        });
+        it(&#039;returns correct object when passed temp==10&#039;, function() {
+            assert.deepEqual(JSON.stringify(FH.parseCondition(&#039;temp==10&#039;)),&#039;{&quot;key&quot;:&quot;temp&quot;,&quot;operator&quot;:&quot;==&quot;,&quot;value&quot;:10}&#039;);
+        });
+        it(&#039;returns correct object when passed temp!=100&#039;, function() {
+            assert.deepEqual(JSON.stringify(FH.parseCondition(&#039;temp!=100&#039;)),&#039;{&quot;key&quot;:&quot;temp&quot;,&quot;operator&quot;:&quot;!=&quot;,&quot;value&quot;:100}&#039;);
+        });
+    });
+    describe(&#039;#converter&#039;, function() {
+        it(&#039;returns int from \&#039;-12.76\&#039;&#039;, function() {
+            assert.deepEqual(JSON.stringify(FH.converter({numb:&#039;&quot;-12.76&quot;&#039;},&#039;numb&#039;,&#039;toInt&#039;)), &#039;{&quot;numb&quot;:-12}&#039;);
+        });
+        it(&#039;returns float from \&#039;-14.26\&#039;&#039;, function() {
+            assert.deepEqual(JSON.stringify(FH.converter({numb:&#039;\&#039;-14.26\&#039;&#039;},&#039;numb&#039;,&#039;toFloat&#039;)), &#039;{&quot;numb&quot;:-14.26}&#039;);
+        });
+        it(&#039;returns null from -A4.26 toFloat&#039;, function() {
+            assert.strictEqual(FH.converter({numb:&#039;\&#039;-A4.26\&#039;&#039;},&#039;numb&#039;,&#039;toFloat&#039;), null);
+        });
+        it(&#039;returns null from -A4.26 toInt&#039;, function() {
+            assert.strictEqual(FH.converter({numb:&#039;\&#039;-A4.26\&#039;&#039;},&#039;numb&#039;,&#039;toInt&#039;), null);
+        });
+        it(&#039;returns null from toORARIO&#039;, function() {
+            assert.strictEqual(FH.converter({numb:&#039;\&#039;-A4.26\&#039;&#039;},&#039;numb&#039;,&#039;toORARIO&#039;), null);
+        });
+        it(&#039;returns null - not found record&#039;, function() {
+            assert.strictEqual(FH.converter(null,&#039;numb&#039;,&#039;toORARIO&#039;), null);
+        });
+        it(&#039;returns null - not found record&#039;, function() {
+            assert.strictEqual(FH.converter(undefined,&#039;numb&#039;,&#039;toORARIO&#039;), null);
+        });
+        it(&#039;returns null - not key record&#039;, function() {
+            assert.strictEqual(FH.converter({numb:&#039;\&#039;-A4.26\&#039;&#039;},&#039;err&#039;,&#039;toORARIO&#039;), null);
+        });
+    });
+    describe(&#039;#isValidFormat&#039;, function() {
+        it(&#039;returns true for toInt&#039;, function() {
+            assert.strictEqual(FH.isValidFormat(&#039;toInt&#039;),true);
+        });
+        it(&#039;returns true for toFloat&#039;, function() {
+            assert.strictEqual(FH.isValidFormat(&#039;toFloat&#039;), true);
+        });
+        it(&#039;returns false for toHour&#039;, function() {
+            assert.strictEqual(FH.isValidFormat(&#039;toHour&#039;), false);
+        });
+    });
+    describe(&#039;#isValidMapFormat&#039;, function() {
+        it(&#039;returns true for coordinates&#039;, function() {
+            assert.strictEqual(FH.isValidMapFormat(&#039;coordinates&#039;),true);
+        });
+        it(&#039;returns true for geographic&#039;, function() {
+            assert.strictEqual(FH.isValidMapFormat(&#039;geographic&#039;), true);
+        });
+        it(&#039;returns false for Hour&#039;, function() {
+            assert.strictEqual(FH.isValidMapFormat(&#039;Hour&#039;), false);
+        });
+    });
+    describe(&#039;#isValidMarker&#039;, function() {
+        it(&#039;returns true for none&#039;, function() {
+            assert.strictEqual(FH.isValidMarker(&#039;none&#039;),true);
+        });
+        it(&#039;returns true for square&#039;, function() {
+            assert.strictEqual(FH.isValidMarker(&#039;square&#039;), true);
+        });
+        it(&#039;returns true for triangle&#039;, function() {
+            assert.strictEqual(FH.isValidMarker(&#039;triangle&#039;), true);
+        });
+        it(&#039;returns true for circle&#039;, function() {
+            assert.strictEqual(FH.isValidMarker(&#039;circle&#039;), true);
+        });
+        it(&#039;returns true for diamond&#039;, function() {
+            assert.strictEqual(FH.isValidMarker(&#039;diamond&#039;), true);
+        });
+        it(&#039;returns false for line&#039;, function() {
+            assert.strictEqual(FH.isValidMarker(&#039;line&#039;), false);
+        });
+    });
+    describe(&#039;#isValidMapMarker&#039;, function() {
+        it(&#039;returns true for valid shape&#039;, function() {
+            assert.strictEqual(FH.isValidMapMarker({type: &#039;shape&#039;, shape: &#039;square&#039;}), true);
+            assert.strictEqual(FH.isValidMapMarker({type: &#039;shape&#039;, shape: &#039;triangle&#039;}), true);
+            assert.strictEqual(FH.isValidMapMarker({type: &#039;shape&#039;, shape: &#039;circle&#039;}), true);
+            assert.strictEqual(FH.isValidMapMarker({type: &#039;shape&#039;, shape: &#039;diamond&#039;}), true);
+        });
+        it(&#039;returns false for invalid shape&#039;, function() {
+            assert.strictEqual(FH.isValidMapMarker({type: &#039;shape&#039;}), false);
+            assert.strictEqual(FH.isValidMapMarker({type: &#039;shape&#039;, shape: &#039;line&#039;}), false);
+        });
+        it(&#039;returns true for valid icon&#039;, function() {
+            assert.strictEqual(FH.isValidMapMarker({type: &#039;icon&#039;, icon: &#039;images/mark.png&#039;}), true);
+        });
+        it(&#039;returns false for invalid icon&#039;, function() {
+            assert.strictEqual(FH.isValidMapMarker({type: &#039;icon&#039;}), false);
+            assert.strictEqual(FH.isValidMapMarker({type: &#039;icon&#039;, icon: 2}), false);
+        });
+        it(&#039;returns true for valid text&#039;, function() {
+            assert.strictEqual(FH.isValidMapMarker({type: &#039;text&#039;, text: &#039;flow1&#039;, color: &#039;#000&#039;}), true);
+        });
+        it(&#039;returns false for invalid text&#039;, function() {
+            assert.strictEqual(FH.isValidMapMarker({type: &#039;text&#039;}), false);
+            assert.strictEqual(FH.isValidMapMarker({type: &#039;text&#039;, text: 2}), false);
+            assert.strictEqual(FH.isValidMapMarker({type: &#039;text&#039;, text: &#039;flow1&#039;, color: &#039;a&#039;}), false);
+        });
+        it(&#039;returns false for 2&#039;, function() {
+            assert.strictEqual(FH.isValidMapMarker(&#039;2&#039;), false);
+        });
+    });
+    describe(&#039;#isValidInterpolation&#039;, function() {
+        it(&#039;returns true for linear&#039;, function() {
+            assert.strictEqual(FH.isValidInterpolation(&#039;linear&#039;),true);
+        });
+        it(&#039;returns true for step&#039;, function() {
+            assert.strictEqual(FH.isValidInterpolation(&#039;step&#039;), true);
+        });
+        it(&#039;returns true for basis&#039;, function() {
+            assert.strictEqual(FH.isValidInterpolation(&#039;basis&#039;), true);
+        });
+        it(&#039;returns true for cardinal&#039;, function() {
+            assert.strictEqual(FH.isValidInterpolation(&#039;cardinal&#039;), true);
+        });
+        it(&#039;returns true for monotone&#039;, function() {
+            assert.strictEqual(FH.isValidInterpolation(&#039;monotone&#039;), true);
+        });
+        it(&#039;returns false for line&#039;, function() {
+            assert.strictEqual(FH.isValidInterpolation(&#039;line&#039;), false);
+        });
+    });
+    describe(&#039;#isValidTrace&#039;, function() {
+        it(&#039;returns true for none&#039;, function() {
+            assert.strictEqual(FH.isValidTrace({type: &#039;none&#039;}),true);
+        });
+        it(&#039;returns true for valid line&#039;, function() {
+            assert.strictEqual(FH.isValidTrace({
+                type: &#039;line&#039;,
+                coordinates: [
+                    [12.43, -2],
+                    [1, 0],
+                    [1, 2]
+                ],
+                strokeColor: &#039;#FFF&#039;,
+                fillColor: &#039;#000&#039;
+            }), true);
+        });
+        it(&#039;returns true for valid poly&#039;, function() {
+            assert.strictEqual(FH.isValidTrace({
+                type: &#039;poly&#039;,
+                coordinates: [
+                    [12.43, -2],
+                    [1, 0],
+                    [1, 2]
+                ],
+                strokeColor: &#039;#FFF&#039;,
+                fillColor: &#039;#000&#039;
+            }), true);
+        });
+        it(&#039;returns false for invalid line&#039;, function() {
+            assert.strictEqual(FH.isValidTrace({
+                type: &#039;line&#039;,
+                coordinates: [
+                    [12.43, -2]
+                ]
+            }), false);
+            assert.strictEqual(FH.isValidTrace({
+                type: &#039;line&#039;,
+                coordinates: [
+                    [12.43, -2]
+                ],
+                strokeColor: &#039;#FFF&#039;,
+                fillColor: &#039;#000&#039;
+            }), false);
+            assert.strictEqual(FH.isValidTrace({
+                type: &#039;line&#039;,
+                coordinates: [
+                    undefined, [12.43, -2],
+                    [1, 2]
+                ],
+                strokeColor: &#039;#FFF&#039;,
+                fillColor: &#039;#000&#039;
+            }), false);
+            assert.strictEqual(FH.isValidTrace({
+                type: &#039;line&#039;,
+                coordinates: [
+                    [12.43, -2],
+                    [1, &#039;2&#039;]
+                ],
+                strokeColor: &#039;#FFF&#039;,
+                fillColor: &#039;#000&#039;
+            }), false);
+            assert.strictEqual(FH.isValidTrace({
+                type: &#039;line&#039;,
+                coordinates: [
+                    [12.43, -2],
+                    [1, &#039;2&#039;],
+                ],
+                strokeColor: &#039;#FFz&#039;,
+                fillColor: &#039;#000&#039;
+            }), false);
+            assert.strictEqual(FH.isValidTrace({
+                type: &#039;line&#039;,
+                coordinates: [
+                    [12.43, -2],
+                    [1, 2, 4],
+                ]
+            }), false);
+        });
+        it(&#039;returns false for square&#039;, function() {
+            assert.strictEqual(FH.isValidTrace({type: &#039;square&#039;}), false);
+        });
+    });
+});</textarea>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>.</p>
+  </div>
+</footer>
+
+<script type="text/html" id="complexity-popover-template">
+  <div class="complexity-notice">
+    Complexity : {{ complexity.cyclomatic }} <br>
+    Length : {{ complexity.halstead.length }} <br>
+    Difficulty : {{ complexity.halstead.difficulty.toFixed(2) }} <br>
+    Est # bugs : {{ complexity.halstead.bugs.toFixed(2) }}<br>
+  </div>
+</script>
+
+<script type="text/javascript" src="../../assets/scripts/bundles/core-bundle.js"></script>
+<script type="text/javascript" src="../../assets/scripts/bundles/codemirror.js"></script>
+<script type="text/javascript" src="../../assets/scripts/codemirror.markpopovertext.js"></script>
+<script type="text/javascript" src="report.js"></script>
+<script type="text/javascript" src="report.history.js"></script>
+<script type="text/javascript" src="../../assets/scripts/plato-file.js"></script>
+</body>
+</html>

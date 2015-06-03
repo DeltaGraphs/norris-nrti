@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<checkstyle version="4.3">
+	<file name="test/businessTier/page/pageSpec.js">
+		<error line="232" column="92" severity="warning" message="Missing semicolon." source="jshint.W033" />
+		<error line="92" column="13" severity="warning" message="&apos;page2&apos; is not defined." source="jshint.W117" />
+		<error line="93" column="13" severity="warning" message="&apos;page2&apos; is not defined." source="jshint.W117" />
+		<error line="115" column="30" severity="warning" message="&apos;page2&apos; is not defined." source="jshint.W117" />
+		<error line="193" column="13" severity="warning" message="&apos;pg&apos; is not defined." source="jshint.W117" />
+		<error line="91" column="17" severity="warning" message="&apos;pg&apos; is defined but never used." source="jshint.W098" />
+	</file>
+</checkstyle>

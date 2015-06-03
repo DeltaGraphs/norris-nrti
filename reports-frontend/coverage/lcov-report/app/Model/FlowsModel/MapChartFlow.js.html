@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for app/Model/FlowsModel/MapChartFlow.js</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../../prettify.css">
+    <link rel="stylesheet" href="../../../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header high">
+    <h1>Code coverage report for <span class="entity">app/Model/FlowsModel/MapChartFlow.js</span></h1>
+    <h2>
+        Statements: <span class="metric">98.63% <small>(72 / 73)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">71.88% <small>(23 / 32)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">87.5% <small>(14 / 16)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">98.63% <small>(72 / 73)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../index.html">All files</a> &#187; <a href="index.html">app/Model/FlowsModel/</a> &#187; MapChartFlow.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">53</span>
+<span class="cline-any cline-yes">53</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">53</span>
+<span class="cline-any cline-yes">35</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">35</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">35</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">35</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">53</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">50</span>
+<span class="cline-any cline-yes">50</span>
+<span class="cline-any cline-yes">50</span>
+<span class="cline-any cline-yes">50</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">50</span>
+<span class="cline-any cline-yes">50</span>
+<span class="cline-any cline-yes">50</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">50</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">50</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">67</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">67</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">15</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">67</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">67</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">67</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">67</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">67</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">67</span>
+<span class="cline-any cline-yes">13</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">67</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">67</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">67</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">67</span>
+<span class="cline-any cline-yes">50</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">67</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*jshint node: true */
+'use strict';
+&nbsp;
+/*
+* Name :  MapChartFlow.js
+* Module : FrontEnd::Model::FlowsModel
+* Location : /frontend/app/Model/FlowsModel
+*
+* History :
+* Version       Date        Programmer                  Description
+* =================================================================================================
+* 0.2.0			2015-05-18	Francesco Rossetto			Modified general structure, some fixes
+*
+* 0.1.1         2015-05-15  Maria Giovanna Chinellato	Various fixes
+*
+* 0.1.0         2015-05-12  Maria Giovanna Chinellato	Add attributes and methods
+*
+* 0.0.1         2015-05-12  Maria Giovanna Chinellato	Initial code
+* =================================================================================================
+*
+*/
+&nbsp;
+angular.module('app')
+.factory('MapChartFlowFactory', ['FlowFactory', function(FlowFactory){
+&nbsp;
+	function split(json) {
+        var flowJson = {};
+        var mapFlowJson = {};
+&nbsp;
+        if (json !== undefined) {
+	        if (json.name !== undefined) {
+	            flowJson.name = json.name;
+	        }
+&nbsp;
+	        if (json.marker !== undefined) {
+	            mapFlowJson.marker = json.marker;
+	        }
+	        if (json.maxItem !== undefined) {
+	            mapFlowJson.maxItem = json.maxItem;
+	        }
+	        if (json.trace !== undefined) {
+	            mapFlowJson.trace = json.trace;
+	        }
+	    }
+&nbsp;
+        return {
+            'flowJson' : flowJson,
+            'mapFlowJson' : mapFlowJson
+        };
+    }
+&nbsp;
+    //MapChartFlow.prototype.test = function _Test(expressionStr) { return eval(expressionStr); };
+&nbsp;
+    function MapChartFlow(info) {
+    	this._data = [];
+		this._marker = null;
+		this._maxItem = 100;
+		this._trace = null;
+&nbsp;
+		var json = split(info);
+		var fJson = json.flowJson;
+		var mfJson = json.mapFlowJson;
+&nbsp;
+		this._flow = FlowFactory.build(fJson);
+&nbsp;
+		if (Object.keys(mfJson).length !== 0) {
+	        <span class="missing-if-branch" title="else path not taken" >E</span>if (mfJson.marker !== undefined) {
+	            this._marker = mfJson.marker;
+	        }
+	        if (mfJson.maxItem !== undefined) {
+	            this._maxItem = mfJson.maxItem;
+	        }
+	        <span class="missing-if-branch" title="else path not taken" >E</span>if (mfJson.trace !== undefined) {
+	        	this._trace = mfJson.trace;
+	        }
+ 	    }
+	}
+&nbsp;
+	MapChartFlow.prototype.updateParameters = function(info) { //abstract
+		<span class="missing-if-branch" title="else path not taken" >E</span>if (info !== undefined) {
+	    	var json = split(info);
+			var fJson = json.flowJson;
+			var mfJson = json.mapFlowJson;
+&nbsp;
+			this._flow = FlowFactory.build(fJson);
+			this._flow.updateParameters(fJson);
+	
+			<span class="missing-if-branch" title="else path not taken" >E</span>if (Object.keys(mfJson).length !== 0) {
+				<span class="missing-if-branch" title="else path not taken" >E</span>if (mfJson.marker !== undefined) {
+		            this._marker = mfJson.marker;
+		        }
+		        <span class="missing-if-branch" title="else path not taken" >E</span>if (mfJson.maxItem !== undefined) {
+		            this._maxItem = mfJson.maxItem;
+		        }
+		        <span class="missing-if-branch" title="else path not taken" >E</span>if (mfJson.trace !== undefined) {
+	        		this._trace = mfJson.trace;
+	        	}
+		    }
+		}
+	};
+&nbsp;
+	MapChartFlow.prototype.initializeData = function(newData) {
+		for (var i=0; i&lt;newData.records.length; i++) {
+			this._data.push(newData.records[i]);
+		}
+	};
+	MapChartFlow.prototype.emptyData = function() {
+		this._data.splice(0);
+	};
+	MapChartFlow.prototype.inPlaceUpdate = function(newData) {
+		for (var i = 0; i&lt;this._data.length; i++){
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (this._data[i].NorrisRecordID === newData.NorrisRecordID){
+                this._data[i] = { 'NorrisRecordID' : newData.NorrisRecordID, 'value' : newData.value };
+            }
+        }
+    };
+	MapChartFlow.prototype.streamUpdate = function(newData) {
+		this.initializeData(newData);
+    };
+    MapChartFlow.prototype.deleteData = function(delData) {
+    	for (var i = 0; i&lt;this._data.length; i++){
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (this._data[i].NorrisRecordID === delData.NorrisRecordID){
+                this._data.splice(i,1);
+            }
+        }
+    };
+&nbsp;
+    MapChartFlow.prototype.getName = <span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >    	return this._flow.getName();</span>
+    };
+	MapChartFlow.prototype.getData = function() {
+		return this._data;
+	};
+	MapChartFlow.prototype.getMarker = function() {
+		return this._marker;
+	};
+	MapChartFlow.prototype.getMaxItem = function() {
+		return this._maxItem;
+	};
+	MapChartFlow.prototype.getTrace = function() {
+		return this._trace;
+	};
+&nbsp;
+<span class="fstat-no" title="function not covered" >	function MapChartFlowFactory() {</span>}
+&nbsp;
+	MapChartFlowFactory.build = function(info) {
+		return new MapChartFlow(info);
+	};
+&nbsp;
+	return MapChartFlowFactory;
+&nbsp;
+}]);</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Jun 03 2015 00:20:50 GMT+0000 (UTC)</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>

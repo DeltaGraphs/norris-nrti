@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for norris-nrti/lib/dataTier/graph/mapChartModel.js</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../../../prettify.css">
+    <link rel="stylesheet" href="../../../../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header high">
+    <h1>Code coverage report for <span class="entity">norris-nrti/lib/dataTier/graph/mapChartModel.js</span></h1>
+    <h2>
+        Statements: <span class="metric">100% <small>(84 / 84)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">98% <small>(49 / 50)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">100% <small>(13 / 13)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">100% <small>(81 / 81)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../../index.html">All files</a> &#187; <a href="index.html">norris-nrti/lib/dataTier/graph/</a> &#187; mapChartModel.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">34</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">30</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">30</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">30</span>
+<span class="cline-any cline-yes">30</span>
+<span class="cline-any cline-yes">30</span>
+<span class="cline-any cline-yes">30</span>
+<span class="cline-any cline-yes">30</span>
+<span class="cline-any cline-yes">30</span>
+<span class="cline-any cline-yes">30</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">30</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">33</span>
+<span class="cline-any cline-yes">32</span>
+<span class="cline-any cline-yes">32</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">32</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">32</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">32</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">32</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">32</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">32</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span></td><td class="text"><pre class="prettyprint lang-js">/*jshint node: true, -W106 */
+'use strict';
+&nbsp;
+/*
+* Name : mapChartModel.js
+* Module : Lib::DataTier::MapChartModel
+* Location : /lib/dataTier/graph
+*
+* History :
+* 
+* Version   Date         Programmer         Description
+* =========================================================
+* 0.0.1     2015-05-13   Samuele Zanella    Initial code
+* =========================================================
+*/
+&nbsp;
+var GraphModel = require('./graphModel.js');
+var MapChartFlowModel = require('../flow/mapChartFlowModel.js');
+&nbsp;
+function MapChartModel(params) {
+	if(params===undefined || params.ID===undefined || typeof params.ID !== 'string'|| params.ID.trim() === ''){ // ID field is required
+		console.log('Error: 332');
+		return;
+	}
+&nbsp;
+	params.type = 'MapChart';
+	
+	this.parent.constructor.call(this, params);
+&nbsp;
+	this._latitude=0;
+	this._longitude=0;
+	this._mapType='roadmap';
+	this._mapWidth=3000;
+	this._mapHeight=2000;
+	this._flows=[];
+	this._legendOnPoint=false;
+&nbsp;
+	this.updateProperties(params);
+}
+&nbsp;
+MapChartModel.prototype = Object.create(GraphModel.prototype);
+MapChartModel.prototype.constructor = MapChartModel;
+MapChartModel.prototype.parent = GraphModel.prototype;
+&nbsp;
+MapChartModel.prototype.getProperties = function() {
+	var res = this.parent.getProperties.call(this);
+	res.latitude = this._latitude;
+	res.longitude = this._longitude;
+	res.mapType = this._mapType;
+	res.mapWidth = this._mapWidth;
+	res.mapHeight = this._mapHeight;
+	res.legendOnPoint = this._legendOnPoint;
+	return res;
+};
+&nbsp;
+MapChartModel.prototype.updateProperties = function(params) {
+	if (params !== undefined){
+		var prop=this.parent.updateBaseProperties.call(this, params);
+		if(params.latitude!==undefined &amp;&amp; typeof params.latitude === 'number'){
+			this._latitude=prop.latitude=params.latitude;
+		}
+		if(params.longitude!==undefined &amp;&amp; typeof params.longitude === 'number'){
+			this._longitude=prop.longitude=params.longitude;
+		}
+		if(params.mapType!==undefined &amp;&amp; typeof params.mapType === 'string' &amp;&amp; (params.mapType==='roadmap' || params.mapType==='satellite' || params.mapType==='hybrid' || params.mapType==='terrain')){
+			this._mapType=prop.mapType=params.mapType;
+		}
+		if(params.mapWidth!==undefined &amp;&amp; typeof params.mapWidth === 'number' &amp;&amp; params.mapWidth&gt;0){
+			this._mapWidth=prop.mapWidth=params.mapWidth;
+		}
+		if(params.mapHeight!==undefined &amp;&amp; typeof params.mapHeight === 'number' &amp;&amp; params.mapHeight&gt;0){
+			this._mapHeight=prop.mapHeight=params.mapHeight;
+		}
+		if(params.legendOnPoint!==undefined &amp;&amp; typeof params.legendOnPoint === 'boolean'){
+			this._legendOnPoint=prop.legendOnPoint=params.legendOnPoint;
+		}
+		return prop;
+	}
+	return 331;
+};
+&nbsp;
+MapChartModel.prototype.getData = function() {
+	var graphData=[];
+	var flows= this._flows.length;
+&nbsp;
+	//build graphData by iterating every flow in _flows
+	for(var i=0; i&lt;flows; i++){
+		graphData[i]={
+			properties: this._flows[i].getProperties(),
+			data: this._flows[i].getData()
+		};
+	}//for flows
+&nbsp;
+	return graphData;
+};
+&nbsp;
+MapChartModel.prototype.addFlow = function(flow) {
+	if(flow instanceof MapChartFlowModel) {
+		this._flows.push(flow);
+	}
+};
+&nbsp;
+MapChartModel.prototype.deleteFlow = function(ID) {
+	<span class="missing-if-branch" title="else path not taken" >E</span>if(typeof ID === 'string') {
+		for(var i=0; i &lt; this._flows.length; i++) {
+			if(this._flows[i].getProperties().ID === ID) {
+				this._flows.splice(i, 1);
+			}
+		}
+	}
+};
+&nbsp;
+MapChartModel.prototype.deleteAllFlows = function() {
+	this._flows = [];
+};
+&nbsp;
+MapChartModel.prototype.updateRecord = function(flowID, ID, newRecord) {
+	var filteredFlows = this._flows.filter(function(flow) {return flow.getProperties().ID === flowID;});
+	if(filteredFlows.length &gt; 0) {
+		var flow = filteredFlows[0];
+		return flow.updateRecord(ID, newRecord);
+	}
+	else {
+		console.log('Error: 231');
+		return 231;
+	}
+};
+&nbsp;
+MapChartModel.prototype.addRecord = function(flowID, record) {
+	var filteredFlows = this._flows.filter(function(flow) {return flow.getProperties().ID === flowID;});
+	if(filteredFlows.length &gt; 0) {
+		var flow = filteredFlows[0];
+		return flow.addRecord(record);
+	}
+	else {
+		return 231;
+	}
+};
+&nbsp;
+MapChartModel.prototype.deleteRecord = function(flowID, ID) {
+	var filteredFlows = this._flows.filter(function(flow) {return flow.getProperties().ID === flowID;});
+	if(filteredFlows.length &gt; 0) {
+		var flow = filteredFlows[0];
+		return flow.deleteRecord(ID);
+	}
+	else {
+		return 231;
+	}
+};
+&nbsp;
+module.exports = MapChartModel;</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Jun 03 2015 00:19:18 GMT+0000 (UTC)</div>
+</div>
+<script src="../../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../../sorter.js"></script>
+</body>
+</html>

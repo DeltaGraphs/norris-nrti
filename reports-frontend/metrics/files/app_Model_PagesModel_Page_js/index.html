@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Plato - app/Model/PagesModel/Page.js</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link href="../../assets/css/vendor/morris.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet">
+  <link href="../../assets/css/plato.css" rel="stylesheet">
+  <link href="../../assets/css/plato-file.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="http://github.com/es-analysis/plato">Plato on Github</a>
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="../../index.html">Report Home</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>app/Model/PagesModel/Page.js</h1>
+  </div>
+</div>
+
+<div class="container aggregate-stats">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
+      <p class="stat">65.84</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
+      <p class="stat">149</p>
+    </div>
+  </div>
+  <div class="row historical">
+    <div class="col-md-6">
+      <p id="chart_historical_maint" class="chart"></p>
+    </div>
+    <div class="col-md-6">
+      <p id="chart_historical_sloc" class="chart"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
+      <p class="stat">37.57</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
+      <p class="stat">1.05</p>
+    </div>
+  </div>
+</div>
+
+<div class="container charts">
+  <div class="row">
+    <h2 class="header">Function weight</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="chart-header">By Complexity <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="This metric counts the number of distinct paths through a block of code. Lower values are better." data-original-title="Cyclomatic Complexity" data-container="body"></i></a></h3>
+      <div id="fn-by-complexity" class="stat"></div>
+    </div>
+    <div class="col-md-6">
+      <h3 class="chart-header">By SLOC  <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h3>
+      <div id="fn-by-sloc" class="stat"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <textarea id="file-source" class="col-md-12">/*jshint node: true */
+&#039;use strict&#039;;
+
+/*
+* Name :  Page.js
+* Module : FrontEnd::Model::PagesModel
+* Location : /frontend/app/Model
+*
+* History :
+* Version       Date        Programmer                  Description
+* =================================================================================================
+* 0.1.4         2015-05-18  Maria Giovanna Chinellato   Fix attributes
+*
+* 0.1.3         2015-05-14  Francesco Rossetto          Fix addGraph
+*
+* 0.1.2         2015-05-13  Francesco Rossetto          Fix constructor
+*
+* 0.1.1         2015-05-12  Francesco Rossetto          Fix methods
+*
+* 0.1.0         2015-05-12  Maria Giovanna Chinellato   Add all attributes and all methods
+*
+* 0.0.1         2015-05-12  Maria Giovanna Chinellato   Initial code     
+* =================================================================================================
+*
+*/
+
+angular.module(&#039;app&#039;)
+.factory(&#039;PageFactory&#039;, [&#039;LineChartFactory&#039;, &#039;BarChartFactory&#039;, &#039;MapChartFactory&#039;, &#039;TableFactory&#039;, function(LineChartFactory, BarChartFactory, MapChartFactory, TableFactory){
+
+    function Page(info){
+        this._graphsList = [];
+        this._name = &#039;Titolo di default&#039;;
+        this._description = &#039;&#039;;
+        this._graphsPerRow = 1;
+        this._graphsPerCol = 5;
+        this._url = null;
+
+        if (info !== undefined) {
+            if (info.properties.name !== undefined) {
+                this._name = info.properties.name;
+            }
+            if (info.properties.description !== undefined) {
+                this._description = info.properties.description;
+            }
+            if (info.properties.graphsPerRow !== undefined) {
+                this._graphsPerRow = info.properties.graphsPerRow;
+            }
+            if (info.properties.graphsPerCol !== undefined) {
+                this._graphsPerCol = info.properties.graphsPerCol;
+            }
+            if (info.properties.socketURL !== undefined) {
+                this._url = info.properties.socketURL;
+            }
+            if (info.data !== undefined) {
+                for (var i=0; i&lt;info.data.length; i++){
+                    this.addGraph(info.data[i]);
+                }
+            }
+        }
+    }
+
+    Page.prototype = {
+
+        constructor : Page,
+
+        updateParameters: function(info){
+            if (info !== undefined) {
+                if (info.name !== undefined) {
+                    this._name = info.name;
+                }
+                if (info.description !== undefined) {
+                    this._description = info.description;
+                }
+                if (info.graphsPerRow !== undefined) {
+                    this._graphsPerRow = info.graphsPerRow;
+                }
+                if (info.graphsPerCol !== undefined) {
+                    this._graphsPerCol = info.graphsPerCol;
+                }
+            }
+        },
+        initializeData: function(data) {
+            if (data !== undefined) {
+                for (var i=0; i&lt;data.length; i++) {
+                    this.addGraph(data[i]);
+                }
+            }
+        },
+        addGraph: function(graph){
+            if (graph !== undefined) {
+                var count = 0;
+                for (var j=0; j&lt;this._graphsList.length; j++) {
+                    if (this._graphsList[j].id === graph.ID){
+                        count++;
+                    }
+                }
+                if (count === 0){
+                    var newGraph;
+                    switch (graph.type) {
+                        case &#039;LineChart&#039;: 
+                            newGraph = LineChartFactory.build(graph);
+                            this._graphsList.push( {&#039;id&#039; : graph.ID, &#039;graph&#039; : newGraph} );
+                            break;
+                        case &#039;BarChart&#039;: 
+                            newGraph = BarChartFactory.build(graph);
+                            this._graphsList.push( {&#039;id&#039; : graph.ID, &#039;graph&#039; : newGraph} );
+                            break;
+                        case &#039;MapChart&#039;: 
+                            newGraph = MapChartFactory.build(graph);
+                            this._graphsList.push( {&#039;id&#039; : graph.ID, &#039;graph&#039; : newGraph} );
+                            break;
+                        case &#039;Table&#039;: 
+                            newGraph = TableFactory.build(graph);
+                            this._graphsList.push( {&#039;id&#039; : graph.ID, &#039;graph&#039; : newGraph} );
+                            break;
+                    }
+                }
+            // error
+            }
+            // error
+        },
+
+        getGraphsList: function(){
+            return this._graphsList;
+        },
+        getName: function(){
+            return this._name;
+        },
+        getDescription: function(){
+            return this._description;
+        },
+        getGraphsPerRow: function(){
+            return  this._graphsPerRow;
+        },
+        getGraphsPerCol: function(){
+            return  this._graphsPerCol;
+        },
+        getUrl: function(){
+            return this._url;
+        }
+    };
+
+    function PageFactory() {}
+
+    PageFactory.build = function(info) {
+        return new Page(info);
+    };
+
+    return PageFactory;
+}]);</textarea>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>.</p>
+  </div>
+</footer>
+
+<script type="text/html" id="complexity-popover-template">
+  <div class="complexity-notice">
+    Complexity : {{ complexity.cyclomatic }} <br>
+    Length : {{ complexity.halstead.length }} <br>
+    Difficulty : {{ complexity.halstead.difficulty.toFixed(2) }} <br>
+    Est # bugs : {{ complexity.halstead.bugs.toFixed(2) }}<br>
+  </div>
+</script>
+
+<script type="text/javascript" src="../../assets/scripts/bundles/core-bundle.js"></script>
+<script type="text/javascript" src="../../assets/scripts/bundles/codemirror.js"></script>
+<script type="text/javascript" src="../../assets/scripts/codemirror.markpopovertext.js"></script>
+<script type="text/javascript" src="report.js"></script>
+<script type="text/javascript" src="report.history.js"></script>
+<script type="text/javascript" src="../../assets/scripts/plato-file.js"></script>
+</body>
+</html>

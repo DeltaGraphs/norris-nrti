@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for app/Model/GraphsModel/Graph.js</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../../prettify.css">
+    <link rel="stylesheet" href="../../../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header high">
+    <h1>Code coverage report for <span class="entity">app/Model/GraphsModel/Graph.js</span></h1>
+    <h2>
+        Statements: <span class="metric">96.61% <small>(57 / 59)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">67.65% <small>(23 / 34)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">93.75% <small>(15 / 16)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">96.61% <small>(57 / 59)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../index.html">All files</a> &#187; <a href="index.html">app/Model/GraphsModel/</a> &#187; Graph.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">109</span>
+<span class="cline-any cline-yes">109</span>
+<span class="cline-any cline-yes">109</span>
+<span class="cline-any cline-yes">109</span>
+<span class="cline-any cline-yes">109</span>
+<span class="cline-any cline-yes">109</span>
+<span class="cline-any cline-yes">109</span>
+<span class="cline-any cline-yes">109</span>
+<span class="cline-any cline-yes">109</span>
+<span class="cline-any cline-yes">109</span>
+<span class="cline-any cline-yes">44</span>
+<span class="cline-any cline-yes">43</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">44</span>
+<span class="cline-any cline-yes">43</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">133</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">39</span>
+<span class="cline-any cline-yes">39</span>
+<span class="cline-any cline-yes">39</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">39</span>
+<span class="cline-any cline-yes">39</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">39</span>
+<span class="cline-any cline-yes">39</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">39</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">39</span>
+<span class="cline-any cline-yes">39</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">39</span>
+<span class="cline-any cline-yes">39</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">127</span>
+<span class="cline-any cline-yes">127</span>
+<span class="cline-any cline-yes">104</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">127</span>
+<span class="cline-any cline-yes">127</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">56</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">133</span>
+<span class="cline-any cline-yes">109</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">133</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*jshint node: true */
+'use strict';
+&nbsp;
+/*
+* Name :  Graph.js
+* Module : FrontEnd::Model::GraphsModel
+* Location : /frontend/app/Model/GrapshModel
+*
+* History :
+* Version       Date        Programmer                  Description
+* =================================================================================================
+* 0.1.5			2015-05-18	Maria Giovanna Chinellato	Fix methods addFlow and deleteFlow
+*
+* 0.1.4			2015-05-15	Francesco Rossetto			Various fixes
+*
+* 0.1.3			2015-05-14	Maria Giovanna Chinellato	Add method getFlowList
+*
+* 0.1.3			2015-05-14	Francesco Rossetto			Fix constructor
+*
+* 0.1.2			2015-05-13	Francesco Rossetto			Fix constructor 
+*
+* 0.1.1			2015-05-12	Maria Giovanna Chinellato	Fix attributes
+*
+* 0.1.0         2015-05-12  Francesco Rossetto   		Add all attributes and all methods
+*
+* 0.0.1         2015-05-12  Francesco Rossetto			Initial code    
+* =================================================================================================
+*
+*/
+&nbsp;
+angular.module('app')
+.factory('GraphFactory', ['LegendFactory', function(LegendFactory){
+&nbsp;
+&nbsp;
+	function Graph(info){
+		this._flowList = [];
+		this._title = null;
+		this._height = null;
+		this._width = null;
+		this._legend = null;
+		this._enabledLegend = false;
+		this._horizontalGrid = true;
+		this._verticalGrid = true;
+		this._url = null;
+		if (info !== undefined) {
+			if (info.title !== undefined) {
+				this._title = info.title;
+			}
+			if (info.url !== undefined) {
+				this._url = info.url;
+			}
+		}		
+	}
+&nbsp;
+	Graph.prototype = {
+&nbsp;
+		constructor : Graph,
+&nbsp;
+		updateParameters : function(info) { //abstract
+			<span class="missing-if-branch" title="else path not taken" >E</span>if (info !== undefined) {
+				<span class="missing-if-branch" title="else path not taken" >E</span>if (info.title !== undefined) {
+					this._title = info.title;
+				}
+				<span class="missing-if-branch" title="else path not taken" >E</span>if (info.height !== undefined) {
+					this._height = info.height;
+				}
+				<span class="missing-if-branch" title="else path not taken" >E</span>if (info.width !== undefined) {
+					this._width = info.width;
+				}
+				if (info.enabledLegend !== undefined) {
+					this._enabledLegend = info.enabledLegend;
+					if (this._enabledLegend &amp;&amp; info.legend !== undefined) {
+						this._legend = LegendFactory.build(info.legend);
+					}
+				}
+				<span class="missing-if-branch" title="else path not taken" >E</span>if (info.horizontalGrid !== undefined) {
+					this._horizontalGrid = info.horizontalGrid;
+				}
+				<span class="missing-if-branch" title="else path not taken" >E</span>if (info.verticalGrid !== undefined) {
+					this._verticalGrid = info.verticalGrid;
+				}
+			}
+		},
+		addFlow : function(newId, newFlow) { //abstract
+			var count = 0;
+			for (var i = 0; i&lt;this._flowList.length; i++) {
+				<span class="missing-if-branch" title="if path not taken" >I</span>if (this._flowList[i].id === newId) {
+<span class="cstat-no" title="statement not covered" >					count++;</span>
+				}
+			}
+&nbsp;
+		    <span class="missing-if-branch" title="else path not taken" >E</span>if(count === 0) {
+		        this._flowList.push({ id: newId, flow: newFlow});
+			}
+			// error
+		},
+		deleteFlow : function(flowID) {
+	        for (var i = 0; i&lt;this._flowList.length; i++){
+	            <span class="missing-if-branch" title="else path not taken" >E</span>if (this._flowList[i].id === flowID){
+	                this._flowList.splice(i,1);
+	            }
+	        }
+		},
+		replaceData : function(newData) {
+			for (var i = 0;i&lt;this._flowList.length; i++) {
+				<span class="missing-if-branch" title="else path not taken" >E</span>if (this._flowList[i].id === newData.ID){
+	                this._flowList[i].flow.emptyData();
+	                this._flowList[i].flow.initializeData(newData);
+	            }
+			}
+		},
+		
+		getTitle : function() {
+			return this._title;
+		},
+		getHeight : function() {
+			return this._height;
+		},
+		getWidth : function() {
+			return this._width;
+		},
+		getLegend : function() {
+			<span class="missing-if-branch" title="else path not taken" >E</span>if (this._enabledLegend) {
+				return this._legend;
+			} else {
+<span class="cstat-no" title="statement not covered" >				return null;</span>
+			}
+		},
+		getHGrid : function() {
+			return this._horizontalGrid;
+		},
+		getVGrid : function() {
+			return this._verticalGrid;
+		},
+		getUrl : function() {
+			return this._url;
+		},
+		getFlowList : function() {
+			return this._flowList;
+		}
+	};
+&nbsp;
+<span class="fstat-no" title="function not covered" >	function GraphFactory() {</span>}
+&nbsp;
+	GraphFactory.build = function(info) {
+		return new Graph(info);
+	};
+	
+	return( GraphFactory );
+}]);</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Jun 03 2015 00:20:50 GMT+0000 (UTC)</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>

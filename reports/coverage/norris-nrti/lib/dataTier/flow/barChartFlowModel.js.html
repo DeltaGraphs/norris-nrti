@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for norris-nrti/lib/dataTier/flow/barChartFlowModel.js</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../../../prettify.css">
+    <link rel="stylesheet" href="../../../../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header high">
+    <h1>Code coverage report for <span class="entity">norris-nrti/lib/dataTier/flow/barChartFlowModel.js</span></h1>
+    <h2>
+        Statements: <span class="metric">96.67% <small>(58 / 60)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">86% <small>(43 / 50)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">80% <small>(4 / 5)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">96.67% <small>(58 / 60)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../../index.html">All files</a> &#187; <a href="index.html">norris-nrti/lib/dataTier/flow/</a> &#187; barChartFlowModel.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">18</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15</span>
+<span class="cline-any cline-yes">15</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15</span>
+<span class="cline-any cline-yes">15</span>
+<span class="cline-any cline-yes">15</span>
+<span class="cline-any cline-yes">15</span>
+<span class="cline-any cline-yes">15</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">15</span>
+<span class="cline-any cline-yes">15</span>
+<span class="cline-any cline-yes">15</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span></td><td class="text"><pre class="prettyprint lang-js">/*jshint node: true, -W106 */
+'use strict';
+&nbsp;
+/*
+* Name : barChartFlowModel.js
+* Module : Lib::DataTier::BarChartFlowModel
+* Location : /lib/dataTier/flow
+*
+* History :
+* 
+* Version   Date         Programmer         Description
+* =========================================================
+* 0.0.1     2015-05-14   Matteo Furlan      Initial code
+* =========================================================
+* 0.0.2     2015-05-15   Filippo Rampado    Add first methods
+* =========================================================
+*/
+var FlowModel = require('./flowModel.js');
+var Helper = require('../../helpers/functionHelper.js');
+&nbsp;
+function BarChartFlowModel(params, records) {
+	if(params===undefined || params.ID===undefined || typeof params.ID !== 'string'|| params.ID.trim() === ''){ // ID field is required
+		console.log('Error: 212');
+		return;
+	}
+&nbsp;
+	params.type = 'BarChartFlow';
+	this.parent.constructor.call(this, params);
+&nbsp;
+	this._indexKey=null;
+	this._valueKey=null;
+	this._indexFormat=null;	//raw data will be displayed
+	this._valueFormat=null;	//raw data will be displayed
+	this._flowColor=null;	//will be random on frontEnd
+&nbsp;
+	this.updateProperties(params);
+&nbsp;
+	if(records!==undefined &amp;&amp; Array.isArray(records)){
+		var nRecords=records.length;
+		for (var i=0; i&lt;nRecords; i++){
+			<span class="missing-if-branch" title="else path not taken" >E</span>if (typeof records[i] === 'object'){
+				this._records[i]=records[i];
+				this._records[i].norrisRecordID=this.generateNorrisRecordID(i);
+			}
+		}
+		this.validateData();
+	}
+}
+&nbsp;
+BarChartFlowModel.prototype = Object.create(FlowModel.prototype);
+BarChartFlowModel.prototype.constructor = BarChartFlowModel;
+BarChartFlowModel.prototype.parent = FlowModel.prototype;
+&nbsp;
+BarChartFlowModel.prototype.updateProperties = function(params){
+	<span class="missing-if-branch" title="else path not taken" >E</span>if (params!==undefined){
+		var prop=this.parent.updateBaseProperties.call(this, params);
+		if(params.indexKey!==undefined &amp;&amp; typeof params.indexKey === 'string'){
+			this._indexKey=prop.indexKey=params.indexKey;
+		}
+		if(params.valueKey!==undefined &amp;&amp; typeof params.valueKey === 'string'){
+			this._valueKey=prop.valueKey=params.valueKey;
+		}
+		if(params.indexFormat!==undefined &amp;&amp; Helper.isValidFormat(params.indexFormat)){
+			this._indexFormat=prop.indexFormat=params.indexFormat;
+		}
+		if(params.valueFormat!==undefined &amp;&amp; Helper.isValidFormat(params.valueFormat)){
+			this._valueFormat=prop.valueFormat=params.valueFormat;
+		}
+		if(params.flowColor!==undefined &amp;&amp; Helper.isHEX(params.flowColor)){
+			this._flowColor=prop.flowColor=params.flowColor;
+		}
+		return prop;
+	}
+	//return error
+};
+&nbsp;
+BarChartFlowModel.prototype.updateRecord = function(index, record){
+	if (record === undefined || record === null || typeof record !== 'object'|| Array.isArray(record)){
+		return 111;
+	}
+	if ((typeof index === 'number') &amp;&amp; (index &lt; this._records.length &amp;&amp; index &gt;= 0)){
+		var oldID=this._records[index].norrisRecordID;
+		this._records[index]=record;
+		this._records[index].norrisRecordID=oldID;
+		this.validateRecord(index);
+		return true;
+	}
+	//invalid index
+	return 112;
+};
+&nbsp;
+BarChartFlowModel.prototype.getProperties = function(){
+	var prop=this.parent.getProperties.call(this);
+	prop.indexKey=this._indexKey;
+	prop.valueKey=this._valueKey;
+	prop.indexFormat=this._indexFormat;
+	prop.valueFormat=this._valueFormat;
+	prop.flowColor=this._flowColor;
+	return prop;
+&nbsp;
+};
+BarChartFlowModel.prototype.getRecordByIndex = <span class="fstat-no" title="function not covered" >function(index){</span>
+<span class="cstat-no" title="statement not covered" >	if (index!==undefined &amp;&amp; index&gt;=0 &amp;&amp; index&lt;this._records.length){</span>
+<span class="cstat-no" title="statement not covered" >		return this._records[index];</span>
+	}
+};
+&nbsp;
+module.exports = BarChartFlowModel;</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Jun 03 2015 00:19:18 GMT+0000 (UTC)</div>
+</div>
+<script src="../../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../../sorter.js"></script>
+</body>
+</html>

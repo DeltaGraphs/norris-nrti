@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for app/Model/PagesModel/Page.js</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../../prettify.css">
+    <link rel="stylesheet" href="../../../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header medium">
+    <h1>Code coverage report for <span class="entity">app/Model/PagesModel/Page.js</span></h1>
+    <h2>
+        Statements: <span class="metric">60% <small>(39 / 65)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">27.78% <small>(10 / 36)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">84.62% <small>(11 / 13)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">60% <small>(39 / 65)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../index.html">All files</a> &#187; <a href="index.html">app/Model/PagesModel/</a> &#187; Page.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">23</span>
+<span class="cline-any cline-yes">23</span>
+<span class="cline-any cline-yes">23</span>
+<span class="cline-any cline-yes">23</span>
+<span class="cline-any cline-yes">23</span>
+<span class="cline-any cline-yes">23</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">23</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25</span>
+<span class="cline-any cline-yes">23</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*jshint node: true */
+'use strict';
+&nbsp;
+/*
+* Name :  Page.js
+* Module : FrontEnd::Model::PagesModel
+* Location : /frontend/app/Model
+*
+* History :
+* Version       Date        Programmer                  Description
+* =================================================================================================
+* 0.1.4         2015-05-18  Maria Giovanna Chinellato   Fix attributes
+*
+* 0.1.3         2015-05-14  Francesco Rossetto          Fix addGraph
+*
+* 0.1.2         2015-05-13  Francesco Rossetto          Fix constructor
+*
+* 0.1.1         2015-05-12  Francesco Rossetto          Fix methods
+*
+* 0.1.0         2015-05-12  Maria Giovanna Chinellato   Add all attributes and all methods
+*
+* 0.0.1         2015-05-12  Maria Giovanna Chinellato   Initial code     
+* =================================================================================================
+*
+*/
+&nbsp;
+angular.module('app')
+.factory('PageFactory', ['LineChartFactory', 'BarChartFactory', 'MapChartFactory', 'TableFactory', function(LineChartFactory, BarChartFactory, MapChartFactory, TableFactory){
+&nbsp;
+    function Page(info){
+        this._graphsList = [];
+        this._name = 'Titolo di default';
+        this._description = '';
+        this._graphsPerRow = 1;
+        this._graphsPerCol = 5;
+        this._url = null;
+&nbsp;
+        if (info !== undefined) {
+            if (info.properties.name !== undefined) {
+<span class="cstat-no" title="statement not covered" >                this._name = info.properties.name;</span>
+            }
+<span class="cstat-no" title="statement not covered" >            if (info.properties.description !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >                this._description = info.properties.description;</span>
+            }
+<span class="cstat-no" title="statement not covered" >            if (info.properties.graphsPerRow !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >                this._graphsPerRow = info.properties.graphsPerRow;</span>
+            }
+<span class="cstat-no" title="statement not covered" >            if (info.properties.graphsPerCol !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >                this._graphsPerCol = info.properties.graphsPerCol;</span>
+            }
+<span class="cstat-no" title="statement not covered" >            if (info.properties.socketURL !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >                this._url = info.properties.socketURL;</span>
+            }
+<span class="cstat-no" title="statement not covered" >            if (info.data !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >                for (var i=0; i&lt;info.data.length; i++){</span>
+<span class="cstat-no" title="statement not covered" >                    this.addGraph(info.data[i]);</span>
+                }
+            }
+        }
+    }
+&nbsp;
+    Page.prototype = {
+&nbsp;
+        constructor : Page,
+&nbsp;
+        updateParameters: function(info){
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (info !== undefined) {
+                <span class="missing-if-branch" title="else path not taken" >E</span>if (info.name !== undefined) {
+                    this._name = info.name;
+                }
+                <span class="missing-if-branch" title="else path not taken" >E</span>if (info.description !== undefined) {
+                    this._description = info.description;
+                }
+                <span class="missing-if-branch" title="else path not taken" >E</span>if (info.graphsPerRow !== undefined) {
+                    this._graphsPerRow = info.graphsPerRow;
+                }
+                <span class="missing-if-branch" title="else path not taken" >E</span>if (info.graphsPerCol !== undefined) {
+                    this._graphsPerCol = info.graphsPerCol;
+                }
+            }
+        },
+        initializeData: <span class="fstat-no" title="function not covered" >function(data) {</span>
+<span class="cstat-no" title="statement not covered" >            if (data !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >                for (var i=0; i&lt;data.length; i++) {</span>
+<span class="cstat-no" title="statement not covered" >                    this.addGraph(data[i]);</span>
+                }
+            }
+        },
+        addGraph: function(graph){
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (graph !== undefined) {
+                var count = 0;
+                for (var j=0; j&lt;this._graphsList.length; j++) {
+<span class="cstat-no" title="statement not covered" >                    if (this._graphsList[j].id === graph.ID){</span>
+<span class="cstat-no" title="statement not covered" >                        count++;</span>
+                    }
+                }
+                <span class="missing-if-branch" title="else path not taken" >E</span>if (count === 0){
+                    var newGraph;
+                    switch (graph.type) {
+<span class="branch-0 cbranch-no" title="branch not covered" >                        case 'LineChart': </span>
+<span class="cstat-no" title="statement not covered" >                            newGraph = LineChartFactory.build(graph);</span>
+<span class="cstat-no" title="statement not covered" >                            this._graphsList.push( {'id' : graph.ID, 'graph' : newGraph} );</span>
+<span class="cstat-no" title="statement not covered" >                            break;</span>
+<span class="branch-1 cbranch-no" title="branch not covered" >                        case 'BarChart': </span>
+<span class="cstat-no" title="statement not covered" >                            newGraph = BarChartFactory.build(graph);</span>
+<span class="cstat-no" title="statement not covered" >                            this._graphsList.push( {'id' : graph.ID, 'graph' : newGraph} );</span>
+<span class="cstat-no" title="statement not covered" >                            break;</span>
+<span class="branch-2 cbranch-no" title="branch not covered" >                        case 'MapChart': </span>
+<span class="cstat-no" title="statement not covered" >                            newGraph = MapChartFactory.build(graph);</span>
+<span class="cstat-no" title="statement not covered" >                            this._graphsList.push( {'id' : graph.ID, 'graph' : newGraph} );</span>
+<span class="cstat-no" title="statement not covered" >                            break;</span>
+                        case 'Table': 
+                            newGraph = TableFactory.build(graph);
+                            this._graphsList.push( {'id' : graph.ID, 'graph' : newGraph} );
+                            break;
+                    }
+                }
+            // error
+            }
+            // error
+        },
+&nbsp;
+        getGraphsList: function(){
+            return this._graphsList;
+        },
+        getName: function(){
+            return this._name;
+        },
+        getDescription: function(){
+            return this._description;
+        },
+        getGraphsPerRow: function(){
+            return  this._graphsPerRow;
+        },
+        getGraphsPerCol: function(){
+            return  this._graphsPerCol;
+        },
+        getUrl: function(){
+            return this._url;
+        }
+    };
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function PageFactory() {</span>}
+&nbsp;
+    PageFactory.build = function(info) {
+        return new Page(info);
+    };
+&nbsp;
+    return PageFactory;
+}]);</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Jun 03 2015 00:20:50 GMT+0000 (UTC)</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>

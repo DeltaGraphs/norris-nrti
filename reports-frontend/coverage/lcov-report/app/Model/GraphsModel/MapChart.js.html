@@ -1,0 +1,774 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for app/Model/GraphsModel/MapChart.js</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../../prettify.css">
+    <link rel="stylesheet" href="../../../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header high">
+    <h1>Code coverage report for <span class="entity">app/Model/GraphsModel/MapChart.js</span></h1>
+    <h2>
+        Statements: <span class="metric">90.23% <small>(120 / 133)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">47.06% <small>(32 / 68)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">75% <small>(21 / 28)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">90.23% <small>(120 / 133)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../index.html">All files</a> &#187; <a href="index.html">app/Model/GraphsModel/</a> &#187; MapChart.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">51</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">27</span>
+<span class="cline-any cline-yes">27</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">51</span>
+<span class="cline-any cline-yes">34</span>
+<span class="cline-any cline-yes">34</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">51</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">51</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">51</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">51</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">51</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">51</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">51</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">51</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">51</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">51</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">51</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">51</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">51</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">51</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">51</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">51</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">51</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">51</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">51</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">51</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">51</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">51</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">51</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*jshint node: true */
+'use strict';
+&nbsp;
+/*
+* Name :  MapChart.js
+* Module : FrontEnd::Model::GraphsModel
+* Location : /frontend/app/Model/GraphsModel
+*
+* History :
+* Version       Date        Programmer                  Description
+* ===============================================================================================================
+* 0.2.0         2015-05-18  Maria Giovanna Chinellato   Modified general structure, some fixes
+*
+* 0.1.1         2015-05-15  Francesco Rossetto          Various fix, insert inzializeData
+*
+* 0.1.0         2015-05-14  Maria Giovanna Chinellato   Add all attributes and methods
+*
+* 0.0.1         2015-05-14  Maria Giovanna Chinellato   Initial code      
+* ===============================================================================================================
+*
+*/
+&nbsp;
+angular.module('app')
+.factory('MapChartFactory',['GraphFactory', 'MapChartFlowFactory', function(GraphFactory, MapChartFlowFactory){
+&nbsp;
+    function split(json) {
+        var graphJson = {};
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (json.title !== undefined) {
+            graphJson.title = json.title;
+        }
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (json.height !== undefined) {
+            graphJson.height = json.height;
+        }
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (json.width !== undefined) {
+            graphJson.width = json.width;
+        }
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (json.enableLegend !== undefined) {
+<span class="cstat-no" title="statement not covered" >            graphJson.enableLegend = json.enableLegend;</span>
+<span class="cstat-no" title="statement not covered" >            if (json.legend !== undefined &amp;&amp; graphJson.enableLegend !== false) {</span>
+<span class="cstat-no" title="statement not covered" >                graphJson.legend = json.legend;</span>
+            }
+        }
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (json.horizontalGrid !== undefined) {
+            graphJson.horizontalGrid = json.horizontalGrid;
+        }
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (json.verticalGrid !== undefined) {
+            graphJson.verticalGrid = json.verticalGrid;
+        }
+&nbsp;
+&nbsp;
+        var mapJson = {};
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (json.legendOnPoint !== undefined) {
+            mapJson.legendOnPoint = json.legendOnPoint;
+        }
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (json.latitude !== undefined) {
+            mapJson.latitude = json.latitude;
+        }
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (json.longitude !== undefined) {
+            mapJson.longitude = json.longitude;
+        }
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (json.mapType !== undefined) {
+            mapJson.mapType = json.mapType;
+        }
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (json.zoom !== undefined) {
+            mapJson.zoom = json.zoom;
+        }
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (json.mapWidth !== undefined) {
+<span class="cstat-no" title="statement not covered" >            mapJson.mapWidth = json.mapWidth;</span>
+        }
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (json.mapHeight !== undefined) {
+<span class="cstat-no" title="statement not covered" >            mapJson.mapHeight = json.mapHeight;</span>
+        }
+&nbsp;
+&nbsp;
+        return {
+            'graphJson' : graphJson,
+            'mapJson' : mapJson
+        };
+    }
+&nbsp;
+    //MapChart.prototype.test = function _Test(expressionStr) { return eval(expressionStr); };
+&nbsp;
+    // create our new custom object that reuse the original object constructor
+    function MapChart(info) {
+        this._legendOnPoint = false;
+        this._latitude = 45.4113311;
+        this._longitude = 11.8876318;
+        this._mapType = 'terrain';
+        this._zoom = true;
+        this._mapWidth = 0;
+        this._mapHeight = 0;
+&nbsp;
+        this._graph = GraphFactory.build(info);
+    }
+&nbsp;
+    MapChart.prototype.updateParameters = function(info) {
+        var json = split(info);
+        var gJson = json.graphJson;
+        var mJson = json.mapJson;
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (Object.keys(gJson).length !== 0) {
+            this._graph.updateParameters.call(this, gJson);
+        } 
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (Object.keys(mJson).length !== 0) {
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (mJson.legendOnPoint !== undefined) {
+                this._legendOnPoint = mJson.legendOnPoint;
+            }
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (mJson.latitude !== undefined) {
+                this._latitude = mJson.latitude;
+            }
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (mJson.longitude !== undefined) {
+                this._longitude = mJson.longitude;
+            }
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (mJson.mapType !== undefined) {
+                this._mapType = mJson.mapType;
+            }
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (mJson.zoom !== undefined) {
+                this._zoom = mJson.zoom;
+            }
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (mJson.mapWidth !== undefined) {
+<span class="cstat-no" title="statement not covered" >                this._mapWidth = mJson.mapWidth;</span>
+            }
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (mJson.mapHeight !== undefined) {
+<span class="cstat-no" title="statement not covered" >                this._mapHeight = mJson.mapHeight;</span>
+            }
+        }
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (info.flows !== undefined) {
+            for (var i=0; i&lt;info.flows.length; i++) {
+                var newflow = MapChartFlowFactory.build(info.flows[i]);
+                this.addFlow(info.flows[i].ID, newflow);
+            }
+        }
+    };
+&nbsp;
+    MapChart.prototype.addFlow = function(ID, newFlow) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (newFlow.constructor.name === 'MapChartFlow') {
+            this._graph.addFlow(ID, newFlow);
+        }
+    };
+    MapChart.prototype.deleteFlow = function(ID) {
+        this._graph.deleteFlow(ID);
+    };
+    MapChart.prototype.replaceData = <span class="fstat-no" title="function not covered" >function(newData){</span>
+<span class="cstat-no" title="statement not covered" >        this._graph.replaceData(newData);</span>
+    };
+&nbsp;
+    MapChart.prototype.initializeData = function(newData) {  //inizialization data of flows
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (newData !== undefined) {
+            var fList = this._graph.getFlowList();
+            for (var i=0; i&lt;newData.length; i++) {
+                for (var j=0; j&lt;fList.length; j++) {
+                    <span class="missing-if-branch" title="else path not taken" >E</span>if (fList[j].id === newData[i].ID) {
+                        fList[j].flow.initializeData(newData[i]);
+                    }
+                }
+            }
+        }
+    };
+&nbsp;
+    // update data
+    MapChart.prototype.inPlaceUpdate = function(newData) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (newData !== undefined) {
+            var fList = this._graph.getFlowList();
+            for (var j=0; j&lt;fList.length; j++) {
+                <span class="missing-if-branch" title="else path not taken" >E</span>if (fList[j].id === newData.ID) {
+                    fList[j].flow.inPlaceUpdate(newData);
+                }
+            }
+        }
+    };
+    MapChart.prototype.streamUpdate = function(newData) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (newData !== undefined) {
+            var fList = this._graph.getFlowList();
+            for (var j=0; j&lt;fList.length; j++) {
+                <span class="missing-if-branch" title="else path not taken" >E</span>if (fList[j].id === newData.ID) {
+                    fList[j].flow.streamUpdate(newData);
+                }
+            }
+        }
+    };
+    MapChart.prototype.deleteData = function(delData) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (delData !== undefined){
+            var fList = this._graph.getFlowList();
+            for (var j=0; j&lt;fList.length; j++) {
+                <span class="missing-if-branch" title="else path not taken" >E</span>if (fList[j].id === delData.ID) {
+                    fList[j].flow.deleteData(delData);
+                }
+            }
+        }
+    };
+&nbsp;
+    MapChart.prototype.getTitle = function() {
+        return this._graph.getTitle();
+    };
+    MapChart.prototype.getHeight = <span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >        return this._graph.getHeight();</span>
+    };
+    MapChart.prototype.getWidth = <span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >        return this._graph.getWidth();</span>
+    };
+    MapChart.prototype.getLegend = <span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >        return this._graph.getLegend();</span>
+    };
+    MapChart.prototype.getHGrid = <span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >        return this._graph.getHGrid();</span>
+    };
+    MapChart.prototype.getVGrid = <span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >        return this._graph.getVGrid();</span>
+    };
+    MapChart.prototype.getUrl = function() {
+        return this._graph.getUrl();
+    };
+    MapChart.prototype.getFlowList = function() {
+        return this._graph.getFlowList();
+    };
+    MapChart.prototype.getLegendOnPoint = function() {
+        return this._legendOnPoint;
+    };
+    MapChart.prototype.getLatitude = function() {
+        return this._latitude;
+    };
+    MapChart.prototype.getLongitude = function() {
+        return this._longitude;
+    };
+    MapChart.prototype.getMapType = function() {
+        return this._mapType;
+    };
+    MapChart.prototype.getZoom = function() {
+        return this._zoom;
+    };
+    MapChart.prototype.getMapWidth = function() {
+        return this._mapWidth;
+    };
+    MapChart.prototype.getMapHeight = function() {
+        return this._mapHeight;
+    };
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function MapChartFactory() {</span>}
+&nbsp;
+    MapChartFactory.build = function(info) {
+        return new MapChart(info);
+    };
+&nbsp;
+    return MapChartFactory;
+}]);</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Jun 03 2015 00:20:50 GMT+0000 (UTC)</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>

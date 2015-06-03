@@ -1,0 +1,819 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for norris-nrti/lib/dataTier/graph/tableModel.js</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../../../prettify.css">
+    <link rel="stylesheet" href="../../../../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header high">
+    <h1>Code coverage report for <span class="entity">norris-nrti/lib/dataTier/graph/tableModel.js</span></h1>
+    <h2>
+        Statements: <span class="metric">100% <small>(141 / 141)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">92.59% <small>(125 / 135)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">100% <small>(11 / 11)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">100% <small>(139 / 139)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../../index.html">All files</a> &#187; <a href="index.html">norris-nrti/lib/dataTier/graph/</a> &#187; tableModel.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">29</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">31</span>
+<span class="cline-any cline-yes">31</span>
+<span class="cline-any cline-yes">31</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">31</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">31</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">31</span>
+<span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">16</span>
+<span class="cline-any cline-yes">16</span>
+<span class="cline-any cline-yes">16</span>
+<span class="cline-any cline-yes">16</span>
+<span class="cline-any cline-yes">16</span>
+<span class="cline-any cline-yes">16</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">31</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">31</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">31</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span></td><td class="text"><pre class="prettyprint lang-js">/*jshint node: true, -W106 */
+'use strict';
+&nbsp;
+/*
+* Name : tableModel.js
+* Module : Lib::DataTier::TableModel
+* Location : /lib/dataTier/graph
+*
+* History :
+* 
+* Version   Date         Programmer         Description
+* =========================================================
+* 0.0.1     2015-05-16   Samuele Zanella    Initial code
+* =========================================================
+*/
+&nbsp;
+var GraphModel = require('./graphModel.js');
+var TableFlowModel = require('../flow/tableFlowModel.js');
+var FH = require('../../helpers/functionHelper.js');
+&nbsp;
+function TableModel(params) {
+	if(params===undefined || params.ID===undefined || typeof params.ID !== 'string'|| params.ID.trim() === ''){ // ID field is required
+		console.log('Error: 342');
+		return;
+	}
+&nbsp;
+	params.type = 'Table';
+	
+	this.parent.constructor.call(this, params);
+&nbsp;
+	this._sortable=false;
+	this._sort=null;
+	this._maxItemsPage=10;
+	this._headers=[];
+	this._appearance= {
+		border: {
+			color: '#000000',
+			width: 1
+		},
+		rowEven: {
+			textColor: [],
+			backgroundColor: []
+		},
+		rowOdd: {
+			textColor: [],
+			backgroundColor: []
+		},
+		headers: {
+			textColor: [],
+			backgroundColor: []			
+		}
+	};
+	this._addRowOn='bottom';
+	this._flows=[];
+&nbsp;
+	this.updateProperties(params);
+}
+&nbsp;
+TableModel.prototype = Object.create(GraphModel.prototype);
+TableModel.prototype.constructor = TableModel;
+TableModel.prototype.parent = GraphModel.prototype;
+&nbsp;
+TableModel.prototype.getProperties = function() {
+	var res = this.parent.getProperties.call(this);
+	res.sortable = this._sortable;
+	res.sort = this._sort;
+	res.maxItemsPage = this._maxItemsPage;
+	res.headers = this._headers;
+	res.appearance = this._appearance;
+	res.addRowOn = this._addRowOn;
+	return res;
+};
+&nbsp;
+TableModel.prototype.updateProperties = function(params) {
+	<span class="missing-if-branch" title="else path not taken" >E</span>if (params !== undefined){
+		var prop=this.parent.updateBaseProperties.call(this, params);		
+		if(params.sortable!==undefined &amp;&amp; typeof params.sortable === 'boolean'){
+			this._sortable=prop.sortable=params.sortable;
+		}
+		if(params.sort!==undefined &amp;&amp; params.sort.column!==undefined &amp;&amp; params.sort.ordering!==undefined &amp;&amp; typeof params.sort.column === 'string' &amp;&amp; typeof params.sort.ordering === 'string' &amp;&amp; (params.sort.ordering === 'ASC' || params.sort.ordering === 'DESC')){
+			this._sort=prop.sort=params.sort;
+		}
+		if(params.maxItemsPage!==undefined &amp;&amp; typeof params.maxItemsPage === 'number' &amp;&amp; params.maxItemsPage &gt; 0){
+			this._maxItemsPage=prop.maxItemsPage=params.maxItemsPage;
+		}
+		if(params.headers!==undefined &amp;&amp; Array.isArray(params.headers)){
+			var prevHLength = this._headers.length;
+			this._headers=params.headers;
+			if(prevHLength === 0) {
+				for(var i=0; i&lt;params.headers.length; i++) {
+					this._appearance.rowEven.textColor[i] = '#000000';
+					this._appearance.rowEven.backgroundColor[i] = '#FFFFFF';
+					this._appearance.rowOdd.textColor[i] = '#000000';
+					this._appearance.rowOdd.backgroundColor[i] = '#FFFFFF';
+					this._appearance.headers.textColor[i] = '#000000';
+					this._appearance.headers.backgroundColor[i] = '#FFFFFF';
+				}
+			}
+			else {
+				if(this._headers.length &gt; prevHLength) {
+					//add columns to the appearance arrays
+					for(var j=0; j&lt;this._headers.length - prevHLength; j++) {
+						this._appearance.rowEven.textColor.push('#000000');
+						this._appearance.rowEven.backgroundColor.push('#FFFFFF');
+						this._appearance.rowOdd.textColor.push('#000000');
+						this._appearance.rowOdd.backgroundColor.push('#FFFFFF');
+						this._appearance.headers.textColor.push('#000000');
+						this._appearance.headers.backgroundColor.push('#FFFFFF');
+					}
+				}
+				else if(this._headers.length &lt; prevHLength) {
+					//remove columns from the appearance arrays
+					for(var k=0; k&lt;prevHLength - this._headers.length; k++) {
+						this._appearance.rowEven.textColor.pop();
+						this._appearance.rowEven.backgroundColor.pop();
+						this._appearance.rowOdd.textColor.pop();
+						this._appearance.rowOdd.backgroundColor.pop();
+						this._appearance.headers.textColor.pop();
+						this._appearance.headers.backgroundColor.pop();
+					}
+				}
+			}
+			prop.headers=params.headers;
+		}
+		if(params.appearance!==undefined &amp;&amp; typeof params.appearance) {
+			if(params.appearance.border!==undefined &amp;&amp; typeof params.appearance.border === 'object') {
+				<span class="missing-if-branch" title="else path not taken" >E</span>if(params.appearance.border.color !== undefined &amp;&amp; typeof params.appearance.border.color === 'string' &amp;&amp; FH.isHEX(params.appearance.border.color)) {
+					this._appearance.border.color = params.appearance.border.color;
+				}
+				<span class="missing-if-branch" title="else path not taken" >E</span>if(params.appearance.border.width !== undefined &amp;&amp; typeof params.appearance.border.width === 'number') {
+					this._appearance.border.width = params.appearance.border.width;
+				}
+			}
+			if(params.appearance.rowEven!==undefined &amp;&amp; typeof params.appearance.rowEven) {
+				//setting rowEven values to the one in the parameters
+				if(params.appearance.rowEven.textColor !== undefined &amp;&amp; typeof params.appearance.rowEven.textColor === 'string' &amp;&amp; FH.isHEX(params.appearance.rowEven.textColor)) {
+					for(var f=0; f &lt; this._appearance.rowEven.textColor.length; f++) {
+						this._appearance.rowEven.textColor[f] = params.appearance.rowEven.textColor;
+					}
+				}
+				else <span class="missing-if-branch" title="else path not taken" >E</span>if(params.appearance.rowEven.textColor !== undefined &amp;&amp; Array.isArray(params.appearance.rowEven.textColor)) {
+					this._appearance.rowEven.textColor = params.appearance.rowEven.textColor;
+				}
+				if(params.appearance.rowEven.backgroundColor !== undefined &amp;&amp; typeof params.appearance.rowEven.backgroundColor === 'string' &amp;&amp; FH.isHEX(params.appearance.rowEven.backgroundColor)) {
+					for(var l=0; l &lt; this._appearance.rowEven.backgroundColor.length; l++) {
+						this._appearance.rowEven.backgroundColor[l] = params.appearance.rowEven.backgroundColor;
+					}
+				}
+				else <span class="missing-if-branch" title="else path not taken" >E</span>if(params.appearance.rowEven.backgroundColor !== undefined &amp;&amp; Array.isArray(params.appearance.rowEven.backgroundColor)) {
+					this._appearance.rowEven.backgroundColor = params.appearance.rowEven.backgroundColor;
+				}
+			}
+			if(params.appearance.rowOdd!==undefined &amp;&amp; typeof params.appearance.rowOdd) {
+				//setting rowOdd values to the one in the parameters
+				if(params.appearance.rowOdd.textColor !== undefined &amp;&amp; typeof params.appearance.rowOdd.textColor === 'string' &amp;&amp; FH.isHEX(params.appearance.rowOdd.textColor)) {
+					for(var m=0; m &lt; this._appearance.rowOdd.textColor.length; m++) {
+						this._appearance.rowOdd.textColor[m] = params.appearance.rowOdd.textColor;
+					}
+				}
+				else <span class="missing-if-branch" title="else path not taken" >E</span>if(params.appearance.rowOdd.textColor !== undefined &amp;&amp; Array.isArray(params.appearance.rowOdd.textColor)) {
+					this._appearance.rowOdd.textColor = params.appearance.rowOdd.textColor;
+				}
+				if(params.appearance.rowOdd.backgroundColor !== undefined &amp;&amp; typeof params.appearance.rowOdd.backgroundColor === 'string' &amp;&amp; FH.isHEX(params.appearance.rowOdd.backgroundColor)) {
+					for(var n=0; n &lt; this._appearance.rowOdd.backgroundColor.length; n++) {
+						this._appearance.rowOdd.backgroundColor[n] = params.appearance.rowOdd.backgroundColor;
+					}
+				}
+				else <span class="missing-if-branch" title="else path not taken" >E</span>if(params.appearance.rowOdd.backgroundColor !== undefined &amp;&amp; Array.isArray(params.appearance.rowOdd.backgroundColor)) {
+					this._appearance.rowOdd.backgroundColor = params.appearance.rowOdd.backgroundColor;
+				}
+			}
+			if(params.appearance.headers!==undefined &amp;&amp; typeof params.appearance.headers) {
+				//setting headers values to the one in the parameters
+				if(params.appearance.headers.textColor !== undefined &amp;&amp; typeof params.appearance.headers.textColor === 'string' &amp;&amp; FH.isHEX(params.appearance.headers.textColor)) {
+					for(var r=0; r &lt; this._appearance.headers.textColor.length; r++) {
+						this._appearance.headers.textColor[r] = params.appearance.headers.textColor;
+					}
+				}
+				else <span class="missing-if-branch" title="else path not taken" >E</span>if(params.appearance.headers.textColor !== undefined &amp;&amp; Array.isArray(params.appearance.headers.textColor)) {
+					this._appearance.headers.textColor = params.appearance.headers.textColor;
+				}
+				if(params.appearance.headers.backgroundColor !== undefined &amp;&amp; typeof params.appearance.headers.backgroundColor === 'string' &amp;&amp; FH.isHEX(params.appearance.headers.backgroundColor)) {
+					for(var s=0; s &lt; this._appearance.headers.backgroundColor.length; s++) {
+						this._appearance.headers.backgroundColor[s] = params.appearance.headers.backgroundColor;
+					}
+				}
+				else <span class="missing-if-branch" title="else path not taken" >E</span>if(params.appearance.headers.backgroundColor !== undefined &amp;&amp; Array.isArray(params.appearance.headers.backgroundColor)) {
+					this._appearance.headers.backgroundColor = params.appearance.headers.backgroundColor;
+				}
+			}
+			prop.appearance=params.appearance;
+		}
+		if(params.addRowOn!==undefined &amp;&amp; typeof params.addRowOn === 'string' &amp;&amp; (params.addRowOn==='bottom' || params.addRowOn==='top')){
+			this._addRowOn=prop.addRowOn=params.addRowOn;
+		}
+		return prop;
+	}
+	//return error
+};
+&nbsp;
+TableModel.prototype.getData = function() {
+	var graphData=[];
+	var flows= this._flows.length;
+&nbsp;
+	//build graphData by iterating every flow in _flows
+	for(var i=0; i&lt;flows; i++){
+		graphData[i]={
+			properties: this._flows[i].getProperties(),
+			data: this._flows[i].getData()
+		};
+	}//for flows
+&nbsp;
+	return graphData;
+};
+&nbsp;
+TableModel.prototype.addFlow = function(flow) {
+	if(flow instanceof TableFlowModel) {
+		this._flows.push(flow);
+	}
+};
+&nbsp;
+TableModel.prototype.deleteFlow = function(ID) {
+	<span class="missing-if-branch" title="else path not taken" >E</span>if(typeof ID === 'string') {
+		for(var i=0; i &lt; this._flows.length; i++) {
+			if(this._flows[i].getProperties().ID === ID) {
+				this._flows.splice(i, 1);
+			}
+		}
+	}
+};
+&nbsp;
+TableModel.prototype.deleteAllFlows = function() {
+	this._flows = [];
+};
+&nbsp;
+TableModel.prototype.updateRecord = function(flowID, ID, newRecord) {
+	var filteredFlows = this._flows.filter(function(flow) {return flow.getProperties().ID === flowID;});
+	if(filteredFlows.length &gt; 0) {
+		var flow = filteredFlows[0];
+		return flow.updateRecord(ID, newRecord);
+	}
+	else {
+		console.log('Error: 241');
+		return 241;
+	}
+};
+&nbsp;
+TableModel.prototype.addRecord = function(flowID, record) {
+	var filteredFlows = this._flows.filter(function(flow) {return flow.getProperties().ID === flowID;});
+	if(filteredFlows.length &gt; 0) {
+		var flow = filteredFlows[0];
+		return flow.addRecord(record);
+	}
+	else {
+		return 241;
+	}
+};
+&nbsp;
+module.exports = TableModel;</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Jun 03 2015 00:19:18 GMT+0000 (UTC)</div>
+</div>
+<script src="../../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../../sorter.js"></script>
+</body>
+</html>

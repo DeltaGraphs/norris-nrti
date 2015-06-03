@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for app/Model/PagesModel/PagesList.js</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../../prettify.css">
+    <link rel="stylesheet" href="../../../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header medium">
+    <h1>Code coverage report for <span class="entity">app/Model/PagesModel/PagesList.js</span></h1>
+    <h2>
+        Statements: <span class="metric">66.67% <small>(16 / 24)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">41.67% <small>(5 / 12)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">66.67% <small>(4 / 6)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">69.57% <small>(16 / 23)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../index.html">All files</a> &#187; <a href="index.html">app/Model/PagesModel/</a> &#187; PagesList.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*jshint node: true */
+'use strict';
+&nbsp;
+/*
+* Name :  PagesList.js
+* Module : FrontEnd::Model::PagesModel
+* Location : /frontend/app/Model/PagesModel
+*
+* History :
+* Version       Date        Programmer                  Description
+* =================================================================================================
+* 0.1.1         2015-05-18  Maria Giovanna Chinellato	Fix attributes
+*
+* 0.1.0         2015-05-12  Maria Giovanna Chinellato   Add all attributes and all methods
+*
+* 0.0.1         2015-05-12  Maria Giovanna Chinellato   Initial code      
+* =================================================================================================
+*
+*/
+&nbsp;
+angular.module('app')
+.factory('PagesList', ['PageFactory', function(PageFactory){
+&nbsp;
+	var pagesList = [];
+&nbsp;
+	function PagesList(info) {
+&nbsp;
+		if (info !== undefined) {
+			<span class="missing-if-branch" title="else path not taken" >E</span>if (info.data !== undefined) {
+				for (var i=0; i&lt;info.data.length; i++){
+					var count = 0;
+					for (var j=0; j&lt;pagesList.length; j++) {
+<span class="cstat-no" title="statement not covered" >						if (pagesList[j].id === info.data[i].ID){</span>
+<span class="cstat-no" title="statement not covered" >							count++;</span>
+						}
+					}
+	    			<span class="missing-if-branch" title="else path not taken" >E</span>if(count === 0) {
+	    				var page = PageFactory.build(info.data[i]);
+<span class="cstat-no" title="statement not covered" >	       				pagesList.push({ 'id' : info.data[i].properties.ID, 'page' : page});</span>
+					} 
+					// error
+				}
+			}
+		}
+	}
+	
+	PagesList.prototype = {
+&nbsp;
+		addPage: function(page) { // da cambiare DP
+			var filteredPages = pagesList.filter(<span class="fstat-no" title="function not covered" >function(page) {<span class="cstat-no" title="statement not covered" ></span>return page.ID === pagesList.id;}</span>);
+			<span class="missing-if-branch" title="else path not taken" >E</span>if(filteredPages.length === 0) {
+				var newPage = PageFactory.build(page);
+<span class="cstat-no" title="statement not covered" >   				pagesList.push({ 'id' : page.ID, 'page' : newPage});</span>
+			}
+			// error
+		},
+&nbsp;
+		updatePage: <span class="fstat-no" title="function not covered" >function(info) {</span>
+<span class="cstat-no" title="statement not covered" >			for (var j=0; j&lt;pagesList.length; j++) {</span>
+<span class="cstat-no" title="statement not covered" >				if (pagesList[j].id === info.ID){</span>
+<span class="cstat-no" title="statement not covered" >					pagesList[j].updateParameters(info);</span>
+				}
+			}
+		},
+&nbsp;
+		getPagesList: function(){
+			return pagesList;
+		}
+	};
+&nbsp;
+	return( PagesList );
+}]);</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Jun 03 2015 00:20:50 GMT+0000 (UTC)</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>

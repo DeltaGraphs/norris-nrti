@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Plato - test/dataTier/graph/lineChartModelSpec.js</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link href="../../assets/css/vendor/morris.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet">
+  <link href="../../assets/css/plato.css" rel="stylesheet">
+  <link href="../../assets/css/plato-file.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="http://github.com/es-analysis/plato">Plato on Github</a>
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="../../index.html">Report Home</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>test/dataTier/graph/lineChartModelSpec.js</h1>
+  </div>
+</div>
+
+<div class="container aggregate-stats">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
+      <p class="stat">64.32</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
+      <p class="stat">337</p>
+    </div>
+  </div>
+  <div class="row historical">
+    <div class="col-md-6">
+      <p id="chart_historical_maint" class="chart"></p>
+    </div>
+    <div class="col-md-6">
+      <p id="chart_historical_sloc" class="chart"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
+      <p class="stat">37.18</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
+      <p class="stat">4.75</p>
+    </div>
+  </div>
+</div>
+
+<div class="container charts">
+  <div class="row">
+    <h2 class="header">Function weight</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="chart-header">By Complexity <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="This metric counts the number of distinct paths through a block of code. Lower values are better." data-original-title="Cyclomatic Complexity" data-container="body"></i></a></h3>
+      <div id="fn-by-complexity" class="stat"></div>
+    </div>
+    <div class="col-md-6">
+      <h3 class="chart-header">By SLOC  <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h3>
+      <div id="fn-by-sloc" class="stat"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <textarea id="file-source" class="col-md-12">/*jshint node: true, -W106 */
+&#039;use strict&#039;;
+
+/*
+* Name : barChartModelSpec.js
+* Module : UnitTest
+* Location : /test/dataTier/graph
+*
+* History :
+* 
+* Version   Date         Programmer         Description
+* =========================================================
+* 0.0.1     2015-05-15   Samuele Zanella    Initial code
+* =========================================================
+*/
+
+var LineChartModel = require(&#039;../../../lib/dataTier/graph/lineChartModel.js&#039;);
+var LegendModel = require(&#039;../../../lib/dataTier/graph/legendModel.js&#039;);
+var LineChartFlowModel = require(&#039;../../../lib/dataTier/flow/lineChartFlowModel.js&#039;);
+var AxisModel = require(&#039;../../../lib/dataTier/graph/axisModel.js&#039;);
+var assert = require(&#039;assert&#039;);
+
+describe(&#039;lineChartModel&#039;, function() {
+
+    it(&#039;returns null when there are no params&#039;, function() {
+        assert.strictEqual((new LineChartModel()).hasOwnProperty(&#039;_title&#039;), false);
+    });
+
+    it(&#039;returns null when there is no valid ID in params&#039;, function() {
+        assert.strictEqual((new LineChartModel({})).hasOwnProperty(&#039;_title&#039;), false);
+    });
+
+    it(&#039;returns null when there is a empty ID in params&#039;, function() {
+        assert.strictEqual((new LineChartModel({ID:&#039; &#039;})).hasOwnProperty(&#039;_title&#039;), false);
+    });
+    
+    var defaultLegend = new LegendModel();
+    var defaultAxis = new AxisModel();
+    it(&#039;set default values to property not specified&#039;, function() {
+        var graph1=new LineChartModel({ID:&#039;graph1&#039;});
+        assert.strictEqual(graph1._ID, &#039;graph1&#039;);
+        assert.strictEqual(graph1._title, &#039;&#039;);
+        assert.strictEqual(graph1._type, &#039;LineChart&#039;);
+        assert.strictEqual(graph1._height, 400);
+        assert.strictEqual(graph1._width, 500);
+        assert.strictEqual(graph1._enableLegend, false);
+        assert.deepEqual(graph1._legend.getProperties(), defaultLegend.getProperties());
+        assert.deepEqual(graph1._xAxis.getProperties(), defaultAxis.getProperties());
+        assert.deepEqual(graph1._yAxis.getProperties(), defaultAxis.getProperties());
+        assert.strictEqual(graph1._backgroundColor, &#039;#FFFFFF&#039;);
+        assert.strictEqual(graph1._legendOnPoint, false);
+        assert.strictEqual(graph1._viewFinder, false);
+        assert.strictEqual(graph1._horizontalGrid, false);
+        assert.strictEqual(graph1._verticalGrid, false);
+    });
+
+    it(&#039;set default values to wrong properties&#039;, function() {
+        var graph1=new LineChartModel({
+            ID: &#039;graph1&#039;,
+            title: 1,
+            height: &#039;a&#039;,
+            width: &#039;b&#039;,
+            enableLegend: &#039;abc&#039;,
+            legend: &#039;def&#039;,
+            xAxis: true,
+            yAxis: true,
+            backgroundColor: 222,
+            legendOnPoint: &#039;abc&#039;,
+            viewFinder: 12,
+            horizontalGrid: &#039;abc&#039;,
+            verticalGrid: &#039;def&#039;
+        });
+        assert.strictEqual(graph1._ID, &#039;graph1&#039;);
+        assert.strictEqual(graph1._title, &#039;&#039;);
+        assert.strictEqual(graph1._type, &#039;LineChart&#039;);
+        assert.strictEqual(graph1._height, 400);
+        assert.strictEqual(graph1._width, 500);
+        assert.strictEqual(graph1._enableLegend, false);
+        assert.deepEqual(graph1._legend.getProperties(), defaultLegend.getProperties());
+        assert.deepEqual(graph1._xAxis.getProperties(), defaultAxis.getProperties());
+        assert.deepEqual(graph1._yAxis.getProperties(), defaultAxis.getProperties());
+        assert.strictEqual(graph1._backgroundColor, &#039;#FFFFFF&#039;);
+        assert.strictEqual(graph1._legendOnPoint, false);
+        assert.strictEqual(graph1._viewFinder, false);
+        assert.strictEqual(graph1._horizontalGrid, false);
+        assert.strictEqual(graph1._verticalGrid, false);
+    });
+
+    var legend1 = new LegendModel();
+    var xAxis1 = new AxisModel();
+    var yAxis1 = new AxisModel();
+    it(&#039;set param values to properties&#039;, function() {
+        var graph1=new LineChartModel({
+            ID: &#039;graph1&#039;,
+            title: &#039;graph one&#039;,
+            height: 200,
+            width: 350,
+            enableLegend: true,
+            legend: legend1.getProperties(),
+            xAxis: xAxis1.getProperties(),
+            yAxis: yAxis1.getProperties(),
+            backgroundColor: &#039;#EEEEEE&#039;,
+            legendOnPoint: true,
+            viewFinder: true,
+            horizontalGrid: true,
+            verticalGrid: true
+        });
+        assert.strictEqual(graph1._ID, &#039;graph1&#039;);
+        assert.strictEqual(graph1._title, &#039;graph one&#039;);
+        assert.strictEqual(graph1._type, &#039;LineChart&#039;);
+        assert.strictEqual(graph1._height, 200);
+        assert.strictEqual(graph1._width, 350);
+        assert.strictEqual(graph1._enableLegend, true);
+        assert.deepEqual(graph1._legend.getProperties(), legend1.getProperties());
+        assert.deepEqual(graph1._xAxis.getProperties(), xAxis1.getProperties());
+        assert.deepEqual(graph1._yAxis.getProperties(), yAxis1.getProperties());
+        assert.strictEqual(graph1._backgroundColor, &#039;#EEEEEE&#039;);
+        assert.strictEqual(graph1._legendOnPoint, true);
+        assert.strictEqual(graph1._viewFinder, true);
+        assert.strictEqual(graph1._horizontalGrid, true);
+        assert.strictEqual(graph1._verticalGrid, true);
+    });
+
+    describe(&#039;#getProperties&#039;, function() {
+        it(&#039;returns the JSON with the properties&#039;, function() {
+            var properties={
+	            ID: &#039;graph1&#039;,
+	            title: &#039;graph one&#039;,
+	            height: 200,
+	            width: 350,
+	            enableLegend: true,
+	            legend: legend1.getProperties(),
+	            xAxis: xAxis1.getProperties(),
+	            yAxis: yAxis1.getProperties(),
+	            backgroundColor: &#039;#EEEEEE&#039;,
+                legendOnPoint: true,
+                viewFinder: true,
+                horizontalGrid: true,
+                verticalGrid: true
+            };
+            var graph1=new LineChartModel(properties);
+            var prop=graph1.getProperties();
+            assert.strictEqual(prop.ID, &#039;graph1&#039;);
+            assert.strictEqual(prop.title, &#039;graph one&#039;);
+            assert.strictEqual(prop.type, &#039;LineChart&#039;);
+            assert.strictEqual(prop.height, 200);
+            assert.strictEqual(prop.width, 350);
+            assert.strictEqual(prop.enableLegend, true);
+            assert.deepEqual(prop.legend, legend1.getProperties());
+            assert.deepEqual(prop.xAxis, xAxis1.getProperties());
+            assert.deepEqual(prop.yAxis, yAxis1.getProperties());
+            assert.strictEqual(prop.backgroundColor, &#039;#EEEEEE&#039;);
+            assert.strictEqual(prop.legendOnPoint, true);
+            assert.strictEqual(prop.viewFinder, true);
+            assert.strictEqual(prop.horizontalGrid, true);
+            assert.strictEqual(prop.verticalGrid, true);
+        });
+    });
+    describe(&#039;#updateProperties&#039;, function() {
+        it(&#039;updates the properties passed as param&#039;, function() {
+            var properties={
+                ID: &#039;graph1&#039;,
+                title: &#039;graph one&#039;,
+                height: 200,
+                width: 350,
+                enableLegend: true,
+                legend: legend1.getProperties(),
+	            xAxis: xAxis1.getProperties(),
+	            yAxis: yAxis1.getProperties(),
+	            backgroundColor: &#039;#EEEEEE&#039;,
+                legendOnPoint: true,
+                viewFinder: true,
+                horizontalGrid: true,
+                verticalGrid: true
+            };
+            var graph1=new LineChartModel({ID: &#039;graph1&#039;});
+            graph1.updateProperties(properties);
+            assert.strictEqual(graph1._ID, &#039;graph1&#039;);
+            assert.strictEqual(graph1._title, &#039;graph one&#039;);
+            assert.strictEqual(graph1._type, &#039;LineChart&#039;);
+            assert.strictEqual(graph1._height, 200);
+            assert.strictEqual(graph1._width, 350);
+            assert.strictEqual(graph1._enableLegend, true);
+            assert.deepEqual(graph1._legend.getProperties(), legend1.getProperties());
+	        assert.deepEqual(graph1._xAxis.getProperties(), xAxis1.getProperties());
+	        assert.deepEqual(graph1._yAxis.getProperties(), yAxis1.getProperties());
+            assert.strictEqual(graph1._backgroundColor, &#039;#EEEEEE&#039;);
+            assert.strictEqual(graph1._legendOnPoint, true);
+            assert.strictEqual(graph1._viewFinder, true);
+            assert.strictEqual(graph1._horizontalGrid, true);
+            assert.strictEqual(graph1._verticalGrid, true);
+        });
+        it(&#039;does not update the properties with wrong param&#039;, function() {
+            var properties={
+                ID: &#039;graph1&#039;,
+                title: 1,
+                height: &#039;a&#039;,
+                width: &#039;b&#039;,
+                enableLegend: &#039;abc&#039;,
+                legend: &#039;def&#039;,
+	            xAxis: true,
+	            yAxis: true,
+	            backgroundColor: 222,
+                legendOnPoint: &#039;abc&#039;,
+                viewFinder: 12,
+                horizontalGrid: &#039;abc&#039;,
+                verticalGrid: &#039;def&#039;
+            };
+            var graph1=new LineChartModel({ID: &#039;graph1&#039;});
+            graph1.updateProperties(properties);
+            assert.strictEqual(graph1._ID, &#039;graph1&#039;);
+            assert.strictEqual(graph1._title, &#039;&#039;);
+            assert.strictEqual(graph1._type, &#039;LineChart&#039;);
+            assert.strictEqual(graph1._height, 400);
+            assert.strictEqual(graph1._width, 500);
+            assert.strictEqual(graph1._enableLegend, false);
+            assert.deepEqual(graph1._legend.getProperties(), defaultLegend.getProperties());
+	        assert.deepEqual(graph1._xAxis.getProperties(), defaultAxis.getProperties());
+	        assert.deepEqual(graph1._yAxis.getProperties(), defaultAxis.getProperties());
+	        assert.strictEqual(graph1._backgroundColor, &#039;#FFFFFF&#039;);
+            assert.strictEqual(graph1._legendOnPoint, false);
+            assert.strictEqual(graph1._viewFinder, false);
+            assert.strictEqual(graph1._horizontalGrid, false);
+            assert.strictEqual(graph1._verticalGrid, false);
+        });
+    });
+    describe(&#039;#addFlow&#039;, function() {
+    	var flow1 = new LineChartFlowModel();
+    	it(&#039;adds flow to the flows array&#039;, function() {
+    		var graph1=new LineChartModel({ID: &#039;graph1&#039;});
+    		graph1.addFlow(flow1);
+    		assert.strictEqual(graph1._flows.length, 1);
+    	});
+    	it(&#039;does not add an invalid flow to the flows array&#039;, function() {
+    		var graph1=new LineChartModel({ID: &#039;graph1&#039;});
+    		graph1.addFlow({});
+    		assert.strictEqual(graph1._flows.length, 0);
+    	});
+    });
+    function LCFMMock(ID) {
+    	this._ID = ID;
+    }
+    LCFMMock.prototype.getProperties = function() {
+    	return {ID: this._ID};
+    };
+
+    describe(&#039;#getData&#039;, function() {
+        var flow1 = new LineChartFlowModel({ID: &#039;flow1&#039;});
+        var flow2 = new LineChartFlowModel({ID: &#039;flow2&#039;});
+        it(&#039;returns empty json if it has no flows&#039;, function() {
+            var graph1=new LineChartModel({ID: &#039;graph1&#039;});
+            assert.strictEqual(graph1.getData().length, 0);
+        });
+       
+        it(&#039;returns json with one graph&#039;, function() {
+            var graph1=new LineChartModel({ID: &#039;graph1&#039;});
+            graph1.addFlow(flow1);
+            var data=graph1.getData();
+            assert.strictEqual(data.length, 1);
+            assert.strictEqual(data[0].properties.ID, &#039;flow1&#039;);
+        });
+        it(&#039;returns json with two graphs&#039;, function() {
+            var graph1=new LineChartModel({ID: &#039;graph1&#039;});
+            graph1.addFlow(flow1);
+            graph1.addFlow(flow2);
+            var data=graph1.getData();
+            assert.strictEqual(data.length, 2);
+            assert.strictEqual(data[0].properties.ID, &#039;flow1&#039;);
+            assert.strictEqual(data[1].properties.ID, &#039;flow2&#039;);
+        });
+    });    
+
+    describe(&#039;#deleteFlow&#039;, function() {
+    	it(&#039;deletes the flow with the given ID&#039;, function() {
+    		var graph1=new LineChartModel({ID: &#039;graph1&#039;});
+    		graph1._flows[0] = new LCFMMock(&#039;flow1&#039;);
+    		graph1.deleteFlow(&#039;flow1&#039;);
+    		assert.strictEqual(graph1._flows.length, 0);
+    	});
+    	it(&#039;does not delete anything if the ID is not found&#039;, function() {
+    		var graph1=new LineChartModel({ID: &#039;graph1&#039;});
+    		graph1._flows[0] = new LCFMMock(&#039;flow1&#039;);
+    		graph1.deleteFlow(&#039;flow2&#039;);
+    		assert.strictEqual(graph1._flows.length, 1);
+    	});
+    });
+    describe(&#039;#deleteAllFlows&#039;, function() {
+    	it(&#039;deletes all the flows&#039;, function() {
+    		var graph1=new LineChartModel({ID: &#039;graph1&#039;});
+    		graph1._flows[0] = new LCFMMock(&#039;flow1&#039;);
+    		graph1._flows[1] = new LCFMMock(&#039;flow2&#039;);
+    		graph1.deleteAllFlows();
+    		assert.strictEqual(graph1._flows.length, 0);
+    	});
+    });
+    describe(&#039;#updateRecord&#039;, function() {
+        it(&#039;returns 221 if it doesn\&#039;t find the wanted flow&#039;, function() {
+            var graph1=new LineChartModel({ID: &#039;graph1&#039;});
+            graph1._flows[0] = new LineChartFlowModel({ID: &#039;flow1&#039;});
+            assert.strictEqual(graph1.updateRecord(&#039;flow4&#039;, 0, {temperature: 2}), 221);
+        });
+        it(&#039;returns 122 if it doesn\&#039;t find the wanted record&#039;, function() {
+            var graph1=new LineChartModel({ID: &#039;graph1&#039;});
+            graph1._flows[0] = new LineChartFlowModel({ID: &#039;flow1&#039;});
+            graph1._flows[0]._records[0]={temperature: 3};
+            assert.strictEqual(graph1.updateRecord(&#039;flow1&#039;, &#039;asd&#039;, {temperature: 2}), 122);
+        });
+        it(&#039;returns 121 if no valid record is passed&#039;, function() {
+            var graph1=new LineChartModel({ID: &#039;graph1&#039;});
+            graph1._flows[0] = new LineChartFlowModel({ID: &#039;flow1&#039;});
+            var ID=graph1._flows[0].addRecord({temperature: 3});
+            assert.strictEqual(graph1.updateRecord(&#039;flow1&#039;, ID, null), 121);
+        });
+        it(&#039;returns true if passed valid parameters&#039;, function() {
+            var graph1=new LineChartModel({ID: &#039;graph1&#039;});
+            graph1._flows[0] = new LineChartFlowModel({ID: &#039;flow1&#039;});
+            var ID=graph1._flows[0].addRecord({temperature: 3});
+            assert.strictEqual(graph1.updateRecord(&#039;flow1&#039;, ID, {temperature: 2}), true);
+        });
+    });
+    describe(&#039;#addRecord&#039;, function() {
+        it(&#039;returns 221 if it doesn\&#039;t find the wanted flow&#039;, function() {
+            var graph1=new LineChartModel({ID: &#039;graph1&#039;});
+            graph1._flows[0] = new LineChartFlowModel({ID: &#039;flow1&#039;});
+            assert.strictEqual(graph1.addRecord(&#039;flow4&#039;, {temperature: 2}), 221);
+        });
+        it(&#039;returns 123 if no valid record is passed&#039;, function() {
+            var graph1=new LineChartModel({ID: &#039;graph1&#039;});
+            graph1._flows[0] = new LineChartFlowModel({ID: &#039;flow1&#039;});
+            assert.strictEqual(graph1.addRecord(&#039;flow1&#039;, null), 123);
+        });
+        it(&#039;returns true if passed valid parameters&#039;, function() {
+            var graph1=new LineChartModel({ID: &#039;graph1&#039;});
+            graph1._flows[0] = new LineChartFlowModel({ID: &#039;flow1&#039;});
+            assert.strictEqual(graph1.addRecord(&#039;flow1&#039;, {temperature: 2}).indexOf(&#039;flow1&#039;), 0);
+        });
+    });
+});</textarea>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>.</p>
+  </div>
+</footer>
+
+<script type="text/html" id="complexity-popover-template">
+  <div class="complexity-notice">
+    Complexity : {{ complexity.cyclomatic }} <br>
+    Length : {{ complexity.halstead.length }} <br>
+    Difficulty : {{ complexity.halstead.difficulty.toFixed(2) }} <br>
+    Est # bugs : {{ complexity.halstead.bugs.toFixed(2) }}<br>
+  </div>
+</script>
+
+<script type="text/javascript" src="../../assets/scripts/bundles/core-bundle.js"></script>
+<script type="text/javascript" src="../../assets/scripts/bundles/codemirror.js"></script>
+<script type="text/javascript" src="../../assets/scripts/codemirror.markpopovertext.js"></script>
+<script type="text/javascript" src="report.js"></script>
+<script type="text/javascript" src="report.history.js"></script>
+<script type="text/javascript" src="../../assets/scripts/plato-file.js"></script>
+</body>
+</html>

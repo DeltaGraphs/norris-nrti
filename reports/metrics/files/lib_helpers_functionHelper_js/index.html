@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Plato - lib/helpers/functionHelper.js</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link href="../../assets/css/vendor/morris.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet">
+  <link href="../../assets/css/plato.css" rel="stylesheet">
+  <link href="../../assets/css/plato-file.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="http://github.com/es-analysis/plato">Plato on Github</a>
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="../../index.html">Report Home</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>lib/helpers/functionHelper.js</h1>
+  </div>
+</div>
+
+<div class="container aggregate-stats">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
+      <p class="stat">58.53</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
+      <p class="stat">214</p>
+    </div>
+  </div>
+  <div class="row historical">
+    <div class="col-md-6">
+      <p id="chart_historical_maint" class="chart"></p>
+    </div>
+    <div class="col-md-6">
+      <p id="chart_historical_sloc" class="chart"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
+      <p class="stat">46.90</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
+      <p class="stat">1.77</p>
+    </div>
+  </div>
+</div>
+
+<div class="container charts">
+  <div class="row">
+    <h2 class="header">Function weight</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="chart-header">By Complexity <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="This metric counts the number of distinct paths through a block of code. Lower values are better." data-original-title="Cyclomatic Complexity" data-container="body"></i></a></h3>
+      <div id="fn-by-complexity" class="stat"></div>
+    </div>
+    <div class="col-md-6">
+      <h3 class="chart-header">By SLOC  <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h3>
+      <div id="fn-by-sloc" class="stat"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <textarea id="file-source" class="col-md-12">/*jshint node: true, -W106 */
+&#039;use strict&#039;;
+
+/*
+* Name : functionHelper.js
+* Module : FunctionHelper
+* Location : /lib/helpers
+*
+* History :
+* 
+* Version   Date         Programmer         Description
+* =========================================================
+* 0.0.1     2015-05-14   Matteo Furlan    Initial code
+* =========================================================
+*/
+String.prototype.replaceAll = function(target, replacement) {
+	return this.split(target).join(replacement);
+};
+module.exports.isHEX= function(hex){
+	return (/(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test(hex));
+};
+module.exports.getCorrectType= function(str){
+	var arr=str.split(&#039;\&#039;&#039;);
+	if(arr.length===3){ // is a string &#039;hello&#039;
+		return arr[1];
+	}else{
+		str=str.replaceAll(&#039;\&#039;&#039;, &#039;&#039;);
+		if(isNaN(str)){ // is a malformed string &#039;hello
+			return str;
+		}else{ // is a number -2.948
+			return parseFloat(str);
+		}
+	}
+};
+module.exports.parseCondition= function(cond){
+	//   &lt;   &lt;=   &gt;   &gt;=   !=   == 
+	// splitting string
+	var array=cond.split(&#039;==&#039;);
+	var operator=&#039;==&#039;;
+	if(array.length!==2){
+		array=cond.split(&#039;!=&#039;);
+		operator=&#039;!=&#039;;
+		if(array.length!==2){
+			array=cond.split(&#039;&gt;=&#039;);
+			operator=&#039;&gt;=&#039;;
+			if(array.length!==2){
+				array=cond.split(&#039;&lt;=&#039;);
+				operator=&#039;&lt;=&#039;;
+				if(array.length!==2){
+					array=cond.split(&#039;&gt;&#039;);
+					operator=&#039;&gt;&#039;;
+					if(array.length!==2){
+						array=cond.split(&#039;&lt;&#039;);
+						operator=&#039;&lt;&#039;;
+						if(array.length!==2){
+							console.log(&#039;Error: 701&#039;);
+							return 701;
+						}
+					}
+				}
+			}
+		}
+	}
+	var key=array[0].trim();
+	var value=array[1].trim();
+	if(key.length===0 || value.length===0){
+		console.log(&#039;Error: 701&#039;);
+		return 701;
+	}
+	return {
+		key: module.exports.getCorrectType(key),
+		operator: operator,
+		value: module.exports.getCorrectType(value)
+	};
+};
+module.exports.converter= function(record,key,format){
+	if(record===undefined || record===null || record[key]===undefined){
+		return null;
+	}
+	switch(format) {
+    case &#039;toInt&#039;:
+		record[key]=record[key].replaceAll(&#039;\&#039;&#039;, &#039;&#039;).replaceAll(&#039;&quot;&#039;, &#039;&#039;).trim();
+		if(isNaN(record[key])){
+			return null;
+		}
+		record[key]=parseInt(record[key],10);
+		break;
+    case &#039;toFloat&#039;:
+		record[key]=record[key].replaceAll(&#039;\&#039;&#039;, &#039;&#039;).replaceAll(&#039;&quot;&#039;, &#039;&#039;).trim();
+		if(isNaN(record[key])){
+			return null;
+		}
+		record[key]=parseFloat(record[key]);
+		break;
+    default:
+        return null;
+	}
+	return record;
+};
+module.exports.isValidFormat= function(format){
+	switch(format) {
+    case &#039;toInt&#039;:
+		break;
+    case &#039;toFloat&#039;:
+		break;
+    default:
+        return false;
+	}
+	return true;
+};
+module.exports.isValidMapFormat= function(format){
+	switch(format) {
+    case &#039;coordinates&#039;:
+		break;
+    case &#039;geographic&#039;:
+		break;
+    default:
+        return false;
+	}
+	return true;
+};
+module.exports.isValidMarker= function(marker){
+	switch(marker) {
+    case &#039;none&#039;:
+		break;
+    case &#039;square&#039;:
+		break;
+	case &#039;triangle&#039;:
+		break;
+	case &#039;circle&#039;:
+		break;
+	case &#039;diamond&#039;:
+		break;
+    default:
+        return false;
+	}
+	return true;
+};
+module.exports.isValidMapMarker= function(marker){
+	if (marker!==undefined || typeof marker===&#039;object&#039;){
+		if (marker.type!==undefined){
+			if (marker.type===&#039;shape&#039; &amp;&amp; marker.shape!==undefined){
+				switch(marker.shape) {
+				case &#039;square&#039;:
+					break;
+				case &#039;triangle&#039;:
+					break;
+				case &#039;circle&#039;:
+					break;
+				case &#039;diamond&#039;:
+					break;
+				default:
+					return false;
+				}
+				return true;
+			}
+			if (marker.type===&#039;icon&#039; &amp;&amp; marker.icon!==undefined &amp;&amp; typeof marker.icon===&#039;string&#039;){
+				//may check if file exists
+				return true;
+			}
+			if (marker.type===&#039;text&#039; &amp;&amp;
+				marker.text!==undefined &amp;&amp; typeof marker.text===&#039;string&#039; &amp;&amp;
+				marker.color!==undefined &amp;&amp; this.isHEX(marker.color)){
+				return true;
+			}
+		}
+	}
+	return false;
+};
+module.exports.isValidInterpolation= function(interpolation){
+	switch(interpolation) {
+    case &#039;linear&#039;:
+		break;
+    case &#039;step&#039;:
+		break;
+	case &#039;basis&#039;:
+		break;
+	case &#039;cardinal&#039;:
+		break;
+	case &#039;monotone&#039;:
+		break;
+    default:
+        return false;
+	}
+	return true;
+};
+
+module.exports.isValidTrace= function(trace){
+	if (trace!==undefined || typeof trace===&#039;object&#039;){
+		if (trace.type!==undefined){
+			if (trace.type===&#039;none&#039;){
+				return true;
+			}
+			if (trace.type===&#039;line&#039; || trace.type===&#039;poly&#039;){
+				if (trace.coordinates!==undefined &amp;&amp; Array.isArray(trace.coordinates) &amp;&amp; trace.coordinates.length&gt;=2){
+					if (trace.strokeColor!==undefined &amp;&amp; this.isHEX(trace.strokeColor) &amp;&amp;
+						trace.fillColor!==undefined &amp;&amp; this.isHEX(trace.fillColor)){
+						var nCoordinates=trace.coordinates.length;
+						for (var i=0; i&lt;nCoordinates; i++){
+							if (trace.coordinates[i]===undefined || !Array.isArray(trace.coordinates[i]) || trace.coordinates[i].length!==2){
+								return false;
+							}
+							if (typeof trace.coordinates[i][0]!==&#039;number&#039; || typeof trace.coordinates[i][1]!==&#039;number&#039;){
+								return false;
+							}
+						}
+						//every coordinate is valid
+						return true;
+					}
+				}
+			}
+		}
+	}
+	return false;
+};</textarea>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>.</p>
+  </div>
+</footer>
+
+<script type="text/html" id="complexity-popover-template">
+  <div class="complexity-notice">
+    Complexity : {{ complexity.cyclomatic }} <br>
+    Length : {{ complexity.halstead.length }} <br>
+    Difficulty : {{ complexity.halstead.difficulty.toFixed(2) }} <br>
+    Est # bugs : {{ complexity.halstead.bugs.toFixed(2) }}<br>
+  </div>
+</script>
+
+<script type="text/javascript" src="../../assets/scripts/bundles/core-bundle.js"></script>
+<script type="text/javascript" src="../../assets/scripts/bundles/codemirror.js"></script>
+<script type="text/javascript" src="../../assets/scripts/codemirror.markpopovertext.js"></script>
+<script type="text/javascript" src="report.js"></script>
+<script type="text/javascript" src="report.history.js"></script>
+<script type="text/javascript" src="../../assets/scripts/plato-file.js"></script>
+</body>
+</html>

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Plato - lib/businessTier/flow/mapChartFlow.js</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link href="../../assets/css/vendor/morris.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet">
+  <link href="../../assets/css/plato.css" rel="stylesheet">
+  <link href="../../assets/css/plato-file.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="http://github.com/es-analysis/plato">Plato on Github</a>
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="../../index.html">Report Home</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>lib/businessTier/flow/mapChartFlow.js</h1>
+  </div>
+</div>
+
+<div class="container aggregate-stats">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
+      <p class="stat">55.75</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
+      <p class="stat">185</p>
+    </div>
+  </div>
+  <div class="row historical">
+    <div class="col-md-6">
+      <p id="chart_historical_maint" class="chart"></p>
+    </div>
+    <div class="col-md-6">
+      <p id="chart_historical_sloc" class="chart"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
+      <p class="stat">54.88</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
+      <p class="stat">1.88</p>
+    </div>
+  </div>
+</div>
+
+<div class="container charts">
+  <div class="row">
+    <h2 class="header">Function weight</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="chart-header">By Complexity <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="This metric counts the number of distinct paths through a block of code. Lower values are better." data-original-title="Cyclomatic Complexity" data-container="body"></i></a></h3>
+      <div id="fn-by-complexity" class="stat"></div>
+    </div>
+    <div class="col-md-6">
+      <h3 class="chart-header">By SLOC  <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h3>
+      <div id="fn-by-sloc" class="stat"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <textarea id="file-source" class="col-md-12">/*jshint node: true, -W106 */
+&#039;use strict&#039;;
+
+/*
+* Name : mapChartFlow.js
+* Module : Lib::BusinessTier::MapChartFlow
+* Location : /lib/businessTier/flow
+*
+* History :
+* 
+* Version   Date         Programmer         Description
+* =========================================================
+* 0.0.1     2015-05-20   Filippo Rampado    Initial code
+* =========================================================
+*/
+
+var MapChartFlowModel=require(&#039;../../dataTier/flow/mapChartFlowModel.js&#039;);
+var Flow=require(&#039;./flow.js&#039;);
+
+function MapChartFlow(params, graphSocket) {
+	if (graphSocket===undefined || !(graphSocket.hasOwnProperty(&#039;_namespace&#039;))){
+		console.log(&#039;Error: 201&#039;);
+		return;
+	}
+	var mc=new MapChartFlowModel(params);
+	if (!mc.hasOwnProperty(&#039;_ID&#039;)){
+		return;
+	}
+	this.parent.constructor.call(this, graphSocket);
+	this._dataMapChartFlow=mc;
+}
+
+MapChartFlow.prototype = Object.create(Flow.prototype);
+MapChartFlow.prototype.constructor = Flow;
+MapChartFlow.prototype.parent = Flow.prototype;
+
+MapChartFlow.prototype.addRecord = function(record){
+	var res=this._dataMapChartFlow.addRecord(record);
+	if (res!==133 &amp;&amp; this._dataMapChartFlow.getRecordByID(res).norrisRecordIsValid){
+		var latKey=this._dataMapChartFlow._latitudeKey;
+		var longKey=this._dataMapChartFlow._longitudeKey;
+		var newValue=[null, null];
+		if (record[latKey]!==undefined &amp;&amp; typeof record[latKey]===&#039;number&#039; &amp;&amp; record[longKey]!==undefined &amp;&amp; typeof record[longKey]===&#039;number&#039;){
+			newValue=[record[latKey], record[longKey]];
+		}
+		var data={
+			action: &#039;insertRecords&#039;,
+			ID: this._dataMapChartFlow._ID,
+			records: [{
+				norrisRecordID: res,
+				markerID: record[this._dataMapChartFlow._objectKey],
+				value: newValue
+			}]
+		};
+		this._graphSocket.sendMessage(&#039;updateFlowData&#039;, data);
+	}
+	return res;
+};
+
+MapChartFlow.prototype.deleteRecord = function(ID){
+	var record=this._dataMapChartFlow.getRecordByID(ID);
+	if (record!==155){
+		if (record.norrisRecordIsValid){
+			var data={
+				action: &#039;deleteRecord&#039;,
+				ID: this._dataMapChartFlow._ID,
+				norrisRecordID: ID
+			};
+			this._graphSocket.sendMessage(&#039;updateFlowData&#039;, data);
+		}
+		this._dataMapChartFlow.deleteRecord(ID);
+		return true;
+	}
+	return 155;
+};
+
+MapChartFlow.prototype.updateRecord = function(ID, record){
+	var oldValid=this._dataMapChartFlow.getRecordByID(ID).norrisRecordIsValid;
+	var res=this._dataMapChartFlow.updateRecord(ID, record);
+	var newValid=this._dataMapChartFlow.getRecordByID(ID).norrisRecordIsValid;
+	if (res===true ){
+		if (oldValid &amp;&amp; !newValid){
+			var data={
+				action: &#039;deleteRecord&#039;,
+				ID: this._dataMapChartFlow._ID,
+				norrisRecordID: ID
+			};
+			this._graphSocket.sendMessage(&#039;updateFlowData&#039;, data);
+		}
+		if (newValid){
+			var latKey=this._dataMapChartFlow._latitudeKey;
+			var longKey=this._dataMapChartFlow._longitudeKey;
+			var newValue=[null, null];
+			if (record[latKey]!==undefined &amp;&amp; typeof record[latKey]===&#039;number&#039; &amp;&amp; record[longKey]!==undefined &amp;&amp; typeof record[longKey]===&#039;number&#039;){
+				newValue=[record[latKey], record[longKey]];
+			}
+			if (!oldValid){
+				var data2={
+					action: &#039;insertRecords&#039;,
+					ID: this._dataMapChartFlow._ID,
+					records: [{
+						norrisRecordID: ID,
+						markerID: record[this._dataMapChartFlow._objectKey],
+						value: newValue
+					}]
+				};
+				this._graphSocket.sendMessage(&#039;updateFlowData&#039;, data2);
+			}
+			if (oldValid){
+				var data3={
+					action: &#039;updateRecord&#039;,
+					ID: this._dataMapChartFlow._ID,
+					norrisRecordID: ID,
+					markerID: record[this._dataMapChartFlow._objectKey],
+					value: newValue
+				};
+				this._graphSocket.sendMessage(&#039;updateFlowData&#039;, data3);
+			}
+		}
+	}
+	return res;
+};
+
+MapChartFlow.prototype.getReplaceDataJSON = function(){
+	var records=[];
+	var dataRecords=this._dataMapChartFlow._records;
+	for (var i=0; i&lt;dataRecords.length; i++){
+		records.push({
+			norrisRecordID : dataRecords[i].norrisRecordID,
+			markerID: dataRecords[i][this._dataMapChartFlow._objectKey],
+			value: [ //lat,long
+				dataRecords[i][this._dataMapChartFlow._latitudeKey],
+				dataRecords[i][this._dataMapChartFlow._longitudeKey]
+			]
+		});
+	}
+
+	return {
+		action: &#039;replaceData&#039;,
+		ID: this._dataMapChartFlow._ID,
+		records: records
+	};
+};
+
+MapChartFlow.prototype.updateMovie = function(records){
+	var recIDs=this._dataMapChartFlow.updateMovie(records);
+	this._graphSocket.sendMessage(&#039;updateFlowData&#039;, this.getReplaceDataJSON());
+	return recIDs;
+};
+
+
+MapChartFlow.prototype.updateProperties = function(params){
+	if (params!==undefined){
+		var prop=this._dataMapChartFlow.updateProperties(params);
+		prop.ID=this._dataMapChartFlow._ID;
+		if (prop.filters !== undefined){
+			var latKey=this._dataMapChartFlow._latitudeKey;
+			var longKey=this._dataMapChartFlow._longitudeKey;
+			var records=[];
+			var recordsModel=this._dataMapChartFlow._records;
+			var nRecords=this._dataMapChartFlow._records.length;
+			for (var i=0; i&lt;nRecords; i++){
+				if (recordsModel[i][latKey]!==undefined &amp;&amp;
+				typeof recordsModel[i][latKey]===&#039;number&#039; &amp;&amp;
+				recordsModel[i][longKey]!==undefined &amp;&amp;
+				typeof recordsModel[i][longKey]===&#039;number&#039;){
+					if (recordsModel[i].norrisRecordIsValid){
+						records.push({
+							norrisRecordID: recordsModel[i].norrisRecordID,
+							markerID: params[this._dataMapChartFlow._objectKey],
+							value: [recordsModel[i][latKey], recordsModel[i][longKey]]
+						});
+					}
+				}
+			}
+			console.log(&#039;here1&#039;);
+			this._graphSocket.sendMessage(&#039;updateFlowData&#039;, this.getReplaceDataJSON());
+		}
+		console.log(&#039;here2&#039;);
+		this._graphSocket.sendMessage(&#039;updateFlowProp&#039;, prop);
+	}
+};
+
+
+
+module.exports = MapChartFlow;</textarea>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>.</p>
+  </div>
+</footer>
+
+<script type="text/html" id="complexity-popover-template">
+  <div class="complexity-notice">
+    Complexity : {{ complexity.cyclomatic }} <br>
+    Length : {{ complexity.halstead.length }} <br>
+    Difficulty : {{ complexity.halstead.difficulty.toFixed(2) }} <br>
+    Est # bugs : {{ complexity.halstead.bugs.toFixed(2) }}<br>
+  </div>
+</script>
+
+<script type="text/javascript" src="../../assets/scripts/bundles/core-bundle.js"></script>
+<script type="text/javascript" src="../../assets/scripts/bundles/codemirror.js"></script>
+<script type="text/javascript" src="../../assets/scripts/codemirror.markpopovertext.js"></script>
+<script type="text/javascript" src="report.js"></script>
+<script type="text/javascript" src="report.history.js"></script>
+<script type="text/javascript" src="../../assets/scripts/plato-file.js"></script>
+</body>
+</html>

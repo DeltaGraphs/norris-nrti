@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for norris-nrti/lib/dataTier/flow/lineChartFlowModel.js</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../../../prettify.css">
+    <link rel="stylesheet" href="../../../../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header high">
+    <h1>Code coverage report for <span class="entity">norris-nrti/lib/dataTier/flow/lineChartFlowModel.js</span></h1>
+    <h2>
+        Statements: <span class="metric">92.52% <small>(99 / 107)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">80.7% <small>(92 / 114)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">100% <small>(5 / 5)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">92.52% <small>(99 / 107)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../../index.html">All files</a> &#187; <a href="index.html">norris-nrti/lib/dataTier/flow/</a> &#187; lineChartFlowModel.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">33</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28</span>
+<span class="cline-any cline-yes">28</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28</span>
+<span class="cline-any cline-yes">28</span>
+<span class="cline-any cline-yes">28</span>
+<span class="cline-any cline-yes">28</span>
+<span class="cline-any cline-yes">28</span>
+<span class="cline-any cline-yes">28</span>
+<span class="cline-any cline-yes">28</span>
+<span class="cline-any cline-yes">28</span>
+<span class="cline-any cline-yes">28</span>
+<span class="cline-any cline-yes">28</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">17</span>
+<span class="cline-any cline-yes">13</span>
+<span class="cline-any cline-yes">13</span>
+<span class="cline-any cline-yes">13</span>
+<span class="cline-any cline-yes">13</span>
+<span class="cline-any cline-yes">13</span>
+<span class="cline-any cline-yes">13</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">15</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span></td><td class="text"><pre class="prettyprint lang-js">/*jshint node: true, -W106 */
+'use strict';
+&nbsp;
+/*
+* Name : lineChartFlowModel.js
+* Module : Lib::DataTier::lineChartFlowModel
+* Location : /lib/dataTier/flow
+*
+* History :
+* 
+* Version   Date         Programmer         Description
+* =========================================================
+* 0.0.1     2015-05-15   Filippo Rampado    Initial code
+* =========================================================
+*/
+var FlowModel = require('./flowModel.js');
+var Helper = require('../../helpers/functionHelper.js');
+&nbsp;
+function LineChartFlowModel(params) {
+	if(params===undefined || params.ID===undefined || typeof params.ID !== 'string'|| params.ID.trim() === ''){ // ID field is required
+		console.log('Error: 222');
+		return;
+	}
+&nbsp;
+	params.type = 'LineChartFlow';
+	this.parent.constructor.call(this, params);
+&nbsp;
+	this._xKey=null;
+	this._yKey=null;
+	this._xFormat=null;//raw data will be displayed
+	this._yFormat=null;//raw data will be displayed
+	this._flowColor=null;//will be random on frontEnd
+	this._marker='none';//circle, triangle, square, diamond
+	this._interpolation='linear';//linear, step, basis, cardinal, monotone
+	this._area='none';//none or HEX
+	this._maxItems=50;//items displayed
+	this._maxItemsSaved=500; //items saved
+&nbsp;
+&nbsp;
+	if(params.xKey!==undefined &amp;&amp; typeof params.xKey === 'string'){
+		this._xKey=params.xKey;
+	}
+	if(params.yKey!==undefined &amp;&amp; typeof params.yKey === 'string'){
+		this._yKey=params.yKey;
+	}
+	if(params.xFormat!==undefined &amp;&amp; Helper.isValidFormat(params.xFormat)){
+		this._xFormat=params.xFormat;
+	}
+	if(params.yFormat!==undefined &amp;&amp; Helper.isValidFormat(params.yFormat)){
+		this._yFormat=params.yFormat;
+	}
+	if(params.flowColor!==undefined &amp;&amp; Helper.isHEX(params.flowColor)){
+		this._flowColor=params.flowColor;
+	}
+	if(params.marker!==undefined &amp;&amp; Helper.isValidMarker(params.marker)){
+		this._marker=params.marker;
+	}
+	if(params.interpolation!==undefined &amp;&amp; Helper.isValidInterpolation(params.interpolation)){
+		this._interpolation=params.interpolation;
+	}
+	if(params.area!==undefined &amp;&amp; (params.area === 'none' || Helper.isHEX(params.area))){
+		this._area=params.area;
+	}
+	if(params.maxItems!==undefined &amp;&amp; typeof params.maxItems==='number' &amp;&amp; params.maxItems&gt;=0){
+		this._maxItems=params.maxItems;
+	}
+	if(params.maxItemsSaved!==undefined &amp;&amp; typeof params.maxItemsSaved==='number' &amp;&amp; params.maxItemsSaved&gt;=0){
+		this._maxItemsSaved=params.maxItemsSaved;
+	}
+}
+&nbsp;
+LineChartFlowModel.prototype = Object.create(FlowModel.prototype);
+LineChartFlowModel.prototype.constructor = LineChartFlowModel;
+LineChartFlowModel.prototype.parent = FlowModel.prototype;
+&nbsp;
+LineChartFlowModel.prototype.updateProperties = function(params){
+	<span class="missing-if-branch" title="else path not taken" >E</span>if (params !== undefined){
+		var prop=this.parent.updateBaseProperties.call(this, params);
+		<span class="missing-if-branch" title="else path not taken" >E</span>if(params.xKey!==undefined &amp;&amp; typeof params.xKey === 'string'){
+			this._xKey=prop.xKey=params.xKey;
+		}
+		<span class="missing-if-branch" title="else path not taken" >E</span>if(params.yKey!==undefined &amp;&amp; typeof params.yKey === 'string'){
+			this._yKey=prop.yKey=params.yKey;
+		}
+		<span class="missing-if-branch" title="if path not taken" >I</span>if(params.xFormat!==undefined &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >Helper.isValidFormat(params.xFormat))</span>{
+<span class="cstat-no" title="statement not covered" >			this._xFormat=prop.xFormat=params.xFormat;</span>
+		}
+		<span class="missing-if-branch" title="if path not taken" >I</span>if(params.yFormat!==undefined &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >Helper.isValidFormat(params.yFormat))</span>{
+<span class="cstat-no" title="statement not covered" >			this._yFormat=prop.yFormat=params.yFormat;</span>
+		}
+		<span class="missing-if-branch" title="if path not taken" >I</span>if(params.flowColor!==undefined &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >Helper.isHEX(params.flowColor))</span>{
+<span class="cstat-no" title="statement not covered" >			this._flowColor=prop.flowColor=params.flowColor;</span>
+		}
+		<span class="missing-if-branch" title="if path not taken" >I</span>if(params.marker!==undefined &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >Helper.isValidMarker(params.marker))</span>{
+<span class="cstat-no" title="statement not covered" >			this._marker=prop.marker=params.marker;</span>
+		}
+		<span class="missing-if-branch" title="if path not taken" >I</span>if(params.interpolation!==undefined &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >Helper.isValidInterpolation(params.interpolation))</span>{
+<span class="cstat-no" title="statement not covered" >			this._interpolation=prop.interpolation=params.interpolation;</span>
+		}
+		<span class="missing-if-branch" title="if path not taken" >I</span>if(params.area!==undefined &amp;&amp; (<span class="branch-1 cbranch-no" title="branch not covered" >params.area === 'none' </span>|| <span class="branch-2 cbranch-no" title="branch not covered" >Helper.isHEX(params.area))</span>){
+<span class="cstat-no" title="statement not covered" >			this._area=prop.area=params.area;</span>
+		}
+		<span class="missing-if-branch" title="if path not taken" >I</span>if(params.maxItems!==undefined &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >typeof params.maxItems==='number' </span>&amp;&amp; <span class="branch-2 cbranch-no" title="branch not covered" >params.maxItems&gt;=0)</span>{
+<span class="cstat-no" title="statement not covered" >			this._maxItems=prop.maxItems=params.maxItems;</span>
+		}
+		<span class="missing-if-branch" title="if path not taken" >I</span>if(params.maxItemsSaved!==undefined &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >typeof params.maxItemsSaved==='number' </span>&amp;&amp; <span class="branch-2 cbranch-no" title="branch not covered" >params.maxItemsSaved&gt;=0)</span>{
+<span class="cstat-no" title="statement not covered" >			this._maxItemsSaved=prop.maxItemsSaved=params.maxItemsSaved;</span>
+		}
+		return prop;
+	}
+	//return ;
+};
+&nbsp;
+LineChartFlowModel.prototype.addRecord = function(record){
+	if(record!==undefined &amp;&amp; record!==null &amp;&amp; typeof record === 'object'){
+		this._records.push(record);
+		var index=this._records.length-1;
+		var ID=this.generateNorrisRecordID(index);
+		this._records[index].norrisRecordID=ID;
+		this.validateRecord(index);
+		return ID;
+	}
+	console.log('Error: 123');
+	return 123;
+};
+&nbsp;
+&nbsp;
+LineChartFlowModel.prototype.updateRecord = function(ID, record){
+	if (record === undefined || record === null || Array.isArray(record)){
+		return 121;
+	}
+	if (typeof ID==='string' &amp;&amp; ID.indexOf(this._ID) !== -1) {
+		var records=this._records.length;
+		var i=0;
+		var found=false;
+		while (i&lt;records &amp;&amp; (!found)){
+			if (this._records[i].norrisRecordID===ID){
+				found=true;
+			}
+			else{
+				i++;
+			}
+		}//while		
+		if (found){//in records[i] there is the ID	
+			var oldID=this._records[i].norrisRecordID;
+			this._records[i]=record;
+			this._records[i].norrisRecordID=oldID;
+			this.validateRecord(i);
+			return true;
+		}
+		//no ID in records
+	}
+	//invalid ID
+	return 122;
+};
+&nbsp;
+LineChartFlowModel.prototype.getProperties = function(){
+	var prop=this.parent.getProperties.call(this);
+	prop.xKey=this._xKey;
+	prop.yKey=this._yKey;
+	prop.xFormat=this._xFormat;
+	prop.yFormat=this._yFormat;
+	prop.flowColor=this._flowColor;
+	prop.marker=this._marker;
+	prop.interpolation=this._interpolation;
+	prop.area=this._area;
+	prop.maxItems=this._maxItems;
+	prop.maxItemsSaved=this._maxItemsSaved;
+&nbsp;
+	return prop;
+};
+&nbsp;
+module.exports = LineChartFlowModel;</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Jun 03 2015 00:19:18 GMT+0000 (UTC)</div>
+</div>
+<script src="../../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../../sorter.js"></script>
+</body>
+</html>

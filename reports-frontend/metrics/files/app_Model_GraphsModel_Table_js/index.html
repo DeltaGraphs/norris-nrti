@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Plato - app/Model/GraphsModel/Table.js</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link href="../../assets/css/vendor/morris.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet">
+  <link href="../../assets/css/plato.css" rel="stylesheet">
+  <link href="../../assets/css/plato-file.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="http://github.com/es-analysis/plato">Plato on Github</a>
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="../../index.html">Report Home</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>app/Model/GraphsModel/Table.js</h1>
+  </div>
+</div>
+
+<div class="container aggregate-stats">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
+      <p class="stat">69.51</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
+      <p class="stat">238</p>
+    </div>
+  </div>
+  <div class="row historical">
+    <div class="col-md-6">
+      <p id="chart_historical_maint" class="chart"></p>
+    </div>
+    <div class="col-md-6">
+      <p id="chart_historical_sloc" class="chart"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
+      <p class="stat">44.01</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
+      <p class="stat">2.16</p>
+    </div>
+  </div>
+</div>
+
+<div class="container charts">
+  <div class="row">
+    <h2 class="header">Function weight</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="chart-header">By Complexity <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="This metric counts the number of distinct paths through a block of code. Lower values are better." data-original-title="Cyclomatic Complexity" data-container="body"></i></a></h3>
+      <div id="fn-by-complexity" class="stat"></div>
+    </div>
+    <div class="col-md-6">
+      <h3 class="chart-header">By SLOC  <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h3>
+      <div id="fn-by-sloc" class="stat"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <textarea id="file-source" class="col-md-12">/*jshint node: true */
+&#039;use strict&#039;;
+
+/*
+* Name :  Table.js
+* Module : FrontEnd::Model::GraphsModel
+* Location : /frontend/app/Model/GraphsModel
+*
+* History :
+* Version       Date        Programmer                  Description
+* ===============================================================================================================
+* 0.3.0         2015-05-18  Maria Giovanna Chinellato   Modified general structure, some fixes
+*
+* 0.2.1         2015-05-15  Maria Giovanna Chinellato   Fix methods test
+*
+* 0.1.1         2015-05-15  Francesco Rossetto          Various fix, insert inzializeData
+*
+* 0.1.0         2015-05-14  Maria Giovanna Chinellato   Add all attributes and all methods
+*
+* 0.0.1         2015-05-14  Maria Giovanna Chinellato   Initial code          
+* ===============================================================================================================
+*
+*/
+
+angular.module(&#039;app&#039;)
+.factory(&#039;TableFactory&#039;, [&#039;GraphFactory&#039;, &#039;CellFactory&#039;, &#039;TableFlowFactory&#039;, function(GraphFactory, CellFactory, TableFlowFactory){
+
+	function split(json) {
+		var graphJson = {};
+		if (json.title !== undefined) {
+			graphJson.title = json.title;
+		}
+		if (json.height !== undefined) {
+			graphJson.height = json.height;
+		}
+		if (json.width !== undefined) {
+			graphJson.width = json.width;
+		}
+		if (json.enabledLegend !== undefined) {
+			graphJson.enabledLegend = json.enabledLegend;
+			if (json.legend !== undefined  &amp;&amp; graphJson.enabledLegend !== false) {
+				graphJson.legend = json.legend;
+			}
+		}
+		if (json.horizontalGrid !== undefined) {
+			graphJson.horizontalGrid = json.horizontalGrid;
+		}
+		if (json.verticalGrid !== undefined) {
+			graphJson.verticalGrid = json.verticalGrid;
+		}
+
+
+		var tableJson = {};
+		if (json.headers !== undefined) {
+			tableJson.headers = json.headers;
+		}
+		if (json.maxItemsPage !== undefined) {
+			tableJson.maxItemsPage = json.maxItemsPage;
+		}
+		if (json.addRowOn !== undefined) {
+			tableJson.addRowOn = json.addRowOn;
+		}
+		if (json.sortable !== undefined) {
+			tableJson.sortable = json.sortable;
+		}
+        if (json.sort !== undefined) {
+            tableJson.sort = json.sort;
+        }
+        if (json.appearance !== undefined) {
+            tableJson.appearance = json.appearance;
+        }
+
+		return {
+			&#039;graphJson&#039; : graphJson,
+			&#039;tableJson&#039; : tableJson
+		};
+	}
+
+    //Table.prototype.test = function _Test(expressionStr) { return eval(expressionStr); };
+
+    // create our new custom object that reuse the original object constructor
+    function Table(info) {
+        this._headers = [];
+        this._maxItemsPage = 20;
+        this._addRowOn = &#039;up&#039;;
+        this._sortable = true;
+        this._sort = null;
+        this._appearance = null;
+        this._graph = GraphFactory.build(info);
+    }
+
+    Table.prototype.updateParameters = function(info) {
+        if (info !== undefined) {
+            var json = split(info);
+            var gJson = json.graphJson;
+            var tJson = json.tableJson;
+            
+            if (Object.keys(gJson).length !== 0) {
+                this._graph.updateParameters(gJson);
+            } 
+            if (Object.keys(tJson).length !== 0) {
+                if (tJson.headers !== undefined) {
+                    for (var z=0; z&lt;tJson.headers.length; z++) { 
+                        this._headers.push(tJson.headers[z]);
+                    }
+                }
+                if (tJson.maxItemsPage !== undefined) {
+                    this._maxItemsPage = tJson.maxItemsPage;
+                }
+                if (tJson.addRowOn !== undefined) {
+                    this._addRowOn = tJson.addRowOn;
+                }
+                if (tJson.sortable !== undefined) {
+                    this._sortable = tJson.sortable;
+                }
+                if (tJson.sort !== undefined) {
+                    this._sort = tJson.sort;
+                }
+                if (tJson.appearance !== undefined) {
+                    this._appearance = tJson.appearance;
+                }
+            }
+            if (info.flows !== undefined) {
+                for (var y=0; y&lt;info.flows.length; y++) {
+                    var newflow = TableFlowFactory.build(info.flows[y]);
+                    this.addFlow(info.flows[y].ID, newflow);
+                }
+            }
+        }
+    };
+
+    Table.prototype.addFlow = function(ID, newFlow) {
+        if (newFlow.constructor.name === &#039;TableFlow&#039;) {
+            this._graph.addFlow(ID, newFlow);
+        }
+    };
+    Table.prototype.deleteFlow = function(ID) {
+        this._graph.deleteFlow(ID);
+    };
+    Table.prototype.replaceData = function(newData){
+        this._graph.replaceData(newData);
+    };
+
+    Table.prototype.initializeData = function(newData) {  //inizialization data of flows
+        if (newData !== undefined) {
+            var fList = this._graph.getFlowList();
+            for (var i=0; i&lt;newData.length; i++) {
+                for (var j=0; j&lt;fList.length; j++) {
+                    if (fList[j].id === newData[i].ID) {
+                        fList[j].flow.initializeData(newData[i]);
+                    }
+                }
+            }
+        }
+    };
+
+    Table.prototype.inPlaceUpdate = function(newData) {
+        if (newData !== undefined) {
+            var fList = this._graph.getFlowList();
+            for (var j=0; j&lt;fList.length; j++) {
+                if (fList[j].id === newData.ID) {
+                    fList[j].flow.inPlaceUpdate(newData);
+                }
+            }
+        }
+    };
+    Table.prototype.streamUpdate = function(newData) {
+        if (newData !== undefined) {
+            var fList = this._graph.getFlowList();
+            for (var j=0; j&lt;fList.length; j++) {
+                if (fList[j].id === newData.ID) {
+                    fList[j].flow.streamUpdate(newData);
+                }
+            }
+        }
+    };
+
+    Table.prototype.deleteData = function(delData) {
+        if (delData !== undefined){
+            var fList = this._graph.getFlowList();
+            for (var j=0; j&lt;fList.length; j++) {
+                if (fList[j].id === delData.ID) {
+                    fList[j].flow.deleteData(delData);
+                }
+            }
+        }
+    };
+
+    Table.prototype.getTitle = function() {
+        return this._graph.getTitle();
+    };
+    Table.prototype.getHeight = function() {
+        return this._graph.getHeight();
+    };
+    Table.prototype.getWidth = function() {
+        return this._graph.getWidth();
+    };
+    Table.prototype.getLegend = function() {
+        return this._graph.getLegend();
+    };
+    Table.prototype.getHGrid = function() {
+        return this._graph.getHGrid();
+    };
+    Table.prototype.getVGrid = function() {
+        return this._graph.getVGrid();
+    };
+    Table.prototype.getUrl = function() {
+        return this._graph.getUrl();
+    };
+    Table.prototype.getFlowList = function() {
+        return this._graph.getFlowList();
+    };
+    Table.prototype.getHeaders = function() {
+    return this._headers;
+    };
+    Table.prototype.getMaxItemsPage = function() {
+        return this._maxItemsPage;
+    };
+    Table.prototype.getAddRowOn = function() {
+        return this._addRowOn;
+    };
+    Table.prototype.getSortable = function() {
+        return this._sortable;
+    };
+    Table.prototype.getSort = function() {
+        return this._sort;
+    };
+    Table.prototype.getAppearance = function() {
+        return this._appearance;
+    };
+
+    function TableFactory() {}
+
+    TableFactory.build = function(info) {
+        return new Table(info);
+    };
+
+    return TableFactory;
+}]);</textarea>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>.</p>
+  </div>
+</footer>
+
+<script type="text/html" id="complexity-popover-template">
+  <div class="complexity-notice">
+    Complexity : {{ complexity.cyclomatic }} <br>
+    Length : {{ complexity.halstead.length }} <br>
+    Difficulty : {{ complexity.halstead.difficulty.toFixed(2) }} <br>
+    Est # bugs : {{ complexity.halstead.bugs.toFixed(2) }}<br>
+  </div>
+</script>
+
+<script type="text/javascript" src="../../assets/scripts/bundles/core-bundle.js"></script>
+<script type="text/javascript" src="../../assets/scripts/bundles/codemirror.js"></script>
+<script type="text/javascript" src="../../assets/scripts/codemirror.markpopovertext.js"></script>
+<script type="text/javascript" src="report.js"></script>
+<script type="text/javascript" src="report.history.js"></script>
+<script type="text/javascript" src="../../assets/scripts/plato-file.js"></script>
+</body>
+</html>

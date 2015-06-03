@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Plato - test/unit/Model/Table.js</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link href="../../assets/css/vendor/morris.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet">
+  <link href="../../assets/css/plato.css" rel="stylesheet">
+  <link href="../../assets/css/plato-file.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="http://github.com/es-analysis/plato">Plato on Github</a>
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="../../index.html">Report Home</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>test/unit/Model/Table.js</h1>
+  </div>
+</div>
+
+<div class="container aggregate-stats">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
+      <p class="stat">74.23</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
+      <p class="stat">347</p>
+    </div>
+  </div>
+  <div class="row historical">
+    <div class="col-md-6">
+      <p id="chart_historical_maint" class="chart"></p>
+    </div>
+    <div class="col-md-6">
+      <p id="chart_historical_sloc" class="chart"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
+      <p class="stat">16.45</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
+      <p class="stat">2.53</p>
+    </div>
+  </div>
+</div>
+
+<div class="container charts">
+  <div class="row">
+    <h2 class="header">Function weight</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="chart-header">By Complexity <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="This metric counts the number of distinct paths through a block of code. Lower values are better." data-original-title="Cyclomatic Complexity" data-container="body"></i></a></h3>
+      <div id="fn-by-complexity" class="stat"></div>
+    </div>
+    <div class="col-md-6">
+      <h3 class="chart-header">By SLOC  <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h3>
+      <div id="fn-by-sloc" class="stat"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <textarea id="file-source" class="col-md-12">/*
+* Name :  LineChart.js
+* Module : UnitTest
+* Location : /frontend/test/unit/Model
+*
+* History :
+* Version       Date        Programmer                  Description
+* =================================================================================================
+* 0.2.2         2015-05-17  Maria Giovanna Chinellato   Fix code
+*
+* 0.2.1			2015-05-15	Maria Giovanna Chinellato	Fix test of Model::Table
+*
+* 0.2.0			2015-05-15	Maria Giovanna Chinellato	Add test of all the methods of LineChart classes
+*
+* 0.1.0			2015-05-15	Maria Giovanna Chinellato	Add test of Model::Table.js
+*
+* 0.0.1			2015-05-15	Maria Giovanna Chinellato	Initial code
+* =================================================================================================
+*
+*/
+
+describe(&#039;TableFactory&#039;, function(){
+	&#039;use strict&#039;;
+
+	var TableFactory;
+	var TableFlowFactory;
+
+	beforeEach(angular.mock.module(&#039;app&#039;));
+
+	beforeEach(inject(function(_TableFactory_, $injector){
+		TableFactory = _TableFactory_;
+		TableFlowFactory = $injector.get(&#039;TableFlowFactory&#039;);
+	}));
+
+	describe(&#039;Constructor&#039;, function(){
+
+		var json = {
+			&#039;title&#039; : &#039;fottutissimografico&#039;,
+			&#039;url&#039; : &#039;localhost/page1/grafico1&#039;
+		};
+		var Table;
+
+		beforeEach(function(){
+			Table = TableFactory.build(json);
+		});
+
+		afterEach(function(){
+			Table = null;
+		});
+
+		it(&#039;Table created&#039;, function(){
+			expect(Table).toBeDefined();
+		});
+		it(&#039;graph Constructor called&#039;, function(){
+			expect(Table.getTitle()).toEqual(&#039;fottutissimografico&#039;);
+		});
+		it(&#039;graph Constructor called&#039;, function(){
+			expect(Table.getUrl()).toEqual(&#039;localhost/page1/grafico1&#039;);
+		});
+		it(&#039;graph created with the correct headers&#039;, function(){
+			expect(Table.getHeaders()).toEqual([]);
+		});
+		it(&#039;graph created with the correct item displayed per page&#039;, function(){
+			expect(Table.getMaxItemsPage()).toEqual(20);
+		});
+		it(&#039;graph created with the correct add data position&#039;, function(){
+			expect(Table.getAddRowOn()).toEqual(&#039;up&#039;);
+		});
+		it(&#039;graph created with the correct sortable&#039;, function(){
+			expect(Table.getSortable()).toEqual(true);
+		});
+		it(&#039;graph created with the correct sort&#039;, function(){
+			expect(Table.getSort()).toEqual(null);
+		});
+		it(&#039;graph created with the correct appearance&#039;, function(){
+			expect(Table.getAppearance()).toEqual(null);
+		});
+
+	});
+
+	/*describe(&#039;split&#039;, function(){
+		var res;
+		var json = {};
+		var json1 = json;
+		json = json1;
+		json = {
+			&#039;title&#039; : &#039;grafico&#039;,
+			&#039;height&#039; : 300,
+			&#039;width&#039; : 300,
+			&#039;enabledLegend&#039; : true,
+			&#039;legend&#039; : {},
+			&#039;horizontalGrid&#039; : true,
+			&#039;verticalGrid&#039; : true,
+			&#039;row&#039; : 5,
+			&#039;colunms&#039; : 8,
+			&#039;headers&#039; : {},
+			&#039;cells&#039; : {},
+			&#039;itemDisplayedPerPage&#039; : 4,
+			&#039;addDataPosition&#039; : &#039;&#039;,
+			&#039;sortable&#039; : true
+		};
+		var g = {
+			&#039;title&#039; : &#039;grafico&#039;,
+			&#039;height&#039; : 300,
+			&#039;width&#039; : 300,
+			&#039;enabledLegend&#039; : true,
+			&#039;legend&#039; : {},
+			&#039;horizontalGrid&#039; : true,
+			&#039;verticalGrid&#039; : true
+		};
+		var t = {
+			&#039;row&#039; : 5,
+			&#039;colunms&#039; : 8,
+			&#039;headers&#039; : {},
+			&#039;cells&#039; : {},
+			&#039;itemDisplayedPerPage&#039; : 4,
+			&#039;addDataPosition&#039; : &#039;down&#039;,
+			&#039;sortable&#039; : true
+		};
+
+		beforeEach(function(){
+			res = Table.Test(&#039;split(json)&#039;);
+		});
+
+		it(&#039;json splitted in the correct way&#039;, function(){
+			expect(res.graphJson).toEqual(g);
+			expect(res.tableJson).toEqual(t);
+		});
+
+	});*/
+
+
+	describe(&#039;updateParameters&#039;, function(){
+		var json = {
+			&#039;title&#039; : &#039;graficonuovo&#039;,
+			&#039;height&#039; : 400,
+			&#039;width&#039; : 400,
+			&#039;enabledLegend&#039; : false,
+			&#039;horizontalGrid&#039; : false,
+			&#039;verticalGrid&#039; : false,
+			&#039;rows&#039; : 6,
+			&#039;colunms&#039; : 9,
+			&#039;headers&#039; : [&#039;ciao&#039;,&#039;amici&#039;],
+			&#039;itemDisplayedPerPage&#039; : 5,
+			&#039;addDataPosition&#039; : &#039;up&#039;,
+			&#039;sortable&#039; : false,
+			&#039;appearance&#039; : { 
+				border: {
+					color: &#039;#000000&#039;,
+					width: 1
+				},
+				rowEven: {
+					textColor: [&#039;#000000&#039;, &#039;#000000&#039;],
+					backgroundColor: [&#039;#FFFFFF&#039;, &#039;#FFFFFF&#039;]
+				},
+				rowOdd: {
+					textColor: [&#039;#000000&#039;, &#039;#000000&#039;],
+					backgroundColor: [&#039;#FFFFFF&#039;, &#039;#FFFFFF&#039;]
+				},
+				headers: {
+					textColor: [&#039;#000000&#039;, &#039;#000000&#039;],
+					backgroundColor: [&#039;#FFFFFF&#039;, &#039;#FFFFFF&#039;]
+				}
+			},
+			&#039;flows&#039; : [{&#039;ID&#039; : &#039;f1&#039;},{&#039;ID&#039; : &#039;f2&#039;},{&#039;ID&#039; : &#039;f3&#039;}]
+		};
+		var Table;
+
+		beforeEach(function(){
+			Table = TableFactory.build();
+			Table.updateParameters(json);
+		});
+
+		afterEach(function(){
+			Table = null;
+		});
+
+		it(&#039;Table created&#039;, function(){
+			expect(Table).toBeDefined();
+		});
+
+		it(&#039;graph updated with the correct headers&#039;, function(){
+			expect(Table.getHeaders().length).toEqual(2);
+		});
+		it(&#039;graph updated with the correct item displayed per page&#039;, function(){
+			expect(Table.getMaxItemsPage()).toEqual(20);
+		});
+		it(&#039;graph updated with the correct add data position&#039;, function(){
+			expect(Table.getAddRowOn()).toEqual(&#039;up&#039;);
+		});
+		it(&#039;graph updated with the correct sortable&#039;, function(){
+			expect(Table.getSortable()).toEqual(false);
+		});
+		it(&#039;graph updated with the correct sort&#039;, function(){
+			expect(Table.getSort()).toEqual(null);
+		});
+		it(&#039;graph updated with the correct appearance&#039;, function(){
+			expect(Table.getAppearance().border.color).toEqual(&#039;#000000&#039;);
+		});
+		it(&#039;graph updated with the correct flow&#039;, function(){
+			expect(Table.getFlowList().length).toEqual(3);
+		});
+		
+	});
+	
+	describe(&#039;addFlow&#039;, function(){
+
+		var json = {
+			&#039;ID&#039; : 	&#039;flusso1&#039;,
+		};
+
+		var fJson = {
+			&#039;name&#039; : &#039;flusso1&#039;,
+			&#039;maxItem&#039; : &#039;5&#039;
+		};
+
+		var newFlow;
+		var Table;
+
+		beforeEach(function(){
+			newFlow = TableFlowFactory.build(fJson);
+			Table = TableFactory.build();
+			Table.addFlow(json.ID, newFlow);
+		});
+
+		afterEach(function(){
+			Table = null;
+		});
+
+		it(&#039;graph addFlow called with the correct parameters&#039;, function(){
+			expect(Table.getFlowList().length).toEqual(1);
+		});
+
+	});
+
+	describe(&#039;deleteFlow&#039;, function(){
+
+		var json1 = {
+			&#039;ID&#039; : 	&#039;flusso1&#039;,
+			&#039;name&#039; : &#039;sonda 1&#039;
+		};
+
+		var json2 = {
+			&#039;ID&#039; : 	&#039;flusso2&#039;,
+			&#039;name&#039; : &#039;sonda 2&#039;
+		};
+		var Table, Flow1, Flow2;
+
+		beforeEach(function(){
+			Flow1 = TableFlowFactory.build();
+			Flow2 = TableFlowFactory.build();
+			Table = TableFactory.build();
+			Table.addFlow(json1.ID, Flow1);
+			Table.addFlow(json2.ID, Flow2);
+			Table.deleteFlow(&#039;flusso1&#039;);
+		});
+
+		afterEach(function(){
+			Flow1 = null;
+			Flow2 = null;
+			Table = null;
+		});
+
+		it(&#039;delete flow from graph&#039;, function(){
+			expect(Table.getFlowList().length).toEqual(1);
+		});
+
+	});
+
+	describe(&#039;inizializeData&#039;, function(){
+
+		var data = [
+			{
+				&#039;ID&#039; : &#039;1&#039;,
+				&#039;records&#039; : [{ &#039;NorrisRecordID&#039; : &#039;234321&#039;, &#039;value&#039; : [0,1]},{}]
+			}
+		];
+
+		var newFlow;
+		var Table;
+
+		beforeEach(function(){
+			newFlow = TableFlowFactory.build();
+			Table = TableFactory.build();
+			Table.addFlow(data[0].ID, newFlow);
+			Table.initializeData(data);
+		});
+
+		afterEach(function(){
+			Table = null;
+		});
+
+		it(&#039;TableFlow inizializeData called in the right way&#039;, function(){
+			expect(Table.getFlowList()[0].flow.getData().length).toEqual(2);
+		});
+	});
+
+	describe(&#039;inPlaceUpdate&#039;, function(){
+
+		var data = [
+			{
+				&#039;ID&#039; : &#039;2&#039;,
+				&#039;records&#039; : [{&#039;NorrisRecordID&#039; : &#039;record2&#039;, &#039;value&#039; : [3,3] }]
+			}
+		];
+		var data1 = 	{
+			&#039;ID&#039; : &#039;2&#039;,
+			&#039;NorrisRecordID&#039; : &#039;record2&#039;,
+			&#039;value&#039; : [4,4]
+		};
+		var newFlow;
+		var Table;
+
+		beforeEach(function(){
+			newFlow = TableFlowFactory.build();
+			Table = TableFactory.build();
+			Table.addFlow(data[0].ID, newFlow);
+			Table.initializeData(data);
+		});
+
+		afterEach(function(){
+			Table = null;
+		});
+
+		it(&#039;TableFlow inPlaceUpdate called in the right way&#039;, function(){
+			expect(Table.getFlowList()[0].flow.getData()[0].value[0]).toEqual(3);
+			Table.inPlaceUpdate(data1);
+			expect(Table.getFlowList()[0].flow.getData()[0].value[0]).toEqual(4);
+		});
+	});
+
+	describe(&#039;streamUpdate&#039;, function(){
+
+		var data = [
+			{
+				&#039;ID&#039; : &#039;2&#039;,
+				&#039;records&#039; : [{&#039;NorrisRecordID&#039; : &#039;record2&#039;, &#039;value&#039; : [3,3] }]
+			}
+		];
+		var data1 = 	{
+			&#039;ID&#039; : &#039;2&#039;,
+			&#039;records&#039; : [{
+				&#039;NorrisRecordID&#039; : &#039;record2&#039;,
+				&#039;value&#039; : [4,4]
+			}]
+		};
+		var newFlow;
+		var Table;
+
+		beforeEach(function(){
+			newFlow = TableFlowFactory.build();
+			Table = TableFactory.build();
+			Table.addFlow(data[0].ID, newFlow);
+			Table.initializeData(data);
+		});
+
+		afterEach(function(){
+			Table = null;
+		});
+
+		it(&#039;inizialize flowList&#039;, function(){
+			expect(Table.getFlowList()[0].flow.getData().length).toEqual(1);
+			Table.streamUpdate(data1);
+			expect(Table.getFlowList()[0].flow.getData().length).toEqual(2);
+		});
+	});
+
+});</textarea>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>.</p>
+  </div>
+</footer>
+
+<script type="text/html" id="complexity-popover-template">
+  <div class="complexity-notice">
+    Complexity : {{ complexity.cyclomatic }} <br>
+    Length : {{ complexity.halstead.length }} <br>
+    Difficulty : {{ complexity.halstead.difficulty.toFixed(2) }} <br>
+    Est # bugs : {{ complexity.halstead.bugs.toFixed(2) }}<br>
+  </div>
+</script>
+
+<script type="text/javascript" src="../../assets/scripts/bundles/core-bundle.js"></script>
+<script type="text/javascript" src="../../assets/scripts/bundles/codemirror.js"></script>
+<script type="text/javascript" src="../../assets/scripts/codemirror.markpopovertext.js"></script>
+<script type="text/javascript" src="report.js"></script>
+<script type="text/javascript" src="report.history.js"></script>
+<script type="text/javascript" src="../../assets/scripts/plato-file.js"></script>
+</body>
+</html>

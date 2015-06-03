@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for norris-nrti/lib/businessTier/norris.js</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../../prettify.css">
+    <link rel="stylesheet" href="../../../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header medium">
+    <h1>Code coverage report for <span class="entity">norris-nrti/lib/businessTier/norris.js</span></h1>
+    <h2>
+        Statements: <span class="metric">50% <small>(10 / 20)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">25% <small>(3 / 12)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">25% <small>(1 / 4)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">50% <small>(10 / 20)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../index.html">All files</a> &#187; <a href="index.html">norris-nrti/lib/businessTier/</a> &#187; norris.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span></td><td class="text"><pre class="prettyprint lang-js">/*jshint node: true, -W106 */
+'use strict';
+&nbsp;
+/*
+* Name : norris.js
+* Module : Norris
+* Location : /lib/businessTier
+*
+* History :
+* 
+* Version   Date         Programmer         Description
+* =========================================================
+* 0.0.1     2015-05-19   Matteo Furlan    Initial code
+* =========================================================
+*/
+&nbsp;
+var NetworkHandler=require('./networkHandler.js');
+var PageListModel=require('../dataTier/pageList/pageListModel.js');
+&nbsp;
+function Norris(app,server,io,namespace){
+	<span class="missing-if-branch" title="else path not taken" >E</span>if(app===undefined || io===undefined || <span class="branch-2 cbranch-no" title="branch not covered" >namespace===undefined </span>||
+<span class="branch-3 cbranch-no" title="branch not covered" >		typeof app !== 'object' </span>|| <span class="branch-4 cbranch-no" title="branch not covered" >app.lazyrouter===undefined </span>||
+<span class="branch-5 cbranch-no" title="branch not covered" >		typeof io !== 'object' </span>|| <span class="branch-6 cbranch-no" title="branch not covered" >io.nsps===undefined </span>||
+<span class="branch-7 cbranch-no" title="branch not covered" >		typeof namespace !== 'string' </span>|| <span class="branch-8 cbranch-no" title="branch not covered" >namespace.length&lt;2 </span>|| <span class="branch-9 cbranch-no" title="branch not covered" >namespace.indexOf('/')!==0</span>
+		){
+		console.log('Error: 521');
+		return;
+	}
+<span class="cstat-no" title="statement not covered" >	this._app=app;</span>
+<span class="cstat-no" title="statement not covered" >	this._io=io;</span>
+<span class="cstat-no" title="statement not covered" >	this._networkHandler=new NetworkHandler(app,io,namespace);</span>
+<span class="cstat-no" title="statement not covered" >	this._pageListSocket=this._networkHandler.createSocket(namespace,this,'configPageList');</span>
+<span class="cstat-no" title="statement not covered" >	this._pageList=new PageListModel(namespace.substring(1));</span>
+}
+Norris.prototype.createPage = <span class="fstat-no" title="function not covered" >function(params) {</span>
+<span class="cstat-no" title="statement not covered" >	console.log(params);</span>
+	//return new Page;
+};
+Norris.prototype.getConfigJSON = <span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >	var data=this._pageList.getData();</span>
+<span class="cstat-no" title="statement not covered" >	data.name=this._pageList.getName();</span>
+<span class="cstat-no" title="statement not covered" >	return data;</span>
+};
+Norris.prototype.pageChanged = <span class="fstat-no" title="function not covered" >function(params) {</span>
+<span class="cstat-no" title="statement not covered" >	console.log(params);</span>
+};
+module.exports = Norris;</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed May 20 2015 08:23:18 GMT+0000 (UTC)</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>

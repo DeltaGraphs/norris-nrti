@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Plato - test/dataTier/flow/tableFlowModelSpec.js</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link href="../../assets/css/vendor/morris.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet">
+  <link href="../../assets/css/plato.css" rel="stylesheet">
+  <link href="../../assets/css/plato-file.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="http://github.com/es-analysis/plato">Plato on Github</a>
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="../../index.html">Report Home</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>test/dataTier/flow/tableFlowModelSpec.js</h1>
+  </div>
+</div>
+
+<div class="container aggregate-stats">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
+      <p class="stat">67.04</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
+      <p class="stat">148</p>
+    </div>
+  </div>
+  <div class="row historical">
+    <div class="col-md-6">
+      <p id="chart_historical_maint" class="chart"></p>
+    </div>
+    <div class="col-md-6">
+      <p id="chart_historical_sloc" class="chart"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
+      <p class="stat">25.40</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
+      <p class="stat">1.70</p>
+    </div>
+  </div>
+</div>
+
+<div class="container charts">
+  <div class="row">
+    <h2 class="header">Function weight</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="chart-header">By Complexity <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="This metric counts the number of distinct paths through a block of code. Lower values are better." data-original-title="Cyclomatic Complexity" data-container="body"></i></a></h3>
+      <div id="fn-by-complexity" class="stat"></div>
+    </div>
+    <div class="col-md-6">
+      <h3 class="chart-header">By SLOC  <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h3>
+      <div id="fn-by-sloc" class="stat"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <textarea id="file-source" class="col-md-12">/*jshint node: true, -W106 */
+&#039;use strict&#039;;
+
+/*
+* Name : tableFlowModelSpec.js
+* Module : UnitTest
+* Location : /test/dataTier/flow
+*
+* History :
+* 
+* Version   Date         Programmer         Description
+* =========================================================
+* 0.0.1     2015-05-14   Filippo Rampado    Initial code
+* =========================================================
+*/
+
+var TableFlowModel = require(&#039;../../../lib/dataTier/flow/tableFlowModel.js&#039;);
+var assert = require(&#039;assert&#039;);
+
+describe(&#039;TableFlowModel&#039;, function() {
+    
+    it(&#039;returns null when there are no params&#039;, function() {
+        assert.strictEqual((new TableFlowModel()).hasOwnProperty(&#039;_name&#039;), false);
+    });
+
+    it(&#039;returns null when there is no valid ID in params&#039;, function() {
+        assert.strictEqual((new TableFlowModel({})).hasOwnProperty(&#039;_name&#039;), false);
+    });
+
+    it(&#039;returns null when there is a empty ID in params&#039;, function() {
+        assert.strictEqual((new TableFlowModel({ID:&#039; &#039;})).hasOwnProperty(&#039;_name&#039;), false);
+    });
+
+    it(&#039;calls the parent constructor with the params specified&#039;, function() {
+        var flow1=new TableFlowModel({
+            ID:&#039;flow1&#039;,
+            name: &#039;table flow&#039;
+        });
+        assert.strictEqual(flow1._ID, &#039;flow1&#039;);
+        assert.strictEqual(flow1._name, &#039;table flow&#039;);
+        assert.strictEqual(flow1._type, &#039;TableFlow&#039;);
+    });
+
+    it(&#039;set default values to property not specified&#039;, function() {
+        var flow1=new TableFlowModel({ID:&#039;flow1&#039;});
+        assert.strictEqual(flow1._ID, &#039;flow1&#039;);
+        assert.strictEqual(flow1._columnKeys.length, 0);
+        assert.strictEqual(flow1._columnFormats, null);
+        assert.strictEqual(flow1._maxItems, 50);
+        assert.strictEqual(flow1._maxItemsSaved, 500);
+    });
+
+	it(&#039;set default values to wrong properties&#039;, function() {
+        var flow1=new TableFlowModel({
+            ID: &#039;flow1&#039;,
+            columnKeys: [2, {id: 2}],
+            maxItems: -2,
+            maxItemsSaved: &#039;a&#039;
+        });
+        var flow2=new TableFlowModel({
+            ID: &#039;flow1&#039;,
+            columnKeys: [&#039;temp&#039;],
+            columnFormats: {&#039;temp&#039;:&#039;ttt&#039;}
+        });
+		assert.strictEqual(flow1._ID, &#039;flow1&#039;);
+        assert.strictEqual(flow1._columnKeys.length, 0);
+        assert.strictEqual(flow1._maxItems, 50);
+        assert.strictEqual(flow1._maxItemsSaved, 500);
+        assert.strictEqual(flow2._columnFormats, null);
+    });
+
+	it(&#039;set param values to properties&#039;, function() {
+        var flow1=new TableFlowModel({
+            ID: &#039;flow1&#039;,
+            columnKeys: [&#039;213&#039;],
+            columnFormats: {&#039;213&#039;:&#039;toInt&#039;},
+            maxItems: 2,
+            maxItemsSaved: 1000
+        });
+        assert.strictEqual(flow1._ID, &#039;flow1&#039;);
+        assert.strictEqual(flow1._columnKeys.length, 1);
+        assert.deepEqual(flow1._columnFormats, {&#039;213&#039;:&#039;toInt&#039;});
+        assert.strictEqual(flow1._maxItems, 2);
+        assert.strictEqual(flow1._maxItemsSaved, 1000);
+    });
+
+    describe(&#039;#addRecord&#039;, function() {
+        it(&#039;does not add a invalid record&#039;, function() {
+            var flow1=new TableFlowModel({ID: &#039;flow1&#039;});
+            assert.strictEqual(flow1.addRecord(), 143);
+            assert.strictEqual(flow1.addRecord(2), 143);
+        });
+        it(&#039;adds a valid record&#039;, function() {
+            var flow1=new TableFlowModel({ID: &#039;flow1&#039;});
+            var ID=flow1.addRecord({temperature: 2});
+            assert.strictEqual(ID.indexOf(&#039;flow1&#039;), 0);
+            assert.strictEqual(flow1._records.length, 1);
+            assert.strictEqual(flow1._records[0].norrisRecordID.indexOf(&#039;flow1&#039;), 0);
+        });
+    });
+
+    describe(&#039;#updateRecord&#039;, function() {
+        it(&#039;return 141 if record is not valid&#039;, function() {
+            var flow1=new TableFlowModel({ID: &#039;flow1&#039;});
+            assert.strictEqual(flow1.updateRecord(1), 141);
+            assert.strictEqual(flow1.updateRecord(1, [{asd:&#039;asd&#039;}]), 141);
+            assert.strictEqual(flow1.updateRecord(1, 2), 141);
+        });
+        it(&#039;return 142 if index is not valid&#039;, function() {
+            var flow1=new TableFlowModel({ID: &#039;flow1&#039;});
+            flow1._records=[{temperature: 2, norrisRecordID: &#039;flow1whatever0&#039;}];
+            assert.strictEqual(flow1.updateRecord(&#039;flow2whaterver0&#039;, {temperature: 2}), 142);
+            assert.strictEqual(flow1.updateRecord(&#039;flow1whaterver1&#039;, {temperature: 2}), 142);
+            assert.strictEqual(flow1.updateRecord(&#039;asd&#039;, {temperature: 2}), 142);
+        });
+        it(&#039;updates and validate the record if ID and record are valid&#039;, function() {
+            var flow1=new TableFlowModel({
+                    ID: &#039;flow1&#039;,
+                    filters: &#039;temperature&gt;3&#039;
+                });
+            flow1._records=[{temperature: 2, norrisRecordID: &#039;flow1whatever0&#039;}];
+            flow1.validateRecord(0);
+            assert.strictEqual(flow1._records[0].norrisRecordIsValid, false);
+            var update=flow1.updateRecord(&#039;flow1whatever0&#039;, {temperature: 4});
+            assert.strictEqual(update, true);
+            assert.strictEqual(flow1._records[0].temperature, 4);
+            assert.strictEqual(flow1._records[0].norrisRecordIsValid, true);
+        });
+    });
+    describe(&#039;#getProperties&#039;, function() {
+        it(&#039;returns the param properties&#039;, function() {
+            var prop={
+                ID: &#039;flow1&#039;,
+                columnKeys: [&#039;213&#039;],
+                columnFormats: {&#039;213&#039;:&#039;toInt&#039;},
+                maxItems: 2,
+                maxItemsSaved: 1000
+            };
+            var flow1=new TableFlowModel(prop);
+            var result=flow1.getProperties();
+            assert.strictEqual(result.ID, prop.ID);
+            assert.strictEqual(result.columnKeys, prop.columnKeys);
+            assert.strictEqual(result.columnFormats, prop.columnFormats);
+            assert.strictEqual(result.maxItems, prop.maxItems);
+            assert.strictEqual(result.maxItemsSaved, prop.maxItemsSaved);
+        });
+    });
+
+});</textarea>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>.</p>
+  </div>
+</footer>
+
+<script type="text/html" id="complexity-popover-template">
+  <div class="complexity-notice">
+    Complexity : {{ complexity.cyclomatic }} <br>
+    Length : {{ complexity.halstead.length }} <br>
+    Difficulty : {{ complexity.halstead.difficulty.toFixed(2) }} <br>
+    Est # bugs : {{ complexity.halstead.bugs.toFixed(2) }}<br>
+  </div>
+</script>
+
+<script type="text/javascript" src="../../assets/scripts/bundles/core-bundle.js"></script>
+<script type="text/javascript" src="../../assets/scripts/bundles/codemirror.js"></script>
+<script type="text/javascript" src="../../assets/scripts/codemirror.markpopovertext.js"></script>
+<script type="text/javascript" src="report.js"></script>
+<script type="text/javascript" src="report.history.js"></script>
+<script type="text/javascript" src="../../assets/scripts/plato-file.js"></script>
+</body>
+</html>

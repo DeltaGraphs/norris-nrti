@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Plato - test/dataTier/graph/tableModelSpec.js</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link href="../../assets/css/vendor/morris.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet">
+  <link href="../../assets/css/plato.css" rel="stylesheet">
+  <link href="../../assets/css/plato-file.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="http://github.com/es-analysis/plato">Plato on Github</a>
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="../../index.html">Report Home</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>test/dataTier/graph/tableModelSpec.js</h1>
+  </div>
+</div>
+
+<div class="container aggregate-stats">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
+      <p class="stat">60.62</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
+      <p class="stat">508</p>
+    </div>
+  </div>
+  <div class="row historical">
+    <div class="col-md-6">
+      <p id="chart_historical_maint" class="chart"></p>
+    </div>
+    <div class="col-md-6">
+      <p id="chart_historical_sloc" class="chart"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
+      <p class="stat">52.12</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
+      <p class="stat">6.89</p>
+    </div>
+  </div>
+</div>
+
+<div class="container charts">
+  <div class="row">
+    <h2 class="header">Function weight</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="chart-header">By Complexity <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="This metric counts the number of distinct paths through a block of code. Lower values are better." data-original-title="Cyclomatic Complexity" data-container="body"></i></a></h3>
+      <div id="fn-by-complexity" class="stat"></div>
+    </div>
+    <div class="col-md-6">
+      <h3 class="chart-header">By SLOC  <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h3>
+      <div id="fn-by-sloc" class="stat"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <textarea id="file-source" class="col-md-12">/*jshint node: true, -W106 */
+&#039;use strict&#039;;
+
+/*
+* Name : tableModelSpec.js
+* Module : UnitTest
+* Location : /test/dataTier/graph
+*
+* History :
+* 
+* Version   Date         Programmer         Description
+* =========================================================
+* 0.0.1     2015-05-16   Samuele Zanella    Initial code
+* =========================================================
+*/
+
+var TableModel = require(&#039;../../../lib/dataTier/graph/tableModel.js&#039;);
+var LegendModel = require(&#039;../../../lib/dataTier/graph/legendModel.js&#039;);
+var TableFlowModel = require(&#039;../../../lib/dataTier/flow/tableFlowModel.js&#039;);
+var assert = require(&#039;assert&#039;);
+
+describe(&#039;tableModel&#039;, function() {
+
+    it(&#039;returns null when there are no params&#039;, function() {
+        assert.strictEqual((new TableModel()).hasOwnProperty(&#039;_title&#039;), false);
+    });
+
+    it(&#039;returns null when there is no valid ID in params&#039;, function() {
+        assert.strictEqual((new TableModel({})).hasOwnProperty(&#039;_title&#039;), false);
+    });
+
+    it(&#039;returns null when there is a empty ID in params&#039;, function() {
+        assert.strictEqual((new TableModel({ID:&#039; &#039;})).hasOwnProperty(&#039;_title&#039;), false);
+    });
+    
+    var defaultLegend = new LegendModel();
+    var defaultAppearance = {
+        border: {
+            color: &#039;#000000&#039;,
+            width: 1
+        },
+        rowEven: {
+            textColor: [],
+            backgroundColor: []
+        },
+        rowOdd: {
+            textColor: [],
+            backgroundColor: []
+        },
+        headers: {
+            textColor: [],
+            backgroundColor: []         
+        }
+    };
+    var default2colAppearance = {
+        border: {
+            color: &#039;#000000&#039;,
+            width: 1
+        },
+        rowEven: {
+            textColor: [&#039;#000000&#039;, &#039;#000000&#039;],
+            backgroundColor: [&#039;#FFFFFF&#039;, &#039;#FFFFFF&#039;]
+        },
+        rowOdd: {
+            textColor: [&#039;#000000&#039;, &#039;#000000&#039;],
+            backgroundColor: [&#039;#FFFFFF&#039;, &#039;#FFFFFF&#039;]
+        },
+        headers: {
+            textColor: [&#039;#000000&#039;, &#039;#000000&#039;],
+            backgroundColor: [&#039;#FFFFFF&#039;, &#039;#FFFFFF&#039;]      
+        }
+    };
+
+    var example2colAppearance = {
+        border: {
+            color: &#039;#111111&#039;,
+            width: 1
+        },
+        rowEven: {
+            textColor: [&#039;#222222&#039;, &#039;#333333&#039;],
+            backgroundColor: [&#039;#444444&#039;, &#039;#555555&#039;]
+        },
+        rowOdd: {
+            textColor: [&#039;#555555&#039;, &#039;#666666&#039;],
+            backgroundColor: [&#039;#777777&#039;, &#039;#888888&#039;]
+        },
+        headers: {
+            textColor: [&#039;#333333&#039;, &#039;#999999&#039;],
+            backgroundColor: [&#039;#123456&#039;, &#039;#654321&#039;]      
+        }
+    };
+
+    var  example2colAppearanceSV = {
+        border: {
+            color: &#039;#111111&#039;,
+            width: 1
+        },
+        rowEven: {
+            textColor: &#039;#222222&#039;,
+            backgroundColor: &#039;#444444&#039;
+        },
+        rowOdd: {
+            textColor: &#039;#555555&#039;,
+            backgroundColor: &#039;#777777&#039;
+        },
+        headers: {
+            textColor: &#039;#333333&#039;,
+            backgroundColor: &#039;#123456&#039;      
+        }        
+    };
+
+    var  example2colAppearanceSVspread = {
+        border: {
+            color: &#039;#111111&#039;,
+            width: 1
+        },
+        rowEven: {
+            textColor: [&#039;#222222&#039;, &#039;#222222&#039;],
+            backgroundColor: [&#039;#444444&#039;, &#039;#444444&#039;]
+        },
+        rowOdd: {
+            textColor: [&#039;#555555&#039;, &#039;#555555&#039;],
+            backgroundColor: [&#039;#777777&#039;, &#039;#777777&#039;]
+        },
+        headers: {
+            textColor: [&#039;#333333&#039;, &#039;#333333&#039;],
+            backgroundColor: [&#039;#123456&#039;, &#039;#123456&#039;]      
+        }     
+    };
+
+    it(&#039;set default values to property not specified&#039;, function() {
+        var graph1=new TableModel({ID:&#039;graph1&#039;});
+        assert.strictEqual(graph1._ID, &#039;graph1&#039;);
+        assert.strictEqual(graph1._title, &#039;&#039;);
+        assert.strictEqual(graph1._type, &#039;Table&#039;);
+        assert.strictEqual(graph1._height, 400);
+        assert.strictEqual(graph1._width, 500);
+        assert.strictEqual(graph1._enableLegend, false);
+        assert.deepEqual(graph1._legend.getProperties(), defaultLegend.getProperties());
+        assert.strictEqual(graph1._sortable, false);
+        assert.strictEqual(graph1._sort, null);
+        assert.strictEqual(graph1._maxItemsPage, 10);
+        assert.strictEqual(graph1._headers.length, 0);
+        assert.deepEqual(graph1._appearance, defaultAppearance);
+        assert.strictEqual(graph1._addRowOn, &#039;bottom&#039;);
+    });
+
+    it(&#039;set default values to wrong properties&#039;, function() {
+        var graph1=new TableModel({
+            ID: &#039;graph1&#039;,
+            title: 1,
+            height: &#039;a&#039;,
+            width: &#039;b&#039;,
+            enableLegend: &#039;abc&#039;,
+            legend: &#039;def&#039;,
+            sortable: 123,
+            sort: 456,
+            maxItemsPage: -5,
+            headers: 123,
+            addRowOn: &#039;def&#039;
+        });
+        assert.strictEqual(graph1._ID, &#039;graph1&#039;);
+        assert.strictEqual(graph1._title, &#039;&#039;);
+        assert.strictEqual(graph1._type, &#039;Table&#039;);
+        assert.strictEqual(graph1._height, 400);
+        assert.strictEqual(graph1._width, 500);
+        assert.strictEqual(graph1._enableLegend, false);
+        assert.deepEqual(graph1._legend.getProperties(), defaultLegend.getProperties());
+        assert.strictEqual(graph1._sortable, false);
+        assert.strictEqual(graph1._sort, null);
+        assert.strictEqual(graph1._maxItemsPage, 10);
+        assert.strictEqual(graph1._headers.length, 0);
+        assert.deepEqual(graph1._appearance, defaultAppearance);
+        assert.strictEqual(graph1._addRowOn, &#039;bottom&#039;);
+    });
+
+    var legend1 = new LegendModel();
+    it(&#039;set param values to properties with no appearance specified&#039;, function() {
+        var graph1=new TableModel({
+            ID: &#039;graph1&#039;,
+            title: &#039;graph one&#039;,
+            height: 200,
+            width: 350,
+            enableLegend: true,
+            legend: legend1.getProperties(),
+            sortable: true,
+            sort: {column: &#039;col1&#039;, ordering:&#039;DESC&#039;},
+            maxItemsPage: 15,
+            headers: [&#039;col1&#039;, &#039;col2&#039;],
+            addRowOn: &#039;top&#039;
+        });
+        assert.strictEqual(graph1._ID, &#039;graph1&#039;);
+        assert.strictEqual(graph1._title, &#039;graph one&#039;);
+        assert.strictEqual(graph1._type, &#039;Table&#039;);
+        assert.strictEqual(graph1._height, 200);
+        assert.strictEqual(graph1._width, 350);
+        assert.strictEqual(graph1._enableLegend, true);
+        assert.deepEqual(graph1._legend.getProperties(), legend1.getProperties());
+        assert.strictEqual(graph1._sortable, true);
+        assert.deepEqual(graph1._sort, {column: &#039;col1&#039;, ordering:&#039;DESC&#039;});
+        assert.strictEqual(graph1._maxItemsPage, 15);
+        assert.strictEqual(graph1._headers[0], &#039;col1&#039;);
+        assert.strictEqual(graph1._headers[1], &#039;col2&#039;);
+        assert.deepEqual(graph1._appearance, default2colAppearance);
+        assert.strictEqual(graph1._addRowOn, &#039;top&#039;);
+    });
+
+    it(&#039;set param values to properties with the appearance specified&#039;, function() {
+        var graph1=new TableModel({
+            ID: &#039;graph1&#039;,
+            title: &#039;graph one&#039;,
+            height: 200,
+            width: 350,
+            enableLegend: true,
+            legend: legend1.getProperties(),
+            sortable: true,
+            sort: {column: &#039;col1&#039;, ordering:&#039;DESC&#039;},
+            maxItemsPage: 15,
+            headers: [&#039;col1&#039;, &#039;col2&#039;],
+            appearance: example2colAppearance,
+            addRowOn: &#039;top&#039;
+        });
+        assert.strictEqual(graph1._ID, &#039;graph1&#039;);
+        assert.strictEqual(graph1._title, &#039;graph one&#039;);
+        assert.strictEqual(graph1._type, &#039;Table&#039;);
+        assert.strictEqual(graph1._height, 200);
+        assert.strictEqual(graph1._width, 350);
+        assert.strictEqual(graph1._enableLegend, true);
+        assert.deepEqual(graph1._legend.getProperties(), legend1.getProperties());
+        assert.strictEqual(graph1._sortable, true);
+        assert.deepEqual(graph1._sort, {column: &#039;col1&#039;, ordering:&#039;DESC&#039;});
+        assert.strictEqual(graph1._maxItemsPage, 15);
+        assert.strictEqual(graph1._headers[0], &#039;col1&#039;);
+        assert.strictEqual(graph1._headers[1], &#039;col2&#039;);
+        assert.deepEqual(graph1._appearance, example2colAppearance);
+        assert.strictEqual(graph1._addRowOn, &#039;top&#039;);
+    });
+
+    it(&#039;set param values to properties with the appearance specified in a compact way&#039;, function() {
+        var graph1=new TableModel({
+            ID: &#039;graph1&#039;,
+            title: &#039;graph one&#039;,
+            height: 200,
+            width: 350,
+            enableLegend: true,
+            legend: legend1.getProperties(),
+            sortable: true,
+            sort: {column: &#039;col1&#039;, ordering:&#039;DESC&#039;},
+            maxItemsPage: 15,
+            headers: [&#039;col1&#039;, &#039;col2&#039;],
+            appearance: example2colAppearanceSV,
+            addRowOn: &#039;top&#039;
+        });
+        assert.strictEqual(graph1._ID, &#039;graph1&#039;);
+        assert.strictEqual(graph1._title, &#039;graph one&#039;);
+        assert.strictEqual(graph1._type, &#039;Table&#039;);
+        assert.strictEqual(graph1._height, 200);
+        assert.strictEqual(graph1._width, 350);
+        assert.strictEqual(graph1._enableLegend, true);
+        assert.deepEqual(graph1._legend.getProperties(), legend1.getProperties());
+        assert.strictEqual(graph1._sortable, true);
+        assert.deepEqual(graph1._sort, {column: &#039;col1&#039;, ordering:&#039;DESC&#039;});
+        assert.strictEqual(graph1._maxItemsPage, 15);
+        assert.strictEqual(graph1._headers[0], &#039;col1&#039;);
+        assert.strictEqual(graph1._headers[1], &#039;col2&#039;);
+        assert.deepEqual(graph1._appearance, example2colAppearanceSVspread);
+        assert.strictEqual(graph1._addRowOn, &#039;top&#039;);
+    });    
+    
+    describe(&#039;#getProperties&#039;, function() {
+        it(&#039;returns the JSON with the properties&#039;, function() {
+            var properties={
+                ID: &#039;graph1&#039;,
+                title: &#039;graph one&#039;,
+                height: 200,
+                width: 350,
+                enableLegend: true,
+                legend: legend1.getProperties(),
+                sortable: true,
+                sort: {column: &#039;col1&#039;, ordering:&#039;DESC&#039;},
+                maxItemsPage: 15,
+                headers: [&#039;col1&#039;, &#039;col2&#039;],
+                addRowOn: &#039;top&#039;
+            };
+
+            var graph1=new TableModel(properties);
+            var prop=graph1.getProperties();
+            assert.strictEqual(prop.ID, &#039;graph1&#039;);
+            assert.strictEqual(prop.title, &#039;graph one&#039;);
+            assert.strictEqual(prop.type, &#039;Table&#039;);
+            assert.strictEqual(prop.height, 200);
+            assert.strictEqual(prop.width, 350);
+            assert.strictEqual(prop.enableLegend, true);
+            assert.deepEqual(prop.legend, legend1.getProperties());
+            assert.strictEqual(prop.sortable, true);
+            assert.deepEqual(prop.sort, {column: &#039;col1&#039;, ordering:&#039;DESC&#039;});
+            assert.strictEqual(prop.maxItemsPage, 15);
+            assert.strictEqual(prop.headers[0], &#039;col1&#039;);
+            assert.strictEqual(prop.headers[1], &#039;col2&#039;);
+            assert.deepEqual(graph1._appearance, default2colAppearance);
+            assert.strictEqual(prop.addRowOn, &#039;top&#039;);
+        });
+    });
+    describe(&#039;#updateProperties&#039;, function() {
+        it(&#039;updates the properties passed as param without specifying any appearance&#039;, function() {
+            var properties={
+                ID: &#039;graph1&#039;,
+                title: &#039;graph one&#039;,
+                height: 200,
+                width: 350,
+                enableLegend: true,
+                legend: legend1.getProperties(),
+                sortable: true,
+                sort: {column: &#039;col1&#039;, ordering:&#039;DESC&#039;},
+                maxItemsPage: 15,
+                headers: [&#039;col1&#039;, &#039;col2&#039;],
+                addRowOn: &#039;top&#039;
+            };
+            var graph1=new TableModel({ID: &#039;graph1&#039;});
+            graph1.updateProperties(properties);
+            assert.strictEqual(graph1._ID, &#039;graph1&#039;);
+            assert.strictEqual(graph1._title, &#039;graph one&#039;);
+            assert.strictEqual(graph1._type, &#039;Table&#039;);
+            assert.strictEqual(graph1._height, 200);
+            assert.strictEqual(graph1._width, 350);
+            assert.strictEqual(graph1._enableLegend, true);
+            assert.deepEqual(graph1._legend.getProperties(), legend1.getProperties());
+            assert.strictEqual(graph1._sortable, true);
+            assert.deepEqual(graph1._sort, {column: &#039;col1&#039;, ordering:&#039;DESC&#039;});
+            assert.strictEqual(graph1._maxItemsPage, 15);
+            assert.strictEqual(graph1._headers[0], &#039;col1&#039;);
+            assert.strictEqual(graph1._headers[1], &#039;col2&#039;);
+            assert.deepEqual(graph1._appearance, default2colAppearance);
+            assert.strictEqual(graph1._addRowOn, &#039;top&#039;);
+        });
+        it(&#039;does not update the properties with wrong param&#039;, function() {
+            var properties={
+                ID: &#039;graph1&#039;,
+                title: 1,
+                height: &#039;a&#039;,
+                width: &#039;b&#039;,
+                enableLegend: &#039;abc&#039;,
+                legend: &#039;def&#039;,
+                sortable: 123,
+                sort: 456,
+                maxItemsPage: -5,
+                headers: 123,
+                appearance: 456,
+                addRowOn: &#039;def&#039;
+            };
+            var graph1=new TableModel({ID: &#039;graph1&#039;});
+            graph1.updateProperties(properties);
+            assert.strictEqual(graph1._ID, &#039;graph1&#039;);
+            assert.strictEqual(graph1._title, &#039;&#039;);
+            assert.strictEqual(graph1._type, &#039;Table&#039;);
+            assert.strictEqual(graph1._height, 400);
+            assert.strictEqual(graph1._width, 500);
+            assert.strictEqual(graph1._enableLegend, false);
+            assert.deepEqual(graph1._legend.getProperties(), defaultLegend.getProperties());
+            assert.strictEqual(graph1._sortable, false);
+            assert.strictEqual(graph1._sort, null);
+            assert.strictEqual(graph1._maxItemsPage, 10);
+            assert.strictEqual(graph1._headers.length, 0);
+            assert.deepEqual(graph1._appearance, defaultAppearance);
+            assert.strictEqual(graph1._addRowOn, &#039;bottom&#039;);
+        });
+        it(&#039;increases the number of appearance columns if the number of headers is increased&#039;, function() {
+            var properties={
+                headers: [&#039;col1&#039;, &#039;col2&#039;]
+            };
+            var graph1=new TableModel({ID: &#039;graph1&#039;, headers:[&#039;col1&#039;]});
+            graph1.updateProperties(properties);
+            assert.strictEqual(graph1._headers[0], &#039;col1&#039;);
+            assert.strictEqual(graph1._headers[1], &#039;col2&#039;);
+            assert.deepEqual(graph1._appearance, default2colAppearance);
+        });
+        it(&#039;decreases the number of appearance columns if the number of headers is decreased&#039;, function() {
+            var properties={
+                headers: [&#039;col1&#039;, &#039;col2&#039;]
+            };
+            var graph1=new TableModel({ID: &#039;graph1&#039;, headers:[&#039;col1&#039;, &#039;col2&#039;, &#039;col3&#039;]});
+            graph1.updateProperties(properties);
+            assert.strictEqual(graph1._headers[0], &#039;col1&#039;);
+            assert.strictEqual(graph1._headers[1], &#039;col2&#039;);
+            assert.deepEqual(graph1._appearance, default2colAppearance);
+        });
+        it(&#039;leaves the number of appearance columns untouched if the number of headers doesn\&#039; change&#039;, function() {
+            var properties={
+                headers: [&#039;col1&#039;, &#039;col2&#039;]
+            };
+            var graph1=new TableModel({ID: &#039;graph1&#039;, headers:[&#039;cola&#039;, &#039;colb&#039;]});
+            graph1.updateProperties(properties);
+            assert.strictEqual(graph1._headers[0], &#039;col1&#039;);
+            assert.strictEqual(graph1._headers[1], &#039;col2&#039;);
+            assert.deepEqual(graph1._appearance, default2colAppearance);
+        });
+    });
+
+    describe(&#039;#getData&#039;, function() {
+        var flow1 = new TableFlowModel({ID: &#039;flow1&#039;});
+        var flow2 = new TableFlowModel({ID: &#039;flow2&#039;});
+        it(&#039;returns empty json if it has no flows&#039;, function() {
+            var graph1=new TableModel({ID: &#039;graph1&#039;});
+            assert.strictEqual(graph1.getData().length, 0);
+        });
+       
+        it(&#039;returns json with one graph&#039;, function() {
+            var graph1=new TableModel({ID: &#039;graph1&#039;});
+            graph1.addFlow(flow1);
+            var data=graph1.getData();
+            assert.strictEqual(data.length, 1);
+            assert.strictEqual(data[0].properties.ID, &#039;flow1&#039;);
+        });
+        it(&#039;returns json with two graphs&#039;, function() {
+            var graph1=new TableModel({ID: &#039;graph1&#039;});
+            graph1.addFlow(flow1);
+            graph1.addFlow(flow2);
+            var data=graph1.getData();
+            assert.strictEqual(data.length, 2);
+            assert.strictEqual(data[0].properties.ID, &#039;flow1&#039;);
+            assert.strictEqual(data[1].properties.ID, &#039;flow2&#039;);
+        });
+    });    
+
+    describe(&#039;#addFlow&#039;, function() {
+        var flow1 = new TableFlowModel();
+        it(&#039;adds flow to the flows array&#039;, function() {
+            var graph1=new TableModel({ID: &#039;graph1&#039;});
+            graph1.addFlow(flow1);
+            assert.strictEqual(graph1._flows.length, 1);
+        });
+        it(&#039;does not add an invalid flow to the flows array&#039;, function() {
+            var graph1=new TableModel({ID: &#039;graph1&#039;});
+            graph1.addFlow({});
+            assert.strictEqual(graph1._flows.length, 0);
+        });
+    });
+    function TFMMock(ID) {
+        this._ID = ID;
+    }
+    TFMMock.prototype.getProperties = function() {
+        return {ID: this._ID};
+    };
+    describe(&#039;#deleteFlow&#039;, function() {
+        it(&#039;deletes the flow with the given ID&#039;, function() {
+            var graph1=new TableModel({ID: &#039;graph1&#039;});
+            graph1._flows[0] = new TFMMock(&#039;flow1&#039;);
+            graph1.deleteFlow(&#039;flow1&#039;);
+            assert.strictEqual(graph1._flows.length, 0);
+        });
+        it(&#039;does not delete anything if the ID is not found&#039;, function() {
+            var graph1=new TableModel({ID: &#039;graph1&#039;});
+            graph1._flows[0] = new TFMMock(&#039;flow1&#039;);
+            graph1.deleteFlow(&#039;flow2&#039;);
+            assert.strictEqual(graph1._flows.length, 1);
+        });
+    });
+    describe(&#039;#deleteAllFlows&#039;, function() {
+        it(&#039;deletes all the flows&#039;, function() {
+            var graph1=new TableModel({ID: &#039;graph1&#039;});
+            graph1._flows[0] = new TFMMock(&#039;flow1&#039;);
+            graph1._flows[1] = new TFMMock(&#039;flow2&#039;);
+            graph1.deleteAllFlows();
+            assert.strictEqual(graph1._flows.length, 0);
+        });
+    });
+    describe(&#039;#updateRecord&#039;, function() {
+        it(&#039;returns 241 if it doesn\&#039;t find the wanted flow&#039;, function() {
+            var graph1=new TableModel({ID: &#039;graph1&#039;});
+            graph1._flows[0] = new TableFlowModel({ID: &#039;flow1&#039;});
+            assert.strictEqual(graph1.updateRecord(&#039;flow4&#039;, 0, {temperature: 2}), 241);
+        });
+        it(&#039;returns 142 if it doesn\&#039;t find the wanted record&#039;, function() {
+            var graph1=new TableModel({ID: &#039;graph1&#039;});
+            graph1._flows[0] = new TableFlowModel({ID: &#039;flow1&#039;});
+            graph1._flows[0]._records[0]={temperature: 3};
+            assert.strictEqual(graph1.updateRecord(&#039;flow1&#039;, &#039;asd&#039;, {temperature: 2}), 142);
+        });
+        it(&#039;returns 141 if no valid record is passed&#039;, function() {
+            var graph1=new TableModel({ID: &#039;graph1&#039;});
+            graph1._flows[0] = new TableFlowModel({ID: &#039;flow1&#039;});
+            var ID=graph1._flows[0].addRecord({temperature: 3});
+            assert.strictEqual(graph1.updateRecord(&#039;flow1&#039;, ID, null), 141);
+        });
+        it(&#039;returns true if passed valid parameters&#039;, function() {
+            var graph1=new TableModel({ID: &#039;graph1&#039;});
+            graph1._flows[0] = new TableFlowModel({ID: &#039;flow1&#039;});
+            var ID=graph1._flows[0].addRecord({temperature: 3});
+            assert.strictEqual(graph1.updateRecord(&#039;flow1&#039;, ID, {temperature: 2}), true);
+        });
+    });
+    describe(&#039;#addRecord&#039;, function() {
+        it(&#039;returns 241 if it doesn\&#039;t find the wanted flow&#039;, function() {
+            var graph1=new TableModel({ID: &#039;graph1&#039;});
+            graph1._flows[0] = new TableFlowModel({ID: &#039;flow1&#039;});
+            assert.strictEqual(graph1.addRecord(&#039;flow4&#039;, {temperature: 2}), 241);
+        });
+        it(&#039;returns 143 if no valid record is passed&#039;, function() {
+            var graph1=new TableModel({ID: &#039;graph1&#039;});
+            graph1._flows[0] = new TableFlowModel({ID: &#039;flow1&#039;});
+            assert.strictEqual(graph1.addRecord(&#039;flow1&#039;, null), 143);
+        });
+        it(&#039;returns true if passed valid parameters&#039;, function() {
+            var graph1=new TableModel({ID: &#039;graph1&#039;});
+            graph1._flows[0] = new TableFlowModel({ID: &#039;flow1&#039;});
+            assert.strictEqual(graph1.addRecord(&#039;flow1&#039;, {temperature: 2}).indexOf(&#039;flow1&#039;), 0);
+        });
+    });
+});</textarea>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>.</p>
+  </div>
+</footer>
+
+<script type="text/html" id="complexity-popover-template">
+  <div class="complexity-notice">
+    Complexity : {{ complexity.cyclomatic }} <br>
+    Length : {{ complexity.halstead.length }} <br>
+    Difficulty : {{ complexity.halstead.difficulty.toFixed(2) }} <br>
+    Est # bugs : {{ complexity.halstead.bugs.toFixed(2) }}<br>
+  </div>
+</script>
+
+<script type="text/javascript" src="../../assets/scripts/bundles/core-bundle.js"></script>
+<script type="text/javascript" src="../../assets/scripts/bundles/codemirror.js"></script>
+<script type="text/javascript" src="../../assets/scripts/codemirror.markpopovertext.js"></script>
+<script type="text/javascript" src="report.js"></script>
+<script type="text/javascript" src="report.history.js"></script>
+<script type="text/javascript" src="../../assets/scripts/plato-file.js"></script>
+</body>
+</html>

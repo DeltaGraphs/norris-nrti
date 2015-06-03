@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for norris-nrti/lib/businessTier/networkHandler.js</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../../prettify.css">
+    <link rel="stylesheet" href="../../../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1>Code coverage report for <span class="entity">norris-nrti/lib/businessTier/networkHandler.js</span></h1>
+    <h2>
+        Statements: <span class="metric">30% <small>(6 / 20)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">0% <small>(0 / 16)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">0% <small>(0 / 3)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">30% <small>(6 / 20)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../index.html">All files</a> &#187; <a href="index.html">norris-nrti/lib/businessTier/</a> &#187; networkHandler.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span></td><td class="text"><pre class="prettyprint lang-js">/*jshint node: true, -W106 */
+'use strict';
+&nbsp;
+/*
+* Name : networkHandler.js
+* Module : NetworkHandler
+* Location : /lib/businessTier
+*
+* History :
+* 
+* Version   Date         Programmer         Description
+* =========================================================
+* 0.0.1     2015-05-19   Matteo Furlan    Initial code
+* =========================================================
+*/
+&nbsp;
+var Socket=require('../presentationTier/socket.js');
+var Routes=require('../presentationTier/routes.js');
+&nbsp;
+<span class="fstat-no" title="function not covered" >function NetworkHandler(app,io,norrisNamespace){</span>
+<span class="cstat-no" title="statement not covered" >	if(app===undefined || io===undefined || norrisNamespace===undefined ||</span>
+		typeof app !== 'object' || app.prototype.costructor !== 'Express' ||
+		typeof io !== 'object' || io.prototype.costructor !== 'SocketIO' ||
+		typeof norrisNamespace !== 'object' || norrisNamespace.length&lt;2
+		){
+<span class="cstat-no" title="statement not covered" >		console.log('Error: 811');</span>
+<span class="cstat-no" title="statement not covered" >		return;</span>
+	}
+<span class="cstat-no" title="statement not covered" >	this._app=app;</span>
+<span class="cstat-no" title="statement not covered" >	this._io=io;</span>
+<span class="cstat-no" title="statement not covered" >	this._norrisNamespace=norrisNamespace;</span>
+<span class="cstat-no" title="statement not covered" >	this._routes=new Routes(this._app,this._norrisNamespace);</span>
+<span class="cstat-no" title="statement not covered" >	this._routes.addRoutingPath(this._norrisNamespace,'pageList'); </span>//page is pageList.ejs;
+}
+NetworkHandler.prototype.addPageToRouting = <span class="fstat-no" title="function not covered" >function(namespacePage) {</span>
+<span class="cstat-no" title="statement not covered" >	if(typeof namespacePage !== 'string' || namespacePage.length&lt;2 || namespacePage.indexOf('/')!==0){</span>
+<span class="cstat-no" title="statement not covered" >		return false;</span>
+	}
+<span class="cstat-no" title="statement not covered" >	return this._routes.addRoutingPath(namespacePage,'page'); </span>//page is page.ejs;
+};
+NetworkHandler.prototype.createSocket = <span class="fstat-no" title="function not covered" >function(namespace,attachedObject) {</span>
+<span class="cstat-no" title="statement not covered" >	var sock=new Socket(this._io,namespace);</span>
+<span class="cstat-no" title="statement not covered" >	sock.attachedObject(attachedObject,'configPageList');</span>
+<span class="cstat-no" title="statement not covered" >	return sock;</span>
+};
+module.exports = NetworkHandler;</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed May 20 2015 08:23:18 GMT+0000 (UTC)</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>

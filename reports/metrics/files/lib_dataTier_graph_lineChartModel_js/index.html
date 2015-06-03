@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Plato - lib/dataTier/graph/lineChartModel.js</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link href="../../assets/css/vendor/morris.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet">
+  <link href="../../assets/css/plato.css" rel="stylesheet">
+  <link href="../../assets/css/plato-file.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="http://github.com/es-analysis/plato">Plato on Github</a>
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="../../index.html">Report Home</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>lib/dataTier/graph/lineChartModel.js</h1>
+  </div>
+</div>
+
+<div class="container aggregate-stats">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
+      <p class="stat">65.86</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
+      <p class="stat">148</p>
+    </div>
+  </div>
+  <div class="row historical">
+    <div class="col-md-6">
+      <p id="chart_historical_maint" class="chart"></p>
+    </div>
+    <div class="col-md-6">
+      <p id="chart_historical_sloc" class="chart"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
+      <p class="stat">48.67</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
+      <p class="stat">1.51</p>
+    </div>
+  </div>
+</div>
+
+<div class="container charts">
+  <div class="row">
+    <h2 class="header">Function weight</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="chart-header">By Complexity <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="This metric counts the number of distinct paths through a block of code. Lower values are better." data-original-title="Cyclomatic Complexity" data-container="body"></i></a></h3>
+      <div id="fn-by-complexity" class="stat"></div>
+    </div>
+    <div class="col-md-6">
+      <h3 class="chart-header">By SLOC  <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h3>
+      <div id="fn-by-sloc" class="stat"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <textarea id="file-source" class="col-md-12">/*jshint node: true, -W106 */
+&#039;use strict&#039;;
+
+/*
+* Name : lineChartModel.js
+* Module : Lib::DataTier::LineChartModel
+* Location : /lib/dataTier/graph
+*
+* History :
+* 
+* Version   Date         Programmer         Description
+* =========================================================
+* 0.0.1     2015-05-13   Samuele Zanella    Initial code
+* =========================================================
+*/
+
+var GraphModel = require(&#039;./graphModel.js&#039;);
+var LineChartFlowModel = require(&#039;../flow/lineChartFlowModel.js&#039;);
+var AxisModel = require(&#039;../graph/axisModel.js&#039;);
+
+function LineChartModel(params) {
+	if(params===undefined || params.ID===undefined || typeof params.ID !== &#039;string&#039;|| params.ID.trim() === &#039;&#039;){ // ID field is required
+		console.log(&#039;Error: 322&#039;);
+		return;
+	}
+
+	params.type = &#039;LineChart&#039;;
+	
+	this.parent.constructor.call(this, params);
+
+	this._xAxis=new AxisModel();
+	this._yAxis=new AxisModel();
+	this._backgroundColor=&#039;#FFFFFF&#039;;
+	this._flows=[];
+	this._viewFinder=false;
+	this._horizontalGrid=false;
+	this._verticalGrid=false;
+	this._legendOnPoint=false;
+
+	this.updateProperties(params);
+}
+
+LineChartModel.prototype = Object.create(GraphModel.prototype);
+LineChartModel.prototype.constructor = LineChartModel;
+LineChartModel.prototype.parent = GraphModel.prototype;
+
+LineChartModel.prototype.getProperties = function() {
+	var res = this.parent.getProperties.call(this);
+	res.horizontalGrid = this._horizontalGrid;
+	res.verticalGrid = this._verticalGrid;
+	res.viewFinder = this._viewFinder;
+	res.xAxis = this._xAxis.getProperties();
+	res.yAxis = this._yAxis.getProperties();
+	res.backgroundColor = this._backgroundColor;
+	res.legendOnPoint = this._legendOnPoint;
+	return res;
+};
+
+LineChartModel.prototype.updateProperties = function(params) {
+	if (params !== undefined){
+		var prop=this.parent.updateBaseProperties.call(this, params);
+		if(params.xAxis!==undefined){
+			this._xAxis.updateProperties(params.xAxis);
+			prop.xAxis=this._xAxis;
+		}
+		if(params.yAxis!==undefined){
+			this._yAxis.updateProperties(params.yAxis);
+			prop.yAxis=this._yAxis;
+		}
+		if(params.backgroundColor!==undefined &amp;&amp; (/(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test(params.backgroundColor))){
+			this._backgroundColor=prop.backgroundColor=params.backgroundColor;
+		}
+		if(params.horizontalGrid!==undefined &amp;&amp; typeof params.horizontalGrid === &#039;boolean&#039;){
+			this._horizontalGrid=prop.horizontalGrid=params.horizontalGrid;
+		}
+		if(params.verticalGrid!==undefined &amp;&amp; typeof params.verticalGrid === &#039;boolean&#039;){
+			this._verticalGrid=prop.verticalGrid=params.verticalGrid;
+		}
+		if(params.viewFinder!==undefined &amp;&amp; typeof params.viewFinder === &#039;boolean&#039;){
+			this._viewFinder=prop.viewFinder=params.viewFinder;
+		}
+		if(params.legendOnPoint!==undefined &amp;&amp; typeof params.legendOnPoint === &#039;boolean&#039;){
+			this._legendOnPoint=prop.legendOnPoint=params.legendOnPoint;
+		}
+		return prop;
+	}
+	//return error;
+};
+
+LineChartModel.prototype.getData = function() {
+	 var graphData=[];
+	 var flows= this._flows.length;
+
+	 //build graphData by iterating every flow in _flows
+	 for(var i=0; i&lt;flows; i++){
+		 graphData[i]={
+			 properties: this._flows[i].getProperties(),
+			 data: this._flows[i].getData()
+		 };
+	 }//for flows
+
+	 return graphData;
+};
+
+LineChartModel.prototype.addFlow = function(flow) {
+	if(flow instanceof LineChartFlowModel) {
+		this._flows.push(flow);
+	}
+};
+
+LineChartModel.prototype.deleteFlow = function(ID) {
+	if(typeof ID === &#039;string&#039;) {
+		for(var i=0; i &lt; this._flows.length; i++) {
+			if(this._flows[i].getProperties().ID === ID) {
+				this._flows.splice(i, 1);
+			}
+		}
+	}
+};
+
+LineChartModel.prototype.deleteAllFlows = function() {
+	this._flows = [];
+};
+
+LineChartModel.prototype.updateRecord = function(flowID, index, newRecord) {
+	var filteredFlows = this._flows.filter(function(flow) {return flow.getProperties().ID === flowID;});
+	if(filteredFlows.length &gt; 0) {
+		var flow = filteredFlows[0];
+		return flow.updateRecord(index, newRecord);
+	}
+	else {
+		console.log(&#039;Error: 221&#039;);
+		return 221;
+	}
+};
+
+LineChartModel.prototype.addRecord = function(flowID, record) {
+	var filteredFlows = this._flows.filter(function(flow) {return flow.getProperties().ID === flowID;});
+	if(filteredFlows.length &gt; 0) {
+		var flow = filteredFlows[0];
+		return flow.addRecord(record);
+	}
+	else {
+		console.log(&#039;Error: 221&#039;);
+		return 221;
+	}
+};
+
+module.exports = LineChartModel;</textarea>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>.</p>
+  </div>
+</footer>
+
+<script type="text/html" id="complexity-popover-template">
+  <div class="complexity-notice">
+    Complexity : {{ complexity.cyclomatic }} <br>
+    Length : {{ complexity.halstead.length }} <br>
+    Difficulty : {{ complexity.halstead.difficulty.toFixed(2) }} <br>
+    Est # bugs : {{ complexity.halstead.bugs.toFixed(2) }}<br>
+  </div>
+</script>
+
+<script type="text/javascript" src="../../assets/scripts/bundles/core-bundle.js"></script>
+<script type="text/javascript" src="../../assets/scripts/bundles/codemirror.js"></script>
+<script type="text/javascript" src="../../assets/scripts/codemirror.markpopovertext.js"></script>
+<script type="text/javascript" src="report.js"></script>
+<script type="text/javascript" src="report.history.js"></script>
+<script type="text/javascript" src="../../assets/scripts/plato-file.js"></script>
+</body>
+</html>

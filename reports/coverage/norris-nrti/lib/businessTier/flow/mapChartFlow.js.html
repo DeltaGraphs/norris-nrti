@@ -1,0 +1,603 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for norris-nrti/lib/businessTier/flow/mapChartFlow.js</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../../../prettify.css">
+    <link rel="stylesheet" href="../../../../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header high">
+    <h1>Code coverage report for <span class="entity">norris-nrti/lib/businessTier/flow/mapChartFlow.js</span></h1>
+    <h2>
+        Statements: <span class="metric">100% <small>(84 / 84)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">90% <small>(45 / 50)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">100% <small>(7 / 7)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">100% <small>(84 / 84)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../../index.html">All files</a> &#187; <a href="index.html">norris-nrti/lib/businessTier/flow/</a> &#187; mapChartFlow.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">17</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15</span>
+<span class="cline-any cline-yes">15</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13</span>
+<span class="cline-any cline-yes">13</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">16</span>
+<span class="cline-any cline-yes">16</span>
+<span class="cline-any cline-yes">13</span>
+<span class="cline-any cline-yes">13</span>
+<span class="cline-any cline-yes">13</span>
+<span class="cline-any cline-yes">13</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*jshint node: true, -W106 */
+'use strict';
+&nbsp;
+/*
+* Name : mapChartFlow.js
+* Module : Lib::BusinessTier::MapChartFlow
+* Location : /lib/businessTier/flow
+*
+* History :
+* 
+* Version   Date         Programmer         Description
+* =========================================================
+* 0.0.1     2015-05-20   Filippo Rampado    Initial code
+* =========================================================
+*/
+&nbsp;
+var MapChartFlowModel=require('../../dataTier/flow/mapChartFlowModel.js');
+var Flow=require('./flow.js');
+&nbsp;
+function MapChartFlow(params, graphSocket) {
+	if (graphSocket===undefined || !(graphSocket.hasOwnProperty('_namespace'))){
+		console.log('Error: 201');
+		return;
+	}
+	var mc=new MapChartFlowModel(params);
+	if (!mc.hasOwnProperty('_ID')){
+		return;
+	}
+	this.parent.constructor.call(this, graphSocket);
+	this._dataMapChartFlow=mc;
+}
+&nbsp;
+MapChartFlow.prototype = Object.create(Flow.prototype);
+MapChartFlow.prototype.constructor = Flow;
+MapChartFlow.prototype.parent = Flow.prototype;
+&nbsp;
+MapChartFlow.prototype.addRecord = function(record){
+	var res=this._dataMapChartFlow.addRecord(record);
+	if (res!==133 &amp;&amp; this._dataMapChartFlow.getRecordByID(res).norrisRecordIsValid){
+		var latKey=this._dataMapChartFlow._latitudeKey;
+		var longKey=this._dataMapChartFlow._longitudeKey;
+		var newValue=[null, null];
+		if (record[latKey]!==undefined &amp;&amp; typeof record[latKey]==='number' &amp;&amp; record[longKey]!==undefined &amp;&amp; typeof record[longKey]==='number'){
+			newValue=[record[latKey], record[longKey]];
+		}
+		var data={
+			action: 'insertRecords',
+			ID: this._dataMapChartFlow._ID,
+			records: [{
+				norrisRecordID: res,
+				markerID: record[this._dataMapChartFlow._objectKey],
+				value: newValue
+			}]
+		};
+		this._graphSocket.sendMessage('updateFlowData', data);
+	}
+	return res;
+};
+&nbsp;
+MapChartFlow.prototype.deleteRecord = function(ID){
+	var record=this._dataMapChartFlow.getRecordByID(ID);
+	if (record!==155){
+		<span class="missing-if-branch" title="else path not taken" >E</span>if (record.norrisRecordIsValid){
+			var data={
+				action: 'deleteRecord',
+				ID: this._dataMapChartFlow._ID,
+				norrisRecordID: ID
+			};
+			this._graphSocket.sendMessage('updateFlowData', data);
+		}
+		this._dataMapChartFlow.deleteRecord(ID);
+		return true;
+	}
+	return 155;
+};
+&nbsp;
+MapChartFlow.prototype.updateRecord = function(ID, record){
+	var oldValid=this._dataMapChartFlow.getRecordByID(ID).norrisRecordIsValid;
+	var res=this._dataMapChartFlow.updateRecord(ID, record);
+	var newValid=this._dataMapChartFlow.getRecordByID(ID).norrisRecordIsValid;
+	if (res===true ){
+		if (oldValid &amp;&amp; !newValid){
+			var data={
+				action: 'deleteRecord',
+				ID: this._dataMapChartFlow._ID,
+				norrisRecordID: ID
+			};
+			this._graphSocket.sendMessage('updateFlowData', data);
+		}
+		if (newValid){
+			var latKey=this._dataMapChartFlow._latitudeKey;
+			var longKey=this._dataMapChartFlow._longitudeKey;
+			var newValue=[null, null];
+			<span class="missing-if-branch" title="else path not taken" >E</span>if (record[latKey]!==undefined &amp;&amp; typeof record[latKey]==='number' &amp;&amp; record[longKey]!==undefined &amp;&amp; typeof record[longKey]==='number'){
+				newValue=[record[latKey], record[longKey]];
+			}
+			if (!oldValid){
+				var data2={
+					action: 'insertRecords',
+					ID: this._dataMapChartFlow._ID,
+					records: [{
+						norrisRecordID: ID,
+						markerID: record[this._dataMapChartFlow._objectKey],
+						value: newValue
+					}]
+				};
+				this._graphSocket.sendMessage('updateFlowData', data2);
+			}
+			if (oldValid){
+				var data3={
+					action: 'updateRecord',
+					ID: this._dataMapChartFlow._ID,
+					norrisRecordID: ID,
+					markerID: record[this._dataMapChartFlow._objectKey],
+					value: newValue
+				};
+				this._graphSocket.sendMessage('updateFlowData', data3);
+			}
+		}
+	}
+	return res;
+};
+&nbsp;
+MapChartFlow.prototype.getReplaceDataJSON = function(){
+	var records=[];
+	var dataRecords=this._dataMapChartFlow._records;
+	for (var i=0; i&lt;dataRecords.length; i++){
+		records.push({
+			norrisRecordID : dataRecords[i].norrisRecordID,
+			markerID: dataRecords[i][this._dataMapChartFlow._objectKey],
+			value: [ //lat,long
+				dataRecords[i][this._dataMapChartFlow._latitudeKey],
+				dataRecords[i][this._dataMapChartFlow._longitudeKey]
+			]
+		});
+	}
+&nbsp;
+	return {
+		action: 'replaceData',
+		ID: this._dataMapChartFlow._ID,
+		records: records
+	};
+};
+&nbsp;
+MapChartFlow.prototype.updateMovie = function(records){
+	var recIDs=this._dataMapChartFlow.updateMovie(records);
+	this._graphSocket.sendMessage('updateFlowData', this.getReplaceDataJSON());
+	return recIDs;
+};
+&nbsp;
+&nbsp;
+MapChartFlow.prototype.updateProperties = function(params){
+	<span class="missing-if-branch" title="else path not taken" >E</span>if (params!==undefined){
+		var prop=this._dataMapChartFlow.updateProperties(params);
+		prop.ID=this._dataMapChartFlow._ID;
+		if (prop.filters !== undefined){
+			var latKey=this._dataMapChartFlow._latitudeKey;
+			var longKey=this._dataMapChartFlow._longitudeKey;
+			var records=[];
+			var recordsModel=this._dataMapChartFlow._records;
+			var nRecords=this._dataMapChartFlow._records.length;
+			for (var i=0; i&lt;nRecords; i++){
+				<span class="missing-if-branch" title="else path not taken" >E</span>if (recordsModel[i][latKey]!==undefined &amp;&amp;
+				typeof recordsModel[i][latKey]==='number' &amp;&amp;
+				recordsModel[i][longKey]!==undefined &amp;&amp;
+				typeof recordsModel[i][longKey]==='number'){
+					<span class="missing-if-branch" title="else path not taken" >E</span>if (recordsModel[i].norrisRecordIsValid){
+						records.push({
+							norrisRecordID: recordsModel[i].norrisRecordID,
+							markerID: params[this._dataMapChartFlow._objectKey],
+							value: [recordsModel[i][latKey], recordsModel[i][longKey]]
+						});
+					}
+				}
+			}
+			console.log('here1');
+			this._graphSocket.sendMessage('updateFlowData', this.getReplaceDataJSON());
+		}
+		console.log('here2');
+		this._graphSocket.sendMessage('updateFlowProp', prop);
+	}
+};
+&nbsp;
+&nbsp;
+&nbsp;
+module.exports = MapChartFlow;
+&nbsp;</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Jun 03 2015 00:19:18 GMT+0000 (UTC)</div>
+</div>
+<script src="../../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../../sorter.js"></script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Plato - test/dataTier/flow/filterConditionModelSpec.js</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link href="../../assets/css/vendor/morris.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet">
+  <link href="../../assets/css/plato.css" rel="stylesheet">
+  <link href="../../assets/css/plato-file.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="http://github.com/es-analysis/plato">Plato on Github</a>
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="../../index.html">Report Home</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>test/dataTier/flow/filterConditionModelSpec.js</h1>
+  </div>
+</div>
+
+<div class="container aggregate-stats">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
+      <p class="stat">78.49</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
+      <p class="stat">94</p>
+    </div>
+  </div>
+  <div class="row historical">
+    <div class="col-md-6">
+      <p id="chart_historical_maint" class="chart"></p>
+    </div>
+    <div class="col-md-6">
+      <p id="chart_historical_sloc" class="chart"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
+      <p class="stat">15.16</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
+      <p class="stat">0.93</p>
+    </div>
+  </div>
+</div>
+
+<div class="container charts">
+  <div class="row">
+    <h2 class="header">Function weight</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="chart-header">By Complexity <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="This metric counts the number of distinct paths through a block of code. Lower values are better." data-original-title="Cyclomatic Complexity" data-container="body"></i></a></h3>
+      <div id="fn-by-complexity" class="stat"></div>
+    </div>
+    <div class="col-md-6">
+      <h3 class="chart-header">By SLOC  <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h3>
+      <div id="fn-by-sloc" class="stat"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <textarea id="file-source" class="col-md-12">/*jshint node: true, -W106 */
+&#039;use strict&#039;;
+
+/*
+* Name : filterConditionModelSpec.js
+* Module : UnitTest
+* Location : /test/dataTier/flow
+*
+* History :
+* 
+* Version   Date         Programmer         Description
+* =========================================================
+* 0.0.1     2015-05-14   Matteo Furlan    Initial code
+* =========================================================
+*/
+
+
+var FilterConditionModel = require(&#039;../../../lib/dataTier/flow/filterConditionModel.js&#039;);
+var assert = require(&#039;assert&#039;);
+
+describe(&#039;FilterConditionModel&#039;, function() {
+	it(&#039;test invalid condition 1&#039;, function() {
+		var fcm1=new FilterConditionModel(&#039;&#039;);
+        assert.deepEqual(fcm1.hasOwnProperty(&#039;_key&#039;), false);
+    });
+	it(&#039;test invalid condition 2&#039;, function() {
+		var fcm2=new FilterConditionModel(&#039;xs&gt;&#039;);
+        assert.deepEqual(fcm2.hasOwnProperty(&#039;_key&#039;), false);
+    });
+    it(&#039;test invalid condition 3&#039;, function() {
+		var fcm3=new FilterConditionModel(23);
+        assert.deepEqual(fcm3.hasOwnProperty(&#039;_key&#039;), false);
+    });
+    it(&#039;test correct condition&#039;, function() {
+		var fcm2=new FilterConditionModel(&#039;xs&gt;23&#039;);
+        assert.deepEqual(JSON.stringify(fcm2),&#039;{&quot;_key&quot;:&quot;xs&quot;,&quot;_operator&quot;:&quot;&gt;&quot;,&quot;_value&quot;:23}&#039;);
+    });
+    describe(&#039;#validateRecord&#039;, function() {
+		var fcm2=new FilterConditionModel(&#039;xs&lt;&gt;23&#039;);
+        it(&#039;test invalid operator 1&#039;, function() {
+            assert.deepEqual(fcm2.validateRecord({}), false);
+        });
+        it(&#039;test invalid operator 2&#039;, function() {
+            assert.deepEqual(fcm2.validateRecord({xs:23}), false);
+        });
+		var fcm3=new FilterConditionModel(&#039;xs==23&#039;);
+        it(&#039;test invalid record&#039;, function() {
+            assert.deepEqual(fcm3.validateRecord({}), false);
+        });
+        it(&#039;test invalid key&#039;, function() {
+            assert.deepEqual(fcm3.validateRecord({xd:23}), false);
+        });
+        it(&#039;test invalid value&#039;, function() {
+            assert.deepEqual(fcm3.validateRecord({xs:4}), false);
+        });
+        it(&#039;test == valid&#039;, function() {
+            assert.deepEqual(fcm3.validateRecord({xs:23}), true);
+        });
+        var fcm4=new FilterConditionModel(&#039;xs!=23&#039;);
+        it(&#039;test invalid !=&#039;, function() {
+            assert.deepEqual(fcm4.validateRecord({xs:23}), false);
+        });
+        it(&#039;test valid !=&#039;, function() {
+            assert.deepEqual(fcm4.validateRecord({xs:6}), true);
+        });
+        var fcm5=new FilterConditionModel(&#039;xs&gt;23&#039;);
+        it(&#039;test invalid &gt;&#039;, function() {
+            assert.deepEqual(fcm5.validateRecord({xs:23}), false);
+        });
+        it(&#039;test valid &gt;&#039;, function() {
+            assert.deepEqual(fcm5.validateRecord({xs:25}), true);
+        });
+        var fcm6=new FilterConditionModel(&#039;xs&gt;=23&#039;);
+        it(&#039;test invalid &gt;=&#039;, function() {
+            assert.deepEqual(fcm6.validateRecord({xs:22}), false);
+        });
+        it(&#039;test valid &gt;=&#039;, function() {
+            assert.deepEqual(fcm6.validateRecord({xs:25}), true);
+        });
+        var fcm7=new FilterConditionModel(&#039;xs&lt;23&#039;);
+        it(&#039;test invalid &lt;&#039;, function() {
+            assert.deepEqual(fcm7.validateRecord({xs:28}), false);
+        });
+        it(&#039;test valid &lt;&#039;, function() {
+            assert.deepEqual(fcm7.validateRecord({xs:2}), true);
+        });
+        var fcm8=new FilterConditionModel(&#039;xs&lt;=23&#039;);
+        it(&#039;test invalid &lt;=&#039;, function() {
+            assert.deepEqual(fcm8.validateRecord({xs:24}), false);
+        });
+        it(&#039;test valid &lt;=&#039;, function() {
+            assert.deepEqual(fcm8.validateRecord({xs:23}), true);
+        });
+    });
+});</textarea>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>.</p>
+  </div>
+</footer>
+
+<script type="text/html" id="complexity-popover-template">
+  <div class="complexity-notice">
+    Complexity : {{ complexity.cyclomatic }} <br>
+    Length : {{ complexity.halstead.length }} <br>
+    Difficulty : {{ complexity.halstead.difficulty.toFixed(2) }} <br>
+    Est # bugs : {{ complexity.halstead.bugs.toFixed(2) }}<br>
+  </div>
+</script>
+
+<script type="text/javascript" src="../../assets/scripts/bundles/core-bundle.js"></script>
+<script type="text/javascript" src="../../assets/scripts/bundles/codemirror.js"></script>
+<script type="text/javascript" src="../../assets/scripts/codemirror.markpopovertext.js"></script>
+<script type="text/javascript" src="report.js"></script>
+<script type="text/javascript" src="report.history.js"></script>
+<script type="text/javascript" src="../../assets/scripts/plato-file.js"></script>
+</body>
+</html>

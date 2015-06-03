@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for norris-nrti/lib/businessTier/graph/lineChart.js</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../../../prettify.css">
+    <link rel="stylesheet" href="../../../../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1>Code coverage report for <span class="entity">norris-nrti/lib/businessTier/graph/lineChart.js</span></h1>
+    <h2>
+        Statements: <span class="metric">27.08% <small>(26 / 96)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">14.29% <small>(4 / 28)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">20% <small>(2 / 10)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">27.08% <small>(26 / 96)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../../index.html">All files</a> &#187; <a href="index.html">norris-nrti/lib/businessTier/graph/</a> &#187; lineChart.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*jshint node: true, -W106 */
+'use strict';
+&nbsp;
+/*
+* Name : lineChart.js
+* Module : Lib::BusinessTier::LineChart
+* Location : /lib/businessTier/lineChart
+*
+* History :
+* 
+* Version   Date         Programmer         Description
+* =========================================================
+* 0.0.1     2015-05-31   Samuele Zanella    Initial code
+* =========================================================
+*/
+&nbsp;
+/*var Socket=require('../../presentationTier/socket.js');
+var Page=require('../page/page.js');*/
+var Graph=require('./graph.js');
+var LineChartFlow=require('../flow/lineChartFlow.js');
+var LineChartModel=require('../../dataTier/graph/lineChartModel.js');
+&nbsp;
+function LineChart(params, page, graphSocket) {
+	<span class="missing-if-branch" title="if path not taken" >I</span>if (params===undefined){
+<span class="cstat-no" title="statement not covered" >		console.log('Error: 371');</span>
+<span class="cstat-no" title="statement not covered" >		return;</span>
+	}
+	<span class="missing-if-branch" title="if path not taken" >I</span>if (!(graphSocket.hasOwnProperty('_namespace'))){
+<span class="cstat-no" title="statement not covered" >		console.log('Error: 372');</span>
+<span class="cstat-no" title="statement not covered" >		return;</span>
+	}
+	<span class="missing-if-branch" title="if path not taken" >I</span>if (!(page.hasOwnProperty('_page'))){
+<span class="cstat-no" title="statement not covered" >		console.log('Error: 373');</span>
+<span class="cstat-no" title="statement not covered" >		return;</span>
+	}
+	var lc=new LineChartModel(params);
+	<span class="missing-if-branch" title="if path not taken" >I</span>if (!lc.hasOwnProperty('_ID')){
+<span class="cstat-no" title="statement not covered" >		return;</span>
+	}
+	this.parent.constructor.call(this, page, graphSocket);
+	this._dataLineChart=lc;
+	this._flows=[];
+}
+&nbsp;
+LineChart.prototype = Object.create(Graph.prototype);
+LineChart.prototype.constructor = Graph;
+LineChart.prototype.parent = Graph.prototype;
+&nbsp;
+LineChart.prototype.getFlowByID = <span class="fstat-no" title="function not covered" >function(ID){</span>
+<span class="cstat-no" title="statement not covered" >	if (typeof ID==='string') {</span>
+<span class="cstat-no" title="statement not covered" >		var flows=this._flows.length;</span>
+<span class="cstat-no" title="statement not covered" >		var i=0;</span>
+<span class="cstat-no" title="statement not covered" >		var found=false;</span>
+<span class="cstat-no" title="statement not covered" >		while (i&lt;flows &amp;&amp; (!found)){</span>
+<span class="cstat-no" title="statement not covered" >			if (this._flows[i]._dataLineChartFlow._ID===ID){</span>
+<span class="cstat-no" title="statement not covered" >				found=true;</span>
+			}
+			else{
+<span class="cstat-no" title="statement not covered" >				i++;</span>
+			}
+		}//while
+<span class="cstat-no" title="statement not covered" >		if (found){//in flows[i] there is the ID</span>
+<span class="cstat-no" title="statement not covered" >			return this._flows[i];</span>
+		}
+		//no ID in flows
+	}
+<span class="cstat-no" title="statement not covered" >	return 272;</span>
+};
+&nbsp;
+LineChart.prototype.createLineChartFlow = <span class="fstat-no" title="function not covered" >function(params){</span>
+<span class="cstat-no" title="statement not covered" >	var lcf=new LineChartFlow(params, this._graphSocket);</span>
+<span class="cstat-no" title="statement not covered" >	if (!lcf.hasOwnProperty('_dataLineChartFlow')){</span>
+<span class="cstat-no" title="statement not covered" >		return 222;</span>
+	}
+<span class="cstat-no" title="statement not covered" >	this._flows.push(lcf);</span>
+<span class="cstat-no" title="statement not covered" >	this._dataLineChart.addFlow(lcf._dataLineChartFlow);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	var prop={ID: params.ID};</span>
+<span class="cstat-no" title="statement not covered" >	prop.name=lcf._name;</span>
+<span class="cstat-no" title="statement not covered" >	prop.marker=lcf._marker;</span>
+<span class="cstat-no" title="statement not covered" >	prop.flowColor=lcf._flowColor;</span>
+<span class="cstat-no" title="statement not covered" >	prop.interpolation=lcf._interpolation;</span>
+<span class="cstat-no" title="statement not covered" >	prop.area=lcf._area;</span>
+<span class="cstat-no" title="statement not covered" >	prop.maxItems=lcf._maxItems;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	this._graphSocket.sendMessage('insertFlow', prop);</span>
+<span class="cstat-no" title="statement not covered" >	return lcf;</span>
+};
+&nbsp;
+LineChart.prototype.deleteFlow = <span class="fstat-no" title="function not covered" >function(ID){</span>
+<span class="cstat-no" title="statement not covered" >	if (typeof ID==='string') {</span>
+<span class="cstat-no" title="statement not covered" >		var flows=this._flows.length;</span>
+<span class="cstat-no" title="statement not covered" >		var i=0;</span>
+<span class="cstat-no" title="statement not covered" >		var found=false;</span>
+<span class="cstat-no" title="statement not covered" >		while (i&lt;flows &amp;&amp; (!found)){</span>
+<span class="cstat-no" title="statement not covered" >			if (this._flows[i].ID===ID){</span>
+<span class="cstat-no" title="statement not covered" >				found=true;</span>
+			}
+			else{
+<span class="cstat-no" title="statement not covered" >				i++;</span>
+			}
+		}//while
+<span class="cstat-no" title="statement not covered" >		if (found){//in flows[i] there is the ID			</span>
+<span class="cstat-no" title="statement not covered" >			this._graphSocket.sendMessage('deleteFlow', ID);</span>
+<span class="cstat-no" title="statement not covered" >			this._flows.splice(i, 1);</span>
+<span class="cstat-no" title="statement not covered" >			return true;</span>
+		}
+		//no ID in flows
+	}
+<span class="cstat-no" title="statement not covered" >	return 273;</span>
+};
+&nbsp;
+LineChart.prototype.deleteAllFlows = <span class="fstat-no" title="function not covered" >function(){</span>
+<span class="cstat-no" title="statement not covered" >	while (this._flows.length&gt;0){</span>
+<span class="cstat-no" title="statement not covered" >		this._graphSocket.sendMessage('deleteFlow', {</span>
+			ID: this._flows[0]._dataLineChartFlow._ID
+		});
+<span class="cstat-no" title="statement not covered" >		this._flows.splice(0, 1);</span>
+	}
+};
+&nbsp;
+LineChart.prototype.addRecord = <span class="fstat-no" title="function not covered" >function(flowID, record){</span>
+<span class="cstat-no" title="statement not covered" >	return this.getFlowByID(flowID).addRecord(record);</span>
+};
+&nbsp;
+LineChart.prototype.updateRecord = <span class="fstat-no" title="function not covered" >function(flowID, ID, record){</span>
+<span class="cstat-no" title="statement not covered" >	return this.getFlowByID(flowID).updateRecord(ID, record);</span>
+};
+&nbsp;
+&nbsp;
+LineChart.prototype.updateProperties = <span class="fstat-no" title="function not covered" >function(params){</span>
+<span class="cstat-no" title="statement not covered" >	if (params!==undefined){</span>
+<span class="cstat-no" title="statement not covered" >		var prop=this._dataLineChart.updateProperties(params);</span>
+<span class="cstat-no" title="statement not covered" >		prop.ID=this._dataLineChart.ID;</span>
+<span class="cstat-no" title="statement not covered" >		this._graphSocket.sendMessage('updateGraphProp', prop);</span>
+	}
+};
+&nbsp;
+LineChart.prototype.getProperties = function(){
+	return this._dataLineChart.getProperties();
+};
+&nbsp;
+LineChart.prototype.getConfigJSON = <span class="fstat-no" title="function not covered" >function(){</span>
+<span class="cstat-no" title="statement not covered" >	var configJSON={};</span>
+<span class="cstat-no" title="statement not covered" >	configJSON.properties=this._dataLineChart.getProperties();</span>
+<span class="cstat-no" title="statement not covered" >	var flowProp=[];</span>
+<span class="cstat-no" title="statement not covered" >	var flows=this._flows.length;</span>
+<span class="cstat-no" title="statement not covered" >	configJSON.data=[];</span>
+<span class="cstat-no" title="statement not covered" >	for (var i=0; i&lt;flows; i++){</span>
+<span class="cstat-no" title="statement not covered" >		var flowData={};</span>
+<span class="cstat-no" title="statement not covered" >		flowProp.push(this._flows[i]._dataLineChartFlow.getProperties());</span>
+<span class="cstat-no" title="statement not covered" >		var records=this._flows[i]._dataLineChartFlow.getData();</span>
+<span class="cstat-no" title="statement not covered" >		flowData.ID=this._flows[i]._dataLineChartFlow._ID;</span>
+<span class="cstat-no" title="statement not covered" >		flowData.records=[];</span>
+<span class="cstat-no" title="statement not covered" >		for (var j=0; j&lt;records.length; j++){</span>
+<span class="cstat-no" title="statement not covered" >			flowData.records.push({</span>
+				norrisRecordID : records[j].norrisRecordID,
+				value: [ //x,y
+					records[j][this._flows[i]._dataLineChartFlow._xKey],
+					records[j][this._flows[i]._dataLineChartFlow._yKey]
+				]
+			});
+		}
+<span class="cstat-no" title="statement not covered" >		configJSON.data.push(flowData);</span>
+	}
+<span class="cstat-no" title="statement not covered" >	configJSON.properties.flows=flowProp;</span>
+<span class="cstat-no" title="statement not covered" >	return configJSON;</span>
+};
+&nbsp;
+module.exports = LineChart;
+&nbsp;</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Jun 03 2015 00:19:18 GMT+0000 (UTC)</div>
+</div>
+<script src="../../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../../sorter.js"></script>
+</body>
+</html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Plato - lib/dataTier/flow/lineChartFlowModel.js</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link href="../../assets/css/vendor/morris.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet">
+  <link href="../../assets/css/plato.css" rel="stylesheet">
+  <link href="../../assets/css/plato-file.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="http://github.com/es-analysis/plato">Plato on Github</a>
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="../../index.html">Report Home</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>lib/dataTier/flow/lineChartFlowModel.js</h1>
+  </div>
+</div>
+
+<div class="container aggregate-stats">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
+      <p class="stat">51.97</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
+      <p class="stat">172</p>
+    </div>
+  </div>
+  <div class="row historical">
+    <div class="col-md-6">
+      <p id="chart_historical_maint" class="chart"></p>
+    </div>
+    <div class="col-md-6">
+      <p id="chart_historical_sloc" class="chart"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
+      <p class="stat">55.51</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
+      <p class="stat">2.12</p>
+    </div>
+  </div>
+</div>
+
+<div class="container charts">
+  <div class="row">
+    <h2 class="header">Function weight</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="chart-header">By Complexity <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="This metric counts the number of distinct paths through a block of code. Lower values are better." data-original-title="Cyclomatic Complexity" data-container="body"></i></a></h3>
+      <div id="fn-by-complexity" class="stat"></div>
+    </div>
+    <div class="col-md-6">
+      <h3 class="chart-header">By SLOC  <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h3>
+      <div id="fn-by-sloc" class="stat"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <textarea id="file-source" class="col-md-12">/*jshint node: true, -W106 */
+&#039;use strict&#039;;
+
+/*
+* Name : lineChartFlowModel.js
+* Module : Lib::DataTier::lineChartFlowModel
+* Location : /lib/dataTier/flow
+*
+* History :
+* 
+* Version   Date         Programmer         Description
+* =========================================================
+* 0.0.1     2015-05-15   Filippo Rampado    Initial code
+* =========================================================
+*/
+var FlowModel = require(&#039;./flowModel.js&#039;);
+var Helper = require(&#039;../../helpers/functionHelper.js&#039;);
+
+function LineChartFlowModel(params) {
+	if(params===undefined || params.ID===undefined || typeof params.ID !== &#039;string&#039;|| params.ID.trim() === &#039;&#039;){ // ID field is required
+		console.log(&#039;Error: 222&#039;);
+		return;
+	}
+
+	params.type = &#039;LineChartFlow&#039;;
+	this.parent.constructor.call(this, params);
+
+	this._xKey=null;
+	this._yKey=null;
+	this._xFormat=null;//raw data will be displayed
+	this._yFormat=null;//raw data will be displayed
+	this._flowColor=null;//will be random on frontEnd
+	this._marker=&#039;none&#039;;//circle, triangle, square, diamond
+	this._interpolation=&#039;linear&#039;;//linear, step, basis, cardinal, monotone
+	this._area=&#039;none&#039;;//none or HEX
+	this._maxItems=50;//items displayed
+	this._maxItemsSaved=500; //items saved
+
+
+	if(params.xKey!==undefined &amp;&amp; typeof params.xKey === &#039;string&#039;){
+		this._xKey=params.xKey;
+	}
+	if(params.yKey!==undefined &amp;&amp; typeof params.yKey === &#039;string&#039;){
+		this._yKey=params.yKey;
+	}
+	if(params.xFormat!==undefined &amp;&amp; Helper.isValidFormat(params.xFormat)){
+		this._xFormat=params.xFormat;
+	}
+	if(params.yFormat!==undefined &amp;&amp; Helper.isValidFormat(params.yFormat)){
+		this._yFormat=params.yFormat;
+	}
+	if(params.flowColor!==undefined &amp;&amp; Helper.isHEX(params.flowColor)){
+		this._flowColor=params.flowColor;
+	}
+	if(params.marker!==undefined &amp;&amp; Helper.isValidMarker(params.marker)){
+		this._marker=params.marker;
+	}
+	if(params.interpolation!==undefined &amp;&amp; Helper.isValidInterpolation(params.interpolation)){
+		this._interpolation=params.interpolation;
+	}
+	if(params.area!==undefined &amp;&amp; (params.area === &#039;none&#039; || Helper.isHEX(params.area))){
+		this._area=params.area;
+	}
+	if(params.maxItems!==undefined &amp;&amp; typeof params.maxItems===&#039;number&#039; &amp;&amp; params.maxItems&gt;=0){
+		this._maxItems=params.maxItems;
+	}
+	if(params.maxItemsSaved!==undefined &amp;&amp; typeof params.maxItemsSaved===&#039;number&#039; &amp;&amp; params.maxItemsSaved&gt;=0){
+		this._maxItemsSaved=params.maxItemsSaved;
+	}
+}
+
+LineChartFlowModel.prototype = Object.create(FlowModel.prototype);
+LineChartFlowModel.prototype.constructor = LineChartFlowModel;
+LineChartFlowModel.prototype.parent = FlowModel.prototype;
+
+LineChartFlowModel.prototype.updateProperties = function(params){
+	if (params !== undefined){
+		var prop=this.parent.updateBaseProperties.call(this, params);
+		if(params.xKey!==undefined &amp;&amp; typeof params.xKey === &#039;string&#039;){
+			this._xKey=prop.xKey=params.xKey;
+		}
+		if(params.yKey!==undefined &amp;&amp; typeof params.yKey === &#039;string&#039;){
+			this._yKey=prop.yKey=params.yKey;
+		}
+		if(params.xFormat!==undefined &amp;&amp; Helper.isValidFormat(params.xFormat)){
+			this._xFormat=prop.xFormat=params.xFormat;
+		}
+		if(params.yFormat!==undefined &amp;&amp; Helper.isValidFormat(params.yFormat)){
+			this._yFormat=prop.yFormat=params.yFormat;
+		}
+		if(params.flowColor!==undefined &amp;&amp; Helper.isHEX(params.flowColor)){
+			this._flowColor=prop.flowColor=params.flowColor;
+		}
+		if(params.marker!==undefined &amp;&amp; Helper.isValidMarker(params.marker)){
+			this._marker=prop.marker=params.marker;
+		}
+		if(params.interpolation!==undefined &amp;&amp; Helper.isValidInterpolation(params.interpolation)){
+			this._interpolation=prop.interpolation=params.interpolation;
+		}
+		if(params.area!==undefined &amp;&amp; (params.area === &#039;none&#039; || Helper.isHEX(params.area))){
+			this._area=prop.area=params.area;
+		}
+		if(params.maxItems!==undefined &amp;&amp; typeof params.maxItems===&#039;number&#039; &amp;&amp; params.maxItems&gt;=0){
+			this._maxItems=prop.maxItems=params.maxItems;
+		}
+		if(params.maxItemsSaved!==undefined &amp;&amp; typeof params.maxItemsSaved===&#039;number&#039; &amp;&amp; params.maxItemsSaved&gt;=0){
+			this._maxItemsSaved=prop.maxItemsSaved=params.maxItemsSaved;
+		}
+		return prop;
+	}
+	//return ;
+};
+
+LineChartFlowModel.prototype.addRecord = function(record){
+	if(record!==undefined &amp;&amp; record!==null &amp;&amp; typeof record === &#039;object&#039;){
+		this._records.push(record);
+		var index=this._records.length-1;
+		var ID=this.generateNorrisRecordID(index);
+		this._records[index].norrisRecordID=ID;
+		this.validateRecord(index);
+		return ID;
+	}
+	console.log(&#039;Error: 123&#039;);
+	return 123;
+};
+
+
+LineChartFlowModel.prototype.updateRecord = function(ID, record){
+	if (record === undefined || record === null || Array.isArray(record)){
+		return 121;
+	}
+	if (typeof ID===&#039;string&#039; &amp;&amp; ID.indexOf(this._ID) !== -1) {
+		var records=this._records.length;
+		var i=0;
+		var found=false;
+		while (i&lt;records &amp;&amp; (!found)){
+			if (this._records[i].norrisRecordID===ID){
+				found=true;
+			}
+			else{
+				i++;
+			}
+		}//while		
+		if (found){//in records[i] there is the ID	
+			var oldID=this._records[i].norrisRecordID;
+			this._records[i]=record;
+			this._records[i].norrisRecordID=oldID;
+			this.validateRecord(i);
+			return true;
+		}
+		//no ID in records
+	}
+	//invalid ID
+	return 122;
+};
+
+LineChartFlowModel.prototype.getProperties = function(){
+	var prop=this.parent.getProperties.call(this);
+	prop.xKey=this._xKey;
+	prop.yKey=this._yKey;
+	prop.xFormat=this._xFormat;
+	prop.yFormat=this._yFormat;
+	prop.flowColor=this._flowColor;
+	prop.marker=this._marker;
+	prop.interpolation=this._interpolation;
+	prop.area=this._area;
+	prop.maxItems=this._maxItems;
+	prop.maxItemsSaved=this._maxItemsSaved;
+
+	return prop;
+};
+
+module.exports = LineChartFlowModel;</textarea>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>.</p>
+  </div>
+</footer>
+
+<script type="text/html" id="complexity-popover-template">
+  <div class="complexity-notice">
+    Complexity : {{ complexity.cyclomatic }} <br>
+    Length : {{ complexity.halstead.length }} <br>
+    Difficulty : {{ complexity.halstead.difficulty.toFixed(2) }} <br>
+    Est # bugs : {{ complexity.halstead.bugs.toFixed(2) }}<br>
+  </div>
+</script>
+
+<script type="text/javascript" src="../../assets/scripts/bundles/core-bundle.js"></script>
+<script type="text/javascript" src="../../assets/scripts/bundles/codemirror.js"></script>
+<script type="text/javascript" src="../../assets/scripts/codemirror.markpopovertext.js"></script>
+<script type="text/javascript" src="report.js"></script>
+<script type="text/javascript" src="report.history.js"></script>
+<script type="text/javascript" src="../../assets/scripts/plato-file.js"></script>
+</body>
+</html>

@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Plato - test/dataTier/flow/mapChartFlowModelSpec.js</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link href="../../assets/css/vendor/morris.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet">
+  <link href="../../assets/css/plato.css" rel="stylesheet">
+  <link href="../../assets/css/plato-file.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="http://github.com/es-analysis/plato">Plato on Github</a>
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="../../index.html">Report Home</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>test/dataTier/flow/mapChartFlowModelSpec.js</h1>
+  </div>
+</div>
+
+<div class="container aggregate-stats">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
+      <p class="stat">43.47</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
+      <p class="stat">356</p>
+    </div>
+  </div>
+  <div class="row historical">
+    <div class="col-md-6">
+      <p id="chart_historical_maint" class="chart"></p>
+    </div>
+    <div class="col-md-6">
+      <p id="chart_historical_sloc" class="chart"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
+      <p class="stat">78.43</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
+      <p class="stat">14.03</p>
+    </div>
+  </div>
+</div>
+
+<div class="container charts">
+  <div class="row">
+    <h2 class="header">Function weight</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="chart-header">By Complexity <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="This metric counts the number of distinct paths through a block of code. Lower values are better." data-original-title="Cyclomatic Complexity" data-container="body"></i></a></h3>
+      <div id="fn-by-complexity" class="stat"></div>
+    </div>
+    <div class="col-md-6">
+      <h3 class="chart-header">By SLOC  <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h3>
+      <div id="fn-by-sloc" class="stat"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <textarea id="file-source" class="col-md-12">/*jshint node: true, -W106 */
+&#039;use strict&#039;;
+
+/*
+* Name : mapChartFlowModel.js
+* Module : UnitTest
+* Location : /test/dataTier/flow
+*
+* History :
+* 
+* Version   Date         Programmer         Description
+* =========================================================
+* 0.0.1     2015-05-14   Filippo Rampado    Initial code
+* =========================================================
+*/
+
+var MapChartFlowModel = require(&#039;../../../lib/dataTier/flow/mapChartFlowModel.js&#039;);
+var assert = require(&#039;assert&#039;);
+
+describe(&#039;MapChartFlowModel&#039;, function() {
+    
+    it(&#039;returns null when there are no params&#039;, function() {
+        assert.strictEqual((new MapChartFlowModel()).hasOwnProperty(&#039;_name&#039;), false);
+    });
+
+    it(&#039;returns null when there is no valid ID in params&#039;, function() {
+        assert.strictEqual((new MapChartFlowModel({})).hasOwnProperty(&#039;_name&#039;), false);
+    });
+
+    it(&#039;returns null when there is a empty ID in params&#039;, function() {
+        assert.strictEqual((new MapChartFlowModel({ID:&#039; &#039;})).hasOwnProperty(&#039;_name&#039;), false);
+    });
+
+    it(&#039;calls the parent constructor with the params specified&#039;, function() {
+        var flow1=new MapChartFlowModel({
+            ID:&#039;flow1&#039;,
+            name: &#039;map chart flow&#039;
+        });
+        assert.strictEqual(flow1._ID, &#039;flow1&#039;);
+        assert.strictEqual(flow1._name, &#039;map chart flow&#039;);
+        assert.strictEqual(flow1._type, &#039;MapChartFlow&#039;);
+    });
+
+    it(&#039;set default values to property not specified&#039;, function() {
+        var flow1=new MapChartFlowModel({ID:&#039;flow1&#039;});
+        assert.strictEqual(flow1._ID, &#039;flow1&#039;);
+        assert.strictEqual(flow1._longitudeKey, null);
+        assert.strictEqual(flow1._latitudeKey, null);
+        assert.strictEqual(flow1._objectKey, null);
+        assert.strictEqual(flow1._longitudeFormat, &#039;coordinates&#039;);
+        assert.strictEqual(flow1._latitudeFormat, &#039;coordinates&#039;);
+        assert.strictEqual(flow1._marker.type, &#039;shape&#039;);
+        assert.strictEqual(flow1._marker.shape, &#039;circle&#039;);
+        assert.strictEqual(flow1._trace.type, &#039;none&#039;);
+        assert.strictEqual(flow1._trace.coordinates.length, 0);
+        assert.strictEqual(flow1._trailLength, 3);
+        assert.strictEqual(flow1._maxItemsSaved, 500);
+    });
+
+	it(&#039;set default values to wrong properties&#039;, function() {
+        var flow1=new MapChartFlowModel({
+            ID: &#039;flow1&#039;,
+            longitudeKey: 1,
+            latitudeKey: {},
+            objectKey: {},
+            longitudeFormat: &#039;ttt&#039;,
+            latitudeFormat: 2,
+            marker: 2,
+            trace: 3,
+            trailLength: -2,
+            maxItemsSaved: &#039;123&#039;
+        });
+		assert.strictEqual(flow1._ID, &#039;flow1&#039;);
+        assert.strictEqual(flow1._longitudeKey, null);
+        assert.strictEqual(flow1._latitudeKey, null);
+        assert.strictEqual(flow1._objectKey, null);
+        assert.strictEqual(flow1._longitudeFormat, &#039;coordinates&#039;);
+        assert.strictEqual(flow1._latitudeFormat, &#039;coordinates&#039;);
+        assert.strictEqual(flow1._marker.type, &#039;shape&#039;);
+        assert.strictEqual(flow1._marker.shape, &#039;circle&#039;);
+        assert.strictEqual(flow1._trace.type, &#039;none&#039;);
+        assert.strictEqual(flow1._trace.coordinates.length, 0);
+        assert.strictEqual(flow1._trailLength, 3);
+        assert.strictEqual(flow1._maxItemsSaved, 500);
+    });
+
+	it(&#039;set param values to properties&#039;, function() {
+        var marker={
+            type: &#039;shape&#039;,
+            shape: &#039;triangle&#039;
+        };
+        var trace={
+            type: &#039;line&#039;,
+            coordinates:[
+                [1,2],
+                [3,4],
+            ],
+            strokeColor: &#039;#FFF&#039;,
+            fillColor: &#039;#FFF&#039;
+        };
+        var flow1=new MapChartFlowModel({
+            ID: &#039;flow1&#039;,
+            longitudeKey: &#039;x&#039;,
+            latitudeKey: &#039;y&#039;,
+            objectKey: &#039;ID&#039;,
+            longitudeFormat: &#039;coordinates&#039;,
+            latitudeFormat: &#039;geographic&#039;,
+            marker: marker,
+            trace: trace,
+            trailLength: 2,
+            maxItemsSaved: 1000
+        });
+        assert.strictEqual(flow1._ID, &#039;flow1&#039;);
+        assert.strictEqual(flow1._longitudeKey, &#039;x&#039;);
+        assert.strictEqual(flow1._latitudeKey, &#039;y&#039;);
+        assert.strictEqual(flow1._objectKey, &#039;ID&#039;);
+        assert.strictEqual(flow1._longitudeFormat, &#039;coordinates&#039;);
+        assert.strictEqual(flow1._latitudeFormat, &#039;geographic&#039;);
+        assert.deepEqual(flow1._marker, marker);
+        assert.deepEqual(flow1._trace, trace);
+        assert.strictEqual(flow1._trailLength, 2);
+        assert.strictEqual(flow1._maxItemsSaved, 1000);
+    });
+
+    describe(&#039;#updateProperties&#039;, function() {
+        it(&#039;returns 233 if there are no params specified&#039;, function() {
+            var flow1=new MapChartFlowModel({ID: &#039;graph1&#039;});
+            var updates=flow1.updateProperties();
+            assert.strictEqual(updates, 233);
+        });
+        it(&#039;updates and returns the properties passed as param&#039;, function() {
+            var marker={
+                type: &#039;shape&#039;,
+                shape: &#039;triangle&#039;
+            };
+            var trace={
+                type: &#039;line&#039;,
+                coordinates:[
+                    [1,2],
+                    [3,4],
+                ],
+                strokeColor: &#039;#FFF&#039;,
+                fillColor: &#039;#FFF&#039;
+            };
+            var properties={
+                longitudeKey: &#039;x&#039;,
+                latitudeKey: &#039;y&#039;,
+                objectKey: &#039;ID&#039;,
+                longitudeFormat: &#039;coordinates&#039;,
+                latitudeFormat: &#039;geographic&#039;,
+                marker: marker,
+                trace: trace,
+                trailLength: 2,
+                maxItemsSaved: 1000
+            };
+            var flow1=new MapChartFlowModel({ID: &#039;flow1&#039;});
+            var updates=flow1.updateProperties(properties);
+            assert.strictEqual(flow1._ID, &#039;flow1&#039;);
+            assert.strictEqual(flow1._longitudeKey, &#039;x&#039;);
+            assert.strictEqual(flow1._latitudeKey, &#039;y&#039;);
+            assert.strictEqual(flow1._objectKey, &#039;ID&#039;);
+            assert.strictEqual(flow1._longitudeFormat, &#039;coordinates&#039;);
+            assert.strictEqual(flow1._latitudeFormat, &#039;geographic&#039;);
+            assert.deepEqual(flow1._marker, marker);
+            assert.deepEqual(flow1._trace, trace);
+            assert.strictEqual(flow1._trailLength, 2);
+            assert.strictEqual(flow1._maxItemsSaved, 1000);
+
+            assert.strictEqual(updates.longitudeKey, &#039;x&#039;);
+            assert.strictEqual(updates.latitudeKey, &#039;y&#039;);
+            assert.strictEqual(updates.objectKey, &#039;ID&#039;);
+            assert.strictEqual(updates.longitudeFormat, &#039;coordinates&#039;);
+            assert.strictEqual(updates.latitudeFormat, &#039;geographic&#039;);
+            assert.deepEqual(updates.marker, marker);
+            assert.deepEqual(updates.trace, trace);
+            assert.strictEqual(updates.trailLength, 2);
+            assert.strictEqual(updates.maxItemsSaved, 1000);
+        });
+        it(&#039;does not update the properties with wrong param&#039;, function() {
+            var properties={
+                ID: &#039;flow1&#039;,
+                longitudeKey: 1,
+                latitudeKey: {},
+                objectKey: {},
+                longitudeFormat: &#039;ttt&#039;,
+                latitudeFormat: 2,
+                marker: 2,
+                trace: 3,
+                trailLength: -2,
+                maxItemsSaved: &#039;123&#039;
+            };
+            var flow1=new MapChartFlowModel({ID: &#039;flow1&#039;});
+            flow1.updateProperties(properties);
+            assert.strictEqual(flow1._ID, &#039;flow1&#039;);
+            assert.strictEqual(flow1._longitudeKey, null);
+            assert.strictEqual(flow1._latitudeKey, null);
+            assert.strictEqual(flow1._objectKey, null);
+            assert.strictEqual(flow1._longitudeFormat, &#039;coordinates&#039;);
+            assert.strictEqual(flow1._latitudeFormat, &#039;coordinates&#039;);
+            assert.strictEqual(flow1._marker.type, &#039;shape&#039;);
+            assert.strictEqual(flow1._marker.shape, &#039;circle&#039;);
+            assert.strictEqual(flow1._trace.type, &#039;none&#039;);
+            assert.strictEqual(flow1._trace.coordinates.length, 0);
+            assert.strictEqual(flow1._trailLength, 3);
+            assert.strictEqual(flow1._maxItemsSaved, 500);
+        });
+    });
+
+    describe(&#039;#addRecord&#039;, function() {
+        it(&#039;does not add a invalid record&#039;, function() {
+            var flow1=new MapChartFlowModel({ID: &#039;flow1&#039;});
+            assert.strictEqual(flow1.addRecord(), 133);
+            assert.strictEqual(flow1.addRecord(2), 133);
+        });
+        it(&#039;adds a valid record&#039;, function() {
+            var flow1=new MapChartFlowModel({ID: &#039;flow1&#039;});
+            var ID=flow1.addRecord({temperature: 2});
+            assert.strictEqual(ID.indexOf(&#039;flow1&#039;), 0);
+            assert.strictEqual(flow1._records.length, 1);
+            assert.strictEqual(flow1._records[0].norrisRecordID.indexOf(&#039;flow1&#039;), 0);
+        });
+    });
+
+    describe(&#039;#updateRecord&#039;, function() {
+        it(&#039;return 131 if record is not valid&#039;, function() {
+            var flow1=new MapChartFlowModel({ID: &#039;flow1&#039;});
+            assert.strictEqual(flow1.updateRecord(1), 131);
+            assert.strictEqual(flow1.updateRecord(1, [{asd:&#039;asd&#039;}]), 131);
+        });
+        it(&#039;return 132 if index is not valid&#039;, function() {
+            var flow1=new MapChartFlowModel({ID: &#039;flow1&#039;});
+            flow1._records=[{temperature: 2, norrisRecordID: &#039;flow1whatever0&#039;}];
+            assert.strictEqual(flow1.updateRecord(&#039;flow2whaterver0&#039;, {temperature: 2}), 132);
+            assert.strictEqual(flow1.updateRecord(&#039;flow1whaterver1&#039;, {temperature: 2}), 132);
+            assert.strictEqual(flow1.updateRecord(&#039;asd&#039;, {temperature: 2}), 132);
+        });
+        it(&#039;updates and validate the record if ID and record are valid&#039;, function() {
+            var flow1=new MapChartFlowModel({
+                    ID: &#039;flow1&#039;,
+                    filters: &#039;temperature&gt;3&#039;
+                });
+            flow1._records=[{temperature: 2, norrisRecordID: &#039;flow1whatever0&#039;}];
+            flow1.validateRecord(0);
+            assert.strictEqual(flow1._records[0].norrisRecordIsValid, false);
+            var update=flow1.updateRecord(&#039;flow1whatever0&#039;, {temperature: 4});
+            assert.strictEqual(update, true);
+            assert.strictEqual(flow1._records[0].temperature, 4);
+            assert.strictEqual(flow1._records[0].norrisRecordIsValid, true);
+        });
+    });
+    describe(&#039;#updateMovie&#039;, function() {
+        it(&#039;return 131 if record is not valid&#039;, function() {
+            var flow1=new MapChartFlowModel({ID: &#039;flow1&#039;});
+            assert.strictEqual(flow1.updateMovie(1), 131);
+            assert.strictEqual(flow1.updateMovie(null), 131);
+        });
+        it(&#039;insert only correct records&#039;, function() {
+            var flow1=new MapChartFlowModel({ID: &#039;flow1&#039;, latitudeKey: &#039;WGS84La&#039;, longitudeKey: &#039;WGS84Fi&#039;, objectKey: &#039;IdMezzo&#039;});
+            var recIDs=flow1.updateMovie([ { &#039;0&#039;: 875, &#039;1&#039;: 45.42533493042, &#039;2&#039;: 11.902134895325, &#039;3&#039;: 14, &#039;4&#039;: 0, IdMezzo: 875, WGS84Fi: 45.42533493042, WGS84La: 11.902134895325, Girometro: 14, StatoPorte: 0, capolinea: &#039;Capolinea Torre&#039; }, { &#039;0&#039;: 805, &#039;1&#039;: 45.385223388672, &#039;2&#039;: 11.862413406372, &#039;3&#039;: 14, &#039;4&#039;: 0, IdMezzo: 805, WGS84Fi: 45.385223388672, WGS84La: 11.862413406372, Girometro: 14, StatoPorte: 0, capolinea: &#039;Codalunga 8b&#039; }, { &#039;0&#039;: 867, &#039;1&#039;: 45.390911102295, &#039;2&#039;: 11.870438575745, &#039;3&#039;: 266, &#039;4&#039;: 0, IdMezzo: 867, WGS84Fi: 45.390911102295, WGS84La: 11.870438575745, Girometro: 266, StatoPorte: 0, capolinea: &#039;Capolinea Mandria via Monselice&#039; }, { &#039;0&#039;: 835, &#039;1&#039;: 45.424865722656, &#039;2&#039;: 11.885174751282, &#039;3&#039;: 188, &#039;4&#039;: 0, IdMezzo: 835, WGS84Fi: 45.424865722656, WGS84La: 11.885174751282, Girometro: 188, StatoPorte: 0, capolinea: &#039;Capolinea Mandria via Monselice&#039; }, { &#039;0&#039;: 814, &#039;1&#039;: 45.429698944092, &#039;2&#039;: 11.940545082092, &#039;3&#039;: 132, &#039;4&#039;: 0, IdMezzo: 814, WGS84Fi: 45.429698944092, WGS84La: 11.940545082092, Girometro: 132, StatoPorte: 0, capolinea: &#039;Capolinea Mandria via Monselice&#039; }, { &#039;0&#039;: 845, &#039;1&#039;: 45.381771087646, &#039;2&#039;: 11.854724884033, &#039;3&#039;: 51, &#039;4&#039;: 0, IdMezzo: 845, WGS84Fi: 45.381771087646, WGS84La: 11.854724884033, Girometro: 51, StatoPorte: 0, capolinea: &#039;Capolinea Torre&#039; }, { &#039;0&#039;: 880, &#039;1&#039;: 45.40881729126, &#039;2&#039;: 11.878475189209, &#039;3&#039;: 45, &#039;4&#039;: 1, IdMezzo: 880, WGS84Fi: 45.40881729126, WGS84La: 11.878475189209, Girometro: 45, StatoPorte: 1, capolinea: &#039;Capolinea Torre&#039; }, { &#039;0&#039;: 837, &#039;1&#039;: 45.392189025879, &#039;2&#039;: 11.87103843689, &#039;3&#039;: 80, &#039;4&#039;: 0, IdMezzooo: 83327, WGS84Fsi: 45.392189025879, WGS84Laa: 11.87103843689, Girometro: 80, StatoPorte: 0, capolinea: &#039;Capolinea Torre&#039; } ]);
+            assert.deepEqual(recIDs.length,7);
+            assert.deepEqual(flow1._records,[ { &#039;0&#039;: 875, &#039;1&#039;: 45.42533493042, &#039;2&#039;: 11.902134895325, &#039;3&#039;: 14, &#039;4&#039;: 0, IdMezzo: 875, WGS84Fi: 45.42533493042, WGS84La: 11.902134895325, Girometro: 14, StatoPorte: 0, capolinea: &#039;Capolinea Torre&#039;, norrisRecordID: recIDs[0], norrisRecordIsValid: true }, { &#039;0&#039;: 805, &#039;1&#039;: 45.385223388672, &#039;2&#039;: 11.862413406372, &#039;3&#039;: 14, &#039;4&#039;: 0, IdMezzo: 805, WGS84Fi: 45.385223388672, WGS84La: 11.862413406372, Girometro: 14, StatoPorte: 0, capolinea: &#039;Codalunga 8b&#039;, norrisRecordID: recIDs[1], norrisRecordIsValid: true }, { &#039;0&#039;: 867, &#039;1&#039;: 45.390911102295, &#039;2&#039;: 11.870438575745, &#039;3&#039;: 266, &#039;4&#039;: 0, IdMezzo: 867, WGS84Fi: 45.390911102295, WGS84La: 11.870438575745, Girometro: 266, StatoPorte: 0, capolinea: &#039;Capolinea Mandria via Monselice&#039;, norrisRecordID: recIDs[2], norrisRecordIsValid: true }, { &#039;0&#039;: 835, &#039;1&#039;: 45.424865722656, &#039;2&#039;: 11.885174751282, &#039;3&#039;: 188, &#039;4&#039;: 0, IdMezzo: 835, WGS84Fi: 45.424865722656, WGS84La: 11.885174751282, Girometro: 188, StatoPorte: 0, capolinea: &#039;Capolinea Mandria via Monselice&#039;, norrisRecordID: recIDs[3], norrisRecordIsValid: true }, { &#039;0&#039;: 814, &#039;1&#039;: 45.429698944092, &#039;2&#039;: 11.940545082092, &#039;3&#039;: 132, &#039;4&#039;: 0, IdMezzo: 814, WGS84Fi: 45.429698944092, WGS84La: 11.940545082092, Girometro: 132, StatoPorte: 0, capolinea: &#039;Capolinea Mandria via Monselice&#039;, norrisRecordID: recIDs[4], norrisRecordIsValid: true }, { &#039;0&#039;: 845, &#039;1&#039;: 45.381771087646, &#039;2&#039;: 11.854724884033, &#039;3&#039;: 51, &#039;4&#039;: 0, IdMezzo: 845, WGS84Fi: 45.381771087646, WGS84La: 11.854724884033, Girometro: 51, StatoPorte: 0, capolinea: &#039;Capolinea Torre&#039;, norrisRecordID: recIDs[5], norrisRecordIsValid: true }, { &#039;0&#039;: 880, &#039;1&#039;: 45.40881729126, &#039;2&#039;: 11.878475189209, &#039;3&#039;: 45, &#039;4&#039;: 1, IdMezzo: 880, WGS84Fi: 45.40881729126, WGS84La: 11.878475189209, Girometro: 45, StatoPorte: 1, capolinea: &#039;Capolinea Torre&#039;, norrisRecordID: recIDs[6], norrisRecordIsValid: true }, { &#039;0&#039;: 837, &#039;1&#039;: 45.392189025879, &#039;2&#039;: 11.87103843689, &#039;3&#039;: 80, &#039;4&#039;: 0, IdMezzooo: 83327, WGS84Fsi: 45.392189025879, WGS84Laa: 11.87103843689, Girometro: 80, StatoPorte: 0, capolinea: &#039;Capolinea Torre&#039;, norrisRecordIsValid: true } ]);
+        });
+        it(&#039;first insert is correct&#039;, function() {
+            var flow1=new MapChartFlowModel({ID: &#039;flow1&#039;, latitudeKey: &#039;WGS84La&#039;, longitudeKey: &#039;WGS84Fi&#039;, objectKey: &#039;IdMezzo&#039;});
+            var recIDs=flow1.updateMovie([ { &#039;0&#039;: 875, &#039;1&#039;: 45.42533493042, &#039;2&#039;: 11.902134895325, &#039;3&#039;: 14, &#039;4&#039;: 0, IdMezzo: 875, WGS84Fi: 45.42533493042, WGS84La: 11.902134895325, Girometro: 14, StatoPorte: 0, capolinea: &#039;Capolinea Torre&#039; }, { &#039;0&#039;: 805, &#039;1&#039;: 45.385223388672, &#039;2&#039;: 11.862413406372, &#039;3&#039;: 14, &#039;4&#039;: 0, IdMezzo: 805, WGS84Fi: 45.385223388672, WGS84La: 11.862413406372, Girometro: 14, StatoPorte: 0, capolinea: &#039;Codalunga 8b&#039; }, { &#039;0&#039;: 867, &#039;1&#039;: 45.390911102295, &#039;2&#039;: 11.870438575745, &#039;3&#039;: 266, &#039;4&#039;: 0, IdMezzo: 867, WGS84Fi: 45.390911102295, WGS84La: 11.870438575745, Girometro: 266, StatoPorte: 0, capolinea: &#039;Capolinea Mandria via Monselice&#039; }, { &#039;0&#039;: 835, &#039;1&#039;: 45.424865722656, &#039;2&#039;: 11.885174751282, &#039;3&#039;: 188, &#039;4&#039;: 0, IdMezzo: 835, WGS84Fi: 45.424865722656, WGS84La: 11.885174751282, Girometro: 188, StatoPorte: 0, capolinea: &#039;Capolinea Mandria via Monselice&#039; }, { &#039;0&#039;: 814, &#039;1&#039;: 45.429698944092, &#039;2&#039;: 11.940545082092, &#039;3&#039;: 132, &#039;4&#039;: 0, IdMezzo: 814, WGS84Fi: 45.429698944092, WGS84La: 11.940545082092, Girometro: 132, StatoPorte: 0, capolinea: &#039;Capolinea Mandria via Monselice&#039; }, { &#039;0&#039;: 845, &#039;1&#039;: 45.381771087646, &#039;2&#039;: 11.854724884033, &#039;3&#039;: 51, &#039;4&#039;: 0, IdMezzo: 845, WGS84Fi: 45.381771087646, WGS84La: 11.854724884033, Girometro: 51, StatoPorte: 0, capolinea: &#039;Capolinea Torre&#039; }, { &#039;0&#039;: 880, &#039;1&#039;: 45.40881729126, &#039;2&#039;: 11.878475189209, &#039;3&#039;: 45, &#039;4&#039;: 1, IdMezzo: 880, WGS84Fi: 45.40881729126, WGS84La: 11.878475189209, Girometro: 45, StatoPorte: 1, capolinea: &#039;Capolinea Torre&#039; }, { &#039;0&#039;: 837, &#039;1&#039;: 45.392189025879, &#039;2&#039;: 11.87103843689, &#039;3&#039;: 80, &#039;4&#039;: 0, IdMezzo: 837, WGS84Fi: 45.392189025879, WGS84La: 11.87103843689, Girometro: 80, StatoPorte: 0, capolinea: &#039;Capolinea Torre&#039; } ]);
+            assert.deepEqual(recIDs.length,8);
+            assert.deepEqual(flow1._records,[ { &#039;0&#039;: 875, &#039;1&#039;: 45.42533493042, &#039;2&#039;: 11.902134895325, &#039;3&#039;: 14, &#039;4&#039;: 0, IdMezzo: 875, WGS84Fi: 45.42533493042, WGS84La: 11.902134895325, Girometro: 14, StatoPorte: 0, capolinea: &#039;Capolinea Torre&#039;, norrisRecordID: recIDs[0], norrisRecordIsValid: true }, { &#039;0&#039;: 805, &#039;1&#039;: 45.385223388672, &#039;2&#039;: 11.862413406372, &#039;3&#039;: 14, &#039;4&#039;: 0, IdMezzo: 805, WGS84Fi: 45.385223388672, WGS84La: 11.862413406372, Girometro: 14, StatoPorte: 0, capolinea: &#039;Codalunga 8b&#039;, norrisRecordID: recIDs[1], norrisRecordIsValid: true }, { &#039;0&#039;: 867, &#039;1&#039;: 45.390911102295, &#039;2&#039;: 11.870438575745, &#039;3&#039;: 266, &#039;4&#039;: 0, IdMezzo: 867, WGS84Fi: 45.390911102295, WGS84La: 11.870438575745, Girometro: 266, StatoPorte: 0, capolinea: &#039;Capolinea Mandria via Monselice&#039;, norrisRecordID: recIDs[2], norrisRecordIsValid: true }, { &#039;0&#039;: 835, &#039;1&#039;: 45.424865722656, &#039;2&#039;: 11.885174751282, &#039;3&#039;: 188, &#039;4&#039;: 0, IdMezzo: 835, WGS84Fi: 45.424865722656, WGS84La: 11.885174751282, Girometro: 188, StatoPorte: 0, capolinea: &#039;Capolinea Mandria via Monselice&#039;, norrisRecordID: recIDs[3], norrisRecordIsValid: true }, { &#039;0&#039;: 814, &#039;1&#039;: 45.429698944092, &#039;2&#039;: 11.940545082092, &#039;3&#039;: 132, &#039;4&#039;: 0, IdMezzo: 814, WGS84Fi: 45.429698944092, WGS84La: 11.940545082092, Girometro: 132, StatoPorte: 0, capolinea: &#039;Capolinea Mandria via Monselice&#039;, norrisRecordID: recIDs[4], norrisRecordIsValid: true }, { &#039;0&#039;: 845, &#039;1&#039;: 45.381771087646, &#039;2&#039;: 11.854724884033, &#039;3&#039;: 51, &#039;4&#039;: 0, IdMezzo: 845, WGS84Fi: 45.381771087646, WGS84La: 11.854724884033, Girometro: 51, StatoPorte: 0, capolinea: &#039;Capolinea Torre&#039;, norrisRecordID: recIDs[5], norrisRecordIsValid: true }, { &#039;0&#039;: 880, &#039;1&#039;: 45.40881729126, &#039;2&#039;: 11.878475189209, &#039;3&#039;: 45, &#039;4&#039;: 1, IdMezzo: 880, WGS84Fi: 45.40881729126, WGS84La: 11.878475189209, Girometro: 45, StatoPorte: 1, capolinea: &#039;Capolinea Torre&#039;, norrisRecordID: recIDs[6], norrisRecordIsValid: true }, { &#039;0&#039;: 837, &#039;1&#039;: 45.392189025879, &#039;2&#039;: 11.87103843689, &#039;3&#039;: 80, &#039;4&#039;: 0, IdMezzo: 837, WGS84Fi: 45.392189025879, WGS84La: 11.87103843689, Girometro: 80, StatoPorte: 0, capolinea: &#039;Capolinea Torre&#039;, norrisRecordID: recIDs[7], norrisRecordIsValid: true } ]);
+        });
+        it(&#039;second insert is correct with old object&#039;, function() {
+            var flow1=new MapChartFlowModel({ID: &#039;flow1&#039;, latitudeKey: &#039;WGS84La&#039;, longitudeKey: &#039;WGS84Fi&#039;, objectKey: &#039;IdMezzo&#039;});
+            var recIDs=flow1.updateMovie([ { &#039;0&#039;: 875, &#039;1&#039;: 45.42533493042, &#039;2&#039;: 11.902134895325, &#039;3&#039;: 14, &#039;4&#039;: 0, IdMezzo: 875, WGS84Fi: 45.42533493042, WGS84La: 11.902134895325, Girometro: 14, StatoPorte: 0, capolinea: &#039;Capolinea Torre&#039; }, { &#039;0&#039;: 805, &#039;1&#039;: 45.385223388672, &#039;2&#039;: 11.862413406372, &#039;3&#039;: 14, &#039;4&#039;: 0, IdMezzo: 805, WGS84Fi: 45.385223388672, WGS84La: 11.862413406372, Girometro: 14, StatoPorte: 0, capolinea: &#039;Codalunga 8b&#039; }, { &#039;0&#039;: 867, &#039;1&#039;: 45.390911102295, &#039;2&#039;: 11.870438575745, &#039;3&#039;: 266, &#039;4&#039;: 0, IdMezzo: 867, WGS84Fi: 45.390911102295, WGS84La: 11.870438575745, Girometro: 266, StatoPorte: 0, capolinea: &#039;Capolinea Mandria via Monselice&#039; }, { &#039;0&#039;: 835, &#039;1&#039;: 45.424865722656, &#039;2&#039;: 11.885174751282, &#039;3&#039;: 188, &#039;4&#039;: 0, IdMezzo: 835, WGS84Fi: 45.424865722656, WGS84La: 11.885174751282, Girometro: 188, StatoPorte: 0, capolinea: &#039;Capolinea Mandria via Monselice&#039; }, { &#039;0&#039;: 814, &#039;1&#039;: 45.429698944092, &#039;2&#039;: 11.940545082092, &#039;3&#039;: 132, &#039;4&#039;: 0, IdMezzo: 814, WGS84Fi: 45.429698944092, WGS84La: 11.940545082092, Girometro: 132, StatoPorte: 0, capolinea: &#039;Capolinea Mandria via Monselice&#039; }, { &#039;0&#039;: 845, &#039;1&#039;: 45.381771087646, &#039;2&#039;: 11.854724884033, &#039;3&#039;: 51, &#039;4&#039;: 0, IdMezzo: 845, WGS84Fi: 45.381771087646, WGS84La: 11.854724884033, Girometro: 51, StatoPorte: 0, capolinea: &#039;Capolinea Torre&#039; }, { &#039;0&#039;: 880, &#039;1&#039;: 45.40881729126, &#039;2&#039;: 11.878475189209, &#039;3&#039;: 45, &#039;4&#039;: 1, IdMezzo: 880, WGS84Fi: 45.40881729126, WGS84La: 11.878475189209, Girometro: 45, StatoPorte: 1, capolinea: &#039;Capolinea Torre&#039; }, { &#039;0&#039;: 837, &#039;1&#039;: 45.392189025879, &#039;2&#039;: 11.87103843689, &#039;3&#039;: 80, &#039;4&#039;: 0, IdMezzo: 837, WGS84Fi: 45.392189025879, WGS84La: 11.87103843689, Girometro: 80, StatoPorte: 0, capolinea: &#039;Capolinea Torre&#039; } ]);
+            assert.deepEqual(recIDs.length,8);
+            assert.deepEqual(flow1._records,[ { &#039;0&#039;: 875, &#039;1&#039;: 45.42533493042, &#039;2&#039;: 11.902134895325, &#039;3&#039;: 14, &#039;4&#039;: 0, IdMezzo: 875, WGS84Fi: 45.42533493042, WGS84La: 11.902134895325, Girometro: 14, StatoPorte: 0, capolinea: &#039;Capolinea Torre&#039;, norrisRecordID: recIDs[0], norrisRecordIsValid: true }, { &#039;0&#039;: 805, &#039;1&#039;: 45.385223388672, &#039;2&#039;: 11.862413406372, &#039;3&#039;: 14, &#039;4&#039;: 0, IdMezzo: 805, WGS84Fi: 45.385223388672, WGS84La: 11.862413406372, Girometro: 14, StatoPorte: 0, capolinea: &#039;Codalunga 8b&#039;, norrisRecordID: recIDs[1], norrisRecordIsValid: true }, { &#039;0&#039;: 867, &#039;1&#039;: 45.390911102295, &#039;2&#039;: 11.870438575745, &#039;3&#039;: 266, &#039;4&#039;: 0, IdMezzo: 867, WGS84Fi: 45.390911102295, WGS84La: 11.870438575745, Girometro: 266, StatoPorte: 0, capolinea: &#039;Capolinea Mandria via Monselice&#039;, norrisRecordID: recIDs[2], norrisRecordIsValid: true }, { &#039;0&#039;: 835, &#039;1&#039;: 45.424865722656, &#039;2&#039;: 11.885174751282, &#039;3&#039;: 188, &#039;4&#039;: 0, IdMezzo: 835, WGS84Fi: 45.424865722656, WGS84La: 11.885174751282, Girometro: 188, StatoPorte: 0, capolinea: &#039;Capolinea Mandria via Monselice&#039;, norrisRecordID: recIDs[3], norrisRecordIsValid: true }, { &#039;0&#039;: 814, &#039;1&#039;: 45.429698944092, &#039;2&#039;: 11.940545082092, &#039;3&#039;: 132, &#039;4&#039;: 0, IdMezzo: 814, WGS84Fi: 45.429698944092, WGS84La: 11.940545082092, Girometro: 132, StatoPorte: 0, capolinea: &#039;Capolinea Mandria via Monselice&#039;, norrisRecordID: recIDs[4], norrisRecordIsValid: true }, { &#039;0&#039;: 845, &#039;1&#039;: 45.381771087646, &#039;2&#039;: 11.854724884033, &#039;3&#039;: 51, &#039;4&#039;: 0, IdMezzo: 845, WGS84Fi: 45.381771087646, WGS84La: 11.854724884033, Girometro: 51, StatoPorte: 0, capolinea: &#039;Capolinea Torre&#039;, norrisRecordID: recIDs[5], norrisRecordIsValid: true }, { &#039;0&#039;: 880, &#039;1&#039;: 45.40881729126, &#039;2&#039;: 11.878475189209, &#039;3&#039;: 45, &#039;4&#039;: 1, IdMezzo: 880, WGS84Fi: 45.40881729126, WGS84La: 11.878475189209, Girometro: 45, StatoPorte: 1, capolinea: &#039;Capolinea Torre&#039;, norrisRecordID: recIDs[6], norrisRecordIsValid: true }, { &#039;0&#039;: 837, &#039;1&#039;: 45.392189025879, &#039;2&#039;: 11.87103843689, &#039;3&#039;: 80, &#039;4&#039;: 0, IdMezzo: 837, WGS84Fi: 45.392189025879, WGS84La: 11.87103843689, Girometro: 80, StatoPorte: 0, capolinea: &#039;Capolinea Torre&#039;, norrisRecordID: recIDs[7], norrisRecordIsValid: true } ]);
+
+            var recIDs_new=flow1.updateMovie([ { &#039;0&#039;: 837, &#039;1&#039;: 45.39281463623, &#039;2&#039;: 11.871248245239, &#039;3&#039;: 65, &#039;4&#039;: 0, IdMezzo: 837, WGS84Fi: 45.39281463623, WGS84La: 11.871248245239, Girometro: 65, StatoPorte: 0, capolinea: &#039;Capolinea Torre&#039; }, { &#039;0&#039;: 805, &#039;1&#039;: 45.385437011719, &#039;2&#039;: 11.862988471985, &#039;3&#039;: 27, &#039;4&#039;: 0, IdMezzo: 805, WGS84Fi: 45.385437011719, WGS84La: 11.862988471985, Girometro: 27, StatoPorte: 0, capolinea: &#039;Codalunga 8b&#039; }, { &#039;0&#039;: 835, &#039;1&#039;: 45.423889160156, &#039;2&#039;: 11.88440322876, &#039;3&#039;: 240, &#039;4&#039;: 0, IdMezzo: 835, WGS84Fi: 45.423889160156, WGS84La: 11.88440322876, Girometro: 240, StatoPorte: 0, capolinea: &#039;Capolinea Mandria via Monselice&#039; }, { &#039;0&#039;: 867, &#039;1&#039;: 45.390277862549, &#039;2&#039;: 11.870240211487, &#039;3&#039;: 263, &#039;4&#039;: 0, IdMezzo: 867, WGS84Fi: 45.390277862549, WGS84La: 11.870240211487, Girometro: 263, StatoPorte: 0, capolinea: &#039;Capolinea Mandria via Monselice&#039; }, { &#039;0&#039;: 875, &#039;1&#039;: 45.426048278809, &#039;2&#039;: 11.906834602356, &#039;3&#039;: 334, &#039;4&#039;: 0, IdMezzo: 875, WGS84Fi: 45.426048278809, WGS84La: 11.906834602356, Girometro: 334, StatoPorte: 0, capolinea: &#039;Capolinea Torre&#039; }, { &#039;0&#039;: 814, &#039;1&#039;: 45.431480407715, &#039;2&#039;: 11.937152862549, &#039;3&#039;: 158, &#039;4&#039;: 0, IdMezzo: 814, WGS84Fi: 45.431480407715, WGS84La: 11.937152862549, Girometro: 158, StatoPorte: 0, capolinea: &#039;Capolinea Mandria via Monselice&#039; }, { &#039;0&#039;: 845, &#039;1&#039;: 45.381893157959, &#039;2&#039;: 11.854881286621, &#039;3&#039;: 47, &#039;4&#039;: 0, IdMezzo: 845, WGS84Fi: 45.381893157959, WGS84La: 11.854881286621, Girometro: 47, StatoPorte: 0, capolinea: &#039;Capolinea Torre&#039; }, { &#039;0&#039;: 880, &#039;1&#039;: 45.40881729126, &#039;2&#039;: 11.878475189209, &#039;3&#039;: 45, &#039;4&#039;: 0, IdMezzo: 880, WGS84Fi: 45.40881729126, WGS84La: 11.878475189209, Girometro: 45, StatoPorte: 0, capolinea: &#039;Capolinea Torre&#039; } ]);
+            assert.deepEqual(recIDs_new.length,8);
+            assert.deepEqual(flow1._records,[ { &#039;0&#039;: 837, &#039;1&#039;: 45.39281463623, &#039;2&#039;: 11.871248245239, &#039;3&#039;: 65, &#039;4&#039;: 0, IdMezzo: 837, WGS84Fi: 45.39281463623, WGS84La: 11.871248245239, Girometro: 65, StatoPorte: 0, capolinea: &#039;Capolinea Torre&#039;, norrisRecordID: recIDs[7], norrisRecordIsValid: true }, { &#039;0&#039;: 805, &#039;1&#039;: 45.385437011719, &#039;2&#039;: 11.862988471985, &#039;3&#039;: 27, &#039;4&#039;: 0, IdMezzo: 805, WGS84Fi: 45.385437011719, WGS84La: 11.862988471985, Girometro: 27, StatoPorte: 0, capolinea: &#039;Codalunga 8b&#039;, norrisRecordID: recIDs[1], norrisRecordIsValid: true }, { &#039;0&#039;: 835, &#039;1&#039;: 45.423889160156, &#039;2&#039;: 11.88440322876, &#039;3&#039;: 240, &#039;4&#039;: 0, IdMezzo: 835, WGS84Fi: 45.423889160156, WGS84La: 11.88440322876, Girometro: 240, StatoPorte: 0, capolinea: &#039;Capolinea Mandria via Monselice&#039;, norrisRecordID: recIDs[3], norrisRecordIsValid: true }, { &#039;0&#039;: 867, &#039;1&#039;: 45.390277862549, &#039;2&#039;: 11.870240211487, &#039;3&#039;: 263, &#039;4&#039;: 0, IdMezzo: 867, WGS84Fi: 45.390277862549, WGS84La: 11.870240211487, Girometro: 263, StatoPorte: 0, capolinea: &#039;Capolinea Mandria via Monselice&#039;, norrisRecordID: recIDs[2], norrisRecordIsValid: true }, { &#039;0&#039;: 875, &#039;1&#039;: 45.426048278809, &#039;2&#039;: 11.906834602356, &#039;3&#039;: 334, &#039;4&#039;: 0, IdMezzo: 875, WGS84Fi: 45.426048278809, WGS84La: 11.906834602356, Girometro: 334, StatoPorte: 0, capolinea: &#039;Capolinea Torre&#039;, norrisRecordID: recIDs[0], norrisRecordIsValid: true }, { &#039;0&#039;: 814, &#039;1&#039;: 45.431480407715, &#039;2&#039;: 11.937152862549, &#039;3&#039;: 158, &#039;4&#039;: 0, IdMezzo: 814, WGS84Fi: 45.431480407715, WGS84La: 11.937152862549, Girometro: 158, StatoPorte: 0, capolinea: &#039;Capolinea Mandria via Monselice&#039;, norrisRecordID: recIDs[4], norrisRecordIsValid: true }, { &#039;0&#039;: 845, &#039;1&#039;: 45.381893157959, &#039;2&#039;: 11.854881286621, &#039;3&#039;: 47, &#039;4&#039;: 0, IdMezzo: 845, WGS84Fi: 45.381893157959, WGS84La: 11.854881286621, Girometro: 47, StatoPorte: 0, capolinea: &#039;Capolinea Torre&#039;, norrisRecordID: recIDs[5], norrisRecordIsValid: true }, { &#039;0&#039;: 880, &#039;1&#039;: 45.40881729126, &#039;2&#039;: 11.878475189209, &#039;3&#039;: 45, &#039;4&#039;: 0, IdMezzo: 880, WGS84Fi: 45.40881729126, WGS84La: 11.878475189209, Girometro: 45, StatoPorte: 0, capolinea: &#039;Capolinea Torre&#039;, norrisRecordID: recIDs[6], norrisRecordIsValid: true } ]);
+
+        });
+        it(&#039;third insert is correct with old object and one new&#039;, function() {
+            var flow1=new MapChartFlowModel({ID: &#039;flow1&#039;, latitudeKey: &#039;WGS84La&#039;, longitudeKey: &#039;WGS84Fi&#039;, objectKey: &#039;IdMezzo&#039;});
+            var recIDs=flow1.updateMovie([ { &#039;0&#039;: 875, &#039;1&#039;: 45.42533493042, &#039;2&#039;: 11.902134895325, &#039;3&#039;: 14, &#039;4&#039;: 0, IdMezzo: 875, WGS84Fi: 45.42533493042, WGS84La: 11.902134895325, Girometro: 14, StatoPorte: 0, capolinea: &#039;Capolinea Torre&#039; }, { &#039;0&#039;: 805, &#039;1&#039;: 45.385223388672, &#039;2&#039;: 11.862413406372, &#039;3&#039;: 14, &#039;4&#039;: 0, IdMezzo: 805, WGS84Fi: 45.385223388672, WGS84La: 11.862413406372, Girometro: 14, StatoPorte: 0, capolinea: &#039;Codalunga 8b&#039; }, { &#039;0&#039;: 867, &#039;1&#039;: 45.390911102295, &#039;2&#039;: 11.870438575745, &#039;3&#039;: 266, &#039;4&#039;: 0, IdMezzo: 867, WGS84Fi: 45.390911102295, WGS84La: 11.870438575745, Girometro: 266, StatoPorte: 0, capolinea: &#039;Capolinea Mandria via Monselice&#039; }, { &#039;0&#039;: 835, &#039;1&#039;: 45.424865722656, &#039;2&#039;: 11.885174751282, &#039;3&#039;: 188, &#039;4&#039;: 0, IdMezzo: 835, WGS84Fi: 45.424865722656, WGS84La: 11.885174751282, Girometro: 188, StatoPorte: 0, capolinea: &#039;Capolinea Mandria via Monselice&#039; }, { &#039;0&#039;: 814, &#039;1&#039;: 45.429698944092, &#039;2&#039;: 11.940545082092, &#039;3&#039;: 132, &#039;4&#039;: 0, IdMezzo: 814, WGS84Fi: 45.429698944092, WGS84La: 11.940545082092, Girometro: 132, StatoPorte: 0, capolinea: &#039;Capolinea Mandria via Monselice&#039; }, { &#039;0&#039;: 845, &#039;1&#039;: 45.381771087646, &#039;2&#039;: 11.854724884033, &#039;3&#039;: 51, &#039;4&#039;: 0, IdMezzo: 845, WGS84Fi: 45.381771087646, WGS84La: 11.854724884033, Girometro: 51, StatoPorte: 0, capolinea: &#039;Capolinea Torre&#039; }, { &#039;0&#039;: 880, &#039;1&#039;: 45.40881729126, &#039;2&#039;: 11.878475189209, &#039;3&#039;: 45, &#039;4&#039;: 1, IdMezzo: 880, WGS84Fi: 45.40881729126, WGS84La: 11.878475189209, Girometro: 45, StatoPorte: 1, capolinea: &#039;Capolinea Torre&#039; }, { &#039;0&#039;: 837, &#039;1&#039;: 45.392189025879, &#039;2&#039;: 11.87103843689, &#039;3&#039;: 80, &#039;4&#039;: 0, IdMezzo: 837, WGS84Fi: 45.392189025879, WGS84La: 11.87103843689, Girometro: 80, StatoPorte: 0, capolinea: &#039;Capolinea Torre&#039; } ]);
+            console.log(&#039;recIDs:&#039;);
+            console.dir(recIDs);
+            assert.strictEqual(recIDs.length,8);
+            assert.deepEqual(flow1._records,[ { &#039;0&#039;: 875, &#039;1&#039;: 45.42533493042, &#039;2&#039;: 11.902134895325, &#039;3&#039;: 14, &#039;4&#039;: 0, IdMezzo: 875, WGS84Fi: 45.42533493042, WGS84La: 11.902134895325, Girometro: 14, StatoPorte: 0, capolinea: &#039;Capolinea Torre&#039;, norrisRecordID: recIDs[0], norrisRecordIsValid: true }, { &#039;0&#039;: 805, &#039;1&#039;: 45.385223388672, &#039;2&#039;: 11.862413406372, &#039;3&#039;: 14, &#039;4&#039;: 0, IdMezzo: 805, WGS84Fi: 45.385223388672, WGS84La: 11.862413406372, Girometro: 14, StatoPorte: 0, capolinea: &#039;Codalunga 8b&#039;, norrisRecordID: recIDs[1], norrisRecordIsValid: true }, { &#039;0&#039;: 867, &#039;1&#039;: 45.390911102295, &#039;2&#039;: 11.870438575745, &#039;3&#039;: 266, &#039;4&#039;: 0, IdMezzo: 867, WGS84Fi: 45.390911102295, WGS84La: 11.870438575745, Girometro: 266, StatoPorte: 0, capolinea: &#039;Capolinea Mandria via Monselice&#039;, norrisRecordID: recIDs[2], norrisRecordIsValid: true }, { &#039;0&#039;: 835, &#039;1&#039;: 45.424865722656, &#039;2&#039;: 11.885174751282, &#039;3&#039;: 188, &#039;4&#039;: 0, IdMezzo: 835, WGS84Fi: 45.424865722656, WGS84La: 11.885174751282, Girometro: 188, StatoPorte: 0, capolinea: &#039;Capolinea Mandria via Monselice&#039;, norrisRecordID: recIDs[3], norrisRecordIsValid: true }, { &#039;0&#039;: 814, &#039;1&#039;: 45.429698944092, &#039;2&#039;: 11.940545082092, &#039;3&#039;: 132, &#039;4&#039;: 0, IdMezzo: 814, WGS84Fi: 45.429698944092, WGS84La: 11.940545082092, Girometro: 132, StatoPorte: 0, capolinea: &#039;Capolinea Mandria via Monselice&#039;, norrisRecordID: recIDs[4], norrisRecordIsValid: true }, { &#039;0&#039;: 845, &#039;1&#039;: 45.381771087646, &#039;2&#039;: 11.854724884033, &#039;3&#039;: 51, &#039;4&#039;: 0, IdMezzo: 845, WGS84Fi: 45.381771087646, WGS84La: 11.854724884033, Girometro: 51, StatoPorte: 0, capolinea: &#039;Capolinea Torre&#039;, norrisRecordID: recIDs[5], norrisRecordIsValid: true }, { &#039;0&#039;: 880, &#039;1&#039;: 45.40881729126, &#039;2&#039;: 11.878475189209, &#039;3&#039;: 45, &#039;4&#039;: 1, IdMezzo: 880, WGS84Fi: 45.40881729126, WGS84La: 11.878475189209, Girometro: 45, StatoPorte: 1, capolinea: &#039;Capolinea Torre&#039;, norrisRecordID: recIDs[6], norrisRecordIsValid: true }, { &#039;0&#039;: 837, &#039;1&#039;: 45.392189025879, &#039;2&#039;: 11.87103843689, &#039;3&#039;: 80, &#039;4&#039;: 0, IdMezzo: 837, WGS84Fi: 45.392189025879, WGS84La: 11.87103843689, Girometro: 80, StatoPorte: 0, capolinea: &#039;Capolinea Torre&#039;, norrisRecordID: recIDs[7], norrisRecordIsValid: true } ]);
+            var recIDs_new=flow1.updateMovie([ { &#039;0&#039;: 875, &#039;1&#039;: 45.42533493042, &#039;2&#039;: 11.902134895325, &#039;3&#039;: 14, &#039;4&#039;: 0, IdMezzo: 875, WGS84Fi: 45.42533493042, WGS84La: 11.902134895325, Girometro: 14, StatoPorte: 0, capolinea: &#039;Capolinea Torre&#039; }, { &#039;0&#039;: 805, &#039;1&#039;: 45.385223388672, &#039;2&#039;: 11.862413406372, &#039;3&#039;: 14, &#039;4&#039;: 0, IdMezzo: 805, WGS84Fi: 45.385223388672, WGS84La: 11.862413406372, Girometro: 14, StatoPorte: 0, capolinea: &#039;Codalunga 8b&#039; }, { &#039;0&#039;: 867, &#039;1&#039;: 45.390911102295, &#039;2&#039;: 11.870438575745, &#039;3&#039;: 266, &#039;4&#039;: 0, IdMezzo: 867, WGS84Fi: 45.390911102295, WGS84La: 11.870438575745, Girometro: 266, StatoPorte: 0, capolinea: &#039;Capolinea Mandria via Monselice&#039; }, { &#039;0&#039;: 835, &#039;1&#039;: 45.424865722656, &#039;2&#039;: 11.885174751282, &#039;3&#039;: 188, &#039;4&#039;: 0, IdMezzo: 835, WGS84Fi: 45.424865722656, WGS84La: 11.885174751282, Girometro: 188, StatoPorte: 0, capolinea: &#039;Capolinea Mandria via Monselice&#039; }, { &#039;0&#039;: 814, &#039;1&#039;: 45.429698944092, &#039;2&#039;: 11.940545082092, &#039;3&#039;: 132, &#039;4&#039;: 0, IdMezzo: 814, WGS84Fi: 45.429698944092, WGS84La: 11.940545082092, Girometro: 132, StatoPorte: 0, capolinea: &#039;Capolinea Mandria via Monselice&#039; }, { &#039;0&#039;: 845, &#039;1&#039;: 45.381771087646, &#039;2&#039;: 11.854724884033, &#039;3&#039;: 51, &#039;4&#039;: 0, IdMezzo: 845, WGS84Fi: 45.381771087646, WGS84La: 11.854724884033, Girometro: 51, StatoPorte: 0, capolinea: &#039;Capolinea Torre&#039; }, { &#039;0&#039;: 880, &#039;1&#039;: 45.40881729126, &#039;2&#039;: 11.878475189209, &#039;3&#039;: 45, &#039;4&#039;: 1, IdMezzo: 880, WGS84Fi: 45.40881729126, WGS84La: 11.878475189209, Girometro: 45, StatoPorte: 1, capolinea: &#039;Capolinea Torre&#039; }, { &#039;0&#039;: 81371, &#039;1&#039;: 45.392189025879, &#039;2&#039;: 11.87103843689, &#039;3&#039;: 80, &#039;4&#039;: 0, IdMezzo: 81371, WGS84Fi: 45.392189025879, WGS84La: 11.87103843689, Girometro: 80, StatoPorte: 0, capolinea: &#039;Capolinea Torre&#039; } ]);
+            console.log(&#039;recIDs_new: &#039;);
+            console.dir(recIDs_new);
+            assert.strictEqual(recIDs_new[0],recIDs[0]);
+            assert.strictEqual(recIDs_new[1],recIDs[1]);
+            assert.strictEqual(recIDs_new[2],recIDs[2]);
+            assert.strictEqual(recIDs_new[3],recIDs[3]);
+            assert.strictEqual(recIDs_new[4],recIDs[4]);
+            assert.strictEqual(recIDs_new[5],recIDs[5]);
+            assert.strictEqual(recIDs_new[6],recIDs[6]);
+            assert.notStrictEqual(recIDs_new[7],recIDs[7]);
+        });
+    });
+    describe(&#039;#deleteRecord&#039;, function() {
+        it(&#039;return 134 if ID is not valid&#039;, function() {
+            var flow1=new MapChartFlowModel({ID: &#039;flow1&#039;});
+            flow1.addRecord({temperature: 1});
+            assert.strictEqual(flow1.deleteRecord(), 134);
+            assert.strictEqual(flow1.deleteRecord(&#039;ads&#039;), 134);
+        });
+        it(&#039;removes the record and return true if index is valid&#039;, function() {
+            var flow1=new MapChartFlowModel({ID: &#039;flow1&#039;});
+            var ID1=flow1.addRecord({temperature: 1});
+            flow1.addRecord({temperature: 2});
+            assert.strictEqual(flow1.deleteRecord(ID1), true);
+            assert.strictEqual(flow1._records.length, 1);
+            assert.strictEqual(flow1._records[0].temperature, 2);
+        });
+    });
+    describe(&#039;#getProperties&#039;, function() {
+        it(&#039;returns the param properties&#039;, function() {
+            var marker={
+                type: &#039;shape&#039;,
+                shape: &#039;triangle&#039;
+            };
+            var trace={
+                type: &#039;line&#039;,
+                coordinates:[
+                    [1,2],
+                    [3,4],
+                ],
+                strokeColor: &#039;#FFF&#039;,
+                fillColor: &#039;#FFF&#039;
+            };
+            var prop={
+                ID: &#039;flow1&#039;,
+                longitudeKey: &#039;x&#039;,
+                latitudeKey: &#039;y&#039;,
+                objectKey: &#039;ID&#039;,
+                longitudeFormat: &#039;coordinates&#039;,
+                latitudeFormat: &#039;geographic&#039;,
+                marker: marker,
+                trace: trace,
+                trailLength: 2,
+                maxItemsSaved: 1000
+            };
+            var flow1=new MapChartFlowModel(prop);
+            var result=flow1.getProperties();
+            assert.strictEqual(result.ID, prop.ID);
+            assert.strictEqual(result.longitudeKey, prop.longitudeKey);
+            assert.strictEqual(result.latitudeKey, prop.latitudeKey);
+            assert.strictEqual(result.objectKey, prop.objectKey);
+            assert.strictEqual(result.longitudeFormat, prop.longitudeFormat);
+            assert.strictEqual(result.latitudeFormat, prop.latitudeFormat);
+            assert.deepEqual(result.marker, prop.marker);
+            assert.deepEqual(result.trace, prop.trace);
+            assert.strictEqual(result.trailLength, prop.trailLength);
+            assert.strictEqual(result.maxItemsSaved, prop.maxItemsSaved);
+        });
+    });
+});</textarea>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>.</p>
+  </div>
+</footer>
+
+<script type="text/html" id="complexity-popover-template">
+  <div class="complexity-notice">
+    Complexity : {{ complexity.cyclomatic }} <br>
+    Length : {{ complexity.halstead.length }} <br>
+    Difficulty : {{ complexity.halstead.difficulty.toFixed(2) }} <br>
+    Est # bugs : {{ complexity.halstead.bugs.toFixed(2) }}<br>
+  </div>
+</script>
+
+<script type="text/javascript" src="../../assets/scripts/bundles/core-bundle.js"></script>
+<script type="text/javascript" src="../../assets/scripts/bundles/codemirror.js"></script>
+<script type="text/javascript" src="../../assets/scripts/codemirror.markpopovertext.js"></script>
+<script type="text/javascript" src="report.js"></script>
+<script type="text/javascript" src="report.history.js"></script>
+<script type="text/javascript" src="../../assets/scripts/plato-file.js"></script>
+</body>
+</html>

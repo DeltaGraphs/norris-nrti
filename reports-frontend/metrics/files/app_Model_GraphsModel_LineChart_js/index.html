@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Plato - app/Model/GraphsModel/LineChart.js</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link href="../../assets/css/vendor/morris.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet">
+  <link href="../../assets/css/plato.css" rel="stylesheet">
+  <link href="../../assets/css/plato-file.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="http://github.com/es-analysis/plato">Plato on Github</a>
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="../../index.html">Report Home</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>app/Model/GraphsModel/LineChart.js</h1>
+  </div>
+</div>
+
+<div class="container aggregate-stats">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
+      <p class="stat">69.86</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
+      <p class="stat">226</p>
+    </div>
+  </div>
+  <div class="row historical">
+    <div class="col-md-6">
+      <p id="chart_historical_maint" class="chart"></p>
+    </div>
+    <div class="col-md-6">
+      <p id="chart_historical_sloc" class="chart"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
+      <p class="stat">43.81</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
+      <p class="stat">2.02</p>
+    </div>
+  </div>
+</div>
+
+<div class="container charts">
+  <div class="row">
+    <h2 class="header">Function weight</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="chart-header">By Complexity <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="This metric counts the number of distinct paths through a block of code. Lower values are better." data-original-title="Cyclomatic Complexity" data-container="body"></i></a></h3>
+      <div id="fn-by-complexity" class="stat"></div>
+    </div>
+    <div class="col-md-6">
+      <h3 class="chart-header">By SLOC  <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h3>
+      <div id="fn-by-sloc" class="stat"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <textarea id="file-source" class="col-md-12">/*jshint node: true */
+&#039;use strict&#039;;
+
+/*
+* Name :  LineChart.js
+* Module : FrontEnd::Model::GraphsModel
+* Location : /frontend/app/Model/GraphsModel
+*
+* History :
+* Version       Date        Programmer                  Description
+* ===============================================================================================================
+* 0.3.0         2015-05-18  Francesco Rossetto          Modified general structure, some fixes
+*
+* 0.2.2			2015-05-15	Francesco Rossetto			Various fixes, insert inzializeData
+*
+* 0.2.1         2015-05-15  Maria Giovanna Chinellato	Fix all methods
+*
+* 0.2.0         2015-05-13  Maria Giovanna Chinellato	Add all methods
+*
+* 0.1.0         2015-05-13  Francesco Rossetto   		Add all attributes and some methods
+*
+* 0.0.1         2015-05-13  Francesco Rossetto			Initial code      
+* ===============================================================================================================
+*
+*/
+
+angular.module(&#039;app&#039;)
+.factory(&#039;LineChartFactory&#039;, [&#039;GraphFactory&#039;, &#039;AxisFactory&#039;, &#039;LineChartFlowFactory&#039;, function(GraphFactory, AxisFactory, LineChartFlowFactory){
+
+	function split(json) {
+		var graphJson = {};
+		if (json.title !== undefined) {
+			graphJson.title = json.title;
+		}
+		if (json.height !== undefined) {
+			graphJson.height = json.height;
+		}
+		if (json.width !== undefined) {
+			graphJson.width = json.width;
+		}
+		if (json.enableLegend !== undefined) {
+			graphJson.enableLegend = json.enabledLegend;
+			if (graphJson.enableLegend === true &amp;&amp; json.legend !== undefined) {
+				graphJson.legend = json.legend;
+			}
+		}
+		if (json.horizontalGrid  !== undefined) {
+			graphJson.horizontalGrid = json.horizontalGrid;
+		}
+		if (json.verticalGrid !== undefined) {
+			graphJson.verticalGrid = json.verticalGrid;
+		}
+
+		var lineJson = {};
+        if (json.legendOnPoint !== undefined) {
+            lineJson.legendOnPoint = json.legendOnPoint;
+        }
+		if (json.axisX !== undefined) {
+			lineJson.axisX = json.axisX;
+		}
+		if (json.axisY !== undefined) {
+			lineJson.axisY = json.axisY;
+		}
+		if (json.viewFinder !== undefined) {
+			lineJson.viewFinder = json.viewFinder;
+		}
+		if (json.backgroundColor !== undefined) {
+			lineJson.backgroundColor = json.backgroundColor;
+		}
+
+		return {
+			&#039;graphJson&#039; : graphJson,
+			&#039;lineJson&#039; : lineJson
+		};
+	}
+
+	//LineChart.prototype.test = function _Test(expressionStr) { return eval(expressionStr); };
+
+    // create our new custom object that reuse the original object constructor
+    function LineChart(info) {
+        this._legendOnPoint = false;
+        this._axisX = null;
+        this._axisY = null;
+        this._viewFinder = false;
+        this._backgroundColor = &#039;#FFF&#039;;
+        this._graph = GraphFactory.build(info);
+    }
+
+    LineChart.prototype.updateParameters = function(info) {
+        if (info !== undefined) {
+            var json = split(info);
+            var gJson = json.graphJson;
+            var lJson = json.lineJson;
+            if (Object.keys(gJson).length !== 0) {
+                this._graph.updateParameters(gJson);
+            }
+            if (Object.keys(lJson).length !== 0) {
+                if (lJson.legendOnPoint !== undefined) {
+                    this._legendOnPoint = lJson.legendOnPoint;
+                }
+                if (lJson.axisX !== undefined) {
+                    this._axisX = AxisFactory.build(lJson.axisX);
+                }
+                if (lJson.axisY !== undefined) {
+                    this._axisY = AxisFactory.build(lJson.axisY);
+                }
+                if (lJson.viewFinder !== undefined) {
+                    this._viewFinder = lJson.viewFinder;
+                }
+                if (lJson.backgroundColor !== undefined) {
+                    this._backgroundColor = lJson.backgroundColor;
+                }
+            }
+            if (info.flows !== undefined) {
+                for (var i=0; i&lt;info.flows.length; i++) {
+                    var newflow = LineChartFlowFactory.build(info.flows[i]);
+                    this.addFlow(info.flows[i].ID, newflow);
+                }
+            }
+        }
+    };
+
+    LineChart.prototype.addFlow = function(newId, newFlow) {
+        if (newFlow.constructor.name === &#039;LineChartFlow&#039;) {
+            this._graph.addFlow(newId, newFlow);
+        }
+    };
+    LineChart.prototype.deleteFlow = function(ID) {
+        this._graph.deleteFlow(ID);
+    };
+    LineChart.prototype.replaceData = function(newData){
+        this._graph.replaceData(newData);
+    };
+
+    LineChart.prototype.initializeData = function(newData) {  //inizialization data of flows
+        if (newData !== undefined) {
+            var fList = this._graph.getFlowList();
+            for (var i=0; i&lt;newData.length; i++) {
+                for (var j=0; j&lt;fList.length; j++) {
+                    if (fList[j].id === newData[i].ID) {
+                        fList[j].flow.initializeData(newData[i]);
+                    }
+                }
+            }
+        }
+    };
+    
+    // update data
+    LineChart.prototype.inPlaceUpdate = function(newData) {
+        if (newData !== undefined) {
+            var fList = this._graph.getFlowList();
+            for (var j=0; j&lt;fList.length; j++) {
+                if (fList[j].id === newData.ID) {
+                    fList[j].flow.inPlaceUpdate(newData);
+                }
+            }
+        }
+    };
+    LineChart.prototype.streamUpdate = function(newData) {
+        if (newData !== undefined) {
+           var fList = this._graph.getFlowList();
+            for (var j=0; j&lt;fList.length; j++) {
+                if (fList[j].id === newData.ID) {
+                    fList[j].flow.streamUpdate(newData);
+                }
+            }
+        }
+    };
+    LineChart.prototype.deleteData = function(delData) {
+        if (delData !== undefined){
+            var fList = this._graph.getFlowList();
+            for (var j=0; j&lt;fList.length; j++) {
+                if (fList[j].id === delData.ID) {
+                    fList[j].flow.deleteData(delData);
+                }
+            }
+        }
+    };
+
+    LineChart.prototype.getTitle = function() {
+        return this._graph.getTitle();
+    };
+    LineChart.prototype.getHeight = function() {
+        return this._graph.getHeight();
+    };
+    LineChart.prototype.getWidth = function() {
+        return this._graph.getWidth();
+    };
+    LineChart.prototype.getLegend = function() {
+        return this._graph.getLegend();
+    };
+    LineChart.prototype.getHGrid = function() {
+        return this._graph.getHGrid();
+    };
+    LineChart.prototype.getVGrid = function() {
+        return this._graph.getVGrid();
+    };
+    LineChart.prototype.getUrl = function() {
+        return this._graph.getUrl();
+    };
+    LineChart.prototype.getFlowList = function() {
+        return this._graph.getFlowList();
+    };
+    LineChart.prototype.getX = function() {
+        return this._axisX;
+    };
+    LineChart.prototype.getY = function() {
+        return this._axisY;
+    };
+    LineChart.prototype.getViewFinder = function() {
+        return this._viewFinder;
+    };
+    LineChart.prototype.getBackground = function() {
+        return this._backgroundColor;
+    };
+    LineChart.prototype.getLegendOnPoint = function() {
+        return this._legendOnPoint;
+    };
+
+    function LineChartFactory(){}
+
+    LineChartFactory.build = function(info) {
+        return new LineChart(info);
+    };
+
+    return LineChartFactory;
+}]);</textarea>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>.</p>
+  </div>
+</footer>
+
+<script type="text/html" id="complexity-popover-template">
+  <div class="complexity-notice">
+    Complexity : {{ complexity.cyclomatic }} <br>
+    Length : {{ complexity.halstead.length }} <br>
+    Difficulty : {{ complexity.halstead.difficulty.toFixed(2) }} <br>
+    Est # bugs : {{ complexity.halstead.bugs.toFixed(2) }}<br>
+  </div>
+</script>
+
+<script type="text/javascript" src="../../assets/scripts/bundles/core-bundle.js"></script>
+<script type="text/javascript" src="../../assets/scripts/bundles/codemirror.js"></script>
+<script type="text/javascript" src="../../assets/scripts/codemirror.markpopovertext.js"></script>
+<script type="text/javascript" src="report.js"></script>
+<script type="text/javascript" src="report.history.js"></script>
+<script type="text/javascript" src="../../assets/scripts/plato-file.js"></script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Plato - JavaScript Introspection</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <script>
+    var __options = {"title":"Frontend","flags":{"complexity":{"logicalor":true,"switchcase":true,"forin":false,"trycatch":false,"newmi":true},"jshint":{}}}
+  </script>
+
+  <link href="assets/css/vendor/bootstrap.css" rel="stylesheet">
+  <link href="assets/css/vendor/font-awesome.css" rel="stylesheet">
+  <link href="assets/css/vendor/morris.css" rel="stylesheet">
+  <link href="assets/css/plato.css" rel="stylesheet">
+  <link href="assets/css/plato-display.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Frontend</h1>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="reportBlock lineCount">
+                <div class="reportContent">
+                    <small class="chart-label">Total / Average Lines</small>
+                    <h1>6738 / 153</h1>
+                </div>
+                <div id="chart_historical_sloc" class="chart js-chart"></div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="reportBlock maintainability">
+                <div class="reportContent">
+                    <small class="chart-label">Average Maintainability</small>
+                    <h1>73.70</h1>
+                </div>
+                <div id="chart_historical_maint" class="chart js-chart"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="reportBlock maintainabilityList">
+                <h2 class="reportTitle">Worst Maintainability Scores</h2>
+                <ul class="list-unstyled">
+
+                    <li>
+                        <strong>50 score</strong>
+                        <small>./karma.conf.js</small>
+                    </li>
+
+                    <li>
+                        <strong>66 score</strong>
+                        <small>app/Model/PagesModel/Page.js</small>
+                    </li>
+
+                    <li>
+                        <strong>67 score</strong>
+                        <small>test/unit/Controller/MapChartController.js</small>
+                    </li>
+
+                    <li>
+                        <strong>69 score</strong>
+                        <small>app/Controller/PagesControllers/PageController.js</small>
+                    </li>
+
+                    <li>
+                        <strong>69 score</strong>
+                        <small>app/Controller/GraphsControllers/MapChartController.js</small>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="reportBlock locList">
+                <h2 class="reportTitle">Largest Files</h2>
+                <ul class="list-unstyled">
+
+                    <li>
+                        <strong>370 lines</strong>
+                        <small>test/unit/Model/MapChart.js</small>
+                    </li>
+
+                    <li>
+                        <strong>347 lines</strong>
+                        <small>test/unit/Model/Table.js</small>
+                    </li>
+
+                    <li>
+                        <strong>323 lines</strong>
+                        <small>test/unit/Model/LineChart.js</small>
+                    </li>
+
+                    <li>
+                        <strong>323 lines</strong>
+                        <small>test/unit/Model/MapChartFlow.js</small>
+                    </li>
+
+                    <li>
+                        <strong>321 lines</strong>
+                        <small>test/unit/Model/LineChartFlow.js</small>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="reportBlock lintList">
+                <h2 class="reportTitle">Lint Warnings</h2>
+                <ul class="list-unstyled">
+
+                    <li>
+                        <strong>51 lint errors</strong>
+                        <small>test/unit/Model/Axis.js</small>
+                   </li>
+
+                    <li>
+                        <strong>51 lint errors</strong>
+                        <small>test/unit/Model/Graph.js</small>
+                   </li>
+
+                    <li>
+                        <strong>51 lint errors</strong>
+                        <small>test/unit/Model/LineChartFlow.js</small>
+                   </li>
+
+                    <li>
+                        <strong>51 lint errors</strong>
+                        <small>test/unit/Model/MapChartFlow.js</small>
+                   </li>
+
+                    <li>
+                        <strong>51 lint errors</strong>
+                        <small>test/unit/Model/Page.js</small>
+                   </li>
+
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<script type="text/javascript" src="assets/scripts/bundles/core-bundle.js"></script>
+<script type="text/javascript" src="report.js"></script>
+<script type="text/javascript" src="report.history.js"></script>
+<script type="text/javascript" src="assets/scripts/plato-display.js"></script>
+
+</body>
+</html>

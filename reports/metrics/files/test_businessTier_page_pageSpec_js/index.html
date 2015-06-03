@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Plato - test/businessTier/page/pageSpec.js</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link href="../../assets/css/vendor/morris.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet">
+  <link href="../../assets/css/plato.css" rel="stylesheet">
+  <link href="../../assets/css/plato-file.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="http://github.com/es-analysis/plato">Plato on Github</a>
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="../../index.html">Report Home</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>test/businessTier/page/pageSpec.js</h1>
+  </div>
+</div>
+
+<div class="container aggregate-stats">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
+      <p class="stat">71.69</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
+      <p class="stat">269</p>
+    </div>
+  </div>
+  <div class="row historical">
+    <div class="col-md-6">
+      <p id="chart_historical_maint" class="chart"></p>
+    </div>
+    <div class="col-md-6">
+      <p id="chart_historical_sloc" class="chart"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
+      <p class="stat">25.82</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
+      <p class="stat">2.87</p>
+    </div>
+  </div>
+</div>
+
+<div class="container charts">
+  <div class="row">
+    <h2 class="header">Function weight</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="chart-header">By Complexity <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="This metric counts the number of distinct paths through a block of code. Lower values are better." data-original-title="Cyclomatic Complexity" data-container="body"></i></a></h3>
+      <div id="fn-by-complexity" class="stat"></div>
+    </div>
+    <div class="col-md-6">
+      <h3 class="chart-header">By SLOC  <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h3>
+      <div id="fn-by-sloc" class="stat"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <textarea id="file-source" class="col-md-12">/*jshint node: true, -W106 */
+&#039;use strict&#039;;
+
+/*
+* Name : pageSpec.js
+* Module : UnitTest
+* Location : /test/businessTier/page
+*
+* History :
+* 
+* Version   Date         Programmer         Description
+* =========================================================
+* 0.0.1     2015-05-23   Samuele Zanella    Initial code
+* =========================================================
+*/
+
+var Page = require(&#039;../../../lib/businessTier/page/page.js&#039;);
+var PageModel = require(&#039;../../../lib/dataTier/page/pageModel.js&#039;);
+var MapChart = require(&#039;../../../lib/businessTier/graph/mapChart.js&#039;);
+var LineChart = require(&#039;../../../lib/businessTier/graph/lineChart.js&#039;);
+var assert = require(&#039;assert&#039;);
+
+var Norris = require(&#039;../../../lib/businessTier/norris/norris.js&#039;);
+var Page = require(&#039;../../../lib/businessTier/page/page.js&#039;);
+var express = require(&#039;express&#039;);
+var app = express();
+var http = require(&#039;http&#039;);
+var server = http.createServer(app);
+var io = require(&#039;socket.io&#039;)(server);
+io.listen(5000);
+var ioclient = require(&#039;socket.io-client&#039;);
+var nor = new Norris(app, io, &#039;/norris&#039;);
+var page1 = nor.createPage(&#039;page1&#039;);
+
+function ParamMock() {
+    this._app = null;
+    this._io = null;
+    this._networkHandler = null;
+    this._pageListSocket = null;
+    this._pageList = null;
+}
+
+ParamMock.prototype.createSocket = function(param) {
+    param = null;
+    return this;
+};
+
+ParamMock.prototype.attachObject = function(param1, param2) {
+    param1 = param2;
+    return null;
+};
+
+ParamMock.prototype.addPageToRouting = function(param1, param2) {
+    return param1 + &#039; &#039; + param2;
+};
+
+ParamMock.prototype.sendMessage = function(param1, param2) {
+    return param1 + &#039; &#039; + param2;
+};
+
+ParamMock.prototype.pageChanged = function(param1) {
+    return param1;
+};
+
+describe(&#039;Page&#039;, function() {
+
+    it(&#039;returns null when there are no params&#039;, function() {
+        assert.strictEqual((new Page()).hasOwnProperty(&#039;_page&#039;), false);
+    });
+
+    it(&#039;returns null when there is no valid ID in params&#039;, function() {
+        assert.strictEqual((new Page({})).hasOwnProperty(&#039;_name&#039;), false);
+    });
+
+    it(&#039;returns null when there is a empty ID in params&#039;, function() {
+        assert.strictEqual((new Page({ID:&#039; &#039;})).hasOwnProperty(&#039;_name&#039;), false);
+    });
+
+    it(&#039;set param values to properties&#039;, function() {
+        var page1=new Page({ID:&#039;page1&#039;}, new ParamMock(), new ParamMock());
+        assert.deepEqual(page1._page, new PageModel({ID:&#039;page1&#039;}));
+        assert.deepEqual(page1._networkHandler, new ParamMock());
+        assert.deepEqual(page1._norris, new ParamMock());
+        assert.strictEqual(page1._pageNamespace, &#039;/page1&#039;);
+        assert.deepEqual(page1._pageSocket, new ParamMock());
+        assert.strictEqual(page1._graphs.length, 0);
+    });
+
+    describe(&#039;#getConfigJSON&#039;, function() {
+        it(&#039;returns the JSON to send to clients when they connect&#039;, function() {
+            var pg = nor.createPage({ID:&#039;page2&#039;, name:&#039;page2&#039;, description:&#039;page two&#039;, graphsPerRow: 3, graphsPerCol: 5});
+            page2.createMapChart({ID:&#039;map1&#039;});
+            page2.createLineChart({ID:&#039;line1&#039;});
+            var expectedJSON = {
+                properties: {
+                    ID: &#039;page2&#039;,
+                    name: &#039;page2&#039;,
+                    description: &#039;page two&#039;,
+                    graphsPerRow: 3,
+                    graphsPerCol: 5
+                },
+                data: [
+                    {
+                        ID: &#039;map1&#039;,
+                        title: &#039;&#039;,
+                        socketURL: &#039;page1/map1&#039;
+                    },
+                    {
+                        ID: &#039;line1&#039;,
+                        title: &#039;&#039;,
+                        socketURL: &#039;page1/line1&#039;
+                    }
+                ]
+            };
+            assert.deepEqual(page2.getConfigJSON(), expectedJSON);
+        });
+    });
+
+    describe(&#039;#updateProperties&#039;, function() {
+        it(&#039;does nothing when passed no valid parameter&#039;, function() {
+            var page1=new Page({ID:&#039;page1&#039;}, nor._networkHandler, nor);
+            page1.updateProperties();
+            assert.deepEqual(page1._page, new PageModel({ID:&#039;page1&#039;}));
+        });
+        it(&#039;updates the properties to the passed parameters&#039;, function() {
+            var page1=new Page({ID:&#039;page1&#039;}, nor._networkHandler, nor);
+            var pSocketURL = &#039;http://0.0.0.0:5000/page1&#039;;
+            var nSocketURL = &#039;http://0.0.0.0:5000/norris&#039;;
+            var options ={
+                transports: [&#039;websocket&#039;],
+                &#039;force new connection&#039;: true
+            };
+            var params = {
+                name:&#039;p1&#039;, 
+                description:&#039;ppp&#039;, 
+                graphsPerRow: 5, 
+                graphsPerCol: 7
+            };
+            page1.updateProperties(params);
+            var client1 = ioclient.connect(pSocketURL, options);
+            var client2 = ioclient.connect(nSocketURL, options);
+            client1.on(&#039;updatePageProp&#039;, function(message) {
+                assert.strictEqual(message, params);
+            });
+            client2.on(&#039;updatePage&#039;, function(message) {
+                assert.strictEqual(message, params);
+            });
+            assert.deepEqual(page1._page._ID, &#039;page1&#039;);
+            assert.deepEqual(page1._page._name, &#039;p1&#039;);
+            assert.deepEqual(page1._page._description, &#039;ppp&#039;);
+            assert.deepEqual(page1._page._graphsPerRow, 5);
+            assert.deepEqual(page1._page._graphsPerCol, 7);
+        });
+    });
+
+    describe(&#039;#graphChanged&#039;, function() {
+        it(&#039;sends the message over the socket&#039;, function() {
+            var page1=new Page({ID:&#039;page1&#039;}, nor._networkHandler, nor);
+            var pSocketURL = &#039;http://0.0.0.0:5000/page1&#039;;
+            var nSocketURL = &#039;http://0.0.0.0:5000/norris&#039;;
+            var options ={
+                transports: [&#039;websocket&#039;],
+                &#039;force new connection&#039;: true
+            };
+            var params = {
+                eventType: &#039;updateGraph&#039;,
+                params: {
+                    name: &#039;newName&#039;
+                }
+            };
+            page1.graphChanged(params);
+            var client1 = ioclient.connect(pSocketURL, options);
+            var client2 = ioclient.connect(nSocketURL, options);
+            client1.on(&#039;updateGraph&#039;, function(message) {
+                assert.strictEqual(message, params.params);
+            });
+            client2.on(&#039;updateGraph&#039;, function(message) {
+                assert.strictEqual(message, params.params);
+            });
+        });
+    });
+
+    describe(&#039;#createMapChart&#039;, function() {
+        it(&#039;returns null if no parameter is passed&#039;, function() {
+            assert.deepEqual(page1.createMapChart(), null);
+        });
+
+        it(&#039;returns null if the passed parameter does not contain an ID&#039;, function() {
+            assert.deepEqual(page1.createMapChart({p: &#039;abvs&#039;}), null);
+        });
+
+        it(&#039;returns null if the passed ID is already used&#039;, function() {
+            pg.createMapChart({ID: &#039;m1&#039;});
+            assert.deepEqual(page1.createMapChart({ID: &#039;m1&#039;}), null);
+        });
+
+        it(&#039;returns null if the mapChartModel is not created&#039;, function() {
+            assert.deepEqual(page1.createMapChart({ID: &#039;&#039;}), null);
+        });
+
+        it(&#039;behaves correctly with the right parameters&#039;, function() {
+            var socketURL = &#039;http://0.0.0.0:5000/page1&#039;;
+            var options ={
+                transports: [&#039;websocket&#039;],
+                &#039;force new connection&#039;: true
+            };
+            var expJSON = {
+                ID: &#039;page1&#039;,
+                graph: {
+                    ID: &#039;map1&#039;,
+                    title: &#039;&#039;,
+                    type: &#039;MapChart&#039;,
+                    socketURL: &#039;/page1/map1&#039;
+                }
+            };
+            //var stPage = new Page({ID: &#039;page1&#039;}, nor._networkHandler, nor);
+            assert.deepEqual(page1.createMapChart({ID: &#039;map1&#039;}) instanceof MapChart, true);
+            assert.strictEqual(nor._pages[0]._graphs.length, 1);
+            assert.strictEqual(nor._pageList._pages[0]._graphs.length, 1);
+            var client1 = ioclient.connect(socketURL, options);
+            client1.on(&#039;insertGraph&#039;, function(message) {
+                assert.strictEqual(message, expJSON);
+            });
+        });
+    });
+
+    describe(&#039;#createLineChart&#039;, function() {
+        it(&#039;returns null if no parameter is passed&#039;, function() {
+            assert.deepEqual(page1.createLineChart(), null);
+        });
+
+        it(&#039;returns null if the passed parameter does not contain an ID&#039;, function() {page1
+            assert.deepEqual(page1.createLineChart({p: &#039;abvs&#039;}), null);
+        });
+
+        it(&#039;returns null if the passed ID is already used&#039;, function() {
+            page1.createMapChart({ID: &#039;l1&#039;});
+            assert.deepEqual(page1.createLineChart({ID: &#039;l1&#039;}), null);
+        });
+
+        it(&#039;returns null if the createLineChart is not created&#039;, function() {
+            assert.deepEqual(page1.createMapChart({ID: &#039;&#039;}), null);
+        });
+
+        it(&#039;behaves correctly with the right parameters&#039;, function() {
+            var socketURL = &#039;http://0.0.0.0:5000/page1&#039;;
+            var options ={
+                transports: [&#039;websocket&#039;],
+                &#039;force new connection&#039;: true
+            };
+            var expJSON = {
+                ID: &#039;page1&#039;,
+                graph: {
+                    ID: &#039;line1&#039;,
+                    title: &#039;&#039;,
+                    type: &#039;LineChart&#039;,
+                    socketURL: &#039;/page1/line1&#039;
+                }
+            };
+            //var stPage = new Page({ID: &#039;page1&#039;}, nor._networkHandler, nor);
+            assert.deepEqual(page1.createLineChart({ID: &#039;line1&#039;}) instanceof LineChart, true);
+            assert.strictEqual(nor._pages[0]._graphs.length, 1);
+            assert.strictEqual(nor._pageList._pages[0]._graphs.length, 1);
+            var client1 = ioclient.connect(socketURL, options);
+            client1.on(&#039;insertGraph&#039;, function(message) {
+                assert.strictEqual(message, expJSON);
+            });
+        });
+    });
+});</textarea>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>.</p>
+  </div>
+</footer>
+
+<script type="text/html" id="complexity-popover-template">
+  <div class="complexity-notice">
+    Complexity : {{ complexity.cyclomatic }} <br>
+    Length : {{ complexity.halstead.length }} <br>
+    Difficulty : {{ complexity.halstead.difficulty.toFixed(2) }} <br>
+    Est # bugs : {{ complexity.halstead.bugs.toFixed(2) }}<br>
+  </div>
+</script>
+
+<script type="text/javascript" src="../../assets/scripts/bundles/core-bundle.js"></script>
+<script type="text/javascript" src="../../assets/scripts/bundles/codemirror.js"></script>
+<script type="text/javascript" src="../../assets/scripts/codemirror.markpopovertext.js"></script>
+<script type="text/javascript" src="report.js"></script>
+<script type="text/javascript" src="report.history.js"></script>
+<script type="text/javascript" src="../../assets/scripts/plato-file.js"></script>
+</body>
+</html>

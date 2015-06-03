@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Plato - app/View/GraphsView/MapChartView.js</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link href="../../assets/css/vendor/morris.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet">
+  <link href="../../assets/css/plato.css" rel="stylesheet">
+  <link href="../../assets/css/plato-file.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="http://github.com/es-analysis/plato">Plato on Github</a>
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="../../index.html">Report Home</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>app/View/GraphsView/MapChartView.js</h1>
+  </div>
+</div>
+
+<div class="container aggregate-stats">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
+      <p class="stat">70.10</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
+      <p class="stat">140</p>
+    </div>
+  </div>
+  <div class="row historical">
+    <div class="col-md-6">
+      <p id="chart_historical_maint" class="chart"></p>
+    </div>
+    <div class="col-md-6">
+      <p id="chart_historical_sloc" class="chart"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
+      <p class="stat">3.30</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
+      <p class="stat">0.06</p>
+    </div>
+  </div>
+</div>
+
+<div class="container charts">
+  <div class="row">
+    <h2 class="header">Function weight</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="chart-header">By Complexity <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="This metric counts the number of distinct paths through a block of code. Lower values are better." data-original-title="Cyclomatic Complexity" data-container="body"></i></a></h3>
+      <div id="fn-by-complexity" class="stat"></div>
+    </div>
+    <div class="col-md-6">
+      <h3 class="chart-header">By SLOC  <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h3>
+      <div id="fn-by-sloc" class="stat"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <textarea id="file-source" class="col-md-12">/*jshint node: true */
+&#039;use strict&#039;;
+
+/*
+* Name :  MapChart.js
+* Module : FrontEnd::View
+* Location : /frontend/app/View
+*
+* History :
+* Version       Date        Programmer                  Description
+* =================================================================================================
+* 0.0.1         2015-05-25  Maria Giovanna Chinellato   Initial code      
+* =================================================================================================
+*/
+
+
+angular.module(&#039;app&#039;)
+.directive(&#039;mapChart&#039;, function(){
+	return {
+		restrict: &#039;E&#039;,
+		//controller : &#039;MapChartController&#039;,
+		replace: false,
+        require: &#039;^page&#039;,
+		scope: {
+			//mapChart1: &#039;@&#039;,
+			id: &#039;@&#039;
+		},
+		bindToController: true,
+        template: &#039;&lt;div&gt;mapchart {{id}}&lt;/div&gt;&#039;,
+    	/*link: function (scope, element, attrs) {
+            console.log(&#039;link&#039;);
+			scope.socketConnection();
+			//scope.listenOnEvents();
+			scope.render = function() {
+
+                console.log(&#039;render&#039;);
+                // Set map option
+				var mapOptions = {
+          			center: { lat: scope.mapChart.getLatitude() , lng: scope.mapChart.getLongitude() },
+          			zoom: 8
+        		};
+
+                // Create map
+        		var map = new google.maps.Map(document.getElementById(&#039;ciao&#039;), mapOptions); // &#039;ciao&#039; da cambiare
+        		switch (scope.mapChart.getMapType()) {
+        			case &#039;roadMap&#039;: 
+                        console.log(&#039;render: roadMap&#039;);
+        				map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
+        				break;
+        			case &#039;satellite&#039;:
+        				map.setMapTypeId(google.maps.MapTypeId.SATELLITE);
+        				break;
+        			case &#039;hybrid&#039;:
+        				map.setMapTypeId(google.maps.MapTypeId.HYBRID);
+        				break;
+        			case &#039;terrain&#039;:
+        				map.setMapTypeId(google.maps.MapTypeId.TERRAIN);
+        				break;
+        		}
+
+                // Instantiate an info window to hold step text.
+                var stepDisplay = new google.maps.InfoWindow();
+
+                // Create markers
+        		var markers = [];
+
+        		for (var i=0; i&lt;scope.mapChart.getFlowList().length; i++){
+        			for (var j=0; i&lt;scope.mapChart.getFlowList()[i].flow.getData().length; i++){
+        				var latLng = new google.maps.LatLng(scope.mapChart.getFlowList()[i].flow.getData()[j].value[0], scope.mapChart.getFlowList()[i].flow.getData()[j].value[0]);
+                        var marker;
+
+        				switch (scope.matChart.getFlowList()[i].flow.getMarker().type) {
+        					case &#039;shape&#039;:
+                                var type;
+        						switch (scope.matChart.getFlowList()[i].flow.getMarker().shape) { //circle, triangle, square, diamond
+                                    case &#039;circle&#039;:
+                                        type = 
+                                    case &#039;triangle&#039;:
+
+                                    case &#039;square&#039;:
+
+                                    case &#039;diamond&#039;:
+
+                                }
+        						marker = new google.maps.Marker({
+		    						position: latLng,
+		    						map: map,
+		    						icon: { path: scope.matChart.getFlowList()[i].flow.getMarker().shape }
+								});
+								break;
+        					case &#039;icon&#039;:
+        						marker = new google.maps.Marker({
+		    						position: latLng,
+		    						map: map,
+		    						icon: { path: scope.mapChart.getFlowList()[i].flow.getMarker().icon }
+								});
+								break;
+        					case &#039;text&#039;:
+        						marker = new google.maps.Marker({
+	    							position: latLng,
+	    							map: map,
+		    						title: scope.mapChart.getFlowList()[i].flow.getMarker().text
+								});
+								break;
+        				}
+                        if (scope.mapChart.getLegendOnPoint() === true){
+                            addLegendOnPoint(marker, scope.mapChart.getFlowList()[i].flow.getName());
+                        }
+                        markers.push(marker);
+
+        			}
+
+        		}
+
+                // add legend on point
+                function addLegendOnPoint(marker,text) {
+
+                    google.maps.event.addListener(marker, &#039;click&#039;, function() {
+                        // Open an info window when the marker is clicked on,
+                        // containing the text of the step.
+                        stepDisplay.setContent(text);
+                        stepDisplay.open(map, marker);
+                    });
+                }
+                console.log(&#039;fine render&#039;);
+
+      		}; // shape icon text
+
+            console.log(&#039;link chiama render&#039;);
+      		scope.$watch(&#039;scope.mapChart&#039;, function(){
+                scope.render();
+            }, true);
+            console.log(&#039;link ha chiamato render&#039;);
+
+      		
+			showMarker = function() {};
+			zoom = function() {};
+			drag = function() {};
+		}*/
+	};
+});</textarea>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>.</p>
+  </div>
+</footer>
+
+<script type="text/html" id="complexity-popover-template">
+  <div class="complexity-notice">
+    Complexity : {{ complexity.cyclomatic }} <br>
+    Length : {{ complexity.halstead.length }} <br>
+    Difficulty : {{ complexity.halstead.difficulty.toFixed(2) }} <br>
+    Est # bugs : {{ complexity.halstead.bugs.toFixed(2) }}<br>
+  </div>
+</script>
+
+<script type="text/javascript" src="../../assets/scripts/bundles/core-bundle.js"></script>
+<script type="text/javascript" src="../../assets/scripts/bundles/codemirror.js"></script>
+<script type="text/javascript" src="../../assets/scripts/codemirror.markpopovertext.js"></script>
+<script type="text/javascript" src="report.js"></script>
+<script type="text/javascript" src="report.history.js"></script>
+<script type="text/javascript" src="../../assets/scripts/plato-file.js"></script>
+</body>
+</html>

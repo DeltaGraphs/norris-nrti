@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Plato - test/dataTier/flow/barChartFlowModelSpec.js</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link href="../../assets/css/vendor/morris.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet">
+  <link href="../../assets/css/plato.css" rel="stylesheet">
+  <link href="../../assets/css/plato-file.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="http://github.com/es-analysis/plato">Plato on Github</a>
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="../../index.html">Report Home</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>test/dataTier/flow/barChartFlowModelSpec.js</h1>
+  </div>
+</div>
+
+<div class="container aggregate-stats">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
+      <p class="stat">65.77</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
+      <p class="stat">144</p>
+    </div>
+  </div>
+  <div class="row historical">
+    <div class="col-md-6">
+      <p id="chart_historical_maint" class="chart"></p>
+    </div>
+    <div class="col-md-6">
+      <p id="chart_historical_sloc" class="chart"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
+      <p class="stat">23.71</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
+      <p class="stat">1.49</p>
+    </div>
+  </div>
+</div>
+
+<div class="container charts">
+  <div class="row">
+    <h2 class="header">Function weight</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="chart-header">By Complexity <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="This metric counts the number of distinct paths through a block of code. Lower values are better." data-original-title="Cyclomatic Complexity" data-container="body"></i></a></h3>
+      <div id="fn-by-complexity" class="stat"></div>
+    </div>
+    <div class="col-md-6">
+      <h3 class="chart-header">By SLOC  <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h3>
+      <div id="fn-by-sloc" class="stat"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <textarea id="file-source" class="col-md-12">/*jshint node: true, -W106 */
+&#039;use strict&#039;;
+
+/*
+* Name : filterModelSpec.js
+* Module : UnitTest
+* Location : /test/dataTier/flow
+*
+* History :
+* 
+* Version   Date         Programmer         Description
+* =========================================================
+* 0.0.1     2015-05-14   Matteo Furlan    Initial code
+* =========================================================
+*/
+
+var BarChartFlowModel = require(&#039;../../../lib/dataTier/flow/barChartFlowModel.js&#039;);
+var assert = require(&#039;assert&#039;);
+
+describe(&#039;BarChartFlowModel&#039;, function() {
+    
+    it(&#039;returns null when there are no params&#039;, function() {
+        assert.strictEqual((new BarChartFlowModel()).hasOwnProperty(&#039;_name&#039;), false);
+    });
+
+    it(&#039;returns null when there is no valid ID in params&#039;, function() {
+        assert.strictEqual((new BarChartFlowModel({})).hasOwnProperty(&#039;_name&#039;), false);
+    });
+
+    it(&#039;returns null when there is a empty ID in params&#039;, function() {
+        assert.strictEqual((new BarChartFlowModel({ID:&#039; &#039;})).hasOwnProperty(&#039;_name&#039;), false);
+    });
+
+    it(&#039;calls the parent constructor with the params specified&#039;, function() {
+        var flow1=new BarChartFlowModel({
+            ID:&#039;flow1&#039;,
+            name: &#039;bar chart flow&#039;
+        });
+        assert.strictEqual(flow1._ID, &#039;flow1&#039;);
+        assert.strictEqual(flow1._name, &#039;bar chart flow&#039;);
+        assert.strictEqual(flow1._type, &#039;BarChartFlow&#039;);
+    });
+
+    it(&#039;set default values to property not specified&#039;, function() {
+        var flow1=new BarChartFlowModel({ID:&#039;flow1&#039;});
+        assert.strictEqual(flow1._ID, &#039;flow1&#039;);
+        assert.strictEqual(flow1._indexKey, null);
+        assert.strictEqual(flow1._valueKey, null);
+        assert.strictEqual(flow1._indexFormat, null);
+        assert.strictEqual(flow1._valueFormat, null);
+        assert.strictEqual(flow1._flowColor, null);
+    });
+
+	it(&#039;set default values to wrong properties&#039;, function() {
+        var flow1=new BarChartFlowModel({
+            ID: &#039;flow1&#039;,
+            indexKey: 1,
+            valuekey: 2,
+            indexFormat: &#039;tooooInt&#039;,
+            valueFormat: 2,
+            flowColor: &#039;asd&#039;,
+            records: 2
+        });
+		assert.strictEqual(flow1._ID, &#039;flow1&#039;);
+        assert.strictEqual(flow1._indexKey, null);
+        assert.strictEqual(flow1._valueKey, null);
+        assert.strictEqual(flow1._indexFormat, null);
+        assert.strictEqual(flow1._valueFormat, null);
+        assert.strictEqual(flow1._flowColor, null);
+        assert.strictEqual(flow1._records.length, 0);
+    });
+
+	it(&#039;set param values to properties&#039;, function() {
+        var flow1=new BarChartFlowModel({
+            ID: &#039;flow1&#039;,
+            indexKey: &#039;temperature&#039;,
+            valueKey: &#039;pressure&#039;,
+            indexFormat: &#039;toInt&#039;,
+            valueFormat: &#039;toFloat&#039;,
+            flowColor: &#039;#FFFFFF&#039;
+        },[
+            {temperature: 2, pressure: 4},
+            {temperature: 2, pressure: 4}
+        ]);
+        assert.strictEqual(flow1._ID, &#039;flow1&#039;);
+        assert.strictEqual(flow1._indexKey, &#039;temperature&#039;);
+        assert.strictEqual(flow1._valueKey, &#039;pressure&#039;);
+        assert.strictEqual(flow1._indexFormat, &#039;toInt&#039;);
+        assert.strictEqual(flow1._valueFormat, &#039;toFloat&#039;);
+        assert.strictEqual(flow1._flowColor, &#039;#FFFFFF&#039;);
+        assert.strictEqual(flow1._records.length, 2);
+    });
+
+    describe(&#039;#updateRecord&#039;, function() {
+        it(&#039;return 111 if record is not valid&#039;, function() {
+            var flow1=new BarChartFlowModel({ID: &#039;flow1&#039;});
+            assert.strictEqual(flow1.updateRecord(1), 111);
+            assert.strictEqual(flow1.updateRecord(1, [{asd:&#039;asd&#039;}]), 111);
+            assert.strictEqual(flow1.updateRecord(1, 2), 111);
+        });
+        it(&#039;return 112 if ID_index is not valid&#039;, function() {
+            var flow1=new BarChartFlowModel({ID: &#039;flow1&#039;}, [{temperature: 1}]);
+            assert.strictEqual(flow1.updateRecord(&#039;asd&#039;, {temperature: 2}), 112);
+            assert.strictEqual(flow1.updateRecord(2, {temperature: 2}), 112);
+        });
+        it(&#039;updates and validate the record if index and record are valid&#039;, function() {
+            var flow1=new BarChartFlowModel({
+                    ID: &#039;flow1&#039;,
+                    filters: &#039;temperature&gt;3&#039;
+                },[{temperature: 1}]);
+            flow1.validateRecord(0);
+            assert.strictEqual(flow1._records[0].norrisRecordIsValid, false);
+            var update=flow1.updateRecord(0, {temperature: 4});
+            assert.strictEqual(update, true);
+            assert.strictEqual(flow1._records[0].temperature, 4);
+            assert.strictEqual(flow1._records[0].norrisRecordIsValid, true);
+        });
+    });
+
+    describe(&#039;#getProperties&#039;, function() {
+        it(&#039;returns the param properties&#039;, function() {
+            var prop={
+                ID: &#039;flow1&#039;,
+                indexKey: &#039;temperature&#039;,
+                valueKey: &#039;pressure&#039;,
+                indexFormat: &#039;toInt&#039;,
+                valueFormat: &#039;toFloat&#039;,
+                flowColor: &#039;#FFFFFF&#039;
+            };
+            var flow1=new BarChartFlowModel(prop,[
+                {temperature: 2, pressure: 4},
+                {temperature: 2, pressure: 4}
+            ]);
+            var result=flow1.getProperties();
+            assert.strictEqual(result.ID, prop.ID);
+            assert.strictEqual(result.indexKey, prop.indexKey);
+            assert.strictEqual(result.valueKey, prop.valueKey);
+            assert.strictEqual(result.indexFormat, prop.indexFormat);
+            assert.strictEqual(result.valueFormat, prop.valueFormat);
+            assert.strictEqual(result.flowColor, prop.flowColor);
+        });
+    });
+
+
+});</textarea>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>.</p>
+  </div>
+</footer>
+
+<script type="text/html" id="complexity-popover-template">
+  <div class="complexity-notice">
+    Complexity : {{ complexity.cyclomatic }} <br>
+    Length : {{ complexity.halstead.length }} <br>
+    Difficulty : {{ complexity.halstead.difficulty.toFixed(2) }} <br>
+    Est # bugs : {{ complexity.halstead.bugs.toFixed(2) }}<br>
+  </div>
+</script>
+
+<script type="text/javascript" src="../../assets/scripts/bundles/core-bundle.js"></script>
+<script type="text/javascript" src="../../assets/scripts/bundles/codemirror.js"></script>
+<script type="text/javascript" src="../../assets/scripts/codemirror.markpopovertext.js"></script>
+<script type="text/javascript" src="report.js"></script>
+<script type="text/javascript" src="report.history.js"></script>
+<script type="text/javascript" src="../../assets/scripts/plato-file.js"></script>
+</body>
+</html>

@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for norris-nrti/lib/dataTier/flow/tableFlowModel.js</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../../../prettify.css">
+    <link rel="stylesheet" href="../../../../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header high">
+    <h1>Code coverage report for <span class="entity">norris-nrti/lib/dataTier/flow/tableFlowModel.js</span></h1>
+    <h2>
+        Statements: <span class="metric">100% <small>(78 / 78)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">98.28% <small>(57 / 58)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">100% <small>(5 / 5)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">100% <small>(78 / 78)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../../index.html">All files</a> &#187; <a href="index.html">norris-nrti/lib/dataTier/flow/</a> &#187; tableFlowModel.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span></td><td class="text"><pre class="prettyprint lang-js">/*jshint node: true, -W106 */
+'use strict';
+&nbsp;
+/*
+* Name : tableFlowModel.js
+* Module : Lib::DataTier::tableFlowModel
+* Location : /lib/dataTier/flow
+*
+* History :
+* 
+* Version   Date         Programmer         Description
+* =========================================================
+* 0.0.1     2015-05-15   Filippo Rampado    Initial code
+* =========================================================
+*/
+var FlowModel = require('./flowModel.js');
+var Helper = require('../../helpers/functionHelper.js');
+&nbsp;
+function TableFlowModel(params) {
+	if(params===undefined || params.ID===undefined || typeof params.ID !== 'string'|| params.ID.trim() === ''){ // ID field is required
+		console.log('Error: 242');
+		return;
+	}
+&nbsp;
+	params.type = 'TableFlow';
+	this.parent.constructor.call(this, params);
+&nbsp;
+	this._columnKeys=[];
+	this._columnFormats=null;
+	this._maxItems=50;//items displayed
+	this._maxItemsSaved=500; //items saved
+&nbsp;
+	this.updateProperties(params);
+}
+&nbsp;
+TableFlowModel.prototype = Object.create(FlowModel.prototype);
+TableFlowModel.prototype.constructor = TableFlowModel;
+TableFlowModel.prototype.parent = FlowModel.prototype;
+&nbsp;
+TableFlowModel.prototype.updateProperties = function(params){
+	<span class="missing-if-branch" title="else path not taken" >E</span>if (params!==undefined){
+		var prop=this.parent.updateBaseProperties.call(this, params);
+		if(params.columnKeys!==undefined &amp;&amp; Array.isArray(params.columnKeys) &amp;&amp; params.columnKeys.length&gt;0){
+			var validKeys=true;
+			var keys=params.columnKeys.length;
+			for (var i=0; i&lt;keys; i++){
+				if (typeof params.columnKeys[i]!=='string'){
+					validKeys=false;
+				}
+			}
+			if (validKeys){
+				this._columnKeys=params.columnKeys;
+			}
+			prop.columnKeys=params.columnKeys;
+		}
+		if(params.columnFormats!==undefined &amp;&amp; typeof params.columnFormats==='object'){
+			var validFormats=true;
+			var nkeys=params.columnKeys.length;
+			for (var j=0; j&lt;nkeys; j++){
+				if (params.columnFormats[this._columnKeys[j]]!==undefined &amp;&amp; !Helper.isValidFormat(params.columnFormats[this._columnKeys[j]])){
+					validFormats=false;
+				}
+			}
+			if (validFormats){
+				this._columnFormats=params.columnFormats;
+			}
+			prop.columnFormats=params.columnFormats;
+		}
+		if(params.maxItems!==undefined &amp;&amp; typeof params.maxItems==='number' &amp;&amp; params.maxItems&gt;=0){
+			this._maxItems=prop.maxItems=params.maxItems;
+		}
+		if(params.maxItemsSaved!==undefined &amp;&amp; typeof params.maxItemsSaved==='number' &amp;&amp; params.maxItemsSaved&gt;=0){
+			this._maxItemsSaved=prop.maxItemsSaved=params.maxItemsSaved;
+		}
+		return prop;
+	}
+	//return error
+};
+&nbsp;
+TableFlowModel.prototype.addRecord = function(record){
+	if(record!==undefined &amp;&amp; record!==null &amp;&amp; typeof record === 'object'){
+		this._records.push(record);
+		var index=this._records.length-1;
+		var ID=this.generateNorrisRecordID(index);
+		this._records[index].norrisRecordID=ID;
+		this.validateRecord(index);
+		return ID;
+	}
+	return 143;
+};
+&nbsp;
+&nbsp;
+TableFlowModel.prototype.updateRecord = function(ID, record){
+	if (record === undefined || record === null || typeof record !== 'object'|| Array.isArray(record)){
+		return 141;
+	}
+	if (typeof ID==='string' &amp;&amp; ID.indexOf(this._ID) !== -1) {
+		var records=this._records.length;
+		var i=0;
+		var found=false;
+		while (i&lt;records &amp;&amp; (!found)){
+			if (this._records[i].norrisRecordID===ID){
+				found=true;
+			}
+			else{
+				i++;
+			}
+		}//while
+		if (found){//in records[i] there is the ID						
+			var oldID=this._records[i].norrisRecordID;
+			this._records[i]=record;
+			this._records[i].norrisRecordID=oldID;
+			this.validateRecord(i);
+			return true;
+		}
+		//no ID in records
+		return 142;
+	}
+	//invalid ID
+	return 142;
+};
+&nbsp;
+TableFlowModel.prototype.getProperties = function(){
+	var prop=this.parent.getProperties.call(this);
+	prop.columnKeys=this._columnKeys;
+	prop.columnFormats=this._columnFormats;
+	prop.maxItems=this._maxItems;
+	prop.maxItemsSaved=this._maxItemsSaved;
+	return prop;
+};
+&nbsp;
+module.exports = TableFlowModel;</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Jun 03 2015 00:19:18 GMT+0000 (UTC)</div>
+</div>
+<script src="../../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../../sorter.js"></script>
+</body>
+</html>
