@@ -94,13 +94,10 @@ angular.module('app')
 
                 var latLng = new google.maps.LatLng(scope.mapChart.getLatitude(), scope.mapChart.getLongitude());
                 
-                //console.log('lunghezza flussi ' + scope.mapChart.getFlowList().length);
-                //console.log('lung record ' + scope.mapChart.getFlowList()[0].flow.getData().length);
                 for (var i=0; i<scope.mapChart.getFlowList().length; i++){
                     for (var j=0; j<scope.mapChart.getFlowList()[i].flow.getData().length; j++){
-                        //console.log(j + ' lat: ' + scope.mapChart.getFlowList()[i].flow.getData()[j].value[0] + ' , lng: ' + scope.mapChart.getFlowList()[i].flow.getData()[j].value[1]);
                         var coordinates = new google.maps.LatLng(scope.mapChart.getFlowList()[i].flow.getData()[j].value[0], scope.mapChart.getFlowList()[i].flow.getData()[j].value[1]);
-                        
+                        var marker;
                         switch (scope.mapChart.getFlowList()[i].flow.getMarker().type) {
                             case 'shape':
                                 console.log('shape type');
@@ -108,19 +105,19 @@ angular.module('app')
                                 switch (scope.mapChart.getFlowList()[i].flow.getMarker().shape) { //circle, triangle, square, diamond
                                     case 'circle':
                                         console.log('shape type circle');
-                                        type = { path: 'img/circle.png' };
+                                        type = 'http://norris-nrti-dev.herokuapp.com/norris/img/circle.png';
                                         break;
                                     case 'triangle':
                                         console.log('shape type triangle');
-                                        type = { path: 'img/triangle.png' };
+                                        type = 'http://norris-nrti-dev.herokuapp.com/norris/img/triangle.png';
                                         break;
                                     case 'square':
                                         console.log('shape type square');
-                                        type = { path: 'img/square.png' };
+                                        type = 'http://norris-nrti-dev.herokuapp.com/norris/img/square.png';
                                         break;
                                     case 'diamond':
                                         console.log('shape type diamond');
-                                        type = { path: 'img/diamond.png' };
+                                        type = 'http://norris-nrti-dev.herokuapp.com/norris/img/diamond.png';
                                         break;
                                 }
                                 marker = new google.maps.Marker({
