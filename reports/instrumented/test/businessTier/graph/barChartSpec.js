@@ -17,26 +17,51 @@
 var BarChart = require('../../../lib/businessTier/graph/barChart.js');
 var assert = require('assert');
 
+var LineChart = require('../../../lib/businessTier/graph/lineChart.js');
+var assert = require('assert');
+
+var socketMock=function(){
+    this.p1=null;
+    this.p2=null;
+    this._namespace='flow1';
+    this.sendMessage=function(p1, p2){
+        this.p1=p1;
+        this.p2=p2;
+    };
+};
+
 describe('BarChart', function() {
-    it('returns null when there are no params', function() {
-        assert.strictEqual((new BarChart()).hasOwnProperty('_dataMapChart'), false);
+    it('returns 361 when there are no params', function() {
+        assert.strictEqual(new BarChart().hasOwnProperty('_dataBarChart'),false);
     });
 
-    it('returns null when there is no valid page in params', function() {
-        assert.strictEqual((new BarChart(2, 3)).hasOwnProperty('_dataMapChart'), false);
+    it('returns 362 when there is no valid graphsocket in params', function() {
+        assert.strictEqual(new BarChart({is: 1}, {_page: 'dssada'}, {}).hasOwnProperty('_dataBarChart'),false);
     });
 
-    it('returns null when there is no valid graphsocket in params', function() {
-        assert.strictEqual((new BarChart(2, {_namespace: 2}, 3)).hasOwnProperty('_dataMapChart'), false);
+    it('returns 393 when page is not valid', function() {
+        assert.strictEqual(new BarChart({is: 1}, {}, {}).hasOwnProperty('_dataBarChart'),false);
     });
 
-    it('returns null when params are not valid', function() {
-        assert.strictEqual((new BarChart(2, {_namespace: 2})).hasOwnProperty('_dataMapChart'), false);
+    it('returns null if it does not create a BarChartModel', function() {
+        assert.strictEqual(new BarChart({is: 1}, {_page: 'dssada'}, new socketMock()).hasOwnProperty('_dataBarChart'),false);
     });
 
-    it('calls the parent constructor with the params specified', function() {
-        var bar1=new BarChart({ID: 'bar1'},{_namespace: 'bar1'});
-        assert.strictEqual(bar1._dataMapChartFlow._ID, 'bar1');
-        assert.strictEqual(bar1._graphSocket._namespace, 'bar1');
+    it('returns a correct BarChart', function() {
+        assert.strictEqual(new LineChart({_ID: 'dada'}, {_page: 'dssada'}, new socketMock()).hasOwnProperty('_dataBarChart'),true);
     });
+
+    /*describe('#getFlowByID', function() {
+        it('return 272 - no ID in flows', function() {
+            var barChart=new BarChart({_ID: 'dada'}, {_page: 'dssada'}, new socketMock());
+            barChart.createBarChartFlow({ ID:'flow1', name: 'grafico tempo-temperatura', xKey: 'tempo', yKey: 'temperatura'});
+            assert.strictEqual(barChart.getFlowByID('fl1'),272);
+        });
+        it('return correct flow', function() {
+            var barChart=new BarChart({_ID: 'dada'}, {_page: 'dssada'}, new socketMock());
+            barChart.createBarChartFlow({ ID:'flow1', name: 'grafico tempo-temperatura', xKey: 'tempo', yKey: 'temperatura'});
+            console.log('SOSTITUIREgetFlowByIDgetFlowByID '+JSON.stringify(barChart.getFlowByID('flow1')));
+            assert.deepEqual(barChart.getFlowByID('flow1'),{});
+        });
+    });*/
 });
