@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">93</p>
+      <p class="stat">92</p>
     </div>
   </div>
   <div class="row historical">
@@ -105,7 +105,6 @@
 * 0.0.1         2015-05-30  Francesco Rossetto			Initial code      
 * =================================================================================================
 */
-
 angular.module(&#039;app&#039;)
 .directive(&#039;page&#039;, function(){
 	return {
@@ -120,14 +119,14 @@ angular.module(&#039;app&#039;)
 					&#039;&lt;table&gt;&#039; +
 						&#039;&lt;tr ng-repeat=&quot;line in graphs&quot;&gt;&#039; +
 							&#039;&lt;td ng-repeat=&quot;graph in line&quot;&gt;&#039; +
-								&#039;&lt;div ng-show=&quot;graph.graph.constructor.name == \&#039;LineChart\&#039;&quot; class=&quot;ng-hide&quot;&gt;&#039; +
-								&#039;&lt;line-chart id=&quot;{{$index}}&quot;&gt;&lt;/line-chart&gt; &lt;/div&gt;&#039; +
-								&#039;&lt;div ng-show=&quot;graph.graph.constructor.name == \&#039;BarChart\&#039;&quot; class=&quot;ng-hide&quot;&gt;&#039; +
-								&#039;&lt;bar-chart id=&quot;{{$index}}&quot;&gt;  &lt;/bar-chart&gt; &lt;/div&gt;&#039; +
-								&#039;&lt;div ng-show=&quot;graph.graph.constructor.name == \&#039;MapChart\&#039;&quot; class=&quot;ng-hide&quot;&gt;&#039; +
-								&#039;&lt;map-chart id=&quot;{{$index}}&quot;&gt;  &lt;/map-chart&gt; &lt;/div&gt;&#039; +
-								&#039;&lt;div ng-show=&quot;graph.graph.constructor.name == \&#039;Table\&#039;&quot; class=&quot;ng-hide&quot;&gt;&#039; + 
-								&#039;&lt;table-chart id=&quot;{{$index}}&quot;&gt;  &lt;/table-chart&gt; &lt;/div&gt;&#039; +
+								&#039;&lt;div ng-if=&quot;checkType(graph, \&#039;LineChart\&#039;)&quot;&gt;&#039; +
+								&#039;&lt;line-chart id=&quot;{{$index + $parent.$index * page.getGraphsPerRow()}}&quot;&gt;&lt;/line-chart&gt;&lt;/div&gt;&#039; +
+								&#039;&lt;div ng-if=&quot;checkType(graph, \&#039;BarChart\&#039;)&quot;&gt;&#039; +
+								&#039;&lt;bar-chart id=&quot;{{$index + $parent.$index * page.getGraphsPerRow()}}&quot;&gt;&lt;/bar-chart&gt;&lt;/div&gt;&#039; +
+								&#039;&lt;div ng-if=&quot;checkType(graph, \&#039;MapChart\&#039;)&quot;&gt;&#039; +
+								&#039;&lt;map-chart id=&quot;{{$index + $parent.$index * page.getGraphsPerRow()}}&quot;&gt;&lt;/map-chart&gt;&lt;/div&gt;&#039; +
+								&#039;&lt;div ng-if=&quot;checkType(graph, \&#039;Table\&#039;)&quot;&gt;&#039; + 
+								&#039;&lt;table-chart id=&quot;{{$index + $parent.$index * page.getGraphsPerRow()}}&quot;&gt;&lt;/table-chart&gt;&lt;/div&gt;&#039; +
 							&#039;&lt;/td&gt;&#039; +
 						&#039;&lt;/tr&gt;&#039; +
 					&#039;&lt;/table&gt;&#039; +

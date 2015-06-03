@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">65.67</p>
+      <p class="stat">65.38</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">158</p>
+      <p class="stat">154</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">20.76</p>
+      <p class="stat">24.86</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">2.12</p>
+      <p class="stat">2.19</p>
     </div>
   </div>
 </div>
@@ -107,7 +107,6 @@
 
 var LineChartFlow = require(&#039;../../../lib/businessTier/flow/lineChartFlow.js&#039;);
 var assert = require(&#039;assert&#039;);
-var Socket = require(&#039;../../../lib/presentationTier/socket.js&#039;);
 var socketMock=function(){
     this.p1=null;
     this.p2=null;
@@ -115,6 +114,16 @@ var socketMock=function(){
     this.sendMessage=function(p1, p2){
         this.p1=p1;
         this.p2=p2;
+    };
+};
+
+var socketMockHistory=function(){
+    this.p1=[];
+    this.p2=[];
+    this._namespace=&#039;flow1&#039;;
+    this.sendMessage=function(p1, p2){
+        this.p1.push(p1);
+        this.p2.push(p2);
     };
 };
 
@@ -215,36 +224,23 @@ describe(&#039;LineChartFlow&#039;, function() {
 
     describe(&#039;#updateProperties&#039;, function() {
         it(&#039;update correct properties&#039;, function() {
-            var io = require(&#039;socket.io-client&#039;);
-            var server = require(&#039;socket.io&#039;)();
-            server.listen(5000);
-
-            var socketURL = &#039;http://0.0.0.0:5000/namespace&#039;;
-            var options ={
-                transports: [&#039;websocket&#039;],
-                &#039;force new connection&#039;: true
-            };
-            var client1 = io.connect(socketURL, options);
-
-            var socket1 = new Socket(server, &#039;/namespace&#039;);
-            var flow1=new LineChartFlow({ID: &#039;flow1&#039;},socket1);
+            var mock=new socketMockHistory();
+            var flow1=new LineChartFlow({ID: &#039;flow1&#039;},mock);
             flow1.updateProperties({name: &#039;grafico tempo-temperatura&#039;,xKey: &#039;tempo&#039;,yKey: &#039;temperatura&#039;,filters: &#039;temperature&gt;3&#039;,});
             flow1.addRecord({&#039;tempo&#039;: 4, &#039;temperatura&#039;: 4});
             flow1.addRecord({&#039;tempo&#039;: 9, &#039;temperatura&#039;: 23});
             flow1.addRecord({&#039;tempo&#039;: 6, &#039;temperatura&#039;: 7});
             flow1.addRecord({&#039;tempo&#039;: 6, &#039;temperatura&#039;: 0});
             flow1.addRecord({&#039;time&#039;: 6, &#039;temp&#039;: 0});
-            //assert.strictEqual(flow1._dataLineChartFlow._xKey,&#039;tempo&#039;);
-            //assert.strictEqual(flow1._dataLineChartFlow._yKey,&#039;temperatura&#039;);
-            //assert.strictEqual(flow1._dataLineChartFlow._name,&#039;grafico tempo-temperatura&#039;);
-            client1.on(&#039;updateFlowData&#039;, function(message) {
-                console.log(&#039;STAMPAAAAA#updateFlowData &#039;+message);
-                assert.strictEqual(message, &#039;message&#039;);
-            });
-            client1.on(&#039;updateFlowProp&#039;, function(message) {
-                console.log(&#039;STAMPAAAAA#updateFlowProp &#039;+message);
-                assert.strictEqual(message, &#039;message&#039;);
-            });
+            assert.strictEqual(flow1._dataLineChartFlow._xKey,&#039;tempo&#039;);
+            assert.strictEqual(flow1._dataLineChartFlow._yKey,&#039;temperatura&#039;);
+            assert.strictEqual(flow1._dataLineChartFlow._name,&#039;grafico tempo-temperatura&#039;);
+            assert.strictEqual(mock.p1[0],&#039;updateFlowData&#039;);
+            console.log(&#039;#updateProperties##updateFlowData &#039;+ JSON.stringify(mock.p2[0]));
+            assert.strictEqual(mock.p2[0],{});
+            assert.strictEqual(mock.p1[1],&#039;updateFlowProp&#039;);
+            console.log(&#039;#updateProperties##updateFlowProp &#039;+ JSON.stringify(mock.p2[1]));
+            assert.strictEqual(mock.p2[1],{});
         });
     });
 });</textarea>

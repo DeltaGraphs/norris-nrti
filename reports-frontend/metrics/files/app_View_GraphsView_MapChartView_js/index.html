@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">70.10</p>
+      <p class="stat">55.71</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">140</p>
+      <p class="stat">151</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">3.30</p>
+      <p class="stat">22.82</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.06</p>
+      <p class="stat">1.32</p>
     </div>
   </div>
 </div>
@@ -109,19 +109,30 @@ angular.module(&#039;app&#039;)
 .directive(&#039;mapChart&#039;, function(){
 	return {
 		restrict: &#039;E&#039;,
-		//controller : &#039;MapChartController&#039;,
+		controller : &#039;MapChartController&#039;,
 		replace: false,
         require: &#039;^page&#039;,
 		scope: {
-			//mapChart1: &#039;@&#039;,
 			id: &#039;@&#039;
 		},
 		bindToController: true,
         template: &#039;&lt;div&gt;mapchart {{id}}&lt;/div&gt;&#039;,
-    	/*link: function (scope, element, attrs) {
-            console.log(&#039;link&#039;);
-			scope.socketConnection();
-			//scope.listenOnEvents();
+    	link: function (scope, element, attrs) {
+            //console.log(scope.$parent.page.getGraphsList().length);
+            attrs.$observe(&#039;id&#039;, function(value) {
+                if (value) {
+                    if(scope.$parent.page.getGraphsList()[value].graph.constructor.name === &#039;MapChart&#039;){
+                        scope.mapChart = scope.$parent.page.getGraphsList()[value].graph;
+                        console.log(scope.mapChart.getTitle());
+                        scope.socketConnection();
+
+                    }
+                }
+            });
+            
+            //scope.mapChart = scope.$parent.page.getGraphsList()[attrs.id].graph;
+			
+
 			scope.render = function() {
 
                 console.log(&#039;render&#039;);
@@ -157,7 +168,7 @@ angular.module(&#039;app&#039;)
 
         		for (var i=0; i&lt;scope.mapChart.getFlowList().length; i++){
         			for (var j=0; i&lt;scope.mapChart.getFlowList()[i].flow.getData().length; i++){
-        				var latLng = new google.maps.LatLng(scope.mapChart.getFlowList()[i].flow.getData()[j].value[0], scope.mapChart.getFlowList()[i].flow.getData()[j].value[0]);
+        				var latLng = new google.maps.LatLng(scope.mapChart.getFlowList()[i].flow.getData()[j].value[0], scope.mapChart.getFlowList()[i].flow.getData()[j].value[1]);
                         var marker;
 
         				switch (scope.matChart.getFlowList()[i].flow.getMarker().type) {
@@ -165,18 +176,18 @@ angular.module(&#039;app&#039;)
                                 var type;
         						switch (scope.matChart.getFlowList()[i].flow.getMarker().shape) { //circle, triangle, square, diamond
                                     case &#039;circle&#039;:
-                                        type = 
+                                        type = { path: &#039;img/circle.png&#039; };
                                     case &#039;triangle&#039;:
-
+                                        type = { path: &#039;img/triangle.png&#039; };
                                     case &#039;square&#039;:
-
+                                        type = { path: &#039;img/square.png&#039; };
                                     case &#039;diamond&#039;:
-
+                                        type = { path: &#039;img/diamond.png&#039; };
                                 }
         						marker = new google.maps.Marker({
 		    						position: latLng,
 		    						map: map,
-		    						icon: { path: scope.matChart.getFlowList()[i].flow.getMarker().shape }
+		    						icon: type
 								});
 								break;
         					case &#039;icon&#039;:
@@ -217,17 +228,17 @@ angular.module(&#039;app&#039;)
 
       		}; // shape icon text
 
-            console.log(&#039;link chiama render&#039;);
+            /*console.log(&#039;link chiama render&#039;);
       		scope.$watch(&#039;scope.mapChart&#039;, function(){
                 scope.render();
             }, true);
-            console.log(&#039;link ha chiamato render&#039;);
+            console.log(&#039;link ha chiamato render&#039;);*/
 
       		
-			showMarker = function() {};
+			/*showMarker = function() {};
 			zoom = function() {};
-			drag = function() {};
-		}*/
+			drag = function() {};*/
+		}
 	};
 });</textarea>
   </div>

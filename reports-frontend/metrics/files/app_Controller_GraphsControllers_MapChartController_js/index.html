@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">68.72</p>
+      <p class="stat">72.57</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">97</p>
+      <p class="stat">78</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">21.72</p>
+      <p class="stat">19.51</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.81</p>
+      <p class="stat">0.63</p>
     </div>
   </div>
 </div>
@@ -110,30 +110,11 @@
 angular.module(&#039;app&#039;)
 .controller(&#039;MapChartController&#039;, [&#039;$scope&#039;, &#039;$location&#039;, &#039;MapChartFactory&#039;, &#039;MapChartFlowFactory&#039;, &#039;SocketServicesFactory&#039;, function($scope, $location, MapChartFactory, MapChartFlowFactory, SocketServicesFactory){
 
-	var json = {
-			&#039;title&#039; : &#039;graficonuovo&#039;,
-			&#039;url&#039; : &#039;https://norris-nrti-dev.herokuapp.com/page1/map1&#039;,
-			&#039;height&#039; : 400,
-			&#039;width&#039; : 400,
-			&#039;enabledLegend&#039; : false,
-			&#039;horizontalGrid&#039; : false,
-			&#039;verticalGrid&#039; : false,
-			&#039;legendOnPoint&#039; : true,
-			&#039;scale&#039; : 999,
-			&#039;mapType&#039; : &#039;roadMap&#039;,
-			&#039;zoom&#039; : false
-	};
-
-	var mapChart = MapChartFactory.build(json);
-	$scope.mapChart = mapChart;
 	var socket;
-	var url = $scope.mapChart.getUrl();
-
-	console.log(url);
 
 	this.socketConnection = function(){
-		console.log(&#039;socketConnection &#039; + url);
-		socket = SocketServicesFactory.build(url);
+		console.log(&#039;socketConnection &#039;);
+		socket = SocketServicesFactory.build($scope.mapChart.getUrl());
 		this.listenOnEvents();
 	};
 
