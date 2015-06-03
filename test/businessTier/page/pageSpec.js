@@ -103,12 +103,12 @@ describe('Page', function() {
                     {
                         ID: 'map1',
                         title: '',
-                        socketURL: 'page2/map1'
+                        socketURL: '/page2/map1'
                     },
                     {
                         ID: 'line1',
                         title: '',
-                        socketURL: 'page2/line1'
+                        socketURL: '/page2/line1'
                     }
                 ]
             };
@@ -199,24 +199,26 @@ describe('Page', function() {
         });
 
         it('behaves correctly with the right parameters', function() {
-            var socketURL = 'http://0.0.0.0:5000/page1';
+            var nor2 = new Norris(app, io, '/norris');
+            var page4 = nor2.createPage({ID: 'page4'});
+            var socketURL = 'http://0.0.0.0:5000/page4';
             var options ={
                 transports: ['websocket'],
                 'force new connection': true
             };
             var expJSON = {
-                ID: 'page1',
+                ID: 'page4',
                 graph: {
                     ID: 'map1',
                     title: '',
                     type: 'MapChart',
-                    socketURL: '/page1/map1'
+                    socketURL: '/page4/map1'
                 }
             };
             //var stPage = new Page({ID: 'page1'}, nor._networkHandler, nor);
-            assert.deepEqual(page1.createMapChart({ID: 'map1'}) instanceof MapChart, true);
-            assert.strictEqual(nor._pages[0]._graphs.length, 1);
-            assert.strictEqual(nor._pageList._pages[0]._graphs.length, 1);
+            assert.deepEqual(page4.createMapChart({ID: 'map1'}) instanceof MapChart, true);
+            assert.strictEqual(nor2._pages[0]._graphs.length, 1);
+            assert.strictEqual(nor2._pageList._pages[0]._graphs.length, 1);
             var client1 = ioclient.connect(socketURL, options);
             client1.on('insertGraph', function(message) {
                 assert.strictEqual(message, expJSON);
@@ -229,7 +231,7 @@ describe('Page', function() {
             assert.deepEqual(page1.createLineChart(), null);
         });
 
-        it('returns null if the passed parameter does not contain an ID', function() {page1
+        it('returns null if the passed parameter does not contain an ID', function() {
             assert.deepEqual(page1.createLineChart({p: 'abvs'}), null);
         });
 
@@ -243,7 +245,8 @@ describe('Page', function() {
         });
 
         it('behaves correctly with the right parameters', function() {
-            var page3 = nor.createPage({ID: 'page3'});
+            var nor3 = new Norris(app, io, '/norris');
+            var page3 = nor3.createPage({ID: 'page3'});
             var socketURL = 'http://0.0.0.0:5000/page3';
             var options ={
                 transports: ['websocket'],
@@ -260,8 +263,8 @@ describe('Page', function() {
             };
             //var stPage = new Page({ID: 'page1'}, nor._networkHandler, nor);
             assert.deepEqual(page3.createLineChart({ID: 'line1'}) instanceof LineChart, true);
-            assert.strictEqual(nor._pages[0]._graphs.length, 1);
-            assert.strictEqual(nor._pageList._pages[0]._graphs.length, 1);
+            assert.strictEqual(nor3._pages[0]._graphs.length, 1);
+            assert.strictEqual(nor3._pageList._pages[0]._graphs.length, 1);
             var client1 = ioclient.connect(socketURL, options);
             client1.on('insertGraph', function(message) {
                 assert.strictEqual(message, expJSON);
