@@ -152,6 +152,39 @@ describe('LineChartFlowModel', function() {
             assert.strictEqual(flow1._records[0].norrisRecordIsValid, true);
         });
     });
+    
+    describe('#updateProperties', function() {
+        it('updated properties', function() {
+            var prop={
+                ID: 'flow1',
+                xKey: 'temperature',
+                yKey: 'pressure',
+                xFormat: 'toInt',
+                yFormat: 'toFloat',
+                flowColor: '#FFFFFF',
+                marker: 'diamond',
+                interpolation: 'basis',
+                area: '#012345',
+                maxItems: 2,
+                maxItemsSaved: 1000
+            };
+            var flow1=new LineChartFlowModel(prop);
+            var updP=flow1.updateProperties({
+                ID: 'flow1',
+                xKey: 'temp',
+                yKey: 'press',
+                xFormat: 'toInt',
+                yFormat: 'toFloat',
+                flowColor: '#FFFFFF',
+                marker: 'circle',
+                interpolation: 'basis',
+                area: '#0F2345',
+                maxItems: 4,
+                maxItemsSaved: 50
+            });
+            console.log('STAMPAAAAA#updateProperties'+JSON.stringify(updP));
+        });
+    });
 
     describe('#getProperties', function() {
         it('returns the param properties', function() {
