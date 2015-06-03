@@ -31,6 +31,20 @@ var socketMock=function(){
     };
 };
 
+var socketMockHistory=function(){
+    this.p1=[];
+    this.p2=[];
+    this._namespace='flow1';
+    this.sendMessage=function(p1, p2){
+        this.p1.push(p1);
+        this.p2.push(p2);
+    };
+    this.attachObject=function(p1, p2){
+        this.p1.push(p1);
+        this.p2.push(p2);
+    };
+};
+
 describe('LineChart', function() {
     it('returns 381 when there are no params', function() {
         assert.strictEqual((new LineChart()).hasOwnProperty('_dataLineChart'),false);
@@ -113,13 +127,16 @@ describe('LineChart', function() {
         });
     });
     describe('#deleteAllFlows', function() {
-        it('return true - deleted flow', function() {
-            var mock = new socketMock();
+        it('deletes all flows and sends right message', function() {
+            var mock = new socketMockHistory();
             var lineChart=new LineChart({ID: 'dada'}, {_page: 'dssada'}, mock);
             lineChart.createLineChartFlow({ ID:'flow1', name: 'grafico tempo-temperatura', xKey: 'tempo', yKey: 'temperatura'});
-            assert.strictEqual(lineChart.deleteFlow('flow1'),true);
-            assert.strictEqual(mock.p1,'deleteFlow');
-            assert.strictEqual(mock.p2,'flow1');
+            lineChart.createLineChartFlow({ ID:'flow2', name: 'grafico tempo-temperatura', xKey: 'tempo', yKey: 'temperatura'});
+            lineChart.deleteAllFlows();
+            assert.strictEqual(mock.p1[mock.p1.length-2],'deleteFlow');
+            assert.strictEqual(mock.p2[mock.p2.length-2], {ID: 'flow1'});
+            assert.strictEqual(mock.p1[mock.p1.length-1],'deleteFlow');
+            assert.strictEqual(mock.p2[mock.p2.length-1], {ID: 'flow2'});
             assert.strictEqual(lineChart._flows.length,0);
         });
     });
