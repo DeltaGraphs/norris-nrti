@@ -15,10 +15,10 @@
 <div class="header high">
     <h1>Code coverage report for <span class="entity">norris-nrti/lib/businessTier/graph/lineChart.js</span></h1>
     <h2>
-        Statements: <span class="metric">97.06% <small>(99 / 102)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Branches: <span class="metric">96.43% <small>(27 / 28)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">97.09% <small>(100 / 103)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">96.88% <small>(31 / 32)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Functions: <span class="metric">100% <small>(10 / 10)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">97.06% <small>(99 / 102)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">97.09% <small>(100 / 103)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
     <div class="path"><a href="../../../../index.html">All files</a> &#187; <a href="index.html">norris-nrti/lib/businessTier/graph/</a> &#187; lineChart.js</div>
@@ -201,7 +201,9 @@
 174
 175
 176
-177</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+177
+178
+179</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -229,22 +231,17 @@
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">23</span>
-<span class="cline-any cline-yes">23</span>
 <span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">21</span>
 <span class="cline-any cline-yes">21</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">21</span>
 <span class="cline-any cline-yes">21</span>
-<span class="cline-any cline-yes">21</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">20</span>
-<span class="cline-any cline-yes">20</span>
 <span class="cline-any cline-yes">20</span>
 <span class="cline-any cline-yes">20</span>
 <span class="cline-any cline-yes">20</span>
@@ -255,20 +252,20 @@
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">8</span>
-<span class="cline-any cline-yes">6</span>
-<span class="cline-any cline-yes">6</span>
-<span class="cline-any cline-yes">6</span>
-<span class="cline-any cline-yes">6</span>
 <span class="cline-any cline-yes">7</span>
 <span class="cline-any cline-yes">5</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6</span>
 <span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">4</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -330,11 +327,18 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
@@ -404,24 +408,19 @@ function LineChart(params, page, graphSocket) {
 		console.log('Error: 371');
 		return;
 	}
-	console.log('Piedino1');
 	if (!(graphSocket.hasOwnProperty('_namespace'))){
 		console.log('Error: 372');
 		return;
 	}
-	console.log('Piedino2');
 	<span class="missing-if-branch" title="if path not taken" >I</span>if (!(page.hasOwnProperty('_page'))){
 <span class="cstat-no" title="statement not covered" >		console.log('Error: 373');</span>
 <span class="cstat-no" title="statement not covered" >		return;</span>
 	}
-	console.log('Piedino3');
 	var lc=new LineChartModel(params);
 	if (!lc.hasOwnProperty('_ID')){
 		return;
 	}
-	console.log('Piedino4');
 	this.parent.constructor.call(this, page, graphSocket);
-	console.log('Piedino5');
 	this._dataLineChart=lc;
 	this._flows=[];
 }
@@ -505,13 +504,20 @@ LineChart.prototype.deleteAllFlows = function(){
 };
 &nbsp;
 LineChart.prototype.addRecord = function(flowID, record){
-	return this.getFlowByID(flowID).addRecord(record);
+	var flow=this.getFlowByID(flowID);
+	if (flow!==272){
+		return flow.addRecord(record);
+	}
+	return 272;
 };
 &nbsp;
 LineChart.prototype.updateRecord = function(flowID, ID, record){
-	return this.getFlowByID(flowID).updateRecord(ID, record);
+	var flow=this.getFlowByID(flowID);
+	if (flow!==272){
+		return flow.updateRecord(ID, record);
+	}
+	return 272;
 };
-&nbsp;
 &nbsp;
 LineChart.prototype.updateProperties = function(params){
 	if (params!==undefined){
@@ -558,7 +564,7 @@ module.exports = LineChart;
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Jun 03 2015 20:45:43 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Jun 03 2015 20:55:50 GMT+0000 (UTC)</div>
 </div>
 <script src="../../../../prettify.js"></script>
 <script>

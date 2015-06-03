@@ -224,7 +224,7 @@ LineChartFlow.prototype.getReplaceDataJSON = function(){
 LineChartFlow.prototype.updateProperties = function(params){
 	if (params!==undefined){
 		var prop=this._dataLineChartFlow.updateProperties(params);
-		prop.ID=this._dataLineChartFlow.ID;
+		prop.ID=this._dataLineChartFlow._ID;
 		if (prop.filters !== undefined){//filters changed
 			this._graphSocket.sendMessage(&#039;updateFlowData&#039;, this.getReplaceDataJSON());
 		}

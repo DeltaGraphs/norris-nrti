@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">62.27</p>
+      <p class="stat">62.21</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">175</p>
+      <p class="stat">177</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">42.26</p>
+      <p class="stat">43.43</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">1.70</p>
+      <p class="stat">1.68</p>
     </div>
   </div>
 </div>
@@ -116,24 +116,19 @@ function LineChart(params, page, graphSocket) {
 		console.log(&#039;Error: 371&#039;);
 		return;
 	}
-	console.log(&#039;Piedino1&#039;);
 	if (!(graphSocket.hasOwnProperty(&#039;_namespace&#039;))){
 		console.log(&#039;Error: 372&#039;);
 		return;
 	}
-	console.log(&#039;Piedino2&#039;);
 	if (!(page.hasOwnProperty(&#039;_page&#039;))){
 		console.log(&#039;Error: 373&#039;);
 		return;
 	}
-	console.log(&#039;Piedino3&#039;);
 	var lc=new LineChartModel(params);
 	if (!lc.hasOwnProperty(&#039;_ID&#039;)){
 		return;
 	}
-	console.log(&#039;Piedino4&#039;);
 	this.parent.constructor.call(this, page, graphSocket);
-	console.log(&#039;Piedino5&#039;);
 	this._dataLineChart=lc;
 	this._flows=[];
 }
@@ -217,13 +212,20 @@ LineChart.prototype.deleteAllFlows = function(){
 };
 
 LineChart.prototype.addRecord = function(flowID, record){
-	return this.getFlowByID(flowID).addRecord(record);
+	var flow=this.getFlowByID(flowID);
+	if (flow!==272){
+		return flow.addRecord(record);
+	}
+	return 272;
 };
 
 LineChart.prototype.updateRecord = function(flowID, ID, record){
-	return this.getFlowByID(flowID).updateRecord(ID, record);
+	var flow=this.getFlowByID(flowID);
+	if (flow!==272){
+		return flow.updateRecord(ID, record);
+	}
+	return 272;
 };
-
 
 LineChart.prototype.updateProperties = function(params){
 	if (params!==undefined){

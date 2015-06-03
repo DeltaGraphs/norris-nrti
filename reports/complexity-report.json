@@ -2335,7 +2335,7 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 13,
+                            "distinct": 14,
                             "total": 27,
                             "identifiers": [
                                 "params",
@@ -2345,6 +2345,7 @@
                                 "_dataLineChartFlow",
                                 "updateProperties",
                                 "ID",
+                                "_ID",
                                 "filters",
                                 "\"updateFlowData\"",
                                 "getReplaceDataJSON",
@@ -2354,12 +2355,12 @@
                             ]
                         },
                         "length": 49,
-                        "vocabulary": 19,
-                        "difficulty": 6.230769230769232,
-                        "volume": 208.14844815873568,
-                        "effort": 1296.9249462198147,
-                        "bugs": 0.0693828160529119,
-                        "time": 72.05138590110082
+                        "vocabulary": 20,
+                        "difficulty": 5.785714285714286,
+                        "volume": 211.77447664948076,
+                        "effort": 1225.2666149005672,
+                        "bugs": 0.07059149221649359,
+                        "time": 68.07036749447596
                     },
                     "params": 1,
                     "line": 133,
@@ -2378,10 +2379,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 94.67864731564846,
+            "maintainability": 94.68298740042628,
             "loc": 15.2,
             "cyclomatic": 4,
-            "effort": 11300.563936977747,
+            "effort": 11286.2322707139,
             "params": 1.2,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/flow/lineChartFlow.js"
         },
@@ -4147,10 +4148,10 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 111,
-                    "physical": 175
+                    "logical": 112,
+                    "physical": 177
                 },
-                "cyclomatic": 18,
+                "cyclomatic": 20,
                 "halstead": {
                     "operators": {
                         "distinct": 22,
@@ -4181,8 +4182,8 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 101,
-                        "total": 388,
+                        "distinct": 97,
+                        "total": 383,
                         "identifiers": [
                             "\"use strict\"",
                             "Graph",
@@ -4200,22 +4201,17 @@
                             "\"Error: 371\"",
                             "console",
                             "log",
-                            "\"Piedino1\"",
                             "\"_namespace\"",
                             "_hasOwnProperty",
                             "\"Error: 372\"",
-                            "\"Piedino2\"",
                             "\"_page\"",
                             "\"Error: 373\"",
-                            "\"Piedino3\"",
                             "lc",
                             "\"_ID\"",
-                            "\"Piedino4\"",
                             "this",
                             "parent",
                             "_constructor",
                             "call",
-                            "\"Piedino5\"",
                             "_dataLineChart",
                             "_flows",
                             "<anonymous>",
@@ -4266,6 +4262,7 @@
                             "addRecord",
                             "flowID",
                             "record",
+                            "flow",
                             "updateRecord",
                             "updateProperties",
                             "\"updateGraphProp\"",
@@ -4287,30 +4284,30 @@
                             "exports"
                         ]
                     },
-                    "length": 735,
-                    "vocabulary": 123,
-                    "difficulty": 42.257425742574256,
-                    "volume": 5102.748161424342,
-                    "effort": 215629.00151444643,
-                    "bugs": 1.7009160538081138,
-                    "time": 11979.388973024801
+                    "length": 730,
+                    "vocabulary": 119,
+                    "difficulty": 43.432989690721655,
+                    "volume": 5033.216967214799,
+                    "effort": 218607.6606482057,
+                    "bugs": 1.6777389890715997,
+                    "time": 12144.870036011427
                 },
                 "params": 12,
                 "line": 2,
-                "cyclomaticDensity": 16.216216216216218
+                "cyclomaticDensity": 17.857142857142858
             },
             "functions": [
                 {
                     "name": "LineChart",
                     "sloc": {
-                        "logical": 20,
-                        "physical": 26
+                        "logical": 15,
+                        "physical": 21
                     },
                     "cyclomatic": 5,
                     "halstead": {
                         "operators": {
                             "distinct": 10,
-                            "total": 46,
+                            "total": 36,
                             "identifiers": [
                                 "if",
                                 "===",
@@ -4325,8 +4322,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 27,
-                            "total": 54,
+                            "distinct": 22,
+                            "total": 39,
                             "identifiers": [
                                 "params",
                                 "page",
@@ -4335,39 +4332,34 @@
                                 "\"Error: 371\"",
                                 "console",
                                 "log",
-                                "\"Piedino1\"",
                                 "\"_namespace\"",
                                 "_hasOwnProperty",
                                 "\"Error: 372\"",
-                                "\"Piedino2\"",
                                 "\"_page\"",
                                 "\"Error: 373\"",
-                                "\"Piedino3\"",
                                 "lc",
                                 "LineChartModel",
                                 "\"_ID\"",
-                                "\"Piedino4\"",
                                 "this",
                                 "parent",
                                 "_constructor",
                                 "call",
-                                "\"Piedino5\"",
                                 "_dataLineChart",
                                 "_flows",
                                 "<anonymous>"
                             ]
                         },
-                        "length": 100,
-                        "vocabulary": 37,
-                        "difficulty": 10,
-                        "volume": 520.945336562895,
-                        "effort": 5209.45336562895,
-                        "bugs": 0.173648445520965,
-                        "time": 289.414075868275
+                        "length": 75,
+                        "vocabulary": 32,
+                        "difficulty": 8.863636363636363,
+                        "volume": 375,
+                        "effort": 3323.863636363636,
+                        "bugs": 0.125,
+                        "time": 184.65909090909088
                     },
                     "params": 3,
                     "line": 23,
-                    "cyclomaticDensity": 25
+                    "cyclomaticDensity": 33.33333333333333
                 },
                 {
                     "name": "<anonymous>.getFlowByID",
@@ -4425,7 +4417,7 @@
                         "time": 195.7428688390628
                     },
                     "params": 1,
-                    "line": 54,
+                    "line": 49,
                     "cyclomaticDensity": 41.66666666666667
                 },
                 {
@@ -4496,7 +4488,7 @@
                         "time": 298.22882019930233
                     },
                     "params": 1,
-                    "line": 75,
+                    "line": 70,
                     "cyclomaticDensity": 13.333333333333334
                 },
                 {
@@ -4564,7 +4556,7 @@
                         "time": 318.69715453335493
                     },
                     "params": 1,
-                    "line": 96,
+                    "line": 91,
                     "cyclomaticDensity": 33.33333333333333
                 },
                 {
@@ -4615,89 +4607,101 @@
                         "time": 39.2116385856331
                     },
                     "params": 0,
-                    "line": 119,
+                    "line": 114,
                     "cyclomaticDensity": 50
                 },
                 {
                     "name": "<anonymous>.addRecord",
                     "sloc": {
-                        "logical": 1,
-                        "physical": 3
+                        "logical": 4,
+                        "physical": 7
                     },
-                    "cyclomatic": 1,
+                    "cyclomatic": 2,
                     "halstead": {
                         "operators": {
-                            "distinct": 3,
-                            "total": 5,
+                            "distinct": 7,
+                            "total": 10,
                             "identifiers": [
-                                "return",
+                                "var",
+                                "=",
                                 "()",
-                                "."
+                                ".",
+                                "if",
+                                "!==",
+                                "return"
                             ]
                         },
                         "operands": {
-                            "distinct": 5,
-                            "total": 7,
+                            "distinct": 7,
+                            "total": 12,
                             "identifiers": [
                                 "flowID",
                                 "record",
+                                "flow",
                                 "this",
                                 "getFlowByID",
+                                272,
                                 "addRecord"
                             ]
                         },
-                        "length": 12,
-                        "vocabulary": 8,
-                        "difficulty": 2.0999999999999996,
-                        "volume": 36,
-                        "effort": 75.6,
-                        "bugs": 0.012,
-                        "time": 4.199999999999999
+                        "length": 22,
+                        "vocabulary": 14,
+                        "difficulty": 6,
+                        "volume": 83.76180828526728,
+                        "effort": 502.57084971160367,
+                        "bugs": 0.02792060276175576,
+                        "time": 27.92060276175576
                     },
                     "params": 2,
-                    "line": 128,
-                    "cyclomaticDensity": 100
+                    "line": 123,
+                    "cyclomaticDensity": 50
                 },
                 {
                     "name": "<anonymous>.updateRecord",
                     "sloc": {
-                        "logical": 1,
-                        "physical": 3
+                        "logical": 4,
+                        "physical": 7
                     },
-                    "cyclomatic": 1,
+                    "cyclomatic": 2,
                     "halstead": {
                         "operators": {
-                            "distinct": 3,
-                            "total": 5,
+                            "distinct": 7,
+                            "total": 10,
                             "identifiers": [
-                                "return",
+                                "var",
+                                "=",
                                 "()",
-                                "."
+                                ".",
+                                "if",
+                                "!==",
+                                "return"
                             ]
                         },
                         "operands": {
-                            "distinct": 6,
-                            "total": 9,
+                            "distinct": 8,
+                            "total": 14,
                             "identifiers": [
                                 "flowID",
                                 "ID",
                                 "record",
+                                "flow",
                                 "this",
                                 "getFlowByID",
+                                272,
                                 "updateRecord"
                             ]
                         },
-                        "length": 14,
-                        "vocabulary": 9,
-                        "difficulty": 2.25,
-                        "volume": 44.37895002019238,
-                        "effort": 99.85263754543286,
-                        "bugs": 0.014792983340064125,
-                        "time": 5.547368752524047
+                        "length": 24,
+                        "vocabulary": 15,
+                        "difficulty": 6.125,
+                        "volume": 93.76537429460444,
+                        "effort": 574.3129175544522,
+                        "bugs": 0.03125512476486815,
+                        "time": 31.906273197469563
                     },
                     "params": 3,
-                    "line": 132,
-                    "cyclomaticDensity": 100
+                    "line": 131,
+                    "cyclomaticDensity": 50
                 },
                 {
                     "name": "<anonymous>.updateProperties",
@@ -4744,7 +4748,7 @@
                         "time": 38.400000000000006
                     },
                     "params": 1,
-                    "line": 137,
+                    "line": 139,
                     "cyclomaticDensity": 50
                 },
                 {
@@ -4782,7 +4786,7 @@
                         "time": 1.5078947920873411
                     },
                     "params": 0,
-                    "line": 145,
+                    "line": 147,
                     "cyclomaticDensity": 100
                 },
                 {
@@ -4850,7 +4854,7 @@
                         "time": 902.3242435850648
                     },
                     "params": 0,
-                    "line": 149,
+                    "line": 151,
                     "cyclomaticDensity": 15
                 }
             ],
@@ -4871,10 +4875,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 106.48411088677575,
-            "loc": 9.3,
-            "cyclomatic": 2.7,
-            "effort": 3767.893317279547,
+            "maintainability": 106.3849280076294,
+            "loc": 9.4,
+            "cyclomatic": 2.9,
+            "effort": 3669.4774573250784,
             "params": 1.2,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/graph/lineChart.js"
         },
@@ -16871,9 +16875,9 @@
     ],
     "changeCost": 21.22788761706556,
     "coreSize": 29.03225806451613,
-    "loc": 10.156164265841689,
-    "cyclomatic": 4.244249836185322,
-    "effort": 7833.973867806341,
+    "loc": 10.159390072293302,
+    "cyclomatic": 4.250701449088548,
+    "effort": 7830.336850831557,
     "params": 1.119795079472499,
-    "maintainability": 105.90108762512622
+    "maintainability": 105.89802818014658
 }
