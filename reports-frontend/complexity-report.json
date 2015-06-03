@@ -1761,14 +1761,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 31,
-                    "physical": 80
+                    "logical": 51,
+                    "physical": 85
                 },
-                "cyclomatic": 3,
+                "cyclomatic": 8,
                 "halstead": {
                     "operators": {
-                        "distinct": 11,
-                        "total": 105,
+                        "distinct": 15,
+                        "total": 157,
                         "identifiers": [
                             "()",
                             "[]",
@@ -1776,16 +1776,20 @@
                             "var",
                             "=",
                             ".",
+                            "if",
+                            "===",
+                            "+",
+                            "++ (postfix)",
                             "for",
                             "<",
-                            "++ (postfix)",
-                            "if",
-                            "==="
+                            "switch",
+                            "case",
+                            "break"
                         ]
                     },
                     "operands": {
-                        "distinct": 47,
-                        "total": 140,
+                        "distinct": 62,
+                        "total": 194,
                         "identifiers": [
                             "\"use strict\"",
                             "\"MapChartController\"",
@@ -1807,6 +1811,8 @@
                             "getUrl",
                             "build",
                             "listenOnEvents",
+                            "count",
+                            0,
                             "\"listen ON EVENTS\"",
                             "console",
                             "log",
@@ -1816,50 +1822,63 @@
                             "updateParameters",
                             "data",
                             "initializeData",
+                            "\"configGraph lunghezza flussi \"",
+                            "getFlowList",
+                            "length",
+                            "\"configGraph lung record \"",
+                            "flow",
+                            "getData",
                             "on",
                             "\"updateGraphProp\"",
                             "\"insertFlow\"",
-                            "flow",
                             "ID",
                             "addFlow",
                             "\"deleteFlow\"",
                             "deleteFlow",
                             "\"updateFlowProp\"",
                             "i",
-                            0,
-                            "getFlowList",
-                            "length",
                             "id",
+                            "\"updateFlowData\"",
+                            "\"updateFlowData \"",
+                            "action",
+                            "\"insertRecords\"",
+                            "streamUpdate",
+                            "\"deleteRecord\"",
+                            "deleteData",
+                            "\"updateRecord\"",
+                            "inPlaceUpdate",
+                            "\"replaceData\"",
+                            "replaceData",
                             "\"app\"",
                             "angular",
                             "module",
                             "controller"
                         ]
                     },
-                    "length": 245,
-                    "vocabulary": 58,
-                    "difficulty": 16.382978723404253,
-                    "volume": 1435.205343806255,
-                    "effort": 23512.938611293965,
-                    "bugs": 0.4784017812687517,
-                    "time": 1306.2743672941092
+                    "length": 351,
+                    "vocabulary": 77,
+                    "difficulty": 23.467741935483872,
+                    "volume": 2199.6420757839105,
+                    "effort": 51620.63258492887,
+                    "bugs": 0.7332140252613035,
+                    "time": 2867.812921384937
                 },
-                "params": 10,
+                "params": 11,
                 "line": 2,
-                "cyclomaticDensity": 9.67741935483871
+                "cyclomaticDensity": 15.686274509803921
             },
             "functions": [
                 {
                     "name": "<anonymous>",
                     "sloc": {
-                        "logical": 5,
-                        "physical": 62
+                        "logical": 6,
+                        "physical": 67
                     },
                     "cyclomatic": 1,
                     "halstead": {
                         "operators": {
                             "distinct": 4,
-                            "total": 13,
+                            "total": 15,
                             "identifiers": [
                                 "var",
                                 "=",
@@ -1868,8 +1887,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 10,
-                            "total": 20,
+                            "distinct": 12,
+                            "total": 22,
                             "identifiers": [
                                 "$scope",
                                 "$location",
@@ -1880,20 +1899,22 @@
                                 "this",
                                 "socketConnection",
                                 "<anonymous>",
+                                "count",
+                                0,
                                 "listenOnEvents"
                             ]
                         },
-                        "length": 33,
-                        "vocabulary": 14,
-                        "difficulty": 4,
-                        "volume": 125.64271242790092,
-                        "effort": 502.57084971160367,
-                        "bugs": 0.04188090414263364,
-                        "time": 27.92060276175576
+                        "length": 37,
+                        "vocabulary": 16,
+                        "difficulty": 3.6666666666666665,
+                        "volume": 148,
+                        "effort": 542.6666666666666,
+                        "bugs": 0.04933333333333333,
+                        "time": 30.148148148148145
                     },
                     "params": 5,
                     "line": 20,
-                    "cyclomaticDensity": 20
+                    "cyclomaticDensity": 16.666666666666664
                 },
                 {
                     "name": "<anonymous>.socketConnection",
@@ -1941,14 +1962,14 @@
                 {
                     "name": "<anonymous>.listenOnEvents",
                     "sloc": {
-                        "logical": 6,
-                        "physical": 48
+                        "logical": 7,
+                        "physical": 53
                     },
                     "cyclomatic": 1,
                     "halstead": {
                         "operators": {
                             "distinct": 3,
-                            "total": 17,
+                            "total": 20,
                             "identifiers": [
                                 "()",
                                 ".",
@@ -1956,8 +1977,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 11,
-                            "total": 23,
+                            "distinct": 12,
+                            "total": 27,
                             "identifiers": [
                                 "\"listen ON EVENTS\"",
                                 "console",
@@ -1969,42 +1990,49 @@
                                 "\"updateGraphProp\"",
                                 "\"insertFlow\"",
                                 "\"deleteFlow\"",
-                                "\"updateFlowProp\""
+                                "\"updateFlowProp\"",
+                                "\"updateFlowData\""
                             ]
                         },
-                        "length": 40,
-                        "vocabulary": 14,
-                        "difficulty": 3.1363636363636362,
-                        "volume": 152.29419688230416,
-                        "effort": 477.649981130863,
-                        "bugs": 0.05076473229410139,
-                        "time": 26.536110062825724
+                        "length": 47,
+                        "vocabulary": 15,
+                        "difficulty": 3.375,
+                        "volume": 183.62385799360038,
+                        "effort": 619.7305207284013,
+                        "bugs": 0.06120795266453346,
+                        "time": 34.42947337380007
                     },
                     "params": 0,
                     "line": 29,
-                    "cyclomaticDensity": 16.666666666666664
+                    "cyclomaticDensity": 14.285714285714285
                 },
                 {
                     "name": "<anonymous>",
                     "sloc": {
-                        "logical": 3,
-                        "physical": 5
+                        "logical": 7,
+                        "physical": 10
                     },
-                    "cyclomatic": 1,
+                    "cyclomatic": 2,
                     "halstead": {
                         "operators": {
-                            "distinct": 2,
-                            "total": 10,
+                            "distinct": 6,
+                            "total": 31,
                             "identifiers": [
+                                "if",
+                                "===",
                                 "()",
-                                "."
+                                ".",
+                                "+",
+                                "++ (postfix)"
                             ]
                         },
                         "operands": {
-                            "distinct": 10,
-                            "total": 14,
+                            "distinct": 18,
+                            "total": 34,
                             "identifiers": [
                                 "info",
+                                "count",
+                                0,
                                 "\"configGraph\"",
                                 "console",
                                 "log",
@@ -2013,20 +2041,26 @@
                                 "mapChart",
                                 "updateParameters",
                                 "data",
-                                "initializeData"
+                                "initializeData",
+                                "\"configGraph lunghezza flussi \"",
+                                "getFlowList",
+                                "length",
+                                "\"configGraph lung record \"",
+                                "flow",
+                                "getData"
                             ]
                         },
-                        "length": 24,
-                        "vocabulary": 12,
-                        "difficulty": 1.4,
-                        "volume": 86.03910001730776,
-                        "effort": 120.45474002423086,
-                        "bugs": 0.028679700005769252,
-                        "time": 6.691930001346159
+                        "length": 65,
+                        "vocabulary": 24,
+                        "difficulty": 5.666666666666666,
+                        "volume": 298.0225625468752,
+                        "effort": 1688.7945210989592,
+                        "bugs": 0.09934085418229173,
+                        "time": 93.82191783883107
                     },
                     "params": 1,
                     "line": 31,
-                    "cyclomaticDensity": 33.33333333333333
+                    "cyclomaticDensity": 28.57142857142857
                 },
                 {
                     "name": "<anonymous>",
@@ -2066,7 +2100,7 @@
                         "time": 2.6164460329365116
                     },
                     "params": 1,
-                    "line": 36,
+                    "line": 41,
                     "cyclomaticDensity": 50
                 },
                 {
@@ -2115,7 +2149,7 @@
                         "time": 21.904608559521048
                     },
                     "params": 1,
-                    "line": 40,
+                    "line": 45,
                     "cyclomaticDensity": 25
                 },
                 {
@@ -2157,7 +2191,7 @@
                         "time": 3.1143075889569025
                     },
                     "params": 1,
-                    "line": 46,
+                    "line": 51,
                     "cyclomaticDensity": 50
                 },
                 {
@@ -2212,16 +2246,69 @@
                         "time": 109.21171008194788
                     },
                     "params": 1,
-                    "line": 50,
+                    "line": 55,
                     "cyclomaticDensity": 60
+                },
+                {
+                    "name": "<anonymous>",
+                    "sloc": {
+                        "logical": 14,
+                        "physical": 17
+                    },
+                    "cyclomatic": 5,
+                    "halstead": {
+                        "operators": {
+                            "distinct": 6,
+                            "total": 26,
+                            "identifiers": [
+                                "()",
+                                "+",
+                                ".",
+                                "switch",
+                                "case",
+                                "break"
+                            ]
+                        },
+                        "operands": {
+                            "distinct": 15,
+                            "total": 28,
+                            "identifiers": [
+                                "data",
+                                "\"updateFlowData \"",
+                                "action",
+                                "console",
+                                "log",
+                                "\"insertRecords\"",
+                                "$scope",
+                                "mapChart",
+                                "streamUpdate",
+                                "\"deleteRecord\"",
+                                "deleteData",
+                                "\"updateRecord\"",
+                                "inPlaceUpdate",
+                                "\"replaceData\"",
+                                "replaceData"
+                            ]
+                        },
+                        "length": 54,
+                        "vocabulary": 21,
+                        "difficulty": 5.6,
+                        "volume": 237.1851408300531,
+                        "effort": 1328.2367886482973,
+                        "bugs": 0.0790617136100177,
+                        "time": 73.79093270268318
+                    },
+                    "params": 1,
+                    "line": 63,
+                    "cyclomaticDensity": 35.714285714285715
                 }
             ],
             "dependencies": [],
-            "maintainability": 129.1474973424407,
-            "loc": 3.625,
-            "cyclomatic": 1.25,
-            "effort": 455.86865380681434,
-            "params": 1.25,
+            "maintainability": 120.78689832203364,
+            "loc": 5.444444444444445,
+            "cyclomatic": 1.7777777777777777,
+            "effort": 747.3002396366824,
+            "params": 1.2222222222222223,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/frontend/app/Controller/GraphsControllers/MapChartController.js"
         },
         {
@@ -15434,23 +15521,26 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 62,
-                    "physical": 145
+                    "logical": 63,
+                    "physical": 148
                 },
                 "cyclomatic": 10,
                 "halstead": {
                     "operators": {
-                        "distinct": 19,
-                        "total": 230,
+                        "distinct": 21,
+                        "total": 244,
                         "identifiers": [
                             "()",
                             "function",
                             "return",
                             "{}",
                             ":",
-                            "if",
-                            "===",
+                            "+",
                             ".",
+                            "if",
+                            "&&",
+                            ">",
+                            "===",
                             "=",
                             "var",
                             "new",
@@ -15458,15 +15548,14 @@
                             "case",
                             "break",
                             "[]",
-                            "+",
                             "for",
                             "<",
                             "++ (postfix)"
                         ]
                     },
                     "operands": {
-                        "distinct": 97,
-                        "total": 242,
+                        "distinct": 99,
+                        "total": 256,
                         "identifiers": [
                             "\"use strict\"",
                             "\"mapChart\"",
@@ -15489,6 +15578,15 @@
                             "link",
                             "element",
                             "attrs",
+                            "\"watch \"",
+                            "mapChart",
+                            "getFlowList",
+                            "length",
+                            "console",
+                            "log",
+                            0,
+                            "render",
+                            "$watch",
                             "\"id\"",
                             "value",
                             "$parent",
@@ -15498,14 +15596,10 @@
                             "_constructor",
                             "name",
                             "\"MapChart\"",
-                            "mapChart",
-                            "getUrl",
-                            "console",
-                            "log",
+                            "\"mapchart \"",
+                            "JSON",
+                            "stringify",
                             "socketConnection",
-                            "\"scope.mapChart\"",
-                            "render",
-                            "$watch",
                             "$observe",
                             "\"render\"",
                             "map",
@@ -15544,10 +15638,7 @@
                             "Marker",
                             "markers",
                             "\"lunghezza flussi \"",
-                            "getFlowList",
-                            "length",
                             "\"lung record \"",
-                            0,
                             "flow",
                             "getData",
                             "i",
@@ -15567,24 +15658,24 @@
                             "directive"
                         ]
                     },
-                    "length": 472,
-                    "vocabulary": 116,
-                    "difficulty": 23.701030927835053,
-                    "volume": 3236.967029700214,
-                    "effort": 76719.45568330714,
-                    "bugs": 1.0789890099000714,
-                    "time": 4262.191982405952
+                    "length": 500,
+                    "vocabulary": 120,
+                    "difficulty": 27.151515151515152,
+                    "volume": 3453.4452978042596,
+                    "effort": 93766.27232826111,
+                    "bugs": 1.1511484326014199,
+                    "time": 5209.237351570062
                 },
                 "params": 4,
                 "line": 2,
-                "cyclomaticDensity": 16.129032258064516
+                "cyclomaticDensity": 15.873015873015872
             },
             "functions": [
                 {
                     "name": "<anonymous>",
                     "sloc": {
                         "logical": 10,
-                        "physical": 129
+                        "physical": 132
                     },
                     "cyclomatic": 1,
                     "halstead": {
@@ -15636,14 +15727,14 @@
                 {
                     "name": "link",
                     "sloc": {
-                        "logical": 2,
-                        "physical": 116
+                        "logical": 3,
+                        "physical": 119
                     },
                     "cyclomatic": 1,
                     "halstead": {
                         "operators": {
                             "distinct": 4,
-                            "total": 6,
+                            "total": 9,
                             "identifiers": [
                                 "()",
                                 "function",
@@ -15652,53 +15743,103 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 7,
-                            "total": 10,
+                            "distinct": 10,
+                            "total": 15,
                             "identifiers": [
                                 "scope",
                                 "element",
                                 "attrs",
-                                "\"id\"",
+                                "\"mapChart\"",
                                 "<anonymous>",
+                                true,
+                                "$watch",
+                                "\"id\"",
                                 "$observe",
                                 "render"
                             ]
                         },
-                        "length": 16,
-                        "vocabulary": 11,
-                        "difficulty": 2.857142857142857,
-                        "volume": 55.350905898196764,
-                        "effort": 158.14544542341932,
-                        "bugs": 0.018450301966065587,
-                        "time": 8.785858079078851
+                        "length": 24,
+                        "vocabulary": 14,
+                        "difficulty": 3,
+                        "volume": 91.37651812938249,
+                        "effort": 274.1295543881475,
+                        "bugs": 0.03045883937646083,
+                        "time": 15.229419688230415
                     },
                     "params": 3,
                     "line": 29,
-                    "cyclomaticDensity": 50
+                    "cyclomaticDensity": 33.33333333333333
                 },
                 {
                     "name": "<anonymous>",
                     "sloc": {
-                        "logical": 6,
-                        "physical": 14
+                        "logical": 3,
+                        "physical": 6
+                    },
+                    "cyclomatic": 2,
+                    "halstead": {
+                        "operators": {
+                            "distinct": 6,
+                            "total": 17,
+                            "identifiers": [
+                                "()",
+                                "+",
+                                ".",
+                                "if",
+                                "&&",
+                                ">"
+                            ]
+                        },
+                        "operands": {
+                            "distinct": 9,
+                            "total": 16,
+                            "identifiers": [
+                                "\"watch \"",
+                                "scope",
+                                "mapChart",
+                                "getFlowList",
+                                "length",
+                                "console",
+                                "log",
+                                0,
+                                "render"
+                            ]
+                        },
+                        "length": 33,
+                        "vocabulary": 15,
+                        "difficulty": 5.333333333333333,
+                        "volume": 128.92738965508113,
+                        "effort": 687.6127448270993,
+                        "bugs": 0.04297579655169371,
+                        "time": 38.20070804594996
+                    },
+                    "params": 0,
+                    "line": 30,
+                    "cyclomaticDensity": 66.66666666666666
+                },
+                {
+                    "name": "<anonymous>",
+                    "sloc": {
+                        "logical": 5,
+                        "physical": 9
                     },
                     "cyclomatic": 3,
                     "halstead": {
                         "operators": {
                             "distinct": 6,
-                            "total": 29,
+                            "total": 27,
                             "identifiers": [
                                 "if",
                                 "===",
                                 ".",
                                 "()",
                                 "=",
-                                "function"
+                                "+"
                             ]
                         },
                         "operands": {
-                            "distinct": 18,
-                            "total": 31,
+                            "distinct": 16,
+                            "total": 28,
                             "identifiers": [
                                 "value",
                                 "scope",
@@ -15710,65 +15851,25 @@
                                 "name",
                                 "\"MapChart\"",
                                 "mapChart",
-                                "getUrl",
+                                "\"mapchart \"",
+                                "JSON",
+                                "stringify",
                                 "console",
                                 "log",
-                                "socketConnection",
-                                "\"scope.mapChart\"",
-                                "<anonymous>",
-                                true,
-                                "$watch"
+                                "socketConnection"
                             ]
                         },
-                        "length": 60,
-                        "vocabulary": 24,
-                        "difficulty": 5.166666666666667,
-                        "volume": 275.0977500432694,
-                        "effort": 1421.3383752235586,
-                        "bugs": 0.09169925001442314,
-                        "time": 78.96324306797548
+                        "length": 55,
+                        "vocabulary": 22,
+                        "difficulty": 5.25,
+                        "volume": 245.26873902505136,
+                        "effort": 1287.6608798815196,
+                        "bugs": 0.08175624634168378,
+                        "time": 71.5367155489733
                     },
                     "params": 1,
-                    "line": 31,
-                    "cyclomaticDensity": 50
-                },
-                {
-                    "name": "<anonymous>",
-                    "sloc": {
-                        "logical": 2,
-                        "physical": 5
-                    },
-                    "cyclomatic": 2,
-                    "halstead": {
-                        "operators": {
-                            "distinct": 3,
-                            "total": 4,
-                            "identifiers": [
-                                "if",
-                                ".",
-                                "()"
-                            ]
-                        },
-                        "operands": {
-                            "distinct": 3,
-                            "total": 4,
-                            "identifiers": [
-                                "scope",
-                                "mapChart",
-                                "render"
-                            ]
-                        },
-                        "length": 8,
-                        "vocabulary": 6,
-                        "difficulty": 2,
-                        "volume": 20.67970000576925,
-                        "effort": 41.3594000115385,
-                        "bugs": 0.006893233335256416,
-                        "time": 2.2977444450854723
-                    },
-                    "params": 0,
                     "line": 37,
-                    "cyclomaticDensity": 100
+                    "cyclomaticDensity": 60
                 },
                 {
                     "name": "scope.render",
@@ -15874,15 +15975,15 @@
                         "time": 2544.472435067567
                     },
                     "params": 0,
-                    "line": 46,
+                    "line": 49,
                     "cyclomaticDensity": 17.5
                 }
             ],
             "dependencies": [],
-            "maintainability": 99.16684276710751,
-            "loc": 12,
+            "maintainability": 98.85432896306853,
+            "loc": 12.2,
             "cyclomatic": 2.8,
-            "effort": 9547.105386681991,
+            "effort": 9672.817378369642,
             "params": 0.8,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/frontend/app/View/GraphsView/MapChartView.js"
         },
@@ -18166,9 +18267,9 @@
     ],
     "changeCost": 3.4482758620689653,
     "coreSize": 0,
-    "loc": 4.95289679548003,
-    "cyclomatic": 1.7802766859247237,
-    "effort": 1123.1518029081221,
-    "params": 0.7224094491187238,
-    "maintainability": 124.16317396472314
+    "loc": 5.0225328108057,
+    "cyclomatic": 1.7984759196411988,
+    "effort": 1137.5360642018297,
+    "params": 0.7214515947125936,
+    "maintainability": 123.86410110870777
 }
