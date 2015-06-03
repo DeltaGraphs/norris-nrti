@@ -82,14 +82,13 @@ describe('MapChartFlow', function() {
         });
         it('returns true if ID is valid and sends right message', function() {
             var mock=new socketMock();
-            var flow1=new MapChartFlow({ID: 'flow1'}, mock);
-            var flow2=new MapChartFlow({
-                ID: 'flow2',
+            var flow1=new MapChartFlow({
+                ID: 'flow1',
                 objectKey: 'temperature',
                 latitudeKey: 'a',
                 longitudeKey: 'b'
             }, mock);
-            var ID=flow2.addRecord({temperature: 2, a:1, b:2});
+            var ID=flow1.addRecord({temperature: 2, a:1, b:2});
             assert.strictEqual(flow1.deleteRecord(ID), true);
             assert.strictEqual(mock.p1, 'updateFlowData');
             assert.deepEqual(mock.p2,{
