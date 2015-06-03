@@ -60,10 +60,14 @@ describe('LineChartFlow', function() {
         it('returns 123 if record is invalid', function() {
             var flow1=new LineChartFlow({ID: 'flow1'},new socketMock());
             assert.strictEqual(flow1.addRecord(), 123);
+            
         });
         it('returns valid norrisRecordID if record is valid', function() {
-            var flow1=new LineChartFlow({ID: 'flow1'},new socketMock());
+            var mock=new socketMock();
+            var flow1=new LineChartFlow({ID: 'flow1'},mock);
             assert.strictEqual(flow1.addRecord({'tempo': 1, 'temperatura': 25}).indexOf('flow1'), 0);
+            assert.strictEqual(mock.p1,'updateFlowData');
+            assert.strictEqual(typeof mock.p2,'string');
         });
     });
 
@@ -146,10 +150,9 @@ describe('LineChartFlow', function() {
             assert.strictEqual(flow1._dataLineChartFlow._name,'grafico tempo-temperatura');
             assert.strictEqual(mock.p1[0],'updateFlowData');
             console.log('#updateProperties##updateFlowData '+ JSON.stringify(mock.p2[0]));
-            console.log('#updateProperties##updateFlowProp '+ JSON.stringify(mock.p2[1]));
             assert.strictEqual(mock.p2[0],{});
             assert.strictEqual(mock.p1[1],'updateFlowProp');
-            assert.strictEqual(mock.p2[1],{});
+            assert.strictEqual(mock.p2[1],{'name':'grafico tempo-temperatura','filters':'temperature>3','xKey':'tempo','yKey':'temperatura'});
         });
     });
 });
