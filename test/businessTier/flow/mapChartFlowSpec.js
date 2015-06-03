@@ -50,9 +50,26 @@ describe('MapChartFlow', function() {
             var flow1=new MapChartFlow({ID: 'flow1'}, new socketMock());
             assert.strictEqual(flow1.addRecord(), 133);
         });
-        it('returns valid norrisRecordID if record is valid', function() {
-            var flow2=new MapChartFlow({ID: 'flow2'}, new socketMock());
-            assert.strictEqual(flow2.addRecord({temperature: 2}).indexOf('flow2'), 0);
+        it('returns valid norrisRecordID if record is valid and sends right message', function() {
+            var mock=new socketMock();
+            var flow2=new MapChartFlow({
+                ID: 'flow2',
+                objectKey: 'temperature',
+                latitudeKey: 'a',
+                longitudeKey: 'b'
+            }, mock);
+            var ID=flow2.addRecord({temperature: 2, a:1, b:2});
+            assert.strictEqual(ID.indexOf('flow2'), 0);
+            assert.strictEqual(mock.p1, 'updateFlowData');
+            assert.deepEqual(mock.p2,{
+                action: 'insertRecords',
+                ID: 'flow2',
+                records: [{
+                    norrisRecordID: ID,
+                    markerID: 2,
+                    value: [1,2]
+                }]
+            });
         });
     });
 
@@ -63,10 +80,23 @@ describe('MapChartFlow', function() {
             assert.strictEqual(flow1.deleteRecord(), 155);
             assert.strictEqual(flow1.deleteRecord('flow1asd'), 155);
         });
-        it('returns true if ID is valid', function() {
-            var flow1=new MapChartFlow({ID: 'flow1'}, new socketMock());
-            var ID=flow1.addRecord({temperature: 2});
+        it('returns true if ID is valid and sends right message', function() {
+            var mock=new socketMock();
+            var flow1=new MapChartFlow({ID: 'flow1'}, mock);
+            var flow2=new MapChartFlow({
+                ID: 'flow2',
+                objectKey: 'temperature',
+                latitudeKey: 'a',
+                longitudeKey: 'b'
+            }, mock);
+            var ID=flow2.addRecord({temperature: 2, a:1, b:2});
             assert.strictEqual(flow1.deleteRecord(ID), true);
+            assert.strictEqual(mock.p1, 'updateFlowData');
+            assert.deepEqual(mock.p2,{
+                action: 'deleteRecord',
+                ID: 'flow1',
+                norrisRecordID: ID,
+            });
         });
     });
 

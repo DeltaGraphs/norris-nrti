@@ -25,6 +25,10 @@ var socketMock=function(){
         this.p1=p1;
         this.p2=p2;
     };
+    this.attachObject=function(p1, p2){
+        this.p1=p1;
+        this.p2=p2;
+    };
 };
 
 describe('LineChart', function() {

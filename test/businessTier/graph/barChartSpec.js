@@ -17,14 +17,15 @@
 var BarChart = require('../../../lib/businessTier/graph/barChart.js');
 var assert = require('assert');
 
-var LineChart = require('../../../lib/businessTier/graph/lineChart.js');
-var assert = require('assert');
-
 var socketMock=function(){
     this.p1=null;
     this.p2=null;
     this._namespace='flow1';
     this.sendMessage=function(p1, p2){
+        this.p1=p1;
+        this.p2=p2;
+    };
+    this.attachObject=function(p1, p2){
         this.p1=p1;
         this.p2=p2;
     };
@@ -48,7 +49,7 @@ describe('BarChart', function() {
     });
 
     it('returns a correct BarChart', function() {
-        assert.strictEqual(new LineChart({_ID: 'dada'}, {_page: 'dssada'}, new socketMock()).hasOwnProperty('_dataBarChart'),true);
+        assert.strictEqual(new BarChart({ID: 'dada'}, {_page: 'dssada'}, new socketMock()).hasOwnProperty('_dataBarChart'),true);
     });
 
     /*describe('#getFlowByID', function() {
