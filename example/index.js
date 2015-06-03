@@ -60,8 +60,8 @@ var mapChart=page1.createMapChart({
     legend: {
         position: 'NE',
     },
-    latitude: 45.42533493042,
-    longitude: 45.42533493042,
+    latitude: 45.4113311,
+    longitude: 11.8876318,
     mapType: 'roadMap',
     mapWidth: 2000,
     mapHeight: 2000,
@@ -88,8 +88,8 @@ var mapChartFlow=mapChart.createMapChartFlow({
 		'strokeColor' : '#DC271C',
 		'fillColor' : '#3a6d99'
 	},
-    latitudeKey: '45.4113311',
-    longitudeKey: '11.8876318',
+    latitudeKey: '1',
+    longitudeKey: '2',
     objectKey: '0'
 });
 
