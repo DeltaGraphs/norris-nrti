@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">65.41</p>
+      <p class="stat">65.48</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">138</p>
+      <p class="stat">159</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">23.81</p>
+      <p class="stat">20.98</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">1.88</p>
+      <p class="stat">2.20</p>
     </div>
   </div>
 </div>
@@ -107,7 +107,7 @@
 
 var LineChartFlow = require(&#039;../../../lib/businessTier/flow/lineChartFlow.js&#039;);
 var assert = require(&#039;assert&#039;);
-
+var Socket = require(&#039;../../../lib/presentationTier/socket.js&#039;);
 var socketMock=function(){
     this.p1=null;
     this.p2=null;
@@ -214,8 +214,21 @@ describe(&#039;LineChartFlow&#039;, function() {
     });
 
     describe(&#039;#updateProperties&#039;, function() {
+
+        var io = require(&#039;socket.io-client&#039;);
+        var server = require(&#039;socket.io&#039;)();
+        server.listen(5000);
+
+        var socketURL = &#039;http://0.0.0.0:5000/namespace&#039;;
+        var options ={
+            transports: [&#039;websocket&#039;],
+            &#039;force new connection&#039;: true
+        };
+        var client1 = io.connect(socketURL, options);
+
         it(&#039;update correct properties&#039;, function() {
-            var flow1=new LineChartFlow({ID: &#039;flow1&#039;},new socketMock());
+            var socket1 = new Socket(server, &#039;/namespace&#039;);
+            var flow1=new LineChartFlow({ID: &#039;flow1&#039;},socket1);
             flow1.updateProperties({name: &#039;grafico tempo-temperatura&#039;,xKey: &#039;tempo&#039;,yKey: &#039;temperatura&#039;,filters: &#039;temperature&gt;3&#039;,});
             flow1.addRecord({&#039;tempo&#039;: 4, &#039;temperatura&#039;: 4});
             flow1.addRecord({&#039;tempo&#039;: 9, &#039;temperatura&#039;: 23});
@@ -225,6 +238,14 @@ describe(&#039;LineChartFlow&#039;, function() {
             assert.strictEqual(flow1._dataLineChartFlow._xKey,&#039;tempo&#039;);
             assert.strictEqual(flow1._dataLineChartFlow._yKey,&#039;temperatura&#039;);
             assert.strictEqual(flow1._dataLineChartFlow._name,&#039;grafico tempo-temperatura&#039;);
+            client1.on(&#039;updateFlowData&#039;, function(message) {
+                console.log(&#039;STAMPAAAAA#updateFlowData &#039;+message);
+                assert.strictEqual(message, &#039;message&#039;);
+            });
+            client1.on(&#039;updateFlowProp&#039;, function(message) {
+                console.log(&#039;STAMPAAAAA#updateFlowProp &#039;+message);
+                assert.strictEqual(message, &#039;message&#039;);
+            });
         });
     });
 });</textarea>
