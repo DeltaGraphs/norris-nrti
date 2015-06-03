@@ -4141,14 +4141,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 110,
+                    "logical": 111,
                     "physical": 175
                 },
                 "cyclomatic": 18,
                 "halstead": {
                     "operators": {
                         "distinct": 22,
-                        "total": 344,
+                        "total": 347,
                         "identifiers": [
                             "var",
                             "=",
@@ -4168,15 +4168,15 @@
                             "else",
                             "++ (postfix)",
                             "{}",
-                            ">",
                             ":",
+                            ">",
                             "!==",
                             "for"
                         ]
                     },
                     "operands": {
                         "distinct": 101,
-                        "total": 385,
+                        "total": 388,
                         "identifiers": [
                             "\"use strict\"",
                             "Graph",
@@ -4281,17 +4281,17 @@
                             "exports"
                         ]
                     },
-                    "length": 729,
+                    "length": 735,
                     "vocabulary": 123,
-                    "difficulty": 41.930693069306926,
-                    "volume": 5061.093074392305,
-                    "effort": 212215.14029753872,
-                    "bugs": 1.6870310247974352,
-                    "time": 11789.73001652993
+                    "difficulty": 42.257425742574256,
+                    "volume": 5102.748161424342,
+                    "effort": 215629.00151444643,
+                    "bugs": 1.7009160538081138,
+                    "time": 11979.388973024801
                 },
                 "params": 12,
                 "line": 2,
-                "cyclomaticDensity": 16.363636363636363
+                "cyclomaticDensity": 16.216216216216218
             },
             "functions": [
                 {
@@ -4496,14 +4496,14 @@
                 {
                     "name": "<anonymous>.deleteFlow",
                     "sloc": {
-                        "logical": 14,
+                        "logical": 15,
                         "physical": 22
                     },
                     "cyclomatic": 5,
                     "halstead": {
                         "operators": {
-                            "distinct": 14,
-                            "total": 32,
+                            "distinct": 16,
+                            "total": 35,
                             "identifiers": [
                                 "if",
                                 "===",
@@ -4518,12 +4518,14 @@
                                 "else",
                                 "++ (postfix)",
                                 "()",
+                                "{}",
+                                ":",
                                 "return"
                             ]
                         },
                         "operands": {
-                            "distinct": 17,
-                            "total": 35,
+                            "distinct": 20,
+                            "total": 38,
                             "identifiers": [
                                 "ID",
                                 "\"string\"",
@@ -4535,8 +4537,11 @@
                                 0,
                                 "found",
                                 false,
+                                "_dataLineChartFlow",
+                                "_ID",
                                 true,
                                 "\"deleteFlow\"",
+                                "<anonymous>",
                                 "_graphSocket",
                                 "sendMessage",
                                 1,
@@ -4544,17 +4549,17 @@
                                 273
                             ]
                         },
-                        "length": 67,
-                        "vocabulary": 31,
-                        "difficulty": 14.411764705882351,
-                        "volume": 331.9311527959207,
-                        "effort": 4783.713672647092,
-                        "bugs": 0.11064371759864024,
-                        "time": 265.7618707026162
+                        "length": 73,
+                        "vocabulary": 36,
+                        "difficulty": 15.2,
+                        "volume": 377.40452510528877,
+                        "effort": 5736.548781600389,
+                        "bugs": 0.1258015083684296,
+                        "time": 318.69715453335493
                     },
                     "params": 1,
                     "line": 96,
-                    "cyclomaticDensity": 35.714285714285715
+                    "cyclomaticDensity": 33.33333333333333
                 },
                 {
                     "name": "<anonymous>.deleteAllFlows",
@@ -4860,10 +4865,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 106.74684594979303,
-            "loc": 9.2,
+            "maintainability": 106.48411088677575,
+            "loc": 9.3,
             "cyclomatic": 2.7,
-            "effort": 3672.6098063842173,
+            "effort": 3767.893317279547,
             "params": 1.2,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/graph/lineChart.js"
         },
@@ -4871,13 +4876,13 @@
             "aggregate": {
                 "sloc": {
                     "logical": 111,
-                    "physical": 180
+                    "physical": 178
                 },
                 "cyclomatic": 22,
                 "halstead": {
                     "operators": {
                         "distinct": 23,
-                        "total": 368,
+                        "total": 369,
                         "identifiers": [
                             "var",
                             "=",
@@ -4906,7 +4911,7 @@
                     },
                     "operands": {
                         "distinct": 95,
-                        "total": 402,
+                        "total": 403,
                         "identifiers": [
                             "\"use strict\"",
                             "Graph",
@@ -4972,12 +4977,12 @@
                             "\"insertFlow\"",
                             "sendMessage",
                             "deleteFlow",
+                            "_dataMapChartFlow",
+                            "_ID",
                             "\"deleteFlow\"",
                             "splice",
                             283,
                             "deleteAllFlows",
-                            "_dataMapChartFlow",
-                            "_ID",
                             "addRecord",
                             "flowID",
                             "record",
@@ -5005,13 +5010,13 @@
                             "exports"
                         ]
                     },
-                    "length": 770,
+                    "length": 772,
                     "vocabulary": 118,
-                    "difficulty": 48.66315789473684,
-                    "volume": 5299.635148008618,
-                    "effort": 257896.9819920404,
-                    "bugs": 1.7665450493362058,
-                    "time": 14327.610110668911
+                    "difficulty": 48.784210526315796,
+                    "volume": 5313.400434107341,
+                    "effort": 259210.04538811027,
+                    "bugs": 1.7711334780357806,
+                    "time": 14400.558077117237
                 },
                 "params": 14,
                 "line": 2,
@@ -5216,13 +5221,13 @@
                     "name": "<anonymous>.deleteFlow",
                     "sloc": {
                         "logical": 15,
-                        "physical": 24
+                        "physical": 22
                     },
                     "cyclomatic": 5,
                     "halstead": {
                         "operators": {
                             "distinct": 16,
-                            "total": 34,
+                            "total": 35,
                             "identifiers": [
                                 "if",
                                 "===",
@@ -5243,8 +5248,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 18,
-                            "total": 37,
+                            "distinct": 20,
+                            "total": 38,
                             "identifiers": [
                                 "ID",
                                 "\"string\"",
@@ -5256,6 +5261,8 @@
                                 0,
                                 "found",
                                 false,
+                                "_dataMapChartFlow",
+                                "_ID",
                                 true,
                                 "\"deleteFlow\"",
                                 "<anonymous>",
@@ -5266,13 +5273,13 @@
                                 283
                             ]
                         },
-                        "length": 71,
-                        "vocabulary": 34,
-                        "difficulty": 16.444444444444443,
-                        "volume": 361.2098617287741,
-                        "effort": 5939.895503984285,
-                        "bugs": 0.1204032872429247,
-                        "time": 329.9941946657936
+                        "length": 73,
+                        "vocabulary": 36,
+                        "difficulty": 15.2,
+                        "volume": 377.40452510528877,
+                        "effort": 5736.548781600389,
+                        "bugs": 0.1258015083684296,
+                        "time": 318.69715453335493
                     },
                     "params": 1,
                     "line": 94,
@@ -5326,7 +5333,7 @@
                         "time": 39.2116385856331
                     },
                     "params": 0,
-                    "line": 119,
+                    "line": 117,
                     "cyclomaticDensity": 50
                 },
                 {
@@ -5366,7 +5373,7 @@
                         "time": 4.199999999999999
                     },
                     "params": 2,
-                    "line": 128,
+                    "line": 126,
                     "cyclomaticDensity": 100
                 },
                 {
@@ -5406,7 +5413,7 @@
                         "time": 4.199999999999999
                     },
                     "params": 2,
-                    "line": 132,
+                    "line": 130,
                     "cyclomaticDensity": 100
                 },
                 {
@@ -5447,7 +5454,7 @@
                         "time": 5.547368752524047
                     },
                     "params": 3,
-                    "line": 136,
+                    "line": 134,
                     "cyclomaticDensity": 100
                 },
                 {
@@ -5495,7 +5502,7 @@
                         "time": 38.400000000000006
                     },
                     "params": 1,
-                    "line": 141,
+                    "line": 139,
                     "cyclomaticDensity": 50
                 },
                 {
@@ -5533,7 +5540,7 @@
                         "time": 1.5078947920873411
                     },
                     "params": 0,
-                    "line": 149,
+                    "line": 147,
                     "cyclomaticDensity": 100
                 },
                 {
@@ -5603,7 +5610,7 @@
                         "time": 1010.7605574735189
                     },
                     "params": 0,
-                    "line": 153,
+                    "line": 151,
                     "cyclomaticDensity": 14.285714285714285
                 }
             ],
@@ -5629,10 +5636,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 107.90673967621558,
+            "maintainability": 107.92145417918275,
             "loc": 8.272727272727273,
             "cyclomatic": 2.909090909090909,
-            "effort": 4305.850418382484,
+            "effort": 4287.364352711221,
             "params": 1.2727272727272727,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/graph/mapChart.js"
         },
@@ -16858,9 +16865,9 @@
     ],
     "changeCost": 21.22788761706556,
     "coreSize": 29.03225806451613,
-    "loc": 10.146486846486848,
+    "loc": 10.149712652938463,
     "cyclomatic": 4.244249836185322,
-    "effort": 7807.962540626571,
+    "effort": 7810.439877569283,
     "params": 1.119795079472499,
-    "maintainability": 105.92337261412777
+    "maintainability": 105.91537195090037
 }

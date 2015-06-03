@@ -1,8 +1,8 @@
-Mean per-function logical LOC: 10.146486846486848
+Mean per-function logical LOC: 10.149712652938463
 Mean per-function parameter count: 1.119795079472499
 Mean per-function cyclomatic complexity: 4.244249836185322
-Mean per-function Halstead effort: 7807.962540626571
-Mean per-module maintainability index: 105.92337261412777
+Mean per-function Halstead effort: 7810.439877569283
+Mean per-module maintainability index: 105.91537195090037
 First-order density: 5.931321540062435%
 Change cost: 21.22788761706556%
 Core size: 29.03225806451613%
@@ -660,11 +660,11 @@ Core size: 29.03225806451613%
 /home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/graph/lineChart.js
 
   Physical LOC: 175
-  Logical LOC: 110
+  Logical LOC: 111
   Mean parameter count: 1.2
   Cyclomatic complexity: 18
-  Cyclomatic complexity density: 16.363636363636363%
-  Maintainability index: 106.74684594979303
+  Cyclomatic complexity density: 16.216216216216218%
+  Maintainability index: 106.48411088677575
   Dependency count: 3
 
   Function: LineChart
@@ -703,13 +703,13 @@ Core size: 29.03225806451613%
   Function: <anonymous>.deleteFlow
     Line No.: 96
     Physical LOC: 22
-    Logical LOC: 14
+    Logical LOC: 15
     Parameter count: 1
     Cyclomatic complexity: 5
-    Cyclomatic complexity density: 35.714285714285715%
-    Halstead difficulty: 14.411764705882351
-    Halstead volume: 331.9311527959207
-    Halstead effort: 4783.713672647092
+    Cyclomatic complexity density: 33.33333333333333%
+    Halstead difficulty: 15.2
+    Halstead volume: 377.40452510528877
+    Halstead effort: 5736.548781600389
 
   Function: <anonymous>.deleteAllFlows
     Line No.: 119
@@ -779,12 +779,12 @@ Core size: 29.03225806451613%
 
 /home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/graph/mapChart.js
 
-  Physical LOC: 180
+  Physical LOC: 178
   Logical LOC: 111
   Mean parameter count: 1.2727272727272727
   Cyclomatic complexity: 22
   Cyclomatic complexity density: 19.81981981981982%
-  Maintainability index: 107.90673967621558
+  Maintainability index: 107.92145417918275
   Dependency count: 4
 
   Function: MapChart
@@ -822,17 +822,17 @@ Core size: 29.03225806451613%
 
   Function: <anonymous>.deleteFlow
     Line No.: 94
-    Physical LOC: 24
+    Physical LOC: 22
     Logical LOC: 15
     Parameter count: 1
     Cyclomatic complexity: 5
     Cyclomatic complexity density: 33.33333333333333%
-    Halstead difficulty: 16.444444444444443
-    Halstead volume: 361.2098617287741
-    Halstead effort: 5939.895503984285
+    Halstead difficulty: 15.2
+    Halstead volume: 377.40452510528877
+    Halstead effort: 5736.548781600389
 
   Function: <anonymous>.deleteAllFlows
-    Line No.: 119
+    Line No.: 117
     Physical LOC: 8
     Logical LOC: 4
     Parameter count: 0
@@ -843,7 +843,7 @@ Core size: 29.03225806451613%
     Halstead effort: 705.8094945413958
 
   Function: <anonymous>.addRecord
-    Line No.: 128
+    Line No.: 126
     Physical LOC: 3
     Logical LOC: 1
     Parameter count: 2
@@ -854,7 +854,7 @@ Core size: 29.03225806451613%
     Halstead effort: 75.6
 
   Function: <anonymous>.deleteRecord
-    Line No.: 132
+    Line No.: 130
     Physical LOC: 3
     Logical LOC: 1
     Parameter count: 2
@@ -865,7 +865,7 @@ Core size: 29.03225806451613%
     Halstead effort: 75.6
 
   Function: <anonymous>.updateRecord
-    Line No.: 136
+    Line No.: 134
     Physical LOC: 3
     Logical LOC: 1
     Parameter count: 3
@@ -876,7 +876,7 @@ Core size: 29.03225806451613%
     Halstead effort: 99.85263754543286
 
   Function: <anonymous>.updateProperties
-    Line No.: 141
+    Line No.: 139
     Physical LOC: 7
     Logical LOC: 4
     Parameter count: 1
@@ -887,7 +887,7 @@ Core size: 29.03225806451613%
     Halstead effort: 691.2
 
   Function: <anonymous>.getProperties
-    Line No.: 149
+    Line No.: 147
     Physical LOC: 3
     Logical LOC: 1
     Parameter count: 0
@@ -898,7 +898,7 @@ Core size: 29.03225806451613%
     Halstead effort: 27.14210625757214
 
   Function: <anonymous>.getConfigJSON
-    Line No.: 153
+    Line No.: 151
     Physical LOC: 27
     Logical LOC: 21
     Parameter count: 0
