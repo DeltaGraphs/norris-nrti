@@ -46,8 +46,8 @@ angular.module('app')
 			if (info.title !== undefined) {
 				this._title = info.title;
 			}
-			if (info.url !== undefined) {
-				this._url = info.url;
+			if (info.socketURL !== undefined) {
+				this._url = info.socketURL;
 			}
 		}		
 	}

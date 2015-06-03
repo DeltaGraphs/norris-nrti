@@ -85,7 +85,7 @@ angular.module('app')
         this._legendOnPoint = false;
         this._latitude = 45.4113311;
         this._longitude = 11.8876318;
-        this._mapType = 'terrain';
+        this._mapType = 'roadmap';
         this._zoom = true;
         this._mapWidth = 0;
         this._mapHeight = 0;
@@ -94,11 +94,12 @@ angular.module('app')
     }
 
     MapChart.prototype.updateParameters = function(info) {
+        console.log(JSON.stringify(info));
         var json = split(info);
         var gJson = json.graphJson;
         var mJson = json.mapJson;
         if (Object.keys(gJson).length !== 0) {
-            this._graph.updateParameters.call(this, gJson);
+            this._graph.updateParameters(gJson);
         } 
         if (Object.keys(mJson).length !== 0) {
             if (mJson.legendOnPoint !== undefined) {
@@ -124,7 +125,9 @@ angular.module('app')
             }
         }
         if (info.flows !== undefined) {
+            console.log('info.flows.length ' + info.flows.length);
             for (var i=0; i<info.flows.length; i++) {
+                console.log('stringify di info.flows ' + JSON.stringify(info.flows[i]));
                 var newflow = MapChartFlowFactory.build(info.flows[i]);
                 this.addFlow(info.flows[i].ID, newflow);
             }

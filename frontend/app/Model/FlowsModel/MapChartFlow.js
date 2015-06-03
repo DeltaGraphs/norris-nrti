@@ -35,8 +35,8 @@ angular.module('app')
 	        if (json.marker !== undefined) {
 	            mapFlowJson.marker = json.marker;
 	        }
-	        if (json.maxItem !== undefined) {
-	            mapFlowJson.maxItem = json.maxItem;
+	        if (json.maxItemsSaved !== undefined) {
+	            mapFlowJson.maxItem = json.maxItemsSaved;
 	        }
 	        if (json.trace !== undefined) {
 	            mapFlowJson.trace = json.trace;

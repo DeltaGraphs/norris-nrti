@@ -25,128 +25,71 @@ angular.module('app')
 			id: '@'
 		},
 		bindToController: true,
-        template: '<div>mapchart {{id}}</div>',
+        template: '<div id="map-canvas" style="height:500px;width:500px"></div>',
     	link: function (scope, element, attrs) {
             //console.log(scope.$parent.page.getGraphsList().length);
             attrs.$observe('id', function(value) {
                 if (value) {
                     if(scope.$parent.page.getGraphsList()[value].graph.constructor.name === 'MapChart'){
                         scope.mapChart = scope.$parent.page.getGraphsList()[value].graph;
-                        console.log(scope.mapChart.getTitle());
+                        console.log(scope.mapChart.getUrl());
                         scope.socketConnection();
-
+                        scope.$watch('scope.mapChart', function(){
+                            if(scope.mapChart){
+                                scope.render();
+                            }
+                        }, true);
                     }
                 }
             });
             
-            //scope.mapChart = scope.$parent.page.getGraphsList()[attrs.id].graph;
-			
-
-			scope.render = function() {
-
+            scope.render = function(){
                 console.log('render');
-                // Set map option
-				var mapOptions = {
-          			center: { lat: scope.mapChart.getLatitude() , lng: scope.mapChart.getLongitude() },
-          			zoom: 8
-        		};
 
-                // Create map
-        		var map = new google.maps.Map(document.getElementById('ciao'), mapOptions); // 'ciao' da cambiare
-        		switch (scope.mapChart.getMapType()) {
-        			case 'roadMap': 
-                        console.log('render: roadMap');
-        				map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
-        				break;
-        			case 'satellite':
-        				map.setMapTypeId(google.maps.MapTypeId.SATELLITE);
-        				break;
-        			case 'hybrid':
-        				map.setMapTypeId(google.maps.MapTypeId.HYBRID);
-        				break;
-        			case 'terrain':
-        				map.setMapTypeId(google.maps.MapTypeId.TERRAIN);
-        				break;
-        		}
+                var map;
+                var latLng = new google.maps.LatLng(scope.mapChart.getLatitude(), scope.mapChart.getLongitude());
 
-                // Instantiate an info window to hold step text.
-                var stepDisplay = new google.maps.InfoWindow();
+                // map config
+                var mapOptions = {
+                    center: latLng,
+                    zoom: 18,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP,
+                    scrollwheel: scope.mapChart.getZoom()
+                };
 
-                // Create markers
-        		var markers = [];
+                map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
-        		for (var i=0; i<scope.mapChart.getFlowList().length; i++){
-        			for (var j=0; i<scope.mapChart.getFlowList()[i].flow.getData().length; i++){
-        				var latLng = new google.maps.LatLng(scope.mapChart.getFlowList()[i].flow.getData()[j].value[0], scope.mapChart.getFlowList()[i].flow.getData()[j].value[1]);
-                        var marker;
-
-        				switch (scope.matChart.getFlowList()[i].flow.getMarker().type) {
-        					case 'shape':
-                                var type;
-        						switch (scope.matChart.getFlowList()[i].flow.getMarker().shape) { //circle, triangle, square, diamond
-                                    case 'circle':
-                                        type = { path: 'img/circle.png' };
-                                    case 'triangle':
-                                        type = { path: 'img/triangle.png' };
-                                    case 'square':
-                                        type = { path: 'img/square.png' };
-                                    case 'diamond':
-                                        type = { path: 'img/diamond.png' };
-                                }
-        						marker = new google.maps.Marker({
-		    						position: latLng,
-		    						map: map,
-		    						icon: type
-								});
-								break;
-        					case 'icon':
-        						marker = new google.maps.Marker({
-		    						position: latLng,
-		    						map: map,
-		    						icon: { path: scope.mapChart.getFlowList()[i].flow.getMarker().icon }
-								});
-								break;
-        					case 'text':
-        						marker = new google.maps.Marker({
-	    							position: latLng,
-	    							map: map,
-		    						title: scope.mapChart.getFlowList()[i].flow.getMarker().text
-								});
-								break;
-        				}
-                        if (scope.mapChart.getLegendOnPoint() === true){
-                            addLegendOnPoint(marker, scope.mapChart.getFlowList()[i].flow.getName());
-                        }
-                        markers.push(marker);
-
-        			}
-
-        		}
-
-                // add legend on point
-                function addLegendOnPoint(marker,text) {
-
-                    google.maps.event.addListener(marker, 'click', function() {
-                        // Open an info window when the marker is clicked on,
-                        // containing the text of the step.
-                        stepDisplay.setContent(text);
-                        stepDisplay.open(map, marker);
-                    });
+                switch (scope.mapChart.getMapType()) {
+                    case 'roadmap':
+                        map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
+                        break;
+                    case 'satellite':
+                        map.setMapTypeId(google.maps.MapTypeId.SATELLITE);
+                        break;
+                    case 'hybrid':
+                        map.setMapTypeId(google.maps.MapTypeId.HYBRID);
+                        break;
+                    case 'terrain':
+                        map.setMapTypeId(google.maps.MapTypeId.TERRAIN);
+                        break;
                 }
-                console.log('fine render');
 
-      		}; // shape icon text
+                var markers = [];
+                console.log('flowlist length '+scope.mapChart.getFlowList().length);
+                console.log('recordlist length '+scope.mapChart.getFlowList()[0].flow.getData().length);
+                for (var i=0; i<scope.mapChart.getFlowList().length; i++){
+                    for (var j=0; j<scope.mapChart.getFlowList()[i].flow.getData().length; j++){
+                        markers.push(new google.maps.Marker({
+                            position: new google.maps.LatLng(scope.mapChart.getLatitude()+j*0.1, scope.mapChart.getLongitude()+j*0.1),
+                            map: map,
+                            title: 'markerrrr'
+                        }));
 
-            /*console.log('link chiama render');
-      		scope.$watch('scope.mapChart', function(){
-                scope.render();
-            }, true);
-            console.log('link ha chiamato render');*/
+                    }
+                }
+                
+            };
 
-      		
-			/*showMarker = function() {};
-			zoom = function() {};
-			drag = function() {};*/
 		}
 	};
 });

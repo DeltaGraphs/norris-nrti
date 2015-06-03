@@ -22,51 +22,48 @@ angular.module('app')
 	var socket;
 
 	this.socketConnection = function(){
-		console.log('socketConnection ');
 		socket = SocketServicesFactory.build($scope.mapChart.getUrl());
 		this.listenOnEvents();
 	};
 
 	this.listenOnEvents = function(){
+		console.log('listen ON EVENTS');
 		socket.on('configGraph', function(info){
 			console.log(JSON.stringify(info));
-			console.log(mapChart.getLatitude());
-			$scope.mapChart = mapChart.updateParameters(info.properties);
-			$scope.mapChart = mapChart.initializeData(info.data);
+			$scope.mapChart.updateParameters(info.properties);
+			$scope.mapChart.initializeData(info.data);
 		});
 		socket.on('updateGraphProp', function(info){
-			$scope.mapChart = mapChart.updateParameters(info);
+			$scope.mapChart.updateParameters(info);
 		});
 		socket.on('insertFlow', function(info){
 			var flow = MapChartFlowFactory.build(info.properties);
 			flow.initializeData(info);
-			$scope.mapChart = mapChart.addFlow(info.properties.ID, flow);
+			$scope.mapChart.addFlow(info.properties.ID, flow);
 		});
 		socket.on('deleteFlow', function(info){
-			$scope.mapChart = mapChart.deleteFlow(info.ID);
+			$scope.mapChart.deleteFlow(info.ID);
 		});
 		socket.on('updateFlowProp', function(info){
-			var flowList = mapChart.getFlowList();
-			for (var i=0; i<flowList.length; i++){
-				if (flowList[i].id === info.ID){
-					flowList[i].flow.updateParameters(info);
+			for (var i=0; i<$scope.mapChart.getFlowList().length; i++){
+				if ($scope.mapChart.getFlowList()[i].id === info.ID){
+					$scope.mapChart.getFlowList()[i].flow.updateParameters(info);
 				}
 			}
-			$scope.mapChart = mapChart;
 		});
 		socket.on('updateFlowData', function(data){
 			switch (data.action){
 				case 'insertRecords':
-					$scope.mapChart = mapChart.streamUpdate(data);
+					$scope.mapChart.streamUpdate(data);
 					break;
 				case 'deleteRecord':
-					$scope.mapChart = mapChart.deleteData(data);
+					$scope.mapChart.deleteData(data);
 					break;
 				case 'updateRecord':
-					$scope.mapChart = mapChart.inPlaceUpdate(data);
+					$scope.mapChart.inPlaceUpdate(data);
 					break;
 				case 'replaceData':
-					$scope.mapChart = mapChart.replaceData(data);
+					$scope.mapChart.replaceData(data);
 					break;
 			}
 		});

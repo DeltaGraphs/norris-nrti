@@ -20,14 +20,8 @@ angular.module('app')
 .controller('PageController', ['$scope', '$location', '$routeParams', 'PagesList', 'PageFactory', 'SocketServicesFactory', function($scope, $location, $routeParams, PagesList, PageFactory, SocketServicesFactory){
 
 	$scope.page = PagesList.prototype.getPagesList()[$routeParams.pageId].page;
-	//var url =  $scope.page.getUrl();
 	var url = 'http://norris-nrti-dev.herokuapp.com/page1';
 	var socket;
-	/*$scope.graphs =  [
-		['nsk','fsefw'],
-		['fsf','dsf'],
-		['sfs','fwef']
-	];*/
 
 	console.log($scope.page.getName());
 	console.log($scope.page.getGraphsList().length);
@@ -40,20 +34,15 @@ angular.module('app')
 
 	this.listenOnEvents = function(){
 		socket.on('configPage', function(info){
-			console.log('configPage');
-			console.log(JSON.stringify(info));
 			$scope.page.updateParameters(info.properties);
 			$scope.page.initializeData(info.data);
 			$scope.graphs = matrix($scope.page.getGraphsList());
-			console.log('c');
 
 		});
 		socket.on('updatePageProp', function(info){
-			console.log('updatePageProp');
 			$scope.page.updateParameters(info);
 		});
 		socket.on('insertGraph', function(info){
-			console.log('insertGraph');
 			$scope.page.addGraph(info);
 			$scope.graphs = matrix($scope.page.getGraphsList());
 		});
