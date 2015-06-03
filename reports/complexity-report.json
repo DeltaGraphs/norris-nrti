@@ -1902,14 +1902,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 98,
-                    "physical": 154
+                    "logical": 99,
+                    "physical": 155
                 },
                 "cyclomatic": 18,
                 "halstead": {
                     "operators": {
                         "distinct": 20,
-                        "total": 333,
+                        "total": 334,
                         "identifiers": [
                             "var",
                             "=",
@@ -1935,7 +1935,7 @@
                     },
                     "operands": {
                         "distinct": 77,
-                        "total": 374,
+                        "total": 376,
                         "identifiers": [
                             "\"use strict\"",
                             "LineChartFlowModel",
@@ -2008,25 +2008,25 @@
                             "filters",
                             "recordsModel",
                             "nRecords",
+                            "dir",
                             "norrisIsValid",
-                            "markerID",
-                            "_objectKey",
+                            "\"isValid\"",
                             "\"updateFlowProp\"",
                             "module",
                             "exports"
                         ]
                     },
-                    "length": 707,
+                    "length": 710,
                     "vocabulary": 97,
-                    "difficulty": 48.57142857142857,
-                    "volume": 4666.138379426299,
-                    "effort": 226641.00700070595,
-                    "bugs": 1.5553794598087665,
-                    "time": 12591.167055594775
+                    "difficulty": 48.83116883116883,
+                    "volume": 4685.938117952861,
+                    "effort": 228819.83537016567,
+                    "bugs": 1.5619793726509537,
+                    "time": 12712.213076120315
                 },
                 "params": 6,
                 "line": 2,
-                "cyclomaticDensity": 18.367346938775512
+                "cyclomaticDensity": 18.181818181818183
             },
             "functions": [
                 {
@@ -2304,14 +2304,14 @@
                 {
                     "name": "<anonymous>.updateProperties",
                     "sloc": {
-                        "logical": 19,
-                        "physical": 29
+                        "logical": 20,
+                        "physical": 30
                     },
                     "cyclomatic": 6,
                     "halstead": {
                         "operators": {
                             "distinct": 15,
-                            "total": 84,
+                            "total": 85,
                             "identifiers": [
                                 "if",
                                 "!==",
@@ -2331,8 +2331,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 32,
-                            "total": 90,
+                            "distinct": 34,
+                            "total": 92,
                             "identifiers": [
                                 "params",
                                 "undefined",
@@ -2355,10 +2355,12 @@
                                 "i",
                                 0,
                                 "\"number\"",
+                                "console",
+                                "dir",
                                 "norrisIsValid",
+                                "\"isValid\"",
+                                "log",
                                 "norrisRecordID",
-                                "markerID",
-                                "_objectKey",
                                 "value",
                                 "push",
                                 "\"updateFlowData\"",
@@ -2368,17 +2370,17 @@
                                 "\"updateFlowProp\""
                             ]
                         },
-                        "length": 174,
-                        "vocabulary": 47,
-                        "difficulty": 21.09375,
-                        "volume": 966.498460191909,
-                        "effort": 20387.07689467308,
-                        "bugs": 0.322166153397303,
-                        "time": 1132.6153830373933
+                        "length": 177,
+                        "vocabulary": 49,
+                        "difficulty": 20.294117647058826,
+                        "volume": 993.8036424083919,
+                        "effort": 20168.368037111482,
+                        "bugs": 0.3312678808027973,
+                        "time": 1120.464890950638
                     },
                     "params": 1,
                     "line": 125,
-                    "cyclomaticDensity": 31.57894736842105
+                    "cyclomaticDensity": 30
                 }
             ],
             "dependencies": [
@@ -2393,10 +2395,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 92.30845595279735,
-            "loc": 17.2,
+            "maintainability": 92.13315681110657,
+            "loc": 17.4,
             "cyclomatic": 4.4,
-            "effort": 12502.660982251857,
+            "effort": 12458.91921073954,
             "params": 1.2,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/flow/lineChartFlow.js"
         },
@@ -16411,9 +16413,9 @@
     ],
     "changeCost": 21.88888888888889,
     "coreSize": 30,
-    "loc": 10.325417360417362,
+    "loc": 10.33208402708403,
     "cyclomatic": 4.333581973581975,
-    "effort": 8061.355553176541,
+    "effort": 8059.89749412613,
     "params": 1.1171215821215823,
-    "maintainability": 105.54870648069179
+    "maintainability": 105.54286317596875
 }
