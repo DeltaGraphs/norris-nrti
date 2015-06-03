@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">56.57</p>
+      <p class="stat">56.99</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">155</p>
+      <p class="stat">152</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">27.50</p>
+      <p class="stat">26.92</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">1.52</p>
+      <p class="stat">1.48</p>
     </div>
   </div>
 </div>
@@ -185,13 +185,10 @@ angular.module(&#039;app&#039;)
 
                 var latLng = new google.maps.LatLng(scope.mapChart.getLatitude(), scope.mapChart.getLongitude());
                 
-                //console.log(&#039;lunghezza flussi &#039; + scope.mapChart.getFlowList().length);
-                //console.log(&#039;lung record &#039; + scope.mapChart.getFlowList()[0].flow.getData().length);
                 for (var i=0; i&lt;scope.mapChart.getFlowList().length; i++){
                     for (var j=0; j&lt;scope.mapChart.getFlowList()[i].flow.getData().length; j++){
-                        //console.log(j + &#039; lat: &#039; + scope.mapChart.getFlowList()[i].flow.getData()[j].value[0] + &#039; , lng: &#039; + scope.mapChart.getFlowList()[i].flow.getData()[j].value[1]);
                         var coordinates = new google.maps.LatLng(scope.mapChart.getFlowList()[i].flow.getData()[j].value[0], scope.mapChart.getFlowList()[i].flow.getData()[j].value[1]);
-                        
+                        var marker;
                         switch (scope.mapChart.getFlowList()[i].flow.getMarker().type) {
                             case &#039;shape&#039;:
                                 console.log(&#039;shape type&#039;);
@@ -199,19 +196,19 @@ angular.module(&#039;app&#039;)
                                 switch (scope.mapChart.getFlowList()[i].flow.getMarker().shape) { //circle, triangle, square, diamond
                                     case &#039;circle&#039;:
                                         console.log(&#039;shape type circle&#039;);
-                                        type = { path: &#039;img/circle.png&#039; };
+                                        type = &#039;http://norris-nrti-dev.herokuapp.com/norris/img/circle.png&#039;;
                                         break;
                                     case &#039;triangle&#039;:
                                         console.log(&#039;shape type triangle&#039;);
-                                        type = { path: &#039;img/triangle.png&#039; };
+                                        type = &#039;http://norris-nrti-dev.herokuapp.com/norris/img/triangle.png&#039;;
                                         break;
                                     case &#039;square&#039;:
                                         console.log(&#039;shape type square&#039;);
-                                        type = { path: &#039;img/square.png&#039; };
+                                        type = &#039;http://norris-nrti-dev.herokuapp.com/norris/img/square.png&#039;;
                                         break;
                                     case &#039;diamond&#039;:
                                         console.log(&#039;shape type diamond&#039;);
-                                        type = { path: &#039;img/diamond.png&#039; };
+                                        type = &#039;http://norris-nrti-dev.herokuapp.com/norris/img/diamond.png&#039;;
                                         break;
                                 }
                                 marker = new google.maps.Marker({

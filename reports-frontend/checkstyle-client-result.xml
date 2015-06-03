@@ -12,14 +12,10 @@
 		<error line="76" column="42" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
 		<error line="79" column="42" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
 		<error line="95" column="34" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
-		<error line="102" column="47" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
-		<error line="126" column="33" severity="warning" message="&apos;marker&apos; is not defined." source="jshint.W117" />
-		<error line="126" column="46" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
-		<error line="133" column="33" severity="warning" message="&apos;marker&apos; is not defined." source="jshint.W117" />
-		<error line="133" column="46" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
-		<error line="140" column="33" severity="warning" message="&apos;marker&apos; is not defined." source="jshint.W117" />
-		<error line="140" column="46" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
-		<error line="147" column="38" severity="warning" message="&apos;marker&apos; is not defined." source="jshint.W117" />
+		<error line="99" column="47" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
+		<error line="123" column="46" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
+		<error line="130" column="46" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
+		<error line="137" column="46" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
 		<error line="95" column="21" severity="warning" message="&apos;latLng&apos; is defined but never used." source="jshint.W098" />
 	</file>
 </checkstyle>
