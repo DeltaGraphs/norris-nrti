@@ -49,7 +49,7 @@ describe('Socket', function() {
         var server = require('socket.io')();
         server.listen(5000);
 
-        var socketURL = 'http://0.0.0.0:5000/namespace';
+        var socketURL = 'http://localhost:5000/namespace';
         var options ={
             transports: ['websocket'],
             'force new connection': true
@@ -89,7 +89,7 @@ describe('Socket', function() {
         var server = require('socket.io')();
         server.listen(5000);
 
-        var socketURL = 'http://0.0.0.0:5000/namespace';
+        var socketURL = 'http://localhost:5000/namespace';
         var options ={
             transports: ['websocket'],
             'force new connection': true
