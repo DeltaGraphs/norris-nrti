@@ -140,7 +140,7 @@ describe(&#039;Socket&#039;, function() {
         var server = require(&#039;socket.io&#039;)();
         server.listen(5000);
 
-        var socketURL = &#039;http://0.0.0.0:5000/namespace&#039;;
+        var socketURL = &#039;http://localhost:5000/namespace&#039;;
         var options ={
             transports: [&#039;websocket&#039;],
             &#039;force new connection&#039;: true
@@ -180,7 +180,7 @@ describe(&#039;Socket&#039;, function() {
         var server = require(&#039;socket.io&#039;)();
         server.listen(5000);
 
-        var socketURL = &#039;http://0.0.0.0:5000/namespace&#039;;
+        var socketURL = &#039;http://localhost:5000/namespace&#039;;
         var options ={
             transports: [&#039;websocket&#039;],
             &#039;force new connection&#039;: true
