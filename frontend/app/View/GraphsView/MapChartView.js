@@ -27,8 +27,8 @@ angular.module('app')
 		bindToController: true,
         template: '<div id="map-canvas" style="height:500px;width:500px"></div>',
     	link: function (scope, element, attrs) {
-            scope.$watch('scope.mapChart', function(){
-                //console.log('watch ' + scope.mapChart.getFlowList().length);
+            scope.$watch('mapChart', function(){
+                console.log('watch ' + scope.mapChart.getFlowList().length);
                 if(scope.mapChart && (scope.mapChart.getFlowList().length>0)){
                     scope.render();
                 }
