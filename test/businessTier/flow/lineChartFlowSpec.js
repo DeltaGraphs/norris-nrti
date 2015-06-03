@@ -16,7 +16,7 @@
 
 var LineChartFlow = require('../../../lib/businessTier/flow/lineChartFlow.js');
 var assert = require('assert');
-
+var Socket = require('../../../lib/presentationTier/socket.js');
 var socketMock=function(){
     this.p1=null;
     this.p2=null;
@@ -123,8 +123,21 @@ describe('LineChartFlow', function() {
     });
 
     describe('#updateProperties', function() {
+
+        var io = require('socket.io-client');
+        var server = require('socket.io')();
+        server.listen(5000);
+
+        var socketURL = 'http://0.0.0.0:5000/namespace';
+        var options ={
+            transports: ['websocket'],
+            'force new connection': true
+        };
+        var client1 = io.connect(socketURL, options);
+
         it('update correct properties', function() {
-            var flow1=new LineChartFlow({ID: 'flow1'},new socketMock());
+            var socket1 = new Socket(server, '/namespace');
+            var flow1=new LineChartFlow({ID: 'flow1'},socket1);
             flow1.updateProperties({name: 'grafico tempo-temperatura',xKey: 'tempo',yKey: 'temperatura',filters: 'temperature>3',});
             flow1.addRecord({'tempo': 4, 'temperatura': 4});
             flow1.addRecord({'tempo': 9, 'temperatura': 23});
@@ -134,6 +147,14 @@ describe('LineChartFlow', function() {
             assert.strictEqual(flow1._dataLineChartFlow._xKey,'tempo');
             assert.strictEqual(flow1._dataLineChartFlow._yKey,'temperatura');
             assert.strictEqual(flow1._dataLineChartFlow._name,'grafico tempo-temperatura');
+            client1.on('updateFlowData', function(message) {
+                console.log('STAMPAAAAA#updateFlowData '+message);
+                assert.strictEqual(message, 'message');
+            });
+            client1.on('updateFlowProp', function(message) {
+                console.log('STAMPAAAAA#updateFlowProp '+message);
+                assert.strictEqual(message, 'message');
+            });
         });
     });
 });
