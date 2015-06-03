@@ -1761,14 +1761,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 59,
-                    "physical": 93
+                    "logical": 58,
+                    "physical": 92
                 },
                 "cyclomatic": 8,
                 "halstead": {
                     "operators": {
                         "distinct": 16,
-                        "total": 175,
+                        "total": 171,
                         "identifiers": [
                             "()",
                             "[]",
@@ -1789,8 +1789,8 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 63,
-                        "total": 215,
+                        "distinct": 62,
+                        "total": 211,
                         "identifiers": [
                             "\"use strict\"",
                             "\"MapChartController\"",
@@ -1834,7 +1834,6 @@
                             "addFlow",
                             "\"deleteFlow\"",
                             "deleteFlow",
-                            "changed",
                             "\"updateFlowProp\"",
                             "i",
                             "getFlowList",
@@ -1857,24 +1856,24 @@
                             "controller"
                         ]
                     },
-                    "length": 390,
-                    "vocabulary": 79,
-                    "difficulty": 27.3015873015873,
-                    "volume": 2458.4744917890703,
-                    "effort": 67120.25596630477,
-                    "bugs": 0.8194914972630234,
-                    "time": 3728.903109239154
+                    "length": 382,
+                    "vocabulary": 78,
+                    "difficulty": 27.225806451612904,
+                    "volume": 2401.023647605379,
+                    "effort": 65369.80511544968,
+                    "bugs": 0.8003412158684597,
+                    "time": 3631.6558397472045
                 },
                 "params": 11,
                 "line": 2,
-                "cyclomaticDensity": 13.559322033898304
+                "cyclomaticDensity": 13.793103448275861
             },
             "functions": [
                 {
                     "name": "<anonymous>",
                     "sloc": {
                         "logical": 8,
-                        "physical": 75
+                        "physical": 74
                     },
                     "cyclomatic": 1,
                     "halstead": {
@@ -1968,7 +1967,7 @@
                     "name": "<anonymous>.listenOnEvents",
                     "sloc": {
                         "logical": 7,
-                        "physical": 59
+                        "physical": 58
                     },
                     "cyclomatic": 1,
                     "halstead": {
@@ -2111,14 +2110,14 @@
                 {
                     "name": "<anonymous>",
                     "sloc": {
-                        "logical": 6,
-                        "physical": 8
+                        "logical": 5,
+                        "physical": 7
                     },
                     "cyclomatic": 1,
                     "halstead": {
                         "operators": {
                             "distinct": 5,
-                            "total": 22,
+                            "total": 18,
                             "identifiers": [
                                 "()",
                                 ".",
@@ -2128,8 +2127,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 15,
-                            "total": 27,
+                            "distinct": 14,
+                            "total": 23,
                             "identifiers": [
                                 "info",
                                 "\"insertFlow\"",
@@ -2144,21 +2143,20 @@
                                 "$scope",
                                 "mapChart",
                                 "addFlow",
-                                "changedP",
                                 "changedD"
                             ]
                         },
-                        "length": 49,
-                        "vocabulary": 20,
-                        "difficulty": 4.5,
-                        "volume": 211.77447664948076,
-                        "effort": 952.9851449226634,
-                        "bugs": 0.07059149221649359,
-                        "time": 52.94361916237019
+                        "length": 41,
+                        "vocabulary": 19,
+                        "difficulty": 4.107142857142857,
+                        "volume": 174.165028051187,
+                        "effort": 715.320650924518,
+                        "bugs": 0.05805500935039566,
+                        "time": 39.74003616247322
                     },
                     "params": 1,
                     "line": 48,
-                    "cyclomaticDensity": 16.666666666666664
+                    "cyclomaticDensity": 20
                 },
                 {
                     "name": "<anonymous>",
@@ -2190,7 +2188,7 @@
                                 "$scope",
                                 "mapChart",
                                 "deleteFlow",
-                                "changed"
+                                "changedD"
                             ]
                         },
                         "length": 23,
@@ -2202,7 +2200,7 @@
                         "time": 13.659647848446747
                     },
                     "params": 1,
-                    "line": 56,
+                    "line": 55,
                     "cyclomaticDensity": 33.33333333333333
                 },
                 {
@@ -2247,7 +2245,7 @@
                                 "ID",
                                 "flow",
                                 "updateParameters",
-                                "changed"
+                                "changedD"
                             ]
                         },
                         "length": 60,
@@ -2259,7 +2257,7 @@
                         "time": 154.79520632582413
                     },
                     "params": 1,
-                    "line": 61,
+                    "line": 60,
                     "cyclomaticDensity": 50
                 },
                 {
@@ -2303,7 +2301,7 @@
                                 "inPlaceUpdate",
                                 "\"replaceData\"",
                                 "replaceData",
-                                "changed"
+                                "changedD"
                             ]
                         },
                         "length": 62,
@@ -2315,15 +2313,15 @@
                         "time": 126.34118890876077
                     },
                     "params": 1,
-                    "line": 70,
+                    "line": 69,
                     "cyclomaticDensity": 33.33333333333333
                 }
             ],
             "dependencies": [],
-            "maintainability": 117.26703884540899,
-            "loc": 6.333333333333333,
+            "maintainability": 117.64332101165397,
+            "loc": 6.222222222222222,
             "cyclomatic": 1.7777777777777777,
-            "effort": 1021.7871530680916,
+            "effort": 995.3799870682976,
             "params": 1.2222222222222223,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/frontend/app/Controller/GraphsControllers/MapChartController.js"
         },
@@ -11489,14 +11487,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 144,
-                    "physical": 245
+                    "logical": 149,
+                    "physical": 252
                 },
-                "cyclomatic": 40,
+                "cyclomatic": 42,
                 "halstead": {
                     "operators": {
                         "distinct": 18,
-                        "total": 471,
+                        "total": 485,
                         "identifiers": [
                             "()",
                             "[]",
@@ -11519,8 +11517,8 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 99,
-                        "total": 518,
+                        "distinct": 101,
+                        "total": 535,
                         "identifiers": [
                             "\"use strict\"",
                             "\"MapChartFactory\"",
@@ -11547,6 +11545,7 @@
                             "longitude",
                             "mapType",
                             "zoom",
+                            "drag",
                             "mapWidth",
                             "mapHeight",
                             "\"graphJson\"",
@@ -11563,6 +11562,7 @@
                             "\"roadmap\"",
                             "_zoom",
                             true,
+                            "_drag",
                             "_mapWidth",
                             0,
                             "_mapHeight",
@@ -11623,24 +11623,24 @@
                             "factory"
                         ]
                     },
-                    "length": 989,
-                    "vocabulary": 117,
-                    "difficulty": 47.09090909090909,
-                    "volume": 6794.790707667988,
-                    "effort": 319972.8715065471,
-                    "bugs": 2.264930235889329,
-                    "time": 17776.270639252616
+                    "length": 1020,
+                    "vocabulary": 119,
+                    "difficulty": 47.67326732673268,
+                    "volume": 7032.714118574103,
+                    "effort": 335272.4602072704,
+                    "bugs": 2.344238039524701,
+                    "time": 18626.2477892928
                 },
                 "params": 14,
                 "line": 2,
-                "cyclomaticDensity": 27.77777777777778
+                "cyclomaticDensity": 28.187919463087248
             },
             "functions": [
                 {
                     "name": "<anonymous>",
                     "sloc": {
                         "logical": 28,
-                        "physical": 223
+                        "physical": 230
                     },
                     "cyclomatic": 1,
                     "halstead": {
@@ -11706,14 +11706,14 @@
                 {
                     "name": "split",
                     "sloc": {
-                        "logical": 33,
-                        "physical": 54
+                        "logical": 35,
+                        "physical": 57
                     },
-                    "cyclomatic": 15,
+                    "cyclomatic": 16,
                     "halstead": {
                         "operators": {
                             "distinct": 9,
-                            "total": 97,
+                            "total": 103,
                             "identifiers": [
                                 "var",
                                 "=",
@@ -11727,8 +11727,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 22,
-                            "total": 111,
+                            "distinct": 23,
+                            "total": 118,
                             "identifiers": [
                                 "json",
                                 "graphJson",
@@ -11748,35 +11748,36 @@
                                 "longitude",
                                 "mapType",
                                 "zoom",
+                                "drag",
                                 "mapWidth",
                                 "mapHeight",
                                 "\"graphJson\"",
                                 "\"mapJson\""
                             ]
                         },
-                        "length": 208,
-                        "vocabulary": 31,
-                        "difficulty": 22.704545454545457,
-                        "volume": 1030.4728325604701,
-                        "effort": 23396.417266543405,
-                        "bugs": 0.34349094418682335,
-                        "time": 1299.8009592524113
+                        "length": 221,
+                        "vocabulary": 32,
+                        "difficulty": 23.08695652173913,
+                        "volume": 1105,
+                        "effort": 25511.086956521736,
+                        "bugs": 0.36833333333333335,
+                        "time": 1417.282608695652
                     },
                     "params": 1,
                     "line": 26,
-                    "cyclomaticDensity": 45.45454545454545
+                    "cyclomaticDensity": 45.714285714285715
                 },
                 {
                     "name": "MapChart",
                     "sloc": {
-                        "logical": 8,
-                        "physical": 11
+                        "logical": 9,
+                        "physical": 12
                     },
                     "cyclomatic": 1,
                     "halstead": {
                         "operators": {
                             "distinct": 3,
-                            "total": 18,
+                            "total": 20,
                             "identifiers": [
                                 "=",
                                 ".",
@@ -11784,8 +11785,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 18,
-                            "total": 27,
+                            "distinct": 19,
+                            "total": 30,
                             "identifiers": [
                                 "info",
                                 "this",
@@ -11799,6 +11800,7 @@
                                 "\"roadmap\"",
                                 "_zoom",
                                 true,
+                                "_drag",
                                 "_mapWidth",
                                 0,
                                 "_mapHeight",
@@ -11807,29 +11809,29 @@
                                 "build"
                             ]
                         },
-                        "length": 45,
-                        "vocabulary": 21,
-                        "difficulty": 2.25,
-                        "volume": 197.65428402504423,
-                        "effort": 444.72213905634953,
-                        "bugs": 0.0658847613416814,
-                        "time": 24.70678550313053
+                        "length": 50,
+                        "vocabulary": 22,
+                        "difficulty": 2.3684210526315788,
+                        "volume": 222.97158093186488,
+                        "effort": 528.0905864175746,
+                        "bugs": 0.07432386031062163,
+                        "time": 29.33836591208748
                     },
                     "params": 1,
-                    "line": 84,
-                    "cyclomaticDensity": 12.5
+                    "line": 87,
+                    "cyclomaticDensity": 11.11111111111111
                 },
                 {
                     "name": "<anonymous>.updateParameters",
                     "sloc": {
-                        "logical": 26,
-                        "physical": 38
+                        "logical": 28,
+                        "physical": 41
                     },
-                    "cyclomatic": 12,
+                    "cyclomatic": 13,
                     "halstead": {
                         "operators": {
                             "distinct": 9,
-                            "total": 89,
+                            "total": 95,
                             "identifiers": [
                                 "()",
                                 ".",
@@ -11843,8 +11845,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 40,
-                            "total": 101,
+                            "distinct": 42,
+                            "total": 108,
                             "identifiers": [
                                 "info",
                                 "JSON",
@@ -11875,6 +11877,8 @@
                                 "_mapType",
                                 "zoom",
                                 "_zoom",
+                                "drag",
+                                "_drag",
                                 "mapWidth",
                                 "_mapWidth",
                                 "mapHeight",
@@ -11888,17 +11892,17 @@
                                 "addFlow"
                             ]
                         },
-                        "length": 190,
-                        "vocabulary": 49,
-                        "difficulty": 11.362499999999999,
-                        "volume": 1066.7948703818895,
-                        "effort": 12121.456714714219,
-                        "bugs": 0.3555982901272965,
-                        "time": 673.4142619285677
+                        "length": 203,
+                        "vocabulary": 51,
+                        "difficulty": 11.571428571428573,
+                        "volume": 1151.5023444202136,
+                        "effort": 13324.527128291045,
+                        "bugs": 0.38383411480673785,
+                        "time": 740.2515071272803
                     },
                     "params": 1,
-                    "line": 96,
-                    "cyclomaticDensity": 46.15384615384615
+                    "line": 100,
+                    "cyclomaticDensity": 46.42857142857143
                 },
                 {
                     "name": "<anonymous>.addFlow",
@@ -11941,7 +11945,7 @@
                         "time": 9.85864687698318
                     },
                     "params": 2,
-                    "line": 135,
+                    "line": 142,
                     "cyclomaticDensity": 100
                 },
                 {
@@ -11979,7 +11983,7 @@
                         "time": 1.43609027817842
                     },
                     "params": 1,
-                    "line": 140,
+                    "line": 147,
                     "cyclomaticDensity": 100
                 },
                 {
@@ -12017,7 +12021,7 @@
                         "time": 1.43609027817842
                     },
                     "params": 1,
-                    "line": 143,
+                    "line": 150,
                     "cyclomaticDensity": 100
                 },
                 {
@@ -12079,7 +12083,7 @@
                         "time": 210.22152341185972
                     },
                     "params": 1,
-                    "line": 147,
+                    "line": 154,
                     "cyclomaticDensity": 55.55555555555556
                 },
                 {
@@ -12134,7 +12138,7 @@
                         "time": 100.04031248972242
                     },
                     "params": 1,
-                    "line": 162,
+                    "line": 169,
                     "cyclomaticDensity": 66.66666666666666
                 },
                 {
@@ -12189,7 +12193,7 @@
                         "time": 100.04031248972242
                     },
                     "params": 1,
-                    "line": 172,
+                    "line": 179,
                     "cyclomaticDensity": 66.66666666666666
                 },
                 {
@@ -12244,7 +12248,7 @@
                         "time": 100.04031248972242
                     },
                     "params": 1,
-                    "line": 182,
+                    "line": 189,
                     "cyclomaticDensity": 66.66666666666666
                 },
                 {
@@ -12282,7 +12286,7 @@
                         "time": 1.5078947920873411
                     },
                     "params": 0,
-                    "line": 193,
+                    "line": 200,
                     "cyclomaticDensity": 100
                 },
                 {
@@ -12320,7 +12324,7 @@
                         "time": 1.5078947920873411
                     },
                     "params": 0,
-                    "line": 196,
+                    "line": 203,
                     "cyclomaticDensity": 100
                 },
                 {
@@ -12358,7 +12362,7 @@
                         "time": 1.5078947920873411
                     },
                     "params": 0,
-                    "line": 199,
+                    "line": 206,
                     "cyclomaticDensity": 100
                 },
                 {
@@ -12396,7 +12400,7 @@
                         "time": 1.5078947920873411
                     },
                     "params": 0,
-                    "line": 202,
+                    "line": 209,
                     "cyclomaticDensity": 100
                 },
                 {
@@ -12434,7 +12438,7 @@
                         "time": 1.5078947920873411
                     },
                     "params": 0,
-                    "line": 205,
+                    "line": 212,
                     "cyclomaticDensity": 100
                 },
                 {
@@ -12472,7 +12476,7 @@
                         "time": 1.5078947920873411
                     },
                     "params": 0,
-                    "line": 208,
+                    "line": 215,
                     "cyclomaticDensity": 100
                 },
                 {
@@ -12510,7 +12514,7 @@
                         "time": 1.5078947920873411
                     },
                     "params": 0,
-                    "line": 211,
+                    "line": 218,
                     "cyclomaticDensity": 100
                 },
                 {
@@ -12548,7 +12552,7 @@
                         "time": 1.5078947920873411
                     },
                     "params": 0,
-                    "line": 214,
+                    "line": 221,
                     "cyclomaticDensity": 100
                 },
                 {
@@ -12584,7 +12588,7 @@
                         "time": 0.4444444444444444
                     },
                     "params": 0,
-                    "line": 217,
+                    "line": 224,
                     "cyclomaticDensity": 100
                 },
                 {
@@ -12620,7 +12624,7 @@
                         "time": 0.4444444444444444
                     },
                     "params": 0,
-                    "line": 220,
+                    "line": 227,
                     "cyclomaticDensity": 100
                 },
                 {
@@ -12656,7 +12660,7 @@
                         "time": 0.4444444444444444
                     },
                     "params": 0,
-                    "line": 223,
+                    "line": 230,
                     "cyclomaticDensity": 100
                 },
                 {
@@ -12692,7 +12696,7 @@
                         "time": 0.4444444444444444
                     },
                     "params": 0,
-                    "line": 226,
+                    "line": 233,
                     "cyclomaticDensity": 100
                 },
                 {
@@ -12728,7 +12732,7 @@
                         "time": 0.4444444444444444
                     },
                     "params": 0,
-                    "line": 229,
+                    "line": 236,
                     "cyclomaticDensity": 100
                 },
                 {
@@ -12764,7 +12768,7 @@
                         "time": 0.4444444444444444
                     },
                     "params": 0,
-                    "line": 232,
+                    "line": 239,
                     "cyclomaticDensity": 100
                 },
                 {
@@ -12800,7 +12804,7 @@
                         "time": 0.4444444444444444
                     },
                     "params": 0,
-                    "line": 235,
+                    "line": 242,
                     "cyclomaticDensity": 100
                 },
                 {
@@ -12830,7 +12834,7 @@
                         "vocabulary": 0
                     },
                     "params": 0,
-                    "line": 239,
+                    "line": 246,
                     "cyclomaticDensity": null
                 },
                 {
@@ -12866,15 +12870,15 @@
                         "time": 0.8333333333333334
                     },
                     "params": 1,
-                    "line": 241,
+                    "line": 248,
                     "cyclomaticDensity": 100
                 }
             ],
             "dependencies": [],
-            "maintainability": 118.73201969224561,
-            "loc": 5.071428571428571,
-            "cyclomatic": 2.392857142857143,
-            "effort": 1869.6666484396371,
+            "maintainability": 117.94937445942313,
+            "loc": 5.25,
+            "cyclomatic": 2.4642857142857144,
+            "effort": 1991.1348109723654,
             "params": 0.5,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/frontend/app/Model/GraphsModel/MapChart.js"
         },
@@ -15537,14 +15541,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 100,
-                    "physical": 152
+                    "logical": 116,
+                    "physical": 182
                 },
-                "cyclomatic": 19,
+                "cyclomatic": 23,
                 "halstead": {
                     "operators": {
                         "distinct": 20,
-                        "total": 301,
+                        "total": 399,
                         "identifiers": [
                             "()",
                             "function",
@@ -15558,19 +15562,19 @@
                             "+",
                             "!==",
                             "var",
+                            "[]",
                             "new",
                             "switch",
                             "case",
                             "break",
-                            "[]",
                             "for",
                             "<",
                             "++ (postfix)"
                         ]
                     },
                     "operands": {
-                        "distinct": 120,
-                        "total": 323,
+                        "distinct": 136,
+                        "total": 415,
                         "identifiers": [
                             "\"use strict\"",
                             "\"mapChart\"",
@@ -15610,15 +15614,16 @@
                             "log",
                             "socketConnection",
                             "$observe",
-                            "\"mapChart._mapWidth\"",
+                            "\"changedP\"",
                             "newValue",
                             "oldValue",
                             "init",
                             "$watch",
-                            "\"mapChart._graph._flowList\"",
+                            "\"changedD\"",
                             "render",
                             "map",
-                            "\"init \"",
+                            "markers",
+                            "polylines",
                             "mapOptions",
                             "center",
                             "getLatitude",
@@ -15646,72 +15651,87 @@
                             "HYBRID",
                             "\"terrain\"",
                             "TERRAIN",
-                            "markers",
-                            "\"render\"",
-                            "z",
-                            0,
-                            "length",
-                            null,
-                            "setMap",
-                            "latLng",
                             "i",
+                            0,
                             "getFlowList",
-                            "j",
+                            "length",
                             "flow",
-                            "getData",
+                            "getTrace",
+                            "type",
+                            "\"poly\"",
+                            "polyline",
+                            "y",
                             "coordinates",
                             1,
+                            "push",
+                            "path",
+                            "geodesic",
+                            "strokeColor",
+                            "strokeOpacity",
+                            0.8,
+                            "strokeWeight",
+                            3,
+                            "Polyline",
+                            "setMap",
+                            "\"render\"",
+                            "z",
+                            null,
+                            "stepDisplay",
+                            "InfoWindow",
+                            "latLng",
+                            "j",
+                            "getData",
                             "marker",
                             "getMarker",
-                            "type",
                             "\"shape\"",
-                            "\"shape type\"",
                             "shape",
                             "\"circle\"",
-                            "\"shape type circle\"",
-                            "\"http://norris-nrti-dev.herokuapp.com/norris/img/circle.png\"",
+                            "\"http://norris-nrti-dev.herokuapp.com/norris/img/c.png\"",
                             "\"triangle\"",
-                            "\"shape type triangle\"",
-                            "\"http://norris-nrti-dev.herokuapp.com/norris/img/triangle.png\"",
+                            "\"http://norris-nrti-dev.herokuapp.com/norris/img/t.png\"",
                             "\"square\"",
-                            "\"shape type square\"",
-                            "\"http://norris-nrti-dev.herokuapp.com/norris/img/square.png\"",
+                            "\"http://norris-nrti-dev.herokuapp.com/norris/img/s.png\"",
                             "\"diamond\"",
-                            "\"shape type diamond\"",
-                            "\"http://norris-nrti-dev.herokuapp.com/norris/img/diamond.png\"",
+                            "\"http://norris-nrti-dev.herokuapp.com/norris/img/d.png\"",
                             "position",
                             "icon",
                             "Marker",
                             "\"icon\"",
-                            "path",
                             "\"text\"",
                             "title",
                             "text",
-                            "push",
+                            "getLegendOnPoint",
+                            "getName",
+                            "addLegendOnPoint",
+                            "\"click\"",
+                            "setContent",
+                            "open",
+                            "event",
+                            "addListener",
                             "\"app\"",
                             "angular",
                             "module",
                             "directive"
                         ]
                     },
-                    "length": 624,
-                    "vocabulary": 140,
-                    "difficulty": 26.916666666666668,
-                    "volume": 4448.672602573659,
-                    "effort": 119743.43755260766,
-                    "bugs": 1.482890867524553,
-                    "time": 6652.413197367092
+                    "length": 814,
+                    "vocabulary": 156,
+                    "difficulty": 30.51470588235294,
+                    "volume": 5930.31740615387,
+                    "effort": 180961.89143778352,
+                    "bugs": 1.9767724687179566,
+                    "time": 10053.438413210195
                 },
-                "params": 8,
+                "params": 10,
                 "line": 2,
-                "cyclomaticDensity": 19
+                "cyclomaticDensity": 19.82758620689655
             },
             "functions": [
                 {
                     "name": "<anonymous>",
                     "sloc": {
                         "logical": 10,
-                        "physical": 136
+                        "physical": 166
                     },
                     "cyclomatic": 1,
                     "halstead": {
@@ -15763,14 +15783,14 @@
                 {
                     "name": "link",
                     "sloc": {
-                        "logical": 7,
-                        "physical": 123
+                        "logical": 8,
+                        "physical": 153
                     },
                     "cyclomatic": 1,
                     "halstead": {
                         "operators": {
                             "distinct": 6,
-                            "total": 19,
+                            "total": 22,
                             "identifiers": [
                                 "()",
                                 "function",
@@ -15781,8 +15801,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 14,
-                            "total": 26,
+                            "distinct": 15,
+                            "total": 28,
                             "identifiers": [
                                 "scope",
                                 "element",
@@ -15790,27 +15810,28 @@
                                 "\"id\"",
                                 "<anonymous>",
                                 "$observe",
-                                "\"mapChart._mapWidth\"",
+                                "\"changedP\"",
                                 true,
                                 "$watch",
-                                "\"mapChart._graph._flowList\"",
+                                "\"changedD\"",
                                 "map",
-                                "init",
                                 "markers",
+                                "polylines",
+                                "init",
                                 "render"
                             ]
                         },
-                        "length": 45,
-                        "vocabulary": 20,
-                        "difficulty": 5.571428571428571,
-                        "volume": 194.4867642699313,
-                        "effort": 1083.5691152181887,
-                        "bugs": 0.06482892142331044,
-                        "time": 60.19828417878826
+                        "length": 50,
+                        "vocabulary": 21,
+                        "difficulty": 5.6,
+                        "volume": 219.61587113893805,
+                        "effort": 1229.848878378053,
+                        "bugs": 0.07320529037964602,
+                        "time": 68.32493768766962
                     },
                     "params": 3,
                     "line": 29,
-                    "cyclomaticDensity": 14.285714285714285
+                    "cyclomaticDensity": 12.5
                 },
                 {
                     "name": "<anonymous>",
@@ -15949,42 +15970,42 @@
                 {
                     "name": "scope.init",
                     "sloc": {
-                        "logical": 20,
-                        "physical": 28
+                        "logical": 33,
+                        "physical": 43
                     },
-                    "cyclomatic": 5,
+                    "cyclomatic": 8,
                     "halstead": {
                         "operators": {
-                            "distinct": 11,
-                            "total": 66,
+                            "distinct": 16,
+                            "total": 143,
                             "identifiers": [
-                                "()",
-                                "+",
-                                ".",
                                 "var",
                                 "=",
                                 "{}",
                                 ":",
                                 "new",
+                                "()",
+                                ".",
                                 "switch",
                                 "case",
-                                "break"
+                                "break",
+                                "for",
+                                "<",
+                                "++ (postfix)",
+                                "if",
+                                "===",
+                                "[]"
                             ]
                         },
                         "operands": {
-                            "distinct": 36,
-                            "total": 69,
+                            "distinct": 55,
+                            "total": 141,
                             "identifiers": [
-                                "\"init \"",
-                                "scope",
-                                "mapChart",
-                                "JSON",
-                                "stringify",
-                                "console",
-                                "log",
                                 "mapOptions",
                                 "<anonymous>",
                                 "center",
+                                "scope",
+                                "mapChart",
                                 "getLatitude",
                                 "getLongitude",
                                 "google",
@@ -16010,32 +16031,56 @@
                                 "\"hybrid\"",
                                 "HYBRID",
                                 "\"terrain\"",
-                                "TERRAIN"
+                                "TERRAIN",
+                                "i",
+                                0,
+                                "getFlowList",
+                                "length",
+                                "flow",
+                                "getTrace",
+                                "type",
+                                "\"poly\"",
+                                "polyline",
+                                "y",
+                                "coordinates",
+                                1,
+                                "push",
+                                "path",
+                                "geodesic",
+                                true,
+                                "strokeColor",
+                                "strokeOpacity",
+                                0.8,
+                                "strokeWeight",
+                                3,
+                                "Polyline",
+                                "polylines",
+                                "setMap"
                             ]
                         },
-                        "length": 135,
-                        "vocabulary": 47,
-                        "difficulty": 10.541666666666668,
-                        "volume": 749.8694949764811,
-                        "effort": 7904.874259543739,
-                        "bugs": 0.2499564983254937,
-                        "time": 439.1596810857633
+                        "length": 284,
+                        "vocabulary": 71,
+                        "difficulty": 20.509090909090908,
+                        "volume": 1746.5281819393297,
+                        "effort": 35819.705258682974,
+                        "bugs": 0.5821760606464432,
+                        "time": 1989.9836254823874
                     },
                     "params": 0,
-                    "line": 55,
-                    "cyclomaticDensity": 25
+                    "line": 57,
+                    "cyclomaticDensity": 24.242424242424242
                 },
                 {
                     "name": "scope.render",
                     "sloc": {
-                        "logical": 52,
-                        "physical": 64
+                        "logical": 51,
+                        "physical": 79
                     },
-                    "cyclomatic": 11,
+                    "cyclomatic": 12,
                     "halstead": {
                         "operators": {
-                            "distinct": 14,
-                            "total": 163,
+                            "distinct": 17,
+                            "total": 172,
                             "identifiers": [
                                 "()",
                                 ".",
@@ -16050,12 +16095,15 @@
                                 "case",
                                 "break",
                                 "{}",
-                                ":"
+                                ":",
+                                "if",
+                                "===",
+                                "function"
                             ]
                         },
                         "operands": {
-                            "distinct": 54,
-                            "total": 162,
+                            "distinct": 55,
+                            "total": 164,
                             "identifiers": [
                                 "\"render\"",
                                 "console",
@@ -16067,13 +16115,15 @@
                                 null,
                                 "setMap",
                                 "<anonymous>",
+                                "stepDisplay",
+                                "google",
+                                "maps",
+                                "InfoWindow",
                                 "latLng",
                                 "scope",
                                 "mapChart",
                                 "getLatitude",
                                 "getLongitude",
-                                "google",
-                                "maps",
                                 "LatLng",
                                 "i",
                                 "getFlowList",
@@ -16087,20 +16137,15 @@
                                 "getMarker",
                                 "type",
                                 "\"shape\"",
-                                "\"shape type\"",
                                 "shape",
                                 "\"circle\"",
-                                "\"shape type circle\"",
-                                "\"http://norris-nrti-dev.herokuapp.com/norris/img/circle.png\"",
+                                "\"http://norris-nrti-dev.herokuapp.com/norris/img/c.png\"",
                                 "\"triangle\"",
-                                "\"shape type triangle\"",
-                                "\"http://norris-nrti-dev.herokuapp.com/norris/img/triangle.png\"",
+                                "\"http://norris-nrti-dev.herokuapp.com/norris/img/t.png\"",
                                 "\"square\"",
-                                "\"shape type square\"",
-                                "\"http://norris-nrti-dev.herokuapp.com/norris/img/square.png\"",
+                                "\"http://norris-nrti-dev.herokuapp.com/norris/img/s.png\"",
                                 "\"diamond\"",
-                                "\"shape type diamond\"",
-                                "\"http://norris-nrti-dev.herokuapp.com/norris/img/diamond.png\"",
+                                "\"http://norris-nrti-dev.herokuapp.com/norris/img/d.png\"",
                                 "position",
                                 "map",
                                 "icon",
@@ -16110,28 +16155,115 @@
                                 "\"text\"",
                                 "title",
                                 "text",
+                                "getLegendOnPoint",
+                                true,
+                                "getName",
+                                "addLegendOnPoint",
                                 "push"
                             ]
                         },
-                        "length": 325,
-                        "vocabulary": 68,
-                        "difficulty": 21,
-                        "volume": 1978.4254234063606,
-                        "effort": 41546.93389153357,
-                        "bugs": 0.6594751411354535,
-                        "time": 2308.162993974087
+                        "length": 336,
+                        "vocabulary": 72,
+                        "difficulty": 25.345454545454547,
+                        "volume": 2073.094800484617,
+                        "effort": 52543.53003410102,
+                        "bugs": 0.691031600161539,
+                        "time": 2919.085001894501
                     },
                     "params": 0,
-                    "line": 86,
-                    "cyclomaticDensity": 21.153846153846153
+                    "line": 101,
+                    "cyclomaticDensity": 23.52941176470588
+                },
+                {
+                    "name": "addLegendOnPoint",
+                    "sloc": {
+                        "logical": 1,
+                        "physical": 9
+                    },
+                    "cyclomatic": 1,
+                    "halstead": {
+                        "operators": {
+                            "distinct": 3,
+                            "total": 5,
+                            "identifiers": [
+                                "()",
+                                "function",
+                                "."
+                            ]
+                        },
+                        "operands": {
+                            "distinct": 8,
+                            "total": 9,
+                            "identifiers": [
+                                "marker",
+                                "text",
+                                "\"click\"",
+                                "<anonymous>",
+                                "google",
+                                "maps",
+                                "event",
+                                "addListener"
+                            ]
+                        },
+                        "length": 14,
+                        "vocabulary": 11,
+                        "difficulty": 1.6875,
+                        "volume": 48.43204266092217,
+                        "effort": 81.72907199030617,
+                        "bugs": 0.016144014220307392,
+                        "time": 4.540503999461453
+                    },
+                    "params": 2,
+                    "line": 169,
+                    "cyclomaticDensity": 100
+                },
+                {
+                    "name": "<anonymous>",
+                    "sloc": {
+                        "logical": 2,
+                        "physical": 6
+                    },
+                    "cyclomatic": 1,
+                    "halstead": {
+                        "operators": {
+                            "distinct": 2,
+                            "total": 4,
+                            "identifiers": [
+                                "()",
+                                "."
+                            ]
+                        },
+                        "operands": {
+                            "distinct": 6,
+                            "total": 7,
+                            "identifiers": [
+                                "text",
+                                "stepDisplay",
+                                "setContent",
+                                "map",
+                                "marker",
+                                "open"
+                            ]
+                        },
+                        "length": 11,
+                        "vocabulary": 8,
+                        "difficulty": 1.1666666666666667,
+                        "volume": 33,
+                        "effort": 38.5,
+                        "bugs": 0.011,
+                        "time": 2.138888888888889
+                    },
+                    "params": 0,
+                    "line": 171,
+                    "cyclomaticDensity": 50
                 }
             ],
             "dependencies": [],
-            "maintainability": 97.45092548593752,
-            "loc": 14,
-            "cyclomatic": 3.5714285714285716,
-            "effort": 7473.888289673179,
-            "params": 1.1428571428571428,
+            "maintainability": 98.02845473358616,
+            "loc": 12.666666666666666,
+            "cyclomatic": 3.4444444444444446,
+            "effort": 10166.128222729902,
+            "params": 1.1111111111111112,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/frontend/app/View/GraphsView/MapChartView.js"
         },
         {
@@ -18414,9 +18546,9 @@
     ],
     "changeCost": 3.4482758620689653,
     "coreSize": 0,
-    "loc": 5.11525311731911,
-    "cyclomatic": 1.8250769048628737,
-    "effort": 1071.1759891926902,
-    "params": 0.7332742548111156,
-    "maintainability": 123.69433342064725
+    "loc": 5.0716023236683165,
+    "cyclomatic": 1.823161196050613,
+    "effort": 1167.289814350954,
+    "params": 0.7321795640612525,
+    "maintainability": 123.70023570275315
 }
