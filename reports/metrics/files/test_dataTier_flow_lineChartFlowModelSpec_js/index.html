@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">63.98</p>
+      <p class="stat">63.47</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">186</p>
+      <p class="stat">219</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">27.48</p>
+      <p class="stat">29.92</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">2.22</p>
+      <p class="stat">2.52</p>
     </div>
   </div>
 </div>
@@ -241,6 +241,39 @@ describe(&#039;LineChartFlowModel&#039;, function() {
             assert.strictEqual(update, true);
             assert.strictEqual(flow1._records[0].temperature, 4);
             assert.strictEqual(flow1._records[0].norrisRecordIsValid, true);
+        });
+    });
+    
+    describe(&#039;#updateProperties&#039;, function() {
+        it(&#039;updated properties&#039;, function() {
+            var prop={
+                ID: &#039;flow1&#039;,
+                xKey: &#039;temperature&#039;,
+                yKey: &#039;pressure&#039;,
+                xFormat: &#039;toInt&#039;,
+                yFormat: &#039;toFloat&#039;,
+                flowColor: &#039;#FFFFFF&#039;,
+                marker: &#039;diamond&#039;,
+                interpolation: &#039;basis&#039;,
+                area: &#039;#012345&#039;,
+                maxItems: 2,
+                maxItemsSaved: 1000
+            };
+            var flow1=new LineChartFlowModel(prop);
+            var updP=flow1.updateProperties({
+                ID: &#039;flow1&#039;,
+                xKey: &#039;temp&#039;,
+                yKey: &#039;press&#039;,
+                xFormat: &#039;toInt&#039;,
+                yFormat: &#039;toFloat&#039;,
+                flowColor: &#039;#FFFFFF&#039;,
+                marker: &#039;circle&#039;,
+                interpolation: &#039;basis&#039;,
+                area: &#039;#0F2345&#039;,
+                maxItems: 4,
+                maxItemsSaved: 50
+            });
+            console.log(&#039;STAMPAAAAA#updateProperties&#039;+JSON.stringify(updP));
         });
     });
 

@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">71.69</p>
+      <p class="stat">71.38</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">269</p>
+      <p class="stat">272</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">25.82</p>
+      <p class="stat">26.36</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">2.87</p>
+      <p class="stat">2.93</p>
     </div>
   </div>
 </div>
@@ -121,7 +121,6 @@ var io = require(&#039;socket.io&#039;)(server);
 io.listen(5000);
 var ioclient = require(&#039;socket.io-client&#039;);
 var nor = new Norris(app, io, &#039;/norris&#039;);
-var page1 = nor.createPage(&#039;page1&#039;);
 
 function ParamMock() {
     this._app = null;
@@ -179,7 +178,7 @@ describe(&#039;Page&#039;, function() {
 
     describe(&#039;#getConfigJSON&#039;, function() {
         it(&#039;returns the JSON to send to clients when they connect&#039;, function() {
-            var pg = nor.createPage({ID:&#039;page2&#039;, name:&#039;page2&#039;, description:&#039;page two&#039;, graphsPerRow: 3, graphsPerCol: 5});
+            var page2 = nor.createPage({ID:&#039;page2&#039;, name:&#039;page2&#039;, description:&#039;page two&#039;, graphsPerRow: 3, graphsPerCol: 5});
             page2.createMapChart({ID:&#039;map1&#039;});
             page2.createLineChart({ID:&#039;line1&#039;});
             var expectedJSON = {
@@ -272,6 +271,8 @@ describe(&#039;Page&#039;, function() {
     });
 
     describe(&#039;#createMapChart&#039;, function() {
+        var nor = new Norris(app, io, &#039;/norris&#039;);
+        var page1 = nor.createPage(&#039;page1&#039;);
         it(&#039;returns null if no parameter is passed&#039;, function() {
             assert.deepEqual(page1.createMapChart(), null);
         });
@@ -316,6 +317,8 @@ describe(&#039;Page&#039;, function() {
     });
 
     describe(&#039;#createLineChart&#039;, function() {
+        var nor = new Norris(app, io, &#039;/norris&#039;);
+        var page1 = nor.createPage(&#039;page1&#039;);
         it(&#039;returns null if no parameter is passed&#039;, function() {
             assert.deepEqual(page1.createLineChart(), null);
         });
