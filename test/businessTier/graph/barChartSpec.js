@@ -2,7 +2,7 @@
 'use strict';
 
 /*
-* Name : mapChartSpec.js
+* Name : barChartSpec.js
 * Module : UnitTest
 * Location : /test/businessTier/graph
 *
