@@ -67,9 +67,13 @@ describe('Socket', function() {
             socket1.attachObject(object, 'onEvent');
             socket1.sendMessage('event', 'message');
             client1.on('connection', function(configJSON) {
+                console.log('#fuckingtest#connection');
+                console.dir(configJSON);
                 assert.strictEqual(configJSON, object.getConfigJSON());
             });
             client1.on('event', function(message) {
+                console.log('#fuckingtest#event');
+                console.dir(message);
                 assert.strictEqual(message, 'message');
             });
         });
