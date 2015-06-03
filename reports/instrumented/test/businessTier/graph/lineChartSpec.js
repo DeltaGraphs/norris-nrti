@@ -138,10 +138,16 @@ describe('LineChart', function() {
         });
     });
     describe('#addRecord', function() {
+        it('returned 272 - undefined flowID', function() {
+            var mock=new socketMock();
+            var lineChart=new LineChart({ID: 'dada'}, {_page: 'dssada'}, mock);
+            assert.strictEqual(lineChart.addRecord(),272);
+        });
         it('returned 123 - undefined record', function() {
             var mock=new socketMock();
             var lineChart=new LineChart({ID: 'dada'}, {_page: 'dssada'}, mock);
-            assert.strictEqual(lineChart.addRecord(),123);
+            lineChart.createLineChartFlow({ ID:'flow1', name: 'grafico tempo-temperatura', xKey: 'tempo', yKey: 'temperatura'});
+            assert.strictEqual(lineChart.addRecord('flow1'),123);
         });
         it('returned correct ID - record added correctly', function() {
             var mock=new socketMock();
@@ -154,7 +160,7 @@ describe('LineChart', function() {
         it('returned error - undefined record', function() {
             var mock=new socketMock();
             var lineChart=new LineChart({ID: 'dada'}, {_page: 'dssada'}, mock);
-            assert.strictEqual(typeof  lineChart.updateRecord(),'numeric');
+            assert.strictEqual(typeof lineChart.updateRecord(),'number');
         });
         it('returned true - correctly updated', function() {
             var mock=new socketMock();
@@ -168,6 +174,8 @@ describe('LineChart', function() {
         it('no update - invalid params', function() {
             var mock = new socketMock();
             var lineChart=new LineChart({ID: 'dada'}, {_page: 'dssada'}, mock);
+            mock.p1=null;
+            mock.p2=null;
             lineChart.updateProperties();
             assert.strictEqual(mock.p1,null);
             assert.strictEqual(mock.p2,null);
@@ -178,10 +186,17 @@ describe('LineChart', function() {
             lineChart.updateProperties({title: 'graph one', height: 200, width: 350, enableLegend: true, backgroundColor: '#EEEEEE', legendOnPoint: true, viewFinder: true, horizontalGrid: true, verticalGrid: true });
             assert.strictEqual(mock.p1,'updateGraphProp');
             console.log('SOSTITUIREupdateProperties '+JSON.stringify(mock.p2));
-            assert.strictEqual(mock.p2,null);
+            assert.strictEqual(mock.p2,{
+                title: 'graph one',
+                height: 200,
+                width: 350,
+                enableLegend: true,
+                backgroundColor: '#EEEEEE',
+                horizontalGrid: true,
+            });
         });
     });
-    describe('#getProperties', function() {
+    /*describe('#getProperties', function() {
         it('returned a correct JSON', function() {
             var mock=new socketMock();
             var lineChart=new LineChart({ID: 'dada'}, {_page: 'dssada'}, mock);
@@ -198,6 +213,6 @@ describe('LineChart', function() {
             console.log('SOSTITUIREgetConfigJSON '+JSON.stringify(lineChart.getConfigJSON()));
             assert.deepEqual(lineChart.getConfigJSON(),{});
         });
-    });
+    });*/
 
 });

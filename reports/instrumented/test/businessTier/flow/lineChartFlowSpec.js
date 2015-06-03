@@ -161,7 +161,7 @@ describe('LineChartFlow', function() {
             assert.strictEqual(flow1._dataLineChartFlow._yKey,'temperatura');
             assert.strictEqual(flow1._dataLineChartFlow._name,'grafico tempo-temperatura');
             assert.strictEqual(mock.p1[mock.p1.length-2],'updateFlowData');
-            console.dir(flow1._dataMapChartFlow._records);
+            console.dir(flow1._dataLineChartFlow._records);
             assert.strictEqual(mock.p2[mock.p1.length-2],{
                 action: 'replaceData',
                 ID: 'flow1',
