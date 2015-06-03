@@ -59,14 +59,19 @@ angular.module('app')
 		});
 	};
 
+	$scope.checkType = function(graph, type){
+		if (graph.graph.constructor.name === type){
+			return true;
+		}
+		return false;
+	};
+
 	function matrix(list) {
 		var array = [];
-		var count = 0,
-			max = $scope.page.getGraphsList().length;
-		for (var i=0; i<$scope.page.getGraphsPerCol() && count<max; i++) {
+		var count = 0;
+		for (var i=0;count<list.length && i<$scope.page.getGraphsPerCol(); i++) {
 			array[i] = [];
-			for (var j=0; j<$scope.page.getGraphsPerRow() && count<max; j++) {
-				console.log(list[$scope.page.getGraphsPerRow()*i+j].graph.constructor.name);
+			for (var j=0;count<list.length && j<$scope.page.getGraphsPerRow(); j++) {
 				array[i].push(list[$scope.page.getGraphsPerRow()*i+j]);
 				count++;
 			}

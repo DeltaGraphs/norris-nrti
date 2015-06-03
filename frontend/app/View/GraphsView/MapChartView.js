@@ -18,19 +18,30 @@ angular.module('app')
 .directive('mapChart', function(){
 	return {
 		restrict: 'E',
-		//controller : 'MapChartController',
+		controller : 'MapChartController',
 		replace: false,
         require: '^page',
 		scope: {
-			//mapChart1: '@',
 			id: '@'
 		},
 		bindToController: true,
         template: '<div>mapchart {{id}}</div>',
-    	/*link: function (scope, element, attrs) {
-            console.log('link');
-			scope.socketConnection();
-			//scope.listenOnEvents();
+    	link: function (scope, element, attrs) {
+            //console.log(scope.$parent.page.getGraphsList().length);
+            attrs.$observe('id', function(value) {
+                if (value) {
+                    if(scope.$parent.page.getGraphsList()[value].graph.constructor.name === 'MapChart'){
+                        scope.mapChart = scope.$parent.page.getGraphsList()[value].graph;
+                        console.log(scope.mapChart.getTitle());
+                        scope.socketConnection();
+
+                    }
+                }
+            });
+            
+            //scope.mapChart = scope.$parent.page.getGraphsList()[attrs.id].graph;
+			
+
 			scope.render = function() {
 
                 console.log('render');
@@ -66,7 +77,7 @@ angular.module('app')
 
         		for (var i=0; i<scope.mapChart.getFlowList().length; i++){
         			for (var j=0; i<scope.mapChart.getFlowList()[i].flow.getData().length; i++){
-        				var latLng = new google.maps.LatLng(scope.mapChart.getFlowList()[i].flow.getData()[j].value[0], scope.mapChart.getFlowList()[i].flow.getData()[j].value[0]);
+        				var latLng = new google.maps.LatLng(scope.mapChart.getFlowList()[i].flow.getData()[j].value[0], scope.mapChart.getFlowList()[i].flow.getData()[j].value[1]);
                         var marker;
 
         				switch (scope.matChart.getFlowList()[i].flow.getMarker().type) {
@@ -74,18 +85,18 @@ angular.module('app')
                                 var type;
         						switch (scope.matChart.getFlowList()[i].flow.getMarker().shape) { //circle, triangle, square, diamond
                                     case 'circle':
-                                        type = 
+                                        type = { path: 'img/circle.png' };
                                     case 'triangle':
-
+                                        type = { path: 'img/triangle.png' };
                                     case 'square':
-
+                                        type = { path: 'img/square.png' };
                                     case 'diamond':
-
+                                        type = { path: 'img/diamond.png' };
                                 }
         						marker = new google.maps.Marker({
 		    						position: latLng,
 		    						map: map,
-		    						icon: { path: scope.matChart.getFlowList()[i].flow.getMarker().shape }
+		    						icon: type
 								});
 								break;
         					case 'icon':
@@ -126,16 +137,16 @@ angular.module('app')
 
       		}; // shape icon text
 
-            console.log('link chiama render');
+            /*console.log('link chiama render');
       		scope.$watch('scope.mapChart', function(){
                 scope.render();
             }, true);
-            console.log('link ha chiamato render');
+            console.log('link ha chiamato render');*/
 
       		
-			showMarker = function() {};
+			/*showMarker = function() {};
 			zoom = function() {};
-			drag = function() {};
-		}*/
+			drag = function() {};*/
+		}
 	};
 });
