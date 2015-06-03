@@ -67,7 +67,8 @@ describe('LineChartFlow', function() {
             var flow1=new LineChartFlow({ID: 'flow1'},mock);
             assert.strictEqual(flow1.addRecord({'tempo': 1, 'temperatura': 25}).indexOf('flow1'), 0);
             assert.strictEqual(mock.p1,'updateFlowData');
-            assert.strictEqual(typeof mock.p2,'string');
+            console.log('STAMPAAAA#addRecord '+JSON.stringify(mock.p2));
+            assert.deepEqual(mock.p2,{});
         });
     });
 

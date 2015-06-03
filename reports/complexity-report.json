@@ -3028,7 +3028,7 @@
             "aggregate": {
                 "sloc": {
                     "logical": 20,
-                    "physical": 49
+                    "physical": 53
                 },
                 "cyclomatic": 4,
                 "halstead": {
@@ -3164,7 +3164,7 @@
                     "name": "<anonymous>.addRecord",
                     "sloc": {
                         "logical": 0,
-                        "physical": 2
+                        "physical": 3
                     },
                     "cyclomatic": 1,
                     "halstead": {
@@ -3196,7 +3196,7 @@
                     "name": "<anonymous>.updateRecord",
                     "sloc": {
                         "logical": 0,
-                        "physical": 2
+                        "physical": 3
                     },
                     "cyclomatic": 1,
                     "halstead": {
@@ -3222,14 +3222,14 @@
                         "time": 0
                     },
                     "params": 2,
-                    "line": 40,
+                    "line": 41,
                     "cyclomaticDensity": null
                 },
                 {
                     "name": "<anonymous>.getReplaceDataJSON",
                     "sloc": {
                         "logical": 0,
-                        "physical": 2
+                        "physical": 3
                     },
                     "cyclomatic": 1,
                     "halstead": {
@@ -3252,14 +3252,14 @@
                         "vocabulary": 0
                     },
                     "params": 0,
-                    "line": 43,
+                    "line": 45,
                     "cyclomaticDensity": null
                 },
                 {
                     "name": "<anonymous>.updateProperties",
                     "sloc": {
                         "logical": 0,
-                        "physical": 2
+                        "physical": 3
                     },
                     "cyclomatic": 1,
                     "halstead": {
@@ -3284,7 +3284,7 @@
                         "time": 0
                     },
                     "params": 1,
-                    "line": 46,
+                    "line": 49,
                     "cyclomaticDensity": null
                 }
             ],
@@ -4115,13 +4115,13 @@
             "aggregate": {
                 "sloc": {
                     "logical": 105,
-                    "physical": 169
+                    "physical": 170
                 },
                 "cyclomatic": 18,
                 "halstead": {
                     "operators": {
                         "distinct": 22,
-                        "total": 327,
+                        "total": 334,
                         "identifiers": [
                             "var",
                             "=",
@@ -4141,15 +4141,15 @@
                             "else",
                             "++ (postfix)",
                             "{}",
-                            ":",
                             ">",
+                            ":",
                             "!==",
                             "for"
                         ]
                     },
                     "operands": {
                         "distinct": 96,
-                        "total": 363,
+                        "total": 370,
                         "identifiers": [
                             "\"use strict\"",
                             "Graph",
@@ -4249,13 +4249,13 @@
                             "exports"
                         ]
                     },
-                    "length": 690,
+                    "length": 704,
                     "vocabulary": 118,
-                    "difficulty": 41.59375,
-                    "volume": 4749.02370405967,
-                    "effort": 197529.70469073192,
-                    "bugs": 1.5830079013532234,
-                    "time": 10973.87248281844
+                    "difficulty": 42.39583333333333,
+                    "volume": 4845.380706750737,
+                    "effort": 205423.95287995308,
+                    "bugs": 1.6151269022502457,
+                    "time": 11412.44182666406
                 },
                 "params": 12,
                 "line": 2,
@@ -4389,13 +4389,13 @@
                     "name": "<anonymous>.createLineChartFlow",
                     "sloc": {
                         "logical": 15,
-                        "physical": 19
+                        "physical": 20
                     },
                     "cyclomatic": 2,
                     "halstead": {
                         "operators": {
-                            "distinct": 10,
-                            "total": 43,
+                            "distinct": 9,
+                            "total": 50,
                             "identifiers": [
                                 "var",
                                 "=",
@@ -4405,13 +4405,12 @@
                                 "! (prefix)",
                                 "()",
                                 "return",
-                                "{}",
-                                ":"
+                                "{}"
                             ]
                         },
                         "operands": {
                             "distinct": 30,
-                            "total": 54,
+                            "total": 61,
                             "identifiers": [
                                 "params",
                                 "lcf",
@@ -4445,13 +4444,13 @@
                                 "sendMessage"
                             ]
                         },
-                        "length": 97,
-                        "vocabulary": 40,
-                        "difficulty": 9,
-                        "volume": 516.2270252040742,
-                        "effort": 4646.043226836668,
-                        "bugs": 0.1720756750680247,
-                        "time": 258.1135126020371
+                        "length": 111,
+                        "vocabulary": 39,
+                        "difficulty": 9.149999999999999,
+                        "volume": 586.6796462937097,
+                        "effort": 5368.118763587442,
+                        "bugs": 0.1955598820979032,
+                        "time": 298.22882019930233
                     },
                     "params": 1,
                     "line": 70,
@@ -4517,7 +4516,7 @@
                         "time": 265.7618707026162
                     },
                     "params": 1,
-                    "line": 90,
+                    "line": 91,
                     "cyclomaticDensity": 35.714285714285715
                 },
                 {
@@ -4568,7 +4567,7 @@
                         "time": 39.2116385856331
                     },
                     "params": 0,
-                    "line": 113,
+                    "line": 114,
                     "cyclomaticDensity": 50
                 },
                 {
@@ -4608,7 +4607,7 @@
                         "time": 4.199999999999999
                     },
                     "params": 2,
-                    "line": 122,
+                    "line": 123,
                     "cyclomaticDensity": 100
                 },
                 {
@@ -4649,7 +4648,7 @@
                         "time": 5.547368752524047
                     },
                     "params": 3,
-                    "line": 126,
+                    "line": 127,
                     "cyclomaticDensity": 100
                 },
                 {
@@ -4697,7 +4696,7 @@
                         "time": 38.400000000000006
                     },
                     "params": 1,
-                    "line": 131,
+                    "line": 132,
                     "cyclomaticDensity": 50
                 },
                 {
@@ -4735,7 +4734,7 @@
                         "time": 1.5078947920873411
                     },
                     "params": 0,
-                    "line": 139,
+                    "line": 140,
                     "cyclomaticDensity": 100
                 },
                 {
@@ -4803,7 +4802,7 @@
                         "time": 902.3242435850648
                     },
                     "params": 0,
-                    "line": 143,
+                    "line": 144,
                     "cyclomaticDensity": 15
                 }
             ],
@@ -4824,10 +4823,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 107.90399180033708,
+            "maintainability": 107.83236690134254,
             "loc": 8.7,
             "cyclomatic": 2.7,
-            "effort": 3411.843279782609,
+            "effort": 3484.0508334576866,
             "params": 1.2,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/graph/lineChart.js"
         },
@@ -16824,7 +16823,7 @@
     "coreSize": 29.03225806451613,
     "loc": 10.043952284274868,
     "cyclomatic": 4.245401909918041,
-    "effort": 7808.581451537017,
+    "effort": 7810.910727462017,
     "params": 1.119795079472499,
-    "maintainability": 106.76500669056958
+    "maintainability": 106.76269620995684
 }

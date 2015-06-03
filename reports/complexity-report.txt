@@ -1,8 +1,8 @@
 Mean per-function logical LOC: 10.043952284274868
 Mean per-function parameter count: 1.119795079472499
 Mean per-function cyclomatic complexity: 4.245401909918041
-Mean per-function Halstead effort: 7808.581451537017
-Mean per-module maintainability index: 106.76500669056958
+Mean per-function Halstead effort: 7810.910727462017
+Mean per-module maintainability index: 106.76269620995684
 First-order density: 5.931321540062435%
 Change cost: 21.22788761706556%
 Core size: 29.03225806451613%
@@ -464,7 +464,7 @@ Core size: 29.03225806451613%
 
 /home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/flow/tableFlow.js
 
-  Physical LOC: 49
+  Physical LOC: 53
   Logical LOC: 20
   Mean parameter count: 1.2
   Cyclomatic complexity: 4
@@ -485,7 +485,7 @@ Core size: 29.03225806451613%
 
   Function: <anonymous>.addRecord
     Line No.: 37
-    Physical LOC: 2
+    Physical LOC: 3
     Logical LOC: 0
     Parameter count: 1
     Cyclomatic complexity: 1
@@ -495,8 +495,8 @@ Core size: 29.03225806451613%
     Halstead effort: 0
 
   Function: <anonymous>.updateRecord
-    Line No.: 40
-    Physical LOC: 2
+    Line No.: 41
+    Physical LOC: 3
     Logical LOC: 0
     Parameter count: 2
     Cyclomatic complexity: 1
@@ -506,8 +506,8 @@ Core size: 29.03225806451613%
     Halstead effort: 0
 
   Function: <anonymous>.getReplaceDataJSON
-    Line No.: 43
-    Physical LOC: 2
+    Line No.: 45
+    Physical LOC: 3
     Logical LOC: 0
     Parameter count: 0
     Cyclomatic complexity: 1
@@ -517,8 +517,8 @@ Core size: 29.03225806451613%
     Halstead effort: 0
 
   Function: <anonymous>.updateProperties
-    Line No.: 46
-    Physical LOC: 2
+    Line No.: 49
+    Physical LOC: 3
     Logical LOC: 0
     Parameter count: 1
     Cyclomatic complexity: 1
@@ -659,12 +659,12 @@ Core size: 29.03225806451613%
 
 /home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/graph/lineChart.js
 
-  Physical LOC: 169
+  Physical LOC: 170
   Logical LOC: 105
   Mean parameter count: 1.2
   Cyclomatic complexity: 18
   Cyclomatic complexity density: 17.142857142857142%
-  Maintainability index: 107.90399180033708
+  Maintainability index: 107.83236690134254
   Dependency count: 3
 
   Function: LineChart
@@ -691,17 +691,17 @@ Core size: 29.03225806451613%
 
   Function: <anonymous>.createLineChartFlow
     Line No.: 70
-    Physical LOC: 19
+    Physical LOC: 20
     Logical LOC: 15
     Parameter count: 1
     Cyclomatic complexity: 2
     Cyclomatic complexity density: 13.333333333333334%
-    Halstead difficulty: 9
-    Halstead volume: 516.2270252040742
-    Halstead effort: 4646.043226836668
+    Halstead difficulty: 9.149999999999999
+    Halstead volume: 586.6796462937097
+    Halstead effort: 5368.118763587442
 
   Function: <anonymous>.deleteFlow
-    Line No.: 90
+    Line No.: 91
     Physical LOC: 22
     Logical LOC: 14
     Parameter count: 1
@@ -712,7 +712,7 @@ Core size: 29.03225806451613%
     Halstead effort: 4783.713672647092
 
   Function: <anonymous>.deleteAllFlows
-    Line No.: 113
+    Line No.: 114
     Physical LOC: 8
     Logical LOC: 4
     Parameter count: 0
@@ -723,7 +723,7 @@ Core size: 29.03225806451613%
     Halstead effort: 705.8094945413958
 
   Function: <anonymous>.addRecord
-    Line No.: 122
+    Line No.: 123
     Physical LOC: 3
     Logical LOC: 1
     Parameter count: 2
@@ -734,7 +734,7 @@ Core size: 29.03225806451613%
     Halstead effort: 75.6
 
   Function: <anonymous>.updateRecord
-    Line No.: 126
+    Line No.: 127
     Physical LOC: 3
     Logical LOC: 1
     Parameter count: 3
@@ -745,7 +745,7 @@ Core size: 29.03225806451613%
     Halstead effort: 99.85263754543286
 
   Function: <anonymous>.updateProperties
-    Line No.: 131
+    Line No.: 132
     Physical LOC: 7
     Logical LOC: 4
     Parameter count: 1
@@ -756,7 +756,7 @@ Core size: 29.03225806451613%
     Halstead effort: 691.2
 
   Function: <anonymous>.getProperties
-    Line No.: 139
+    Line No.: 140
     Physical LOC: 3
     Logical LOC: 1
     Parameter count: 0
@@ -767,7 +767,7 @@ Core size: 29.03225806451613%
     Halstead effort: 27.14210625757214
 
   Function: <anonymous>.getConfigJSON
-    Line No.: 143
+    Line No.: 144
     Physical LOC: 26
     Logical LOC: 20
     Parameter count: 0
