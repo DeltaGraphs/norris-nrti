@@ -83,6 +83,7 @@ angular.module('app')
 		},
 		addFlow : function(newId, newFlow) { //abstract
 			var count = 0;
+
 			for (var i = 0; i<this._flowList.length; i++) {
 				if (this._flowList[i].id === newId) {
 					count++;

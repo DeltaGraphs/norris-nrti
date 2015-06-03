@@ -57,6 +57,8 @@ angular.module('app')
 		this._maxItem = 100;
 		this._trace = null;
 
+		console.log('creo mapchartflow ' + JSON.stringify(info));
+
 		var json = split(info);
 		var fJson = json.flowJson;
 		var mfJson = json.mapFlowJson;

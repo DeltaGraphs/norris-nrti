@@ -29,29 +29,34 @@ angular.module('app')
 	this.listenOnEvents = function(){
 		console.log('listen ON EVENTS');
 		socket.on('configGraph', function(info){
-			console.log(JSON.stringify(info));
+			console.log('configGraph');
 			$scope.mapChart.updateParameters(info.properties);
 			$scope.mapChart.initializeData(info.data);
 		});
 		socket.on('updateGraphProp', function(info){
+			console.log('updateGraphProp');
 			$scope.mapChart.updateParameters(info);
 		});
 		socket.on('insertFlow', function(info){
+			console.log('insertFlow');
 			var flow = MapChartFlowFactory.build(info.properties);
 			flow.initializeData(info);
 			$scope.mapChart.addFlow(info.properties.ID, flow);
 		});
 		socket.on('deleteFlow', function(info){
+			console.log('deleteFlow');
 			$scope.mapChart.deleteFlow(info.ID);
 		});
 		socket.on('updateFlowProp', function(info){
+			console.log('updateFlowProp');
 			for (var i=0; i<$scope.mapChart.getFlowList().length; i++){
 				if ($scope.mapChart.getFlowList()[i].id === info.ID){
 					$scope.mapChart.getFlowList()[i].flow.updateParameters(info);
 				}
 			}
 		});
-		socket.on('updateFlowData', function(data){
+		/*socket.on('updateFlowData', function(data){
+			console.log('updateFlowData ' + data.action);
 			switch (data.action){
 				case 'insertRecords':
 					$scope.mapChart.streamUpdate(data);
@@ -66,7 +71,7 @@ angular.module('app')
 					$scope.mapChart.replaceData(data);
 					break;
 			}
-		});
+		});*/
 
 	};
 

@@ -125,9 +125,7 @@ angular.module('app')
             }
         }
         if (info.flows !== undefined) {
-            console.log('info.flows.length ' + info.flows.length);
             for (var i=0; i<info.flows.length; i++) {
-                console.log('stringify di info.flows ' + JSON.stringify(info.flows[i]));
                 var newflow = MapChartFlowFactory.build(info.flows[i]);
                 this.addFlow(info.flows[i].ID, newflow);
             }
@@ -148,6 +146,7 @@ angular.module('app')
 
     MapChart.prototype.initializeData = function(newData) {  //inizialization data of flows
         if (newData !== undefined) {
+            console.log('inizializedata ' + JSON.stringify(newData));
             var fList = this._graph.getFlowList();
             for (var i=0; i<newData.length; i++) {
                 for (var j=0; j<fList.length; j++) {

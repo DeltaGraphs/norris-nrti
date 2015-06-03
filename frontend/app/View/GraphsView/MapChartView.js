@@ -73,17 +73,68 @@ angular.module('app')
                         map.setMapTypeId(google.maps.MapTypeId.TERRAIN);
                         break;
                 }
-
+                var marker = new google.maps.Marker({
+                    position: latLng,
+                    map: map,
+                    title: 'marker'
+                });
                 var markers = [];
-                console.log('flowlist length '+scope.mapChart.getFlowList().length);
-                console.log('recordlist length '+scope.mapChart.getFlowList()[0].flow.getData().length);
+                console.log('lunghezza flussi ' + scope.mapChart.getFlowList().length);
+                console.log('lung record ' + scope.mapChart.getFlowList()[0].flow.getData().length);
                 for (var i=0; i<scope.mapChart.getFlowList().length; i++){
                     for (var j=0; j<scope.mapChart.getFlowList()[i].flow.getData().length; j++){
+                        var coordinates = new google.maps.LatLng(scope.mapChart.getFlowList()[i].flow.getData()[j].value[0], scope.mapChart.getFlowList()[i].flow.getData()[j].value[1]);
                         markers.push(new google.maps.Marker({
-                            position: new google.maps.LatLng(scope.mapChart.getLatitude()+j*0.1, scope.mapChart.getLongitude()+j*0.1),
+                            position: coordinates,
                             map: map,
-                            title: 'markerrrr'
+                            title: 'merkerrrr'
                         }));
+                        console.log('type ' + scope.mapChart.getFlowList()[i].flow.getMarker().type);
+                        console.log('shape ' + scope.mapChart.getFlowList()[i].flow.getMarker().shape);
+                        /*switch (scope.mapChart.getFlowList()[i].flow.getMarker().type) {
+                            case 'shape':
+                                console.log('shape type');
+                                var type;
+                                switch (scope.mapChart.getFlowList()[i].flow.getMarker().shape) { //circle, triangle, square, diamond
+                                    case 'circle':
+                                        console.log('shape type circle');
+                                        type = { path: 'img/circle.png' };
+                                        break;
+                                    case 'triangle':
+                                        console.log('shape type triangle');
+                                        type = { path: 'img/triangle.png' };
+                                        break;
+                                    case 'square':
+                                        console.log('shape type square');
+                                        type = { path: 'img/square.png' };
+                                        break;
+                                    case 'diamond':
+                                        console.log('shape type diamond');
+                                        type = { path: 'img/diamond.png' };
+                                        break;
+                                }
+                                marker = new google.maps.Marker({
+                                    position: coordinates,
+                                    map: map,
+                                    icon: type
+                                });
+                                break;
+                            case 'icon':
+                                marker = new google.maps.Marker({
+                                    position: coordinates,
+                                    map: map,
+                                    icon: { path: scope.mapChart.getFlowList()[i].flow.getMarker().icon }
+                                });
+                                break;
+                            case 'text':
+                                marker = new google.maps.Marker({
+                                    position: coordinates,
+                                    map: map,
+                                    title: scope.mapChart.getFlowList()[i].flow.getMarker().text
+                                });
+                                break;
+                        }
+                        markers.push(marker);*/
 
                     }
                 }
