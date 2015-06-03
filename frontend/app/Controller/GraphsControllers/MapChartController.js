@@ -33,8 +33,6 @@ angular.module('app')
 				console.log('configGraph');
 				$scope.mapChart.updateParameters(info.properties);
 				$scope.mapChart.initializeData(info.data);
-				console.log('configGraph lunghezza flussi ' + $scope.mapChart.getFlowList().length);
-	            console.log('configGraph lung record ' + $scope.mapChart.getFlowList()[0].flow.getData().length);
 	            count++;
 	        }
 		});

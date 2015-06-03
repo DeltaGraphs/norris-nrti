@@ -27,12 +27,6 @@ angular.module('app')
 		bindToController: true,
         template: '<div id="map-canvas" style="height:500px;width:500px"></div>',
     	link: function (scope, element, attrs) {
-            scope.$watch('mapChart', function(){
-                console.log('watch ' + scope.mapChart.getFlowList().length);
-                if(scope.mapChart && (scope.mapChart.getFlowList().length>0)){
-                    scope.render();
-                }
-            }, true);
 
             attrs.$observe('id', function(value) {
                 if (value) {
@@ -43,18 +37,27 @@ angular.module('app')
                     }
                 }
             });
+
+            scope.$watch('mapChart._mapWidth', function(newValue, oldValue){
+                if (newValue !== oldValue) {
+                    scope.init();
+                }
+            }, true);
+
+            scope.$watch('mapChart._graph._flowList', function(newValue, oldValue){
+                if(newValue !== oldValue){
+                    scope.render();
+                }
+            }, true);
+
+            var map;
             
-            
-
-            scope.render = function(){
-                console.log('render');
-
-                var map;
-                var latLng = new google.maps.LatLng(scope.mapChart.getLatitude(), scope.mapChart.getLongitude());
-
+            scope.init = function(){
                 // map config
+                console.log('init ' + JSON.stringify(scope.mapChart));
+
                 var mapOptions = {
-                    center: latLng,
+                    center: new google.maps.LatLng(scope.mapChart.getLatitude(), scope.mapChart.getLongitude()),
                     zoom: 18,
                     mapTypeId: google.maps.MapTypeId.ROADMAP,
                     scrollwheel: scope.mapChart.getZoom()
@@ -76,25 +79,29 @@ angular.module('app')
                         map.setMapTypeId(google.maps.MapTypeId.TERRAIN);
                         break;
                 }
-                var marker = new google.maps.Marker({
-                    position: latLng,
-                    map: map,
-                    title: 'marker'
-                });
-                var markers = [];
-                console.log('lunghezza flussi ' + scope.mapChart.getFlowList().length);
-                console.log('lung record ' + scope.mapChart.getFlowList()[0].flow.getData().length);
+            };
+
+            var markers = [];
+
+            scope.render = function(){
+                console.log('render');
+
+                for (var z = 0; z < markers.length; z++) {
+                    markers[z].setMap(null);
+                }
+                markers = [];
+                
+
+                var latLng = new google.maps.LatLng(scope.mapChart.getLatitude(), scope.mapChart.getLongitude());
+                
+                //console.log('lunghezza flussi ' + scope.mapChart.getFlowList().length);
+                //console.log('lung record ' + scope.mapChart.getFlowList()[0].flow.getData().length);
                 for (var i=0; i<scope.mapChart.getFlowList().length; i++){
                     for (var j=0; j<scope.mapChart.getFlowList()[i].flow.getData().length; j++){
+                        //console.log(j + ' lat: ' + scope.mapChart.getFlowList()[i].flow.getData()[j].value[0] + ' , lng: ' + scope.mapChart.getFlowList()[i].flow.getData()[j].value[1]);
                         var coordinates = new google.maps.LatLng(scope.mapChart.getFlowList()[i].flow.getData()[j].value[0], scope.mapChart.getFlowList()[i].flow.getData()[j].value[1]);
-                        markers.push(new google.maps.Marker({
-                            position: coordinates,
-                            map: map,
-                            title: 'merkerrrr'
-                        }));
-                        console.log('type ' + scope.mapChart.getFlowList()[i].flow.getMarker().type);
-                        console.log('shape ' + scope.mapChart.getFlowList()[i].flow.getMarker().shape);
-                        /*switch (scope.mapChart.getFlowList()[i].flow.getMarker().type) {
+                        
+                        switch (scope.mapChart.getFlowList()[i].flow.getMarker().type) {
                             case 'shape':
                                 console.log('shape type');
                                 var type;
@@ -137,7 +144,7 @@ angular.module('app')
                                 });
                                 break;
                         }
-                        markers.push(marker);*/
+                        markers.push(marker);
 
                     }
                 }
