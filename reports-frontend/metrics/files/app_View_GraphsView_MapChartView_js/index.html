@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">55.71</p>
+      <p class="stat">59.84</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">151</p>
+      <p class="stat">94</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">22.82</p>
+      <p class="stat">22.58</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">1.32</p>
+      <p class="stat">0.88</p>
     </div>
   </div>
 </div>
@@ -116,128 +116,71 @@ angular.module(&#039;app&#039;)
 			id: &#039;@&#039;
 		},
 		bindToController: true,
-        template: &#039;&lt;div&gt;mapchart {{id}}&lt;/div&gt;&#039;,
+        template: &#039;&lt;div id=&quot;map-canvas&quot; style=&quot;height:500px;width:500px&quot;&gt;&lt;/div&gt;&#039;,
     	link: function (scope, element, attrs) {
             //console.log(scope.$parent.page.getGraphsList().length);
             attrs.$observe(&#039;id&#039;, function(value) {
                 if (value) {
                     if(scope.$parent.page.getGraphsList()[value].graph.constructor.name === &#039;MapChart&#039;){
                         scope.mapChart = scope.$parent.page.getGraphsList()[value].graph;
-                        console.log(scope.mapChart.getTitle());
+                        console.log(scope.mapChart.getUrl());
                         scope.socketConnection();
-
+                        scope.$watch(&#039;scope.mapChart&#039;, function(){
+                            if(scope.mapChart){
+                                scope.render();
+                            }
+                        }, true);
                     }
                 }
             });
             
-            //scope.mapChart = scope.$parent.page.getGraphsList()[attrs.id].graph;
-			
-
-			scope.render = function() {
-
+            scope.render = function(){
                 console.log(&#039;render&#039;);
-                // Set map option
-				var mapOptions = {
-          			center: { lat: scope.mapChart.getLatitude() , lng: scope.mapChart.getLongitude() },
-          			zoom: 8
-        		};
 
-                // Create map
-        		var map = new google.maps.Map(document.getElementById(&#039;ciao&#039;), mapOptions); // &#039;ciao&#039; da cambiare
-        		switch (scope.mapChart.getMapType()) {
-        			case &#039;roadMap&#039;: 
-                        console.log(&#039;render: roadMap&#039;);
-        				map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
-        				break;
-        			case &#039;satellite&#039;:
-        				map.setMapTypeId(google.maps.MapTypeId.SATELLITE);
-        				break;
-        			case &#039;hybrid&#039;:
-        				map.setMapTypeId(google.maps.MapTypeId.HYBRID);
-        				break;
-        			case &#039;terrain&#039;:
-        				map.setMapTypeId(google.maps.MapTypeId.TERRAIN);
-        				break;
-        		}
+                var map;
+                var latLng = new google.maps.LatLng(scope.mapChart.getLatitude(), scope.mapChart.getLongitude());
 
-                // Instantiate an info window to hold step text.
-                var stepDisplay = new google.maps.InfoWindow();
+                // map config
+                var mapOptions = {
+                    center: latLng,
+                    zoom: 18,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP,
+                    scrollwheel: scope.mapChart.getZoom()
+                };
 
-                // Create markers
-        		var markers = [];
+                map = new google.maps.Map(document.getElementById(&#039;map-canvas&#039;), mapOptions);
 
-        		for (var i=0; i&lt;scope.mapChart.getFlowList().length; i++){
-        			for (var j=0; i&lt;scope.mapChart.getFlowList()[i].flow.getData().length; i++){
-        				var latLng = new google.maps.LatLng(scope.mapChart.getFlowList()[i].flow.getData()[j].value[0], scope.mapChart.getFlowList()[i].flow.getData()[j].value[1]);
-                        var marker;
-
-        				switch (scope.matChart.getFlowList()[i].flow.getMarker().type) {
-        					case &#039;shape&#039;:
-                                var type;
-        						switch (scope.matChart.getFlowList()[i].flow.getMarker().shape) { //circle, triangle, square, diamond
-                                    case &#039;circle&#039;:
-                                        type = { path: &#039;img/circle.png&#039; };
-                                    case &#039;triangle&#039;:
-                                        type = { path: &#039;img/triangle.png&#039; };
-                                    case &#039;square&#039;:
-                                        type = { path: &#039;img/square.png&#039; };
-                                    case &#039;diamond&#039;:
-                                        type = { path: &#039;img/diamond.png&#039; };
-                                }
-        						marker = new google.maps.Marker({
-		    						position: latLng,
-		    						map: map,
-		    						icon: type
-								});
-								break;
-        					case &#039;icon&#039;:
-        						marker = new google.maps.Marker({
-		    						position: latLng,
-		    						map: map,
-		    						icon: { path: scope.mapChart.getFlowList()[i].flow.getMarker().icon }
-								});
-								break;
-        					case &#039;text&#039;:
-        						marker = new google.maps.Marker({
-	    							position: latLng,
-	    							map: map,
-		    						title: scope.mapChart.getFlowList()[i].flow.getMarker().text
-								});
-								break;
-        				}
-                        if (scope.mapChart.getLegendOnPoint() === true){
-                            addLegendOnPoint(marker, scope.mapChart.getFlowList()[i].flow.getName());
-                        }
-                        markers.push(marker);
-
-        			}
-
-        		}
-
-                // add legend on point
-                function addLegendOnPoint(marker,text) {
-
-                    google.maps.event.addListener(marker, &#039;click&#039;, function() {
-                        // Open an info window when the marker is clicked on,
-                        // containing the text of the step.
-                        stepDisplay.setContent(text);
-                        stepDisplay.open(map, marker);
-                    });
+                switch (scope.mapChart.getMapType()) {
+                    case &#039;roadmap&#039;:
+                        map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
+                        break;
+                    case &#039;satellite&#039;:
+                        map.setMapTypeId(google.maps.MapTypeId.SATELLITE);
+                        break;
+                    case &#039;hybrid&#039;:
+                        map.setMapTypeId(google.maps.MapTypeId.HYBRID);
+                        break;
+                    case &#039;terrain&#039;:
+                        map.setMapTypeId(google.maps.MapTypeId.TERRAIN);
+                        break;
                 }
-                console.log(&#039;fine render&#039;);
 
-      		}; // shape icon text
+                var markers = [];
+                console.log(&#039;flowlist length &#039;+scope.mapChart.getFlowList().length);
+                console.log(&#039;recordlist length &#039;+scope.mapChart.getFlowList()[0].flow.getData().length);
+                for (var i=0; i&lt;scope.mapChart.getFlowList().length; i++){
+                    for (var j=0; j&lt;scope.mapChart.getFlowList()[i].flow.getData().length; j++){
+                        markers.push(new google.maps.Marker({
+                            position: new google.maps.LatLng(scope.mapChart.getLatitude()+j*0.1, scope.mapChart.getLongitude()+j*0.1),
+                            map: map,
+                            title: &#039;markerrrr&#039;
+                        }));
 
-            /*console.log(&#039;link chiama render&#039;);
-      		scope.$watch(&#039;scope.mapChart&#039;, function(){
-                scope.render();
-            }, true);
-            console.log(&#039;link ha chiamato render&#039;);*/
+                    }
+                }
+                
+            };
 
-      		
-			/*showMarker = function() {};
-			zoom = function() {};
-			drag = function() {};*/
 		}
 	};
 });</textarea>

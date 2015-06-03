@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">69.60</p>
+      <p class="stat">69.22</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">243</p>
+      <p class="stat">246</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">45.54</p>
+      <p class="stat">47.34</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">2.21</p>
+      <p class="stat">2.30</p>
     </div>
   </div>
 </div>
@@ -176,7 +176,7 @@ angular.module(&#039;app&#039;)
         this._legendOnPoint = false;
         this._latitude = 45.4113311;
         this._longitude = 11.8876318;
-        this._mapType = &#039;terrain&#039;;
+        this._mapType = &#039;roadmap&#039;;
         this._zoom = true;
         this._mapWidth = 0;
         this._mapHeight = 0;
@@ -185,11 +185,12 @@ angular.module(&#039;app&#039;)
     }
 
     MapChart.prototype.updateParameters = function(info) {
+        console.log(JSON.stringify(info));
         var json = split(info);
         var gJson = json.graphJson;
         var mJson = json.mapJson;
         if (Object.keys(gJson).length !== 0) {
-            this._graph.updateParameters.call(this, gJson);
+            this._graph.updateParameters(gJson);
         } 
         if (Object.keys(mJson).length !== 0) {
             if (mJson.legendOnPoint !== undefined) {
@@ -215,7 +216,9 @@ angular.module(&#039;app&#039;)
             }
         }
         if (info.flows !== undefined) {
+            console.log(&#039;info.flows.length &#039; + info.flows.length);
             for (var i=0; i&lt;info.flows.length; i++) {
+                console.log(&#039;stringify di info.flows &#039; + JSON.stringify(info.flows[i]));
                 var newflow = MapChartFlowFactory.build(info.flows[i]);
                 this.addFlow(info.flows[i].ID, newflow);
             }
