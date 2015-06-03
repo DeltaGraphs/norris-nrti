@@ -2,6 +2,5 @@
 <checkstyle version="4.3">
 	<file name="test/businessTier/page/pageSpec.js">
 		<error line="232" column="92" severity="warning" message="Missing semicolon." source="jshint.W033" />
-		<error line="193" column="13" severity="warning" message="&apos;pg&apos; is not defined." source="jshint.W117" />
 	</file>
 </checkstyle>

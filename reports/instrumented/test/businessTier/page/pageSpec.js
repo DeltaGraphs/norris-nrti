@@ -29,8 +29,8 @@ var server = http.createServer(app);
 var io = require('socket.io')(server);
 io.listen(5000);
 var ioclient = require('socket.io-client');
-        var nor = new Norris(app, io, '/norris');
-        var page1 = nor.createPage({ID: 'page1'});
+var nor = new Norris(app, io, '/norris');
+var page1 = nor.createPage({ID: 'page1'});
 
 function ParamMock() {
     this._app = null;
@@ -103,12 +103,12 @@ describe('Page', function() {
                     {
                         ID: 'map1',
                         title: '',
-                        socketURL: 'page1/map1'
+                        socketURL: 'page2/map1'
                     },
                     {
                         ID: 'line1',
                         title: '',
-                        socketURL: 'page1/line1'
+                        socketURL: 'page2/line1'
                     }
                 ]
             };
@@ -190,7 +190,7 @@ describe('Page', function() {
         });
 
         it('returns null if the passed ID is already used', function() {
-            pg.createMapChart({ID: 'm1'});
+            page1.createMapChart({ID: 'm1'});
             assert.deepEqual(page1.createMapChart({ID: 'm1'}), null);
         });
 
@@ -243,7 +243,8 @@ describe('Page', function() {
         });
 
         it('behaves correctly with the right parameters', function() {
-            var socketURL = 'http://0.0.0.0:5000/page1';
+            var page3 = nor.createPage({ID: 'page3'});
+            var socketURL = 'http://0.0.0.0:5000/page3';
             var options ={
                 transports: ['websocket'],
                 'force new connection': true
@@ -254,11 +255,11 @@ describe('Page', function() {
                     ID: 'line1',
                     title: '',
                     type: 'LineChart',
-                    socketURL: '/page1/line1'
+                    socketURL: '/page3/line1'
                 }
             };
             //var stPage = new Page({ID: 'page1'}, nor._networkHandler, nor);
-            assert.deepEqual(page1.createLineChart({ID: 'line1'}) instanceof LineChart, true);
+            assert.deepEqual(page3.createLineChart({ID: 'line1'}) instanceof LineChart, true);
             assert.strictEqual(nor._pages[0]._graphs.length, 1);
             assert.strictEqual(nor._pageList._pages[0]._graphs.length, 1);
             var client1 = ioclient.connect(socketURL, options);
