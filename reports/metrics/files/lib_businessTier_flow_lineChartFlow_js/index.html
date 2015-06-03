@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">54.00</p>
+      <p class="stat">55.63</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">154</p>
+      <p class="stat">142</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">48.44</p>
+      <p class="stat">45.97</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">1.55</p>
+      <p class="stat">1.36</p>
     </div>
   </div>
 </div>
@@ -195,16 +195,24 @@ LineChartFlow.prototype.updateRecord = function(ID, record){
 LineChartFlow.prototype.getReplaceDataJSON = function(){
 	var records=[];
 	var dataRecords=this._dataLineChartFlow._records;
+	var xKey=this._dataLineChartFlow._xKey;
+	var yKey=this._dataLineChartFlow._yKey;
 	for (var i=0; i&lt;dataRecords.length; i++){
-		records.push({
-			norrisRecordID : dataRecords[i].norrisRecordID,
-			value: [ //lat,long
-				dataRecords[i][this._dataLineChartFlow._xKey],
-				dataRecords[i][this._dataLineChartFlow._yKey]
-			]
-		});
-	}
+		if (dataRecords[i][xKey]!==undefined &amp;&amp;
+			typeof dataRecords[i][xKey]===&#039;number&#039; &amp;&amp;
+			dataRecords[i][yKey]!==undefined &amp;&amp;
+			typeof dataRecords[i][yKey]===&#039;number&#039; &amp;&amp;
+			dataRecords[i].norrisRecordIsValid){
 
+			records.push({
+				norrisRecordID : dataRecords[i].norrisRecordID,
+				value: [
+					dataRecords[i][xKey],
+					dataRecords[i][yKey]
+				]
+			});
+		}
+	}
 	return {
 		action: &#039;replaceData&#039;,
 		ID: this._dataLineChartFlow._ID,
@@ -217,26 +225,6 @@ LineChartFlow.prototype.updateProperties = function(params){
 		var prop=this._dataLineChartFlow.updateProperties(params);
 		prop.ID=this._dataLineChartFlow.ID;
 		if (prop.filters !== undefined){//filters changed
-			var xKey=this._dataLineChartFlow._xKey;
-			var yKey=this._dataLineChartFlow._yKey;
-			var records=[];
-			var recordsModel=this._dataLineChartFlow._records;
-			var nRecords=this._dataLineChartFlow._records.length;
-			for (var i=0; i&lt;nRecords; i++){
-				if (recordsModel[i][xKey]!==undefined &amp;&amp;
-				typeof recordsModel[i][xKey]===&#039;number&#039; &amp;&amp;
-				recordsModel[i][yKey]!==undefined &amp;&amp;
-				typeof recordsModel[i][yKey]===&#039;number&#039;){
-					console.dir(recordsModel[i]);
-					if (recordsModel[i].norrisIsValid){
-						console.log(&#039;isValid&#039;);
-						records.push({
-							norrisRecordID: recordsModel[i].norrisRecordID,
-							value: [recordsModel[i][xKey], recordsModel[i][yKey]]
-						});
-					}
-				}
-			}
 			this._graphSocket.sendMessage(&#039;updateFlowData&#039;, this.getReplaceDataJSON());
 		}
 		this._graphSocket.sendMessage(&#039;updateFlowProp&#039;, prop);

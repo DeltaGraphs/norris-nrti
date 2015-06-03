@@ -53,7 +53,7 @@ describe('LineChart', function() {
         var mock=new socketMock();
         console.log('Piedino');
         var lc=new LineChart({ID: 'dada'}, {_page: 'dssada'}, mock);
-        console.log('PIEDONE '+JSON.stringify(lc));
+        //console.log('PIEDONE '+JSON.stringify(lc));
         assert.strictEqual(lc.hasOwnProperty('_dataLineChart'),true);
     });
 
