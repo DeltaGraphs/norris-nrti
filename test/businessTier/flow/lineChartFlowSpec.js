@@ -160,8 +160,8 @@ describe('LineChartFlow', function() {
             assert.strictEqual(flow1._dataLineChartFlow._xKey,'tempo');
             assert.strictEqual(flow1._dataLineChartFlow._yKey,'temperatura');
             assert.strictEqual(flow1._dataLineChartFlow._name,'grafico tempo-temperatura');
-            assert.strictEqual(mock.p1[mock.p1.lenght-2],'updateFlowData');
-            assert.strictEqual(mock.p2[mock.p1.lenght-2],{
+            assert.strictEqual(mock.p1[mock.p1.length-2],'updateFlowData');
+            assert.strictEqual(mock.p2[mock.p1.length-2],{
                 action: 'replaceData',
                 ID: 'flow1',
                 records: [
@@ -173,8 +173,8 @@ describe('LineChartFlow', function() {
                     value: [6,7]},
                 ]
             });
-            assert.strictEqual(mock.p1[mock.p1.lenght-1],'updateFlowProp');
-            assert.strictEqual(mock.p2[mock.p1.lenght-1],{'name':'grafico tempo-temperatura','filters':'temperature>3','xKey':'tempo','yKey':'temperatura'});
+            assert.strictEqual(mock.p1[mock.p1.length-1],'updateFlowProp');
+            assert.strictEqual(mock.p2[mock.p1.length-1],{'name':'grafico tempo-temperatura','filters':'temperature>3','xKey':'tempo','yKey':'temperatura'});
         });
     });
 });

@@ -68,8 +68,9 @@ describe('LineChart', function() {
             var mock=new socketMock();
             var lineChart=new LineChart({ID: 'dada'}, {_page: 'dssada'}, mock);
             lineChart.createLineChartFlow({ ID:'flow1', name: 'grafico tempo-temperatura', xKey: 'tempo', yKey: 'temperatura'});
+            lineChart.createLineChartFlow({ ID:'flow2', name: 'grafico tempo-temperatura', xKey: 'tempo', yKey: 'temperatura'});
             console.log('SOSTITUIREgetFlowByIDgetFlowByID '+JSON.stringify(lineChart.getFlowByID('flow1')));
-            assert.deepEqual(lineChart.getFlowByID('flow1'),{});
+            assert.deepEqual(lineChart.getFlowByID('flow2')._dataLineChartFlow._ID, 'flow2');
         });
     });
 
@@ -85,8 +86,8 @@ describe('LineChart', function() {
             var lc=lineChart.createLineChartFlow({ ID:'flow1', name: 'grafico tempo-temperatura', xKey: 'tempo', yKey: 'temperatura'});
             assert.strictEqual(lc.hasOwnProperty('_dataLineChartFlow'),true);
             assert.strictEqual(mock.p1,'insertFlow');
-            console.log('SOSTITUIREcreateLineChartFlow '+JSON.stringify(mock.p2));
-            assert.deepEqual(mock.p2,'insertFlow');
+            assert.strictEqual(mock.p2.ID, 'flow1');
+            assert.strictEqual(mock.p2.name, 'grafico tempo-temperatura');
         });
     });
     describe('#deleteFlow', function() {
@@ -108,7 +109,7 @@ describe('LineChart', function() {
             lineChart.createLineChartFlow({ ID:'flow1', name: 'grafico tempo-temperatura', xKey: 'tempo', yKey: 'temperatura'});
             assert.strictEqual(lineChart.deleteFlow('flow1'),true);
             assert.strictEqual(mock.p1,'deleteFlow');
-            assert.strictEqual(mock.p2,'flow1');
+            assert.strictEqual(mock.p2.ID, 'flow1');
         });
     });
     describe('#deleteAllFlows', function() {
