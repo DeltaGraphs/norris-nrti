@@ -43,7 +43,7 @@ describe('Routes', function() {
         assert.strictEqual(routes1._norrisNamespace, '/namespace');
     });
 
-    describe('#addRoutingPath', function(done) {
+    describe('#addRoutingPath', function() {
         var routes2 = new Routes(app, '/namespace');
         it('returns false if passed an invalid namespace', function() {
             assert.strictEqual(routes2.addRoutingPath(123, 'page'), false);
@@ -59,7 +59,7 @@ describe('Routes', function() {
             var routes3 = new Routes(app2, '/norris');
             routes3.addRoutingPath('/page', 'page');
             var server = app2.listen(3000);
-            
+            console.log(server);
             request(app2).get('/page/').expect(200, done);
 
         });

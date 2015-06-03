@@ -35,6 +35,7 @@ describe('Socket', function() {
         function getConfigJSON(){
             return 'prop1-prop2';
         }
+        this.p=getConfigJSON();
     }
 
     var server = require('socket.io')();
