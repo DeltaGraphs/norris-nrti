@@ -54,7 +54,8 @@ describe('Socket', function() {
             transports: ['websocket'],
             'force new connection': true
         };
-        var client1 = io.connect(socketURL, options);
+        //var client1 = io.connect(socketURL, options);
+        io.connect(socketURL, options);
 
         function Mock() {}
         Mock.prototype.getConfigJSON = function() {
@@ -66,12 +67,14 @@ describe('Socket', function() {
             var object = new Mock();
             socket1.attachObject(object, 'onEvent');
             socket1.sendMessage('event', 'message');
-            client1.on('connection', function(configJSON) {
+            //client1.on('connection', function(configJSON) {
+            io.on('connection', function(configJSON) {
                 console.log('#fuckingtest#connection');
                 console.dir(configJSON);
                 assert.strictEqual(configJSON, object.getConfigJSON());
             });
-            client1.on('event', function(message) {
+            //client1.on('event', function(message) {
+            io.on('event', function(message) {
                 console.log('#fuckingtest#event');
                 console.dir(message);
                 assert.strictEqual(message, 'message');
