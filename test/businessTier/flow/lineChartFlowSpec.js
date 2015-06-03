@@ -123,19 +123,18 @@ describe('LineChartFlow', function() {
     });
 
     describe('#updateProperties', function() {
-
-        var io = require('socket.io-client');
-        var server = require('socket.io')();
-        server.listen(5000);
-
-        var socketURL = 'http://0.0.0.0:5000/namespace';
-        var options ={
-            transports: ['websocket'],
-            'force new connection': true
-        };
-        var client1 = io.connect(socketURL, options);
-
         it('update correct properties', function() {
+            var io = require('socket.io-client');
+            var server = require('socket.io')();
+            server.listen(5000);
+
+            var socketURL = 'http://0.0.0.0:5000/namespace';
+            var options ={
+                transports: ['websocket'],
+                'force new connection': true
+            };
+            var client1 = io.connect(socketURL, options);
+
             var socket1 = new Socket(server, '/namespace');
             var flow1=new LineChartFlow({ID: 'flow1'},socket1);
             flow1.updateProperties({name: 'grafico tempo-temperatura',xKey: 'tempo',yKey: 'temperatura',filters: 'temperature>3',});
