@@ -271,7 +271,7 @@ Page.prototype.getConfigJSON = function () {
         ret.data.push({
             ID: PData[i].properties.ID,
             title: PData[i].properties.title,
-            socketURL: this._networkHandler._routes._baseURL + this._pageNamespace
+            socketURL: this._networkHandler._routes._baseURL + this._pageNamespace + '/' + PData[i].properties.ID
         });
     }
     __cov_3lcmDxeukeGn43y_$VaRGg.s['87']++;

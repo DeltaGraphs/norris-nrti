@@ -29,7 +29,8 @@ var server = http.createServer(app);
 var io = require('socket.io')(server);
 io.listen(5000);
 var ioclient = require('socket.io-client');
-var nor = new Norris(app, io, '/norris');
+        var nor = new Norris(app, io, '/norris');
+        var page1 = nor.createPage({ID: 'page1'});
 
 function ParamMock() {
     this._app = null;
@@ -180,8 +181,6 @@ describe('Page', function() {
     });
 
     describe('#createMapChart', function() {
-        var nor = new Norris(app, io, '/norris');
-        var page1 = nor.createPage('page1');
         it('returns null if no parameter is passed', function() {
             assert.deepEqual(page1.createMapChart(), null);
         });
@@ -226,8 +225,6 @@ describe('Page', function() {
     });
 
     describe('#createLineChart', function() {
-        var nor = new Norris(app, io, '/norris');
-        var page1 = nor.createPage('page1');
         it('returns null if no parameter is passed', function() {
             assert.deepEqual(page1.createLineChart(), null);
         });

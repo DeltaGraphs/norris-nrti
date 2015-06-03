@@ -6139,7 +6139,7 @@
                 "halstead": {
                     "operators": {
                         "distinct": 21,
-                        "total": 436,
+                        "total": 441,
                         "identifiers": [
                             "var",
                             "=",
@@ -6166,7 +6166,7 @@
                     },
                     "operands": {
                         "distinct": 87,
-                        "total": 492,
+                        "total": 497,
                         "identifiers": [
                             "\"use strict\"",
                             "PageModel",
@@ -6257,13 +6257,13 @@
                             "exports"
                         ]
                     },
-                    "length": 928,
+                    "length": 938,
                     "vocabulary": 108,
-                    "difficulty": 59.37931034482759,
-                    "volume": 6268.5356020077,
-                    "effort": 372221.32091921585,
-                    "bugs": 2.0895118673359,
-                    "time": 20678.96227328977
+                    "difficulty": 59.98275862068965,
+                    "volume": 6336.084477029334,
+                    "effort": 380055.8257859492,
+                    "bugs": 2.1120281590097782,
+                    "time": 21114.212543663845
                 },
                 "params": 8,
                 "line": 2,
@@ -6644,7 +6644,7 @@
                     "halstead": {
                         "operators": {
                             "distinct": 12,
-                            "total": 43,
+                            "total": 48,
                             "identifiers": [
                                 "var",
                                 "=",
@@ -6661,8 +6661,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 24,
-                            "total": 46,
+                            "distinct": 25,
+                            "total": 51,
                             "identifiers": [
                                 "ret",
                                 "<anonymous>",
@@ -6687,16 +6687,17 @@
                                 "_routes",
                                 "_baseURL",
                                 "_pageNamespace",
+                                "\"/\"",
                                 "push"
                             ]
                         },
-                        "length": 89,
-                        "vocabulary": 36,
-                        "difficulty": 11.5,
-                        "volume": 460.12332512836576,
-                        "effort": 5291.418238976206,
-                        "bugs": 0.15337444170945524,
-                        "time": 293.96767994312256
+                        "length": 99,
+                        "vocabulary": 37,
+                        "difficulty": 12.24,
+                        "volume": 515.735883197266,
+                        "effort": 6312.607210334537,
+                        "bugs": 0.17191196106575535,
+                        "time": 350.70040057414093
                     },
                     "params": 0,
                     "line": 193,
@@ -6775,10 +6776,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 94.62201217133801,
+            "maintainability": 94.57333940523452,
             "loc": 15.571428571428571,
             "cyclomatic": 4.428571428571429,
-            "effort": 10177.804203495918,
+            "effort": 10323.688342261394,
             "params": 1.1428571428571428,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/page/page.js"
         },
@@ -16412,7 +16413,7 @@
     "coreSize": 30,
     "loc": 10.325417360417362,
     "cyclomatic": 4.333581973581975,
-    "effort": 8056.492748551026,
+    "effort": 8061.355553176541,
     "params": 1.1171215821215823,
-    "maintainability": 105.55032890622857
+    "maintainability": 105.54870648069179
 }
