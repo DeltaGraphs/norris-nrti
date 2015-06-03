@@ -154,8 +154,7 @@ describe('BarChartFlowModel', function() {
                 {temperature: 1, pressure: 5}
             ]);
             var rec=flow1.getRecordByIndex(0);
-            console.dir('STAMPAAAA#getRecordByIndex '+JSON.stringify(rec));
-            assert.deepEqual(rec,{temperature: 2, pressure: 4});
+            assert.deepEqual(rec,{'temperature':2,'pressure':4,'norrisRecordID':rec.norrisRecordID,'norrisRecordIsValid':true});
         });
     });
 });
