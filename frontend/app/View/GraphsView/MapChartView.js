@@ -38,23 +38,23 @@ angular.module('app')
                 }
             });
 
-            scope.$watch('mapChart._mapWidth', function(newValue, oldValue){
+            scope.$watch('changedP', function(newValue, oldValue){
                 if (newValue !== oldValue) {
                     scope.init();
                 }
             }, true);
 
-            scope.$watch('mapChart._graph._flowList', function(newValue, oldValue){
+            scope.$watch('changedD', function(newValue, oldValue){
                 if(newValue !== oldValue){
                     scope.render();
                 }
             }, true);
 
             var map;
+            var markers = [];
+            var polylines = [];
             
             scope.init = function(){
-                // map config
-                console.log('init ' + JSON.stringify(scope.mapChart));
 
                 var mapOptions = {
                     center: new google.maps.LatLng(scope.mapChart.getLatitude(), scope.mapChart.getLongitude()),
@@ -79,9 +79,24 @@ angular.module('app')
                         map.setMapTypeId(google.maps.MapTypeId.TERRAIN);
                         break;
                 }
-            };
+                for (var i=0; i<scope.mapChart.getFlowList().length; i++){
+                    if (scope.mapChart.getFlowList()[i].flow.getTrace().type === 'poly'){
+                        var polyline = [];
 
-            var markers = [];
+                        for (var y=0; y<scope.mapChart.getFlowList()[i].flow.getTrace().coordinates.length; y++){
+                            polyline.push(new google.maps.LatLng(scope.mapChart.getFlowList()[i].flow.getTrace().coordinates[y][0],scope.mapChart.getFlowList()[i].flow.getTrace().coordinates[y][1]));
+                        }
+                        polylines.push(new google.maps.Polyline({
+                            path: polyline,
+                            geodesic: true,
+                            strokeColor: scope.mapChart.getFlowList()[i].flow.getTrace().strokeColor,
+                            strokeOpacity: 0.8,
+                            strokeWeight: 3
+                        }));
+                        polylines[i].setMap(map);
+                    }
+                }
+            };
 
             scope.render = function(){
                 console.log('render');
@@ -90,7 +105,9 @@ angular.module('app')
                     markers[z].setMap(null);
                 }
                 markers = [];
-                
+
+                // Instantiate an info window to hold step text.
+                var stepDisplay = new google.maps.InfoWindow();
 
                 var latLng = new google.maps.LatLng(scope.mapChart.getLatitude(), scope.mapChart.getLongitude());
                 
@@ -98,26 +115,22 @@ angular.module('app')
                     for (var j=0; j<scope.mapChart.getFlowList()[i].flow.getData().length; j++){
                         var coordinates = new google.maps.LatLng(scope.mapChart.getFlowList()[i].flow.getData()[j].value[0], scope.mapChart.getFlowList()[i].flow.getData()[j].value[1]);
                         var marker;
+
                         switch (scope.mapChart.getFlowList()[i].flow.getMarker().type) {
                             case 'shape':
-                                console.log('shape type');
                                 var type;
                                 switch (scope.mapChart.getFlowList()[i].flow.getMarker().shape) { //circle, triangle, square, diamond
                                     case 'circle':
-                                        console.log('shape type circle');
-                                        type = 'http://norris-nrti-dev.herokuapp.com/norris/img/circle.png';
+                                        type = 'http://norris-nrti-dev.herokuapp.com/norris/img/c.png';
                                         break;
                                     case 'triangle':
-                                        console.log('shape type triangle');
-                                        type = 'http://norris-nrti-dev.herokuapp.com/norris/img/triangle.png';
+                                        type = 'http://norris-nrti-dev.herokuapp.com/norris/img/t.png';
                                         break;
                                     case 'square':
-                                        console.log('shape type square');
-                                        type = 'http://norris-nrti-dev.herokuapp.com/norris/img/square.png';
+                                        type = 'http://norris-nrti-dev.herokuapp.com/norris/img/s.png';
                                         break;
                                     case 'diamond':
-                                        console.log('shape type diamond');
-                                        type = 'http://norris-nrti-dev.herokuapp.com/norris/img/diamond.png';
+                                        type = 'http://norris-nrti-dev.herokuapp.com/norris/img/d.png';
                                         break;
                                 }
                                 marker = new google.maps.Marker({
@@ -141,9 +154,26 @@ angular.module('app')
                                 });
                                 break;
                         }
+                        if (scope.mapChart.getLegendOnPoint() === true){
+                            addLegendOnPoint(marker, scope.mapChart.getFlowList()[i].flow.getName());
+                        }
                         markers.push(marker);
 
                     }
+                    
+                }
+
+
+
+                // add legend on point
+                function addLegendOnPoint(marker,text) {
+
+                    google.maps.event.addListener(marker, 'click', function() {
+                        // Open an info window when the marker is clicked on,
+                        // containing the text of the step.
+                        stepDisplay.setContent(text);
+                        stepDisplay.open(map, marker);
+                    });
                 }
                 
             };

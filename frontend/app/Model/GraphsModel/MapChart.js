@@ -64,6 +64,9 @@ angular.module('app')
         if (json.zoom !== undefined) {
             mapJson.zoom = json.zoom;
         }
+        if (json.drag !== undefined) {
+            mapJson.drag = json.drag;
+        }
         if (json.mapWidth !== undefined) {
             mapJson.mapWidth = json.mapWidth;
         }
@@ -87,6 +90,7 @@ angular.module('app')
         this._longitude = 11.8876318;
         this._mapType = 'roadmap';
         this._zoom = true;
+        this._drag = true;
         this._mapWidth = 0;
         this._mapHeight = 0;
 
@@ -116,6 +120,9 @@ angular.module('app')
             }
             if (mJson.zoom !== undefined) {
                 this._zoom = mJson.zoom;
+            }
+            if (mJson.drag !== undefined) {
+                this._drag = mJson.drag;
             }
             if (mJson.mapWidth !== undefined) {
                 this._mapWidth = mJson.mapWidth;

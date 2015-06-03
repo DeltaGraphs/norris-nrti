@@ -50,13 +50,12 @@ angular.module('app')
 			var flow = MapChartFlowFactory.build(info.properties);
 			flow.initializeData(info);
 			$scope.mapChart.addFlow(info.properties.ID, flow);
-			$scope.changedP = !$scope.changedP;
 			$scope.changedD = !$scope.changedD;
 		});
 		socket.on('deleteFlow', function(info){
 			console.log('deleteFlow');
 			$scope.mapChart.deleteFlow(info.ID);
-			$scope.changed = !$scope.changed;
+			$scope.changedD = !$scope.changedD;
 		});
 		socket.on('updateFlowProp', function(info){
 			console.log('updateFlowProp');
@@ -65,7 +64,7 @@ angular.module('app')
 					$scope.mapChart.getFlowList()[i].flow.updateParameters(info);
 				}
 			}
-			$scope.changed = !$scope.changed;
+			$scope.changedD = !$scope.changedD;
 		});
 		socket.on('updateFlowData', function(data){
 			console.log('updateFlowData ' + data.action);
@@ -83,7 +82,7 @@ angular.module('app')
 					$scope.mapChart.replaceData(data);
 					break;
 			}
-			$scope.changed = !$scope.changed;
+			$scope.changedD = !$scope.changedD;
 		});
 
 	};
