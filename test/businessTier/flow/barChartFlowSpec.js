@@ -48,8 +48,6 @@ describe('BarChartFlow', function() {
     describe('#getReplaceDataJSON', function() {
         it('returns the correct JSON', function() {            
             var flow1=new BarChartFlow({ID: 'flow1', indexKey: 'index', valueKey: 'value'}, new socketMock(), [{index: 1, value: 3}, {index: 2, value: 5}]);
-            console.log('printing JSON');
-            console.dir(flow1.getReplaceDataJSON());
             var expJSON = {
                 action: 'replaceData',
                 ID: 'flow1',
@@ -75,10 +73,12 @@ describe('BarChartFlow', function() {
         });
         it('returns 112 if no ID in records', function() {
             var flow1=new BarChartFlow({ID: 'flow1'},new socketMock(), [{'index': 1, 'value': 25}]);
+            var ID = flow1._dataBarChartFlow._records[0]._ID;
             assert.strictEqual(flow1.updateRecord(ID+'32442',{'tempo': 4, 'temperatura': 33}), 122);
         });
         it('returns 112 if invalid ID', function() {
             var flow1=new BarChartFlow({ID: 'flow1'},new socketMock(), [{'index': 1, 'value': 25}]);
+            var ID = flow1._dataBarChartFlow._records[0]._ID;
             assert.strictEqual(flow1.updateRecord('sad'+ID,{'tempo': 4, 'temperatura': 33}), 122);
         });
         it('returns true with correct update', function() {
@@ -93,6 +93,10 @@ describe('BarChartFlow', function() {
                     {i: 1, v:5, temperature: 4},
                     {i: 3, v:2, temperature: 2}
                 ]);
+            console.dir('Printing flow');
+            console.dir(flow1);
+            console.dir(flow1._dataBarChartFlow._records[0]);
+            console.dir(flow1._dataBarChartFlow._records[1]);
             var ID = flow1._dataBarChartFlow._records[0]._ID;
             flow1.updateRecord(ID, {i: 1, v:3, temperature: 0});
             assert.strictEqual(mock.p1, 'updateFlowData');
