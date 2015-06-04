@@ -186,14 +186,16 @@ describe('LineChart', function() {
             var lineChart=new LineChart({ID: 'dada'}, {_page: 'dssada'}, mock);
             lineChart.updateProperties({title: 'graph one', height: 200, width: 350, enableLegend: true, backgroundColor: '#EEEEEE', legendOnPoint: true, viewFinder: true, horizontalGrid: true, verticalGrid: true });
             assert.strictEqual(mock.p1,'updateGraphProp');
-            console.log('SOSTITUIREupdateProperties '+JSON.stringify(mock.p2));
             assert.strictEqual(mock.p2,{
-                title: 'graph one',
-                height: 200,
-                width: 350,
-                enableLegend: true,
-                backgroundColor: '#EEEEEE',
-                horizontalGrid: true,
+                'title':'graph one',
+                'height':200,
+                'width':350,
+                'enableLegend':true,
+                'backgroundColor':'#EEEEEE',
+                'horizontalGrid':true,
+                'verticalGrid':true,
+                'viewFinder':true,
+                'legendOnPoint':true
             });
         });
     });
@@ -202,8 +204,7 @@ describe('LineChart', function() {
             var mock=new socketMock();
             var lineChart=new LineChart({ID: 'dada'}, {_page: 'dssada'}, mock);
             lineChart.createLineChartFlow({ ID:'flow1', name: 'grafico tempo-temperatura', xKey: 'tempo', yKey: 'temperatura'});
-            console.log('SOSTITUIREgetProperties '+JSON.stringify(lineChart.getProperties()));
-            assert.deepEqual(lineChart.getProperties(),{});
+            assert.deepEqual(lineChart.getProperties(),{'ID':'dada','title':'','type':'LineChart','height':400,'width':500,'enableLegend':false,'legend':{'position':'NE','fontColor':'#000000','backgroundColor':'#FFFFFF'},'horizontalGrid':false,'verticalGrid':false,'viewFinder':false,'xAxis':{'name':'','color':'#000000','maxIndex':null,'minIndex':null,'ticks':10,'scale':'linear'},'yAxis':{'name':'','color':'#000000','maxIndex':null,'minIndex':null,'ticks':10,'scale':'linear'},'backgroundColor':'#FFFFFF','legendOnPoint':false});
         });
     });
     describe('#getConfigJSON', function() {
@@ -211,8 +212,8 @@ describe('LineChart', function() {
             var mock=new socketMock();
             var lineChart=new LineChart({ID: 'dada'}, {_page: 'dssada'}, mock);
             lineChart.createLineChartFlow({ ID:'flow1', name: 'grafico tempo-temperatura', xKey: 'tempo', yKey: 'temperatura'});
-            console.log('SOSTITUIREgetConfigJSON '+JSON.stringify(lineChart.getConfigJSON()));
-            assert.deepEqual(lineChart.getConfigJSON(),{});
+            //console.log('SOSTITUIREgetConfigJSON '+JSON.stringify(lineChart.getConfigJSON()));
+            assert.deepEqual(lineChart.getConfigJSON(),{'properties':{'ID':'dada','title':'','type':'LineChart','height':400,'width':500,'enableLegend':false,'legend':{'position':'NE','fontColor':'#000000','backgroundColor':'#FFFFFF'},'horizontalGrid':false,'verticalGrid':false,'viewFinder':false,'xAxis':{'name':'','color':'#000000','maxIndex':null,'minIndex':null,'ticks':10,'scale':'linear'},'yAxis':{'name':'','color':'#000000','maxIndex':null,'minIndex':null,'ticks':10,'scale':'linear'},'backgroundColor':'#FFFFFF','legendOnPoint':false,'flows':[{'ID':'flow1','name':'grafico tempo-temperatura','filters':null,'xKey':'tempo','yKey':'temperatura','xFormat':null,'yFormat':null,'flowColor':null,'marker':'none','interpolation':'linear','area':'none','maxItems':50,'maxItemsSaved':500}]},'data':[{'ID':'flow1','records':[]}]});
         });
     });
 
