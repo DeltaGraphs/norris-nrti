@@ -8166,7 +8166,7 @@
                             "_height",
                             "_width",
                             "_legend",
-                            "_enabledLegend",
+                            "_enableLegend",
                             false,
                             "_horizontalGrid",
                             true,
@@ -8180,7 +8180,7 @@
                             "updateParameters",
                             "height",
                             "width",
-                            "enabledLegend",
+                            "enableLegend",
                             "legend",
                             "build",
                             "horizontalGrid",
@@ -8321,7 +8321,7 @@
                                 "_height",
                                 "_width",
                                 "_legend",
-                                "_enabledLegend",
+                                "_enableLegend",
                                 false,
                                 "_horizontalGrid",
                                 true,
@@ -8377,8 +8377,8 @@
                                 "_height",
                                 "width",
                                 "_width",
-                                "enabledLegend",
-                                "_enabledLegend",
+                                "enableLegend",
+                                "_enableLegend",
                                 "legend",
                                 "_legend",
                                 "LegendFactory",
@@ -8689,7 +8689,7 @@
                             "total": 5,
                             "identifiers": [
                                 "this",
-                                "_enabledLegend",
+                                "_enableLegend",
                                 "_legend",
                                 null
                             ]
@@ -10615,14 +10615,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 149,
-                    "physical": 252
+                    "logical": 151,
+                    "physical": 255
                 },
                 "cyclomatic": 42,
                 "halstead": {
                     "operators": {
                         "distinct": 18,
-                        "total": 486,
+                        "total": 492,
                         "identifiers": [
                             "()",
                             "[]",
@@ -10645,8 +10645,8 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 102,
-                        "total": 536,
+                        "distinct": 103,
+                        "total": 542,
                         "identifiers": [
                             "\"use strict\"",
                             "\"MapChartFactory\"",
@@ -10742,7 +10742,8 @@
                             "getLatitude",
                             "getLongitude",
                             "getMapType",
-                            "getZoom",
+                            "getZoomable",
+                            "getDraggable",
                             "getMapWidth",
                             "getMapHeight",
                             "MapChartFactory",
@@ -10752,30 +10753,30 @@
                             "factory"
                         ]
                     },
-                    "length": 1022,
-                    "vocabulary": 120,
-                    "difficulty": 47.294117647058826,
-                    "volume": 7058.842188711906,
-                    "effort": 333841.7129249631,
-                    "bugs": 2.352947396237302,
-                    "time": 18546.761829164618
+                    "length": 1034,
+                    "vocabulary": 121,
+                    "difficulty": 47.359223300970875,
+                    "volume": 7154.104587341932,
+                    "effort": 338812.83667042665,
+                    "bugs": 2.3847015291139773,
+                    "time": 18822.93537057926
                 },
                 "params": 14,
                 "line": 2,
-                "cyclomaticDensity": 28.187919463087248
+                "cyclomaticDensity": 27.81456953642384
             },
             "functions": [
                 {
                     "name": "<anonymous>",
                     "sloc": {
-                        "logical": 28,
-                        "physical": 230
+                        "logical": 29,
+                        "physical": 233
                     },
                     "cyclomatic": 1,
                     "halstead": {
                         "operators": {
                             "distinct": 4,
-                            "total": 99,
+                            "total": 103,
                             "identifiers": [
                                 "function",
                                 "=",
@@ -10784,8 +10785,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 31,
-                            "total": 101,
+                            "distinct": 32,
+                            "total": 105,
                             "identifiers": [
                                 "GraphFactory",
                                 "MapChartFlowFactory",
@@ -10813,24 +10814,25 @@
                                 "getLatitude",
                                 "getLongitude",
                                 "getMapType",
-                                "getZoom",
+                                "getZoomable",
+                                "getDraggable",
                                 "getMapWidth",
                                 "getMapHeight",
                                 "MapChartFactory",
                                 "build"
                             ]
                         },
-                        "length": 200,
-                        "vocabulary": 35,
-                        "difficulty": 6.516129032258065,
-                        "volume": 1025.8566033889933,
-                        "effort": 6684.6139962766665,
-                        "bugs": 0.34195220112966446,
-                        "time": 371.36744423759257
+                        "length": 208,
+                        "vocabulary": 36,
+                        "difficulty": 6.5625,
+                        "volume": 1075.3444003000009,
+                        "effort": 7056.947626968756,
+                        "bugs": 0.35844813343333365,
+                        "time": 392.05264594270864
                     },
                     "params": 2,
                     "line": 24,
-                    "cyclomaticDensity": 3.571428571428571
+                    "cyclomaticDensity": 3.4482758620689653
                 },
                 {
                     "name": "split",
@@ -11831,7 +11833,7 @@
                     "cyclomaticDensity": 100
                 },
                 {
-                    "name": "<anonymous>.getZoom",
+                    "name": "<anonymous>.getZoomable",
                     "sloc": {
                         "logical": 1,
                         "physical": 3
@@ -11867,6 +11869,42 @@
                     "cyclomaticDensity": 100
                 },
                 {
+                    "name": "<anonymous>.getDraggable",
+                    "sloc": {
+                        "logical": 1,
+                        "physical": 3
+                    },
+                    "cyclomatic": 1,
+                    "halstead": {
+                        "operators": {
+                            "distinct": 2,
+                            "total": 2,
+                            "identifiers": [
+                                "return",
+                                "."
+                            ]
+                        },
+                        "operands": {
+                            "distinct": 2,
+                            "total": 2,
+                            "identifiers": [
+                                "this",
+                                "_drag"
+                            ]
+                        },
+                        "length": 4,
+                        "vocabulary": 4,
+                        "difficulty": 1,
+                        "volume": 8,
+                        "effort": 8,
+                        "bugs": 0.0026666666666666666,
+                        "time": 0.4444444444444444
+                    },
+                    "params": 0,
+                    "line": 239,
+                    "cyclomaticDensity": 100
+                },
+                {
                     "name": "<anonymous>.getMapWidth",
                     "sloc": {
                         "logical": 1,
@@ -11899,7 +11937,7 @@
                         "time": 0.4444444444444444
                     },
                     "params": 0,
-                    "line": 239,
+                    "line": 242,
                     "cyclomaticDensity": 100
                 },
                 {
@@ -11935,7 +11973,7 @@
                         "time": 0.4444444444444444
                     },
                     "params": 0,
-                    "line": 242,
+                    "line": 245,
                     "cyclomaticDensity": 100
                 },
                 {
@@ -11965,7 +12003,7 @@
                         "vocabulary": 0
                     },
                     "params": 0,
-                    "line": 246,
+                    "line": 249,
                     "cyclomaticDensity": null
                 },
                 {
@@ -12001,16 +12039,16 @@
                         "time": 0.8333333333333334
                     },
                     "params": 1,
-                    "line": 248,
+                    "line": 251,
                     "cyclomaticDensity": 100
                 }
             ],
             "dependencies": [],
-            "maintainability": 117.85510807058088,
-            "loc": 5.25,
-            "cyclomatic": 2.4642857142857144,
-            "effort": 2046.780364352397,
-            "params": 0.5,
+            "maintainability": 118.30681745003284,
+            "loc": 5.137931034482759,
+            "cyclomatic": 2.413793103448276,
+            "effort": 1989.316683881352,
+            "params": 0.4827586206896552,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/frontend/app/Model/GraphsModel/MapChart.js"
         },
         {
@@ -14634,14 +14672,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 115,
-                    "physical": 180
+                    "logical": 141,
+                    "physical": 210
                 },
-                "cyclomatic": 22,
+                "cyclomatic": 24,
                 "halstead": {
                     "operators": {
                         "distinct": 20,
-                        "total": 407,
+                        "total": 520,
                         "identifiers": [
                             "()",
                             "function",
@@ -14666,12 +14704,13 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 127,
-                        "total": 426,
+                        "distinct": 159,
+                        "total": 544,
                         "identifiers": [
                             "\"use strict\"",
                             "\"mapChart\"",
                             "<anonymous>",
+                            "$compile",
                             "restrict",
                             "\"E\"",
                             "replace",
@@ -14682,7 +14721,7 @@
                             "bindToController",
                             true,
                             "template",
-                            "\"<div id=\"map-canvas\" style=\"height:500px;width:500px\"></div>\"",
+                            "\"<div style=\"height:500px;width:500px\"></div><div></div>\"",
                             "link",
                             "element",
                             "attrs",
@@ -14715,15 +14754,22 @@
                             "maps",
                             "LatLng",
                             "zoom",
-                            18,
+                            12,
                             "mapTypeId",
                             "MapTypeId",
                             "ROADMAP",
                             "scrollwheel",
-                            "getZoom",
-                            "\"map-canvas\"",
-                            "document",
-                            "getElementById",
+                            "getZoomable",
+                            "draggable",
+                            "getDraggable",
+                            "panControl",
+                            "zoomControl",
+                            "mapTypeControl",
+                            "scaleControl",
+                            "streetViewControl",
+                            "overviewMapControl",
+                            "children",
+                            0,
                             "Map",
                             "getMapType",
                             "\"roadmap\"",
@@ -14735,7 +14781,6 @@
                             "\"terrain\"",
                             "TERRAIN",
                             "i",
-                            0,
                             "getFlowList",
                             "length",
                             "flow",
@@ -14756,6 +14801,7 @@
                             3,
                             "Polyline",
                             "setMap",
+                            "legend",
                             "\"render\"",
                             "z",
                             null,
@@ -14792,30 +14838,54 @@
                             "open",
                             "event",
                             "addListener",
+                            "\"legend \"",
+                            "getLegend",
+                            "JSON",
+                            "stringify",
+                            "div",
+                            "\"style\"",
+                            "\"background-color: \"",
+                            "getBackgroundColor",
+                            "\"; color: \"",
+                            "getFontColor",
+                            "setAttribute",
+                            "ul",
+                            "\"ul\"",
+                            "document",
+                            "createElement",
+                            "appendChild",
+                            "li",
+                            "\"li\"",
+                            "square",
+                            "\"span\"",
+                            "\"height=\"5px\"; width=\"5px\"; background-color=\"\"",
+                            "\"\"\"",
+                            "innerHtml",
+                            "\"scope.$parent.mapChart.getFlowList()[i].flow.getName()\"",
                             "\"app\"",
                             "angular",
                             "module",
                             "directive"
                         ]
                     },
-                    "length": 833,
-                    "vocabulary": 147,
-                    "difficulty": 33.54330708661417,
-                    "volume": 5997.327063248692,
-                    "effort": 201170.1833814128,
-                    "bugs": 1.9991090210828972,
-                    "time": 11176.121298967377
+                    "length": 1064,
+                    "vocabulary": 179,
+                    "difficulty": 34.21383647798742,
+                    "volume": 7962.7799870091685,
+                    "effort": 272437.2523857225,
+                    "bugs": 2.654259995669723,
+                    "time": 15135.402910317915
                 },
-                "params": 10,
+                "params": 11,
                 "line": 2,
-                "cyclomaticDensity": 19.130434782608695
+                "cyclomaticDensity": 17.02127659574468
             },
             "functions": [
                 {
                     "name": "<anonymous>",
                     "sloc": {
                         "logical": 8,
-                        "physical": 164
+                        "physical": 194
                     },
                     "cyclomatic": 1,
                     "halstead": {
@@ -14830,9 +14900,10 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 13,
-                            "total": 15,
+                            "distinct": 14,
+                            "total": 16,
                             "identifiers": [
+                                "$compile",
                                 "<anonymous>",
                                 "restrict",
                                 "\"E\"",
@@ -14844,33 +14915,33 @@
                                 "bindToController",
                                 true,
                                 "template",
-                                "\"<div id=\"map-canvas\" style=\"height:500px;width:500px\"></div>\"",
+                                "\"<div style=\"height:500px;width:500px\"></div><div></div>\"",
                                 "link"
                             ]
                         },
-                        "length": 26,
-                        "vocabulary": 17,
-                        "difficulty": 2.3076923076923075,
-                        "volume": 106.27403387250884,
-                        "effort": 245.24777047502036,
-                        "bugs": 0.03542467795750295,
-                        "time": 13.624876137501131
+                        "length": 27,
+                        "vocabulary": 18,
+                        "difficulty": 2.2857142857142856,
+                        "volume": 112.58797503894243,
+                        "effort": 257.34394294615413,
+                        "bugs": 0.03752932501298081,
+                        "time": 14.296885719230785
                     },
-                    "params": 0,
+                    "params": 1,
                     "line": 18,
                     "cyclomaticDensity": 12.5
                 },
                 {
                     "name": "link",
                     "sloc": {
-                        "logical": 8,
-                        "physical": 152
+                        "logical": 9,
+                        "physical": 182
                     },
                     "cyclomatic": 1,
                     "halstead": {
                         "operators": {
                             "distinct": 6,
-                            "total": 24,
+                            "total": 27,
                             "identifiers": [
                                 "()",
                                 "function",
@@ -14881,8 +14952,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 16,
-                            "total": 30,
+                            "distinct": 17,
+                            "total": 33,
                             "identifiers": [
                                 "scope",
                                 "element",
@@ -14899,20 +14970,21 @@
                                 "markers",
                                 "polylines",
                                 "init",
-                                "render"
+                                "render",
+                                "legend"
                             ]
                         },
-                        "length": 54,
-                        "vocabulary": 22,
-                        "difficulty": 5.625,
-                        "volume": 240.80930740641406,
-                        "effort": 1354.5523541610792,
-                        "bugs": 0.08026976913547136,
-                        "time": 75.2529085645044
+                        "length": 60,
+                        "vocabulary": 23,
+                        "difficulty": 5.823529411764706,
+                        "volume": 271.4137173634208,
+                        "effort": 1580.585765822274,
+                        "bugs": 0.09047123912114027,
+                        "time": 87.81032032345966
                     },
                     "params": 3,
                     "line": 28,
-                    "cyclomaticDensity": 12.5
+                    "cyclomaticDensity": 11.11111111111111
                 },
                 {
                     "name": "<anonymous>",
@@ -15046,14 +15118,14 @@
                 {
                     "name": "scope.init",
                     "sloc": {
-                        "logical": 33,
-                        "physical": 43
+                        "logical": 41,
+                        "physical": 51
                     },
                     "cyclomatic": 8,
                     "halstead": {
                         "operators": {
                             "distinct": 16,
-                            "total": 153,
+                            "total": 175,
                             "identifiers": [
                                 "var",
                                 "=",
@@ -15074,8 +15146,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 56,
-                            "total": 151,
+                            "distinct": 65,
+                            "total": 176,
                             "identifiers": [
                                 "mapOptions",
                                 "<anonymous>",
@@ -15089,16 +15161,25 @@
                                 "maps",
                                 "LatLng",
                                 "zoom",
-                                18,
+                                12,
                                 "mapTypeId",
                                 "MapTypeId",
                                 "ROADMAP",
                                 "scrollwheel",
-                                "getZoom",
+                                "getZoomable",
+                                "draggable",
+                                "getDraggable",
+                                "panControl",
+                                "zoomControl",
+                                "mapTypeControl",
+                                false,
+                                "scaleControl",
+                                "streetViewControl",
+                                "overviewMapControl",
                                 "map",
-                                "\"map-canvas\"",
-                                "document",
-                                "getElementById",
+                                "element",
+                                "children",
+                                0,
                                 "Map",
                                 "getMapType",
                                 "\"roadmap\"",
@@ -15110,7 +15191,6 @@
                                 "\"terrain\"",
                                 "TERRAIN",
                                 "i",
-                                0,
                                 "getFlowList",
                                 "length",
                                 "flow",
@@ -15132,20 +15212,21 @@
                                 3,
                                 "Polyline",
                                 "polylines",
-                                "setMap"
+                                "setMap",
+                                "legend"
                             ]
                         },
-                        "length": 304,
-                        "vocabulary": 72,
-                        "difficulty": 21.571428571428573,
-                        "volume": 1875.657200438463,
-                        "effort": 40460.60532374399,
-                        "bugs": 0.625219066812821,
-                        "time": 2247.8114068746663
+                        "length": 351,
+                        "vocabulary": 81,
+                        "difficulty": 21.661538461538463,
+                        "volume": 2225.287351012503,
+                        "effort": 48203.14754193238,
+                        "bugs": 0.7417624503375011,
+                        "time": 2677.952641218466
                     },
                     "params": 0,
                     "line": 55,
-                    "cyclomaticDensity": 24.242424242424242
+                    "cyclomaticDensity": 19.51219512195122
                 },
                 {
                     "name": "scope.render",
@@ -15250,7 +15331,7 @@
                         "time": 3361.017936616592
                     },
                     "params": 0,
-                    "line": 99,
+                    "line": 107,
                     "cyclomaticDensity": 23.076923076923077
                 },
                 {
@@ -15293,7 +15374,7 @@
                         "time": 4.540503999461453
                     },
                     "params": 2,
-                    "line": 167,
+                    "line": 175,
                     "cyclomaticDensity": 100
                 },
                 {
@@ -15333,16 +15414,99 @@
                         "time": 2.138888888888889
                     },
                     "params": 0,
-                    "line": 169,
+                    "line": 177,
                     "cyclomaticDensity": 50
+                },
+                {
+                    "name": "scope.legend",
+                    "sloc": {
+                        "logical": 17,
+                        "physical": 21
+                    },
+                    "cyclomatic": 3,
+                    "halstead": {
+                        "operators": {
+                            "distinct": 10,
+                            "total": 88,
+                            "identifiers": [
+                                "()",
+                                "+",
+                                ".",
+                                "if",
+                                "!==",
+                                "var",
+                                "=",
+                                "for",
+                                "<",
+                                "++ (postfix)"
+                            ]
+                        },
+                        "operands": {
+                            "distinct": 41,
+                            "total": 89,
+                            "identifiers": [
+                                "\"legend \"",
+                                "scope",
+                                "$parent",
+                                "mapChart",
+                                "getLegend",
+                                "JSON",
+                                "stringify",
+                                "console",
+                                "log",
+                                null,
+                                "div",
+                                "element",
+                                "children",
+                                1,
+                                "\"style\"",
+                                "\"background-color: \"",
+                                "getBackgroundColor",
+                                "\"; color: \"",
+                                "getFontColor",
+                                "setAttribute",
+                                "ul",
+                                "\"ul\"",
+                                "document",
+                                "createElement",
+                                "appendChild",
+                                "i",
+                                0,
+                                "getFlowList",
+                                "length",
+                                "li",
+                                "\"li\"",
+                                "square",
+                                "\"span\"",
+                                "\"height=\"5px\"; width=\"5px\"; background-color=\"\"",
+                                "flow",
+                                "getTrace",
+                                "strokeColor",
+                                "\"\"\"",
+                                "text",
+                                "innerHtml",
+                                "\"scope.$parent.mapChart.getFlowList()[i].flow.getName()\""
+                            ]
+                        },
+                        "length": 177,
+                        "vocabulary": 51,
+                        "difficulty": 10.853658536585368,
+                        "volume": 1004.0192855289548,
+                        "effort": 10897.282489277683,
+                        "bugs": 0.33467309517631827,
+                        "time": 605.404582737649
+                    },
+                    "params": 0,
+                    "line": 187,
+                    "cyclomaticDensity": 17.647058823529413
                 }
             ],
             "dependencies": [],
-            "maintainability": 97.76987518697592,
-            "loc": 12.555555555555555,
-            "cyclomatic": 3.3333333333333335,
-            "effort": 11457.095261598162,
-            "params": 1.1111111111111112,
+            "maintainability": 95.9095941630573,
+            "loc": 13.9,
+            "cyclomatic": 3.3,
+            "effort": 12199.181164598187,
+            "params": 1.1,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/frontend/app/View/GraphsView/MapChartView.js"
         },
         {
@@ -17801,9 +17965,9 @@
     ],
     "changeCost": 3.4482758620689653,
     "coreSize": 0,
-    "loc": 5.0064734869877565,
-    "cyclomatic": 1.815219425177808,
-    "effort": 1285.5629109722,
-    "params": 1.1137424456241338,
-    "maintainability": 124.64884269052682
+    "loc": 5.04896919315766,
+    "cyclomatic": 1.8123288753788156,
+    "effort": 1309.170573818027,
+    "params": 1.1127647735406354,
+    "maintainability": 124.6002712545107
 }
