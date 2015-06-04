@@ -62,7 +62,7 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">43.43</p>
+      <p class="stat">43.55</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
@@ -230,7 +230,7 @@ LineChart.prototype.updateRecord = function(flowID, ID, record){
 LineChart.prototype.updateProperties = function(params){
 	if (params!==undefined){
 		var prop=this._dataLineChart.updateProperties(params);
-		prop.ID=this._dataLineChart.ID;
+		prop.ID=this._dataLineChart.parent._ID;
 		this._graphSocket.sendMessage(&#039;updateGraphProp&#039;, prop);
 	}
 };

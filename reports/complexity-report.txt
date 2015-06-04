@@ -1,8 +1,8 @@
 Mean per-function logical LOC: 10.159390072293302
 Mean per-function parameter count: 1.119795079472499
 Mean per-function cyclomatic complexity: 4.250701449088548
-Mean per-function Halstead effort: 7830.336850831557
-Mean per-module maintainability index: 105.89802818014658
+Mean per-function Halstead effort: 7830.2795698242435
+Mean per-module maintainability index: 105.89808157970067
 First-order density: 5.931321540062435%
 Change cost: 21.22788761706556%
 Core size: 29.03225806451613%
@@ -664,7 +664,7 @@ Core size: 29.03225806451613%
   Mean parameter count: 1.2
   Cyclomatic complexity: 20
   Cyclomatic complexity density: 17.857142857142858%
-  Maintainability index: 106.3849280076294
+  Maintainability index: 106.38658339380588
   Dependency count: 3
 
   Function: LineChart
@@ -751,9 +751,9 @@ Core size: 29.03225806451613%
     Parameter count: 1
     Cyclomatic complexity: 2
     Cyclomatic complexity density: 50%
-    Halstead difficulty: 5.4
-    Halstead volume: 128
-    Halstead effort: 691.2
+    Halstead difficulty: 4.75
+    Halstead volume: 141.7774500490386
+    Halstead effort: 673.4428877329334
 
   Function: <anonymous>.getProperties
     Line No.: 147

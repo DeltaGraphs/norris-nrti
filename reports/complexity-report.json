@@ -4155,7 +4155,7 @@
                 "halstead": {
                     "operators": {
                         "distinct": 22,
-                        "total": 347,
+                        "total": 348,
                         "identifiers": [
                             "var",
                             "=",
@@ -4183,7 +4183,7 @@
                     },
                     "operands": {
                         "distinct": 97,
-                        "total": 383,
+                        "total": 384,
                         "identifiers": [
                             "\"use strict\"",
                             "Graph",
@@ -4284,13 +4284,13 @@
                             "exports"
                         ]
                     },
-                    "length": 730,
+                    "length": 732,
                     "vocabulary": 119,
-                    "difficulty": 43.432989690721655,
-                    "volume": 5033.216967214799,
-                    "effort": 218607.6606482057,
-                    "bugs": 1.6777389890715997,
-                    "time": 12144.870036011427
+                    "difficulty": 43.54639175257732,
+                    "volume": 5047.006602741415,
+                    "effort": 219778.92670082205,
+                    "bugs": 1.6823355342471384,
+                    "time": 12209.94037226789
                 },
                 "params": 12,
                 "line": 2,
@@ -4713,7 +4713,7 @@
                     "halstead": {
                         "operators": {
                             "distinct": 6,
-                            "total": 14,
+                            "total": 15,
                             "identifiers": [
                                 "if",
                                 "!==",
@@ -4724,8 +4724,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 10,
-                            "total": 18,
+                            "distinct": 12,
+                            "total": 19,
                             "identifiers": [
                                 "params",
                                 "undefined",
@@ -4734,18 +4734,20 @@
                                 "_dataLineChart",
                                 "updateProperties",
                                 "ID",
+                                "parent",
+                                "_ID",
                                 "\"updateGraphProp\"",
                                 "_graphSocket",
                                 "sendMessage"
                             ]
                         },
-                        "length": 32,
-                        "vocabulary": 16,
-                        "difficulty": 5.4,
-                        "volume": 128,
-                        "effort": 691.2,
-                        "bugs": 0.042666666666666665,
-                        "time": 38.400000000000006
+                        "length": 34,
+                        "vocabulary": 18,
+                        "difficulty": 4.75,
+                        "volume": 141.7774500490386,
+                        "effort": 673.4428877329334,
+                        "bugs": 0.0472591500163462,
+                        "time": 37.413493762940746
                     },
                     "params": 1,
                     "line": 139,
@@ -4875,10 +4877,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 106.3849280076294,
+            "maintainability": 106.38658339380588,
             "loc": 9.4,
             "cyclomatic": 2.9,
-            "effort": 3669.4774573250784,
+            "effort": 3667.701746098372,
             "params": 1.2,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/graph/lineChart.js"
         },
@@ -16877,7 +16879,7 @@
     "coreSize": 29.03225806451613,
     "loc": 10.159390072293302,
     "cyclomatic": 4.250701449088548,
-    "effort": 7830.336850831557,
+    "effort": 7830.2795698242435,
     "params": 1.119795079472499,
-    "maintainability": 105.89802818014658
+    "maintainability": 105.89808157970067
 }
