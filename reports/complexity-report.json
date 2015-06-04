@@ -5177,7 +5177,7 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 26,
+                            "distinct": 27,
                             "total": 51,
                             "identifiers": [
                                 "params",
@@ -5197,6 +5197,7 @@
                                 "<anonymous>",
                                 "ID",
                                 "name",
+                                "_dataMapChartFlow",
                                 "_name",
                                 "marker",
                                 "_marker",
@@ -5209,12 +5210,12 @@
                             ]
                         },
                         "length": 93,
-                        "vocabulary": 35,
-                        "difficulty": 8.826923076923077,
-                        "volume": 477.0233205758819,
-                        "effort": 4210.648156621726,
-                        "bugs": 0.15900777352529397,
-                        "time": 233.9248975900959
+                        "vocabulary": 36,
+                        "difficulty": 8.5,
+                        "volume": 480.80302513413505,
+                        "effort": 4086.825713640148,
+                        "bugs": 0.16026767504471168,
+                        "time": 227.04587298000823
                     },
                     "params": 1,
                     "line": 70,
@@ -5656,10 +5657,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 107.82891780340286,
+            "maintainability": 107.8401720048496,
             "loc": 8.727272727272727,
             "cyclomatic": 2.8181818181818183,
-            "effort": 3426.3559298804084,
+            "effort": 3415.0993441548108,
             "params": 1.2727272727272727,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/graph/mapChart.js"
         },
@@ -16887,7 +16888,7 @@
     "coreSize": 29.03225806451613,
     "loc": 10.164375409536703,
     "cyclomatic": 4.247768897768899,
-    "effort": 7778.054804253812,
+    "effort": 7777.691688585245,
     "params": 1.119795079472499,
-    "maintainability": 105.91583743303255
+    "maintainability": 105.91620047178888
 }

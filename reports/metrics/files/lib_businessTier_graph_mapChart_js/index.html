@@ -168,10 +168,10 @@ MapChart.prototype.createMapChartFlow = function(params){
 
 	var prop={};
 	prop.ID=params.ID;
-	prop.name=mcf._dataMapChart._name;
-	prop.marker=mcf._dataMapChart._marker;
-	prop.trace=mcf._dataMapChart._trace;
-	prop.maxItems=mcf._dataMapChart._maxItems;
+	prop.name=mcf._dataMapChartFlow._name;
+	prop.marker=mcf._dataMapChartFlow._marker;
+	prop.trace=mcf._dataMapChartFlow._trace;
+	prop.maxItems=mcf._dataMapChartFlow._maxItems;
 
 	this._graphSocket.sendMessage(&#039;insertFlow&#039;, prop);
 	return mcf;

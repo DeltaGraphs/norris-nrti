@@ -1,8 +1,8 @@
 Mean per-function logical LOC: 10.164375409536703
 Mean per-function parameter count: 1.119795079472499
 Mean per-function cyclomatic complexity: 4.247768897768899
-Mean per-function Halstead effort: 7778.054804253812
-Mean per-module maintainability index: 105.91583743303255
+Mean per-function Halstead effort: 7777.691688585245
+Mean per-module maintainability index: 105.91620047178888
 First-order density: 5.931321540062435%
 Change cost: 21.22788761706556%
 Core size: 29.03225806451613%
@@ -784,7 +784,7 @@ Core size: 29.03225806451613%
   Mean parameter count: 1.2727272727272727
   Cyclomatic complexity: 21
   Cyclomatic complexity density: 18.103448275862068%
-  Maintainability index: 107.82891780340286
+  Maintainability index: 107.8401720048496
   Dependency count: 4
 
   Function: MapChart
@@ -816,9 +816,9 @@ Core size: 29.03225806451613%
     Parameter count: 1
     Cyclomatic complexity: 2
     Cyclomatic complexity density: 15.384615384615385%
-    Halstead difficulty: 8.826923076923077
-    Halstead volume: 477.0233205758819
-    Halstead effort: 4210.648156621726
+    Halstead difficulty: 8.5
+    Halstead volume: 480.80302513413505
+    Halstead effort: 4086.825713640148
 
   Function: <anonymous>.deleteFlow
     Line No.: 89
