@@ -120,13 +120,13 @@ angular.module(&#039;app&#039;)
 						&#039;&lt;tr ng-repeat=&quot;line in graphs&quot;&gt;&#039; +
 							&#039;&lt;td ng-repeat=&quot;graph in line&quot;&gt;&#039; +
 								&#039;&lt;div ng-if=&quot;checkType(graph, \&#039;LineChart\&#039;)&quot;&gt;&#039; +
-								&#039;&lt;line-chart id=&quot;{{$index + $parent.$index * page.getGraphsPerRow()}}&quot;&gt;&lt;/line-chart&gt;&lt;/div&gt;&#039; +
-								&#039;&lt;div ng-if=&quot;checkType(graph, \&#039;BarChart\&#039;)&quot;&gt;&#039; +
-								&#039;&lt;bar-chart id=&quot;{{$index + $parent.$index * page.getGraphsPerRow()}}&quot;&gt;&lt;/bar-chart&gt;&lt;/div&gt;&#039; +
+                                &#039;&lt;line-chart urllc=&quot;{{graph.graph.getUrl()}}&quot; ng-controller=&quot;LineChartController&quot;&gt;&lt;/line-chart&gt;&lt;/div&gt;&#039; +
+                                &#039;&lt;div ng-if=&quot;checkType(graph, \&#039;BarChart\&#039;)&quot;&gt;&#039; +
+                                &#039;&lt;bar-chart urlbc=&quot;{{graph.graph.getUrl()}}&quot; ng-controller=&quot;BarChartController&quot;&gt;&lt;/bar-chart&gt;&lt;/div&gt;&#039; +
 								&#039;&lt;div ng-if=&quot;checkType(graph, \&#039;MapChart\&#039;)&quot;&gt;&#039; +
-								&#039;&lt;map-chart id=&quot;{{$index + $parent.$index * page.getGraphsPerRow()}}&quot;&gt;&lt;/map-chart&gt;&lt;/div&gt;&#039; +
+								&#039;&lt;map-chart urlmc=&quot;{{graph.graph.getUrl()}}&quot; ng-controller=&quot;MapChartController&quot;&gt;&lt;/map-chart&gt;&lt;/div&gt;&#039; +
 								&#039;&lt;div ng-if=&quot;checkType(graph, \&#039;Table\&#039;)&quot;&gt;&#039; + 
-								&#039;&lt;table-chart id=&quot;{{$index + $parent.$index * page.getGraphsPerRow()}}&quot;&gt;&lt;/table-chart&gt;&lt;/div&gt;&#039; +
+                                &#039;&lt;table-chart urltc=&quot;{{graph.graph.getUrl()}}&quot; ng-controller=&quot;TableController&quot;&gt;&lt;/table-chart&gt;&lt;/div&gt;&#039; +
 							&#039;&lt;/td&gt;&#039; +
 						&#039;&lt;/tr&gt;&#039; +
 					&#039;&lt;/table&gt;&#039; +
