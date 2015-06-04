@@ -234,7 +234,7 @@ MapChart.prototype.updateRecord = function (flowID, ID, record) {
     __cov_7_tfqyFdCSgmklxuMrfvXg.s['79']++;
     var flow = this.getFlowByID(flowID);
     __cov_7_tfqyFdCSgmklxuMrfvXg.s['80']++;
-    if (flow !== 272) {
+    if (flow !== 282) {
         __cov_7_tfqyFdCSgmklxuMrfvXg.b['16'][0]++;
         __cov_7_tfqyFdCSgmklxuMrfvXg.s['81']++;
         return flow.updateRecord(ID, record);
@@ -242,7 +242,7 @@ MapChart.prototype.updateRecord = function (flowID, ID, record) {
         __cov_7_tfqyFdCSgmklxuMrfvXg.b['16'][1]++;
     }
     __cov_7_tfqyFdCSgmklxuMrfvXg.s['82']++;
-    return 272;
+    return 282;
 };
 __cov_7_tfqyFdCSgmklxuMrfvXg.s['83']++;
 MapChart.prototype.updateProperties = function (params) {

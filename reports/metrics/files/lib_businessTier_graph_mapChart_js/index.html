@@ -62,7 +62,7 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">43.45</p>
+      <p class="stat">43.89</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
@@ -227,10 +227,10 @@ MapChart.prototype.deleteRecord = function(flowID, ID){
 
 MapChart.prototype.updateRecord = function(flowID, ID, record){
 	var flow=this.getFlowByID(flowID);
-	if (flow!==272){
+	if (flow!==282){
 		return flow.updateRecord(ID, record);
 	}
-	return 272;
+	return 282;
 };
 
 

@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">68.27</p>
+      <p class="stat">66.30</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">236</p>
+      <p class="stat">314</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">31.39</p>
+      <p class="stat">30.19</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">3.75</p>
+      <p class="stat">4.64</p>
     </div>
   </div>
 </div>
@@ -272,6 +272,20 @@ describe(&#039;MapChart&#039;, function() {
             assert.strictEqual(typeof mapChart.addRecord(&#039;flow1&#039;,{&#039;lat&#039;: 1, &#039;long&#039;: 25}),&#039;string&#039;);
         });
     });
+    describe(&#039;#deleteRecord&#039;, function() {
+        it(&#039;returned 282 - undefined flowID&#039;, function() {
+            var mock=new socketMock();
+            var mapChart=new MapChart({ID: &#039;dada&#039;}, {_page: &#039;dssada&#039;}, mock);
+            assert.strictEqual(mapChart.deleteRecord(),282);
+        });
+        it(&#039;returned true - correctly deleted&#039;, function() {
+            var mock=new socketMock();
+            var mapChart=new MapChart({ID: &#039;dada&#039;}, {_page: &#039;dssada&#039;}, mock);
+            mapChart.createMapChartFlow({ ID:&#039;flow1&#039;, name: &#039;grafico&#039;, latitudeKey: &#039;lat&#039;, longitudeKey:&#039;long&#039;});
+            var recID=mapChart.addRecord(&#039;flow1&#039;,{&#039;lat&#039;: 1, &#039;long&#039;: 25});
+            assert.strictEqual(mapChart.deleteRecord(&#039;flow1&#039;,recID),true);
+        });
+    });
     describe(&#039;#updateRecord&#039;, function() {
         it(&#039;returned error - undefined record&#039;, function() {
             var mock=new socketMock();
@@ -309,8 +323,24 @@ describe(&#039;MapChart&#039;, function() {
             var mock=new socketMock();
             var mapChart=new MapChart({ID: &#039;dada&#039;}, {_page: &#039;dssada&#039;}, mock);
             mapChart.createMapChartFlow({ ID:&#039;flow1&#039;, name: &#039;grafico&#039;, latitudeKey: &#039;lat&#039;, longitudeKey:&#039;long&#039;});
-            console.log(&#039;getproperties sostituire&#039;);
-            assert.deepEqual(mapChart.getProperties(),{});
+            assert.deepEqual(mapChart.getProperties(),{
+                &#039;ID&#039;: &#039;dada&#039;,
+                &#039;enableLegend&#039;: false,
+                &#039;height&#039;: 400,
+                &#039;legend&#039;: {
+                    &#039;backgroundColor&#039;: &#039;#FFFFFF&#039;,
+                    &#039;fontColor&#039;: &#039;#000000&#039;,
+                    &#039;position&#039;: &#039;NE&#039;
+                },
+                &#039;legendOnPoint&#039;: false,
+                &#039;longitude&#039;: 0,
+                &#039;mapHeight&#039;: 2000,
+                &#039;mapType&#039;: &#039;roadmap&#039;,
+                &#039;mapWidth&#039;: 3000,
+                &#039;title&#039;: &#039;&#039;,
+                &#039;type&#039;: &#039;MapChart&#039;,
+                &#039;width&#039;: 500
+            });
         });
     });
     describe(&#039;#getConfigJSON&#039;, function() {
@@ -321,7 +351,55 @@ describe(&#039;MapChart&#039;, function() {
             //var ID=mapChart.addRecord(&#039;flow1&#039;,{&#039;lat&#039;: 1, &#039;long&#039;: 25});
             mapChart.addRecord(&#039;flow1&#039;,{&#039;lat&#039;: 1, &#039;long&#039;: 25});
             console.log(&#039;getconfigJSON sostituire&#039;);
-            assert.deepEqual(mapChart.getConfigJSON(),{});
+            assert.deepEqual(mapChart.getConfigJSON(),{
+                &#039;data&#039;:[{
+                    &#039;ID&#039;:&#039;flow1&#039;,
+                    &#039;records&#039;:[{
+                        &#039;markerID&#039;:undefined,
+                        &#039;norrisRecordID&#039;:&#039;flow1_1433425860095_1&#039;,
+                        &#039;value&#039;:[1,25]
+                    }]
+                }],
+                &#039;properties&#039;:{
+                    &#039;ID&#039;:&#039;dada&#039;,
+                    &#039;enableLegend&#039;:false,
+                    &#039;flows&#039;:[{
+                        &#039;ID&#039;:&#039;flow1&#039;,
+                        &#039;filters&#039;:null,
+                        &#039;latitudeFormat&#039;:&#039;coordinates&#039;,
+                        &#039;latitudeKey&#039;:&#039;lat&#039;,
+                        &#039;longitudeFormat&#039;:&#039;coordinates&#039;,
+                        &#039;longitudeKey&#039;:&#039;long&#039;,
+                        &#039;marker&#039;:{
+                            &#039;shape&#039;:&#039;circle&#039;,
+                            &#039;type&#039;:&#039;shape&#039;,
+                        },
+                        &#039;maxItemsSaved&#039;:500,
+                        &#039;name&#039;:&#039;grafico&#039;,
+                        &#039;objectKey&#039;:null,
+                        &#039;trace&#039;:{
+                            &#039;coordinates&#039;:[],
+                            &#039;type&#039;:&#039;none&#039;
+                        },
+                        &#039;trailLength&#039;:3,
+                    }],
+                    &#039;height&#039;:400,
+                    &#039;latitude&#039;:0,
+                    &#039;legend&#039;:{
+                        &#039;backgroundColor&#039;:&#039;#FFFFFF&#039;,
+                        &#039;fontColor&#039;:&#039;#000000&#039;,
+                        &#039;position&#039;:&#039;NE&#039;,
+                    },
+                    &#039;legendOnPoint&#039;:false,
+                    &#039;longitude&#039;:0,
+                    &#039;mapHeight&#039;:2000,
+                    &#039;mapType&#039;:&#039;roadmap&#039;,
+                    &#039;mapWidth&#039;:3000,
+                    &#039;title&#039;:&#039;&#039;,
+                    &#039;type&#039;:&#039;MapChart&#039;,
+                    &#039;width&#039;:500
+                }
+            });
         });
     });
 

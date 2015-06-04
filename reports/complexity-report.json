@@ -4912,7 +4912,7 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 100,
+                        "distinct": 99,
                         "total": 395,
                         "identifiers": [
                             "\"use strict\"",
@@ -4994,7 +4994,6 @@
                             "flow",
                             "deleteRecord",
                             "updateRecord",
-                            272,
                             "updateProperties",
                             "\"updateGraphProp\"",
                             "getProperties",
@@ -5018,12 +5017,12 @@
                         ]
                     },
                     "length": 754,
-                    "vocabulary": 122,
-                    "difficulty": 43.45,
-                    "volume": 5225.775952522416,
-                    "effort": 227059.965137099,
-                    "bugs": 1.7419253175074723,
-                    "time": 12614.442507616612
+                    "vocabulary": 121,
+                    "difficulty": 43.88888888888889,
+                    "volume": 5216.822880905045,
+                    "effort": 228960.5597730548,
+                    "bugs": 1.7389409603016817,
+                    "time": 12720.031098503045
                 },
                 "params": 14,
                 "line": 2,
@@ -5463,7 +5462,7 @@
                                 "flow",
                                 "this",
                                 "getFlowByID",
-                                272,
+                                282,
                                 "updateRecord"
                             ]
                         },
