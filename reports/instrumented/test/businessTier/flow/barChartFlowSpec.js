@@ -67,4 +67,58 @@ describe('BarChartFlow', function() {
             assert.deepEqual(flow1.getReplaceDataJSON(), expJSON);
         });
     });
+
+    describe('#updateRecord', function() {
+        it('returns 111 if record is invalid', function() {
+            var flow1=new BarChartFlow({ID: 'flow1'},new socketMock(), [{'index': 1, 'value': 25}]);
+            assert.strictEqual(flow1.updateRecord(), 111);
+        });
+        it('returns 112 if no ID in records', function() {
+            var flow1=new BarChartFlow({ID: 'flow1'},new socketMock(), [{'index': 1, 'value': 25}]);
+            assert.strictEqual(flow1.updateRecord(ID+'32442',{'tempo': 4, 'temperatura': 33}), 122);
+        });
+        it('returns 112 if invalid ID', function() {
+            var flow1=new BarChartFlow({ID: 'flow1'},new socketMock(), [{'index': 1, 'value': 25}]);
+            assert.strictEqual(flow1.updateRecord('sad'+ID,{'tempo': 4, 'temperatura': 33}), 122);
+        });
+        it('returns true with correct update', function() {
+            var mock=new socketMock();
+            var flow1=new BarChartFlow({
+                    ID: 'flow1',
+                    filters: 'temperature>3',
+                    indexKey: 'i',
+                    valueKey: 'v'
+                }, mock,
+                [
+                    {i: 1, v:5, temperature: 4},
+                    {i: 3, v:2, temperature: 2}
+                ]);
+            var ID = flow1._dataBarChartFlow._records[0]._ID;
+            flow1.updateRecord(ID, {i: 1, v:3, temperature: 0});
+            assert.strictEqual(mock.p1, 'updateFlowData');
+            assert.deepEqual(mock.p2, {
+                action: 'deleteRecord',
+                ID: 'flow1',
+                norrisRecordID: ID
+            });
+            flow1.updateRecord(ID, {i: 1, v:3, temperature: 4});
+            assert.strictEqual(mock.p1, 'updateFlowData');
+            assert.deepEqual(mock.p2, {
+                action: 'insertRecords',
+                ID: 'flow1',
+                records: [{
+                    norrisRecordID: ID,
+                    value: [1,3]
+                }]
+            });
+            flow1.updateRecord(ID, {i: 1, v:5, temperature: 6);
+            assert.strictEqual(mock.p1, 'updateFlowData');
+            assert.deepEqual(mock.p2, {
+                action: 'updateRecord',
+                ID: 'flow1',
+                norrisRecordID: ID,
+                value: [1,5]
+            });
+        });
+    });
 });
