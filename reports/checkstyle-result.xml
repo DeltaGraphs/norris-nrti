@@ -6,9 +6,6 @@
 		<error line="68" column="49" severity="warning" message="&apos;params&apos; is defined but never used." source="jshint.W098" />
 	</file>
 	<file name="test/businessTier/flow/barChartFlowSpec.js">
-		<error line="114" column="62" severity="error" message="Expected &apos;}&apos; to match &apos;{&apos; from line 114 and instead saw &apos;)&apos;." source="jshint.E020" />
-		<error line="114" column="63" severity="warning" message="Expected &apos;)&apos; and instead saw &apos;;&apos;." source="jshint.W116" />
-		<error line="114" column="64" severity="warning" message="Missing semicolon." source="jshint.W033" />
 		<error line="78" column="51" severity="warning" message="&apos;ID&apos; is not defined." source="jshint.W117" />
 		<error line="82" column="57" severity="warning" message="&apos;ID&apos; is not defined." source="jshint.W117" />
 	</file>

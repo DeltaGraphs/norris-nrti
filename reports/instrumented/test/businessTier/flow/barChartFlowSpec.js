@@ -111,7 +111,7 @@ describe('BarChartFlow', function() {
                     value: [1,3]
                 }]
             });
-            flow1.updateRecord(ID, {i: 1, v:5, temperature: 6);
+            flow1.updateRecord(ID, {i: 1, v:5, temperature: 6});
             assert.strictEqual(mock.p1, 'updateFlowData');
             assert.deepEqual(mock.p2, {
                 action: 'updateRecord',
