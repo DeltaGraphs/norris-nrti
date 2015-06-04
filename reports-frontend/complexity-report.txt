@@ -1,8 +1,8 @@
-Mean per-function logical LOC: 5.04896919315766
+Mean per-function logical LOC: 5.055865744881798
 Mean per-function parameter count: 1.1127647735406354
 Mean per-function cyclomatic complexity: 1.8123288753788156
-Mean per-function Halstead effort: 1309.170573818027
-Mean per-module maintainability index: 124.6002712545107
+Mean per-function Halstead effort: 1320.0881403738867
+Mean per-module maintainability index: 124.58926916325953
 First-order density: 0%
 Change cost: 3.4482758620689653%
 Core size: 0%
@@ -3317,17 +3317,17 @@ Core size: 0%
 
 /home/travis/build/DeltaGraphs/norris-nrti/frontend/app/View/GraphsView/MapChartView.js
 
-  Physical LOC: 210
-  Logical LOC: 141
+  Physical LOC: 212
+  Logical LOC: 143
   Mean parameter count: 1.1
   Cyclomatic complexity: 24
-  Cyclomatic complexity density: 17.02127659574468%
-  Maintainability index: 95.9095941630573
+  Cyclomatic complexity density: 16.783216783216783%
+  Maintainability index: 95.59053351677309
   Dependency count: 0
 
   Function: <anonymous>
     Line No.: 18
-    Physical LOC: 194
+    Physical LOC: 196
     Logical LOC: 8
     Parameter count: 1
     Cyclomatic complexity: 1
@@ -3338,7 +3338,7 @@ Core size: 0%
 
   Function: link
     Line No.: 28
-    Physical LOC: 182
+    Physical LOC: 184
     Logical LOC: 9
     Parameter count: 3
     Cyclomatic complexity: 1
@@ -3426,14 +3426,14 @@ Core size: 0%
 
   Function: scope.legend
     Line No.: 187
-    Physical LOC: 21
-    Logical LOC: 17
+    Physical LOC: 23
+    Logical LOC: 19
     Parameter count: 0
     Cyclomatic complexity: 3
-    Cyclomatic complexity density: 17.647058823529413%
-    Halstead difficulty: 10.853658536585368
-    Halstead volume: 1004.0192855289548
-    Halstead effort: 10897.282489277683
+    Cyclomatic complexity density: 15.789473684210526%
+    Halstead difficulty: 11.97674418604651
+    Halstead volume: 1174.2236931854559
+    Halstead effort: 14063.37679047697
 
 /home/travis/build/DeltaGraphs/norris-nrti/frontend/app/View/GraphsView/TableView.js
 

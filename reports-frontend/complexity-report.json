@@ -14672,14 +14672,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 141,
-                    "physical": 210
+                    "logical": 143,
+                    "physical": 212
                 },
                 "cyclomatic": 24,
                 "halstead": {
                     "operators": {
                         "distinct": 20,
-                        "total": 520,
+                        "total": 534,
                         "identifiers": [
                             "()",
                             "function",
@@ -14704,8 +14704,8 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 159,
-                        "total": 544,
+                        "distinct": 160,
+                        "total": 558,
                         "identifiers": [
                             "\"use strict\"",
                             "\"mapChart\"",
@@ -14853,39 +14853,40 @@
                             "\"ul\"",
                             "document",
                             "createElement",
+                            "\"list-style-type: none\"",
                             "appendChild",
                             "li",
                             "\"li\"",
                             "square",
-                            "\"span\"",
-                            "\"height=\"5px\"; width=\"5px\"; background-color=\"\"",
-                            "\"\"\"",
-                            "innerHtml",
-                            "\"scope.$parent.mapChart.getFlowList()[i].flow.getName()\"",
+                            "\"div\"",
+                            "\"height: 15px; width: 15px; float: left; background-color: \"",
+                            "spanText",
+                            "\"    \"",
+                            "createTextNode",
                             "\"app\"",
                             "angular",
                             "module",
                             "directive"
                         ]
                     },
-                    "length": 1064,
-                    "vocabulary": 179,
-                    "difficulty": 34.21383647798742,
-                    "volume": 7962.7799870091685,
-                    "effort": 272437.2523857225,
-                    "bugs": 2.654259995669723,
-                    "time": 15135.402910317915
+                    "length": 1092,
+                    "vocabulary": 180,
+                    "difficulty": 34.875,
+                    "volume": 8181.103581192005,
+                    "effort": 285315.9873940712,
+                    "bugs": 2.7270345270640015,
+                    "time": 15850.888188559511
                 },
                 "params": 11,
                 "line": 2,
-                "cyclomaticDensity": 17.02127659574468
+                "cyclomaticDensity": 16.783216783216783
             },
             "functions": [
                 {
                     "name": "<anonymous>",
                     "sloc": {
                         "logical": 8,
-                        "physical": 194
+                        "physical": 196
                     },
                     "cyclomatic": 1,
                     "halstead": {
@@ -14935,7 +14936,7 @@
                     "name": "link",
                     "sloc": {
                         "logical": 9,
-                        "physical": 182
+                        "physical": 184
                     },
                     "cyclomatic": 1,
                     "halstead": {
@@ -15420,14 +15421,14 @@
                 {
                     "name": "scope.legend",
                     "sloc": {
-                        "logical": 17,
-                        "physical": 21
+                        "logical": 19,
+                        "physical": 23
                     },
                     "cyclomatic": 3,
                     "halstead": {
                         "operators": {
                             "distinct": 10,
-                            "total": 88,
+                            "total": 102,
                             "identifiers": [
                                 "()",
                                 "+",
@@ -15442,8 +15443,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 41,
-                            "total": 89,
+                            "distinct": 43,
+                            "total": 103,
                             "identifiers": [
                                 "\"legend \"",
                                 "scope",
@@ -15469,6 +15470,7 @@
                                 "\"ul\"",
                                 "document",
                                 "createElement",
+                                "\"list-style-type: none\"",
                                 "appendChild",
                                 "i",
                                 0,
@@ -15477,35 +15479,36 @@
                                 "li",
                                 "\"li\"",
                                 "square",
-                                "\"span\"",
-                                "\"height=\"5px\"; width=\"5px\"; background-color=\"\"",
+                                "\"div\"",
+                                "\"height: 15px; width: 15px; float: left; background-color: \"",
                                 "flow",
                                 "getTrace",
                                 "strokeColor",
-                                "\"\"\"",
+                                "spanText",
                                 "text",
-                                "innerHtml",
-                                "\"scope.$parent.mapChart.getFlowList()[i].flow.getName()\""
+                                "\"    \"",
+                                "getName",
+                                "createTextNode"
                             ]
                         },
-                        "length": 177,
-                        "vocabulary": 51,
-                        "difficulty": 10.853658536585368,
-                        "volume": 1004.0192855289548,
-                        "effort": 10897.282489277683,
-                        "bugs": 0.33467309517631827,
-                        "time": 605.404582737649
+                        "length": 205,
+                        "vocabulary": 53,
+                        "difficulty": 11.97674418604651,
+                        "volume": 1174.2236931854559,
+                        "effort": 14063.37679047697,
+                        "bugs": 0.3914078977284853,
+                        "time": 781.2987105820539
                     },
                     "params": 0,
                     "line": 187,
-                    "cyclomaticDensity": 17.647058823529413
+                    "cyclomaticDensity": 15.789473684210526
                 }
             ],
             "dependencies": [],
-            "maintainability": 95.9095941630573,
-            "loc": 13.9,
+            "maintainability": 95.59053351677309,
+            "loc": 14.1,
             "cyclomatic": 3.3,
-            "effort": 12199.181164598187,
+            "effort": 12515.790594718117,
             "params": 1.1,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/frontend/app/View/GraphsView/MapChartView.js"
         },
@@ -17965,9 +17968,9 @@
     ],
     "changeCost": 3.4482758620689653,
     "coreSize": 0,
-    "loc": 5.04896919315766,
+    "loc": 5.055865744881798,
     "cyclomatic": 1.8123288753788156,
-    "effort": 1309.170573818027,
+    "effort": 1320.0881403738867,
     "params": 1.1127647735406354,
-    "maintainability": 124.6002712545107
+    "maintainability": 124.58926916325953
 }
