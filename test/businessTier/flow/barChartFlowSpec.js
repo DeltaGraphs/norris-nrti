@@ -44,4 +44,25 @@ describe('BarChartFlow', function() {
         assert.strictEqual(flow1._dataBarChartFlow._ID, 'flow1');
         assert.strictEqual(flow1._graphSocket._namespace, 'flow1');
     });
+
+    describe('#getReplaceDataJSON', function() {
+        it('returns the correct JSON', function() {            
+            var flow1=new BarChartFlow({ID: 'flow1', indexKey: 'index', valueKey: 'value'}, new socketMock(), [{index: 1, value: 3}, {index: 2, value: 5}]);
+            var expJSON = {
+                action: 'replaceData',
+                ID: 'flow1',
+                records: [
+                    {
+                        norrisRecordID: flow1._records[0].norrisRecordID,
+                        value: [1, 3]
+                    },
+                    {
+                        norrisRecordID: flow1._records[1].norrisRecordID,
+                        value: [2, 5]
+                    }
+                ]
+            };
+            assert.strictEqual(flow1.getReplaceDataJSON(), expJSON);
+        });
+    });
 });
