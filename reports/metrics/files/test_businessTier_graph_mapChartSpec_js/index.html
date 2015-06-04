@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">68.80</p>
+      <p class="stat">68.27</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">164</p>
+      <p class="stat">236</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">24.62</p>
+      <p class="stat">31.39</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">2.32</p>
+      <p class="stat">3.75</p>
     </div>
   </div>
 </div>
@@ -253,6 +253,78 @@ describe(&#039;MapChart&#039;, function() {
             assert.strictEqual(mp._flows.length,0);
         });
     });
+    describe(&#039;#addRecord&#039;, function() {
+        it(&#039;returned 282 - undefined flowID&#039;, function() {
+            var mock=new socketMock();
+            var mapChart=new MapChart({ID: &#039;dada&#039;}, {_page: &#039;dssada&#039;}, mock);
+            assert.strictEqual(mapChart.addRecord(),282);
+        });
+        it(&#039;returned 133 - undefined record&#039;, function() {
+            var mock=new socketMock();
+            var mapChart=new MapChart({ID: &#039;dada&#039;}, {_page: &#039;dssada&#039;}, mock);
+            mapChart.createMapChartFlow({ ID:&#039;flow1&#039;, name: &#039;grafico&#039;, latitudeKey: &#039;lat&#039;, longitudeKey:&#039;long&#039;});
+            assert.strictEqual(mapChart.addRecord(&#039;flow1&#039;),133);
+        });
+        it(&#039;returned correct ID - record added correctly&#039;, function() {
+            var mock=new socketMock();
+            var mapChart=new MapChart({ID: &#039;dada&#039;}, {_page: &#039;dssada&#039;}, mock);
+            mapChart.createMapChartFlow({ ID:&#039;flow1&#039;, name: &#039;grafico&#039;, latitudeKey: &#039;lat&#039;, longitudeKey:&#039;long&#039;});
+            assert.strictEqual(typeof mapChart.addRecord(&#039;flow1&#039;,{&#039;lat&#039;: 1, &#039;long&#039;: 25}),&#039;string&#039;);
+        });
+    });
+    describe(&#039;#updateRecord&#039;, function() {
+        it(&#039;returned error - undefined record&#039;, function() {
+            var mock=new socketMock();
+            var mapChart=new MapChart({ID: &#039;dada&#039;}, {_page: &#039;dssada&#039;}, mock);
+            assert.strictEqual(typeof mapChart.updateRecord(),&#039;number&#039;);
+        });
+        it(&#039;returned true - correctly updated&#039;, function() {
+            var mock=new socketMock();
+            var mapChart=new MapChart({ID: &#039;dada&#039;}, {_page: &#039;dssada&#039;}, mock);
+            mapChart.createMapChartFlow({ ID:&#039;flow1&#039;, name: &#039;grafico&#039;, latitudeKey: &#039;lat&#039;, longitudeKey:&#039;long&#039;});
+            var recID=mapChart.addRecord(&#039;flow1&#039;,{&#039;lat&#039;: 1, &#039;long&#039;: 25});
+            assert.strictEqual(mapChart.updateRecord(&#039;flow1&#039;,recID,{&#039;lat&#039;: 3, &#039;long&#039;: 7}),true);
+        });
+    });
+    describe(&#039;#updateProperties&#039;, function() {
+        it(&#039;no update - invalid params&#039;, function() {
+            var mock = new socketMock();
+            var mapChart=new MapChart({ID: &#039;dada&#039;}, {_page: &#039;dssada&#039;}, mock);
+            mock.p1=null;
+            mock.p2=null;
+            mapChart.updateProperties();
+            assert.strictEqual(mock.p1,null);
+            assert.strictEqual(mock.p2,null);
+        });
+        it(&#039;updated properties&#039;, function() {
+            var mock = new socketMock();
+            var mapChart=new MapChart({ID: &#039;dada&#039;}, {_page: &#039;dssada&#039;}, mock);
+            mapChart.updateProperties({title: &#039;graph one&#039;});
+            assert.strictEqual(mock.p1,&#039;updateGraphProp&#039;);
+            assert.deepEqual(mock.p2,{&#039;title&#039;:&#039;graph one&#039;});
+        });
+    });
+    describe(&#039;#getProperties&#039;, function() {
+        it(&#039;returned a correct JSON&#039;, function() {
+            var mock=new socketMock();
+            var mapChart=new MapChart({ID: &#039;dada&#039;}, {_page: &#039;dssada&#039;}, mock);
+            mapChart.createMapChartFlow({ ID:&#039;flow1&#039;, name: &#039;grafico&#039;, latitudeKey: &#039;lat&#039;, longitudeKey:&#039;long&#039;});
+            console.log(&#039;getproperties sostituire&#039;);
+            assert.deepEqual(mapChart.getProperties(),{});
+        });
+    });
+    describe(&#039;#getConfigJSON&#039;, function() {
+        it(&#039;returned a correct JSON&#039;, function() {
+            var mock=new socketMock();
+            var mapChart=new MapChart({ID: &#039;dada&#039;}, {_page: &#039;dssada&#039;}, mock);
+            mapChart.createMapChartFlow({ ID:&#039;flow1&#039;, name: &#039;grafico&#039;, latitudeKey: &#039;lat&#039;, longitudeKey:&#039;long&#039;});
+            //var ID=mapChart.addRecord(&#039;flow1&#039;,{&#039;lat&#039;: 1, &#039;long&#039;: 25});
+            mapChart.addRecord(&#039;flow1&#039;,{&#039;lat&#039;: 1, &#039;long&#039;: 25});
+            console.log(&#039;getconfigJSON sostituire&#039;);
+            assert.deepEqual(mapChart.getConfigJSON(),{});
+        });
+    });
+
 });</textarea>
   </div>
 </div>

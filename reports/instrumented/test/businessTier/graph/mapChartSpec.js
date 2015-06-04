@@ -162,4 +162,76 @@ describe('MapChart', function() {
             assert.strictEqual(mp._flows.length,0);
         });
     });
+    describe('#addRecord', function() {
+        it('returned 282 - undefined flowID', function() {
+            var mock=new socketMock();
+            var mapChart=new MapChart({ID: 'dada'}, {_page: 'dssada'}, mock);
+            assert.strictEqual(mapChart.addRecord(),282);
+        });
+        it('returned 133 - undefined record', function() {
+            var mock=new socketMock();
+            var mapChart=new MapChart({ID: 'dada'}, {_page: 'dssada'}, mock);
+            mapChart.createMapChartFlow({ ID:'flow1', name: 'grafico', latitudeKey: 'lat', longitudeKey:'long'});
+            assert.strictEqual(mapChart.addRecord('flow1'),133);
+        });
+        it('returned correct ID - record added correctly', function() {
+            var mock=new socketMock();
+            var mapChart=new MapChart({ID: 'dada'}, {_page: 'dssada'}, mock);
+            mapChart.createMapChartFlow({ ID:'flow1', name: 'grafico', latitudeKey: 'lat', longitudeKey:'long'});
+            assert.strictEqual(typeof mapChart.addRecord('flow1',{'lat': 1, 'long': 25}),'string');
+        });
+    });
+    describe('#updateRecord', function() {
+        it('returned error - undefined record', function() {
+            var mock=new socketMock();
+            var mapChart=new MapChart({ID: 'dada'}, {_page: 'dssada'}, mock);
+            assert.strictEqual(typeof mapChart.updateRecord(),'number');
+        });
+        it('returned true - correctly updated', function() {
+            var mock=new socketMock();
+            var mapChart=new MapChart({ID: 'dada'}, {_page: 'dssada'}, mock);
+            mapChart.createMapChartFlow({ ID:'flow1', name: 'grafico', latitudeKey: 'lat', longitudeKey:'long'});
+            var recID=mapChart.addRecord('flow1',{'lat': 1, 'long': 25});
+            assert.strictEqual(mapChart.updateRecord('flow1',recID,{'lat': 3, 'long': 7}),true);
+        });
+    });
+    describe('#updateProperties', function() {
+        it('no update - invalid params', function() {
+            var mock = new socketMock();
+            var mapChart=new MapChart({ID: 'dada'}, {_page: 'dssada'}, mock);
+            mock.p1=null;
+            mock.p2=null;
+            mapChart.updateProperties();
+            assert.strictEqual(mock.p1,null);
+            assert.strictEqual(mock.p2,null);
+        });
+        it('updated properties', function() {
+            var mock = new socketMock();
+            var mapChart=new MapChart({ID: 'dada'}, {_page: 'dssada'}, mock);
+            mapChart.updateProperties({title: 'graph one'});
+            assert.strictEqual(mock.p1,'updateGraphProp');
+            assert.deepEqual(mock.p2,{'title':'graph one'});
+        });
+    });
+    describe('#getProperties', function() {
+        it('returned a correct JSON', function() {
+            var mock=new socketMock();
+            var mapChart=new MapChart({ID: 'dada'}, {_page: 'dssada'}, mock);
+            mapChart.createMapChartFlow({ ID:'flow1', name: 'grafico', latitudeKey: 'lat', longitudeKey:'long'});
+            console.log('getproperties sostituire');
+            assert.deepEqual(mapChart.getProperties(),{});
+        });
+    });
+    describe('#getConfigJSON', function() {
+        it('returned a correct JSON', function() {
+            var mock=new socketMock();
+            var mapChart=new MapChart({ID: 'dada'}, {_page: 'dssada'}, mock);
+            mapChart.createMapChartFlow({ ID:'flow1', name: 'grafico', latitudeKey: 'lat', longitudeKey:'long'});
+            //var ID=mapChart.addRecord('flow1',{'lat': 1, 'long': 25});
+            mapChart.addRecord('flow1',{'lat': 1, 'long': 25});
+            console.log('getconfigJSON sostituire');
+            assert.deepEqual(mapChart.getConfigJSON(),{});
+        });
+    });
+
 });
