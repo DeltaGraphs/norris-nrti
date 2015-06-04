@@ -181,6 +181,20 @@ describe('MapChart', function() {
             assert.strictEqual(typeof mapChart.addRecord('flow1',{'lat': 1, 'long': 25}),'string');
         });
     });
+    describe('#deleteRecord', function() {
+        it('returned 282 - undefined flowID', function() {
+            var mock=new socketMock();
+            var mapChart=new MapChart({ID: 'dada'}, {_page: 'dssada'}, mock);
+            assert.strictEqual(mapChart.deleteRecord(),282);
+        });
+        it('returned true - correctly deleted', function() {
+            var mock=new socketMock();
+            var mapChart=new MapChart({ID: 'dada'}, {_page: 'dssada'}, mock);
+            mapChart.createMapChartFlow({ ID:'flow1', name: 'grafico', latitudeKey: 'lat', longitudeKey:'long'});
+            var recID=mapChart.addRecord('flow1',{'lat': 1, 'long': 25});
+            assert.strictEqual(mapChart.deleteRecord('flow1',recID),true);
+        });
+    });
     describe('#updateRecord', function() {
         it('returned error - undefined record', function() {
             var mock=new socketMock();
@@ -218,8 +232,24 @@ describe('MapChart', function() {
             var mock=new socketMock();
             var mapChart=new MapChart({ID: 'dada'}, {_page: 'dssada'}, mock);
             mapChart.createMapChartFlow({ ID:'flow1', name: 'grafico', latitudeKey: 'lat', longitudeKey:'long'});
-            console.log('getproperties sostituire');
-            assert.deepEqual(mapChart.getProperties(),{});
+            assert.deepEqual(mapChart.getProperties(),{
+                'ID': 'dada',
+                'enableLegend': false,
+                'height': 400,
+                'legend': {
+                    'backgroundColor': '#FFFFFF',
+                    'fontColor': '#000000',
+                    'position': 'NE'
+                },
+                'legendOnPoint': false,
+                'longitude': 0,
+                'mapHeight': 2000,
+                'mapType': 'roadmap',
+                'mapWidth': 3000,
+                'title': '',
+                'type': 'MapChart',
+                'width': 500
+            });
         });
     });
     describe('#getConfigJSON', function() {
@@ -230,7 +260,55 @@ describe('MapChart', function() {
             //var ID=mapChart.addRecord('flow1',{'lat': 1, 'long': 25});
             mapChart.addRecord('flow1',{'lat': 1, 'long': 25});
             console.log('getconfigJSON sostituire');
-            assert.deepEqual(mapChart.getConfigJSON(),{});
+            assert.deepEqual(mapChart.getConfigJSON(),{
+                'data':[{
+                    'ID':'flow1',
+                    'records':[{
+                        'markerID':undefined,
+                        'norrisRecordID':'flow1_1433425860095_1',
+                        'value':[1,25]
+                    }]
+                }],
+                'properties':{
+                    'ID':'dada',
+                    'enableLegend':false,
+                    'flows':[{
+                        'ID':'flow1',
+                        'filters':null,
+                        'latitudeFormat':'coordinates',
+                        'latitudeKey':'lat',
+                        'longitudeFormat':'coordinates',
+                        'longitudeKey':'long',
+                        'marker':{
+                            'shape':'circle',
+                            'type':'shape',
+                        },
+                        'maxItemsSaved':500,
+                        'name':'grafico',
+                        'objectKey':null,
+                        'trace':{
+                            'coordinates':[],
+                            'type':'none'
+                        },
+                        'trailLength':3,
+                    }],
+                    'height':400,
+                    'latitude':0,
+                    'legend':{
+                        'backgroundColor':'#FFFFFF',
+                        'fontColor':'#000000',
+                        'position':'NE',
+                    },
+                    'legendOnPoint':false,
+                    'longitude':0,
+                    'mapHeight':2000,
+                    'mapType':'roadmap',
+                    'mapWidth':3000,
+                    'title':'',
+                    'type':'MapChart',
+                    'width':500
+                }
+            });
         });
     });
 
