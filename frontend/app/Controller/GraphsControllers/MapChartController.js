@@ -23,19 +23,24 @@ angular.module('app')
 
 	$scope.mapChart = MapChartFactory.build();
 
+	var count1 = 0;
 	this.socketConnection = function(url){
-		console.log('socketConnection mapchart' + url);
-		socket = SocketServicesFactory.build(url);
-		this.listenOnEvents();
+		if (count1 === 0) {
+			console.log('MAPCHART socketConnection ' + url);
+			socket = SocketServicesFactory.build(url);
+			this.listenOnEvents();
+			count1++;
+		}
 	};
 
 	var count = 0;
 	$scope.changedP = true;
 	$scope.changedD = true;
 	this.listenOnEvents = function(){
-		console.log('listen ON EVENTS');
+		console.log('MAP CHART listenOnEvents');
 		socket.on('configGraph', function(info){
 			if (count === 0) {
+				console.log('MAPCHART configGraph');
 				count++;
 				$scope.mapChart.updateParameters(info.properties);
 				$scope.mapChart.initializeData(info.data);
@@ -45,25 +50,24 @@ angular.module('app')
 	        }
 		});
 		socket.on('updateGraphProp', function(info){
-			console.log('updateGraphProp');
+			console.log('MAPCHART updateGraphProp');
 			$scope.mapChart.updateParameters(info);
 			$scope.changedP = !$scope.changedP;
 		});
 		socket.on('insertFlow', function(info){
-			console.log('insertFlow');
-			console.log('insert flow' + JSON.stringify(info));
+			console.log('MAPCHART insert flow' + JSON.stringify(info));
 			var flow = MapChartFlowFactory.build(info.properties);
 			flow.initializeData(info);
 			$scope.mapChart.addFlow(info.properties.ID, flow);
 			$scope.changedD = !$scope.changedD;
 		});
 		socket.on('deleteFlow', function(info){
-			console.log('deleteFlow');
+			console.log('MAPCHART deleteFlow');
 			$scope.mapChart.deleteFlow(info.ID);
 			$scope.changedD = !$scope.changedD;
 		});
 		socket.on('updateFlowProp', function(info){
-			console.log('updateFlowProp');
+			console.log('MAPCHART updateFlowProp');
 			for (var i=0; i<$scope.mapChart.getFlowList().length; i++){
 				if ($scope.mapChart.getFlowList()[i].id === info.ID){
 					$scope.mapChart.getFlowList()[i].flow.updateParameters(info);
@@ -72,7 +76,7 @@ angular.module('app')
 			$scope.changedD = !$scope.changedD;
 		});
 		socket.on('updateFlowData', function(data){
-			console.log('updateFlowData ' + data.action);
+			console.log('MAPCHART updateFlowData ' + data.action);
 			switch (data.action){
 				case 'insertRecords':
 					$scope.mapChart.streamUpdate(data);

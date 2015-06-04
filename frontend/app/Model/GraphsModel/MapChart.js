@@ -98,7 +98,7 @@ angular.module('app')
     }
 
     MapChart.prototype.updateParameters = function(info) {
-        console.log(JSON.stringify(info));
+        console.log('MAPCHART MODEL updateParameters' +JSON.stringify(info));
         var json = split(info);
         var gJson = json.graphJson;
         var mJson = json.mapJson;
@@ -153,7 +153,7 @@ angular.module('app')
 
     MapChart.prototype.initializeData = function(newData) {  //inizialization data of flows
         if (newData !== undefined) {
-            console.log('inizializedata ' + JSON.stringify(newData));
+            console.log('MAPCHART MODEL initialize ' + JSON.stringify(newData));
             var fList = this._graph.getFlowList();
             for (var i=0; i<newData.length; i++) {
                 for (var j=0; j<fList.length; j++) {

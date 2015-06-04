@@ -15,7 +15,7 @@
 * =================================================================================================
 */
 angular.module('app')
-.directive('page', function(){
+.directive('page', function($compile){
 	return {
 		restrict: 'E',
 		controller : 'PageController',
@@ -23,10 +23,11 @@ angular.module('app')
 		scope: {
 			
 		},
-		template: '<div id="page">' +
+		template: '<div id="page"></div>',
+		/*
 					'<h1> ciao </h1>' +
 					'<table>' +
-						'<tr ng-repeat="line in graphs">' +
+						'<tr ng-repeat="line in /graphs">' +
 							'<td ng-repeat="graph in line">' +
 								'<div ng-if="checkType(graph, \'LineChart\')" ng-controller="LineChartController">' +
                                 	'<line-chart urllc="{{graph.graph.getUrl()}}"></line-chart>' +
@@ -35,7 +36,7 @@ angular.module('app')
                                 	'<bar-chart urlbc="{{graph.graph.getUrl()}}"></bar-chart>' +
                                 '</div>' +
 								'<div ng-if="checkType(graph, \'MapChart\')" ng-controller="MapChartController">' +
-                                	'<map-chart urlmc="{{graph.graph.getUrl()}}" socketconnection="socketConnection(url)"></map-chart>' +
+                                	'<map-chart urlmc="{{graph.graph.getUrl()}}"></map-chart>' +
                                 '</div>' +
 								'<div ng-if="checkType(graph, \'Table\')" ng-controller="TableController">' +
                                 	'<table-chart urltc="{{graph.graph.getUrl()}}"></table-chart>' +
@@ -43,54 +44,59 @@ angular.module('app')
 							'</td>' +
 						'</tr>' +
 					'</table>' +
-				'</div>',
-		link: function (scope) {
+				'</div>',*/
+		link: function (scope, element, attrs) {
 			scope.socketConnection();
-/*
+
 			scope.render = function() {
 				var parent = document.getElementById('page');
 				while(parent.firstChild) {
 				    parent.removeChild(parent.firstChild);
 				}
 
-				var table = document.createElement('div');
+				var table = document.createElement('table');
 				table.className = 'graphstable';
-				table.appendChild('table');
-				arrayDiv = [];
-				for(var i=0; i<scope.page.getGraphsList().length; i++) {
-					var div = document.createElement('div');
-					div.className = 'graph';
-					switch (scope.page.getGraphsList()[i].graph.contructor.name) {
-						case 'BarChart' : 
-							div.innerHTML = '<bar-chart id=barchart"'+ i +'" barChart="{{ scope.page.getGraphsList()[i].graph }}">';
-							break;
-						case 'LineChart' : 
-							div.innerHTML = '<line-chart id=linechart"'+ i +'" lineChart="{{ scope.page.getGraphsList()[i].graph }}">';
-							break;
-						case 'MapChart' : 
-							div.innerHTML = '<map-chart id=mapchart"'+ i +'" mapChart="{{ scope.page.getGraphsList()[i].graph }}">';
-							break;
-						case 'Table' :
-							div.innerHTML = '<table id=table"'+ i +'" table="{{ scope.page.getGraphsList()[i].graph }}">';
-							break;
+				parent.appendChild(table);
+
+				for(var i=0; i<scope.graphs.length; i++) {
+					var line = scope.graphs[i];
+					var row = table.insertRow(i);
+					for(var j=0; j<line.length; j++) {
+						var div = document.createElement('div');
+						div.className = 'graph';
+						var graph = line[j].graph;
+						switch (graph.constructor.name) {
+							case 'BarChart' : 
+								div.setAttribute('ng-controller', 'BarChartController');
+								div.innerHTML = '<bar-chart urlbc="'+ graph.getUrl() +'"></bar-chart>';
+								break;
+							case 'LineChart' : 
+								div.setAttribute('ng-controller', 'LineChartController');
+								div.innerHTML = '<line-chart urllc="'+ graph.getUrl() +'"></line-chart>';
+								break;
+							case 'MapChart' : 
+								div.setAttribute('ng-controller', 'MapChartController');
+								div.innerHTML = '<map-chart urlmc="'+ graph.getUrl() +'"></map-chart>';
+								break;
+							case 'Table' :
+								div.setAttribute('ng-controller', 'TableController');
+								div.innerHTML = '<table-chart urltc="'+ graph.getUrl() +'"></table-chart>';
+								break;
+						}
+						var cell = row.insertCell(j);
+						cell.appendChild(div);
 					}
-					arrayDiv.push(div);
 				}
-				
-				for (var i=0; i<scope.page.getGraphsPerRow(); i++) {
-					for (var j=0; j<scope.page.getGraphsPerCol(); j++) {
-						div = arrayDiv[i*scope.page.getGraphsPerRow() + j];
-						parent.appendChild(div);
-					}
-				}
+				var el = $compile(parent)(scope);
+				element.parent().append( el );
        		};
 
-       		scope.render();
-
-       		scope.$watch('scope.page.getGraphsList()', function(){
-	          	scope.render();
+       		scope.$watch('graphs', function(){
+       			if (scope.graphs.length > 0) {
+	          		scope.render();
+	          	}
         	}, true);
-*/
+
 		}
 
 	};

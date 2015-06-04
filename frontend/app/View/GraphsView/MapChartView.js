@@ -21,28 +21,29 @@ angular.module('app')
 		//controller : 'MapChartController',
         replace: false,
         scope: {
-            urlmc: '@',
-            socketconnection: '&'
+            urlmc: '@'
 		},
 		bindToController: true,
         template: '<div id="map-canvas" style="height:500px;width:500px"></div>',
     	link: function (scope, element, attrs) {
-    
+
             attrs.$observe('urlmc', function(value) {
                 console.log('observ urlmc ' + value);
                 if (value) {
-                    scope.socketconnection(value);
+                    scope.$parent.socketConnection(value);
                 }
             });
 
-            scope.$watch('changedP', function(newValue, oldValue){
+            scope.$parent.$watch('changedP', function(newValue, oldValue){
                 if (newValue !== oldValue) {
+                    console.log('MAPCHART watch changedP');
                     scope.init();
                 }
             }, true);
 
-            scope.$watch('changedD', function(newValue, oldValue){
+            scope.$parent.$watch('changedD', function(newValue, oldValue){
                 if(newValue !== oldValue){
+                    console.log('MAPCHART watch changedD');                    
                     scope.render();
                 }
             }, true);
@@ -54,15 +55,15 @@ angular.module('app')
             scope.init = function(){
 
                 var mapOptions = {
-                    center: new google.maps.LatLng(scope.mapChart.getLatitude(), scope.mapChart.getLongitude()),
+                    center: new google.maps.LatLng(scope.$parent.mapChart.getLatitude(), scope.$parent.mapChart.getLongitude()),
                     zoom: 18,
                     mapTypeId: google.maps.MapTypeId.ROADMAP,
-                    scrollwheel: scope.mapChart.getZoom()
+                    scrollwheel: scope.$parent.mapChart.getZoom()
                 };
 
                 map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
-                switch (scope.mapChart.getMapType()) {
+                switch (scope.$parent.mapChart.getMapType()) {
                     case 'roadmap':
                         map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
                         break;
@@ -76,17 +77,17 @@ angular.module('app')
                         map.setMapTypeId(google.maps.MapTypeId.TERRAIN);
                         break;
                 }
-                for (var i=0; i<scope.mapChart.getFlowList().length; i++){
-                    if (scope.mapChart.getFlowList()[i].flow.getTrace().type === 'poly'){
+                for (var i=0; i<scope.$parent.mapChart.getFlowList().length; i++){
+                    if (scope.$parent.mapChart.getFlowList()[i].flow.getTrace().type === 'poly'){
                         var polyline = [];
 
-                        for (var y=0; y<scope.mapChart.getFlowList()[i].flow.getTrace().coordinates.length; y++){
-                            polyline.push(new google.maps.LatLng(scope.mapChart.getFlowList()[i].flow.getTrace().coordinates[y][0],scope.mapChart.getFlowList()[i].flow.getTrace().coordinates[y][1]));
+                        for (var y=0; y<scope.$parent.mapChart.getFlowList()[i].flow.getTrace().coordinates.length; y++){
+                            polyline.push(new google.maps.LatLng(scope.$parent.mapChart.getFlowList()[i].flow.getTrace().coordinates[y][0],scope.$parent.mapChart.getFlowList()[i].flow.getTrace().coordinates[y][1]));
                         }
                         polylines.push(new google.maps.Polyline({
                             path: polyline,
                             geodesic: true,
-                            strokeColor: scope.mapChart.getFlowList()[i].flow.getTrace().strokeColor,
+                            strokeColor: scope.$parent.mapChart.getFlowList()[i].flow.getTrace().strokeColor,
                             strokeOpacity: 0.8,
                             strokeWeight: 3
                         }));
@@ -106,17 +107,17 @@ angular.module('app')
                 // Instantiate an info window to hold step text.
                 var stepDisplay = new google.maps.InfoWindow();
 
-                var latLng = new google.maps.LatLng(scope.mapChart.getLatitude(), scope.mapChart.getLongitude());
+                var latLng = new google.maps.LatLng(scope.$parent.mapChart.getLatitude(), scope.$parent.mapChart.getLongitude());
                 
-                for (var i=0; i<scope.mapChart.getFlowList().length; i++){
-                    for (var j=0; j<scope.mapChart.getFlowList()[i].flow.getData().length; j++){
-                        var coordinates = new google.maps.LatLng(scope.mapChart.getFlowList()[i].flow.getData()[j].value[0], scope.mapChart.getFlowList()[i].flow.getData()[j].value[1]);
+                for (var i=0; i<scope.$parent.mapChart.getFlowList().length; i++){
+                    for (var j=0; j<scope.$parent.mapChart.getFlowList()[i].flow.getData().length; j++){
+                        var coordinates = new google.maps.LatLng(scope.$parent.mapChart.getFlowList()[i].flow.getData()[j].value[0], scope.$parent.mapChart.getFlowList()[i].flow.getData()[j].value[1]);
                         var marker;
 
-                        switch (scope.mapChart.getFlowList()[i].flow.getMarker().type) {
+                        switch (scope.$parent.mapChart.getFlowList()[i].flow.getMarker().type) {
                             case 'shape':
                                 var type;
-                                switch (scope.mapChart.getFlowList()[i].flow.getMarker().shape) { //circle, triangle, square, diamond
+                                switch (scope.$parent.mapChart.getFlowList()[i].flow.getMarker().shape) { //circle, triangle, square, diamond
                                     case 'circle':
                                         type = 'http://norris-nrti-dev.herokuapp.com/norris/img/c.png';
                                         break;
@@ -140,19 +141,19 @@ angular.module('app')
                                 marker = new google.maps.Marker({
                                     position: coordinates,
                                     map: map,
-                                    icon: { path: scope.mapChart.getFlowList()[i].flow.getMarker().icon }
+                                    icon: { path: scope.$parent.mapChart.getFlowList()[i].flow.getMarker().icon }
                                 });
                                 break;
                             case 'text':
                                 marker = new google.maps.Marker({
                                     position: coordinates,
                                     map: map,
-                                    title: scope.mapChart.getFlowList()[i].flow.getMarker().text
+                                    title: scope.$parent.mapChart.getFlowList()[i].flow.getMarker().text
                                 });
                                 break;
                         }
-                        if (scope.mapChart.getLegendOnPoint() === true){
-                            addLegendOnPoint(marker, scope.mapChart.getFlowList()[i].flow.getName());
+                        if (scope.$parent.mapChart.getLegendOnPoint() === true){
+                            addLegendOnPoint(marker, scope.$parent.mapChart.getFlowList()[i].flow.getName());
                         }
                         markers.push(marker);
 

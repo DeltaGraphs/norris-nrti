@@ -65,6 +65,7 @@ angular.module('app')
 		return array;
 	}
 
+	$scope.graphs = [];
 	$scope.socketConnection = this.socketConnection;
 	$scope.listenOnEvents = this.listenOnEvents;
 	

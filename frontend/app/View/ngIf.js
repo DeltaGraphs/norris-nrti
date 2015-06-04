@@ -2,9 +2,9 @@
 'use strict';
 
 /*
-* Name :  PageView.js
+* Name :  ngIf.js
 * Module : FrontEnd::View
-* Location : /frontend/app/PagesView
+* Location : /frontend/app/View
 *
 * History :
 * Version       Date        Programmer                  Description
