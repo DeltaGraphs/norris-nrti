@@ -36,8 +36,9 @@ angular.module('app')
 	var count = 0;
 	$scope.changedP = true;
 	$scope.changedD = true;
+	$scope.changedF = true;
 	this.listenOnEvents = function(){
-		console.log('MAP CHART listenOnEvents');
+		console.log('MAPCHART listenOnEvents');
 		socket.on('configGraph', function(info){
 			if (count === 0) {
 				console.log('MAPCHART configGraph');
@@ -46,7 +47,6 @@ angular.module('app')
 				$scope.mapChart.initializeData(info.data);
 				$scope.changedP = !$scope.changedP;
 				$scope.changedD = !$scope.changedD;
-	            
 	        }
 		});
 		socket.on('updateGraphProp', function(info){
@@ -60,11 +60,13 @@ angular.module('app')
 			flow.initializeData(info);
 			$scope.mapChart.addFlow(info.properties.ID, flow);
 			$scope.changedD = !$scope.changedD;
+			$scope.changedF = !$scope.changedF;
 		});
 		socket.on('deleteFlow', function(info){
 			console.log('MAPCHART deleteFlow');
 			$scope.mapChart.deleteFlow(info.ID);
 			$scope.changedD = !$scope.changedD;
+			$scope.changedF = !$scope.changedF;
 		});
 		socket.on('updateFlowProp', function(info){
 			console.log('MAPCHART updateFlowProp');

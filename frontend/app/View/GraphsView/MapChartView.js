@@ -15,7 +15,7 @@
 
 
 angular.module('app')
-.directive('mapChart', function($compile){
+.directive('mapChart', function(){
 	return {
 		restrict: 'E',
 		//controller : 'MapChartController',
@@ -28,7 +28,7 @@ angular.module('app')
     	link: function (scope, element, attrs) {
 
             attrs.$observe('url', function(value) {
-                console.log('observ url ' + value);
+                console.log('MAPCHART observ url ' + value);
                 if (value) {
                     scope.$parent.socketConnection(value);
                 }
@@ -45,6 +45,13 @@ angular.module('app')
                 if(newValue !== oldValue){
                     console.log('MAPCHART watch changedD');                    
                     scope.render();
+                }
+            }, true);
+
+            scope.$parent.$watch('changedF', function(newValue, oldValue){
+                if(newValue !== oldValue){
+                    console.log('MAPCHART watch changedF');                    
+                    scope.legend();
                 }
             }, true);
 
@@ -185,13 +192,16 @@ angular.module('app')
             };
 
             scope.legend = function() {
+                var parent = element.children()[1];
+                while(parent.firstChild) {
+                    parent.removeChild(parent.firstChild);
+                }
                 console.log('legend ' + JSON.stringify(scope.$parent.mapChart.getLegend()));
                 if (scope.$parent.mapChart.getLegend() !== null) {
-                    var div = element.children()[1];
-                    div.setAttribute('style', 'background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + '; color: '+ scope.$parent.mapChart.getLegend().getFontColor());
+                    parent.setAttribute('style', 'background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + '; color: '+ scope.$parent.mapChart.getLegend().getFontColor());
                     var ul = document.createElement('ul');
                     ul.setAttribute('style', 'list-style-type: none');
-                    div.appendChild(ul);
+                    parent.appendChild(ul);
                     for (var i=0; i<scope.$parent.mapChart.getFlowList().length; i++) {
                         var li = document.createElement('li');
                         var square = document.createElement('div');
@@ -201,7 +211,6 @@ angular.module('app')
                         spanText.appendChild(text);
                         li.appendChild(square);
                         li.appendChild(spanText);
-                        console.log(ul);
                         ul.appendChild(li);
                     }
                 }
