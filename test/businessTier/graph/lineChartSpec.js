@@ -186,6 +186,7 @@ describe('LineChart', function() {
             var lineChart=new LineChart({ID: 'dada'}, {_page: 'dssada'}, mock);
             lineChart.updateProperties({title: 'graph one', height: 200, width: 350, enableLegend: true, backgroundColor: '#EEEEEE', legendOnPoint: true, viewFinder: true, horizontalGrid: true, verticalGrid: true });
             assert.strictEqual(mock.p1,'updateGraphProp');
+            console.log(JSON.stringify(mock.p2));
             assert.strictEqual(mock.p2,{
                 'title':'graph one',
                 'height':200,
