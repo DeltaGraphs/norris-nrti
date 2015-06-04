@@ -130,7 +130,7 @@ describe('MapChart', function() {
         it('return 283 - ID is not a string', function() {
             var mock=new socketMock();
             var mp=new MapChart({ID: 'dada'}, {_page: 'dssada'}, mock);
-            mp.createLineChartFlow({ ID:'flow1', name: 'linea 22', 'latitudeKey': '1', 'longitudeKey': '2', 'objectKey': '0'});
+            mp.createMapChartFlow({ ID:'flow1', name: 'linea 22', 'latitudeKey': '1', 'longitudeKey': '2', 'objectKey': '0'});
             console.log('mp '+JSON.stringify(mp));
             console.log('mpmpmpmp '+JSON.stringify(mp.deleteFlow(34)));
             assert.strictEqual(mp.deleteFlow(34),283);
@@ -138,13 +138,13 @@ describe('MapChart', function() {
         it('return 283 - no ID in flows', function() {
             var mock=new socketMock();
             var mp=new MapChart({ID: 'dada'}, {_page: 'dssada'}, mock);
-            mp.createLineChartFlow({ ID:'flow1', name: 'linea 22', 'latitudeKey': '1', 'longitudeKey': '2', 'objectKey': '0'});
+            mp.createMapChartFlow({ ID:'flow1', name: 'linea 22', 'latitudeKey': '1', 'longitudeKey': '2', 'objectKey': '0'});
             assert.strictEqual(mp.deleteFlow('flow123'),283);
         });
         it('return true - deleted flow', function() {
             var mock = new socketMock();
             var mp=new MapChart({ID: 'dada'}, {_page: 'dssada'}, mock);
-            mp.createLineChartFlow({ ID:'flow1', name: 'linea 22', 'latitudeKey': '1', 'longitudeKey': '2', 'objectKey': '0'});
+            mp.createMapChartFlow({ ID:'flow1', name: 'linea 22', 'latitudeKey': '1', 'longitudeKey': '2', 'objectKey': '0'});
             assert.strictEqual(mp.deleteFlow('flow1'),true);
             assert.strictEqual(mock.p1,'deleteFlow');
             assert.strictEqual(mock.p2.ID, 'flow1');
@@ -154,8 +154,8 @@ describe('MapChart', function() {
         it('deletes all flows and sends right message', function() {
             var mock = new socketMockHistory();
             var mp=new MapChart({ID: 'dada'}, {_page: 'dssada'}, mock);
-            mp.createLineChartFlow({ ID:'flow1', name: 'linea 22', 'latitudeKey': '1', 'longitudeKey': '2', 'objectKey': '0'});
-            mp.createLineChartFlow({ ID:'flow2', name: 'linea 22', 'latitudeKey': '1', 'longitudeKey': '2', 'objectKey': '0'});
+            mp.createMapChartFlow({ ID:'flow1', name: 'linea 22', 'latitudeKey': '1', 'longitudeKey': '2', 'objectKey': '0'});
+            mp.createMapChartFlow({ ID:'flow2', name: 'linea 22', 'latitudeKey': '1', 'longitudeKey': '2', 'objectKey': '0'});
             mp.deleteAllFlows();
             assert.strictEqual(mock.p1[mock.p1.length-2],'deleteFlow');
             assert.deepEqual(mock.p2[mock.p2.length-2], {ID: 'flow1'});
