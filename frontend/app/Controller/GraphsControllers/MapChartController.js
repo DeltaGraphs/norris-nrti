@@ -24,7 +24,7 @@ angular.module('app')
 	$scope.mapChart = MapChartFactory.build();
 
 	this.socketConnection = function(url){
-		console.log('url del mapChart' + url);
+		console.log('socketConnection mapchart' + url);
 		socket = SocketServicesFactory.build(url);
 		this.listenOnEvents();
 	};

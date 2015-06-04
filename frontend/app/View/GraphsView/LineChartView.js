@@ -19,9 +19,10 @@ angular.module('app')
 	return {
 		restrict: 'E',
 		//controller : 'LineChartController',
-		require: '^url',
 		replace: false,
-		scope: true,
+        scope: {
+            urllc: '@'
+		},
 		bindToController: true,
         template: '<div>linechart {{urllc}}</div>'
     };

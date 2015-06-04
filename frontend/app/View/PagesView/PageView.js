@@ -28,14 +28,18 @@ angular.module('app')
 					'<table>' +
 						'<tr ng-repeat="line in graphs">' +
 							'<td ng-repeat="graph in line">' +
-								'<div ng-if="checkType(graph, \'LineChart\')">' +
-                                '<line-chart urllc="{{graph.graph.getUrl()}}" ng-controller="LineChartController"></line-chart></div>' +
-                                '<div ng-if="checkType(graph, \'BarChart\')">' +
-                                '<bar-chart urlbc="{{graph.graph.getUrl()}}" ng-controller="BarChartController"></bar-chart></div>' +
-								'<div ng-if="checkType(graph, \'MapChart\')">' +
-								'<map-chart urlmc="{{graph.graph.getUrl()}}" ng-controller="MapChartController"></map-chart></div>' +
-								'<div ng-if="checkType(graph, \'Table\')">' + 
-                                '<table-chart urltc="{{graph.graph.getUrl()}}" ng-controller="TableController"></table-chart></div>' +
+								'<div ng-if="checkType(graph, \'LineChart\')" ng-controller="LineChartController">' +
+                                	'<line-chart urllc="{{graph.graph.getUrl()}}"></line-chart>' +
+                                '</div>' +
+								'<div ng-if="checkType(graph, \'BarChart\')" ng-controller="BarChartController">' +
+                                	'<bar-chart urlbc="{{graph.graph.getUrl()}}"></bar-chart>' +
+                                '</div>' +
+								'<div ng-if="checkType(graph, \'MapChart\')" ng-controller="MapChartController">' +
+                                	'<map-chart urlmc="{{graph.graph.getUrl()}}" socketconnection="socketConnection(url)"></map-chart>' +
+                                '</div>' +
+								'<div ng-if="checkType(graph, \'Table\')" ng-controller="TableController">' +
+                                	'<table-chart urltc="{{graph.graph.getUrl()}}"></table-chart>' +
+                                '</div>' +
 							'</td>' +
 						'</tr>' +
 					'</table>' +

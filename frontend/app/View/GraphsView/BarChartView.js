@@ -19,9 +19,10 @@ angular.module('app')
 	return {
 		restrict: 'E',
 		//controller : 'BarChartController',
-		require: '^url',
 		replace: false,
-		scope: true,
+		scope: {
+            urlbc: '@'
+		},
 		bindToController: true,
         template: '<div>barchart {{urlbc}}</div>'
     };

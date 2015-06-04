@@ -19,19 +19,19 @@ angular.module('app')
 	return {
 		restrict: 'E',
 		//controller : 'MapChartController',
-		require: '^url',
         replace: false,
-		scope: true,
-        /*scope: {
-            urlmc: '@'
-		},*/
+        scope: {
+            urlmc: '@',
+            socketconnection: '&'
+		},
 		bindToController: true,
         template: '<div id="map-canvas" style="height:500px;width:500px"></div>',
     	link: function (scope, element, attrs) {
     
             attrs.$observe('urlmc', function(value) {
+                console.log('observ urlmc ' + value);
                 if (value) {
-                    scope.socketConnection(value);
+                    scope.socketconnection(value);
                 }
             });
 

@@ -23,11 +23,8 @@ angular.module('app')
 	var url = 'http://norris-nrti-dev.herokuapp.com/page1';
 	var socket;
 
-	console.log($scope.page.getName());
-	console.log($scope.page.getGraphsList().length);
 	this.socketConnection = function(){
-		console.log('socketconnection page');
-		console.log(url);
+		console.log('socketconnection page: ' + url);
 		socket = SocketServicesFactory.build(url);
 		this.listenOnEvents();
 	};
