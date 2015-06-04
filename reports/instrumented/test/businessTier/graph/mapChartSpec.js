@@ -106,7 +106,7 @@ describe('MapChart', function() {
             assert.strictEqual(lc.hasOwnProperty('_dataMapChartFlow'),true);
             assert.strictEqual(mock.p1,'insertFlow');
             assert.strictEqual(mock.p2.ID, 'flow1');
-            assert.strictEqual(mock.p2.name, 'grafico tempo-temperatura');
+            assert.strictEqual(mock.p2.name, 'linea 22');
         });
     });
     describe('#getFlowByID', function() {
@@ -121,8 +121,10 @@ describe('MapChart', function() {
         });
         it('return correct flow', function() {
             var mp=new MapChart({ID: 'map1'}, {_page:2}, new socketMock());
-            mp.createMapChartFlow({ID: 'flow1'}).hasOwnProperty('_dataMapChartFlow');
-            mp.createMapChartFlow({ID: 'flow2'}).hasOwnProperty('_dataMapChartFlow');
+            mp.createMapChartFlow({ID: 'flow1'});
+            mp.createMapChartFlow({ID: 'flow2'});
+            console.log('###getFlowByID '+JSON.stringify(mp.getFlowByID('flow2')));
+            console.log('###getFlowByID###getFlowByID '+JSON.stringify(mp.getFlowByID('flow2')._dataMapChartFlow));
             assert.strictEqual(mp.getFlowByID('flow2')._dataMapChartFlow._ID,'flow2');
         });
     });
