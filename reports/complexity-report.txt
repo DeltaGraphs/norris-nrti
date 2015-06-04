@@ -1,8 +1,8 @@
-Mean per-function logical LOC: 10.180504441794767
+Mean per-function logical LOC: 10.184088671185448
 Mean per-function parameter count: 1.119795079472499
 Mean per-function cyclomatic complexity: 4.280026962285028
-Mean per-function Halstead effort: 7867.700951273179
-Mean per-module maintainability index: 105.8784409668113
+Mean per-function Halstead effort: 7872.450970324781
+Mean per-module maintainability index: 105.86872119665222
 First-order density: 5.82726326742976%
 Change cost: 21.22788761706556%
 Core size: 29.03225806451613%
@@ -529,12 +529,12 @@ Core size: 29.03225806451613%
 
 /home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/graph/barChart.js
 
-  Physical LOC: 164
-  Logical LOC: 104
+  Physical LOC: 165
+  Logical LOC: 105
   Mean parameter count: 1.2222222222222223
   Cyclomatic complexity: 20
-  Cyclomatic complexity density: 19.230769230769234%
-  Maintainability index: 105.52636561908969
+  Cyclomatic complexity density: 19.047619047619047%
+  Maintainability index: 105.22505274415843
   Dependency count: 4
 
   Function: BarChart
@@ -627,14 +627,14 @@ Core size: 29.03225806451613%
 
   Function: <anonymous>.getConfigJSON
     Line No.: 138
-    Physical LOC: 26
-    Logical LOC: 20
+    Physical LOC: 27
+    Logical LOC: 21
     Parameter count: 0
     Cyclomatic complexity: 3
-    Cyclomatic complexity density: 15%
-    Halstead difficulty: 18.7
-    Halstead volume: 868.5474002423084
-    Halstead effort: 16241.836384531167
+    Cyclomatic complexity density: 14.285714285714285%
+    Halstead difficulty: 18.2
+    Halstead volume: 965.2248186773982
+    Halstead effort: 17567.091699928646
 
 /home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/graph/graph.js
 
