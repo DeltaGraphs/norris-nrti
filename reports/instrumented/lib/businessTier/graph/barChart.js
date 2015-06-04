@@ -254,7 +254,7 @@ BarChart.prototype.getConfigJSON = function () {
         __cov_Q1gspF7bcYG3VQX6TclCQw.s['86']++;
         var records = this._flows[i]._dataBarChartFlow.getData();
         __cov_Q1gspF7bcYG3VQX6TclCQw.s['87']++;
-        console.log(JSON.stringify('getConfigJSONBarChart ' + records));
+        console.log('getConfigJSONBarChart ' + JSON.stringify(records));
         __cov_Q1gspF7bcYG3VQX6TclCQw.s['88']++;
         flowData.ID = this._flows[i]._dataBarChartFlow._ID;
         __cov_Q1gspF7bcYG3VQX6TclCQw.s['89']++;
