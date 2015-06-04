@@ -5,7 +5,4 @@
 		<error line="60" column="45" severity="warning" message="&apos;ID&apos; is defined but never used." source="jshint.W098" />
 		<error line="68" column="49" severity="warning" message="&apos;params&apos; is defined but never used." source="jshint.W098" />
 	</file>
-	<file name="lib/businessTier/graph/mapChart.js">
-		<error line="21" column="5" severity="warning" message="&apos;Helper&apos; is defined but never used." source="jshint.W098" />
-	</file>
 </checkstyle>

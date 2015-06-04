@@ -4878,14 +4878,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 116,
-                    "physical": 184
+                    "logical": 115,
+                    "physical": 183
                 },
                 "cyclomatic": 21,
                 "halstead": {
                     "operators": {
                         "distinct": 22,
-                        "total": 359,
+                        "total": 356,
                         "identifiers": [
                             "var",
                             "=",
@@ -4912,8 +4912,8 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 99,
-                        "total": 395,
+                        "distinct": 97,
+                        "total": 392,
                         "identifiers": [
                             "\"use strict\"",
                             "Graph",
@@ -4923,8 +4923,6 @@
                             "\"../flow/mapChartFlow.js\"",
                             "MapChartModel",
                             "\"../../dataTier/graph/mapChartModel.js\"",
-                            "Helper",
-                            "\"../../helpers/functionHelper.js\"",
                             "MapChart",
                             "params",
                             "page",
@@ -5016,17 +5014,17 @@
                             "exports"
                         ]
                     },
-                    "length": 754,
-                    "vocabulary": 121,
-                    "difficulty": 43.88888888888889,
-                    "volume": 5216.822880905045,
-                    "effort": 228960.5597730548,
-                    "bugs": 1.7389409603016817,
-                    "time": 12720.031098503045
+                    "length": 748,
+                    "vocabulary": 119,
+                    "difficulty": 44.45360824742268,
+                    "volume": 5157.323686954342,
+                    "effort": 229261.64678502185,
+                    "bugs": 1.7191078956514472,
+                    "time": 12736.758154723437
                 },
                 "params": 14,
                 "line": 2,
-                "cyclomaticDensity": 18.103448275862068
+                "cyclomaticDensity": 18.26086956521739
             },
             "functions": [
                 {
@@ -5090,7 +5088,7 @@
                         "time": 184.65909090909088
                     },
                     "params": 3,
-                    "line": 23,
+                    "line": 22,
                     "cyclomaticDensity": 33.33333333333333
                 },
                 {
@@ -5149,7 +5147,7 @@
                         "time": 195.7428688390628
                     },
                     "params": 1,
-                    "line": 49,
+                    "line": 48,
                     "cyclomaticDensity": 41.66666666666667
                 },
                 {
@@ -5217,7 +5215,7 @@
                         "time": 227.04587298000823
                     },
                     "params": 1,
-                    "line": 70,
+                    "line": 69,
                     "cyclomaticDensity": 15.384615384615385
                 },
                 {
@@ -5285,7 +5283,7 @@
                         "time": 318.69715453335493
                     },
                     "params": 1,
-                    "line": 89,
+                    "line": 88,
                     "cyclomaticDensity": 33.33333333333333
                 },
                 {
@@ -5336,7 +5334,7 @@
                         "time": 39.2116385856331
                     },
                     "params": 0,
-                    "line": 112,
+                    "line": 111,
                     "cyclomaticDensity": 50
                 },
                 {
@@ -5382,7 +5380,7 @@
                         "time": 27.92060276175576
                     },
                     "params": 2,
-                    "line": 121,
+                    "line": 120,
                     "cyclomaticDensity": 50
                 },
                 {
@@ -5428,7 +5426,7 @@
                         "time": 27.92060276175576
                     },
                     "params": 2,
-                    "line": 129,
+                    "line": 128,
                     "cyclomaticDensity": 50
                 },
                 {
@@ -5475,7 +5473,7 @@
                         "time": 31.906273197469563
                     },
                     "params": 3,
-                    "line": 137,
+                    "line": 136,
                     "cyclomaticDensity": 50
                 },
                 {
@@ -5522,7 +5520,7 @@
                         "time": 21.632597927536054
                     },
                     "params": 1,
-                    "line": 146,
+                    "line": 145,
                     "cyclomaticDensity": 66.66666666666666
                 },
                 {
@@ -5560,7 +5558,7 @@
                         "time": 1.5078947920873411
                     },
                     "params": 0,
-                    "line": 153,
+                    "line": 152,
                     "cyclomaticDensity": 100
                 },
                 {
@@ -5630,7 +5628,7 @@
                         "time": 1010.7605574735189
                     },
                     "params": 0,
-                    "line": 157,
+                    "line": 156,
                     "cyclomaticDensity": 14.285714285714285
                 }
             ],
@@ -5648,11 +5646,6 @@
                 {
                     "line": 20,
                     "path": "../../dataTier/graph/mapChartModel.js",
-                    "type": "CommonJS"
-                },
-                {
-                    "line": 21,
-                    "path": "../../helpers/functionHelper.js",
                     "type": "CommonJS"
                 }
             ],
@@ -15197,7 +15190,7 @@
             0
         ],
         [
-            1,
+            0,
             0,
             0,
             0,
@@ -15857,7 +15850,7 @@
             0
         ]
     ],
-    "firstOrderDensity": 5.931321540062435,
+    "firstOrderDensity": 5.82726326742976,
     "visibilityMatrix": [
         [
             0,

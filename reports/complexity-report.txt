@@ -3,7 +3,7 @@ Mean per-function parameter count: 1.119795079472499
 Mean per-function cyclomatic complexity: 4.247768897768899
 Mean per-function Halstead effort: 7777.691688585245
 Mean per-module maintainability index: 105.91620047178888
-First-order density: 5.931321540062435%
+First-order density: 5.82726326742976%
 Change cost: 21.22788761706556%
 Core size: 29.03225806451613%
 
@@ -779,16 +779,16 @@ Core size: 29.03225806451613%
 
 /home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/graph/mapChart.js
 
-  Physical LOC: 184
-  Logical LOC: 116
+  Physical LOC: 183
+  Logical LOC: 115
   Mean parameter count: 1.2727272727272727
   Cyclomatic complexity: 21
-  Cyclomatic complexity density: 18.103448275862068%
+  Cyclomatic complexity density: 18.26086956521739%
   Maintainability index: 107.8401720048496
-  Dependency count: 4
+  Dependency count: 3
 
   Function: MapChart
-    Line No.: 23
+    Line No.: 22
     Physical LOC: 21
     Logical LOC: 15
     Parameter count: 3
@@ -799,7 +799,7 @@ Core size: 29.03225806451613%
     Halstead effort: 3323.863636363636
 
   Function: <anonymous>.getFlowByID
-    Line No.: 49
+    Line No.: 48
     Physical LOC: 20
     Logical LOC: 12
     Parameter count: 1
@@ -810,7 +810,7 @@ Core size: 29.03225806451613%
     Halstead effort: 3523.3716391031303
 
   Function: <anonymous>.createMapChartFlow
-    Line No.: 70
+    Line No.: 69
     Physical LOC: 18
     Logical LOC: 13
     Parameter count: 1
@@ -821,7 +821,7 @@ Core size: 29.03225806451613%
     Halstead effort: 4086.825713640148
 
   Function: <anonymous>.deleteFlow
-    Line No.: 89
+    Line No.: 88
     Physical LOC: 22
     Logical LOC: 15
     Parameter count: 1
@@ -832,7 +832,7 @@ Core size: 29.03225806451613%
     Halstead effort: 5736.548781600389
 
   Function: <anonymous>.deleteAllFlows
-    Line No.: 112
+    Line No.: 111
     Physical LOC: 8
     Logical LOC: 4
     Parameter count: 0
@@ -843,7 +843,7 @@ Core size: 29.03225806451613%
     Halstead effort: 705.8094945413958
 
   Function: <anonymous>.addRecord
-    Line No.: 121
+    Line No.: 120
     Physical LOC: 7
     Logical LOC: 4
     Parameter count: 2
@@ -854,7 +854,7 @@ Core size: 29.03225806451613%
     Halstead effort: 502.57084971160367
 
   Function: <anonymous>.deleteRecord
-    Line No.: 129
+    Line No.: 128
     Physical LOC: 7
     Logical LOC: 4
     Parameter count: 2
@@ -865,7 +865,7 @@ Core size: 29.03225806451613%
     Halstead effort: 502.57084971160367
 
   Function: <anonymous>.updateRecord
-    Line No.: 137
+    Line No.: 136
     Physical LOC: 7
     Logical LOC: 4
     Parameter count: 3
@@ -876,7 +876,7 @@ Core size: 29.03225806451613%
     Halstead effort: 574.3129175544522
 
   Function: <anonymous>.updateProperties
-    Line No.: 146
+    Line No.: 145
     Physical LOC: 6
     Logical LOC: 3
     Parameter count: 1
@@ -887,7 +887,7 @@ Core size: 29.03225806451613%
     Halstead effort: 389.386762695649
 
   Function: <anonymous>.getProperties
-    Line No.: 153
+    Line No.: 152
     Physical LOC: 3
     Logical LOC: 1
     Parameter count: 0
@@ -898,7 +898,7 @@ Core size: 29.03225806451613%
     Halstead effort: 27.14210625757214
 
   Function: <anonymous>.getConfigJSON
-    Line No.: 157
+    Line No.: 156
     Physical LOC: 27
     Logical LOC: 21
     Parameter count: 0

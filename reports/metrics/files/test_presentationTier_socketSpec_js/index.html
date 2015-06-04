@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">75.90</p>
+      <p class="stat">75.88</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">112</p>
+      <p class="stat">109</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,7 +62,7 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">14.26</p>
+      <p class="stat">14.32</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
@@ -140,13 +140,12 @@ describe(&#039;Socket&#039;, function() {
         var server = require(&#039;socket.io&#039;)();
         server.listen(5000);
 
-        var socketURL = &#039;http://localhost:5000/namespace&#039;;
+        var socketURL = &#039;http://0.0.0.0:5000/namespace&#039;;
         var options ={
             transports: [&#039;websocket&#039;],
             &#039;force new connection&#039;: true
         };
-        //var client1 = io.connect(socketURL, options);
-        io.connect(socketURL, options);
+        var client1 = io.connect(socketURL, options);
 
         function Mock() {}
         Mock.prototype.getConfigJSON = function() {
@@ -158,14 +157,12 @@ describe(&#039;Socket&#039;, function() {
             var object = new Mock();
             socket1.attachObject(object, &#039;onEvent&#039;);
             socket1.sendMessage(&#039;event&#039;, &#039;message&#039;);
-            //client1.on(&#039;connection&#039;, function(configJSON) {
-            io.on(&#039;connection&#039;, function(configJSON) {
+            client1.on(&#039;connection&#039;, function(configJSON) {
                 console.log(&#039;#fuckingtest#connection&#039;);
                 console.dir(configJSON);
                 assert.strictEqual(configJSON, object.getConfigJSON());
             });
-            //client1.on(&#039;event&#039;, function(message) {
-            io.on(&#039;event&#039;, function(message) {
+            client1.on(&#039;event&#039;, function(message) {
                 console.log(&#039;#fuckingtest#event&#039;);
                 console.dir(message);
                 assert.strictEqual(message, &#039;message&#039;);
@@ -183,7 +180,7 @@ describe(&#039;Socket&#039;, function() {
         var server = require(&#039;socket.io&#039;)();
         server.listen(5000);
 
-        var socketURL = &#039;http://localhost:5000/namespace&#039;;
+        var socketURL = &#039;http://0.0.0.0:5000/namespace&#039;;
         var options ={
             transports: [&#039;websocket&#039;],
             &#039;force new connection&#039;: true
