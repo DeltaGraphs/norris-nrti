@@ -265,7 +265,7 @@ var repeatBar=function(){
                 ID:'flow2',
                 name: 'grafico tempo-umidita',
                 indexKey: 'tempo',
-                valueKey: 'pressione',
+                valueKey: 'umidita',
             },[
                 {tempo: 1, umidita: 7},
                 {tempo: 2, umidita: 20},
