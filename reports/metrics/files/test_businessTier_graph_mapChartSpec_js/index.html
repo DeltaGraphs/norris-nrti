@@ -44,7 +44,7 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">68.55</p>
+      <p class="stat">68.59</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">26.30</p>
+      <p class="stat">26.17</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">2.42</p>
+      <p class="stat">2.41</p>
     </div>
   </div>
 </div>
@@ -214,8 +214,6 @@ describe(&#039;MapChart&#039;, function() {
             var mp=new MapChart({ID: &#039;map1&#039;}, {_page:2}, new socketMock());
             mp.createMapChartFlow({ID: &#039;flow1&#039;});
             mp.createMapChartFlow({ID: &#039;flow2&#039;});
-            console.log(&#039;###getFlowByID &#039;+JSON.stringify(mp.getFlowByID(&#039;flow2&#039;)));
-            console.log(&#039;###getFlowByID###getFlowByID &#039;+JSON.stringify(mp.getFlowByID(&#039;flow2&#039;)._dataMapChartFlow));
             assert.strictEqual(mp.getFlowByID(&#039;flow2&#039;)._dataMapChartFlow._ID,&#039;flow2&#039;);
         });
     });
@@ -224,6 +222,8 @@ describe(&#039;MapChart&#039;, function() {
             var mock=new socketMock();
             var mp=new MapChart({ID: &#039;dada&#039;}, {_page: &#039;dssada&#039;}, mock);
             mp.createLineChartFlow({ ID:&#039;flow1&#039;, name: &#039;linea 22&#039;, &#039;latitudeKey&#039;: &#039;1&#039;, &#039;longitudeKey&#039;: &#039;2&#039;, &#039;objectKey&#039;: &#039;0&#039;});
+            console.log(&#039;mp &#039;+JSON.stringify(mp));
+            console.log(&#039;mpmpmpmp &#039;+JSON.stringify(mp.deleteFlow(34)));
             assert.strictEqual(mp.deleteFlow(34),283);
         });
         it(&#039;return 283 - no ID in flows&#039;, function() {
