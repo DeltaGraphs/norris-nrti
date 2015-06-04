@@ -21,9 +21,9 @@ angular.module('app')
 		//controller : 'BarChartController',
 		replace: false,
 		scope: {
-            urlbc: '@'
+            url: '@'
 		},
 		bindToController: true,
-        template: '<div>barchart {{urlbc}}</div>'
+        template: '<div>barchart {{url}}</div>'
     };
 });

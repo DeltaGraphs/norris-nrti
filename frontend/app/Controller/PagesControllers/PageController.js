@@ -45,13 +45,6 @@ angular.module('app')
 		});
 	};
 
-	$scope.checkType = function(graph, type){
-		if (graph.graph.constructor.name === type){
-			return true;
-		}
-		return false;
-	};
-
 	function matrix(list) {
 		var array = [];
 		var count = 0;

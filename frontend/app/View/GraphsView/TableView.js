@@ -21,9 +21,9 @@ angular.module('app')
 		//controller : 'TableController',
 		replace: false,
 		scope: {
-            urltc: '@'
+            url: '@'
 		},
 		bindToController: true,
-        template: '<div>table {{urltc}}</div>'
+        template: '<div>table {{url}}</div>'
     };
 });

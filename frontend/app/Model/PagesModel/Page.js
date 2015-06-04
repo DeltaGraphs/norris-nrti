@@ -25,7 +25,7 @@
 */
 
 angular.module('app')
-.factory('PageFactory', ['LineChartFactory', 'BarChartFactory', 'MapChartFactory', 'TableFactory', function(LineChartFactory, BarChartFactory, MapChartFactory, TableFactory){
+.factory('PageFactory', function(){
 
     function Page(info){
         this._graphsList = [];
@@ -95,25 +95,7 @@ angular.module('app')
                     }
                 }
                 if (count === 0){
-                    var newGraph;
-                    switch (graph.type) {
-                        case 'LineChart': 
-                            newGraph = LineChartFactory.build(graph);
-                            this._graphsList.push( {'id' : graph.ID, 'graph' : newGraph} );
-                            break;
-                        case 'BarChart': 
-                            newGraph = BarChartFactory.build(graph);
-                            this._graphsList.push( {'id' : graph.ID, 'graph' : newGraph} );
-                            break;
-                        case 'MapChart': 
-                            newGraph = MapChartFactory.build(graph);
-                            this._graphsList.push( {'id' : graph.ID, 'graph' : newGraph} );
-                            break;
-                        case 'Table': 
-                            newGraph = TableFactory.build(graph);
-                            this._graphsList.push( {'id' : graph.ID, 'graph' : newGraph} );
-                            break;
-                    }
+                    this._graphsList.push( {'id' : graph.ID, 'type' : graph.type, 'url' : graph.socketURL} );          
                 }
             // error
             }
@@ -147,4 +129,4 @@ angular.module('app')
     };
 
     return PageFactory;
-}]);
+});

@@ -21,14 +21,14 @@ angular.module('app')
 		//controller : 'MapChartController',
         replace: false,
         scope: {
-            urlmc: '@'
+            url: '@'
 		},
 		bindToController: true,
         template: '<div id="map-canvas" style="height:500px;width:500px"></div>',
     	link: function (scope, element, attrs) {
 
-            attrs.$observe('urlmc', function(value) {
-                console.log('observ urlmc ' + value);
+            attrs.$observe('url', function(value) {
+                console.log('observ url ' + value);
                 if (value) {
                     scope.$parent.socketConnection(value);
                 }

@@ -21,9 +21,9 @@ angular.module('app')
 		//controller : 'LineChartController',
 		replace: false,
         scope: {
-            urllc: '@'
+            url: '@'
 		},
 		bindToController: true,
-        template: '<div>linechart {{urllc}}</div>'
+        template: '<div>linechart {{url}}</div>'
     };
 });

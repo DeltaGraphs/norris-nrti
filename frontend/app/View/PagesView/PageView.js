@@ -24,27 +24,6 @@ angular.module('app')
 			
 		},
 		template: '<div id="page"></div>',
-		/*
-					'<h1> ciao </h1>' +
-					'<table>' +
-						'<tr ng-repeat="line in /graphs">' +
-							'<td ng-repeat="graph in line">' +
-								'<div ng-if="checkType(graph, \'LineChart\')" ng-controller="LineChartController">' +
-                                	'<line-chart urllc="{{graph.graph.getUrl()}}"></line-chart>' +
-                                '</div>' +
-								'<div ng-if="checkType(graph, \'BarChart\')" ng-controller="BarChartController">' +
-                                	'<bar-chart urlbc="{{graph.graph.getUrl()}}"></bar-chart>' +
-                                '</div>' +
-								'<div ng-if="checkType(graph, \'MapChart\')" ng-controller="MapChartController">' +
-                                	'<map-chart urlmc="{{graph.graph.getUrl()}}"></map-chart>' +
-                                '</div>' +
-								'<div ng-if="checkType(graph, \'Table\')" ng-controller="TableController">' +
-                                	'<table-chart urltc="{{graph.graph.getUrl()}}"></table-chart>' +
-                                '</div>' +
-							'</td>' +
-						'</tr>' +
-					'</table>' +
-				'</div>',*/
 		link: function (scope, element, attrs) {
 			scope.socketConnection();
 
@@ -64,23 +43,23 @@ angular.module('app')
 					for(var j=0; j<line.length; j++) {
 						var div = document.createElement('div');
 						div.className = 'graph';
-						var graph = line[j].graph;
-						switch (graph.constructor.name) {
+						var graph = line[j];
+						switch (graph.type) {
 							case 'BarChart' : 
 								div.setAttribute('ng-controller', 'BarChartController');
-								div.innerHTML = '<bar-chart urlbc="'+ graph.getUrl() +'"></bar-chart>';
+								div.innerHTML = '<bar-chart url="'+ graph.url +'"></bar-chart>';
 								break;
 							case 'LineChart' : 
 								div.setAttribute('ng-controller', 'LineChartController');
-								div.innerHTML = '<line-chart urllc="'+ graph.getUrl() +'"></line-chart>';
+								div.innerHTML = '<line-chart url="'+ graph.url +'"></line-chart>';
 								break;
 							case 'MapChart' : 
 								div.setAttribute('ng-controller', 'MapChartController');
-								div.innerHTML = '<map-chart urlmc="'+ graph.getUrl() +'"></map-chart>';
+								div.innerHTML = '<map-chart url="'+ graph.url +'"></map-chart>';
 								break;
 							case 'Table' :
 								div.setAttribute('ng-controller', 'TableController');
-								div.innerHTML = '<table-chart urltc="'+ graph.getUrl() +'"></table-chart>';
+								div.innerHTML = '<table-chart url="'+ graph.url +'"></table-chart>';
 								break;
 						}
 						var cell = row.insertCell(j);
