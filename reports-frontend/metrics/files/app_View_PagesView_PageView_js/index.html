@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">59.54</p>
+      <p class="stat">59.61</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">102</p>
+      <p class="stat">81</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">18.73</p>
+      <p class="stat">18.74</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.63</p>
+      <p class="stat">0.61</p>
     </div>
   </div>
 </div>
@@ -115,27 +115,6 @@ angular.module(&#039;app&#039;)
 			
 		},
 		template: &#039;&lt;div id=&quot;page&quot;&gt;&lt;/div&gt;&#039;,
-		/*
-					&#039;&lt;h1&gt; ciao &lt;/h1&gt;&#039; +
-					&#039;&lt;table&gt;&#039; +
-						&#039;&lt;tr ng-repeat=&quot;line in /graphs&quot;&gt;&#039; +
-							&#039;&lt;td ng-repeat=&quot;graph in line&quot;&gt;&#039; +
-								&#039;&lt;div ng-if=&quot;checkType(graph, \&#039;LineChart\&#039;)&quot; ng-controller=&quot;LineChartController&quot;&gt;&#039; +
-                                	&#039;&lt;line-chart urllc=&quot;{{graph.graph.getUrl()}}&quot;&gt;&lt;/line-chart&gt;&#039; +
-                                &#039;&lt;/div&gt;&#039; +
-								&#039;&lt;div ng-if=&quot;checkType(graph, \&#039;BarChart\&#039;)&quot; ng-controller=&quot;BarChartController&quot;&gt;&#039; +
-                                	&#039;&lt;bar-chart urlbc=&quot;{{graph.graph.getUrl()}}&quot;&gt;&lt;/bar-chart&gt;&#039; +
-                                &#039;&lt;/div&gt;&#039; +
-								&#039;&lt;div ng-if=&quot;checkType(graph, \&#039;MapChart\&#039;)&quot; ng-controller=&quot;MapChartController&quot;&gt;&#039; +
-                                	&#039;&lt;map-chart urlmc=&quot;{{graph.graph.getUrl()}}&quot;&gt;&lt;/map-chart&gt;&#039; +
-                                &#039;&lt;/div&gt;&#039; +
-								&#039;&lt;div ng-if=&quot;checkType(graph, \&#039;Table\&#039;)&quot; ng-controller=&quot;TableController&quot;&gt;&#039; +
-                                	&#039;&lt;table-chart urltc=&quot;{{graph.graph.getUrl()}}&quot;&gt;&lt;/table-chart&gt;&#039; +
-                                &#039;&lt;/div&gt;&#039; +
-							&#039;&lt;/td&gt;&#039; +
-						&#039;&lt;/tr&gt;&#039; +
-					&#039;&lt;/table&gt;&#039; +
-				&#039;&lt;/div&gt;&#039;,*/
 		link: function (scope, element, attrs) {
 			scope.socketConnection();
 
@@ -155,23 +134,23 @@ angular.module(&#039;app&#039;)
 					for(var j=0; j&lt;line.length; j++) {
 						var div = document.createElement(&#039;div&#039;);
 						div.className = &#039;graph&#039;;
-						var graph = line[j].graph;
-						switch (graph.constructor.name) {
+						var graph = line[j];
+						switch (graph.type) {
 							case &#039;BarChart&#039; : 
 								div.setAttribute(&#039;ng-controller&#039;, &#039;BarChartController&#039;);
-								div.innerHTML = &#039;&lt;bar-chart urlbc=&quot;&#039;+ graph.getUrl() +&#039;&quot;&gt;&lt;/bar-chart&gt;&#039;;
+								div.innerHTML = &#039;&lt;bar-chart url=&quot;&#039;+ graph.url +&#039;&quot;&gt;&lt;/bar-chart&gt;&#039;;
 								break;
 							case &#039;LineChart&#039; : 
 								div.setAttribute(&#039;ng-controller&#039;, &#039;LineChartController&#039;);
-								div.innerHTML = &#039;&lt;line-chart urllc=&quot;&#039;+ graph.getUrl() +&#039;&quot;&gt;&lt;/line-chart&gt;&#039;;
+								div.innerHTML = &#039;&lt;line-chart url=&quot;&#039;+ graph.url +&#039;&quot;&gt;&lt;/line-chart&gt;&#039;;
 								break;
 							case &#039;MapChart&#039; : 
 								div.setAttribute(&#039;ng-controller&#039;, &#039;MapChartController&#039;);
-								div.innerHTML = &#039;&lt;map-chart urlmc=&quot;&#039;+ graph.getUrl() +&#039;&quot;&gt;&lt;/map-chart&gt;&#039;;
+								div.innerHTML = &#039;&lt;map-chart url=&quot;&#039;+ graph.url +&#039;&quot;&gt;&lt;/map-chart&gt;&#039;;
 								break;
 							case &#039;Table&#039; :
 								div.setAttribute(&#039;ng-controller&#039;, &#039;TableController&#039;);
-								div.innerHTML = &#039;&lt;table-chart urltc=&quot;&#039;+ graph.getUrl() +&#039;&quot;&gt;&lt;/table-chart&gt;&#039;;
+								div.innerHTML = &#039;&lt;table-chart url=&quot;&#039;+ graph.url +&#039;&quot;&gt;&lt;/table-chart&gt;&#039;;
 								break;
 						}
 						var cell = row.insertCell(j);

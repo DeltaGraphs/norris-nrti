@@ -112,14 +112,14 @@ angular.module(&#039;app&#039;)
 		//controller : &#039;MapChartController&#039;,
         replace: false,
         scope: {
-            urlmc: &#039;@&#039;
+            url: &#039;@&#039;
 		},
 		bindToController: true,
         template: &#039;&lt;div id=&quot;map-canvas&quot; style=&quot;height:500px;width:500px&quot;&gt;&lt;/div&gt;&#039;,
     	link: function (scope, element, attrs) {
 
-            attrs.$observe(&#039;urlmc&#039;, function(value) {
-                console.log(&#039;observ urlmc &#039; + value);
+            attrs.$observe(&#039;url&#039;, function(value) {
+                console.log(&#039;observ url &#039; + value);
                 if (value) {
                     scope.$parent.socketConnection(value);
                 }

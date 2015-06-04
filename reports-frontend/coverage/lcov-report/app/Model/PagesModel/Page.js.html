@@ -15,10 +15,10 @@
 <div class="header medium">
     <h1>Code coverage report for <span class="entity">app/Model/PagesModel/Page.js</span></h1>
     <h2>
-        Statements: <span class="metric">60% <small>(39 / 65)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Branches: <span class="metric">27.78% <small>(10 / 36)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">67.31% <small>(35 / 52)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">28.13% <small>(9 / 32)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Functions: <span class="metric">84.62% <small>(11 / 13)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">60% <small>(39 / 65)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">67.31% <small>(35 / 52)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
     <div class="path"><a href="../../../index.html">All files</a> &#187; <a href="index.html">app/Model/PagesModel/</a> &#187; Page.js</div>
@@ -156,25 +156,7 @@
 129
 130
 131
-132
-133
-134
-135
-136
-137
-138
-139
-140
-141
-142
-143
-144
-145
-146
-147
-148
-149
-150</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+132</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -272,24 +254,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -350,7 +314,7 @@
 */
 &nbsp;
 angular.module('app')
-.factory('PageFactory', ['LineChartFactory', 'BarChartFactory', 'MapChartFactory', 'TableFactory', function(LineChartFactory, BarChartFactory, MapChartFactory, TableFactory){
+.factory('PageFactory', function(){
 &nbsp;
     function Page(info){
         this._graphsList = [];
@@ -420,25 +384,7 @@ angular.module('app')
                     }
                 }
                 <span class="missing-if-branch" title="else path not taken" >E</span>if (count === 0){
-                    var newGraph;
-                    switch (graph.type) {
-<span class="branch-0 cbranch-no" title="branch not covered" >                        case 'LineChart': </span>
-<span class="cstat-no" title="statement not covered" >                            newGraph = LineChartFactory.build(graph);</span>
-<span class="cstat-no" title="statement not covered" >                            this._graphsList.push( {'id' : graph.ID, 'graph' : newGraph} );</span>
-<span class="cstat-no" title="statement not covered" >                            break;</span>
-<span class="branch-1 cbranch-no" title="branch not covered" >                        case 'BarChart': </span>
-<span class="cstat-no" title="statement not covered" >                            newGraph = BarChartFactory.build(graph);</span>
-<span class="cstat-no" title="statement not covered" >                            this._graphsList.push( {'id' : graph.ID, 'graph' : newGraph} );</span>
-<span class="cstat-no" title="statement not covered" >                            break;</span>
-<span class="branch-2 cbranch-no" title="branch not covered" >                        case 'MapChart': </span>
-<span class="cstat-no" title="statement not covered" >                            newGraph = MapChartFactory.build(graph);</span>
-<span class="cstat-no" title="statement not covered" >                            this._graphsList.push( {'id' : graph.ID, 'graph' : newGraph} );</span>
-<span class="cstat-no" title="statement not covered" >                            break;</span>
-                        case 'Table': 
-                            newGraph = TableFactory.build(graph);
-                            this._graphsList.push( {'id' : graph.ID, 'graph' : newGraph} );
-                            break;
-                    }
+                    this._graphsList.push( {'id' : graph.ID, 'type' : graph.type, 'url' : graph.socketURL} );          
                 }
             // error
             }
@@ -472,12 +418,12 @@ angular.module('app')
     };
 &nbsp;
     return PageFactory;
-}]);</pre></td></tr>
+});</pre></td></tr>
 </table></pre>
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Jun 04 2015 14:59:24 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Jun 04 2015 15:24:19 GMT+0000 (UTC)</div>
 </div>
 <script src="../../../prettify.js"></script>
 <script>

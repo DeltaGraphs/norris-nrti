@@ -38,6 +38,6 @@
 		<error line="110" column="21" severity="warning" message="&apos;latLng&apos; is defined but never used." source="jshint.W098" />
 	</file>
 	<file name="app/View/PagesView/PageView.js">
-		<error line="48" column="41" severity="warning" message="&apos;attrs&apos; is defined but never used." source="jshint.W098" />
+		<error line="27" column="41" severity="warning" message="&apos;attrs&apos; is defined but never used." source="jshint.W098" />
 	</file>
 </checkstyle>
