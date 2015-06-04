@@ -20,7 +20,6 @@ angular.module('app')
 		restrict: 'E',
 		controller : 'MapChartController',
 		replace: false,
-        require: '^page',
 		scope: {
 			id: '@'
 		},
