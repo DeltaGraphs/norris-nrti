@@ -4891,7 +4891,7 @@
                 "halstead": {
                     "operators": {
                         "distinct": 23,
-                        "total": 369,
+                        "total": 370,
                         "identifiers": [
                             "var",
                             "=",
@@ -4920,7 +4920,7 @@
                     },
                     "operands": {
                         "distinct": 95,
-                        "total": 403,
+                        "total": 404,
                         "identifiers": [
                             "\"use strict\"",
                             "Graph",
@@ -4966,6 +4966,8 @@
                             0,
                             "found",
                             false,
+                            "_dataMapChartFlow",
+                            "_ID",
                             true,
                             282,
                             "createMapChartFlow",
@@ -4986,8 +4988,6 @@
                             "\"insertFlow\"",
                             "sendMessage",
                             "deleteFlow",
-                            "_dataMapChartFlow",
-                            "_ID",
                             "\"deleteFlow\"",
                             "splice",
                             283,
@@ -5019,13 +5019,13 @@
                             "exports"
                         ]
                     },
-                    "length": 772,
+                    "length": 774,
                     "vocabulary": 118,
-                    "difficulty": 48.784210526315796,
-                    "volume": 5313.400434107341,
-                    "effort": 259210.04538811027,
-                    "bugs": 1.7711334780357806,
-                    "time": 14400.558077117237
+                    "difficulty": 48.90526315789474,
+                    "volume": 5327.165720206065,
+                    "effort": 260526.44143239345,
+                    "bugs": 1.7757219067353551,
+                    "time": 14473.691190688525
                 },
                 "params": 14,
                 "line": 2,
@@ -5106,7 +5106,7 @@
                     "halstead": {
                         "operators": {
                             "distinct": 13,
-                            "total": 28,
+                            "total": 29,
                             "identifiers": [
                                 "if",
                                 "===",
@@ -5124,8 +5124,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 12,
-                            "total": 27,
+                            "distinct": 14,
+                            "total": 28,
                             "identifiers": [
                                 "ID",
                                 "\"string\"",
@@ -5137,17 +5137,19 @@
                                 0,
                                 "found",
                                 false,
+                                "_dataMapChartFlow",
+                                "_ID",
                                 true,
                                 282
                             ]
                         },
-                        "length": 55,
-                        "vocabulary": 25,
-                        "difficulty": 14.625,
-                        "volume": 255.41209043760983,
-                        "effort": 3735.401822650044,
-                        "bugs": 0.08513736347920328,
-                        "time": 207.522323480558
+                        "length": 57,
+                        "vocabulary": 27,
+                        "difficulty": 13,
+                        "volume": 271.0285876233177,
+                        "effort": 3523.3716391031303,
+                        "bugs": 0.0903428625411059,
+                        "time": 195.7428688390628
                     },
                     "params": 1,
                     "line": 49,
@@ -5645,10 +5647,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 107.92145417918275,
+            "maintainability": 107.93686475331566,
             "loc": 8.272727272727273,
             "cyclomatic": 2.909090909090909,
-            "effort": 4287.364352711221,
+            "effort": 4268.088881479684,
             "params": 1.2727272727272727,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/graph/mapChart.js"
         },
@@ -16876,7 +16878,7 @@
     "coreSize": 29.03225806451613,
     "loc": 10.156164265841689,
     "cyclomatic": 4.250701449088548,
-    "effort": 7829.363259743479,
+    "effort": 7828.741470348912,
     "params": 1.119795079472499,
-    "maintainability": 105.90452848285315
+    "maintainability": 105.90502559814776
 }

@@ -84,7 +84,7 @@ MapChart.prototype.getFlowByID = function (ID) {
         __cov_7_tfqyFdCSgmklxuMrfvXg.s['29']++;
         while ((__cov_7_tfqyFdCSgmklxuMrfvXg.b['6'][0]++, i < flows) && (__cov_7_tfqyFdCSgmklxuMrfvXg.b['6'][1]++, !found)) {
             __cov_7_tfqyFdCSgmklxuMrfvXg.s['30']++;
-            if (this._flows[i].ID === ID) {
+            if (this._flows[i]._dataMapChartFlow._ID === ID) {
                 __cov_7_tfqyFdCSgmklxuMrfvXg.b['7'][0]++;
                 __cov_7_tfqyFdCSgmklxuMrfvXg.s['31']++;
                 found = true;
