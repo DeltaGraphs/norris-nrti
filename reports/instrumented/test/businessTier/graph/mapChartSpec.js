@@ -243,6 +243,7 @@ describe('MapChart', function() {
                 },
                 'legendOnPoint': false,
                 'longitude': 0,
+                'latitude': 0,
                 'mapHeight': 2000,
                 'mapType': 'roadmap',
                 'mapWidth': 3000,
@@ -257,15 +258,13 @@ describe('MapChart', function() {
             var mock=new socketMock();
             var mapChart=new MapChart({ID: 'dada'}, {_page: 'dssada'}, mock);
             mapChart.createMapChartFlow({ ID:'flow1', name: 'grafico', latitudeKey: 'lat', longitudeKey:'long'});
-            //var ID=mapChart.addRecord('flow1',{'lat': 1, 'long': 25});
-            mapChart.addRecord('flow1',{'lat': 1, 'long': 25});
-            console.log('getconfigJSON sostituire');
+            var ID=mapChart.addRecord('flow1',{'lat': 1, 'long': 25});
             assert.deepEqual(mapChart.getConfigJSON(),{
                 'data':[{
                     'ID':'flow1',
                     'records':[{
                         'markerID':undefined,
-                        'norrisRecordID':'flow1_1433425860095_1',
+                        'norrisRecordID':ID,
                         'value':[1,25]
                     }]
                 }],

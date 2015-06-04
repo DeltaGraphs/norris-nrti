@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">66.30</p>
+      <p class="stat">66.29</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">314</p>
+      <p class="stat">313</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">30.19</p>
+      <p class="stat">30.84</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">4.64</p>
+      <p class="stat">4.63</p>
     </div>
   </div>
 </div>
@@ -334,6 +334,7 @@ describe(&#039;MapChart&#039;, function() {
                 },
                 &#039;legendOnPoint&#039;: false,
                 &#039;longitude&#039;: 0,
+                &#039;latitude&#039;: 0,
                 &#039;mapHeight&#039;: 2000,
                 &#039;mapType&#039;: &#039;roadmap&#039;,
                 &#039;mapWidth&#039;: 3000,
@@ -348,15 +349,13 @@ describe(&#039;MapChart&#039;, function() {
             var mock=new socketMock();
             var mapChart=new MapChart({ID: &#039;dada&#039;}, {_page: &#039;dssada&#039;}, mock);
             mapChart.createMapChartFlow({ ID:&#039;flow1&#039;, name: &#039;grafico&#039;, latitudeKey: &#039;lat&#039;, longitudeKey:&#039;long&#039;});
-            //var ID=mapChart.addRecord(&#039;flow1&#039;,{&#039;lat&#039;: 1, &#039;long&#039;: 25});
-            mapChart.addRecord(&#039;flow1&#039;,{&#039;lat&#039;: 1, &#039;long&#039;: 25});
-            console.log(&#039;getconfigJSON sostituire&#039;);
+            var ID=mapChart.addRecord(&#039;flow1&#039;,{&#039;lat&#039;: 1, &#039;long&#039;: 25});
             assert.deepEqual(mapChart.getConfigJSON(),{
                 &#039;data&#039;:[{
                     &#039;ID&#039;:&#039;flow1&#039;,
                     &#039;records&#039;:[{
                         &#039;markerID&#039;:undefined,
-                        &#039;norrisRecordID&#039;:&#039;flow1_1433425860095_1&#039;,
+                        &#039;norrisRecordID&#039;:ID,
                         &#039;value&#039;:[1,25]
                     }]
                 }],
