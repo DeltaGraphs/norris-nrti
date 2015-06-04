@@ -48,8 +48,8 @@ describe('BarChartFlow', function() {
     describe('#getReplaceDataJSON', function() {
         it('returns the correct JSON', function() {            
             var flow1=new BarChartFlow({ID: 'flow1', indexKey: 'index', valueKey: 'value'}, new socketMock(), [{index: 1, value: 3}, {index: 2, value: 5}]);
-            console.log('printing FLOW1');
-            console.dir(flow1);
+            console.log('printing JSON');
+            console.dir(flow1.getReplaceDataJSON());
             var expJSON = {
                 action: 'replaceData',
                 ID: 'flow1',
@@ -64,7 +64,7 @@ describe('BarChartFlow', function() {
                     }
                 ]
             };
-            assert.strictEqual(flow1.getReplaceDataJSON(), expJSON);
+            assert.deepEqual(flow1.getReplaceDataJSON(), expJSON);
         });
     });
 });
