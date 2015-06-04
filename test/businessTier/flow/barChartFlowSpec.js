@@ -55,11 +55,11 @@ describe('BarChartFlow', function() {
                 ID: 'flow1',
                 records: [
                     {
-                        norrisRecordID: flow1._records[0].norrisRecordID,
+                        norrisRecordID: flow1._dataBarChartFlow._records[0].norrisRecordID,
                         value: [1, 3]
                     },
                     {
-                        norrisRecordID: flow1._records[1].norrisRecordID,
+                        norrisRecordID: flow1._dataBarChartFlow._records[1].norrisRecordID,
                         value: [2, 5]
                     }
                 ]
