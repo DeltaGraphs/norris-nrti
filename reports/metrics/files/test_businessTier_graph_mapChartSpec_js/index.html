@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">77.34</p>
+      <p class="stat">68.79</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">73</p>
+      <p class="stat">164</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">14.96</p>
+      <p class="stat">24.37</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.63</p>
+      <p class="stat">2.34</p>
     </div>
   </div>
 </div>
@@ -122,6 +122,21 @@ describe(&#039;MapChart&#039;, function() {
             this.p2=p2;
         };
     };
+
+    var socketMockHistory=function(){
+        this.p1=[];
+        this.p2=[];
+        this._namespace=&#039;flow1&#039;;
+        this.sendMessage=function(p1, p2){
+            this.p1.push(p1);
+            this.p2.push(p2);
+        };
+        this.attachObject=function(p1, p2){
+            this.p1.push(p1);
+            this.p2.push(p2);
+        };
+    };
+
     it(&#039;returns null when there are no params&#039;, function() {
         assert.strictEqual((new MapChart()).hasOwnProperty(&#039;_dataMapChart&#039;), false);
     });
@@ -139,28 +154,104 @@ describe(&#039;MapChart&#039;, function() {
     });
 
     it(&#039;calls the parent constructor with the params specified&#039;, function() {
-        var flow1=new MapChart({ID: &#039;map1&#039;}, {_page:2}, new socketMock());
-        assert.strictEqual(flow1._dataMapChart._ID, &#039;map1&#039;);
-        assert.strictEqual(flow1._graphSocket._namespace, &#039;flow1&#039;);
+        var mp=new MapChart({ID: &#039;map1&#039;}, {_page:2}, new socketMock());
+        assert.strictEqual(mp._dataMapChart._ID, &#039;map1&#039;);
+        assert.strictEqual(mp._graphSocket._namespace, &#039;flow1&#039;);
     });
 
     describe(&#039;#createMapChartFlow&#039;, function() {
         it (&#039;returns 232 if are passed no valid params&#039;, function(){
-            var flow1=new MapChart({ID: &#039;map1&#039;}, {_page:2}, new socketMock());
-            assert.strictEqual(flow1.createMapChartFlow(0), 232);
+            var mp=new MapChart({ID: &#039;map1&#039;}, {_page:2}, new socketMock());
+            assert.strictEqual(mp.createMapChartFlow(0), 232);
         });
         it (&#039;adds and returns a mapChartFlow&#039;, function(){
-            var flow1=new MapChart({ID: &#039;map1&#039;}, {_page:2}, new socketMock());
-            assert.strictEqual(flow1.createMapChartFlow({ID: &#039;flow1&#039;}).hasOwnProperty(&#039;_dataMapChartFlow&#039;), true);
-            assert.strictEqual(flow1._flows[0].hasOwnProperty(&#039;_dataMapChartFlow&#039;), true);
+            var mp=new MapChart({ID: &#039;map1&#039;}, {_page:2}, new socketMock());
+            assert.strictEqual(mp.createMapChartFlow({ID: &#039;flow1&#039;}).hasOwnProperty(&#039;_dataMapChartFlow&#039;), true);
+            assert.strictEqual(mp._flows[0].hasOwnProperty(&#039;_dataMapChartFlow&#039;), true);
+        });
+
+        it(&#039;adds and returns a mapChartFlow&#039;, function() {
+            var mock = new socketMock();
+            var mapChart=new MapChart({ID: &#039;dada&#039;}, {_page: &#039;dssada&#039;}, mock);
+            var lc=mapChart.createMapChartFlow({
+                &#039;ID&#039;:&#039;flow1&#039;,
+                &#039;name&#039;: &#039;linea 22&#039;,
+                &#039;marker&#039;:{
+                    &#039;type&#039;: &#039;shape&#039;,
+                    &#039;shape&#039;: &#039;circle&#039;,
+                    &#039;icon&#039;: &#039;null&#039;,
+                    &#039;text&#039;: &#039;null&#039;,
+                    &#039;color&#039; : &#039;#000&#039;
+                },
+                &#039;trace&#039;:{
+                    &#039;type&#039;:&#039;poly&#039;,
+                    &#039;coordinates&#039;: [[45.42946, 11.94090],[45.42941, 11.94081],[45.43054, 11.93937],[45.43131, 11.93773],[45.43268, 11.93539],[45.34719, 11.81996]],
+                    &#039;strokeColor&#039;: &#039;#DC271C&#039;,
+                    &#039;fillColor&#039;: &#039;#3a6d99&#039;
+                },
+                &#039;trailLength&#039;: 3,
+                &#039;latitudeKey&#039;: &#039;1&#039;,
+                &#039;longitudeKey&#039;: &#039;2&#039;,
+                &#039;objectKey&#039;: &#039;0&#039;
+            });
+            assert.strictEqual(lc.hasOwnProperty(&#039;_dataMapChartFlow&#039;),true);
+            assert.strictEqual(mock.p1,&#039;insertFlow&#039;);
+            assert.strictEqual(mock.p2.ID, &#039;flow1&#039;);
+            assert.strictEqual(mock.p2.name, &#039;grafico tempo-temperatura&#039;);
         });
     });
     describe(&#039;#getFlowByID&#039;, function() {
         it(&#039;returns 282 if there is no valid ID&#039;, function(){
-            var flow1=new MapChart({ID: &#039;map1&#039;}, {_page:2}, new socketMock());
-            assert.strictEqual(flow1.getFlowByID(0), 282);
+            var mp=new MapChart({ID: &#039;map1&#039;}, {_page:2}, new socketMock());
+            assert.strictEqual(mp.getFlowByID(0), 282);
         });
-        ////////////////////////////
+        it(&#039;return 282 - no ID in flows&#039;, function() {
+            var mp=new MapChart({ID: &#039;map1&#039;}, {_page:2}, new socketMock());
+            mp.createMapChartFlow({ID: &#039;flow1&#039;}).hasOwnProperty(&#039;_dataMapChartFlow&#039;);
+            assert.strictEqual(mp.getFlowByID(&#039;fl1&#039;),282);
+        });
+        it(&#039;return correct flow&#039;, function() {
+            var mp=new MapChart({ID: &#039;map1&#039;}, {_page:2}, new socketMock());
+            mp.createMapChartFlow({ID: &#039;flow1&#039;}).hasOwnProperty(&#039;_dataMapChartFlow&#039;);
+            mp.createMapChartFlow({ID: &#039;flow2&#039;}).hasOwnProperty(&#039;_dataMapChartFlow&#039;);
+            assert.strictEqual(mp.getFlowByID(&#039;flow2&#039;)._dataMapChartFlow._ID,&#039;flow2&#039;);
+        });
+    });
+    describe(&#039;#deleteFlow&#039;, function() {
+        it(&#039;return 283 - ID is not a string&#039;, function() {
+            var mock=new socketMock();
+            var mp=new MapChart({ID: &#039;dada&#039;}, {_page: &#039;dssada&#039;}, mock);
+            mp.createLineChartFlow({ ID:&#039;flow1&#039;, name: &#039;linea 22&#039;, &#039;latitudeKey&#039;: &#039;1&#039;, &#039;longitudeKey&#039;: &#039;2&#039;, &#039;objectKey&#039;: &#039;0&#039;});
+            assert.strictEqual(mp.deleteFlow(34),283);
+        });
+        it(&#039;return 283 - no ID in flows&#039;, function() {
+            var mock=new socketMock();
+            var mp=new MapChart({ID: &#039;dada&#039;}, {_page: &#039;dssada&#039;}, mock);
+            mp.createLineChartFlow({ ID:&#039;flow1&#039;, name: &#039;linea 22&#039;, &#039;latitudeKey&#039;: &#039;1&#039;, &#039;longitudeKey&#039;: &#039;2&#039;, &#039;objectKey&#039;: &#039;0&#039;});
+            assert.strictEqual(mp.deleteFlow(&#039;flow123&#039;),283);
+        });
+        it(&#039;return true - deleted flow&#039;, function() {
+            var mock = new socketMock();
+            var mp=new MapChart({ID: &#039;dada&#039;}, {_page: &#039;dssada&#039;}, mock);
+            mp.createLineChartFlow({ ID:&#039;flow1&#039;, name: &#039;linea 22&#039;, &#039;latitudeKey&#039;: &#039;1&#039;, &#039;longitudeKey&#039;: &#039;2&#039;, &#039;objectKey&#039;: &#039;0&#039;});
+            assert.strictEqual(mp.deleteFlow(&#039;flow1&#039;),true);
+            assert.strictEqual(mock.p1,&#039;deleteFlow&#039;);
+            assert.strictEqual(mock.p2.ID, &#039;flow1&#039;);
+        });
+    });
+    describe(&#039;#deleteAllFlows&#039;, function() {
+        it(&#039;deletes all flows and sends right message&#039;, function() {
+            var mock = new socketMockHistory();
+            var mp=new MapChart({ID: &#039;dada&#039;}, {_page: &#039;dssada&#039;}, mock);
+            mp.createLineChartFlow({ ID:&#039;flow1&#039;, name: &#039;linea 22&#039;, &#039;latitudeKey&#039;: &#039;1&#039;, &#039;longitudeKey&#039;: &#039;2&#039;, &#039;objectKey&#039;: &#039;0&#039;});
+            mp.createLineChartFlow({ ID:&#039;flow2&#039;, name: &#039;linea 22&#039;, &#039;latitudeKey&#039;: &#039;1&#039;, &#039;longitudeKey&#039;: &#039;2&#039;, &#039;objectKey&#039;: &#039;0&#039;});
+            mp.deleteAllFlows();
+            assert.strictEqual(mock.p1[mock.p1.length-2],&#039;deleteFlow&#039;);
+            assert.deepEqual(mock.p2[mock.p2.length-2], {ID: &#039;flow1&#039;});
+            assert.strictEqual(mock.p1[mock.p1.length-1],&#039;deleteFlow&#039;);
+            assert.deepEqual(mock.p2[mock.p2.length-1], {ID: &#039;flow2&#039;});
+            assert.strictEqual(mp._flows.length,0);
+        });
     });
 });</textarea>
   </div>
