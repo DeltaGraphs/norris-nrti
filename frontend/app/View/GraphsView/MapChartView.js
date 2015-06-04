@@ -190,16 +190,18 @@ angular.module('app')
                     var div = element.children()[1];
                     div.setAttribute('style', 'background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + '; color: '+ scope.$parent.mapChart.getLegend().getFontColor());
                     var ul = document.createElement('ul');
+                    ul.setAttribute('style', 'list-style-type: none');
                     div.appendChild(ul);
                     for (var i=0; i<scope.$parent.mapChart.getFlowList().length; i++) {
                         var li = document.createElement('li');
-                        var square = document.createElement('span');
-                        square.setAttribute('style', 'height="5px"; width="5px"; background-color="' + scope.$parent.mapChart.getFlowList()[i].flow.getTrace().strokeColor + '"');
-                        var text = document.createElement('span');
-                        text.innerHtml = 'scope.$parent.mapChart.getFlowList()[i].flow.getName()';
+                        var square = document.createElement('div');
+                        square.setAttribute('style', 'height: 15px; width: 15px; float: left; background-color: ' + scope.$parent.mapChart.getFlowList()[i].flow.getTrace().strokeColor);
+                        var spanText = document.createElement('div');
+                        var text = document.createTextNode('\u00A0\u00A0\u00A0\u00A0' + scope.$parent.mapChart.getFlowList()[i].flow.getName());
+                        spanText.appendChild(text);
                         li.appendChild(square);
-                        li.appendChild(text);
-                        console.log(li);
+                        li.appendChild(spanText);
+                        console.log(ul);
                         ul.appendChild(li);
                     }
                 }
