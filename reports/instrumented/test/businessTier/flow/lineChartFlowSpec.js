@@ -156,12 +156,12 @@ describe('LineChartFlow', function() {
             var ID3=flow1.addRecord({'tempo': 6, 'temperatura': 7});
             flow1.addRecord({'tempo': 6, 'temperatura': 0});
             flow1.addRecord({'time': 6, 'temp': 0});
-            flow1.updateProperties({name: 'grafico tempo-temperatura',xKey: 'tempo',yKey: 'temperatura',filters: 'temperature>3'});
+            flow1.updateProperties({name: 'grafico tempo-temperatura',xKey: 'tempo',yKey: 'temperatura',filters: 'temperatura>3'});
             assert.strictEqual(flow1._dataLineChartFlow._xKey,'tempo');
             assert.strictEqual(flow1._dataLineChartFlow._yKey,'temperatura');
             assert.strictEqual(flow1._dataLineChartFlow._name,'grafico tempo-temperatura');
             assert.strictEqual(mock.p1[mock.p1.length-2],'updateFlowData');
-            console.dir(flow1._dataLineChartFlow._records);
+            //console.dir(flow1._dataLineChartFlow._records);
             assert.deepEqual(mock.p2[mock.p1.length-2],{
                 action: 'replaceData',
                 ID: 'flow1',
