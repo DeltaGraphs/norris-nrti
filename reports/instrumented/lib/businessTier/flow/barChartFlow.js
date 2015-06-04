@@ -50,7 +50,7 @@ BarChartFlow.prototype.updateRecord = function (index, record) {
     if ((__cov_f2smeCI7YK4vS8IjYvbLdA.b['5'][0]++, index === undefined) || (__cov_f2smeCI7YK4vS8IjYvbLdA.b['5'][1]++, typeof index !== 'number') || ((__cov_f2smeCI7YK4vS8IjYvbLdA.b['5'][2]++, index > this._dataBarChartFlow._records.length) || (__cov_f2smeCI7YK4vS8IjYvbLdA.b['5'][3]++, index < 0))) {
         __cov_f2smeCI7YK4vS8IjYvbLdA.b['4'][0]++;
         __cov_f2smeCI7YK4vS8IjYvbLdA.s['17']++;
-        return 112;
+        return 111;
     } else {
         __cov_f2smeCI7YK4vS8IjYvbLdA.b['4'][1]++;
     }

@@ -127,7 +127,7 @@ BarChartFlow.prototype.parent = Flow.prototype;
 
 BarChartFlow.prototype.updateRecord = function(index, record){
 	if ((index===undefined)||(typeof index !== &#039;number&#039;)||(index &gt; this._dataBarChartFlow._records.length || index &lt; 0)){
-		return 112;
+		return 111;
 	}
 	var oldValid=this._dataBarChartFlow.getRecordByIndex(index).norrisRecordIsValid;
 	var res=this._dataBarChartFlow.updateRecord(index, record);
