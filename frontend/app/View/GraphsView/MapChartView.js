@@ -15,7 +15,7 @@
 
 
 angular.module('app')
-.directive('mapChart', function(){
+.directive('mapChart', function($compile){
 	return {
 		restrict: 'E',
 		//controller : 'MapChartController',
@@ -24,7 +24,7 @@ angular.module('app')
             url: '@'
 		},
 		bindToController: true,
-        template: '<div id="map-canvas" style="height:500px;width:500px"></div>',
+        template: '<div style="height:500px;width:500px"></div><div></div>',
     	link: function (scope, element, attrs) {
 
             attrs.$observe('url', function(value) {
@@ -56,12 +56,19 @@ angular.module('app')
 
                 var mapOptions = {
                     center: new google.maps.LatLng(scope.$parent.mapChart.getLatitude(), scope.$parent.mapChart.getLongitude()),
-                    zoom: 18,
+                    zoom: 12,
                     mapTypeId: google.maps.MapTypeId.ROADMAP,
-                    scrollwheel: scope.$parent.mapChart.getZoom()
+                    scrollwheel: scope.$parent.mapChart.getZoomable(),
+                    draggable: scope.$parent.mapChart.getDraggable(),
+                    panControl: scope.$parent.mapChart.getDraggable(),
+                    zoomControl: scope.$parent.mapChart.getZoomable(),
+                    mapTypeControl: false,
+                    scaleControl: false,
+                    streetViewControl: false,
+                    overviewMapControl: false
                 };
 
-                map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+                map = new google.maps.Map(element.children()[0], mapOptions);
 
                 switch (scope.$parent.mapChart.getMapType()) {
                     case 'roadmap':
@@ -94,6 +101,7 @@ angular.module('app')
                         polylines[i].setMap(map);
                     }
                 }
+                scope.legend();
             };
 
             scope.render = function(){
@@ -174,6 +182,28 @@ angular.module('app')
                     });
                 }
                 
+            };
+
+            scope.legend = function() {
+                console.log('legend ' + JSON.stringify(scope.$parent.mapChart.getLegend()));
+                if (scope.$parent.mapChart.getLegend() !== null) {
+                    var div = element.children()[1];
+                    div.setAttribute('style', 'background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + '; color: '+ scope.$parent.mapChart.getLegend().getFontColor());
+                    var ul = document.createElement('ul');
+                    div.appendChild(ul);
+                    for (var i=0; i<scope.$parent.mapChart.getFlowList().length; i++) {
+                        var li = document.createElement('li');
+                        var square = document.createElement('span');
+                        square.setAttribute('style', 'height="5px"; width="5px"; background-color="' + scope.$parent.mapChart.getFlowList()[i].flow.getTrace().strokeColor + '"');
+                        var text = document.createElement('span');
+                        text.innerHtml = 'scope.$parent.mapChart.getFlowList()[i].flow.getName()';
+                        li.appendChild(square);
+                        li.appendChild(text);
+                        console.log(li);
+                        ul.appendChild(li);
+                    }
+                }
+
             };
 
 		}

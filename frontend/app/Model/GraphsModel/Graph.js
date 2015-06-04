@@ -38,7 +38,7 @@ angular.module('app')
 		this._height = null;
 		this._width = null;
 		this._legend = null;
-		this._enabledLegend = false;
+		this._enableLegend = false;
 		this._horizontalGrid = true;
 		this._verticalGrid = true;
 		this._url = null;
@@ -67,9 +67,9 @@ angular.module('app')
 				if (info.width !== undefined) {
 					this._width = info.width;
 				}
-				if (info.enabledLegend !== undefined) {
-					this._enabledLegend = info.enabledLegend;
-					if (this._enabledLegend && info.legend !== undefined) {
+				if (info.enableLegend !== undefined) {
+					this._enableLegend = info.enableLegend;
+					if (this._enableLegend && info.legend !== undefined) {
 						this._legend = LegendFactory.build(info.legend);
 					}
 				}
@@ -121,7 +121,7 @@ angular.module('app')
 			return this._width;
 		},
 		getLegend : function() {
-			if (this._enabledLegend) {
+			if (this._enableLegend) {
 				return this._legend;
 			} else {
 				return null;

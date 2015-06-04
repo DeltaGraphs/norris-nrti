@@ -233,9 +233,12 @@ angular.module('app')
     MapChart.prototype.getMapType = function() {
         return this._mapType;
     };
-    MapChart.prototype.getZoom = function() {
+    MapChart.prototype.getZoomable = function() {
         return this._zoom;
     };
+    MapChart.prototype.getDraggable = function() {
+        return this._drag;
+    };    
     MapChart.prototype.getMapWidth = function() {
         return this._mapWidth;
     };
