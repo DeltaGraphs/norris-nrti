@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">67.86</p>
+      <p class="stat">67.90</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">217</p>
+      <p class="stat">218</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">38.44</p>
+      <p class="stat">40.22</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">3.09</p>
+      <p class="stat">3.48</p>
     </div>
   </div>
 </div>
@@ -137,16 +137,17 @@ var socketMockHistory=function(){
 };
 
 describe(&#039;LineChart&#039;, function() {
-    it(&#039;returns 381 when there are no params&#039;, function() {
+    it(&#039;returns 371 when there are no params&#039;, function() {
         assert.strictEqual((new LineChart()).hasOwnProperty(&#039;_dataLineChart&#039;),false);
     });
 
-    it(&#039;returns 382 when there is no valid graphsocket in params&#039;, function() {
+    it(&#039;returns 372 when there is no valid graphsocket in params&#039;, function() {
         assert.strictEqual((new LineChart({is: 1}, {_page: &#039;dssada&#039;}, {})).hasOwnProperty(&#039;_dataLineChart&#039;),false);
     });
 
-    it(&#039;returns 383 when page is not valid&#039;, function() {
-        assert.strictEqual((new LineChart({is: 1}, {}, {})).hasOwnProperty(&#039;_dataLineChart&#039;),false);
+    it(&#039;returns 373 when page is not valid&#039;, function() {
+        var mock=new socketMock();
+        assert.strictEqual((new LineChart({is: 1}, {}, mock)).hasOwnProperty(&#039;_dataLineChart&#039;),false);
     });
 
     it(&#039;returns 322 - not create a LineChartModel&#039;, function() {
@@ -171,7 +172,7 @@ describe(&#039;LineChart&#039;, function() {
             var mock=new socketMock();
             var lineChart=new LineChart({ID: &#039;dada&#039;}, {_page: &#039;dssada&#039;}, mock);
             lineChart.createLineChartFlow({ ID:&#039;flow1&#039;, name: &#039;grafico tempo-temperatura&#039;, xKey: &#039;tempo&#039;, yKey: &#039;temperatura&#039;});
-            lineChart.createLineChartFlow({ ID:&#039;flow2&#039;, name: &#039;grafico tempo-temperatura&#039;, xKey: &#039;tempo&#039;, yKey: &#039;temperatura&#039;});            
+            lineChart.createLineChartFlow({ ID:&#039;flow2&#039;, name: &#039;grafico tempo-temperatura&#039;, xKey: &#039;tempo&#039;, yKey: &#039;temperatura&#039;});
             assert.deepEqual(lineChart.getFlowByID(&#039;flow2&#039;)._dataLineChartFlow._ID, &#039;flow2&#039;);
         });
     });
@@ -287,7 +288,7 @@ describe(&#039;LineChart&#039;, function() {
             });
         });
     });
-    /*describe(&#039;#getProperties&#039;, function() {
+    describe(&#039;#getProperties&#039;, function() {
         it(&#039;returned a correct JSON&#039;, function() {
             var mock=new socketMock();
             var lineChart=new LineChart({ID: &#039;dada&#039;}, {_page: &#039;dssada&#039;}, mock);
@@ -304,7 +305,7 @@ describe(&#039;LineChart&#039;, function() {
             console.log(&#039;SOSTITUIREgetConfigJSON &#039;+JSON.stringify(lineChart.getConfigJSON()));
             assert.deepEqual(lineChart.getConfigJSON(),{});
         });
-    });*/
+    });
 
 });</textarea>
   </div>

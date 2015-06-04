@@ -46,16 +46,17 @@ var socketMockHistory=function(){
 };
 
 describe('LineChart', function() {
-    it('returns 381 when there are no params', function() {
+    it('returns 371 when there are no params', function() {
         assert.strictEqual((new LineChart()).hasOwnProperty('_dataLineChart'),false);
     });
 
-    it('returns 382 when there is no valid graphsocket in params', function() {
+    it('returns 372 when there is no valid graphsocket in params', function() {
         assert.strictEqual((new LineChart({is: 1}, {_page: 'dssada'}, {})).hasOwnProperty('_dataLineChart'),false);
     });
 
-    it('returns 383 when page is not valid', function() {
-        assert.strictEqual((new LineChart({is: 1}, {}, {})).hasOwnProperty('_dataLineChart'),false);
+    it('returns 373 when page is not valid', function() {
+        var mock=new socketMock();
+        assert.strictEqual((new LineChart({is: 1}, {}, mock)).hasOwnProperty('_dataLineChart'),false);
     });
 
     it('returns 322 - not create a LineChartModel', function() {
@@ -80,7 +81,7 @@ describe('LineChart', function() {
             var mock=new socketMock();
             var lineChart=new LineChart({ID: 'dada'}, {_page: 'dssada'}, mock);
             lineChart.createLineChartFlow({ ID:'flow1', name: 'grafico tempo-temperatura', xKey: 'tempo', yKey: 'temperatura'});
-            lineChart.createLineChartFlow({ ID:'flow2', name: 'grafico tempo-temperatura', xKey: 'tempo', yKey: 'temperatura'});            
+            lineChart.createLineChartFlow({ ID:'flow2', name: 'grafico tempo-temperatura', xKey: 'tempo', yKey: 'temperatura'});
             assert.deepEqual(lineChart.getFlowByID('flow2')._dataLineChartFlow._ID, 'flow2');
         });
     });
@@ -196,7 +197,7 @@ describe('LineChart', function() {
             });
         });
     });
-    /*describe('#getProperties', function() {
+    describe('#getProperties', function() {
         it('returned a correct JSON', function() {
             var mock=new socketMock();
             var lineChart=new LineChart({ID: 'dada'}, {_page: 'dssada'}, mock);
@@ -213,6 +214,6 @@ describe('LineChart', function() {
             console.log('SOSTITUIREgetConfigJSON '+JSON.stringify(lineChart.getConfigJSON()));
             assert.deepEqual(lineChart.getConfigJSON(),{});
         });
-    });*/
+    });
 
 });
