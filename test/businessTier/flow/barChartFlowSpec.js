@@ -39,7 +39,7 @@ describe('BarChartFlow', function() {
         assert.strictEqual((new BarChartFlow(2, new socketMock(), [{index: 1, value: 2}])).hasOwnProperty('_dataBarChartFlow'), false);
     });
 
-    it('calls the parent constructor with the params specified', function() {
+    it('calls the parent constructor with the specified params', function() {
         var flow1=new BarChartFlow({ID: 'flow1'}, new socketMock(), []);
         assert.strictEqual(flow1._dataBarChartFlow._ID, 'flow1');
         assert.strictEqual(flow1._graphSocket._namespace, 'flow1');
@@ -48,6 +48,8 @@ describe('BarChartFlow', function() {
     describe('#getReplaceDataJSON', function() {
         it('returns the correct JSON', function() {            
             var flow1=new BarChartFlow({ID: 'flow1', indexKey: 'index', valueKey: 'value'}, new socketMock(), [{index: 1, value: 3}, {index: 2, value: 5}]);
+            console.log('printing FLOW1');
+            console.dir(flow1);
             var expJSON = {
                 action: 'replaceData',
                 ID: 'flow1',
