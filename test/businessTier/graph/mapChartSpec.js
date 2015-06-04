@@ -123,8 +123,6 @@ describe('MapChart', function() {
             var mp=new MapChart({ID: 'map1'}, {_page:2}, new socketMock());
             mp.createMapChartFlow({ID: 'flow1'});
             mp.createMapChartFlow({ID: 'flow2'});
-            console.log('###getFlowByID '+JSON.stringify(mp.getFlowByID('flow2')));
-            console.log('###getFlowByID###getFlowByID '+JSON.stringify(mp.getFlowByID('flow2')._dataMapChartFlow));
             assert.strictEqual(mp.getFlowByID('flow2')._dataMapChartFlow._ID,'flow2');
         });
     });
@@ -133,6 +131,8 @@ describe('MapChart', function() {
             var mock=new socketMock();
             var mp=new MapChart({ID: 'dada'}, {_page: 'dssada'}, mock);
             mp.createLineChartFlow({ ID:'flow1', name: 'linea 22', 'latitudeKey': '1', 'longitudeKey': '2', 'objectKey': '0'});
+            console.log('mp '+JSON.stringify(mp));
+            console.log('mpmpmpmp '+JSON.stringify(mp.deleteFlow(34)));
             assert.strictEqual(mp.deleteFlow(34),283);
         });
         it('return 283 - no ID in flows', function() {
