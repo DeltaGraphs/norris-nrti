@@ -15,10 +15,10 @@
 <div class="header low">
     <h1>Code coverage report for <span class="entity">norris-nrti/lib/businessTier/flow/barChartFlow.js</span></h1>
     <h2>
-        Statements: <span class="metric">43.1% <small>(25 / 58)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Branches: <span class="metric">19.44% <small>(7 / 36)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">43.33% <small>(26 / 60)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">23.81% <small>(10 / 42)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Functions: <span class="metric">75% <small>(3 / 4)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">43.1% <small>(25 / 58)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">43.33% <small>(26 / 60)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
     <div class="path"><a href="../../../../index.html">All files</a> &#187; <a href="index.html">norris-nrti/lib/businessTier/flow/</a> &#187; barChartFlow.js</div>
@@ -166,7 +166,10 @@
 139
 140
 141
-142</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+142
+143
+144
+145</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -203,7 +206,10 @@
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -248,6 +254,20 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -258,21 +278,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-yes">4</span>
-<span class="cline-any cline-yes">4</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -344,7 +350,10 @@ BarChartFlow.prototype.constructor = Flow;
 BarChartFlow.prototype.parent = Flow.prototype;
 &nbsp;
 BarChartFlow.prototype.updateRecord = function(index, record){
-	var oldValid=this._dataBarChartFlow.getRecordByIndex(index).norrisRecordIsValid;
+	<span class="missing-if-branch" title="else path not taken" >E</span>if ((index===undefined)||(typeof index !== 'number')||(<span class="branch-2 cbranch-no" title="branch not covered" >index &gt; this._dataBarChartFlow._records.length </span>|| <span class="branch-3 cbranch-no" title="branch not covered" >index &lt; 0)</span>){
+		return 112;
+	}
+<span class="cstat-no" title="statement not covered" >	var oldValid=this._dataBarChartFlow.getRecordByIndex(index).norrisRecordIsValid;</span>
 <span class="cstat-no" title="statement not covered" >	var res=this._dataBarChartFlow.updateRecord(index, record);</span>
 <span class="cstat-no" title="statement not covered" >	var newValid=this._dataBarChartFlow.getRecordByIndex(index).norrisRecordIsValid;</span>
 <span class="cstat-no" title="statement not covered" >	if (res===true ){</span>
@@ -453,7 +462,7 @@ module.exports = BarChartFlow;
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Jun 04 2015 17:15:43 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Jun 04 2015 17:33:15 GMT+0000 (UTC)</div>
 </div>
 <script src="../../../../prettify.js"></script>
 <script>

@@ -5,8 +5,4 @@
 		<error line="60" column="45" severity="warning" message="&apos;ID&apos; is defined but never used." source="jshint.W098" />
 		<error line="68" column="49" severity="warning" message="&apos;params&apos; is defined but never used." source="jshint.W098" />
 	</file>
-	<file name="test/businessTier/flow/barChartFlowSpec.js">
-		<error line="78" column="51" severity="warning" message="&apos;ID&apos; is not defined." source="jshint.W117" />
-		<error line="82" column="57" severity="warning" message="&apos;ID&apos; is not defined." source="jshint.W117" />
-	</file>
 </checkstyle>

@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">65.44</p>
+      <p class="stat">64.82</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">123</p>
+      <p class="stat">127</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">22.14</p>
+      <p class="stat">23.80</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">1.39</p>
+      <p class="stat">1.48</p>
     </div>
   </div>
 </div>
@@ -139,8 +139,6 @@ describe(&#039;BarChartFlow&#039;, function() {
     describe(&#039;#getReplaceDataJSON&#039;, function() {
         it(&#039;returns the correct JSON&#039;, function() {            
             var flow1=new BarChartFlow({ID: &#039;flow1&#039;, indexKey: &#039;index&#039;, valueKey: &#039;value&#039;}, new socketMock(), [{index: 1, value: 3}, {index: 2, value: 5}]);
-            console.log(&#039;printing JSON&#039;);
-            console.dir(flow1.getReplaceDataJSON());
             var expJSON = {
                 action: &#039;replaceData&#039;,
                 ID: &#039;flow1&#039;,
@@ -166,10 +164,12 @@ describe(&#039;BarChartFlow&#039;, function() {
         });
         it(&#039;returns 112 if no ID in records&#039;, function() {
             var flow1=new BarChartFlow({ID: &#039;flow1&#039;},new socketMock(), [{&#039;index&#039;: 1, &#039;value&#039;: 25}]);
+            var ID = flow1._dataBarChartFlow._records[0]._ID;
             assert.strictEqual(flow1.updateRecord(ID+&#039;32442&#039;,{&#039;tempo&#039;: 4, &#039;temperatura&#039;: 33}), 122);
         });
         it(&#039;returns 112 if invalid ID&#039;, function() {
             var flow1=new BarChartFlow({ID: &#039;flow1&#039;},new socketMock(), [{&#039;index&#039;: 1, &#039;value&#039;: 25}]);
+            var ID = flow1._dataBarChartFlow._records[0]._ID;
             assert.strictEqual(flow1.updateRecord(&#039;sad&#039;+ID,{&#039;tempo&#039;: 4, &#039;temperatura&#039;: 33}), 122);
         });
         it(&#039;returns true with correct update&#039;, function() {
@@ -184,6 +184,10 @@ describe(&#039;BarChartFlow&#039;, function() {
                     {i: 1, v:5, temperature: 4},
                     {i: 3, v:2, temperature: 2}
                 ]);
+            console.dir(&#039;Printing flow&#039;);
+            console.dir(flow1);
+            console.dir(flow1._dataBarChartFlow._records[0]);
+            console.dir(flow1._dataBarChartFlow._records[1]);
             var ID = flow1._dataBarChartFlow._records[0]._ID;
             flow1.updateRecord(ID, {i: 1, v:3, temperature: 0});
             assert.strictEqual(mock.p1, &#039;updateFlowData&#039;);

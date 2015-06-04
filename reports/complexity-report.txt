@@ -1,8 +1,8 @@
-Mean per-function logical LOC: 10.164375409536703
+Mean per-function logical LOC: 10.180504441794767
 Mean per-function parameter count: 1.119795079472499
-Mean per-function cyclomatic complexity: 4.247768897768899
-Mean per-function Halstead effort: 7777.691688585245
-Mean per-module maintainability index: 105.91620047178888
+Mean per-function cyclomatic complexity: 4.280026962285028
+Mean per-function Halstead effort: 7867.700951273179
+Mean per-module maintainability index: 105.8784409668113
 First-order density: 5.82726326742976%
 Change cost: 21.22788761706556%
 Core size: 29.03225806451613%
@@ -237,12 +237,12 @@ Core size: 29.03225806451613%
 
 /home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/flow/barChartFlow.js
 
-  Physical LOC: 140
-  Logical LOC: 81
+  Physical LOC: 143
+  Logical LOC: 83
   Mean parameter count: 1.5
-  Cyclomatic complexity: 17
-  Cyclomatic complexity density: 20.98765432098765%
-  Maintainability index: 91.90628659289949
+  Cyclomatic complexity: 21
+  Cyclomatic complexity density: 25.301204819277107%
+  Maintainability index: 90.7357419385937
   Dependency count: 2
 
   Function: BarChartFlow
@@ -258,17 +258,17 @@ Core size: 29.03225806451613%
 
   Function: <anonymous>.updateRecord
     Line No.: 37
-    Physical LOC: 44
-    Logical LOC: 32
+    Physical LOC: 47
+    Logical LOC: 34
     Parameter count: 2
-    Cyclomatic complexity: 7
-    Cyclomatic complexity density: 21.875%
-    Halstead difficulty: 23.6
-    Halstead volume: 1235.236165705346
-    Halstead effort: 29151.573510646165
+    Cyclomatic complexity: 11
+    Cyclomatic complexity density: 32.35294117647059%
+    Halstead difficulty: 28.333333333333336
+    Halstead volume: 1422.8019559041131
+    Halstead effort: 40312.72208394988
 
   Function: <anonymous>.getReplaceDataJSON
-    Line No.: 82
+    Line No.: 85
     Physical LOC: 31
     Logical LOC: 12
     Parameter count: 0
@@ -279,7 +279,7 @@ Core size: 29.03225806451613%
     Halstead effort: 5516.36721802867
 
   Function: <anonymous>.updateProperties
-    Line No.: 114
+    Line No.: 117
     Physical LOC: 26
     Logical LOC: 18
     Parameter count: 1
