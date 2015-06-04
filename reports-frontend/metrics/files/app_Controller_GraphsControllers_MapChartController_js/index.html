@@ -115,7 +115,7 @@ angular.module(&#039;app&#039;)
 	$scope.mapChart = MapChartFactory.build();
 
 	this.socketConnection = function(url){
-		console.log(&#039;url del mapChart&#039; + url);
+		console.log(&#039;socketConnection mapchart&#039; + url);
 		socket = SocketServicesFactory.build(url);
 		this.listenOnEvents();
 	};
