@@ -4,22 +4,22 @@
 		<error line="23" column="22" severity="warning" message="&apos;io&apos; is not defined." source="jshint.W117" />
 	</file>
 	<file name="app/View/GraphsView/MapChartView.js">
-		<error line="60" column="33" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
-		<error line="62" column="32" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
-		<error line="66" column="27" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
-		<error line="70" column="42" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
-		<error line="73" column="42" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
-		<error line="76" column="42" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
-		<error line="79" column="42" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
-		<error line="87" column="47" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
-		<error line="89" column="44" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
-		<error line="110" column="39" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
-		<error line="112" column="34" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
-		<error line="116" column="47" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
-		<error line="136" column="46" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
-		<error line="143" column="46" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
-		<error line="150" column="46" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
-		<error line="171" column="21" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
-		<error line="112" column="21" severity="warning" message="&apos;latLng&apos; is defined but never used." source="jshint.W098" />
+		<error line="59" column="33" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
+		<error line="61" column="32" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
+		<error line="65" column="27" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
+		<error line="69" column="42" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
+		<error line="72" column="42" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
+		<error line="75" column="42" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
+		<error line="78" column="42" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
+		<error line="86" column="47" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
+		<error line="88" column="44" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
+		<error line="109" column="39" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
+		<error line="111" column="34" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
+		<error line="115" column="47" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
+		<error line="135" column="46" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
+		<error line="142" column="46" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
+		<error line="149" column="46" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
+		<error line="170" column="21" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
+		<error line="111" column="21" severity="warning" message="&apos;latLng&apos; is defined but never used." source="jshint.W098" />
 	</file>
 </checkstyle>
