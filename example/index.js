@@ -281,7 +281,7 @@ var repeatBar=function(){
         index3=0;
         barChart.deleteAllFlows();
     }else{
-        barChartFlow1.updateRecord(index3, {tempo: index3, umidita: index3});
+        barChartFlow1.updateRecord(index3, {tempo: index3, pressione: index3});
     }
 };
 
