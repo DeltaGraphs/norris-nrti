@@ -1362,14 +1362,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 84,
-                    "physical": 144
+                    "logical": 83,
+                    "physical": 143
                 },
                 "cyclomatic": 21,
                 "halstead": {
                     "operators": {
-                        "distinct": 22,
-                        "total": 289,
+                        "distinct": 21,
+                        "total": 279,
                         "identifiers": [
                             "var",
                             "=",
@@ -1390,14 +1390,13 @@
                             "{}",
                             ":",
                             "[]",
-                            "+",
                             "for",
                             "++ (postfix)"
                         ]
                     },
                     "operands": {
-                        "distinct": 81,
-                        "total": 324,
+                        "distinct": 77,
+                        "total": 313,
                         "identifiers": [
                             "\"use strict\"",
                             "BarChartFlowModel",
@@ -1458,10 +1457,6 @@
                             "data2",
                             "\"insertRecords\"",
                             "value",
-                            "\"recorddddddd \"",
-                            "\" \"",
-                            "JSON",
-                            "stringify",
                             "data3",
                             "\"updateRecord\"",
                             "getReplaceDataJSON",
@@ -1482,17 +1477,17 @@
                             "exports"
                         ]
                     },
-                    "length": 613,
-                    "vocabulary": 103,
-                    "difficulty": 44,
-                    "volume": 4098.824823163313,
-                    "effort": 180348.2922191858,
-                    "bugs": 1.3662749410544377,
-                    "time": 10019.349567732545
+                    "length": 592,
+                    "vocabulary": 98,
+                    "difficulty": 42.68181818181818,
+                    "volume": 3915.908227716204,
+                    "effort": 167138.08299206887,
+                    "bugs": 1.305302742572068,
+                    "time": 9285.449055114937
                 },
                 "params": 6,
                 "line": 2,
-                "cyclomaticDensity": 25
+                "cyclomaticDensity": 25.301204819277107
             },
             "functions": [
                 {
@@ -1557,14 +1552,14 @@
                 {
                     "name": "<anonymous>.updateRecord",
                     "sloc": {
-                        "logical": 35,
-                        "physical": 48
+                        "logical": 34,
+                        "physical": 47
                     },
                     "cyclomatic": 11,
                     "halstead": {
                         "operators": {
-                            "distinct": 18,
-                            "total": 125,
+                            "distinct": 17,
+                            "total": 115,
                             "identifiers": [
                                 "if",
                                 "||",
@@ -1582,13 +1577,12 @@
                                 "! (prefix)",
                                 "{}",
                                 ":",
-                                "[]",
-                                "+"
+                                "[]"
                             ]
                         },
                         "operands": {
-                            "distinct": 45,
-                            "total": 141,
+                            "distinct": 39,
+                            "total": 130,
                             "identifiers": [
                                 "index",
                                 "record",
@@ -1627,27 +1621,21 @@
                                 "\"insertRecords\"",
                                 "records",
                                 "value",
-                                "\"recorddddddd \"",
-                                "\" \"",
-                                "JSON",
-                                "stringify",
-                                "console",
-                                "log",
                                 "data3",
                                 "\"updateRecord\""
                             ]
                         },
-                        "length": 266,
-                        "vocabulary": 63,
-                        "difficulty": 28.2,
-                        "volume": 1589.9564596509779,
-                        "effort": 44836.77216215758,
-                        "bugs": 0.529985486550326,
-                        "time": 2490.931786786532
+                        "length": 245,
+                        "vocabulary": 56,
+                        "difficulty": 28.333333333333336,
+                        "volume": 1422.8019559041131,
+                        "effort": 40312.72208394988,
+                        "bugs": 0.4742673186347044,
+                        "time": 2239.5956713305486
                     },
                     "params": 2,
                     "line": 37,
-                    "cyclomaticDensity": 31.428571428571427
+                    "cyclomaticDensity": 32.35294117647059
                 },
                 {
                     "name": "<anonymous>.getReplaceDataJSON",
@@ -1709,7 +1697,7 @@
                         "time": 306.46484544603726
                     },
                     "params": 0,
-                    "line": 86,
+                    "line": 85,
                     "cyclomaticDensity": 25
                 },
                 {
@@ -1786,7 +1774,7 @@
                         "time": 823.7779644494512
                     },
                     "params": 1,
-                    "line": 118,
+                    "line": 117,
                     "cyclomaticDensity": 33.33333333333333
                 }
             ],
@@ -1802,10 +1790,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 90.27344990023133,
-            "loc": 18.25,
+            "maintainability": 90.7357419385937,
+            "loc": 18,
             "cyclomatic": 6,
-            "effort": 16767.278194475024,
+            "effort": 15636.2656749231,
             "params": 1.5,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/flow/barChartFlow.js"
         },
@@ -3354,7 +3342,7 @@
             "aggregate": {
                 "sloc": {
                     "logical": 104,
-                    "physical": 164
+                    "physical": 165
                 },
                 "cyclomatic": 20,
                 "halstead": {
@@ -3620,7 +3608,7 @@
                     "name": "<anonymous>.createBarChartFlow",
                     "sloc": {
                         "logical": 14,
-                        "physical": 19
+                        "physical": 20
                     },
                     "cyclomatic": 4,
                     "halstead": {
@@ -3750,7 +3738,7 @@
                         "time": 329.9941946657936
                     },
                     "params": 1,
-                    "line": 91,
+                    "line": 92,
                     "cyclomaticDensity": 33.33333333333333
                 },
                 {
@@ -3801,7 +3789,7 @@
                         "time": 39.2116385856331
                     },
                     "params": 0,
-                    "line": 114,
+                    "line": 115,
                     "cyclomaticDensity": 50
                 },
                 {
@@ -3842,7 +3830,7 @@
                         "time": 5.547368752524047
                     },
                     "params": 3,
-                    "line": 121,
+                    "line": 122,
                     "cyclomaticDensity": 100
                 },
                 {
@@ -3890,7 +3878,7 @@
                         "time": 38.400000000000006
                     },
                     "params": 1,
-                    "line": 126,
+                    "line": 127,
                     "cyclomaticDensity": 50
                 },
                 {
@@ -3928,7 +3916,7 @@
                         "time": 1.5078947920873411
                     },
                     "params": 0,
-                    "line": 134,
+                    "line": 135,
                     "cyclomaticDensity": 100
                 },
                 {
@@ -3996,7 +3984,7 @@
                         "time": 902.3242435850648
                     },
                     "params": 0,
-                    "line": 138,
+                    "line": 139,
                     "cyclomaticDensity": 15
                 }
             ],
@@ -16899,9 +16887,9 @@
     ],
     "changeCost": 21.22788761706556,
     "coreSize": 29.03225806451613,
-    "loc": 10.188568957923799,
+    "loc": 10.180504441794767,
     "cyclomatic": 4.280026962285028,
-    "effort": 7904.185226097435,
+    "effort": 7867.700951273179,
     "params": 1.119795079472499,
-    "maintainability": 105.8635283204125
+    "maintainability": 105.8784409668113
 }
