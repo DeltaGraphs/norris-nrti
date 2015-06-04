@@ -21,23 +21,27 @@ angular.module('app')
 
 	var socket;
 
-	this.socketConnection = function(){
-		socket = SocketServicesFactory.build($scope.mapChart.getUrl());
+	$scope.mapChart = MapChartFactory.build();
+
+	this.socketConnection = function(url){
+		console.log('url del mapChart' + url);
+		socket = SocketServicesFactory.build(url);
 		this.listenOnEvents();
 	};
+
 	var count = 0;
 	$scope.changedP = true;
 	$scope.changedD = true;
 	this.listenOnEvents = function(){
 		console.log('listen ON EVENTS');
 		socket.on('configGraph', function(info){
-			if (count	=== 0) {
-				console.log('configGraph');
+			if (count === 0) {
+				count++;
 				$scope.mapChart.updateParameters(info.properties);
 				$scope.mapChart.initializeData(info.data);
 				$scope.changedP = !$scope.changedP;
 				$scope.changedD = !$scope.changedD;
-	            count++;
+	            
 	        }
 		});
 		socket.on('updateGraphProp', function(info){
@@ -47,6 +51,7 @@ angular.module('app')
 		});
 		socket.on('insertFlow', function(info){
 			console.log('insertFlow');
+			console.log('insert flow' + JSON.stringify(info));
 			var flow = MapChartFlowFactory.build(info.properties);
 			flow.initializeData(info);
 			$scope.mapChart.addFlow(info.properties.ID, flow);

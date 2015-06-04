@@ -29,13 +29,13 @@ angular.module('app')
 						'<tr ng-repeat="line in graphs">' +
 							'<td ng-repeat="graph in line">' +
 								'<div ng-if="checkType(graph, \'LineChart\')">' +
-								'<line-chart id="{{$index + $parent.$index * page.getGraphsPerRow()}}"></line-chart></div>' +
-								'<div ng-if="checkType(graph, \'BarChart\')">' +
-								'<bar-chart id="{{$index + $parent.$index * page.getGraphsPerRow()}}"></bar-chart></div>' +
+                                '<line-chart urllc="{{graph.graph.getUrl()}}" ng-controller="LineChartController"></line-chart></div>' +
+                                '<div ng-if="checkType(graph, \'BarChart\')">' +
+                                '<bar-chart urlbc="{{graph.graph.getUrl()}}" ng-controller="BarChartController"></bar-chart></div>' +
 								'<div ng-if="checkType(graph, \'MapChart\')">' +
-								'<map-chart id="{{$index + $parent.$index * page.getGraphsPerRow()}}"></map-chart></div>' +
+								'<map-chart urlmc="{{graph.graph.getUrl()}}" ng-controller="MapChartController"></map-chart></div>' +
 								'<div ng-if="checkType(graph, \'Table\')">' + 
-								'<table-chart id="{{$index + $parent.$index * page.getGraphsPerRow()}}"></table-chart></div>' +
+                                '<table-chart urltc="{{graph.graph.getUrl()}}" ng-controller="TableController"></table-chart></div>' +
 							'</td>' +
 						'</tr>' +
 					'</table>' +

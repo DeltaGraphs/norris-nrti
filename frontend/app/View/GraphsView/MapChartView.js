@@ -18,22 +18,20 @@ angular.module('app')
 .directive('mapChart', function(){
 	return {
 		restrict: 'E',
-		controller : 'MapChartController',
-		replace: false,
-		scope: {
-			id: '@'
-		},
+		//controller : 'MapChartController',
+		require: '^url',
+        replace: false,
+		scope: true,
+        /*scope: {
+            urlmc: '@'
+		},*/
 		bindToController: true,
         template: '<div id="map-canvas" style="height:500px;width:500px"></div>',
     	link: function (scope, element, attrs) {
-
-            attrs.$observe('id', function(value) {
+    
+            attrs.$observe('urlmc', function(value) {
                 if (value) {
-                    if(scope.$parent.page.getGraphsList()[value].graph.constructor.name === 'MapChart'){
-                        scope.mapChart = scope.$parent.page.getGraphsList()[value].graph;
-                        console.log('mapchart ' + JSON.stringify(scope.mapChart));
-                        scope.socketConnection();
-                    }
+                    scope.socketConnection(value);
                 }
             });
 
@@ -159,7 +157,7 @@ angular.module('app')
                         markers.push(marker);
 
                     }
-                    
+                    console.log('fine render');
                 }
 
 

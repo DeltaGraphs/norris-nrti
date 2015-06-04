@@ -2,27 +2,27 @@
 'use strict';
 
 /*
-* Name :  MapChart.js
+* Name :  url.js
 * Module : FrontEnd::View
-* Location : /frontend/app/View
+* Location : /frontend/app/PagesView
 *
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
-* 0.0.1         2015-06-02  Maria Giovanna Chinellato   Initial code      
+* 0.1.0			2015-06-04	Francesco Rossetto			Add all attributes and all methods	
+*
+* 0.0.1         2015-06-04  Francesco Rossetto			Initial code      
 * =================================================================================================
 */
-
-
 angular.module('app')
-.directive('barChart', function(){
+.directive('url', function(){
 	return {
-		restrict: 'E',
-		//controller : 'BarChartController',
-		require: '^url',
+		restrict: 'A',
 		replace: false,
-		scope: true,
-		bindToController: true,
-        template: '<div>barchart {{urlbc}}</div>'
-    };
+		transclude: true,
+		link: function (scope, element, attrs) {
+			scope.url=attrs.url;
+		}
+
+	};
 });

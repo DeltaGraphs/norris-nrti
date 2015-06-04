@@ -19,12 +19,10 @@ angular.module('app')
 	return {
 		restrict: 'E',
 		//controller : 'TableController',
+		require: '^url',
 		replace: false,
-		require: '^page',
-		scope: {
-			id: '@'
-		},
+		scope: true,
 		bindToController: true,
-        template: '<div>table {{id}}</div>'
+        template: '<div>table {{urltc}}</div>'
     };
 });

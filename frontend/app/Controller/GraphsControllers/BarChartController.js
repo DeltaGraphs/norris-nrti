@@ -17,15 +17,17 @@
 */
 
 angular.module('app')
-.controller('MapChartController', ['$scope', '$controllerProvider', 'location', 'BarChartFactory', 'BarChartFlowFactory', 'SocketServicesFactory', function($scope, $controllerProvider, $location, BarChartFactory, BarChartFlowFactory, SocketServicesFactory){
+.controller('BarChartController', ['$scope', '$location', 'BarChartFactory', 'BarChartFlowFactory', 'SocketServicesFactory', function($scope, $location, BarChartFactory, BarChartFlowFactory, SocketServicesFactory){
 
 	var socket;
-	var url = $scope.barChart.getUrl();
+	$scope.barChart = BarChartFactory.build();
 
-	this.socketConnection = function(){
+	/*
+	this.socketConnection = function(url){
 		socket = SocketServicesFactory.build(url);
-		// listenOnEvents();
+		listenOnEvents();
 	};
+
 
 	this.listenOnEvents = function(){
 		socket.on('configGraph', function(info){
@@ -67,10 +69,10 @@ angular.module('app')
 					break;
 			}
 		});
-
 	};
 
 	$scope.socketConnection = this.socketConnection;
 	$scope.listenOnEvents = this.listenOnEvents;
 	
+	*/
 }]);
