@@ -24,7 +24,7 @@ angular.module('app')
             url: '@'
 		},
 		bindToController: true,
-        template: '<nvd3-multi-bar-chart data="exampleData" xAxisTickFormat="xAxisTickFormatFunction()" showXAxis="true" showYAxis="true"><svg></svg></nvd3-multi-bar-chart>',
+        template: '<nvd3-multi-bar-chart data="exampleData" id="exampleId" xAxisTickFormat="xAxisTickFormatFunction()" width="550" height="350" showXAxis="true" showYAxis="true"><svg></svg></nvd3-multi-bar-chart>',
         link: function(scope, element, attrs){
 
             scope.exampleData = [
@@ -76,14 +76,17 @@ angular.module('app')
             var  chart;
 
             scope.init = function(){
+                /*
+                showXAxis="true" showYAxis="true" 
+
                 var parent = element.children()[0];
                 var str = scope.url.split('/');
                 var id = str[str.length-1];
                 parent.setAttribute('id', id);
                 parent.setAttribute('width', scope.$parent.barChart.getWidth());
                 parent.setAttribute('height', scope.$parent.barChart.getHeight());
-                //parent.setAttribute('interactive', 'true');
-                /*if (scope.$parent.barChart.getLegend() !== null){
+                parent.setAttribute('interactive', 'true');
+                if (scope.$parent.barChart.getLegend() !== null){
                     parent.setAttribute('showLegend', 'true');
                 }
                 else{
@@ -94,18 +97,18 @@ angular.module('app')
                 }
                 if (scope.$parent.barChart.getBarsGrouping() === 'grouped'){
                     parent.setAttribute('grouped', 'true');
-                }
-                if (scope.$parent.barChart.getLegendOnPoint()){
-                    parent.setAttribute('totooltips', 'true');
+                }*/
+                /*if (scope.$parent.barChart.getLegendOnPoint()){
+                    parent.setAttribute('tooltips', 'true');
                 }
                 else{
-                    parent.setAttribute('totooltips', 'false');
-                }*/
-                parent.setAttribute('rotateLabels', '90');
+                    parent.setAttribute('tooltips', 'false');
+                }
+                parent.setAttribute('rotate-labels', '90');
 
                 var el = $compile(parent)(scope);
                 element.append( el );
-
+*/
                 /*    d3.select(".nv-legendWrap")
                         .attr("transform", "translate(100,100)");*/
 
