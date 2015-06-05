@@ -44,7 +44,7 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">63.95</p>
+      <p class="stat">63.92</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
@@ -186,7 +186,7 @@ describe(&#039;BarChartFlow&#039;, function() {
             assert.deepEqual(mock.p2, {
                 action: &#039;deleteRecord&#039;,
                 ID: &#039;flow1&#039;,
-                norrisRecordID: flow1._dataBarChartFlow.getRecordByIndex(index)._ID
+                norrisRecordID: flow1._dataBarChartFlow.getRecordByIndex(0)._ID
             });
             console.dir(&#039;Printing flow&#039;);
             console.dir(flow1);
@@ -202,7 +202,7 @@ describe(&#039;BarChartFlow&#039;, function() {
                 action: &#039;insertRecords&#039;,
                 ID: &#039;flow1&#039;,
                 records: [{
-                    norrisRecordID: flow1._dataBarChartFlow.getRecordByIndex(index)._ID,
+                    norrisRecordID: flow1._dataBarChartFlow.getRecordByIndex(0)._ID,
                     value: [1,3]
                 }]
             });
@@ -211,7 +211,7 @@ describe(&#039;BarChartFlow&#039;, function() {
             assert.deepEqual(mock.p2, {
                 action: &#039;updateRecord&#039;,
                 ID: &#039;flow1&#039;,
-                norrisRecordID: flow1._dataBarChartFlow.getRecordByIndex(index)._ID,
+                norrisRecordID: flow1._dataBarChartFlow.getRecordByIndex(0)._ID,
                 value: [1,5]
             });
         });

@@ -95,7 +95,7 @@ describe('BarChartFlow', function() {
             assert.deepEqual(mock.p2, {
                 action: 'deleteRecord',
                 ID: 'flow1',
-                norrisRecordID: flow1._dataBarChartFlow.getRecordByIndex(index)._ID
+                norrisRecordID: flow1._dataBarChartFlow.getRecordByIndex(0)._ID
             });
             console.dir('Printing flow');
             console.dir(flow1);
@@ -111,7 +111,7 @@ describe('BarChartFlow', function() {
                 action: 'insertRecords',
                 ID: 'flow1',
                 records: [{
-                    norrisRecordID: flow1._dataBarChartFlow.getRecordByIndex(index)._ID,
+                    norrisRecordID: flow1._dataBarChartFlow.getRecordByIndex(0)._ID,
                     value: [1,3]
                 }]
             });
@@ -120,7 +120,7 @@ describe('BarChartFlow', function() {
             assert.deepEqual(mock.p2, {
                 action: 'updateRecord',
                 ID: 'flow1',
-                norrisRecordID: flow1._dataBarChartFlow.getRecordByIndex(index)._ID,
+                norrisRecordID: flow1._dataBarChartFlow.getRecordByIndex(0)._ID,
                 value: [1,5]
             });
         });

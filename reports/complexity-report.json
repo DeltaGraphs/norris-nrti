@@ -6,11 +6,11 @@
                     "logical": 152,
                     "physical": 216
                 },
-                "cyclomatic": 57,
+                "cyclomatic": 58,
                 "halstead": {
                     "operators": {
                         "distinct": 24,
-                        "total": 384,
+                        "total": 390,
                         "identifiers": [
                             "=",
                             ".",
@@ -40,7 +40,7 @@
                     },
                     "operands": {
                         "distinct": 98,
-                        "total": 384,
+                        "total": 390,
                         "identifiers": [
                             "\"use strict\"",
                             "String",
@@ -142,17 +142,17 @@
                             "\"number\""
                         ]
                     },
-                    "length": 768,
+                    "length": 780,
                     "vocabulary": 122,
-                    "difficulty": 47.0204081632653,
-                    "volume": 5322.8062752482965,
-                    "effort": 250280.52363616478,
-                    "bugs": 1.7742687584160988,
-                    "time": 13904.473535342488
+                    "difficulty": 47.755102040816325,
+                    "volume": 5405.975123299052,
+                    "effort": 258162.89364326085,
+                    "bugs": 1.8019917077663508,
+                    "time": 14342.382980181159
                 },
                 "params": 14,
                 "line": 2,
-                "cyclomaticDensity": 37.5
+                "cyclomaticDensity": 38.15789473684211
             },
             "functions": [
                 {
@@ -656,11 +656,11 @@
                         "logical": 18,
                         "physical": 30
                     },
-                    "cyclomatic": 16,
+                    "cyclomatic": 17,
                     "halstead": {
                         "operators": {
                             "distinct": 16,
-                            "total": 85,
+                            "total": 91,
                             "identifiers": [
                                 "if",
                                 "||",
@@ -682,7 +682,7 @@
                         },
                         "operands": {
                             "distinct": 23,
-                            "total": 81,
+                            "total": 87,
                             "identifiers": [
                                 "trace",
                                 "undefined",
@@ -709,24 +709,24 @@
                                 1
                             ]
                         },
-                        "length": 166,
+                        "length": 178,
                         "vocabulary": 39,
-                        "difficulty": 28.17391304347826,
-                        "volume": 877.3767683311332,
-                        "effort": 24719.13677732932,
-                        "bugs": 0.29245892277704444,
-                        "time": 1373.2853765182956
+                        "difficulty": 30.26086956521739,
+                        "volume": 940.8015949574802,
+                        "effort": 28469.47435175679,
+                        "bugs": 0.3136005316524934,
+                        "time": 1581.6374639864885
                     },
                     "params": 1,
                     "line": 188,
-                    "cyclomaticDensity": 88.88888888888889
+                    "cyclomaticDensity": 94.44444444444444
                 }
             ],
             "dependencies": [],
-            "maintainability": 99.80273599379183,
+            "maintainability": 99.60042764541231,
             "loc": 12.727272727272727,
-            "cyclomatic": 6.090909090909091,
-            "effort": 5693.4694397338435,
+            "cyclomatic": 6.181818181818182,
+            "effort": 6034.40921922725,
             "params": 1.2727272727272727,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/helpers/functionHelper.js"
         },
@@ -16888,8 +16888,8 @@
     "changeCost": 21.22788761706556,
     "coreSize": 29.03225806451613,
     "loc": 10.186369544434063,
-    "cyclomatic": 4.282959513604677,
-    "effort": 7890.835165900916,
+    "cyclomatic": 4.285892064924324,
+    "effort": 7901.83322330393,
     "params": 1.119795079472499,
-    "maintainability": 105.86499876078479
+    "maintainability": 105.8584726850306
 }

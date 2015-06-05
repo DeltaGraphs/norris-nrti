@@ -1,8 +1,8 @@
 Mean per-function logical LOC: 10.186369544434063
 Mean per-function parameter count: 1.119795079472499
-Mean per-function cyclomatic complexity: 4.282959513604677
-Mean per-function Halstead effort: 7890.835165900916
-Mean per-module maintainability index: 105.86499876078479
+Mean per-function cyclomatic complexity: 4.285892064924324
+Mean per-function Halstead effort: 7901.83322330393
+Mean per-module maintainability index: 105.8584726850306
 First-order density: 5.82726326742976%
 Change cost: 21.22788761706556%
 Core size: 29.03225806451613%
@@ -12,9 +12,9 @@ Core size: 29.03225806451613%
   Physical LOC: 216
   Logical LOC: 152
   Mean parameter count: 1.2727272727272727
-  Cyclomatic complexity: 57
-  Cyclomatic complexity density: 37.5%
-  Maintainability index: 99.80273599379183
+  Cyclomatic complexity: 58
+  Cyclomatic complexity density: 38.15789473684211%
+  Maintainability index: 99.60042764541231
   Dependency count: 0
 
   Function: <anonymous>.replaceAll
@@ -132,11 +132,11 @@ Core size: 29.03225806451613%
     Physical LOC: 30
     Logical LOC: 18
     Parameter count: 1
-    Cyclomatic complexity: 16
-    Cyclomatic complexity density: 88.88888888888889%
-    Halstead difficulty: 28.17391304347826
-    Halstead volume: 877.3767683311332
-    Halstead effort: 24719.13677732932
+    Cyclomatic complexity: 17
+    Cyclomatic complexity density: 94.44444444444444%
+    Halstead difficulty: 30.26086956521739
+    Halstead volume: 940.8015949574802
+    Halstead effort: 28469.47435175679
 
 /home/travis/build/DeltaGraphs/norris-nrti/lib/presentationTier/routes.js
 
