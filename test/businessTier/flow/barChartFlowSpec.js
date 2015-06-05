@@ -146,9 +146,9 @@ describe('BarChartFlow', function() {
                 ]
             );
             flow1.updateProperties({name: 'grafico tempo-temperatura',indexKey: 'tempo',valueKey: 'temperatura',filters: 'temperatura>3'});
-            assert.strictEqual(flow1._dataLineChartFlow._indexKey,'tempo');
-            assert.strictEqual(flow1._dataLineChartFlow._valueKey,'temperatura');
-            assert.strictEqual(flow1._dataLineChartFlow._name,'grafico tempo-temperatura');
+            assert.strictEqual(flow1._dataBarChartFlow._indexKey,'tempo');
+            assert.strictEqual(flow1._dataBarChartFlow._valueKey,'temperatura');
+            assert.strictEqual(flow1._dataBarChartFlow._name,'grafico tempo-temperatura');
             assert.strictEqual(mock.p1[mock.p1.length-2],'updateFlowData');
             //console.dir(flow1._dataLineChartFlow._records);
             assert.deepEqual(mock.p2[mock.p1.length-2],{
