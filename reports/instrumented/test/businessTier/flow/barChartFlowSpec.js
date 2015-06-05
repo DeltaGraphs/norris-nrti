@@ -74,11 +74,12 @@ describe('BarChartFlow', function() {
         it('returns 112 if the index is invalid', function() {
             var flow1=new BarChartFlow({ID: 'flow1'},new socketMock(), [{'index': 1, 'value': 25}]);
             assert.strictEqual(flow1.updateRecord('abc',{'tempo': 4, 'temperatura': 33}), 112);
-            assert.strictEqual(flow1.updateRecord(0,{'tempo': 4, 'temperatura': 33}), 112);
+            assert.strictEqual(flow1.updateRecord(3,{'tempo': 4, 'temperatura': 33}), 112);
         });
         it('returns true with correct update', function() {
             var mock=new socketMock();
-            var flow1=new BarChartFlow({
+            var flow1=new BarChartFlow(
+                {
                     ID: 'flow1',
                     filters: 'temperature>3',
                     indexKey: 'i',
@@ -87,11 +88,8 @@ describe('BarChartFlow', function() {
                 [
                     {i: 1, v:5, temperature: 4},
                     {i: 3, v:2, temperature: 2}
-                ]);
-            console.dir('Printing flow');
-            console.dir(flow1);
-            console.dir(flow1._dataBarChartFlow._records[0]);
-            console.dir(flow1._dataBarChartFlow._records[1]);
+                ]
+            );
             var ID = flow1._dataBarChartFlow._records[0]._norrisRecordID;
             assert(flow1.updateRecord(0, {i: 1, v:3, temperature: 0}), true);
             assert.strictEqual(mock.p1, 'updateFlowData');
@@ -100,6 +98,10 @@ describe('BarChartFlow', function() {
                 ID: 'flow1',
                 norrisRecordID: ID
             });
+            console.dir('Printing flow');
+            console.dir(flow1);
+            console.dir(flow1._dataBarChartFlow._records[0]);
+            console.dir(flow1._dataBarChartFlow._records[1]);
             assert(flow1.updateRecord(0, {i: 1, v:3, temperature: 4}), true);
             assert.strictEqual(mock.p1, 'updateFlowData');
             assert.deepEqual(mock.p2, {
@@ -110,6 +112,10 @@ describe('BarChartFlow', function() {
                     value: [1,3]
                 }]
             });
+            console.dir('Printing flow again');
+            console.dir(flow1);
+            console.dir(flow1._dataBarChartFlow._records[0]);
+            console.dir(flow1._dataBarChartFlow._records[1]);
             assert(flow1.updateRecord(0, {i: 1, v:5, temperature: 6}), true);
             assert.strictEqual(mock.p1, 'updateFlowData');
             assert.deepEqual(mock.p2, {

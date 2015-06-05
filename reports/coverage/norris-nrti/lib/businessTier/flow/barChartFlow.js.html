@@ -15,10 +15,10 @@
 <div class="header medium">
     <h1>Code coverage report for <span class="entity">norris-nrti/lib/businessTier/flow/barChartFlow.js</span></h1>
     <h2>
-        Statements: <span class="metric">76.67% <small>(46 / 60)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Branches: <span class="metric">73.81% <small>(31 / 42)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">73.33% <small>(44 / 60)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">66.67% <small>(28 / 42)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Functions: <span class="metric">75% <small>(3 / 4)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">76.67% <small>(46 / 60)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">73.33% <small>(44 / 60)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
     <div class="path"><a href="../../../../index.html">All files</a> &#187; <a href="index.html">norris-nrti/lib/businessTier/flow/</a> &#187; barChartFlow.js</div>
@@ -207,32 +207,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">5</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4</span>
-<span class="cline-any cline-yes">4</span>
-<span class="cline-any cline-yes">4</span>
-<span class="cline-any cline-yes">4</span>
-<span class="cline-any cline-yes">3</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3</span>
-<span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
 <span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -241,6 +223,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -248,9 +239,18 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
@@ -369,10 +369,10 @@ BarChartFlow.prototype.updateRecord = function(index, record){
 			var indexKey=this._dataBarChartFlow._indexKey;
 			var valueKey=this._dataBarChartFlow._valueKey;
 			var newValue=[null, null];
-			if (record[indexKey]!==undefined &amp;&amp; typeof record[indexKey]==='number' &amp;&amp; record[valueKey]!==undefined &amp;&amp; typeof record[valueKey]==='number'){
+			<span class="missing-if-branch" title="else path not taken" >E</span>if (record[indexKey]!==undefined &amp;&amp; typeof record[indexKey]==='number' &amp;&amp; record[valueKey]!==undefined &amp;&amp; typeof record[valueKey]==='number'){
 				newValue=[record[indexKey], record[valueKey]];
 			}
-			if (!oldValid){
+			<span class="missing-if-branch" title="else path not taken" >E</span>if (!oldValid){
 				var data2={
 					action: 'insertRecords',
 					ID: this._dataBarChartFlow._ID,
@@ -383,14 +383,14 @@ BarChartFlow.prototype.updateRecord = function(index, record){
 				};
 				this._graphSocket.sendMessage('updateFlowData', data2);
 			}
-			if (oldValid){
-				var data3={
+			<span class="missing-if-branch" title="if path not taken" >I</span>if (oldValid){
+<span class="cstat-no" title="statement not covered" >				var data3={</span>
 					action: 'updateRecord',
 					ID: this._dataBarChartFlow._ID,
 					norrisRecordID: this._dataBarChartFlow.getRecordByIndex(index).norrisRecordID,
 					value: newValue
 				};
-				this._graphSocket.sendMessage('updateFlowData', data3);
+<span class="cstat-no" title="statement not covered" >				this._graphSocket.sendMessage('updateFlowData', data3);</span>
 			}
 		}
 	}
@@ -462,7 +462,7 @@ module.exports = BarChartFlow;
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Jun 05 2015 14:08:04 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Jun 05 2015 14:15:39 GMT+0000 (UTC)</div>
 </div>
 <script src="../../../../prettify.js"></script>
 <script>

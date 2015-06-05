@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">64.58</p>
+      <p class="stat">63.93</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">122</p>
+      <p class="stat">128</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">20.28</p>
+      <p class="stat">21.00</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">1.39</p>
+      <p class="stat">1.46</p>
     </div>
   </div>
 </div>
@@ -165,11 +165,12 @@ describe(&#039;BarChartFlow&#039;, function() {
         it(&#039;returns 112 if the index is invalid&#039;, function() {
             var flow1=new BarChartFlow({ID: &#039;flow1&#039;},new socketMock(), [{&#039;index&#039;: 1, &#039;value&#039;: 25}]);
             assert.strictEqual(flow1.updateRecord(&#039;abc&#039;,{&#039;tempo&#039;: 4, &#039;temperatura&#039;: 33}), 112);
-            assert.strictEqual(flow1.updateRecord(0,{&#039;tempo&#039;: 4, &#039;temperatura&#039;: 33}), 112);
+            assert.strictEqual(flow1.updateRecord(3,{&#039;tempo&#039;: 4, &#039;temperatura&#039;: 33}), 112);
         });
         it(&#039;returns true with correct update&#039;, function() {
             var mock=new socketMock();
-            var flow1=new BarChartFlow({
+            var flow1=new BarChartFlow(
+                {
                     ID: &#039;flow1&#039;,
                     filters: &#039;temperature&gt;3&#039;,
                     indexKey: &#039;i&#039;,
@@ -178,11 +179,8 @@ describe(&#039;BarChartFlow&#039;, function() {
                 [
                     {i: 1, v:5, temperature: 4},
                     {i: 3, v:2, temperature: 2}
-                ]);
-            console.dir(&#039;Printing flow&#039;);
-            console.dir(flow1);
-            console.dir(flow1._dataBarChartFlow._records[0]);
-            console.dir(flow1._dataBarChartFlow._records[1]);
+                ]
+            );
             var ID = flow1._dataBarChartFlow._records[0]._norrisRecordID;
             assert(flow1.updateRecord(0, {i: 1, v:3, temperature: 0}), true);
             assert.strictEqual(mock.p1, &#039;updateFlowData&#039;);
@@ -191,6 +189,10 @@ describe(&#039;BarChartFlow&#039;, function() {
                 ID: &#039;flow1&#039;,
                 norrisRecordID: ID
             });
+            console.dir(&#039;Printing flow&#039;);
+            console.dir(flow1);
+            console.dir(flow1._dataBarChartFlow._records[0]);
+            console.dir(flow1._dataBarChartFlow._records[1]);
             assert(flow1.updateRecord(0, {i: 1, v:3, temperature: 4}), true);
             assert.strictEqual(mock.p1, &#039;updateFlowData&#039;);
             assert.deepEqual(mock.p2, {
@@ -201,6 +203,10 @@ describe(&#039;BarChartFlow&#039;, function() {
                     value: [1,3]
                 }]
             });
+            console.dir(&#039;Printing flow again&#039;);
+            console.dir(flow1);
+            console.dir(flow1._dataBarChartFlow._records[0]);
+            console.dir(flow1._dataBarChartFlow._records[1]);
             assert(flow1.updateRecord(0, {i: 1, v:5, temperature: 6}), true);
             assert.strictEqual(mock.p1, &#039;updateFlowData&#039;);
             assert.deepEqual(mock.p2, {
