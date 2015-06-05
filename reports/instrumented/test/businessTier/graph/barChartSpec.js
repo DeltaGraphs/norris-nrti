@@ -141,6 +141,8 @@ describe('BarChart', function() {
         it('returned error - undefined record', function() {
             var mock=new socketMock();
             var barChart=new BarChart({ID: 'dada'}, {_page: 'dssada'}, mock);
+            console.dir('CREATED BARCHART');
+            console.dir(barChart);
             assert.strictEqual(typeof barChart.updateRecord(),'number');
         });
         it('returned true - correctly updated', function() {
