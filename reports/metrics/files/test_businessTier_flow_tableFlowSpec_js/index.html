@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">63.25</p>
+      <p class="stat">63.58</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">188</p>
+      <p class="stat">183</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">30.37</p>
+      <p class="stat">31.18</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">2.55</p>
+      <p class="stat">2.46</p>
     </div>
   </div>
 </div>
@@ -247,18 +247,13 @@ describe(&#039;TableFlow&#039;, function() {
     describe(&#039;#updateProperties&#039;, function() {
         it(&#039;update correct properties&#039;, function() {
             var mock=new socketMockHistory();
-            var flow1=new TableFlow({ID: &#039;flow1&#039;, name: &#039;tabella&#039;, columnKeys: [&#039;col1&#039;,&#039;col2&#039;]},new socketMock());
+            var flow1=new TableFlow({ID: &#039;flow1&#039;, name: &#039;tabella&#039;, columnKeys: [&#039;col1&#039;,&#039;col2&#039;]}, mock);
             var ID1=flow1.addRecord({temperatura: &#039;6&#039;, col1: 1, col2:&#039;2&#039;, col3:&#039;notThis&#039;});
             var ID2=flow1.addRecord({temperatura: &#039;5&#039;, col1: 0, col2:0, col3:&#039;notThis&#039;});
             var ID3=flow1.addRecord({temperatura: &#039;6&#039;, col1: 2, col2:1.2});
             flow1.addRecord({temperatura: &#039;0&#039;, col1: 6, col2: 0});
-            flow1.addRecord({temperatura: &#039;10&#039;, col1: 10, col2: 0});
+            flow1.addRecord({col1: 10, col2: 0});
             flow1.updateProperties({name: &#039;tabella&#039;,filters: &#039;temperatura&gt;3&#039;});
-            console.log(&#039;mock&#039;);
-            console.dir(mock.p1);
-            console.log(&#039;records&#039;);
-            console.dir(flow1._dataTableFlow._records);
-            
             assert.strictEqual(flow1._dataTableFlow._name,&#039;tabella&#039;);
             assert.strictEqual(mock.p1[mock.p1.length-2],&#039;updateFlowData&#039;);
             assert.deepEqual(mock.p2[mock.p1.length-2],{

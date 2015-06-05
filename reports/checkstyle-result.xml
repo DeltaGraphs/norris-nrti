@@ -1,3 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <checkstyle version="4.3">
+	<file name="test/businessTier/graph/barChartSpec.js">
+		<error line="113" column="28" severity="warning" message="&apos;socketMockHistory&apos; is not defined." source="jshint.W117" />
+	</file>
 </checkstyle>

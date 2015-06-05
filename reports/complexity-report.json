@@ -1072,14 +1072,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 23,
-                    "physical": 49
+                    "logical": 24,
+                    "physical": 50
                 },
                 "cyclomatic": 6,
                 "halstead": {
                     "operators": {
                         "distinct": 14,
-                        "total": 64,
+                        "total": 66,
                         "identifiers": [
                             "function",
                             "if",
@@ -1098,8 +1098,8 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 35,
-                        "total": 82,
+                        "distinct": 36,
+                        "total": 85,
                         "identifiers": [
                             "\"use strict\"",
                             "Socket",
@@ -1118,6 +1118,7 @@
                             null,
                             "_onConnectionEvent",
                             "\"\"",
+                            "_nsp",
                             "prototype",
                             "sendMessage",
                             "<anonymous>",
@@ -1138,30 +1139,30 @@
                             "exports"
                         ]
                     },
-                    "length": 146,
-                    "vocabulary": 49,
-                    "difficulty": 16.400000000000002,
-                    "volume": 819.7476372408204,
-                    "effort": 13443.861250749456,
-                    "bugs": 0.2732492124136068,
-                    "time": 746.881180597192
+                    "length": 151,
+                    "vocabulary": 50,
+                    "difficulty": 16.52777777777778,
+                    "volume": 852.2222846559833,
+                    "effort": 14085.34053806417,
+                    "bugs": 0.28407409488532775,
+                    "time": 782.5189187813428
                 },
                 "params": 7,
                 "line": 2,
-                "cyclomaticDensity": 26.08695652173913
+                "cyclomaticDensity": 25
             },
             "functions": [
                 {
                     "name": "Socket",
                     "sloc": {
-                        "logical": 6,
-                        "physical": 9
+                        "logical": 7,
+                        "physical": 10
                     },
                     "cyclomatic": 4,
                     "halstead": {
                         "operators": {
                             "distinct": 9,
-                            "total": 19,
+                            "total": 21,
                             "identifiers": [
                                 "if",
                                 "||",
@@ -1175,8 +1176,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 15,
-                            "total": 23,
+                            "distinct": 16,
+                            "total": 26,
                             "identifiers": [
                                 "io",
                                 "nsp",
@@ -1192,20 +1193,21 @@
                                 "_attachedObj",
                                 null,
                                 "_onConnectionEvent",
-                                "\"\""
+                                "\"\"",
+                                "_nsp"
                             ]
                         },
-                        "length": 42,
-                        "vocabulary": 24,
-                        "difficulty": 6.9,
-                        "volume": 192.56842503028858,
-                        "effort": 1328.7221327089912,
-                        "bugs": 0.0641894750100962,
-                        "time": 73.81789626161063
+                        "length": 47,
+                        "vocabulary": 25,
+                        "difficulty": 7.3125,
+                        "volume": 218.26124091941205,
+                        "effort": 1596.0353242232006,
+                        "bugs": 0.07275374697313734,
+                        "time": 88.66862912351115
                     },
                     "params": 2,
                     "line": 18,
-                    "cyclomaticDensity": 66.66666666666666
+                    "cyclomaticDensity": 57.14285714285714
                 },
                 {
                     "name": "<anonymous>.sendMessage",
@@ -1247,7 +1249,7 @@
                         "time": 15.855728252087614
                     },
                     "params": 2,
-                    "line": 28,
+                    "line": 29,
                     "cyclomaticDensity": 100
                 },
                 {
@@ -1274,7 +1276,7 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 15,
+                            "distinct": 16,
                             "total": 25,
                             "identifiers": [
                                 "obj",
@@ -1284,10 +1286,11 @@
                                 "_attachedObj",
                                 "_onConnectionEvent",
                                 "nsp",
-                                "_namespace",
+                                "_nsp",
                                 "clientHandle",
                                 "<anonymous>",
                                 "\"connection\"",
+                                "_namespace",
                                 "on",
                                 "\"Error: 922\"",
                                 "console",
@@ -1295,15 +1298,15 @@
                             ]
                         },
                         "length": 45,
-                        "vocabulary": 24,
-                        "difficulty": 7.5,
-                        "volume": 206.32331253245206,
-                        "effort": 1547.4248439933904,
-                        "bugs": 0.06877443751081735,
-                        "time": 85.96804688852168
+                        "vocabulary": 25,
+                        "difficulty": 7.03125,
+                        "volume": 208.9735285398626,
+                        "effort": 1469.345122545909,
+                        "bugs": 0.06965784284662087,
+                        "time": 81.63028458588383
                     },
                     "params": 2,
-                    "line": 34,
+                    "line": 35,
                     "cyclomaticDensity": 25
                 },
                 {
@@ -1347,15 +1350,15 @@
                         "time": 5.642996528912931
                     },
                     "params": 1,
-                    "line": 40,
+                    "line": 41,
                     "cyclomaticDensity": 50
                 }
             ],
             "dependencies": [],
-            "maintainability": 123.51925309550161,
-            "loc": 4.5,
+            "maintainability": 122.45057083387637,
+            "loc": 4.75,
             "cyclomatic": 2.25,
-            "effort": 815.7810056900978,
+            "effort": 863.0893732067798,
             "params": 1.75,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/presentationTier/socket.js"
         },
@@ -3492,7 +3495,7 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 88,
+                        "distinct": 89,
                         "total": 359,
                         "identifiers": [
                             "\"use strict\"",
@@ -3565,6 +3568,7 @@
                             "deleteAllFlows",
                             "updateRecord",
                             "flowID",
+                            "index",
                             "record",
                             "updateProperties",
                             "\"updateGraphProp\"",
@@ -3586,12 +3590,12 @@
                         ]
                     },
                     "length": 686,
-                    "vocabulary": 110,
-                    "difficulty": 44.87499999999999,
-                    "volume": 4652.012763477916,
-                    "effort": 208759.07276107147,
-                    "bugs": 1.5506709211593055,
-                    "time": 11597.72626450397
+                    "vocabulary": 111,
+                    "difficulty": 44.37078651685393,
+                    "volume": 4660.969284316173,
+                    "effort": 206810.87307600636,
+                    "bugs": 1.553656428105391,
+                    "time": 11489.49294866702
                 },
                 "params": 11,
                 "line": 2,
@@ -3931,7 +3935,7 @@
                             "total": 9,
                             "identifiers": [
                                 "flowID",
-                                "ID",
+                                "index",
                                 "record",
                                 "this",
                                 "getFlowByID",
@@ -16999,9 +17003,9 @@
     ],
     "changeCost": 21.22788761706556,
     "coreSize": 29.03225806451613,
-    "loc": 10.457337286369546,
+    "loc": 10.46540180249858,
     "cyclomatic": 4.363311419763034,
-    "effort": 8060.495075555419,
+    "effort": 8062.021151926924,
     "params": 1.119795079472499,
-    "maintainability": 105.25611527203726
+    "maintainability": 105.22164165069452
 }
