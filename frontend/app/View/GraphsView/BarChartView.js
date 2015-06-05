@@ -15,7 +15,7 @@
 
 
 angular.module('app')
-.directive('barChart', function(){
+.directive('barChart', function($compile){
 	return {
 		restrict: 'E',
 		//controller : 'BarChartController',
@@ -24,7 +24,7 @@ angular.module('app')
             url: '@'
 		},
 		bindToController: true,
-        template: '<svg></svg>',
+        template: '<div></div>',
         link: function(scope, element, attrs){
 
         	attrs.$observe('url', function(value) {
@@ -55,80 +55,36 @@ angular.module('app')
                 }
             }, true);
 
-            var  chart;
+            scope.chart;
 
             scope.init = function(){
-            	console.log('BARCHART init');
             	var parent = element.children()[0];
-            	console.log('BARCHART init url ' + scope.url);
             	var str = scope.url.split('/');
             	var id = str[str.length-1];
             	parent.setAttribute('id', id);
             	if (scope.$parent.barChart.getBarOrientation() === 'V'){
-            		chart = nv.models.multiBarChart()
-      					.reduceXTicks(true)   //If 'false', every single x-axis tick label will be rendered.
-      					.rotateLabels(0)      //Angle to rotate x-axis labels.
-      					.showControls(true)   //Allow user to switch between 'Grouped' and 'Stacked' mode.
-      					.groupSpacing(0.1)    //Distance between each group of bars.
+            		console.log('\n sto iniziando la costruzione \n');
+            		var svgContainer = d3.select('#' + id)
+            			.append('svg')
+            			.style('width', '500px')
+            			.style('length', '500px');
+            		var axisScale = d3.scale.linear()
+            			.domain([0,10])
+            			.range([0,500]);
+					var xAxis = d3.svg.axis()
+						.scale(axisScale);
+
+					var xAxisGroup = svgContainer.append('g')
+										.call(xAxis);
+
+
+
+            	} else {
+            		console.log('H');
             	}
-            	else{
-            		chart = nv.models.multiBarHorizontalChart()
-				        .x(function(d) { return d.label })
-				        .y(function(d) { return d.value })
-				        .margin({top: 30, right: 20, bottom: 50, left: 175})
-				        .showValues(true)           //Show bar value next to each bar.
-				        .tooltips(true)             //Show tooltips on hover.
-				        .transitionDuration(350)
-				        .showControls(true);        //Allow user to switch between "Grouped" and "Stacked" mode.
-            	}
-            	
-            	
-
-			    chart.yAxis
-			        .tickFormat(d3.format(',.2f'));
-
-			    d3.select('#' + id + ' svg')
-			        .datum(test_data)
-			        .call(chart);
-
-			    nv.utils.windowResize(chart.update);
-
-			    var test_data = [
-			        { 
-			          "label" : "A Label" ,
-			          "value" : -29.765957771107
-			        } , 
-			        { 
-			          "label" : "B Label" , 
-			          "value" : 0
-			        } , 
-			        { 
-			          "label" : "C Label" , 
-			          "value" : 32.807804682612
-			        } , 
-			        { 
-			          "label" : "D Label" , 
-			          "value" : 196.45946739256
-			        } , 
-			        { 
-			          "label" : "E Label" ,
-			          "value" : 0.19434030906893
-			        } , 
-			        { 
-			          "label" : "F Label" , 
-			          "value" : -98.079782601442
-			        } , 
-			        { 
-			          "label" : "G Label" , 
-			          "value" : -13.925743130903
-			        } , 
-			        { 
-			          "label" : "H Label" , 
-			          "value" : -5.1387322875705
-			        }
-		     	]
-
-				nv.addGraph(chart);
+				
+				var el = $compile(parent)(scope);
+				element.parent().append( el );
 
             };
 
@@ -155,6 +111,8 @@ angular.module('app')
                         console.log(ul);
                         ul.appendChild(li);
                     }
+                } else {
+                	console.log('H');
                 }
 
             };
