@@ -199,7 +199,7 @@ BarChartFlow.prototype.updateProperties = function (params) {
                 if ((__cov_f2smeCI7YK4vS8IjYvbLdA.b['18'][0]++, recordsModel[i][indexKey] !== undefined) && (__cov_f2smeCI7YK4vS8IjYvbLdA.b['18'][1]++, typeof recordsModel[i][indexKey] === 'number')) {
                     __cov_f2smeCI7YK4vS8IjYvbLdA.b['17'][0]++;
                     __cov_f2smeCI7YK4vS8IjYvbLdA.s['56']++;
-                    if (recordsModel[i].norrisIsValid) {
+                    if (recordsModel[i].norrisRecordIsValid) {
                         __cov_f2smeCI7YK4vS8IjYvbLdA.b['19'][0]++;
                         __cov_f2smeCI7YK4vS8IjYvbLdA.s['57']++;
                         records.push({

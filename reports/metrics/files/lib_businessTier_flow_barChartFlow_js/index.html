@@ -62,7 +62,7 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">43.23</p>
+      <p class="stat">43.80</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
@@ -220,7 +220,7 @@ BarChartFlow.prototype.updateProperties = function(params){
 			for (var i=0; i&lt;nRecords; i++){
 				if (recordsModel[i][indexKey]!==undefined &amp;&amp;
 				typeof recordsModel[i][indexKey]===&#039;number&#039;){
-					if (recordsModel[i].norrisIsValid){
+					if (recordsModel[i].norrisRecordIsValid){
 						records.push({
 							norrisRecordID: recordsModel[i].norrisRecordID,
 							markerID: params[this._dataBarChartFlow._objectKey],

@@ -1395,7 +1395,7 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 77,
+                        "distinct": 76,
                         "total": 317,
                         "identifiers": [
                             "\"use strict\"",
@@ -1469,7 +1469,6 @@
                             "filters",
                             "recordsModel",
                             "nRecords",
-                            "norrisIsValid",
                             "markerID",
                             "_objectKey",
                             "\"updateFlowProp\"",
@@ -1478,12 +1477,12 @@
                         ]
                     },
                     "length": 600,
-                    "vocabulary": 98,
-                    "difficulty": 43.22727272727273,
-                    "volume": 3968.8259064691256,
-                    "effort": 171561.5198660063,
-                    "bugs": 1.322941968823042,
-                    "time": 9531.195548111462
+                    "vocabulary": 97,
+                    "difficulty": 43.79605263157895,
+                    "volume": 3959.947705312277,
+                    "effort": 173430.07812015677,
+                    "bugs": 1.3199825684374256,
+                    "time": 9635.004340008709
                 },
                 "params": 6,
                 "line": 2,
@@ -1753,7 +1752,7 @@
                                 "i",
                                 0,
                                 "\"number\"",
-                                "norrisIsValid",
+                                "norrisRecordIsValid",
                                 "norrisRecordID",
                                 "markerID",
                                 "_objectKey",
