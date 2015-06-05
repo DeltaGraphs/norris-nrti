@@ -3461,14 +3461,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 105,
-                    "physical": 166
+                    "logical": 107,
+                    "physical": 169
                 },
-                "cyclomatic": 20,
+                "cyclomatic": 21,
                 "halstead": {
                     "operators": {
                         "distinct": 22,
-                        "total": 330,
+                        "total": 333,
                         "identifiers": [
                             "var",
                             "=",
@@ -3496,7 +3496,7 @@
                     },
                     "operands": {
                         "distinct": 91,
-                        "total": 363,
+                        "total": 366,
                         "identifiers": [
                             "\"use strict\"",
                             "Graph",
@@ -3591,17 +3591,17 @@
                             "exports"
                         ]
                     },
-                    "length": 693,
+                    "length": 699,
                     "vocabulary": 113,
-                    "difficulty": 43.879120879120876,
-                    "volume": 4726.384020953726,
-                    "effort": 207389.5757765739,
-                    "bugs": 1.5754613403179085,
-                    "time": 11521.64309869855
+                    "difficulty": 44.24175824175824,
+                    "volume": 4767.305094728217,
+                    "effort": 210913.95946566816,
+                    "bugs": 1.589101698242739,
+                    "time": 11717.44219253712
                 },
                 "params": 11,
                 "line": 2,
-                "cyclomaticDensity": 19.047619047619047
+                "cyclomaticDensity": 19.626168224299064
             },
             "functions": [
                 {
@@ -3923,43 +3923,47 @@
                 {
                     "name": "<anonymous>.updateRecord",
                     "sloc": {
-                        "logical": 1,
-                        "physical": 3
+                        "logical": 3,
+                        "physical": 6
                     },
-                    "cyclomatic": 1,
+                    "cyclomatic": 2,
                     "halstead": {
                         "operators": {
-                            "distinct": 3,
-                            "total": 5,
+                            "distinct": 5,
+                            "total": 8,
                             "identifiers": [
+                                "if",
+                                "===",
                                 "return",
                                 "()",
                                 "."
                             ]
                         },
                         "operands": {
-                            "distinct": 6,
-                            "total": 9,
+                            "distinct": 8,
+                            "total": 12,
                             "identifiers": [
                                 "flowID",
                                 "index",
                                 "record",
+                                "undefined",
+                                false,
                                 "this",
                                 "getFlowByID",
                                 "updateRecord"
                             ]
                         },
-                        "length": 14,
-                        "vocabulary": 9,
-                        "difficulty": 2.25,
-                        "volume": 44.37895002019238,
-                        "effort": 99.85263754543286,
-                        "bugs": 0.014792983340064125,
-                        "time": 5.547368752524047
+                        "length": 20,
+                        "vocabulary": 13,
+                        "difficulty": 3.75,
+                        "volume": 74.00879436282185,
+                        "effort": 277.5329788605819,
+                        "bugs": 0.024669598120940616,
+                        "time": 15.418498825587884
                     },
                     "params": 3,
                     "line": 123,
-                    "cyclomaticDensity": 100
+                    "cyclomaticDensity": 66.66666666666666
                 },
                 {
                     "name": "<anonymous>.updateProperties",
@@ -4007,7 +4011,7 @@
                         "time": 35.672402978184785
                     },
                     "params": 1,
-                    "line": 128,
+                    "line": 131,
                     "cyclomaticDensity": 50
                 },
                 {
@@ -4045,7 +4049,7 @@
                         "time": 1.5078947920873411
                     },
                     "params": 0,
-                    "line": 136,
+                    "line": 139,
                     "cyclomaticDensity": 100
                 },
                 {
@@ -4113,7 +4117,7 @@
                         "time": 902.3242435850648
                     },
                     "params": 0,
-                    "line": 140,
+                    "line": 143,
                     "cyclomaticDensity": 15
                 }
             ],
@@ -4139,10 +4143,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 105.3486993026792,
-            "loc": 9.666666666666666,
-            "cyclomatic": 3.111111111111111,
-            "effort": 4331.035646627504,
+            "maintainability": 104.95687658972234,
+            "loc": 9.88888888888889,
+            "cyclomatic": 3.2222222222222223,
+            "effort": 4350.777906773632,
             "params": 1.2222222222222223,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/graph/barChart.js"
         },
@@ -17010,9 +17014,9 @@
     ],
     "changeCost": 21.22788761706556,
     "coreSize": 29.03225806451613,
-    "loc": 10.46898603188926,
-    "cyclomatic": 4.363311419763034,
-    "effort": 8061.8036256336,
+    "loc": 10.476154490670622,
+    "cyclomatic": 4.366895649153715,
+    "effort": 8062.440472735088,
     "params": 1.119795079472499,
-    "maintainability": 105.21577182460585
+    "maintainability": 105.2031323822524
 }

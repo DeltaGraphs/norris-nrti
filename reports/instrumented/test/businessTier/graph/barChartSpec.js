@@ -138,18 +138,30 @@ describe('BarChart', function() {
     });
 
     describe('#updateRecord', function() {
-        it('returned error - undefined record', function() {
-            var mock=new socketMock();
-            var barChart=new BarChart({ID: 'dada'}, {_page: 'dssada'}, mock);
-            console.dir('CREATED BARCHART');
-            console.dir(barChart);
-            assert.strictEqual(typeof barChart.updateRecord(),'number');
-        });
         it('returned true - correctly updated', function() {
             var mock=new socketMock();
             var barChart=new BarChart({ID: 'dada'}, {_page: 'dssada'}, mock);
             barChart.createBarChartFlow({ ID:'flow1', name: 'grafico tempo-temperatura', indexKey: 'tempo', valueKey: 'temperatura'}, [{'tempo': 1, 'temperatura': 25}]);
             assert.strictEqual(barChart.updateRecord('flow1',0,{'tempo': 3, 'temperatura': 7}),true);
+        });
+    });
+
+    describe('#updateProperties', function() {
+        it('no update - invalid params', function() {
+            var mock = new socketMock();
+            var barChart=new BarChart({ID: 'dada'}, {_page: 'dssada'}, mock);
+            mock.p1=null;
+            mock.p2=null;
+            barChart.updateProperties();
+            assert.strictEqual(mock.p1,null);
+            assert.strictEqual(mock.p2,null);
+        });
+        it('updated properties', function() {
+            var mock = new socketMock();
+            var barChart=new BarChart({ID: 'dada'}, {_page: 'dssada'}, mock);
+            barChart.updateProperties({title: 'graph one', height: 200, width: 350, enableLegend: true, backgroundColor: '#EEEEEE', legendOnPoint: true, viewFinder: true, horizontalGrid: true, verticalGrid: true });
+            assert.strictEqual(mock.p1,'updateGraphProp');
+            assert.deepEqual(mock.p2,{'title':'graph one','height':200,'width':350,'enableLegend':true,'backgroundColor':'#EEEEEE','horizontalGrid':true,'verticalGrid':true,'viewFinder':true,'legendOnPoint':true});
         });
     });
 });
