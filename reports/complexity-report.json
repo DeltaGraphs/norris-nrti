@@ -1362,14 +1362,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 83,
-                    "physical": 143
+                    "logical": 87,
+                    "physical": 150
                 },
                 "cyclomatic": 21,
                 "halstead": {
                     "operators": {
                         "distinct": 21,
-                        "total": 283,
+                        "total": 291,
                         "identifiers": [
                             "var",
                             "=",
@@ -1395,8 +1395,8 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 77,
-                        "total": 317,
+                        "distinct": 82,
+                        "total": 329,
                         "identifiers": [
                             "\"use strict\"",
                             "BarChartFlowModel",
@@ -1448,17 +1448,22 @@
                             "\"updateFlowData\"",
                             "_graphSocket",
                             "sendMessage",
+                            "\"That coverage script is a bit of a douche\"",
+                            "dir",
                             "indexKey",
                             "_indexKey",
                             "valueKey",
                             "_valueKey",
                             "newValue",
                             null,
+                            "\"Here I am, douchebag\"",
                             "data2",
                             "\"insertRecords\"",
                             "value",
+                            "\"And here I am, you jerk\"",
                             "data3",
                             "\"updateRecord\"",
+                            "\"It really is a douche, executed all of this stuff\"",
                             "getReplaceDataJSON",
                             "dataRecords",
                             "i",
@@ -1477,17 +1482,17 @@
                             "exports"
                         ]
                     },
-                    "length": 600,
-                    "vocabulary": 98,
-                    "difficulty": 43.22727272727273,
-                    "volume": 3968.8259064691256,
-                    "effort": 171561.5198660063,
-                    "bugs": 1.322941968823042,
-                    "time": 9531.195548111462
+                    "length": 620,
+                    "vocabulary": 103,
+                    "difficulty": 42.1280487804878,
+                    "volume": 4145.630326853596,
+                    "effort": 174647.3166355579,
+                    "bugs": 1.3818767756178651,
+                    "time": 9702.628701975438
                 },
                 "params": 6,
                 "line": 2,
-                "cyclomaticDensity": 25.301204819277107
+                "cyclomaticDensity": 24.137931034482758
             },
             "functions": [
                 {
@@ -1552,14 +1557,14 @@
                 {
                     "name": "<anonymous>.updateRecord",
                     "sloc": {
-                        "logical": 34,
-                        "physical": 47
+                        "logical": 38,
+                        "physical": 54
                     },
                     "cyclomatic": 11,
                     "halstead": {
                         "operators": {
                             "distinct": 17,
-                            "total": 119,
+                            "total": 127,
                             "identifiers": [
                                 "if",
                                 "||",
@@ -1581,8 +1586,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 39,
-                            "total": 134,
+                            "distinct": 45,
+                            "total": 146,
                             "identifiers": [
                                 "index",
                                 "record",
@@ -1611,31 +1616,37 @@
                                 "\"updateFlowData\"",
                                 "_graphSocket",
                                 "sendMessage",
+                                "\"That coverage script is a bit of a douche\"",
+                                "console",
+                                "dir",
                                 "indexKey",
                                 "_indexKey",
                                 "valueKey",
                                 "_valueKey",
                                 "newValue",
                                 null,
+                                "\"Here I am, douchebag\"",
                                 "data2",
                                 "\"insertRecords\"",
                                 "records",
                                 "value",
+                                "\"And here I am, you jerk\"",
                                 "data3",
-                                "\"updateRecord\""
+                                "\"updateRecord\"",
+                                "\"It really is a douche, executed all of this stuff\""
                             ]
                         },
-                        "length": 253,
-                        "vocabulary": 56,
-                        "difficulty": 29.205128205128204,
-                        "volume": 1469.260795280574,
-                        "effort": 42909.94989293779,
-                        "bugs": 0.489753598426858,
-                        "time": 2383.8861051632102
+                        "length": 273,
+                        "vocabulary": 62,
+                        "difficulty": 27.57777777777778,
+                        "volume": 1625.495592735617,
+                        "effort": 44827.55623522002,
+                        "bugs": 0.5418318642452057,
+                        "time": 2490.4197908455567
                     },
                     "params": 2,
                     "line": 37,
-                    "cyclomaticDensity": 32.35294117647059
+                    "cyclomaticDensity": 28.947368421052634
                 },
                 {
                     "name": "<anonymous>.getReplaceDataJSON",
@@ -1697,7 +1708,7 @@
                         "time": 306.46484544603726
                     },
                     "params": 0,
-                    "line": 85,
+                    "line": 92,
                     "cyclomaticDensity": 25
                 },
                 {
@@ -1774,7 +1785,7 @@
                         "time": 823.7779644494512
                     },
                     "params": 1,
-                    "line": 117,
+                    "line": 124,
                     "cyclomaticDensity": 33.33333333333333
                 }
             ],
@@ -1790,10 +1801,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 90.59659355472444,
-            "loc": 18,
+            "maintainability": 89.62148270665476,
+            "loc": 19,
             "cyclomatic": 6,
-            "effort": 16285.572627170077,
+            "effort": 16764.974212740635,
             "params": 1.5,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/flow/barChartFlow.js"
         },
@@ -16887,9 +16898,9 @@
     ],
     "changeCost": 21.22788761706556,
     "coreSize": 29.03225806451613,
-    "loc": 10.186369544434063,
+    "loc": 10.218627608950193,
     "cyclomatic": 4.285892064924324,
-    "effort": 7901.83322330393,
+    "effort": 7917.297790580399,
     "params": 1.119795079472499,
-    "maintainability": 105.8584726850306
+    "maintainability": 105.8270174963832
 }

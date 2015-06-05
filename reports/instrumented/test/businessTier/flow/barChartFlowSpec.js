@@ -90,8 +90,6 @@ describe('BarChartFlow', function() {
                     {i: 3, v:2, temperature: 2}
                 ]
             );
-            console.dir('Printing record ID');
-            console.dir(flow1._dataBarChartFlow.getRecordByIndex(0).norrisRecordID);
             assert(flow1.updateRecord(0, {i: 1, v:3, temperature: 0}), true);
             assert.strictEqual(mock.p1, 'updateFlowData');
             assert.deepEqual(mock.p2, {
