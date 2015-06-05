@@ -254,13 +254,13 @@ describe(&#039;TableFlow&#039;, function() {
             flow1.addRecord({temperatura: &#039;0&#039;, col1: 6, col2: 0});
             flow1.addRecord({temperatura: &#039;10&#039;, col1: 10, col2: 0});
             flow1.updateProperties({name: &#039;tabella&#039;,filters: &#039;temperatura&gt;3&#039;});
-            assert.strictEqual(flow1._dataTableFlow._name,&#039;tabella&#039;);
-            assert.strictEqual(mock.p1[mock.p1.length-2],&#039;updateFlowData&#039;);
             console.log(&#039;mock&#039;);
             console.dir(mock.p1);
             console.log(&#039;records&#039;);
             console.dir(flow1._dataTableFlow._records);
             
+            assert.strictEqual(flow1._dataTableFlow._name,&#039;tabella&#039;);
+            assert.strictEqual(mock.p1[mock.p1.length-2],&#039;updateFlowData&#039;);
             assert.deepEqual(mock.p2[mock.p1.length-2],{
                 action: &#039;replaceData&#039;,
                 ID: &#039;flow1&#039;,
