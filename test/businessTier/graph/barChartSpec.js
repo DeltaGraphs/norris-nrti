@@ -84,4 +84,56 @@ describe('BarChart', function() {
             assert.strictEqual(mock.p2.name, 'grafico tempo-temperatura');
         });
     });
+
+    describe('#deleteFlow', function() {
+        it('return 263 - ID is not a string', function() {
+            var mock=new socketMock();
+            var barChart=new BarChart({ID: 'dada'}, {_page: 'dssada'}, mock);
+            barChart.createBarChartFlow({ ID:'flow1', name: 'grafico tempo-temperatura', indexKey: 'tempo', valueKey: 'temperatura'});
+            assert.strictEqual(barChart.deleteFlow(34),273);
+        });
+        it('return 263 - no ID in flows', function() {
+            var mock=new socketMock();
+            var barChart=new BarChart({ID: 'dada'}, {_page: 'dssada'}, mock);
+            barChart.createBarChartFlow({ ID:'flow1', name: 'grafico tempo-temperatura', indexKey: 'tempo', valueKey: 'temperatura'});
+            assert.strictEqual(barChart.deleteFlow('flow123'),273);
+        });
+        it('return true - deleted flow', function() {
+            var mock = new socketMock();
+            var barChart=new BarChart({ID: 'dada'}, {_page: 'dssada'}, mock);
+            barChart.createBarChartFlow({ ID:'flow1', name: 'grafico tempo-temperatura', indexKey: 'tempo', valueKey: 'temperatura'});
+            assert.strictEqual(barChart.deleteFlow('flow1'),true);
+            assert.strictEqual(mock.p1,'deleteFlow');
+            assert.strictEqual(mock.p2.ID, 'flow1');
+        });
+    });
+
+    describe('#deleteAllFlows', function() {
+        it('deletes all flows and sends right message', function() {
+            var mock = new socketMockHistory();
+            var barChart=new BarChart({ID: 'dada'}, {_page: 'dssada'}, mock);
+            barChart.createBarChartFlow({ ID:'flow1', name: 'grafico tempo-temperatura', indexKey: 'tempo', valueKey: 'temperatura'});
+            barChart.createBarChartFlow({ ID:'flow2', name: 'grafico tempo-temperatura', indexKey: 'tempo', valueKey: 'temperatura'});
+            barChart.deleteAllFlows();
+            assert.strictEqual(mock.p1[mock.p1.length-2],'deleteFlow');
+            assert.deepEqual(mock.p2[mock.p2.length-2], {ID: 'flow1'});
+            assert.strictEqual(mock.p1[mock.p1.length-1],'deleteFlow');
+            assert.deepEqual(mock.p2[mock.p2.length-1], {ID: 'flow2'});
+            assert.strictEqual(barChart._flows.length,0);
+        });
+    });
+
+    describe('#updateRecord', function() {
+        it('returned error - undefined record', function() {
+            var mock=new socketMock();
+            var barChart=new BarChart({ID: 'dada'}, {_page: 'dssada'}, mock);
+            assert.strictEqual(typeof barChart.updateRecord(),'number');
+        });
+        it('returned true - correctly updated', function() {
+            var mock=new socketMock();
+            var barChart=new BarChart({ID: 'dada'}, {_page: 'dssada'}, mock);
+            barChart.createBarChartFlow({ ID:'flow1', name: 'grafico tempo-temperatura', indexKey: 'tempo', valueKey: 'temperatura'}, [{'tempo': 1, 'temperatura': 25}]);
+            assert.strictEqual(barChart.updateRecord('flow1',0,{'tempo': 3, 'temperatura': 7}),true);
+        });
+    });
 });
