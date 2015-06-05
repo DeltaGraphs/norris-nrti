@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <checkstyle version="4.3">
-	<file name="lib/businessTier/flow/tableFlow.js">
-		<error line="60" column="49" severity="warning" message="&apos;record&apos; is defined but never used." source="jshint.W098" />
-		<error line="60" column="45" severity="warning" message="&apos;ID&apos; is defined but never used." source="jshint.W098" />
-		<error line="68" column="49" severity="warning" message="&apos;params&apos; is defined but never used." source="jshint.W098" />
+	<file name="test/businessTier/flow/tableFlowSpec.js">
+		<error line="29" column="5" severity="warning" message="&apos;socketMockHistory&apos; is defined but never used." source="jshint.W098" />
 	</file>
 </checkstyle>

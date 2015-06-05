@@ -2990,14 +2990,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 36,
-                    "physical": 72
+                    "logical": 93,
+                    "physical": 141
                 },
-                "cyclomatic": 6,
+                "cyclomatic": 18,
                 "halstead": {
                     "operators": {
-                        "distinct": 18,
-                        "total": 110,
+                        "distinct": 20,
+                        "total": 262,
                         "identifiers": [
                             "var",
                             "=",
@@ -3014,14 +3014,16 @@
                             "!==",
                             "[]",
                             "forin",
-                            "typeof (prefix)",
                             "{}",
-                            ":"
+                            ":",
+                            "for",
+                            "<",
+                            "++ (postfix)"
                         ]
                     },
                     "operands": {
-                        "distinct": 54,
-                        "total": 125,
+                        "distinct": 70,
+                        "total": 298,
                         "identifiers": [
                             "\"use strict\"",
                             "TableFlowModel",
@@ -3059,7 +3061,6 @@
                             "_columnKeys",
                             "newValue",
                             "key",
-                            "\"number\"",
                             "push",
                             "data",
                             "action",
@@ -3073,23 +3074,40 @@
                             "_graphSocket",
                             "sendMessage",
                             "updateRecord",
+                            "oldValid",
+                            "newValid",
+                            true,
+                            "\"deleteRecord\"",
+                            "data2",
+                            "data3",
+                            "\"updateRecord\"",
                             "getReplaceDataJSON",
+                            "dataRecords",
+                            "_records",
+                            "i",
+                            0,
+                            "length",
+                            "j",
+                            "\"replaceData\"",
                             "updateProperties",
+                            "prop",
+                            "filters",
+                            "\"updateFlowProp\"",
                             "module",
                             "exports"
                         ]
                     },
-                    "length": 235,
-                    "vocabulary": 72,
-                    "difficulty": 20.833333333333336,
-                    "volume": 1449.9323753389433,
-                    "effort": 30206.92448622799,
-                    "bugs": 0.48331079177964775,
-                    "time": 1678.1624714571105
+                    "length": 560,
+                    "vocabulary": 90,
+                    "difficulty": 42.57142857142857,
+                    "volume": 3635.437733944618,
+                    "effort": 154765.77781649944,
+                    "bugs": 1.2118125779815392,
+                    "time": 8598.098767583302
                 },
                 "params": 6,
                 "line": 2,
-                "cyclomaticDensity": 16.666666666666664
+                "cyclomaticDensity": 19.35483870967742
             },
             "functions": [
                 {
@@ -3159,8 +3177,8 @@
                     "cyclomatic": 3,
                     "halstead": {
                         "operators": {
-                            "distinct": 14,
-                            "total": 50,
+                            "distinct": 12,
+                            "total": 45,
                             "identifiers": [
                                 "var",
                                 "=",
@@ -3171,16 +3189,14 @@
                                 "!==",
                                 "[]",
                                 "forin",
-                                "===",
-                                "typeof (prefix)",
                                 "{}",
                                 ":",
                                 "return"
                             ]
                         },
                         "operands": {
-                            "distinct": 27,
-                            "total": 55,
+                            "distinct": 26,
+                            "total": 51,
                             "identifiers": [
                                 "record",
                                 "res",
@@ -3196,7 +3212,6 @@
                                 "<anonymous>",
                                 "key",
                                 "undefined",
-                                "\"number\"",
                                 "push",
                                 "data",
                                 "action",
@@ -3211,13 +3226,13 @@
                                 "sendMessage"
                             ]
                         },
-                        "length": 105,
-                        "vocabulary": 41,
-                        "difficulty": 14.25925925925926,
-                        "volume": 562.5429604848988,
-                        "effort": 8021.445918025409,
-                        "bugs": 0.18751432016163294,
-                        "time": 445.63588433474496
+                        "length": 96,
+                        "vocabulary": 38,
+                        "difficulty": 11.769230769230768,
+                        "volume": 503.8010412905842,
+                        "effort": 5929.350716727644,
+                        "bugs": 0.16793368043019472,
+                        "time": 329.4083731515358
                     },
                     "params": 1,
                     "line": 37,
@@ -3226,97 +3241,199 @@
                 {
                     "name": "<anonymous>.updateRecord",
                     "sloc": {
-                        "logical": 0,
-                        "physical": 3
+                        "logical": 33,
+                        "physical": 45
                     },
-                    "cyclomatic": 1,
+                    "cyclomatic": 7,
                     "halstead": {
                         "operators": {
-                            "distinct": 0,
-                            "total": 0,
-                            "identifiers": []
-                        },
-                        "operands": {
-                            "distinct": 2,
-                            "total": 2,
+                            "distinct": 14,
+                            "total": 82,
                             "identifiers": [
-                                "ID",
-                                "record"
+                                "var",
+                                "=",
+                                ".",
+                                "()",
+                                "if",
+                                "===",
+                                "&&",
+                                "! (prefix)",
+                                "{}",
+                                ":",
+                                "[]",
+                                "forin",
+                                "!==",
+                                "return"
                             ]
                         },
-                        "length": 2,
-                        "vocabulary": 2,
-                        "difficulty": 0,
-                        "volume": 2,
-                        "effort": 0,
-                        "bugs": 0.0006666666666666666,
-                        "time": 0
+                        "operands": {
+                            "distinct": 32,
+                            "total": 97,
+                            "identifiers": [
+                                "ID",
+                                "record",
+                                "oldValid",
+                                "this",
+                                "_dataTableFlow",
+                                "getRecordByID",
+                                "norrisRecordIsValid",
+                                "res",
+                                "updateRecord",
+                                "newValid",
+                                true,
+                                "data",
+                                "<anonymous>",
+                                "action",
+                                "\"deleteRecord\"",
+                                "_ID",
+                                "norrisRecordID",
+                                "\"updateFlowData\"",
+                                "_graphSocket",
+                                "sendMessage",
+                                "columnKeys",
+                                "_columnKeys",
+                                "newValue",
+                                "key",
+                                "undefined",
+                                "push",
+                                "data2",
+                                "\"insertRecords\"",
+                                "records",
+                                "value",
+                                "data3",
+                                "\"updateRecord\""
+                            ]
+                        },
+                        "length": 179,
+                        "vocabulary": 46,
+                        "difficulty": 21.21875,
+                        "volume": 988.7175901342054,
+                        "effort": 20979.351365660168,
+                        "bugs": 0.32957253004473513,
+                        "time": 1165.5195203144538
                     },
                     "params": 2,
                     "line": 60,
-                    "cyclomaticDensity": null
+                    "cyclomaticDensity": 21.21212121212121
                 },
                 {
                     "name": "<anonymous>.getReplaceDataJSON",
                     "sloc": {
-                        "logical": 0,
-                        "physical": 3
+                        "logical": 18,
+                        "physical": 24
                     },
-                    "cyclomatic": 1,
+                    "cyclomatic": 5,
                     "halstead": {
                         "operators": {
-                            "distinct": 0,
-                            "total": 0,
-                            "identifiers": []
+                            "distinct": 13,
+                            "total": 53,
+                            "identifiers": [
+                                "var",
+                                "=",
+                                "[]",
+                                ".",
+                                "for",
+                                "<",
+                                "++ (postfix)",
+                                "if",
+                                "!==",
+                                "()",
+                                "{}",
+                                ":",
+                                "return"
+                            ]
                         },
                         "operands": {
-                            "distinct": 0,
-                            "total": 0,
-                            "identifiers": []
+                            "distinct": 22,
+                            "total": 56,
+                            "identifiers": [
+                                "records",
+                                "<anonymous>",
+                                "dataRecords",
+                                "this",
+                                "_dataTableFlow",
+                                "_records",
+                                "columnKeys",
+                                "_columnKeys",
+                                "i",
+                                0,
+                                "length",
+                                "norrisRecordIsValid",
+                                "record",
+                                "j",
+                                "undefined",
+                                "push",
+                                "norrisRecordID",
+                                "value",
+                                "action",
+                                "\"replaceData\"",
+                                "ID",
+                                "_ID"
+                            ]
                         },
-                        "length": 0,
-                        "time": 0,
-                        "bugs": 0,
-                        "effort": 0,
-                        "volume": 0,
-                        "difficulty": 0,
-                        "vocabulary": 0
+                        "length": 109,
+                        "vocabulary": 35,
+                        "difficulty": 16.545454545454547,
+                        "volume": 559.0918488470013,
+                        "effort": 9250.428771832205,
+                        "bugs": 0.1863639496156671,
+                        "time": 513.9127095462336
                     },
                     "params": 0,
-                    "line": 64,
-                    "cyclomaticDensity": null
+                    "line": 106,
+                    "cyclomaticDensity": 27.77777777777778
                 },
                 {
                     "name": "<anonymous>.updateProperties",
                     "sloc": {
-                        "logical": 0,
-                        "physical": 3
+                        "logical": 6,
+                        "physical": 10
                     },
-                    "cyclomatic": 1,
+                    "cyclomatic": 3,
                     "halstead": {
                         "operators": {
-                            "distinct": 0,
-                            "total": 0,
-                            "identifiers": []
-                        },
-                        "operands": {
-                            "distinct": 1,
-                            "total": 1,
+                            "distinct": 6,
+                            "total": 22,
                             "identifiers": [
-                                "params"
+                                "if",
+                                "!==",
+                                "var",
+                                "=",
+                                "()",
+                                "."
                             ]
                         },
-                        "length": 1,
-                        "vocabulary": 1,
-                        "difficulty": 0,
-                        "volume": 0,
-                        "effort": 0,
-                        "bugs": 0,
-                        "time": 0
+                        "operands": {
+                            "distinct": 14,
+                            "total": 27,
+                            "identifiers": [
+                                "params",
+                                "undefined",
+                                "prop",
+                                "this",
+                                "_dataTableFlow",
+                                "updateProperties",
+                                "ID",
+                                "_ID",
+                                "filters",
+                                "\"updateFlowData\"",
+                                "getReplaceDataJSON",
+                                "_graphSocket",
+                                "sendMessage",
+                                "\"updateFlowProp\""
+                            ]
+                        },
+                        "length": 49,
+                        "vocabulary": 20,
+                        "difficulty": 5.785714285714286,
+                        "volume": 211.77447664948076,
+                        "effort": 1225.2666149005672,
+                        "bugs": 0.07059149221649359,
+                        "time": 68.07036749447596
                     },
                     "params": 1,
-                    "line": 68,
-                    "cyclomaticDensity": null
+                    "line": 131,
+                    "cyclomaticDensity": 50
                 }
             ],
             "dependencies": [
@@ -3331,10 +3448,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 119.50855462793464,
-            "loc": 4.8,
-            "cyclomatic": 2,
-            "effort": 1956.822162465664,
+            "maintainability": 94.8795506237527,
+            "loc": 16.2,
+            "cyclomatic": 4.4,
+            "effort": 7829.4124726846985,
             "params": 1.2,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/flow/tableFlow.js"
         },
@@ -16882,9 +16999,9 @@
     ],
     "changeCost": 21.22788761706556,
     "coreSize": 29.03225806451613,
-    "loc": 10.089595350885677,
-    "cyclomatic": 4.285892064924324,
-    "effort": 7871.05667845158,
+    "loc": 10.457337286369546,
+    "cyclomatic": 4.363311419763034,
+    "effort": 8060.495075555419,
     "params": 1.119795079472499,
-    "maintainability": 106.05059927217218
+    "maintainability": 105.25611527203726
 }

@@ -1,8 +1,8 @@
-Mean per-function logical LOC: 10.089595350885677
+Mean per-function logical LOC: 10.457337286369546
 Mean per-function parameter count: 1.119795079472499
-Mean per-function cyclomatic complexity: 4.285892064924324
-Mean per-function Halstead effort: 7871.05667845158
-Mean per-module maintainability index: 106.05059927217218
+Mean per-function cyclomatic complexity: 4.363311419763034
+Mean per-function Halstead effort: 8060.495075555419
+Mean per-module maintainability index: 105.25611527203726
 First-order density: 5.82726326742976%
 Change cost: 21.22788761706556%
 Core size: 29.03225806451613%
@@ -464,12 +464,12 @@ Core size: 29.03225806451613%
 
 /home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/flow/tableFlow.js
 
-  Physical LOC: 72
-  Logical LOC: 36
+  Physical LOC: 141
+  Logical LOC: 93
   Mean parameter count: 1.2
-  Cyclomatic complexity: 6
-  Cyclomatic complexity density: 16.666666666666664%
-  Maintainability index: 119.50855462793464
+  Cyclomatic complexity: 18
+  Cyclomatic complexity density: 19.35483870967742%
+  Maintainability index: 94.8795506237527
   Dependency count: 2
 
   Function: TableFlow
@@ -490,42 +490,42 @@ Core size: 29.03225806451613%
     Parameter count: 1
     Cyclomatic complexity: 3
     Cyclomatic complexity density: 18.75%
-    Halstead difficulty: 14.25925925925926
-    Halstead volume: 562.5429604848988
-    Halstead effort: 8021.445918025409
+    Halstead difficulty: 11.769230769230768
+    Halstead volume: 503.8010412905842
+    Halstead effort: 5929.350716727644
 
   Function: <anonymous>.updateRecord
     Line No.: 60
-    Physical LOC: 3
-    Logical LOC: 0
+    Physical LOC: 45
+    Logical LOC: 33
     Parameter count: 2
-    Cyclomatic complexity: 1
-    Cyclomatic complexity density: Infinity%
-    Halstead difficulty: 0
-    Halstead volume: 2
-    Halstead effort: 0
+    Cyclomatic complexity: 7
+    Cyclomatic complexity density: 21.21212121212121%
+    Halstead difficulty: 21.21875
+    Halstead volume: 988.7175901342054
+    Halstead effort: 20979.351365660168
 
   Function: <anonymous>.getReplaceDataJSON
-    Line No.: 64
-    Physical LOC: 3
-    Logical LOC: 0
+    Line No.: 106
+    Physical LOC: 24
+    Logical LOC: 18
     Parameter count: 0
-    Cyclomatic complexity: 1
-    Cyclomatic complexity density: Infinity%
-    Halstead difficulty: 0
-    Halstead volume: 0
-    Halstead effort: 0
+    Cyclomatic complexity: 5
+    Cyclomatic complexity density: 27.77777777777778%
+    Halstead difficulty: 16.545454545454547
+    Halstead volume: 559.0918488470013
+    Halstead effort: 9250.428771832205
 
   Function: <anonymous>.updateProperties
-    Line No.: 68
-    Physical LOC: 3
-    Logical LOC: 0
+    Line No.: 131
+    Physical LOC: 10
+    Logical LOC: 6
     Parameter count: 1
-    Cyclomatic complexity: 1
-    Cyclomatic complexity density: Infinity%
-    Halstead difficulty: 0
-    Halstead volume: 0
-    Halstead effort: 0
+    Cyclomatic complexity: 3
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 5.785714285714286
+    Halstead volume: 211.77447664948076
+    Halstead effort: 1225.2666149005672
 
 /home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/graph/barChart.js
 

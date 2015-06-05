@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Plato - test/businessTier/flow/tableFlowSpec.js</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link href="../../assets/css/vendor/morris.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet">
+  <link href="../../assets/css/plato.css" rel="stylesheet">
+  <link href="../../assets/css/plato-file.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="http://github.com/es-analysis/plato">Plato on Github</a>
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="../../index.html">Report Home</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>test/businessTier/flow/tableFlowSpec.js</h1>
+  </div>
+</div>
+
+<div class="container aggregate-stats">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
+      <p class="stat">66.22</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
+      <p class="stat">187</p>
+    </div>
+  </div>
+  <div class="row historical">
+    <div class="col-md-6">
+      <p id="chart_historical_maint" class="chart"></p>
+    </div>
+    <div class="col-md-6">
+      <p id="chart_historical_sloc" class="chart"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
+      <p class="stat">22.97</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
+      <p class="stat">1.82</p>
+    </div>
+  </div>
+</div>
+
+<div class="container charts">
+  <div class="row">
+    <h2 class="header">Function weight</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="chart-header">By Complexity <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="This metric counts the number of distinct paths through a block of code. Lower values are better." data-original-title="Cyclomatic Complexity" data-container="body"></i></a></h3>
+      <div id="fn-by-complexity" class="stat"></div>
+    </div>
+    <div class="col-md-6">
+      <h3 class="chart-header">By SLOC  <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h3>
+      <div id="fn-by-sloc" class="stat"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <textarea id="file-source" class="col-md-12">/*jshint node: true, -W106 */
+&#039;use strict&#039;;
+
+/*
+* Name : tableFlowSpec.js
+* Module : UnitTest
+* Location : /test/businessTier/flow
+*
+* History :
+* 
+* Version   Date         Programmer         Description
+* =========================================================
+* 0.0.1     2015-06-05   Filippo Rampado    Initial code
+* =========================================================
+*/
+
+var TableFlow = require(&#039;../../../lib/businessTier/flow/tableFlow.js&#039;);
+var assert = require(&#039;assert&#039;);
+var socketMock=function(){
+    this.p1=null;
+    this.p2=null;
+    this._namespace=&#039;flow1&#039;;
+    this.sendMessage=function(p1, p2){
+        this.p1=p1;
+        this.p2=p2;
+    };
+};
+
+var socketMockHistory=function(){
+    this.p1=[];
+    this.p2=[];
+    this._namespace=&#039;flow1&#039;;
+    this.sendMessage=function(p1, p2){
+        this.p1.push(p1);
+        this.p2.push(p2);
+    };
+};
+
+describe(&#039;TableFlow&#039;, function() {
+    
+    it(&#039;returns null when there are no params&#039;, function() {
+        assert.strictEqual((new TableFlow()).hasOwnProperty(&#039;_dataTableFlow&#039;), false);
+    });
+
+    it(&#039;returns null when there is no valid graphsocket in params&#039;, function() {
+        assert.strictEqual((new TableFlow(2, 3)).hasOwnProperty(&#039;_dataTableFlow&#039;), false);
+    });
+
+    it(&#039;returns null when params are not valid&#039;, function() {
+        assert.strictEqual((new TableFlow(2, {_namespace: 2})).hasOwnProperty(&#039;_dataTableFlow&#039;), false);
+    });
+
+    it(&#039;calls the parent constructor with the params specified&#039;, function() {
+        var flow1=new TableFlow({ID: &#039;flow1&#039;},new socketMock());
+        assert.strictEqual(flow1._dataTableFlow._ID, &#039;flow1&#039;);
+        assert.strictEqual(flow1._graphSocket._namespace, &#039;flow1&#039;);
+    });
+
+    describe(&#039;#addRecord&#039;, function() {
+        it(&#039;returns 143 if record is invalid&#039;, function() {
+            var flow1=new TableFlow({ID: &#039;flow1&#039;},new socketMock());
+            assert.strictEqual(flow1.addRecord(), 143);
+            
+        });
+        it(&#039;returns valid norrisRecordID if record is valid&#039;, function() {
+            var mock=new socketMock();
+            var flow1=new TableFlow({
+                ID: &#039;flow1&#039;,
+                xKey: &#039;a&#039;,
+                yKey: &#039;b&#039;
+            },mock);
+            var ID=flow1.addRecord({&#039;a&#039;: 1, &#039;b&#039;: 25});
+            assert.strictEqual(ID.indexOf(&#039;flow1&#039;), 0);
+            assert.strictEqual(mock.p1, &#039;updateFlowData&#039;);
+            assert.deepEqual(mock.p2,{
+                action: &#039;insertRecords&#039;,
+                ID: &#039;flow1&#039;,
+                records: [{
+                    norrisRecordID: ID,
+                    value: [1,25]
+                }]
+            });
+        });
+    });
+
+    describe(&#039;#updateRecord&#039;, function() {
+        it(&#039;returns 143 if record is invalid&#039;, function() {
+            var flow1=new TableFlow({ID: &#039;flow1&#039;},new socketMock());
+            flow1.addRecord({&#039;tempo&#039;: 1, &#039;temperatura&#039;: 25});
+            assert.strictEqual(flow1.updateRecord(), 141);
+        });
+        it(&#039;returns 142 if no ID in records&#039;, function() {
+            var flow1=new TableFlow({ID: &#039;flow1&#039;},new socketMock());
+            var ID=flow1.addRecord({&#039;tempo&#039;: 1, &#039;temperatura&#039;: 25});
+            assert.strictEqual(flow1.updateRecord(ID+&#039;32442&#039;,{&#039;tempo&#039;: 4, &#039;temperatura&#039;: 33}), 142);
+        });
+        it(&#039;returns 142 if invalid ID&#039;, function() {
+            var flow1=new TableFlow({ID: &#039;flow1&#039;},new socketMock());
+            var ID=flow1.addRecord({&#039;tempo&#039;: 1, &#039;temperatura&#039;: 25});
+            assert.strictEqual(flow1.updateRecord(&#039;sad&#039;+ID,{&#039;tempo&#039;: 4, &#039;temperatura&#039;: 33}), 142);
+        });
+        it(&#039;returns true with correct update&#039;, function() {
+            var mock=new socketMock();
+            var flow1=new TableFlow({
+                    ID: &#039;flow1&#039;,
+                    filters: &#039;temperature&gt;3&#039;,
+                    columnKeys: [&#039;col1&#039;,&#039;col2&#039;]
+                }, mock);
+            var ID=flow1.addRecord({temperature: 5, col1:1, col2:&#039;2&#039;});
+            flow1.addRecord({temperature: 6, col1:1, col2:&#039;2&#039;});
+            flow1.updateRecord(ID, {temperature: 0, col1:1, col2:&#039;2&#039;});
+            assert.strictEqual(mock.p1, &#039;updateFlowData&#039;);
+            assert.deepEqual(mock.p2, {
+                action: &#039;deleteRecord&#039;,
+                ID: &#039;flow1&#039;,
+                norrisRecordID: ID
+            });
+            flow1.updateRecord(ID, {temperature: 5, col1:1, col2:&#039;2&#039;});
+            assert.strictEqual(mock.p1, &#039;updateFlowData&#039;);
+            assert.deepEqual(mock.p2, {
+                action: &#039;insertRecords&#039;,
+                ID: &#039;flow1&#039;,
+                records: [{
+                    norrisRecordID: ID,
+                    value: [1,&#039;2&#039;]
+                }]
+            });
+            flow1.updateRecord(ID, {temperature: 6, a:1, b:2});
+            assert.strictEqual(mock.p1, &#039;updateFlowData&#039;);
+            assert.deepEqual(mock.p2, {
+                action: &#039;updateRecord&#039;,
+                ID: &#039;flow1&#039;,
+                norrisRecordID: ID,
+                value: [1,&#039;2&#039;]
+            });
+        });
+    });
+
+    describe(&#039;#getReplaceDataJSON&#039;, function() {
+        it(&#039;returns correct JSON&#039;, function() {
+            var flow1=new TableFlow({ID: &#039;flow1&#039;, name: &#039;tabella&#039;, columnKeys: [&#039;col1&#039;,&#039;col2&#039;]},new socketMock());
+            var ID1=flow1.addRecord({col1: 1, col2:&#039;2&#039;, col3:&#039;notThis&#039;});
+            var ID2=flow1.addRecord({col1: 0, col2:0, col3:&#039;notThis&#039;});
+            var ID3=flow1.addRecord({col1: 2, col2:1.2});
+            assert.deepEqual(flow1.getReplaceDataJSON(),{
+                &#039;action&#039;:&#039;replaceData&#039;,
+                &#039;ID&#039;:&#039;flow1&#039;,
+                &#039;records&#039;:[
+                    {&#039;norrisRecordID&#039;:ID1,&#039;value&#039;:[1,&#039;2&#039;]},
+                    {&#039;norrisRecordID&#039;:ID2,&#039;value&#039;:[0,0]},
+                    {&#039;norrisRecordID&#039;:ID3,&#039;value&#039;:[2,1.2]}
+                ]
+            });
+        });
+    });
+
+    /*describe(&#039;#updateProperties&#039;, function() {
+        it(&#039;update correct properties&#039;, function() {
+            var mock=new socketMockHistory();
+            var flow1=new TableFlow({ID: &#039;flow1&#039;,filters: &#039;temperature&gt;5&#039;},mock);
+            var ID1=flow1.addRecord({&#039;tempo&#039;: 4, &#039;temperatura&#039;: 4});
+            var ID2=flow1.addRecord({&#039;tempo&#039;: 9, &#039;temperatura&#039;: 23});
+            var ID3=flow1.addRecord({&#039;tempo&#039;: 6, &#039;temperatura&#039;: 7});
+            flow1.addRecord({&#039;tempo&#039;: 6, &#039;temperatura&#039;: 0});
+            flow1.addRecord({&#039;time&#039;: 6, &#039;temp&#039;: 0});
+            flow1.updateProperties({name: &#039;grafico tempo-temperatura&#039;,xKey: &#039;tempo&#039;,yKey: &#039;temperatura&#039;,filters: &#039;temperatura&gt;3&#039;});
+            assert.strictEqual(flow1._dataTableFlow._xKey,&#039;tempo&#039;);
+            assert.strictEqual(flow1._dataTableFlow._yKey,&#039;temperatura&#039;);
+            assert.strictEqual(flow1._dataTableFlow._name,&#039;grafico tempo-temperatura&#039;);
+            assert.strictEqual(mock.p1[mock.p1.length-2],&#039;updateFlowData&#039;);
+            //console.dir(flow1._dataTableFlow._records);
+            assert.deepEqual(mock.p2[mock.p1.length-2],{
+                action: &#039;replaceData&#039;,
+                ID: &#039;flow1&#039;,
+                records: [
+                    {norrisRecordID: ID1,
+                    value: [4,4]},
+                    {norrisRecordID: ID2,
+                    value: [9,23]},
+                    {norrisRecordID: ID3,
+                    value: [6,7]},
+                ]
+            });
+            assert.strictEqual(mock.p1[mock.p1.length-1],&#039;updateFlowProp&#039;);
+            assert.deepEqual(mock.p2[mock.p1.length-1],{&#039;ID&#039;: &#039;flow1&#039;, &#039;name&#039;:&#039;grafico tempo-temperatura&#039;,&#039;filters&#039;:&#039;temperatura&gt;3&#039;,&#039;xKey&#039;:&#039;tempo&#039;,&#039;yKey&#039;:&#039;temperatura&#039;});
+        });
+    });*/
+});</textarea>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>.</p>
+  </div>
+</footer>
+
+<script type="text/html" id="complexity-popover-template">
+  <div class="complexity-notice">
+    Complexity : {{ complexity.cyclomatic }} <br>
+    Length : {{ complexity.halstead.length }} <br>
+    Difficulty : {{ complexity.halstead.difficulty.toFixed(2) }} <br>
+    Est # bugs : {{ complexity.halstead.bugs.toFixed(2) }}<br>
+  </div>
+</script>
+
+<script type="text/javascript" src="../../assets/scripts/bundles/core-bundle.js"></script>
+<script type="text/javascript" src="../../assets/scripts/bundles/codemirror.js"></script>
+<script type="text/javascript" src="../../assets/scripts/codemirror.markpopovertext.js"></script>
+<script type="text/javascript" src="report.js"></script>
+<script type="text/javascript" src="report.history.js"></script>
+<script type="text/javascript" src="../../assets/scripts/plato-file.js"></script>
+</body>
+</html>
