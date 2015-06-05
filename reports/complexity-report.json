@@ -1362,14 +1362,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 87,
-                    "physical": 150
+                    "logical": 83,
+                    "physical": 146
                 },
                 "cyclomatic": 21,
                 "halstead": {
                     "operators": {
                         "distinct": 21,
-                        "total": 291,
+                        "total": 283,
                         "identifiers": [
                             "var",
                             "=",
@@ -1395,8 +1395,8 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 82,
-                        "total": 329,
+                        "distinct": 77,
+                        "total": 317,
                         "identifiers": [
                             "\"use strict\"",
                             "BarChartFlowModel",
@@ -1448,22 +1448,17 @@
                             "\"updateFlowData\"",
                             "_graphSocket",
                             "sendMessage",
-                            "\"That coverage script is a bit of a douche\"",
-                            "dir",
                             "indexKey",
                             "_indexKey",
                             "valueKey",
                             "_valueKey",
                             "newValue",
                             null,
-                            "\"Here I am, douchebag\"",
                             "data2",
                             "\"insertRecords\"",
                             "value",
-                            "\"And here I am, you jerk\"",
                             "data3",
                             "\"updateRecord\"",
-                            "\"It really is a douche, executed all of this stuff\"",
                             "getReplaceDataJSON",
                             "dataRecords",
                             "i",
@@ -1482,17 +1477,17 @@
                             "exports"
                         ]
                     },
-                    "length": 620,
-                    "vocabulary": 103,
-                    "difficulty": 42.1280487804878,
-                    "volume": 4145.630326853596,
-                    "effort": 174647.3166355579,
-                    "bugs": 1.3818767756178651,
-                    "time": 9702.628701975438
+                    "length": 600,
+                    "vocabulary": 98,
+                    "difficulty": 43.22727272727273,
+                    "volume": 3968.8259064691256,
+                    "effort": 171561.5198660063,
+                    "bugs": 1.322941968823042,
+                    "time": 9531.195548111462
                 },
                 "params": 6,
                 "line": 2,
-                "cyclomaticDensity": 24.137931034482758
+                "cyclomaticDensity": 25.301204819277107
             },
             "functions": [
                 {
@@ -1557,14 +1552,14 @@
                 {
                     "name": "<anonymous>.updateRecord",
                     "sloc": {
-                        "logical": 38,
-                        "physical": 54
+                        "logical": 34,
+                        "physical": 50
                     },
                     "cyclomatic": 11,
                     "halstead": {
                         "operators": {
                             "distinct": 17,
-                            "total": 127,
+                            "total": 119,
                             "identifiers": [
                                 "if",
                                 "||",
@@ -1586,8 +1581,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 45,
-                            "total": 146,
+                            "distinct": 39,
+                            "total": 134,
                             "identifiers": [
                                 "index",
                                 "record",
@@ -1616,37 +1611,31 @@
                                 "\"updateFlowData\"",
                                 "_graphSocket",
                                 "sendMessage",
-                                "\"That coverage script is a bit of a douche\"",
-                                "console",
-                                "dir",
                                 "indexKey",
                                 "_indexKey",
                                 "valueKey",
                                 "_valueKey",
                                 "newValue",
                                 null,
-                                "\"Here I am, douchebag\"",
                                 "data2",
                                 "\"insertRecords\"",
                                 "records",
                                 "value",
-                                "\"And here I am, you jerk\"",
                                 "data3",
-                                "\"updateRecord\"",
-                                "\"It really is a douche, executed all of this stuff\""
+                                "\"updateRecord\""
                             ]
                         },
-                        "length": 273,
-                        "vocabulary": 62,
-                        "difficulty": 27.57777777777778,
-                        "volume": 1625.495592735617,
-                        "effort": 44827.55623522002,
-                        "bugs": 0.5418318642452057,
-                        "time": 2490.4197908455567
+                        "length": 253,
+                        "vocabulary": 56,
+                        "difficulty": 29.205128205128204,
+                        "volume": 1469.260795280574,
+                        "effort": 42909.94989293779,
+                        "bugs": 0.489753598426858,
+                        "time": 2383.8861051632102
                     },
                     "params": 2,
                     "line": 37,
-                    "cyclomaticDensity": 28.947368421052634
+                    "cyclomaticDensity": 32.35294117647059
                 },
                 {
                     "name": "<anonymous>.getReplaceDataJSON",
@@ -1708,7 +1697,7 @@
                         "time": 306.46484544603726
                     },
                     "params": 0,
-                    "line": 92,
+                    "line": 88,
                     "cyclomaticDensity": 25
                 },
                 {
@@ -1785,7 +1774,7 @@
                         "time": 823.7779644494512
                     },
                     "params": 1,
-                    "line": 124,
+                    "line": 120,
                     "cyclomaticDensity": 33.33333333333333
                 }
             ],
@@ -1801,10 +1790,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 89.62148270665476,
-            "loc": 19,
+            "maintainability": 90.59659355472444,
+            "loc": 18,
             "cyclomatic": 6,
-            "effort": 16764.974212740635,
+            "effort": 16285.572627170077,
             "params": 1.5,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/flow/barChartFlow.js"
         },
@@ -4031,45 +4020,42 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 15,
-                    "physical": 36
+                    "logical": 12,
+                    "physical": 33
                 },
                 "cyclomatic": 5,
                 "halstead": {
                     "operators": {
                         "distinct": 9,
-                        "total": 34,
+                        "total": 28,
                         "identifiers": [
                             "function",
-                            "()",
-                            ".",
                             "if",
                             "||",
                             "===",
                             "! (prefix)",
+                            "()",
+                            ".",
                             "return",
                             "="
                         ]
                     },
                     "operands": {
-                        "distinct": 22,
-                        "total": 43,
+                        "distinct": 19,
+                        "total": 34,
                         "identifiers": [
                             "\"use strict\"",
                             "Graph",
                             "page",
                             "graphSocket",
-                            "\"Piedino4-1\"",
-                            "console",
-                            "log",
                             "undefined",
                             "\"_page\"",
                             "_hasOwnProperty",
                             "\"Error: 302\"",
-                            "\"Piedino4-2\"",
+                            "console",
+                            "log",
                             "\"_namespace\"",
                             "\"Error: 301\"",
-                            "\"Piedino4-3\"",
                             "this",
                             "_page",
                             "_graphSocket",
@@ -4079,58 +4065,55 @@
                             "exports"
                         ]
                     },
-                    "length": 77,
-                    "vocabulary": 31,
-                    "difficulty": 8.795454545454545,
-                    "volume": 381.47311589978943,
-                    "effort": 3355.2294512095114,
-                    "bugs": 0.1271577052999298,
-                    "time": 186.40163617830618
+                    "length": 62,
+                    "vocabulary": 28,
+                    "difficulty": 8.052631578947368,
+                    "volume": 298.0560051675714,
+                    "effort": 2400.1351995072855,
+                    "bugs": 0.0993520017225238,
+                    "time": 133.34084441707142
                 },
                 "params": 2,
                 "line": 2,
-                "cyclomaticDensity": 33.33333333333333
+                "cyclomaticDensity": 41.66666666666667
             },
             "functions": [
                 {
                     "name": "Graph",
                     "sloc": {
-                        "logical": 12,
-                        "physical": 17
+                        "logical": 9,
+                        "physical": 14
                     },
                     "cyclomatic": 5,
                     "halstead": {
                         "operators": {
                             "distinct": 8,
-                            "total": 31,
+                            "total": 25,
                             "identifiers": [
-                                "()",
-                                ".",
                                 "if",
                                 "||",
                                 "===",
                                 "! (prefix)",
+                                "()",
+                                ".",
                                 "return",
                                 "="
                             ]
                         },
                         "operands": {
-                            "distinct": 18,
-                            "total": 38,
+                            "distinct": 15,
+                            "total": 29,
                             "identifiers": [
                                 "page",
                                 "graphSocket",
-                                "\"Piedino4-1\"",
-                                "console",
-                                "log",
                                 "undefined",
                                 "\"_page\"",
                                 "_hasOwnProperty",
                                 "\"Error: 302\"",
-                                "\"Piedino4-2\"",
+                                "console",
+                                "log",
                                 "\"_namespace\"",
                                 "\"Error: 301\"",
-                                "\"Piedino4-3\"",
                                 "this",
                                 "_page",
                                 "_graphSocket",
@@ -4138,24 +4121,24 @@
                                 "attachObject"
                             ]
                         },
-                        "length": 69,
-                        "vocabulary": 26,
-                        "difficulty": 8.444444444444445,
-                        "volume": 324.3303405517354,
-                        "effort": 2738.7895424368767,
-                        "bugs": 0.10811011351724513,
-                        "time": 152.15497457982647
+                        "length": 54,
+                        "vocabulary": 23,
+                        "difficulty": 7.733333333333333,
+                        "volume": 244.2723456270787,
+                        "effort": 1889.0394728494086,
+                        "bugs": 0.08142411520902623,
+                        "time": 104.9466373805227
                     },
                     "params": 2,
                     "line": 19,
-                    "cyclomaticDensity": 41.66666666666667
+                    "cyclomaticDensity": 55.55555555555556
                 }
             ],
             "dependencies": [],
-            "maintainability": 103.3041136086049,
-            "loc": 12,
+            "maintainability": 109.23491385631196,
+            "loc": 9,
             "cyclomatic": 5,
-            "effort": 2738.7895424368767,
+            "effort": 1889.0394728494086,
             "params": 2,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/graph/graph.js"
         },
@@ -16898,9 +16881,9 @@
     ],
     "changeCost": 21.22788761706556,
     "coreSize": 29.03225806451613,
-    "loc": 10.218627608950193,
+    "loc": 10.089595350885677,
     "cyclomatic": 4.285892064924324,
-    "effort": 7917.297790580399,
+    "effort": 7874.421930736592,
     "params": 1.119795079472499,
-    "maintainability": 105.8270174963832
+    "maintainability": 106.04978882205342
 }

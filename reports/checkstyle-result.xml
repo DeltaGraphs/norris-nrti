@@ -5,4 +5,10 @@
 		<error line="60" column="45" severity="warning" message="&apos;ID&apos; is defined but never used." source="jshint.W098" />
 		<error line="68" column="49" severity="warning" message="&apos;params&apos; is defined but never used." source="jshint.W098" />
 	</file>
+	<file name="test/businessTier/flow/barChartFlowSpec.js">
+		<error line="123" column="26" severity="warning" message="&apos;socketMockHistory&apos; is not defined." source="jshint.W117" />
+		<error line="147" column="38" severity="warning" message="&apos;ID1&apos; is not defined." source="jshint.W117" />
+		<error line="149" column="38" severity="warning" message="&apos;ID2&apos; is not defined." source="jshint.W117" />
+		<error line="151" column="38" severity="warning" message="&apos;ID3&apos; is not defined." source="jshint.W117" />
+	</file>
 </checkstyle>
