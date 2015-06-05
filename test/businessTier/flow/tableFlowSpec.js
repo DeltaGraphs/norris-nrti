@@ -165,6 +165,11 @@ describe('TableFlow', function() {
             flow1.updateProperties({name: 'tabella',filters: 'temperatura>3'});
             assert.strictEqual(flow1._dataTableFlow._name,'tabella');
             assert.strictEqual(mock.p1[mock.p1.length-2],'updateFlowData');
+            console.log('mock');
+            console.dir(mock.p1);
+            console.log('records');
+            console.dir(flow1._dataTableFlow._records);
+            
             assert.deepEqual(mock.p2[mock.p1.length-2],{
                 action: 'replaceData',
                 ID: 'flow1',
