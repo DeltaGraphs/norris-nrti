@@ -31,6 +31,20 @@ var socketMock=function(){
     };
 };
 
+var socketMockHistory=function(){
+    this.p1=[];
+    this.p2=[];
+    this._namespace='flow1';
+    this.sendMessage=function(p1, p2){
+        this.p1.push(p1);
+        this.p2.push(p2);
+    };
+    this.attachObject=function(p1, p2){
+        this.p1.push(p1);
+        this.p2.push(p2);
+    };
+};
+
 describe('BarChart', function() {
     it('returns 361 when there are no params', function() {
         assert.strictEqual(new BarChart().hasOwnProperty('_dataBarChart'),false);
@@ -90,13 +104,13 @@ describe('BarChart', function() {
             var mock=new socketMock();
             var barChart=new BarChart({ID: 'dada'}, {_page: 'dssada'}, mock);
             barChart.createBarChartFlow({ ID:'flow1', name: 'grafico tempo-temperatura', indexKey: 'tempo', valueKey: 'temperatura'});
-            assert.strictEqual(barChart.deleteFlow(34),273);
+            assert.strictEqual(barChart.deleteFlow(34),263);
         });
         it('return 263 - no ID in flows', function() {
             var mock=new socketMock();
             var barChart=new BarChart({ID: 'dada'}, {_page: 'dssada'}, mock);
             barChart.createBarChartFlow({ ID:'flow1', name: 'grafico tempo-temperatura', indexKey: 'tempo', valueKey: 'temperatura'});
-            assert.strictEqual(barChart.deleteFlow('flow123'),273);
+            assert.strictEqual(barChart.deleteFlow('flow123'),263);
         });
         it('return true - deleted flow', function() {
             var mock = new socketMock();

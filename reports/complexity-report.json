@@ -3468,7 +3468,7 @@
                 "halstead": {
                     "operators": {
                         "distinct": 22,
-                        "total": 333,
+                        "total": 334,
                         "identifiers": [
                             "var",
                             "=",
@@ -3496,7 +3496,7 @@
                     },
                     "operands": {
                         "distinct": 92,
-                        "total": 368,
+                        "total": 369,
                         "identifiers": [
                             "\"use strict\"",
                             "Graph",
@@ -3592,13 +3592,13 @@
                             "exports"
                         ]
                     },
-                    "length": 701,
+                    "length": 703,
                     "vocabulary": 114,
-                    "difficulty": 44,
-                    "volume": 4789.855899929485,
-                    "effort": 210753.6595968973,
-                    "bugs": 1.5966186333098282,
-                    "time": 11708.536644272073
+                    "difficulty": 44.119565217391305,
+                    "volume": 4803.521679957814,
+                    "effort": 211929.28803205182,
+                    "bugs": 1.6011738933192712,
+                    "time": 11773.84933511399
                 },
                 "params": 11,
                 "line": 2,
@@ -3809,7 +3809,7 @@
                     "halstead": {
                         "operators": {
                             "distinct": 16,
-                            "total": 40,
+                            "total": 41,
                             "identifiers": [
                                 "if",
                                 "===",
@@ -3830,8 +3830,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 22,
-                            "total": 46,
+                            "distinct": 24,
+                            "total": 47,
                             "identifiers": [
                                 "ID",
                                 "\"string\"",
@@ -3846,6 +3846,8 @@
                                 0,
                                 "found",
                                 false,
+                                "_dataBarChartFlow",
+                                "_ID",
                                 true,
                                 "\"FOUND\"",
                                 "\"deleteFlow\"",
@@ -3857,13 +3859,13 @@
                                 263
                             ]
                         },
-                        "length": 86,
-                        "vocabulary": 38,
-                        "difficulty": 16.727272727272727,
-                        "volume": 451.3217661561483,
-                        "effort": 7549.382270248299,
-                        "bugs": 0.1504405887187161,
-                        "time": 419.4101261249055
+                        "length": 88,
+                        "vocabulary": 40,
+                        "difficulty": 15.666666666666666,
+                        "volume": 468.3296723500879,
+                        "effort": 7337.164866818043,
+                        "bugs": 0.15610989078336263,
+                        "time": 407.62027037878016
                     },
                     "params": 1,
                     "line": 92,
@@ -4139,10 +4141,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 104.83701484350284,
+            "maintainability": 104.85491628686383,
             "loc": 9.88888888888889,
             "cyclomatic": 3.111111111111111,
-            "effort": 4516.610824638805,
+            "effort": 4493.031113146553,
             "params": 1.2222222222222223,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/graph/barChart.js"
         },
@@ -17012,7 +17014,7 @@
     "coreSize": 29.03225806451613,
     "loc": 10.476154490670622,
     "cyclomatic": 4.363311419763034,
-    "effort": 8067.7899216984815,
+    "effort": 8067.029285843892,
     "params": 1.119795079472499,
-    "maintainability": 105.19926587430984
+    "maintainability": 105.1998433402247
 }

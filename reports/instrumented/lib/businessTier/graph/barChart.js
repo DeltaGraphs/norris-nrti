@@ -169,7 +169,7 @@ BarChart.prototype.deleteFlow = function (ID) {
         __cov_Q1gspF7bcYG3VQX6TclCQw.s['57']++;
         while ((__cov_Q1gspF7bcYG3VQX6TclCQw.b['15'][0]++, i < flows) && (__cov_Q1gspF7bcYG3VQX6TclCQw.b['15'][1]++, !found)) {
             __cov_Q1gspF7bcYG3VQX6TclCQw.s['58']++;
-            if (this._flows[i].ID === ID) {
+            if (this._flows[i]._dataBarChartFlow._ID === ID) {
                 __cov_Q1gspF7bcYG3VQX6TclCQw.b['16'][0]++;
                 __cov_Q1gspF7bcYG3VQX6TclCQw.s['59']++;
                 found = true;
