@@ -14,7 +14,6 @@
 		<error line="19" column="159" severity="warning" message="&apos;TableFlowFactory&apos; is defined but never used." source="jshint.W098" />
 	</file>
 	<file name="app/View/GraphsView/BarChartView.js">
-		<error line="18" column="33" severity="warning" message="&apos;$compile&apos; is defined but never used." source="jshint.W098" />
 		<error line="76" column="18" severity="warning" message="&apos;chart&apos; is defined but never used." source="jshint.W098" />
 	</file>
 	<file name="app/View/GraphsView/MapChartView.js">
