@@ -148,14 +148,14 @@ describe(&#039;BarChart&#039;, function() {
             var mock=new socketMock();
             var barChart=new BarChart({ID: &#039;dada&#039;}, {_page: &#039;dssada&#039;}, mock);
             barChart.createBarChartFlow({ ID:&#039;flow1&#039;, name: &#039;grafico tempo-temperatura&#039;, indexKey: &#039;tempo&#039;, valueKey: &#039;temperatura&#039;});
-            assert.strictEqual(barChart.getFlowByID(&#039;fl1&#039;),272);
+            assert.strictEqual(barChart.getFlowByID(&#039;fl1&#039;),262);
         });
         it(&#039;return correct flow&#039;, function() {
             var mock=new socketMock();
             var barChart=new BarChart({ID: &#039;dada&#039;}, {_page: &#039;dssada&#039;}, mock);
             barChart.createBarChartFlow({ ID:&#039;flow1&#039;, name: &#039;grafico tempo-temperatura&#039;, indexKey: &#039;tempo&#039;, valueKey: &#039;temperatura&#039;});
             barChart.createBarChartFlow({ ID:&#039;flow2&#039;, name: &#039;grafico tempo-temperatura&#039;, indexKey: &#039;tempo&#039;, valueKey: &#039;temperatura&#039;});
-            assert.deepEqual(barChart.getFlowByID(&#039;flow2&#039;)._dataBarChart._ID, &#039;flow2&#039;);
+            assert.deepEqual(barChart.getFlowByID(&#039;flow2&#039;)._dataBarChartFlow._ID, &#039;flow2&#039;);
         });
     });
 

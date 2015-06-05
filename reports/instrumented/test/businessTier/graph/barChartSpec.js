@@ -57,14 +57,14 @@ describe('BarChart', function() {
             var mock=new socketMock();
             var barChart=new BarChart({ID: 'dada'}, {_page: 'dssada'}, mock);
             barChart.createBarChartFlow({ ID:'flow1', name: 'grafico tempo-temperatura', indexKey: 'tempo', valueKey: 'temperatura'});
-            assert.strictEqual(barChart.getFlowByID('fl1'),272);
+            assert.strictEqual(barChart.getFlowByID('fl1'),262);
         });
         it('return correct flow', function() {
             var mock=new socketMock();
             var barChart=new BarChart({ID: 'dada'}, {_page: 'dssada'}, mock);
             barChart.createBarChartFlow({ ID:'flow1', name: 'grafico tempo-temperatura', indexKey: 'tempo', valueKey: 'temperatura'});
             barChart.createBarChartFlow({ ID:'flow2', name: 'grafico tempo-temperatura', indexKey: 'tempo', valueKey: 'temperatura'});
-            assert.deepEqual(barChart.getFlowByID('flow2')._dataBarChart._ID, 'flow2');
+            assert.deepEqual(barChart.getFlowByID('flow2')._dataBarChartFlow._ID, 'flow2');
         });
     });
 
