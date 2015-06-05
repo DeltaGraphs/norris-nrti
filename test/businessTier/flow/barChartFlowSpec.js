@@ -117,4 +117,43 @@ describe('BarChartFlow', function() {
             });
         });
     });
+
+    describe('#updateProperties', function() {
+        it('update correct properties', function() {
+            var mock=new socketMockHistory();
+            var flow1=new BarChartFlow(
+                {
+                    ID: 'flow1',
+                    filters: 'temperature>5'
+                },mock,
+                [
+                    {'tempo': 4, 'temperatura': 4},
+                    {'tempo': 9, 'temperatura': 23},
+                    {'tempo': 6, 'temperatura': 7},
+                    {'tempo': 6, 'temperatura': 0},
+                    {'time': 6, 'temp': 0}
+                ]
+            );
+            flow1.updateProperties({name: 'grafico tempo-temperatura',indexKey: 'tempo',valueKey: 'temperatura',filters: 'temperatura>3'});
+            assert.strictEqual(flow1._dataLineChartFlow._indexKey,'tempo');
+            assert.strictEqual(flow1._dataLineChartFlow._valueKey,'temperatura');
+            assert.strictEqual(flow1._dataLineChartFlow._name,'grafico tempo-temperatura');
+            assert.strictEqual(mock.p1[mock.p1.length-2],'updateFlowData');
+            //console.dir(flow1._dataLineChartFlow._records);
+            assert.deepEqual(mock.p2[mock.p1.length-2],{
+                action: 'replaceData',
+                ID: 'flow1',
+                records: [
+                    {norrisRecordID: ID1,
+                    value: [4,4]},
+                    {norrisRecordID: ID2,
+                    value: [9,23]},
+                    {norrisRecordID: ID3,
+                    value: [6,7]},
+                ]
+            });
+            assert.strictEqual(mock.p1[mock.p1.length-1],'updateFlowProp');
+            assert.deepEqual(mock.p2[mock.p1.length-1],{'ID': 'flow1', 'name':'grafico tempo-temperatura','filters':'temperatura>3','xKey':'tempo','yKey':'temperatura'});
+        });
+    });
 });
