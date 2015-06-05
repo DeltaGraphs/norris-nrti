@@ -28,22 +28,17 @@ angular.module('app')
 		this.listenOnEvents();
 	};
 
-	var count = 0;
 	$scope.changedP = true;
 	$scope.changedD = true;
 	$scope.changedF = true;
 	this.listenOnEvents = function(){
 		console.log('BARCHART listenOnEvents');
-
 		socket.on('configGraph', function(info){
-			if (count == 0) {
-				console.log('BARCHART configGraph');
-				$scope.barChart.updateParameters(info.properties);
-				$scope.barChart.initializeData(info.data);
-				$scope.changedP = !$scope.changedP;
-				$scope.changedD = !$scope.changedD;
-				count++;
-			}
+			console.log('BARCHART configGraph');
+			$scope.barChart.updateParameters(info.properties);
+			$scope.barChart.initializeData(info.data);
+			$scope.changedP = !$scope.changedP;
+			$scope.changedD = !$scope.changedD;
 		});
 		socket.on('updateGraphProp', function(info){
 			console.log('BARCHART updateGraphProp');
@@ -52,7 +47,7 @@ angular.module('app')
 		});
 		socket.on('insertFlow', function(info){
 			console.log('BARCHART insert flow' + JSON.stringify(info));
-			var flow = BarChartFlowFactory.build(info);
+			var flow = BarChartFlowFactory.build(info.properties);
 			flow.initializeData(info);
 			$scope.barChart.addFlow(info.ID, flow);
 			$scope.changedD = !$scope.changedD;
@@ -92,6 +87,7 @@ angular.module('app')
 			$scope.changedD = !$scope.changedD;
 		});
 	};
+
 
 	$scope.socketConnection = this.socketConnection;
 	$scope.listenOnEvents = this.listenOnEvents;

@@ -47,7 +47,7 @@ angular.module('app')
 
     function BarChartFlow(info) {
     	this._data = [];
-		this._flowColor = '#5A8';
+		this._flowColor = '#000';
 		this._flow = null;
 
 		var json = split(info);
