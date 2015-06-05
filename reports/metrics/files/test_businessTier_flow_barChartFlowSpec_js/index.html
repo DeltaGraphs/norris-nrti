@@ -62,7 +62,7 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">24.54</p>
+      <p class="stat">24.77</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
@@ -237,9 +237,9 @@ describe(&#039;BarChartFlow&#039;, function() {
                 ]
             );
             flow1.updateProperties({name: &#039;grafico tempo-temperatura&#039;,indexKey: &#039;tempo&#039;,valueKey: &#039;temperatura&#039;,filters: &#039;temperatura&gt;3&#039;});
-            assert.strictEqual(flow1._dataLineChartFlow._indexKey,&#039;tempo&#039;);
-            assert.strictEqual(flow1._dataLineChartFlow._valueKey,&#039;temperatura&#039;);
-            assert.strictEqual(flow1._dataLineChartFlow._name,&#039;grafico tempo-temperatura&#039;);
+            assert.strictEqual(flow1._dataBarChartFlow._indexKey,&#039;tempo&#039;);
+            assert.strictEqual(flow1._dataBarChartFlow._valueKey,&#039;temperatura&#039;);
+            assert.strictEqual(flow1._dataBarChartFlow._name,&#039;grafico tempo-temperatura&#039;);
             assert.strictEqual(mock.p1[mock.p1.length-2],&#039;updateFlowData&#039;);
             //console.dir(flow1._dataLineChartFlow._records);
             assert.deepEqual(mock.p2[mock.p1.length-2],{
