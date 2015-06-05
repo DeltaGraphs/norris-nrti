@@ -3461,14 +3461,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 107,
-                    "physical": 168
+                    "logical": 105,
+                    "physical": 166
                 },
                 "cyclomatic": 20,
                 "halstead": {
                     "operators": {
                         "distinct": 22,
-                        "total": 334,
+                        "total": 330,
                         "identifiers": [
                             "var",
                             "=",
@@ -3495,8 +3495,8 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 92,
-                        "total": 369,
+                        "distinct": 91,
+                        "total": 363,
                         "identifiers": [
                             "\"use strict\"",
                             "Graph",
@@ -3561,9 +3561,8 @@
                             "\"insertFlow\"",
                             "sendMessage",
                             "deleteFlow",
-                            "\"DELETEFLOW - ID\"",
-                            "dir",
                             "\"FOUND\"",
+                            "dir",
                             "\"deleteFlow\"",
                             1,
                             "splice",
@@ -3592,17 +3591,17 @@
                             "exports"
                         ]
                     },
-                    "length": 703,
-                    "vocabulary": 114,
-                    "difficulty": 44.119565217391305,
-                    "volume": 4803.521679957814,
-                    "effort": 211929.28803205182,
-                    "bugs": 1.6011738933192712,
-                    "time": 11773.84933511399
+                    "length": 693,
+                    "vocabulary": 113,
+                    "difficulty": 43.879120879120876,
+                    "volume": 4726.384020953726,
+                    "effort": 207389.5757765739,
+                    "bugs": 1.5754613403179085,
+                    "time": 11521.64309869855
                 },
                 "params": 11,
                 "line": 2,
-                "cyclomaticDensity": 18.69158878504673
+                "cyclomaticDensity": 19.047619047619047
             },
             "functions": [
                 {
@@ -3802,42 +3801,39 @@
                 {
                     "name": "<anonymous>.deleteFlow",
                     "sloc": {
-                        "logical": 18,
-                        "physical": 25
+                        "logical": 16,
+                        "physical": 23
                     },
                     "cyclomatic": 5,
                     "halstead": {
                         "operators": {
                             "distinct": 16,
-                            "total": 41,
+                            "total": 37,
                             "identifiers": [
                                 "if",
                                 "===",
                                 "typeof (prefix)",
-                                "()",
-                                ".",
                                 "var",
                                 "=",
+                                ".",
                                 "while",
                                 "&&",
                                 "<",
                                 "! (prefix)",
                                 "else",
                                 "++ (postfix)",
+                                "()",
                                 "{}",
                                 ":",
                                 "return"
                             ]
                         },
                         "operands": {
-                            "distinct": 24,
-                            "total": 47,
+                            "distinct": 23,
+                            "total": 41,
                             "identifiers": [
                                 "ID",
                                 "\"string\"",
-                                "\"DELETEFLOW - ID\"",
-                                "console",
-                                "dir",
                                 "flows",
                                 "this",
                                 "_flows",
@@ -3850,6 +3846,8 @@
                                 "_ID",
                                 true,
                                 "\"FOUND\"",
+                                "console",
+                                "dir",
                                 "\"deleteFlow\"",
                                 "<anonymous>",
                                 "_graphSocket",
@@ -3859,17 +3857,17 @@
                                 263
                             ]
                         },
-                        "length": 88,
-                        "vocabulary": 40,
-                        "difficulty": 15.666666666666666,
-                        "volume": 468.3296723500879,
-                        "effort": 7337.164866818043,
-                        "bugs": 0.15610989078336263,
-                        "time": 407.62027037878016
+                        "length": 78,
+                        "vocabulary": 39,
+                        "difficulty": 14.26086956521739,
+                        "volume": 412.2613730712554,
+                        "effort": 5879.205668146598,
+                        "bugs": 0.13742045769041847,
+                        "time": 326.62253711925547
                     },
                     "params": 1,
                     "line": 92,
-                    "cyclomaticDensity": 27.77777777777778
+                    "cyclomaticDensity": 31.25
                 },
                 {
                     "name": "<anonymous>.deleteAllFlows",
@@ -3919,7 +3917,7 @@
                         "time": 39.2116385856331
                     },
                     "params": 0,
-                    "line": 118,
+                    "line": 116,
                     "cyclomaticDensity": 50
                 },
                 {
@@ -3960,7 +3958,7 @@
                         "time": 5.547368752524047
                     },
                     "params": 3,
-                    "line": 125,
+                    "line": 123,
                     "cyclomaticDensity": 100
                 },
                 {
@@ -4009,7 +4007,7 @@
                         "time": 35.672402978184785
                     },
                     "params": 1,
-                    "line": 130,
+                    "line": 128,
                     "cyclomaticDensity": 50
                 },
                 {
@@ -4047,7 +4045,7 @@
                         "time": 1.5078947920873411
                     },
                     "params": 0,
-                    "line": 138,
+                    "line": 136,
                     "cyclomaticDensity": 100
                 },
                 {
@@ -4115,7 +4113,7 @@
                         "time": 902.3242435850648
                     },
                     "params": 0,
-                    "line": 142,
+                    "line": 140,
                     "cyclomaticDensity": 15
                 }
             ],
@@ -4141,10 +4139,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 104.85491628686383,
-            "loc": 9.88888888888889,
+            "maintainability": 105.3486993026792,
+            "loc": 9.666666666666666,
             "cyclomatic": 3.111111111111111,
-            "effort": 4493.031113146553,
+            "effort": 4331.035646627504,
             "params": 1.2222222222222223,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/graph/barChart.js"
         },
@@ -17012,9 +17010,9 @@
     ],
     "changeCost": 21.22788761706556,
     "coreSize": 29.03225806451613,
-    "loc": 10.476154490670622,
+    "loc": 10.46898603188926,
     "cyclomatic": 4.363311419763034,
-    "effort": 8067.029285843892,
+    "effort": 8061.8036256336,
     "params": 1.119795079472499,
-    "maintainability": 105.1998433402247
+    "maintainability": 105.21577182460585
 }
