@@ -24,7 +24,7 @@ angular.module('app')
             url: '@'
 		},
 		bindToController: true,
-        template: '<nvd3-multi-bar-chart data="exampleData" id="exampleId" xAxisTickFormat="xAxisTickFormatFunction()" width="550" height="350" showXAxis="true" showYAxis="true"><svg></svg></nvd3-multi-bar-chart>',
+        //template: '<div></div>',
         link: function(scope, element, attrs){
 
             scope.exampleData = [
@@ -76,6 +76,10 @@ angular.module('app')
             var  chart;
 
             scope.init = function(){
+
+
+                element.append('<nvd3-multi-bar-chart data="exampleData" id="exampleId" ng-attr-x_axis_tick_format="xAxisTickFormatFunction()" width="1000" height="600" ng-attr-show_x_axis="true" ng-attr-show_y_axis="true"><svg></svg></nvd3-multi-bar-chart>');
+                $compile(element.contents())(scope);
                 /*
                 showXAxis="true" showYAxis="true" 
 
