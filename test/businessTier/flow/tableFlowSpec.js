@@ -161,7 +161,7 @@ describe('TableFlow', function() {
             var ID2=flow1.addRecord({temperatura: '5', col1: 0, col2:0, col3:'notThis'});
             var ID3=flow1.addRecord({temperatura: '6', col1: 2, col2:1.2});
             flow1.addRecord({temperatura: '0', col1: 6, col2: 0});
-            flow1.addRecord({temperatura: '10', col1: 10, col2: 0});
+            flow1.addRecord({col1: 10, col2: 0});
             flow1.updateProperties({name: 'tabella',filters: 'temperatura>3'});
             assert.strictEqual(flow1._dataTableFlow._name,'tabella');
             assert.strictEqual(mock.p1[mock.p1.length-2],'updateFlowData');
