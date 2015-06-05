@@ -69,17 +69,12 @@ describe('BarChartFlow', function() {
     describe('#updateRecord', function() {
         it('returns 111 if record is invalid', function() {
             var flow1=new BarChartFlow({ID: 'flow1'},new socketMock(), [{'index': 1, 'value': 25}]);
-            assert.strictEqual(flow1.updateRecord(), 111);
+            assert.strictEqual(flow1.updateRecord(1, null), 111);
         });
-        it('returns 112 if no ID in records', function() {
+        it('returns 112 if the index is invalid', function() {
             var flow1=new BarChartFlow({ID: 'flow1'},new socketMock(), [{'index': 1, 'value': 25}]);
-            var ID = flow1._dataBarChartFlow._records[0]._ID;
-            assert.strictEqual(flow1.updateRecord(ID+'32442',{'tempo': 4, 'temperatura': 33}), 112);
-        });
-        it('returns 112 if invalid ID', function() {
-            var flow1=new BarChartFlow({ID: 'flow1'},new socketMock(), [{'index': 1, 'value': 25}]);
-            var ID = flow1._dataBarChartFlow._records[0]._ID;
-            assert.strictEqual(flow1.updateRecord('sad'+ID,{'tempo': 4, 'temperatura': 33}), 112);
+            assert.strictEqual(flow1.updateRecord('abc',{'tempo': 4, 'temperatura': 33}), 112);
+            assert.strictEqual(flow1.updateRecord(0,{'tempo': 4, 'temperatura': 33}), 112);
         });
         it('returns true with correct update', function() {
             var mock=new socketMock();
@@ -98,14 +93,14 @@ describe('BarChartFlow', function() {
             console.dir(flow1._dataBarChartFlow._records[0]);
             console.dir(flow1._dataBarChartFlow._records[1]);
             var ID = flow1._dataBarChartFlow._records[0]._ID;
-            assert(flow1.updateRecord(ID, {i: 1, v:3, temperature: 0}), true);
+            assert(flow1.updateRecord(0, {i: 1, v:3, temperature: 0}), true);
             assert.strictEqual(mock.p1, 'updateFlowData');
             assert.deepEqual(mock.p2, {
                 action: 'deleteRecord',
                 ID: 'flow1',
                 norrisRecordID: ID
             });
-            assert(flow1.updateRecord(ID, {i: 1, v:3, temperature: 4}), true);
+            assert(flow1.updateRecord(0, {i: 1, v:3, temperature: 4}), true);
             assert.strictEqual(mock.p1, 'updateFlowData');
             assert.deepEqual(mock.p2, {
                 action: 'insertRecords',
@@ -115,7 +110,7 @@ describe('BarChartFlow', function() {
                     value: [1,3]
                 }]
             });
-            assert(flow1.updateRecord(ID, {i: 1, v:5, temperature: 6}), true);
+            assert(flow1.updateRecord(0, {i: 1, v:5, temperature: 6}), true);
             assert.strictEqual(mock.p1, 'updateFlowData');
             assert.deepEqual(mock.p2, {
                 action: 'updateRecord',
