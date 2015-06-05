@@ -17,16 +17,27 @@
 var BarChartFlow = require('../../../lib/businessTier/flow/barChartFlow.js');
 var assert = require('assert');
 
-describe('BarChartFlow', function() {
-    var socketMock=function(){
-        this.p1=null;
-        this.p2=null;
-        this._namespace='flow1';
-        this.sendMessage=function(p1, p2){
-            this.p1=p1;
-            this.p2=p2;
-        };
+var socketMock=function(){
+    this.p1=null;
+    this.p2=null;
+    this._namespace='flow1';
+    this.sendMessage=function(p1, p2){
+        this.p1=p1;
+        this.p2=p2;
     };
+};
+
+var socketMockHistory=function(){
+    this.p1=[];
+    this.p2=[];
+    this._namespace='flow1';
+    this.sendMessage=function(p1, p2){
+        this.p1.push(p1);
+        this.p2.push(p2);
+    };
+};
+
+describe('BarChartFlow', function() {
     it('returns null when there are no params', function() {
         assert.strictEqual((new BarChartFlow()).hasOwnProperty('_dataBarChartFlow'), false);
     });
