@@ -41,7 +41,7 @@ describe('BarChart', function() {
     });
 
     it('returns 393 when page is not valid', function() {
-        assert.strictEqual(new BarChart({is: 1}, {}, {}).hasOwnProperty('_dataBarChart'),false);
+        assert.strictEqual(new BarChart({is: 1}, {}, {._namespace:'bababa'}).hasOwnProperty('_dataBarChart'),false);
     });
 
     it('returns null if it does not create a BarChartModel', function() {
@@ -52,17 +52,36 @@ describe('BarChart', function() {
         assert.strictEqual(new BarChart({ID: 'dada'}, {_page: 'dssada'}, new socketMock()).hasOwnProperty('_dataBarChart'),true);
     });
 
-    /*describe('#getFlowByID', function() {
-        it('return 272 - no ID in flows', function() {
-            var barChart=new BarChart({_ID: 'dada'}, {_page: 'dssada'}, new socketMock());
-            barChart.createBarChartFlow({ ID:'flow1', name: 'grafico tempo-temperatura', xKey: 'tempo', yKey: 'temperatura'});
+    describe('#getFlowByID', function() {
+        it('return 262 - no ID in flows', function() {
+            var mock=new socketMock();
+            var barChart=new BarChart({ID: 'dada'}, {_page: 'dssada'}, mock);
+            barChart.createBarChartFlow({ ID:'flow1', name: 'grafico tempo-temperatura', indexKey: 'tempo', valueKey: 'temperatura'});
             assert.strictEqual(barChart.getFlowByID('fl1'),272);
         });
         it('return correct flow', function() {
-            var barChart=new BarChart({_ID: 'dada'}, {_page: 'dssada'}, new socketMock());
-            barChart.createBarChartFlow({ ID:'flow1', name: 'grafico tempo-temperatura', xKey: 'tempo', yKey: 'temperatura'});
-            console.log('SOSTITUIREgetFlowByIDgetFlowByID '+JSON.stringify(barChart.getFlowByID('flow1')));
-            assert.deepEqual(barChart.getFlowByID('flow1'),{});
+            var mock=new socketMock();
+            var barChart=new BarChart({ID: 'dada'}, {_page: 'dssada'}, mock);
+            barChart.createBarChartFlow({ ID:'flow1', name: 'grafico tempo-temperatura', indexKey: 'tempo', valueKey: 'temperatura'});
+            barChart.createBarChartFlow({ ID:'flow2', name: 'grafico tempo-temperatura', indexKey: 'tempo', valueKey: 'temperatura'});
+            assert.deepEqual(barChart.getFlowByID('flow2')._dataBarChart._ID, 'flow2');
         });
-    });*/
+    });
+
+    describe('#createBarChartFlow', function() {
+        it('return 212 on creation of flow', function() {
+            var mock=new socketMock();
+            var barChart=new BarChart({ID: 'dada'}, {_page: 'dssada'}, mock);
+            assert.strictEqual(barChart.createBarChartFlow(),212);
+        });
+        it('return correct object', function() {
+            var mock = new socketMock();
+            var barChart=new BarChart({ID: 'dada'}, {_page: 'dssada'}, mock);
+            var bc=barChart.createBarChartFlow({ ID:'flow1', name: 'grafico tempo-temperatura', indexKey: 'tempo', valueKey: 'temperatura'});
+            assert.strictEqual(bc.hasOwnProperty('_dataBarChartFlow'),true);
+            assert.strictEqual(mock.p1,'insertFlow');
+            assert.strictEqual(mock.p2.ID, 'flow1');
+            assert.strictEqual(mock.p2.name, 'grafico tempo-temperatura');
+        });
+    });
 });
