@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">66.22</p>
+      <p class="stat">63.53</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">187</p>
+      <p class="stat">183</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">22.97</p>
+      <p class="stat">31.00</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">1.82</p>
+      <p class="stat">2.47</p>
     </div>
   </div>
 </div>
@@ -157,10 +157,9 @@ describe(&#039;TableFlow&#039;, function() {
             var mock=new socketMock();
             var flow1=new TableFlow({
                 ID: &#039;flow1&#039;,
-                xKey: &#039;a&#039;,
-                yKey: &#039;b&#039;
+                columnKeys: [&#039;col1&#039;,&#039;col2&#039;]
             },mock);
-            var ID=flow1.addRecord({&#039;a&#039;: 1, &#039;b&#039;: 25});
+            var ID=flow1.addRecord({temperature: 6, col1:1, col2:&#039;2&#039;});
             assert.strictEqual(ID.indexOf(&#039;flow1&#039;), 0);
             assert.strictEqual(mock.p1, &#039;updateFlowData&#039;);
             assert.deepEqual(mock.p2,{
@@ -168,7 +167,7 @@ describe(&#039;TableFlow&#039;, function() {
                 ID: &#039;flow1&#039;,
                 records: [{
                     norrisRecordID: ID,
-                    value: [1,25]
+                    value: [1,&#039;2&#039;]
                 }]
             });
         });
@@ -216,7 +215,7 @@ describe(&#039;TableFlow&#039;, function() {
                     value: [1,&#039;2&#039;]
                 }]
             });
-            flow1.updateRecord(ID, {temperature: 6, a:1, b:2});
+            flow1.updateRecord(ID, {temperature: 6, col1:1, col2:&#039;2&#039;});
             assert.strictEqual(mock.p1, &#039;updateFlowData&#039;);
             assert.deepEqual(mock.p2, {
                 action: &#039;updateRecord&#039;,
@@ -245,37 +244,34 @@ describe(&#039;TableFlow&#039;, function() {
         });
     });
 
-    /*describe(&#039;#updateProperties&#039;, function() {
+    describe(&#039;#updateProperties&#039;, function() {
         it(&#039;update correct properties&#039;, function() {
             var mock=new socketMockHistory();
-            var flow1=new TableFlow({ID: &#039;flow1&#039;,filters: &#039;temperature&gt;5&#039;},mock);
-            var ID1=flow1.addRecord({&#039;tempo&#039;: 4, &#039;temperatura&#039;: 4});
-            var ID2=flow1.addRecord({&#039;tempo&#039;: 9, &#039;temperatura&#039;: 23});
-            var ID3=flow1.addRecord({&#039;tempo&#039;: 6, &#039;temperatura&#039;: 7});
-            flow1.addRecord({&#039;tempo&#039;: 6, &#039;temperatura&#039;: 0});
-            flow1.addRecord({&#039;time&#039;: 6, &#039;temp&#039;: 0});
-            flow1.updateProperties({name: &#039;grafico tempo-temperatura&#039;,xKey: &#039;tempo&#039;,yKey: &#039;temperatura&#039;,filters: &#039;temperatura&gt;3&#039;});
-            assert.strictEqual(flow1._dataTableFlow._xKey,&#039;tempo&#039;);
-            assert.strictEqual(flow1._dataTableFlow._yKey,&#039;temperatura&#039;);
-            assert.strictEqual(flow1._dataTableFlow._name,&#039;grafico tempo-temperatura&#039;);
+            var flow1=new TableFlow({ID: &#039;flow1&#039;, name: &#039;tabella&#039;, columnKeys: [&#039;col1&#039;,&#039;col2&#039;]},new socketMock());
+            var ID1=flow1.addRecord({temperatura: &#039;6&#039;, col1: 1, col2:&#039;2&#039;, col3:&#039;notThis&#039;});
+            var ID2=flow1.addRecord({temperatura: &#039;5&#039;, col1: 0, col2:0, col3:&#039;notThis&#039;});
+            var ID3=flow1.addRecord({temperatura: &#039;6&#039;, col1: 2, col2:1.2});
+            flow1.addRecord({temperatura: &#039;0&#039;, col1: 6, col2: 0});
+            flow1.addRecord({temperatura: &#039;10&#039;, col1: 10, col2: 0});
+            flow1.updateProperties({name: &#039;tabella&#039;,filters: &#039;temperatura&gt;3&#039;});
+            assert.strictEqual(flow1._dataTableFlow._name,&#039;tabella&#039;);
             assert.strictEqual(mock.p1[mock.p1.length-2],&#039;updateFlowData&#039;);
-            //console.dir(flow1._dataTableFlow._records);
             assert.deepEqual(mock.p2[mock.p1.length-2],{
                 action: &#039;replaceData&#039;,
                 ID: &#039;flow1&#039;,
                 records: [
                     {norrisRecordID: ID1,
-                    value: [4,4]},
+                    value: [1,&#039;2&#039;]},
                     {norrisRecordID: ID2,
-                    value: [9,23]},
+                    value: [0,0]},
                     {norrisRecordID: ID3,
-                    value: [6,7]},
+                    value: [2,1.2]},
                 ]
             });
             assert.strictEqual(mock.p1[mock.p1.length-1],&#039;updateFlowProp&#039;);
-            assert.deepEqual(mock.p2[mock.p1.length-1],{&#039;ID&#039;: &#039;flow1&#039;, &#039;name&#039;:&#039;grafico tempo-temperatura&#039;,&#039;filters&#039;:&#039;temperatura&gt;3&#039;,&#039;xKey&#039;:&#039;tempo&#039;,&#039;yKey&#039;:&#039;temperatura&#039;});
+            assert.deepEqual(mock.p2[mock.p1.length-1],{&#039;ID&#039;: &#039;flow1&#039;, &#039;name&#039;:&#039;tabella&#039;,&#039;filters&#039;:&#039;temperatura&gt;3&#039;});
         });
-    });*/
+    });
 });</textarea>
   </div>
 </div>
