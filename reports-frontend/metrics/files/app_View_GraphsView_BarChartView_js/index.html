@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">63.40</p>
+      <p class="stat">64.24</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">163</p>
+      <p class="stat">121</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">22.70</p>
+      <p class="stat">22.72</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">1.54</p>
+      <p class="stat">1.21</p>
     </div>
   </div>
 </div>
@@ -106,7 +106,7 @@
 
 
 angular.module(&#039;app&#039;)
-.directive(&#039;barChart&#039;, function(){
+.directive(&#039;barChart&#039;, function($compile){
 	return {
 		restrict: &#039;E&#039;,
 		//controller : &#039;BarChartController&#039;,
@@ -115,7 +115,7 @@ angular.module(&#039;app&#039;)
             url: &#039;@&#039;
 		},
 		bindToController: true,
-        template: &#039;&lt;svg&gt;&lt;/svg&gt;&#039;,
+        template: &#039;&lt;div&gt;&lt;/div&gt;&#039;,
         link: function(scope, element, attrs){
 
         	attrs.$observe(&#039;url&#039;, function(value) {
@@ -146,80 +146,36 @@ angular.module(&#039;app&#039;)
                 }
             }, true);
 
-            var  chart;
+            scope.chart;
 
             scope.init = function(){
-            	console.log(&#039;BARCHART init&#039;);
             	var parent = element.children()[0];
-            	console.log(&#039;BARCHART init url &#039; + scope.url);
             	var str = scope.url.split(&#039;/&#039;);
             	var id = str[str.length-1];
             	parent.setAttribute(&#039;id&#039;, id);
             	if (scope.$parent.barChart.getBarOrientation() === &#039;V&#039;){
-            		chart = nv.models.multiBarChart()
-      					.reduceXTicks(true)   //If &#039;false&#039;, every single x-axis tick label will be rendered.
-      					.rotateLabels(0)      //Angle to rotate x-axis labels.
-      					.showControls(true)   //Allow user to switch between &#039;Grouped&#039; and &#039;Stacked&#039; mode.
-      					.groupSpacing(0.1)    //Distance between each group of bars.
+            		console.log(&#039;\n sto iniziando la costruzione \n&#039;);
+            		var svgContainer = d3.select(&#039;#&#039; + id)
+            			.append(&#039;svg&#039;)
+            			.style(&#039;width&#039;, &#039;500px&#039;)
+            			.style(&#039;length&#039;, &#039;500px&#039;);
+            		var axisScale = d3.scale.linear()
+            			.domain([0,10])
+            			.range([0,500]);
+					var xAxis = d3.svg.axis()
+						.scale(axisScale);
+
+					var xAxisGroup = svgContainer.append(&#039;g&#039;)
+										.call(xAxis);
+
+
+
+            	} else {
+            		console.log(&#039;H&#039;);
             	}
-            	else{
-            		chart = nv.models.multiBarHorizontalChart()
-				        .x(function(d) { return d.label })
-				        .y(function(d) { return d.value })
-				        .margin({top: 30, right: 20, bottom: 50, left: 175})
-				        .showValues(true)           //Show bar value next to each bar.
-				        .tooltips(true)             //Show tooltips on hover.
-				        .transitionDuration(350)
-				        .showControls(true);        //Allow user to switch between &quot;Grouped&quot; and &quot;Stacked&quot; mode.
-            	}
-            	
-            	
-
-			    chart.yAxis
-			        .tickFormat(d3.format(&#039;,.2f&#039;));
-
-			    d3.select(&#039;#&#039; + id + &#039; svg&#039;)
-			        .datum(test_data)
-			        .call(chart);
-
-			    nv.utils.windowResize(chart.update);
-
-			    var test_data = [
-			        { 
-			          &quot;label&quot; : &quot;A Label&quot; ,
-			          &quot;value&quot; : -29.765957771107
-			        } , 
-			        { 
-			          &quot;label&quot; : &quot;B Label&quot; , 
-			          &quot;value&quot; : 0
-			        } , 
-			        { 
-			          &quot;label&quot; : &quot;C Label&quot; , 
-			          &quot;value&quot; : 32.807804682612
-			        } , 
-			        { 
-			          &quot;label&quot; : &quot;D Label&quot; , 
-			          &quot;value&quot; : 196.45946739256
-			        } , 
-			        { 
-			          &quot;label&quot; : &quot;E Label&quot; ,
-			          &quot;value&quot; : 0.19434030906893
-			        } , 
-			        { 
-			          &quot;label&quot; : &quot;F Label&quot; , 
-			          &quot;value&quot; : -98.079782601442
-			        } , 
-			        { 
-			          &quot;label&quot; : &quot;G Label&quot; , 
-			          &quot;value&quot; : -13.925743130903
-			        } , 
-			        { 
-			          &quot;label&quot; : &quot;H Label&quot; , 
-			          &quot;value&quot; : -5.1387322875705
-			        }
-		     	]
-
-				nv.addGraph(chart);
+				
+				var el = $compile(parent)(scope);
+				element.parent().append( el );
 
             };
 
@@ -246,6 +202,8 @@ angular.module(&#039;app&#039;)
                         console.log(ul);
                         ul.appendChild(li);
                     }
+                } else {
+                	console.log(&#039;H&#039;);
                 }
 
             };
