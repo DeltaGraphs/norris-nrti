@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <checkstyle version="4.3">
+	<file name="lib/businessTier/flow/barChartFlow.js">
+		<error line="134" column="36" severity="warning" message="Expected &apos;:&apos; and instead saw &apos;.&apos;." source="jshint.W116" />
+		<error line="134" column="57" severity="error" message="Expected &apos;}&apos; to match &apos;{&apos; from line 133 and instead saw &apos;;&apos;." source="jshint.E020" />
+		<error line="135" column="29" severity="warning" message="Expected &apos;)&apos; and instead saw &apos;norrisRecordID&apos;." source="jshint.W116" />
+		<error line="135" column="43" severity="warning" message="Missing semicolon." source="jshint.W033" />
+		<error line="135" column="43" severity="error" message="Expected &apos;}&apos; to match &apos;{&apos; from line 132 and instead saw &apos;:&apos;." source="jshint.E020" />
+		<error line="136" column="37" severity="warning" message="Missing semicolon." source="jshint.W033" />
+		<error line="136" column="37" severity="error" message="Expected &apos;}&apos; to match &apos;{&apos; from line 131 and instead saw &apos;:&apos;." source="jshint.E020" />
+		<error line="137" column="34" severity="warning" message="Missing semicolon." source="jshint.W033" />
+		<error line="137" column="34" severity="error" message="Expected &apos;}&apos; to match &apos;{&apos; from line 129 and instead saw &apos;:&apos;." source="jshint.E020" />
+		<error line="137" column="63" severity="warning" message="Missing semicolon." source="jshint.W033" />
+		<error line="138" column="26" severity="error" message="Expected an identifier and instead saw &apos;)&apos;." source="jshint.E030" />
+		<error line="140" column="18" severity="warning" message="Missing semicolon." source="jshint.W033" />
+		<error line="140" column="13" severity="error" message="Unrecoverable syntax error. (93% scanned)." source="jshint.E041" />
+	</file>
 	<file name="lib/businessTier/flow/tableFlow.js">
 		<error line="60" column="49" severity="warning" message="&apos;record&apos; is defined but never used." source="jshint.W098" />
 		<error line="60" column="45" severity="warning" message="&apos;ID&apos; is defined but never used." source="jshint.W098" />
