@@ -90,7 +90,7 @@ describe('MapChartFlowModel', function() {
             shape: 'triangle'
         };
         var trace={
-            type: 'line',
+            type: 'area',
             coordinates:[
                 [1,2],
                 [3,4],
@@ -134,7 +134,7 @@ describe('MapChartFlowModel', function() {
                 shape: 'triangle'
             };
             var trace={
-                type: 'line',
+                type: 'area',
                 coordinates:[
                     [1,2],
                     [3,4],
@@ -320,7 +320,7 @@ describe('MapChartFlowModel', function() {
                 shape: 'triangle'
             };
             var trace={
-                type: 'line',
+                type: 'area',
                 coordinates:[
                     [1,2],
                     [3,4],
