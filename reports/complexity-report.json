@@ -10751,14 +10751,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 87,
-                    "physical": 141
+                    "logical": 91,
+                    "physical": 148
                 },
-                "cyclomatic": 21,
+                "cyclomatic": 22,
                 "halstead": {
                     "operators": {
                         "distinct": 22,
-                        "total": 322,
+                        "total": 340,
                         "identifiers": [
                             "var",
                             "=",
@@ -10785,8 +10785,8 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 85,
-                        "total": 354,
+                        "distinct": 87,
+                        "total": 374,
                         "identifiers": [
                             "\"use strict\"",
                             "GraphModel",
@@ -10822,6 +10822,7 @@
                             false,
                             "_xAxis",
                             "_yAxis",
+                            "_groupingControl",
                             "_backgroundColor",
                             "\"#FFFFFF\"",
                             "_grid",
@@ -10838,6 +10839,7 @@
                             "sortable",
                             "xAxis",
                             "yAxis",
+                            "groupingControl",
                             "grid",
                             "backgroundColor",
                             "legendOnPoint",
@@ -10875,30 +10877,30 @@
                             "exports"
                         ]
                     },
-                    "length": 676,
-                    "vocabulary": 107,
-                    "difficulty": 45.811764705882354,
-                    "volume": 4557.231682807175,
-                    "effort": 208774.8255629546,
-                    "bugs": 1.5190772276023918,
-                    "time": 11598.601420164145
+                    "length": 714,
+                    "vocabulary": 109,
+                    "difficulty": 47.28735632183908,
+                    "volume": 4832.483607890726,
+                    "effort": 228515.3742857752,
+                    "bugs": 1.6108278692969085,
+                    "time": 12695.298571431957
                 },
                 "params": 8,
                 "line": 2,
-                "cyclomaticDensity": 24.137931034482758
+                "cyclomaticDensity": 24.175824175824175
             },
             "functions": [
                 {
                     "name": "BarChartModel",
                     "sloc": {
-                        "logical": 15,
-                        "physical": 20
+                        "logical": 16,
+                        "physical": 21
                     },
                     "cyclomatic": 5,
                     "halstead": {
                         "operators": {
                             "distinct": 11,
-                            "total": 47,
+                            "total": 49,
                             "identifiers": [
                                 "if",
                                 "||",
@@ -10914,8 +10916,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 30,
-                            "total": 55,
+                            "distinct": 31,
+                            "total": 58,
                             "identifiers": [
                                 "params",
                                 "undefined",
@@ -10941,6 +10943,7 @@
                                 "_xAxis",
                                 "AxisModel",
                                 "_yAxis",
+                                "_groupingControl",
                                 "_backgroundColor",
                                 "\"#FFFFFF\"",
                                 "_grid",
@@ -10949,29 +10952,29 @@
                                 "updateProperties"
                             ]
                         },
-                        "length": 102,
-                        "vocabulary": 41,
-                        "difficulty": 10.083333333333332,
-                        "volume": 546.4703044710445,
-                        "effort": 5510.242236749698,
-                        "bugs": 0.18215676815701484,
-                        "time": 306.1245687083166
+                        "length": 107,
+                        "vocabulary": 42,
+                        "difficulty": 10.29032258064516,
+                        "volume": 576.9779642373273,
+                        "effort": 5937.289373926045,
+                        "bugs": 0.1923259880791091,
+                        "time": 329.84940966255806
                     },
                     "params": 1,
                     "line": 22,
-                    "cyclomaticDensity": 33.33333333333333
+                    "cyclomaticDensity": 31.25
                 },
                 {
                     "name": "<anonymous>.getProperties",
                     "sloc": {
-                        "logical": 10,
-                        "physical": 12
+                        "logical": 11,
+                        "physical": 13
                     },
                     "cyclomatic": 1,
                     "halstead": {
                         "operators": {
                             "distinct": 5,
-                            "total": 35,
+                            "total": 39,
                             "identifiers": [
                                 "var",
                                 "=",
@@ -10981,8 +10984,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 21,
-                            "total": 41,
+                            "distinct": 24,
+                            "total": 46,
                             "identifiers": [
                                 "res",
                                 "this",
@@ -10999,6 +11002,9 @@
                                 "_xAxis",
                                 "yAxis",
                                 "_yAxis",
+                                "groupingControl",
+                                "_groupingControl",
+                                false,
                                 "grid",
                                 "_grid",
                                 "backgroundColor",
@@ -11007,29 +11013,29 @@
                                 "_legendOnPoint"
                             ]
                         },
-                        "length": 76,
-                        "vocabulary": 26,
-                        "difficulty": 4.8809523809523805,
-                        "volume": 357.23341857872305,
-                        "effort": 1743.6393049675767,
-                        "bugs": 0.11907780619290768,
-                        "time": 96.86885027597648
+                        "length": 85,
+                        "vocabulary": 29,
+                        "difficulty": 4.791666666666667,
+                        "volume": 412.9283845858437,
+                        "effort": 1978.615176140501,
+                        "bugs": 0.1376427948619479,
+                        "time": 109.92306534113895
                     },
                     "params": 0,
-                    "line": 48,
-                    "cyclomaticDensity": 10
+                    "line": 49,
+                    "cyclomaticDensity": 9.090909090909092
                 },
                 {
                     "name": "<anonymous>.updateProperties",
                     "sloc": {
-                        "logical": 21,
-                        "physical": 33
+                        "logical": 23,
+                        "physical": 38
                     },
-                    "cyclomatic": 11,
+                    "cyclomatic": 12,
                     "halstead": {
                         "operators": {
                             "distinct": 11,
-                            "total": 107,
+                            "total": 119,
                             "identifiers": [
                                 "if",
                                 "!==",
@@ -11045,8 +11051,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 32,
-                            "total": 115,
+                            "distinct": 34,
+                            "total": 127,
                             "identifiers": [
                                 "params",
                                 "undefined",
@@ -11072,6 +11078,8 @@
                                 "updateProperties",
                                 "yAxis",
                                 "_yAxis",
+                                "groupingControl",
+                                "_groupingControl",
                                 "backgroundColor",
                                 "Helper",
                                 "isHEX",
@@ -11082,17 +11090,17 @@
                                 "_legendOnPoint"
                             ]
                         },
-                        "length": 222,
-                        "vocabulary": 43,
-                        "difficulty": 19.765625,
-                        "volume": 1204.6307755438656,
-                        "effort": 23810.28017285922,
-                        "bugs": 0.40154359184795524,
-                        "time": 1322.7933429366233
+                        "length": 246,
+                        "vocabulary": 45,
+                        "difficulty": 20.544117647058822,
+                        "volume": 1350.9958616971,
+                        "effort": 27755.017923394833,
+                        "bugs": 0.45033195389903335,
+                        "time": 1541.9454401886019
                     },
                     "params": 1,
-                    "line": 61,
-                    "cyclomaticDensity": 52.38095238095239
+                    "line": 63,
+                    "cyclomaticDensity": 52.17391304347826
                 },
                 {
                     "name": "<anonymous>.getData",
@@ -11146,7 +11154,7 @@
                         "time": 146.8586954483787
                     },
                     "params": 0,
-                    "line": 95,
+                    "line": 102,
                     "cyclomaticDensity": 25
                 },
                 {
@@ -11187,7 +11195,7 @@
                         "time": 5.91719333602565
                     },
                     "params": 1,
-                    "line": 110,
+                    "line": 117,
                     "cyclomaticDensity": 100
                 },
                 {
@@ -11239,7 +11247,7 @@
                         "time": 103.36611360272276
                     },
                     "params": 1,
-                    "line": 116,
+                    "line": 123,
                     "cyclomaticDensity": 80
                 },
                 {
@@ -11277,7 +11285,7 @@
                         "time": 1.292481250360578
                     },
                     "params": 0,
-                    "line": 126,
+                    "line": 133,
                     "cyclomaticDensity": 100
                 },
                 {
@@ -11334,7 +11342,7 @@
                         "time": 65.44934817463752
                     },
                     "params": 3,
-                    "line": 130,
+                    "line": 137,
                     "cyclomaticDensity": 28.57142857142857
                 },
                 {
@@ -11374,7 +11382,7 @@
                         "time": 4.166666666666667
                     },
                     "params": 1,
-                    "line": 131,
+                    "line": 138,
                     "cyclomaticDensity": 100
                 }
             ],
@@ -11400,10 +11408,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 109.04547023111522,
-            "loc": 7.777777777777778,
-            "cyclomatic": 3.2222222222222223,
-            "effort": 4105.674520799415,
+            "maintainability": 107.7356208262032,
+            "loc": 8.222222222222221,
+            "cyclomatic": 3.3333333333333335,
+            "effort": 4617.536827342181,
             "params": 0.8888888888888888,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/dataTier/graph/barChartModel.js"
         },
@@ -17014,9 +17022,9 @@
     ],
     "changeCost": 21.22788761706556,
     "coreSize": 29.03225806451613,
-    "loc": 10.476154490670622,
-    "cyclomatic": 4.366895649153715,
-    "effort": 8062.440472735088,
+    "loc": 10.490491408233346,
+    "cyclomatic": 4.370479878544395,
+    "effort": 8078.952160042919,
     "params": 1.119795079472499,
-    "maintainability": 105.2031323822524
+    "maintainability": 105.16087917564234
 }
