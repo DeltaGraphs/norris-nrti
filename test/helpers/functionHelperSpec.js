@@ -205,7 +205,7 @@ describe('FunctionHelper', function() {
         });
         it('returns true for valid line', function() {
             assert.strictEqual(FH.isValidTrace({
-                type: 'line',
+                type: 'area',
                 coordinates: [
                     [12.43, -2],
                     [1, 0],
@@ -223,19 +223,18 @@ describe('FunctionHelper', function() {
                     [1, 0],
                     [1, 2]
                 ],
-                strokeColor: '#FFF',
-                fillColor: '#000'
+                strokeColor: '#FFF'
             }), true);
         });
         it('returns false for invalid line', function() {
             assert.strictEqual(FH.isValidTrace({
-                type: 'line',
+                type: 'area',
                 coordinates: [
                     [12.43, -2]
                 ]
             }), false);
             assert.strictEqual(FH.isValidTrace({
-                type: 'line',
+                type: 'area',
                 coordinates: [
                     [12.43, -2]
                 ],
@@ -243,7 +242,7 @@ describe('FunctionHelper', function() {
                 fillColor: '#000'
             }), false);
             assert.strictEqual(FH.isValidTrace({
-                type: 'line',
+                type: 'area',
                 coordinates: [
                     undefined, [12.43, -2],
                     [1, 2]
@@ -252,7 +251,7 @@ describe('FunctionHelper', function() {
                 fillColor: '#000'
             }), false);
             assert.strictEqual(FH.isValidTrace({
-                type: 'line',
+                type: 'area',
                 coordinates: [
                     [12.43, -2],
                     [1, '2']
@@ -261,7 +260,7 @@ describe('FunctionHelper', function() {
                 fillColor: '#000'
             }), false);
             assert.strictEqual(FH.isValidTrace({
-                type: 'line',
+                type: 'area',
                 coordinates: [
                     [12.43, -2],
                     [1, '2'],
@@ -270,7 +269,7 @@ describe('FunctionHelper', function() {
                 fillColor: '#000'
             }), false);
             assert.strictEqual(FH.isValidTrace({
-                type: 'line',
+                type: 'area',
                 coordinates: [
                     [12.43, -2],
                     [1, 2, 4],
