@@ -3,14 +3,4 @@
 	<file name="test/businessTier/flow/tableFlowSpec.js">
 		<error line="29" column="5" severity="warning" message="&apos;socketMockHistory&apos; is defined but never used." source="jshint.W098" />
 	</file>
-	<file name="test/businessTier/graph/barChartSpec.js">
-		<error line="44" column="55" severity="error" message="Expected &apos;}&apos; to match &apos;{&apos; from line 44 and instead saw &apos;.&apos;." source="jshint.E020" />
-		<error line="44" column="56" severity="warning" message="Expected &apos;)&apos; and instead saw &apos;_namespace&apos;." source="jshint.W116" />
-		<error line="44" column="66" severity="warning" message="Expected &apos;)&apos; and instead saw &apos;:&apos;." source="jshint.W116" />
-		<error line="44" column="67" severity="warning" message="Missing semicolon." source="jshint.W033" />
-		<error line="44" column="75" severity="warning" message="Missing semicolon." source="jshint.W033" />
-		<error line="44" column="115" severity="warning" message="Missing semicolon." source="jshint.W033" />
-		<error line="44" column="115" severity="error" message="Expected an identifier and instead saw &apos;)&apos;." source="jshint.E030" />
-		<error line="86" column="1" severity="error" message="Unrecoverable syntax error. (98% scanned)." source="jshint.E041" />
-	</file>
 </checkstyle>

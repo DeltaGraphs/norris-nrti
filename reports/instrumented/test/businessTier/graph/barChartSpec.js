@@ -41,7 +41,7 @@ describe('BarChart', function() {
     });
 
     it('returns 393 when page is not valid', function() {
-        assert.strictEqual(new BarChart({is: 1}, {}, {._namespace:'bababa'}).hasOwnProperty('_dataBarChart'),false);
+        assert.strictEqual(new BarChart({is: 1}, {}, {_namespace:'bababa'}).hasOwnProperty('_dataBarChart'),false);
     });
 
     it('returns null if it does not create a BarChartModel', function() {
