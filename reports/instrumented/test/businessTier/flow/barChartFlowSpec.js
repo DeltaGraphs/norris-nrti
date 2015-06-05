@@ -103,6 +103,10 @@ describe('BarChartFlow', function() {
             console.dir(flow1._dataBarChartFlow._records[0]);
             console.dir(flow1._dataBarChartFlow._records[1]);
             assert(flow1.updateRecord(0, {i: 1, v:3, temperature: 4}), true);
+            console.dir('Printing flow again');
+            console.dir(flow1);
+            console.dir(flow1._dataBarChartFlow._records[0]);
+            console.dir(flow1._dataBarChartFlow._records[1]);
             assert.strictEqual(mock.p1, 'updateFlowData');
             assert.deepEqual(mock.p2, {
                 action: 'insertRecords',
@@ -112,10 +116,6 @@ describe('BarChartFlow', function() {
                     value: [1,3]
                 }]
             });
-            console.dir('Printing flow again');
-            console.dir(flow1);
-            console.dir(flow1._dataBarChartFlow._records[0]);
-            console.dir(flow1._dataBarChartFlow._records[1]);
             assert(flow1.updateRecord(0, {i: 1, v:5, temperature: 6}), true);
             assert.strictEqual(mock.p1, 'updateFlowData');
             assert.deepEqual(mock.p2, {
