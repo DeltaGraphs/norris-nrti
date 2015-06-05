@@ -69,7 +69,7 @@ describe('BarChartFlow', function() {
     describe('#updateRecord', function() {
         it('returns 111 if record is invalid', function() {
             var flow1=new BarChartFlow({ID: 'flow1'},new socketMock(), [{'index': 1, 'value': 25}]);
-            assert.strictEqual(flow1.updateRecord(1, null), 111);
+            assert.strictEqual(flow1.updateRecord(0, null), 111);
         });
         it('returns 112 if the index is invalid', function() {
             var flow1=new BarChartFlow({ID: 'flow1'},new socketMock(), [{'index': 1, 'value': 25}]);
@@ -92,7 +92,7 @@ describe('BarChartFlow', function() {
             console.dir(flow1);
             console.dir(flow1._dataBarChartFlow._records[0]);
             console.dir(flow1._dataBarChartFlow._records[1]);
-            var ID = flow1._dataBarChartFlow._records[0]._ID;
+            var ID = flow1._dataBarChartFlow._records[0]._norrisRecordID;
             assert(flow1.updateRecord(0, {i: 1, v:3, temperature: 0}), true);
             assert.strictEqual(mock.p1, 'updateFlowData');
             assert.deepEqual(mock.p2, {
