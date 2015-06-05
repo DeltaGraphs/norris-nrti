@@ -155,11 +155,11 @@ describe('BarChartFlow', function() {
                 action: 'replaceData',
                 ID: 'flow1',
                 records: [
-                    {norrisRecordID: ID1,
+                    {norrisRecordID: flow1._dataBarChartFlow.getRecordByIndex(0).norrisRecordID,
                     value: [4,4]},
-                    {norrisRecordID: ID2,
+                    {norrisRecordID: flow1._dataBarChartFlow.getRecordByIndex(1).norrisRecordID,
                     value: [9,23]},
-                    {norrisRecordID: ID3,
+                    {norrisRecordID: flow1._dataBarChartFlow.getRecordByIndex(2).norrisRecordID,
                     value: [6,7]},
                 ]
             });
