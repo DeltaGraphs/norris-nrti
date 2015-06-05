@@ -218,7 +218,7 @@ BarChart.prototype.updateRecord = function(flowID, ID, record){
 BarChart.prototype.updateProperties = function(params){
 	if (params!==undefined){
 		var prop=this._dataBarChart.updateProperties(params);
-		prop.ID=this._dataBarChart.ID;
+		prop.ID=this._dataBarChart._ID;
 		this._graphSocket.sendMessage(&#039;updateGraphProp&#039;, prop);
 	}
 };

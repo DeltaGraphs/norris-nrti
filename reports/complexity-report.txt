@@ -1,8 +1,8 @@
-Mean per-function logical LOC: 10.105724383143741
+Mean per-function logical LOC: 10.089595350885677
 Mean per-function parameter count: 1.119795079472499
 Mean per-function cyclomatic complexity: 4.285892064924324
-Mean per-function Halstead effort: 7885.784880745442
-Mean per-module maintainability index: 106.03310984877986
+Mean per-function Halstead effort: 7871.05667845158
+Mean per-module maintainability index: 106.05059927217218
 First-order density: 5.82726326742976%
 Change cost: 21.22788761706556%
 Core size: 29.03225806451613%
@@ -237,12 +237,12 @@ Core size: 29.03225806451613%
 
 /home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/flow/barChartFlow.js
 
-  Physical LOC: 148
-  Logical LOC: 85
+  Physical LOC: 146
+  Logical LOC: 83
   Mean parameter count: 1.5
   Cyclomatic complexity: 21
-  Cyclomatic complexity density: 24.705882352941178%
-  Maintainability index: 90.07954538324368
+  Cyclomatic complexity density: 25.301204819277107%
+  Maintainability index: 90.61741921606746
   Dependency count: 2
 
   Function: BarChartFlow
@@ -280,14 +280,14 @@ Core size: 29.03225806451613%
 
   Function: <anonymous>.updateProperties
     Line No.: 120
-    Physical LOC: 28
-    Logical LOC: 20
+    Physical LOC: 26
+    Logical LOC: 18
     Parameter count: 1
     Cyclomatic complexity: 6
-    Cyclomatic complexity density: 30%
-    Halstead difficulty: 18.636363636363637
-    Halstead volume: 871.2541501125005
-    Halstead effort: 16237.009161187509
+    Cyclomatic complexity density: 33.33333333333333%
+    Halstead difficulty: 18.14516129032258
+    Halstead volume: 795.3929216722099
+    Halstead effort: 14432.532852923163
 
 /home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/flow/flow.js
 
@@ -534,7 +534,7 @@ Core size: 29.03225806451613%
   Mean parameter count: 1.2222222222222223
   Cyclomatic complexity: 20
   Cyclomatic complexity density: 19.230769230769234%
-  Maintainability index: 105.52636561908969
+  Maintainability index: 105.53066391142781
   Dependency count: 4
 
   Function: BarChart
@@ -610,9 +610,9 @@ Core size: 29.03225806451613%
     Parameter count: 1
     Cyclomatic complexity: 2
     Cyclomatic complexity density: 50%
-    Halstead difficulty: 5.4
-    Halstead volume: 128
-    Halstead effort: 691.2
+    Halstead difficulty: 4.909090909090909
+    Halstead volume: 130.79881092001088
+    Halstead effort: 642.1032536073261
 
   Function: <anonymous>.getProperties
     Line No.: 135

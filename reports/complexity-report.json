@@ -1362,14 +1362,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 85,
-                    "physical": 148
+                    "logical": 83,
+                    "physical": 146
                 },
                 "cyclomatic": 21,
                 "halstead": {
                     "operators": {
                         "distinct": 21,
-                        "total": 288,
+                        "total": 283,
                         "identifiers": [
                             "var",
                             "=",
@@ -1395,8 +1395,8 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 79,
-                        "total": 324,
+                        "distinct": 77,
+                        "total": 317,
                         "identifiers": [
                             "\"use strict\"",
                             "BarChartFlowModel",
@@ -1470,8 +1470,6 @@
                             "recordsModel",
                             "nRecords",
                             "norrisIsValid",
-                            "\"PRINTING RECORD\"",
-                            "dir",
                             "markerID",
                             "_objectKey",
                             "\"updateFlowProp\"",
@@ -1479,17 +1477,17 @@
                             "exports"
                         ]
                     },
-                    "length": 612,
-                    "vocabulary": 100,
-                    "difficulty": 43.063291139240505,
-                    "volume": 4066.0399881421317,
-                    "effort": 175097.06379315862,
-                    "bugs": 1.3553466627140438,
-                    "time": 9727.61465517548
+                    "length": 600,
+                    "vocabulary": 98,
+                    "difficulty": 43.22727272727273,
+                    "volume": 3968.8259064691256,
+                    "effort": 171561.5198660063,
+                    "bugs": 1.322941968823042,
+                    "time": 9531.195548111462
                 },
                 "params": 6,
                 "line": 2,
-                "cyclomaticDensity": 24.705882352941178
+                "cyclomaticDensity": 25.301204819277107
             },
             "functions": [
                 {
@@ -1705,14 +1703,14 @@
                 {
                     "name": "<anonymous>.updateProperties",
                     "sloc": {
-                        "logical": 20,
-                        "physical": 28
+                        "logical": 18,
+                        "physical": 26
                     },
                     "cyclomatic": 6,
                     "halstead": {
                         "operators": {
                             "distinct": 15,
-                            "total": 74,
+                            "total": 69,
                             "identifiers": [
                                 "if",
                                 "!==",
@@ -1732,8 +1730,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 33,
-                            "total": 82,
+                            "distinct": 31,
+                            "total": 75,
                             "identifiers": [
                                 "params",
                                 "undefined",
@@ -1742,6 +1740,7 @@
                                 "_dataBarChartFlow",
                                 "updateProperties",
                                 "ID",
+                                "_ID",
                                 "filters",
                                 "indexKey",
                                 "_indexKey",
@@ -1755,9 +1754,6 @@
                                 0,
                                 "\"number\"",
                                 "norrisIsValid",
-                                "\"PRINTING RECORD\"",
-                                "console",
-                                "dir",
                                 "norrisRecordID",
                                 "markerID",
                                 "_objectKey",
@@ -1770,17 +1766,17 @@
                                 "\"updateFlowProp\""
                             ]
                         },
-                        "length": 156,
-                        "vocabulary": 48,
-                        "difficulty": 18.636363636363637,
-                        "volume": 871.2541501125005,
-                        "effort": 16237.009161187509,
-                        "bugs": 0.29041805003750015,
-                        "time": 902.0560645104172
+                        "length": 144,
+                        "vocabulary": 46,
+                        "difficulty": 18.14516129032258,
+                        "volume": 795.3929216722099,
+                        "effort": 14432.532852923163,
+                        "bugs": 0.26513097389073664,
+                        "time": 801.8073807179535
                     },
                     "params": 1,
                     "line": 120,
-                    "cyclomaticDensity": 30
+                    "cyclomaticDensity": 33.33333333333333
                 }
             ],
             "dependencies": [
@@ -1795,10 +1791,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 90.07954538324368,
-            "loc": 18.5,
+            "maintainability": 90.61741921606746,
+            "loc": 18,
             "cyclomatic": 6,
-            "effort": 16637.824077444424,
+            "effort": 16186.705000378337,
             "params": 1.5,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/flow/barChartFlow.js"
         },
@@ -3859,7 +3855,7 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 10,
+                            "distinct": 11,
                             "total": 18,
                             "identifiers": [
                                 "params",
@@ -3869,18 +3865,19 @@
                                 "_dataBarChart",
                                 "updateProperties",
                                 "ID",
+                                "_ID",
                                 "\"updateGraphProp\"",
                                 "_graphSocket",
                                 "sendMessage"
                             ]
                         },
                         "length": 32,
-                        "vocabulary": 16,
-                        "difficulty": 5.4,
-                        "volume": 128,
-                        "effort": 691.2,
-                        "bugs": 0.042666666666666665,
-                        "time": 38.400000000000006
+                        "vocabulary": 17,
+                        "difficulty": 4.909090909090909,
+                        "volume": 130.79881092001088,
+                        "effort": 642.1032536073261,
+                        "bugs": 0.04359960364000363,
+                        "time": 35.672402978184785
                     },
                     "params": 1,
                     "line": 127,
@@ -4015,10 +4012,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 105.52636561908969,
+            "maintainability": 105.53066391142781,
             "loc": 9.555555555555555,
             "cyclomatic": 3.111111111111111,
-            "effort": 4343.234155764211,
+            "effort": 4337.778961720581,
             "params": 1.2222222222222223,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/graph/barChart.js"
         },
@@ -16886,9 +16883,9 @@
     ],
     "changeCost": 21.22788761706556,
     "coreSize": 29.03225806451613,
-    "loc": 10.105724383143741,
+    "loc": 10.089595350885677,
     "cyclomatic": 4.285892064924324,
-    "effort": 7885.784880745442,
+    "effort": 7871.05667845158,
     "params": 1.119795079472499,
-    "maintainability": 106.03310984877986
+    "maintainability": 106.05059927217218
 }
