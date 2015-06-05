@@ -230,6 +230,33 @@ describe('FunctionHelper', function() {
             assert.strictEqual(FH.isValidTrace({
                 type: 'area',
                 coordinates: [
+                    [12.43, -2],
+                    [1, 0],
+                    [1, 2]
+                ],
+                strokeColor: '#FFF'
+            }), false);
+            assert.strictEqual(FH.isValidTrace({
+                type: 'area',
+                coordinates: [
+                    [12.43, 'as'],
+                    [1, 0],
+                    [1, 2]
+                ],
+                strokeColor: '#FFF',
+                fillColor: '#000'
+            }), false);
+            assert.strictEqual(FH.isValidTrace({
+                type: 'area',
+                coordinates: [
+                    [12.43, 'as']
+                ],
+                strokeColor: '#FFF',
+                fillColor: '#000'
+            }), false);
+            assert.strictEqual(FH.isValidTrace({
+                type: 'area',
+                coordinates: [
                     [12.43, -2]
                 ]
             }), false);
