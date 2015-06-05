@@ -66,10 +66,9 @@ describe('TableFlow', function() {
             var mock=new socketMock();
             var flow1=new TableFlow({
                 ID: 'flow1',
-                xKey: 'a',
-                yKey: 'b'
+                columnKeys: ['col1','col2']
             },mock);
-            var ID=flow1.addRecord({'a': 1, 'b': 25});
+            var ID=flow1.addRecord({temperature: 6, col1:1, col2:'2'});
             assert.strictEqual(ID.indexOf('flow1'), 0);
             assert.strictEqual(mock.p1, 'updateFlowData');
             assert.deepEqual(mock.p2,{
@@ -77,7 +76,7 @@ describe('TableFlow', function() {
                 ID: 'flow1',
                 records: [{
                     norrisRecordID: ID,
-                    value: [1,25]
+                    value: [1,'2']
                 }]
             });
         });
@@ -125,7 +124,7 @@ describe('TableFlow', function() {
                     value: [1,'2']
                 }]
             });
-            flow1.updateRecord(ID, {temperature: 6, a:1, b:2});
+            flow1.updateRecord(ID, {temperature: 6, col1:1, col2:'2'});
             assert.strictEqual(mock.p1, 'updateFlowData');
             assert.deepEqual(mock.p2, {
                 action: 'updateRecord',
@@ -154,35 +153,32 @@ describe('TableFlow', function() {
         });
     });
 
-    /*describe('#updateProperties', function() {
+    describe('#updateProperties', function() {
         it('update correct properties', function() {
             var mock=new socketMockHistory();
-            var flow1=new TableFlow({ID: 'flow1',filters: 'temperature>5'},mock);
-            var ID1=flow1.addRecord({'tempo': 4, 'temperatura': 4});
-            var ID2=flow1.addRecord({'tempo': 9, 'temperatura': 23});
-            var ID3=flow1.addRecord({'tempo': 6, 'temperatura': 7});
-            flow1.addRecord({'tempo': 6, 'temperatura': 0});
-            flow1.addRecord({'time': 6, 'temp': 0});
-            flow1.updateProperties({name: 'grafico tempo-temperatura',xKey: 'tempo',yKey: 'temperatura',filters: 'temperatura>3'});
-            assert.strictEqual(flow1._dataTableFlow._xKey,'tempo');
-            assert.strictEqual(flow1._dataTableFlow._yKey,'temperatura');
-            assert.strictEqual(flow1._dataTableFlow._name,'grafico tempo-temperatura');
+            var flow1=new TableFlow({ID: 'flow1', name: 'tabella', columnKeys: ['col1','col2']},new socketMock());
+            var ID1=flow1.addRecord({temperatura: '6', col1: 1, col2:'2', col3:'notThis'});
+            var ID2=flow1.addRecord({temperatura: '5', col1: 0, col2:0, col3:'notThis'});
+            var ID3=flow1.addRecord({temperatura: '6', col1: 2, col2:1.2});
+            flow1.addRecord({temperatura: '0', col1: 6, col2: 0});
+            flow1.addRecord({temperatura: '10', col1: 10, col2: 0});
+            flow1.updateProperties({name: 'tabella',filters: 'temperatura>3'});
+            assert.strictEqual(flow1._dataTableFlow._name,'tabella');
             assert.strictEqual(mock.p1[mock.p1.length-2],'updateFlowData');
-            //console.dir(flow1._dataTableFlow._records);
             assert.deepEqual(mock.p2[mock.p1.length-2],{
                 action: 'replaceData',
                 ID: 'flow1',
                 records: [
                     {norrisRecordID: ID1,
-                    value: [4,4]},
+                    value: [1,'2']},
                     {norrisRecordID: ID2,
-                    value: [9,23]},
+                    value: [0,0]},
                     {norrisRecordID: ID3,
-                    value: [6,7]},
+                    value: [2,1.2]},
                 ]
             });
             assert.strictEqual(mock.p1[mock.p1.length-1],'updateFlowProp');
-            assert.deepEqual(mock.p2[mock.p1.length-1],{'ID': 'flow1', 'name':'grafico tempo-temperatura','filters':'temperatura>3','xKey':'tempo','yKey':'temperatura'});
+            assert.deepEqual(mock.p2[mock.p1.length-1],{'ID': 'flow1', 'name':'tabella','filters':'temperatura>3'});
         });
-    });*/
+    });
 });
