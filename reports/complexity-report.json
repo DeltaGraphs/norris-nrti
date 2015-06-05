@@ -1369,7 +1369,7 @@
                 "halstead": {
                     "operators": {
                         "distinct": 21,
-                        "total": 279,
+                        "total": 283,
                         "identifiers": [
                             "var",
                             "=",
@@ -1396,7 +1396,7 @@
                     },
                     "operands": {
                         "distinct": 77,
-                        "total": 313,
+                        "total": 317,
                         "identifiers": [
                             "\"use strict\"",
                             "BarChartFlowModel",
@@ -1477,13 +1477,13 @@
                             "exports"
                         ]
                     },
-                    "length": 592,
+                    "length": 600,
                     "vocabulary": 98,
-                    "difficulty": 42.68181818181818,
-                    "volume": 3915.908227716204,
-                    "effort": 167138.08299206887,
-                    "bugs": 1.305302742572068,
-                    "time": 9285.449055114937
+                    "difficulty": 43.22727272727273,
+                    "volume": 3968.8259064691256,
+                    "effort": 171561.5198660063,
+                    "bugs": 1.322941968823042,
+                    "time": 9531.195548111462
                 },
                 "params": 6,
                 "line": 2,
@@ -1559,7 +1559,7 @@
                     "halstead": {
                         "operators": {
                             "distinct": 17,
-                            "total": 115,
+                            "total": 119,
                             "identifiers": [
                                 "if",
                                 "||",
@@ -1582,7 +1582,7 @@
                         },
                         "operands": {
                             "distinct": 39,
-                            "total": 130,
+                            "total": 134,
                             "identifiers": [
                                 "index",
                                 "record",
@@ -1625,13 +1625,13 @@
                                 "\"updateRecord\""
                             ]
                         },
-                        "length": 245,
+                        "length": 253,
                         "vocabulary": 56,
-                        "difficulty": 28.333333333333336,
-                        "volume": 1422.8019559041131,
-                        "effort": 40312.72208394988,
-                        "bugs": 0.4742673186347044,
-                        "time": 2239.5956713305486
+                        "difficulty": 29.205128205128204,
+                        "volume": 1469.260795280574,
+                        "effort": 42909.94989293779,
+                        "bugs": 0.489753598426858,
+                        "time": 2383.8861051632102
                     },
                     "params": 2,
                     "line": 37,
@@ -1790,10 +1790,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 90.7357419385937,
+            "maintainability": 90.59659355472444,
             "loc": 18,
             "cyclomatic": 6,
-            "effort": 15636.2656749231,
+            "effort": 16285.572627170077,
             "params": 1.5,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/flow/barChartFlow.js"
         },
@@ -16889,7 +16889,7 @@
     "coreSize": 29.03225806451613,
     "loc": 10.186369544434063,
     "cyclomatic": 4.282959513604677,
-    "effort": 7869.889780344562,
+    "effort": 7890.835165900916,
     "params": 1.119795079472499,
-    "maintainability": 105.86948741832896
+    "maintainability": 105.86499876078479
 }

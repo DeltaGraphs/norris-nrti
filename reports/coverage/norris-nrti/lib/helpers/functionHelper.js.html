@@ -15,10 +15,10 @@
 <div class="header high">
     <h1>Code coverage report for <span class="entity">norris-nrti/lib/helpers/functionHelper.js</span></h1>
     <h2>
-        Statements: <span class="metric">99.16% <small>(118 / 119)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Branches: <span class="metric">95.5% <small>(106 / 111)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">97.48% <small>(116 / 119)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">91.89% <small>(102 / 111)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Functions: <span class="metric">100% <small>(11 / 11)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">99.16% <small>(118 / 119)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">97.48% <small>(116 / 119)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
     <div class="path"><a href="../../../index.html">All files</a> &#187; <a href="index.html">norris-nrti/lib/helpers/</a> &#187; functionHelper.js</div>
@@ -260,7 +260,7 @@
 <span class="cline-any cline-yes">127</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">135</span>
+<span class="cline-any cline-yes">131</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">117</span>
@@ -429,34 +429,34 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">16</span>
-<span class="cline-any cline-yes">16</span>
-<span class="cline-any cline-yes">14</span>
+<span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-yes">9</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">13</span>
-<span class="cline-any cline-yes">12</span>
-<span class="cline-any cline-yes">10</span>
 <span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">8</span>
-<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
 <span class="cline-any cline-yes">21</span>
-<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">20</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">21</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*jshint node: true, -W106 */
 'use strict';
 &nbsp;
@@ -651,18 +651,18 @@ module.exports.isValidTrace= function(trace){
 				return true;
 			}
 			if (trace.type==='area' || trace.type==='poly'){
-				if (trace.coordinates!==undefined &amp;&amp; Array.isArray(trace.coordinates) &amp;&amp; trace.coordinates.length&gt;=2){
-					if (trace.strokeColor!==undefined &amp;&amp; this.isHEX(trace.strokeColor) ){
+				<span class="missing-if-branch" title="else path not taken" >E</span>if (trace.coordinates!==undefined &amp;&amp; Array.isArray(trace.coordinates) &amp;&amp; trace.coordinates.length&gt;=2){
+					<span class="missing-if-branch" title="else path not taken" >E</span>if (trace.strokeColor!==undefined &amp;&amp; this.isHEX(trace.strokeColor) ){
 						<span class="missing-if-branch" title="if path not taken" >I</span>if (trace.fillColor!==undefined &amp;&amp; !this.isHEX(trace.fillColor)){
 <span class="cstat-no" title="statement not covered" >							return false;</span>
 						}
 						var nCoordinates=trace.coordinates.length;
 						for (var i=0; i&lt;nCoordinates; i++){
-							if (trace.coordinates[i]===undefined || !Array.isArray(trace.coordinates[i]) || trace.coordinates[i].length!==2){
-								return false;
+							<span class="missing-if-branch" title="if path not taken" >I</span>if (trace.coordinates[i]===undefined || !Array.isArray(trace.coordinates[i]) || trace.coordinates[i].length!==2){
+<span class="cstat-no" title="statement not covered" >								return false;</span>
 							}
-							if (typeof trace.coordinates[i][0]!=='number' || typeof trace.coordinates[i][1]!=='number'){
-								return false;
+							<span class="missing-if-branch" title="if path not taken" >I</span>if (typeof trace.coordinates[i][0]!=='number' || typeof trace.coordinates[i][1]!=='number'){
+<span class="cstat-no" title="statement not covered" >								return false;</span>
 							}
 						}
 						//every coordinate is valid
@@ -678,7 +678,7 @@ module.exports.isValidTrace= function(trace){
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Jun 05 2015 14:29:24 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Jun 05 2015 14:42:06 GMT+0000 (UTC)</div>
 </div>
 <script src="../../../prettify.js"></script>
 <script>

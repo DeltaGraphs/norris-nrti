@@ -1,8 +1,8 @@
 Mean per-function logical LOC: 10.186369544434063
 Mean per-function parameter count: 1.119795079472499
 Mean per-function cyclomatic complexity: 4.282959513604677
-Mean per-function Halstead effort: 7869.889780344562
-Mean per-module maintainability index: 105.86948741832896
+Mean per-function Halstead effort: 7890.835165900916
+Mean per-module maintainability index: 105.86499876078479
 First-order density: 5.82726326742976%
 Change cost: 21.22788761706556%
 Core size: 29.03225806451613%
@@ -242,7 +242,7 @@ Core size: 29.03225806451613%
   Mean parameter count: 1.5
   Cyclomatic complexity: 21
   Cyclomatic complexity density: 25.301204819277107%
-  Maintainability index: 90.7357419385937
+  Maintainability index: 90.59659355472444
   Dependency count: 2
 
   Function: BarChartFlow
@@ -263,9 +263,9 @@ Core size: 29.03225806451613%
     Parameter count: 2
     Cyclomatic complexity: 11
     Cyclomatic complexity density: 32.35294117647059%
-    Halstead difficulty: 28.333333333333336
-    Halstead volume: 1422.8019559041131
-    Halstead effort: 40312.72208394988
+    Halstead difficulty: 29.205128205128204
+    Halstead volume: 1469.260795280574
+    Halstead effort: 42909.94989293779
 
   Function: <anonymous>.getReplaceDataJSON
     Line No.: 85
