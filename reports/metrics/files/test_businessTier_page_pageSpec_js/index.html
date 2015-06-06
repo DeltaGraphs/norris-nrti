@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">71.19</p>
+      <p class="stat">71.13</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">273</p>
+      <p class="stat">319</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">25.56</p>
+      <p class="stat">28.80</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">3.00</p>
+      <p class="stat">3.58</p>
     </div>
   </div>
 </div>
@@ -331,8 +331,8 @@ describe(&#039;Page&#039;, function() {
             assert.deepEqual(page1.createLineChart({ID: &#039;l1&#039;}), null);
         });
 
-        it(&#039;returns null if the createLineChart is not created&#039;, function() {
-            assert.deepEqual(page1.createMapChart({ID: &#039;&#039;}), null);
+        it(&#039;returns null if the lineChartModel is not created&#039;, function() {
+            assert.deepEqual(page1.createLineChart({ID: &#039;&#039;}), null);
         });
 
         it(&#039;behaves correctly with the right parameters&#039;, function() {
@@ -356,6 +356,52 @@ describe(&#039;Page&#039;, function() {
             assert.deepEqual(page3.createLineChart({ID: &#039;line1&#039;}) instanceof LineChart, true);
             assert.strictEqual(nor3._pages[0]._graphs.length, 1);
             assert.strictEqual(nor3._pageList._pages[0]._graphs.length, 1);
+            var client1 = ioclient.connect(socketURL, options);
+            client1.on(&#039;insertGraph&#039;, function(message) {
+                assert.strictEqual(message, expJSON);
+            });
+        });
+    });
+
+    describe(&#039;#createBarChart&#039;, function() {
+        it(&#039;returns null if no parameter is passed&#039;, function() {
+            assert.deepEqual(page1.createBarChart(), null);
+        });
+
+        it(&#039;returns null if the passed parameter does not contain an ID&#039;, function() {
+            assert.deepEqual(page1.createBarChart({p: &#039;abvs&#039;}), null);
+        });
+
+        it(&#039;returns null if the passed ID is already used&#039;, function() {
+            page1.createMapChart({ID: &#039;l1&#039;});
+            assert.deepEqual(page1.createBarChart({ID: &#039;l1&#039;}), null);
+        });
+
+        it(&#039;returns null if the barChartModel is not created&#039;, function() {
+            assert.deepEqual(page1.createBarChart({ID: &#039;&#039;}), null);
+        });
+
+        it(&#039;behaves correctly with the right parameters&#039;, function() {
+            var nor4 = new Norris(app, io, &#039;/norris&#039;);
+            var page4 = nor3.createPage({ID: &#039;page3&#039;});
+            var socketURL = &#039;http://0.0.0.0:5000/page3&#039;;
+            var options ={
+                transports: [&#039;websocket&#039;],
+                &#039;force new connection&#039;: true
+            };
+            var expJSON = {
+                ID: &#039;page1&#039;,
+                graph: {
+                    ID: &#039;bar1&#039;,
+                    title: &#039;&#039;,
+                    type: &#039;BarChart&#039;,
+                    socketURL: &#039;/page3/bar1&#039;
+                }
+            };
+            //var stPage = new Page({ID: &#039;page1&#039;}, nor._networkHandler, nor);
+            assert.deepEqual(page4.createBarChart({ID: &#039;bar1&#039;}) instanceof BarChart, true);
+            assert.strictEqual(nor4._pages[0]._graphs.length, 1);
+            assert.strictEqual(nor4._pageList._pages[0]._graphs.length, 1);
             var client1 = ioclient.connect(socketURL, options);
             client1.on(&#039;insertGraph&#039;, function(message) {
                 assert.strictEqual(message, expJSON);
