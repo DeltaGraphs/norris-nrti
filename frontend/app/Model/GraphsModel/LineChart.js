@@ -133,7 +133,7 @@ angular.module('app')
     };
 
     LineChart.prototype.initializeData = function(newData) {  //inizialization data of flows
-        if (newData !== undefined) {
+        /*if (newData !== undefined) {
             var fList = this._graph.getFlowList();
             for (var i=0; i<newData.length; i++) {
                 for (var j=0; j<fList.length; j++) {
@@ -142,6 +142,9 @@ angular.module('app')
                     }
                 }
             }
+        }*/
+        for (var i=0; i<newData.records.length; i++) {
+            this._data.push(newData.records[i]);
         }
     };
     

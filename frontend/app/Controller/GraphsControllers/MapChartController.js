@@ -58,7 +58,7 @@ angular.module('app')
 			console.log('MAPCHART insert flow' + JSON.stringify(info));
 			var flow = MapChartFlowFactory.build(info.properties);
 			flow.initializeData(info);
-			$scope.mapChart.addFlow(info.properties.ID, flow);
+			$scope.mapChart.addFlow(info.ID, flow);
 			$scope.changedD = !$scope.changedD;
 			$scope.changedF = !$scope.changedF;
 		});

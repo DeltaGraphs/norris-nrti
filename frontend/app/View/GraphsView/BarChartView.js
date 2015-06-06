@@ -24,7 +24,7 @@ angular.module('app')
             url: '@'
 		},
 		bindToController: true,
-        //template: '<div></div>',
+        //template: '<nvd3-multi-bar-chart data="exampleData" id="exampleId" width="1000" height="600" showxaxis="true" showyaxis="true" rotatelabels="90"><svg></svg></nvd3-multi-bar-chart>',
         link: function(scope, element, attrs){
 
             scope.exampleData = [
@@ -73,13 +73,51 @@ angular.module('app')
                 }
             }, true);
 
-            var  chart;
+            var  chart = 0;
+
+            scope.createChart = function(){
+                var barchart, legend, onPoint, control;
+                if (scope.$parent.barChart.getLegend() !== null){
+                    legend = true;
+                }
+                else{
+                    legend = false;
+                }
+                if (scope.$parent.barChart.getGroupingControl()){
+                    control = true;
+                }
+                else{
+                    control = false;
+                }
+                if (scope.$parent.barChart.getLegendOnPoint()){
+                    onPoint = true;
+                }
+                else{
+                    onPoint = false;
+                }
+
+                if (scope.$parent.barChart.getBarOrientation() === 'V'){
+                    barchart = '<nvd3-multi-bar-chart data="exampleData" id="exampleId" ';
+                    barchart = barchart + 'xaxisticksformat="xAxisTickFormatFunction()" showxaxis="true" showyaxis="true" ';
+                    barchart = barchart + 'rotatelabels="90" interactive="true" tooltips="'+ scope.$parent.barChart.getLegendOnPoint() +'" showLegend="'+ legend +'" ';
+                    barchart = barchart + 'showcontrols="'+ control +'">';
+                    barchart = barchart + '<svg></svg></nvd3-multi-bar-chart>'; 
+                }else if(scope.$parent.barChart.getBarOrientation() === 'H'){
+                    barchart = '<nvd3-multi-bar-horizontal-chart data="exampleData" id="exampleId" ';
+                    barchart = barchart + 'xAxisTickFormat="xAxisTickFormatFunction()" yAxisTickFormat="yAxisTickFormatFunction()" width="1000" height="600"';
+                    barchart = barchart + '<svg></svg></nvd3-multi-bar-horizontal-chart>'; 
+                }
+                
+                var compiled = $compile(barchart)(scope);
+                element.append(compiled);
+            };
 
             scope.init = function(){
-
-
-                element.append('<nvd3-multi-bar-chart data="exampleData" id="exampleId" ng-attr-x_axis_tick_format="xAxisTickFormatFunction()" width="1000" height="600" ng-attr-show_x_axis="true" ng-attr-show_y_axis="true"><svg></svg></nvd3-multi-bar-chart>');
-                $compile(element.contents())(scope);
+                                
+                if (chart === 0){
+                    scope.createChart();
+                    chart++;
+                }
                 /*
                 showXAxis="true" showYAxis="true" 
 

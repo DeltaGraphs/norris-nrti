@@ -28,11 +28,11 @@ angular.module('app')
     function BarChart(info) {
         this._axisX = null;
         this._axisY = null;
-        this._barOrientation = 'vertical';
+        this._barOrientation = 'V';
         this._headers = [];
         this._background = '#FFF';
         this._sortable = true;
-        this._barsGrouping = 'grouped';
+        this._groupingControl = true;
         this._legendOnPoint = false;
         this._graph = GraphFactory.build(info);
     }
@@ -48,9 +48,9 @@ angular.module('app')
         if (json.width !== undefined) {
             graphJson.width = json.width;
         }
-        if (json.enabledLegend !== undefined) {
-            graphJson.enabledLegend = json.enabledLegend;
-            if (graphJson.enabledLegend && json.legend !== undefined) {
+        if (json.enableLegend !== undefined) {
+            graphJson.enableLegend = json.enableLegend;
+            if (graphJson.enableLegend && json.legend !== undefined) {
                 graphJson.legend = json.legend;
             }
         }
@@ -80,8 +80,8 @@ angular.module('app')
         if (json.sortable !== undefined) {
             barJson.sortable = json.sortable;
         }
-        if (json.barsGrouping !== undefined) {
-            barJson.barsGrouping = json.barsGrouping;
+        if (json.groupingControl !== undefined) {
+            barJson.groupingControl = json.groupingControl;
         }
         if (json.legendOnPoint !== undefined) {
             barJson.legendOnPoint = json.legendOnPoint;
@@ -120,8 +120,8 @@ angular.module('app')
                 if (bJson.sortable !== undefined) {
                     this._sortable = bJson.sortable;
                 }
-                if (bJson.barsGrouping !== undefined) {
-                    this._barsGrouping = bJson.barsGrouping;
+                if (bJson.groupingControl !== undefined) {
+                    this.groupingControl = bJson.groupingControl;
                 }
                 if (bJson.legendOnPoint !== undefined) {
                     this._legendOnPoint = bJson.legendOnPoint;
@@ -237,8 +237,8 @@ angular.module('app')
     BarChart.prototype.getSortable = function() {
         return this._sortable;
     };
-    BarChart.prototype.getBarsGrouping = function() {
-        return this._barsGrouping;
+    BarChart.prototype.getGroupingControl = function() {
+        return this._groupingControl;
     };
     BarChart.prototype.getLegendOnPoint = function() {
         return this._legendOnPoint;
