@@ -9,8 +9,9 @@
 		<error line="19" column="159" severity="warning" message="&apos;TableFlowFactory&apos; is defined but never used." source="jshint.W098" />
 	</file>
 	<file name="app/View/GraphsView/BarChartView.js">
-		<error line="157" column="36" severity="warning" message="&apos;i&apos; is defined but never used." source="jshint.W098" />
-		<error line="157" column="33" severity="warning" message="&apos;d&apos; is defined but never used." source="jshint.W098" />
+		<error line="145" column="17" severity="warning" message="&apos;d3&apos; is not defined." source="jshint.W117" />
+		<error line="156" column="36" severity="warning" message="&apos;i&apos; is defined but never used." source="jshint.W098" />
+		<error line="156" column="33" severity="warning" message="&apos;d&apos; is defined but never used." source="jshint.W098" />
 	</file>
 	<file name="app/View/GraphsView/LineChartView.js">
 		<error line="45" column="28" severity="warning" message="&apos;d3&apos; is not defined." source="jshint.W117" />
