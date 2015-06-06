@@ -156,8 +156,8 @@ BarChart.prototype.createBarChartFlow = function (params, records) {
             prop.records.push({
                 norrisRecordID: dataRecords[i].norrisRecordID,
                 value: [
-                    dataRecords[i][this._dataBarChartFlow._indexKey],
-                    dataRecords[i][this._dataBarChartFlow._valueKey]
+                    dataRecords[i][bcf._dataBarChartFlow._indexKey],
+                    dataRecords[i][bcf._dataBarChartFlow._valueKey]
                 ]
             });
         } else {
