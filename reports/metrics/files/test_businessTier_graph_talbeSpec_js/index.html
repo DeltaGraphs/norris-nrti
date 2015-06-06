@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">64.82</p>
+      <p class="stat">64.79</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">211</p>
+      <p class="stat">209</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">31.33</p>
+      <p class="stat">34.24</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">4.42</p>
+      <p class="stat">4.39</p>
     </div>
   </div>
 </div>
@@ -285,9 +285,7 @@ describe(&#039;Table&#039;, function() {
             var mock=new socketMock();
             var table=new Table({ID: &#039;table1&#039;, title: &#039;graph one&#039;, height: 200, width: 350, sortable: true, addRowOn: &#039;top&#039;, headers: [&#039;column1&#039;,&#039;h2&#039;], sort:{column: &#039;col1&#039;, ordering: &#039;ASC&#039;}}, {_page: &#039;dssada&#039;}, mock);
             table.createTableFlow({ ID:&#039;flow1&#039;, name: &#039;tabella&#039;, columnKeys: [&#039;col1&#039;,&#039;col2&#039;]});
-            console.log(&#039;getProperties()&#039;);
-            console.log(JSON.stringify(table.getProperties()));
-            assert.deepEqual(table.getProperties(),{&#039;ID&#039;:&#039;dada&#039;,&#039;title&#039;:&#039;&#039;,&#039;type&#039;:&#039;Table&#039;,&#039;height&#039;:400,&#039;width&#039;:500,&#039;enableLegend&#039;:false,&#039;legend&#039;:{&#039;position&#039;:&#039;NE&#039;,&#039;fontColor&#039;:&#039;#000000&#039;,&#039;backgroundColor&#039;:&#039;#FFFFFF&#039;},&#039;horizontalGrid&#039;:false,&#039;verticalGrid&#039;:false,&#039;viewFinder&#039;:false,&#039;xAxis&#039;:{&#039;name&#039;:&#039;&#039;,&#039;color&#039;:&#039;#000000&#039;,&#039;maxIndex&#039;:null,&#039;minIndex&#039;:null,&#039;ticks&#039;:10,&#039;scale&#039;:&#039;linear&#039;},&#039;yAxis&#039;:{&#039;name&#039;:&#039;&#039;,&#039;color&#039;:&#039;#000000&#039;,&#039;maxIndex&#039;:null,&#039;minIndex&#039;:null,&#039;ticks&#039;:10,&#039;scale&#039;:&#039;linear&#039;},&#039;backgroundColor&#039;:&#039;#FFFFFF&#039;,&#039;legendOnPoint&#039;:false});
+            assert.deepEqual(table.getProperties(),{&#039;ID&#039;:&#039;table1&#039;,&#039;title&#039;:&#039;graph one&#039;,&#039;type&#039;:&#039;Table&#039;,&#039;height&#039;:200,&#039;width&#039;:350,&#039;enableLegend&#039;:false,&#039;legend&#039;:{&#039;position&#039;:&#039;NE&#039;,&#039;fontColor&#039;:&#039;#000000&#039;,&#039;backgroundColor&#039;:&#039;#FFFFFF&#039;},&#039;sortable&#039;:true,&#039;sort&#039;:{&#039;column&#039;:&#039;col1&#039;,&#039;ordering&#039;:&#039;ASC&#039;},&#039;maxItemsPage&#039;:10,&#039;headers&#039;:[&#039;column1&#039;,&#039;h2&#039;],&#039;appearance&#039;:{&#039;border&#039;:{&#039;color&#039;:&#039;#000000&#039;,&#039;width&#039;:1},&#039;rowEven&#039;:{&#039;textColor&#039;:[&#039;#000000&#039;,&#039;#000000&#039;],&#039;backgroundColor&#039;:[&#039;#FFFFFF&#039;,&#039;#FFFFFF&#039;]},&#039;rowOdd&#039;:{&#039;textColor&#039;:[&#039;#000000&#039;,&#039;#000000&#039;],&#039;backgroundColor&#039;:[&#039;#FFFFFF&#039;,&#039;#FFFFFF&#039;]},&#039;headers&#039;:{&#039;textColor&#039;:[&#039;#000000&#039;,&#039;#000000&#039;],&#039;backgroundColor&#039;:[&#039;#FFFFFF&#039;,&#039;#FFFFFF&#039;]}},&#039;addRowOn&#039;:&#039;top&#039;});
         });
     });
     describe(&#039;#getConfigJSON&#039;, function() {

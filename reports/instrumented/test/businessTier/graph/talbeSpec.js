@@ -194,9 +194,7 @@ describe('Table', function() {
             var mock=new socketMock();
             var table=new Table({ID: 'table1', title: 'graph one', height: 200, width: 350, sortable: true, addRowOn: 'top', headers: ['column1','h2'], sort:{column: 'col1', ordering: 'ASC'}}, {_page: 'dssada'}, mock);
             table.createTableFlow({ ID:'flow1', name: 'tabella', columnKeys: ['col1','col2']});
-            console.log('getProperties()');
-            console.log(JSON.stringify(table.getProperties()));
-            assert.deepEqual(table.getProperties(),{'ID':'dada','title':'','type':'Table','height':400,'width':500,'enableLegend':false,'legend':{'position':'NE','fontColor':'#000000','backgroundColor':'#FFFFFF'},'horizontalGrid':false,'verticalGrid':false,'viewFinder':false,'xAxis':{'name':'','color':'#000000','maxIndex':null,'minIndex':null,'ticks':10,'scale':'linear'},'yAxis':{'name':'','color':'#000000','maxIndex':null,'minIndex':null,'ticks':10,'scale':'linear'},'backgroundColor':'#FFFFFF','legendOnPoint':false});
+            assert.deepEqual(table.getProperties(),{'ID':'table1','title':'graph one','type':'Table','height':200,'width':350,'enableLegend':false,'legend':{'position':'NE','fontColor':'#000000','backgroundColor':'#FFFFFF'},'sortable':true,'sort':{'column':'col1','ordering':'ASC'},'maxItemsPage':10,'headers':['column1','h2'],'appearance':{'border':{'color':'#000000','width':1},'rowEven':{'textColor':['#000000','#000000'],'backgroundColor':['#FFFFFF','#FFFFFF']},'rowOdd':{'textColor':['#000000','#000000'],'backgroundColor':['#FFFFFF','#FFFFFF']},'headers':{'textColor':['#000000','#000000'],'backgroundColor':['#FFFFFF','#FFFFFF']}},'addRowOn':'top'});
         });
     });
     describe('#getConfigJSON', function() {
