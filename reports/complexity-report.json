@@ -733,14 +733,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 37,
-                    "physical": 71
+                    "logical": 41,
+                    "physical": 76
                 },
-                "cyclomatic": 15,
+                "cyclomatic": 16,
                 "halstead": {
                     "operators": {
-                        "distinct": 18,
-                        "total": 138,
+                        "distinct": 19,
+                        "total": 146,
                         "identifiers": [
                             "var",
                             "=",
@@ -756,15 +756,16 @@
                             "return",
                             "+",
                             "<=",
-                            "-",
-                            "- (prefix)",
+                            "else",
                             "{}",
-                            ":"
+                            ":",
+                            "-",
+                            "- (prefix)"
                         ]
                     },
                     "operands": {
-                        "distinct": 63,
-                        "total": 165,
+                        "distinct": 70,
+                        "total": 175,
                         "identifiers": [
                             "\"use strict\"",
                             "Express",
@@ -812,6 +813,14 @@
                             "handle",
                             "req",
                             "res",
+                            "url",
+                            "\"/favicon.ico\"",
+                            200,
+                            "\"Content-Type\"",
+                            "\"image/x-icon\"",
+                            "writeHead",
+                            "\"screw you favicon\"",
+                            "end",
                             "fullUrl",
                             "protocol",
                             "\"://\"",
@@ -822,7 +831,6 @@
                             "slice",
                             "fullURL",
                             "render",
-                            "end",
                             "\"/../../frontend/app\"",
                             "static",
                             "use",
@@ -831,17 +839,17 @@
                             "exports"
                         ]
                     },
-                    "length": 303,
-                    "vocabulary": 81,
-                    "difficulty": 23.571428571428573,
-                    "volume": 1920.9745508740414,
-                    "effort": 45280.11441345955,
-                    "bugs": 0.6403248502913471,
-                    "time": 2515.561911858864
+                    "length": 321,
+                    "vocabulary": 89,
+                    "difficulty": 23.75,
+                    "volume": 2078.7104313402137,
+                    "effort": 49369.372744330074,
+                    "bugs": 0.6929034771134046,
+                    "time": 2742.74293024056
                 },
                 "params": 6,
                 "line": 2,
-                "cyclomaticDensity": 40.54054054054054
+                "cyclomaticDensity": 39.02439024390244
             },
             "functions": [
                 {
@@ -910,7 +918,7 @@
                     "name": "<anonymous>.addRoutingPath",
                     "sloc": {
                         "logical": 15,
-                        "physical": 37
+                        "physical": 42
                     },
                     "cyclomatic": 8,
                     "halstead": {
@@ -992,34 +1000,44 @@
                 {
                     "name": "handle",
                     "sloc": {
-                        "logical": 10,
-                        "physical": 11
+                        "logical": 14,
+                        "physical": 16
                     },
-                    "cyclomatic": 2,
+                    "cyclomatic": 3,
                     "halstead": {
                         "operators": {
-                            "distinct": 11,
-                            "total": 43,
+                            "distinct": 12,
+                            "total": 51,
                             "identifiers": [
+                                "if",
+                                "else",
+                                "===",
+                                ".",
+                                "()",
+                                "{}",
+                                ":",
                                 "var",
                                 "=",
                                 "+",
-                                ".",
-                                "()",
-                                "if",
-                                "===",
                                 "-",
-                                "- (prefix)",
-                                "{}",
-                                ":"
+                                "- (prefix)"
                             ]
                         },
                         "operands": {
-                            "distinct": 24,
-                            "total": 52,
+                            "distinct": 31,
+                            "total": 62,
                             "identifiers": [
                                 "req",
                                 "res",
+                                "url",
+                                "\"/favicon.ico\"",
+                                200,
+                                "<anonymous>",
+                                "\"Content-Type\"",
+                                "\"image/x-icon\"",
+                                "writeHead",
+                                "\"screw you favicon\"",
+                                "end",
                                 "fullUrl",
                                 "protocol",
                                 "\"://\"",
@@ -1038,23 +1056,21 @@
                                 "norrisNamespace",
                                 "nspNorris",
                                 "filename",
-                                "<anonymous>",
                                 "fullURL",
-                                "render",
-                                "end"
+                                "render"
                             ]
                         },
-                        "length": 95,
-                        "vocabulary": 35,
-                        "difficulty": 11.916666666666666,
-                        "volume": 487.2818866097718,
-                        "effort": 5806.775815433113,
-                        "bugs": 0.1624272955365906,
-                        "time": 322.59865641295073
+                        "length": 113,
+                        "vocabulary": 43,
+                        "difficulty": 12,
+                        "volume": 613.167917281337,
+                        "effort": 7358.015007376045,
+                        "bugs": 0.20438930576044567,
+                        "time": 408.7786115208914
                     },
                     "params": 2,
                     "line": 51,
-                    "cyclomaticDensity": 20
+                    "cyclomaticDensity": 21.428571428571427
                 }
             ],
             "dependencies": [
@@ -1064,10 +1080,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 102.63526742714441,
-            "loc": 10.666666666666666,
-            "cyclomatic": 5.666666666666667,
-            "effort": 5769.511108851261,
+            "maintainability": 100.42049181146712,
+            "loc": 12,
+            "cyclomatic": 6,
+            "effort": 6286.590839498906,
             "params": 2,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/presentationTier/routes.js"
         },
@@ -17905,9 +17921,9 @@
     ],
     "changeCost": 21.09375,
     "coreSize": 31.25,
-    "loc": 10.49946910728161,
-    "cyclomatic": 4.337374604562105,
-    "effort": 8015.619630992644,
+    "loc": 10.541135773948275,
+    "cyclomatic": 4.347791271228772,
+    "effort": 8031.778372575382,
     "params": 1.1223014832389835,
-    "maintainability": 105.07482636275752
+    "maintainability": 105.0056146247676
 }
