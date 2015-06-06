@@ -15,10 +15,10 @@
 <div class="header high">
     <h1>Code coverage report for <span class="entity">app/Model/GraphsModel/BarChart.js</span></h1>
     <h2>
-        Statements: <span class="metric">84.4% <small>(119 / 141)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">81.56% <small>(115 / 141)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Branches: <span class="metric">41.89% <small>(31 / 74)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Functions: <span class="metric">65.52% <small>(19 / 29)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">84.4% <small>(119 / 141)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">81.56% <small>(115 / 141)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
     <div class="path"><a href="../../../index.html">All files</a> &#187; <a href="index.html">app/Model/GraphsModel/</a> &#187; BarChart.js</div>
@@ -344,10 +344,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">10</span>
 <span class="cline-any cline-yes">10</span>
-<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">10</span>
-<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">10</span>
 <span class="cline-any cline-yes">10</span>
@@ -384,10 +384,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">10</span>
 <span class="cline-any cline-yes">10</span>
-<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">10</span>
-<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">10</span>
 <span class="cline-any cline-yes">10</span>
@@ -421,6 +421,7 @@
 <span class="cline-any cline-yes">26</span>
 <span class="cline-any cline-yes">35</span>
 <span class="cline-any cline-yes">35</span>
+<span class="cline-any cline-yes">35</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">26</span>
@@ -445,7 +446,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">26</span>
-<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
@@ -597,11 +597,11 @@ angular.module('app')
         }
 &nbsp;
         var barJson = {};
-        <span class="missing-if-branch" title="else path not taken" >E</span>if (json.axisX !== undefined) {
-            barJson.axisX = json.axisX;
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (json.xAxis !== undefined) {
+<span class="cstat-no" title="statement not covered" >            barJson.xAxis = json.xAxis;</span>
         }
-        <span class="missing-if-branch" title="else path not taken" >E</span>if (json.axisY !== undefined) {
-            barJson.axisY = json.axisY;
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (json.yAxis !== undefined) {
+<span class="cstat-no" title="statement not covered" >            barJson.yAxis = json.yAxis;</span>
         }
         <span class="missing-if-branch" title="else path not taken" >E</span>if (json.barOrientation !== undefined) {
             barJson.barOrientation = json.barOrientation;
@@ -637,11 +637,11 @@ angular.module('app')
                 this._graph.updateParameters(gJson);
             } 
             <span class="missing-if-branch" title="else path not taken" >E</span>if (Object.keys(bJson).length !== 0) {
-                <span class="missing-if-branch" title="else path not taken" >E</span>if (bJson.axisX !== undefined) {
-                    this._axisX = AxisFactory.build(bJson.axisX);
+                <span class="missing-if-branch" title="if path not taken" >I</span>if (bJson.xAxis !== undefined) {
+<span class="cstat-no" title="statement not covered" >                    this._axisX = AxisFactory.build(bJson.xAxis);</span>
                 }
-                <span class="missing-if-branch" title="else path not taken" >E</span>if (bJson.axisY !== undefined) {
-                    this._axisY = AxisFactory.build(bJson.axisY);
+                <span class="missing-if-branch" title="if path not taken" >I</span>if (bJson.yAxis !== undefined) {
+<span class="cstat-no" title="statement not covered" >                    this._axisY = AxisFactory.build(bJson.yAxis);</span>
                 }
                 <span class="missing-if-branch" title="else path not taken" >E</span>if (bJson.barOrientation !== undefined) {
                     this._barOrientation = bJson.barOrientation;
@@ -656,7 +656,7 @@ angular.module('app')
                     this._sortable = bJson.sortable;
                 }
                 <span class="missing-if-branch" title="if path not taken" >I</span>if (bJson.groupingControl !== undefined) {
-<span class="cstat-no" title="statement not covered" >                    this.groupingControl = bJson.groupingControl;</span>
+<span class="cstat-no" title="statement not covered" >                    this._groupingControl = bJson.groupingControl;</span>
                 }
                 <span class="missing-if-branch" title="else path not taken" >E</span>if (bJson.legendOnPoint !== undefined) {
                     this._legendOnPoint = bJson.legendOnPoint;
@@ -674,6 +674,7 @@ angular.module('app')
 &nbsp;
     BarChart.prototype.addFlow = function(newId, newFlow) {
         <span class="missing-if-branch" title="else path not taken" >E</span>if (newFlow.constructor.name === 'BarChartFlow') {
+            console.log('BARCHART constructor.name');
             this._graph.addFlow(newId, newFlow);
         }
     };
@@ -700,10 +701,9 @@ angular.module('app')
     // update data
     BarChart.prototype.inPlaceUpdate = function(newData) {
         <span class="missing-if-branch" title="else path not taken" >E</span>if (newData !== undefined) {
-            var fList = this._graph.getFlowList();
-            for (var j=0; j&lt;fList.length; j++) {
-                <span class="missing-if-branch" title="else path not taken" >E</span>if (fList[j].id === newData.ID) {
-                    fList[j].flow.inPlaceUpdate(newData);
+            for (var j=0; j&lt;this._graph.getFlowList().length; j++) {
+                <span class="missing-if-branch" title="else path not taken" >E</span>if (this._graph.getFlowList()[j].id === newData.ID) {
+                    this._graph.getFlowList()[j].flow.inPlaceUpdate(newData);
                 }
             }
         }   
@@ -792,7 +792,7 @@ angular.module('app')
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Jun 06 2015 15:00:50 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Jun 06 2015 17:56:59 GMT+0000 (UTC)</div>
 </div>
 <script src="../../../prettify.js"></script>
 <script>
