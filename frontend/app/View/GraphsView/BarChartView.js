@@ -27,7 +27,7 @@ angular.module('app')
         //template: '<nvd3-multi-bar-chart data="exampleData" id="exampleId" width="1000" height="600" showxaxis="true" showyaxis="true" rotatelabels="90"><svg></svg></nvd3-multi-bar-chart>',
         link: function(scope, element, attrs){
 
-         scope.exampleData = [
+         /*scope.exampleData = [
          {
          'key': 'Series 1',
          'values': [ [ 1025409600000 , 0] , [ 1028088000000 , -6.3382185140371] , [ 1030766400000 , -5.9507873460847] , [ 1033358400000 , -11.569146943813] , [ 1036040400000 , -5.4767332317425] , [ 1038632400000 , 0.50794682203014] , [ 1041310800000 , -5.5310285460542] , [ 1043989200000 , -5.7838296963382] , [ 1046408400000 , -7.3249341615649] , [ 1049086800000 , -6.7078630712489] , [ 1051675200000 , 0.44227126150934] , [ 1054353600000 , 7.2481659343222] , [ 1056945600000 , 9.2512381306992] ]
@@ -40,7 +40,7 @@ angular.module('app')
          'key': 'Series 4',
          'values': [ [ 1025409600000 , -7.0674410638835] , [ 1028088000000 , -14.663359292964] , [ 1030766400000 , -14.104393060540] , [ 1033358400000 , -23.114477037218] , [ 1036040400000 , -16.774256687841] , [ 1038632400000 , -11.902028464000] , [ 1041310800000 , -16.883038668422] , [ 1043989200000 , -19.104223676831] , [ 1046408400000 , -20.420523282736] , [ 1049086800000 , -19.660555051587] , [ 1051675200000 , -13.106911231646] , [ 1054353600000 , -8.2448460302143] , [ 1056945600000 , -7.0313058730976] ]
          }
-         ];
+         ];*/
 
 
 
@@ -101,7 +101,7 @@ angular.module('app')
                 if (scope.$parent.barChart.getBarOrientation() === 'V'){
                     barchart = '<nvd3-multi-bar-chart data="data" nodata=" " id="'+ id +'" ';
                     barchart = barchart + 'xaxisticksformat="xAxisTickFormatFunction()" showxaxis="true" showyaxis="true" ';
-                    barchart = barchart + 'rotatelabels="-90" interactive="true" tooltips="'+ scope.$parent.barChart.getLegendOnPoint() +'" showlegend="'+ legend +'" ';
+                    barchart = barchart + 'rotatelabels="-90" interactive="true" tooltips="'+ onPoint +'" showlegend="'+ legend +'" ';
                     barchart = barchart + 'xaxislabel="'+ scope.$parent.barChart.getX().getName() +'" ';
                     barchart = barchart + 'showcontrols="'+ control +'" color="colorFunction()">';
                     //barchart = barchart + 'width="'+ scope.$parent.barChart.getWidth() +'" height="'+ scope.$parent.barChart.getHeight() +'">';
@@ -109,7 +109,7 @@ angular.module('app')
                 }else if(scope.$parent.barChart.getBarOrientation() === 'H'){
                     barchart = '<nvd3-multi-bar-horizontal-chart data="data" nodata=" " id="'+ id +'" ';
                     barchart = barchart + 'xaxisticksformat="xAxisTickFormatFunction()" yaxistickformat="yAxisTickFormatFunction()" showxaxis="true" showyaxis="true" ';
-                    barchart = barchart + 'rotatelabels="-90" interactive="true" tooltips="'+ scope.$parent.barChart.getLegendOnPoint() +'" showlegend="'+ legend +'" ';
+                    barchart = barchart + 'rotatelabels="-90" interactive="true" tooltips="'+ onPoint +'" showlegend="'+ legend +'" ';
                     barchart = barchart + 'xaxislabel="'+ scope.$parent.barChart.getX().getName() +'" ';
                     barchart = barchart + 'showcontrols="'+ control +'" color="colorFunction()">';
                     //barchart = barchart + 'width="'+ scope.$parent.barChart.getWidth() +'" height="'+ scope.$parent.barChart.getHeight() +'">';

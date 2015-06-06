@@ -109,8 +109,8 @@ angular.module('app')
                     linechart = linechart + '<svg width="'+ scope.$parent.lineChart.getWidth() +'" height="'+ scope.$parent.lineChart.getHeight() +'"></svg></nvd3-line-with-focus-chart>';
                 }
 
-                var compiled = $compile(linechart)(scope);
-                element.append(compiled);
+                //var compiled = $compile(linechart)(scope);
+                //element.append(compiled);
                 
                 /*    d3.select(".nv-legendWrap")
                         .attr("transform", "translate(100,100)");*/
