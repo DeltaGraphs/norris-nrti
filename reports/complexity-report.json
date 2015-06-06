@@ -2993,14 +2993,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 94,
+                    "logical": 93,
                     "physical": 142
                 },
                 "cyclomatic": 18,
                 "halstead": {
                     "operators": {
                         "distinct": 20,
-                        "total": 265,
+                        "total": 262,
                         "identifiers": [
                             "var",
                             "=",
@@ -3025,8 +3025,8 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 71,
-                        "total": 302,
+                        "distinct": 70,
+                        "total": 298,
                         "identifiers": [
                             "\"use strict\"",
                             "TableFlowModel",
@@ -3091,7 +3091,6 @@
                             0,
                             "length",
                             "j",
-                            "appearance",
                             "\"replaceData\"",
                             "updateProperties",
                             "prop",
@@ -3101,17 +3100,17 @@
                             "exports"
                         ]
                     },
-                    "length": 567,
-                    "vocabulary": 91,
-                    "difficulty": 42.53521126760563,
-                    "volume": 3689.919560992661,
-                    "effort": 156951.50808729345,
-                    "bugs": 1.2299731869975536,
-                    "time": 8719.528227071858
+                    "length": 560,
+                    "vocabulary": 90,
+                    "difficulty": 42.57142857142857,
+                    "volume": 3635.437733944618,
+                    "effort": 154765.77781649944,
+                    "bugs": 1.2118125779815392,
+                    "time": 8598.098767583302
                 },
                 "params": 6,
                 "line": 2,
-                "cyclomaticDensity": 19.148936170212767
+                "cyclomaticDensity": 19.35483870967742
             },
             "functions": [
                 {
@@ -3323,14 +3322,14 @@
                 {
                     "name": "<anonymous>.getReplaceDataJSON",
                     "sloc": {
-                        "logical": 19,
+                        "logical": 18,
                         "physical": 25
                     },
                     "cyclomatic": 5,
                     "halstead": {
                         "operators": {
                             "distinct": 13,
-                            "total": 56,
+                            "total": 53,
                             "identifiers": [
                                 "var",
                                 "=",
@@ -3348,8 +3347,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 23,
-                            "total": 60,
+                            "distinct": 22,
+                            "total": 56,
                             "identifiers": [
                                 "records",
                                 "<anonymous>",
@@ -3369,24 +3368,23 @@
                                 "push",
                                 "norrisRecordID",
                                 "value",
-                                "appearance",
                                 "action",
                                 "\"replaceData\"",
                                 "ID",
                                 "_ID"
                             ]
                         },
-                        "length": 116,
-                        "vocabulary": 36,
-                        "difficulty": 16.956521739130434,
-                        "volume": 599.7113001673082,
-                        "effort": 10169.017698489139,
-                        "bugs": 0.19990376672243607,
-                        "time": 564.945427693841
+                        "length": 109,
+                        "vocabulary": 35,
+                        "difficulty": 16.545454545454547,
+                        "volume": 559.0918488470013,
+                        "effort": 9250.428771832205,
+                        "bugs": 0.1863639496156671,
+                        "time": 513.9127095462336
                     },
                     "params": 0,
                     "line": 106,
-                    "cyclomaticDensity": 26.31578947368421
+                    "cyclomaticDensity": 27.77777777777778
                 },
                 {
                     "name": "<anonymous>.updateProperties",
@@ -3453,10 +3451,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 94.60145162074974,
-            "loc": 16.4,
+            "maintainability": 94.8795506237527,
+            "loc": 16.2,
             "cyclomatic": 4.4,
-            "effort": 8013.130258016086,
+            "effort": 7829.4124726846985,
             "params": 1.2,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/flow/tableFlow.js"
         },
@@ -17905,9 +17903,9 @@
     ],
     "changeCost": 21.09375,
     "coreSize": 31.25,
-    "loc": 10.495302440614942,
+    "loc": 10.489052440614943,
     "cyclomatic": 4.337374604562105,
-    "effort": 8017.049440049221,
+    "effort": 8011.308259257616,
     "params": 1.1223014832389835,
-    "maintainability": 105.08506500908751
+    "maintainability": 105.09375560293137
 }

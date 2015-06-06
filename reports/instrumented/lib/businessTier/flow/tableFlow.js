@@ -198,8 +198,7 @@ TableFlow.prototype.getReplaceDataJSON = function () {
             __cov_os6SKsuY__8LJzZG1Boexw.s['57']++;
             records.push({
                 norrisRecordID: dataRecords[i].norrisRecordID,
-                value: record,
-                appearance: dataRecords[i].appearance
+                value: record
             });
         } else {
             __cov_os6SKsuY__8LJzZG1Boexw.b['14'][1]++;
