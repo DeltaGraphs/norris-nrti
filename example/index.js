@@ -196,6 +196,7 @@ var repeatLine=function(){
             name: 'grafico tempo-temperatura',
             xKey: 'tempo',
             yKey: 'temperatura',
+            flowColor: '#B9D3EE'
             //other stuff
         });
     }
