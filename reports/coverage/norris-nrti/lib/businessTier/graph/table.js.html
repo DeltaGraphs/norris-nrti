@@ -1,0 +1,597 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for norris-nrti/lib/businessTier/graph/table.js</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../../../prettify.css">
+    <link rel="stylesheet" href="../../../../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header high">
+    <h1>Code coverage report for <span class="entity">norris-nrti/lib/businessTier/graph/table.js</span></h1>
+    <h2>
+        Statements: <span class="metric">100% <small>(108 / 108)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">97.22% <small>(35 / 36)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">100% <small>(10 / 10)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">100% <small>(108 / 108)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../../index.html">All files</a> &#187; <a href="index.html">norris-nrti/lib/businessTier/graph/</a> &#187; table.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">22</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">21</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19</span>
+<span class="cline-any cline-yes">19</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">18</span>
+<span class="cline-any cline-yes">18</span>
+<span class="cline-any cline-yes">18</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">15</span>
+<span class="cline-any cline-yes">15</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14</span>
+<span class="cline-any cline-yes">14</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14</span>
+<span class="cline-any cline-yes">14</span>
+<span class="cline-any cline-yes">14</span>
+<span class="cline-any cline-yes">14</span>
+<span class="cline-any cline-yes">14</span>
+<span class="cline-any cline-yes">14</span>
+<span class="cline-any cline-yes">14</span>
+<span class="cline-any cline-yes">14</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14</span>
+<span class="cline-any cline-yes">14</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*jshint node: true, -W106 */
+'use strict';
+&nbsp;
+/*
+* Name : table.js
+* Module : Lib::BusinessTier::Table
+* Location : /lib/businessTier/table
+*
+* History :
+* 
+* Version   Date         Programmer         Description
+* =========================================================
+* 0.0.1     2015-06-06   Filippo Rampado    Initial code
+* =========================================================
+*/
+&nbsp;
+/*var Socket=require('../../presentationTier/socket.js');
+var Page=require('../page/page.js');*/
+var Graph=require('./graph.js');
+var TableFlow=require('../flow/tableFlow.js');
+var TableModel=require('../../dataTier/graph/tableModel.js');
+&nbsp;
+function Table(params, page, graphSocket) {
+	if (params===undefined){
+		console.log('Error: 371');
+		return;
+	}
+	if (!(graphSocket.hasOwnProperty('_namespace'))){
+		console.log('Error: 392');
+		return;
+	}
+	if (!(page.hasOwnProperty('_page'))){
+		console.log('Error: 393');
+		return;
+	}
+	var tm=new TableModel(params);
+	if (!tm.hasOwnProperty('_ID')){
+		return;
+	}
+	this.parent.constructor.call(this, page, graphSocket);
+	this._dataTable=tm;
+	this._flows=[];
+}
+&nbsp;
+Table.prototype = Object.create(Graph.prototype);
+Table.prototype.constructor = Graph;
+Table.prototype.parent = Graph.prototype;
+&nbsp;
+Table.prototype.getFlowByID = function(ID){
+	if (typeof ID==='string') {
+		var flows=this._flows.length;
+		var i=0;
+		var found=false;
+		while (i&lt;flows &amp;&amp; (!found)){
+			if (this._flows[i]._dataTableFlow._ID===ID){
+				found=true;
+			}
+			else{
+				i++;
+			}
+		}//while
+		if (found){//in flows[i] there is the ID
+			return this._flows[i];
+		}
+		//no ID in flows
+	}
+	return 292;
+};
+&nbsp;
+Table.prototype.createTableFlow = function(params){
+	var tf=new TableFlow(params, this._graphSocket);
+	if (!tf.hasOwnProperty('_dataTableFlow')){
+		return 242;
+	}
+	this._flows.push(tf);
+	this._dataTable.addFlow(tf._dataTableFlow);
+&nbsp;
+	var prop={};
+	prop.ID=params.ID;
+	prop.name=tf._dataTableFlow._name;
+	prop.marker=tf._dataTableFlow._marker;
+	prop.flowColor=tf._dataTableFlow._flowColor;
+	prop.interpolation=tf._dataTableFlow._interpolation;
+	prop.area=tf._dataTableFlow._area;
+	prop.maxItems=tf._dataTableFlow._maxItems;
+&nbsp;
+	this._graphSocket.sendMessage('insertFlow', prop);
+	return tf;
+};
+&nbsp;
+Table.prototype.deleteFlow = function(ID){
+	if (typeof ID==='string') {
+		var flows=this._flows.length;
+		var i=0;
+		var found=false;
+		while (i&lt;flows &amp;&amp; (!found)){
+			if (this._flows[i]._dataTableFlow._ID===ID){
+				found=true;
+			}
+			else{
+				i++;
+			}
+		}//while
+		if (found){//in flows[i] there is the ID			
+			this._graphSocket.sendMessage('deleteFlow', {ID: ID});
+			this._flows.splice(i, 1);
+			return true;
+		}
+		//no ID in flows
+	}
+	return 273;
+};
+&nbsp;
+Table.prototype.deleteAllFlows = function(){
+	while (this._flows.length&gt;0){
+		this._graphSocket.sendMessage('deleteFlow', {
+			ID: this._flows[0]._dataTableFlow._ID
+		});
+		this._flows.splice(0, 1);
+	}
+};
+&nbsp;
+Table.prototype.addRecord = function(flowID, record){
+	var flow=this.getFlowByID(flowID);
+	if (flow!==292){
+		return flow.addRecord(record);
+	}
+	return 292;
+};
+&nbsp;
+Table.prototype.updateRecord = function(flowID, ID, record){
+	var flow=this.getFlowByID(flowID);
+	if (flow!==292){
+		return flow.updateRecord(ID, record);
+	}
+	return 292;
+};
+&nbsp;
+Table.prototype.updateProperties = function(params){
+	if (params!==undefined){
+		var prop=this._dataTable.updateProperties(params);
+		this._graphSocket.sendMessage('updateGraphProp', prop);
+	}
+};
+&nbsp;
+Table.prototype.getProperties = function(){
+	return this._dataTable.getProperties();
+};
+&nbsp;
+Table.prototype.getConfigJSON = function(){
+	var configJSON={};
+	configJSON.properties=this._dataTable.getProperties();
+	var flowProp=[];
+	var flows=this._flows.length;
+	configJSON.data=[];
+	for (var f=0; f&lt;flows; f++){
+		var flowData={};
+		flowData.ID=this._flows[f]._dataTableFlow._ID;
+		flowData.records=[];
+		flowProp.push(this._flows[f]._dataTableFlow.getProperties());
+		var records=this._flows[f]._dataTableFlow.getData();
+		var columnKeys=this._flows[f]._dataTableFlow._columnKeys;
+		for (var i=0; i&lt;records.length; i++){//scan all records
+			if (records[i].norrisRecordIsValid){//if current record is valid, send it
+				var record=[];
+				for (var j=0; j&lt;columnKeys.length; j++){//insert all valid columns
+					<span class="missing-if-branch" title="else path not taken" >E</span>if (records[i][columnKeys[j]]!==undefined){
+						record.push(records[i][columnKeys[j]]);
+					}
+				}
+				records.push({
+					norrisRecordID : records[i].norrisRecordID,
+					value: record
+					//add appearance
+				});
+			}
+		}
+		configJSON.data.push(flowData);
+	}
+	configJSON.properties.flows=flowProp;
+	return configJSON;
+};
+&nbsp;
+module.exports = Table;
+&nbsp;</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Jun 06 2015 12:50:05 GMT+0000 (UTC)</div>
+</div>
+<script src="../../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../../sorter.js"></script>
+</body>
+</html>

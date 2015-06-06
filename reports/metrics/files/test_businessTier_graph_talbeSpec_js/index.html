@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Plato - test/businessTier/graph/talbeSpec.js</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link href="../../assets/css/vendor/morris.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet">
+  <link href="../../assets/css/plato.css" rel="stylesheet">
+  <link href="../../assets/css/plato-file.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="http://github.com/es-analysis/plato">Plato on Github</a>
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="../../index.html">Report Home</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>test/businessTier/graph/talbeSpec.js</h1>
+  </div>
+</div>
+
+<div class="container aggregate-stats">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
+      <p class="stat">66.76</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
+      <p class="stat">212</p>
+    </div>
+  </div>
+  <div class="row historical">
+    <div class="col-md-6">
+      <p id="chart_historical_maint" class="chart"></p>
+    </div>
+    <div class="col-md-6">
+      <p id="chart_historical_sloc" class="chart"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
+      <p class="stat">31.77</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
+      <p class="stat">3.85</p>
+    </div>
+  </div>
+</div>
+
+<div class="container charts">
+  <div class="row">
+    <h2 class="header">Function weight</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="chart-header">By Complexity <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="This metric counts the number of distinct paths through a block of code. Lower values are better." data-original-title="Cyclomatic Complexity" data-container="body"></i></a></h3>
+      <div id="fn-by-complexity" class="stat"></div>
+    </div>
+    <div class="col-md-6">
+      <h3 class="chart-header">By SLOC  <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h3>
+      <div id="fn-by-sloc" class="stat"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <textarea id="file-source" class="col-md-12">/*jshint node: true, -W106 */
+&#039;use strict&#039;;
+
+/*
+* Name : tableSpec.js
+* Module : UnitTest
+* Location : /test/businessTier/graph
+*
+* History :
+* 
+* Version   Date         Programmer         Description
+* =========================================================
+* 0.0.1     2015-06-06   Filippo Rampado    Initial code
+* =========================================================
+*/
+
+var Table = require(&#039;../../../lib/businessTier/graph/table.js&#039;);
+var assert = require(&#039;assert&#039;);
+
+var socketMock=function(){
+    this.p1=null;
+    this.p2=null;
+    this._namespace=&#039;flow1&#039;;
+    this.sendMessage=function(p1, p2){
+        this.p1=p1;
+        this.p2=p2;
+    };
+    this.attachObject=function(p1, p2){
+        this.p1=p1;
+        this.p2=p2;
+    };
+};
+
+var socketMockHistory=function(){
+    this.p1=[];
+    this.p2=[];
+    this._namespace=&#039;flow1&#039;;
+    this.sendMessage=function(p1, p2){
+        this.p1.push(p1);
+        this.p2.push(p2);
+    };
+    this.attachObject=function(p1, p2){
+        this.p1.push(p1);
+        this.p2.push(p2);
+    };
+};
+
+describe(&#039;Table&#039;, function() {
+    it(&#039;returns 391 when there are no params&#039;, function() {
+        assert.strictEqual((new Table()).hasOwnProperty(&#039;_dataTable&#039;),false);
+    });
+
+    it(&#039;returns 392 when there is no valid graphsocket in params&#039;, function() {
+        assert.strictEqual((new Table({is: 1}, {_page: &#039;dssada&#039;}, {})).hasOwnProperty(&#039;_dataTable&#039;),false);
+    });
+
+    it(&#039;returns 393 when page is not valid&#039;, function() {
+        var mock=new socketMock();
+        assert.strictEqual((new Table({is: 1}, {}, mock)).hasOwnProperty(&#039;_dataTable&#039;),false);
+    });
+
+    it(&#039;returns 342 - not create a TableModel&#039;, function() {
+        var mock=new socketMock();
+        assert.strictEqual((new Table({is: 1}, {_page: &#039;dssada&#039;}, mock)).hasOwnProperty(&#039;_dataTable&#039;),false);
+    });
+
+    it(&#039;returns a correct Table&#039;, function() {
+        var mock=new socketMock();
+        var lc=new Table({ID: &#039;dada&#039;}, {_page: &#039;dssada&#039;}, mock);
+        assert.strictEqual(lc.hasOwnProperty(&#039;_dataTable&#039;),true);
+    });
+
+    describe(&#039;#getFlowByID&#039;, function() {
+        it(&#039;return 292 - no ID in flows&#039;, function() {
+            var mock=new socketMock();
+            var table=new Table({ID: &#039;dada&#039;}, {_page: &#039;dssada&#039;}, mock);
+            table.createTableFlow({ ID:&#039;flow1&#039;, name: &#039;tabella&#039;, columnKeys: [&#039;col1&#039;,&#039;col2&#039;]});
+            assert.strictEqual(table.getFlowByID(&#039;fl1&#039;),292);
+        });
+        it(&#039;return correct flow&#039;, function() {
+            var mock=new socketMock();
+            var table=new Table({ID: &#039;dada&#039;}, {_page: &#039;dssada&#039;}, mock);
+            table.createTableFlow({ ID:&#039;flow1&#039;, name: &#039;tabella&#039;, columnKeys: [&#039;col1&#039;,&#039;col2&#039;]});
+            table.createTableFlow({ ID:&#039;flow2&#039;, name: &#039;tabella&#039;, columnKeys: [&#039;col1&#039;,&#039;col2&#039;]});
+            assert.deepEqual(table.getFlowByID(&#039;flow2&#039;)._dataTableFlow._ID, &#039;flow2&#039;);
+        });
+    });
+
+    describe(&#039;#createTableFlow&#039;, function() {
+        it(&#039;return 242 on creation of flow&#039;, function() {
+            var mock=new socketMock();
+            var table=new Table({ID: &#039;dada&#039;}, {_page: &#039;dssada&#039;}, mock);
+            assert.strictEqual(table.createTableFlow(),242);
+        });
+        it(&#039;return correct object&#039;, function() {
+            var mock = new socketMock();
+            var table=new Table({ID: &#039;dada&#039;}, {_page: &#039;dssada&#039;}, mock);
+            var lc=table.createTableFlow({ ID:&#039;flow1&#039;, name: &#039;tabella&#039;, columnKeys: [&#039;col1&#039;,&#039;col2&#039;]});
+            assert.strictEqual(lc.hasOwnProperty(&#039;_dataTableFlow&#039;),true);
+            assert.strictEqual(mock.p1,&#039;insertFlow&#039;);
+            assert.strictEqual(mock.p2.ID, &#039;flow1&#039;);
+            assert.strictEqual(mock.p2.name, &#039;tabella&#039;);
+        });
+    });
+    describe(&#039;#deleteFlow&#039;, function() {
+        it(&#039;return 293 - ID is not a string&#039;, function() {
+            var mock=new socketMock();
+            var table=new Table({ID: &#039;dada&#039;}, {_page: &#039;dssada&#039;}, mock);
+            table.createTableFlow({ ID:&#039;flow1&#039;, name: &#039;tabella&#039;, columnKeys: [&#039;col1&#039;,&#039;col2&#039;]});
+            assert.strictEqual(table.deleteFlow(34),293);
+        });
+        it(&#039;return 293 - no ID in flows&#039;, function() {
+            var mock=new socketMock();
+            var table=new Table({ID: &#039;dada&#039;}, {_page: &#039;dssada&#039;}, mock);
+            table.createTableFlow({ ID:&#039;flow1&#039;, name: &#039;tabella&#039;, columnKeys: [&#039;col1&#039;,&#039;col2&#039;]});
+            assert.strictEqual(table.deleteFlow(&#039;flow123&#039;),293);
+        });
+        it(&#039;return true - deleted flow&#039;, function() {
+            var mock = new socketMock();
+            var table=new Table({ID: &#039;dada&#039;}, {_page: &#039;dssada&#039;}, mock);
+            table.createTableFlow({ ID:&#039;flow1&#039;, name: &#039;tabella&#039;, columnKeys: [&#039;col1&#039;,&#039;col2&#039;]});
+            assert.strictEqual(table.deleteFlow(&#039;flow1&#039;),true);
+            assert.strictEqual(mock.p1,&#039;deleteFlow&#039;);
+            assert.strictEqual(mock.p2.ID, &#039;flow1&#039;);
+        });
+    });
+    describe(&#039;#deleteAllFlows&#039;, function() {
+        it(&#039;deletes all flows and sends right message&#039;, function() {
+            var mock = new socketMockHistory();
+            var table=new Table({ID: &#039;dada&#039;}, {_page: &#039;dssada&#039;}, mock);
+            table.createTableFlow({ ID:&#039;flow1&#039;, name: &#039;tabella&#039;, columnKeys: [&#039;col1&#039;,&#039;col2&#039;]});
+            table.createTableFlow({ ID:&#039;flow2&#039;, name: &#039;tabella&#039;, columnKeys: [&#039;col1&#039;,&#039;col2&#039;]});
+            table.deleteAllFlows();
+            assert.strictEqual(mock.p1[mock.p1.length-2],&#039;deleteFlow&#039;);
+            assert.deepEqual(mock.p2[mock.p2.length-2], {ID: &#039;flow1&#039;});
+            assert.strictEqual(mock.p1[mock.p1.length-1],&#039;deleteFlow&#039;);
+            assert.deepEqual(mock.p2[mock.p2.length-1], {ID: &#039;flow2&#039;});
+            assert.strictEqual(table._flows.length,0);
+        });
+    });
+    describe(&#039;#addRecord&#039;, function() {
+        it(&#039;returned 292 - undefined flowID&#039;, function() {
+            var mock=new socketMock();
+            var table=new Table({ID: &#039;dada&#039;}, {_page: &#039;dssada&#039;}, mock);
+            assert.strictEqual(table.addRecord(),292);
+        });
+        it(&#039;returned 123 - undefined record&#039;, function() {
+            var mock=new socketMock();
+            var table=new Table({ID: &#039;dada&#039;}, {_page: &#039;dssada&#039;}, mock);
+            table.createTableFlow({ ID:&#039;flow1&#039;, name: &#039;tabella&#039;, columnKeys: [&#039;col1&#039;,&#039;col2&#039;]});
+            assert.strictEqual(table.addRecord(&#039;flow1&#039;),123);
+        });
+        it(&#039;returned correct ID - record added correctly&#039;, function() {
+            var mock=new socketMock();
+            var table=new Table({ID: &#039;dada&#039;}, {_page: &#039;dssada&#039;}, mock);
+            table.createTableFlow({ ID:&#039;flow1&#039;, name: &#039;tabella&#039;, columnKeys: [&#039;col1&#039;,&#039;col2&#039;]});
+            assert.strictEqual(typeof table.addRecord(&#039;flow1&#039;,{&#039;col1&#039;: 1, &#039;col2&#039;: 25}),&#039;string&#039;);
+        });
+    });
+    describe(&#039;#updateRecord&#039;, function() {
+        it(&#039;returned error - undefined record&#039;, function() {
+            var mock=new socketMock();
+            var table=new Table({ID: &#039;dada&#039;}, {_page: &#039;dssada&#039;}, mock);
+            assert.strictEqual(typeof table.updateRecord(),&#039;number&#039;);
+        });
+        it(&#039;returned true - correctly updated&#039;, function() {
+            var mock=new socketMock();
+            var table=new Table({ID: &#039;dada&#039;}, {_page: &#039;dssada&#039;}, mock);
+            table.createTableFlow({ ID:&#039;flow1&#039;, name: &#039;tabella&#039;, columnKeys: [&#039;col1&#039;,&#039;col2&#039;]});
+            var recID=table.addRecord(&#039;flow1&#039;,{&#039;col1&#039;: 1, &#039;col2&#039;: 25});
+            assert.strictEqual(table.updateRecord(&#039;flow1&#039;,recID,{&#039;col1&#039;: 4, &#039;col2&#039;: 25}),true);
+        });
+    });
+    describe(&#039;#updateProperties&#039;, function() {
+        it(&#039;no update - invalid params&#039;, function() {
+            var mock = new socketMock();
+            var table=new Table({ID: &#039;dada&#039;}, {_page: &#039;dssada&#039;}, mock);
+            mock.p1=null;
+            mock.p2=null;
+            table.updateProperties();
+            assert.strictEqual(mock.p1,null);
+            assert.strictEqual(mock.p2,null);
+        });
+        it(&#039;updated properties&#039;, function() {
+            var mock = new socketMock();
+            var table=new Table({ID: &#039;dada&#039;}, {_page: &#039;dssada&#039;}, mock);
+            table.updateProperties({title: &#039;graph one&#039;, height: 200, width: 350, sortable: true, addRowOn: &#039;top&#039;, headers: [&#039;column1&#039;,&#039;h2&#039;], sort:{column: &#039;col1&#039;, ordering: &#039;ASC&#039;}});
+            assert.strictEqual(mock.p1,&#039;updateGraphProp&#039;);
+            assert.deepEqual(mock.p2,{title: &#039;graph one&#039;, height: 200, width: 350, sortable: true, addRowOn: &#039;top&#039;, headers: [&#039;column1&#039;,&#039;h2&#039;], sort:{column: &#039;col1&#039;, ordering: &#039;ASC&#039;}});
+        });
+    });
+    describe(&#039;#getProperties&#039;, function() {
+        it(&#039;returned a correct JSON&#039;, function() {
+            var mock=new socketMock();
+            var table=new Table({ID: &#039;dada&#039;}, {_page: &#039;dssada&#039;}, mock);
+            table.createTableFlow({ ID:&#039;flow1&#039;, name: &#039;grafico tempo-temperatura&#039;, xKey: &#039;tempo&#039;, yKey: &#039;temperatura&#039;});
+            assert.deepEqual(table.getProperties(),{&#039;ID&#039;:&#039;dada&#039;,&#039;title&#039;:&#039;&#039;,&#039;type&#039;:&#039;Table&#039;,&#039;height&#039;:400,&#039;width&#039;:500,&#039;enableLegend&#039;:false,&#039;legend&#039;:{&#039;position&#039;:&#039;NE&#039;,&#039;fontColor&#039;:&#039;#000000&#039;,&#039;backgroundColor&#039;:&#039;#FFFFFF&#039;},&#039;horizontalGrid&#039;:false,&#039;verticalGrid&#039;:false,&#039;viewFinder&#039;:false,&#039;xAxis&#039;:{&#039;name&#039;:&#039;&#039;,&#039;color&#039;:&#039;#000000&#039;,&#039;maxIndex&#039;:null,&#039;minIndex&#039;:null,&#039;ticks&#039;:10,&#039;scale&#039;:&#039;linear&#039;},&#039;yAxis&#039;:{&#039;name&#039;:&#039;&#039;,&#039;color&#039;:&#039;#000000&#039;,&#039;maxIndex&#039;:null,&#039;minIndex&#039;:null,&#039;ticks&#039;:10,&#039;scale&#039;:&#039;linear&#039;},&#039;backgroundColor&#039;:&#039;#FFFFFF&#039;,&#039;legendOnPoint&#039;:false});
+        });
+    });
+    describe(&#039;#getConfigJSON&#039;, function() {
+        it(&#039;returned a correct JSON&#039;, function() {
+            var mock=new socketMock();
+            var table=new Table({ID: &#039;dada&#039;}, {_page: &#039;dssada&#039;}, mock);
+            table.createTableFlow({ ID:&#039;flow1&#039;, name: &#039;tabella&#039;, columnKeys: [&#039;col1&#039;,&#039;col2&#039;]});
+            //var recID=table.addRecord(&#039;flow1&#039;,{&#039;col1&#039;: 1, &#039;col2&#039;: 25});
+            table.addRecord(&#039;flow1&#039;,{&#039;col1&#039;: 1, &#039;col2&#039;: 25});
+            console.log(table.getConfigJSON());
+            console.log(table.getConfigJSON());
+            assert.deepEqual(table.getConfigJSON(),{});
+        });
+    });
+
+});</textarea>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>.</p>
+  </div>
+</footer>
+
+<script type="text/html" id="complexity-popover-template">
+  <div class="complexity-notice">
+    Complexity : {{ complexity.cyclomatic }} <br>
+    Length : {{ complexity.halstead.length }} <br>
+    Difficulty : {{ complexity.halstead.difficulty.toFixed(2) }} <br>
+    Est # bugs : {{ complexity.halstead.bugs.toFixed(2) }}<br>
+  </div>
+</script>
+
+<script type="text/javascript" src="../../assets/scripts/bundles/core-bundle.js"></script>
+<script type="text/javascript" src="../../assets/scripts/bundles/codemirror.js"></script>
+<script type="text/javascript" src="../../assets/scripts/codemirror.markpopovertext.js"></script>
+<script type="text/javascript" src="report.js"></script>
+<script type="text/javascript" src="report.history.js"></script>
+<script type="text/javascript" src="../../assets/scripts/plato-file.js"></script>
+</body>
+</html>
