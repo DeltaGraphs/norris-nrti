@@ -48,7 +48,7 @@ angular.module('app')
 			$scope.lineChart.updateParameters(info);
 			$scope.changedP = !$scope.changedP;
 		});
-		socket.on('insertFlow', function(info){
+		/*socket.on('insertFlow', function(info){
 			console.log('LINECHART insert flow' + JSON.stringify(info));
 			var flow = LineChartFlowFactory.build(info); // no properties perchè non ci sono dati
 			flow.initializeData(info);
@@ -88,7 +88,7 @@ angular.module('app')
 					break;
 			}
 			$scope.changedD = !$scope.changedD;
-		});
+		});*/
 	};
 
 	$scope.socketConnection = this.socketConnection;
