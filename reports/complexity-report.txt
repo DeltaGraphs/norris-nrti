@@ -1,8 +1,8 @@
-Mean per-function logical LOC: 10.657802440614944
+Mean per-function logical LOC: 10.670302440614943
 Mean per-function parameter count: 1.1223014832389835
 Mean per-function cyclomatic complexity: 4.412374604562105
-Mean per-function Halstead effort: 8319.122565184045
-Mean per-module maintainability index: 104.8498896837649
+Mean per-function Halstead effort: 8336.02886096727
+Mean per-module maintainability index: 104.83603336407967
 First-order density: 5.76171875%
 Change cost: 21.09375%
 Core size: 31.25%
@@ -1637,12 +1637,12 @@ Core size: 31.25%
 
 /home/travis/build/DeltaGraphs/norris-nrti/lib/dataTier/flow/tableFlowModel.js
 
-  Physical LOC: 165
-  Logical LOC: 103
+  Physical LOC: 168
+  Logical LOC: 105
   Mean parameter count: 1
   Cyclomatic complexity: 37
-  Cyclomatic complexity density: 35.92233009708738%
-  Maintainability index: 89.64052042017012
+  Cyclomatic complexity density: 35.23809523809524%
+  Maintainability index: 89.19711819024292
   Dependency count: 2
 
   Function: TableFlowModel
@@ -1669,17 +1669,17 @@ Core size: 31.25%
 
   Function: <anonymous>.addRecord
     Line No.: 80
-    Physical LOC: 27
-    Logical LOC: 18
+    Physical LOC: 30
+    Logical LOC: 20
     Parameter count: 1
     Cyclomatic complexity: 8
-    Cyclomatic complexity density: 44.44444444444444%
-    Halstead difficulty: 20.625
-    Halstead volume: 824.7922427147189
-    Halstead effort: 17011.34000599108
+    Cyclomatic complexity density: 40%
+    Halstead difficulty: 22.857142857142858
+    Halstead volume: 862.590195744693
+    Halstead effort: 19716.347331307268
 
   Function: <anonymous>.updateRecord
-    Line No.: 109
+    Line No.: 112
     Physical LOC: 47
     Logical LOC: 30
     Parameter count: 2
@@ -1690,7 +1690,7 @@ Core size: 31.25%
     Halstead effort: 40438.401138700356
 
   Function: <anonymous>.getProperties
-    Line No.: 157
+    Line No.: 160
     Physical LOC: 8
     Logical LOC: 6
     Parameter count: 0

@@ -83,18 +83,15 @@ describe('TableFlow', function() {
                     ]
                 }]
             });
-            ID=flow1.addRecord({temperature: 6, col1:1, col2:'2', appearance:[{bg:'#000', text:'#FFF'},{bg:'#000', text:'#FF'}]});
+            ID=flow1.addRecord({temperature: 6, col1:1, col2:'3', appearance:[{bg:'#000', text:'#FFF'},{bg:'#000', text:'#FF'}]});
             assert.strictEqual(mock.p1, 'updateFlowData');
             assert.deepEqual(mock.p2,{
                 action: 'insertRecords',
                 ID: 'flow1',
                 records: [{
                     norrisRecordID: ID,
-                    value: [1,'2'],
-                    appearance:[
-                        {bg:'#000', text:'#FFF'},
-                        {bg:'#000', text:'#FFA'}
-                    ]
+                    value: [1,'3'],
+                    appearance: undefined
                 }]
             });
         });

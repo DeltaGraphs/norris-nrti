@@ -10746,14 +10746,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 103,
-                    "physical": 165
+                    "logical": 105,
+                    "physical": 168
                 },
                 "cyclomatic": 37,
                 "halstead": {
                     "operators": {
                         "distinct": 25,
-                        "total": 390,
+                        "total": 393,
                         "identifiers": [
                             "var",
                             "=",
@@ -10776,15 +10776,15 @@
                             ">=",
                             "forin",
                             "break",
+                            "else",
                             "-",
                             "- (prefix)",
-                            "while",
-                            "else"
+                            "while"
                         ]
                     },
                     "operands": {
                         "distinct": 84,
-                        "total": 412,
+                        "total": 415,
                         "identifiers": [
                             "\"use strict\"",
                             "FlowModel",
@@ -10872,17 +10872,17 @@
                             "exports"
                         ]
                     },
-                    "length": 802,
+                    "length": 808,
                     "vocabulary": 109,
-                    "difficulty": 61.30952380952381,
-                    "volume": 5428.083828471094,
-                    "effort": 332793.2347217397,
-                    "bugs": 1.8093612761570315,
-                    "time": 18488.513040096652
+                    "difficulty": 61.75595238095239,
+                    "volume": 5468.692934419756,
+                    "effort": 337724.3404440772,
+                    "bugs": 1.8228976448065854,
+                    "time": 18762.46335800429
                 },
                 "params": 5,
                 "line": 2,
-                "cyclomaticDensity": 35.92233009708738
+                "cyclomaticDensity": 35.23809523809524
             },
             "functions": [
                 {
@@ -11034,14 +11034,14 @@
                 {
                     "name": "<anonymous>.addRecord",
                     "sloc": {
-                        "logical": 18,
-                        "physical": 27
+                        "logical": 20,
+                        "physical": 30
                     },
                     "cyclomatic": 8,
                     "halstead": {
                         "operators": {
-                            "distinct": 15,
-                            "total": 75,
+                            "distinct": 16,
+                            "total": 78,
                             "identifiers": [
                                 "var",
                                 "=",
@@ -11056,13 +11056,14 @@
                                 "||",
                                 "! (prefix)",
                                 "break",
+                                "else",
                                 "-",
                                 "return"
                             ]
                         },
                         "operands": {
                             "distinct": 28,
-                            "total": 77,
+                            "total": 80,
                             "identifiers": [
                                 "rec",
                                 "record",
@@ -11094,17 +11095,17 @@
                                 143
                             ]
                         },
-                        "length": 152,
-                        "vocabulary": 43,
-                        "difficulty": 20.625,
-                        "volume": 824.7922427147189,
-                        "effort": 17011.34000599108,
-                        "bugs": 0.274930747571573,
-                        "time": 945.0744447772821
+                        "length": 158,
+                        "vocabulary": 44,
+                        "difficulty": 22.857142857142858,
+                        "volume": 862.590195744693,
+                        "effort": 19716.347331307268,
+                        "bugs": 0.287530065248231,
+                        "time": 1095.3526295170705
                     },
                     "params": 1,
                     "line": 80,
-                    "cyclomaticDensity": 44.44444444444444
+                    "cyclomaticDensity": 40
                 },
                 {
                     "name": "<anonymous>.updateRecord",
@@ -11187,7 +11188,7 @@
                         "time": 2246.5778410389084
                     },
                     "params": 2,
-                    "line": 109,
+                    "line": 112,
                     "cyclomaticDensity": 50
                 },
                 {
@@ -11237,7 +11238,7 @@
                         "time": 43.03576443796233
                     },
                     "params": 0,
-                    "line": 157,
+                    "line": 160,
                     "cyclomaticDensity": 16.666666666666664
                 }
             ],
@@ -11253,10 +11254,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 89.64052042017012,
-            "loc": 18.2,
+            "maintainability": 89.19711819024292,
+            "loc": 18.6,
             "cyclomatic": 8.2,
-            "effort": 20015.043494210604,
+            "effort": 20556.04495927384,
             "params": 1,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/dataTier/flow/tableFlowModel.js"
         },
@@ -17930,9 +17931,9 @@
     ],
     "changeCost": 21.09375,
     "coreSize": 31.25,
-    "loc": 10.657802440614944,
+    "loc": 10.670302440614943,
     "cyclomatic": 4.412374604562105,
-    "effort": 8319.122565184045,
+    "effort": 8336.02886096727,
     "params": 1.1223014832389835,
-    "maintainability": 104.8498896837649
+    "maintainability": 104.83603336407967
 }
