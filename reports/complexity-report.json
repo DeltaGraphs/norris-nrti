@@ -5802,14 +5802,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 119,
-                    "physical": 184
+                    "logical": 118,
+                    "physical": 183
                 },
                 "cyclomatic": 23,
                 "halstead": {
                     "operators": {
                         "distinct": 22,
-                        "total": 359,
+                        "total": 358,
                         "identifiers": [
                             "var",
                             "=",
@@ -5836,8 +5836,8 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 100,
-                        "total": 394,
+                        "distinct": 99,
+                        "total": 392,
                         "identifiers": [
                             "\"use strict\"",
                             "Graph",
@@ -5852,7 +5852,7 @@
                             "page",
                             "graphSocket",
                             "undefined",
-                            "\"Error: 371\"",
+                            "\"Error: 391\"",
                             "console",
                             "log",
                             "\"_namespace\"",
@@ -5932,7 +5932,6 @@
                             "getData",
                             "columnKeys",
                             "_columnKeys",
-                            "dir",
                             "norrisRecordIsValid",
                             "j",
                             "norrisRecordID",
@@ -5941,17 +5940,17 @@
                             "exports"
                         ]
                     },
-                    "length": 753,
-                    "vocabulary": 122,
-                    "difficulty": 43.339999999999996,
-                    "volume": 5218.845215184853,
-                    "effort": 226184.7516261115,
-                    "bugs": 1.7396150717282843,
-                    "time": 12565.819534783972
+                    "length": 750,
+                    "vocabulary": 121,
+                    "difficulty": 43.55555555555556,
+                    "volume": 5189.147427955947,
+                    "effort": 226016.1990843035,
+                    "bugs": 1.729715809318649,
+                    "time": 12556.455504683527
                 },
                 "params": 12,
                 "line": 2,
-                "cyclomaticDensity": 19.327731092436977
+                "cyclomaticDensity": 19.491525423728813
             },
             "functions": [
                 {
@@ -5986,7 +5985,7 @@
                                 "page",
                                 "graphSocket",
                                 "undefined",
-                                "\"Error: 371\"",
+                                "\"Error: 391\"",
                                 "console",
                                 "log",
                                 "\"_namespace\"",
@@ -6448,14 +6447,14 @@
                 {
                     "name": "<anonymous>.getConfigJSON",
                     "sloc": {
-                        "logical": 28,
-                        "physical": 34
+                        "logical": 27,
+                        "physical": 33
                     },
                     "cyclomatic": 6,
                     "halstead": {
                         "operators": {
                             "distinct": 13,
-                            "total": 99,
+                            "total": 98,
                             "identifiers": [
                                 "var",
                                 "=",
@@ -6473,8 +6472,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 31,
-                            "total": 101,
+                            "distinct": 29,
+                            "total": 99,
                             "identifiers": [
                                 "configJSON",
                                 "<anonymous>",
@@ -6498,8 +6497,6 @@
                                 "getData",
                                 "columnKeys",
                                 "_columnKeys",
-                                "console",
-                                "dir",
                                 "i",
                                 "norrisRecordIsValid",
                                 "record",
@@ -6509,17 +6506,17 @@
                                 "value"
                             ]
                         },
-                        "length": 200,
-                        "vocabulary": 44,
-                        "difficulty": 21.17741935483871,
-                        "volume": 1091.8863237274595,
-                        "effort": 23123.33456538959,
-                        "bugs": 0.3639621079091532,
-                        "time": 1284.6296980771995
+                        "length": 197,
+                        "vocabulary": 42,
+                        "difficulty": 22.189655172413794,
+                        "volume": 1062.2865322874159,
+                        "effort": 23571.771845756968,
+                        "bugs": 0.354095510762472,
+                        "time": 1309.5428803198315
                     },
                     "params": 0,
                     "line": 150,
-                    "cyclomaticDensity": 21.428571428571427
+                    "cyclomaticDensity": 22.22222222222222
                 }
             ],
             "dependencies": [
@@ -6539,10 +6536,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 104.63465528007086,
-            "loc": 10.1,
+            "maintainability": 104.76059280799656,
+            "loc": 10,
             "cyclomatic": 3.2,
-            "effort": 4327.445951680485,
+            "effort": 4372.289679717223,
             "params": 1.2,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/graph/table.js"
         },
@@ -17906,9 +17903,9 @@
     ],
     "changeCost": 21.09375,
     "coreSize": 31.25,
-    "loc": 10.492177440614944,
+    "loc": 10.489052440614943,
     "cyclomatic": 4.337374604562105,
-    "effort": 8011.391232719452,
+    "effort": 8012.7925992206,
     "params": 1.1223014832389835,
-    "maintainability": 105.08865265351172
+    "maintainability": 105.09258820125939
 }
