@@ -1,8 +1,8 @@
-Mean per-function logical LOC: 10.483322949451985
+Mean per-function logical LOC: 10.479738720061302
 Mean per-function parameter count: 1.119795079472499
 Mean per-function cyclomatic complexity: 4.366895649153714
-Mean per-function Halstead effort: 8081.017011732665
-Mean per-module maintainability index: 105.1714055884229
+Mean per-function Halstead effort: 8080.923060625162
+Mean per-module maintainability index: 105.17751985548769
 First-order density: 5.82726326742976%
 Change cost: 21.22788761706556%
 Core size: 29.03225806451613%
@@ -530,11 +530,11 @@ Core size: 29.03225806451613%
 /home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/graph/barChart.js
 
   Physical LOC: 170
-  Logical LOC: 105
+  Logical LOC: 104
   Mean parameter count: 1.2222222222222223
   Cyclomatic complexity: 20
-  Cyclomatic complexity density: 19.047619047619047%
-  Maintainability index: 105.28319538591944
+  Cyclomatic complexity density: 19.230769230769234%
+  Maintainability index: 105.47273766492796
   Dependency count: 4
 
   Function: BarChart
@@ -561,25 +561,25 @@ Core size: 29.03225806451613%
 
   Function: <anonymous>.createBarChartFlow
     Line No.: 71
-    Physical LOC: 24
+    Physical LOC: 25
     Logical LOC: 15
     Parameter count: 2
     Cyclomatic complexity: 4
     Cyclomatic complexity density: 26.666666666666668%
-    Halstead difficulty: 16.153846153846153
-    Halstead volume: 590.7340185324972
-    Halstead effort: 9542.626453217263
+    Halstead difficulty: 15.814814814814813
+    Halstead volume: 610.7609285264615
+    Halstead effort: 9659.070980770335
 
   Function: <anonymous>.deleteFlow
-    Line No.: 96
-    Physical LOC: 23
-    Logical LOC: 16
+    Line No.: 97
+    Physical LOC: 22
+    Logical LOC: 15
     Parameter count: 1
     Cyclomatic complexity: 5
-    Cyclomatic complexity density: 31.25%
-    Halstead difficulty: 14.26086956521739
-    Halstead volume: 412.2613730712554
-    Halstead effort: 5879.205668146598
+    Cyclomatic complexity density: 33.33333333333333%
+    Halstead difficulty: 15.2
+    Halstead volume: 377.40452510528877
+    Halstead effort: 5736.548781600389
 
   Function: <anonymous>.deleteAllFlows
     Line No.: 120

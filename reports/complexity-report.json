@@ -3461,7 +3461,7 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 105,
+                    "logical": 104,
                     "physical": 170
                 },
                 "cyclomatic": 20,
@@ -3495,8 +3495,8 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 91,
-                        "total": 362,
+                        "distinct": 90,
+                        "total": 360,
                         "identifiers": [
                             "\"use strict\"",
                             "Graph",
@@ -3559,11 +3559,10 @@
                             "name",
                             "flowColor",
                             "isHEX",
+                            "getReplaceDataJSON",
                             "\"insertFlow\"",
                             "sendMessage",
                             "deleteFlow",
-                            "\"FOUND\"",
-                            "dir",
                             "\"deleteFlow\"",
                             1,
                             "splice",
@@ -3591,17 +3590,17 @@
                             "exports"
                         ]
                     },
-                    "length": 692,
-                    "vocabulary": 113,
-                    "difficulty": 43.75824175824176,
-                    "volume": 4719.56384199131,
-                    "effort": 206519.81559131207,
-                    "bugs": 1.5731879473304367,
-                    "time": 11473.323088406227
+                    "length": 690,
+                    "vocabulary": 112,
+                    "difficulty": 44,
+                    "volume": 4697.074896219747,
+                    "effort": 206671.29543366886,
+                    "bugs": 1.565691632073249,
+                    "time": 11481.738635203825
                 },
                 "params": 11,
                 "line": 2,
-                "cyclomaticDensity": 19.047619047619047
+                "cyclomaticDensity": 19.230769230769234
             },
             "functions": [
                 {
@@ -3731,13 +3730,13 @@
                     "name": "<anonymous>.createBarChartFlow",
                     "sloc": {
                         "logical": 15,
-                        "physical": 24
+                        "physical": 25
                     },
                     "cyclomatic": 4,
                     "halstead": {
                         "operators": {
                             "distinct": 14,
-                            "total": 51,
+                            "total": 53,
                             "identifiers": [
                                 "var",
                                 "=",
@@ -3756,8 +3755,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 26,
-                            "total": 60,
+                            "distinct": 27,
+                            "total": 61,
                             "identifiers": [
                                 "params",
                                 "records",
@@ -3783,17 +3782,18 @@
                                 "flowColor",
                                 "Helper",
                                 "isHEX",
+                                "getReplaceDataJSON",
                                 "\"insertFlow\"",
                                 "sendMessage"
                             ]
                         },
-                        "length": 111,
-                        "vocabulary": 40,
-                        "difficulty": 16.153846153846153,
-                        "volume": 590.7340185324972,
-                        "effort": 9542.626453217263,
-                        "bugs": 0.1969113395108324,
-                        "time": 530.1459140676257
+                        "length": 114,
+                        "vocabulary": 41,
+                        "difficulty": 15.814814814814813,
+                        "volume": 610.7609285264615,
+                        "effort": 9659.070980770335,
+                        "bugs": 0.20358697617548716,
+                        "time": 536.6150544872409
                     },
                     "params": 2,
                     "line": 71,
@@ -3802,14 +3802,14 @@
                 {
                     "name": "<anonymous>.deleteFlow",
                     "sloc": {
-                        "logical": 16,
-                        "physical": 23
+                        "logical": 15,
+                        "physical": 22
                     },
                     "cyclomatic": 5,
                     "halstead": {
                         "operators": {
                             "distinct": 16,
-                            "total": 37,
+                            "total": 35,
                             "identifiers": [
                                 "if",
                                 "===",
@@ -3830,8 +3830,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 23,
-                            "total": 41,
+                            "distinct": 20,
+                            "total": 38,
                             "identifiers": [
                                 "ID",
                                 "\"string\"",
@@ -3846,9 +3846,6 @@
                                 "_dataBarChartFlow",
                                 "_ID",
                                 true,
-                                "\"FOUND\"",
-                                "console",
-                                "dir",
                                 "\"deleteFlow\"",
                                 "<anonymous>",
                                 "_graphSocket",
@@ -3858,17 +3855,17 @@
                                 263
                             ]
                         },
-                        "length": 78,
-                        "vocabulary": 39,
-                        "difficulty": 14.26086956521739,
-                        "volume": 412.2613730712554,
-                        "effort": 5879.205668146598,
-                        "bugs": 0.13742045769041847,
-                        "time": 326.62253711925547
+                        "length": 73,
+                        "vocabulary": 36,
+                        "difficulty": 15.2,
+                        "volume": 377.40452510528877,
+                        "effort": 5736.548781600389,
+                        "bugs": 0.1258015083684296,
+                        "time": 318.69715453335493
                     },
                     "params": 1,
-                    "line": 96,
-                    "cyclomaticDensity": 31.25
+                    "line": 97,
+                    "cyclomaticDensity": 33.33333333333333
                 },
                 {
                     "name": "<anonymous>.deleteAllFlows",
@@ -4138,10 +4135,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 105.28319538591944,
-            "loc": 9.666666666666666,
+            "maintainability": 105.47273766492796,
+            "loc": 9.555555555555555,
             "cyclomatic": 3.111111111111111,
-            "effort": 4414.7883091557605,
+            "effort": 4411.875824823189,
             "params": 1.2222222222222223,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/graph/barChart.js"
         },
@@ -17017,9 +17014,9 @@
     ],
     "changeCost": 21.22788761706556,
     "coreSize": 29.03225806451613,
-    "loc": 10.483322949451985,
+    "loc": 10.479738720061302,
     "cyclomatic": 4.366895649153714,
-    "effort": 8081.017011732665,
+    "effort": 8080.923060625162,
     "params": 1.119795079472499,
-    "maintainability": 105.1714055884229
+    "maintainability": 105.17751985548769
 }
