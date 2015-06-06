@@ -144,11 +144,11 @@ describe('Table', function() {
             var table=new Table({ID: 'dada'}, {_page: 'dssada'}, mock);
             assert.strictEqual(table.addRecord(),292);
         });
-        it('returned 123 - undefined record', function() {
+        it('returned 143 - undefined record', function() {
             var mock=new socketMock();
             var table=new Table({ID: 'dada'}, {_page: 'dssada'}, mock);
             table.createTableFlow({ ID:'flow1', name: 'tabella', columnKeys: ['col1','col2']});
-            assert.strictEqual(table.addRecord('flow1'),123);
+            assert.strictEqual(table.addRecord('flow1'),143);
         });
         it('returned correct ID - record added correctly', function() {
             var mock=new socketMock();
@@ -192,8 +192,10 @@ describe('Table', function() {
     describe('#getProperties', function() {
         it('returned a correct JSON', function() {
             var mock=new socketMock();
-            var table=new Table({ID: 'dada'}, {_page: 'dssada'}, mock);
-            table.createTableFlow({ ID:'flow1', name: 'grafico tempo-temperatura', xKey: 'tempo', yKey: 'temperatura'});
+            var table=new Table({title: 'graph one', height: 200, width: 350, sortable: true, addRowOn: 'top', headers: ['column1','h2'], sort:{column: 'col1', ordering: 'ASC'}}, {_page: 'dssada'}, mock);
+            table.createTableFlow({ ID:'flow1', name: 'tabella', columnKeys: ['col1','col2']});
+            console.log('getProperties()');
+            console.log(JSON.stringify(table.getProperties()));
             assert.deepEqual(table.getProperties(),{'ID':'dada','title':'','type':'Table','height':400,'width':500,'enableLegend':false,'legend':{'position':'NE','fontColor':'#000000','backgroundColor':'#FFFFFF'},'horizontalGrid':false,'verticalGrid':false,'viewFinder':false,'xAxis':{'name':'','color':'#000000','maxIndex':null,'minIndex':null,'ticks':10,'scale':'linear'},'yAxis':{'name':'','color':'#000000','maxIndex':null,'minIndex':null,'ticks':10,'scale':'linear'},'backgroundColor':'#FFFFFF','legendOnPoint':false});
         });
     });
@@ -204,8 +206,8 @@ describe('Table', function() {
             table.createTableFlow({ ID:'flow1', name: 'tabella', columnKeys: ['col1','col2']});
             //var recID=table.addRecord('flow1',{'col1': 1, 'col2': 25});
             table.addRecord('flow1',{'col1': 1, 'col2': 25});
-            console.log(table.getConfigJSON());
-            console.log(table.getConfigJSON());
+            console.log('getConfigJSON()');
+            console.log(JSON.stringify(table.getConfigJSON()));
             assert.deepEqual(table.getConfigJSON(),{});
         });
     });
