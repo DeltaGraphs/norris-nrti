@@ -240,8 +240,8 @@ describe('Page', function() {
             assert.deepEqual(page1.createLineChart({ID: 'l1'}), null);
         });
 
-        it('returns null if the createLineChart is not created', function() {
-            assert.deepEqual(page1.createMapChart({ID: ''}), null);
+        it('returns null if the lineChartModel is not created', function() {
+            assert.deepEqual(page1.createLineChart({ID: ''}), null);
         });
 
         it('behaves correctly with the right parameters', function() {
@@ -265,6 +265,52 @@ describe('Page', function() {
             assert.deepEqual(page3.createLineChart({ID: 'line1'}) instanceof LineChart, true);
             assert.strictEqual(nor3._pages[0]._graphs.length, 1);
             assert.strictEqual(nor3._pageList._pages[0]._graphs.length, 1);
+            var client1 = ioclient.connect(socketURL, options);
+            client1.on('insertGraph', function(message) {
+                assert.strictEqual(message, expJSON);
+            });
+        });
+    });
+
+    describe('#createBarChart', function() {
+        it('returns null if no parameter is passed', function() {
+            assert.deepEqual(page1.createBarChart(), null);
+        });
+
+        it('returns null if the passed parameter does not contain an ID', function() {
+            assert.deepEqual(page1.createBarChart({p: 'abvs'}), null);
+        });
+
+        it('returns null if the passed ID is already used', function() {
+            page1.createMapChart({ID: 'l1'});
+            assert.deepEqual(page1.createBarChart({ID: 'l1'}), null);
+        });
+
+        it('returns null if the barChartModel is not created', function() {
+            assert.deepEqual(page1.createBarChart({ID: ''}), null);
+        });
+
+        it('behaves correctly with the right parameters', function() {
+            var nor4 = new Norris(app, io, '/norris');
+            var page4 = nor3.createPage({ID: 'page3'});
+            var socketURL = 'http://0.0.0.0:5000/page3';
+            var options ={
+                transports: ['websocket'],
+                'force new connection': true
+            };
+            var expJSON = {
+                ID: 'page1',
+                graph: {
+                    ID: 'bar1',
+                    title: '',
+                    type: 'BarChart',
+                    socketURL: '/page3/bar1'
+                }
+            };
+            //var stPage = new Page({ID: 'page1'}, nor._networkHandler, nor);
+            assert.deepEqual(page4.createBarChart({ID: 'bar1'}) instanceof BarChart, true);
+            assert.strictEqual(nor4._pages[0]._graphs.length, 1);
+            assert.strictEqual(nor4._pageList._pages[0]._graphs.length, 1);
             var client1 = ioclient.connect(socketURL, options);
             client1.on('insertGraph', function(message) {
                 assert.strictEqual(message, expJSON);
