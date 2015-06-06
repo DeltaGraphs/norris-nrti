@@ -18,6 +18,7 @@ var Page = require('../../../lib/businessTier/page/page.js');
 var PageModel = require('../../../lib/dataTier/page/pageModel.js');
 var MapChart = require('../../../lib/businessTier/graph/mapChart.js');
 var LineChart = require('../../../lib/businessTier/graph/lineChart.js');
+var BarChart = require('../../../lib/businessTier/graph/barChart.js');
 var assert = require('assert');
 
 var Norris = require('../../../lib/businessTier/norris/norris.js');
