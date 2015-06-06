@@ -733,14 +733,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 41,
-                    "physical": 76
+                    "logical": 42,
+                    "physical": 77
                 },
                 "cyclomatic": 16,
                 "halstead": {
                     "operators": {
                         "distinct": 19,
-                        "total": 146,
+                        "total": 149,
                         "identifiers": [
                             "var",
                             "=",
@@ -765,7 +765,7 @@
                     },
                     "operands": {
                         "distinct": 70,
-                        "total": 175,
+                        "total": 179,
                         "identifiers": [
                             "\"use strict\"",
                             "Express",
@@ -839,17 +839,17 @@
                             "exports"
                         ]
                     },
-                    "length": 321,
+                    "length": 328,
                     "vocabulary": 89,
-                    "difficulty": 23.75,
-                    "volume": 2078.7104313402137,
-                    "effort": 49369.372744330074,
-                    "bugs": 0.6929034771134046,
-                    "time": 2742.74293024056
+                    "difficulty": 24.29285714285714,
+                    "volume": 2124.0405653569783,
+                    "effort": 51599.01401985059,
+                    "bugs": 0.7080135217856595,
+                    "time": 2866.6118899916996
                 },
                 "params": 6,
                 "line": 2,
-                "cyclomaticDensity": 39.02439024390244
+                "cyclomaticDensity": 38.095238095238095
             },
             "functions": [
                 {
@@ -918,7 +918,7 @@
                     "name": "<anonymous>.addRoutingPath",
                     "sloc": {
                         "logical": 15,
-                        "physical": 42
+                        "physical": 43
                     },
                     "cyclomatic": 8,
                     "halstead": {
@@ -1000,20 +1000,20 @@
                 {
                     "name": "handle",
                     "sloc": {
-                        "logical": 14,
-                        "physical": 16
+                        "logical": 15,
+                        "physical": 17
                     },
                     "cyclomatic": 3,
                     "halstead": {
                         "operators": {
                             "distinct": 12,
-                            "total": 51,
+                            "total": 54,
                             "identifiers": [
+                                "()",
+                                ".",
                                 "if",
                                 "else",
                                 "===",
-                                ".",
-                                "()",
                                 "{}",
                                 ":",
                                 "var",
@@ -1024,12 +1024,14 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 31,
-                            "total": 62,
+                            "distinct": 33,
+                            "total": 66,
                             "identifiers": [
                                 "req",
                                 "res",
                                 "url",
+                                "console",
+                                "log",
                                 "\"/favicon.ico\"",
                                 200,
                                 "<anonymous>",
@@ -1060,17 +1062,17 @@
                                 "render"
                             ]
                         },
-                        "length": 113,
-                        "vocabulary": 43,
+                        "length": 120,
+                        "vocabulary": 45,
                         "difficulty": 12,
-                        "volume": 613.167917281337,
-                        "effort": 7358.015007376045,
-                        "bugs": 0.20438930576044567,
-                        "time": 408.7786115208914
+                        "volume": 659.022371559561,
+                        "effort": 7908.268458714731,
+                        "bugs": 0.219674123853187,
+                        "time": 439.34824770637397
                     },
                     "params": 2,
                     "line": 51,
-                    "cyclomaticDensity": 21.428571428571427
+                    "cyclomaticDensity": 20
                 }
             ],
             "dependencies": [
@@ -1080,10 +1082,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 100.42049181146712,
-            "loc": 12,
+            "maintainability": 99.87827429260602,
+            "loc": 12.333333333333334,
             "cyclomatic": 6,
-            "effort": 6286.590839498906,
+            "effort": 6470.008656611801,
             "params": 2,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/presentationTier/routes.js"
         },
@@ -17921,9 +17923,9 @@
     ],
     "changeCost": 21.09375,
     "coreSize": 31.25,
-    "loc": 10.541135773948275,
+    "loc": 10.551552440614943,
     "cyclomatic": 4.347791271228772,
-    "effort": 8031.778372575382,
+    "effort": 8037.510179360161,
     "params": 1.1223014832389835,
-    "maintainability": 105.0056146247676
+    "maintainability": 104.9886703273032
 }
