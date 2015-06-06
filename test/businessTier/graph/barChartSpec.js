@@ -91,11 +91,12 @@ describe('BarChart', function() {
         it('return correct object', function() {
             var mock = new socketMock();
             var barChart=new BarChart({ID: 'dada'}, {_page: 'dssada'}, mock);
-            var bc=barChart.createBarChartFlow({ ID:'flow1', name: 'grafico tempo-temperatura', indexKey: 'tempo', valueKey: 'temperatura'});
+            var bc=barChart.createBarChartFlow({ ID:'flow1', name: 'grafico tempo-temperatura', indexKey: 'tempo', valueKey: 'temperatura', flowColor: '#EEEEEE'});
             assert.strictEqual(bc.hasOwnProperty('_dataBarChartFlow'),true);
             assert.strictEqual(mock.p1,'insertFlow');
             assert.strictEqual(mock.p2.ID, 'flow1');
             assert.strictEqual(mock.p2.name, 'grafico tempo-temperatura');
+            assert.strictEqual(mock.p2.flowColor, '#EEEEEE');
         });
     });
 
@@ -171,6 +172,16 @@ describe('BarChart', function() {
             var barChart=new BarChart({ID: 'dada'}, {_page: 'dssada'}, mock);
             barChart.createBarChartFlow({ ID:'flow1', name: 'grafico tempo-temperatura', indexKey: 'tempo', valueKey: 'temperatura'});
             assert.deepEqual(barChart.getProperties(),{'ID':'dada','title':'','type':'BarChart','height':400,'width':500,'enableLegend':false,'legend':{'position':'NE','fontColor':'#000000','backgroundColor':'#FFFFFF'},'grid':false,'xAxis':{'name':'','color':'#000000','maxIndex':null,'minIndex':null,'ticks':10,'scale':'linear'},'yAxis':{'name':'','color':'#000000','maxIndex':null,'minIndex':null,'ticks':10,'scale':'linear'},'backgroundColor':'#FFFFFF','legendOnPoint':false,'sortable':false,'groupingControl':false,'barOrientation':'V', 'headers':[]});
+        });
+    });
+
+    describe('#getConfigJSON', function() {
+        it('returned a correct JSON', function() {
+            var mock=new socketMock();
+            var barChart=new BarChart({ID: 'dada'}, {_page: 'dssada'}, mock);
+            barChart.createBarChartFlow({ ID:'flow1', name: 'grafico tempo-temperatura', indexKey: 'tempo', valueKey: 'temperatura'}, [{'tempo': 1, 'temperatura': 25}]);
+            var ID = barChart.getFlowByID('flow1')._dataBarChartFlow.getRecordByIndex(0)._norrisRecordID;
+            assert.deepEqual(barChart.getConfigJSON(),{'properties':{'ID':'dada','title':'','type':'BarChart','height':400,'width':500,'enableLegend':false,'legend':{'position':'NE','fontColor':'#000000','backgroundColor':'#FFFFFF'},'grid':false,'sortable':false,'barOrientation':'V','groupingControl':false,'headers':[],'xAxis':{'name':'','color':'#000000','maxIndex':null,'minIndex':null,'ticks':10,'scale':'linear'},'yAxis':{'name':'','color':'#000000','maxIndex':null,'minIndex':null,'ticks':10,'scale':'linear'},'backgroundColor':'#FFFFFF','legendOnPoint':false,'flows':[{'ID':'flow1','name':'grafico tempo-temperatura','filters':null,'indexKey':'tempo','valueKey':'temperatura','indexFormat':null,'valueFormat':null,'flowColor':null}]},'data':[{'ID':'flow1','records':[{norrisRecordID: ID, value: [1,25]}]}]});
         });
     });
 });
