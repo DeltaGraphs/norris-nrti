@@ -1,3 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <checkstyle version="4.3">
+	<file name="test/businessTier/flow/tableFlowSpec.js">
+		<error line="112" column="93" severity="error" message="Expected &apos;}&apos; to match &apos;{&apos; from line 112 and instead saw &apos;appearance&apos;." source="jshint.E020" />
+		<error line="112" column="103" severity="warning" message="Expected &apos;)&apos; and instead saw &apos;:&apos;." source="jshint.W116" />
+		<error line="112" column="129" severity="error" message="Expected &apos;]&apos; to match &apos;[&apos; from line 112 and instead saw &apos;,&apos;." source="jshint.E020" />
+		<error line="112" column="130" severity="warning" message="Expected &apos;)&apos; and instead saw &apos;{&apos;." source="jshint.W116" />
+		<error line="112" column="131" severity="warning" message="Missing semicolon." source="jshint.W033" />
+		<error line="112" column="134" severity="warning" message="Label &apos;bg&apos; on #000 statement." source="jshint.W028" />
+		<error line="112" column="146" severity="warning" message="Missing semicolon." source="jshint.W033" />
+		<error line="112" column="146" severity="error" message="Expected &apos;}&apos; to match &apos;{&apos; from line 109 and instead saw &apos;:&apos;." source="jshint.E020" />
+		<error line="112" column="147" severity="warning" message="Expected &apos;)&apos; and instead saw &apos;#FFF&apos;." source="jshint.W116" />
+		<error line="112" column="153" severity="warning" message="Missing semicolon." source="jshint.W033" />
+		<error line="112" column="154" severity="warning" message="Expected &apos;)&apos; and instead saw &apos;]&apos;." source="jshint.W116" />
+		<error line="112" column="155" severity="warning" message="Missing semicolon." source="jshint.W033" />
+		<error line="112" column="162" severity="warning" message="Missing semicolon." source="jshint.W033" />
+		<error line="112" column="162" severity="error" message="Expected an identifier and instead saw &apos;)&apos;." source="jshint.E030" />
+		<error line="112" column="9" severity="error" message="Unrecoverable syntax error. (53% scanned)." source="jshint.E041" />
+	</file>
 </checkstyle>
