@@ -185,7 +185,7 @@ Table.prototype.deleteFlow = function (ID) {
         __cov_XcYyGhG6A7rz319V38i8kA.b['10'][1]++;
     }
     __cov_XcYyGhG6A7rz319V38i8kA.s['64']++;
-    return 273;
+    return 293;
 };
 __cov_XcYyGhG6A7rz319V38i8kA.s['65']++;
 Table.prototype.deleteAllFlows = function () {
