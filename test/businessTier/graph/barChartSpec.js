@@ -94,9 +94,9 @@ describe('BarChart', function() {
             var bc=barChart.createBarChartFlow({ ID:'flow1', name: 'grafico tempo-temperatura', indexKey: 'tempo', valueKey: 'temperatura', flowColor: '#EEEEEE'});
             assert.strictEqual(bc.hasOwnProperty('_dataBarChartFlow'),true);
             assert.strictEqual(mock.p1,'insertFlow');
-            assert.strictEqual(mock.p2.ID, 'flow1');
-            assert.strictEqual(mock.p2.name, 'grafico tempo-temperatura');
-            assert.strictEqual(mock.p2.flowColor, '#EEEEEE');
+            assert.strictEqual(mock.p2.properties.ID, 'flow1');
+            assert.strictEqual(mock.p2.properties.name, 'grafico tempo-temperatura');
+            assert.strictEqual(mock.p2.properties.flowColor, '#EEEEEE');
         });
     });
 

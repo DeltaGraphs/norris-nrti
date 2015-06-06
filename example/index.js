@@ -233,6 +233,13 @@ var barChart=page1.createBarChart({
         color: '#000000'
         //ecc
     },
+    headers: [ 
+        'h1',
+        'h2',
+        'h3',
+        'h4',
+        'h5'
+    ],
     backGroundColor: '#FFFFFF',
     viewFinder: true,
     grid: true,
