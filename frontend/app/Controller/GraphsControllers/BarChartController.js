@@ -39,8 +39,9 @@ angular.module('app')
 				console.log('BARCHART configGraph');
 				$scope.barChart.updateParameters(info.properties);
 				$scope.barChart.initializeData(info.data);
-				$scope.changedP = !$scope.changedP;
 				$scope.changedD = !$scope.changedD;
+				$scope.changedP = !$scope.changedP;
+				count++;
 			}
 		});
 		socket.on('updateGraphProp', function(info){
@@ -49,11 +50,12 @@ angular.module('app')
 			$scope.changedP = !$scope.changedP;
 		});
 		socket.on('insertFlow', function(info){
-			console.log('BARCHART insert flow' + JSON.stringify(info));
+			console.log('BARCHART insert flow');
 			var flow = BarChartFlowFactory.build(info.properties);
 			flow.initializeData(info);
-			$scope.barChart.addFlow(info.ID, flow);
+			$scope.barChart.addFlow(info.properties.ID, flow);
 			$scope.changedD = !$scope.changedD;
+
 			//$scope.changedF = !$scope.changedF;
 		});
 		socket.on('deleteFlow', function(info){
@@ -63,7 +65,7 @@ angular.module('app')
 			//$scope.changedF = !$scope.changedF;
 		});
 		socket.on('updateFlowProp', function(info){
-			console.log('BARCHART updateFlowProp');
+			console.log('BARCHART updateFlowProp'  + JSON.stringify($scope.barChart));
 			for (var i=0; i<$scope.barChart.getFlowList().length; i++){
 				if ($scope.barChart.getFlowList()[i].id === info.ID){
 					$scope.barChart.getFlowList()[i].flow.updateParameters(info);
@@ -72,7 +74,7 @@ angular.module('app')
 			$scope.changedD = !$scope.changedD;
 		});
 		socket.on('updateFlowData', function(data){
-			console.log('BARCHART updateFlowData ' + data.action);
+			console.log('BARCHART updateFlowData');
 			switch (data.action){
 				case 'insertRecords':
 					$scope.barChart.addRecords(data);

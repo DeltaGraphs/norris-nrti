@@ -53,12 +53,12 @@ angular.module('app')
 		var json = split(info);
 		var fJson = json.flowJson;
 		var bfJson = json.barFlowJson;
-
 		this._flow = FlowFactory.build(fJson);
 
 		if (bfJson.flowColor !== undefined) {
             this._flowColor = bfJson.flowColor;
         }
+
 	}
 
 	BarChartFlow.prototype.updateParameters = function(info) {

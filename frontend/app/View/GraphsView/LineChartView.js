@@ -24,10 +24,10 @@ angular.module('app')
             url: '@'
 		},
 		bindToController: true,
-        template: '<div>ciao, sono il line chart</div>',
+        //template: '<div>ciao, sono il line chart</div>',
         link: function(scope, element, attrs){
-/*
-			scope.exampleData = [
+			
+            /*scope.exampleData = [
 				{
 					'key' : 'Quantity' ,
 					'bar': true,
@@ -38,32 +38,32 @@ angular.module('app')
 					'key' : 'Price' ,
 					'values' : [ [ 1136005200000 , 71.89] , [ 1138683600000 , 75.51] , [ 1141102800000 , 68.49] , [ 1143781200000 , 62.72] , [ 1146369600000 , 70.39] , [ 1149048000000 , 59.77] , [ 1151640000000 , 57.27] , [ 1154318400000 , 67.96] , [ 1156996800000 , 67.85] , [ 1159588800000 , 76.98] , [ 1162270800000 , 81.08] , [ 1164862800000 , 91.66] , [ 1167541200000 , 84.84] , [ 1170219600000 , 85.73] , [ 1172638800000 , 84.61] , [ 1175313600000 , 92.91] , [ 1177905600000 , 99.8] , [ 1180584000000 , 121.191] , [ 1183176000000 , 122.04] , [ 1185854400000 , 131.76] , [ 1188532800000 , 138.48] , [ 1191124800000 , 153.47] , [ 1193803200000 , 189.95] , [ 1196398800000 , 182.22] , [ 1199077200000 , 198.08] , [ 1201755600000 , 135.36] , [ 1204261200000 , 125.02] , [ 1206936000000 , 143.5] , [ 1209528000000 , 173.95] , [ 1212206400000 , 188.75] , [ 1214798400000 , 167.44] , [ 1217476800000 , 158.95] , [ 1220155200000 , 169.53] , [ 1222747200000 , 113.66] , [ 1225425600000 , 107.59] , [ 1228021200000 , 92.67] , [ 1230699600000 , 85.35] , [ 1233378000000 , 90.13] , [ 1235797200000 , 89.31] , [ 1238472000000 , 105.12] , [ 1241064000000 , 125.83] , [ 1243742400000 , 135.81] , [ 1246334400000 , 142.43] , [ 1249012800000 , 163.39] , [ 1251691200000 , 168.21] , [ 1254283200000 , 185.35] , [ 1256961600000 , 188.5] , [ 1259557200000 , 199.91] , [ 1262235600000 , 210.732] , [ 1264914000000 , 192.063] , [ 1267333200000 , 204.62] , [ 1270008000000 , 235.0] , [ 1272600000000 , 261.09] , [ 1275278400000 , 256.88] , [ 1277870400000 , 251.53] , [ 1280548800000 , 257.25] , [ 1283227200000 , 243.1] , [ 1285819200000 , 283.75] , [ 1288497600000 , 300.98] , [ 1291093200000 , 311.15] , [ 1293771600000 , 322.56] , [ 1296450000000 , 339.32] , [ 1298869200000 , 353.21] , [ 1301544000000 , 348.5075] , [ 1304136000000 , 350.13] , [ 1306814400000 , 347.83] , [ 1309406400000 , 335.67] , [ 1312084800000 , 390.48] , [ 1314763200000 , 384.83] , [ 1317355200000 , 381.32] , [ 1320033600000 , 404.78] , [ 1322629200000 , 382.2] , [ 1325307600000 , 405.0] , [ 1327986000000 , 456.48] , [ 1330491600000 , 542.44] , [ 1333166400000 , 599.55] , [ 1335758400000 , 583.98] ]
 				}
-			];
+			];*/
 
 			scope.xAxisTickFormatFunction = function(){
 				return function(d){
 					return d3.time.format('%x')(new Date(d));  //uncomment for date format
 				};
 			};
-*/
+
         	attrs.$observe('url', function(value) {
                 console.log('LINECHART observ url ' + value);
                 if (value) {
-                    //scope.$parent.socketConnection(value);
+                    scope.$parent.socketConnection(value);
                 }
             });
 
             scope.$parent.$watch('changedP', function(newValue, oldValue){
                 if (newValue !== oldValue) {
                     console.log('LINECHART watch changedP');
-                    //scope.init();
+                    scope.init();
                 }
             }, true);
 
             scope.$parent.$watch('changedD', function(newValue, oldValue){
                 if(newValue !== oldValue){
                     console.log('LINECHART watch changedD');                    
-                    //scope.render();
+                    scope.setData();
                 }
             }, true);
 
@@ -74,21 +74,20 @@ angular.module('app')
                 }
             }, true);
 
-            var  chart = 0;
+            scope.init = function(){
+                while(element.firstChild) {
+                    element.removeChild(element.firstChild);
+                }
+                console.log('BARCHART init');
+                var linechart, legend, onPoint;
+                var str = scope.url.split('/');
+                var id = str[str.length-1];
 
-            scope.createChart = function(){
-                /*var linechart, legend, onPoint, control;
                 if (scope.$parent.lineChart.getLegend() !== null){
                     legend = true;
                 }
                 else{
                     legend = false;
-                }
-                if (scope.$parent.lineChart.getGroupingControl()){
-                    control = true;
-                }
-                else{
-                    control = false;
                 }
                 if (scope.$parent.lineChart.getLegendOnPoint()){
                     onPoint = true;
@@ -96,70 +95,47 @@ angular.module('app')
                 else{
                     onPoint = false;
                 }
-                linechart = '<nvd3-line-with-focus-chart data="exampleData" id="exampleId" ';
-                linechart = linechart + 'yAxisTickFormat="yAxisTickFormatFunction()" xAxisTickFormat="xAxisTickFormatFunction()" x2AxisTickFormat="xAxisTickFormatFunction()" ';*/
 
-                /*if (scope.$parent.lineChart.getBarOrientation() === 'V'){
-                    linechart = '<nvd3-multi-bar-chart data="exampleData" id="exampleId" ';
-                    linechart = linechart + 'xaxisticksformat="xAxisTickFormatFunction()" showxaxis="true" showyaxis="true" ';
-                    linechart = linechart + 'rotatelabels="90" interactive="true" tooltips="'+ scope.$parent.lineChart.getLegendOnPoint() +'" showLegend="'+ legend +'" ';
-                    linechart = linechart + 'showcontrols="'+ control +'">';
-                    linechart = linechart + '<svg></svg></nvd3-multi-bar-chart>'; 
-                }else if(scope.$parent.lineChart.getBarOrientation() === 'H'){
-                    linechart = '<nvd3-multi-bar-horizontal-chart data="exampleData" id="exampleId" ';
-                    linechart = linechart + 'xAxisTickFormat="xAxisTickFormatFunction()" yAxisTickFormat="yAxisTickFormatFunction()" width="1000" height="600"';
-                    linechart = linechart + '<svg></svg></nvd3-multi-bar-horizontal-chart>'; 
+                if (scope.$parent.lineChart.getViewFinder() === true){
+                    linechart = '<nvd3-line-with-focus-chart data="data" id="'+ id +'" ';
+                    linechart = 'showlegend="'+ legend +'" interactive="true" tooltips="'+ onPoint +'" ';
+                    linechart = linechart + 'yAxisTickFormat="yAxisTickFormatFunction()" xAxisTickFormat="xAxisTickFormatFunction()" x2AxisTickFormat="xAxisTickFormatFunction()">';
+                    linechart = linechart + '<svg width="'+ scope.$parent.lineChart.getWidth() +'" height="'+ scope.$parent.lineChart.getHeight() +'"></svg></nvd3-line-with-focus-chart>';
                 }
-                
+                else{
+                    linechart = '<nvd3-line-chart data="data" id="'+ id +'" ';
+                    linechart = 'showlegend="'+ legend +'" interactive="true" tooltips="'+ onPoint +'" ';
+                    linechart = linechart + 'yAxisTickFormat="yAxisTickFormatFunction()" xAxisTickFormat="xAxisTickFormatFunction()" x2AxisTickFormat="xAxisTickFormatFunction()">';
+                    linechart = linechart + '<svg width="'+ scope.$parent.lineChart.getWidth() +'" height="'+ scope.$parent.lineChart.getHeight() +'"></svg></nvd3-line-with-focus-chart>';
+                }
+
                 var compiled = $compile(linechart)(scope);
-                element.append(compiled);*/
-            };
-
-            scope.init = function(){
-                                
-                if (chart === 0){
-                    scope.createChart();
-                    chart++;
-                }
-                /*
-                showXAxis="true" showYAxis="true" 
-
-                var parent = element.children()[0];
-                var str = scope.url.split('/');
-                var id = str[str.length-1];
-                parent.setAttribute('id', id);
-                parent.setAttribute('width', scope.$parent.lineChart.getWidth());
-                parent.setAttribute('height', scope.$parent.lineChart.getHeight());
-                parent.setAttribute('interactive', 'true');
-                if (scope.$parent.lineChart.getLegend() !== null){
-                    parent.setAttribute('showLegend', 'true');
-                }
-                else{
-                    parent.setAttribute('showLegend', 'false');
-                }
-                if (scope.$parent.lineChart.getBarsGrouping() === 'stacked'){ // cosa bisogna mettere
-                    parent.setAttribute('stacked', 'true');
-                }
-                if (scope.$parent.lineChart.getBarsGrouping() === 'grouped'){
-                    parent.setAttribute('grouped', 'true');
-                }*/
-                /*if (scope.$parent.lineChart.getLegendOnPoint()){
-                    parent.setAttribute('tooltips', 'true');
-                }
-                else{
-                    parent.setAttribute('tooltips', 'false');
-                }
-                parent.setAttribute('rotate-labels', '90');
-
-                var el = $compile(parent)(scope);
-                element.append( el );
-*/
+                element.append(compiled);
+                
                 /*    d3.select(".nv-legendWrap")
                         .attr("transform", "translate(100,100)");*/
 
             };
 
             scope.setData = function(){
+                var data = [];
+                var colorArray = [];
+
+                for (var i=0; i<scope.$parent.lineChart.getFlowList().length; i++) {
+                    var key;
+                    var values = [];
+                    key = scope.$parent.lineChart.getFlowList()[i].flow.getName();
+                    colorArray.push(scope.$parent.lineChart.getFlowList()[i].flow.getFlowColor());
+                    console.log('length ' + scope.$parent.lineChart.getFlowList().length);
+                    for (var j=0; j<scope.$parent.lineChart.getFlowList()[i].flow.getData().length; j++) {
+                        var value = [scope.$parent.lineChart.getFlowList()[i].flow.getData()[j].value[0], scope.$parent.lineChart.getFlowList()[i].flow.getData()[j].value[1]];
+                        values.push(value);
+                    }
+                    data.push({ 'key': key, 'values': values});
+                    console.log('linechart data ' + data.toString());
+                }
+                scope.data = data;
+                scope.colorArray = colorArray;
 
             };
 

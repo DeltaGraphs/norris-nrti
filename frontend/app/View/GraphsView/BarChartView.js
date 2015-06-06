@@ -33,10 +33,6 @@ angular.module('app')
          'values': [ [ 1025409600000 , 0] , [ 1028088000000 , -6.3382185140371] , [ 1030766400000 , -5.9507873460847] , [ 1033358400000 , -11.569146943813] , [ 1036040400000 , -5.4767332317425] , [ 1038632400000 , 0.50794682203014] , [ 1041310800000 , -5.5310285460542] , [ 1043989200000 , -5.7838296963382] , [ 1046408400000 , -7.3249341615649] , [ 1049086800000 , -6.7078630712489] , [ 1051675200000 , 0.44227126150934] , [ 1054353600000 , 7.2481659343222] , [ 1056945600000 , 9.2512381306992] ]
          },
          {
-         'key': 'Series 2',
-         'values': [ [ 1025409600000 , 0] , [ 1028088000000 , 0] , [ 1030766400000 , 0] , [ 1033358400000 , 0] , [ 1036040400000 , 0] , [ 1038632400000 , 0] , [ 1041310800000 , 0] , [ 1043989200000 , 0] , [ 1046408400000 , 0] , [ 1049086800000 , 0] , [ 1051675200000 , 0] , [ 1054353600000 , 0] , [ 1056945600000 , 0] , [ 1059624000000 , 0] , [ 1062302400000 , 0] , [ 1064894400000 , 0] , [ 1067576400000 , 0] , [ 1070168400000 , 0] , [ 1072846800000 , 0] , [ 1075525200000 , -0.049184266875945] ]
-         },
-         {
          'key': 'Series 3',
          'values': [ [ 1025409600000 , 0] , [ 1028088000000 , -6.3382185140371] , [ 1030766400000 , -5.9507873460847] , [ 1033358400000 , -11.569146943813] , [ 1036040400000 , -5.4767332317425] , [ 1038632400000 , 0.50794682203014] , [ 1041310800000 , -5.5310285460542] , [ 1043989200000 , -5.7838296963382] , [ 1046408400000 , -7.3249341615649] , [ 1049086800000 , -6.7078630712489] , [ 1051675200000 , 0.44227126150934] , [ 1054353600000 , 7.2481659343222] , [ 1056945600000 , 9.2512381306992] ]
          },
@@ -65,7 +61,7 @@ angular.module('app')
             scope.$parent.$watch('changedD', function(newValue, oldValue){
                 if(newValue !== oldValue){
                     console.log('BARCHART watch changedD');                    
-                    //scope.setData();
+                    scope.setData();
                 }
             }, true);
 
@@ -80,7 +76,7 @@ angular.module('app')
                 while(element.firstChild) {
                     element.removeChild(element.firstChild);
                 }
-
+                console.log('BARCHART init');
                 var barchart, legend, onPoint, control;
                 var str = scope.url.split('/');
                 var id = str[str.length-1];
@@ -102,21 +98,22 @@ angular.module('app')
                 else{
                     onPoint = false;
                 }
-
                 if (scope.$parent.barChart.getBarOrientation() === 'V'){
-                    barchart = '<nvd3-multi-bar-chart data="exampleData" id="'+ id +'" ';
+                    barchart = '<nvd3-multi-bar-chart data="data" nodata=" " id="'+ id +'" ';
                     barchart = barchart + 'xaxisticksformat="xAxisTickFormatFunction()" showxaxis="true" showyaxis="true" ';
                     barchart = barchart + 'rotatelabels="-90" interactive="true" tooltips="'+ scope.$parent.barChart.getLegendOnPoint() +'" showlegend="'+ legend +'" ';
-                    barchart = barchart + 'showcontrols="'+ control +'" color="colorFunction()" ';
-                    barchart = barchart + 'width="'+ scope.$parent.barChart.getWidth() +'" height="'+ scope.$parent.barChart.getHeight() +'">';
-                    barchart = barchart + '<svg></svg></nvd3-multi-bar-chart>';
+                    barchart = barchart + 'xaxislabel="'+ scope.$parent.barChart.getX().getName() +'" ';
+                    barchart = barchart + 'showcontrols="'+ control +'" color="colorFunction()">';
+                    //barchart = barchart + 'width="'+ scope.$parent.barChart.getWidth() +'" height="'+ scope.$parent.barChart.getHeight() +'">';
+                    barchart = barchart + '<svg width="'+ scope.$parent.barChart.getWidth() +'" height="'+ scope.$parent.barChart.getHeight() +'"></svg></nvd3-multi-bar-chart>';
                 }else if(scope.$parent.barChart.getBarOrientation() === 'H'){
-                    barchart = '<nvd3-multi-bar-horizontal-chart data="data" id="'+ id +'" ';
+                    barchart = '<nvd3-multi-bar-horizontal-chart data="data" nodata=" " id="'+ id +'" ';
                     barchart = barchart + 'xaxisticksformat="xAxisTickFormatFunction()" yaxistickformat="yAxisTickFormatFunction()" showxaxis="true" showyaxis="true" ';
                     barchart = barchart + 'rotatelabels="-90" interactive="true" tooltips="'+ scope.$parent.barChart.getLegendOnPoint() +'" showlegend="'+ legend +'" ';
-                    barchart = barchart + 'showcontrols="'+ control +'" color="colorFunction()" ';
-                    barchart = barchart + 'width="'+ scope.$parent.barChart.getWidth() +'" height="'+ scope.$parent.barChart.getHeight() +'">';
-                    barchart = barchart + '<svg></svg></nvd3-multi-bar-horizontal-chart>';
+                    barchart = barchart + 'xaxislabel="'+ scope.$parent.barChart.getX().getName() +'" ';
+                    barchart = barchart + 'showcontrols="'+ control +'" color="colorFunction()">';
+                    //barchart = barchart + 'width="'+ scope.$parent.barChart.getWidth() +'" height="'+ scope.$parent.barChart.getHeight() +'">';
+                    barchart = barchart + '<svg width="'+ scope.$parent.barChart.getWidth() +'" height="'+ scope.$parent.barChart.getHeight() +'"></svg></nvd3-multi-bar-horizontal-chart>';
                 }
                 
                 /*switch (scope.$parent.barChart.getLegend().getPosition()) {
@@ -145,10 +142,10 @@ angular.module('app')
                         break;
                 }*/
 
-                d3.select("nv-legendWrap")
+                /*d3.select("nv-legendWrap")
                     .attr("transform", null)
                     .attr("transform", "translate(100,100)");
-            
+                */
 
                 var compiled = $compile(barchart)(scope);
                 element.append(compiled);
@@ -165,19 +162,23 @@ angular.module('app')
             scope.setData = function(){
                 var data = [];
                 var colorArray = [];
+
                 for (var i=0; i<scope.$parent.barChart.getFlowList().length; i++) {
-                    var flusso;
-                    flusso.key = scope.$parent.barChart.getFlowList()[i].getName();
-                    colorArray.push(scope.$parent.barChart.getFlowList()[i].getFlowColor());
-                    flusso.values = [];
+                    var key;
+                    var values = [];
+                    key = scope.$parent.barChart.getFlowList()[i].flow.getName();
+                    colorArray.push(scope.$parent.barChart.getFlowList()[i].flow.getFlowColor());
+                    console.log('length ' + scope.$parent.barChart.getFlowList().length);
                     for (var j=0; j<scope.$parent.barChart.getFlowList()[i].flow.getData().length; j++) {
                         var value = [scope.$parent.barChart.getHeaders()[j], scope.$parent.barChart.getFlowList()[i].flow.getData()[j].value[1]];
-                        flusso.values.push(value);
+                        values.push(value);
                     }
-                    data.push(flusso);
+                    data.push({ 'key': key, 'values': values});
+                    console.log('barchart data ' + data.toString());
                 }
                 scope.data = data;
                 scope.colorArray = colorArray;
+
             };
 
             /*scope.legend = function() {

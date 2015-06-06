@@ -24,6 +24,7 @@ angular.module('app')
 .factory('FlowFactory', function(){
 
 	function Flow(info){
+		
 		this._name = null;
 
 		if (info !== undefined) {

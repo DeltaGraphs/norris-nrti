@@ -62,11 +62,11 @@ angular.module('app')
         }
 
         var barJson = {};
-        if (json.axisX !== undefined) {
-            barJson.axisX = json.axisX;
+        if (json.xAxis !== undefined) {
+            barJson.xAxis = json.xAxis;
         }
-        if (json.axisY !== undefined) {
-            barJson.axisY = json.axisY;
+        if (json.yAxis !== undefined) {
+            barJson.yAxis = json.yAxis;
         }
         if (json.barOrientation !== undefined) {
             barJson.barOrientation = json.barOrientation;
@@ -102,11 +102,11 @@ angular.module('app')
                 this._graph.updateParameters(gJson);
             } 
             if (Object.keys(bJson).length !== 0) {
-                if (bJson.axisX !== undefined) {
-                    this._axisX = AxisFactory.build(bJson.axisX);
+                if (bJson.xAxis !== undefined) {
+                    this._axisX = AxisFactory.build(bJson.xAxis);
                 }
-                if (bJson.axisY !== undefined) {
-                    this._axisY = AxisFactory.build(bJson.axisY);
+                if (bJson.yAxis !== undefined) {
+                    this._axisY = AxisFactory.build(bJson.yAxis);
                 }
                 if (bJson.barOrientation !== undefined) {
                     this._barOrientation = bJson.barOrientation;
@@ -121,7 +121,7 @@ angular.module('app')
                     this._sortable = bJson.sortable;
                 }
                 if (bJson.groupingControl !== undefined) {
-                    this.groupingControl = bJson.groupingControl;
+                    this._groupingControl = bJson.groupingControl;
                 }
                 if (bJson.legendOnPoint !== undefined) {
                     this._legendOnPoint = bJson.legendOnPoint;
@@ -139,6 +139,7 @@ angular.module('app')
 
     BarChart.prototype.addFlow = function(newId, newFlow) {
         if (newFlow.constructor.name === 'BarChartFlow') {
+            console.log('BARCHART constructor.name');
             this._graph.addFlow(newId, newFlow);
         }
     };
@@ -165,10 +166,9 @@ angular.module('app')
     // update data
     BarChart.prototype.inPlaceUpdate = function(newData) {
         if (newData !== undefined) {
-            var fList = this._graph.getFlowList();
-            for (var j=0; j<fList.length; j++) {
-                if (fList[j].id === newData.ID) {
-                    fList[j].flow.inPlaceUpdate(newData);
+            for (var j=0; j<this._graph.getFlowList().length; j++) {
+                if (this._graph.getFlowList()[j].id === newData.ID) {
+                    this._graph.getFlowList()[j].flow.inPlaceUpdate(newData);
                 }
             }
         }   
