@@ -159,9 +159,9 @@ describe('BarChart', function() {
         it('updated properties', function() {
             var mock = new socketMock();
             var barChart=new BarChart({ID: 'dada'}, {_page: 'dssada'}, mock);
-            barChart.updateProperties({title: 'graph one', height: 200, width: 350, enableLegend: true, backgroundColor: '#EEEEEE', legendOnPoint: true, viewFinder: true, horizontalGrid: true, verticalGrid: true });
+            barChart.updateProperties({title: 'graph one', height: 200, width: 350, enableLegend: true, backgroundColor: '#EEEEEE', legendOnPoint: true, sortable: true, grid: true, barOrientation: 'H', groupingControl:true});
             assert.strictEqual(mock.p1,'updateGraphProp');
-            assert.deepEqual(mock.p2,{'title':'graph one','height':200,'width':350,'enableLegend':true,'backgroundColor':'#EEEEEE','horizontalGrid':true,'verticalGrid':true,'viewFinder':true,'legendOnPoint':true, 'groupControl':false});
+            assert.deepEqual(mock.p2,{'title':'graph one','height':200,'width':350,'enableLegend':true,'backgroundColor':'#EEEEEE','grid':true,'legendOnPoint':true, 'groupingControl':true,'sortable':false,'barOrientation':'H'});
         });
     });
 });
