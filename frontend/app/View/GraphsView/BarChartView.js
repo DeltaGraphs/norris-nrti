@@ -142,14 +142,13 @@ angular.module('app')
                         break;
                 }*/
 
-                /*d3.select("nv-legendWrap")
-                    .attr("transform", null)
-                    .attr("transform", "translate(100,100)");
-                */
+                d3.select('.nv-legendWrap')
+                    .attr('transform', 'translate(200,300)');
 
                 var compiled = $compile(barchart)(scope);
                 element.append(compiled);
-
+                
+                
             };
             
             scope.colorArray = [];

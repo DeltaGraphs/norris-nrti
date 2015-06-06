@@ -4844,7 +4844,9 @@ nv.models.indentedTree = function() {
 
 
   return chart;
-};nv.models.legend = function() {
+};
+
+nv.models.legend = function() {
   "use strict";
   //============================================================
   // Public Variables with Default Settings
@@ -5003,12 +5005,12 @@ nv.models.indentedTree = function() {
             });
 
         //position legend as far right as possible within the total width
-        if (rightAlign) {
+        /*if (rightAlign) {
            g.attr('transform', 'translate(' + (width - margin.right - legendWidth) + ',' + margin.top + ')');
         }
         else {
            g.attr('transform', 'translate(0' + ',' + margin.top + ')');
-        }
+        }*/
 
         height = margin.top + margin.bottom + (Math.ceil(seriesWidths.length / seriesPerRow) * 20);
 
