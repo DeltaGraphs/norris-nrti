@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">63.99</p>
+      <p class="stat">60.65</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">191</p>
+      <p class="stat">211</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">24.80</p>
+      <p class="stat">33.44</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">1.46</p>
+      <p class="stat">2.20</p>
     </div>
   </div>
 </div>
@@ -118,23 +118,26 @@ angular.module(&#039;app&#039;)
         //template: &#039;&lt;nvd3-multi-bar-chart data=&quot;exampleData&quot; id=&quot;exampleId&quot; width=&quot;1000&quot; height=&quot;600&quot; showxaxis=&quot;true&quot; showyaxis=&quot;true&quot; rotatelabels=&quot;90&quot;&gt;&lt;svg&gt;&lt;/svg&gt;&lt;/nvd3-multi-bar-chart&gt;&#039;,
         link: function(scope, element, attrs){
 
-            scope.exampleData = [
-                {
-                    &quot;key&quot;: &quot;Series 1&quot;,
-                    &quot;values&quot;: [ [ 1025409600000 , 0] , [ 1028088000000 , -6.3382185140371] , [ 1030766400000 , -5.9507873460847] , [ 1033358400000 , -11.569146943813] , [ 1036040400000 , -5.4767332317425] , [ 1038632400000 , 0.50794682203014] , [ 1041310800000 , -5.5310285460542] , [ 1043989200000 , -5.7838296963382] , [ 1046408400000 , -7.3249341615649] , [ 1049086800000 , -6.7078630712489] , [ 1051675200000 , 0.44227126150934] , [ 1054353600000 , 7.2481659343222] , [ 1056945600000 , 9.2512381306992] ]             },
-                {
-                    &quot;key&quot;: &quot;Series 2&quot;,
-                    &quot;values&quot;: [ [ 1025409600000 , 0] , [ 1028088000000 , 0] , [ 1030766400000 , 0] , [ 1033358400000 , 0] , [ 1036040400000 , 0] , [ 1038632400000 , 0] , [ 1041310800000 , 0] , [ 1043989200000 , 0] , [ 1046408400000 , 0] , [ 1049086800000 , 0] , [ 1051675200000 , 0] , [ 1054353600000 , 0] , [ 1056945600000 , 0] , [ 1059624000000 , 0] , [ 1062302400000 , 0] , [ 1064894400000 , 0] , [ 1067576400000 , 0] , [ 1070168400000 , 0] , [ 1072846800000 , 0] , [ 1075525200000 , -0.049184266875945] ]
-                },
-                {
-                    &quot;key&quot;: &quot;Series 3&quot;,
-                    &quot;values&quot;: [ [ 1025409600000 , 0] , [ 1028088000000 , -6.3382185140371] , [ 1030766400000 , -5.9507873460847] , [ 1033358400000 , -11.569146943813] , [ 1036040400000 , -5.4767332317425] , [ 1038632400000 , 0.50794682203014] , [ 1041310800000 , -5.5310285460542] , [ 1043989200000 , -5.7838296963382] , [ 1046408400000 , -7.3249341615649] , [ 1049086800000 , -6.7078630712489] , [ 1051675200000 , 0.44227126150934] , [ 1054353600000 , 7.2481659343222] , [ 1056945600000 , 9.2512381306992] ]
-                },
-                {
-                    &quot;key&quot;: &quot;Series 4&quot;,
-                    &quot;values&quot;: [ [ 1025409600000 , -7.0674410638835] , [ 1028088000000 , -14.663359292964] , [ 1030766400000 , -14.104393060540] , [ 1033358400000 , -23.114477037218] , [ 1036040400000 , -16.774256687841] , [ 1038632400000 , -11.902028464000] , [ 1041310800000 , -16.883038668422] , [ 1043989200000 , -19.104223676831] , [ 1046408400000 , -20.420523282736] , [ 1049086800000 , -19.660555051587] , [ 1051675200000 , -13.106911231646] , [ 1054353600000 , -8.2448460302143] , [ 1056945600000 , -7.0313058730976] ]
-                }
-            ];
+         scope.exampleData = [
+         {
+         &#039;key&#039;: &#039;Series 1&#039;,
+         &#039;values&#039;: [ [ 1025409600000 , 0] , [ 1028088000000 , -6.3382185140371] , [ 1030766400000 , -5.9507873460847] , [ 1033358400000 , -11.569146943813] , [ 1036040400000 , -5.4767332317425] , [ 1038632400000 , 0.50794682203014] , [ 1041310800000 , -5.5310285460542] , [ 1043989200000 , -5.7838296963382] , [ 1046408400000 , -7.3249341615649] , [ 1049086800000 , -6.7078630712489] , [ 1051675200000 , 0.44227126150934] , [ 1054353600000 , 7.2481659343222] , [ 1056945600000 , 9.2512381306992] ]
+         },
+         {
+         &#039;key&#039;: &#039;Series 2&#039;,
+         &#039;values&#039;: [ [ 1025409600000 , 0] , [ 1028088000000 , 0] , [ 1030766400000 , 0] , [ 1033358400000 , 0] , [ 1036040400000 , 0] , [ 1038632400000 , 0] , [ 1041310800000 , 0] , [ 1043989200000 , 0] , [ 1046408400000 , 0] , [ 1049086800000 , 0] , [ 1051675200000 , 0] , [ 1054353600000 , 0] , [ 1056945600000 , 0] , [ 1059624000000 , 0] , [ 1062302400000 , 0] , [ 1064894400000 , 0] , [ 1067576400000 , 0] , [ 1070168400000 , 0] , [ 1072846800000 , 0] , [ 1075525200000 , -0.049184266875945] ]
+         },
+         {
+         &#039;key&#039;: &#039;Series 3&#039;,
+         &#039;values&#039;: [ [ 1025409600000 , 0] , [ 1028088000000 , -6.3382185140371] , [ 1030766400000 , -5.9507873460847] , [ 1033358400000 , -11.569146943813] , [ 1036040400000 , -5.4767332317425] , [ 1038632400000 , 0.50794682203014] , [ 1041310800000 , -5.5310285460542] , [ 1043989200000 , -5.7838296963382] , [ 1046408400000 , -7.3249341615649] , [ 1049086800000 , -6.7078630712489] , [ 1051675200000 , 0.44227126150934] , [ 1054353600000 , 7.2481659343222] , [ 1056945600000 , 9.2512381306992] ]
+         },
+         {
+         &#039;key&#039;: &#039;Series 4&#039;,
+         &#039;values&#039;: [ [ 1025409600000 , -7.0674410638835] , [ 1028088000000 , -14.663359292964] , [ 1030766400000 , -14.104393060540] , [ 1033358400000 , -23.114477037218] , [ 1036040400000 , -16.774256687841] , [ 1038632400000 , -11.902028464000] , [ 1041310800000 , -16.883038668422] , [ 1043989200000 , -19.104223676831] , [ 1046408400000 , -20.420523282736] , [ 1049086800000 , -19.660555051587] , [ 1051675200000 , -13.106911231646] , [ 1054353600000 , -8.2448460302143] , [ 1056945600000 , -7.0313058730976] ]
+         }
+         ];
+
+
 
         	attrs.$observe(&#039;url&#039;, function(value) {
                 console.log(&#039;BARCHART observ url &#039; + value);
@@ -153,21 +156,25 @@ angular.module(&#039;app&#039;)
             scope.$parent.$watch(&#039;changedD&#039;, function(newValue, oldValue){
                 if(newValue !== oldValue){
                     console.log(&#039;BARCHART watch changedD&#039;);                    
-                    //scope.render();
+                    //scope.setData();
                 }
             }, true);
 
-            scope.$parent.$watch(&#039;changedF&#039;, function(newValue, oldValue){
+            /*scope.$parent.$watch(&#039;changedF&#039;, function(newValue, oldValue){
                 if(newValue !== oldValue){
                     console.log(&#039;BARCHART watch changedF&#039;);                    
                     //scope.legend();
                 }
-            }, true);
+            }, true);*/
 
-            var  chart = 0;
+            scope.init = function(){  
+                while(element.firstChild) {
+                    element.removeChild(element.firstChild);
+                }
 
-            scope.createChart = function(){
                 var barchart, legend, onPoint, control;
+                var str = scope.url.split(&#039;/&#039;);
+                var id = str[str.length-1];
                 if (scope.$parent.barChart.getLegend() !== null){
                     legend = true;
                 }
@@ -188,67 +195,80 @@ angular.module(&#039;app&#039;)
                 }
 
                 if (scope.$parent.barChart.getBarOrientation() === &#039;V&#039;){
-                    barchart = &#039;&lt;nvd3-multi-bar-chart data=&quot;exampleData&quot; id=&quot;exampleId&quot; &#039;;
+                    barchart = &#039;&lt;nvd3-multi-bar-chart data=&quot;exampleData&quot; id=&quot;&#039;+ id +&#039;&quot; &#039;;
                     barchart = barchart + &#039;xaxisticksformat=&quot;xAxisTickFormatFunction()&quot; showxaxis=&quot;true&quot; showyaxis=&quot;true&quot; &#039;;
-                    barchart = barchart + &#039;rotatelabels=&quot;90&quot; interactive=&quot;true&quot; tooltips=&quot;&#039;+ scope.$parent.barChart.getLegendOnPoint() +&#039;&quot; showLegend=&quot;&#039;+ legend +&#039;&quot; &#039;;
-                    barchart = barchart + &#039;showcontrols=&quot;&#039;+ control +&#039;&quot;&gt;&#039;;
-                    barchart = barchart + &#039;&lt;svg&gt;&lt;/svg&gt;&lt;/nvd3-multi-bar-chart&gt;&#039;; 
+                    barchart = barchart + &#039;rotatelabels=&quot;-90&quot; interactive=&quot;true&quot; tooltips=&quot;&#039;+ scope.$parent.barChart.getLegendOnPoint() +&#039;&quot; showlegend=&quot;&#039;+ legend +&#039;&quot; &#039;;
+                    barchart = barchart + &#039;showcontrols=&quot;&#039;+ control +&#039;&quot; color=&quot;colorFunction()&quot; &#039;;
+                    barchart = barchart + &#039;width=&quot;&#039;+ scope.$parent.barChart.getWidth() +&#039;&quot; height=&quot;&#039;+ scope.$parent.barChart.getHeight() +&#039;&quot;&gt;&#039;;
+                    barchart = barchart + &#039;&lt;svg&gt;&lt;/svg&gt;&lt;/nvd3-multi-bar-chart&gt;&#039;;
                 }else if(scope.$parent.barChart.getBarOrientation() === &#039;H&#039;){
-                    barchart = &#039;&lt;nvd3-multi-bar-horizontal-chart data=&quot;exampleData&quot; id=&quot;exampleId&quot; &#039;;
-                    barchart = barchart + &#039;xAxisTickFormat=&quot;xAxisTickFormatFunction()&quot; yAxisTickFormat=&quot;yAxisTickFormatFunction()&quot; width=&quot;1000&quot; height=&quot;600&quot;&#039;;
-                    barchart = barchart + &#039;&lt;svg&gt;&lt;/svg&gt;&lt;/nvd3-multi-bar-horizontal-chart&gt;&#039;; 
+                    barchart = &#039;&lt;nvd3-multi-bar-horizontal-chart data=&quot;data&quot; id=&quot;&#039;+ id +&#039;&quot; &#039;;
+                    barchart = barchart + &#039;xaxisticksformat=&quot;xAxisTickFormatFunction()&quot; yaxistickformat=&quot;yAxisTickFormatFunction()&quot; showxaxis=&quot;true&quot; showyaxis=&quot;true&quot; &#039;;
+                    barchart = barchart + &#039;rotatelabels=&quot;-90&quot; interactive=&quot;true&quot; tooltips=&quot;&#039;+ scope.$parent.barChart.getLegendOnPoint() +&#039;&quot; showlegend=&quot;&#039;+ legend +&#039;&quot; &#039;;
+                    barchart = barchart + &#039;showcontrols=&quot;&#039;+ control +&#039;&quot; color=&quot;colorFunction()&quot; &#039;;
+                    barchart = barchart + &#039;width=&quot;&#039;+ scope.$parent.barChart.getWidth() +&#039;&quot; height=&quot;&#039;+ scope.$parent.barChart.getHeight() +&#039;&quot;&gt;&#039;;
+                    barchart = barchart + &#039;&lt;svg&gt;&lt;/svg&gt;&lt;/nvd3-multi-bar-horizontal-chart&gt;&#039;;
                 }
                 
+                /*switch (scope.$parent.barChart.getLegend().getPosition()) {
+                    case &#039;N&#039;:
+
+                        break;
+                    case &#039;E&#039;:
+
+                        break;
+                    case &#039;S&#039;:
+
+                        break;
+                    case &#039;W&#039;:
+                        
+                        break;
+                    case &#039;NE&#039;:
+                        
+                        break;
+                    case &#039;NW&#039;:
+                        
+                        break;
+                    case &#039;SE&#039;:
+                        
+                        break;
+                    case &#039;SW&#039;:
+                        break;
+                }*/
+
+                d3.select(&quot;nv-legendWrap&quot;)
+                    .attr(&quot;transform&quot;, null)
+                    .attr(&quot;transform&quot;, &quot;translate(100,100)&quot;);
+            
+
                 var compiled = $compile(barchart)(scope);
                 element.append(compiled);
+
             };
-
-            scope.init = function(){
-                                
-                if (chart === 0){
-                    scope.createChart();
-                    chart++;
-                }
-                /*
-                showXAxis=&quot;true&quot; showYAxis=&quot;true&quot; 
-
-                var parent = element.children()[0];
-                var str = scope.url.split(&#039;/&#039;);
-                var id = str[str.length-1];
-                parent.setAttribute(&#039;id&#039;, id);
-                parent.setAttribute(&#039;width&#039;, scope.$parent.barChart.getWidth());
-                parent.setAttribute(&#039;height&#039;, scope.$parent.barChart.getHeight());
-                parent.setAttribute(&#039;interactive&#039;, &#039;true&#039;);
-                if (scope.$parent.barChart.getLegend() !== null){
-                    parent.setAttribute(&#039;showLegend&#039;, &#039;true&#039;);
-                }
-                else{
-                    parent.setAttribute(&#039;showLegend&#039;, &#039;false&#039;);
-                }
-                if (scope.$parent.barChart.getBarsGrouping() === &#039;stacked&#039;){ // cosa bisogna mettere
-                    parent.setAttribute(&#039;stacked&#039;, &#039;true&#039;);
-                }
-                if (scope.$parent.barChart.getBarsGrouping() === &#039;grouped&#039;){
-                    parent.setAttribute(&#039;grouped&#039;, &#039;true&#039;);
-                }*/
-                /*if (scope.$parent.barChart.getLegendOnPoint()){
-                    parent.setAttribute(&#039;tooltips&#039;, &#039;true&#039;);
-                }
-                else{
-                    parent.setAttribute(&#039;tooltips&#039;, &#039;false&#039;);
-                }
-                parent.setAttribute(&#039;rotate-labels&#039;, &#039;90&#039;);
-
-                var el = $compile(parent)(scope);
-                element.append( el );
-*/
-                /*    d3.select(&quot;.nv-legendWrap&quot;)
-                        .attr(&quot;transform&quot;, &quot;translate(100,100)&quot;);*/
-
+            
+            scope.colorArray = [];
+            scope.colorFunction = function() {
+                return function(d, i) {
+                    return scope.colorArray;
+                };
             };
 
             scope.setData = function(){
-
+                var data = [];
+                var colorArray = [];
+                for (var i=0; i&lt;scope.$parent.barChart.getFlowList().length; i++) {
+                    var flusso;
+                    flusso.key = scope.$parent.barChart.getFlowList()[i].getName();
+                    colorArray.push(scope.$parent.barChart.getFlowList()[i].getFlowColor());
+                    flusso.values = [];
+                    for (var j=0; j&lt;scope.$parent.barChart.getFlowList()[i].flow.getData().length; j++) {
+                        var value = [scope.$parent.barChart.getHeaders()[j], scope.$parent.barChart.getFlowList()[i].flow.getData()[j].value[1]];
+                        flusso.values.push(value);
+                    }
+                    data.push(flusso);
+                }
+                scope.data = data;
+                scope.colorArray = colorArray;
             };
 
             /*scope.legend = function() {

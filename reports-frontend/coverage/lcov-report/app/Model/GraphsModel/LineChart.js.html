@@ -15,10 +15,10 @@
 <div class="header high">
     <h1>Code coverage report for <span class="entity">app/Model/GraphsModel/LineChart.js</span></h1>
     <h2>
-        Statements: <span class="metric">82.76% <small>(96 / 116)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Branches: <span class="metric">39.66% <small>(23 / 58)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Functions: <span class="metric">65.38% <small>(17 / 26)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">82.76% <small>(96 / 116)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">88.33% <small>(106 / 120)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">43.55% <small>(27 / 62)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">69.23% <small>(18 / 26)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">88.33% <small>(106 / 120)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
     <div class="path"><a href="../../../index.html">All files</a> &#187; <a href="index.html">app/Model/GraphsModel/</a> &#187; LineChart.js</div>
@@ -251,10 +251,7 @@
 224
 225
 226
-227
-228
-229
-230</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+227</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -389,28 +386,25 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">19</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">19</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -458,7 +452,7 @@
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">19</span>
-<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">8</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">19</span>
 <span class="cline-any cline-yes">2</span>
@@ -618,28 +612,25 @@ angular.module('app')
     };
 &nbsp;
     LineChart.prototype.initializeData = function(newData) {  //inizialization data of flows
-        /*if (newData !== undefined) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (newData !== undefined) {
             var fList = this._graph.getFlowList();
             for (var i=0; i&lt;newData.length; i++) {
                 for (var j=0; j&lt;fList.length; j++) {
-                    if (fList[j].id === newData[i].ID) {
+                    <span class="missing-if-branch" title="else path not taken" >E</span>if (fList[j].id === newData[i].ID) {
                         fList[j].flow.initializeData(newData[i]);
                     }
                 }
             }
-        }*/
-        for (var i=0; i&lt;newData.records.length; i++) {
-<span class="cstat-no" title="statement not covered" >            this._data.push(newData.records[i]);</span>
         }
     };
     
     // update data
-    LineChart.prototype.inPlaceUpdate = <span class="fstat-no" title="function not covered" >function(newData) {</span>
-<span class="cstat-no" title="statement not covered" >        if (newData !== undefined) {</span>
-<span class="cstat-no" title="statement not covered" >            var fList = this._graph.getFlowList();</span>
-<span class="cstat-no" title="statement not covered" >            for (var j=0; j&lt;fList.length; j++) {</span>
-<span class="cstat-no" title="statement not covered" >                if (fList[j].id === newData.ID) {</span>
-<span class="cstat-no" title="statement not covered" >                    fList[j].flow.inPlaceUpdate(newData);</span>
+    LineChart.prototype.inPlaceUpdate = function(newData) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (newData !== undefined) {
+            var fList = this._graph.getFlowList();
+            for (var j=0; j&lt;fList.length; j++) {
+                <span class="missing-if-branch" title="else path not taken" >E</span>if (fList[j].id === newData.ID) {
+                    fList[j].flow.inPlaceUpdate(newData);
                 }
             }
         }
@@ -717,7 +708,7 @@ angular.module('app')
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Jun 06 2015 10:57:36 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Jun 06 2015 11:05:02 GMT+0000 (UTC)</div>
 </div>
 <script src="../../../prettify.js"></script>
 <script>

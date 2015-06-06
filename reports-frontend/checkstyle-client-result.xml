@@ -8,11 +8,14 @@
 		<error line="19" column="177" severity="warning" message="&apos;SocketServicesFactory&apos; is defined but never used." source="jshint.W098" />
 		<error line="19" column="159" severity="warning" message="&apos;TableFlowFactory&apos; is defined but never used." source="jshint.W098" />
 	</file>
+	<file name="app/View/GraphsView/BarChartView.js">
+		<error line="148" column="17" severity="warning" message="&apos;d3&apos; is not defined." source="jshint.W117" />
+		<error line="160" column="36" severity="warning" message="&apos;i&apos; is defined but never used." source="jshint.W098" />
+		<error line="160" column="33" severity="warning" message="&apos;d&apos; is defined but never used." source="jshint.W098" />
+	</file>
 	<file name="app/View/GraphsView/LineChartView.js">
-		<error line="44" column="28" severity="warning" message="&apos;d3&apos; is not defined." source="jshint.W117" />
-		<error line="79" column="32" severity="warning" message="&apos;legend&apos; is defined but never used." source="jshint.W098" />
-		<error line="79" column="40" severity="warning" message="&apos;onPoint&apos; is defined but never used." source="jshint.W098" />
-		<error line="79" column="49" severity="warning" message="&apos;control&apos; is defined but never used." source="jshint.W098" />
+		<error line="51" column="28" severity="warning" message="Empty block." source="jshint.W035" />
+		<error line="18" column="34" severity="warning" message="&apos;$compile&apos; is defined but never used." source="jshint.W098" />
 	</file>
 	<file name="app/View/GraphsView/MapChartView.js">
 		<error line="65" column="33" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
