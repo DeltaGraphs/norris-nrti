@@ -292,7 +292,7 @@ describe('Page', function() {
 
         it('behaves correctly with the right parameters', function() {
             var nor4 = new Norris(app, io, '/norris');
-            var page4 = nor3.createPage({ID: 'page3'});
+            var page4 = nor4.createPage({ID: 'page4'});
             var socketURL = 'http://0.0.0.0:5000/page3';
             var options ={
                 transports: ['websocket'],
@@ -304,7 +304,7 @@ describe('Page', function() {
                     ID: 'bar1',
                     title: '',
                     type: 'BarChart',
-                    socketURL: '/page3/bar1'
+                    socketURL: '/page4/bar1'
                 }
             };
             //var stPage = new Page({ID: 'page1'}, nor._networkHandler, nor);

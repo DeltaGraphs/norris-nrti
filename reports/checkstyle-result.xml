@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <checkstyle version="4.3">
 	<file name="test/businessTier/page/pageSpec.js">
-		<error line="295" column="25" severity="warning" message="&apos;nor3&apos; is not defined." source="jshint.W117" />
 		<error line="311" column="76" severity="warning" message="&apos;BarChart&apos; is not defined." source="jshint.W117" />
 	</file>
 </checkstyle>

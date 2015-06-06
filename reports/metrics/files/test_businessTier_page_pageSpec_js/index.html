@@ -383,7 +383,7 @@ describe(&#039;Page&#039;, function() {
 
         it(&#039;behaves correctly with the right parameters&#039;, function() {
             var nor4 = new Norris(app, io, &#039;/norris&#039;);
-            var page4 = nor3.createPage({ID: &#039;page3&#039;});
+            var page4 = nor4.createPage({ID: &#039;page4&#039;});
             var socketURL = &#039;http://0.0.0.0:5000/page3&#039;;
             var options ={
                 transports: [&#039;websocket&#039;],
@@ -395,7 +395,7 @@ describe(&#039;Page&#039;, function() {
                     ID: &#039;bar1&#039;,
                     title: &#039;&#039;,
                     type: &#039;BarChart&#039;,
-                    socketURL: &#039;/page3/bar1&#039;
+                    socketURL: &#039;/page4/bar1&#039;
                 }
             };
             //var stPage = new Page({ID: &#039;page1&#039;}, nor._networkHandler, nor);
