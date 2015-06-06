@@ -3,9 +3,6 @@
 	<file name="app/Model/SocketServices.js">
 		<error line="23" column="22" severity="warning" message="&apos;io&apos; is not defined." source="jshint.W117" />
 	</file>
-	<file name="app/Controller/GraphsControllers/LineChartController.js">
-		<error line="30" column="9" severity="warning" message="&apos;count&apos; is defined but never used." source="jshint.W098" />
-	</file>
 	<file name="app/Controller/GraphsControllers/TableController.js">
 		<error line="21" column="9" severity="warning" message="&apos;socket&apos; is defined but never used." source="jshint.W098" />
 		<error line="19" column="177" severity="warning" message="&apos;SocketServicesFactory&apos; is defined but never used." source="jshint.W098" />
@@ -17,6 +14,7 @@
 	</file>
 	<file name="app/View/GraphsView/LineChartView.js">
 		<error line="45" column="28" severity="warning" message="&apos;d3&apos; is not defined." source="jshint.W117" />
+		<error line="18" column="34" severity="warning" message="&apos;$compile&apos; is defined but never used." source="jshint.W098" />
 	</file>
 	<file name="app/View/GraphsView/MapChartView.js">
 		<error line="65" column="33" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
@@ -92,5 +90,58 @@
 	</file>
 	<file name="app/View/PagesView/PageView.js">
 		<error line="27" column="41" severity="warning" message="&apos;attrs&apos; is defined but never used." source="jshint.W098" />
+	</file>
+	<file name="app/View/nv.d3.js">
+		<error line="3" column="1" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="3" column="25" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="7" column="14" severity="warning" message="Missing semicolon." source="jshint.W033" />
+		<error line="42" column="1" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="44" column="5" severity="warning" message="Expected &apos;{&apos; and instead saw &apos;console&apos;." source="jshint.W116" />
+		<error line="44" column="42" severity="warning" message="Missing semicolon." source="jshint.W033" />
+		<error line="45" column="43" severity="warning" message="Expected &apos;===&apos; and instead saw &apos;==&apos;." source="jshint.W116" />
+		<error line="46" column="65" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="49" column="3" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="49" column="3" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="49" column="41" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="60" column="21" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="64" column="35" severity="warning" message="Expected &apos;===&apos; and instead saw &apos;==&apos;." source="jshint.W116" />
+		<error line="64" column="54" severity="warning" message="Expected &apos;{&apos; and instead saw &apos;graph&apos;." source="jshint.W116" />
+		<error line="65" column="7" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="68" column="5" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="70" column="33" severity="warning" message="Expected &apos;{&apos; and instead saw &apos;setTimeout&apos;." source="jshint.W116" />
+		<error line="70" column="44" severity="warning" message="Avoid arguments.callee." source="jshint.W059" />
+		<error line="75" column="3" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="83" column="5" severity="warning" message="Expected &apos;{&apos; and instead saw &apos;obj&apos;." source="jshint.W116" />
+		<error line="85" column="3" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="87" column="26" severity="warning" message="Expected &apos;{&apos; and instead saw &apos;nv&apos;." source="jshint.W116" />
+		<error line="88" column="1" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="90" column="37" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="92" column="56" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="95" column="48" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="100" column="37" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="101" column="20" severity="warning" message="Expected &apos;{&apos; and instead saw &apos;step&apos;." source="jshint.W116" />
+		<error line="102" column="5" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="104" column="35" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="105" column="40" severity="warning" message="Expected &apos;{&apos; and instead saw &apos;times&apos;." source="jshint.W116" />
+		<error line="106" column="9" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="108" column="5" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="110" column="5" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="111" column="5" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="111" column="17" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="112" column="4" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="116" column="58" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="123" column="27" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="140" column="5" severity="info" message="Comma warnings can be turned off with &apos;laxcomma&apos;." source="jshint.I001" />
+		<error line="139" column="17" severity="warning" message="Bad line breaking before &apos;,&apos;." source="jshint.W014" />
+		<error line="140" column="16" severity="warning" message="Bad line breaking before &apos;,&apos;." source="jshint.W014" />
+		<error line="143" column="32" severity="warning" message="Bad line breaking before &apos;,&apos;." source="jshint.W014" />
+		<error line="144" column="32" severity="warning" message="Bad line breaking before &apos;,&apos;." source="jshint.W014" />
+		<error line="145" column="32" severity="warning" message="Bad line breaking before &apos;,&apos;." source="jshint.W014" />
+		<error line="146" column="85" severity="warning" message="Bad line breaking before &apos;,&apos;." source="jshint.W014" />
+		<error line="147" column="23" severity="warning" message="Bad line breaking before &apos;,&apos;." source="jshint.W014" />
+		<error line="176" column="46" severity="warning" message="Possible strict violation." source="jshint.W040" />
+		<error line="202" column="29" severity="warning" message="Expected &apos;{&apos; and instead saw &apos;subtractMargin&apos;." source="jshint.W116" />
+		<error line="205" column="30" severity="warning" message="Expected &apos;{&apos; and instead saw &apos;mouseOutAnyReason&apos;." source="jshint.W116" />
+		<error line="205" column="30" severity="error" message="Too many errors. (1% scanned)." source="jshint.E043" />
 	</file>
 </checkstyle>
