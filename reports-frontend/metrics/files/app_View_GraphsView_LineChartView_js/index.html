@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">71.69</p>
+      <p class="stat">69.92</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">28</p>
+      <p class="stat">193</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">3.33</p>
+      <p class="stat">18.64</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.05</p>
+      <p class="stat">2.25</p>
     </div>
   </div>
 </div>
@@ -106,7 +106,7 @@
 
 
 angular.module(&#039;app&#039;)
-.directive(&#039;lineChart&#039;, function(){
+.directive(&#039;lineChart&#039;, function($compile){
 	return {
 		restrict: &#039;E&#039;,
 		//controller : &#039;LineChartController&#039;,
@@ -115,7 +115,172 @@ angular.module(&#039;app&#039;)
             url: &#039;@&#039;
 		},
 		bindToController: true,
-        template: &#039;&lt;div&gt;linechart {{url}}&lt;/div&gt;&#039;
+        link: function(scope, element, attrs){
+
+			scope.exampleData = [
+				{
+					&quot;key&quot; : &quot;Quantity&quot; ,
+					&quot;bar&quot;: true,
+					&quot;values&quot; : [ 
+						[ 1136005200000 , 1271000.0] , [ 1138683600000 , 1271000.0] , [ 1141102800000 , 1271000.0] , [ 1143781200000 , 0] , [ 1146369600000 , 0] , [ 1149048000000 , 0] , [ 1151640000000 , 0] , [ 1154318400000 , 0] , [ 1156996800000 , 0] , [ 1159588800000 , 3899486.0] , [ 1162270800000 , 3899486.0] , [ 1164862800000 , 3899486.0] , [ 1167541200000 , 3564700.0] , [ 1170219600000 , 3564700.0] , [ 1172638800000 , 3564700.0] , [ 1175313600000 , 2648493.0] , [ 1177905600000 , 2648493.0] , [ 1180584000000 , 2648493.0] , [ 1183176000000 , 2522993.0] , [ 1185854400000 , 2522993.0] , [ 1188532800000 , 2522993.0] , [ 1191124800000 , 2906501.0] , [ 1193803200000 , 2906501.0] , [ 1196398800000 , 2906501.0] , [ 1199077200000 , 2206761.0] , [ 1201755600000 , 2206761.0] , [ 1204261200000 , 2206761.0] , [ 1206936000000 , 2287726.0] , [ 1209528000000 , 2287726.0] , [ 1212206400000 , 2287726.0] , [ 1214798400000 , 2732646.0] , [ 1217476800000 , 2732646.0] , [ 1220155200000 , 2732646.0] , [ 1222747200000 , 2599196.0] , [ 1225425600000 , 2599196.0] , [ 1228021200000 , 2599196.0] , [ 1230699600000 , 1924387.0] , [ 1233378000000 , 1924387.0] , [ 1235797200000 , 1924387.0] , [ 1238472000000 , 1756311.0] , [ 1241064000000 , 1756311.0] , [ 1243742400000 , 1756311.0] , [ 1246334400000 , 1743470.0] , [ 1249012800000 , 1743470.0] , [ 1251691200000 , 1743470.0] , [ 1254283200000 , 1519010.0] , [ 1256961600000 , 1519010.0] , [ 1259557200000 , 1519010.0] , [ 1262235600000 , 1591444.0] , [ 1264914000000 , 1591444.0] , [ 1267333200000 , 1591444.0] , [ 1270008000000 , 1543784.0] , [ 1272600000000 , 1543784.0] , [ 1275278400000 , 1543784.0] , [ 1277870400000 , 1309915.0] , [ 1280548800000 , 1309915.0] , [ 1283227200000 , 1309915.0] , [ 1285819200000 , 1331875.0] , [ 1288497600000 , 1331875.0] , [ 1291093200000 , 1331875.0] , [ 1293771600000 , 1331875.0] , [ 1296450000000 , 1154695.0] , [ 1298869200000 , 1154695.0] , [ 1301544000000 , 1194025.0] , [ 1304136000000 , 1194025.0] , [ 1306814400000 , 1194025.0] , [ 1309406400000 , 1194025.0] , [ 1312084800000 , 1194025.0] , [ 1314763200000 , 1244525.0] , [ 1317355200000 , 475000.0] , [ 1320033600000 , 475000.0] , [ 1322629200000 , 475000.0] , [ 1325307600000 , 690033.0] , [ 1327986000000 , 690033.0] , [ 1330491600000 , 690033.0] , [ 1333166400000 , 514733.0] , [ 1335758400000 , 514733.0]]
+				},
+				{
+					&quot;key&quot; : &quot;Price&quot; ,
+					&quot;values&quot; : [ [ 1136005200000 , 71.89] , [ 1138683600000 , 75.51] , [ 1141102800000 , 68.49] , [ 1143781200000 , 62.72] , [ 1146369600000 , 70.39] , [ 1149048000000 , 59.77] , [ 1151640000000 , 57.27] , [ 1154318400000 , 67.96] , [ 1156996800000 , 67.85] , [ 1159588800000 , 76.98] , [ 1162270800000 , 81.08] , [ 1164862800000 , 91.66] , [ 1167541200000 , 84.84] , [ 1170219600000 , 85.73] , [ 1172638800000 , 84.61] , [ 1175313600000 , 92.91] , [ 1177905600000 , 99.8] , [ 1180584000000 , 121.191] , [ 1183176000000 , 122.04] , [ 1185854400000 , 131.76] , [ 1188532800000 , 138.48] , [ 1191124800000 , 153.47] , [ 1193803200000 , 189.95] , [ 1196398800000 , 182.22] , [ 1199077200000 , 198.08] , [ 1201755600000 , 135.36] , [ 1204261200000 , 125.02] , [ 1206936000000 , 143.5] , [ 1209528000000 , 173.95] , [ 1212206400000 , 188.75] , [ 1214798400000 , 167.44] , [ 1217476800000 , 158.95] , [ 1220155200000 , 169.53] , [ 1222747200000 , 113.66] , [ 1225425600000 , 107.59] , [ 1228021200000 , 92.67] , [ 1230699600000 , 85.35] , [ 1233378000000 , 90.13] , [ 1235797200000 , 89.31] , [ 1238472000000 , 105.12] , [ 1241064000000 , 125.83] , [ 1243742400000 , 135.81] , [ 1246334400000 , 142.43] , [ 1249012800000 , 163.39] , [ 1251691200000 , 168.21] , [ 1254283200000 , 185.35] , [ 1256961600000 , 188.5] , [ 1259557200000 , 199.91] , [ 1262235600000 , 210.732] , [ 1264914000000 , 192.063] , [ 1267333200000 , 204.62] , [ 1270008000000 , 235.0] , [ 1272600000000 , 261.09] , [ 1275278400000 , 256.88] , [ 1277870400000 , 251.53] , [ 1280548800000 , 257.25] , [ 1283227200000 , 243.1] , [ 1285819200000 , 283.75] , [ 1288497600000 , 300.98] , [ 1291093200000 , 311.15] , [ 1293771600000 , 322.56] , [ 1296450000000 , 339.32] , [ 1298869200000 , 353.21] , [ 1301544000000 , 348.5075] , [ 1304136000000 , 350.13] , [ 1306814400000 , 347.83] , [ 1309406400000 , 335.67] , [ 1312084800000 , 390.48] , [ 1314763200000 , 384.83] , [ 1317355200000 , 381.32] , [ 1320033600000 , 404.78] , [ 1322629200000 , 382.2] , [ 1325307600000 , 405.0] , [ 1327986000000 , 456.48] , [ 1330491600000 , 542.44] , [ 1333166400000 , 599.55] , [ 1335758400000 , 583.98] ]
+				}
+			];
+
+			scope.xAxisTickFormatFunction = function(){
+				return function(d){
+					return d3.time.format(&#039;%x&#039;)(new Date(d));  //uncomment for date format
+				};
+			};
+
+        	attrs.$observe(&#039;url&#039;, function(value) {
+                console.log(&#039;BARCHART observ url &#039; + value);
+                if (value) {
+                    scope.$parent.socketConnection(value);
+                }
+            });
+
+            scope.$parent.$watch(&#039;changedP&#039;, function(newValue, oldValue){
+                if (newValue !== oldValue) {
+                    console.log(&#039;BARCHART watch changedP&#039;);
+                    scope.init();
+                }
+            }, true);
+
+            scope.$parent.$watch(&#039;changedD&#039;, function(newValue, oldValue){
+                if(newValue !== oldValue){
+                    console.log(&#039;BARCHART watch changedD&#039;);                    
+                    //scope.render();
+                }
+            }, true);
+
+            scope.$parent.$watch(&#039;changedF&#039;, function(newValue, oldValue){
+                if(newValue !== oldValue){
+                    console.log(&#039;BARCHART watch changedF&#039;);                    
+                    //scope.legend();
+                }
+            }, true);
+
+            var  chart = 0;
+
+            scope.createChart = function(){
+                var linechart, legend, onPoint, control;
+                /*if (scope.$parent.lineChart.getLegend() !== null){
+                    legend = true;
+                }
+                else{
+                    legend = false;
+                }
+                if (scope.$parent.lineChart.getGroupingControl()){
+                    control = true;
+                }
+                else{
+                    control = false;
+                }
+                if (scope.$parent.lineChart.getLegendOnPoint()){
+                    onPoint = true;
+                }
+                else{
+                    onPoint = false;
+                }
+                linechart = &#039;&lt;nvd3-line-with-focus-chart data=&quot;exampleData&quot; id=&quot;exampleId&quot; &#039;;
+                linechart = linechart + &#039;yAxisTickFormat=&quot;yAxisTickFormatFunction()&quot; xAxisTickFormat=&quot;xAxisTickFormatFunction()&quot; x2AxisTickFormat=&quot;xAxisTickFormatFunction()&quot; &#039;;*/
+
+                /*if (scope.$parent.lineChart.getBarOrientation() === &#039;V&#039;){
+                    linechart = &#039;&lt;nvd3-multi-bar-chart data=&quot;exampleData&quot; id=&quot;exampleId&quot; &#039;;
+                    linechart = linechart + &#039;xaxisticksformat=&quot;xAxisTickFormatFunction()&quot; showxaxis=&quot;true&quot; showyaxis=&quot;true&quot; &#039;;
+                    linechart = linechart + &#039;rotatelabels=&quot;90&quot; interactive=&quot;true&quot; tooltips=&quot;&#039;+ scope.$parent.lineChart.getLegendOnPoint() +&#039;&quot; showLegend=&quot;&#039;+ legend +&#039;&quot; &#039;;
+                    linechart = linechart + &#039;showcontrols=&quot;&#039;+ control +&#039;&quot;&gt;&#039;;
+                    linechart = linechart + &#039;&lt;svg&gt;&lt;/svg&gt;&lt;/nvd3-multi-bar-chart&gt;&#039;; 
+                }else if(scope.$parent.lineChart.getBarOrientation() === &#039;H&#039;){
+                    linechart = &#039;&lt;nvd3-multi-bar-horizontal-chart data=&quot;exampleData&quot; id=&quot;exampleId&quot; &#039;;
+                    linechart = linechart + &#039;xAxisTickFormat=&quot;xAxisTickFormatFunction()&quot; yAxisTickFormat=&quot;yAxisTickFormatFunction()&quot; width=&quot;1000&quot; height=&quot;600&quot;&#039;;
+                    linechart = linechart + &#039;&lt;svg&gt;&lt;/svg&gt;&lt;/nvd3-multi-bar-horizontal-chart&gt;&#039;; 
+                }*/
+                
+                var compiled = $compile(linechart)(scope);
+                element.append(compiled);
+            };
+
+            scope.init = function(){
+                                
+                if (chart === 0){
+                    scope.createChart();
+                    chart++;
+                }
+                /*
+                showXAxis=&quot;true&quot; showYAxis=&quot;true&quot; 
+
+                var parent = element.children()[0];
+                var str = scope.url.split(&#039;/&#039;);
+                var id = str[str.length-1];
+                parent.setAttribute(&#039;id&#039;, id);
+                parent.setAttribute(&#039;width&#039;, scope.$parent.lineChart.getWidth());
+                parent.setAttribute(&#039;height&#039;, scope.$parent.lineChart.getHeight());
+                parent.setAttribute(&#039;interactive&#039;, &#039;true&#039;);
+                if (scope.$parent.lineChart.getLegend() !== null){
+                    parent.setAttribute(&#039;showLegend&#039;, &#039;true&#039;);
+                }
+                else{
+                    parent.setAttribute(&#039;showLegend&#039;, &#039;false&#039;);
+                }
+                if (scope.$parent.lineChart.getBarsGrouping() === &#039;stacked&#039;){ // cosa bisogna mettere
+                    parent.setAttribute(&#039;stacked&#039;, &#039;true&#039;);
+                }
+                if (scope.$parent.lineChart.getBarsGrouping() === &#039;grouped&#039;){
+                    parent.setAttribute(&#039;grouped&#039;, &#039;true&#039;);
+                }*/
+                /*if (scope.$parent.lineChart.getLegendOnPoint()){
+                    parent.setAttribute(&#039;tooltips&#039;, &#039;true&#039;);
+                }
+                else{
+                    parent.setAttribute(&#039;tooltips&#039;, &#039;false&#039;);
+                }
+                parent.setAttribute(&#039;rotate-labels&#039;, &#039;90&#039;);
+
+                var el = $compile(parent)(scope);
+                element.append( el );
+*/
+                /*    d3.select(&quot;.nv-legendWrap&quot;)
+                        .attr(&quot;transform&quot;, &quot;translate(100,100)&quot;);*/
+
+            };
+
+            scope.setData = function(){
+
+            };
+
+            /*scope.legend = function() {
+                var parent = element.children()[1];
+                while(parent.firstChild) {
+                    parent.removeChild(parent.firstChild);
+                }
+                console.log(&#039;legend &#039; + JSON.stringify(scope.$parent.lineChart.getLegend()));
+                if (scope.$parent.lineChart.getLegend() !== null) {
+                    parent.setAttribute(&#039;style&#039;, &#039;background-color: &#039; + scope.$parent.lineChart.getLegend().getBackgroundColor() + &#039;; color: &#039;+ scope.$parent.lineChart.getLegend().getFontColor());
+                    var ul = document.createElement(&#039;ul&#039;);
+                    ul.setAttribute(&#039;style&#039;, &#039;list-style-type: none&#039;);
+                    parent.appendChild(ul);
+                    for (var i=0; i&lt;scope.$parent.lineChart.getFlowList().length; i++) {
+                        var li = document.createElement(&#039;li&#039;);
+                        var square = document.createElement(&#039;div&#039;);
+                        square.setAttribute(&#039;style&#039;, &#039;height: 15px; width: 15px; float: left; background-color: &#039; + scope.$parent.lineChart.getFlowList()[i].flow.getTrace().strokeColor);
+                        var spanText = document.createElement(&#039;div&#039;);
+                        var text = document.createTextNode(&#039;\u00A0\u00A0\u00A0\u00A0&#039; + scope.$parent.lineChart.getFlowList()[i].flow.getName());
+                        spanText.appendChild(text);
+                        li.appendChild(square);
+                        li.appendChild(spanText);
+                        console.log(ul);
+                        ul.appendChild(li);
+                    }
+                }
+
+            };*/
+
+        }
     };
 });</textarea>
   </div>

@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">69.18</p>
+      <p class="stat">63.99</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">153</p>
+      <p class="stat">191</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">19.63</p>
+      <p class="stat">24.80</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">1.05</p>
+      <p class="stat">1.46</p>
     </div>
   </div>
 </div>
@@ -115,7 +115,7 @@ angular.module(&#039;app&#039;)
             url: &#039;@&#039;
 		},
 		bindToController: true,
-        //template: &#039;&lt;div&gt;&lt;/div&gt;&#039;,
+        //template: &#039;&lt;nvd3-multi-bar-chart data=&quot;exampleData&quot; id=&quot;exampleId&quot; width=&quot;1000&quot; height=&quot;600&quot; showxaxis=&quot;true&quot; showyaxis=&quot;true&quot; rotatelabels=&quot;90&quot;&gt;&lt;svg&gt;&lt;/svg&gt;&lt;/nvd3-multi-bar-chart&gt;&#039;,
         link: function(scope, element, attrs){
 
             scope.exampleData = [
@@ -164,13 +164,51 @@ angular.module(&#039;app&#039;)
                 }
             }, true);
 
-            var  chart;
+            var  chart = 0;
+
+            scope.createChart = function(){
+                var barchart, legend, onPoint, control;
+                if (scope.$parent.barChart.getLegend() !== null){
+                    legend = true;
+                }
+                else{
+                    legend = false;
+                }
+                if (scope.$parent.barChart.getGroupingControl()){
+                    control = true;
+                }
+                else{
+                    control = false;
+                }
+                if (scope.$parent.barChart.getLegendOnPoint()){
+                    onPoint = true;
+                }
+                else{
+                    onPoint = false;
+                }
+
+                if (scope.$parent.barChart.getBarOrientation() === &#039;V&#039;){
+                    barchart = &#039;&lt;nvd3-multi-bar-chart data=&quot;exampleData&quot; id=&quot;exampleId&quot; &#039;;
+                    barchart = barchart + &#039;xaxisticksformat=&quot;xAxisTickFormatFunction()&quot; showxaxis=&quot;true&quot; showyaxis=&quot;true&quot; &#039;;
+                    barchart = barchart + &#039;rotatelabels=&quot;90&quot; interactive=&quot;true&quot; tooltips=&quot;&#039;+ scope.$parent.barChart.getLegendOnPoint() +&#039;&quot; showLegend=&quot;&#039;+ legend +&#039;&quot; &#039;;
+                    barchart = barchart + &#039;showcontrols=&quot;&#039;+ control +&#039;&quot;&gt;&#039;;
+                    barchart = barchart + &#039;&lt;svg&gt;&lt;/svg&gt;&lt;/nvd3-multi-bar-chart&gt;&#039;; 
+                }else if(scope.$parent.barChart.getBarOrientation() === &#039;H&#039;){
+                    barchart = &#039;&lt;nvd3-multi-bar-horizontal-chart data=&quot;exampleData&quot; id=&quot;exampleId&quot; &#039;;
+                    barchart = barchart + &#039;xAxisTickFormat=&quot;xAxisTickFormatFunction()&quot; yAxisTickFormat=&quot;yAxisTickFormatFunction()&quot; width=&quot;1000&quot; height=&quot;600&quot;&#039;;
+                    barchart = barchart + &#039;&lt;svg&gt;&lt;/svg&gt;&lt;/nvd3-multi-bar-horizontal-chart&gt;&#039;; 
+                }
+                
+                var compiled = $compile(barchart)(scope);
+                element.append(compiled);
+            };
 
             scope.init = function(){
-
-
-                element.append(&#039;&lt;nvd3-multi-bar-chart data=&quot;exampleData&quot; id=&quot;exampleId&quot; ng-attr-x_axis_tick_format=&quot;xAxisTickFormatFunction()&quot; width=&quot;1000&quot; height=&quot;600&quot; ng-attr-show_x_axis=&quot;true&quot; ng-attr-show_y_axis=&quot;true&quot;&gt;&lt;svg&gt;&lt;/svg&gt;&lt;/nvd3-multi-bar-chart&gt;&#039;);
-                $compile(element.contents())(scope);
+                                
+                if (chart === 0){
+                    scope.createChart();
+                    chart++;
+                }
                 /*
                 showXAxis=&quot;true&quot; showYAxis=&quot;true&quot; 
 
