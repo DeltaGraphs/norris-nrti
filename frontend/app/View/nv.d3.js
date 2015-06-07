@@ -5005,12 +5005,12 @@ nv.models.legend = function() {
             });
 
         //position legend as far right as possible within the total width
-        /*if (rightAlign) {
+        if (rightAlign) {
            g.attr('transform', 'translate(' + (width - margin.right - legendWidth) + ',' + margin.top + ')');
         }
         else {
            g.attr('transform', 'translate(0' + ',' + margin.top + ')');
-        }*/
+        }
 
         height = margin.top + margin.bottom + (Math.ceil(seriesWidths.length / seriesPerRow) * 20);
 
@@ -6357,14 +6357,22 @@ nv.models.lineWithFocusChart = function() {
   // Private Variables
   //------------------------------------------------------------
 
-  var showTooltip = function(e, offsetElement) {
-    var left = e.pos[0] + ( offsetElement.offsetLeft || 0 ),
+var showTooltip = function(e, offsetElement) {
+    var left = d3.event.pageX || ( e.pos[0] + (offsetElement.offsetLeft || 0) ) + margin.left,
+    top = d3.event.pageY || ( e.pos[1] + ( offsetElement.offsetTop || 0) ) + margin.top,
+    x = xAxis.tickFormat()(lines.x()(e.point, e.pointIndex)),
+    y = yAxis.tickFormat()(lines.y()(e.point, e.pointIndex)),
+    content = tooltip(e.series.key, x, y, e, chart);
+
+    nv.tooltip.show([left, top], content, null , null, offsetElement);
+
+    /*var left = e.pos[0] + ( offsetElement.offsetLeft || 0 ),
         top = e.pos[1] + ( offsetElement.offsetTop || 0),
         x = xAxis.tickFormat()(lines.x()(e.point, e.pointIndex)),
         y = yAxis.tickFormat()(lines.y()(e.point, e.pointIndex)),
         content = tooltip(e.series.key, x, y, e, chart);
 
-    nv.tooltip.show([left, top], content, null, null, offsetElement);
+    nv.tooltip.show([left, top], content, null, null, offsetElement);*/
   };
 
   //============================================================

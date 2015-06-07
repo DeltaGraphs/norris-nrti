@@ -63,9 +63,13 @@ angular.module('app')
 								break;
 						}
 						var cell = row.insertCell(j);
+						cell.setAttribute('align', 'center');
 						cell.appendChild(div);
 					}
 				}
+
+				parent.setAttribute('style', 'height:'+ 900*scope.page.getGraphsPerCol() +'px; width:'+ 1300*scope.page.getGraphsPerRow() +'px;')
+
 				var el = $compile(parent)(scope);
 				element.parent().append( el );
        		};

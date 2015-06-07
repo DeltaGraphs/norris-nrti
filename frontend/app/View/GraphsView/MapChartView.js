@@ -24,7 +24,7 @@ angular.module('app')
             url: '@'
 		},
 		bindToController: true,
-        template: '<div style="height:500px;width:500px"></div><div></div>',
+        template: '<div></div><div></div>',
     	link: function (scope, element, attrs) {
 
             attrs.$observe('url', function(value) {
@@ -109,6 +109,9 @@ angular.module('app')
                     }
                 }
                 scope.legend();
+
+                parent = element.children()[0];
+                parent.setAttribute('style', 'height:'+ scope.$parent.mapChart.getHeight() +'px;width:'+ scope.$parent.mapChart.getWidth() +'px');
             };
 
             scope.render = function(){
@@ -209,6 +212,7 @@ angular.module('app')
                         var spanText = document.createElement('div');
                         var text = document.createTextNode('\u00A0\u00A0\u00A0\u00A0' + scope.$parent.mapChart.getFlowList()[i].flow.getName());
                         spanText.appendChild(text);
+                        spanText.setAttribute('style', 'float:left;');
                         li.appendChild(square);
                         li.appendChild(spanText);
                         ul.appendChild(li);
