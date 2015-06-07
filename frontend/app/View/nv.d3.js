@@ -1016,7 +1016,9 @@ nv.utils.optionsFunc = function(args) {
       }).bind(this));
     }
     return this;
-};nv.models.axis = function() {
+};
+
+nv.models.axis = function() {
   "use strict";
   //============================================================
   // Public Variables with Default Settings
@@ -5445,13 +5447,13 @@ nv.models.lineChart = function() {
   //------------------------------------------------------------
 
   var showTooltip = function(e, offsetElement) {
-    var left = e.pos[0] + ( offsetElement.offsetLeft || 0 ),
-        top = e.pos[1] + ( offsetElement.offsetTop || 0),
-        x = xAxis.tickFormat()(lines.x()(e.point, e.pointIndex)),
-        y = yAxis.tickFormat()(lines.y()(e.point, e.pointIndex)),
-        content = tooltip(e.series.key, x, y, e, chart);
+    var left = d3.event.pageX || ( e.pos[0] + (offsetElement.offsetLeft || 0) ) + margin.left,
+    top = d3.event.pageY || ( e.pos[1] + ( offsetElement.offsetTop || 0) ) + margin.top,
+    x = xAxis.tickFormat()(lines.x()(e.point, e.pointIndex)),
+    y = yAxis.tickFormat()(lines.y()(e.point, e.pointIndex)),
+    content = tooltip(e.series.key, x, y, e, chart);
 
-    nv.tooltip.show([left, top], content, null, null, offsetElement);
+    nv.tooltip.show([left, top], content, null , null, offsetElement);
   };
 
   //============================================================
@@ -6389,7 +6391,7 @@ var showTooltip = function(e, offsetElement) {
                              - margin.top - margin.bottom - height2,
           availableHeight2 = height2 - margin2.top - margin2.bottom;
 
-          console.log('height2 ' + height2 + 'margintop ' + margin2.top + 'marginbottom ' + margin2.bottom + 'availableHeight2 ' + availableHeight2);
+          //console.log('height2 ' + height2 + 'margintop ' + margin2.top + 'marginbottom ' + margin2.bottom + 'availableHeight2 ' + availableHeight2);
 
       chart.update = function() { container.transition().duration(transitionDuration).call(chart) };
       chart.container = this;

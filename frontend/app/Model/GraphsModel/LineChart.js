@@ -67,6 +67,9 @@ angular.module('app')
 		if (json.backgroundColor !== undefined) {
 			lineJson.backgroundColor = json.backgroundColor;
 		}
+        if (json.interpolation !== undefined) {
+            lineJson.interpolation = json.interpolation;
+        }
 
 		return {
 			'graphJson' : graphJson,
@@ -83,6 +86,7 @@ angular.module('app')
         this._axisY = null;
         this._viewFinder = false;
         this._backgroundColor = '#FFF';
+        this._interpolation = 'linear';
         this._graph = GraphFactory.build(info);
     }
 
@@ -109,6 +113,9 @@ angular.module('app')
                 }
                 if (lJson.backgroundColor !== undefined) {
                     this._backgroundColor = lJson.backgroundColor;
+                }
+                if (lJson.interpolation !== undefined) {
+                    this._interpolation = lJson.interpolation;
                 }
             }
             if (info.flows !== undefined) {
@@ -215,6 +222,9 @@ angular.module('app')
     };
     LineChart.prototype.getLegendOnPoint = function() {
         return this._legendOnPoint;
+    };
+    LineChart.prototype.getInterpolation = function() {
+        return this._interpolation;
     };
 
     function LineChartFactory(){}

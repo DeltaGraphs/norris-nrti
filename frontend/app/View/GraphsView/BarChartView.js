@@ -149,10 +149,26 @@ angular.module('app')
                     var values = [];
                     key = scope.$parent.barChart.getFlowList()[i].flow.getName();
                     colorArray.push(scope.$parent.barChart.getFlowList()[i].flow.getFlowColor());
-                    console.log('length ' + scope.$parent.barChart.getFlowList().length);
                     for (var j=0; j<scope.$parent.barChart.getFlowList()[i].flow.getData().length; j++) {
-                        var value = [scope.$parent.barChart.getHeaders()[j], scope.$parent.barChart.getFlowList()[i].flow.getData()[j].value[1]];
+                        var value = [scope.$parent.barChart.getFlowList()[i].flow.getData()[j].value[0], scope.$parent.barChart.getFlowList()[i].flow.getData()[j].value[1]];
                         values.push(value);
+                    }
+                    values.sort(function(a, b) {
+                        if (a[0] === b[0]) {
+                            return 0;
+                        }
+                        else {
+                            return (a[0] < b[0]) ? -1 : 1;
+                        }
+                    });
+                    for (var z=0; z<values.length; z++){
+                        console.log('[' + values[z][0] + ',' + values[z][1] + ']');
+                    }
+                    for (var y=0; y<values.length; y++){
+                        values[y][0] = scope.$parent.barChart.getHeaders()[values[y][0]-1];
+                    }
+                    for (var g=0; g<values.length; g++){
+                        console.log('[' + values[g][0] + ',' + values[g][1] + ']');
                     }
                     data.push({ 'key': key, 'values': values});
                     console.log('barchart data ' + data.toString());

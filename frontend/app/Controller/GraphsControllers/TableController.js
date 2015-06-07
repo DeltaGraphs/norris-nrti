@@ -22,7 +22,6 @@ angular.module('app')
 
 	$scope.table = TableFactory.build();
 
-	/*
 	this.socketConnection = function(url){
 		socket = SocketServicesFactory.build(url);
 		this.listenOnEvents();
@@ -39,8 +38,7 @@ angular.module('app')
 				$scope.mapChart.updateParameters(info.properties);
 				$scope.mapChart.initializeData(info.data);
 				$scope.changedP = !$scope.changedP;
-				$scope.changedD = !$scope.changedD;
-	            
+				$scope.changedD = !$scope.changedD;  
 	        }
 		});
 		socket.on('updateGraphProp', function(info){
@@ -93,5 +91,5 @@ angular.module('app')
 
 	$scope.socketConnection = this.socketConnection;
 	$scope.listenOnEvents = this.listenOnEvents;
-*/
+
 }]);
