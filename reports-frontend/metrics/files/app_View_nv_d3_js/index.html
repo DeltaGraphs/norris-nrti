@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">66.98</p>
+      <p class="stat">66.97</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">14383</p>
+      <p class="stat">14390</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">541.19</p>
+      <p class="stat">539.55</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">218.77</p>
+      <p class="stat">219.25</p>
     </div>
   </div>
 </div>
@@ -95,7 +95,7 @@ var nv = window.nv || {};
 
 
 nv.version = &#039;1.1.15b&#039;;
-nv.dev = true //set false when in production
+nv.dev = true; //set false when in production
 
 window.nv = nv;
 
@@ -6414,13 +6414,13 @@ nv.models.lineWithFocusChart = function() {
     , tooltips = true
     , tooltip = function(key, x, y, e, graph) {
         return &#039;&lt;h3&gt;&#039; + key + &#039;&lt;/h3&gt;&#039; +
-               &#039;&lt;p&gt;&#039; +  y + &#039; at &#039; + x + &#039;&lt;/p&gt;&#039;
+               &#039;&lt;p&gt;&#039; +  y + &#039; at &#039; + x + &#039;&lt;/p&gt;&#039;;
       }
     , noData = &quot;No Data Available.&quot;
     , dispatch = d3.dispatch(&#039;tooltipShow&#039;, &#039;tooltipHide&#039;, &#039;brush&#039;)
     , transitionDuration = 250
     ;
-
+    console.log(&#039;margin2 &#039; + JSON.stringify(margin2));
   lines
     .clipEdge(true)
     ;
@@ -6479,6 +6479,8 @@ var showTooltip = function(e, offsetElement) {
           availableHeight1 = (height || parseInt(container.style(&#039;height&#039;)) || 400)
                              - margin.top - margin.bottom - height2,
           availableHeight2 = height2 - margin2.top - margin2.bottom;
+
+          console.log(&#039;height2 &#039; + height2 + &#039;margintop &#039; + margin2.top + &#039;marginbottom &#039; + margin2.bottom + &#039;availableHeight2 &#039; + availableHeight2);
 
       chart.update = function() { container.transition().duration(transitionDuration).call(chart) };
       chart.container = this;
@@ -6873,7 +6875,10 @@ var showTooltip = function(e, offsetElement) {
 
   chart.margin2 = function(_) {
     if (!arguments.length) return margin2;
-    margin2 = _;
+    margin2.top    = typeof _.top    != &#039;undefined&#039; ? _.top    : margin2.top;
+    margin2.right  = typeof _.right  != &#039;undefined&#039; ? _.right  : margin2.right;
+    margin2.bottom = typeof _.bottom != &#039;undefined&#039; ? _.bottom : margin2.bottom;
+    margin2.left   = typeof _.left   != &#039;undefined&#039; ? _.left   : margin2.left;
     return chart;
   };
 
@@ -7074,6 +7079,8 @@ nv.models.linePlusBarWithFocusChart = function() {
           availableHeight1 = (height || parseInt(container.style(&#039;height&#039;)) || 400)
                              - margin.top - margin.bottom - height2,
           availableHeight2 = height2 - margin2.top - margin2.bottom;
+
+
 
       chart.update = function() { container.transition().duration(transitionDuration).call(chart); };
       chart.container = this;
