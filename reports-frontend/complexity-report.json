@@ -87764,39 +87764,39 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 87,
-                    "physical": 173
+                    "logical": 95,
+                    "physical": 183
                 },
                 "cyclomatic": 11,
                 "halstead": {
                     "operators": {
                         "distinct": 19,
-                        "total": 442,
+                        "total": 466,
                         "identifiers": [
                             "()",
                             "function",
                             "return",
                             "{}",
                             ":",
-                            "=",
-                            ".",
-                            "[]",
                             "+",
+                            ".",
                             "if",
                             "!==",
+                            "=",
                             "while",
                             "var",
                             "-",
                             "else",
                             "===",
+                            "[]",
                             "for",
                             "<",
                             "++ (postfix)"
                         ]
                     },
                     "operands": {
-                        "distinct": 276,
-                        "total": 785,
+                        "distinct": 281,
+                        "total": 811,
                         "identifiers": [
                             "\"use strict\"",
                             "\"lineChart\"",
@@ -87814,12 +87814,70 @@
                             "link",
                             "element",
                             "attrs",
+                            "\"url\"",
+                            "value",
+                            "\"LINECHART observ url \"",
+                            "console",
+                            "log",
+                            "$parent",
+                            "socketConnection",
+                            "$observe",
+                            "\"changedP\"",
+                            "newValue",
+                            "oldValue",
+                            "\"LINECHART watch changedP\"",
+                            "init",
+                            "$watch",
+                            "\"changedD\"",
+                            "\"LINECHART watch changedD\"",
+                            "\"changedF\"",
+                            "\"LINECHART watch changedF\"",
+                            "firstChild",
+                            "removeChild",
+                            "\"LINECHART init\"",
+                            "linechart",
+                            "legend",
+                            "onPoint",
+                            "str",
+                            "\"/\"",
+                            "split",
+                            "id",
+                            "length",
+                            1,
+                            "lineChart",
+                            "getLegend",
+                            null,
+                            "getLegendOnPoint",
+                            "getViewFinder",
+                            "\"<nvd3-line-with-focus-chart data=\"exampleData\" nodata=\" \" id=\"\"",
+                            "\"\" \"",
+                            "\"width=\"\"",
+                            "getWidth",
+                            "\"\" height=\"\"",
+                            "getHeight",
+                            "\"yaxistickformat=\"yAxisTickFormatFunction()\" xaxistickformat=\"xAxisTickFormatFunction()\" x2axistickformat=\"x2AxisTickFormatFunction()\" \"",
+                            "\"margin=\"{left:80,top:50,bottom:30,right:50}\" margin2=\"{left:80,top:50,bottom:30,right:50}\" interactive=\"true\" showlegend=\"\"",
+                            "\"\" tooltips=\"\"",
+                            "\"xaxisrotatelabels=\"-90\" x2axisrotatelables=\"-90\" color=\"colorFunction()\">\"",
+                            "\"<svg></svg></nvd3-line-with-focus-chart>\"",
+                            "\"<nvd3-line-chart data=\"exampledData\" nodata=\" \" id=\"\"",
+                            "\"margin=\"{left:80,top:50,bottom:30,right:50}\" interactive=\"true\" showlegend=\"\"",
+                            "\"yaxistickformat=\"yAxisTickFormatFunction()\" xaxistickformat=\"xAxisTickFormatFunction()\" \"",
+                            "\"xaxisrotatelabels=\"-90\" color=\"colorFunction()\">\"",
+                            "\"<svg></svg></nvd3-line-chart>\"",
+                            "compiled",
+                            "append",
                             "xAxisTickFormatFunction",
                             "d",
                             "x2AxisTickFormatFunction",
+                            "colorArray",
+                            "colorFunction",
+                            "i",
+                            "data",
                             "exampleData",
                             "\"key\"",
                             "\"Quantity\"",
+                            "\"area\"",
                             "\"values\"",
                             1136005200000,
                             127,
@@ -88001,74 +88059,21 @@
                             542.44,
                             599.55,
                             583.98,
-                            "\"url\"",
-                            "value",
-                            "\"LINECHART observ url \"",
-                            "console",
-                            "log",
-                            "$parent",
-                            "socketConnection",
-                            "$observe",
-                            "\"changedP\"",
-                            "newValue",
-                            "oldValue",
-                            "\"LINECHART watch changedP\"",
-                            "init",
-                            "$watch",
-                            "\"changedD\"",
-                            "\"LINECHART watch changedD\"",
-                            "\"changedF\"",
-                            "\"LINECHART watch changedF\"",
-                            "firstChild",
-                            "removeChild",
-                            "\"LINECHART init\"",
-                            "linechart",
-                            "legend",
-                            "onPoint",
-                            "str",
-                            "\"/\"",
-                            "split",
-                            "id",
-                            "length",
-                            1,
-                            "lineChart",
-                            "getLegend",
-                            null,
-                            "getLegendOnPoint",
-                            "getViewFinder",
-                            "\"<nvd3-line-with-focus-chart data=\"exampleData\" nodata=\" \" id=\"\"",
-                            "\"\" \"",
-                            "\"width=\"\"",
-                            "getWidth",
-                            "\"\" height=\"\"",
-                            "getHeight",
-                            "\"yaxistickformat=\"yAxisTickFormatFunction()\" xaxistickformat=\"xAxisTickFormatFunction()\" x2axistickformat=\"x2AxisTickFormatFunction()\" \"",
-                            "\"margin=\"{left:80,top:50,bottom:30,right:50}\" margin2=\"{left:80,top:50,bottom:30,right:50}\" interactive=\"true\" showlegend=\"\"",
-                            "\"\" tooltips=\"\"",
-                            "\"xaxisrotatelabels=\"-90\" x2axisrotatelables=\"-90\">\"",
-                            "\"<svg></svg></nvd3-line-with-focus-chart>\"",
-                            "\"<nvd3-line-chart data=\"exampledData\" nodata=\" \" id=\"\"",
-                            "\"margin=\"{left:80,top:50,bottom:30,right:50}\" interactive=\"true\" showlegend=\"\"",
-                            "\"yaxistickformat=\"yAxisTickFormatFunction()\" xaxistickformat=\"xAxisTickFormatFunction()\" \"",
-                            "\"xaxisrotatelabels=\"-90\">\"",
-                            "\"<svg></svg></nvd3-line-chart>\"",
-                            "compiled",
-                            "append",
                             "setData",
-                            "data",
-                            "colorArray",
-                            "i",
                             "getFlowList",
                             "key",
-                            "values",
                             "flow",
                             "getName",
+                            "area",
+                            "getArea",
+                            "barChart",
                             "getFlowColor",
                             "push",
-                            "\"length \"",
+                            "values",
+                            "\"LINECHART setdata length \"",
                             "j",
                             "getData",
-                            "\"linechart data \"",
+                            "\"LINECHART data \"",
                             "_toString",
                             "\"app\"",
                             "angular",
@@ -88076,24 +88081,24 @@
                             "directive"
                         ]
                     },
-                    "length": 1227,
-                    "vocabulary": 295,
-                    "difficulty": 27.019927536231883,
-                    "volume": 10067.008793993773,
-                    "effort": 272009.8481203209,
-                    "bugs": 3.3556695979979243,
-                    "time": 15111.658228906716
+                    "length": 1277,
+                    "vocabulary": 300,
+                    "difficulty": 27.41814946619217,
+                    "volume": 10508.20146776324,
+                    "effort": 288115.43846399244,
+                    "bugs": 3.5027338225877465,
+                    "time": 16006.41324799958
                 },
-                "params": 13,
+                "params": 15,
                 "line": 2,
-                "cyclomaticDensity": 12.643678160919542
+                "cyclomaticDensity": 11.578947368421053
             },
             "functions": [
                 {
                     "name": "<anonymous>",
                     "sloc": {
                         "logical": 7,
-                        "physical": 157
+                        "physical": 167
                     },
                     "cyclomatic": 1,
                     "halstead": {
@@ -88140,37 +88145,50 @@
                 {
                     "name": "link",
                     "sloc": {
-                        "logical": 13,
-                        "physical": 145
+                        "logical": 18,
+                        "physical": 155
                     },
                     "cyclomatic": 1,
                     "halstead": {
                         "operators": {
                             "distinct": 7,
-                            "total": 192,
+                            "total": 201,
                             "identifiers": [
-                                "=",
-                                ".",
+                                "()",
                                 "function",
+                                ".",
+                                "=",
                                 "[]",
                                 "{}",
-                                ":",
-                                "()"
+                                ":"
                             ]
                         },
                         "operands": {
-                            "distinct": 200,
-                            "total": 512,
+                            "distinct": 204,
+                            "total": 524,
                             "identifiers": [
                                 "scope",
                                 "element",
                                 "attrs",
-                                "xAxisTickFormatFunction",
+                                "\"url\"",
                                 "<anonymous>",
+                                "$observe",
+                                "\"changedP\"",
+                                true,
+                                "$parent",
+                                "$watch",
+                                "\"changedD\"",
+                                "\"changedF\"",
+                                "init",
+                                "xAxisTickFormatFunction",
                                 "x2AxisTickFormatFunction",
+                                "colorArray",
+                                "colorFunction",
+                                "data",
                                 "exampleData",
                                 "\"key\"",
                                 "\"Quantity\"",
+                                "\"area\"",
                                 "\"values\"",
                                 1136005200000,
                                 127,
@@ -88352,167 +88370,20 @@
                                 542.44,
                                 599.55,
                                 583.98,
-                                "\"url\"",
-                                "$observe",
-                                "\"changedP\"",
-                                true,
-                                "$parent",
-                                "$watch",
-                                "\"changedD\"",
-                                "\"changedF\"",
-                                "init",
                                 "setData"
                             ]
                         },
-                        "length": 704,
-                        "vocabulary": 207,
-                        "difficulty": 8.96,
-                        "volume": 5416.214818079525,
-                        "effort": 48529.28476999255,
-                        "bugs": 1.8054049393598417,
-                        "time": 2696.071376110697
+                        "length": 725,
+                        "vocabulary": 211,
+                        "difficulty": 8.990196078431373,
+                        "volume": 5597.796911812709,
+                        "effort": 50325.291844433865,
+                        "bugs": 1.8659323039375697,
+                        "time": 2795.8495469129925
                     },
                     "params": 3,
                     "line": 28,
-                    "cyclomaticDensity": 7.6923076923076925
-                },
-                {
-                    "name": "scope.xAxisTickFormatFunction",
-                    "sloc": {
-                        "logical": 1,
-                        "physical": 5
-                    },
-                    "cyclomatic": 1,
-                    "halstead": {
-                        "operators": {
-                            "distinct": 2,
-                            "total": 2,
-                            "identifiers": [
-                                "return",
-                                "function"
-                            ]
-                        },
-                        "operands": {
-                            "distinct": 1,
-                            "total": 1,
-                            "identifiers": [
-                                "<anonymous>"
-                            ]
-                        },
-                        "length": 3,
-                        "vocabulary": 3,
-                        "difficulty": 1,
-                        "volume": 4.754887502163469,
-                        "effort": 4.754887502163469,
-                        "bugs": 0.0015849625007211565,
-                        "time": 0.2641604167868594
-                    },
-                    "params": 0,
-                    "line": 30,
-                    "cyclomaticDensity": 100
-                },
-                {
-                    "name": "<anonymous>",
-                    "sloc": {
-                        "logical": 1,
-                        "physical": 3
-                    },
-                    "cyclomatic": 1,
-                    "halstead": {
-                        "operators": {
-                            "distinct": 1,
-                            "total": 1,
-                            "identifiers": [
-                                "return"
-                            ]
-                        },
-                        "operands": {
-                            "distinct": 1,
-                            "total": 2,
-                            "identifiers": [
-                                "d"
-                            ]
-                        },
-                        "length": 3,
-                        "vocabulary": 2,
-                        "difficulty": 1,
-                        "volume": 3,
-                        "effort": 3,
-                        "bugs": 0.001,
-                        "time": 0.16666666666666666
-                    },
-                    "params": 1,
-                    "line": 31,
-                    "cyclomaticDensity": 100
-                },
-                {
-                    "name": "scope.x2AxisTickFormatFunction",
-                    "sloc": {
-                        "logical": 1,
-                        "physical": 5
-                    },
-                    "cyclomatic": 1,
-                    "halstead": {
-                        "operators": {
-                            "distinct": 2,
-                            "total": 2,
-                            "identifiers": [
-                                "return",
-                                "function"
-                            ]
-                        },
-                        "operands": {
-                            "distinct": 1,
-                            "total": 1,
-                            "identifiers": [
-                                "<anonymous>"
-                            ]
-                        },
-                        "length": 3,
-                        "vocabulary": 3,
-                        "difficulty": 1,
-                        "volume": 4.754887502163469,
-                        "effort": 4.754887502163469,
-                        "bugs": 0.0015849625007211565,
-                        "time": 0.2641604167868594
-                    },
-                    "params": 0,
-                    "line": 35,
-                    "cyclomaticDensity": 100
-                },
-                {
-                    "name": "<anonymous>",
-                    "sloc": {
-                        "logical": 1,
-                        "physical": 3
-                    },
-                    "cyclomatic": 1,
-                    "halstead": {
-                        "operators": {
-                            "distinct": 1,
-                            "total": 1,
-                            "identifiers": [
-                                "return"
-                            ]
-                        },
-                        "operands": {
-                            "distinct": 1,
-                            "total": 2,
-                            "identifiers": [
-                                "d"
-                            ]
-                        },
-                        "length": 3,
-                        "vocabulary": 2,
-                        "difficulty": 1,
-                        "volume": 3,
-                        "effort": 3,
-                        "bugs": 0.001,
-                        "time": 0.16666666666666666
-                    },
-                    "params": 1,
-                    "line": 36,
-                    "cyclomaticDensity": 100
+                    "cyclomaticDensity": 5.555555555555555
                 },
                 {
                     "name": "<anonymous>",
@@ -88554,7 +88425,7 @@
                         "time": 9.33497420902128
                     },
                     "params": 1,
-                    "line": 54,
+                    "line": 30,
                     "cyclomaticDensity": 66.66666666666666
                 },
                 {
@@ -88597,7 +88468,7 @@
                         "time": 7.413067754222782
                     },
                     "params": 2,
-                    "line": 61,
+                    "line": 37,
                     "cyclomaticDensity": 66.66666666666666
                 },
                 {
@@ -88638,7 +88509,7 @@
                         "time": 5.424093891356845
                     },
                     "params": 2,
-                    "line": 68,
+                    "line": 44,
                     "cyclomaticDensity": 100
                 },
                 {
@@ -88679,14 +88550,14 @@
                         "time": 5.424093891356845
                     },
                     "params": 2,
-                    "line": 75,
+                    "line": 51,
                     "cyclomaticDensity": 100
                 },
                 {
                     "name": "scope.init",
                     "sloc": {
                         "logical": 32,
-                        "physical": 40
+                        "physical": 41
                     },
                     "cyclomatic": 5,
                     "halstead": {
@@ -88745,12 +88616,12 @@
                                 "\"yaxistickformat=\"yAxisTickFormatFunction()\" xaxistickformat=\"xAxisTickFormatFunction()\" x2axistickformat=\"x2AxisTickFormatFunction()\" \"",
                                 "\"margin=\"{left:80,top:50,bottom:30,right:50}\" margin2=\"{left:80,top:50,bottom:30,right:50}\" interactive=\"true\" showlegend=\"\"",
                                 "\"\" tooltips=\"\"",
-                                "\"xaxisrotatelabels=\"-90\" x2axisrotatelables=\"-90\">\"",
+                                "\"xaxisrotatelabels=\"-90\" x2axisrotatelables=\"-90\" color=\"colorFunction()\">\"",
                                 "\"<svg></svg></nvd3-line-with-focus-chart>\"",
                                 "\"<nvd3-line-chart data=\"exampledData\" nodata=\" \" id=\"\"",
                                 "\"margin=\"{left:80,top:50,bottom:30,right:50}\" interactive=\"true\" showlegend=\"\"",
                                 "\"yaxistickformat=\"yAxisTickFormatFunction()\" xaxistickformat=\"xAxisTickFormatFunction()\" \"",
-                                "\"xaxisrotatelabels=\"-90\">\"",
+                                "\"xaxisrotatelabels=\"-90\" color=\"colorFunction()\">\"",
                                 "\"<svg></svg></nvd3-line-chart>\"",
                                 "compiled",
                                 "$compile",
@@ -88766,20 +88637,231 @@
                         "time": 1047.5101130942492
                     },
                     "params": 0,
-                    "line": 82,
+                    "line": 58,
                     "cyclomaticDensity": 15.625
+                },
+                {
+                    "name": "scope.xAxisTickFormatFunction",
+                    "sloc": {
+                        "logical": 1,
+                        "physical": 5
+                    },
+                    "cyclomatic": 1,
+                    "halstead": {
+                        "operators": {
+                            "distinct": 2,
+                            "total": 2,
+                            "identifiers": [
+                                "return",
+                                "function"
+                            ]
+                        },
+                        "operands": {
+                            "distinct": 1,
+                            "total": 1,
+                            "identifiers": [
+                                "<anonymous>"
+                            ]
+                        },
+                        "length": 3,
+                        "vocabulary": 3,
+                        "difficulty": 1,
+                        "volume": 4.754887502163469,
+                        "effort": 4.754887502163469,
+                        "bugs": 0.0015849625007211565,
+                        "time": 0.2641604167868594
+                    },
+                    "params": 0,
+                    "line": 100,
+                    "cyclomaticDensity": 100
+                },
+                {
+                    "name": "<anonymous>",
+                    "sloc": {
+                        "logical": 1,
+                        "physical": 3
+                    },
+                    "cyclomatic": 1,
+                    "halstead": {
+                        "operators": {
+                            "distinct": 1,
+                            "total": 1,
+                            "identifiers": [
+                                "return"
+                            ]
+                        },
+                        "operands": {
+                            "distinct": 1,
+                            "total": 2,
+                            "identifiers": [
+                                "d"
+                            ]
+                        },
+                        "length": 3,
+                        "vocabulary": 2,
+                        "difficulty": 1,
+                        "volume": 3,
+                        "effort": 3,
+                        "bugs": 0.001,
+                        "time": 0.16666666666666666
+                    },
+                    "params": 1,
+                    "line": 101,
+                    "cyclomaticDensity": 100
+                },
+                {
+                    "name": "scope.x2AxisTickFormatFunction",
+                    "sloc": {
+                        "logical": 1,
+                        "physical": 5
+                    },
+                    "cyclomatic": 1,
+                    "halstead": {
+                        "operators": {
+                            "distinct": 2,
+                            "total": 2,
+                            "identifiers": [
+                                "return",
+                                "function"
+                            ]
+                        },
+                        "operands": {
+                            "distinct": 1,
+                            "total": 1,
+                            "identifiers": [
+                                "<anonymous>"
+                            ]
+                        },
+                        "length": 3,
+                        "vocabulary": 3,
+                        "difficulty": 1,
+                        "volume": 4.754887502163469,
+                        "effort": 4.754887502163469,
+                        "bugs": 0.0015849625007211565,
+                        "time": 0.2641604167868594
+                    },
+                    "params": 0,
+                    "line": 105,
+                    "cyclomaticDensity": 100
+                },
+                {
+                    "name": "<anonymous>",
+                    "sloc": {
+                        "logical": 1,
+                        "physical": 3
+                    },
+                    "cyclomatic": 1,
+                    "halstead": {
+                        "operators": {
+                            "distinct": 1,
+                            "total": 1,
+                            "identifiers": [
+                                "return"
+                            ]
+                        },
+                        "operands": {
+                            "distinct": 1,
+                            "total": 2,
+                            "identifiers": [
+                                "d"
+                            ]
+                        },
+                        "length": 3,
+                        "vocabulary": 2,
+                        "difficulty": 1,
+                        "volume": 3,
+                        "effort": 3,
+                        "bugs": 0.001,
+                        "time": 0.16666666666666666
+                    },
+                    "params": 1,
+                    "line": 106,
+                    "cyclomaticDensity": 100
+                },
+                {
+                    "name": "scope.colorFunction",
+                    "sloc": {
+                        "logical": 1,
+                        "physical": 5
+                    },
+                    "cyclomatic": 1,
+                    "halstead": {
+                        "operators": {
+                            "distinct": 2,
+                            "total": 2,
+                            "identifiers": [
+                                "return",
+                                "function"
+                            ]
+                        },
+                        "operands": {
+                            "distinct": 1,
+                            "total": 1,
+                            "identifiers": [
+                                "<anonymous>"
+                            ]
+                        },
+                        "length": 3,
+                        "vocabulary": 3,
+                        "difficulty": 1,
+                        "volume": 4.754887502163469,
+                        "effort": 4.754887502163469,
+                        "bugs": 0.0015849625007211565,
+                        "time": 0.2641604167868594
+                    },
+                    "params": 0,
+                    "line": 112,
+                    "cyclomaticDensity": 100
+                },
+                {
+                    "name": "<anonymous>",
+                    "sloc": {
+                        "logical": 1,
+                        "physical": 3
+                    },
+                    "cyclomatic": 1,
+                    "halstead": {
+                        "operators": {
+                            "distinct": 2,
+                            "total": 2,
+                            "identifiers": [
+                                "return",
+                                "."
+                            ]
+                        },
+                        "operands": {
+                            "distinct": 4,
+                            "total": 4,
+                            "identifiers": [
+                                "d",
+                                "i",
+                                "scope",
+                                "colorArray"
+                            ]
+                        },
+                        "length": 6,
+                        "vocabulary": 6,
+                        "difficulty": 1,
+                        "volume": 15.509775004326936,
+                        "effort": 15.509775004326936,
+                        "bugs": 0.005169925001442312,
+                        "time": 0.861654166907052
+                    },
+                    "params": 2,
+                    "line": 113,
+                    "cyclomaticDensity": 100
                 },
                 {
                     "name": "scope.setData",
                     "sloc": {
-                        "logical": 19,
+                        "logical": 20,
                         "physical": 21
                     },
                     "cyclomatic": 3,
                     "halstead": {
                         "operators": {
                             "distinct": 11,
-                            "total": 102,
+                            "total": 113,
                             "identifiers": [
                                 "var",
                                 "=",
@@ -88795,8 +88877,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 27,
-                            "total": 96,
+                            "distinct": 31,
+                            "total": 105,
                             "identifiers": [
                                 "data",
                                 "<anonymous>",
@@ -88809,12 +88891,15 @@
                                 "getFlowList",
                                 "length",
                                 "key",
-                                "values",
                                 "flow",
                                 "getName",
+                                "area",
+                                "getArea",
+                                "barChart",
                                 "getFlowColor",
                                 "push",
-                                "\"length \"",
+                                "values",
+                                "\"LINECHART setdata length \"",
                                 "console",
                                 "log",
                                 "j",
@@ -88822,30 +88907,31 @@
                                 "value",
                                 1,
                                 "\"key\"",
+                                "\"area\"",
                                 "\"values\"",
-                                "\"linechart data \"",
+                                "\"LINECHART data \"",
                                 "_toString"
                             ]
                         },
-                        "length": 198,
-                        "vocabulary": 38,
-                        "difficulty": 19.555555555555554,
-                        "volume": 1039.08964766183,
-                        "effort": 20319.975332053564,
-                        "bugs": 0.34636321588727664,
-                        "time": 1128.8875184474202
+                        "length": 218,
+                        "vocabulary": 42,
+                        "difficulty": 18.629032258064516,
+                        "volume": 1175.5251981657698,
+                        "effort": 21898.89683679781,
+                        "bugs": 0.39184173272192324,
+                        "time": 1216.6053798221005
                     },
                     "params": 0,
-                    "line": 123,
-                    "cyclomaticDensity": 15.789473684210526
+                    "line": 133,
+                    "cyclomaticDensity": 15
                 }
             ],
             "dependencies": [],
-            "maintainability": 108.68940807503864,
-            "loc": 7.083333333333333,
-            "cyclomatic": 1.8333333333333333,
-            "effort": 7370.057004014513,
-            "params": 1.0833333333333333,
+            "maintainability": 110.14329036700023,
+            "loc": 6.642857142857143,
+            "cyclomatic": 1.7142857142857142,
+            "effort": 6559.705520704729,
+            "params": 1.0714285714285714,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/frontend/app/View/GraphsView/LineChartView.js"
         },
         {
@@ -102408,9 +102494,9 @@
     ],
     "changeCost": 3.225806451612903,
     "coreSize": 0,
-    "loc": 5.539402312805772,
-    "cyclomatic": 1.9675374389313343,
-    "effort": 2016.1296284177051,
-    "params": 0.9722660844594507,
-    "maintainability": 121.08230665600225
+    "loc": 5.525193403435573,
+    "cyclomatic": 1.9636971931556044,
+    "effort": 1989.9892579883574,
+    "params": 0.9718820598818778,
+    "maintainability": 121.12920608477519
 }
