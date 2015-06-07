@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">66.97</p>
+      <p class="stat">66.98</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">14390</p>
+      <p class="stat">14392</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">539.55</p>
+      <p class="stat">540.93</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">219.25</p>
+      <p class="stat">219.17</p>
     </div>
   </div>
 </div>
@@ -1107,7 +1107,9 @@ nv.utils.optionsFunc = function(args) {
       }).bind(this));
     }
     return this;
-};nv.models.axis = function() {
+};
+
+nv.models.axis = function() {
   &quot;use strict&quot;;
   //============================================================
   // Public Variables with Default Settings
@@ -5536,13 +5538,13 @@ nv.models.lineChart = function() {
   //------------------------------------------------------------
 
   var showTooltip = function(e, offsetElement) {
-    var left = e.pos[0] + ( offsetElement.offsetLeft || 0 ),
-        top = e.pos[1] + ( offsetElement.offsetTop || 0),
-        x = xAxis.tickFormat()(lines.x()(e.point, e.pointIndex)),
-        y = yAxis.tickFormat()(lines.y()(e.point, e.pointIndex)),
-        content = tooltip(e.series.key, x, y, e, chart);
+    var left = d3.event.pageX || ( e.pos[0] + (offsetElement.offsetLeft || 0) ) + margin.left,
+    top = d3.event.pageY || ( e.pos[1] + ( offsetElement.offsetTop || 0) ) + margin.top,
+    x = xAxis.tickFormat()(lines.x()(e.point, e.pointIndex)),
+    y = yAxis.tickFormat()(lines.y()(e.point, e.pointIndex)),
+    content = tooltip(e.series.key, x, y, e, chart);
 
-    nv.tooltip.show([left, top], content, null, null, offsetElement);
+    nv.tooltip.show([left, top], content, null , null, offsetElement);
   };
 
   //============================================================
@@ -6480,7 +6482,7 @@ var showTooltip = function(e, offsetElement) {
                              - margin.top - margin.bottom - height2,
           availableHeight2 = height2 - margin2.top - margin2.bottom;
 
-          console.log(&#039;height2 &#039; + height2 + &#039;margintop &#039; + margin2.top + &#039;marginbottom &#039; + margin2.bottom + &#039;availableHeight2 &#039; + availableHeight2);
+          //console.log(&#039;height2 &#039; + height2 + &#039;margintop &#039; + margin2.top + &#039;marginbottom &#039; + margin2.bottom + &#039;availableHeight2 &#039; + availableHeight2);
 
       chart.update = function() { container.transition().duration(transitionDuration).call(chart) };
       chart.container = this;

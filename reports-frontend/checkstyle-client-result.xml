@@ -4,18 +4,16 @@
 		<error line="23" column="22" severity="warning" message="&apos;io&apos; is not defined." source="jshint.W117" />
 	</file>
 	<file name="app/Controller/GraphsControllers/TableController.js">
-		<error line="21" column="9" severity="warning" message="&apos;socket&apos; is defined but never used." source="jshint.W098" />
-		<error line="19" column="177" severity="warning" message="&apos;SocketServicesFactory&apos; is defined but never used." source="jshint.W098" />
-		<error line="19" column="159" severity="warning" message="&apos;TableFlowFactory&apos; is defined but never used." source="jshint.W098" />
+		<error line="52" column="24" severity="warning" message="&apos;MapChartFlowFactory&apos; is not defined." source="jshint.W117" />
 	</file>
 	<file name="app/View/GraphsView/BarChartView.js">
 		<error line="138" column="36" severity="warning" message="&apos;i&apos; is defined but never used." source="jshint.W098" />
 		<error line="138" column="33" severity="warning" message="&apos;d&apos; is defined but never used." source="jshint.W098" />
 	</file>
 	<file name="app/View/GraphsView/LineChartView.js">
-		<error line="118" column="19" severity="warning" message="Expected an assignment or function call and instead saw an expression." source="jshint.W030" />
-		<error line="113" column="36" severity="warning" message="&apos;i&apos; is defined but never used." source="jshint.W098" />
-		<error line="113" column="33" severity="warning" message="&apos;d&apos; is defined but never used." source="jshint.W098" />
+		<error line="138" column="19" severity="warning" message="Expected an assignment or function call and instead saw an expression." source="jshint.W030" />
+		<error line="133" column="36" severity="warning" message="&apos;i&apos; is defined but never used." source="jshint.W098" />
+		<error line="133" column="33" severity="warning" message="&apos;d&apos; is defined but never used." source="jshint.W098" />
 	</file>
 	<file name="app/View/GraphsView/MapChartView.js">
 		<error line="113" column="17" severity="warning" message="Read only." source="jshint.W020" />
@@ -36,6 +34,9 @@
 		<error line="166" column="46" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
 		<error line="187" column="21" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
 		<error line="128" column="21" severity="warning" message="&apos;latLng&apos; is defined but never used." source="jshint.W098" />
+	</file>
+	<file name="app/View/GraphsView/TableView.js">
+		<error line="61" column="41" severity="warning" message="&apos;barchart&apos; is not defined." source="jshint.W117" />
 	</file>
 	<file name="app/View/GraphsView/angularjs-nvd3-directives.js">
 		<error line="5" column="5" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
