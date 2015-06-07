@@ -21,7 +21,6 @@ angular.module('app')
 
 	var socket;
 	$scope.lineChart = LineChartFactory.build();
-
 	this.socketConnection = function(url){
 		console.log('LINECHART socketConnection ' + url);
 		socket = SocketServicesFactory.build(url);

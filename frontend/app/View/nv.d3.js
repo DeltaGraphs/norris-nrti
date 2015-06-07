@@ -4,7 +4,7 @@ var nv = window.nv || {};
 
 
 nv.version = '1.1.15b';
-nv.dev = true //set false when in production
+nv.dev = true; //set false when in production
 
 window.nv = nv;
 
@@ -6323,13 +6323,13 @@ nv.models.lineWithFocusChart = function() {
     , tooltips = true
     , tooltip = function(key, x, y, e, graph) {
         return '<h3>' + key + '</h3>' +
-               '<p>' +  y + ' at ' + x + '</p>'
+               '<p>' +  y + ' at ' + x + '</p>';
       }
     , noData = "No Data Available."
     , dispatch = d3.dispatch('tooltipShow', 'tooltipHide', 'brush')
     , transitionDuration = 250
     ;
-
+    console.log('margin2 ' + JSON.stringify(margin2));
   lines
     .clipEdge(true)
     ;
@@ -6388,6 +6388,8 @@ var showTooltip = function(e, offsetElement) {
           availableHeight1 = (height || parseInt(container.style('height')) || 400)
                              - margin.top - margin.bottom - height2,
           availableHeight2 = height2 - margin2.top - margin2.bottom;
+
+          console.log('height2 ' + height2 + 'margintop ' + margin2.top + 'marginbottom ' + margin2.bottom + 'availableHeight2 ' + availableHeight2);
 
       chart.update = function() { container.transition().duration(transitionDuration).call(chart) };
       chart.container = this;
@@ -6782,7 +6784,10 @@ var showTooltip = function(e, offsetElement) {
 
   chart.margin2 = function(_) {
     if (!arguments.length) return margin2;
-    margin2 = _;
+    margin2.top    = typeof _.top    != 'undefined' ? _.top    : margin2.top;
+    margin2.right  = typeof _.right  != 'undefined' ? _.right  : margin2.right;
+    margin2.bottom = typeof _.bottom != 'undefined' ? _.bottom : margin2.bottom;
+    margin2.left   = typeof _.left   != 'undefined' ? _.left   : margin2.left;
     return chart;
   };
 
@@ -6983,6 +6988,8 @@ nv.models.linePlusBarWithFocusChart = function() {
           availableHeight1 = (height || parseInt(container.style('height')) || 400)
                              - margin.top - margin.bottom - height2,
           availableHeight2 = height2 - margin2.top - margin2.bottom;
+
+
 
       chart.update = function() { container.transition().duration(transitionDuration).call(chart); };
       chart.container = this;

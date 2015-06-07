@@ -2121,8 +2121,8 @@
                     rightalignyaxis: '@',
                     defaultstate: '@',
                     nodata: '@',
-                    margin: '&',
-                    margin2: '&',
+                    margin: '@',
+                    margin2: '@',
                     tooltipcontent: '&',
                     color: '&',
                     x: '&',
@@ -2243,7 +2243,6 @@
 
                                     //setup margin 2
                                     //nvd3 default is {top: 0, right: 30, bottom: 20, left: 60}
-
 
                                     var chart = nv.models.lineWithFocusChart()
                                         .width(scope.width)
