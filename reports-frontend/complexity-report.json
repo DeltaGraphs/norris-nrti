@@ -82020,7 +82020,7 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 91,
+                        "distinct": 90,
                         "total": 469,
                         "identifiers": [
                             "\"use strict\"",
@@ -82040,7 +82040,6 @@
                             "height",
                             "width",
                             "enableLegend",
-                            "enabledLegend",
                             true,
                             "legend",
                             "horizontalGrid",
@@ -82117,12 +82116,12 @@
                         ]
                     },
                     "length": 897,
-                    "vocabulary": 108,
-                    "difficulty": 43.807692307692314,
-                    "volume": 6059.134089440632,
-                    "effort": 265436.68184126465,
-                    "bugs": 2.0197113631468775,
-                    "time": 14746.482324514704
+                    "vocabulary": 107,
+                    "difficulty": 44.294444444444444,
+                    "volume": 6047.095886801829,
+                    "effort": 267852.75280817214,
+                    "bugs": 2.015698628933943,
+                    "time": 14880.708489342896
                 },
                 "params": 15,
                 "line": 2,
@@ -82220,7 +82219,7 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 21,
+                            "distinct": 20,
                             "total": 97,
                             "identifiers": [
                                 "json",
@@ -82231,7 +82230,6 @@
                                 "height",
                                 "width",
                                 "enableLegend",
-                                "enabledLegend",
                                 true,
                                 "legend",
                                 "horizontalGrid",
@@ -82247,12 +82245,12 @@
                             ]
                         },
                         "length": 182,
-                        "vocabulary": 31,
-                        "difficulty": 23.095238095238095,
-                        "volume": 901.6637284904114,
-                        "effort": 20824.138491326168,
-                        "bugs": 0.3005545761634705,
-                        "time": 1156.8965828514538
+                        "vocabulary": 30,
+                        "difficulty": 24.25,
+                        "volume": 893.0540884007504,
+                        "effort": 21656.561643718196,
+                        "bugs": 0.29768469613358345,
+                        "time": 1203.1423135398998
                     },
                     "params": 1,
                     "line": 30,
@@ -83273,10 +83271,10 @@
                 }
             ],
             "dependencies": [],
-            "maintainability": 119.46576493375198,
+            "maintainability": 119.40555487552152,
             "loc": 4.884615384615385,
             "cyclomatic": 2.3846153846153846,
-            "effort": 1802.5997854869888,
+            "effort": 1834.6160605789898,
             "params": 0.5769230769230769,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/frontend/app/Model/GraphsModel/LineChart.js"
         },
@@ -102538,7 +102536,7 @@
     "coreSize": 0,
     "loc": 5.4982994406112145,
     "cyclomatic": 1.9607304099928915,
-    "effort": 1956.9804988323544,
+    "effort": 1958.0132818998384,
     "params": 0.9675617833841818,
-    "maintainability": 121.21976410791032
+    "maintainability": 121.21782184796741
 }

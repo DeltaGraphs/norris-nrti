@@ -1,8 +1,8 @@
 Mean per-function logical LOC: 5.4982994406112145
 Mean per-function parameter count: 0.9675617833841818
 Mean per-function cyclomatic complexity: 1.9607304099928915
-Mean per-function Halstead effort: 1956.9804988323544
-Mean per-module maintainability index: 121.21976410791032
+Mean per-function Halstead effort: 1958.0132818998384
+Mean per-module maintainability index: 121.21782184796741
 First-order density: 0%
 Change cost: 3.225806451612903%
 Core size: 0%
@@ -18651,7 +18651,7 @@ Core size: 0%
   Mean parameter count: 0.5769230769230769
   Cyclomatic complexity: 37
   Cyclomatic complexity density: 28.68217054263566%
-  Maintainability index: 119.46576493375198
+  Maintainability index: 119.40555487552152
   Dependency count: 0
 
   Function: <anonymous>
@@ -18672,9 +18672,9 @@ Core size: 0%
     Parameter count: 1
     Cyclomatic complexity: 13
     Cyclomatic complexity density: 44.827586206896555%
-    Halstead difficulty: 23.095238095238095
-    Halstead volume: 901.6637284904114
-    Halstead effort: 20824.138491326168
+    Halstead difficulty: 24.25
+    Halstead volume: 893.0540884007504
+    Halstead effort: 21656.561643718196
 
   Function: LineChart
     Line No.: 80
