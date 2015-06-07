@@ -39,7 +39,7 @@ angular.module('app')
 			graphJson.width = json.width;
 		}
 		if (json.enableLegend !== undefined) {
-			graphJson.enableLegend = json.enabledLegend;
+			graphJson.enableLegend = json.enableLegend;
 			if (graphJson.enableLegend === true && json.legend !== undefined) {
 				graphJson.legend = json.legend;
 			}
