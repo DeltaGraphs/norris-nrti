@@ -1,8 +1,8 @@
-Mean per-function logical LOC: 5.941152755999169
+Mean per-function logical LOC: 5.973410820515299
 Mean per-function parameter count: 0.9427493646201502
 Mean per-function cyclomatic complexity: 1.974857183526463
-Mean per-function Halstead effort: 2240.5936408005205
-Mean per-module maintainability index: 119.59320399277688
+Mean per-function Halstead effort: 2271.3658183137545
+Mean per-module maintainability index: 119.53462392696954
 First-order density: 0%
 Change cost: 3.225806451612903%
 Core size: 0%
@@ -22244,17 +22244,17 @@ Core size: 0%
 
 /home/travis/build/DeltaGraphs/norris-nrti/frontend/app/View/PagesView/PageView.js
 
-  Physical LOC: 85
-  Logical LOC: 52
+  Physical LOC: 88
+  Logical LOC: 56
   Mean parameter count: 1
   Cyclomatic complexity: 9
-  Cyclomatic complexity density: 17.307692307692307%
-  Maintainability index: 100.52328091725211
+  Cyclomatic complexity density: 16.071428571428573%
+  Maintainability index: 98.70729887722484
   Dependency count: 0
 
   Function: <anonymous>
     Line No.: 18
-    Physical LOC: 69
+    Physical LOC: 72
     Logical LOC: 7
     Parameter count: 1
     Cyclomatic complexity: 1
@@ -22265,7 +22265,7 @@ Core size: 0%
 
   Function: link
     Line No.: 27
-    Physical LOC: 57
+    Physical LOC: 60
     Logical LOC: 3
     Parameter count: 3
     Cyclomatic complexity: 1
@@ -22276,17 +22276,17 @@ Core size: 0%
 
   Function: scope.render
     Line No.: 30
-    Physical LOC: 46
-    Logical LOC: 38
+    Physical LOC: 49
+    Logical LOC: 42
     Parameter count: 0
     Cyclomatic complexity: 8
-    Cyclomatic complexity density: 21.052631578947366%
-    Halstead difficulty: 13.412698412698415
-    Halstead volume: 1530.7422407936785
-    Halstead effort: 20531.384023343788
+    Cyclomatic complexity density: 19.047619047619047%
+    Halstead difficulty: 14.4
+    Halstead volume: 1690.773196873945
+    Halstead effort: 24347.134034984807
 
   Function: <anonymous>
-    Line No.: 77
+    Line No.: 80
     Physical LOC: 5
     Logical LOC: 2
     Parameter count: 0

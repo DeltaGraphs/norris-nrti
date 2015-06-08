@@ -93,6 +93,7 @@
 		<error line="1262" column="37" severity="error" message="Too many errors. (48% scanned)." source="jshint.E043" />
 	</file>
 	<file name="app/View/PagesView/PageView.js">
+		<error line="73" column="75" severity="warning" message="Unnecessary semicolon." source="jshint.W032" />
 		<error line="27" column="41" severity="warning" message="&apos;attrs&apos; is defined but never used." source="jshint.W098" />
 	</file>
 	<file name="app/View/nv.d3.js">
