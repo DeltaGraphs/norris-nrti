@@ -393,7 +393,7 @@ var repeatTable=function(){
         index4=0;
         table.deleteAllFlows();
     }else{
-        table.addRecord(data[index4]);
+        tableFlow1.addRecord(data[index4]);
     }
 };
 
