@@ -361,11 +361,12 @@ var repeatBar=function(){
     }
     console.log('barchart index: '+index3);
     index3++;
-    if (index3>2){
+    if (index3==3){
         barChart.updateProperties({barOrientation:'H'});
     }
     if (index3>4){
         index3=0;
+        barChart.updateProperties({barOrientation:'V'});
         barChart.deleteAllFlows();
     }else{
         barChartFlow1.updateRecord(index3, {tempo: index3+1, pressione: index3+1});
