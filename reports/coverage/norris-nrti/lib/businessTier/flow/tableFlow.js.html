@@ -15,10 +15,10 @@
 <div class="header high">
     <h1>Code coverage report for <span class="entity">norris-nrti/lib/businessTier/flow/tableFlow.js</span></h1>
     <h2>
-        Statements: <span class="metric">94.2% <small>(65 / 69)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Branches: <span class="metric">73.53% <small>(25 / 34)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">100% <small>(69 / 69)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">85.29% <small>(29 / 34)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Functions: <span class="metric">100% <small>(5 / 5)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">94.2% <small>(65 / 69)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">100% <small>(69 / 69)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
     <div class="path"><a href="../../../../index.html">All files</a> &#187; <a href="index.html">norris-nrti/lib/businessTier/flow/</a> &#187; tableFlow.js</div>
@@ -235,29 +235,29 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
 <span class="cline-any cline-yes">6</span>
 <span class="cline-any cline-yes">6</span>
-<span class="cline-any cline-yes">5</span>
-<span class="cline-any cline-yes">5</span>
-<span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-yes">4</span>
-<span class="cline-any cline-yes">4</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -266,9 +266,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">3</span>
 <span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -280,7 +280,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">7</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
@@ -387,15 +387,15 @@ TableFlow.prototype.updateRecord = function(ID, record){
 	var res=this._dataTableFlow.updateRecord(ID, record);
 	var newValid=this._dataTableFlow.getRecordByID(ID).norrisRecordIsValid;
 	if (res===true ){
-		<span class="missing-if-branch" title="if path not taken" >I</span>if (oldValid &amp;&amp; !newValid){
-<span class="cstat-no" title="statement not covered" >			var data={</span>
+		if (oldValid &amp;&amp; !newValid){
+			var data={
 				action: 'deleteRecord',
 				ID: this._dataTableFlow._ID,
 				norrisRecordID: ID
 			};
-<span class="cstat-no" title="statement not covered" >			this._graphSocket.sendMessage('updateFlowData', data);</span>
+			this._graphSocket.sendMessage('updateFlowData', data);
 		}
-		<span class="missing-if-branch" title="else path not taken" >E</span>if (newValid){
+		if (newValid){
 			var columnKeys=this._dataTableFlow._columnKeys;
 			var appearance=this._dataTableFlow.getRecordByID(ID).appearance;
 			var newValue=[];
@@ -404,8 +404,8 @@ TableFlow.prototype.updateRecord = function(ID, record){
 					newValue.push(record[columnKeys[key]]);
 				}
 			}
-			<span class="missing-if-branch" title="if path not taken" >I</span>if (!oldValid){
-<span class="cstat-no" title="statement not covered" >				var data2={</span>
+			if (!oldValid){
+				var data2={
 					action: 'insertRecords',
 					ID: this._dataTableFlow._ID,
 					records: [{
@@ -414,9 +414,9 @@ TableFlow.prototype.updateRecord = function(ID, record){
 						appearance: appearance
 					}]
 				};
-<span class="cstat-no" title="statement not covered" >				this._graphSocket.sendMessage('updateFlowData', data2);</span>
+				this._graphSocket.sendMessage('updateFlowData', data2);
 			}
-			<span class="missing-if-branch" title="else path not taken" >E</span>if (oldValid){
+			if (oldValid){
 				var data3={
 					action: 'updateRecord',
 					ID: this._dataTableFlow._ID,
@@ -474,7 +474,7 @@ module.exports = TableFlow;</pre></td></tr>
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Jun 08 2015 11:28:06 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Jun 08 2015 12:53:16 GMT+0000 (UTC)</div>
 </div>
 <script src="../../../../prettify.js"></script>
 <script>
