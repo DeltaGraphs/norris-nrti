@@ -15,7 +15,7 @@
 
 
 angular.module('app')
-.directive('tableChart', function($compile){
+.directive('tableChart', function($compile, ngTableParams){
 	return {
 		restrict: 'E',
 		//controller : 'TableController',
@@ -24,20 +24,22 @@ angular.module('app')
             url: '@'
 		},
 		bindToController: true,
-        //template: '<div>table {{url}}</div>'
+        //template: '<div>table {{url}}</div>',
         link: function(scope, element, attrs){
 
         	attrs.$observe('url', function(value) {
-                console.log('BARCHART observ url ' + value);
+                console.log('TABLE observ url ' + value);
                 if (value) {
-                    scope.$parent.socketConnection(value);
+                    //scope.$parent.socketConnection(value);
+                    scope.setData();
+                    scope.init();
                 }
             });
 
             scope.$parent.$watch('changedP', function(newValue, oldValue){
                 if (newValue !== oldValue) {
-                    console.log('BARCHART watch changedP');
-                    scope.init();
+                    console.log('TABLE watch changedP');
+                    //scope.init();
                 }
             }, true);
 
@@ -49,22 +51,61 @@ angular.module('app')
             }, true);*/
 
             scope.init = function(){
+                console.log('TABLE init');
             	while(element.firstChild) {
                     element.removeChild(element.firstChild);
                 }
+                /*var table = '<p><strong>Page:</strong> {{tableParams.page()}}' +
+                                '<p><strong>Count per page:</strong> {{tableParams.count()}}' +
 
-                var table = '<table ng-table="" [class="ng-table-responsive"]><tr ng-repeat="record in data">';
+                                '<table ng-table="tableParams" class="table">' +
+                                    '<tr ng-repeat="user in data">' +
+                                        '<td data-title="Name">' +
+                                            '{{user.name}}' +
+                                        '</td>' +
+                                        '<td data-title="Age">' +
+                                            '{{user.age}}' +
+                                        '</td>' +
+                                    '</tr>' +
+                                '</table>';*/
+                var table = '<p><strong>Page:</strong> {{tableParams.page()}}' +
+                            '<p><strong>Count per page:</strong> {{tableParams.count()}}' +                                
+                            '<table ng-table="tableParams" [class="ng-table-responsive"]><tr ng-repeat="record in data">';
                 for (var i=0; i<scope.$parent.table.getHeaders().length; i++){
                 	table = table + '<td data-title="'+ scope.$parent.table.getHeaders()[i] +'">{{record.'+ scope.$parent.table.getHeaders()[i] +'}}</td>';
                 }
                 table = table + '</tr></table>';
-            	var compiled = $compile(barchart)(scope);
+                console.log(table);
+            	var compiled = $compile(table)(scope);
+
                 element.append(compiled);
 
             };
 
             scope.setData = function(){
-
+                console.log('TABLE setData');
+                var data = [];
+                for (var i=0; i<scope.$parent.table.getFlowList()[0].flow.getData().length; i++) {
+                    var record;
+                    for (var j=0; j<scope.$parent.table.getHeaders().length; i++) {
+                        record[scope.$parent.table.getHeaders()[j]] = scope.$parent.table.getFlowList()[0].flow.getData()[i][j];
+                    }
+                    data.push(record);
+                }
+                console.log('data length ' +data.length);
+                for (var g=0; g<data.length; g++) {
+                    console.log('TABLE data: ' + JSON.stringify(data[g]));
+                }
+                scope.data = data;
+                scope.tableParams = new ngTableParams({
+                    page: 1,            // show first page
+                    count: scope.$parent.table.getMaxItemsPage()         // count per page
+                }, {
+                    total: data.length, // length of data
+                    getData: function ($defer, params) {
+                        $defer.resolve(data.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+                    }
+                });
             };
         }
     };

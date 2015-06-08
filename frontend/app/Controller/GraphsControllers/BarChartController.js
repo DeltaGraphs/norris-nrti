@@ -48,7 +48,7 @@ angular.module('app')
 			console.log('BARCHART updateGraphProp');
 			$scope.barChart.updateParameters(info);
 			$scope.changedP = !$scope.changedP;
-		});
+		});/*
 		socket.on('insertFlow', function(info){
 			console.log('BARCHART insert flow');
 			var flow = BarChartFlowFactory.build(info.properties);
@@ -90,7 +90,7 @@ angular.module('app')
 					break;
 			}
 			$scope.changedD = !$scope.changedD;
-		});
+		});*/
 	};
 
 

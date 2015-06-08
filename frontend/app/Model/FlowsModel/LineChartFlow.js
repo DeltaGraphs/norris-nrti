@@ -134,8 +134,8 @@ angular.module('app')
 	};
 	LineChartFlow.prototype.inPlaceUpdate = function(newData) {
 		for (var i = 0; i<this._data.length; i++){
-            if (this._data[i].NorrisRecordID === newData.NorrisRecordID){
-                this._data[i] = { 'NorrisRecordID' : newData.NorrisRecordID, 'value' : newData.value };
+            if (this._data[i].norrisRecordID === newData.norrisRecordID){
+                this._data[i] = { 'norrisRecordID' : newData.norrisRecordID, 'value' : newData.value };
             }
         }
     };
@@ -144,7 +144,7 @@ angular.module('app')
     };
     LineChartFlow.prototype.deleteData = function(delData) {
     	for (var i = 0; i<this._data.length; i++){
-            if (this._data[i].NorrisRecordID === delData.NorrisRecordID){
+            if (this._data[i].norrisRecordID === delData.norrisRecordID){
                 this._data.splice(i,1);
             }
         }

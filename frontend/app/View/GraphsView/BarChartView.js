@@ -171,9 +171,9 @@ angular.module('app')
                         console.log('[' + values[g][0] + ',' + values[g][1] + ']');
                     }
                     data.push({ 'key': key, 'values': values});
-                    console.log('barchart data ' + data.toString());
                 }
                 scope.data = data;
+                console.log(' data.length ' + data.length);
                 scope.colorArray = colorArray;
 
             };
