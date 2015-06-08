@@ -4323,7 +4323,7 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 120,
+                        "distinct": 119,
                         "total": 446,
                         "identifiers": [
                             "\"use strict\"",
@@ -4411,7 +4411,6 @@
                             "getProperties",
                             "getConfigJSON",
                             "configJSON",
-                            "_dataMapChart",
                             "title",
                             "_title",
                             "type",
@@ -4449,12 +4448,12 @@
                         ]
                     },
                     "length": 845,
-                    "vocabulary": 142,
-                    "difficulty": 40.88333333333333,
-                    "volume": 6041.536315981456,
-                    "effort": 246998.14305170852,
-                    "bugs": 2.013845438660485,
-                    "time": 13722.119058428252
+                    "vocabulary": 141,
+                    "difficulty": 41.226890756302524,
+                    "volume": 6032.9208927769805,
+                    "effort": 248718.57058793167,
+                    "bugs": 2.01097363092566,
+                    "time": 13817.698365996204
                 },
                 "params": 12,
                 "line": 2,
@@ -4988,7 +4987,7 @@
                                 "prop",
                                 "ID",
                                 "this",
-                                "_dataMapChart",
+                                "_dataLineChart",
                                 "_ID",
                                 "title",
                                 "_title",
