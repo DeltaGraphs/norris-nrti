@@ -324,6 +324,9 @@ var repeatBar=function(){
     }
     console.log('barchart index: '+index3);
     index3++;
+    if (index3>2){
+        barChart.updateProperties({barOrientation:'H'});
+    }
     if (index3>4){
         index3=0;
         barChart.deleteAllFlows();
@@ -336,7 +339,69 @@ var repeatBar=function(){
 var myVar3=setInterval(function () {repeatBar();}, 5000);
 
 
+/////////////////////////////////////////////////
+//TEST TABLE
+/////////////////////////////////////////////////
+var table=page1.createTable({
+    ID: 'bar1',
+    title: 'Tabella',
+    height: 600,
+    width: 1000,
+    sortable: true,
+    maxItemsPage: 20,
+    addRowOn: 'top',
+    headers: ['0', 'IDMezzo', '1', 'WGS84Fi'],
+    sort: {
+        column: 'col1',
+        ordering: 'DESC'
+    },
+    appearance: {
+        border: {
+            color: '#00AA00', //#xxxxxx,
+            width: 1 // > 0
+        },
+        rowEven: {
+            textColor: ['#00AB00', '#AA0000'],
+            backgroundColor: ['#FAAFFF', '#FFFAFF']
+        },
+        rowOdd: {
+            textColor: ['#BB0000', '#BB0000'],
+            backgroundColor: ['#AAFFFF', '#FAAAFF']
+        },
+        headers: {
+            textColor: ['#00CC00', '#00CC00'],
+            backgroundColor: ['#FFAAFF', '#FABCDF']
+        }
+    },
+});
+console.log('Grafico inserito: '+table);
 
+var tableFlow1;
+
+var index4=0;
+var repeatTable=function(){
+    if (index4===0){
+        tableFlow1=table.createTableFlow({
+            ID:'flow1',
+            name: 'autobus',
+            columnKeys: ['0', 'IDMezzo', '1', 'WGS84Fi']
+        });
+    }
+    console.log('table index: '+index4);
+    index4++;
+    if (index4>30){
+        index4=0;
+        table.deleteAllFlows();
+    }else{
+        table.addRecord(data[index4]);
+    }
+};
+
+var myVar4=setInterval(function () {repeatTable();}, 5000);
+
+
+
+/////////////////////////////////////////////
 app.get('/', function (req, res) {
 	var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
 	console.log(' HOME APS - expressEsempio.js '+ fullUrl);
