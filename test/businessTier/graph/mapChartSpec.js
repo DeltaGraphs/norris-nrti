@@ -105,8 +105,8 @@ describe('MapChart', function() {
             });
             assert.strictEqual(lc.hasOwnProperty('_dataMapChartFlow'),true);
             assert.strictEqual(mock.p1,'insertFlow');
-            assert.strictEqual(mock.p2.ID, 'flow1');
-            assert.strictEqual(mock.p2.name, 'linea 22');
+            assert.strictEqual(mock.p2.properties.ID, 'flow1');
+            assert.strictEqual(mock.p2.properties.name, 'linea 22');
         });
     });
     describe('#getFlowByID', function() {

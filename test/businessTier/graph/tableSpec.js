@@ -98,8 +98,8 @@ describe('Table', function() {
             var lc=table.createTableFlow({ ID:'flow1', name: 'tabella', columnKeys: ['col1','col2']});
             assert.strictEqual(lc.hasOwnProperty('_dataTableFlow'),true);
             assert.strictEqual(mock.p1,'insertFlow');
-            assert.strictEqual(mock.p2.ID, 'flow1');
-            assert.strictEqual(mock.p2.name, 'tabella');
+            assert.strictEqual(mock.p2.properties.ID, 'flow1');
+            assert.strictEqual(mock.p2.properties.name, 'tabella');
         });
     });
     describe('#deleteFlow', function() {
