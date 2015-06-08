@@ -71,7 +71,7 @@ angular.module('app')
                         '<p><strong>Page:</strong> {{tableParams.page()}}' +
                         '<p><strong>Count per page:</strong> {{tableParams.count()}}';     
 
-                table = table + '<table ng-table="tableParams" class="ng-table">';
+                table = table + '<table st-table="data" class="table table-striped">';
 
                 table = table + '<thead><tr>';
                 for (var i=0; i<scope.$parent.table.getHeaders().length; i++) {
@@ -84,7 +84,15 @@ angular.module('app')
                     //data-title="\''+ scope.$parent.table.getHeaders()[j] +'\'"
                 	table = table + '<td>{{record.'+ scope.$parent.table.getHeaders()[j] +'}}</td>';
                 }
-                table = table + '</tr></tbody></table>';
+                table = table + '</tr></tbody>';
+
+                table = table + '<tfoot><tr>' +
+                                    '<td colspan="5" class="text-center">' +
+                                        '<div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>' +
+                                    '</td>' +
+                                '</tr></tfoot>';
+
+                table = table + '</table>';
                 
                 console.log(table);
             	var compiled = $compile(table)(scope);
@@ -95,7 +103,7 @@ angular.module('app')
             scope.setData = function(){
                 console.log('TABLE setData');
                 var data = [];
-                console.log('getData.length ' + scope.$parent.table.getFlowList()[0].flow.getData().length + ' stringify table: ' + JSON.stringify(scope.$parent.table));
+                //console.log('getData.length ' + scope.$parent.table.getFlowList()[0].flow.getData().length + ' stringify table: ' + JSON.stringify(scope.$parent.table));
                 for (var i=0; i<scope.$parent.table.getFlowList()[0].flow.getData().length; i++) {
                     var record = {};
                     console.log('getHeader.length ' + scope.$parent.table.getHeaders().length);
@@ -104,12 +112,13 @@ angular.module('app')
                     }
                     data.push(record);
                 }
-                console.log('data length ' +data.length);
+                //console.log('data length ' +data.length);
                 /*for (var g=0; g<data.length; g++) {
                     console.log('TABLE data: ' + JSON.stringify(data[g]));
                 }*/
                 scope.data = data;
-                scope.tableParams = new ngTableParams({
+                scope.itemsByPage=10;
+                /*scope.tableParams = new ngTableParams({
                     page: 1,            // show first page
                     count: scope.$parent.table.getMaxItemsPage()         // count per page
                 }, {
@@ -117,7 +126,7 @@ angular.module('app')
                     data: function ($defer, params) {
                         $defer.resolve(data.slice((params.page() - 1) * params.count(), params.page() * params.count()));
                     }
-                });
+                });*/
             };
         }
     };
