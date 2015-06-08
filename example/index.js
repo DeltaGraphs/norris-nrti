@@ -36,7 +36,7 @@ app.configure(function() {
 
 // Includo e creo l'ustanza di Norris
 var Norris = require('../norris-nrti.js');
-var norris = new Norris(app,io,'/norris','http://norris-nrti-dev.herokuapp.com/');
+var norris = new Norris(app,io,'/norris','http://norris-nrti-dev.herokuapp.com');
 
 var page1=norris.createPage({
     ID:'page1',
