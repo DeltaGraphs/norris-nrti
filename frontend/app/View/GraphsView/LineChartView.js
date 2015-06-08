@@ -89,20 +89,22 @@ angular.module('app')
                 }
 
                 if (scope.$parent.lineChart.getViewFinder() === true) {
-                    linechart = '<nvd3-line-with-focus-chart data="exampleData" nodata=" " id="'+ id +'" ';
-                    linechart = linechart + 'yaxistickformat="yAxisTickFormatFunction()" xaxistickformat="xAxisTickFormatFunction()" x2axistickformat="x2AxisTickFormatFunction()" ';
-                    linechart = linechart + 'margin="{left:80,top:50,bottom:30,right:50}" margin2="{left:80,top:50,bottom:30,right:50}" interactive="true" showlegend="'+ legend +'" tooltips="'+ onPoint +'" ';
-                    linechart = linechart + 'xaxisrotatelabels="-90" x2axisrotatelables="-90" interpolate="' + scope.$parent.lineChart.getInterpolation() +'">'; // perchè colorFunction ritorna null per adesso
-                    //linechart = linechart + 'xaxisrotatelabels="-90" x2axisrotatelables="-90" color="colorFunction()">'; 
-                    linechart = linechart + '<svg style="width: '+ scope.$parent.lineChart.getWidth() +'px; height: '+ scope.$parent.lineChart.getHeight() +'px;"></svg></nvd3-line-with-focus-chart>';
+                    linechart = '<div class="graphtitle">'+ scope.$parent.lineChart.getTitle() +'</div>' +
+                                '<nvd3-line-with-focus-chart data="exampleData" nodata=" " id="'+ id +'" ' +
+                                'yaxistickformat="yAxisTickFormatFunction()" xaxistickformat="xAxisTickFormatFunction()" x2axistickformat="x2AxisTickFormatFunction()" ' +
+                                'margin="{left:80,top:50,bottom:30,right:50}" margin2="{left:80,top:50,bottom:30,right:50}" interactive="true" showlegend="'+ legend +'" tooltips="'+ onPoint +'" ' +
+                                'xaxisrotatelabels="-90" x2axisrotatelables="-90" interpolate="' + scope.$parent.lineChart.getInterpolation() +'">' + // perchè colorFunction ritorna null per adesso
+                                //linechart = linechart + 'xaxisrotatelabels="-90" x2axisrotatelables="-90" color="colorFunction()">'; 
+                                '<svg style="width: '+ scope.$parent.lineChart.getWidth() +'px; height: '+ scope.$parent.lineChart.getHeight() +'px;"></svg></nvd3-line-with-focus-chart>';
                 } else {
-                    linechart = '<nvd3-line-chart data="exampleData" id="'+ id +'" ';
-                    linechart = linechart + 'yaxistickformat="yAxisTickFormatFunction()" xaxistickformat="xAxisTickFormatFunction()" ';
-                    linechart = linechart + 'margin="{left:80,top:50,bottom:30,right:50}" interactive="true" showlegend="'+ legend +'" tooltips="'+ onPoint +'" ';
-                    linechart = linechart + 'xaxisrotatelabels="-90" interpolate="' + scope.$parent.lineChart.getInterpolation() +'"';
-                    //linechart = linechart + 'xaxisrotatelabels="-90" color="colorFunction()" interpolate="' + scope.$parent.lineChart.getInterpolation() +'" '; // perchè colorFunction ritorna null per adesso
-                    linechart = linechart + 'showxaxis="true" showyaxis="true">';
-                    linechart = linechart + '<svg style="width: '+ scope.$parent.lineChart.getWidth() +'px; height: '+ scope.$parent.lineChart.getHeight() +'px;"></svg></nvd3-line-chart>';
+                    linechart = '<div class="graphtitle">'+ scope.$parent.lineChart.getTitle() +'</div>' +
+                                '<nvd3-line-chart data="exampleData" id="'+ id +'" ' +
+                                'yaxistickformat="yAxisTickFormatFunction()" xaxistickformat="xAxisTickFormatFunction()" ' +
+                                'margin="{left:80,top:50,bottom:30,right:50}" interactive="true" showlegend="'+ legend +'" tooltips="'+ onPoint +'" ' +
+                                'xaxisrotatelabels="-90" interpolate="' + scope.$parent.lineChart.getInterpolation() +'"' +
+                                //linechart = linechart + 'xaxisrotatelabels="-90" color="colorFunction()" interpolate="' + scope.$parent.lineChart.getInterpolation() +'" '; // perchè colorFunction ritorna null per adesso
+                                'showxaxis="true" showyaxis="true">' +
+                                'svg style="width: '+ scope.$parent.lineChart.getWidth() +'px; height: '+ scope.$parent.lineChart.getHeight() +'px;"></svg></nvd3-line-chart>';
                 }
 
                 var compiled = $compile(linechart)(scope);

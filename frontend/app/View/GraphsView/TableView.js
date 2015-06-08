@@ -55,7 +55,7 @@ angular.module('app')
             	while(element.firstChild) {
                     element.removeChild(element.firstChild);
                 }
-                var  table = '<div class="ng-cloak ng-table-pager" ng-if="params.data.length">' +
+                /*var  table = '<div class="ng-cloak ng-table-pager" ng-if="params.data.length">' +
                                     '<div ng-if="params.settings().counts.length" class="ng-table-counts btn-group pull-right">' +
                                         '<button ng-repeat="count in params.settings().counts" type="button"' +
                                             'ng-class="{\'active\':params.count() == count}"' +
@@ -85,8 +85,9 @@ angular.module('app')
                                         '<a ng-switch-when="next" ng-click="params.page(page.number)" href="">&raquo;</a>' +
                                     '</li>' +
                                 '</ul>' +
-                            '</div>';
-                table = '<p><strong>Page:</strong> {{tableParams.page()}}' +
+                            '</div>';*/
+                var table =     '<div class="graphtitle">'+ scope.$parent.table.getTitle() +'</div>' +
+                            '<p><strong>Page:</strong> {{tableParams.page()}}' +
                             '<p><strong>Count per page:</strong> {{tableParams.count()}}' +                                
                             '<table ng-table="tableParams" class="table"><tr ng-repeat="record in data">';
 
