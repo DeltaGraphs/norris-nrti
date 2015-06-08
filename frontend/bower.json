@@ -8,7 +8,8 @@
 		"sio-client": "latest",
 		"d3": "latest",
 		"nvd3": "latest",
-		"angularjs-nvd3-directives": "latest"
+		"angularjs-nvd3-directives": "latest",
+		"ng-table": "latest"
 	},
 	"devDependencies": {
 		"socket.io-client": "latest",
