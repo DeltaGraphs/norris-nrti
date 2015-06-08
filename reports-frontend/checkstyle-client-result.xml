@@ -32,6 +32,9 @@
 		<error line="188" column="21" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
 		<error line="129" column="21" severity="warning" message="&apos;latLng&apos; is defined but never used." source="jshint.W098" />
 	</file>
+	<file name="app/View/GraphsView/TableView.js">
+		<error line="18" column="45" severity="warning" message="&apos;ngTableParams&apos; is defined but never used." source="jshint.W098" />
+	</file>
 	<file name="app/View/GraphsView/angularjs-nvd3-directives.js">
 		<error line="5" column="5" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
 		<error line="109" column="25" severity="warning" message="The body of a for in should be wrapped in an if statement to filter unwanted properties from the prototype." source="jshint.W089" />
@@ -137,6 +140,13 @@
 		<error line="3" column="3132" severity="warning" message="Missing semicolon." source="jshint.W033" />
 		<error line="3" column="3141" severity="warning" message="Missing semicolon." source="jshint.W033" />
 		<error line="3" column="3141" severity="error" message="Too many errors. (100% scanned)." source="jshint.E043" />
+	</file>
+	<file name="app/View/GraphsView/smart-table.js">
+		<error line="328" column="34" severity="warning" message="Confusing use of &apos;!&apos;." source="jshint.W018" />
+		<error line="468" column="45" severity="warning" message="Missing semicolon." source="jshint.W033" />
+		<error line="476" column="14" severity="warning" message="Missing semicolon." source="jshint.W033" />
+		<error line="77" column="30" severity="warning" message="&apos;oldValue&apos; is defined but never used." source="jshint.W098" />
+		<error line="254" column="32" severity="warning" message="&apos;oldValue&apos; is defined but never used." source="jshint.W098" />
 	</file>
 	<file name="app/View/PagesView/PageView.js">
 		<error line="27" column="41" severity="warning" message="&apos;attrs&apos; is defined but never used." source="jshint.W098" />
