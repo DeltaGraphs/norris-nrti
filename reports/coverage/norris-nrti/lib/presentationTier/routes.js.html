@@ -15,10 +15,10 @@
 <div class="header high">
     <h1>Code coverage report for <span class="entity">norris-nrti/lib/presentationTier/routes.js</span></h1>
     <h2>
-        Statements: <span class="metric">100% <small>(33 / 33)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">100% <small>(29 / 29)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Branches: <span class="metric">94.74% <small>(18 / 19)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Functions: <span class="metric">100% <small>(3 / 3)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">100% <small>(33 / 33)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">100% <small>(29 / 29)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
     <div class="path"><a href="../../../index.html">All files</a> &#187; <a href="index.html">norris-nrti/lib/presentationTier/</a> &#187; routes.js</div>
@@ -115,22 +115,22 @@
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">31</span>
+<span class="cline-any cline-yes">17</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3</span>
 <span class="cline-any cline-yes">3</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">28</span>
-<span class="cline-any cline-yes">28</span>
-<span class="cline-any cline-yes">28</span>
-<span class="cline-any cline-yes">28</span>
+<span class="cline-any cline-yes">14</span>
+<span class="cline-any cline-yes">14</span>
+<span class="cline-any cline-yes">14</span>
+<span class="cline-any cline-yes">14</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">54</span>
-<span class="cline-any cline-yes">54</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-yes">20</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2</span>
@@ -138,31 +138,31 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">52</span>
-<span class="cline-any cline-yes">52</span>
-<span class="cline-any cline-yes">52</span>
+<span class="cline-any cline-yes">18</span>
+<span class="cline-any cline-yes">18</span>
+<span class="cline-any cline-yes">18</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">52</span>
-<span class="cline-any cline-yes">52</span>
-<span class="cline-any cline-yes">52</span>
-<span class="cline-any cline-yes">52</span>
+<span class="cline-any cline-yes">18</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">18</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">52</span>
+<span class="cline-any cline-yes">18</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">52</span>
+<span class="cline-any cline-yes">18</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">52</span>
+<span class="cline-any cline-yes">18</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">52</span>
+<span class="cline-any cline-yes">18</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span></td><td class="text"><pre class="prettyprint lang-js">/*jshint node: true, -W106 */
@@ -184,7 +184,7 @@
 &nbsp;
 var Express = require('express');
 &nbsp;
-function Routes(exprApp, norrisNamespace) {
+function Routes(exprApp, norrisNamespace, baseURL) {
 	if(exprApp===undefined || norrisNamespace===undefined || exprApp.lazyrouter===undefined ||
 		typeof norrisNamespace !=='string' || norrisNamespace.length &lt; 1 ||
 		norrisNamespace.indexOf('/')!==0) {
@@ -192,7 +192,7 @@ function Routes(exprApp, norrisNamespace) {
 		return;
 	}
 	
-	this._baseURL='';
+	this._baseURL=baseURL;
 	this._norrisNamespace = norrisNamespace;
 	this._exprApp=exprApp;
     this.addRoutingPath(norrisNamespace,'pageList'); //page is pageList.ejs;
@@ -213,15 +213,15 @@ Routes.prototype.addRoutingPath = function(namespace, filename) {
     app.set('views', __dirname + '/views');
 &nbsp;
 	var nspNorris=this._norrisNamespace;
-	var baseURL='';
-	var routesObject=this;
+	//var baseURL='';
+	///var routesObject=this;
 	var handle = function (req, res) {
 		var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
 		<span class="missing-if-branch" title="else path not taken" >E</span>if(fullUrl.substring(fullUrl.length-1, fullUrl.length)==='/'){
 			fullUrl=fullUrl.slice(0,-1);
 		}
-		baseURL=req.protocol + '://' + req.get('host');
-		routesObject._baseURL=baseURL;
+		//baseURL=req.protocol + '://' + req.get('host');
+		//routesObject._baseURL=baseURL;
 		var norrisNamespace=req.protocol + '://' + req.get('host')+nspNorris;
 		res.render(filename,{fullURL:fullUrl, norrisNamespace : norrisNamespace});
 	};
@@ -240,7 +240,7 @@ module.exports = Routes;</pre></td></tr>
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Jun 08 2015 22:50:37 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Jun 08 2015 23:11:25 GMT+0000 (UTC)</div>
 </div>
 <script src="../../../prettify.js"></script>
 <script>

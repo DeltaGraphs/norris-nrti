@@ -44,7 +44,7 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">72.43</p>
+      <p class="stat">72.38</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">15.74</p>
+      <p class="stat">15.68</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.40</p>
+      <p class="stat">0.41</p>
     </div>
   </div>
 </div>
@@ -109,7 +109,7 @@
 var Socket=require(&#039;../../presentationTier/socket.js&#039;);
 var Routes=require(&#039;../../presentationTier/routes.js&#039;);
 
-function NetworkHandler(app,io,norrisNamespace){
+function NetworkHandler(app,io,norrisNamespace,baseURL){
 	if(app===undefined || io===undefined || norrisNamespace===undefined ||
 		typeof app !== &#039;function&#039; || app.lazyrouter===undefined ||
 		typeof io !== &#039;object&#039; || io.nsps===undefined ||
@@ -121,7 +121,7 @@ function NetworkHandler(app,io,norrisNamespace){
 	this._app = app;
 	this._io=io;
 	this._norrisNamespace=norrisNamespace;
-	this._routes=new Routes(this._app,this._norrisNamespace);
+	this._routes=new Routes(this._app,this._norrisNamespace,baseURL);
 }
 NetworkHandler.prototype.addPageToRouting = function(namespacePage) {
 	if(typeof namespacePage !== &#039;string&#039; || namespacePage.length&lt;1 || namespacePage.indexOf(&#039;/&#039;)!==0){

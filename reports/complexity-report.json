@@ -733,14 +733,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 36,
+                    "logical": 32,
                     "physical": 70
                 },
                 "cyclomatic": 15,
                 "halstead": {
                     "operators": {
                         "distinct": 18,
-                        "total": 136,
+                        "total": 124,
                         "identifiers": [
                             "var",
                             "=",
@@ -763,8 +763,8 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 62,
-                        "total": 163,
+                        "distinct": 60,
+                        "total": 150,
                         "identifiers": [
                             "\"use strict\"",
                             "Express",
@@ -773,6 +773,7 @@
                             "Routes",
                             "exprApp",
                             "norrisNamespace",
+                            "baseURL",
                             "undefined",
                             "lazyrouter",
                             "\"string\"",
@@ -786,7 +787,6 @@
                             "log",
                             "this",
                             "_baseURL",
-                            "\"\"",
                             "_norrisNamespace",
                             "_exprApp",
                             "\"pageList\"",
@@ -807,8 +807,6 @@
                             "__dirname",
                             "\"/views\"",
                             "nspNorris",
-                            "baseURL",
-                            "routesObject",
                             "handle",
                             "req",
                             "res",
@@ -830,17 +828,17 @@
                             "exports"
                         ]
                     },
-                    "length": 299,
-                    "vocabulary": 80,
-                    "difficulty": 23.661290322580644,
-                    "volume": 1890.2565003713212,
-                    "effort": 44725.9078394311,
-                    "bugs": 0.6300855001237737,
-                    "time": 2484.772657746172
+                    "length": 274,
+                    "vocabulary": 78,
+                    "difficulty": 22.5,
+                    "volume": 1722.200207968256,
+                    "effort": 38749.50467928576,
+                    "bugs": 0.5740667359894187,
+                    "time": 2152.75025996032
                 },
-                "params": 6,
+                "params": 7,
                 "line": 2,
-                "cyclomaticDensity": 41.66666666666667
+                "cyclomaticDensity": 46.875
             },
             "functions": [
                 {
@@ -869,10 +867,11 @@
                         },
                         "operands": {
                             "distinct": 20,
-                            "total": 34,
+                            "total": 35,
                             "identifiers": [
                                 "exprApp",
                                 "norrisNamespace",
+                                "baseURL",
                                 "undefined",
                                 "lazyrouter",
                                 "\"string\"",
@@ -886,36 +885,35 @@
                                 "log",
                                 "this",
                                 "_baseURL",
-                                "\"\"",
                                 "_norrisNamespace",
                                 "_exprApp",
                                 "\"pageList\"",
                                 "addRoutingPath"
                             ]
                         },
-                        "length": 62,
+                        "length": 63,
                         "vocabulary": 30,
-                        "difficulty": 8.5,
-                        "volume": 304.22721692772814,
-                        "effort": 2585.9313438856893,
-                        "bugs": 0.10140907230924272,
-                        "time": 143.66285243809386
+                        "difficulty": 8.75,
+                        "volume": 309.1341075233367,
+                        "effort": 2704.923440829196,
+                        "bugs": 0.1030447025077789,
+                        "time": 150.27352449051088
                     },
-                    "params": 2,
+                    "params": 3,
                     "line": 20,
                     "cyclomaticDensity": 100
                 },
                 {
                     "name": "<anonymous>.addRoutingPath",
                     "sloc": {
-                        "logical": 15,
+                        "logical": 13,
                         "physical": 36
                     },
                     "cyclomatic": 8,
                     "halstead": {
                         "operators": {
                             "distinct": 14,
-                            "total": 57,
+                            "total": 53,
                             "identifiers": [
                                 "()",
                                 "+",
@@ -934,8 +932,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 37,
-                            "total": 67,
+                            "distinct": 34,
+                            "total": 63,
                             "identifiers": [
                                 "namespace",
                                 "filename",
@@ -963,9 +961,6 @@
                                 "nspNorris",
                                 "this",
                                 "_norrisNamespace",
-                                "baseURL",
-                                "\"\"",
-                                "routesObject",
                                 "handle",
                                 "<anonymous>",
                                 "get",
@@ -976,29 +971,29 @@
                                 true
                             ]
                         },
-                        "length": 124,
-                        "vocabulary": 51,
-                        "difficulty": 12.675675675675675,
-                        "volume": 703.3807424044655,
-                        "effort": 8915.826167234982,
-                        "bugs": 0.2344602474681552,
-                        "time": 495.323675957499
+                        "length": 116,
+                        "vocabulary": 48,
+                        "difficulty": 12.970588235294118,
+                        "volume": 647.8556500836542,
+                        "effort": 8403.068873143868,
+                        "bugs": 0.21595188336121804,
+                        "time": 466.8371596191038
                     },
                     "params": 2,
                     "line": 34,
-                    "cyclomaticDensity": 53.333333333333336
+                    "cyclomaticDensity": 61.53846153846154
                 },
                 {
                     "name": "handle",
                     "sloc": {
-                        "logical": 9,
+                        "logical": 7,
                         "physical": 10
                     },
                     "cyclomatic": 2,
                     "halstead": {
                         "operators": {
                             "distinct": 11,
-                            "total": 41,
+                            "total": 33,
                             "identifiers": [
                                 "var",
                                 "=",
@@ -1014,8 +1009,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 23,
-                            "total": 50,
+                            "distinct": 20,
+                            "total": 40,
                             "identifiers": [
                                 "req",
                                 "res",
@@ -1031,9 +1026,6 @@
                                 "\"/\"",
                                 0,
                                 "slice",
-                                "baseURL",
-                                "routesObject",
-                                "_baseURL",
                                 "norrisNamespace",
                                 "nspNorris",
                                 "filename",
@@ -1042,17 +1034,17 @@
                                 "render"
                             ]
                         },
-                        "length": 91,
-                        "vocabulary": 34,
-                        "difficulty": 11.956521739130434,
-                        "volume": 462.9591185537809,
-                        "effort": 5535.380765316945,
-                        "bugs": 0.15431970618459365,
-                        "time": 307.52115362871916
+                        "length": 73,
+                        "vocabulary": 31,
+                        "difficulty": 11,
+                        "volume": 361.6563306582419,
+                        "effort": 3978.219637240661,
+                        "bugs": 0.12055211021941398,
+                        "time": 221.0122020689256
                     },
                     "params": 2,
                     "line": 51,
-                    "cyclomaticDensity": 22.22222222222222
+                    "cyclomaticDensity": 28.57142857142857
                 }
             ],
             "dependencies": [
@@ -1062,11 +1054,11 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 103.20364625920438,
-            "loc": 10.333333333333334,
+            "maintainability": 105.85760283638847,
+            "loc": 9,
             "cyclomatic": 5.666666666666667,
-            "effort": 5679.0460921458725,
-            "params": 2,
+            "effort": 5028.737317071242,
+            "params": 2.3333333333333335,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/presentationTier/routes.js"
         },
         {
@@ -6728,8 +6720,8 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 45,
-                        "total": 109,
+                        "distinct": 46,
+                        "total": 111,
                         "identifiers": [
                             "\"use strict\"",
                             "Socket",
@@ -6741,6 +6733,7 @@
                             "app",
                             "io",
                             "norrisNamespace",
+                            "baseURL",
                             "undefined",
                             "\"function\"",
                             "lazyrouter",
@@ -6778,15 +6771,15 @@
                             "exports"
                         ]
                     },
-                    "length": 207,
-                    "vocabulary": 58,
-                    "difficulty": 15.744444444444444,
-                    "volume": 1212.6020659914075,
-                    "effort": 19091.745861220268,
-                    "bugs": 0.4042006886638025,
-                    "time": 1060.6525478455706
+                    "length": 209,
+                    "vocabulary": 59,
+                    "difficulty": 15.684782608695652,
+                    "volume": 1229.472397316625,
+                    "effort": 19284.00727530315,
+                    "bugs": 0.40982413243887494,
+                    "time": 1071.3337375168417
                 },
-                "params": 6,
+                "params": 7,
                 "line": 2,
                 "cyclomaticDensity": 73.91304347826086
             },
@@ -6817,12 +6810,13 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 23,
-                            "total": 47,
+                            "distinct": 24,
+                            "total": 49,
                             "identifiers": [
                                 "app",
                                 "io",
                                 "norrisNamespace",
+                                "baseURL",
                                 "undefined",
                                 "\"function\"",
                                 "lazyrouter",
@@ -6845,15 +6839,15 @@
                                 "Routes"
                             ]
                         },
-                        "length": 89,
-                        "vocabulary": 34,
-                        "difficulty": 11.23913043478261,
-                        "volume": 452.78419287128025,
-                        "effort": 5088.900602488085,
-                        "bugs": 0.15092806429042674,
-                        "time": 282.71670013822694
+                        "length": 91,
+                        "vocabulary": 35,
+                        "difficulty": 11.229166666666666,
+                        "volume": 466.7647545419919,
+                        "effort": 5241.379222877784,
+                        "bugs": 0.1555882515139973,
+                        "time": 291.18773460432135
                     },
-                    "params": 3,
+                    "params": 4,
                     "line": 21,
                     "cyclomaticDensity": 157.14285714285714
                 },
@@ -7016,24 +7010,24 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 123.85052361497586,
+            "maintainability": 123.773078363493,
             "loc": 3.75,
             "cyclomatic": 5,
-            "effort": 1664.3847847956938,
-            "params": 1.5,
+            "effort": 1702.5044398931186,
+            "params": 1.75,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/networkHandler/networkHandler.js"
         },
         {
             "aggregate": {
                 "sloc": {
                     "logical": 72,
-                    "physical": 125
+                    "physical": 126
                 },
-                "cyclomatic": 19,
+                "cyclomatic": 21,
                 "halstead": {
                     "operators": {
                         "distinct": 20,
-                        "total": 272,
+                        "total": 278,
                         "identifiers": [
                             "var",
                             "=",
@@ -7059,7 +7053,7 @@
                     },
                     "operands": {
                         "distinct": 89,
-                        "total": 307,
+                        "total": 314,
                         "identifiers": [
                             "\"use strict\"",
                             "NetworkHandler",
@@ -7073,6 +7067,7 @@
                             "app",
                             "io",
                             "namespace",
+                            "baseURL",
                             "undefined",
                             "\"function\"",
                             "lazyrouter",
@@ -7129,7 +7124,6 @@
                             77,
                             "pProp",
                             "pData",
-                            "baseURL",
                             "ret",
                             "prop",
                             "name",
@@ -7152,30 +7146,30 @@
                             "exports"
                         ]
                     },
-                    "length": 579,
+                    "length": 592,
                     "vocabulary": 109,
-                    "difficulty": 34.49438202247191,
-                    "volume": 3918.77872404584,
-                    "effort": 135175.85036877223,
-                    "bugs": 1.3062595746819468,
-                    "time": 7509.76946493179
+                    "difficulty": 35.28089887640449,
+                    "volume": 4006.7651202679403,
+                    "effort": 141362.2750296779,
+                    "bugs": 1.3355883734226468,
+                    "time": 7853.459723870994
                 },
-                "params": 8,
+                "params": 9,
                 "line": 2,
-                "cyclomaticDensity": 26.38888888888889
+                "cyclomaticDensity": 29.166666666666668
             },
             "functions": [
                 {
                     "name": "Norris",
                     "sloc": {
                         "logical": 14,
-                        "physical": 22
+                        "physical": 23
                     },
-                    "cyclomatic": 12,
+                    "cyclomatic": 14,
                     "halstead": {
                         "operators": {
                             "distinct": 13,
-                            "total": 64,
+                            "total": 70,
                             "identifiers": [
                                 "if",
                                 "||",
@@ -7193,12 +7187,13 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 33,
-                            "total": 73,
+                            "distinct": 34,
+                            "total": 80,
                             "identifiers": [
                                 "app",
                                 "io",
                                 "namespace",
+                                "baseURL",
                                 "undefined",
                                 "\"function\"",
                                 "lazyrouter",
@@ -7231,17 +7226,17 @@
                                 "<anonymous>"
                             ]
                         },
-                        "length": 137,
-                        "vocabulary": 46,
-                        "difficulty": 14.378787878787877,
-                        "volume": 756.7279879798108,
-                        "effort": 10880.831221103641,
-                        "bugs": 0.25224266265993694,
-                        "time": 604.4906233946467
+                        "length": 150,
+                        "vocabulary": 47,
+                        "difficulty": 15.294117647058824,
+                        "volume": 833.1883277516456,
+                        "effort": 12742.880306789875,
+                        "bugs": 0.2777294425838819,
+                        "time": 707.9377948216597
                     },
-                    "params": 3,
+                    "params": 4,
                     "line": 21,
-                    "cyclomaticDensity": 85.71428571428571
+                    "cyclomaticDensity": 100
                 },
                 {
                     "name": "<anonymous>.createPage",
@@ -7315,7 +7310,7 @@
                         "time": 459.6795327552349
                     },
                     "params": 1,
-                    "line": 43,
+                    "line": 44,
                     "cyclomaticDensity": 23.809523809523807
                 },
                 {
@@ -7378,7 +7373,7 @@
                         "time": 751.4414870343471
                     },
                     "params": 3,
-                    "line": 82,
+                    "line": 83,
                     "cyclomaticDensity": 11.76470588235294
                 },
                 {
@@ -7438,7 +7433,7 @@
                         "time": 179.16299593779496
                     },
                     "params": 0,
-                    "line": 102,
+                    "line": 103,
                     "cyclomaticDensity": 25
                 },
                 {
@@ -7486,7 +7481,7 @@
                         "time": 105.86419753086419
                     },
                     "params": 1,
-                    "line": 119,
+                    "line": 120,
                     "cyclomaticDensity": 100
                 }
             ],
@@ -7507,11 +7502,11 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 99.31854143641954,
+            "maintainability": 99.13495945181919,
             "loc": 12.4,
-            "cyclomatic": 4.6,
-            "effort": 7562.299811950395,
-            "params": 1.6,
+            "cyclomatic": 5,
+            "effort": 7934.709629087643,
+            "params": 1.8,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/norris/norris.js"
         },
         {
@@ -18175,9 +18170,9 @@
     ],
     "changeCost": 21.875,
     "coreSize": 37.5,
-    "loc": 10.737191194222445,
-    "cyclomatic": 4.336197656510158,
-    "effort": 8255.882105148408,
-    "params": 1.121743447524698,
-    "maintainability": 104.59947747548107
+    "loc": 10.69552452755578,
+    "cyclomatic": 4.348697656510157,
+    "effort": 8248.38900193466,
+    "params": 1.1462226141913645,
+    "maintainability": 104.67425651739046
 }
