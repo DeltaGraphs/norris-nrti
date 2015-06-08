@@ -1,8 +1,8 @@
-Mean per-function logical LOC: 6.001188598293076
-Mean per-function parameter count: 0.9293085044050965
-Mean per-function cyclomatic complexity: 1.9874019863938466
-Mean per-function Halstead effort: 2283.7495503055443
-Mean per-module maintainability index: 119.42239209270232
+Mean per-function logical LOC: 5.941152755999169
+Mean per-function parameter count: 0.9427493646201502
+Mean per-function cyclomatic complexity: 1.974857183526463
+Mean per-function Halstead effort: 2240.5936408005205
+Mean per-module maintainability index: 119.59320399277688
 First-order density: 0%
 Change cost: 3.225806451612903%
 Core size: 0%
@@ -16681,11 +16681,11 @@ Core size: 0%
 /home/travis/build/DeltaGraphs/norris-nrti/frontend/app/Controller/GraphsControllers/MapChartController.js
 
   Physical LOC: 103
-  Logical LOC: 66
-  Mean parameter count: 1.3333333333333333
-  Cyclomatic complexity: 9
-  Cyclomatic complexity density: 13.636363636363635%
-  Maintainability index: 114.86179428536045
+  Logical LOC: 27
+  Mean parameter count: 1.75
+  Cyclomatic complexity: 3
+  Cyclomatic complexity density: 11.11111111111111%
+  Maintainability index: 118.34098114764431
   Dependency count: 0
 
   Function: <anonymous>
@@ -16713,13 +16713,13 @@ Core size: 0%
   Function: <anonymous>.listenOnEvents
     Line No.: 40
     Physical LOC: 60
-    Logical LOC: 7
+    Logical LOC: 2
     Parameter count: 0
     Cyclomatic complexity: 1
-    Cyclomatic complexity density: 14.285714285714285%
-    Halstead difficulty: 3.375
-    Halstead volume: 183.62385799360038
-    Halstead effort: 619.7305207284013
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 1.5
+    Halstead volume: 39.863137138648355
+    Halstead effort: 59.79470570797253
 
   Function: <anonymous>
     Line No.: 42
@@ -16731,61 +16731,6 @@ Core size: 0%
     Halstead difficulty: 6.25
     Halstead volume: 202.04660144782298
     Halstead effort: 1262.7912590488936
-
-  Function: <anonymous>
-    Line No.: 52
-    Physical LOC: 5
-    Logical LOC: 3
-    Parameter count: 1
-    Cyclomatic complexity: 1
-    Cyclomatic complexity density: 33.33333333333333%
-    Halstead difficulty: 3
-    Halstead volume: 75.28421251514429
-    Halstead effort: 225.85263754543286
-
-  Function: <anonymous>
-    Line No.: 57
-    Physical LOC: 8
-    Logical LOC: 6
-    Parameter count: 1
-    Cyclomatic complexity: 1
-    Cyclomatic complexity density: 16.666666666666664%
-    Halstead difficulty: 5.117647058823529
-    Halstead volume: 239.7487836710217
-    Halstead effort: 1226.9496576105228
-
-  Function: <anonymous>
-    Line No.: 65
-    Physical LOC: 6
-    Logical LOC: 4
-    Parameter count: 1
-    Cyclomatic complexity: 1
-    Cyclomatic complexity density: 25%
-    Halstead difficulty: 3.4
-    Halstead volume: 118.02800258378572
-    Halstead effort: 401.2952087848714
-
-  Function: <anonymous>
-    Line No.: 71
-    Physical LOC: 9
-    Logical LOC: 6
-    Parameter count: 1
-    Cyclomatic complexity: 3
-    Cyclomatic complexity density: 50%
-    Halstead difficulty: 10
-    Halstead volume: 278.63137138648347
-    Halstead effort: 2786.3137138648344
-
-  Function: <anonymous>
-    Line No.: 80
-    Physical LOC: 18
-    Logical LOC: 15
-    Parameter count: 1
-    Cyclomatic complexity: 5
-    Cyclomatic complexity density: 33.33333333333333%
-    Halstead difficulty: 8
-    Halstead volume: 284.2676750447117
-    Halstead effort: 2274.141400357694
 
 /home/travis/build/DeltaGraphs/norris-nrti/frontend/app/Controller/GraphsControllers/TableController.js
 
@@ -22299,17 +22244,17 @@ Core size: 0%
 
 /home/travis/build/DeltaGraphs/norris-nrti/frontend/app/View/PagesView/PageView.js
 
-  Physical LOC: 88
-  Logical LOC: 56
+  Physical LOC: 85
+  Logical LOC: 52
   Mean parameter count: 1
   Cyclomatic complexity: 9
-  Cyclomatic complexity density: 16.071428571428573%
-  Maintainability index: 98.70729887722484
+  Cyclomatic complexity density: 17.307692307692307%
+  Maintainability index: 100.52328091725211
   Dependency count: 0
 
   Function: <anonymous>
     Line No.: 18
-    Physical LOC: 72
+    Physical LOC: 69
     Logical LOC: 7
     Parameter count: 1
     Cyclomatic complexity: 1
@@ -22320,7 +22265,7 @@ Core size: 0%
 
   Function: link
     Line No.: 27
-    Physical LOC: 60
+    Physical LOC: 57
     Logical LOC: 3
     Parameter count: 3
     Cyclomatic complexity: 1
@@ -22331,17 +22276,17 @@ Core size: 0%
 
   Function: scope.render
     Line No.: 30
-    Physical LOC: 49
-    Logical LOC: 42
+    Physical LOC: 46
+    Logical LOC: 38
     Parameter count: 0
     Cyclomatic complexity: 8
-    Cyclomatic complexity density: 19.047619047619047%
-    Halstead difficulty: 14.4
-    Halstead volume: 1690.773196873945
-    Halstead effort: 24347.134034984807
+    Cyclomatic complexity density: 21.052631578947366%
+    Halstead difficulty: 13.412698412698415
+    Halstead volume: 1530.7422407936785
+    Halstead effort: 20531.384023343788
 
   Function: <anonymous>
-    Line No.: 80
+    Line No.: 77
     Physical LOC: 5
     Logical LOC: 2
     Parameter count: 0
