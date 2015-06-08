@@ -92,7 +92,17 @@
 		<error line="1262" column="37" severity="error" message="Too many errors. (48% scanned)." source="jshint.E043" />
 	</file>
 	<file name="app/View/PagesView/PageView.js">
-		<error line="27" column="41" severity="warning" message="&apos;attrs&apos; is defined but never used." source="jshint.W098" />
+		<error line="93" column="1" severity="error" message="Expected an identifier and instead saw &apos;&lt;&lt;&apos;." source="jshint.E030" />
+		<error line="93" column="3" severity="error" message="Expected an operator and instead saw &apos;&lt;&lt;&apos;." source="jshint.E033" />
+		<error line="93" column="5" severity="error" message="Expected an operator and instead saw &apos;&lt;&lt;&apos;." source="jshint.E033" />
+		<error line="93" column="7" severity="error" message="Expected an operator and instead saw &apos;&lt;&apos;." source="jshint.E033" />
+		<error line="93" column="7" severity="warning" message="Expected an assignment or function call and instead saw an expression." source="jshint.W030" />
+		<error line="93" column="8" severity="warning" message="Missing semicolon." source="jshint.W033" />
+		<error line="93" column="9" severity="warning" message="Expected an assignment or function call and instead saw an expression." source="jshint.W030" />
+		<error line="93" column="16" severity="warning" message="Missing semicolon." source="jshint.W033" />
+		<error line="95" column="1" severity="warning" message="Bad line breaking before &apos;===&apos;." source="jshint.W014" />
+		<error line="95" column="4" severity="error" message="Expected an identifier and instead saw &apos;===&apos;." source="jshint.E030" />
+		<error line="95" column="7" severity="error" message="Unrecoverable syntax error. (83% scanned)." source="jshint.E041" />
 	</file>
 	<file name="app/View/nv.d3.js">
 		<error line="3" column="1" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
