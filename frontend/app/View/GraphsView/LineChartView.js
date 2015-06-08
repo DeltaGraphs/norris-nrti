@@ -23,7 +23,7 @@ angular.module('app')
         scope: {
             url: '@'
 		},
-		bindToController: true,
+		//bindToController: true,
         //template: '<div>ciao, sono il line chart</div>',
         link: function(scope, element, attrs){
             scope.exampleData = [

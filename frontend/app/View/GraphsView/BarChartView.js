@@ -9,6 +9,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.1.0         2015-06-09  Maria Giovanna Chinellato   Add all attributes and some methods 
+*
 * 0.0.1         2015-06-02  Maria Giovanna Chinellato   Initial code      
 * =================================================================================================
 */
@@ -23,7 +25,7 @@ angular.module('app')
 		scope: {
             url: '@'
 		},
-		bindToController: true,
+		//bindToController: true,
         //template: '<nvd3-multi-bar-chart data="exampleData" id="exampleId" width="1000" height="600" showxaxis="true" showyaxis="true" rotatelabels="90"><svg></svg></nvd3-multi-bar-chart>',
         link: function(scope, element, attrs){
 
@@ -139,7 +141,7 @@ angular.module('app')
                     return scope.colorArray[i];
                 };
             };
-/*
+
             scope.xAxisTickFormatFunction = function(){
                 return function(d){
                     return d;
@@ -151,7 +153,7 @@ angular.module('app')
                     return d;
                 };
             };
-*/
+
             scope.setData = function(){
                 var data = [];
                 var colorArray = [];

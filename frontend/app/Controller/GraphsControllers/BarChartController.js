@@ -43,12 +43,12 @@ angular.module('app')
 				$scope.changedP = !$scope.changedP;
 				count++;
 			}
-		});/*
+		});
 		socket.on('updateGraphProp', function(info){
 			console.log('BARCHART updateGraphProp');
 			$scope.barChart.updateParameters(info);
 			$scope.changedP = !$scope.changedP;
-		});*/
+		});
 		socket.on('insertFlow', function(info){
 			console.log('BARCHART insert flow');
 			var flow = BarChartFlowFactory.build(info.properties);

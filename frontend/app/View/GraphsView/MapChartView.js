@@ -23,7 +23,7 @@ angular.module('app')
         scope: {
             url: '@'
 		},
-		bindToController: true,
+		//bindToController: true,
         template: '<div></div><div></div><div></div>',
     	link: function (scope, element, attrs) {
 
