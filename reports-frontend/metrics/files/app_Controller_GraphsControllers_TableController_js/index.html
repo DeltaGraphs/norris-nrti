@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">68.46</p>
+      <p class="stat">56.12</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">94</p>
+      <p class="stat">161</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">25.91</p>
+      <p class="stat">7.53</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.83</p>
+      <p class="stat">0.59</p>
     </div>
   </div>
 </div>
@@ -111,11 +111,78 @@ angular.module(&#039;app&#039;)
 
 	var socket;
 
+	var json = {
+		&#039;properties&#039;:
+		{
+			&#039;ID&#039;: &#039;id1&#039;,
+			&#039;title&#039;: &#039;tabella 1&#039;,	//stringa
+			&#039;type&#039;: &#039;Table&#039;,	
+			&#039;height&#039;: 500, // &gt; 0
+			&#039;width&#039;: 600, // &gt; 0
+			&#039;sortable&#039;: true,
+			&#039;maxItemsPage&#039;: 10, // &gt; 0
+			&#039;addRowOn&#039;: &#039;bottom&#039;, // &#039;top&#039;, &#039;bottom&#039;
+			&#039;headers&#039;: [&#039;column1&#039;, &#039;column2&#039;],
+			&#039;sort&#039;: {
+				&#039;column&#039;: &#039;col1&#039;,
+				&#039;ordering&#039;: &#039;ASC&#039; // &#039;ASC&#039;, &#039;DESC&#039;
+			},
+			&#039;appearance&#039;: {
+				&#039;border&#039;: {
+					&#039;color&#039;: &#039;#000000&#039;, //#xxxxxx,
+					&#039;width&#039;: 1 // &gt; 0
+				},
+				&#039;rowEven&#039;: {
+					&#039;textColor&#039;: [&#039;#000000&#039;, &#039;#000000&#039;],
+					&#039;backgroundColor&#039;: [&#039;#FFFFFF&#039;, &#039;#FFFFFF&#039;]
+				},
+				&#039;rowOdd&#039;: {
+					&#039;textColor&#039;: [&#039;#000000&#039;, &#039;#000000&#039;],
+					&#039;backgroundColor&#039;: [&#039;#FFFFFF&#039;, &#039;#FFFFFF&#039;]
+				},
+				&#039;headers&#039;: {
+					&#039;textColor&#039;: [&#039;#000000&#039;, &#039;#000000&#039;],
+					&#039;backgroundColor&#039;: [&#039;#FFFFFF&#039;, &#039;#FFFFFF&#039;]
+				}
+			},
+			&#039;flows&#039;: [
+				{
+					&#039;ID&#039;: &#039;flow1&#039;,
+					&#039;name&#039;: &#039;flow1&#039;,
+					&#039;maxItems&#039;: 50
+				}
+			]
+		},
+		&#039;data&#039;: [
+			{
+				&#039;flowID&#039;: &#039;flow1&#039;,
+				&#039;records&#039;: [
+					{
+						&#039;norrisRecordID&#039;: &#039;xxx&#039;, // porn stuff
+						&#039;values&#039;: [5, 3],
+						&#039;appearance&#039;: [
+							{
+								&#039;bg&#039;: &#039;#FFFFFF&#039;,
+								&#039;text&#039;: &#039;#FFFFFF&#039;
+							},
+							{
+								&#039;bg&#039;: &#039;#FFFFFF&#039;,
+								&#039;text&#039;: &#039;#FFFFFF&#039;							
+							}
+						]
+					}
+				]
+			}
+		]
+	};
+
 	$scope.table = TableFactory.build();
+	$scope.table.updateParameters(json.properties);
+	$scope.table.initializeData(json.data);
 
 	this.socketConnection = function(url){
-		socket = SocketServicesFactory.build(url);
-		this.listenOnEvents();
+		//socket = SocketServicesFactory.build(url);
+		//this.listenOnEvents();
 	};
 
 	var count = 0;
@@ -123,7 +190,7 @@ angular.module(&#039;app&#039;)
 	$scope.changedD = true;
 	this.listenOnEvents = function(){
 		console.log(&#039;listen ON EVENTS&#039;);
-		socket.on(&#039;configGraph&#039;, function(info){
+		/*socket.on(&#039;configGraph&#039;, function(info){
 			if (count === 0) {
 				count++;
 				$scope.mapChart.updateParameters(info.properties);
@@ -176,7 +243,7 @@ angular.module(&#039;app&#039;)
 					break;
 			}
 			$scope.changedD = !$scope.changedD;
-		});
+		});*/
 
 	};
 

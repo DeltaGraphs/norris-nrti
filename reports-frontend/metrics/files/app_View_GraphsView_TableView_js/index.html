@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">72.63</p>
+      <p class="stat">65.55</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">70</p>
+      <p class="stat">111</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">15.15</p>
+      <p class="stat">26.09</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.37</p>
+      <p class="stat">0.85</p>
     </div>
   </div>
 </div>
@@ -106,7 +106,7 @@
 
 
 angular.module(&#039;app&#039;)
-.directive(&#039;tableChart&#039;, function($compile){
+.directive(&#039;tableChart&#039;, function($compile, ngTableParams){
 	return {
 		restrict: &#039;E&#039;,
 		//controller : &#039;TableController&#039;,
@@ -115,20 +115,22 @@ angular.module(&#039;app&#039;)
             url: &#039;@&#039;
 		},
 		bindToController: true,
-        //template: &#039;&lt;div&gt;table {{url}}&lt;/div&gt;&#039;
+        //template: &#039;&lt;div&gt;table {{url}}&lt;/div&gt;&#039;,
         link: function(scope, element, attrs){
 
         	attrs.$observe(&#039;url&#039;, function(value) {
-                console.log(&#039;BARCHART observ url &#039; + value);
+                console.log(&#039;TABLE observ url &#039; + value);
                 if (value) {
-                    scope.$parent.socketConnection(value);
+                    //scope.$parent.socketConnection(value);
+                    scope.setData();
+                    scope.init();
                 }
             });
 
             scope.$parent.$watch(&#039;changedP&#039;, function(newValue, oldValue){
                 if (newValue !== oldValue) {
-                    console.log(&#039;BARCHART watch changedP&#039;);
-                    scope.init();
+                    console.log(&#039;TABLE watch changedP&#039;);
+                    //scope.init();
                 }
             }, true);
 
@@ -140,22 +142,61 @@ angular.module(&#039;app&#039;)
             }, true);*/
 
             scope.init = function(){
+                console.log(&#039;TABLE init&#039;);
             	while(element.firstChild) {
                     element.removeChild(element.firstChild);
                 }
+                /*var table = &#039;&lt;p&gt;&lt;strong&gt;Page:&lt;/strong&gt; {{tableParams.page()}}&#039; +
+                                &#039;&lt;p&gt;&lt;strong&gt;Count per page:&lt;/strong&gt; {{tableParams.count()}}&#039; +
 
-                var table = &#039;&lt;table ng-table=&quot;&quot; [class=&quot;ng-table-responsive&quot;]&gt;&lt;tr ng-repeat=&quot;record in data&quot;&gt;&#039;;
+                                &#039;&lt;table ng-table=&quot;tableParams&quot; class=&quot;table&quot;&gt;&#039; +
+                                    &#039;&lt;tr ng-repeat=&quot;user in data&quot;&gt;&#039; +
+                                        &#039;&lt;td data-title=&quot;Name&quot;&gt;&#039; +
+                                            &#039;{{user.name}}&#039; +
+                                        &#039;&lt;/td&gt;&#039; +
+                                        &#039;&lt;td data-title=&quot;Age&quot;&gt;&#039; +
+                                            &#039;{{user.age}}&#039; +
+                                        &#039;&lt;/td&gt;&#039; +
+                                    &#039;&lt;/tr&gt;&#039; +
+                                &#039;&lt;/table&gt;&#039;;*/
+                var table = &#039;&lt;p&gt;&lt;strong&gt;Page:&lt;/strong&gt; {{tableParams.page()}}&#039; +
+                            &#039;&lt;p&gt;&lt;strong&gt;Count per page:&lt;/strong&gt; {{tableParams.count()}}&#039; +                                
+                            &#039;&lt;table ng-table=&quot;tableParams&quot; [class=&quot;ng-table-responsive&quot;]&gt;&lt;tr ng-repeat=&quot;record in data&quot;&gt;&#039;;
                 for (var i=0; i&lt;scope.$parent.table.getHeaders().length; i++){
                 	table = table + &#039;&lt;td data-title=&quot;&#039;+ scope.$parent.table.getHeaders()[i] +&#039;&quot;&gt;{{record.&#039;+ scope.$parent.table.getHeaders()[i] +&#039;}}&lt;/td&gt;&#039;;
                 }
                 table = table + &#039;&lt;/tr&gt;&lt;/table&gt;&#039;;
-            	var compiled = $compile(barchart)(scope);
+                console.log(table);
+            	var compiled = $compile(table)(scope);
+
                 element.append(compiled);
 
             };
 
             scope.setData = function(){
-
+                console.log(&#039;TABLE setData&#039;);
+                var data = [];
+                for (var i=0; i&lt;scope.$parent.table.getFlowList()[0].flow.getData().length; i++) {
+                    var record;
+                    for (var j=0; j&lt;scope.$parent.table.getHeaders().length; i++) {
+                        record[scope.$parent.table.getHeaders()[j]] = scope.$parent.table.getFlowList()[0].flow.getData()[i][j];
+                    }
+                    data.push(record);
+                }
+                console.log(&#039;data length &#039; +data.length);
+                for (var g=0; g&lt;data.length; g++) {
+                    console.log(&#039;TABLE data: &#039; + JSON.stringify(data[g]));
+                }
+                scope.data = data;
+                scope.tableParams = new ngTableParams({
+                    page: 1,            // show first page
+                    count: scope.$parent.table.getMaxItemsPage()         // count per page
+                }, {
+                    total: data.length, // length of data
+                    getData: function ($defer, params) {
+                        $defer.resolve(data.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+                    }
+                });
             };
         }
     };

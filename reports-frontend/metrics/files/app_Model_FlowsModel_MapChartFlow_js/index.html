@@ -200,8 +200,8 @@ angular.module(&#039;app&#039;)
 	};
 	MapChartFlow.prototype.inPlaceUpdate = function(newData) {
 		for (var i = 0; i&lt;this._data.length; i++){
-            if (this._data[i].NorrisRecordID === newData.NorrisRecordID){
-                this._data[i] = { &#039;NorrisRecordID&#039; : newData.NorrisRecordID, &#039;value&#039; : newData.value };
+            if (this._data[i].norrisRecordID === newData.norrisRecordID){
+                this._data[i] = { &#039;norrisRecordID&#039; : newData.norrisRecordID, &#039;value&#039; : newData.value };
             }
         }
     };
@@ -210,7 +210,7 @@ angular.module(&#039;app&#039;)
     };
     MapChartFlow.prototype.deleteData = function(delData) {
     	for (var i = 0; i&lt;this._data.length; i++){
-            if (this._data[i].NorrisRecordID === delData.NorrisRecordID){
+            if (this._data[i].norrisRecordID === delData.norrisRecordID){
                 this._data.splice(i,1);
             }
         }

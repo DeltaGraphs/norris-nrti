@@ -4,7 +4,11 @@
 		<error line="23" column="22" severity="warning" message="&apos;io&apos; is not defined." source="jshint.W117" />
 	</file>
 	<file name="app/Controller/GraphsControllers/TableController.js">
-		<error line="52" column="24" severity="warning" message="&apos;MapChartFlowFactory&apos; is not defined." source="jshint.W117" />
+		<error line="21" column="9" severity="warning" message="&apos;socket&apos; is defined but never used." source="jshint.W098" />
+		<error line="97" column="9" severity="warning" message="&apos;count&apos; is defined but never used." source="jshint.W098" />
+		<error line="19" column="177" severity="warning" message="&apos;SocketServicesFactory&apos; is defined but never used." source="jshint.W098" />
+		<error line="19" column="159" severity="warning" message="&apos;TableFlowFactory&apos; is defined but never used." source="jshint.W098" />
+		<error line="92" column="38" severity="warning" message="&apos;url&apos; is defined but never used." source="jshint.W098" />
 	</file>
 	<file name="app/View/GraphsView/BarChartView.js">
 		<error line="138" column="36" severity="warning" message="&apos;i&apos; is defined but never used." source="jshint.W098" />
@@ -34,9 +38,6 @@
 		<error line="166" column="46" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
 		<error line="187" column="21" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
 		<error line="128" column="21" severity="warning" message="&apos;latLng&apos; is defined but never used." source="jshint.W098" />
-	</file>
-	<file name="app/View/GraphsView/TableView.js">
-		<error line="61" column="41" severity="warning" message="&apos;barchart&apos; is not defined." source="jshint.W117" />
 	</file>
 	<file name="app/View/GraphsView/angularjs-nvd3-directives.js">
 		<error line="5" column="5" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
@@ -92,7 +93,7 @@
 		<error line="1262" column="37" severity="error" message="Too many errors. (48% scanned)." source="jshint.E043" />
 	</file>
 	<file name="app/View/PagesView/PageView.js">
-		<error line="71" column="146" severity="warning" message="Missing semicolon." source="jshint.W033" />
+		<error line="73" column="75" severity="warning" message="Unnecessary semicolon." source="jshint.W032" />
 		<error line="27" column="41" severity="warning" message="&apos;attrs&apos; is defined but never used." source="jshint.W098" />
 	</file>
 	<file name="app/View/nv.d3.js">
