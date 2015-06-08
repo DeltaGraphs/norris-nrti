@@ -69,14 +69,22 @@ angular.module('app')
 
                 table =  table + '<div class="graphtitle">'+ scope.$parent.table.getTitle() +'</div>' +
                         '<p><strong>Page:</strong> {{tableParams.page()}}' +
-                        '<p><strong>Count per page:</strong> {{tableParams.count()}}' +                                
-                        '<table ng-table="tableParams" class="ng-table"><tr ng-repeat="record in data">';
+                        '<p><strong>Count per page:</strong> {{tableParams.count()}}';     
 
-                for (var i=0; i<scope.$parent.table.getHeaders().length; i++){
+                table = table + '<table ng-table="tableParams" class="ng-table">';
 
-                	table = table + '<td data-title="\''+ scope.$parent.table.getHeaders()[i] +'\'">{{record.'+ scope.$parent.table.getHeaders()[i] +'}}</td>';
+                table = table + '<thead><tr>';
+                for (var i=0; i<scope.$parent.table.getHeaders().length; i++) {
+                    table = table + '<th st-sort="data.'+ scope.$parent.table.getHeaders()[i] +'">'+ scope.$parent.table.getHeaders()[i] +'</th>';
                 }
-                table = table + '</tr></table>';
+                table = table + '</tr></thead>';
+
+                table = table + '<tbody><tr ng-repeat="record in data">';
+                for (var j=0; j<scope.$parent.table.getHeaders().length; j++){
+                    //data-title="\''+ scope.$parent.table.getHeaders()[j] +'\'"
+                	table = table + '<td>{{record.'+ scope.$parent.table.getHeaders()[j] +'}}</td>';
+                }
+                table = table + '</tr></tbody></table>';
                 
                 console.log(table);
             	var compiled = $compile(table)(scope);
