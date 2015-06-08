@@ -4,9 +4,11 @@
 	"dependencies": {
 		"angular": "latest",
 		"bootstrap": "~3.3.4",
-		"angular-resource": "latest",
 		"angular-route": "latest",
-		"angular-socket-io": "latest"
+		"sio-client": "latest",
+		"d3": "latest",
+		"nvd3": "latest",
+		"angularjs-nvd3-directives": "latest"
 	},
 	"devDependencies": {
 		"socket.io-client": "latest",
