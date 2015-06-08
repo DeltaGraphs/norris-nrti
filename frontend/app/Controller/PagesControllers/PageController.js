@@ -20,6 +20,14 @@ angular.module('app')
 .controller('PageController', ['$scope', '$location', '$routeParams', 'PagesList', 'PageFactory', 'SocketServicesFactory', function($scope, $location, $routeParams, PagesList, PageFactory, SocketServicesFactory){
 
 	$scope.page = PagesList.prototype.getPagesList()[$routeParams.pageId].page;
+	$scope.previous = false;
+	$scope.next = false;
+	if (PagesList.prototype.getPagesList()[$routeParams.pageId - 1] !== undefined) {
+		$scope.previous = true;
+	}
+	if (PagesList.prototype.getPagesList()[$routeParams.pageId + 1] !== undefined) {
+		$scope.next = true;
+	}
 	var url = 'http://norris-nrti-dev.herokuapp.com/page1';
 	var socket;
 

@@ -15,7 +15,7 @@
 * =================================================================================================
 */
 angular.module('app')
-.directive('page', function($compile){
+.directive('page', function($compile, $routeParams){
 	return {
 		restrict: 'E',
 		controller : 'PageController',
@@ -32,6 +32,27 @@ angular.module('app')
 				while(parent.firstChild) {
 				    parent.removeChild(parent.firstChild);
 				}
+
+				var commands = document.createElement('div');
+				commands.setAttribute('class', 'commands');
+				if (scope.$parent.previous) {
+					var previous = document.createElement('div');
+					previous.setAttribute('style', 'float:left;');
+					var pIndex = $routeParams.pageId - 1;
+					previous.innerHTML = '<a ng-href="#/page/'+ pIndex +'">PREVIOUS PAGE</a>';
+					commands.appendChild(previous);
+				}
+				var list = document.createElement('div');
+				list.innerHTML = '<a ng-href="/">RETURN TO PAGES LIST</a>';
+				commands.appendChild(list);
+				if (scope.$parent.next) {
+					var next = document.createElement('div');
+					next.setAttribute('style', 'float:right;');
+					var nIndex = $routeParams.pageId + 1;
+					next.innerHTML = '<a ng-href="#/page/'+ nIndex +'">NEXT PAGE</a>';
+					commands.appendChild(next);
+				}
+				parent.appendChild(commands);
 
 				var table = document.createElement('table');
 				table.className = 'graphstable';
@@ -69,7 +90,14 @@ angular.module('app')
 				}
 
 				parent.setAttribute('style', 'height:'+ 900*scope.page.getGraphsPerCol() +'px; width:'+ 1300*scope.page.getGraphsPerRow() +'px;');
+<<<<<<< Updated upstream
 				
+=======
+				var divtable = document.createElement('div');
+				divtable.setAttribute('ng-controller', 'TableController');
+				divtable.innerHTML = '<table-chart url="tantononleggeraiquestourl"></table-chart>';
+				parent.appendChild(divtable);
+>>>>>>> Stashed changes
 				var el = $compile(parent)(scope);
 				element.parent().append( el );
        		};
