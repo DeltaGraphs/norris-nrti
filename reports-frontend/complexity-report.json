@@ -87683,14 +87683,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 79,
-                    "physical": 224
+                    "logical": 85,
+                    "physical": 221
                 },
-                "cyclomatic": 14,
+                "cyclomatic": 16,
                 "halstead": {
                     "operators": {
                         "distinct": 20,
-                        "total": 326,
+                        "total": 358,
                         "identifiers": [
                             "()",
                             "function",
@@ -87715,8 +87715,8 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 101,
-                        "total": 339,
+                        "distinct": 106,
+                        "total": 373,
                         "identifiers": [
                             "\"use strict\"",
                             "\"barChart\"",
@@ -87782,6 +87782,7 @@
                             "getX",
                             "getName",
                             "\"showcontrols=\"\"",
+                            "\"\" color=\"colorFunction()\" \"",
                             "\"width=\"\"",
                             "getWidth",
                             "\"\" height=\"\"",
@@ -87790,7 +87791,6 @@
                             "\"<svg></svg></nvd3-multi-bar-chart>\"",
                             "\"H\"",
                             "\"<nvd3-multi-bar-horizontal-chart data=\"data\" nodata=\" \" id=\"\"",
-                            "\"\" showValues=\"true\" \"",
                             "\"<svg></svg></nvd3-multi-bar-horizontal-chart>\"",
                             "compiled",
                             "append",
@@ -87811,8 +87811,13 @@
                             "a",
                             "b",
                             "sort",
+                            "z",
+                            "\"[\"",
+                            "\",\"",
+                            "\"]\"",
                             "y",
                             "getHeaders",
+                            "g",
                             "\"key\"",
                             "\"values\"",
                             "\"app\"",
@@ -87821,24 +87826,24 @@
                             "directive"
                         ]
                     },
-                    "length": 665,
-                    "vocabulary": 121,
-                    "difficulty": 33.56435643564356,
-                    "volume": 4601.044052787606,
-                    "effort": 154431.08256386122,
-                    "bugs": 1.533681350929202,
-                    "time": 8579.50458688118
+                    "length": 731,
+                    "vocabulary": 126,
+                    "difficulty": 35.18867924528302,
+                    "volume": 5100.391624078439,
+                    "effort": 179476.0448850243,
+                    "bugs": 1.7001305413594798,
+                    "time": 9970.891382501351
                 },
                 "params": 13,
                 "line": 2,
-                "cyclomaticDensity": 17.72151898734177
+                "cyclomaticDensity": 18.823529411764707
             },
             "functions": [
                 {
                     "name": "<anonymous>",
                     "sloc": {
                         "logical": 7,
-                        "physical": 208
+                        "physical": 205
                     },
                     "cyclomatic": 1,
                     "halstead": {
@@ -87886,7 +87891,7 @@
                     "name": "link",
                     "sloc": {
                         "logical": 7,
-                        "physical": 196
+                        "physical": 193
                     },
                     "cyclomatic": 1,
                     "halstead": {
@@ -88067,7 +88072,7 @@
                     "name": "scope.init",
                     "sloc": {
                         "logical": 27,
-                        "physical": 80
+                        "physical": 77
                     },
                     "cyclomatic": 6,
                     "halstead": {
@@ -88130,6 +88135,7 @@
                                 "getX",
                                 "getName",
                                 "\"showcontrols=\"\"",
+                                "\"\" color=\"colorFunction()\" \"",
                                 "\"width=\"\"",
                                 "getWidth",
                                 "\"\" height=\"\"",
@@ -88138,7 +88144,6 @@
                                 "\"<svg></svg></nvd3-multi-bar-chart>\"",
                                 "\"H\"",
                                 "\"<nvd3-multi-bar-horizontal-chart data=\"data\" nodata=\" \" id=\"\"",
-                                "\"\" showValues=\"true\" \"",
                                 "\"<svg></svg></nvd3-multi-bar-horizontal-chart>\"",
                                 "compiled",
                                 "$compile",
@@ -88189,7 +88194,7 @@
                         "time": 0.2641604167868594
                     },
                     "params": 0,
-                    "line": 140,
+                    "line": 137,
                     "cyclomaticDensity": 100
                 },
                 {
@@ -88227,20 +88232,20 @@
                         "time": 1.43609027817842
                     },
                     "params": 2,
-                    "line": 141,
+                    "line": 138,
                     "cyclomaticDensity": 100
                 },
                 {
                     "name": "scope.setData",
                     "sloc": {
-                        "logical": 21,
+                        "logical": 27,
                         "physical": 37
                     },
-                    "cyclomatic": 4,
+                    "cyclomatic": 6,
                     "halstead": {
                         "operators": {
-                            "distinct": 12,
-                            "total": 109,
+                            "distinct": 13,
+                            "total": 141,
                             "identifiers": [
                                 "var",
                                 "=",
@@ -88251,14 +88256,15 @@
                                 "()",
                                 "++ (postfix)",
                                 "function",
+                                "+",
                                 "-",
                                 "{}",
                                 ":"
                             ]
                         },
                         "operands": {
-                            "distinct": 25,
-                            "total": 103,
+                            "distinct": 32,
+                            "total": 137,
                             "identifiers": [
                                 "data",
                                 "<anonymous>",
@@ -88281,23 +88287,30 @@
                                 "value",
                                 1,
                                 "sort",
+                                "z",
+                                "\"[\"",
+                                "\",\"",
+                                "\"]\"",
+                                "console",
+                                "log",
                                 "y",
                                 "getHeaders",
+                                "g",
                                 "\"key\"",
                                 "\"values\""
                             ]
                         },
-                        "length": 212,
-                        "vocabulary": 37,
-                        "difficulty": 24.72,
-                        "volume": 1104.4041135133375,
-                        "effort": 27300.8696860497,
-                        "bugs": 0.36813470450444585,
-                        "time": 1516.7149825583167
+                        "length": 278,
+                        "vocabulary": 45,
+                        "difficulty": 27.828125,
+                        "volume": 1526.7351607796495,
+                        "effort": 42486.176896071185,
+                        "bugs": 0.5089117202598832,
+                        "time": 2360.3431608928436
                     },
                     "params": 0,
-                    "line": 158,
-                    "cyclomaticDensity": 19.047619047619047
+                    "line": 155,
+                    "cyclomaticDensity": 22.22222222222222
                 },
                 {
                     "name": "<anonymous>",
@@ -88340,15 +88353,15 @@
                         "time": 64.72848959635422
                     },
                     "params": 2,
-                    "line": 171,
+                    "line": 168,
                     "cyclomaticDensity": 75
                 }
             ],
             "dependencies": [],
-            "maintainability": 108.45653983200664,
-            "loc": 7.7,
-            "cyclomatic": 2.3,
-            "effort": 5232.312900799303,
+            "maintainability": 106.35032796270626,
+            "loc": 8.3,
+            "cyclomatic": 2.5,
+            "effort": 6750.843621801449,
             "params": 1.3,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/frontend/app/View/GraphsView/BarChartView.js"
         },
@@ -90540,14 +90553,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 50,
-                    "physical": 115
+                    "logical": 57,
+                    "physical": 123
                 },
-                "cyclomatic": 6,
+                "cyclomatic": 7,
                 "halstead": {
                     "operators": {
                         "distinct": 18,
-                        "total": 220,
+                        "total": 246,
                         "identifiers": [
                             "()",
                             "function",
@@ -90570,8 +90583,8 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 90,
-                        "total": 239,
+                        "distinct": 95,
+                        "total": 268,
                         "identifiers": [
                             "\"use strict\"",
                             "\"tableChart\"",
@@ -90624,15 +90637,21 @@
                             "getTitle",
                             "\"<p><strong>Page:</strong> {{tableParams.page()}}\"",
                             "\"<p><strong>Count per page:</strong> {{tableParams.count()}}\"",
-                            "\"<table ng-table=\"tableParams\" class=\"ng-table\"><tr ng-repeat=\"record in data\">\"",
+                            "\"<table ng-table=\"tableParams\" class=\"ng-table\">\"",
+                            "\"<thead><tr>\"",
                             "i",
                             0,
                             "getHeaders",
                             "length",
-                            "\"<td data-title=\"'\"",
-                            "\"'\">{{record.\"",
+                            "\"<th st-sort=\"data.\"",
+                            "\"\">\"",
+                            "\"</th>\"",
+                            "\"</tr></thead>\"",
+                            "\"<tbody><tr ng-repeat=\"record in data\">\"",
+                            "j",
+                            "\"<td>{{record.\"",
                             "\"}}</td>\"",
-                            "\"</tr></table>\"",
+                            "\"</tr></tbody></table>\"",
                             "compiled",
                             "append",
                             "\"TABLE setData\"",
@@ -90646,7 +90665,6 @@
                             "stringify",
                             "record",
                             "\"getHeader.length \"",
-                            "j",
                             "push",
                             "\"data length \"",
                             "tableParams",
@@ -90665,24 +90683,24 @@
                             "directive"
                         ]
                     },
-                    "length": 459,
-                    "vocabulary": 108,
-                    "difficulty": 23.9,
-                    "volume": 3100.493363493032,
-                    "effort": 74101.79138748346,
-                    "bugs": 1.0334977878310108,
-                    "time": 4116.7661881935255
+                    "length": 514,
+                    "vocabulary": 113,
+                    "difficulty": 25.389473684210525,
+                    "volume": 3505.571986681407,
+                    "effort": 89004.6277039532,
+                    "bugs": 1.168523995560469,
+                    "time": 4944.7015391085115
                 },
                 "params": 10,
                 "line": 2,
-                "cyclomaticDensity": 12
+                "cyclomaticDensity": 12.280701754385964
             },
             "functions": [
                 {
                     "name": "<anonymous>",
                     "sloc": {
                         "logical": 7,
-                        "physical": 99
+                        "physical": 107
                     },
                     "cyclomatic": 1,
                     "halstead": {
@@ -90731,7 +90749,7 @@
                     "name": "link",
                     "sloc": {
                         "logical": 4,
-                        "physical": 87
+                        "physical": 95
                     },
                     "cyclomatic": 1,
                     "halstead": {
@@ -90862,14 +90880,14 @@
                 {
                     "name": "scope.init",
                     "sloc": {
-                        "logical": 12,
-                        "physical": 33
+                        "logical": 19,
+                        "physical": 41
                     },
-                    "cyclomatic": 2,
+                    "cyclomatic": 3,
                     "halstead": {
                         "operators": {
                             "distinct": 8,
-                            "total": 66,
+                            "total": 92,
                             "identifiers": [
                                 "()",
                                 ".",
@@ -90882,8 +90900,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 37,
-                            "total": 69,
+                            "distinct": 43,
+                            "total": 98,
                             "identifiers": [
                                 "\"TABLE init\"",
                                 "console",
@@ -90910,31 +90928,37 @@
                                 "getTitle",
                                 "\"<p><strong>Page:</strong> {{tableParams.page()}}\"",
                                 "\"<p><strong>Count per page:</strong> {{tableParams.count()}}\"",
-                                "\"<table ng-table=\"tableParams\" class=\"ng-table\"><tr ng-repeat=\"record in data\">\"",
+                                "\"<table ng-table=\"tableParams\" class=\"ng-table\">\"",
+                                "\"<thead><tr>\"",
                                 "i",
                                 0,
                                 "getHeaders",
                                 "length",
-                                "\"<td data-title=\"'\"",
-                                "\"'\">{{record.\"",
+                                "\"<th st-sort=\"data.\"",
+                                "\"\">\"",
+                                "\"</th>\"",
+                                "\"</tr></thead>\"",
+                                "\"<tbody><tr ng-repeat=\"record in data\">\"",
+                                "j",
+                                "\"<td>{{record.\"",
                                 "\"}}</td>\"",
-                                "\"</tr></table>\"",
+                                "\"</tr></tbody></table>\"",
                                 "compiled",
                                 "$compile",
                                 "append"
                             ]
                         },
-                        "length": 135,
-                        "vocabulary": 45,
-                        "difficulty": 7.45945945945946,
-                        "volume": 741.4001680045061,
-                        "effort": 5530.444496466046,
-                        "bugs": 0.24713338933483536,
-                        "time": 307.2469164703359
+                        "length": 190,
+                        "vocabulary": 51,
+                        "difficulty": 9.116279069767442,
+                        "volume": 1077.7608149745843,
+                        "effort": 9825.168359768304,
+                        "bugs": 0.3592536049915281,
+                        "time": 545.8426866537947
                     },
                     "params": 0,
                     "line": 53,
-                    "cyclomaticDensity": 16.666666666666664
+                    "cyclomaticDensity": 15.789473684210526
                 },
                 {
                     "name": "scope.setData",
@@ -91010,7 +91034,7 @@
                         "time": 1178.2503853094245
                     },
                     "params": 0,
-                    "line": 87,
+                    "line": 95,
                     "cyclomaticDensity": 16.666666666666664
                 },
                 {
@@ -91054,15 +91078,15 @@
                         "time": 22.406015629507227
                     },
                     "params": 2,
-                    "line": 109,
+                    "line": 117,
                     "cyclomaticDensity": 100
                 }
             ],
             "dependencies": [],
-            "maintainability": 111.31347564760807,
-            "loc": 6.857142857142857,
-            "cyclomatic": 1.7142857142857142,
-            "effort": 4008.4222181091727,
+            "maintainability": 108.6026485417866,
+            "loc": 7.857142857142857,
+            "cyclomatic": 1.8571428571428572,
+            "effort": 4621.954198580924,
             "params": 1.4285714285714286,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/frontend/app/View/GraphsView/TableView.js"
         },
@@ -107918,9 +107942,9 @@
     ],
     "changeCost": 3.125,
     "coreSize": 0,
-    "loc": 6.4509107953713825,
-    "cyclomatic": 2.0324857242602423,
-    "effort": 2631.911157486862,
+    "loc": 6.500910795371383,
+    "cyclomatic": 2.043200009974528,
+    "effort": 2698.538116907921,
     "params": 0.9279719405655141,
-    "maintainability": 118.5961502268861
+    "maintainability": 118.44561775891354
 }
