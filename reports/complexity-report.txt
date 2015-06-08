@@ -1,8 +1,8 @@
 Mean per-function logical LOC: 10.670302440614943
 Mean per-function parameter count: 1.1223014832389835
-Mean per-function cyclomatic complexity: 4.412374604562105
-Mean per-function Halstead effort: 8336.02886096727
-Mean per-module maintainability index: 104.83603336407967
+Mean per-function cyclomatic complexity: 4.399874604562105
+Mean per-function Halstead effort: 8285.580198678235
+Mean per-module maintainability index: 104.8461292853813
 First-order density: 5.76171875%
 Change cost: 21.09375%
 Core size: 31.25%
@@ -1488,9 +1488,9 @@ Core size: 31.25%
   Physical LOC: 172
   Logical LOC: 109
   Mean parameter count: 1
-  Cyclomatic complexity: 36
-  Cyclomatic complexity density: 33.02752293577982%
-  Maintainability index: 88.87055012360744
+  Cyclomatic complexity: 34
+  Cyclomatic complexity density: 31.19266055045872%
+  Maintainability index: 89.19361960525868
   Dependency count: 2
 
   Function: LineChartFlowModel
@@ -1498,22 +1498,22 @@ Core size: 31.25%
     Physical LOC: 52
     Logical LOC: 35
     Parameter count: 1
-    Cyclomatic complexity: 16
-    Cyclomatic complexity density: 45.714285714285715%
-    Halstead difficulty: 19.893617021276597
-    Halstead volume: 1886.269880431078
-    Halstead effort: 37524.730600065064
+    Cyclomatic complexity: 15
+    Cyclomatic complexity density: 42.857142857142854%
+    Halstead difficulty: 18.63265306122449
+    Halstead volume: 1860.6705376166833
+    Halstead effort: 34669.228588653714
 
   Function: <anonymous>.updateProperties
     Line No.: 76
     Physical LOC: 37
     Logical LOC: 23
     Parameter count: 1
-    Cyclomatic complexity: 13
-    Cyclomatic complexity density: 56.52173913043478%
-    Halstead difficulty: 24.333333333333332
-    Halstead volume: 1586.1293502048086
-    Halstead effort: 38595.81418831701
+    Cyclomatic complexity: 12
+    Cyclomatic complexity density: 52.17391304347826%
+    Halstead difficulty: 21.694444444444446
+    Halstead volume: 1538.6211119147056
+    Halstead effort: 33379.530233482925
 
   Function: <anonymous>.addRecord
     Line No.: 114
