@@ -1,6 +1,21 @@
 module.exports = function(grunt) {
 
   // Project configuration.
+  /*
+  // Project configuration.
+  grunt.initConfig({
+    uglify: {
+      options: {
+        mangle: false
+      },
+      my_target: {
+        files: {
+          'dest/output.min.js': ['src/input.js']
+        }
+      }
+    }
+  });
+  */
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     uglify: {
