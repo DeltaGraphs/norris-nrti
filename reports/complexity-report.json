@@ -5074,14 +5074,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 131,
-                    "physical": 200
+                    "logical": 132,
+                    "physical": 201
                 },
                 "cyclomatic": 21,
                 "halstead": {
                     "operators": {
                         "distinct": 22,
-                        "total": 414,
+                        "total": 418,
                         "identifiers": [
                             "var",
                             "=",
@@ -5108,8 +5108,8 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 119,
-                        "total": 461,
+                        "distinct": 121,
+                        "total": 466,
                         "identifiers": [
                             "\"use strict\"",
                             "Graph",
@@ -5216,6 +5216,8 @@
                             "_mapType",
                             "mapWidth",
                             "_mapWidth",
+                            "mapHeight",
+                            "_mapHeight",
                             "legend",
                             "_legend",
                             "flowProp",
@@ -5232,17 +5234,17 @@
                             "exports"
                         ]
                     },
-                    "length": 875,
-                    "vocabulary": 141,
-                    "difficulty": 42.61344537815126,
-                    "volume": 6247.107433348944,
-                    "effort": 266210.771382458,
-                    "bugs": 2.082369144449648,
-                    "time": 14789.487299025444
+                    "length": 884,
+                    "vocabulary": 143,
+                    "difficulty": 42.36363636363637,
+                    "volume": 6329.326261712096,
+                    "effort": 268133.2761779852,
+                    "bugs": 2.1097754205706987,
+                    "time": 14896.293120999177
                 },
                 "params": 14,
                 "line": 2,
-                "cyclomaticDensity": 16.030534351145036
+                "cyclomaticDensity": 15.909090909090908
             },
             "functions": [
                 {
@@ -5786,14 +5788,14 @@
                 {
                     "name": "<anonymous>.getConfigJSON",
                     "sloc": {
-                        "logical": 34,
-                        "physical": 41
+                        "logical": 35,
+                        "physical": 42
                     },
                     "cyclomatic": 3,
                     "halstead": {
                         "operators": {
                             "distinct": 11,
-                            "total": 140,
+                            "total": 144,
                             "identifiers": [
                                 "var",
                                 "=",
@@ -5809,8 +5811,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 50,
-                            "total": 154,
+                            "distinct": 52,
+                            "total": 159,
                             "identifiers": [
                                 "configJSON",
                                 "<anonymous>",
@@ -5839,6 +5841,8 @@
                                 "_mapType",
                                 "mapWidth",
                                 "_mapWidth",
+                                "mapHeight",
+                                "_mapHeight",
                                 "legend",
                                 "_legend",
                                 "getProperties",
@@ -5864,17 +5868,17 @@
                                 "_longitudeKey"
                             ]
                         },
-                        "length": 294,
-                        "vocabulary": 61,
-                        "difficulty": 16.94,
-                        "volume": 1743.6367772434887,
-                        "effort": 29537.2070065047,
-                        "bugs": 0.5812122590811629,
-                        "time": 1640.9559448058167
+                        "length": 303,
+                        "vocabulary": 63,
+                        "difficulty": 16.81730769230769,
+                        "volume": 1811.1158168204747,
+                        "effort": 30458.091957875095,
+                        "bugs": 0.6037052722734916,
+                        "time": 1692.1162198819497
                     },
                     "params": 0,
                     "line": 159,
-                    "cyclomaticDensity": 8.823529411764707
+                    "cyclomaticDensity": 8.571428571428571
                 }
             ],
             "dependencies": [
@@ -5894,10 +5898,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 104.3292222336504,
-            "loc": 10.181818181818182,
+            "maintainability": 104.12345094064811,
+            "loc": 10.272727272727273,
             "cyclomatic": 2.8181818181818183,
-            "effort": 4593.363997613415,
+            "effort": 4677.080811374361,
             "params": 1.2727272727272727,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/graph/mapChart.js"
         },
@@ -18022,9 +18026,9 @@
     ],
     "changeCost": 21.09375,
     "coreSize": 31.25,
-    "loc": 10.642745622433123,
+    "loc": 10.645586531524033,
     "cyclomatic": 4.333965513653014,
-    "effort": 8169.779644337936,
+    "effort": 8172.395794767965,
     "params": 1.1223014832389835,
-    "maintainability": 104.76154417885985
+    "maintainability": 104.75511382595353
 }
