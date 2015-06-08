@@ -56,7 +56,7 @@ angular.module('app')
             scope.$parent.$watch('changedD', function(newValue, oldValue){
                 if(newValue !== oldValue){
                     console.log('LINECHART watch changedD');                    
-                    //scope.setData();
+                    scope.setData();
                 }
             }, true);
 
@@ -68,9 +68,7 @@ angular.module('app')
             }, true);
 
             scope.init = function(){
-                while(element.firstChild) {
-                    element.removeChild(element.firstChild);
-                }
+                element.empty();
                 console.log('LINECHART init');
 
                 var linechart, legend, onPoint;
@@ -90,19 +88,19 @@ angular.module('app')
 
                 if (scope.$parent.lineChart.getViewFinder() === true) {
                     linechart = '<div class="graphtitle">'+ scope.$parent.lineChart.getTitle() +'</div>' +
-                                '<nvd3-line-with-focus-chart data="exampleData" nodata=" " id="'+ id +'" ' +
+                                '<nvd3-line-with-focus-chart data="data" nodata=" " id="'+ id +'" ' +
                                 'yaxistickformat="yAxisTickFormatFunction()" xaxistickformat="xAxisTickFormatFunction()" x2axistickformat="x2AxisTickFormatFunction()" ' +
                                 'margin="{left:80,top:50,bottom:30,right:50}" margin2="{left:80,top:50,bottom:30,right:50}" interactive="true" showlegend="'+ legend +'" tooltips="'+ onPoint +'" ' +
-                                'xaxisrotatelabels="-90" x2axisrotatelables="-90" interpolate="' + scope.$parent.lineChart.getInterpolation() +'">' + // perchè colorFunction ritorna null per adesso
-                                //linechart = linechart + 'xaxisrotatelabels="-90" x2axisrotatelables="-90" color="colorFunction()">'; 
+                                'xaxisrotatelabels="-90" x2axisrotatelables="-90" interpolate="' + scope.$parent.lineChart.getInterpolation() +'" ' + // perchè colorFunction ritorna null per adesso
+                                'color="colorFunction()">' + 
                                 '<svg style="width: '+ scope.$parent.lineChart.getWidth() +'px; height: '+ scope.$parent.lineChart.getHeight() +'px;"></svg></nvd3-line-with-focus-chart>';
                 } else {
                     linechart = '<div class="graphtitle">'+ scope.$parent.lineChart.getTitle() +'</div>' +
-                                '<nvd3-line-chart data="exampleData" id="'+ id +'" ' +
+                                '<nvd3-line-chart data="data" id="'+ id +'" ' +
                                 'yaxistickformat="yAxisTickFormatFunction()" xaxistickformat="xAxisTickFormatFunction()" ' +
                                 'margin="{left:80,top:50,bottom:30,right:50}" interactive="true" showlegend="'+ legend +'" tooltips="'+ onPoint +'" ' +
-                                'xaxisrotatelabels="-90" interpolate="' + scope.$parent.lineChart.getInterpolation() +'"' +
-                                //linechart = linechart + 'xaxisrotatelabels="-90" color="colorFunction()" interpolate="' + scope.$parent.lineChart.getInterpolation() +'" '; // perchè colorFunction ritorna null per adesso
+                                'xaxisrotatelabels="-90" interpolate="' + scope.$parent.lineChart.getInterpolation() +'" ' +
+                                'color="colorFunction()" ' +
                                 'showxaxis="true" showyaxis="true">' +
                                 'svg style="width: '+ scope.$parent.lineChart.getWidth() +'px; height: '+ scope.$parent.lineChart.getHeight() +'px;"></svg></nvd3-line-chart>';
                 }
@@ -147,7 +145,7 @@ angular.module('app')
                 for (var i=0; i<scope.$parent.lineChart.getFlowList().length; i++) {
                     var key = scope.$parent.lineChart.getFlowList()[i].flow.getName();
                     var area = scope.$parent.lineChart.getFlowList()[i].flow.getArea();
-                    colorArray.push(scope.$parent.barChart.getFlowList()[i].flow.getFlowColor());
+                    colorArray.push(scope.$parent.lineChart.getFlowList()[i].flow.getFlowColor());
                     var values = [];
                     console.log('LINECHART setdata length ' + scope.$parent.lineChart.getFlowList().length);
                     for (var j=0; j<scope.$parent.lineChart.getFlowList()[i].flow.getData().length; j++) {

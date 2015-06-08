@@ -67,7 +67,7 @@ angular.module('app')
 		this._flowColor = '#000';
 		this._marker = 'square';
 		this._interpolation = 'linear';
-		this._areaColor = '#FFF';
+		this._area = '#FFF';
 		this._maxItem = 20;
 
 		var json = split(info);
@@ -115,7 +115,7 @@ angular.module('app')
 		            this._interpolation = lfJson.interpolation;
 		        }
 		        if (lfJson.area !== undefined) {
-		            this._areaColor = lfJson.area;
+		            this._area = lfJson.area;
 		        }
 		        if (lfJson.maxItem !== undefined) {
 		            this._maxItem = lfJson.maxItem;
@@ -165,8 +165,8 @@ angular.module('app')
 	LineChartFlow.prototype.getInterpolation = function() {
 		return this._interpolation;
 	};
-	LineChartFlow.prototype.getAreaColor = function() {
-		return this._areaColor;
+	LineChartFlow.prototype.getArea = function() {
+		return this._area;
 	};
 	LineChartFlow.prototype.getMaxItem = function() {
 		return this._maxItem;

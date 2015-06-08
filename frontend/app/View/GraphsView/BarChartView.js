@@ -56,9 +56,7 @@ angular.module('app')
             }, true);*/
 
             scope.init = function(){  
-                while(element.firstChild) {
-                    element.removeChild(element.firstChild);
-                }
+                element.empty();
                 console.log('BARCHART init');
                 var barchart, legend, onPoint, control;
                 var str = scope.url.split('/');

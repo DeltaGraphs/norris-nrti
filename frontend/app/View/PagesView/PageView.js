@@ -90,14 +90,11 @@ angular.module('app')
 				}
 
 				parent.setAttribute('style', 'height:'+ 900*scope.page.getGraphsPerCol() +'px; width:'+ 1300*scope.page.getGraphsPerRow() +'px;');
-<<<<<<< Updated upstream
-				
-=======
 				var divtable = document.createElement('div');
 				divtable.setAttribute('ng-controller', 'TableController');
 				divtable.innerHTML = '<table-chart url="tantononleggeraiquestourl"></table-chart>';
 				parent.appendChild(divtable);
->>>>>>> Stashed changes
+				
 				var el = $compile(parent)(scope);
 				element.parent().append( el );
        		};

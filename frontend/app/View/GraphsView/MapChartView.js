@@ -65,7 +65,6 @@ angular.module('app')
             var polylines = [];
             
             scope.init = function(){
-
                 var mapOptions = {
                     center: new google.maps.LatLng(scope.$parent.mapChart.getLatitude(), scope.$parent.mapChart.getLongitude()),
                     zoom: 12,

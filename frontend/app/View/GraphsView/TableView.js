@@ -52,9 +52,7 @@ angular.module('app')
 
             scope.init = function(){
                 console.log('TABLE init');
-            	while(element.firstChild) {
-                    element.removeChild(element.firstChild);
-                }
+            	element.empty();
                 /*var  table = '<div class="ng-cloak ng-table-pager" ng-if="params.data.length">' +
                                     '<div ng-if="params.settings().counts.length" class="ng-table-counts btn-group pull-right">' +
                                         '<button ng-repeat="count in params.settings().counts" type="button"' +
