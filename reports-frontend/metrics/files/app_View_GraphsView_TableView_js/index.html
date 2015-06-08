@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">65.55</p>
+      <p class="stat">63.87</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">111</p>
+      <p class="stat">133</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">26.09</p>
+      <p class="stat">25.79</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.85</p>
+      <p class="stat">1.17</p>
     </div>
   </div>
 </div>
@@ -146,40 +146,62 @@ angular.module(&#039;app&#039;)
             	while(element.firstChild) {
                     element.removeChild(element.firstChild);
                 }
-                /*var table = &#039;&lt;p&gt;&lt;strong&gt;Page:&lt;/strong&gt; {{tableParams.page()}}&#039; +
-                                &#039;&lt;p&gt;&lt;strong&gt;Count per page:&lt;/strong&gt; {{tableParams.count()}}&#039; +
-
-                                &#039;&lt;table ng-table=&quot;tableParams&quot; class=&quot;table&quot;&gt;&#039; +
-                                    &#039;&lt;tr ng-repeat=&quot;user in data&quot;&gt;&#039; +
-                                        &#039;&lt;td data-title=&quot;Name&quot;&gt;&#039; +
-                                            &#039;{{user.name}}&#039; +
-                                        &#039;&lt;/td&gt;&#039; +
-                                        &#039;&lt;td data-title=&quot;Age&quot;&gt;&#039; +
-                                            &#039;{{user.age}}&#039; +
-                                        &#039;&lt;/td&gt;&#039; +
-                                    &#039;&lt;/tr&gt;&#039; +
-                                &#039;&lt;/table&gt;&#039;;*/
-                var table = &#039;&lt;p&gt;&lt;strong&gt;Page:&lt;/strong&gt; {{tableParams.page()}}&#039; +
+                var  table = &#039;&lt;div class=&quot;ng-cloak ng-table-pager&quot; ng-if=&quot;params.data.length&quot;&gt;&#039; +
+                                    &#039;&lt;div ng-if=&quot;params.settings().counts.length&quot; class=&quot;ng-table-counts btn-group pull-right&quot;&gt;&#039; +
+                                        &#039;&lt;button ng-repeat=&quot;count in params.settings().counts&quot; type=&quot;button&quot;&#039; +
+                                            &#039;ng-class=&quot;{\&#039;active\&#039;:params.count() == count}&quot;&#039; +
+                                            &#039;ng-click=&quot;params.count(count)&quot; class=&quot;btn btn-default&quot;&gt;&#039; +
+                                            &#039;&lt;span ng-bind=&quot;count&quot;&gt;&lt;/span&gt;&#039; +
+                                        &#039;&lt;/button&gt;&#039; +
+                                    &#039;&lt;/div&gt;&#039; +
+                                    &#039;&lt;ul class=&quot;pagination ng-table-pagination&quot;&gt;&#039; +
+                                        &#039;&lt;li ng-class=&quot;{\&#039;disabled\&#039;: !page.active &amp;&amp; !page.current, \&#039;active\&#039;: page.current}&quot; ng-repeat=&quot;page in pages&quot; ng-switch=&quot;page.type&quot;&gt;&#039; +
+                                            &#039;&lt;a ng-switch-when=&quot;prev&quot; ng-click=&quot;params.page(page.number)&quot; href=&quot;&quot;&gt;&amp;laquo;&lt;/a&gt;&#039; +
+                                            &#039;&lt;a ng-switch-when=&quot;first&quot; ng-click=&quot;params.page(page.number)&quot; href=&quot;&quot;&gt;&lt;span ng-bind=&quot;page.number&quot;&gt;&lt;/span&gt;&lt;/a&gt;&#039; +
+                                            &#039;&lt;a ng-switch-when=&quot;page&quot; ng-click=&quot;params.page(page.number)&quot; href=&quot;&quot;&gt;&lt;span ng-bind=&quot;page.number&quot;&gt;&lt;/span&gt;&lt;/a&gt;&#039; +
+                                            &#039;&lt;a ng-switch-when=&quot;more&quot; ng-click=&quot;params.page(page.number)&quot; href=&quot;&quot;&gt;&amp;#8230;&lt;/a&gt;&#039; +
+                                            &#039;&lt;a ng-switch-when=&quot;last&quot; ng-click=&quot;params.page(page.number)&quot; href=&quot;&quot;&gt;&lt;span ng-bind=&quot;page.number&quot;&gt;&lt;/span&gt;&lt;/a&gt;&#039; +
+                                            &#039;&lt;a ng-switch-when=&quot;next&quot; ng-click=&quot;params.page(page.number)&quot; href=&quot;&quot;&gt;&amp;raquo;&lt;/a&gt;&#039; +
+                                        &#039;&lt;/li&gt;&#039; +
+                                    &#039;&lt;/ul&gt;&#039; +
+                                &#039;&lt;/div&gt;&#039;;
+                table = &#039;&lt;div ng-table-pagination=&quot;tableParams&quot;&gt;&#039; +
+                                &#039;&lt;ul class=&quot;pagination ng-table-pagination&quot;&gt;&#039; +
+                                    &#039;&lt;li ng-class=&quot;{\&#039;disabled\&#039;: !page.active}&quot; ng-repeat=&quot;page in pages&quot; ng-switch=&quot;page.type&quot;&gt;&#039; +
+                                        &#039;&lt;a ng-switch-when=&quot;prev&quot; ng-click=&quot;params.page(page.number)&quot; href=&quot;&quot;&gt;&amp;laquo;&lt;/a&gt;&#039; +
+                                        &#039;&lt;a ng-switch-when=&quot;first&quot; ng-click=&quot;params.page(page.number)&quot; href=&quot;&quot;&gt;&lt;span ng-bind=&quot;page.number&quot;&gt;&lt;/span&gt;&lt;/a&gt;&#039; +
+                                        &#039;&lt;a ng-switch-when=&quot;page&quot; ng-click=&quot;params.page(page.number)&quot; href=&quot;&quot;&gt;&lt;span ng-bind=&quot;page.number&quot;&gt;&lt;/span&gt;&lt;/a&gt;&#039; +
+                                        &#039;&lt;a ng-switch-when=&quot;more&quot; ng-click=&quot;params.page(page.number)&quot; href=&quot;&quot;&gt;&amp;#8230;&lt;/a&gt;&#039; +
+                                        &#039;&lt;a ng-switch-when=&quot;last&quot; ng-click=&quot;params.page(page.number)&quot; href=&quot;&quot;&gt;&lt;span ng-bind=&quot;page.number&quot;&gt;&lt;/span&gt;&lt;/a&gt;&#039; +
+                                        &#039;&lt;a ng-switch-when=&quot;next&quot; ng-click=&quot;params.page(page.number)&quot; href=&quot;&quot;&gt;&amp;raquo;&lt;/a&gt;&#039; +
+                                    &#039;&lt;/li&gt;&#039; +
+                                &#039;&lt;/ul&gt;&#039; +
+                            &#039;&lt;/div&gt;&#039;;
+                table = &#039;&lt;p&gt;&lt;strong&gt;Page:&lt;/strong&gt; {{tableParams.page()}}&#039; +
                             &#039;&lt;p&gt;&lt;strong&gt;Count per page:&lt;/strong&gt; {{tableParams.count()}}&#039; +                                
-                            &#039;&lt;table ng-table=&quot;tableParams&quot; [class=&quot;ng-table-responsive&quot;]&gt;&lt;tr ng-repeat=&quot;record in data&quot;&gt;&#039;;
+                            &#039;&lt;table ng-table=&quot;tableParams&quot; class=&quot;table&quot;&gt;&lt;tr ng-repeat=&quot;record in data&quot;&gt;&#039;;
+
                 for (var i=0; i&lt;scope.$parent.table.getHeaders().length; i++){
-                	table = table + &#039;&lt;td data-title=&quot;&#039;+ scope.$parent.table.getHeaders()[i] +&#039;&quot;&gt;{{record.&#039;+ scope.$parent.table.getHeaders()[i] +&#039;}}&lt;/td&gt;&#039;;
+
+                	table = table + &#039;&lt;td data-title=&quot;\&#039;&#039;+ scope.$parent.table.getHeaders()[i] +&#039;\&#039;&quot;&gt;{{record.&#039;+ scope.$parent.table.getHeaders()[i] +&#039;}}&lt;/td&gt;&#039;;
                 }
                 table = table + &#039;&lt;/tr&gt;&lt;/table&gt;&#039;;
+                
                 console.log(table);
             	var compiled = $compile(table)(scope);
 
                 element.append(compiled);
-
             };
 
             scope.setData = function(){
                 console.log(&#039;TABLE setData&#039;);
                 var data = [];
+                console.log(&#039;getData.length &#039; + scope.$parent.table.getFlowList()[0].flow.getData().length + &#039; stringify table: &#039; + JSON.stringify(scope.$parent.table));
                 for (var i=0; i&lt;scope.$parent.table.getFlowList()[0].flow.getData().length; i++) {
-                    var record;
-                    for (var j=0; j&lt;scope.$parent.table.getHeaders().length; i++) {
-                        record[scope.$parent.table.getHeaders()[j]] = scope.$parent.table.getFlowList()[0].flow.getData()[i][j];
+                    var record = {};
+                    console.log(&#039;getHeader.length &#039; + scope.$parent.table.getHeaders().length);
+                    for (var j=0; j&lt;scope.$parent.table.getHeaders().length; j++) {
+                        record[scope.$parent.table.getHeaders()[j]] = scope.$parent.table.getFlowList()[0].flow.getData()[i].value[j];
                     }
                     data.push(record);
                 }
@@ -193,7 +215,7 @@ angular.module(&#039;app&#039;)
                     count: scope.$parent.table.getMaxItemsPage()         // count per page
                 }, {
                     total: data.length, // length of data
-                    getData: function ($defer, params) {
+                    data: function ($defer, params) {
                         $defer.resolve(data.slice((params.page() - 1) * params.count(), params.page() * params.count()));
                     }
                 });

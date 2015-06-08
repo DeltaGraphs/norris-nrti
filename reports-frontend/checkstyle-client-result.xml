@@ -5,10 +5,10 @@
 	</file>
 	<file name="app/Controller/GraphsControllers/TableController.js">
 		<error line="21" column="9" severity="warning" message="&apos;socket&apos; is defined but never used." source="jshint.W098" />
-		<error line="97" column="9" severity="warning" message="&apos;count&apos; is defined but never used." source="jshint.W098" />
+		<error line="102" column="9" severity="warning" message="&apos;count&apos; is defined but never used." source="jshint.W098" />
 		<error line="19" column="177" severity="warning" message="&apos;SocketServicesFactory&apos; is defined but never used." source="jshint.W098" />
 		<error line="19" column="159" severity="warning" message="&apos;TableFlowFactory&apos; is defined but never used." source="jshint.W098" />
-		<error line="92" column="38" severity="warning" message="&apos;url&apos; is defined but never used." source="jshint.W098" />
+		<error line="97" column="38" severity="warning" message="&apos;url&apos; is defined but never used." source="jshint.W098" />
 	</file>
 	<file name="app/View/GraphsView/BarChartView.js">
 		<error line="138" column="36" severity="warning" message="&apos;i&apos; is defined but never used." source="jshint.W098" />
