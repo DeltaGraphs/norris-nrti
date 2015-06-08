@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">62.19</p>
+      <p class="stat">65.51</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">221</p>
+      <p class="stat">223</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">35.19</p>
+      <p class="stat">35.79</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">1.70</p>
+      <p class="stat">1.75</p>
     </div>
   </div>
 </div>
@@ -100,6 +100,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.1.0         2015-06-09  Maria Giovanna Chinellato   Add all attributes and some methods 
+*
 * 0.0.1         2015-06-02  Maria Giovanna Chinellato   Initial code      
 * =================================================================================================
 */
@@ -114,7 +116,7 @@ angular.module(&#039;app&#039;)
 		scope: {
             url: &#039;@&#039;
 		},
-		bindToController: true,
+		//bindToController: true,
         //template: &#039;&lt;nvd3-multi-bar-chart data=&quot;exampleData&quot; id=&quot;exampleId&quot; width=&quot;1000&quot; height=&quot;600&quot; showxaxis=&quot;true&quot; showyaxis=&quot;true&quot; rotatelabels=&quot;90&quot;&gt;&lt;svg&gt;&lt;/svg&gt;&lt;/nvd3-multi-bar-chart&gt;&#039;,
         link: function(scope, element, attrs){
 
@@ -230,7 +232,7 @@ angular.module(&#039;app&#039;)
                     return scope.colorArray[i];
                 };
             };
-/*
+
             scope.xAxisTickFormatFunction = function(){
                 return function(d){
                     return d;
@@ -242,7 +244,7 @@ angular.module(&#039;app&#039;)
                     return d;
                 };
             };
-*/
+
             scope.setData = function(){
                 var data = [];
                 var colorArray = [];

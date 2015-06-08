@@ -72590,14 +72590,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 56,
+                    "logical": 60,
                     "physical": 99
                 },
                 "cyclomatic": 8,
                 "halstead": {
                     "operators": {
                         "distinct": 16,
-                        "total": 165,
+                        "total": 177,
                         "identifiers": [
                             "()",
                             "[]",
@@ -72618,8 +72618,8 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 68,
-                        "total": 204,
+                        "distinct": 70,
+                        "total": 220,
                         "identifiers": [
                             "\"use strict\"",
                             "\"BarChartController\"",
@@ -72658,6 +72658,8 @@
                             "data",
                             "initializeData",
                             "on",
+                            "\"updateGraphProp\"",
+                            "\"BARCHART updateGraphProp\"",
                             "\"insertFlow\"",
                             "\"BARCHART insert flow\"",
                             "flow",
@@ -72691,17 +72693,17 @@
                             "controller"
                         ]
                     },
-                    "length": 369,
-                    "vocabulary": 84,
-                    "difficulty": 24,
-                    "volume": 2358.7651290053623,
-                    "effort": 56610.3630961287,
-                    "bugs": 0.7862550430017874,
-                    "time": 3145.02017200715
+                    "length": 397,
+                    "vocabulary": 86,
+                    "difficulty": 25.142857142857142,
+                    "volume": 2551.227107616733,
+                    "effort": 64145.138705792146,
+                    "bugs": 0.8504090358722444,
+                    "time": 3563.6188169884526
                 },
-                "params": 11,
+                "params": 12,
                 "line": 2,
-                "cyclomaticDensity": 14.285714285714285
+                "cyclomaticDensity": 13.333333333333334
             },
             "functions": [
                 {
@@ -72806,14 +72808,14 @@
                 {
                     "name": "<anonymous>.listenOnEvents",
                     "sloc": {
-                        "logical": 6,
+                        "logical": 7,
                         "physical": 60
                     },
                     "cyclomatic": 1,
                     "halstead": {
                         "operators": {
                             "distinct": 3,
-                            "total": 17,
+                            "total": 20,
                             "identifiers": [
                                 "()",
                                 ".",
@@ -72821,8 +72823,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 11,
-                            "total": 23,
+                            "distinct": 12,
+                            "total": 27,
                             "identifiers": [
                                 "\"BARCHART listenOnEvents\"",
                                 "console",
@@ -72831,23 +72833,24 @@
                                 "<anonymous>",
                                 "socket",
                                 "on",
+                                "\"updateGraphProp\"",
                                 "\"insertFlow\"",
                                 "\"deleteFlow\"",
                                 "\"updateFlowProp\"",
                                 "\"updateFlowData\""
                             ]
                         },
-                        "length": 40,
-                        "vocabulary": 14,
-                        "difficulty": 3.1363636363636362,
-                        "volume": 152.29419688230416,
-                        "effort": 477.649981130863,
-                        "bugs": 0.05076473229410139,
-                        "time": 26.536110062825724
+                        "length": 47,
+                        "vocabulary": 15,
+                        "difficulty": 3.375,
+                        "volume": 183.62385799360038,
+                        "effort": 619.7305207284013,
+                        "bugs": 0.06120795266453346,
+                        "time": 34.42947337380007
                     },
                     "params": 0,
                     "line": 35,
-                    "cyclomaticDensity": 16.666666666666664
+                    "cyclomaticDensity": 14.285714285714285
                 },
                 {
                     "name": "<anonymous>",
@@ -72901,6 +72904,50 @@
                     "params": 1,
                     "line": 37,
                     "cyclomaticDensity": 28.57142857142857
+                },
+                {
+                    "name": "<anonymous>",
+                    "sloc": {
+                        "logical": 3,
+                        "physical": 5
+                    },
+                    "cyclomatic": 1,
+                    "halstead": {
+                        "operators": {
+                            "distinct": 4,
+                            "total": 9,
+                            "identifiers": [
+                                "()",
+                                ".",
+                                "=",
+                                "! (prefix)"
+                            ]
+                        },
+                        "operands": {
+                            "distinct": 8,
+                            "total": 12,
+                            "identifiers": [
+                                "info",
+                                "\"BARCHART updateGraphProp\"",
+                                "console",
+                                "log",
+                                "$scope",
+                                "barChart",
+                                "updateParameters",
+                                "changedP"
+                            ]
+                        },
+                        "length": 21,
+                        "vocabulary": 12,
+                        "difficulty": 3,
+                        "volume": 75.28421251514429,
+                        "effort": 225.85263754543286,
+                        "bugs": 0.025094737505048096,
+                        "time": 12.547368752524047
+                    },
+                    "params": 1,
+                    "line": 47,
+                    "cyclomaticDensity": 33.33333333333333
                 },
                 {
                     "name": "<anonymous>",
@@ -73115,11 +73162,11 @@
                 }
             ],
             "dependencies": [],
-            "maintainability": 115.76469854246278,
-            "loc": 6.75,
-            "cyclomatic": 1.875,
-            "effort": 1168.1735626518685,
-            "params": 1.375,
+            "maintainability": 116.79814840130122,
+            "loc": 6.444444444444445,
+            "cyclomatic": 1.7777777777777777,
+            "effort": 1079.257964261991,
+            "params": 1.3333333333333333,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/frontend/app/Controller/GraphsControllers/BarChartController.js"
         },
         {
@@ -87683,14 +87730,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 85,
-                    "physical": 221
+                    "logical": 90,
+                    "physical": 223
                 },
                 "cyclomatic": 16,
                 "halstead": {
                     "operators": {
                         "distinct": 20,
-                        "total": 358,
+                        "total": 369,
                         "identifiers": [
                             "()",
                             "function",
@@ -87715,8 +87762,8 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 106,
-                        "total": 373,
+                        "distinct": 107,
+                        "total": 383,
                         "identifiers": [
                             "\"use strict\"",
                             "\"barChart\"",
@@ -87729,8 +87776,6 @@
                             "scope",
                             "url",
                             "\"@\"",
-                            "bindToController",
-                            true,
                             "link",
                             "element",
                             "attrs",
@@ -87747,6 +87792,7 @@
                             "oldValue",
                             "\"BARCHART watch changedP\"",
                             "init",
+                            true,
                             "$watch",
                             "\"changedD\"",
                             "\"BARCHART watch changedD\"",
@@ -87798,6 +87844,8 @@
                             "colorFunction",
                             "d",
                             "i",
+                            "xAxisTickFormatFunction",
+                            "yAxisTickFormatFunction",
                             "data",
                             0,
                             "getFlowList",
@@ -87826,30 +87874,30 @@
                             "directive"
                         ]
                     },
-                    "length": 731,
-                    "vocabulary": 126,
-                    "difficulty": 35.18867924528302,
-                    "volume": 5100.391624078439,
-                    "effort": 179476.0448850243,
-                    "bugs": 1.7001305413594798,
-                    "time": 9970.891382501351
+                    "length": 752,
+                    "vocabulary": 127,
+                    "difficulty": 35.794392523364486,
+                    "volume": 5255.490884452669,
+                    "effort": 188117.10362106282,
+                    "bugs": 1.7518302948175564,
+                    "time": 10450.950201170157
                 },
-                "params": 13,
+                "params": 15,
                 "line": 2,
-                "cyclomaticDensity": 18.823529411764707
+                "cyclomaticDensity": 17.77777777777778
             },
             "functions": [
                 {
                     "name": "<anonymous>",
                     "sloc": {
-                        "logical": 7,
+                        "logical": 6,
                         "physical": 205
                     },
                     "cyclomatic": 1,
                     "halstead": {
                         "operators": {
                             "distinct": 4,
-                            "total": 10,
+                            "total": 9,
                             "identifiers": [
                                 "return",
                                 "{}",
@@ -87858,8 +87906,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 12,
-                            "total": 14,
+                            "distinct": 10,
+                            "total": 12,
                             "identifiers": [
                                 "$compile",
                                 "<anonymous>",
@@ -87870,34 +87918,32 @@
                                 "scope",
                                 "url",
                                 "\"@\"",
-                                "bindToController",
-                                true,
                                 "link"
                             ]
                         },
-                        "length": 24,
-                        "vocabulary": 16,
-                        "difficulty": 2.3333333333333335,
-                        "volume": 96,
-                        "effort": 224,
-                        "bugs": 0.032,
-                        "time": 12.444444444444445
+                        "length": 21,
+                        "vocabulary": 14,
+                        "difficulty": 2.4,
+                        "volume": 79.95445336320968,
+                        "effort": 191.89068807170324,
+                        "bugs": 0.026651484454403226,
+                        "time": 10.66059378176129
                     },
                     "params": 1,
-                    "line": 18,
-                    "cyclomaticDensity": 14.285714285714285
+                    "line": 20,
+                    "cyclomaticDensity": 16.666666666666664
                 },
                 {
                     "name": "link",
                     "sloc": {
-                        "logical": 7,
+                        "logical": 9,
                         "physical": 193
                     },
                     "cyclomatic": 1,
                     "halstead": {
                         "operators": {
                             "distinct": 5,
-                            "total": 23,
+                            "total": 29,
                             "identifiers": [
                                 "()",
                                 "function",
@@ -87907,8 +87953,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 15,
-                            "total": 31,
+                            "distinct": 17,
+                            "total": 37,
                             "identifiers": [
                                 "scope",
                                 "element",
@@ -87924,20 +87970,22 @@
                                 "init",
                                 "colorArray",
                                 "colorFunction",
+                                "xAxisTickFormatFunction",
+                                "yAxisTickFormatFunction",
                                 "setData"
                             ]
                         },
-                        "length": 54,
-                        "vocabulary": 20,
-                        "difficulty": 5.166666666666667,
-                        "volume": 233.38411712391758,
-                        "effort": 1205.8179384735743,
-                        "bugs": 0.07779470570797252,
-                        "time": 66.98988547075413
+                        "length": 66,
+                        "vocabulary": 22,
+                        "difficulty": 5.441176470588235,
+                        "volume": 294.3224868300616,
+                        "effort": 1601.4605901047469,
+                        "bugs": 0.09810749561002054,
+                        "time": 88.97003278359705
                     },
                     "params": 3,
-                    "line": 28,
-                    "cyclomaticDensity": 14.285714285714285
+                    "line": 30,
+                    "cyclomaticDensity": 11.11111111111111
                 },
                 {
                     "name": "<anonymous>",
@@ -87979,7 +88027,7 @@
                         "time": 9.33497420902128
                     },
                     "params": 1,
-                    "line": 30,
+                    "line": 32,
                     "cyclomaticDensity": 66.66666666666666
                 },
                 {
@@ -88022,7 +88070,7 @@
                         "time": 7.413067754222782
                     },
                     "params": 2,
-                    "line": 37,
+                    "line": 39,
                     "cyclomaticDensity": 66.66666666666666
                 },
                 {
@@ -88065,7 +88113,7 @@
                         "time": 7.413067754222782
                     },
                     "params": 2,
-                    "line": 44,
+                    "line": 46,
                     "cyclomaticDensity": 66.66666666666666
                 },
                 {
@@ -88159,7 +88207,7 @@
                         "time": 1220.1013379617552
                     },
                     "params": 0,
-                    "line": 58,
+                    "line": 60,
                     "cyclomaticDensity": 22.22222222222222
                 },
                 {
@@ -88194,7 +88242,7 @@
                         "time": 0.2641604167868594
                     },
                     "params": 0,
-                    "line": 137,
+                    "line": 139,
                     "cyclomaticDensity": 100
                 },
                 {
@@ -88232,7 +88280,145 @@
                         "time": 1.43609027817842
                     },
                     "params": 2,
-                    "line": 138,
+                    "line": 140,
+                    "cyclomaticDensity": 100
+                },
+                {
+                    "name": "scope.xAxisTickFormatFunction",
+                    "sloc": {
+                        "logical": 1,
+                        "physical": 5
+                    },
+                    "cyclomatic": 1,
+                    "halstead": {
+                        "operators": {
+                            "distinct": 2,
+                            "total": 2,
+                            "identifiers": [
+                                "return",
+                                "function"
+                            ]
+                        },
+                        "operands": {
+                            "distinct": 1,
+                            "total": 1,
+                            "identifiers": [
+                                "<anonymous>"
+                            ]
+                        },
+                        "length": 3,
+                        "vocabulary": 3,
+                        "difficulty": 1,
+                        "volume": 4.754887502163469,
+                        "effort": 4.754887502163469,
+                        "bugs": 0.0015849625007211565,
+                        "time": 0.2641604167868594
+                    },
+                    "params": 0,
+                    "line": 145,
+                    "cyclomaticDensity": 100
+                },
+                {
+                    "name": "<anonymous>",
+                    "sloc": {
+                        "logical": 1,
+                        "physical": 3
+                    },
+                    "cyclomatic": 1,
+                    "halstead": {
+                        "operators": {
+                            "distinct": 1,
+                            "total": 1,
+                            "identifiers": [
+                                "return"
+                            ]
+                        },
+                        "operands": {
+                            "distinct": 1,
+                            "total": 2,
+                            "identifiers": [
+                                "d"
+                            ]
+                        },
+                        "length": 3,
+                        "vocabulary": 2,
+                        "difficulty": 1,
+                        "volume": 3,
+                        "effort": 3,
+                        "bugs": 0.001,
+                        "time": 0.16666666666666666
+                    },
+                    "params": 1,
+                    "line": 146,
+                    "cyclomaticDensity": 100
+                },
+                {
+                    "name": "scope.yAxisTickFormatFunction",
+                    "sloc": {
+                        "logical": 1,
+                        "physical": 5
+                    },
+                    "cyclomatic": 1,
+                    "halstead": {
+                        "operators": {
+                            "distinct": 2,
+                            "total": 2,
+                            "identifiers": [
+                                "return",
+                                "function"
+                            ]
+                        },
+                        "operands": {
+                            "distinct": 1,
+                            "total": 1,
+                            "identifiers": [
+                                "<anonymous>"
+                            ]
+                        },
+                        "length": 3,
+                        "vocabulary": 3,
+                        "difficulty": 1,
+                        "volume": 4.754887502163469,
+                        "effort": 4.754887502163469,
+                        "bugs": 0.0015849625007211565,
+                        "time": 0.2641604167868594
+                    },
+                    "params": 0,
+                    "line": 151,
+                    "cyclomaticDensity": 100
+                },
+                {
+                    "name": "<anonymous>",
+                    "sloc": {
+                        "logical": 1,
+                        "physical": 3
+                    },
+                    "cyclomatic": 1,
+                    "halstead": {
+                        "operators": {
+                            "distinct": 1,
+                            "total": 1,
+                            "identifiers": [
+                                "return"
+                            ]
+                        },
+                        "operands": {
+                            "distinct": 1,
+                            "total": 2,
+                            "identifiers": [
+                                "d"
+                            ]
+                        },
+                        "length": 3,
+                        "vocabulary": 2,
+                        "difficulty": 1,
+                        "volume": 3,
+                        "effort": 3,
+                        "bugs": 0.001,
+                        "time": 0.16666666666666666
+                    },
+                    "params": 1,
+                    "line": 152,
                     "cyclomaticDensity": 100
                 },
                 {
@@ -88309,7 +88495,7 @@
                         "time": 2360.3431608928436
                     },
                     "params": 0,
-                    "line": 155,
+                    "line": 157,
                     "cyclomaticDensity": 22.22222222222222
                 },
                 {
@@ -88353,29 +88539,29 @@
                         "time": 64.72848959635422
                     },
                     "params": 2,
-                    "line": 168,
+                    "line": 170,
                     "cyclomaticDensity": 75
                 }
             ],
             "dependencies": [],
-            "maintainability": 106.35032796270626,
-            "loc": 8.3,
-            "cyclomatic": 2.5,
-            "effort": 6750.843621801449,
-            "params": 1.3,
+            "maintainability": 112.02837796657084,
+            "loc": 6.285714285714286,
+            "cyclomatic": 2.0714285714285716,
+            "effort": 4849.105666622979,
+            "params": 1.0714285714285714,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/frontend/app/View/GraphsView/BarChartView.js"
         },
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 87,
+                    "logical": 86,
                     "physical": 191
                 },
                 "cyclomatic": 10,
                 "halstead": {
                     "operators": {
                         "distinct": 18,
-                        "total": 488,
+                        "total": 487,
                         "identifiers": [
                             "()",
                             "function",
@@ -88398,8 +88584,8 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 289,
-                        "total": 817,
+                        "distinct": 288,
+                        "total": 815,
                         "identifiers": [
                             "\"use strict\"",
                             "\"lineChart\"",
@@ -88412,8 +88598,6 @@
                             "scope",
                             "url",
                             "\"@\"",
-                            "bindToController",
-                            true,
                             "link",
                             "element",
                             "attrs",
@@ -88421,6 +88605,7 @@
                             "\"key\"",
                             "\"Quantity\"",
                             "\"area\"",
+                            true,
                             "\"values\"",
                             1136005200000,
                             127,
@@ -88692,30 +88877,30 @@
                             "directive"
                         ]
                     },
-                    "length": 1305,
-                    "vocabulary": 307,
-                    "difficulty": 25.442906574394463,
-                    "volume": 10782.033773208082,
-                    "effort": 274326.2779736991,
-                    "bugs": 3.5940112577360277,
-                    "time": 15240.348776316616
+                    "length": 1302,
+                    "vocabulary": 306,
+                    "difficulty": 25.46875,
+                    "volume": 10751.118971185831,
+                    "effort": 273817.56129738915,
+                    "bugs": 3.5837063237286104,
+                    "time": 15212.086738743841
                 },
                 "params": 16,
                 "line": 2,
-                "cyclomaticDensity": 11.494252873563218
+                "cyclomaticDensity": 11.627906976744185
             },
             "functions": [
                 {
                     "name": "<anonymous>",
                     "sloc": {
-                        "logical": 7,
+                        "logical": 6,
                         "physical": 175
                     },
                     "cyclomatic": 1,
                     "halstead": {
                         "operators": {
                             "distinct": 4,
-                            "total": 10,
+                            "total": 9,
                             "identifiers": [
                                 "return",
                                 "{}",
@@ -88724,8 +88909,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 12,
-                            "total": 14,
+                            "distinct": 10,
+                            "total": 12,
                             "identifiers": [
                                 "$compile",
                                 "<anonymous>",
@@ -88736,22 +88921,20 @@
                                 "scope",
                                 "url",
                                 "\"@\"",
-                                "bindToController",
-                                true,
                                 "link"
                             ]
                         },
-                        "length": 24,
-                        "vocabulary": 16,
-                        "difficulty": 2.3333333333333335,
-                        "volume": 96,
-                        "effort": 224,
-                        "bugs": 0.032,
-                        "time": 12.444444444444445
+                        "length": 21,
+                        "vocabulary": 14,
+                        "difficulty": 2.4,
+                        "volume": 79.95445336320968,
+                        "effort": 191.89068807170324,
+                        "bugs": 0.026651484454403226,
+                        "time": 10.66059378176129
                     },
                     "params": 1,
                     "line": 18,
-                    "cyclomaticDensity": 14.285714285714285
+                    "cyclomaticDensity": 16.666666666666664
                 },
                 {
                     "name": "link",
@@ -89616,24 +89799,24 @@
                 }
             ],
             "dependencies": [],
-            "maintainability": 114.33382216888245,
-            "loc": 5.3125,
+            "maintainability": 114.52676902655651,
+            "loc": 5.25,
             "cyclomatic": 1.5625,
-            "effort": 5587.134676918247,
+            "effort": 5585.127844922729,
             "params": 1,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/frontend/app/View/GraphsView/LineChartView.js"
         },
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 154,
+                    "logical": 153,
                     "physical": 228
                 },
                 "cyclomatic": 26,
                 "halstead": {
                     "operators": {
                         "distinct": 21,
-                        "total": 583,
+                        "total": 582,
                         "identifiers": [
                             "()",
                             "function",
@@ -89659,8 +89842,8 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 173,
-                        "total": 611,
+                        "distinct": 172,
+                        "total": 609,
                         "identifiers": [
                             "\"use strict\"",
                             "\"mapChart\"",
@@ -89672,8 +89855,6 @@
                             "scope",
                             "url",
                             "\"@\"",
-                            "bindToController",
-                            true,
                             "template",
                             "\"<div></div><div></div><div></div>\"",
                             "link",
@@ -89710,6 +89891,7 @@
                             "\"px\"",
                             "setAttribute",
                             "init",
+                            true,
                             "$watch",
                             "\"changedD\"",
                             "\"MAPCHART watch changedD\"",
@@ -89837,30 +90019,30 @@
                             "directive"
                         ]
                     },
-                    "length": 1194,
-                    "vocabulary": 194,
-                    "difficulty": 37.08381502890173,
-                    "volume": 9074.295933571431,
-                    "effort": 336509.5119180781,
-                    "bugs": 3.0247653111904773,
-                    "time": 18694.972884337672
+                    "length": 1191,
+                    "vocabulary": 193,
+                    "difficulty": 37.17732558139535,
+                    "volume": 9042.616331386283,
+                    "effort": 336180.29145959066,
+                    "bugs": 3.014205443795428,
+                    "time": 18676.68285886615
                 },
                 "params": 12,
                 "line": 2,
-                "cyclomaticDensity": 16.883116883116884
+                "cyclomaticDensity": 16.99346405228758
             },
             "functions": [
                 {
                     "name": "<anonymous>",
                     "sloc": {
-                        "logical": 8,
+                        "logical": 7,
                         "physical": 212
                     },
                     "cyclomatic": 1,
                     "halstead": {
                         "operators": {
                             "distinct": 4,
-                            "total": 11,
+                            "total": 10,
                             "identifiers": [
                                 "return",
                                 "{}",
@@ -89869,8 +90051,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 13,
-                            "total": 15,
+                            "distinct": 11,
+                            "total": 13,
                             "identifiers": [
                                 "<anonymous>",
                                 "restrict",
@@ -89880,24 +90062,22 @@
                                 "scope",
                                 "url",
                                 "\"@\"",
-                                "bindToController",
-                                true,
                                 "template",
                                 "\"<div></div><div></div><div></div>\"",
                                 "link"
                             ]
                         },
-                        "length": 26,
-                        "vocabulary": 17,
-                        "difficulty": 2.3076923076923075,
-                        "volume": 106.27403387250884,
-                        "effort": 245.24777047502036,
-                        "bugs": 0.03542467795750295,
-                        "time": 13.624876137501131
+                        "length": 23,
+                        "vocabulary": 15,
+                        "difficulty": 2.3636363636363638,
+                        "volume": 89.85848369899593,
+                        "effort": 212.3927796521722,
+                        "bugs": 0.02995282789966531,
+                        "time": 11.799598869565123
                     },
                     "params": 0,
                     "line": 18,
-                    "cyclomaticDensity": 12.5
+                    "cyclomaticDensity": 14.285714285714285
                 },
                 {
                     "name": "link",
@@ -90543,10 +90723,10 @@
                 }
             ],
             "dependencies": [],
-            "maintainability": 96.10448471270104,
-            "loc": 13.818181818181818,
+            "maintainability": 96.21227742268147,
+            "loc": 13.727272727272727,
             "cyclomatic": 3.272727272727273,
-            "effort": 11856.85025561638,
+            "effort": 11853.863438268849,
             "params": 1.0909090909090908,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/frontend/app/View/GraphsView/MapChartView.js"
         },
@@ -105156,14 +105336,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 74,
-                    "physical": 110
+                    "logical": 70,
+                    "physical": 106
                 },
                 "cyclomatic": 11,
                 "halstead": {
                     "operators": {
                         "distinct": 20,
-                        "total": 208,
+                        "total": 198,
                         "identifiers": [
                             "()",
                             "function",
@@ -105188,8 +105368,8 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 104,
-                        "total": 252,
+                        "distinct": 102,
+                        "total": 238,
                         "identifiers": [
                             "\"use strict\"",
                             "\"page\"",
@@ -105284,8 +105464,6 @@
                             1300,
                             "getGraphsPerRow",
                             "\"px;\"",
-                            "divtable",
-                            "\"<table-chart url=\"tantononleggeraiquestourl\"></table-chart>\"",
                             "el",
                             "append",
                             "\"graphs\"",
@@ -105297,24 +105475,24 @@
                             "directive"
                         ]
                     },
-                    "length": 460,
-                    "vocabulary": 124,
-                    "difficulty": 24.23076923076923,
-                    "volume": 3198.930302777963,
-                    "effort": 77512.54195192756,
-                    "bugs": 1.0663101009259877,
-                    "time": 4306.252330662643
+                    "length": 436,
+                    "vocabulary": 122,
+                    "difficulty": 23.333333333333336,
+                    "volume": 3021.8014791774185,
+                    "effort": 70508.70118080644,
+                    "bugs": 1.0072671597258063,
+                    "time": 3917.1500656003577
                 },
                 "params": 5,
                 "line": 2,
-                "cyclomaticDensity": 14.864864864864865
+                "cyclomaticDensity": 15.714285714285714
             },
             "functions": [
                 {
                     "name": "<anonymous>",
                     "sloc": {
                         "logical": 7,
-                        "physical": 94
+                        "physical": 90
                     },
                     "cyclomatic": 1,
                     "halstead": {
@@ -105363,7 +105541,7 @@
                     "name": "link",
                     "sloc": {
                         "logical": 3,
-                        "physical": 82
+                        "physical": 78
                     },
                     "cyclomatic": 1,
                     "halstead": {
@@ -105407,14 +105585,14 @@
                 {
                     "name": "scope.render",
                     "sloc": {
-                        "logical": 60,
-                        "physical": 71
+                        "logical": 56,
+                        "physical": 67
                     },
                     "cyclomatic": 10,
                     "halstead": {
                         "operators": {
                             "distinct": 15,
-                            "total": 179,
+                            "total": 169,
                             "identifiers": [
                                 "var",
                                 "=",
@@ -105434,8 +105612,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 83,
-                            "total": 211,
+                            "distinct": 81,
+                            "total": 197,
                             "identifiers": [
                                 "parent",
                                 "\"page\"",
@@ -105514,25 +105692,23 @@
                                 1300,
                                 "getGraphsPerRow",
                                 "\"px;\"",
-                                "divtable",
-                                "\"<table-chart url=\"tantononleggeraiquestourl\"></table-chart>\"",
                                 "el",
                                 "$compile",
                                 "element",
                                 "append"
                             ]
                         },
-                        "length": 390,
-                        "vocabulary": 98,
-                        "difficulty": 19.066265060240966,
-                        "volume": 2579.7368392049316,
-                        "effort": 49185.946361949456,
-                        "bugs": 0.8599122797349772,
-                        "time": 2732.5525756638585
+                        "length": 366,
+                        "vocabulary": 96,
+                        "difficulty": 18.24074074074074,
+                        "volume": 2410.096275263943,
+                        "effort": 43961.941317314515,
+                        "bugs": 0.803365425087981,
+                        "time": 2442.3300731841396
                     },
                     "params": 0,
                     "line": 30,
-                    "cyclomaticDensity": 16.666666666666664
+                    "cyclomaticDensity": 17.857142857142858
                 },
                 {
                     "name": "<anonymous>",
@@ -105572,15 +105748,15 @@
                         "time": 5.0718800023077
                     },
                     "params": 0,
-                    "line": 102,
+                    "line": 98,
                     "cyclomaticDensity": 100
                 }
             ],
             "dependencies": [],
-            "maintainability": 91.6433259698993,
-            "loc": 18,
+            "maintainability": 92.94879825198953,
+            "loc": 17,
             "cyclomatic": 3.5,
-            "effort": 12434.38717720246,
+            "effort": 11128.385916043726,
             "params": 1.25,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/frontend/app/View/PagesView/PageView.js"
         },
@@ -107942,9 +108118,9 @@
     ],
     "changeCost": 3.125,
     "coreSize": 0,
-    "loc": 6.500910795371383,
-    "cyclomatic": 2.043200009974528,
-    "effort": 2698.538116907921,
-    "params": 0.9279719405655141,
-    "maintainability": 118.44561775891354
+    "loc": 6.392371721597934,
+    "cyclomatic": 2.026768958387226,
+    "effort": 2595.3616024057296,
+    "params": 0.9195270000893238,
+    "maintainability": 118.70554624992754
 }
