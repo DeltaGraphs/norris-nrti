@@ -7,7 +7,7 @@
 		"angular-route": "latest",
 		"sio-client": "latest",
 		"d3": "latest",
-		"ng-table": "latest"
+		"angular-smart-table": "latest"
 	},
 	"devDependencies": {
 		"socket.io-client": "latest",
