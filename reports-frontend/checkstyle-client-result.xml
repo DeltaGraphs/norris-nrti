@@ -10,14 +10,8 @@
 		<error line="19" column="159" severity="warning" message="&apos;TableFlowFactory&apos; is defined but never used." source="jshint.W098" />
 		<error line="97" column="38" severity="warning" message="&apos;url&apos; is defined but never used." source="jshint.W098" />
 	</file>
-	<file name="app/View/GraphsView/BarChartView.js">
-		<error line="138" column="36" severity="warning" message="&apos;i&apos; is defined but never used." source="jshint.W098" />
-		<error line="138" column="33" severity="warning" message="&apos;d&apos; is defined but never used." source="jshint.W098" />
-	</file>
 	<file name="app/View/GraphsView/LineChartView.js">
 		<error line="138" column="19" severity="warning" message="Expected an assignment or function call and instead saw an expression." source="jshint.W030" />
-		<error line="133" column="36" severity="warning" message="&apos;i&apos; is defined but never used." source="jshint.W098" />
-		<error line="133" column="33" severity="warning" message="&apos;d&apos; is defined but never used." source="jshint.W098" />
 	</file>
 	<file name="app/View/GraphsView/MapChartView.js">
 		<error line="69" column="33" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
@@ -90,6 +84,59 @@
 		<error line="1252" column="115" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
 		<error line="1262" column="37" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
 		<error line="1262" column="37" severity="error" message="Too many errors. (48% scanned)." source="jshint.E043" />
+	</file>
+	<file name="app/View/GraphsView/ng-table.min.js">
+		<error line="3" column="47" severity="warning" message="Expected &apos;===&apos; and instead saw &apos;==&apos;." source="jshint.W116" />
+		<error line="3" column="120" severity="warning" message="Missing semicolon." source="jshint.W033" />
+		<error line="3" column="127" severity="warning" message="Missing semicolon." source="jshint.W033" />
+		<error line="3" column="393" severity="warning" message="Missing semicolon." source="jshint.W033" />
+		<error line="3" column="485" severity="warning" message="Expected an assignment or function call and instead saw an expression." source="jshint.W030" />
+		<error line="3" column="486" severity="warning" message="Missing semicolon." source="jshint.W033" />
+		<error line="3" column="740" severity="warning" message="Expected an assignment or function call and instead saw an expression." source="jshint.W030" />
+		<error line="3" column="741" severity="warning" message="Missing semicolon." source="jshint.W033" />
+		<error line="3" column="795" severity="warning" message="Expected an assignment or function call and instead saw an expression." source="jshint.W030" />
+		<error line="3" column="796" severity="warning" message="Missing semicolon." source="jshint.W033" />
+		<error line="3" column="802" severity="warning" message="Expected &apos;{&apos; and instead saw &apos;j&apos;." source="jshint.W116" />
+		<error line="3" column="836" severity="warning" message="Missing semicolon." source="jshint.W033" />
+		<error line="3" column="558" severity="warning" message="The body of a for in should be wrapped in an if statement to filter unwanted properties from the prototype." source="jshint.W089" />
+		<error line="3" column="879" severity="warning" message="Missing semicolon." source="jshint.W033" />
+		<error line="3" column="888" severity="warning" message="Missing semicolon." source="jshint.W033" />
+		<error line="3" column="1034" severity="warning" message="Missing semicolon." source="jshint.W033" />
+		<error line="3" column="1112" severity="warning" message="Missing semicolon." source="jshint.W033" />
+		<error line="3" column="1191" severity="warning" message="Missing semicolon." source="jshint.W033" />
+		<error line="3" column="1279" severity="warning" message="Missing semicolon." source="jshint.W033" />
+		<error line="3" column="1370" severity="warning" message="Missing semicolon." source="jshint.W033" />
+		<error line="3" column="1403" severity="warning" message="Expected &apos;===&apos; and instead saw &apos;==&apos;." source="jshint.W116" />
+		<error line="3" column="1488" severity="warning" message="Missing semicolon." source="jshint.W033" />
+		<error line="3" column="1549" severity="warning" message="Missing semicolon." source="jshint.W033" />
+		<error line="3" column="1637" severity="warning" message="Missing semicolon." source="jshint.W033" />
+		<error line="3" column="1695" severity="warning" message="Expected &apos;{&apos; and instead saw &apos;a&apos;." source="jshint.W116" />
+		<error line="3" column="1672" severity="warning" message="The body of a for in should be wrapped in an if statement to filter unwanted properties from the prototype." source="jshint.W089" />
+		<error line="3" column="1744" severity="warning" message="Missing semicolon." source="jshint.W033" />
+		<error line="3" column="1898" severity="warning" message="Missing semicolon." source="jshint.W033" />
+		<error line="3" column="2094" severity="warning" message="Expected an assignment or function call and instead saw an expression." source="jshint.W030" />
+		<error line="3" column="2095" severity="warning" message="Missing semicolon." source="jshint.W033" />
+		<error line="3" column="2122" severity="warning" message="Expected &apos;{&apos; and instead saw &apos;f&apos;." source="jshint.W116" />
+		<error line="3" column="2107" severity="warning" message="The body of a for in should be wrapped in an if statement to filter unwanted properties from the prototype." source="jshint.W089" />
+		<error line="3" column="2177" severity="warning" message="Expected an assignment or function call and instead saw an expression." source="jshint.W030" />
+		<error line="3" column="2178" severity="warning" message="Missing semicolon." source="jshint.W033" />
+		<error line="3" column="2198" severity="warning" message="Missing semicolon." source="jshint.W033" />
+		<error line="3" column="2498" severity="warning" message="Expected an assignment or function call and instead saw an expression." source="jshint.W030" />
+		<error line="3" column="2518" severity="warning" message="Expected &apos;{&apos; and instead saw &apos;i&apos;." source="jshint.W116" />
+		<error line="3" column="2630" severity="warning" message="Expected an assignment or function call and instead saw an expression." source="jshint.W030" />
+		<error line="3" column="2745" severity="warning" message="Expected an assignment or function call and instead saw an expression." source="jshint.W030" />
+		<error line="3" column="2746" severity="warning" message="Missing semicolon." source="jshint.W033" />
+		<error line="3" column="2755" severity="warning" message="Missing semicolon." source="jshint.W033" />
+		<error line="3" column="2815" severity="warning" message="Expected &apos;{&apos; and instead saw &apos;if&apos;." source="jshint.W116" />
+		<error line="3" column="2887" severity="warning" message="Expected &apos;===&apos; and instead saw &apos;==&apos;." source="jshint.W116" />
+		<error line="3" column="2912" severity="warning" message="Expected &apos;{&apos; and instead saw &apos;if&apos;." source="jshint.W116" />
+		<error line="3" column="3015" severity="warning" message="Expected an assignment or function call and instead saw an expression." source="jshint.W030" />
+		<error line="3" column="3016" severity="warning" message="Missing semicolon." source="jshint.W033" />
+		<error line="3" column="3023" severity="warning" message="Expected &apos;{&apos; and instead saw &apos;a&apos;." source="jshint.W116" />
+		<error line="3" column="3131" severity="warning" message="Expected an assignment or function call and instead saw an expression." source="jshint.W030" />
+		<error line="3" column="3132" severity="warning" message="Missing semicolon." source="jshint.W033" />
+		<error line="3" column="3141" severity="warning" message="Missing semicolon." source="jshint.W033" />
+		<error line="3" column="3141" severity="error" message="Too many errors. (100% scanned)." source="jshint.E043" />
 	</file>
 	<file name="app/View/PagesView/PageView.js">
 		<error line="27" column="41" severity="warning" message="&apos;attrs&apos; is defined but never used." source="jshint.W098" />

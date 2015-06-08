@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">62.03</p>
+      <p class="stat">63.42</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">209</p>
+      <p class="stat">224</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">35.23</p>
+      <p class="stat">33.56</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">1.72</p>
+      <p class="stat">1.53</p>
     </div>
   </div>
 </div>
@@ -173,20 +173,23 @@ angular.module(&#039;app&#039;)
                 if (scope.$parent.barChart.getBarOrientation() === &#039;V&#039;){
                     barchart = &#039;&lt;div class=&quot;graphtitle&quot;&gt;&#039;+ scope.$parent.barChart.getTitle() +&#039;&lt;/div&gt;&#039; +
                                 &#039;&lt;nvd3-multi-bar-chart data=&quot;data&quot; nodata=&quot; &quot; id=&quot;&#039;+ id +&#039;&quot; &#039; +
-                                &#039;xaxisticksformat=&quot;xAxisTickFormatFunction()&quot; showxaxis=&quot;true&quot; showyaxis=&quot;true&quot; &#039; +
+                                &#039;xaxisticksformat=&quot;xAxisTickFormatFunction()&quot; yaxistickformat=&quot;yAxisTickFormatFunction()&quot; showxaxis=&quot;true&quot; showyaxis=&quot;true&quot; &#039; +
                                 &#039;rotatelabels=&quot;-90&quot; interactive=&quot;true&quot; tooltips=&quot;&#039;+ onPoint +&#039;&quot; showlegend=&quot;&#039;+ legend +&#039;&quot; &#039; +
                                 &#039;xaxislabel=&quot;&#039;+ scope.$parent.barChart.getX().getName() +&#039;&quot; &#039; +
-                                &#039;showcontrols=&quot;&#039;+ control +&#039;&quot; color=&quot;colorFunction()&quot; &#039; +
+                                &#039;showcontrols=&quot;&#039;+ control + &#039;&quot; &#039; +
+                                //+&#039;&quot; color=&quot;colorFunction()&quot; &#039; +
                                 &#039;width=&quot;&#039;+ scope.$parent.barChart.getWidth() +&#039;&quot; height=&quot;&#039;+ scope.$parent.barChart.getHeight() +&#039;&quot;&gt;&#039; +
-                                &#039;&lt;svg&gt;&lt;/svg&gt;&lt;/nvd3-multi-bar-horizontal-chart&gt;&#039;;
+                                &#039;&lt;svg&gt;&lt;/svg&gt;&lt;/nvd3-multi-bar-chart&gt;&#039;;
                     //barchart = barchart + &#039;&lt;svg width=&quot;&#039;+ scope.$parent.barChart.getWidth() +&#039;&quot; height=&quot;&#039;+ scope.$parent.barChart.getHeight() +&#039;&quot;&gt;&lt;/svg&gt;&lt;/nvd3-multi-bar-chart&gt;&#039;;
                 }else if(scope.$parent.barChart.getBarOrientation() === &#039;H&#039;){
                     barchart = &#039;&lt;div class=&quot;graphtitle&quot;&gt;&#039;+ scope.$parent.barChart.getTitle() +&#039;&lt;/div&gt;&#039; +
                                 &#039;&lt;nvd3-multi-bar-horizontal-chart data=&quot;data&quot; nodata=&quot; &quot; id=&quot;&#039;+ id +&#039;&quot; &#039; +
                                 &#039;xaxisticksformat=&quot;xAxisTickFormatFunction()&quot; yaxistickformat=&quot;yAxisTickFormatFunction()&quot; showxaxis=&quot;true&quot; showyaxis=&quot;true&quot; &#039; +
                                 &#039;rotatelabels=&quot;-90&quot; interactive=&quot;true&quot; tooltips=&quot;&#039;+ onPoint +&#039;&quot; showlegend=&quot;&#039;+ legend +&#039;&quot; &#039; +
-                                &#039;xaxislabel=&quot;&#039;+ scope.$parent.barChart.getX().getName() +&#039;&quot; &#039; +
-                                &#039;showcontrols=&quot;&#039;+ control +&#039;&quot; color=&quot;colorFunction()&quot; &#039; +
+                                &#039;xaxislabel=&quot;&#039;+ scope.$parent.barChart.getX().getName() +&#039;&quot; showValues=&quot;true&quot; &#039; +
+                                &#039;showcontrols=&quot;&#039;+ control + &#039;&quot; &#039; +
+                                //+&#039;&quot; color=&quot;colorFunction()&quot; &#039; +
+                                //&#039;showcontrols=&quot;&#039;+ control +&#039;&quot; color=&quot;colorFunction()&quot; &#039; +
                                 &#039;width=&quot;&#039;+ scope.$parent.barChart.getWidth() +&#039;&quot; height=&quot;&#039;+ scope.$parent.barChart.getHeight() +&#039;&quot;&gt;&#039; +
                                 &#039;&lt;svg&gt;&lt;/svg&gt;&lt;/nvd3-multi-bar-horizontal-chart&gt;&#039;;
                     //barchart = barchart + &#039;&lt;svg width=&quot;&#039;+ scope.$parent.barChart.getWidth() +&#039;&quot; height=&quot;&#039;+ scope.$parent.barChart.getHeight() +&#039;&quot;&gt;&lt;/svg&gt;&lt;/nvd3-multi-bar-horizontal-chart&gt;&#039;;
@@ -227,10 +230,22 @@ angular.module(&#039;app&#039;)
             scope.colorArray = [];
             scope.colorFunction = function() {
                 return function(d, i) {
-                    return scope.colorArray;
+                    return scope.colorArray[i];
+                };
+            };
+/*
+            scope.xAxisTickFormatFunction = function(){
+                return function(d){
+                    return d;
                 };
             };
 
+            scope.yAxisTickFormatFunction = function(){
+                return function(d){
+                    return d;
+                };
+            };
+*/
             scope.setData = function(){
                 var data = [];
                 var colorArray = [];
@@ -252,19 +267,19 @@ angular.module(&#039;app&#039;)
                             return (a[0] &lt; b[0]) ? -1 : 1;
                         }
                     });
-                    for (var z=0; z&lt;values.length; z++){
+                    /*for (var z=0; z&lt;values.length; z++){
                         console.log(&#039;[&#039; + values[z][0] + &#039;,&#039; + values[z][1] + &#039;]&#039;);
-                    }
+                    }*/
                     for (var y=0; y&lt;values.length; y++){
                         values[y][0] = scope.$parent.barChart.getHeaders()[values[y][0]-1];
                     }
-                    for (var g=0; g&lt;values.length; g++){
+                    /*for (var g=0; g&lt;values.length; g++){
                         console.log(&#039;[&#039; + values[g][0] + &#039;,&#039; + values[g][1] + &#039;]&#039;);
-                    }
+                    }*/
                     data.push({ &#039;key&#039;: key, &#039;values&#039;: values});
                 }
                 scope.data = data;
-                console.log(&#039; data.length &#039; + data.length);
+                //console.log(&#039; data.length &#039; + data.length);
                 scope.colorArray = colorArray;
 
             };

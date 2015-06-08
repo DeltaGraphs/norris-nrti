@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Plato - app/View/GraphsView/ng-table.min.js</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link href="../../assets/css/vendor/morris.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet">
+  <link href="../../assets/css/plato.css" rel="stylesheet">
+  <link href="../../assets/css/plato-file.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="http://github.com/es-analysis/plato">Plato on Github</a>
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="../../index.html">Report Home</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>app/View/GraphsView/ng-table.min.js</h1>
+  </div>
+</div>
+
+<div class="container aggregate-stats">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
+      <p class="stat">71.19</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
+      <p class="stat">1</p>
+    </div>
+  </div>
+  <div class="row historical">
+    <div class="col-md-6">
+      <p id="chart_historical_maint" class="chart"></p>
+    </div>
+    <div class="col-md-6">
+      <p id="chart_historical_sloc" class="chart"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
+      <p class="stat">102.49</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
+      <p class="stat">8.06</p>
+    </div>
+  </div>
+</div>
+
+<div class="container charts">
+  <div class="row">
+    <h2 class="header">Function weight</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="chart-header">By Complexity <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="This metric counts the number of distinct paths through a block of code. Lower values are better." data-original-title="Cyclomatic Complexity" data-container="body"></i></a></h3>
+      <div id="fn-by-complexity" class="stat"></div>
+    </div>
+    <div class="col-md-6">
+      <h3 class="chart-header">By SLOC  <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h3>
+      <div id="fn-by-sloc" class="stat"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <textarea id="file-source" class="col-md-12">/*! ngTable v0.5.3 by Vitalii Savchuk(esvit666@gmail.com) - https://github.com/esvit/ng-table - New BSD License */
+
+!function(a,b){&quot;use strict&quot;;return&quot;function&quot;==typeof define&amp;&amp;define.amd?void define([&quot;angular&quot;],function(a){return b(a)}):b(a)}(window.angular||null,function(a){&quot;use strict&quot;;var b=a.module(&quot;ngTable&quot;,[]);return b.value(&quot;ngTableDefaults&quot;,{params:{},settings:{}}),b.factory(&quot;NgTableParams&quot;,[&quot;$q&quot;,&quot;$log&quot;,&quot;ngTableDefaults&quot;,function(b,c,d){var e=function(a){return!isNaN(parseFloat(a))&amp;&amp;isFinite(a)},f=function(f,g){var h=this,i=function(){k.debugMode&amp;&amp;c.debug&amp;&amp;c.debug.apply(this,arguments)};this.data=[],this.parameters=function(b,c){if(c=c||!1,a.isDefined(b)){for(var d in b){var f=b[d];if(c&amp;&amp;d.indexOf(&quot;[&quot;)&gt;=0){for(var g=d.split(/\[(.*)\]/).reverse(),h=&quot;&quot;,k=0,l=g.length;l&gt;k;k++){var m=g[k];if(&quot;&quot;!==m){var n=f;f={},f[h=m]=e(n)?parseFloat(n):n}}&quot;sorting&quot;===h&amp;&amp;(j[h]={}),j[h]=a.extend(j[h]||{},f[h])}else j[d]=e(b[d])?parseFloat(b[d]):b[d]}return i(&quot;ngTable: set parameters&quot;,j),this}return j},this.settings=function(b){return a.isDefined(b)?(a.isArray(b.data)&amp;&amp;(b.total=b.data.length),k=a.extend(k,b),i(&quot;ngTable: set settings&quot;,k),this):k},this.page=function(b){return a.isDefined(b)?this.parameters({page:b}):j.page},this.total=function(b){return a.isDefined(b)?this.settings({total:b}):k.total},this.count=function(b){return a.isDefined(b)?this.parameters({count:b,page:1}):j.count},this.filter=function(b){return a.isDefined(b)?this.parameters({filter:b,page:1}):j.filter},this.sorting=function(b){if(2==arguments.length){var c={};return c[b]=arguments[1],this.parameters({sorting:c}),this}return a.isDefined(b)?this.parameters({sorting:b}):j.sorting},this.isSortBy=function(b,c){return a.isDefined(j.sorting[b])&amp;&amp;a.equals(j.sorting[b],c)},this.orderBy=function(){var a=[];for(var b in j.sorting)a.push((&quot;asc&quot;===j.sorting[b]?&quot;+&quot;:&quot;-&quot;)+b);return a},this.getData=function(b,c){return b.resolve(a.isArray(this.data)&amp;&amp;a.isObject(c)?this.data.slice((c.page()-1)*c.count(),c.page()*c.count()):[]),b.promise},this.getGroups=function(c,d){var e=b.defer();return e.promise.then(function(b){var e={};a.forEach(b,function(b){var c=a.isFunction(d)?d(b):b[d];e[c]=e[c]||{data:[]},e[c].value=c,e[c].data.push(b)});var f=[];for(var g in e)f.push(e[g]);i(&quot;ngTable: refresh groups&quot;,f),c.resolve(f)}),this.getData(e,h)},this.generatePagesArray=function(a,b,c){var d,e,f,g,h,i;if(d=11,i=[],h=Math.ceil(b/c),h&gt;1){i.push({type:&quot;prev&quot;,number:Math.max(1,a-1),active:a&gt;1}),i.push({type:&quot;first&quot;,number:1,active:a&gt;1,current:1===a}),f=Math.round((d-5)/2),g=Math.max(2,a-f),e=Math.min(h-1,a+2*f-(a-g)),g=Math.max(2,g-(2*f-(e-g)));for(var j=g;e&gt;=j;)i.push(j===g&amp;&amp;2!==j||j===e&amp;&amp;j!==h-1?{type:&quot;more&quot;,active:!1}:{type:&quot;page&quot;,number:j,active:a!==j,current:a===j}),j++;i.push({type:&quot;last&quot;,number:h,active:a!==h,current:a===h}),i.push({type:&quot;next&quot;,number:Math.min(h,a+1),active:h&gt;a})}return i},this.url=function(b){b=b||!1;var c=b?[]:{};for(var d in j)if(j.hasOwnProperty(d)){var e=j[d],f=encodeURIComponent(d);if(&quot;object&quot;==typeof e){for(var g in e)if(!a.isUndefined(e[g])&amp;&amp;&quot;&quot;!==e[g]){var h=f+&quot;[&quot;+encodeURIComponent(g)+&quot;]&quot;;b?c.push(h+&quot;=&quot;+e[g]):c[h]=e[g]}}else a.isFunction(e)||a.isUndefined(e)||&quot;&quot;===e||(b?c.push(f+&quot;=&quot;+encodeURIComponent(e)):c[f]=encodeURIComponent(e))}return c},this.reload=function(){var a=b.defer(),c=this,d=null;if(k.$scope)return k.$loading=!0,d=k.groupBy?k.getGroups(a,k.groupBy,this):k.getData(a,this),i(&quot;ngTable: reload data&quot;),d||(d=a.promise),d.then(function(a){return k.$loading=!1,i(&quot;ngTable: current scope&quot;,k.$scope),k.groupBy?(c.data=a,k.$scope&amp;&amp;(k.$scope.$groups=a)):(c.data=a,k.$scope&amp;&amp;(k.$scope.$data=a)),k.$scope&amp;&amp;(k.$scope.pages=c.generatePagesArray(c.page(),c.total(),c.count())),k.$scope.$emit(&quot;ngTableAfterReloadData&quot;),a})},this.reloadPages=function(){var a=this;k.$scope.pages=a.generatePagesArray(a.page(),a.total(),a.count())};var j=this.$params={page:1,count:1,filter:{},sorting:{},group:{},groupBy:null};a.extend(j,d.params);var k={$scope:null,$loading:!1,data:null,total:0,defaultSort:&quot;desc&quot;,filterDelay:750,counts:[10,25,50,100],sortingIndicator:&quot;span&quot;,getGroups:this.getGroups,getData:this.getData};return a.extend(k,d.settings),this.settings(g),this.parameters(f,!0),this};return f}]),b.factory(&quot;ngTableParams&quot;,[&quot;NgTableParams&quot;,function(a){return a}]),b.controller(&quot;ngTableController&quot;,[&quot;$scope&quot;,&quot;NgTableParams&quot;,&quot;$timeout&quot;,&quot;$parse&quot;,&quot;$compile&quot;,&quot;$attrs&quot;,&quot;$element&quot;,&quot;ngTableColumn&quot;,function(b,c,d,e,f,g,h,i){function j(){b.params.$params.page=1}var k=!0;b.$filterRow={},b.$loading=!1,b.hasOwnProperty(&quot;params&quot;)||(b.params=new c,b.params.isNullInstance=!0),b.params.settings().$scope=b;var l=function(){var a=0;return function(b,c){d.cancel(a),a=d(b,c)}}();b.$watch(&quot;params.$params&quot;,function(c,d){if(c!==d){if(b.params.settings().$scope=b,a.equals(c.filter,d.filter))b.params.reload();else{var e=k?a.noop:j;l(function(){e(),b.params.reload()},b.params.settings().filterDelay)}b.params.isNullInstance||(k=!1)}},!0),this.compileDirectiveTemplates=function(){if(!h.hasClass(&quot;ng-table&quot;)){b.templates={header:g.templateHeader?g.templateHeader:&quot;ng-table/header.html&quot;,pagination:g.templatePagination?g.templatePagination:&quot;ng-table/pager.html&quot;},h.addClass(&quot;ng-table&quot;);var c=null;0===h.find(&quot;&gt; thead&quot;).length&amp;&amp;(c=a.element(document.createElement(&quot;thead&quot;)).attr(&quot;ng-include&quot;,&quot;templates.header&quot;),h.prepend(c));var d=a.element(document.createElement(&quot;div&quot;)).attr({&quot;ng-table-pagination&quot;:&quot;params&quot;,&quot;template-url&quot;:&quot;templates.pagination&quot;});h.after(d),c&amp;&amp;f(c)(b),f(d)(b)}},this.loadFilterData=function(c){a.forEach(c,function(c){var d;return d=c.filterData(b,{$column:c}),d?a.isObject(d)&amp;&amp;a.isObject(d.promise)?(delete c.filterData,d.promise.then(function(b){a.isArray(b)||a.isFunction(b)||a.isObject(b)?a.isArray(b)&amp;&amp;b.unshift({title:&quot;-&quot;,id:&quot;&quot;}):b=[],c.data=b})):c.data=d:void delete c.filterData})},this.buildColumns=function(a){return a.map(function(a){return i.buildColumn(a,b)})},this.setupBindingsToInternalScope=function(c){var d=e(c);b.$watch(d,function(c){a.isUndefined(c)||(b.paramsModel=d,b.params=c)},!1),g.showFilter&amp;&amp;b.$parent.$watch(g.showFilter,function(a){b.show_filter=a}),g.disableFilter&amp;&amp;b.$parent.$watch(g.disableFilter,function(a){b.$filterRow.disabled=a})},b.sortBy=function(a,c){var d=a.sortable&amp;&amp;a.sortable();if(d){var e=b.params.settings().defaultSort,f=&quot;asc&quot;===e?&quot;desc&quot;:&quot;asc&quot;,g=b.params.sorting()&amp;&amp;b.params.sorting()[d]&amp;&amp;b.params.sorting()[d]===e,h=c.ctrlKey||c.metaKey?b.params.sorting():{};h[d]=g?f:e,b.params.parameters({sorting:h})}}}]),b.factory(&quot;ngTableColumn&quot;,[function(){function b(b,d){var e=Object.create(b);for(var f in c)void 0===e[f]&amp;&amp;(e[f]=c[f]),a.isFunction(e[f])||!function(a){e[a]=function(){return b[a]}}(f),function(a){var c=e[a];e[a]=function(){return 0===arguments.length?c.call(b,d):c.apply(b,arguments)}}(f);return e}var c={&quot;class&quot;:function(){return&quot;&quot;},filter:function(){return!1},filterData:a.noop,headerTemplateURL:function(){return!1},headerTitle:function(){return&quot;&quot;},sortable:function(){return!1},show:function(){return!0},title:function(){return&quot;&quot;},titleAlt:function(){return&quot;&quot;}};return{buildColumn:b}}]),b.directive(&quot;ngTable&quot;,[&quot;$q&quot;,&quot;$parse&quot;,function(b,c){return{restrict:&quot;A&quot;,priority:1001,scope:!0,controller:&quot;ngTableController&quot;,compile:function(b){var d=[],e=0,f=null;return a.forEach(a.element(b.find(&quot;tr&quot;)),function(b){b=a.element(b),b.hasClass(&quot;ng-table-group&quot;)||f||(f=b)}),f?(a.forEach(f.find(&quot;td&quot;),function(b){var f=a.element(b);if(!f.attr(&quot;ignore-cell&quot;)||&quot;true&quot;!==f.attr(&quot;ignore-cell&quot;)){var g=function(a){return f.attr(&quot;x-data-&quot;+a)||f.attr(&quot;data-&quot;+a)||f.attr(a)},h=function(b){var e=g(b);return e?function(b,f){return c(e)(b,a.extend(f||{},{$columns:d}))}:void 0},i=g(&quot;title-alt&quot;)||g(&quot;title&quot;);i&amp;&amp;f.attr(&quot;data-title-text&quot;,&quot;{{&quot;+i+&quot;}}&quot;),d.push({id:e++,title:h(&quot;title&quot;),titleAlt:h(&quot;title-alt&quot;),headerTitle:h(&quot;header-title&quot;),sortable:h(&quot;sortable&quot;),&quot;class&quot;:h(&quot;header-class&quot;),filter:h(&quot;filter&quot;),headerTemplateURL:h(&quot;header&quot;),filterData:h(&quot;filter-data&quot;),show:f.attr(&quot;ng-show&quot;)?function(a){return c(f.attr(&quot;ng-show&quot;))(a)}:void 0})}}),function(a,b,c,e){a.$columns=d=e.buildColumns(d),e.setupBindingsToInternalScope(c.ngTable),e.loadFilterData(d),e.compileDirectiveTemplates()}):void 0}}}]),b.directive(&quot;ngTableDynamic&quot;,[&quot;$parse&quot;,function(b){function c(a){if(!a||a.indexOf(&quot; with &quot;)&gt;-1){var b=a.split(/\s+with\s+/);return{tableParams:b[0],columns:b[1]}}throw new Error(&quot;Parse error (expected example: ng-table-dynamic=&#039;tableParams with cols&#039;)&quot;)}return{restrict:&quot;A&quot;,priority:1001,scope:!0,controller:&quot;ngTableController&quot;,compile:function(d){var e;return a.forEach(a.element(d.find(&quot;tr&quot;)),function(b){b=a.element(b),b.hasClass(&quot;ng-table-group&quot;)||e||(e=b)}),e?(a.forEach(e.find(&quot;td&quot;),function(b){var c=a.element(b),d=function(a){return c.attr(&quot;x-data-&quot;+a)||c.attr(&quot;data-&quot;+a)||c.attr(a)},e=d(&quot;title&quot;);e||c.attr(&quot;data-title-text&quot;,&quot;{{$columns[$index].titleAlt(this) || $columns[$index].title(this)}}&quot;);var f=c.attr(&quot;ng-show&quot;);f||c.attr(&quot;ng-show&quot;,&quot;$columns[$index].show(this)&quot;)}),function(a,d,e,f){var g=c(e.ngTableDynamic),h=b(g.columns)(a)||[];a.$columns=f.buildColumns(h),f.setupBindingsToInternalScope(g.tableParams),f.loadFilterData(a.$columns),f.compileDirectiveTemplates()}):void 0}}}]),b.directive(&quot;ngTablePagination&quot;,[&quot;$compile&quot;,function(b){return{restrict:&quot;A&quot;,scope:{params:&quot;=ngTablePagination&quot;,templateUrl:&quot;=&quot;},replace:!1,link:function(c,d){c.params.settings().$scope.$on(&quot;ngTableAfterReloadData&quot;,function(){c.pages=c.params.generatePagesArray(c.params.page(),c.params.total(),c.params.count())},!0),c.$watch(&quot;templateUrl&quot;,function(e){if(!a.isUndefined(e)){var f=a.element(document.createElement(&quot;div&quot;));f.attr({&quot;ng-include&quot;:&quot;templateUrl&quot;}),d.append(f),b(f)(c)}})}}}]),a.module(&quot;ngTable&quot;).run([&quot;$templateCache&quot;,function(a){a.put(&quot;ng-table/filters/select-multiple.html&quot;,&#039;&lt;select ng-options=&quot;data.id as data.title for data in $column.data&quot; ng-disabled=&quot;$filterRow.disabled&quot; multiple ng-multiple=&quot;true&quot; ng-model=&quot;params.filter()[name]&quot; ng-show=&quot;filter==\&#039;select-multiple\&#039;&quot; class=&quot;filter filter-select-multiple form-control&quot; name=&quot;{{name}}&quot;&gt; &lt;/select&gt;&#039;),a.put(&quot;ng-table/filters/select.html&quot;,&#039;&lt;select ng-options=&quot;data.id as data.title for data in $column.data&quot; ng-disabled=&quot;$filterRow.disabled&quot; ng-model=&quot;params.filter()[name]&quot; ng-show=&quot;filter==\&#039;select\&#039;&quot; class=&quot;filter filter-select form-control&quot; name=&quot;{{name}}&quot;&gt; &lt;/select&gt;&#039;),a.put(&quot;ng-table/filters/text.html&quot;,&#039;&lt;input type=&quot;text&quot; name=&quot;{{name}}&quot; ng-disabled=&quot;$filterRow.disabled&quot; ng-model=&quot;params.filter()[name]&quot; ng-if=&quot;filter==\&#039;text\&#039;&quot; class=&quot;input-filter form-control&quot;/&gt;&#039;),a.put(&quot;ng-table/header.html&quot;,&#039;&lt;tr&gt; &lt;th title=&quot;{{$column.headerTitle(this)}}&quot; ng-repeat=&quot;$column in $columns&quot; ng-class=&quot;{ \&#039;sortable\&#039;: $column.sortable(this), \&#039;sort-asc\&#039;: params.sorting()[$column.sortable(this)]==\&#039;asc\&#039;, \&#039;sort-desc\&#039;: params.sorting()[$column.sortable(this)]==\&#039;desc\&#039; }&quot; ng-click=&quot;sortBy($column, $event)&quot; ng-show=&quot;$column.show(this)&quot; ng-init=&quot;template=$column.headerTemplateURL(this)&quot; class=&quot;header {{$column.class(this)}}&quot;&gt; &lt;div ng-if=&quot;!template&quot; ng-show=&quot;!template&quot; class=&quot;ng-table-header&quot; ng-class=&quot;{\&#039;sort-indicator\&#039;: params.settings().sortingIndicator==\&#039;div\&#039;}&quot;&gt; &lt;span ng-bind=&quot;$column.title(this)&quot; ng-class=&quot;{\&#039;sort-indicator\&#039;: params.settings().sortingIndicator==\&#039;span\&#039;}&quot;&gt;&lt;/span&gt; &lt;/div&gt; &lt;div ng-if=&quot;template&quot; ng-show=&quot;template&quot; ng-include=&quot;template&quot;&gt;&lt;/div&gt; &lt;/th&gt; &lt;/tr&gt; &lt;tr ng-show=&quot;show_filter&quot; class=&quot;ng-table-filters&quot;&gt; &lt;th data-title-text=&quot;{{$column.titleAlt(this) || $column.title(this)}}&quot; ng-repeat=&quot;$column in $columns&quot; ng-show=&quot;$column.show(this)&quot; class=&quot;filter&quot;&gt; &lt;div ng-repeat=&quot;(name, filter) in $column.filter(this)&quot;&gt; &lt;div ng-if=&quot;filter.indexOf(\&#039;/\&#039;) !==-1&quot; ng-include=&quot;filter&quot;&gt;&lt;/div&gt; &lt;div ng-if=&quot;filter.indexOf(\&#039;/\&#039;)===-1&quot; ng-include=&quot;\&#039;ng-table/filters/\&#039; + filter + \&#039;.html\&#039;&quot;&gt;&lt;/div&gt; &lt;/div&gt; &lt;/th&gt; &lt;/tr&gt; &#039;),a.put(&quot;ng-table/pager.html&quot;,&#039;&lt;div class=&quot;ng-cloak ng-table-pager&quot; ng-if=&quot;params.data.length&quot;&gt; &lt;div ng-if=&quot;params.settings().counts.length&quot; class=&quot;ng-table-counts btn-group pull-right&quot;&gt; &lt;button ng-repeat=&quot;count in params.settings().counts&quot; type=&quot;button&quot; ng-class=&quot;{\&#039;active\&#039;:params.count()==count}&quot; ng-click=&quot;params.count(count)&quot; class=&quot;btn btn-default&quot;&gt; &lt;span ng-bind=&quot;count&quot;&gt;&lt;/span&gt; &lt;/button&gt; &lt;/div&gt; &lt;ul class=&quot;pagination ng-table-pagination&quot;&gt; &lt;li ng-class=&quot;{\&#039;disabled\&#039;: !page.active &amp;&amp; !page.current, \&#039;active\&#039;: page.current}&quot; ng-repeat=&quot;page in pages&quot; ng-switch=&quot;page.type&quot;&gt; &lt;a ng-switch-when=&quot;prev&quot; ng-click=&quot;params.page(page.number)&quot; href=&quot;&quot;&gt;&amp;laquo;&lt;/a&gt; &lt;a ng-switch-when=&quot;first&quot; ng-click=&quot;params.page(page.number)&quot; href=&quot;&quot;&gt;&lt;span ng-bind=&quot;page.number&quot;&gt;&lt;/span&gt;&lt;/a&gt; &lt;a ng-switch-when=&quot;page&quot; ng-click=&quot;params.page(page.number)&quot; href=&quot;&quot;&gt;&lt;span ng-bind=&quot;page.number&quot;&gt;&lt;/span&gt;&lt;/a&gt; &lt;a ng-switch-when=&quot;more&quot; ng-click=&quot;params.page(page.number)&quot; href=&quot;&quot;&gt;&amp;#8230;&lt;/a&gt; &lt;a ng-switch-when=&quot;last&quot; ng-click=&quot;params.page(page.number)&quot; href=&quot;&quot;&gt;&lt;span ng-bind=&quot;page.number&quot;&gt;&lt;/span&gt;&lt;/a&gt; &lt;a ng-switch-when=&quot;next&quot; ng-click=&quot;params.page(page.number)&quot; href=&quot;&quot;&gt;&amp;raquo;&lt;/a&gt; &lt;/li&gt; &lt;/ul&gt; &lt;/div&gt; &#039;)}]),b});</textarea>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>.</p>
+  </div>
+</footer>
+
+<script type="text/html" id="complexity-popover-template">
+  <div class="complexity-notice">
+    Complexity : {{ complexity.cyclomatic }} <br>
+    Length : {{ complexity.halstead.length }} <br>
+    Difficulty : {{ complexity.halstead.difficulty.toFixed(2) }} <br>
+    Est # bugs : {{ complexity.halstead.bugs.toFixed(2) }}<br>
+  </div>
+</script>
+
+<script type="text/javascript" src="../../assets/scripts/bundles/core-bundle.js"></script>
+<script type="text/javascript" src="../../assets/scripts/bundles/codemirror.js"></script>
+<script type="text/javascript" src="../../assets/scripts/codemirror.markpopovertext.js"></script>
+<script type="text/javascript" src="report.js"></script>
+<script type="text/javascript" src="report.history.js"></script>
+<script type="text/javascript" src="../../assets/scripts/plato-file.js"></script>
+</body>
+</html>
