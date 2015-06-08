@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">65.82</p>
+      <p class="stat">66.82</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">191</p>
+      <p class="stat">193</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">27.30</p>
+      <p class="stat">26.73</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">3.58</p>
+      <p class="stat">3.59</p>
     </div>
   </div>
 </div>
@@ -180,20 +180,22 @@ angular.module(&#039;app&#039;)
                 }
 
                 if (scope.$parent.lineChart.getViewFinder() === true) {
-                    linechart = &#039;&lt;nvd3-line-with-focus-chart data=&quot;exampleData&quot; nodata=&quot; &quot; id=&quot;&#039;+ id +&#039;&quot; &#039;;
-                    linechart = linechart + &#039;yaxistickformat=&quot;yAxisTickFormatFunction()&quot; xaxistickformat=&quot;xAxisTickFormatFunction()&quot; x2axistickformat=&quot;x2AxisTickFormatFunction()&quot; &#039;;
-                    linechart = linechart + &#039;margin=&quot;{left:80,top:50,bottom:30,right:50}&quot; margin2=&quot;{left:80,top:50,bottom:30,right:50}&quot; interactive=&quot;true&quot; showlegend=&quot;&#039;+ legend +&#039;&quot; tooltips=&quot;&#039;+ onPoint +&#039;&quot; &#039;;
-                    linechart = linechart + &#039;xaxisrotatelabels=&quot;-90&quot; x2axisrotatelables=&quot;-90&quot; interpolate=&quot;&#039; + scope.$parent.lineChart.getInterpolation() +&#039;&quot;&gt;&#039;; // perchè colorFunction ritorna null per adesso
-                    //linechart = linechart + &#039;xaxisrotatelabels=&quot;-90&quot; x2axisrotatelables=&quot;-90&quot; color=&quot;colorFunction()&quot;&gt;&#039;; 
-                    linechart = linechart + &#039;&lt;svg style=&quot;width: &#039;+ scope.$parent.lineChart.getWidth() +&#039;px; height: &#039;+ scope.$parent.lineChart.getHeight() +&#039;px;&quot;&gt;&lt;/svg&gt;&lt;/nvd3-line-with-focus-chart&gt;&#039;;
+                    linechart = &#039;&lt;div class=&quot;graphtitle&quot;&gt;&#039;+ scope.$parent.lineChart.getTitle() +&#039;&lt;/div&gt;&#039; +
+                                &#039;&lt;nvd3-line-with-focus-chart data=&quot;exampleData&quot; nodata=&quot; &quot; id=&quot;&#039;+ id +&#039;&quot; &#039; +
+                                &#039;yaxistickformat=&quot;yAxisTickFormatFunction()&quot; xaxistickformat=&quot;xAxisTickFormatFunction()&quot; x2axistickformat=&quot;x2AxisTickFormatFunction()&quot; &#039; +
+                                &#039;margin=&quot;{left:80,top:50,bottom:30,right:50}&quot; margin2=&quot;{left:80,top:50,bottom:30,right:50}&quot; interactive=&quot;true&quot; showlegend=&quot;&#039;+ legend +&#039;&quot; tooltips=&quot;&#039;+ onPoint +&#039;&quot; &#039; +
+                                &#039;xaxisrotatelabels=&quot;-90&quot; x2axisrotatelables=&quot;-90&quot; interpolate=&quot;&#039; + scope.$parent.lineChart.getInterpolation() +&#039;&quot;&gt;&#039; + // perchè colorFunction ritorna null per adesso
+                                //linechart = linechart + &#039;xaxisrotatelabels=&quot;-90&quot; x2axisrotatelables=&quot;-90&quot; color=&quot;colorFunction()&quot;&gt;&#039;; 
+                                &#039;&lt;svg style=&quot;width: &#039;+ scope.$parent.lineChart.getWidth() +&#039;px; height: &#039;+ scope.$parent.lineChart.getHeight() +&#039;px;&quot;&gt;&lt;/svg&gt;&lt;/nvd3-line-with-focus-chart&gt;&#039;;
                 } else {
-                    linechart = &#039;&lt;nvd3-line-chart data=&quot;exampleData&quot; id=&quot;&#039;+ id +&#039;&quot; &#039;;
-                    linechart = linechart + &#039;yaxistickformat=&quot;yAxisTickFormatFunction()&quot; xaxistickformat=&quot;xAxisTickFormatFunction()&quot; &#039;;
-                    linechart = linechart + &#039;margin=&quot;{left:80,top:50,bottom:30,right:50}&quot; interactive=&quot;true&quot; showlegend=&quot;&#039;+ legend +&#039;&quot; tooltips=&quot;&#039;+ onPoint +&#039;&quot; &#039;;
-                    linechart = linechart + &#039;xaxisrotatelabels=&quot;-90&quot; interpolate=&quot;&#039; + scope.$parent.lineChart.getInterpolation() +&#039;&quot;&#039;;
-                    //linechart = linechart + &#039;xaxisrotatelabels=&quot;-90&quot; color=&quot;colorFunction()&quot; interpolate=&quot;&#039; + scope.$parent.lineChart.getInterpolation() +&#039;&quot; &#039;; // perchè colorFunction ritorna null per adesso
-                    linechart = linechart + &#039;showxaxis=&quot;true&quot; showyaxis=&quot;true&quot;&gt;&#039;;
-                    linechart = linechart + &#039;&lt;svg style=&quot;width: &#039;+ scope.$parent.lineChart.getWidth() +&#039;px; height: &#039;+ scope.$parent.lineChart.getHeight() +&#039;px;&quot;&gt;&lt;/svg&gt;&lt;/nvd3-line-chart&gt;&#039;;
+                    linechart = &#039;&lt;div class=&quot;graphtitle&quot;&gt;&#039;+ scope.$parent.lineChart.getTitle() +&#039;&lt;/div&gt;&#039; +
+                                &#039;&lt;nvd3-line-chart data=&quot;exampleData&quot; id=&quot;&#039;+ id +&#039;&quot; &#039; +
+                                &#039;yaxistickformat=&quot;yAxisTickFormatFunction()&quot; xaxistickformat=&quot;xAxisTickFormatFunction()&quot; &#039; +
+                                &#039;margin=&quot;{left:80,top:50,bottom:30,right:50}&quot; interactive=&quot;true&quot; showlegend=&quot;&#039;+ legend +&#039;&quot; tooltips=&quot;&#039;+ onPoint +&#039;&quot; &#039; +
+                                &#039;xaxisrotatelabels=&quot;-90&quot; interpolate=&quot;&#039; + scope.$parent.lineChart.getInterpolation() +&#039;&quot;&#039; +
+                                //linechart = linechart + &#039;xaxisrotatelabels=&quot;-90&quot; color=&quot;colorFunction()&quot; interpolate=&quot;&#039; + scope.$parent.lineChart.getInterpolation() +&#039;&quot; &#039;; // perchè colorFunction ritorna null per adesso
+                                &#039;showxaxis=&quot;true&quot; showyaxis=&quot;true&quot;&gt;&#039; +
+                                &#039;svg style=&quot;width: &#039;+ scope.$parent.lineChart.getWidth() +&#039;px; height: &#039;+ scope.$parent.lineChart.getHeight() +&#039;px;&quot;&gt;&lt;/svg&gt;&lt;/nvd3-line-chart&gt;&#039;;
                 }
 
                 var compiled = $compile(linechart)(scope);
