@@ -50,7 +50,6 @@ describe('LineChartFlowModel', function() {
         assert.strictEqual(flow1._yFormat, null);
         assert.strictEqual(flow1._flowColor, null);
         assert.strictEqual(flow1._marker, 'none');
-        assert.strictEqual(flow1._interpolation, 'linear');
         assert.strictEqual(flow1._area, false);
         assert.strictEqual(flow1._maxItems, 50);
         assert.strictEqual(flow1._maxItemsSaved, 500);
@@ -65,7 +64,6 @@ describe('LineChartFlowModel', function() {
             yFormat: 2,
             flowColor: 2,
             marker: 2,
-            interpolation: 3,
             area: 3,
             maxItems: -2,
             maxItemsSaved: '123'
@@ -77,7 +75,6 @@ describe('LineChartFlowModel', function() {
         assert.strictEqual(flow1._yFormat, null);
         assert.strictEqual(flow1._flowColor, null);
         assert.strictEqual(flow1._marker, 'none');
-        assert.strictEqual(flow1._interpolation, 'linear');
         assert.strictEqual(flow1._area, false);
         assert.strictEqual(flow1._maxItems, 50);
         assert.strictEqual(flow1._maxItemsSaved, 500);
@@ -92,7 +89,6 @@ describe('LineChartFlowModel', function() {
             yFormat: 'toFloat',
             flowColor: '#FFFFFF',
             marker: 'diamond',
-            interpolation: 'basis',
             area: true,
             maxItems: 2,
             maxItemsSaved: 1000
@@ -104,7 +100,6 @@ describe('LineChartFlowModel', function() {
         assert.strictEqual(flow1._yFormat, 'toFloat');
         assert.strictEqual(flow1._flowColor, '#FFFFFF');
         assert.strictEqual(flow1._marker, 'diamond');
-        assert.strictEqual(flow1._interpolation, 'basis');
         assert.strictEqual(flow1._area, true);
         assert.strictEqual(flow1._maxItems, 2);
         assert.strictEqual(flow1._maxItemsSaved, 1000);
@@ -163,7 +158,6 @@ describe('LineChartFlowModel', function() {
                 yFormat: 'toFloat',
                 flowColor: '#FFFFFF',
                 marker: 'diamond',
-                interpolation: 'basis',
                 area: true,
                 maxItems: 2,
                 maxItemsSaved: 1000
@@ -177,12 +171,11 @@ describe('LineChartFlowModel', function() {
                 yFormat: 'toFloat',
                 flowColor: '#FFFFFF',
                 marker: 'circle',
-                interpolation: 'basis',
                 area: true,
                 maxItems: 4,
                 maxItemsSaved: 50
             });
-            assert.deepEqual(updP,{'xKey':'temp','yKey':'press','xFormat':'toInt','yFormat':'toFloat','flowColor':'#FFFFFF','marker':'circle','interpolation':'basis','area':false,'maxItems':4,'maxItemsSaved':50});
+            assert.deepEqual(updP,{'xKey':'temp','yKey':'press','xFormat':'toInt','yFormat':'toFloat','flowColor':'#FFFFFF','marker':'circle','area':false,'maxItems':4,'maxItemsSaved':50});
         });
     });
 
@@ -196,7 +189,6 @@ describe('LineChartFlowModel', function() {
                 yFormat: 'toFloat',
                 flowColor: '#FFFFFF',
                 marker: 'diamond',
-                interpolation: 'basis',
                 area: true,
                 maxItems: 2,
                 maxItemsSaved: 1000
@@ -210,7 +202,6 @@ describe('LineChartFlowModel', function() {
             assert.strictEqual(result.yFormat, prop.yFormat);
             assert.strictEqual(result.flowColor, prop.flowColor);
             assert.strictEqual(result.marker, prop.marker);
-            assert.strictEqual(result.interpolation, prop.interpolation);
             assert.strictEqual(result.area, prop.area);
             assert.strictEqual(result.maxItems, prop.maxItems);
             assert.strictEqual(result.maxItemsSaved, prop.maxItemsSaved);

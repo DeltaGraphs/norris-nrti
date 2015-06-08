@@ -220,7 +220,7 @@ describe(&#039;TableFlow&#039;, function() {
                 ID: &#039;flow1&#039;,
                 norrisRecordID: ID
             });
-            flow1.updateRecord(ID, {temperature: 5, col1:1, col2:&#039;2&#039;, appearance:[{bg:&#039;#000&#039;, text:&#039;#FFF&#039;},{bg:&#039;#000&#039;, text:&#039;#FFF&#039;}]});
+            flow1.updateRecord(ID, {temperature: 5, col1:1, col2:&#039;2&#039;, appearance:[{bg:&#039;#000&#039;, text:&#039;#FFF&#039;},{bg:&#039;#000&#039;, text:&#039;#FFA&#039;}]});
             assert.strictEqual(mock.p1, &#039;updateFlowData&#039;);
             assert.deepEqual(mock.p2, {
                 action: &#039;insertRecords&#039;,

@@ -4289,14 +4289,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 113,
-                    "physical": 178
+                    "logical": 127,
+                    "physical": 194
                 },
                 "cyclomatic": 20,
                 "halstead": {
                     "operators": {
                         "distinct": 22,
-                        "total": 347,
+                        "total": 399,
                         "identifiers": [
                             "var",
                             "=",
@@ -4323,8 +4323,8 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 95,
-                        "total": 381,
+                        "distinct": 120,
+                        "total": 446,
                         "identifiers": [
                             "\"use strict\"",
                             "Graph",
@@ -4411,6 +4411,31 @@
                             "getProperties",
                             "getConfigJSON",
                             "configJSON",
+                            "_dataMapChart",
+                            "title",
+                            "_title",
+                            "type",
+                            "_type",
+                            "height",
+                            "_height",
+                            "width",
+                            "_width",
+                            "enableLegend",
+                            "_enableLegend",
+                            "legendOnPoint",
+                            "_legendOnPoint",
+                            "viewFinder",
+                            "_viewFinder",
+                            "horizontalGrid",
+                            "_horizontalGrid",
+                            "verticalGrid",
+                            "_verticalGrid",
+                            "legend",
+                            "_legend",
+                            "xAxis",
+                            "_xAxis",
+                            "yAxis",
+                            "_yAxis",
                             "flowProp",
                             "flowData",
                             "getData",
@@ -4423,17 +4448,17 @@
                             "exports"
                         ]
                     },
-                    "length": 728,
-                    "vocabulary": 117,
-                    "difficulty": 44.1157894736842,
-                    "volume": 5001.625515856718,
-                    "effort": 220650.65828374214,
-                    "bugs": 1.6672085052855727,
-                    "time": 12258.369904652342
+                    "length": 845,
+                    "vocabulary": 142,
+                    "difficulty": 40.88333333333333,
+                    "volume": 6041.536315981456,
+                    "effort": 246998.14305170852,
+                    "bugs": 2.013845438660485,
+                    "time": 13722.119058428252
                 },
                 "params": 12,
                 "line": 2,
-                "cyclomaticDensity": 17.699115044247787
+                "cyclomaticDensity": 15.748031496062993
             },
             "functions": [
                 {
@@ -4932,38 +4957,64 @@
                 {
                     "name": "<anonymous>.getConfigJSON",
                     "sloc": {
-                        "logical": 20,
-                        "physical": 26
+                        "logical": 34,
+                        "physical": 42
                     },
                     "cyclomatic": 3,
                     "halstead": {
                         "operators": {
                             "distinct": 11,
-                            "total": 83,
+                            "total": 135,
                             "identifiers": [
                                 "var",
                                 "=",
                                 "{}",
                                 ".",
-                                "()",
                                 "[]",
                                 "for",
                                 "<",
                                 "++ (postfix)",
+                                "()",
                                 ":",
                                 "return"
                             ]
                         },
                         "operands": {
-                            "distinct": 25,
-                            "total": 85,
+                            "distinct": 50,
+                            "total": 150,
                             "identifiers": [
                                 "configJSON",
                                 "<anonymous>",
-                                "properties",
+                                "prop",
+                                "ID",
                                 "this",
-                                "_dataLineChart",
-                                "getProperties",
+                                "_dataMapChart",
+                                "_ID",
+                                "title",
+                                "_title",
+                                "type",
+                                "_type",
+                                "height",
+                                "_height",
+                                "width",
+                                "_width",
+                                "enableLegend",
+                                "_enableLegend",
+                                "legendOnPoint",
+                                "_legendOnPoint",
+                                "viewFinder",
+                                "_viewFinder",
+                                "horizontalGrid",
+                                "_horizontalGrid",
+                                "verticalGrid",
+                                "_verticalGrid",
+                                "legend",
+                                "_legend",
+                                "xAxis",
+                                "_xAxis",
+                                "yAxis",
+                                "_yAxis",
+                                "properties",
                                 "flowProp",
                                 "flows",
                                 "_flows",
@@ -4973,11 +5024,10 @@
                                 0,
                                 "flowData",
                                 "_dataLineChartFlow",
+                                "getProperties",
                                 "push",
                                 "records",
                                 "getData",
-                                "ID",
-                                "_ID",
                                 "j",
                                 "norrisRecordID",
                                 "value",
@@ -4985,17 +5035,17 @@
                                 "_yKey"
                             ]
                         },
-                        "length": 168,
-                        "vocabulary": 36,
-                        "difficulty": 18.7,
-                        "volume": 868.5474002423084,
-                        "effort": 16241.836384531167,
-                        "bugs": 0.2895158000807695,
-                        "time": 902.3242435850648
+                        "length": 285,
+                        "vocabulary": 61,
+                        "difficulty": 16.5,
+                        "volume": 1690.2601412054228,
+                        "effort": 27889.292329889475,
+                        "bugs": 0.5634200470684743,
+                        "time": 1549.4051294383041
                     },
                     "params": 0,
                     "line": 152,
-                    "cyclomaticDensity": 15
+                    "cyclomaticDensity": 8.823529411764707
                 }
             ],
             "dependencies": [
@@ -5015,24 +5065,24 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 106.13464187295502,
-            "loc": 9.5,
+            "maintainability": 102.98365023723342,
+            "loc": 10.9,
             "cyclomatic": 2.9,
-            "effort": 3755.0686562500246,
+            "effort": 4919.814250785856,
             "params": 1.2,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/graph/lineChart.js"
         },
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 118,
-                    "physical": 186
+                    "logical": 131,
+                    "physical": 200
                 },
                 "cyclomatic": 21,
                 "halstead": {
                     "operators": {
                         "distinct": 22,
-                        "total": 364,
+                        "total": 412,
                         "identifiers": [
                             "var",
                             "=",
@@ -5059,8 +5109,8 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 97,
-                        "total": 400,
+                        "distinct": 119,
+                        "total": 460,
                         "identifiers": [
                             "\"use strict\"",
                             "Graph",
@@ -5147,6 +5197,28 @@
                             "getProperties",
                             "getConfigJSON",
                             "configJSON",
+                            "title",
+                            "_title",
+                            "type",
+                            "_type",
+                            "height",
+                            "_height",
+                            "width",
+                            "_width",
+                            "enableLegend",
+                            "_enableLegend",
+                            "legendOnPoint",
+                            "_legendOnPoint",
+                            "latitude",
+                            "_latitude",
+                            "longitude",
+                            "_longitude",
+                            "mapType",
+                            "_mapType",
+                            "mapWidth",
+                            "_mapWidth",
+                            "legend",
+                            "_legend",
                             "flowProp",
                             "flowData",
                             "getData",
@@ -5161,17 +5233,17 @@
                             "exports"
                         ]
                     },
-                    "length": 764,
-                    "vocabulary": 119,
-                    "difficulty": 45.360824742268036,
-                    "volume": 5267.640771167269,
-                    "effort": 238944.52982614413,
-                    "bugs": 1.7558802570557563,
-                    "time": 13274.696101452451
+                    "length": 872,
+                    "vocabulary": 141,
+                    "difficulty": 42.52100840336134,
+                    "volume": 6225.688779291748,
+                    "effort": 264722.56490097684,
+                    "bugs": 2.0752295930972493,
+                    "time": 14706.80916116538
                 },
                 "params": 14,
                 "line": 2,
-                "cyclomaticDensity": 17.796610169491526
+                "cyclomaticDensity": 16.030534351145036
             },
             "functions": [
                 {
@@ -5715,38 +5787,62 @@
                 {
                     "name": "<anonymous>.getConfigJSON",
                     "sloc": {
-                        "logical": 21,
-                        "physical": 27
+                        "logical": 34,
+                        "physical": 41
                     },
                     "cyclomatic": 3,
                     "halstead": {
                         "operators": {
                             "distinct": 11,
-                            "total": 90,
+                            "total": 138,
                             "identifiers": [
                                 "var",
                                 "=",
                                 "{}",
                                 ".",
-                                "()",
                                 "[]",
                                 "for",
                                 "<",
                                 "++ (postfix)",
+                                "()",
                                 ":",
                                 "return"
                             ]
                         },
                         "operands": {
-                            "distinct": 27,
-                            "total": 93,
+                            "distinct": 50,
+                            "total": 153,
                             "identifiers": [
                                 "configJSON",
                                 "<anonymous>",
-                                "properties",
+                                "prop",
+                                "ID",
                                 "this",
                                 "_dataMapChart",
-                                "getProperties",
+                                "_ID",
+                                "title",
+                                "_title",
+                                "type",
+                                "_type",
+                                "height",
+                                "_height",
+                                "width",
+                                "_width",
+                                "enableLegend",
+                                "_enableLegend",
+                                "legendOnPoint",
+                                "_legendOnPoint",
+                                "latitude",
+                                "_latitude",
+                                "longitude",
+                                "_longitude",
+                                "mapType",
+                                "_mapType",
+                                "mapWidth",
+                                "_mapWidth",
+                                "legend",
+                                "_legend",
+                                "properties",
                                 "flowProp",
                                 "flows",
                                 "_flows",
@@ -5756,11 +5852,10 @@
                                 0,
                                 "flowData",
                                 "_dataMapChartFlow",
+                                "getProperties",
                                 "push",
                                 "records",
                                 "getData",
-                                "ID",
-                                "_ID",
                                 "j",
                                 "norrisRecordID",
                                 "markerID",
@@ -5770,17 +5865,17 @@
                                 "_longitudeKey"
                             ]
                         },
-                        "length": 183,
-                        "vocabulary": 38,
-                        "difficulty": 18.944444444444446,
-                        "volume": 960.3707349601762,
-                        "effort": 18193.69003452334,
-                        "bugs": 0.3201235783200587,
-                        "time": 1010.7605574735189
+                        "length": 291,
+                        "vocabulary": 61,
+                        "difficulty": 16.830000000000002,
+                        "volume": 1725.8445652308,
+                        "effort": 29045.964032834367,
+                        "bugs": 0.5752815217436,
+                        "time": 1613.6646684907982
                     },
                     "params": 0,
                     "line": 159,
-                    "cyclomaticDensity": 14.285714285714285
+                    "cyclomaticDensity": 8.823529411764707
                 }
             ],
             "dependencies": [
@@ -5800,10 +5895,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 107.19750598604632,
-            "loc": 9,
+            "maintainability": 104.36263548226304,
+            "loc": 10.181818181818182,
             "cyclomatic": 2.8181818181818183,
-            "effort": 3562.1351819787455,
+            "effort": 4548.7055454615665,
             "params": 1.2727272727272727,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/graph/mapChart.js"
         },
@@ -17928,9 +18023,9 @@
     ],
     "changeCost": 21.09375,
     "coreSize": 31.25,
-    "loc": 10.562063804251306,
+    "loc": 10.642745622433123,
     "cyclomatic": 4.333965513653014,
-    "effort": 8096.605085797863,
+    "effort": 8163.833709485945,
     "params": 1.1223014832389835,
-    "maintainability": 104.95276380151238
+    "maintainability": 104.76570560965285
 }

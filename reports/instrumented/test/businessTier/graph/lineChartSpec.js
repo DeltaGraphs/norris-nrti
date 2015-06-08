@@ -98,8 +98,8 @@ describe('LineChart', function() {
             var lc=lineChart.createLineChartFlow({ ID:'flow1', name: 'grafico tempo-temperatura', xKey: 'tempo', yKey: 'temperatura'});
             assert.strictEqual(lc.hasOwnProperty('_dataLineChartFlow'),true);
             assert.strictEqual(mock.p1,'insertFlow');
-            assert.strictEqual(mock.p2.ID, 'flow1');
-            assert.strictEqual(mock.p2.name, 'grafico tempo-temperatura');
+            assert.strictEqual(mock.p2.properties.ID, 'flow1');
+            assert.strictEqual(mock.p2.properties.name, 'grafico tempo-temperatura');
         });
     });
     describe('#deleteFlow', function() {
@@ -203,7 +203,7 @@ describe('LineChart', function() {
             var lineChart=new LineChart({ID: 'dada'}, {_page: 'dssada'}, mock);
             lineChart.createLineChartFlow({ ID:'flow1', name: 'grafico tempo-temperatura', xKey: 'tempo', yKey: 'temperatura'});
             var ID=lineChart.addRecord('flow1',{'tempo': 1, 'temperatura': 25});
-            assert.deepEqual(lineChart.getConfigJSON(),{'properties':{'ID':'dada','title':'','type':'LineChart','height':400,'width':500,'enableLegend':false,'legend':{'position':'NE','fontColor':'#000000','backgroundColor':'#FFFFFF'},'horizontalGrid':false,'verticalGrid':false,'viewFinder':false,'xAxis':{'name':'','color':'#000000','maxIndex':null,'minIndex':null,'ticks':10,'scale':'linear'},'yAxis':{'name':'','color':'#000000','maxIndex':null,'minIndex':null,'ticks':10,'scale':'linear'},'backgroundColor':'#FFFFFF','legendOnPoint':false,'flows':[{'ID':'flow1','name':'grafico tempo-temperatura','filters':null,'xKey':'tempo','yKey':'temperatura','xFormat':null,'yFormat':null,'flowColor':null,'marker':'none','interpolation':'linear','area':false,'maxItems':50,'maxItemsSaved':500}]},'data':[{'ID':'flow1','records':[{norrisRecordID: ID, value: [1,25]}]}]});
+            assert.deepEqual(lineChart.getConfigJSON(),{'properties':{'ID':'dada','title':'','type':'LineChart','height':400,'width':500,'enableLegend':false,'legend':{'position':'NE','fontColor':'#000000','backgroundColor':'#FFFFFF'},'horizontalGrid':false,'verticalGrid':false,'viewFinder':false,'xAxis':{'name':'','color':'#000000','maxIndex':null,'minIndex':null,'ticks':10,'scale':'linear'},'yAxis':{'name':'','color':'#000000','maxIndex':null,'minIndex':null,'ticks':10,'scale':'linear'},'backgroundColor':'#FFFFFF','legendOnPoint':false,'flows':[{'ID':'flow1','name':'grafico tempo-temperatura','filters':null,'xKey':'tempo','yKey':'temperatura','xFormat':null,'yFormat':null,'flowColor':null,'marker':'none','area':false,'maxItems':50,'maxItemsSaved':500}]},'data':[{'ID':'flow1','records':[{norrisRecordID: ID, value: [1,25]}]}]});
         });
     });
 

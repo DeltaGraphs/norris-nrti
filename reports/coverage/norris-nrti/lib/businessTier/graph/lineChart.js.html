@@ -12,13 +12,13 @@
     </style>
 </head>
 <body>
-<div class="header high">
+<div class="header medium">
     <h1>Code coverage report for <span class="entity">norris-nrti/lib/businessTier/graph/lineChart.js</span></h1>
     <h2>
-        Statements: <span class="metric">100% <small>(104 / 104)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">77.12% <small>(91 / 118)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Branches: <span class="metric">100% <small>(32 / 32)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Functions: <span class="metric">100% <small>(10 / 10)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">100% <small>(104 / 104)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">77.12% <small>(91 / 118)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
     <div class="path"><a href="../../../../index.html">All files</a> &#187; <a href="index.html">norris-nrti/lib/businessTier/graph/</a> &#187; lineChart.js</div>
@@ -204,7 +204,23 @@
 177
 178
 179
-180</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -359,16 +375,32 @@
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -376,10 +408,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
@@ -536,18 +568,34 @@ LineChart.prototype.getProperties = function(){
 &nbsp;
 LineChart.prototype.getConfigJSON = function(){
 	var configJSON={};
-	configJSON.properties=this._dataLineChart.getProperties();
-	var flowProp=[];
-	var flows=this._flows.length;
-	configJSON.data=[];
-	for (var i=0; i&lt;flows; i++){
-		var flowData={};
-		flowProp.push(this._flows[i]._dataLineChartFlow.getProperties());
-		var records=this._flows[i]._dataLineChartFlow.getData();
-		flowData.ID=this._flows[i]._dataLineChartFlow._ID;
-		flowData.records=[];
-		for (var j=0; j&lt;records.length; j++){
-			flowData.records.push({
+	var prop={};
+	prop.ID=this._dataMapChart._ID;
+<span class="cstat-no" title="statement not covered" >	prop.title=this._dataMapChart._title;</span>
+<span class="cstat-no" title="statement not covered" >	prop.type=this._dataMapChart._type;</span>
+<span class="cstat-no" title="statement not covered" >	prop.height=this._dataMapChart._height;</span>
+<span class="cstat-no" title="statement not covered" >	prop.width=this._dataMapChart._width;</span>
+<span class="cstat-no" title="statement not covered" >	prop.enableLegend=this._dataMapChart._enableLegend;</span>
+<span class="cstat-no" title="statement not covered" >	prop.legendOnPoint=this._dataMapChart._legendOnPoint;</span>
+<span class="cstat-no" title="statement not covered" >	prop.viewFinder=this._dataMapChart._viewFinder;</span>
+<span class="cstat-no" title="statement not covered" >	prop.horizontalGrid=this._dataMapChart._horizontalGrid;</span>
+<span class="cstat-no" title="statement not covered" >	prop.verticalGrid=this._dataMapChart._verticalGrid;</span>
+<span class="cstat-no" title="statement not covered" >	prop.legend=this._dataMapChart._legend;</span>
+<span class="cstat-no" title="statement not covered" >	prop.xAxis=this._dataMapChart._xAxis;</span>
+<span class="cstat-no" title="statement not covered" >	prop.yAxis=this._dataMapChart._yAxis;</span>
+<span class="cstat-no" title="statement not covered" >	configJSON.properties=prop;</span>
+	
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	var flowProp=[];</span>
+<span class="cstat-no" title="statement not covered" >	var flows=this._flows.length;</span>
+<span class="cstat-no" title="statement not covered" >	configJSON.data=[];</span>
+<span class="cstat-no" title="statement not covered" >	for (var i=0; i&lt;flows; i++){</span>
+<span class="cstat-no" title="statement not covered" >		var flowData={};</span>
+<span class="cstat-no" title="statement not covered" >		flowProp.push(this._flows[i]._dataLineChartFlow.getProperties());</span>
+<span class="cstat-no" title="statement not covered" >		var records=this._flows[i]._dataLineChartFlow.getData();</span>
+<span class="cstat-no" title="statement not covered" >		flowData.ID=this._flows[i]._dataLineChartFlow._ID;</span>
+<span class="cstat-no" title="statement not covered" >		flowData.records=[];</span>
+<span class="cstat-no" title="statement not covered" >		for (var j=0; j&lt;records.length; j++){</span>
+<span class="cstat-no" title="statement not covered" >			flowData.records.push({</span>
 				norrisRecordID : records[j].norrisRecordID,
 				value: [ //x,y
 					records[j][this._flows[i]._dataLineChartFlow._xKey],
@@ -555,10 +603,10 @@ LineChart.prototype.getConfigJSON = function(){
 				]
 			});
 		}
-		configJSON.data.push(flowData);
+<span class="cstat-no" title="statement not covered" >		configJSON.data.push(flowData);</span>
 	}
-	configJSON.properties.flows=flowProp;
-	return configJSON;
+<span class="cstat-no" title="statement not covered" >	configJSON.properties.flows=flowProp;</span>
+<span class="cstat-no" title="statement not covered" >	return configJSON;</span>
 };
 &nbsp;
 module.exports = LineChart;
@@ -567,7 +615,7 @@ module.exports = LineChart;
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Jun 08 2015 12:53:16 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Jun 08 2015 13:08:31 GMT+0000 (UTC)</div>
 </div>
 <script src="../../../../prettify.js"></script>
 <script>

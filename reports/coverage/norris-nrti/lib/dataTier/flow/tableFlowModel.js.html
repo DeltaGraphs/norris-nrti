@@ -15,10 +15,10 @@
 <div class="header high">
     <h1>Code coverage report for <span class="entity">norris-nrti/lib/dataTier/flow/tableFlowModel.js</span></h1>
     <h2>
-        Statements: <span class="metric">96.91% <small>(94 / 97)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Branches: <span class="metric">96.43% <small>(81 / 84)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">100% <small>(97 / 97)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">98.81% <small>(83 / 84)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Functions: <span class="metric">100% <small>(5 / 5)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">96.91% <small>(94 / 97)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">100% <small>(97 / 97)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
     <div class="path"><a href="../../../../index.html">All files</a> &#187; <a href="index.html">norris-nrti/lib/dataTier/flow/</a> &#187; tableFlowModel.js</div>
@@ -305,45 +305,45 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">17</span>
+<span class="cline-any cline-yes">18</span>
 <span class="cline-any cline-yes">5</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">12</span>
-<span class="cline-any cline-yes">9</span>
-<span class="cline-any cline-yes">9</span>
-<span class="cline-any cline-yes">9</span>
-<span class="cline-any cline-yes">9</span>
-<span class="cline-any cline-yes">9</span>
-<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">13</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">7</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
 <span class="cline-any cline-yes">6</span>
-<span class="cline-any cline-yes">6</span>
-<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
 <span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-yes">4</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6</span>
-<span class="cline-any cline-yes">6</span>
-<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3</span>
@@ -494,19 +494,19 @@ TableFlowModel.prototype.updateRecord = function(ID, record){
 			if (record.appearance!==undefined &amp;&amp; Array.isArray(record.appearance) &amp;&amp; record.appearance.length!==0){
 				var valid=true;
 				for (var key in record.appearance){
-					<span class="missing-if-branch" title="if path not taken" >I</span>if (record.appearance[key].bg===undefined ||
+					if (record.appearance[key].bg===undefined ||
 						!Helper.isHEX(record.appearance[key].bg) ||
 						record.appearance[key].text===undefined ||
 						!Helper.isHEX(record.appearance[key].text)){
-<span class="cstat-no" title="statement not covered" >						valid=false;</span>
-<span class="cstat-no" title="statement not covered" >						break;</span>
+						valid=false;
+						break;
 					}
 				}
-				<span class="missing-if-branch" title="else path not taken" >E</span>if (valid){
+				if (valid){
 					this._records[i].appearance=record.appearance;
 				}
 				else{
-<span class="cstat-no" title="statement not covered" >					this._records[i].appearance=undefined;</span>
+					this._records[i].appearance=undefined;
 				}
 			}
 			this._records[i].norrisRecordID=oldID;
@@ -534,7 +534,7 @@ module.exports = TableFlowModel;</pre></td></tr>
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Jun 08 2015 12:53:16 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Jun 08 2015 13:08:31 GMT+0000 (UTC)</div>
 </div>
 <script src="../../../../prettify.js"></script>
 <script>
