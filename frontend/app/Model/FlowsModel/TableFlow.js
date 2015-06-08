@@ -33,8 +33,8 @@ angular.module('app')
 	        }
 
 	        
-	        if (json.maxItem !== undefined) {
-	            tableFlowJson.maxItem = json.maxItem;
+	        if (json.maxItems !== undefined) {
+	            tableFlowJson.maxItems = json.maxItems;
 	        }
 	    }
 
@@ -48,7 +48,7 @@ angular.module('app')
 
     function TableFlow(info) {
     	this._data = [];
-		this._maxItem = 100;
+		this._maxItems = 100;
 
 		var json = split(info);
 		var fJson = json.flowJson;
@@ -72,8 +72,8 @@ angular.module('app')
 			}
 
 			if (Object.keys(tfJson).length !== 0) {
-		        if (tfJson.maxItem !== undefined) {
-		            this._maxItem = tfJson.maxItem;
+		        if (tfJson.maxItems !== undefined) {
+		            this._maxItems = tfJson.maxItems;
 		        }
 		    }
 		}

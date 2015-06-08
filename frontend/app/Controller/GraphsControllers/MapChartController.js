@@ -42,14 +42,14 @@ angular.module('app')
 		socket.on('configGraph', function(info){
 			if (count === 0) {
 				console.log('MAPCHART configGraph');
+				count++;
 				$scope.mapChart.updateParameters(info.properties);
 				$scope.mapChart.initializeData(info.data);
 				$scope.changedP = !$scope.changedP;
 				$scope.changedD = !$scope.changedD;
-				count++;
 	        }
 		});
-		/*socket.on('updateGraphProp', function(info){
+		socket.on('updateGraphProp', function(info){
 			console.log('MAPCHART updateGraphProp');
 			$scope.mapChart.updateParameters(info);
 			$scope.changedP = !$scope.changedP;
@@ -94,7 +94,7 @@ angular.module('app')
 					break;
 			}
 			$scope.changedD = !$scope.changedD;
-		});*/
+		});
 
 	};
 

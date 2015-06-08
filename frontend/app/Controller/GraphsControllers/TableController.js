@@ -64,22 +64,27 @@ angular.module('app')
 		},
 		'data': [
 			{
-				'flowID': 'flow1',
+				'ID': 'flow1',
 				'records': [
-					{
-						'norrisRecordID': 'xxx', // porn stuff
-						'values': [5, 3],
-						'appearance': [
-							{
-								'bg': '#FFFFFF',
-								'text': '#FFFFFF'
-							},
-							{
-								'bg': '#FFFFFF',
-								'text': '#FFFFFF'							
-							}
-						]
-					}
+					{'norrisRecordID': 'xx1', 'value': [1, 1]},
+					{'norrisRecordID': 'xx2', 'value': [2, 32]},
+					{'norrisRecordID': 'xx3', 'value': [3, 324]},
+					{'norrisRecordID': 'xx4', 'value': [4, 354]},
+					{'norrisRecordID': 'xx5', 'value': [5, 73]},
+					{'norrisRecordID': 'xx6', 'value': [6, 33]},
+					{'norrisRecordID': 'xx7', 'value': [7, 33]},
+					{'norrisRecordID': 'xx8', 'value': [8, 36]},
+					{'norrisRecordID': 'xx9', 'value': [9, 36]},
+					{'norrisRecordID': 'x10', 'value': [10, 31]},
+					{'norrisRecordID': 'x11', 'value': [11, 31]},
+					{'norrisRecordID': 'x12', 'value': [11, 30]},
+					{'norrisRecordID': 'x13', 'value': [12, 4]},
+					{'norrisRecordID': 'x14', 'value': [17, 2]},
+					{'norrisRecordID': 'x15', 'value': [17, 12]},
+					{'norrisRecordID': 'x16', 'value': [50, 21]},
+					{'norrisRecordID': 'x17', 'value': [50, 2]},
+					{'norrisRecordID': 'x18', 'value': [51, 1]},
+					{'norrisRecordID': 'x19', 'value': [52, 3]},
 				]
 			}
 		]

@@ -36,9 +36,9 @@ angular.module('app')
 		if (json.width !== undefined) {
 			graphJson.width = json.width;
 		}
-		if (json.enabledLegend !== undefined) {
-			graphJson.enabledLegend = json.enabledLegend;
-			if (json.legend !== undefined  && graphJson.enabledLegend !== false) {
+		if (json.enableLegend !== undefined) {
+			graphJson.enableLegend = json.enableLegend;
+			if (json.legend !== undefined  && graphJson.enableLegend !== false) {
 				graphJson.legend = json.legend;
 			}
 		}
@@ -143,11 +143,10 @@ angular.module('app')
 
     Table.prototype.initializeData = function(newData) {  //inizialization data of flows
         if (newData !== undefined) {
-            var fList = this._graph.getFlowList();
             for (var i=0; i<newData.length; i++) {
-                for (var j=0; j<fList.length; j++) {
-                    if (fList[j].id === newData[i].ID) {
-                        fList[j].flow.initializeData(newData[i]);
+                for (var j=0; j<this._graph.getFlowList().length; j++) {
+                    if (this._graph.getFlowList()[j].id === newData[i].ID) {
+                        this._graph.getFlowList()[j].flow.initializeData(newData[i]);
                     }
                 }
             }
