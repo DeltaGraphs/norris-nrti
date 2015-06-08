@@ -1,8 +1,8 @@
 Mean per-function logical LOC: 10.642745622433123
 Mean per-function parameter count: 1.1223014832389835
 Mean per-function cyclomatic complexity: 4.333965513653014
-Mean per-function Halstead effort: 8163.833709485945
-Mean per-module maintainability index: 104.76570560965285
+Mean per-function Halstead effort: 8169.779644337936
+Mean per-module maintainability index: 104.76154417885985
 First-order density: 5.859375%
 Change cost: 21.09375%
 Core size: 31.25%
@@ -664,7 +664,7 @@ Core size: 31.25%
   Mean parameter count: 1.2
   Cyclomatic complexity: 20
   Cyclomatic complexity density: 15.748031496062993%
-  Maintainability index: 102.98365023723342
+  Maintainability index: 102.88389770047017
   Dependency count: 3
 
   Function: LineChart
@@ -773,9 +773,9 @@ Core size: 31.25%
     Parameter count: 0
     Cyclomatic complexity: 3
     Cyclomatic complexity density: 8.823529411764707%
-    Halstead difficulty: 16.5
-    Halstead volume: 1690.2601412054228
-    Halstead effort: 27889.292329889475
+    Halstead difficulty: 16.830000000000002
+    Halstead volume: 1743.6367772434887
+    Halstead effort: 29345.406961007917
 
 /home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/graph/mapChart.js
 
@@ -784,7 +784,7 @@ Core size: 31.25%
   Mean parameter count: 1.2727272727272727
   Cyclomatic complexity: 21
   Cyclomatic complexity density: 16.030534351145036%
-  Maintainability index: 104.36263548226304
+  Maintainability index: 104.3292222336504
   Dependency count: 3
 
   Function: MapChart
@@ -904,9 +904,9 @@ Core size: 31.25%
     Parameter count: 0
     Cyclomatic complexity: 3
     Cyclomatic complexity density: 8.823529411764707%
-    Halstead difficulty: 16.830000000000002
-    Halstead volume: 1725.8445652308
-    Halstead effort: 29045.964032834367
+    Halstead difficulty: 16.94
+    Halstead volume: 1743.6367772434887
+    Halstead effort: 29537.2070065047
 
 /home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/graph/table.js
 
