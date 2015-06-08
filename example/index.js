@@ -285,7 +285,7 @@ var repeatBar=function(){
     }
     console.log('barchart index: '+index3);
     index3++;
-    if (index3>=4){
+    if (index3>4){
         index3=0;
         barChart.deleteAllFlows();
     }else{
