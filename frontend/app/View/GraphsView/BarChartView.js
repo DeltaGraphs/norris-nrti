@@ -82,20 +82,23 @@ angular.module('app')
                 if (scope.$parent.barChart.getBarOrientation() === 'V'){
                     barchart = '<div class="graphtitle">'+ scope.$parent.barChart.getTitle() +'</div>' +
                                 '<nvd3-multi-bar-chart data="data" nodata=" " id="'+ id +'" ' +
-                                'xaxisticksformat="xAxisTickFormatFunction()" showxaxis="true" showyaxis="true" ' +
+                                'xaxisticksformat="xAxisTickFormatFunction()" yaxistickformat="yAxisTickFormatFunction()" showxaxis="true" showyaxis="true" ' +
                                 'rotatelabels="-90" interactive="true" tooltips="'+ onPoint +'" showlegend="'+ legend +'" ' +
                                 'xaxislabel="'+ scope.$parent.barChart.getX().getName() +'" ' +
-                                'showcontrols="'+ control +'" color="colorFunction()" ' +
+                                'showcontrols="'+ control + '" ' +
+                                //+'" color="colorFunction()" ' +
                                 'width="'+ scope.$parent.barChart.getWidth() +'" height="'+ scope.$parent.barChart.getHeight() +'">' +
-                                '<svg></svg></nvd3-multi-bar-horizontal-chart>';
+                                '<svg></svg></nvd3-multi-bar-chart>';
                     //barchart = barchart + '<svg width="'+ scope.$parent.barChart.getWidth() +'" height="'+ scope.$parent.barChart.getHeight() +'"></svg></nvd3-multi-bar-chart>';
                 }else if(scope.$parent.barChart.getBarOrientation() === 'H'){
                     barchart = '<div class="graphtitle">'+ scope.$parent.barChart.getTitle() +'</div>' +
                                 '<nvd3-multi-bar-horizontal-chart data="data" nodata=" " id="'+ id +'" ' +
                                 'xaxisticksformat="xAxisTickFormatFunction()" yaxistickformat="yAxisTickFormatFunction()" showxaxis="true" showyaxis="true" ' +
                                 'rotatelabels="-90" interactive="true" tooltips="'+ onPoint +'" showlegend="'+ legend +'" ' +
-                                'xaxislabel="'+ scope.$parent.barChart.getX().getName() +'" ' +
-                                'showcontrols="'+ control +'" color="colorFunction()" ' +
+                                'xaxislabel="'+ scope.$parent.barChart.getX().getName() +'" showValues="true" ' +
+                                'showcontrols="'+ control + '" ' +
+                                //+'" color="colorFunction()" ' +
+                                //'showcontrols="'+ control +'" color="colorFunction()" ' +
                                 'width="'+ scope.$parent.barChart.getWidth() +'" height="'+ scope.$parent.barChart.getHeight() +'">' +
                                 '<svg></svg></nvd3-multi-bar-horizontal-chart>';
                     //barchart = barchart + '<svg width="'+ scope.$parent.barChart.getWidth() +'" height="'+ scope.$parent.barChart.getHeight() +'"></svg></nvd3-multi-bar-horizontal-chart>';
@@ -136,10 +139,22 @@ angular.module('app')
             scope.colorArray = [];
             scope.colorFunction = function() {
                 return function(d, i) {
-                    return scope.colorArray;
+                    return scope.colorArray[i];
+                };
+            };
+/*
+            scope.xAxisTickFormatFunction = function(){
+                return function(d){
+                    return d;
                 };
             };
 
+            scope.yAxisTickFormatFunction = function(){
+                return function(d){
+                    return d;
+                };
+            };
+*/
             scope.setData = function(){
                 var data = [];
                 var colorArray = [];
@@ -161,19 +176,19 @@ angular.module('app')
                             return (a[0] < b[0]) ? -1 : 1;
                         }
                     });
-                    for (var z=0; z<values.length; z++){
+                    /*for (var z=0; z<values.length; z++){
                         console.log('[' + values[z][0] + ',' + values[z][1] + ']');
-                    }
+                    }*/
                     for (var y=0; y<values.length; y++){
                         values[y][0] = scope.$parent.barChart.getHeaders()[values[y][0]-1];
                     }
-                    for (var g=0; g<values.length; g++){
+                    /*for (var g=0; g<values.length; g++){
                         console.log('[' + values[g][0] + ',' + values[g][1] + ']');
-                    }
+                    }*/
                     data.push({ 'key': key, 'values': values});
                 }
                 scope.data = data;
-                console.log(' data.length ' + data.length);
+                //console.log(' data.length ' + data.length);
                 scope.colorArray = colorArray;
 
             };

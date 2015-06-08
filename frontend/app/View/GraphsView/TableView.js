@@ -53,16 +53,10 @@ angular.module('app')
             scope.init = function(){
                 console.log('TABLE init');
             	element.empty();
-                /*var  table = '<div class="ng-cloak ng-table-pager" ng-if="params.data.length">' +
-                                    '<div ng-if="params.settings().counts.length" class="ng-table-counts btn-group pull-right">' +
-                                        '<button ng-repeat="count in params.settings().counts" type="button"' +
-                                            'ng-class="{\'active\':params.count() == count}"' +
-                                            'ng-click="params.count(count)" class="btn btn-default">' +
-                                            '<span ng-bind="count"></span>' +
-                                        '</button>' +
-                                    '</div>' +
+                var table = '<div ng-table-pagination="tableParams" template-url="\'pager.html\'"></div>';
+                table = table + '<div ng-table-pagination="tableParams">' +
                                     '<ul class="pagination ng-table-pagination">' +
-                                        '<li ng-class="{\'disabled\': !page.active && !page.current, \'active\': page.current}" ng-repeat="page in pages" ng-switch="page.type">' +
+                                        '<li ng-class="{\'disabled\': !page.active}" ng-repeat="page in pages" ng-switch="page.type">' +
                                             '<a ng-switch-when="prev" ng-click="params.page(page.number)" href="">&laquo;</a>' +
                                             '<a ng-switch-when="first" ng-click="params.page(page.number)" href=""><span ng-bind="page.number"></span></a>' +
                                             '<a ng-switch-when="page" ng-click="params.page(page.number)" href=""><span ng-bind="page.number"></span></a>' +
@@ -72,22 +66,11 @@ angular.module('app')
                                         '</li>' +
                                     '</ul>' +
                                 '</div>';
-                table = '<div ng-table-pagination="tableParams">' +
-                                '<ul class="pagination ng-table-pagination">' +
-                                    '<li ng-class="{\'disabled\': !page.active}" ng-repeat="page in pages" ng-switch="page.type">' +
-                                        '<a ng-switch-when="prev" ng-click="params.page(page.number)" href="">&laquo;</a>' +
-                                        '<a ng-switch-when="first" ng-click="params.page(page.number)" href=""><span ng-bind="page.number"></span></a>' +
-                                        '<a ng-switch-when="page" ng-click="params.page(page.number)" href=""><span ng-bind="page.number"></span></a>' +
-                                        '<a ng-switch-when="more" ng-click="params.page(page.number)" href="">&#8230;</a>' +
-                                        '<a ng-switch-when="last" ng-click="params.page(page.number)" href=""><span ng-bind="page.number"></span></a>' +
-                                        '<a ng-switch-when="next" ng-click="params.page(page.number)" href="">&raquo;</a>' +
-                                    '</li>' +
-                                '</ul>' +
-                            '</div>';*/
-                var table =     '<div class="graphtitle">'+ scope.$parent.table.getTitle() +'</div>' +
-                            '<p><strong>Page:</strong> {{tableParams.page()}}' +
-                            '<p><strong>Count per page:</strong> {{tableParams.count()}}' +                                
-                            '<table ng-table="tableParams" class="table"><tr ng-repeat="record in data">';
+
+                table =  table + '<div class="graphtitle">'+ scope.$parent.table.getTitle() +'</div>' +
+                        '<p><strong>Page:</strong> {{tableParams.page()}}' +
+                        '<p><strong>Count per page:</strong> {{tableParams.count()}}' +                                
+                        '<table ng-table="tableParams" class="ng-table"><tr ng-repeat="record in data">';
 
                 for (var i=0; i<scope.$parent.table.getHeaders().length; i++){
 
@@ -114,9 +97,9 @@ angular.module('app')
                     data.push(record);
                 }
                 console.log('data length ' +data.length);
-                for (var g=0; g<data.length; g++) {
+                /*for (var g=0; g<data.length; g++) {
                     console.log('TABLE data: ' + JSON.stringify(data[g]));
-                }
+                }*/
                 scope.data = data;
                 scope.tableParams = new ngTableParams({
                     page: 1,            // show first page

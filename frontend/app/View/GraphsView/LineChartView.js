@@ -91,8 +91,8 @@ angular.module('app')
                                 '<nvd3-line-with-focus-chart data="data" nodata=" " id="'+ id +'" ' +
                                 'yaxistickformat="yAxisTickFormatFunction()" xaxistickformat="xAxisTickFormatFunction()" x2axistickformat="x2AxisTickFormatFunction()" ' +
                                 'margin="{left:80,top:50,bottom:30,right:50}" margin2="{left:80,top:50,bottom:30,right:50}" interactive="true" showlegend="'+ legend +'" tooltips="'+ onPoint +'" ' +
-                                'xaxisrotatelabels="-90" x2axisrotatelables="-90" interpolate="' + scope.$parent.lineChart.getInterpolation() +'" ' + // perchè colorFunction ritorna null per adesso
-                                'color="colorFunction()">' + 
+                                'color="colorFunction()"' + 
+                                'xaxisrotatelabels="-90" x2axisrotatelables="-90" interpolate="' + scope.$parent.lineChart.getInterpolation() +'">' + // perchè colorFunction ritorna null per adesso
                                 '<svg style="width: '+ scope.$parent.lineChart.getWidth() +'px; height: '+ scope.$parent.lineChart.getHeight() +'px;"></svg></nvd3-line-with-focus-chart>';
                 } else {
                     linechart = '<div class="graphtitle">'+ scope.$parent.lineChart.getTitle() +'</div>' +
@@ -131,7 +131,7 @@ angular.module('app')
             scope.colorArray = [];
             scope.colorFunction = function() {
                 return function(d, i) {
-                    return scope.colorArray;
+                    return scope.colorArray[i];
                 };
             };
 
