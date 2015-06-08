@@ -24,7 +24,7 @@ angular.module('app')
             url: '@'
 		},
 		bindToController: true,
-        template: '<div></div><div></div>',
+        template: '<div></div><div></div><div></div>',
     	link: function (scope, element, attrs) {
 
             attrs.$observe('url', function(value) {
@@ -37,6 +37,11 @@ angular.module('app')
             scope.$parent.$watch('changedP', function(newValue, oldValue){
                 if (newValue !== oldValue) {
                     console.log('MAPCHART watch changedP');
+                    var parentTitle = element.children()[0];
+                    var text = document.createTextNode(scope.$parent.mapChart.getTitle());
+                    parentTitle.appendChild(text);
+                    var parentMap = element.children()[1];
+                    parentMap.setAttribute('style', 'height:'+ scope.$parent.mapChart.getHeight() +'px;width:'+ scope.$parent.mapChart.getWidth() +'px');
                     scope.init();
                 }
             }, true);
@@ -75,7 +80,7 @@ angular.module('app')
                     overviewMapControl: false
                 };
 
-                map = new google.maps.Map(element.children()[0], mapOptions);
+                map = new google.maps.Map(element.children()[1], mapOptions);
 
                 switch (scope.$parent.mapChart.getMapType()) {
                     case 'roadmap':
@@ -109,9 +114,6 @@ angular.module('app')
                     }
                 }
                 scope.legend();
-
-                parent = element.children()[0];
-                parent.setAttribute('style', 'height:'+ scope.$parent.mapChart.getHeight() +'px;width:'+ scope.$parent.mapChart.getWidth() +'px');
             };
 
             scope.render = function(){
@@ -176,7 +178,7 @@ angular.module('app')
                         markers.push(marker);
 
                     }
-                    console.log('fine render');
+                    
                 }
 
 
@@ -191,11 +193,13 @@ angular.module('app')
                         stepDisplay.open(map, marker);
                     });
                 }
+
+                console.log('fine render');
                 
             };
 
             scope.legend = function() {
-                var parent = element.children()[1];
+                var parent = element.children()[2];
                 while(parent.firstChild) {
                     parent.removeChild(parent.firstChild);
                 }
