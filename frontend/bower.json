@@ -7,8 +7,6 @@
 		"angular-route": "latest",
 		"sio-client": "latest",
 		"d3": "latest",
-		"nvd3": "latest",
-		"angularjs-nvd3-directives": "latest",
 		"ng-table": "latest"
 	},
 	"devDependencies": {
