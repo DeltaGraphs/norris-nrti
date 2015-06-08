@@ -343,7 +343,7 @@ var myVar3=setInterval(function () {repeatBar();}, 5000);
 //TEST TABLE
 /////////////////////////////////////////////////
 var table=page1.createTable({
-    ID: 'bar1',
+    ID: 'table1',
     title: 'Tabella',
     height: 600,
     width: 1000,
