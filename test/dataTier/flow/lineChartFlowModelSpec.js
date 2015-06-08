@@ -51,7 +51,7 @@ describe('LineChartFlowModel', function() {
         assert.strictEqual(flow1._flowColor, null);
         assert.strictEqual(flow1._marker, 'none');
         assert.strictEqual(flow1._interpolation, 'linear');
-        assert.strictEqual(flow1._area, 'none');
+        assert.strictEqual(flow1._area, false);
         assert.strictEqual(flow1._maxItems, 50);
         assert.strictEqual(flow1._maxItemsSaved, 500);
     });
@@ -78,7 +78,7 @@ describe('LineChartFlowModel', function() {
         assert.strictEqual(flow1._flowColor, null);
         assert.strictEqual(flow1._marker, 'none');
         assert.strictEqual(flow1._interpolation, 'linear');
-        assert.strictEqual(flow1._area, 'none');
+        assert.strictEqual(flow1._area, false);
         assert.strictEqual(flow1._maxItems, 50);
         assert.strictEqual(flow1._maxItemsSaved, 500);
     });
@@ -93,7 +93,7 @@ describe('LineChartFlowModel', function() {
             flowColor: '#FFFFFF',
             marker: 'diamond',
             interpolation: 'basis',
-            area: '#012345',
+            area: true,
             maxItems: 2,
             maxItemsSaved: 1000
         });
@@ -105,7 +105,7 @@ describe('LineChartFlowModel', function() {
         assert.strictEqual(flow1._flowColor, '#FFFFFF');
         assert.strictEqual(flow1._marker, 'diamond');
         assert.strictEqual(flow1._interpolation, 'basis');
-        assert.strictEqual(flow1._area, '#012345');
+        assert.strictEqual(flow1._area, true);
         assert.strictEqual(flow1._maxItems, 2);
         assert.strictEqual(flow1._maxItemsSaved, 1000);
     });
@@ -164,7 +164,7 @@ describe('LineChartFlowModel', function() {
                 flowColor: '#FFFFFF',
                 marker: 'diamond',
                 interpolation: 'basis',
-                area: '#012345',
+                area: true,
                 maxItems: 2,
                 maxItemsSaved: 1000
             };
@@ -178,7 +178,7 @@ describe('LineChartFlowModel', function() {
                 flowColor: '#FFFFFF',
                 marker: 'circle',
                 interpolation: 'basis',
-                area: '#0F2345',
+                area: true,
                 maxItems: 4,
                 maxItemsSaved: 50
             });
@@ -197,7 +197,7 @@ describe('LineChartFlowModel', function() {
                 flowColor: '#FFFFFF',
                 marker: 'diamond',
                 interpolation: 'basis',
-                area: '#012345',
+                area: true,
                 maxItems: 2,
                 maxItemsSaved: 1000
             };
