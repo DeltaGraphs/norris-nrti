@@ -182,7 +182,7 @@ describe('LineChartFlowModel', function() {
                 maxItems: 4,
                 maxItemsSaved: 50
             });
-            assert.deepEqual(updP,{'xKey':'temp','yKey':'press','xFormat':'toInt','yFormat':'toFloat','flowColor':'#FFFFFF','marker':'circle','interpolation':'basis','area':'#0F2345','maxItems':4,'maxItemsSaved':50});
+            assert.deepEqual(updP,{'xKey':'temp','yKey':'press','xFormat':'toInt','yFormat':'toFloat','flowColor':'#FFFFFF','marker':'circle','interpolation':'basis','area':false,'maxItems':4,'maxItemsSaved':50});
         });
     });
 
