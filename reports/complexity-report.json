@@ -4289,14 +4289,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 127,
-                    "physical": 194
+                    "logical": 128,
+                    "physical": 195
                 },
                 "cyclomatic": 20,
                 "halstead": {
                     "operators": {
                         "distinct": 22,
-                        "total": 405,
+                        "total": 409,
                         "identifiers": [
                             "var",
                             "=",
@@ -4323,8 +4323,8 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 119,
-                        "total": 449,
+                        "distinct": 121,
+                        "total": 454,
                         "identifiers": [
                             "\"use strict\"",
                             "Graph",
@@ -4423,6 +4423,8 @@
                             "_enableLegend",
                             "legendOnPoint",
                             "_legendOnPoint",
+                            "backgroundColor",
+                            "_backgroundColor",
                             "viewFinder",
                             "_viewFinder",
                             "horizontalGrid",
@@ -4447,17 +4449,17 @@
                             "exports"
                         ]
                     },
-                    "length": 854,
-                    "vocabulary": 141,
-                    "difficulty": 41.50420168067227,
-                    "volume": 6097.17685494857,
-                    "effort": 253058.45787051247,
-                    "bugs": 2.0323922849828566,
-                    "time": 14058.80321502847
+                    "length": 863,
+                    "vocabulary": 143,
+                    "difficulty": 41.27272727272727,
+                    "volume": 6178.96896363975,
+                    "effort": 255022.90086294967,
+                    "bugs": 2.0596563212132497,
+                    "time": 14167.938936830536
                 },
                 "params": 12,
                 "line": 2,
-                "cyclomaticDensity": 15.748031496062993
+                "cyclomaticDensity": 15.625
             },
             "functions": [
                 {
@@ -4956,14 +4958,14 @@
                 {
                     "name": "<anonymous>.getConfigJSON",
                     "sloc": {
-                        "logical": 34,
-                        "physical": 42
+                        "logical": 35,
+                        "physical": 43
                     },
                     "cyclomatic": 3,
                     "halstead": {
                         "operators": {
                             "distinct": 11,
-                            "total": 141,
+                            "total": 145,
                             "identifiers": [
                                 "var",
                                 "=",
@@ -4979,8 +4981,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 50,
-                            "total": 153,
+                            "distinct": 52,
+                            "total": 158,
                             "identifiers": [
                                 "configJSON",
                                 "<anonymous>",
@@ -5001,6 +5003,8 @@
                                 "_enableLegend",
                                 "legendOnPoint",
                                 "_legendOnPoint",
+                                "backgroundColor",
+                                "_backgroundColor",
                                 "viewFinder",
                                 "_viewFinder",
                                 "horizontalGrid",
@@ -5034,17 +5038,17 @@
                                 "_yKey"
                             ]
                         },
-                        "length": 294,
-                        "vocabulary": 61,
-                        "difficulty": 16.830000000000002,
-                        "volume": 1743.6367772434887,
-                        "effort": 29345.406961007917,
-                        "bugs": 0.5812122590811629,
-                        "time": 1630.300386722662
+                        "length": 303,
+                        "vocabulary": 63,
+                        "difficulty": 16.71153846153846,
+                        "volume": 1811.1158168204747,
+                        "effort": 30266.531631096008,
+                        "bugs": 0.6037052722734916,
+                        "time": 1681.4739795053338
                     },
                     "params": 0,
                     "line": 152,
-                    "cyclomaticDensity": 8.823529411764707
+                    "cyclomaticDensity": 8.571428571428571
                 }
             ],
             "dependencies": [
@@ -5064,10 +5068,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 102.88389770047017,
-            "loc": 10.9,
+            "maintainability": 102.67431901532231,
+            "loc": 11,
             "cyclomatic": 2.9,
-            "effort": 5065.425713897699,
+            "effort": 5157.538180906509,
             "params": 1.2,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/graph/lineChart.js"
         },
@@ -18026,9 +18030,9 @@
     ],
     "changeCost": 21.09375,
     "coreSize": 31.25,
-    "loc": 10.645586531524033,
+    "loc": 10.648711531524032,
     "cyclomatic": 4.333965513653014,
-    "effort": 8172.395794767965,
+    "effort": 8175.27430936199,
     "params": 1.1223014832389835,
-    "maintainability": 104.75511382595353
+    "maintainability": 104.74856449204266
 }
