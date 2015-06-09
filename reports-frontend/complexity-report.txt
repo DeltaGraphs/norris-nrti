@@ -1,32 +1,32 @@
 Mean per-function logical LOC: 6.018531807093598
 Mean per-function parameter count: 0.9257420677419018
 Mean per-function cyclomatic complexity: 1.9676030080231424
-Mean per-function Halstead effort: 2291.3030121333404
-Mean per-module maintainability index: 120.28913985691065
+Mean per-function Halstead effort: 2289.675690532346
+Mean per-module maintainability index: 120.29164425526858
 First-order density: 0%
 Change cost: 2.941176470588235%
 Core size: 0%
 
 /home/travis/build/DeltaGraphs/norris-nrti/frontend/app/Gruntfile.js
 
-  Physical LOC: 71
+  Physical LOC: 46
   Logical LOC: 22
   Mean parameter count: 1
   Cyclomatic complexity: 1
   Cyclomatic complexity density: 4.545454545454546%
-  Maintainability index: 96.07116364072691
+  Maintainability index: 96.15631318489632
   Dependency count: 0
 
   Function: module.exports
     Line No.: 4
-    Physical LOC: 69
+    Physical LOC: 44
     Logical LOC: 20
     Parameter count: 1
     Cyclomatic complexity: 1
     Cyclomatic complexity density: 5%
-    Halstead difficulty: 4.666666666666667
-    Halstead volume: 482.15260359282684
-    Halstead effort: 2250.045483433192
+    Halstead difficulty: 4.516129032258064
+    Halstead volume: 485.9729501355773
+    Halstead effort: 2194.7165489993813
 
 /home/travis/build/DeltaGraphs/norris-nrti/frontend/app/norris-nrti.js
 
