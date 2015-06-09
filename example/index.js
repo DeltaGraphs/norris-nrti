@@ -55,6 +55,16 @@ var page2=norris.createPage({
 });
 console.log('Pagina inserita: '+page2);
 
+/////////////////////////////////////////////////
+// INSERT EMPTY GRAPH FOR BALKY
+/////////////////////////////////////////////////
+page2.createBarChart({
+    ID: 'bar1',
+    title: 'Empty Bar Chart',
+    barOrientation: 'H'
+});
+console.log('Grafico vuoto inserito');
+
 
 /////////////////////////////////////////////////
 //TEST MAP CHART
