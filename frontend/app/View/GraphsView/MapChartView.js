@@ -15,7 +15,7 @@
 
 
 angular.module('norris-nrti')
-.directive('mapChart', function(){
+.directive('mapChart', function($compile){
 	return {
 		restrict: 'E',
 		//controller : 'MapChartController',
@@ -92,7 +92,7 @@ angular.module('norris-nrti')
                 return Math.min(latZoom, lngZoom, ZOOM_MAX);
             }
 
-            scope.init = function(){
+            function setZoom(){
                 var latLng = new google.maps.LatLng(scope.$parent.mapChart.getLatitude(), scope.$parent.mapChart.getLongitude());
                 var mapDim = { height: scope.$parent.mapChart.getHeight(), width: scope.$parent.mapChart.getWidth() };
                 
@@ -104,7 +104,12 @@ angular.module('norris-nrti')
                 bounds.extend(west);
                 bounds.extend(east);
 
-                var zoom = getBoundsZoomLevel(bounds,mapDim);
+                return getBoundsZoomLevel(bounds,mapDim);
+            }
+
+            scope.init = function(){
+
+                var zoom = setZoom();
 
                 var mapOptions = {
                     center: new google.maps.LatLng(scope.$parent.mapChart.getLatitude(), scope.$parent.mapChart.getLongitude()),
@@ -168,13 +173,17 @@ angular.module('norris-nrti')
                         
                         break;
                     case 'NE':
-                        
-                        //parent.setAttribute('style', 'transform: rotate(200,200);');
+                        var parent = element.children()[1];
+                        parent.setAttribute('style', 'position: relative; left: 0px;');
+                        console.log('parent ' + parent.toString());
                         scope.legend();
                         break;
                     case 'NW':
-                        
-                        //parent.setAttribute('style', 'transform: rotate(100,100);');
+                        var parent0 = element.children()[0];
+                        var parent1 = element.children()[1];
+                        parent1.setAttribute('style', 'position: relative; bottom: 0px');
+                        parent1.setAttribute('style', 'position: relative; left: 0px; top: 0px');
+                        $compile(element.contents());
                         scope.legend();
                         break;
                     case 'SE':
