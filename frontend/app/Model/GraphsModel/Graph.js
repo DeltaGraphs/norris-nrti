@@ -28,7 +28,7 @@
 *
 */
 
-angular.module('app')
+angular.module('norris-nrti')
 .factory('GraphFactory', ['LegendFactory', function(LegendFactory){
 
 

@@ -22,7 +22,7 @@
 *
 */
 
-angular.module('app')
+angular.module('norris-nrti')
 .factory('LineChartFlowFactory', ['FlowFactory', function(FlowFactory){
 
 	function split(json) {

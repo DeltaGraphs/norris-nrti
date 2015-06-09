@@ -14,7 +14,7 @@
 */
 
 
-angular.module('app')
+angular.module('norris-nrti')
 .directive('lineChart', function($compile){
 	return {
 		restrict: 'E',

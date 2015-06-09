@@ -16,7 +16,7 @@
 *
 */
 
-angular.module('app')
+angular.module('norris-nrti')
 .controller('MapChartController', ['$scope', '$location', 'MapChartFactory', 'MapChartFlowFactory', 'SocketServicesFactory', function($scope, $location, MapChartFactory, MapChartFlowFactory, SocketServicesFactory){
 
 	var socket;

@@ -18,7 +18,7 @@
 *
 */
 
-angular.module('app')
+angular.module('norris-nrti')
 .factory('PagesList', ['PageFactory', function(PageFactory){
 
 	var pagesList = [];

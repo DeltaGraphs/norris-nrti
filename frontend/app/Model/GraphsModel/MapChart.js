@@ -20,7 +20,7 @@
 *
 */
 
-angular.module('app')
+angular.module('norris-nrti')
 .factory('MapChartFactory',['GraphFactory', 'MapChartFlowFactory', function(GraphFactory, MapChartFlowFactory){
 
     function split(json) {

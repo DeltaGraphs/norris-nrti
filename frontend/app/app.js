@@ -18,7 +18,7 @@
 *
 */
 
-var appConfig = function($routeProvider) {
+var norrisConfig = function($routeProvider) {
     $routeProvider /* inizio definizione di routeProvider */
         .when('/', {
             //controller: 'PagesListController',
@@ -31,5 +31,5 @@ var appConfig = function($routeProvider) {
     ; /* fine definizione di routeProvider */
 };
 
-var app = angular.module('app', ['ngRoute']).config(appConfig); /* definisce un
+var norris = angular.module('norris-nrti', ['ngRoute', 'nvd3ChartDirectives']).config(norrisConfig); /* definisce un
 namespace (chiamato modulo) */

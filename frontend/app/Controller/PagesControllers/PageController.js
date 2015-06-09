@@ -16,7 +16,7 @@
 *
 */
 
-angular.module('app')
+angular.module('norris-nrti')
 .controller('PageController', ['$scope', '$location', '$routeParams', 'PagesList', 'PageFactory', 'SocketServicesFactory', function($scope, $location, $routeParams, PagesList, PageFactory, SocketServicesFactory){
 
 	$scope.page = PagesList.prototype.getPagesList()[$routeParams.pageId].page;
@@ -28,7 +28,7 @@ angular.module('app')
 	if (PagesList.prototype.getPagesList()[$routeParams.pageId + 1] !== undefined) {
 		$scope.next = true;
 	}
-	var url = 'http://norris-nrti-dev.herokuapp.com/page1';
+	var url = $scope.page.getUrl();
 	var socket;
 
 	this.socketConnection = function(){

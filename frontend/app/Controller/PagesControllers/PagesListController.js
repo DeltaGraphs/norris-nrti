@@ -16,20 +16,14 @@
 *
 */
 
-angular.module('app')
+angular.module('norris-nrti')
 .controller('PagesListController', ['$scope', '$location', 'PagesList', 'SocketServicesFactory', function($scope, $location, PagesList, SocketServicesFactory){
 
 	var socket;
 	var pagesList;
 
-	$scope.graphs =  [
-		['nsk','fsefw'],
-		['fsf','dsf'],
-		['sfs','fwef']
-	];
-	
-	this.socketConnection = function(ciao){
-		socket = SocketServicesFactory.build(ciao);
+	this.socketConnection = function(url){
+		socket = SocketServicesFactory.build(url);
 		console.log('socketConnection');
 		this.listenOnEvents();
 	};

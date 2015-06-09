@@ -18,7 +18,7 @@
 *
 */
 
-angular.module('app')
+angular.module('norris-nrti')
 .factory('CellFactory', function(){
 
     function Cell(info){

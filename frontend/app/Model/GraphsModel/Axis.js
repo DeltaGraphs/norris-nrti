@@ -22,7 +22,7 @@
 *
 */
 
-angular.module('app')
+angular.module('norris-nrti')
 .factory('AxisFactory', function(){
 
     function Axis(info){

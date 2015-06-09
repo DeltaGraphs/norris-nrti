@@ -16,7 +16,7 @@
 *
 */
 
-angular.module('app')
+angular.module('norris-nrti')
 .factory('SocketServicesFactory', function ($rootScope) {
 
     function SocketServices(url) {

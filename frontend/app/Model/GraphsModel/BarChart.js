@@ -22,7 +22,7 @@
 *
 */
 
-angular.module('app')
+angular.module('norris-nrti')
 .factory('BarChartFactory', ['GraphFactory','AxisFactory', 'BarChartFlowFactory', function(GraphFactory, AxisFactory, BarChartFlowFactory){
 
     function BarChart(info) {

@@ -16,7 +16,7 @@
 *
 */
 
-angular.module('app')
+angular.module('norris-nrti')
 .controller('LineChartController', ['$scope', '$location', 'LineChartFactory', 'LineChartFlowFactory', 'SocketServicesFactory', function($scope, $location, LineChartFactory, LineChartFlowFactory, SocketServicesFactory){
 
 	var socket;

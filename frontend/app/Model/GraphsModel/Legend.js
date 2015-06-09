@@ -20,7 +20,7 @@
 *
 */
 
-angular.module('app')
+angular.module('norris-nrti')
 .factory('LegendFactory', function(){
 
     function Legend(info){

@@ -14,7 +14,7 @@
 */
 
 
-angular.module('app')
+angular.module('norris-nrti')
 .directive('mapChart', function(){
 	return {
 		restrict: 'E',

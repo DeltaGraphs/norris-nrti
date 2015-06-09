@@ -14,7 +14,7 @@
 * 0.0.1         2015-05-30  Francesco Rossetto			Initial code      
 * =================================================================================================
 */
-angular.module('app')
+angular.module('norris-nrti')
 .directive('page', function($compile, $routeParams){
 	return {
 		restrict: 'E',

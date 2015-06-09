@@ -16,7 +16,7 @@
 */
 
 
-angular.module('app')
+angular.module('norris-nrti')
 .directive('barChart', function($compile){
 	return {
 		restrict: 'E',
