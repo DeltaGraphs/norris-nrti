@@ -1,44 +1,44 @@
-<testsuite name="Mocha Tests" tests="512" failures="6" errors="6" skipped="0" timestamp="Tue, 09 Jun 2015 10:34:07 GMT" time="0.301">
-<testcase classname="BarChartFlow" name="returns null when there are no params" time="0.001"/>
-<testcase classname="BarChartFlow" name="returns null when there is no valid graphsocket in params" time="0"/>
+<testsuite name="Mocha Tests" tests="512" failures="6" errors="6" skipped="0" timestamp="Tue, 09 Jun 2015 10:57:17 GMT" time="0.311">
+<testcase classname="BarChartFlow" name="returns null when there are no params" time="0"/>
+<testcase classname="BarChartFlow" name="returns null when there is no valid graphsocket in params" time="0.001"/>
 <testcase classname="BarChartFlow" name="returns null when params are not valid" time="0"/>
-<testcase classname="BarChartFlow" name="calls the parent constructor with the specified params" time="0"/>
+<testcase classname="BarChartFlow" name="calls the parent constructor with the specified params" time="0.001"/>
 <testcase classname="BarChartFlow #getReplaceDataJSON" name="returns the correct JSON" time="0.001"/>
 <testcase classname="BarChartFlow #updateRecord" name="returns 111 if record is invalid" time="0.001"/>
 <testcase classname="BarChartFlow #updateRecord" name="returns 112 if the index is invalid" time="0"/>
 <testcase classname="BarChartFlow #updateRecord" name="returns true with correct update" time="0.001"/>
 <testcase classname="BarChartFlow #updateProperties" name="update correct properties" time="0.001"/>
-<testcase classname="Flow" name="returns if socket passed is invalid" time="0.001"/>
+<testcase classname="Flow" name="returns if socket passed is invalid" time="0"/>
 <testcase classname="Flow" name="creates the object if graphSocket is valid" time="0"/>
 <testcase classname="LineChartFlow" name="returns null when there are no params" time="0"/>
 <testcase classname="LineChartFlow" name="returns null when there is no valid graphsocket in params" time="0"/>
 <testcase classname="LineChartFlow" name="returns null when params are not valid" time="0"/>
 <testcase classname="LineChartFlow" name="calls the parent constructor with the params specified" time="0"/>
-<testcase classname="LineChartFlow #addRecord" name="returns 123 if record is invalid" time="0"/>
+<testcase classname="LineChartFlow #addRecord" name="returns 123 if record is invalid" time="0.001"/>
 <testcase classname="LineChartFlow #addRecord" name="returns valid norrisRecordID if record is valid" time="0"/>
-<testcase classname="LineChartFlow #updateRecord" name="returns 123 if record is invalid" time="0"/>
-<testcase classname="LineChartFlow #updateRecord" name="returns 122 if no ID in records" time="0.001"/>
+<testcase classname="LineChartFlow #updateRecord" name="returns 123 if record is invalid" time="0.001"/>
+<testcase classname="LineChartFlow #updateRecord" name="returns 122 if no ID in records" time="0"/>
 <testcase classname="LineChartFlow #updateRecord" name="returns 122 if invalid ID" time="0"/>
 <testcase classname="LineChartFlow #updateRecord" name="returns true with correct update" time="0.001"/>
-<testcase classname="LineChartFlow #getReplaceDataJSON" name="returns correct JSON" time="0"/>
-<testcase classname="LineChartFlow #updateProperties" name="update correct properties" time="0.001"/>
-<testcase classname="MapChartFlow" name="returns null when there are no params" time="0.001"/>
+<testcase classname="LineChartFlow #getReplaceDataJSON" name="returns correct JSON" time="0.001"/>
+<testcase classname="LineChartFlow #updateProperties" name="update correct properties" time="0"/>
+<testcase classname="MapChartFlow" name="returns null when there are no params" time="0"/>
 <testcase classname="MapChartFlow" name="returns null when there is no valid graphsocket in params" time="0"/>
 <testcase classname="MapChartFlow" name="returns null when params are not valid" time="0"/>
 <testcase classname="MapChartFlow" name="calls the parent constructor with the params specified" time="0"/>
 <testcase classname="MapChartFlow #addRecord" name="returns 133 if record is invalid" time="0"/>
 <testcase classname="MapChartFlow #addRecord" name="returns valid norrisRecordID if record is valid and sends right message" time="0"/>
 <testcase classname="MapChartFlow #deleteRecord" name="returns 155 if ID is invalid" time="0"/>
-<testcase classname="MapChartFlow #deleteRecord" name="returns true if ID is valid and sends right message" time="0.001"/>
-<testcase classname="MapChartFlow #updateRecord" name="return 131 if record is not valid" time="0"/>
+<testcase classname="MapChartFlow #deleteRecord" name="returns true if ID is valid and sends right message" time="0"/>
+<testcase classname="MapChartFlow #updateRecord" name="return 131 if record is not valid" time="0.001"/>
 <testcase classname="MapChartFlow #updateRecord" name="return 132 if index is not valid" time="0"/>
-<testcase classname="MapChartFlow #updateRecord" name="updates and validate the record if ID and record are valid" time="0.001"/>
-<testcase classname="MapChartFlow #getReplaceDataJSON" name="returns correct JSON" time="0.001"/>
+<testcase classname="MapChartFlow #updateRecord" name="updates and validate the record if ID and record are valid" time="0"/>
+<testcase classname="MapChartFlow #getReplaceDataJSON" name="returns correct JSON" time="0"/>
 <testcase classname="MapChartFlow #updateMovie" name="returns correct IDs and emit right event" time="0"/>
 <testcase classname="MapChartFlow #updateProperties" name="sends right updateFlowProp event" time="0.001"/>
 <testcase classname="MapChartFlow #updateProperties" name="sends right updateFlowData event" time="0"/>
 <testcase classname="TableFlow" name="returns null when there are no params" time="0"/>
-<testcase classname="TableFlow" name="returns null when there is no valid graphsocket in params" time="0.001"/>
+<testcase classname="TableFlow" name="returns null when there is no valid graphsocket in params" time="0"/>
 <testcase classname="TableFlow" name="returns null when params are not valid" time="0"/>
 <testcase classname="TableFlow" name="calls the parent constructor with the params specified" time="0"/>
 <testcase classname="TableFlow #addRecord" name="returns 143 if record is invalid" time="0"/>
@@ -46,24 +46,24 @@
 <testcase classname="TableFlow #updateRecord" name="returns 143 if record is invalid" time="0.001"/>
 <testcase classname="TableFlow #updateRecord" name="returns 142 if no ID in records" time="0"/>
 <testcase classname="TableFlow #updateRecord" name="returns 142 if invalid ID" time="0"/>
-<testcase classname="TableFlow #updateRecord" name="returns true with correct update" time="0.002"/>
+<testcase classname="TableFlow #updateRecord" name="returns true with correct update" time="0.001"/>
 <testcase classname="TableFlow #getReplaceDataJSON" name="returns correct JSON" time="0.001"/>
 <testcase classname="TableFlow #updateProperties" name="update correct properties" time="0.001"/>
-<testcase classname="BarChart" name="returns 361 when there are no params" time="0.001"/>
+<testcase classname="BarChart" name="returns 361 when there are no params" time="0"/>
 <testcase classname="BarChart" name="returns 362 when there is no valid graphsocket in params" time="0"/>
 <testcase classname="BarChart" name="returns 393 when page is not valid" time="0"/>
 <testcase classname="BarChart" name="returns null if it does not create a BarChartModel" time="0"/>
-<testcase classname="BarChart" name="returns a correct BarChart" time="0.001"/>
+<testcase classname="BarChart" name="returns a correct BarChart" time="0"/>
 <testcase classname="BarChart #getFlowByID" name="return 262 - no ID in flows" time="0"/>
-<testcase classname="BarChart #getFlowByID" name="return correct flow" time="0.001"/>
+<testcase classname="BarChart #getFlowByID" name="return correct flow" time="0"/>
 <testcase classname="BarChart #createBarChartFlow" name="return 212 on creation of flow" time="0"/>
-<testcase classname="BarChart #createBarChartFlow" name="return correct object" time="0.001"/>
+<testcase classname="BarChart #createBarChartFlow" name="return correct object" time="0"/>
 <testcase classname="BarChart #deleteFlow" name="return 263 - ID is not a string" time="0"/>
 <testcase classname="BarChart #deleteFlow" name="return 263 - no ID in flows" time="0"/>
 <testcase classname="BarChart #deleteFlow" name="return true - deleted flow" time="0"/>
-<testcase classname="BarChart #deleteAllFlows" name="deletes all flows and sends right message" time="0.001"/>
-<testcase classname="BarChart #updateRecord" name="returned true - correctly updated" time="0"/>
-<testcase classname="BarChart #updateProperties" name="no update - invalid params" time="0.001"/>
+<testcase classname="BarChart #deleteAllFlows" name="deletes all flows and sends right message" time="0"/>
+<testcase classname="BarChart #updateRecord" name="returned true - correctly updated" time="0.001"/>
+<testcase classname="BarChart #updateProperties" name="no update - invalid params" time="0"/>
 <testcase classname="BarChart #updateProperties" name="updated properties" time="0"/>
 <testcase classname="BarChart #getProperties" name="returned a correct JSON" time="0.001"/>
 <testcase classname="BarChart #getConfigJSON" name="returned a correct JSON" time="0.001"/>
@@ -73,18 +73,18 @@
 <testcase classname="LineChart" name="returns 372 when there is no valid graphsocket in params" time="0"/>
 <testcase classname="LineChart" name="returns 373 when page is not valid" time="0"/>
 <testcase classname="LineChart" name="returns 322 - not create a LineChartModel" time="0"/>
-<testcase classname="LineChart" name="returns a correct LineChart" time="0.001"/>
+<testcase classname="LineChart" name="returns a correct LineChart" time="0"/>
 <testcase classname="LineChart #getFlowByID" name="return 272 - no ID in flows" time="0.001"/>
 <testcase classname="LineChart #getFlowByID" name="return correct flow" time="0"/>
 <testcase classname="LineChart #createLineChartFlow" name="return 222 on creation of flow" time="0"/>
-<testcase classname="LineChart #createLineChartFlow" name="return correct object" time="0.001"/>
+<testcase classname="LineChart #createLineChartFlow" name="return correct object" time="0"/>
 <testcase classname="LineChart #deleteFlow" name="return 273 - ID is not a string" time="0"/>
 <testcase classname="LineChart #deleteFlow" name="return 273 - no ID in flows" time="0"/>
 <testcase classname="LineChart #deleteFlow" name="return true - deleted flow" time="0"/>
-<testcase classname="LineChart #deleteAllFlows" name="deletes all flows and sends right message" time="0.001"/>
+<testcase classname="LineChart #deleteAllFlows" name="deletes all flows and sends right message" time="0"/>
 <testcase classname="LineChart #addRecord" name="returned 272 - undefined flowID" time="0"/>
 <testcase classname="LineChart #addRecord" name="returned 123 - undefined record" time="0"/>
-<testcase classname="LineChart #addRecord" name="returned correct ID - record added correctly" time="0.001"/>
+<testcase classname="LineChart #addRecord" name="returned correct ID - record added correctly" time="0"/>
 <testcase classname="LineChart #updateRecord" name="returned error - undefined record" time="0"/>
 <testcase classname="LineChart #updateRecord" name="returned true - correctly updated" time="0"/>
 <testcase classname="LineChart #updateProperties" name="no update - invalid params" time="0"/>
@@ -94,42 +94,42 @@
 <testcase classname="MapChart" name="returns null when there are no params" time="0"/>
 <testcase classname="MapChart" name="returns null when there is no valid page in params" time="0"/>
 <testcase classname="MapChart" name="returns null when there is no valid graphsocket in params" time="0"/>
-<testcase classname="MapChart" name="returns null when params are not valid" time="0.001"/>
+<testcase classname="MapChart" name="returns null when params are not valid" time="0"/>
 <testcase classname="MapChart" name="calls the parent constructor with the params specified" time="0"/>
 <testcase classname="MapChart #createMapChartFlow" name="returns 232 if are passed no valid params" time="0.001"/>
 <testcase classname="MapChart #createMapChartFlow" name="adds and returns a mapChartFlow" time="0"/>
-<testcase classname="MapChart #createMapChartFlow" name="adds and returns a mapChartFlow" time="0"/>
+<testcase classname="MapChart #createMapChartFlow" name="adds and returns a mapChartFlow" time="0.001"/>
 <testcase classname="MapChart #getFlowByID" name="returns 282 if there is no valid ID" time="0"/>
 <testcase classname="MapChart #getFlowByID" name="return 282 - no ID in flows" time="0"/>
 <testcase classname="MapChart #getFlowByID" name="return correct flow" time="0"/>
 <testcase classname="MapChart #deleteFlow" name="return 283 - ID is not a string" time="0"/>
 <testcase classname="MapChart #deleteFlow" name="return 283 - no ID in flows" time="0"/>
 <testcase classname="MapChart #deleteFlow" name="return true - deleted flow" time="0"/>
-<testcase classname="MapChart #deleteAllFlows" name="deletes all flows and sends right message" time="0"/>
+<testcase classname="MapChart #deleteAllFlows" name="deletes all flows and sends right message" time="0.001"/>
 <testcase classname="MapChart #addRecord" name="returned 282 - undefined flowID" time="0"/>
 <testcase classname="MapChart #addRecord" name="returned 133 - undefined record" time="0"/>
-<testcase classname="MapChart #addRecord" name="returned correct ID - record added correctly" time="0"/>
+<testcase classname="MapChart #addRecord" name="returned correct ID - record added correctly" time="0.001"/>
 <testcase classname="MapChart #deleteRecord" name="returned 282 - undefined flowID" time="0"/>
-<testcase classname="MapChart #deleteRecord" name="returned true - correctly deleted" time="0.001"/>
+<testcase classname="MapChart #deleteRecord" name="returned true - correctly deleted" time="0"/>
 <testcase classname="MapChart #updateRecord" name="returned error - undefined record" time="0"/>
-<testcase classname="MapChart #updateRecord" name="returned true - correctly updated" time="0"/>
+<testcase classname="MapChart #updateRecord" name="returned true - correctly updated" time="0.001"/>
 <testcase classname="MapChart #updateProperties" name="no update - invalid params" time="0"/>
-<testcase classname="MapChart #updateProperties" name="updated properties" time="0.001"/>
+<testcase classname="MapChart #updateProperties" name="updated properties" time="0"/>
 <testcase classname="MapChart #getProperties" name="returned a correct JSON" time="0"/>
-<testcase classname="MapChart #getConfigJSON" name="returned a correct JSON" time="0.001"/>
-<testcase classname="Table" name="returns 391 when there are no params" time="0"/>
-<testcase classname="Table" name="returns 392 when there is no valid graphsocket in params" time="0.001"/>
+<testcase classname="MapChart #getConfigJSON" name="returned a correct JSON" time="0"/>
+<testcase classname="Table" name="returns 391 when there are no params" time="0.001"/>
+<testcase classname="Table" name="returns 392 when there is no valid graphsocket in params" time="0"/>
 <testcase classname="Table" name="returns 393 when page is not valid" time="0"/>
-<testcase classname="Table" name="returns 342 - not create a TableModel" time="0"/>
+<testcase classname="Table" name="returns 342 - not create a TableModel" time="0.001"/>
 <testcase classname="Table" name="returns a correct Table" time="0.001"/>
-<testcase classname="Table #getFlowByID" name="return 292 - no ID in flows" time="0.001"/>
-<testcase classname="Table #getFlowByID" name="return correct flow" time="0"/>
+<testcase classname="Table #getFlowByID" name="return 292 - no ID in flows" time="0"/>
+<testcase classname="Table #getFlowByID" name="return correct flow" time="0.001"/>
 <testcase classname="Table #createTableFlow" name="return 242 on creation of flow" time="0"/>
-<testcase classname="Table #createTableFlow" name="return correct object" time="0.001"/>
+<testcase classname="Table #createTableFlow" name="return correct object" time="0"/>
 <testcase classname="Table #deleteFlow" name="return 293 - ID is not a string" time="0"/>
 <testcase classname="Table #deleteFlow" name="return 293 - no ID in flows" time="0"/>
 <testcase classname="Table #deleteFlow" name="return true - deleted flow" time="0"/>
-<testcase classname="Table #deleteAllFlows" name="deletes all flows and sends right message" time="0.001"/>
+<testcase classname="Table #deleteAllFlows" name="deletes all flows and sends right message" time="0"/>
 <testcase classname="Table #addRecord" name="returned 292 - undefined flowID" time="0"/>
 <testcase classname="Table #addRecord" name="returned 143 - undefined record" time="0"/>
 <testcase classname="Table #addRecord" name="returned correct ID - record added correctly" time="0.001"/>
@@ -147,14 +147,14 @@
 <testcase classname="NetworkHandler #addPageToRouting" name="does nothing when given an empty string as a parameter" time="0.001"/>
 <testcase classname="NetworkHandler #addPageToRouting" name="does nothing when given an incorrect string as a parameter" time="0.001"/>
 <testcase classname="NetworkHandler #addPageToRouting" name="adds the given page to the application routing" time="0.003"/>
-<testcase classname="NetworkHandler #addGraphToRouting" name="does nothing when given a non-string parameter" time="0"/>
+<testcase classname="NetworkHandler #addGraphToRouting" name="does nothing when given a non-string parameter" time="0.001"/>
 <testcase classname="NetworkHandler #addGraphToRouting" name="does nothing when given an empty string as a parameter" time="0.001"/>
-<testcase classname="NetworkHandler #addGraphToRouting" name="does nothing when given an incorrect string as a parameter" time="0"/>
+<testcase classname="NetworkHandler #addGraphToRouting" name="does nothing when given an incorrect string as a parameter" time="0.001"/>
 <testcase classname="NetworkHandler #addGraphToRouting" name="adds the given page to the application routing" time="0.002"/>
 <testcase classname="Norris" name="returns null when there are no params" time="0"/>
 <testcase classname="Norris" name="returns null when passed invalid parameters" time="0"/>
 <testcase classname="Norris" name="returns null when passed invalid route" time="0"/>
-<testcase classname="Norris" name="set param values to properties" time="0.018"><failure message="{ _app: 
+<testcase classname="Norris" name="set param values to properties" time="0.017"><failure message="{ _app: 
    { [Function]
      domain: undefined,
      _events: { mount: [Function: onmount] },
@@ -178,8 +178,8 @@
     at Context.&lt;anonymous&gt; (test/businessTier/norris/norrisSpec.js:52:16)]]></failure></testcase>
 <testcase classname="Norris #createPage" name="returns null if no parameter is passed" time="0"/>
 <testcase classname="Norris #createPage" name="returns null if the passed parameter does not contain an ID" time="0"/>
-<testcase classname="Norris #createPage" name="returns null if the passed ID is already used" time="0.001"/>
-<testcase classname="Norris #createPage" name="returns null if the PageModel is not created" time="0.001"/>
+<testcase classname="Norris #createPage" name="returns null if the passed ID is already used" time="0"/>
+<testcase classname="Norris #createPage" name="returns null if the PageModel is not created" time="0"/>
 <testcase classname="Norris #createPage" name="behaves correctly with the right parameters" time="0.002"/>
 <testcase classname="Norris #getConfigJSON" name="returns the correct JSON" time="0.006"><failure message="{ name: 'norris',
   data: 
@@ -212,7 +212,7 @@
 <testcase classname="Page" name="returns null when there is no valid ID in params" time="0"/>
 <testcase classname="Page" name="returns null when there is a empty ID in params" time="0"/>
 <testcase classname="Page" name="set param values to properties" time="0.001"/>
-<testcase classname="Page #getConfigJSON" name="returns the JSON to send to clients when they connect" time="0.005"><failure message="{ properties: 
+<testcase classname="Page #getConfigJSON" name="returns the JSON to send to clients when they connect" time="0.003"><failure message="{ properties: 
    { ID: 'page2',
      name: 'page2',
      description: 'page two',
@@ -235,12 +235,12 @@
      graphsPerCol: 5 },
     at Context.&lt;anonymous&gt; (test/businessTier/page/pageSpec.js:116:20)]]></failure></testcase>
 <testcase classname="Page #updateProperties" name="does nothing when passed no valid parameter" time="0.001"/>
-<testcase classname="Page #updateProperties" name="updates the properties to the passed parameters" time="0.003"/>
-<testcase classname="Page #graphChanged" name="sends the message over the socket" time="0.003"/>
+<testcase classname="Page #updateProperties" name="updates the properties to the passed parameters" time="0.002"/>
+<testcase classname="Page #graphChanged" name="sends the message over the socket" time="0.001"/>
 <testcase classname="Page #createMapChart" name="returns null if no parameter is passed" time="0"/>
 <testcase classname="Page #createMapChart" name="returns null if the passed parameter does not contain an ID" time="0"/>
 <testcase classname="Page #createMapChart" name="returns null if the passed ID is already used" time="0.001"/>
-<testcase classname="Page #createMapChart" name="returns null if the mapChartModel is not created" time="0.001"/>
+<testcase classname="Page #createMapChart" name="returns null if the mapChartModel is not created" time="0"/>
 <testcase classname="Page #createMapChart" name="behaves correctly with the right parameters" time="0"><failure message="Cannot read property 'createMapChart' of null"><![CDATA[TypeError: Cannot read property 'createMapChart' of null
     at Context.&lt;anonymous&gt; (test/businessTier/page/pageSpec.js:220:35)]]></failure></testcase>
 <testcase classname="Page #createLineChart" name="returns null if no parameter is passed" time="0"/>
@@ -287,7 +287,7 @@
 <testcase classname="FilterConditionModel #validateRecord" name="test valid &lt;" time="0"/>
 <testcase classname="FilterConditionModel #validateRecord" name="test invalid &lt;=" time="0"/>
 <testcase classname="FilterConditionModel #validateRecord" name="test valid &lt;=" time="0"/>
-<testcase classname="FilterModel" name="returns 621 if no textRules are specified" time="0"/>
+<testcase classname="FilterModel" name="returns 621 if no textRules are specified" time="0.001"/>
 <testcase classname="FilterModel" name="returns 622 if filterText is not valid" time="0"/>
 <testcase classname="FilterModel" name="returns the right object if filterText is valid" time="0"/>
 <testcase classname="FilterModel #validateRecord" name="returns true if record is valid" time="0"/>
@@ -295,13 +295,13 @@
 <testcase classname="FilterModel #getFilterText" name="returns the right string" time="0"/>
 <testcase classname="FlowModel" name="returns null when there are no params" time="0"/>
 <testcase classname="FlowModel" name="returns null when there is no valid ID in params" time="0"/>
-<testcase classname="FlowModel" name="returns null when there is a empty ID in params" time="0"/>
+<testcase classname="FlowModel" name="returns null when there is a empty ID in params" time="0.001"/>
 <testcase classname="FlowModel" name="set default values to property not specified" time="0"/>
 <testcase classname="FlowModel" name="set default values to wrong properties" time="0"/>
 <testcase classname="FlowModel" name="set param values to properties" time="0"/>
 <testcase classname="FlowModel #generateNorrisRecordID" name="generate the right ID" time="0"/>
 <testcase classname="FlowModel #getProperties" name="returns the right properties" time="0"/>
-<testcase classname="FlowModel #getData" name="returns empty array if there is no data" time="0.001"/>
+<testcase classname="FlowModel #getData" name="returns empty array if there is no data" time="0"/>
 <testcase classname="FlowModel #getData" name="returns the right data" time="0"/>
 <testcase classname="FlowModel #validateData" name="sets valid only valid records" time="0"/>
 <testcase classname="FlowModel #validateRecord" name="sets valid a valid record" time="0"/>
@@ -315,17 +315,17 @@
 <testcase classname="FlowModel #getRecordByID" name="returns the record if ID is valid" time="0"/>
 <testcase classname="LineChartFlowModel" name="returns null when there are no params" time="0"/>
 <testcase classname="LineChartFlowModel" name="returns null when there is no valid ID in params" time="0"/>
-<testcase classname="LineChartFlowModel" name="returns null when there is a empty ID in params" time="0.001"/>
+<testcase classname="LineChartFlowModel" name="returns null when there is a empty ID in params" time="0"/>
 <testcase classname="LineChartFlowModel" name="calls the parent constructor with the params specified" time="0"/>
 <testcase classname="LineChartFlowModel" name="set default values to property not specified" time="0"/>
 <testcase classname="LineChartFlowModel" name="set default values to wrong properties" time="0"/>
-<testcase classname="LineChartFlowModel" name="set param values to properties" time="0.001"/>
+<testcase classname="LineChartFlowModel" name="set param values to properties" time="0"/>
 <testcase classname="LineChartFlowModel #addRecord" name="does not add a invalid record" time="0"/>
 <testcase classname="LineChartFlowModel #addRecord" name="adds a valid record" time="0"/>
 <testcase classname="LineChartFlowModel #updateRecord" name="return 121 if record is not valid" time="0"/>
-<testcase classname="LineChartFlowModel #updateRecord" name="return 122 if index is not valid" time="0.001"/>
+<testcase classname="LineChartFlowModel #updateRecord" name="return 122 if index is not valid" time="0"/>
 <testcase classname="LineChartFlowModel #updateRecord" name="updates and validate the record if ID and record are valid" time="0"/>
-<testcase classname="LineChartFlowModel #updateProperties" name="updated properties" time="0.001"/>
+<testcase classname="LineChartFlowModel #updateProperties" name="updated properties" time="0"/>
 <testcase classname="LineChartFlowModel #getProperties" name="returns the param properties" time="0"/>
 <testcase classname="MapChartFlowModel" name="returns null when there are no params" time="0"/>
 <testcase classname="MapChartFlowModel" name="returns null when there is no valid ID in params" time="0"/>
@@ -344,12 +344,12 @@
 <testcase classname="MapChartFlowModel #updateRecord" name="updates and validate the record if ID and record are valid" time="0"/>
 <testcase classname="MapChartFlowModel #updateMovie" name="return 131 if record is not valid" time="0"/>
 <testcase classname="MapChartFlowModel #updateMovie" name="insert only correct records" time="0"/>
-<testcase classname="MapChartFlowModel #updateMovie" name="first insert is correct" time="0"/>
+<testcase classname="MapChartFlowModel #updateMovie" name="first insert is correct" time="0.001"/>
 <testcase classname="MapChartFlowModel #updateMovie" name="second insert is correct with old object" time="0"/>
 <testcase classname="MapChartFlowModel #updateMovie" name="third insert is correct with old object and one new" time="0.001"/>
 <testcase classname="MapChartFlowModel #deleteRecord" name="return 134 if ID is not valid" time="0"/>
 <testcase classname="MapChartFlowModel #deleteRecord" name="removes the record and return true if index is valid" time="0"/>
-<testcase classname="MapChartFlowModel #getProperties" name="returns the param properties" time="0"/>
+<testcase classname="MapChartFlowModel #getProperties" name="returns the param properties" time="0.001"/>
 <testcase classname="TableFlowModel" name="returns null when there are no params" time="0"/>
 <testcase classname="TableFlowModel" name="returns null when there is no valid ID in params" time="0"/>
 <testcase classname="TableFlowModel" name="returns null when there is a empty ID in params" time="0"/>
@@ -357,24 +357,24 @@
 <testcase classname="TableFlowModel" name="set default values to property not specified" time="0"/>
 <testcase classname="TableFlowModel" name="set default values to wrong properties" time="0"/>
 <testcase classname="TableFlowModel" name="set param values to properties" time="0"/>
-<testcase classname="TableFlowModel #addRecord" name="does not add a invalid record" time="0.001"/>
+<testcase classname="TableFlowModel #addRecord" name="does not add a invalid record" time="0"/>
 <testcase classname="TableFlowModel #addRecord" name="adds a valid record" time="0"/>
 <testcase classname="TableFlowModel #updateRecord" name="return 141 if record is not valid" time="0"/>
 <testcase classname="TableFlowModel #updateRecord" name="return 142 if index is not valid" time="0"/>
 <testcase classname="TableFlowModel #updateRecord" name="updates and validate the record if ID and record are valid" time="0"/>
-<testcase classname="TableFlowModel #getProperties" name="returns the param properties" time="0.001"/>
+<testcase classname="TableFlowModel #getProperties" name="returns the param properties" time="0"/>
 <testcase classname="AxisModel" name="set default values to property not specified" time="0"/>
 <testcase classname="AxisModel" name="set default values to wrong properties" time="0"/>
 <testcase classname="AxisModel" name="set param values to properties" time="0"/>
-<testcase classname="AxisModel #updateProperties" name="does not update the properties with wrong params" time="0"/>
-<testcase classname="AxisModel #updateProperties" name="updates the properties with valid params" time="0.001"/>
+<testcase classname="AxisModel #updateProperties" name="does not update the properties with wrong params" time="0.001"/>
+<testcase classname="AxisModel #updateProperties" name="updates the properties with valid params" time="0"/>
 <testcase classname="AxisModel #getProperties" name="returns the JSON with the properties" time="0"/>
 <testcase classname="barChartModel" name="returns null when there are no params" time="0"/>
 <testcase classname="barChartModel" name="returns null when there is no valid ID in params" time="0"/>
 <testcase classname="barChartModel" name="returns null when there is a empty ID in params" time="0"/>
-<testcase classname="barChartModel" name="set default values to property not specified" time="0.001"/>
+<testcase classname="barChartModel" name="set default values to property not specified" time="0"/>
 <testcase classname="barChartModel" name="set default values to wrong properties" time="0"/>
-<testcase classname="barChartModel" name="set param values to properties" time="0"/>
+<testcase classname="barChartModel" name="set param values to properties" time="0.001"/>
 <testcase classname="barChartModel #getProperties" name="returns the JSON with the properties" time="0"/>
 <testcase classname="barChartModel #updateProperties" name="updates the properties passed as param" time="0"/>
 <testcase classname="barChartModel #updateProperties" name="does not update the properties with wrong param" time="0"/>
@@ -383,7 +383,7 @@
 <testcase classname="barChartModel #getData" name="returns json with two graphs" time="0"/>
 <testcase classname="barChartModel #addFlow" name="adds flow to the flows array" time="0"/>
 <testcase classname="barChartModel #addFlow" name="does not add an invalid flow to the flows array" time="0"/>
-<testcase classname="barChartModel #deleteFlow" name="deletes the flow with the given ID" time="0"/>
+<testcase classname="barChartModel #deleteFlow" name="deletes the flow with the given ID" time="0.001"/>
 <testcase classname="barChartModel #deleteFlow" name="does not delete anything if the ID is not found" time="0"/>
 <testcase classname="barChartModel #deleteAllFlows" name="deletes all the flows" time="0"/>
 <testcase classname="barChartModel #updateRecord" name="returns 211 if it doesn't find the wanted flow" time="0.001"/>
@@ -396,24 +396,24 @@
 <testcase classname="GraphModel" name="set default values to property not specified" time="0"/>
 <testcase classname="GraphModel" name="set default values to wrong properties" time="0"/>
 <testcase classname="GraphModel" name="set param values to properties" time="0"/>
-<testcase classname="GraphModel #getProperties" name="returns the JSON with the properties" time="0"/>
+<testcase classname="GraphModel #getProperties" name="returns the JSON with the properties" time="0.001"/>
 <testcase classname="GraphModel #updateBaseProperties" name="returns 252 if there are no params specified" time="0"/>
 <testcase classname="GraphModel #updateBaseProperties" name="updates and returns the properties passed as param" time="0"/>
 <testcase classname="GraphModel #updateBaseProperties" name="does not update the properties with wrong param" time="0"/>
 <testcase classname="LegendModel" name="set default values to property not specified" time="0"/>
 <testcase classname="LegendModel" name="set default values to wrong properties" time="0"/>
 <testcase classname="LegendModel" name="set param values to properties" time="0"/>
-<testcase classname="LegendModel #updateProperties" name="does not update the properties with wrong params" time="0.001"/>
+<testcase classname="LegendModel #updateProperties" name="does not update the properties with wrong params" time="0"/>
 <testcase classname="LegendModel #updateProperties" name="updates the properties with valid params" time="0"/>
 <testcase classname="LegendModel #getProperties" name="returns the JSON with the properties" time="0"/>
 <testcase classname="lineChartModel" name="returns null when there are no params" time="0"/>
 <testcase classname="lineChartModel" name="returns null when there is no valid ID in params" time="0"/>
-<testcase classname="lineChartModel" name="returns null when there is a empty ID in params" time="0"/>
+<testcase classname="lineChartModel" name="returns null when there is a empty ID in params" time="0.001"/>
 <testcase classname="lineChartModel" name="set default values to property not specified" time="0"/>
 <testcase classname="lineChartModel" name="set default values to wrong properties" time="0"/>
 <testcase classname="lineChartModel" name="set param values to properties" time="0"/>
 <testcase classname="lineChartModel #getProperties" name="returns the JSON with the properties" time="0"/>
-<testcase classname="lineChartModel #updateProperties" name="updates the properties passed as param" time="0"/>
+<testcase classname="lineChartModel #updateProperties" name="updates the properties passed as param" time="0.001"/>
 <testcase classname="lineChartModel #updateProperties" name="does not update the properties with wrong param" time="0"/>
 <testcase classname="lineChartModel #addFlow" name="adds flow to the flows array" time="0"/>
 <testcase classname="lineChartModel #addFlow" name="does not add an invalid flow to the flows array" time="0"/>
@@ -422,8 +422,8 @@
 <testcase classname="lineChartModel #getData" name="returns json with two graphs" time="0"/>
 <testcase classname="lineChartModel #deleteFlow" name="deletes the flow with the given ID" time="0"/>
 <testcase classname="lineChartModel #deleteFlow" name="does not delete anything if the ID is not found" time="0"/>
-<testcase classname="lineChartModel #deleteAllFlows" name="deletes all the flows" time="0.001"/>
-<testcase classname="lineChartModel #updateRecord" name="returns 221 if it doesn't find the wanted flow" time="0"/>
+<testcase classname="lineChartModel #deleteAllFlows" name="deletes all the flows" time="0"/>
+<testcase classname="lineChartModel #updateRecord" name="returns 221 if it doesn't find the wanted flow" time="0.001"/>
 <testcase classname="lineChartModel #updateRecord" name="returns 122 if it doesn't find the wanted record" time="0"/>
 <testcase classname="lineChartModel #updateRecord" name="returns 121 if no valid record is passed" time="0"/>
 <testcase classname="lineChartModel #updateRecord" name="returns true if passed valid parameters" time="0"/>
@@ -449,26 +449,26 @@
 <testcase classname="mapChartModel #deleteFlow" name="does not delete anything if the ID is not found" time="0"/>
 <testcase classname="mapChartModel #deleteAllFlows" name="deletes all the flows" time="0"/>
 <testcase classname="mapChartModel #updateRecord" name="returns 231 if it doesn't find the wanted flow" time="0"/>
-<testcase classname="mapChartModel #updateRecord" name="returns 132 if it doesn't find the wanted record" time="0"/>
-<testcase classname="mapChartModel #updateRecord" name="returns 131 if no valid record is passed" time="0.001"/>
+<testcase classname="mapChartModel #updateRecord" name="returns 132 if it doesn't find the wanted record" time="0.001"/>
+<testcase classname="mapChartModel #updateRecord" name="returns 131 if no valid record is passed" time="0"/>
 <testcase classname="mapChartModel #updateRecord" name="returns true if passed valid parameters" time="0"/>
 <testcase classname="mapChartModel #addRecord" name="returns 231 if it doesn't find the wanted flow" time="0"/>
 <testcase classname="mapChartModel #addRecord" name="returns 133 if no valid record is passed" time="0"/>
 <testcase classname="mapChartModel #addRecord" name="returns true if passed valid parameters" time="0"/>
-<testcase classname="mapChartModel #deleteRecord" name="returns 231 if it doesn't find the wanted flow" time="0.001"/>
+<testcase classname="mapChartModel #deleteRecord" name="returns 231 if it doesn't find the wanted flow" time="0"/>
 <testcase classname="mapChartModel #deleteRecord" name="returns 134 if no valid ID is passed" time="0"/>
 <testcase classname="mapChartModel #deleteRecord" name="returns true if passed valid parameters" time="0"/>
 <testcase classname="tableModel" name="returns null when there are no params" time="0"/>
-<testcase classname="tableModel" name="returns null when there is no valid ID in params" time="0"/>
+<testcase classname="tableModel" name="returns null when there is no valid ID in params" time="0.001"/>
 <testcase classname="tableModel" name="returns null when there is a empty ID in params" time="0"/>
 <testcase classname="tableModel" name="set default values to property not specified" time="0"/>
-<testcase classname="tableModel" name="set default values to wrong properties" time="0"/>
-<testcase classname="tableModel" name="set param values to properties with no appearance specified" time="0.001"/>
-<testcase classname="tableModel" name="set param values to properties with the appearance specified" time="0"/>
-<testcase classname="tableModel" name="set param values to properties with the appearance specified in a compact way" time="0.001"/>
+<testcase classname="tableModel" name="set default values to wrong properties" time="0.001"/>
+<testcase classname="tableModel" name="set param values to properties with no appearance specified" time="0"/>
+<testcase classname="tableModel" name="set param values to properties with the appearance specified" time="0.001"/>
+<testcase classname="tableModel" name="set param values to properties with the appearance specified in a compact way" time="0"/>
 <testcase classname="tableModel #getProperties" name="returns the JSON with the properties" time="0"/>
 <testcase classname="tableModel #updateProperties" name="updates the properties passed as param without specifying any appearance" time="0"/>
-<testcase classname="tableModel #updateProperties" name="does not update the properties with wrong param" time="0"/>
+<testcase classname="tableModel #updateProperties" name="does not update the properties with wrong param" time="0.001"/>
 <testcase classname="tableModel #updateProperties" name="increases the number of appearance columns if the number of headers is increased" time="0"/>
 <testcase classname="tableModel #updateProperties" name="decreases the number of appearance columns if the number of headers is decreased" time="0"/>
 <testcase classname="tableModel #updateProperties" name="leaves the number of appearance columns untouched if the number of headers doesn' change" time="0"/>
@@ -477,10 +477,10 @@
 <testcase classname="tableModel #getData" name="returns json with two graphs" time="0"/>
 <testcase classname="tableModel #addFlow" name="adds flow to the flows array" time="0"/>
 <testcase classname="tableModel #addFlow" name="does not add an invalid flow to the flows array" time="0"/>
-<testcase classname="tableModel #deleteFlow" name="deletes the flow with the given ID" time="0.001"/>
+<testcase classname="tableModel #deleteFlow" name="deletes the flow with the given ID" time="0"/>
 <testcase classname="tableModel #deleteFlow" name="does not delete anything if the ID is not found" time="0"/>
 <testcase classname="tableModel #deleteAllFlows" name="deletes all the flows" time="0"/>
-<testcase classname="tableModel #updateRecord" name="returns 241 if it doesn't find the wanted flow" time="0"/>
+<testcase classname="tableModel #updateRecord" name="returns 241 if it doesn't find the wanted flow" time="0.001"/>
 <testcase classname="tableModel #updateRecord" name="returns 142 if it doesn't find the wanted record" time="0"/>
 <testcase classname="tableModel #updateRecord" name="returns 141 if no valid record is passed" time="0"/>
 <testcase classname="tableModel #updateRecord" name="returns true if passed valid parameters" time="0"/>
@@ -491,16 +491,16 @@
 <testcase classname="PageModel" name="returns null when there is no valid ID in params" time="0"/>
 <testcase classname="PageModel" name="returns null when there is a empty ID in params" time="0"/>
 <testcase classname="PageModel" name="set default values to property not specified" time="0"/>
-<testcase classname="PageModel" name="set default values to wrong properties" time="0"/>
+<testcase classname="PageModel" name="set default values to wrong properties" time="0.001"/>
 <testcase classname="PageModel" name="set param values to properties" time="0"/>
 <testcase classname="PageModel #getProperties" name="returns the JSON with the properties" time="0"/>
 <testcase classname="PageModel #updateProperties" name="updates the properties passed as param" time="0"/>
 <testcase classname="PageModel #updateProperties" name="does not update the properties with wrong param" time="0"/>
-<testcase classname="PageModel #addGraph" name="returns true and pushes the page if graph is valid" time="0"/>
+<testcase classname="PageModel #addGraph" name="returns true and pushes the page if graph is valid" time="0.001"/>
 <testcase classname="PageModel #addGraph" name="returns false if graph is invalid" time="0"/>
 <testcase classname="PageModel #getData" name="returns empty json if it has no graphs" time="0"/>
 <testcase classname="PageModel #getData" name="returns json with one graph" time="0"/>
-<testcase classname="PageModel #getData" name="returns json with two graphs" time="0.001"/>
+<testcase classname="PageModel #getData" name="returns json with two graphs" time="0"/>
 <testcase classname="PageListModel" name="returns null when passed a non-valid string" time="0"/>
 <testcase classname="PageListModel" name="returns null when passed a empty string" time="0"/>
 <testcase classname="PageListModel" name="create object with the right name" time="0"/>
@@ -510,7 +510,7 @@
 <testcase classname="PageListModel #getData" name="returns empty json if it has no pages" time="0"/>
 <testcase classname="PageListModel #getData" name="returns json with one page" time="0"/>
 <testcase classname="PageListModel #getData" name="returns json with two pages" time="0"/>
-<testcase classname="FunctionHelper #isHEX" name="returns false when passed a non-string" time="0.001"/>
+<testcase classname="FunctionHelper #isHEX" name="returns false when passed a non-string" time="0"/>
 <testcase classname="FunctionHelper #isHEX" name="returns false when passed a non-string" time="0"/>
 <testcase classname="FunctionHelper #isHEX" name="returns false when passed AbA9A0 without #" time="0"/>
 <testcase classname="FunctionHelper #isHEX" name="returns TRUE when passed #AbA9A0" time="0"/>
@@ -520,7 +520,7 @@
 <testcase classname="FunctionHelper #getCorrectType" name="returns a string from string notation" time="0"/>
 <testcase classname="FunctionHelper #getCorrectType" name="returns a string from malformed string notation" time="0"/>
 <testcase classname="FunctionHelper #getCorrectType" name="returns a string from string notation" time="0"/>
-<testcase classname="FunctionHelper #parseCondition" name="returns 701 when passed a non-condition" time="0"/>
+<testcase classname="FunctionHelper #parseCondition" name="returns 701 when passed a non-condition" time="0.001"/>
 <testcase classname="FunctionHelper #parseCondition" name="returns 701 when passed a semi-condition" time="0"/>
 <testcase classname="FunctionHelper #parseCondition" name="returns correct object when passed temp&gt;=0" time="0"/>
 <testcase classname="FunctionHelper #parseCondition" name="returns correct object when passed temp&gt;='0'" time="0"/>
@@ -573,8 +573,8 @@
 <testcase classname="Routes" name="set param values to properties" time="0.001"/>
 <testcase classname="Routes #addRoutingPath" name="returns false if passed an invalid namespace" time="0"/>
 <testcase classname="Routes #addRoutingPath" name="returns false if passed an invalid filename" time="0.001"/>
-<testcase classname="Routes #addRoutingPath" name="returns true if passed valid parameters" time="0"/>
-<testcase classname="Routes #addRoutingPath" name="behaves correctly if passed valid parameters" time="0.023"/>
+<testcase classname="Routes #addRoutingPath" name="returns true if passed valid parameters" time="0.002"/>
+<testcase classname="Routes #addRoutingPath" name="behaves correctly if passed valid parameters" time="0.033"/>
 <testcase classname="Socket" name="returns null when there are no params" time="0"/>
 <testcase classname="Socket" name="returns null when there is a non-valid namespace in params" time="0"/>
 <testcase classname="Socket" name="set param values to properties" time="0"/>

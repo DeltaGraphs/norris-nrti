@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">50.14</p>
+      <p class="stat">71.78</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">166</p>
+      <p class="stat">167</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">9.12</p>
+      <p class="stat">11.69</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">1.04</p>
+      <p class="stat">0.28</p>
     </div>
   </div>
 </div>
@@ -111,7 +111,7 @@ angular.module(&#039;norris-nrti&#039;)
 
 	var socket;
 
-	var json = {
+	/*var json = {
 		&#039;properties&#039;:
 		{
 			&#039;ID&#039;: &#039;id1&#039;,
@@ -179,15 +179,16 @@ angular.module(&#039;norris-nrti&#039;)
 				]
 			}
 		]
-	};
+	};*/
 
 	$scope.table = TableFactory.build();
-	$scope.table.updateParameters(json.properties);
-	$scope.table.initializeData(json.data);
+	//$scope.table.updateParameters(json.properties);
+	//$scope.table.initializeData(json.data);
 
 	this.socketConnection = function(url){
-		//socket = SocketServicesFactory.build(url);
-		//this.listenOnEvents();
+		console.log(&#039;TABLE socketConnection &#039; + url);
+		socket = SocketServicesFactory.build(url);
+		this.listenOnEvents();
 	};
 
 	var count = 0;
@@ -195,18 +196,18 @@ angular.module(&#039;norris-nrti&#039;)
 	$scope.changedD = true;
 	this.listenOnEvents = function(){
 		console.log(&#039;listen ON EVENTS&#039;);
-		/*socket.on(&#039;configGraph&#039;, function(info){
+		socket.on(&#039;configGraph&#039;, function(info){
 			if (count === 0) {
 				count++;
-				$scope.mapChart.updateParameters(info.properties);
-				$scope.mapChart.initializeData(info.data);
-				$scope.changedP = !$scope.changedP;
-				$scope.changedD = !$scope.changedD;  
+				$scope.table.updateParameters(info.properties);
+				$scope.table.initializeData(info.data);
+				$scope.changedD = !$scope.changedD;
+				$scope.changedP = !$scope.changedP;  
 	        }
-		});
+		});/*
 		socket.on(&#039;updateGraphProp&#039;, function(info){
 			console.log(&#039;updateGraphProp&#039;);
-			$scope.mapChart.updateParameters(info);
+			$scope.table.updateParameters(info);
 			$scope.changedP = !$scope.changedP;
 		});
 		socket.on(&#039;insertFlow&#039;, function(info){
@@ -214,19 +215,19 @@ angular.module(&#039;norris-nrti&#039;)
 			console.log(&#039;insert flow&#039; + JSON.stringify(info));
 			var flow = MapChartFlowFactory.build(info.properties);
 			flow.initializeData(info);
-			$scope.mapChart.addFlow(info.properties.ID, flow);
+			$scope.table.addFlow(info.properties.ID, flow);
 			$scope.changedD = !$scope.changedD;
 		});
 		socket.on(&#039;deleteFlow&#039;, function(info){
 			console.log(&#039;deleteFlow&#039;);
-			$scope.mapChart.deleteFlow(info.ID);
+			$scope.table.deleteFlow(info.ID);
 			$scope.changedD = !$scope.changedD;
 		});
 		socket.on(&#039;updateFlowProp&#039;, function(info){
 			console.log(&#039;updateFlowProp&#039;);
-			for (var i=0; i&lt;$scope.mapChart.getFlowList().length; i++){
-				if ($scope.mapChart.getFlowList()[i].id === info.ID){
-					$scope.mapChart.getFlowList()[i].flow.updateParameters(info);
+			for (var i=0; i&lt;$scope.table.getFlowList().length; i++){
+				if ($scope.table.getFlowList()[i].id === info.ID){
+					$scope.table.getFlowList()[i].flow.updateParameters(info);
 				}
 			}
 			$scope.changedD = !$scope.changedD;
@@ -235,16 +236,16 @@ angular.module(&#039;norris-nrti&#039;)
 			console.log(&#039;updateFlowData &#039; + data.action);
 			switch (data.action){
 				case &#039;insertRecords&#039;:
-					$scope.mapChart.streamUpdate(data);
+					$scope.table.streamUpdate(data);
 					break;
 				case &#039;deleteRecord&#039;:
-					$scope.mapChart.deleteData(data);
+					$scope.table.deleteData(data);
 					break;
 				case &#039;updateRecord&#039;:
-					$scope.mapChart.inPlaceUpdate(data);
+					$scope.table.inPlaceUpdate(data);
 					break;
 				case &#039;replaceData&#039;:
-					$scope.mapChart.replaceData(data);
+					$scope.table.replaceData(data);
 					break;
 			}
 			$scope.changedD = !$scope.changedD;

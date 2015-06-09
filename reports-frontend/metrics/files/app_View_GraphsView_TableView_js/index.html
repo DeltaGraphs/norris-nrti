@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">63.58</p>
+      <p class="stat">64.57</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">132</p>
+      <p class="stat">130</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">19.76</p>
+      <p class="stat">20.54</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.94</p>
+      <p class="stat">1.01</p>
     </div>
   </div>
 </div>
@@ -121,25 +121,23 @@ angular.module(&#039;norris-nrti&#039;)
         	attrs.$observe(&#039;url&#039;, function(value) {
                 console.log(&#039;TABLE observ url &#039; + value);
                 if (value) {
-                    //scope.$parent.socketConnection(value);
-                    scope.setData();
-                    scope.init();
+                    scope.$parent.socketConnection(value);
                 }
             });
 
             scope.$parent.$watch(&#039;changedP&#039;, function(newValue, oldValue){
                 if (newValue !== oldValue) {
                     console.log(&#039;TABLE watch changedP&#039;);
-                    //scope.init();
+                    scope.init();
                 }
             }, true);
 
-            /*scope.$parent.$watch(&#039;changedP&#039;, function(newValue, oldValue){
+            scope.$parent.$watch(&#039;changedD&#039;, function(newValue, oldValue){
                 if(newValue !== oldValue){
-                    console.log(&#039;BARCHART watch changedP&#039;);                    
-                    scope.render();
+                    console.log(&#039;BARCHART watch changedD&#039;);                    
+                    scope.setData();
                 }
-            }, true);*/
+            }, true);
 
             scope.init = function(){
                 console.log(&#039;TABLE init&#039;);
@@ -179,7 +177,7 @@ angular.module(&#039;norris-nrti&#039;)
 
                 table = table + &#039;&lt;tfoot&gt;&lt;tr&gt;&#039; +
                                     &#039;&lt;td colspan=&quot;5&quot; class=&quot;text-center&quot;&gt;&#039; +
-                                        &#039;&lt;div st-pagination=&quot;&quot; st-items-by-page=&quot;itemsByPage&quot; st-displayed-pages=&quot;7&quot;&gt;&lt;/div&gt;&#039; +
+                                        &#039;&lt;div st-pagination=&quot;&quot; st-items-by-page=&quot;itemsByPage&quot; st-displayed-pages=&quot;5&quot;&gt;&lt;/div&gt;&#039; +
                                     &#039;&lt;/td&gt;&#039; +
                                 &#039;&lt;/tr&gt;&lt;/tfoot&gt;&#039;;
 
