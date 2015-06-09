@@ -113,7 +113,7 @@ angular.module('norris-nrti')
 				$scope.changedD = !$scope.changedD;
 				$scope.changedP = !$scope.changedP;  
 	        }
-		});/*
+		});
 		socket.on('updateGraphProp', function(info){
 			console.log('updateGraphProp');
 			$scope.table.updateParameters(info);
@@ -158,7 +158,7 @@ angular.module('norris-nrti')
 					break;
 			}
 			$scope.changedD = !$scope.changedD;
-		});*/
+		});
 
 	};
 

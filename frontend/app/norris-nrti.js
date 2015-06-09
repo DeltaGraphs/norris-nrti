@@ -22,14 +22,14 @@ var norrisConfig = function($routeProvider) {
     $routeProvider /* inizio definizione di routeProvider */
         .when('/', {
             //controller: 'PagesListController',
-            templateUrl: 'View/pagesList.html'
+            template: '<pages-list></pages-list>'
         })
         .when('/page/:pageId', {
         	//controller : 'PageController',
-        	templateUrl: 'View/page.html'
+        	template: '<page></page>'
         })
     ; /* fine definizione di routeProvider */
 };
 
-var norris = angular.module('norris-nrti', ['ngRoute']).config(norrisConfig); /* definisce un
+var norris = angular.module('norris-nrti', ['ngRoute', 'nvd3ChartDirectives', 'smart-table']).config(norrisConfig); /* definisce un
 namespace (chiamato modulo) */

@@ -37,6 +37,7 @@ angular.module('norris-nrti')
             scope.$parent.$watch('changedP', function(newValue, oldValue){
                 if (newValue !== oldValue) {
                     console.log('TABLE watch changedP');
+                    scope.setData();
                     scope.init();
                 }
             }, true);
@@ -45,6 +46,7 @@ angular.module('norris-nrti')
                 if(newValue !== oldValue){
                     console.log('BARCHART watch changedD');                    
                     scope.setData();
+                    scope.init();
                 }
             }, true);
 
@@ -65,20 +67,34 @@ angular.module('norris-nrti')
                                     '</ul>' +
                                 '</div>';
 
-                table =  table + '<div class="graphtitle">'+ scope.$parent.table.getTitle() +'</div>';
-                        //'<p><strong>Page:</strong> {{tableParams.page()}}' +
-                        //'<p><strong>Count per page:</strong> {{tableParams.count()}}';     
+                table =  table + '<div class="graphtitle">'+ scope.$parent.table.getTitle() +'</div>';   
 
-                table = table + '<table st-table="data" class="table table-striped">';
+                table = table + '<div><table st-table="data" class="table table-striped">';
 
                 table = table + '<thead><tr>';
                 for (var i=0; i<scope.$parent.table.getHeaders().length; i++) {
-                    table = table + '<th st-sort="data.'+ scope.$parent.table.getHeaders()[i] +'">'+ scope.$parent.table.getHeaders()[i] +'</th>';
+                    table = table + '<th ';
+                    console.log('TABLE init sortable ' + scope.$parent.table.getSortable());
+                    if (scope.$parent.table.getSortable()) {
+                        console.log('TABLE init headers[i] '+ scope.$parent.table.getHeaders()[i] +'column sort ' + scope.$parent.table.getSort().column);
+                        if (scope.$parent.table.getHeaders()[i] === scope.$parent.table.getSort().column ) {
+                            var ordinamento;
+                            if (scope.$parent.table.getSort().ordering === 'ASC') {
+                                ordinamento = 'true';
+                            } else if (scope.$parent.table.getSort().ordering === 'DESC'){
+                                ordinamento = 'reverse';
+                            } 
+                            console.log('TABLE init tipo sort ' + ordinamento);
+                            table = table + 'st-sort-default="'+ ordinamento +'" st-sort="'+ scope.$parent.table.getHeaders()[i] +'"';
+                        }
+                    }
+                    table = table + '>'+ scope.$parent.table.getHeaders()[i] +'</th>';
                 }
                 table = table + '</tr></thead>';
 
                 table = table + '<tbody><tr ng-repeat="record in data">';
                 for (var j=0; j<scope.$parent.table.getHeaders().length; j++){
+                    console.log('TABLE costruzione righe');
                     //data-title="\''+ scope.$parent.table.getHeaders()[j] +'\'"
                 	table = table + '<td>{{record.'+ scope.$parent.table.getHeaders()[j] +'}}</td>';
                 }
@@ -90,7 +106,7 @@ angular.module('norris-nrti')
                                     '</td>' +
                                 '</tr></tfoot>';
 
-                table = table + '</table>';
+                table = table + '</table></div>';
                 
                 console.log(table);
             	var compiled = $compile(table)(scope);
@@ -101,21 +117,22 @@ angular.module('norris-nrti')
             scope.setData = function(){
                 console.log('TABLE setData');
                 var data = [];
-                //console.log('getData.length ' + scope.$parent.table.getFlowList()[0].flow.getData().length + ' stringify table: ' + JSON.stringify(scope.$parent.table));
-                for (var i=0; i<scope.$parent.table.getFlowList()[0].flow.getData().length; i++) {
-                    var record = {};
-                    console.log('getHeader.length ' + scope.$parent.table.getHeaders().length);
-                    for (var j=0; j<scope.$parent.table.getHeaders().length; j++) {
-                        record[scope.$parent.table.getHeaders()[j]] = scope.$parent.table.getFlowList()[0].flow.getData()[i].value[j];
+                if (scope.$parent.table.getFlowList().length > 0) {
+                    console.log('getData.length ' + scope.$parent.table.getFlowList()[0].flow.getData().length + ' stringify table: ' + JSON.stringify(scope.$parent.table));
+                    for (var i=0; i<scope.$parent.table.getFlowList()[0].flow.getData().length; i++) {
+                        var record = {};
+                        for (var j=0; j<scope.$parent.table.getHeaders().length; j++) {
+                            record[scope.$parent.table.getHeaders()[j]] = scope.$parent.table.getFlowList()[0].flow.getData()[i].value[j];
+                        }
+                        data.push(record);
                     }
-                    data.push(record);
                 }
-                //console.log('data length ' +data.length);
-                /*for (var g=0; g<data.length; g++) {
+                console.log('data length ' +data.length);
+                for (var g=0; g<data.length; g++) {
                     console.log('TABLE data: ' + JSON.stringify(data[g]));
-                }*/
+                }
                 scope.data = data;
-                scope.itemsByPage=10;
+                scope.itemsByPage = scope.$parent.table.getMaxItemsPage();
                 /*scope.tableParams = new ngTableParams({
                     page: 1,            // show first page
                     count: scope.$parent.table.getMaxItemsPage()         // count per page
