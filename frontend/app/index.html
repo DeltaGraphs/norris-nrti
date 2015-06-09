@@ -28,12 +28,14 @@
 		<script src='Model/FlowsModel/MapChartFlow.js'></script>
 		<script src='Model/GraphsModel/Table.js'></script>
 		<script src='Model/FlowsModel/TableFlow.js'></script>
+		<script src='Model/UrlProvider.js'></script>
 		<script src='Controller/PagesControllers/PagesListController.js'></script>
 		<script src='Controller/PagesControllers/PageController.js'></script>
 		<script src='Controller/GraphsControllers/LineChartController.js'></script>
 		<script src='Controller/GraphsControllers/BarChartController.js'></script>
 		<script src='Controller/GraphsControllers/MapChartController.js'></script>
 		<script src='Controller/GraphsControllers/TableController.js'></script>
+		<script src='Controller/RootController.js'></script>
 		<script src='View/GraphsView/LineChartView.js'></script>
 		<script src='View/GraphsView/BarChartView.js'></script>
 		<script src='View/GraphsView/MapChartView.js'></script>
@@ -48,5 +50,7 @@
 	     	html, body, #map-canvas { height: 100%; margin: 0; padding: 0;}
 	    </style>
 	</head>
-	<body ng-app='norris-nrti' ng-view></body>
+	<body ng-app='norris-nrti' ng-controller="RootController" ng-init="url = 'http://norris-nrti-dev.herokuapp.com/norris'">
+		<div ng-view></div>
+	</body>
 </html>

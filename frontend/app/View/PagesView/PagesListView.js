@@ -21,7 +21,7 @@ angular.module('norris-nrti')
 		replace: false,
 		controller: 'PagesListController',
 		scope: {
-			url: '@'
+
 		},
 		template: '<div id="pagesList">' + 
 					'<ul>' +
@@ -32,7 +32,7 @@ angular.module('norris-nrti')
 					'</ul>' +
 		'</div>',
 		link: function (scope, element, attrs) {
-			scope.socketConnection(attrs.url);
+			scope.socketConnection();
 /*
 			scope.render = function() {
 				var parent = document.getElementById('pagesList');

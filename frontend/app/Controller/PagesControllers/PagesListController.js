@@ -17,12 +17,15 @@
 */
 
 angular.module('norris-nrti')
-.controller('PagesListController', ['$scope', '$location', 'PagesList', 'SocketServicesFactory', function($scope, $location, PagesList, SocketServicesFactory){
+.controller('PagesListController', ['$scope', '$location', 'PagesList', 'SocketServicesFactory', 'UrlProvider', function($scope, $location, PagesList, SocketServicesFactory, UrlProvider){
 
 	var socket;
 	var pagesList;
 
-	this.socketConnection = function(url){
+	var url = UrlProvider.prototype.getUrl();
+
+	this.socketConnection = function(){
+		console.log('\nURL: ' +url+'\n');
 		socket = SocketServicesFactory.build(url);
 		console.log('socketConnection');
 		this.listenOnEvents();
