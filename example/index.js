@@ -93,11 +93,12 @@ var mapChartFlow=mapChart.createMapChartFlow({
     ID:'flow1',
     name: 'linea 22',
     marker:{
-        'type': 'shape',//shape, icon, text
+        //'type': 'shape',//shape, icon, text
+        'type': 'icon',
         //gli attributi qui sotto dipendono dal tipo di marker!!!!!
-        'shape': 'circle',//circle, triangle, square, diamond
-        /*'icon': 'null',//path
-        'text': 'null',//string
+        //'shape': 'circle',//circle, triangle, square, diamond
+        'icon': 'bus'//path
+        /*'text': 'null',//string
         'color' : '#000'*/
     },
     trace:{
@@ -400,7 +401,7 @@ var table=page1.createTable({
     addRowOn: 'top',
     headers: ['IDMezzo', 'WGS84Fi', 'WGS84La'],
     sort: {
-        column: 'col1',
+        column: 'IDMezzo',
         ordering: 'DESC'
     },
     appearance: {

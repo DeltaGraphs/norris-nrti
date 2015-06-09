@@ -44,6 +44,10 @@ describe('Norris', function() {
         assert.strictEqual((new Norris(app, io, '/')).hasOwnProperty('_app'), false);
     });
 
+    it('returns null if the pagelistmodel is not created', function() {
+        assert.strictEqual((new Norris(app, io, '/  ')).hasOwnProperty('_app'), false);
+    });
+
     it('set param values to properties', function() {
         var nor=new Norris(app, io, '/norris', 'baseURL');
         assert.deepEqual(nor._app, app);

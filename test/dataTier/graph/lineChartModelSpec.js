@@ -50,6 +50,7 @@ describe('lineChartModel', function() {
         assert.strictEqual(graph1._backgroundColor, '#FFFFFF');
         assert.strictEqual(graph1._legendOnPoint, false);
         assert.strictEqual(graph1._viewFinder, false);
+        assert.strictEqual(graph1._interpolation, 'linear');
         assert.strictEqual(graph1._horizontalGrid, false);
         assert.strictEqual(graph1._verticalGrid, false);
     });
@@ -67,6 +68,7 @@ describe('lineChartModel', function() {
             backgroundColor: 222,
             legendOnPoint: 'abc',
             viewFinder: 12,
+            interpolation: 123,
             horizontalGrid: 'abc',
             verticalGrid: 'def'
         });
@@ -82,6 +84,7 @@ describe('lineChartModel', function() {
         assert.strictEqual(graph1._backgroundColor, '#FFFFFF');
         assert.strictEqual(graph1._legendOnPoint, false);
         assert.strictEqual(graph1._viewFinder, false);
+        assert.strictEqual(graph1._interpolation, 'linear');
         assert.strictEqual(graph1._horizontalGrid, false);
         assert.strictEqual(graph1._verticalGrid, false);
     });
@@ -102,6 +105,7 @@ describe('lineChartModel', function() {
             backgroundColor: '#EEEEEE',
             legendOnPoint: true,
             viewFinder: true,
+            interpolation: 'step',
             horizontalGrid: true,
             verticalGrid: true
         });
@@ -117,6 +121,7 @@ describe('lineChartModel', function() {
         assert.strictEqual(graph1._backgroundColor, '#EEEEEE');
         assert.strictEqual(graph1._legendOnPoint, true);
         assert.strictEqual(graph1._viewFinder, true);
+        assert.strictEqual(graph1._interpolation, 'step');
         assert.strictEqual(graph1._horizontalGrid, true);
         assert.strictEqual(graph1._verticalGrid, true);
     });
@@ -135,6 +140,7 @@ describe('lineChartModel', function() {
 	            backgroundColor: '#EEEEEE',
                 legendOnPoint: true,
                 viewFinder: true,
+                interpolation: 'step',
                 horizontalGrid: true,
                 verticalGrid: true
             };
@@ -152,6 +158,7 @@ describe('lineChartModel', function() {
             assert.strictEqual(prop.backgroundColor, '#EEEEEE');
             assert.strictEqual(prop.legendOnPoint, true);
             assert.strictEqual(prop.viewFinder, true);
+            assert.strictEqual(prop.interpolation, 'step');
             assert.strictEqual(prop.horizontalGrid, true);
             assert.strictEqual(prop.verticalGrid, true);
         });
@@ -170,6 +177,7 @@ describe('lineChartModel', function() {
 	            backgroundColor: '#EEEEEE',
                 legendOnPoint: true,
                 viewFinder: true,
+                interpolation: 'step',
                 horizontalGrid: true,
                 verticalGrid: true
             };
@@ -187,6 +195,7 @@ describe('lineChartModel', function() {
             assert.strictEqual(graph1._backgroundColor, '#EEEEEE');
             assert.strictEqual(graph1._legendOnPoint, true);
             assert.strictEqual(graph1._viewFinder, true);
+            assert.strictEqual(graph1._interpolation, 'step');
             assert.strictEqual(graph1._horizontalGrid, true);
             assert.strictEqual(graph1._verticalGrid, true);
         });
@@ -203,6 +212,7 @@ describe('lineChartModel', function() {
 	            backgroundColor: 222,
                 legendOnPoint: 'abc',
                 viewFinder: 12,
+                interpolation: 123,
                 horizontalGrid: 'abc',
                 verticalGrid: 'def'
             };
@@ -220,6 +230,7 @@ describe('lineChartModel', function() {
 	        assert.strictEqual(graph1._backgroundColor, '#FFFFFF');
             assert.strictEqual(graph1._legendOnPoint, false);
             assert.strictEqual(graph1._viewFinder, false);
+            assert.strictEqual(graph1._interpolation, 'linear');
             assert.strictEqual(graph1._horizontalGrid, false);
             assert.strictEqual(graph1._verticalGrid, false);
         });
