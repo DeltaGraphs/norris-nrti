@@ -74,10 +74,6 @@ describe('Page', function() {
         assert.strictEqual((new Page(1, new ParamMock(), new ParamMock())).hasOwnProperty('_name'), false);
     });
 
-    it('returns null when there is no valid networkHandler in params', function() {
-        assert.strictEqual((new Page({ID:'abc'}, 111, new ParamMock())).hasOwnProperty('_name'), false);
-    });
-
     it('returns null if the PageModel is not created', function() {
         assert.strictEqual((new Page({ID:' '}, new ParamMock(), new ParamMock())).hasOwnProperty('_name'), false);
     });
