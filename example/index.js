@@ -94,12 +94,12 @@ var mapChartFlow=mapChart.createMapChartFlow({
     name: 'linea 22',
     marker:{
         //'type': 'shape',//shape, icon, text
-        'type': 'icon',
+        'type': 'text',
         //gli attributi qui sotto dipendono dal tipo di marker!!!!!
         //'shape': 'circle',//circle, triangle, square, diamond
-        'icon': 'http://i.imgur.com/W0QgS4N.png'//path
-        /*'text': 'null',//string
-        'color' : '#000'*/
+        //'icon': 'http://i.imgur.com/W0QgS4N.png'//path
+        'text': '#colpaDiPipo',//string
+        'color' : '#000'
     },
     trace:{
 		'type':'poly',
