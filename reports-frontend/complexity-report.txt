@@ -1,8 +1,8 @@
-Mean per-function logical LOC: 5.598899305583987
+Mean per-function logical LOC: 5.549375496060177
 Mean per-function parameter count: 0.9465639720454009
-Mean per-function cyclomatic complexity: 2.0051828874550397
-Mean per-function Halstead effort: 2435.7405405590716
-Mean per-module maintainability index: 120.68681321724125
+Mean per-function cyclomatic complexity: 1.9899447922169446
+Mean per-function Halstead effort: 2404.0733640051412
+Mean per-module maintainability index: 120.75920603548212
 First-order density: 0%
 Change cost: 2.857142857142857%
 Core size: 0%
@@ -44452,17 +44452,17 @@ Core size: 0%
 
 /home/travis/build/DeltaGraphs/norris-nrti/frontend/app/View/GraphsView/MapChartView.js
 
-  Physical LOC: 310
-  Logical LOC: 212
+  Physical LOC: 311
+  Logical LOC: 186
   Mean parameter count: 1.2666666666666666
-  Cyclomatic complexity: 35
-  Cyclomatic complexity density: 16.50943396226415%
-  Maintainability index: 96.04390808730764
+  Cyclomatic complexity: 27
+  Cyclomatic complexity density: 14.516129032258066%
+  Maintainability index: 98.57765672573763
   Dependency count: 0
 
   Function: <anonymous>
     Line No.: 18
-    Physical LOC: 294
+    Physical LOC: 295
     Logical LOC: 7
     Parameter count: 1
     Cyclomatic complexity: 1
@@ -44473,7 +44473,7 @@ Core size: 0%
 
   Function: link
     Line No.: 28
-    Physical LOC: 282
+    Physical LOC: 283
     Logical LOC: 12
     Parameter count: 3
     Cyclomatic complexity: 1
@@ -44572,17 +44572,17 @@ Core size: 0%
 
   Function: scope.init
     Line No.: 110
-    Physical LOC: 87
-    Logical LOC: 68
+    Physical LOC: 88
+    Logical LOC: 42
     Parameter count: 0
-    Cyclomatic complexity: 16
-    Cyclomatic complexity density: 23.52941176470588%
-    Halstead difficulty: 21.48876404494382
-    Halstead volume: 3074.659647735382
-    Halstead effort: 66070.63568869571
+    Cyclomatic complexity: 8
+    Cyclomatic complexity density: 19.047619047619047%
+    Halstead difficulty: 21.907692307692308
+    Halstead volume: 2256.9866010269266
+    Halstead effort: 49445.367997882204
 
   Function: scope.render
-    Line No.: 198
+    Line No.: 199
     Physical LOC: 83
     Logical LOC: 53
     Parameter count: 0
@@ -44593,7 +44593,7 @@ Core size: 0%
     Halstead effort: 63832.29053737734
 
   Function: addLegendOnPoint
-    Line No.: 268
+    Line No.: 269
     Physical LOC: 9
     Logical LOC: 1
     Parameter count: 2
@@ -44604,7 +44604,7 @@ Core size: 0%
     Halstead effort: 81.72907199030617
 
   Function: <anonymous>
-    Line No.: 270
+    Line No.: 271
     Physical LOC: 6
     Logical LOC: 2
     Parameter count: 0
@@ -44615,7 +44615,7 @@ Core size: 0%
     Halstead effort: 38.5
 
   Function: scope.legend
-    Line No.: 282
+    Line No.: 283
     Physical LOC: 26
     Logical LOC: 21
     Parameter count: 0

@@ -31,13 +31,13 @@
 		<error line="141" column="42" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
 		<error line="149" column="47" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
 		<error line="151" column="44" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
-		<error line="207" column="39" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
-		<error line="211" column="47" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
-		<error line="230" column="46" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
-		<error line="237" column="46" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
-		<error line="244" column="46" severity="warning" message="&apos;MapLabel&apos; is not defined." source="jshint.W117" />
-		<error line="270" column="21" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
-		<error line="182" column="29" severity="warning" message="&apos;parent0&apos; is defined but never used." source="jshint.W098" />
+		<error line="208" column="39" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
+		<error line="212" column="47" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
+		<error line="231" column="46" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
+		<error line="238" column="46" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
+		<error line="245" column="46" severity="warning" message="&apos;MapLabel&apos; is not defined." source="jshint.W117" />
+		<error line="271" column="21" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
+		<error line="18" column="33" severity="warning" message="&apos;$compile&apos; is defined but never used." source="jshint.W098" />
 	</file>
 	<file name="app/View/PagesView/PageView.js">
 		<error line="31" column="17" severity="warning" message="Read only." source="jshint.W020" />
