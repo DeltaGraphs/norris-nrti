@@ -6,60 +6,35 @@ module.exports = function(grunt) {
     grunt.initConfig({
         concat: {
             css: {
-                src: ['./View/**/*.css'], // array of folders
-                dest: './dist/tmp/concat.css'
+                src: ['./frontend/app/View/**/*.css'], // array of folders
+                dest: './frontend/app/dist/tmp/concat.css'
             },
             js: {
-                src: ['./norris-nrti.js','./Model/**/*.js','./Controller/**/*.js','./View/**/*.js'], // array of folders
-                dest: './dist/tmp/concat.js'
+                src: [ // array of folders
+                    './frontend/app/norris-nrti.js',
+                    './frontend/app/Model/**/*.js',
+                    './frontend/app/Controller/**/*.js',
+                    './frontend/app/View/**/*.js'
+                ],
+                dest: './frontend/app/dist/tmp/concat.js'
             }
         },
         cssmin: {
-            css: {
+            dist: {
                 files: {
-                    './dist/norris-nrti.min.css': [ './dist/tmp/concat.css' ]
+                    './frontend/app/dist/norris-nrti.min.css': [ './frontend/app/dist/tmp/concat.css' ]
                 }
             }
         },
-        min: {
-            js: {
-                    src: 'dist/js/concat.js',
-                    dest: 'dist/js/norris-nrti.min.js'
+        uglify: {
+            dist: {
+                    src: './frontend/app/dist/js/concat.js',
+                    dest: './frontend/app/dist/js/norris-nrti.min.js'
                 }
             }
         }
     );
     
-
-    /*  
-
-uglify: {
-            options: {
-                mangle: false
-            },
-            my_target: {
-                files: {
-                    'dist/output.min.js': ['src/input.js']
-                }
-            }
-        },
-
-
-
-
-    grunt.initConfig({
-      pkg: grunt.file.readJSON('package.json'),
-      uglify: {
-        options: {
-          banner: '/! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> /\n'
-        },
-        build: {
-          src: 'src/<%= pkg.name %>.js',
-          dest: 'build/<%= pkg.name %>.min.js'
-        }
-      }
-    });
-    */
     // Load the plugin that provides the "uglify" task.
     grunt.loadNpmTasks('grunt-contrib-uglify');
 
