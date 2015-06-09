@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">56.18</p>
+      <p class="stat">56.13</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">71</p>
+      <p class="stat">46</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">6.36</p>
+      <p class="stat">6.28</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.18</p>
+      <p class="stat">0.19</p>
     </div>
   </div>
 </div>
@@ -97,60 +97,35 @@ module.exports = function(grunt) {
     grunt.initConfig({
         concat: {
             css: {
-                src: [&#039;./View/**/*.css&#039;], // array of folders
-                dest: &#039;./dist/tmp/concat.css&#039;
+                src: [&#039;frontend/app/View/**/*.css&#039;], // array of folders
+                dest: &#039;frontend/app/dist/tmp/concat.css&#039;
             },
             js: {
-                src: [&#039;./norris-nrti.js&#039;,&#039;./Model/**/*.js&#039;,&#039;./Controller/**/*.js&#039;,&#039;./View/**/*.js&#039;], // array of folders
-                dest: &#039;./dist/tmp/concat.js&#039;
+                src: [ // array of folders
+                    &#039;frontend/app/norris-nrti.js&#039;,
+                    &#039;frontend/app/Model/**/*.js&#039;,
+                    &#039;frontend/app/Controller/**/*.js&#039;,
+                    &#039;frontend/app/View/**/*.js&#039;
+                ],
+                dest: &#039;frontend/app/dist/tmp/concat.js&#039;
             }
         },
         cssmin: {
-            css: {
+            dist: {
                 files: {
-                    &#039;./dist/norris-nrti.min.css&#039;: [ &#039;./dist/tmp/concat.css&#039; ]
+                    &#039;frontend/app/dist/norris-nrti.min.css&#039;: [ &#039;frontend/app/dist/tmp/concat.css&#039; ]
                 }
             }
         },
-        min: {
-            js: {
-                    src: &#039;dist/js/concat.js&#039;,
-                    dest: &#039;dist/js/norris-nrti.min.js&#039;
+        uglify: {
+            build: {
+                files: {
+                    &#039;frontend/app/dist/norris-nrti.min.js&#039;: [&#039;frontend/app/dist/tmp/concat.js&#039;]
                 }
             }
         }
-    );
-    
-
-    /*  
-
-uglify: {
-            options: {
-                mangle: false
-            },
-            my_target: {
-                files: {
-                    &#039;dist/output.min.js&#039;: [&#039;src/input.js&#039;]
-                }
-            }
-        },
-
-
-
-
-    grunt.initConfig({
-      pkg: grunt.file.readJSON(&#039;package.json&#039;),
-      uglify: {
-        options: {
-          banner: &#039;/! &lt;%= pkg.name %&gt; &lt;%= grunt.template.today(&quot;yyyy-mm-dd&quot;) %&gt; /\n&#039;
-        },
-        build: {
-          src: &#039;src/&lt;%= pkg.name %&gt;.js&#039;,
-          dest: &#039;build/&lt;%= pkg.name %&gt;.min.js&#039;
-        }
-      }
     });
-    */
+
     // Load the plugin that provides the &quot;uglify&quot; task.
     grunt.loadNpmTasks(&#039;grunt-contrib-uglify&#039;);
 
