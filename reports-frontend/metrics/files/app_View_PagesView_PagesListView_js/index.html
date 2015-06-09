@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">61</p>
+      <p class="stat">38</p>
     </div>
   </div>
   <div class="row historical">
@@ -124,29 +124,6 @@ angular.module(&#039;norris-nrti&#039;)
 		&#039;&lt;/div&gt;&#039;,
 		link: function (scope, element, attrs) {
 			scope.socketConnection();
-/*
-			scope.render = function() {
-				var parent = document.getElementById(&#039;pagesList&#039;);
-				while(parent.firstChild) {
-				    parent.removeChild(parent.firstChild);
-				}
-				for(var i=0; i&lt;scope.pagesList.length; i++){
-					var div = document.createElement(&#039;div&#039;);
-					div.className = &#039;page&#039;;
-					div.innerHTML = &#039;&lt;p&gt; &lt;a href=&quot;#/page/&#039;+ i +&#039;&quot; &gt; {{ scope.pagesList[&#039;+ i +&#039;].page.getName() }} &lt;/a&gt; &lt;/p&gt;\n&#039; +
-									&#039;&lt;p&gt; {{ scope.pagesList[&#039;+ i +&#039;].page.getDescription() }} &lt;/p&gt;&#039;;
-					parent.appendChild(div);
-				}
-       		};
-
-       		scope.$watch(&#039;scope.pagesList&#039;, function(){
-       			if (scope.pagesList){
-		          	console.log(&#039;watch render&#039;);
-		          	scope.render();
-	    	      	console.log(&#039;watch render fine&#039;);
-	    	    }
-        	}, true);
-*/
 		}
 
 	};

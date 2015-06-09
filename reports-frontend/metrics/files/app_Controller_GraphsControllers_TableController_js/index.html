@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">68.27</p>
+      <p class="stat">68.24</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">167</p>
+      <p class="stat">95</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">26.79</p>
+      <p class="stat">26.63</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.85</p>
+      <p class="stat">0.86</p>
     </div>
   </div>
 </div>
@@ -111,79 +111,7 @@ angular.module(&#039;norris-nrti&#039;)
 
 	var socket;
 
-	/*var json = {
-		&#039;properties&#039;:
-		{
-			&#039;ID&#039;: &#039;id1&#039;,
-			&#039;title&#039;: &#039;tabella 1&#039;,	//stringa
-			&#039;type&#039;: &#039;Table&#039;,	
-			&#039;height&#039;: 500, // &gt; 0
-			&#039;width&#039;: 600, // &gt; 0
-			&#039;sortable&#039;: true,
-			&#039;maxItemsPage&#039;: 10, // &gt; 0
-			&#039;addRowOn&#039;: &#039;bottom&#039;, // &#039;top&#039;, &#039;bottom&#039;
-			&#039;headers&#039;: [&#039;column1&#039;, &#039;column2&#039;],
-			&#039;sort&#039;: {
-				&#039;column&#039;: &#039;col1&#039;,
-				&#039;ordering&#039;: &#039;ASC&#039; // &#039;ASC&#039;, &#039;DESC&#039;
-			},
-			&#039;appearance&#039;: {
-				&#039;border&#039;: {
-					&#039;color&#039;: &#039;#000000&#039;, //#xxxxxx,
-					&#039;width&#039;: 1 // &gt; 0
-				},
-				&#039;rowEven&#039;: {
-					&#039;textColor&#039;: [&#039;#000000&#039;, &#039;#000000&#039;],
-					&#039;backgroundColor&#039;: [&#039;#FFFFFF&#039;, &#039;#FFFFFF&#039;]
-				},
-				&#039;rowOdd&#039;: {
-					&#039;textColor&#039;: [&#039;#000000&#039;, &#039;#000000&#039;],
-					&#039;backgroundColor&#039;: [&#039;#FFFFFF&#039;, &#039;#FFFFFF&#039;]
-				},
-				&#039;headers&#039;: {
-					&#039;textColor&#039;: [&#039;#000000&#039;, &#039;#000000&#039;],
-					&#039;backgroundColor&#039;: [&#039;#FFFFFF&#039;, &#039;#FFFFFF&#039;]
-				}
-			},
-			&#039;flows&#039;: [
-				{
-					&#039;ID&#039;: &#039;flow1&#039;,
-					&#039;name&#039;: &#039;flow1&#039;,
-					&#039;maxItems&#039;: 50
-				}
-			]
-		},
-		&#039;data&#039;: [
-			{
-				&#039;ID&#039;: &#039;flow1&#039;,
-				&#039;records&#039;: [
-					{&#039;norrisRecordID&#039;: &#039;xx1&#039;, &#039;value&#039;: [1, 1]},
-					{&#039;norrisRecordID&#039;: &#039;xx2&#039;, &#039;value&#039;: [2, 32]},
-					{&#039;norrisRecordID&#039;: &#039;xx3&#039;, &#039;value&#039;: [3, 324]},
-					{&#039;norrisRecordID&#039;: &#039;xx4&#039;, &#039;value&#039;: [4, 354]},
-					{&#039;norrisRecordID&#039;: &#039;xx5&#039;, &#039;value&#039;: [5, 73]},
-					{&#039;norrisRecordID&#039;: &#039;xx6&#039;, &#039;value&#039;: [6, 33]},
-					{&#039;norrisRecordID&#039;: &#039;xx7&#039;, &#039;value&#039;: [7, 33]},
-					{&#039;norrisRecordID&#039;: &#039;xx8&#039;, &#039;value&#039;: [8, 36]},
-					{&#039;norrisRecordID&#039;: &#039;xx9&#039;, &#039;value&#039;: [9, 36]},
-					{&#039;norrisRecordID&#039;: &#039;x10&#039;, &#039;value&#039;: [10, 31]},
-					{&#039;norrisRecordID&#039;: &#039;x11&#039;, &#039;value&#039;: [11, 31]},
-					{&#039;norrisRecordID&#039;: &#039;x12&#039;, &#039;value&#039;: [11, 30]},
-					{&#039;norrisRecordID&#039;: &#039;x13&#039;, &#039;value&#039;: [12, 4]},
-					{&#039;norrisRecordID&#039;: &#039;x14&#039;, &#039;value&#039;: [17, 2]},
-					{&#039;norrisRecordID&#039;: &#039;x15&#039;, &#039;value&#039;: [17, 12]},
-					{&#039;norrisRecordID&#039;: &#039;x16&#039;, &#039;value&#039;: [50, 21]},
-					{&#039;norrisRecordID&#039;: &#039;x17&#039;, &#039;value&#039;: [50, 2]},
-					{&#039;norrisRecordID&#039;: &#039;x18&#039;, &#039;value&#039;: [51, 1]},
-					{&#039;norrisRecordID&#039;: &#039;x19&#039;, &#039;value&#039;: [52, 3]},
-				]
-			}
-		]
-	};*/
-
 	$scope.table = TableFactory.build();
-	//$scope.table.updateParameters(json.properties);
-	//$scope.table.initializeData(json.data);
 
 	this.socketConnection = function(url){
 		console.log(&#039;TABLE socketConnection &#039; + url);
@@ -214,7 +142,7 @@ angular.module(&#039;norris-nrti&#039;)
 			console.log(&#039;insertFlow&#039;);
 			console.log(&#039;insert flow&#039; + JSON.stringify(info));
 			var flow = TableFlowFactory.build(info.properties);
-			flow.initializeData(info);
+			flow.initializeData(info, table.getAddRowOn());
 			$scope.table.addFlow(info.properties.ID, flow);
 			$scope.changedD = !$scope.changedD;
 		});

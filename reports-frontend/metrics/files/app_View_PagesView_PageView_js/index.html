@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">54.36</p>
+      <p class="stat">55.08</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">106</p>
+      <p class="stat">105</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">23.33</p>
+      <p class="stat">21.69</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">1.01</p>
+      <p class="stat">0.96</p>
     </div>
   </div>
 </div>
@@ -119,28 +119,27 @@ angular.module(&#039;norris-nrti&#039;)
 			scope.socketConnection();
 
 			scope.render = function() {
-				var parent = document.getElementById(&#039;page&#039;);
-				while(parent.firstChild) {
-				    parent.removeChild(parent.firstChild);
-				}
+				parent = element.children()[0];
+				element.empty();
 
 				var commands = document.createElement(&#039;div&#039;);
 				commands.setAttribute(&#039;class&#039;, &#039;commands&#039;);
-				if (scope.$parent.previous) {
+				if (scope.previous) {
 					var previous = document.createElement(&#039;div&#039;);
-					previous.setAttribute(&#039;style&#039;, &#039;float:left;&#039;);
-					var pIndex = $routeParams.pageId - 1;
-					previous.innerHTML = &#039;&lt;a ng-href=&quot;#/page/&#039;+ pIndex +&#039;&quot;&gt;PREVIOUS PAGE&lt;/a&gt;&#039;;
+					//previous.setAttribute(&#039;style&#039;, &#039;float:left;&#039;);
+					var pIndex = parseInt($routeParams.pageId) - 1;
+					previous.innerHTML = &#039;&lt;a ng-href=&quot;#/page/&#039;+ pIndex +&#039;&quot; target=&quot;_self&quot;&gt;PREVIOUS PAGE&lt;/a&gt;&#039;;
 					commands.appendChild(previous);
 				}
 				var list = document.createElement(&#039;div&#039;);
-				list.innerHTML = &#039;&lt;a ng-href=&quot;/&quot;&gt;RETURN TO PAGES LIST&lt;/a&gt;&#039;;
+				list.innerHTML = &#039;&lt;a ng-href=&quot;/&quot; target=&quot;_self&quot;&gt;RETURN TO PAGES LIST&lt;/a&gt;&#039;;
+				//list.setAttribute(&#039;style&#039;, &#039;float:left;&#039;);
 				commands.appendChild(list);
-				if (scope.$parent.next) {
+				if (scope.next) {
 					var next = document.createElement(&#039;div&#039;);
-					next.setAttribute(&#039;style&#039;, &#039;float:right;&#039;);
-					var nIndex = $routeParams.pageId + 1;
-					next.innerHTML = &#039;&lt;a ng-href=&quot;#/page/&#039;+ nIndex +&#039;&quot;&gt;NEXT PAGE&lt;/a&gt;&#039;;
+					//next.setAttribute(&#039;style&#039;, &#039;float:left;&#039;);
+					var nIndex = parseInt($routeParams.pageId) + 1;
+					next.innerHTML = &#039;&lt;a ng-href=&quot;#/page/&#039;+ nIndex +&#039;&quot; target=&quot;_self&quot;&gt;NEXT PAGE&lt;/a&gt;&#039;;
 					commands.appendChild(next);
 				}
 				parent.appendChild(commands);
