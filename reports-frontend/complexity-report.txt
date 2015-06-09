@@ -1,8 +1,8 @@
-Mean per-function logical LOC: 5.527501655614908
-Mean per-function parameter count: 0.9374606943706947
-Mean per-function cyclomatic complexity: 2.000254006811873
-Mean per-function Halstead effort: 2396.474846604115
-Mean per-module maintainability index: 120.91558886269232
+Mean per-function logical LOC: 5.543457128713238
+Mean per-function parameter count: 0.9430265570794144
+Mean per-function cyclomatic complexity: 2.004706696978849
+Mean per-function Halstead effort: 2432.615881312617
+Mean per-module maintainability index: 120.88691902178358
 First-order density: 0%
 Change cost: 2.857142857142857%
 Core size: 0%
@@ -44452,17 +44452,17 @@ Core size: 0%
 
 /home/travis/build/DeltaGraphs/norris-nrti/frontend/app/View/GraphsView/MapChartView.js
 
-  Physical LOC: 228
-  Logical LOC: 153
-  Mean parameter count: 1.0909090909090908
-  Cyclomatic complexity: 26
-  Cyclomatic complexity density: 16.99346405228758%
-  Maintainability index: 96.21227742268147
+  Physical LOC: 301
+  Logical LOC: 202
+  Mean parameter count: 1.2857142857142858
+  Cyclomatic complexity: 35
+  Cyclomatic complexity density: 17.326732673267326%
+  Maintainability index: 95.20883299087596
   Dependency count: 0
 
   Function: <anonymous>
     Line No.: 18
-    Physical LOC: 212
+    Physical LOC: 285
     Logical LOC: 7
     Parameter count: 0
     Cyclomatic complexity: 1
@@ -44473,14 +44473,14 @@ Core size: 0%
 
   Function: link
     Line No.: 28
-    Physical LOC: 200
-    Logical LOC: 10
+    Physical LOC: 273
+    Logical LOC: 11
     Parameter count: 3
     Cyclomatic complexity: 1
-    Cyclomatic complexity density: 10%
-    Halstead difficulty: 6.5
-    Halstead volume: 320.947375050481
-    Halstead effort: 2086.1579378281267
+    Cyclomatic complexity density: 9.090909090909092%
+    Halstead difficulty: 6.315789473684211
+    Halstead volume: 334.35764566378015
+    Halstead effort: 2111.732498929138
 
   Function: <anonymous>
     Line No.: 30
@@ -44526,30 +44526,63 @@ Core size: 0%
     Halstead volume: 51.89147427955947
     Halstead effort: 133.43521957601007
 
-  Function: scope.init
+  Function: getBoundsZoomLevel
     Line No.: 67
-    Physical LOC: 50
-    Logical LOC: 41
+    Physical LOC: 27
+    Logical LOC: 14
+    Parameter count: 2
+    Cyclomatic complexity: 2
+    Cyclomatic complexity density: 14.285714285714285%
+    Halstead difficulty: 13.962962962962964
+    Halstead volume: 596.0559466273846
+    Halstead effort: 8322.707106612
+
+  Function: latRad
+    Line No.: 71
+    Physical LOC: 5
+    Logical LOC: 3
+    Parameter count: 1
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 33.33333333333333%
+    Halstead difficulty: 11.818181818181818
+    Halstead volume: 219.61587113893805
+    Halstead effort: 2595.460295278359
+
+  Function: zoom
+    Line No.: 77
+    Physical LOC: 3
+    Logical LOC: 1
+    Parameter count: 3
+    Cyclomatic complexity: 1
+    Cyclomatic complexity density: 100%
+    Halstead difficulty: 3.4285714285714284
+    Halstead volume: 72.64806399138325
+    Halstead effort: 249.07907654188543
+
+  Function: scope.init
+    Line No.: 95
+    Physical LOC: 93
+    Logical LOC: 70
     Parameter count: 0
-    Cyclomatic complexity: 8
-    Cyclomatic complexity density: 19.51219512195122%
-    Halstead difficulty: 21.661538461538463
-    Halstead volume: 2225.287351012503
-    Halstead effort: 48203.14754193238
+    Cyclomatic complexity: 16
+    Cyclomatic complexity density: 22.857142857142858%
+    Halstead difficulty: 24.84782608695652
+    Halstead volume: 3499.1816121787247
+    Halstead effort: 86947.05614609309
 
   Function: scope.render
-    Line No.: 118
-    Physical LOC: 81
-    Logical LOC: 52
+    Line No.: 189
+    Physical LOC: 83
+    Logical LOC: 53
     Parameter count: 0
     Cyclomatic complexity: 12
-    Cyclomatic complexity density: 23.076923076923077%
-    Halstead difficulty: 26.69298245614035
-    Halstead volume: 2266.450478454567
-    Halstead effort: 60498.322859098655
+    Cyclomatic complexity density: 22.641509433962266%
+    Halstead difficulty: 27.147540983606554
+    Halstead volume: 2351.3102190700592
+    Halstead effort: 63832.29053737734
 
   Function: addLegendOnPoint
-    Line No.: 186
+    Line No.: 259
     Physical LOC: 9
     Logical LOC: 1
     Parameter count: 2
@@ -44560,7 +44593,7 @@ Core size: 0%
     Halstead effort: 81.72907199030617
 
   Function: <anonymous>
-    Line No.: 188
+    Line No.: 261
     Physical LOC: 6
     Logical LOC: 2
     Parameter count: 0
@@ -44571,7 +44604,7 @@ Core size: 0%
     Halstead effort: 38.5
 
   Function: scope.legend
-    Line No.: 200
+    Line No.: 273
     Physical LOC: 26
     Logical LOC: 21
     Parameter count: 0
