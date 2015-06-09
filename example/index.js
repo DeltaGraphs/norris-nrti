@@ -399,6 +399,7 @@ var table=page1.createTable({
     maxItemsPage: 20,
     addRowOn: 'top',
     headers: ['0', 'IDMezzo', '1', 'WGS84Fi'],
+    columnKeys: ['0', 'IDMezzo', '1', 'WGS84Fi'],
     sort: {
         column: 'col1',
         ordering: 'DESC'
