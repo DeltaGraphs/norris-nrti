@@ -97,7 +97,7 @@ var mapChartFlow=mapChart.createMapChartFlow({
         'type': 'icon',
         //gli attributi qui sotto dipendono dal tipo di marker!!!!!
         //'shape': 'circle',//circle, triangle, square, diamond
-        'icon': 'bus'//path
+        'icon': 'http://i.imgur.com/W0QgS4N.png'//path
         /*'text': 'null',//string
         'color' : '#000'*/
     },
