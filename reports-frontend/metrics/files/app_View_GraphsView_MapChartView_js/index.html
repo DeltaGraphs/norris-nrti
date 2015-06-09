@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">55.68</p>
+      <p class="stat">56.17</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">301</p>
+      <p class="stat">310</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">44.99</p>
+      <p class="stat">45.01</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">4.12</p>
+      <p class="stat">4.33</p>
     </div>
   </div>
 </div>
@@ -106,7 +106,7 @@
 
 
 angular.module(&#039;norris-nrti&#039;)
-.directive(&#039;mapChart&#039;, function(){
+.directive(&#039;mapChart&#039;, function($compile){
 	return {
 		restrict: &#039;E&#039;,
 		//controller : &#039;MapChartController&#039;,
@@ -183,7 +183,7 @@ angular.module(&#039;norris-nrti&#039;)
                 return Math.min(latZoom, lngZoom, ZOOM_MAX);
             }
 
-            scope.init = function(){
+            function setZoom(){
                 var latLng = new google.maps.LatLng(scope.$parent.mapChart.getLatitude(), scope.$parent.mapChart.getLongitude());
                 var mapDim = { height: scope.$parent.mapChart.getHeight(), width: scope.$parent.mapChart.getWidth() };
                 
@@ -195,7 +195,12 @@ angular.module(&#039;norris-nrti&#039;)
                 bounds.extend(west);
                 bounds.extend(east);
 
-                var zoom = getBoundsZoomLevel(bounds,mapDim);
+                return getBoundsZoomLevel(bounds,mapDim);
+            }
+
+            scope.init = function(){
+
+                var zoom = setZoom();
 
                 var mapOptions = {
                     center: new google.maps.LatLng(scope.$parent.mapChart.getLatitude(), scope.$parent.mapChart.getLongitude()),
@@ -259,13 +264,17 @@ angular.module(&#039;norris-nrti&#039;)
                         
                         break;
                     case &#039;NE&#039;:
-                        
-                        //parent.setAttribute(&#039;style&#039;, &#039;transform: rotate(200,200);&#039;);
+                        var parent = element.children()[1];
+                        parent.setAttribute(&#039;style&#039;, &#039;position: relative; left: 0px;&#039;);
+                        console.log(&#039;parent &#039; + parent.toString());
                         scope.legend();
                         break;
                     case &#039;NW&#039;:
-                        
-                        //parent.setAttribute(&#039;style&#039;, &#039;transform: rotate(100,100);&#039;);
+                        var parent0 = element.children()[0];
+                        var parent1 = element.children()[1];
+                        parent1.setAttribute(&#039;style&#039;, &#039;position: relative; bottom: 0px&#039;);
+                        parent1.setAttribute(&#039;style&#039;, &#039;position: relative; left: 0px; top: 0px&#039;);
+                        $compile(element.contents());
                         scope.legend();
                         break;
                     case &#039;SE&#039;:
