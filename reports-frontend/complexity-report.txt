@@ -1,8 +1,8 @@
 Mean per-function logical LOC: 5.527501655614908
 Mean per-function parameter count: 0.9374606943706947
 Mean per-function cyclomatic complexity: 2.000254006811873
-Mean per-function Halstead effort: 2396.9558829938
-Mean per-module maintainability index: 120.915248527011
+Mean per-function Halstead effort: 2396.474846604115
+Mean per-module maintainability index: 120.91558886269232
 First-order density: 0%
 Change cost: 2.857142857142857%
 Core size: 0%
@@ -44124,17 +44124,17 @@ Core size: 0%
 
 /home/travis/build/DeltaGraphs/norris-nrti/frontend/app/View/GraphsView/BarChartView.js
 
-  Physical LOC: 233
+  Physical LOC: 222
   Logical LOC: 90
   Mean parameter count: 1.0714285714285714
   Cyclomatic complexity: 16
   Cyclomatic complexity density: 17.77777777777778%
-  Maintainability index: 112.03317371988649
+  Maintainability index: 112.04508546873299
   Dependency count: 0
 
   Function: <anonymous>
     Line No.: 20
-    Physical LOC: 215
+    Physical LOC: 204
     Logical LOC: 6
     Parameter count: 1
     Cyclomatic complexity: 1
@@ -44145,7 +44145,7 @@ Core size: 0%
 
   Function: link
     Line No.: 30
-    Physical LOC: 203
+    Physical LOC: 192
     Logical LOC: 9
     Parameter count: 3
     Cyclomatic complexity: 1
@@ -44189,17 +44189,17 @@ Core size: 0%
 
   Function: scope.init
     Line No.: 60
-    Physical LOC: 87
+    Physical LOC: 76
     Logical LOC: 27
     Parameter count: 0
     Cyclomatic complexity: 6
     Cyclomatic complexity density: 22.22222222222222%
-    Halstead difficulty: 13.018867924528301
-    Halstead volume: 1679.6156585034767
-    Halstead effort: 21866.694422026394
+    Halstead difficulty: 12.924528301886793
+    Halstead volume: 1673.6383785799767
+    Halstead effort: 21630.986591080833
 
   Function: scope.colorFunction
-    Line No.: 149
+    Line No.: 138
     Physical LOC: 5
     Logical LOC: 1
     Parameter count: 0
@@ -44210,7 +44210,7 @@ Core size: 0%
     Halstead effort: 4.754887502163469
 
   Function: <anonymous>
-    Line No.: 150
+    Line No.: 139
     Physical LOC: 3
     Logical LOC: 1
     Parameter count: 2
@@ -44221,7 +44221,7 @@ Core size: 0%
     Halstead effort: 25.84962500721156
 
   Function: scope.xAxisTickFormatFunction
-    Line No.: 155
+    Line No.: 144
     Physical LOC: 5
     Logical LOC: 1
     Parameter count: 0
@@ -44232,7 +44232,7 @@ Core size: 0%
     Halstead effort: 4.754887502163469
 
   Function: <anonymous>
-    Line No.: 156
+    Line No.: 145
     Physical LOC: 3
     Logical LOC: 1
     Parameter count: 1
@@ -44243,7 +44243,7 @@ Core size: 0%
     Halstead effort: 3
 
   Function: scope.yAxisTickFormatFunction
-    Line No.: 161
+    Line No.: 150
     Physical LOC: 5
     Logical LOC: 1
     Parameter count: 0
@@ -44254,7 +44254,7 @@ Core size: 0%
     Halstead effort: 4.754887502163469
 
   Function: <anonymous>
-    Line No.: 162
+    Line No.: 151
     Physical LOC: 3
     Logical LOC: 1
     Parameter count: 1
@@ -44265,7 +44265,7 @@ Core size: 0%
     Halstead effort: 3
 
   Function: scope.setData
-    Line No.: 167
+    Line No.: 156
     Physical LOC: 37
     Logical LOC: 27
     Parameter count: 0
@@ -44276,7 +44276,7 @@ Core size: 0%
     Halstead effort: 42486.176896071185
 
   Function: <anonymous>
-    Line No.: 180
+    Line No.: 169
     Physical LOC: 8
     Logical LOC: 4
     Parameter count: 2
