@@ -1,8 +1,8 @@
-Mean per-function logical LOC: 6.358072705842866
-Mean per-function parameter count: 0.9303689371887305
+Mean per-function logical LOC: 6.363123210893371
+Mean per-function parameter count: 0.9253184321382255
 Mean per-function cyclomatic complexity: 2.033851844547634
-Mean per-function Halstead effort: 2525.9272722304045
-Mean per-module maintainability index: 118.78765649055298
+Mean per-function Halstead effort: 2525.746372150144
+Mean per-module maintainability index: 118.77792231633289
 First-order density: 0%
 Change cost: 3.0303030303030303%
 Core size: 0%
@@ -20366,23 +20366,23 @@ Core size: 0%
 /home/travis/build/DeltaGraphs/norris-nrti/frontend/app/View/GraphsView/TableView.js
 
   Physical LOC: 132
-  Logical LOC: 51
-  Mean parameter count: 1.3333333333333333
+  Logical LOC: 52
+  Mean parameter count: 1.1666666666666667
   Cyclomatic complexity: 7
-  Cyclomatic complexity density: 13.725490196078432%
-  Maintainability index: 109.03581628751932
+  Cyclomatic complexity density: 13.461538461538462%
+  Maintainability index: 108.71458853825689
   Dependency count: 0
 
   Function: <anonymous>
     Line No.: 18
     Physical LOC: 116
-    Logical LOC: 6
-    Parameter count: 2
+    Logical LOC: 7
+    Parameter count: 1
     Cyclomatic complexity: 1
-    Cyclomatic complexity density: 16.666666666666664%
-    Halstead difficulty: 2.3636363636363638
-    Halstead volume: 85.95159310338741
-    Halstead effort: 203.15831097164298
+    Cyclomatic complexity density: 14.285714285714285%
+    Halstead difficulty: 2.3333333333333335
+    Halstead volume: 96
+    Halstead effort: 224
 
   Function: link
     Line No.: 28
@@ -20424,9 +20424,9 @@ Core size: 0%
     Parameter count: 0
     Cyclomatic complexity: 3
     Cyclomatic complexity density: 14.285714285714285%
-    Halstead difficulty: 8.816326530612244
-    Halstead volume: 1213.2411229462664
-    Halstead effort: 10696.32990026096
+    Halstead difficulty: 9.02127659574468
+    Halstead volume: 1179.3973815590307
+    Halstead effort: 10639.669995341043
 
   Function: scope.setData
     Line No.: 103
