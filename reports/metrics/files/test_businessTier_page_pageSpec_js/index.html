@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">28.60</p>
+      <p class="stat">28.71</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">3.60</p>
+      <p class="stat">3.61</p>
     </div>
   </div>
 </div>
@@ -195,12 +195,12 @@ describe(&#039;Page&#039;, function() {
                     {
                         ID: &#039;map1&#039;,
                         title: &#039;&#039;,
-                        socketURL: &#039;/page2/map1&#039;
+                        socketURL: &#039;http://0.0.0.0:5000/page2/map1&#039;
                     },
                     {
                         ID: &#039;line1&#039;,
                         title: &#039;&#039;,
-                        socketURL: &#039;/page2/line1&#039;
+                        socketURL: &#039;http://0.0.0.0:5000/page2/line1&#039;
                     }
                 ]
             };
@@ -291,7 +291,7 @@ describe(&#039;Page&#039;, function() {
         });
 
         it(&#039;behaves correctly with the right parameters&#039;, function() {
-            var nor2 = new Norris(app, io, &#039;/norris&#039;);
+            var nor2 = new Norris(app, io, &#039;/norris&#039;, &#039;http://0.0.0.0:5000&#039;);
             var page4 = nor2.createPage({ID: &#039;page4&#039;});
             var socketURL = &#039;http://0.0.0.0:5000/page4&#039;;
             var options ={
@@ -337,7 +337,7 @@ describe(&#039;Page&#039;, function() {
         });
 
         it(&#039;behaves correctly with the right parameters&#039;, function() {
-            var nor3 = new Norris(app, io, &#039;/norris&#039;);
+            var nor3 = new Norris(app, io, &#039;/norris&#039;, &#039;http://0.0.0.0:5000&#039;);
             var page3 = nor3.createPage({ID: &#039;page3&#039;});
             var socketURL = &#039;http://0.0.0.0:5000/page3&#039;;
             var options ={
@@ -383,7 +383,7 @@ describe(&#039;Page&#039;, function() {
         });
 
         it(&#039;behaves correctly with the right parameters&#039;, function() {
-            var nor4 = new Norris(app, io, &#039;/norris&#039;);
+            var nor4 = new Norris(app, io, &#039;/norris&#039;, &#039;http://0.0.0.0:5000&#039;);
             var page4 = nor4.createPage({ID: &#039;page4&#039;});
             var socketURL = &#039;http://0.0.0.0:5000/page3&#039;;
             var options ={

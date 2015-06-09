@@ -49,7 +49,7 @@ describe('Norris', function() {
         assert.deepEqual(nor._app, app);
         assert.deepEqual(nor._io, io);
         assert.deepEqual(nor._pageList, new PageListModel('norris'));
-        assert.deepEqual(nor._networkHandler, new NetworkHandler(app, io, '/norris'));
+        assert.deepEqual(nor._networkHandler, new NetworkHandler(app, io, '/norris', 'baseURL'));
         var plm = (new NetworkHandler(app, io, '/norris')).createSocket('/norris');
         plm.attachObject(nor, 'configPageList');
         assert.deepEqual(nor._pageListSocket, plm);
@@ -163,20 +163,20 @@ describe('Norris', function() {
                             'ID':'page1',
                             'name':'Page one',
                             'description':'',
-                            'socketURL':'/page1'
+                            'socketURL':'baseURL/page1'
                         },
                         'data':[
                             {
                                 'ID':'map1',
                                 'title':'APS',
                                 'type':'MapChart',
-                                'socketURL':'/page1/map1'
+                                'socketURL':'baseURL/page1/map1'
                             },
                             {
                                 'ID':'line1',
                                 'title':'LINEE',
                                 'type':'LineChart',
-                                'socketURL':'/page1/line1'
+                                'socketURL':'baseURL/page1/line1'
                             }
                         ]
                     },
@@ -185,7 +185,7 @@ describe('Norris', function() {
                             'ID':'page2',
                             'name':'Page two',
                             'description': '',
-                            'socketURL':'/page2'
+                            'socketURL':'baseURL/page2'
                         },
                         'data':[]
                     }
