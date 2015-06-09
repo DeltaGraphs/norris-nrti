@@ -7,7 +7,7 @@ module.exports = function(grunt) {
         concat: {
             css: {
                 src: ['frontend/app/View/**/*.css'], // array of folders
-                dest: 'frontend/app/dist/tmp/concat.css'
+                dest: 'frontend/app/dist/norris-nrti.css'
             },
             js: {
                 src: [ // array of folders
@@ -16,20 +16,20 @@ module.exports = function(grunt) {
                     'frontend/app/Controller/**/*.js',
                     'frontend/app/View/**/*.js'
                 ],
-                dest: 'frontend/app/dist/tmp/concat.js'
+                dest: 'frontend/app/dist/norris-nrti.js'
             }
         },
         cssmin: {
             dist: {
                 files: {
-                    'frontend/app/dist/norris-nrti.min.css': [ 'frontend/app/dist/tmp/concat.css' ]
+                    'frontend/app/dist/norris-nrti.min.css': [ 'frontend/app/dist/norris-nrti.css' ]
                 }
             }
         },
         uglify: {
             build: {
                 files: {
-                    'frontend/app/dist/norris-nrti.min.js': ['frontend/app/dist/tmp/concat.js']
+                    'frontend/app/dist/norris-nrti.min.js': ['frontend/app/dist/norris-nrti.js']
                 }
             }
         }

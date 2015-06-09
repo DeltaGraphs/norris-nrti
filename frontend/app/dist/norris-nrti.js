@@ -629,9 +629,17 @@ angular.module('norris-nrti')
 		}
 	};
 
-	TableFlow.prototype.initializeData = function(newData) {
+	TableFlow.prototype.initializeData = function(newData, addRowOn) {
 		for (var i=0; i<newData.records.length; i++) {
-			this._data.push(newData.records[i]);
+			if (addRowOn === 'bottom') {
+				this._data.push(newData.records[i]);
+			} else if (addRowOn === 'top') {
+				if (this._data.length === 0) {
+					this._data.push(newData.records[i]);
+				} else if (this._data.length > 0){
+					this._data.unshift(newData.records[i]);
+				}
+			}
 		}
 	};
 	TableFlow.prototype.emptyData = function() {
@@ -644,8 +652,8 @@ angular.module('norris-nrti')
             }
         }
     };
-    TableFlow.prototype.streamUpdate = function(newData) {
-		this.initializeData(newData);
+    TableFlow.prototype.streamUpdate = function(newData, addRowOn) {
+		this.initializeData(newData, addRowOn);
     };
     TableFlow.prototype.deleteData = function(delData) {
     	for (var i = 0; i<this._data.length; i++){
@@ -1914,7 +1922,7 @@ angular.module('norris-nrti')
     function Table(info) {
         this._headers = [];
         this._maxItemsPage = 20;
-        this._addRowOn = 'up';
+        this._addRowOn = 'top';
         this._sortable = true;
         this._sort = null;
         this._appearance = null;
@@ -1978,7 +1986,7 @@ angular.module('norris-nrti')
             for (var i=0; i<newData.length; i++) {
                 for (var j=0; j<this._graph.getFlowList().length; j++) {
                     if (this._graph.getFlowList()[j].id === newData[i].ID) {
-                        this._graph.getFlowList()[j].flow.initializeData(newData[i]);
+                        this._graph.getFlowList()[j].flow.initializeData(newData[i], this._addRowOn);
                     }
                 }
             }
@@ -2000,7 +2008,7 @@ angular.module('norris-nrti')
             var fList = this._graph.getFlowList();
             for (var j=0; j<fList.length; j++) {
                 if (fList[j].id === newData.ID) {
-                    fList[j].flow.streamUpdate(newData);
+                    fList[j].flow.streamUpdate(newData, this._addRowOn);
                 }
             }
         }
@@ -2680,79 +2688,7 @@ angular.module('norris-nrti')
 
 	var socket;
 
-	/*var json = {
-		'properties':
-		{
-			'ID': 'id1',
-			'title': 'tabella 1',	//stringa
-			'type': 'Table',	
-			'height': 500, // > 0
-			'width': 600, // > 0
-			'sortable': true,
-			'maxItemsPage': 10, // > 0
-			'addRowOn': 'bottom', // 'top', 'bottom'
-			'headers': ['column1', 'column2'],
-			'sort': {
-				'column': 'col1',
-				'ordering': 'ASC' // 'ASC', 'DESC'
-			},
-			'appearance': {
-				'border': {
-					'color': '#000000', //#xxxxxx,
-					'width': 1 // > 0
-				},
-				'rowEven': {
-					'textColor': ['#000000', '#000000'],
-					'backgroundColor': ['#FFFFFF', '#FFFFFF']
-				},
-				'rowOdd': {
-					'textColor': ['#000000', '#000000'],
-					'backgroundColor': ['#FFFFFF', '#FFFFFF']
-				},
-				'headers': {
-					'textColor': ['#000000', '#000000'],
-					'backgroundColor': ['#FFFFFF', '#FFFFFF']
-				}
-			},
-			'flows': [
-				{
-					'ID': 'flow1',
-					'name': 'flow1',
-					'maxItems': 50
-				}
-			]
-		},
-		'data': [
-			{
-				'ID': 'flow1',
-				'records': [
-					{'norrisRecordID': 'xx1', 'value': [1, 1]},
-					{'norrisRecordID': 'xx2', 'value': [2, 32]},
-					{'norrisRecordID': 'xx3', 'value': [3, 324]},
-					{'norrisRecordID': 'xx4', 'value': [4, 354]},
-					{'norrisRecordID': 'xx5', 'value': [5, 73]},
-					{'norrisRecordID': 'xx6', 'value': [6, 33]},
-					{'norrisRecordID': 'xx7', 'value': [7, 33]},
-					{'norrisRecordID': 'xx8', 'value': [8, 36]},
-					{'norrisRecordID': 'xx9', 'value': [9, 36]},
-					{'norrisRecordID': 'x10', 'value': [10, 31]},
-					{'norrisRecordID': 'x11', 'value': [11, 31]},
-					{'norrisRecordID': 'x12', 'value': [11, 30]},
-					{'norrisRecordID': 'x13', 'value': [12, 4]},
-					{'norrisRecordID': 'x14', 'value': [17, 2]},
-					{'norrisRecordID': 'x15', 'value': [17, 12]},
-					{'norrisRecordID': 'x16', 'value': [50, 21]},
-					{'norrisRecordID': 'x17', 'value': [50, 2]},
-					{'norrisRecordID': 'x18', 'value': [51, 1]},
-					{'norrisRecordID': 'x19', 'value': [52, 3]},
-				]
-			}
-		]
-	};*/
-
 	$scope.table = TableFactory.build();
-	//$scope.table.updateParameters(json.properties);
-	//$scope.table.initializeData(json.data);
 
 	this.socketConnection = function(url){
 		console.log('TABLE socketConnection ' + url);
@@ -2783,7 +2719,7 @@ angular.module('norris-nrti')
 			console.log('insertFlow');
 			console.log('insert flow' + JSON.stringify(info));
 			var flow = TableFlowFactory.build(info.properties);
-			flow.initializeData(info);
+			flow.initializeData(info, table.getAddRowOn());
 			$scope.table.addFlow(info.properties.ID, flow);
 			$scope.changedD = !$scope.changedD;
 		});
@@ -2850,11 +2786,17 @@ angular.module('norris-nrti')
 	$scope.page = PagesList.prototype.getPagesList()[$routeParams.pageId].page;
 	$scope.previous = false;
 	$scope.next = false;
-	if (PagesList.prototype.getPagesList()[$routeParams.pageId - 1] !== undefined) {
+	var a = $routeParams.pageId - 1;
+	console.log('$routeParams.pageId - 1 ' + a);
+	if (PagesList.prototype.getPagesList()[parseInt($routeParams.pageId) - 1] !== undefined) {
 		$scope.previous = true;
+		console.log('$scope.previous ' + $scope.previous);
 	}
-	if (PagesList.prototype.getPagesList()[$routeParams.pageId + 1] !== undefined) {
+	var b = $routeParams.pageId + 1;
+	console.log('$routeParams.pageId + 1 ' + b);
+	if (PagesList.prototype.getPagesList()[parseInt($routeParams.pageId) + 1] !== undefined) {
 		$scope.next = true;
+		console.log('$scope.next ' + $scope.next);
 	}
 	var url = $scope.page.getUrl();
 	var socket;
@@ -2925,28 +2867,25 @@ angular.module('norris-nrti')
 
 	var url = UrlProvider.prototype.getUrl();
 
-	this.socketConnection = function(){
-		console.log('\nURL: ' +url+'\n');
+	this.socketConnection = function() {
 		socket = SocketServicesFactory.build(url);
 		console.log('socketConnection');
 		this.listenOnEvents();
 	};
 
-	this.listenOnEvents = function(){
+	this.listenOnEvents = function() {
 		socket.on('configPageList', function(info){
 			console.log('configPageList');
 			console.log(JSON.stringify(info));
 			pagesList = new PagesList(info);
 			$scope.pagesList = pagesList.getPagesList();
-			//$scope.render();
 		});
-		socket.on('insertPage', function(info){
+		socket.on('insertPage', function(info) {
 			console.log('insertPage');
 			pagesList.addPage(info);
 			$scope.pagesList = pagesList.getPagesList();
-			//$scope.render();
 		});
-		socket.on('updatePage', function(info){
+		socket.on('updatePage', function(info) {
 			pagesList.updatePage(info);
 			$scope.pagesList = pagesList.getPagesList();
 		});
@@ -3044,18 +2983,8 @@ angular.module('norris-nrti')
             }, true);*/
 
             scope.init = function(){
-
-                /*if(element.contents().length>0){
-                    console.log('banana');
-                    //element.destroy();
-                    element.children()[1].detach();
-
-                    //$compile(element.contents());
-
-
-                }*/
-                console.log('banana');
                 console.log('BARCHART init');
+                element.empty();
                 var barchart, legend, onPoint, control;
                 var str = scope.url.split('/');
                 var id = str[str.length-1];
@@ -3078,24 +3007,24 @@ angular.module('norris-nrti')
                     onPoint = false;
                 }
                 if (scope.$parent.barChart.getBarOrientation() === 'V'){
-                    barchart = '<div class="graphtitle">'+ scope.$parent.barChart.getTitle() +'</div>' +
+                    barchart = '<div><div class="graphtitle">'+ scope.$parent.barChart.getTitle() +'</div>' +
                                 '<nvd3-multi-bar-chart data="data" nodata=" " id="'+ id +'" ' +
                                 'xaxisticksformat="xAxisTickFormatFunction()" showxaxis="true" showyaxis="true" ' +
                                 'rotatelabels="-90" interactive="true" tooltips="'+ onPoint +'" showlegend="'+ legend +'" ' +
                                 'xaxislabel="'+ scope.$parent.barChart.getX().getName() +'" ' +
                                 'showcontrols="'+ control +'" color="colorFunction()" ' +
                                 'width="'+ scope.$parent.barChart.getWidth() +'" height="'+ scope.$parent.barChart.getHeight() +'">' +
-                                '<svg></svg></nvd3-multi-bar-chart>';
+                                '<svg></svg></nvd3-multi-bar-chart></div>';
                     //barchart = barchart + '<svg width="'+ scope.$parent.barChart.getWidth() +'" height="'+ scope.$parent.barChart.getHeight() +'"></svg></nvd3-multi-bar-chart>';
                 }else if(scope.$parent.barChart.getBarOrientation() === 'H'){
-                    barchart = '<div class="graphtitle">'+ scope.$parent.barChart.getTitle() +'</div>' +
+                    barchart = '<div><div class="graphtitle">'+ scope.$parent.barChart.getTitle() +'</div>' +
                                 '<nvd3-multi-bar-horizontal-chart data="data" nodata=" " id="'+ id +'" ' +
                                 'xaxisticksformat="xAxisTickFormatFunction()" yaxistickformat="yAxisTickFormatFunction()" showxaxis="true" showyaxis="true" ' +
                                 'rotatelabels="-90" interactive="true" tooltips="'+ onPoint +'" showlegend="'+ legend +'" ' +
                                 'xaxislabel="'+ scope.$parent.barChart.getX().getName() +'" ' +
                                 'showcontrols="'+ control +'" color="colorFunction()" ' +
                                 'width="'+ scope.$parent.barChart.getWidth() +'" height="'+ scope.$parent.barChart.getHeight() +'">' +
-                                '<svg></svg></nvd3-multi-bar-horizontal-chart>';
+                                '<svg></svg></nvd3-multi-bar-horizontal-chart></div>';
                     //barchart = barchart + '<svg width="'+ scope.$parent.barChart.getWidth() +'" height="'+ scope.$parent.barChart.getHeight() +'"></svg></nvd3-multi-bar-horizontal-chart>';
                 }
                 
@@ -3127,7 +3056,6 @@ angular.module('norris-nrti')
 
                 var compiled = $compile(barchart)(scope);
                 element.append(compiled);
-                
                 
             };
             
@@ -3421,7 +3349,7 @@ angular.module('norris-nrti')
 
 
 angular.module('norris-nrti')
-.directive('mapChart', function(){
+.directive('mapChart', function($compile){
 	return {
 		restrict: 'E',
 		//controller : 'MapChartController',
@@ -3469,11 +3397,57 @@ angular.module('norris-nrti')
             var map;
             var markers = [];
             var polylines = [];
-            
+
+            function getBoundsZoomLevel(bounds, mapDim) {
+                var WORLD_DIM = { height: 256, width: 256 };
+                var ZOOM_MAX = 21;
+
+                function latRad(lat) {
+                    var sin = Math.sin(lat * Math.PI / 180);
+                    var radX2 = Math.log((1 + sin) / (1 - sin)) / 2;
+                    return Math.max(Math.min(radX2, Math.PI), -Math.PI) / 2;
+                }
+
+                function zoom(mapPx, worldPx, fraction) {
+                    return Math.floor(Math.log(mapPx / worldPx / fraction) / Math.LN2);
+                }
+
+                var ne = bounds.getNorthEast();
+                var sw = bounds.getSouthWest();
+
+                var latFraction = (latRad(ne.lat()) - latRad(sw.lat())) / Math.PI;
+
+                var lngDiff = ne.lng() - sw.lng();
+                var lngFraction = ((lngDiff < 0) ? (lngDiff + 360) : lngDiff) / 360;
+
+                var latZoom = zoom(mapDim.height, WORLD_DIM.height, latFraction);
+                var lngZoom = zoom(mapDim.width, WORLD_DIM.width, lngFraction);
+
+                return Math.min(latZoom, lngZoom, ZOOM_MAX);
+            }
+
+            function setZoom(){
+                var latLng = new google.maps.LatLng(scope.$parent.mapChart.getLatitude(), scope.$parent.mapChart.getLongitude());
+                var mapDim = { height: scope.$parent.mapChart.getHeight(), width: scope.$parent.mapChart.getWidth() };
+                
+                var spherical = google.maps.geometry.spherical; 
+                var west  = spherical.computeOffset(latLng, scope.$parent.mapChart.getMapWidth()/2, -90);
+                var east  = spherical.computeOffset(latLng, scope.$parent.mapChart.getMapWidth()/2, 90);
+
+                var bounds = new google.maps.LatLngBounds();
+                bounds.extend(west);
+                bounds.extend(east);
+
+                return getBoundsZoomLevel(bounds,mapDim);
+            }
+
             scope.init = function(){
+
+                var zoom = setZoom();
+
                 var mapOptions = {
                     center: new google.maps.LatLng(scope.$parent.mapChart.getLatitude(), scope.$parent.mapChart.getLongitude()),
-                    zoom: 12,
+                    zoom: zoom,
                     mapTypeId: google.maps.MapTypeId.ROADMAP,
                     scrollwheel: scope.$parent.mapChart.getZoomable(),
                     draggable: scope.$parent.mapChart.getDraggable(),
@@ -3518,7 +3492,42 @@ angular.module('norris-nrti')
                         polylines[i].setMap(map);
                     }
                 }
+
+                /*switch (scope.$parent.mapChart.getLegend().getPosition()) {
+                    case 'N':
+
+                        break;
+                    case 'E':
+
+                        break;
+                    case 'S':
+
+                        break;
+                    case 'W':
+                        
+                        break;
+                    case 'NE':
+                        var parent = element.children()[1];
+                        parent.setAttribute('style', 'position: relative; left: 0px;');
+                        console.log('parent ' + parent.toString());
+                        scope.legend();
+                        break;
+                    case 'NW':
+                        var parent0 = element.children()[0];
+                        var parent1 = element.children()[1];
+                        parent1.setAttribute('style', 'position: relative; bottom: 0px');
+                        parent1.setAttribute('style', 'position: relative; left: 0px; top: 0px');
+                        $compile(element.contents());
+                        scope.legend();
+                        break;
+                    case 'SE':
+                        
+                        break;
+                    case 'SW':
+                        break;
+                }*/
                 scope.legend();
+                
             };
 
             scope.render = function(){
@@ -3531,29 +3540,26 @@ angular.module('norris-nrti')
 
                 // Instantiate an info window to hold step text.
                 var stepDisplay = new google.maps.InfoWindow();
-
-                var latLng = new google.maps.LatLng(scope.$parent.mapChart.getLatitude(), scope.$parent.mapChart.getLongitude());
                 
                 for (var i=0; i<scope.$parent.mapChart.getFlowList().length; i++){
                     for (var j=0; j<scope.$parent.mapChart.getFlowList()[i].flow.getData().length; j++){
                         var coordinates = new google.maps.LatLng(scope.$parent.mapChart.getFlowList()[i].flow.getData()[j].value[0], scope.$parent.mapChart.getFlowList()[i].flow.getData()[j].value[1]);
                         var marker;
-
                         switch (scope.$parent.mapChart.getFlowList()[i].flow.getMarker().type) {
                             case 'shape':
                                 var type;
                                 switch (scope.$parent.mapChart.getFlowList()[i].flow.getMarker().shape) { //circle, triangle, square, diamond
                                     case 'circle':
-                                        type = 'http://norris-nrti-dev.herokuapp.com/norris/img/c.png';
+                                        type = attrs.url + '/img/c.png';
                                         break;
                                     case 'triangle':
-                                        type = 'http://norris-nrti-dev.herokuapp.com/norris/img/t.png';
+                                        type = attrs.url + '/img/t.png';
                                         break;
                                     case 'square':
-                                        type = 'http://norris-nrti-dev.herokuapp.com/norris/img/s.png';
+                                        type = attrs.url + '/img/s.png';
                                         break;
                                     case 'diamond':
-                                        type = 'http://norris-nrti-dev.herokuapp.com/norris/img/d.png';
+                                        type = attrs.url + '/img/d.png';
                                         break;
                                 }
                                 marker = new google.maps.Marker({
@@ -3566,14 +3572,17 @@ angular.module('norris-nrti')
                                 marker = new google.maps.Marker({
                                     position: coordinates,
                                     map: map,
-                                    icon: { path: scope.$parent.mapChart.getFlowList()[i].flow.getMarker().icon }
+                                    icon: scope.$parent.mapChart.getFlowList()[i].flow.getMarker().icon
                                 });
                                 break;
                             case 'text':
-                                marker = new google.maps.Marker({
+                                marker = new MapLabel({
+                                    text: scope.$parent.mapChart.getFlowList()[i].flow.getMarker().text,
                                     position: coordinates,
                                     map: map,
-                                    title: scope.$parent.mapChart.getFlowList()[i].flow.getMarker().text
+                                    fontColor: scope.$parent.mapChart.getFlowList()[i].flow.getMarker().color,
+                                    fontSize: 20,
+                                    align: 'right'
                                 });
                                 break;
                         }
@@ -3583,6 +3592,8 @@ angular.module('norris-nrti')
                         markers.push(marker);
 
                     }
+
+
                     
                 }
 
@@ -3679,7 +3690,7 @@ angular.module('norris-nrti')
 
             scope.$parent.$watch('changedD', function(newValue, oldValue){
                 if(newValue !== oldValue){
-                    console.log('BARCHART watch changedD');                    
+                    console.log('TABLE watch changedD');                    
                     scope.setData();
                     scope.init();
                 }
@@ -3704,7 +3715,15 @@ angular.module('norris-nrti')
 
                 table =  table + '<div class="graphtitle">'+ scope.$parent.table.getTitle() +'</div>';   
 
-                table = table + '<div><table st-table="data" class="table table-striped">';
+                table = table + '<div><table st-table="data" class="table table-striped"';
+                    
+                //da inserire dopo in base alla griglia si/no
+                //
+                /*if () {
+                    table = table + 'class="table table-striped table-bordered">';
+                } else if () {
+                    table = table + 'class="table-condensed table-striped">';
+                }*/
 
                 table = table + '<thead><tr>';
                 for (var i=0; i<scope.$parent.table.getHeaders().length; i++) {
@@ -3728,11 +3747,13 @@ angular.module('norris-nrti')
                 table = table + '</tr></thead>';
 
                 table = table + '<tbody><tr ng-repeat="record in data">';
+                i = 0;
                 for (var j=0; j<scope.$parent.table.getHeaders().length; j++){
                     console.log('TABLE costruzione righe');
-                    //data-title="\''+ scope.$parent.table.getHeaders()[j] +'\'"
-                	table = table + '<td>{{record.'+ scope.$parent.table.getHeaders()[j] +'}}</td>';
+                    table = table + '<td >{{record.'+ scope.$parent.table.getHeaders()[j] +'}}</td>';
+                    i++;
                 }
+                //style="background-color:'+ scope.appearance[i][j].bg +'; color:'+ scope.appearance[i][j].text +';"
                 table = table + '</tr></tbody>';
 
                 table = table + '<tfoot><tr>' +
@@ -3749,24 +3770,35 @@ angular.module('norris-nrti')
                 element.append(compiled);
             };
 
+            scope.data = [];
+            scope.appearance = [];
+
             scope.setData = function(){
                 console.log('TABLE setData');
                 var data = [];
+                var appearance = [];
                 if (scope.$parent.table.getFlowList().length > 0) {
                     console.log('getData.length ' + scope.$parent.table.getFlowList()[0].flow.getData().length + ' stringify table: ' + JSON.stringify(scope.$parent.table));
                     for (var i=0; i<scope.$parent.table.getFlowList()[0].flow.getData().length; i++) {
                         var record = {};
+                        var look = [];
                         for (var j=0; j<scope.$parent.table.getHeaders().length; j++) {
                             record[scope.$parent.table.getHeaders()[j]] = scope.$parent.table.getFlowList()[0].flow.getData()[i].value[j];
+                            look[j] = scope.$parent.table.getFlowList()[0].flow.getData()[i].appearance[j];
                         }
                         data.push(record);
+                        appearance.push(look);
                     }
                 }
-                console.log('data length ' +data.length);
-                for (var g=0; g<data.length; g++) {
-                    console.log('TABLE data: ' + JSON.stringify(data[g]));
+                console.log('appearance length ' +appearance.length);
+                for (var g=0; g<appearance.length; g++) {
+                    console.log('appearance['+ g +'] length ' +appearance[g].length);
+                    for (var f=0; f<appearance[g].length; f++) {
+                        console.log('TABLE appearance: ' + appearance[g][f].bg + ' ' + appearance[g][f].text);
+                    }
                 }
                 scope.data = data;
+                scope.appearance = appearance;
                 scope.itemsByPage = scope.$parent.table.getMaxItemsPage();
                 /*scope.tableParams = new ngTableParams({
                     page: 1,            // show first page
@@ -3811,28 +3843,27 @@ angular.module('norris-nrti')
 			scope.socketConnection();
 
 			scope.render = function() {
-				var parent = document.getElementById('page');
-				while(parent.firstChild) {
-				    parent.removeChild(parent.firstChild);
-				}
+				parent = element.children()[0];
+				element.empty();
 
 				var commands = document.createElement('div');
 				commands.setAttribute('class', 'commands');
-				if (scope.$parent.previous) {
+				if (scope.previous) {
 					var previous = document.createElement('div');
-					previous.setAttribute('style', 'float:left;');
-					var pIndex = $routeParams.pageId - 1;
-					previous.innerHTML = '<a ng-href="#/page/'+ pIndex +'">PREVIOUS PAGE</a>';
+					//previous.setAttribute('style', 'float:left;');
+					var pIndex = parseInt($routeParams.pageId) - 1;
+					previous.innerHTML = '<a ng-href="#/page/'+ pIndex +'" target="_self">PREVIOUS PAGE</a>';
 					commands.appendChild(previous);
 				}
 				var list = document.createElement('div');
-				list.innerHTML = '<a ng-href="/">RETURN TO PAGES LIST</a>';
+				list.innerHTML = '<a ng-href="/" target="_self">RETURN TO PAGES LIST</a>';
+				//list.setAttribute('style', 'float:left;');
 				commands.appendChild(list);
-				if (scope.$parent.next) {
+				if (scope.next) {
 					var next = document.createElement('div');
-					next.setAttribute('style', 'float:right;');
-					var nIndex = $routeParams.pageId + 1;
-					next.innerHTML = '<a ng-href="#/page/'+ nIndex +'">NEXT PAGE</a>';
+					//next.setAttribute('style', 'float:left;');
+					var nIndex = parseInt($routeParams.pageId) + 1;
+					next.innerHTML = '<a ng-href="#/page/'+ nIndex +'" target="_self">NEXT PAGE</a>';
 					commands.appendChild(next);
 				}
 				parent.appendChild(commands);
@@ -3923,29 +3954,6 @@ angular.module('norris-nrti')
 		'</div>',
 		link: function (scope, element, attrs) {
 			scope.socketConnection();
-/*
-			scope.render = function() {
-				var parent = document.getElementById('pagesList');
-				while(parent.firstChild) {
-				    parent.removeChild(parent.firstChild);
-				}
-				for(var i=0; i<scope.pagesList.length; i++){
-					var div = document.createElement('div');
-					div.className = 'page';
-					div.innerHTML = '<p> <a href="#/page/'+ i +'" > {{ scope.pagesList['+ i +'].page.getName() }} </a> </p>\n' +
-									'<p> {{ scope.pagesList['+ i +'].page.getDescription() }} </p>';
-					parent.appendChild(div);
-				}
-       		};
-
-       		scope.$watch('scope.pagesList', function(){
-       			if (scope.pagesList){
-		          	console.log('watch render');
-		          	scope.render();
-	    	      	console.log('watch render fine');
-	    	    }
-        	}, true);
-*/
 		}
 
 	};
@@ -6564,6 +6572,28 @@ angular.module('norris-nrti')
 
     //crossfilter using $services?
 }());
+(function(){/*
+
+
+ Copyright 2011 Google Inc.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+*/
+var d="prototype";function e(a){this.set("fontFamily","sans-serif");this.set("fontSize",12);this.set("fontColor","#000000");this.set("strokeWeight",4);this.set("strokeColor","#ffffff");this.set("align","center");this.set("zIndex",1E3);this.setValues(a)}e.prototype=new google.maps.OverlayView;window.MapLabel=e;e[d].changed=function(a){switch(a){case "fontFamily":case "fontSize":case "fontColor":case "strokeWeight":case "strokeColor":case "align":case "text":return h(this);case "maxZoom":case "minZoom":case "position":return this.draw()}};
+function h(a){var b=a.a;if(b){var f=b.style;f.zIndex=a.get("zIndex");var c=b.getContext("2d");c.clearRect(0,0,b.width,b.height);c.strokeStyle=a.get("strokeColor");c.fillStyle=a.get("fontColor");c.font=a.get("fontSize")+"px "+a.get("fontFamily");var b=Number(a.get("strokeWeight")),g=a.get("text");if(g){if(b)c.lineWidth=b,c.strokeText(g,b,b);c.fillText(g,b,b);a:{c=c.measureText(g).width+b;switch(a.get("align")){case "left":a=0;break a;case "right":a=-c;break a}a=c/-2}f.marginLeft=a+"px";f.marginTop=
+"-0.4em"}}}e[d].onAdd=function(){var a=this.a=document.createElement("canvas");a.style.position="absolute";var b=a.getContext("2d");b.lineJoin="round";b.textBaseline="top";h(this);(b=this.getPanes())&&b.mapPane.appendChild(a)};e[d].onAdd=e[d].onAdd;
+e[d].draw=function(){var a=this.getProjection();if(a&&this.a){var b=this.get("position");if(b){b=a.fromLatLngToDivPixel(b);a=this.a.style;a.top=b.y+"px";a.left=b.x+"px";var b=this.get("minZoom"),f=this.get("maxZoom");if(b===void 0&&f===void 0)b="";else{var c=this.getMap();c?(c=c.getZoom(),b=c<b||c>f?"hidden":""):b=""}a.visibility=b}}};e[d].draw=e[d].draw;e[d].onRemove=function(){var a=this.a;a&&a.parentNode&&a.parentNode.removeChild(a)};e[d].onRemove=e[d].onRemove;})();
+
 (function(){
 
 var nv = window.nv || {};
