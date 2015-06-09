@@ -99,7 +99,7 @@ var mapChartFlow=mapChart.createMapChartFlow({
         //'shape': 'circle',//circle, triangle, square, diamond
         //'icon': 'http://i.imgur.com/W0QgS4N.png'//path
         'text': '#colpaDiPipo',//string
-        'color' : '#000'
+        'color' : '#FFC4F6'
     },
     trace:{
 		'type':'poly',
