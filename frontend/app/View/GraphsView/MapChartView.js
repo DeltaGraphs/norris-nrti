@@ -63,11 +63,52 @@ angular.module('norris-nrti')
             var map;
             var markers = [];
             var polylines = [];
-            
+
+            function getBoundsZoomLevel(bounds, mapDim) {
+                var WORLD_DIM = { height: 256, width: 256 };
+                var ZOOM_MAX = 21;
+
+                function latRad(lat) {
+                    var sin = Math.sin(lat * Math.PI / 180);
+                    var radX2 = Math.log((1 + sin) / (1 - sin)) / 2;
+                    return Math.max(Math.min(radX2, Math.PI), -Math.PI) / 2;
+                }
+
+                function zoom(mapPx, worldPx, fraction) {
+                    return Math.floor(Math.log(mapPx / worldPx / fraction) / Math.LN2);
+                }
+
+                var ne = bounds.getNorthEast();
+                var sw = bounds.getSouthWest();
+
+                var latFraction = (latRad(ne.lat()) - latRad(sw.lat())) / Math.PI;
+
+                var lngDiff = ne.lng() - sw.lng();
+                var lngFraction = ((lngDiff < 0) ? (lngDiff + 360) : lngDiff) / 360;
+
+                var latZoom = zoom(mapDim.height, WORLD_DIM.height, latFraction);
+                var lngZoom = zoom(mapDim.width, WORLD_DIM.width, lngFraction);
+
+                return Math.min(latZoom, lngZoom, ZOOM_MAX);
+            }
+
             scope.init = function(){
+                var latLng = new google.maps.LatLng(scope.$parent.mapChart.getLatitude(), scope.$parent.mapChart.getLongitude());
+                var mapDim = { height: scope.$parent.mapChart.getHeight(), width: scope.$parent.mapChart.getWidth() };
+                
+                var spherical = google.maps.geometry.spherical; 
+                var west  = spherical.computeOffset(latLng, scope.$parent.mapChart.getMapWidth()/2, -90);
+                var east  = spherical.computeOffset(latLng, scope.$parent.mapChart.getMapWidth()/2, 90);
+
+                var bounds = new google.maps.LatLngBounds();
+                bounds.extend(west);
+                bounds.extend(east);
+
+                var zoom = getBoundsZoomLevel(bounds,mapDim);
+
                 var mapOptions = {
                     center: new google.maps.LatLng(scope.$parent.mapChart.getLatitude(), scope.$parent.mapChart.getLongitude()),
-                    zoom: 12,
+                    zoom: zoom,
                     mapTypeId: google.maps.MapTypeId.ROADMAP,
                     scrollwheel: scope.$parent.mapChart.getZoomable(),
                     draggable: scope.$parent.mapChart.getDraggable(),
@@ -112,7 +153,37 @@ angular.module('norris-nrti')
                         polylines[i].setMap(map);
                     }
                 }
-                scope.legend();
+
+                switch (scope.$parent.mapChart.getLegend().getPosition()) {
+                    case 'N':
+
+                        break;
+                    case 'E':
+
+                        break;
+                    case 'S':
+
+                        break;
+                    case 'W':
+                        
+                        break;
+                    case 'NE':
+                        
+                        //parent.setAttribute('style', 'transform: rotate(200,200);');
+                        scope.legend();
+                        break;
+                    case 'NW':
+                        
+                        //parent.setAttribute('style', 'transform: rotate(100,100);');
+                        scope.legend();
+                        break;
+                    case 'SE':
+                        
+                        break;
+                    case 'SW':
+                        break;
+                }
+                
             };
 
             scope.render = function(){
@@ -125,29 +196,26 @@ angular.module('norris-nrti')
 
                 // Instantiate an info window to hold step text.
                 var stepDisplay = new google.maps.InfoWindow();
-
-                var latLng = new google.maps.LatLng(scope.$parent.mapChart.getLatitude(), scope.$parent.mapChart.getLongitude());
                 
                 for (var i=0; i<scope.$parent.mapChart.getFlowList().length; i++){
                     for (var j=0; j<scope.$parent.mapChart.getFlowList()[i].flow.getData().length; j++){
                         var coordinates = new google.maps.LatLng(scope.$parent.mapChart.getFlowList()[i].flow.getData()[j].value[0], scope.$parent.mapChart.getFlowList()[i].flow.getData()[j].value[1]);
                         var marker;
-
                         switch (scope.$parent.mapChart.getFlowList()[i].flow.getMarker().type) {
                             case 'shape':
                                 var type;
                                 switch (scope.$parent.mapChart.getFlowList()[i].flow.getMarker().shape) { //circle, triangle, square, diamond
                                     case 'circle':
-                                        type = 'http://norris-nrti-dev.herokuapp.com/norris/img/c.png';
+                                        type = attrs.url + '/img/c.png';
                                         break;
                                     case 'triangle':
-                                        type = 'http://norris-nrti-dev.herokuapp.com/norris/img/t.png';
+                                        type = attrs.url + '/img/t.png';
                                         break;
                                     case 'square':
-                                        type = 'http://norris-nrti-dev.herokuapp.com/norris/img/s.png';
+                                        type = attrs.url + '/img/s.png';
                                         break;
                                     case 'diamond':
-                                        type = 'http://norris-nrti-dev.herokuapp.com/norris/img/d.png';
+                                        type = attrs.url + '/img/d.png';
                                         break;
                                 }
                                 marker = new google.maps.Marker({
@@ -160,14 +228,17 @@ angular.module('norris-nrti')
                                 marker = new google.maps.Marker({
                                     position: coordinates,
                                     map: map,
-                                    icon: { path: scope.$parent.mapChart.getFlowList()[i].flow.getMarker().icon }
+                                    icon: scope.$parent.mapChart.getFlowList()[i].flow.getMarker().icon
                                 });
                                 break;
                             case 'text':
-                                marker = new google.maps.Marker({
+                                marker = new MapLabel({
+                                    text: scope.$parent.mapChart.getFlowList()[i].flow.getMarker().text,
                                     position: coordinates,
                                     map: map,
-                                    title: scope.$parent.mapChart.getFlowList()[i].flow.getMarker().text
+                                    fontColor: scope.$parent.mapChart.getFlowList()[i].flow.getMarker().color,
+                                    fontSize: 20,
+                                    align: 'right'
                                 });
                                 break;
                         }
@@ -177,6 +248,8 @@ angular.module('norris-nrti')
                         markers.push(marker);
 
                     }
+
+
                     
                 }
 
