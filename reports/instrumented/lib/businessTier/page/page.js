@@ -31,7 +31,7 @@ function Page(params, networkHandler, norris) {
     __cov_3lcmDxeukeGn43y_$VaRGg.s['10']++;
     var pageM = new PageModel(params);
     __cov_3lcmDxeukeGn43y_$VaRGg.s['11']++;
-    if (pageM._ID === undefined) {
+    if (pageM._name === undefined) {
         __cov_3lcmDxeukeGn43y_$VaRGg.b['3'][0]++;
         __cov_3lcmDxeukeGn43y_$VaRGg.s['12']++;
         console.log('Error: 421');

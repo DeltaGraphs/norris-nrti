@@ -70,12 +70,16 @@ describe('Page', function() {
         assert.strictEqual((new Page()).hasOwnProperty('_page'), false);
     });
 
-    it('returns null when there is no valid ID in params', function() {
-        assert.strictEqual((new Page({})).hasOwnProperty('_name'), false);
+    it('returns null when there is no valid params object in params', function() {
+        assert.strictEqual((new Page(1, new ParamMock(), new ParamMock())).hasOwnProperty('_name'), false);
     });
 
-    it('returns null when there is a empty ID in params', function() {
-        assert.strictEqual((new Page({ID:' '})).hasOwnProperty('_name'), false);
+    it('returns null when there is no valid networkHandler in params', function() {
+        assert.strictEqual((new Page({ID:'abc'}, {}, new ParamMock())).hasOwnProperty('_name'), false);
+    });
+
+    it('returns null if the PageModel is not created', function() {
+        assert.strictEqual((new Page({ID:' '}, new ParamMock(), new ParamMock())).hasOwnProperty('_name'), false);
     });
 
     it('set param values to properties', function() {
