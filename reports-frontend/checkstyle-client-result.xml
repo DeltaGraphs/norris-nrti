@@ -9,9 +9,6 @@
 	<file name="app/Controller/GraphsControllers/LineChartController.js">
 		<error line="29" column="9" severity="warning" message="&apos;count&apos; is defined but never used." source="jshint.W098" />
 	</file>
-	<file name="app/Controller/GraphsControllers/TableController.js">
-		<error line="125" column="24" severity="warning" message="&apos;MapChartFlowFactory&apos; is not defined." source="jshint.W117" />
-	</file>
 	<file name="app/Controller/RootController.js">
 		<error line="21" column="12" severity="warning" message="Expected an assignment or function call and instead saw an expression." source="jshint.W030" />
 	</file>

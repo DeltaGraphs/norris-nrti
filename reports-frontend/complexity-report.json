@@ -84432,7 +84432,7 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 67,
+                        "distinct": 66,
                         "total": 221,
                         "identifiers": [
                             "\"use strict\"",
@@ -84477,7 +84477,6 @@
                             "JSON",
                             "stringify",
                             "flow",
-                            "MapChartFlowFactory",
                             "ID",
                             "addFlow",
                             "\"deleteFlow\"",
@@ -84505,12 +84504,12 @@
                         ]
                     },
                     "length": 399,
-                    "vocabulary": 83,
-                    "difficulty": 26.388059701492537,
-                    "volume": 2543.6407331074233,
-                    "effort": 67121.74352438693,
-                    "bugs": 0.8478802443691411,
-                    "time": 3728.985751354829
+                    "vocabulary": 82,
+                    "difficulty": 26.78787878787879,
+                    "volume": 2536.6632498426156,
+                    "effort": 67951.82766245068,
+                    "bugs": 0.8455544166142052,
+                    "time": 3775.1015368028156
                 },
                 "params": 12,
                 "line": 2,
@@ -84790,7 +84789,7 @@
                                 "stringify",
                                 "flow",
                                 "properties",
-                                "MapChartFlowFactory",
+                                "TableFlowFactory",
                                 "build",
                                 "initializeData",
                                 "ID",
@@ -101023,7 +101022,7 @@
                             "\"<div st-pagination=\"\" st-items-by-page=\"itemsByPage\" st-displayed-pages=\"5\"></div>\"",
                             "\"</td>\"",
                             "\"</tr></tfoot>\"",
-                            "\"</table></div>\"",
+                            "\"</table><div>\"",
                             "compiled",
                             "append",
                             "\"TABLE setData\"",
@@ -101378,7 +101377,7 @@
                                 "\"<div st-pagination=\"\" st-items-by-page=\"itemsByPage\" st-displayed-pages=\"5\"></div>\"",
                                 "\"</td>\"",
                                 "\"</tr></tfoot>\"",
-                                "\"</table></div>\"",
+                                "\"</table><div>\"",
                                 "compiled",
                                 "$compile",
                                 "append"
