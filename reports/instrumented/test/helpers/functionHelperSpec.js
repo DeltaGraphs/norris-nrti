@@ -161,7 +161,7 @@ describe('FunctionHelper', function() {
             assert.strictEqual(FH.isValidMapMarker({type: 'shape', shape: 'line'}), false);
         });
         it('returns true for valid icon', function() {
-            assert.strictEqual(FH.isValidMapMarker({type: 'icon', icon: 'images/mark.png'}, path: 'images/mark.png'), true);
+            assert.strictEqual(FH.isValidMapMarker({type: 'icon', icon: 'images/mark.png'}), true);
         });
         it('returns false for invalid icon', function() {
             assert.strictEqual(FH.isValidMapMarker({type: 'icon'}), false);
