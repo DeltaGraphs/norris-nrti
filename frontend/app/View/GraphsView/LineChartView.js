@@ -89,7 +89,7 @@ angular.module('norris-nrti')
                 if (scope.$parent.lineChart.getViewFinder() === true) {
                     linechart = '<div class="graphtitle">'+ scope.$parent.lineChart.getTitle() +'</div>' +
                                 '<nvd3-line-with-focus-chart data="data" nodata=" " id="'+ id +'" ' +
-                                'yaxistickformat="yAxisTickFormatFunction()" xaxistickformat="xAxisTickFormatFunction()" x2axistickformat="x2AxisTickFormatFunction()" ' +
+                                'yaxistickformat="yAxisTickFormatFunction()" xaxistickformat="xAxisTickFormatFunction()" x2axistickformat="xAxisTickFormatFunction()" ' +
                                 'margin="{left:80,top:50,bottom:30,right:50}" margin2="{left:80,top:50,bottom:30,right:50}" interactive="true" showlegend="'+ legend +'" tooltips="'+ onPoint +'" ' +
                                 'color="colorFunction()"' + 
                                 'xaxisrotatelabels="-90" x2axisrotatelables="-90" interpolate="' + scope.$parent.lineChart.getInterpolation() +'">' + // perchè colorFunction ritorna null per adesso
@@ -117,12 +117,6 @@ angular.module('norris-nrti')
             };
 
             scope.yAxisTickFormatFunction = function(){
-                return function(d){
-                    return d;
-                };
-            };
-
-            scope.x2AxisTickFormatFunction = function(){
                 return function(d){
                     return d;
                 };

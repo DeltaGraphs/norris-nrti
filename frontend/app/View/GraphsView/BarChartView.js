@@ -58,8 +58,17 @@ angular.module('norris-nrti')
             }, true);*/
 
             scope.init = function(){
-                
-                element.empty();
+
+                /*if(element.contents().length>0){
+                    console.log('banana');
+                    //element.destroy();
+                    element.children()[1].detach();
+
+                    //$compile(element.contents());
+
+
+                }*/
+                console.log('banana');
                 console.log('BARCHART init');
                 var barchart, legend, onPoint, control;
                 var str = scope.url.split('/');

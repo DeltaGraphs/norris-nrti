@@ -32,7 +32,7 @@ angular.module('norris-nrti')
 	//$scope.changedF = true;
 	this.listenOnEvents = function(){
 		console.log('LINECHART listenOnEvents');
-		socket.on('configGraph', function(info){
+		/*socket.on('configGraph', function(info){
 			if (count === 0){
 				console.log('LINECHART configGraph');
 				$scope.lineChart.updateParameters(info.properties);
@@ -58,7 +58,7 @@ angular.module('norris-nrti')
 		socket.on('deleteFlow', function(info){
 			console.log('LINECHART deleteFlow');
 			$scope.lineChart.deleteFlow(info.ID);
-			$scope.changedP = !$scope.changedP;
+			//$scope.changedP = !$scope.changedP;
 			$scope.changedD = !$scope.changedD;
 			//$scope.changedF = !$scope.changedF;
 		});
@@ -88,7 +88,7 @@ angular.module('norris-nrti')
 					break;
 			}
 			$scope.changedD = !$scope.changedD;
-		});
+		});*/
 	};
 
 	$scope.socketConnection = this.socketConnection;
