@@ -159,7 +159,7 @@ angular.module('norris-nrti')
                     }
                 }
 
-                switch (scope.$parent.mapChart.getLegend().getPosition()) {
+                /*switch (scope.$parent.mapChart.getLegend().getPosition()) {
                     case 'N':
 
                         break;
@@ -191,7 +191,8 @@ angular.module('norris-nrti')
                         break;
                     case 'SW':
                         break;
-                }
+                }*/
+                scope.legend();
                 
             };
 
