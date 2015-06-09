@@ -20,79 +20,7 @@ angular.module('norris-nrti')
 
 	var socket;
 
-	/*var json = {
-		'properties':
-		{
-			'ID': 'id1',
-			'title': 'tabella 1',	//stringa
-			'type': 'Table',	
-			'height': 500, // > 0
-			'width': 600, // > 0
-			'sortable': true,
-			'maxItemsPage': 10, // > 0
-			'addRowOn': 'bottom', // 'top', 'bottom'
-			'headers': ['column1', 'column2'],
-			'sort': {
-				'column': 'col1',
-				'ordering': 'ASC' // 'ASC', 'DESC'
-			},
-			'appearance': {
-				'border': {
-					'color': '#000000', //#xxxxxx,
-					'width': 1 // > 0
-				},
-				'rowEven': {
-					'textColor': ['#000000', '#000000'],
-					'backgroundColor': ['#FFFFFF', '#FFFFFF']
-				},
-				'rowOdd': {
-					'textColor': ['#000000', '#000000'],
-					'backgroundColor': ['#FFFFFF', '#FFFFFF']
-				},
-				'headers': {
-					'textColor': ['#000000', '#000000'],
-					'backgroundColor': ['#FFFFFF', '#FFFFFF']
-				}
-			},
-			'flows': [
-				{
-					'ID': 'flow1',
-					'name': 'flow1',
-					'maxItems': 50
-				}
-			]
-		},
-		'data': [
-			{
-				'ID': 'flow1',
-				'records': [
-					{'norrisRecordID': 'xx1', 'value': [1, 1]},
-					{'norrisRecordID': 'xx2', 'value': [2, 32]},
-					{'norrisRecordID': 'xx3', 'value': [3, 324]},
-					{'norrisRecordID': 'xx4', 'value': [4, 354]},
-					{'norrisRecordID': 'xx5', 'value': [5, 73]},
-					{'norrisRecordID': 'xx6', 'value': [6, 33]},
-					{'norrisRecordID': 'xx7', 'value': [7, 33]},
-					{'norrisRecordID': 'xx8', 'value': [8, 36]},
-					{'norrisRecordID': 'xx9', 'value': [9, 36]},
-					{'norrisRecordID': 'x10', 'value': [10, 31]},
-					{'norrisRecordID': 'x11', 'value': [11, 31]},
-					{'norrisRecordID': 'x12', 'value': [11, 30]},
-					{'norrisRecordID': 'x13', 'value': [12, 4]},
-					{'norrisRecordID': 'x14', 'value': [17, 2]},
-					{'norrisRecordID': 'x15', 'value': [17, 12]},
-					{'norrisRecordID': 'x16', 'value': [50, 21]},
-					{'norrisRecordID': 'x17', 'value': [50, 2]},
-					{'norrisRecordID': 'x18', 'value': [51, 1]},
-					{'norrisRecordID': 'x19', 'value': [52, 3]},
-				]
-			}
-		]
-	};*/
-
 	$scope.table = TableFactory.build();
-	//$scope.table.updateParameters(json.properties);
-	//$scope.table.initializeData(json.data);
 
 	this.socketConnection = function(url){
 		console.log('TABLE socketConnection ' + url);
@@ -123,7 +51,7 @@ angular.module('norris-nrti')
 			console.log('insertFlow');
 			console.log('insert flow' + JSON.stringify(info));
 			var flow = TableFlowFactory.build(info.properties);
-			flow.initializeData(info);
+			flow.initializeData(info, table.getAddRowOn());
 			$scope.table.addFlow(info.properties.ID, flow);
 			$scope.changedD = !$scope.changedD;
 		});

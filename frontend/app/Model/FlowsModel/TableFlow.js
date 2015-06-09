@@ -79,9 +79,17 @@ angular.module('norris-nrti')
 		}
 	};
 
-	TableFlow.prototype.initializeData = function(newData) {
+	TableFlow.prototype.initializeData = function(newData, addRowOn) {
 		for (var i=0; i<newData.records.length; i++) {
-			this._data.push(newData.records[i]);
+			if (addRowOn === 'bottom') {
+				this._data.push(newData.records[i]);
+			} else if (addRowOn === 'top') {
+				if (this._data.length === 0) {
+					this._data.push(newData.records[i]);
+				} else if (this._data.length > 0){
+					this._data.unshift(newData.records[i]);
+				}
+			}
 		}
 	};
 	TableFlow.prototype.emptyData = function() {
@@ -94,8 +102,8 @@ angular.module('norris-nrti')
             }
         }
     };
-    TableFlow.prototype.streamUpdate = function(newData) {
-		this.initializeData(newData);
+    TableFlow.prototype.streamUpdate = function(newData, addRowOn) {
+		this.initializeData(newData, addRowOn);
     };
     TableFlow.prototype.deleteData = function(delData) {
     	for (var i = 0; i<this._data.length; i++){

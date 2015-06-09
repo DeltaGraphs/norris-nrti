@@ -82,7 +82,7 @@ angular.module('norris-nrti')
     function Table(info) {
         this._headers = [];
         this._maxItemsPage = 20;
-        this._addRowOn = 'up';
+        this._addRowOn = 'top';
         this._sortable = true;
         this._sort = null;
         this._appearance = null;
@@ -146,7 +146,7 @@ angular.module('norris-nrti')
             for (var i=0; i<newData.length; i++) {
                 for (var j=0; j<this._graph.getFlowList().length; j++) {
                     if (this._graph.getFlowList()[j].id === newData[i].ID) {
-                        this._graph.getFlowList()[j].flow.initializeData(newData[i]);
+                        this._graph.getFlowList()[j].flow.initializeData(newData[i], this._addRowOn);
                     }
                 }
             }
@@ -168,7 +168,7 @@ angular.module('norris-nrti')
             var fList = this._graph.getFlowList();
             for (var j=0; j<fList.length; j++) {
                 if (fList[j].id === newData.ID) {
-                    fList[j].flow.streamUpdate(newData);
+                    fList[j].flow.streamUpdate(newData, this._addRowOn);
                 }
             }
         }

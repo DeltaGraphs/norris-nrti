@@ -24,28 +24,25 @@ angular.module('norris-nrti')
 
 	var url = UrlProvider.prototype.getUrl();
 
-	this.socketConnection = function(){
-		console.log('\nURL: ' +url+'\n');
+	this.socketConnection = function() {
 		socket = SocketServicesFactory.build(url);
 		console.log('socketConnection');
 		this.listenOnEvents();
 	};
 
-	this.listenOnEvents = function(){
+	this.listenOnEvents = function() {
 		socket.on('configPageList', function(info){
 			console.log('configPageList');
 			console.log(JSON.stringify(info));
 			pagesList = new PagesList(info);
 			$scope.pagesList = pagesList.getPagesList();
-			//$scope.render();
 		});
-		socket.on('insertPage', function(info){
+		socket.on('insertPage', function(info) {
 			console.log('insertPage');
 			pagesList.addPage(info);
 			$scope.pagesList = pagesList.getPagesList();
-			//$scope.render();
 		});
-		socket.on('updatePage', function(info){
+		socket.on('updatePage', function(info) {
 			pagesList.updatePage(info);
 			$scope.pagesList = pagesList.getPagesList();
 		});

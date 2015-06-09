@@ -44,7 +44,7 @@ angular.module('norris-nrti')
 
             scope.$parent.$watch('changedD', function(newValue, oldValue){
                 if(newValue !== oldValue){
-                    console.log('BARCHART watch changedD');                    
+                    console.log('TABLE watch changedD');                    
                     scope.setData();
                     scope.init();
                 }
@@ -69,7 +69,15 @@ angular.module('norris-nrti')
 
                 table =  table + '<div class="graphtitle">'+ scope.$parent.table.getTitle() +'</div>';   
 
-                table = table + '<div><table st-table="data" class="table table-striped">';
+                table = table + '<div><table st-table="data" class="table table-striped"';
+                    
+                //da inserire dopo in base alla griglia si/no
+                //
+                /*if () {
+                    table = table + 'class="table table-striped table-bordered">';
+                } else if () {
+                    table = table + 'class="table-condensed table-striped">';
+                }*/
 
                 table = table + '<thead><tr>';
                 for (var i=0; i<scope.$parent.table.getHeaders().length; i++) {
@@ -93,11 +101,13 @@ angular.module('norris-nrti')
                 table = table + '</tr></thead>';
 
                 table = table + '<tbody><tr ng-repeat="record in data">';
+                i = 0;
                 for (var j=0; j<scope.$parent.table.getHeaders().length; j++){
                     console.log('TABLE costruzione righe');
-                    //data-title="\''+ scope.$parent.table.getHeaders()[j] +'\'"
-                	table = table + '<td>{{record.'+ scope.$parent.table.getHeaders()[j] +'}}</td>';
+                    table = table + '<td >{{record.'+ scope.$parent.table.getHeaders()[j] +'}}</td>';
+                    i++;
                 }
+                //style="background-color:'+ scope.appearance[i][j].bg +'; color:'+ scope.appearance[i][j].text +';"
                 table = table + '</tr></tbody>';
 
                 table = table + '<tfoot><tr>' +
@@ -114,24 +124,35 @@ angular.module('norris-nrti')
                 element.append(compiled);
             };
 
+            scope.data = [];
+            scope.appearance = [];
+
             scope.setData = function(){
                 console.log('TABLE setData');
                 var data = [];
+                var appearance = [];
                 if (scope.$parent.table.getFlowList().length > 0) {
                     console.log('getData.length ' + scope.$parent.table.getFlowList()[0].flow.getData().length + ' stringify table: ' + JSON.stringify(scope.$parent.table));
                     for (var i=0; i<scope.$parent.table.getFlowList()[0].flow.getData().length; i++) {
                         var record = {};
+                        var look = [];
                         for (var j=0; j<scope.$parent.table.getHeaders().length; j++) {
                             record[scope.$parent.table.getHeaders()[j]] = scope.$parent.table.getFlowList()[0].flow.getData()[i].value[j];
+                            look[j] = scope.$parent.table.getFlowList()[0].flow.getData()[i].appearance[j];
                         }
                         data.push(record);
+                        appearance.push(look);
                     }
                 }
-                console.log('data length ' +data.length);
-                for (var g=0; g<data.length; g++) {
-                    console.log('TABLE data: ' + JSON.stringify(data[g]));
+                console.log('appearance length ' +appearance.length);
+                for (var g=0; g<appearance.length; g++) {
+                    console.log('appearance['+ g +'] length ' +appearance[g].length);
+                    for (var f=0; f<appearance[g].length; f++) {
+                        console.log('TABLE appearance: ' + appearance[g][f].bg + ' ' + appearance[g][f].text);
+                    }
                 }
                 scope.data = data;
+                scope.appearance = appearance;
                 scope.itemsByPage = scope.$parent.table.getMaxItemsPage();
                 /*scope.tableParams = new ngTableParams({
                     page: 1,            // show first page

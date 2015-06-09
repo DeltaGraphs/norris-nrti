@@ -28,28 +28,27 @@ angular.module('norris-nrti')
 			scope.socketConnection();
 
 			scope.render = function() {
-				var parent = document.getElementById('page');
-				while(parent.firstChild) {
-				    parent.removeChild(parent.firstChild);
-				}
+				parent = element.children()[0];
+				element.empty();
 
 				var commands = document.createElement('div');
 				commands.setAttribute('class', 'commands');
-				if (scope.$parent.previous) {
+				if (scope.previous) {
 					var previous = document.createElement('div');
-					previous.setAttribute('style', 'float:left;');
-					var pIndex = $routeParams.pageId - 1;
-					previous.innerHTML = '<a ng-href="#/page/'+ pIndex +'">PREVIOUS PAGE</a>';
+					//previous.setAttribute('style', 'float:left;');
+					var pIndex = parseInt($routeParams.pageId) - 1;
+					previous.innerHTML = '<a ng-href="#/page/'+ pIndex +'" target="_self">PREVIOUS PAGE</a>';
 					commands.appendChild(previous);
 				}
 				var list = document.createElement('div');
-				list.innerHTML = '<a ng-href="/">RETURN TO PAGES LIST</a>';
+				list.innerHTML = '<a ng-href="/" target="_self">RETURN TO PAGES LIST</a>';
+				//list.setAttribute('style', 'float:left;');
 				commands.appendChild(list);
-				if (scope.$parent.next) {
+				if (scope.next) {
 					var next = document.createElement('div');
-					next.setAttribute('style', 'float:right;');
-					var nIndex = $routeParams.pageId + 1;
-					next.innerHTML = '<a ng-href="#/page/'+ nIndex +'">NEXT PAGE</a>';
+					//next.setAttribute('style', 'float:left;');
+					var nIndex = parseInt($routeParams.pageId) + 1;
+					next.innerHTML = '<a ng-href="#/page/'+ nIndex +'" target="_self">NEXT PAGE</a>';
 					commands.appendChild(next);
 				}
 				parent.appendChild(commands);

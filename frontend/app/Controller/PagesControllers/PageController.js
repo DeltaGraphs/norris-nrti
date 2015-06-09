@@ -22,11 +22,17 @@ angular.module('norris-nrti')
 	$scope.page = PagesList.prototype.getPagesList()[$routeParams.pageId].page;
 	$scope.previous = false;
 	$scope.next = false;
-	if (PagesList.prototype.getPagesList()[$routeParams.pageId - 1] !== undefined) {
+	var a = $routeParams.pageId - 1;
+	console.log('$routeParams.pageId - 1 ' + a);
+	if (PagesList.prototype.getPagesList()[parseInt($routeParams.pageId) - 1] !== undefined) {
 		$scope.previous = true;
+		console.log('$scope.previous ' + $scope.previous);
 	}
-	if (PagesList.prototype.getPagesList()[$routeParams.pageId + 1] !== undefined) {
+	var b = $routeParams.pageId + 1;
+	console.log('$routeParams.pageId + 1 ' + b);
+	if (PagesList.prototype.getPagesList()[parseInt($routeParams.pageId) + 1] !== undefined) {
 		$scope.next = true;
+		console.log('$scope.next ' + $scope.next);
 	}
 	var url = $scope.page.getUrl();
 	var socket;
