@@ -398,8 +398,7 @@ var table=page1.createTable({
     sortable: true,
     maxItemsPage: 20,
     addRowOn: 'top',
-    headers: ['0', 'IDMezzo', '1', 'WGS84Fi'],
-    columnKeys: ['0', 'IDMezzo', '1', 'WGS84Fi'],
+    headers: ['IDMezzo', 'WGS84Fi', 'WGS84La'],
     sort: {
         column: 'col1',
         ordering: 'DESC'
@@ -433,7 +432,7 @@ var repeatTable=function(){
         tableFlow1=table.createTableFlow({
             ID:'flow1',
             name: 'autobus',
-            columnKeys: ['0', 'IDMezzo', '1', 'WGS84Fi']
+            columnKeys: ['0','1','2']
         });
     }
     console.log('table index: '+index4);
