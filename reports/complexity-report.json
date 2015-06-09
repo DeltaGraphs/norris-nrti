@@ -7545,7 +7545,7 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 91,
+                        "distinct": 92,
                         "total": 598,
                         "identifiers": [
                             "\"use strict\"",
@@ -7618,6 +7618,7 @@
                             "\"MapChart\"",
                             "createTable",
                             "_dataTable",
+                            "\"Table\"",
                             "updateProperties",
                             "\"object\"",
                             "\"updatePageProp\"",
@@ -7642,12 +7643,12 @@
                         ]
                     },
                     "length": 1129,
-                    "vocabulary": 112,
-                    "difficulty": 69,
-                    "volume": 7685.503707003035,
-                    "effort": 530299.7557832095,
-                    "bugs": 2.561834569001012,
-                    "time": 29461.097543511638
+                    "vocabulary": 113,
+                    "difficulty": 68.25,
+                    "volume": 7699.982048566748,
+                    "effort": 525523.7748146806,
+                    "bugs": 2.5666606828555825,
+                    "time": 29195.765267482253
                 },
                 "params": 9,
                 "line": 2,
@@ -8019,7 +8020,7 @@
                                 "<anonymous>",
                                 "title",
                                 "type",
-                                "\"MapChart\"",
+                                "\"Table\"",
                                 "socketURL",
                                 "_routes",
                                 "_baseURL",
