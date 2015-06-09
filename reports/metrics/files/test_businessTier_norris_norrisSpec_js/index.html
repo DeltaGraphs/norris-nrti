@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">14.55</p>
+      <p class="stat">14.53</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">1.91</p>
+      <p class="stat">1.93</p>
     </div>
   </div>
 </div>
@@ -136,7 +136,7 @@ describe(&#039;Norris&#039;, function() {
     });
 
     it(&#039;set param values to properties&#039;, function() {
-        var nor=new Norris(app, io, &#039;/norris&#039;);
+        var nor=new Norris(app, io, &#039;/norris&#039;, &#039;baseURL&#039;);
         assert.deepEqual(nor._app, app);
         assert.deepEqual(nor._io, io);
         assert.deepEqual(nor._pageList, new PageListModel(&#039;norris&#039;));
@@ -159,7 +159,7 @@ describe(&#039;Norris&#039;, function() {
         });
 
         it(&#039;returns null if the passed ID is already used&#039;, function() {
-            var nor=new Norris(app, io, &#039;/norris&#039;);
+            var nor=new Norris(app, io, &#039;/norris&#039;, &#039;baseURL&#039;);
             nor._pages.push({_page: {_ID: &#039;abc&#039;}});
             assert.strictEqual(nor.createPage({ID: &#039;abc&#039;}), null);
         });
@@ -170,7 +170,7 @@ describe(&#039;Norris&#039;, function() {
         });
 
         it(&#039;behaves correctly with the right parameters&#039;, function() {
-            var nor=new Norris(app, io, &#039;/norris&#039;);
+            var nor=new Norris(app, io, &#039;/norris&#039;, &#039;http://0.0.0.0:5000&#039;);
             var socketURL = &#039;http://0.0.0.0:5000/norris&#039;;
             var options ={
                 transports: [&#039;websocket&#039;],
@@ -199,7 +199,7 @@ describe(&#039;Norris&#039;, function() {
 
     describe(&#039;#getConfigJSON&#039;, function() {
         it(&#039;returns the correct JSON&#039;, function() {
-            var nor = new Norris(app, io, &#039;/norris&#039;);
+            var nor = new Norris(app, io, &#039;/norris&#039;, &#039;baseURL&#039;);
             var p1=nor.createPage({ID: &#039;page1&#039;, name:&#039;Page one&#039;});
             nor.createPage({ID: &#039;page2&#039;, name:&#039;Page two&#039;});
 
@@ -288,7 +288,7 @@ describe(&#039;Norris&#039;, function() {
 
     describe(&#039;#pageChanged&#039;, function() {
         it(&#039;sends the message over the socket&#039;, function() {
-            var nor = new Norris(app, io, &#039;/norris&#039;);
+            var nor = new Norris(app, io, &#039;/norris&#039;, &#039;http://0.0.0.0:5000&#039;);
             var socketURL = &#039;http://0.0.0.0:5000/norris&#039;;
             var options ={
                 transports: [&#039;websocket&#039;],
