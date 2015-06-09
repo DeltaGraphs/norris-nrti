@@ -14,8 +14,8 @@
 */
 
 
-angular.module('app')
-.directive('tableChart', function($compile, ngTableParams){
+angular.module('norris-nrti')
+.directive('tableChart', function($compile){
 	return {
 		restrict: 'E',
 		//controller : 'TableController',
@@ -23,7 +23,7 @@ angular.module('app')
 		scope: {
             url: '@'
 		},
-		//bindToController: true,
+		bindToController: true,
         //template: '<div>table {{url}}</div>',
         link: function(scope, element, attrs){
 
@@ -67,9 +67,9 @@ angular.module('app')
                                     '</ul>' +
                                 '</div>';
 
-                table =  table + '<div class="graphtitle">'+ scope.$parent.table.getTitle() +'</div>' +
-                        '<p><strong>Page:</strong> {{tableParams.page()}}' +
-                        '<p><strong>Count per page:</strong> {{tableParams.count()}}';     
+                table =  table + '<div class="graphtitle">'+ scope.$parent.table.getTitle() +'</div>';
+                        //'<p><strong>Page:</strong> {{tableParams.page()}}' +
+                        //'<p><strong>Count per page:</strong> {{tableParams.count()}}';     
 
                 table = table + '<table st-table="data" class="table table-striped">';
 
