@@ -97,8 +97,7 @@ var mapChartFlow=mapChart.createMapChartFlow({
         'type': 'icon',
         //gli attributi qui sotto dipendono dal tipo di marker!!!!!
         //'shape': 'circle',//circle, triangle, square, diamond
-        'icon': 'http://i.imgur.com/W0QgS4N.png',//path
-        'path': 'http://i.imgur.com/W0QgS4N.png'
+        'icon': 'http://i.imgur.com/W0QgS4N.png'//path
         /*'text': 'null',//string
         'color' : '#000'*/
     },
@@ -151,7 +150,7 @@ var data=[[{'0':875,'IdMezzo':875,'1':45.42533493042,'WGS84Fi':45.42533493042,'2
 ];
 
 var data2=[{'0':875,'IdMezzo':875,'1':45.42533493042,'WGS84Fi':45.42533493042,'2':11.902134895325,'WGS84La':11.902134895325, appearance:[{bg: '#FFAAFF',text: '#FFAAAA'},{bg: '#FFAAFF',text: '#FFABBA'},{bg: '#FFAAFF',text: '#FFAACC'}]},
-{'0':837,'IdMezzo':837,'1':45.39281463623,'WGS84Fi':45.39281463623,'2':11.871248245239,'WGS84La':11.871248245239},
+{'0':837,'IdMezzo':837,'1':45.39281463623,'WGS84Fi':45.39281463623,'2':11.871248245239,'WGS84La':11.871248245239, appearance:[{bg: '#FFAAFF',text: '#FFAAAA'},{bg: '#FFAAFF',text: '#FFABBA'},{bg: '#FFAAFF',text: '#FFAACC'}]},
 {'0':875,'IdMezzo':875,'1':45.426074981689,'WGS84Fi':45.426074981689,'2':11.907616615295,'WGS84La':11.907616615295},
 {'0':805,'IdMezzo':805,'1':45.386032104492,'WGS84Fi':45.386032104492,'2':11.865413665771,'WGS84La':11.865413665771},
 {'0':837,'IdMezzo':837,'1':45.397495269775,'WGS84Fi':45.397495269775,'2':11.874231338501,'WGS84La':11.874231338501},
