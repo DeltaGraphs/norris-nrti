@@ -146,34 +146,36 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 16,
-                        "total": 23,
+                        "distinct": 18,
+                        "total": 25,
                         "identifiers": [
                             "\"use strict\"",
                             "norrisConfig",
                             "<anonymous>",
                             "$routeProvider",
                             "\"/page/:pageId\"",
-                            "templateUrl",
-                            "\"View/page.html\"",
+                            "template",
+                            "\"<page></page>\"",
                             "\"/\"",
-                            "\"View/pagesList.html\"",
+                            "\"<pages-list></pages-list>\"",
                             "when",
                             "norris",
                             "\"norris-nrti\"",
                             "\"ngRoute\"",
+                            "\"nvd3ChartDirectives\"",
+                            "\"smart-table\"",
                             "angular",
                             "module",
                             "config"
                         ]
                     },
-                    "length": 41,
-                    "vocabulary": 24,
-                    "difficulty": 5.75,
-                    "volume": 187.98346252956745,
-                    "effort": 1080.9049095450127,
-                    "bugs": 0.06266115417652249,
-                    "time": 60.05027275250071
+                    "length": 43,
+                    "vocabulary": 26,
+                    "difficulty": 5.555555555555555,
+                    "volume": 202.11890788006698,
+                    "effort": 1122.8828215559276,
+                    "bugs": 0.06737296929335566,
+                    "time": 62.38237897532932
                 },
                 "params": 1,
                 "line": 2,
@@ -205,10 +207,10 @@
                                 "$routeProvider",
                                 "\"/page/:pageId\"",
                                 "<anonymous>",
-                                "templateUrl",
-                                "\"View/page.html\"",
+                                "template",
+                                "\"<page></page>\"",
                                 "\"/\"",
-                                "\"View/pagesList.html\"",
+                                "\"<pages-list></pages-list>\"",
                                 "when"
                             ]
                         },
@@ -84402,14 +84404,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 22,
+                    "logical": 60,
                     "physical": 167
                 },
-                "cyclomatic": 2,
+                "cyclomatic": 8,
                 "halstead": {
                     "operators": {
-                        "distinct": 11,
-                        "total": 61,
+                        "distinct": 16,
+                        "total": 178,
                         "identifiers": [
                             "()",
                             "[]",
@@ -84421,12 +84423,17 @@
                             "if",
                             "===",
                             "++ (postfix)",
-                            "! (prefix)"
+                            "! (prefix)",
+                            "for",
+                            "<",
+                            "switch",
+                            "case",
+                            "break"
                         ]
                     },
                     "operands": {
-                        "distinct": 40,
-                        "total": 85,
+                        "distinct": 67,
+                        "total": 221,
                         "identifiers": [
                             "\"use strict\"",
                             "\"TableController\"",
@@ -84464,23 +84471,50 @@
                             "data",
                             "initializeData",
                             "on",
+                            "\"updateGraphProp\"",
+                            "\"insertFlow\"",
+                            "\"insert flow\"",
+                            "JSON",
+                            "stringify",
+                            "flow",
+                            "MapChartFlowFactory",
+                            "ID",
+                            "addFlow",
+                            "\"deleteFlow\"",
+                            "deleteFlow",
+                            "\"updateFlowProp\"",
+                            "i",
+                            "getFlowList",
+                            "length",
+                            "id",
+                            "\"updateFlowData\"",
+                            "\"updateFlowData \"",
+                            "action",
+                            "\"insertRecords\"",
+                            "streamUpdate",
+                            "\"deleteRecord\"",
+                            "deleteData",
+                            "\"updateRecord\"",
+                            "inPlaceUpdate",
+                            "\"replaceData\"",
+                            "replaceData",
                             "\"norris-nrti\"",
                             "angular",
                             "module",
                             "controller"
                         ]
                     },
-                    "length": 146,
-                    "vocabulary": 51,
-                    "difficulty": 11.6875,
-                    "volume": 828.1740999278384,
-                    "effort": 9679.28479290661,
-                    "bugs": 0.27605803330927947,
-                    "time": 537.7380440503672
+                    "length": 399,
+                    "vocabulary": 83,
+                    "difficulty": 26.388059701492537,
+                    "volume": 2543.6407331074233,
+                    "effort": 67121.74352438693,
+                    "bugs": 0.8478802443691411,
+                    "time": 3728.985751354829
                 },
-                "params": 7,
+                "params": 12,
                 "line": 2,
-                "cyclomaticDensity": 9.090909090909092
+                "cyclomaticDensity": 13.333333333333334
             },
             "functions": [
                 {
@@ -84585,14 +84619,14 @@
                 {
                     "name": "<anonymous>.listenOnEvents",
                     "sloc": {
-                        "logical": 2,
+                        "logical": 7,
                         "physical": 58
                     },
                     "cyclomatic": 1,
                     "halstead": {
                         "operators": {
                             "distinct": 3,
-                            "total": 5,
+                            "total": 20,
                             "identifiers": [
                                 "()",
                                 ".",
@@ -84600,8 +84634,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 7,
-                            "total": 7,
+                            "distinct": 12,
+                            "total": 27,
                             "identifiers": [
                                 "\"listen ON EVENTS\"",
                                 "console",
@@ -84609,20 +84643,25 @@
                                 "\"configGraph\"",
                                 "<anonymous>",
                                 "socket",
-                                "on"
+                                "on",
+                                "\"updateGraphProp\"",
+                                "\"insertFlow\"",
+                                "\"deleteFlow\"",
+                                "\"updateFlowProp\"",
+                                "\"updateFlowData\""
                             ]
                         },
-                        "length": 12,
-                        "vocabulary": 10,
-                        "difficulty": 1.5,
-                        "volume": 39.863137138648355,
-                        "effort": 59.79470570797253,
-                        "bugs": 0.013287712379549451,
-                        "time": 3.321928094887363
+                        "length": 47,
+                        "vocabulary": 15,
+                        "difficulty": 3.375,
+                        "volume": 183.62385799360038,
+                        "effort": 619.7305207284013,
+                        "bugs": 0.06120795266453346,
+                        "time": 34.42947337380007
                     },
                     "params": 0,
                     "line": 106,
-                    "cyclomaticDensity": 50
+                    "cyclomaticDensity": 14.285714285714285
                 },
                 {
                     "name": "<anonymous>",
@@ -84673,14 +84712,271 @@
                     "params": 1,
                     "line": 108,
                     "cyclomaticDensity": 33.33333333333333
+                },
+                {
+                    "name": "<anonymous>",
+                    "sloc": {
+                        "logical": 3,
+                        "physical": 5
+                    },
+                    "cyclomatic": 1,
+                    "halstead": {
+                        "operators": {
+                            "distinct": 4,
+                            "total": 9,
+                            "identifiers": [
+                                "()",
+                                ".",
+                                "=",
+                                "! (prefix)"
+                            ]
+                        },
+                        "operands": {
+                            "distinct": 8,
+                            "total": 12,
+                            "identifiers": [
+                                "info",
+                                "\"updateGraphProp\"",
+                                "console",
+                                "log",
+                                "$scope",
+                                "table",
+                                "updateParameters",
+                                "changedP"
+                            ]
+                        },
+                        "length": 21,
+                        "vocabulary": 12,
+                        "difficulty": 3,
+                        "volume": 75.28421251514429,
+                        "effort": 225.85263754543286,
+                        "bugs": 0.025094737505048096,
+                        "time": 12.547368752524047
+                    },
+                    "params": 1,
+                    "line": 117,
+                    "cyclomaticDensity": 33.33333333333333
+                },
+                {
+                    "name": "<anonymous>",
+                    "sloc": {
+                        "logical": 6,
+                        "physical": 8
+                    },
+                    "cyclomatic": 1,
+                    "halstead": {
+                        "operators": {
+                            "distinct": 6,
+                            "total": 23,
+                            "identifiers": [
+                                "()",
+                                ".",
+                                "+",
+                                "var",
+                                "=",
+                                "! (prefix)"
+                            ]
+                        },
+                        "operands": {
+                            "distinct": 17,
+                            "total": 29,
+                            "identifiers": [
+                                "info",
+                                "\"insertFlow\"",
+                                "console",
+                                "log",
+                                "\"insert flow\"",
+                                "JSON",
+                                "stringify",
+                                "flow",
+                                "properties",
+                                "MapChartFlowFactory",
+                                "build",
+                                "initializeData",
+                                "ID",
+                                "$scope",
+                                "table",
+                                "addFlow",
+                                "changedD"
+                            ]
+                        },
+                        "length": 52,
+                        "vocabulary": 23,
+                        "difficulty": 5.117647058823529,
+                        "volume": 235.22522171496468,
+                        "effort": 1203.7996640707015,
+                        "bugs": 0.07840840723832156,
+                        "time": 66.87775911503897
+                    },
+                    "params": 1,
+                    "line": 122,
+                    "cyclomaticDensity": 16.666666666666664
+                },
+                {
+                    "name": "<anonymous>",
+                    "sloc": {
+                        "logical": 3,
+                        "physical": 5
+                    },
+                    "cyclomatic": 1,
+                    "halstead": {
+                        "operators": {
+                            "distinct": 4,
+                            "total": 10,
+                            "identifiers": [
+                                "()",
+                                ".",
+                                "=",
+                                "! (prefix)"
+                            ]
+                        },
+                        "operands": {
+                            "distinct": 9,
+                            "total": 13,
+                            "identifiers": [
+                                "info",
+                                "\"deleteFlow\"",
+                                "console",
+                                "log",
+                                "ID",
+                                "$scope",
+                                "table",
+                                "deleteFlow",
+                                "changedD"
+                            ]
+                        },
+                        "length": 23,
+                        "vocabulary": 13,
+                        "difficulty": 2.888888888888889,
+                        "volume": 85.11011351724513,
+                        "effort": 245.87366127204146,
+                        "bugs": 0.028370037839081708,
+                        "time": 13.659647848446747
+                    },
+                    "params": 1,
+                    "line": 130,
+                    "cyclomaticDensity": 33.33333333333333
+                },
+                {
+                    "name": "<anonymous>",
+                    "sloc": {
+                        "logical": 6,
+                        "physical": 9
+                    },
+                    "cyclomatic": 3,
+                    "halstead": {
+                        "operators": {
+                            "distinct": 10,
+                            "total": 30,
+                            "identifiers": [
+                                "()",
+                                ".",
+                                "for",
+                                "var",
+                                "=",
+                                "<",
+                                "++ (postfix)",
+                                "if",
+                                "===",
+                                "! (prefix)"
+                            ]
+                        },
+                        "operands": {
+                            "distinct": 15,
+                            "total": 30,
+                            "identifiers": [
+                                "info",
+                                "\"updateFlowProp\"",
+                                "console",
+                                "log",
+                                "i",
+                                0,
+                                "$scope",
+                                "table",
+                                "getFlowList",
+                                "length",
+                                "id",
+                                "ID",
+                                "flow",
+                                "updateParameters",
+                                "changedD"
+                            ]
+                        },
+                        "length": 60,
+                        "vocabulary": 25,
+                        "difficulty": 10,
+                        "volume": 278.63137138648347,
+                        "effort": 2786.3137138648344,
+                        "bugs": 0.09287712379549448,
+                        "time": 154.79520632582413
+                    },
+                    "params": 1,
+                    "line": 135,
+                    "cyclomaticDensity": 50
+                },
+                {
+                    "name": "<anonymous>",
+                    "sloc": {
+                        "logical": 15,
+                        "physical": 18
+                    },
+                    "cyclomatic": 5,
+                    "halstead": {
+                        "operators": {
+                            "distinct": 8,
+                            "total": 30,
+                            "identifiers": [
+                                "()",
+                                "+",
+                                ".",
+                                "switch",
+                                "case",
+                                "break",
+                                "=",
+                                "! (prefix)"
+                            ]
+                        },
+                        "operands": {
+                            "distinct": 16,
+                            "total": 32,
+                            "identifiers": [
+                                "data",
+                                "\"updateFlowData \"",
+                                "action",
+                                "console",
+                                "log",
+                                "\"insertRecords\"",
+                                "$scope",
+                                "table",
+                                "streamUpdate",
+                                "\"deleteRecord\"",
+                                "deleteData",
+                                "\"updateRecord\"",
+                                "inPlaceUpdate",
+                                "\"replaceData\"",
+                                "replaceData",
+                                "changedD"
+                            ]
+                        },
+                        "length": 62,
+                        "vocabulary": 24,
+                        "difficulty": 8,
+                        "volume": 284.2676750447117,
+                        "effort": 2274.141400357694,
+                        "bugs": 0.09475589168157057,
+                        "time": 126.34118890876077
+                    },
+                    "params": 1,
+                    "line": 144,
+                    "cyclomaticDensity": 33.33333333333333
                 }
             ],
             "dependencies": [],
-            "maintainability": 122.74745707862647,
-            "loc": 5,
-            "cyclomatic": 1.25,
-            "effort": 645.6584696843149,
-            "params": 1.75,
+            "maintainability": 116.74046153185317,
+            "loc": 6.444444444444445,
+            "cyclomatic": 1.7777777777777777,
+            "effort": 1097.6167523187103,
+            "params": 1.3333333333333333,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/frontend/app/Controller/GraphsControllers/TableController.js"
         },
         {
@@ -100606,14 +100902,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 56,
-                    "physical": 130
+                    "logical": 77,
+                    "physical": 147
                 },
-                "cyclomatic": 8,
+                "cyclomatic": 14,
                 "halstead": {
                     "operators": {
-                        "distinct": 15,
-                        "total": 213,
+                        "distinct": 18,
+                        "total": 322,
                         "identifiers": [
                             "()",
                             "function",
@@ -100629,12 +100925,15 @@
                             "for",
                             "<",
                             "++ (postfix)",
-                            "[]"
+                            "===",
+                            "else",
+                            "[]",
+                            ">"
                         ]
                     },
                     "operands": {
-                        "distinct": 88,
-                        "total": 241,
+                        "distinct": 111,
+                        "total": 348,
                         "identifiers": [
                             "\"use strict\"",
                             "\"tableChart\"",
@@ -100664,11 +100963,11 @@
                             "newValue",
                             "oldValue",
                             "\"TABLE watch changedP\"",
+                            "setData",
                             "init",
                             "$watch",
                             "\"changedD\"",
                             "\"BARCHART watch changedD\"",
-                            "setData",
                             "\"TABLE init\"",
                             "empty",
                             "table",
@@ -100687,18 +100986,35 @@
                             "\"</div>\"",
                             "\"<div class=\"graphtitle\">\"",
                             "getTitle",
-                            "\"<table st-table=\"data\" class=\"table table-striped\">\"",
+                            "\"<div><table st-table=\"data\" class=\"table table-striped\">\"",
                             "\"<thead><tr>\"",
                             "i",
                             0,
                             "getHeaders",
                             "length",
-                            "\"<th st-sort=\"data.\"",
-                            "\"\">\"",
+                            "\"<th \"",
+                            "\"TABLE init sortable \"",
+                            "getSortable",
+                            "\"TABLE init headers[i] \"",
+                            "\"column sort \"",
+                            "getSort",
+                            "column",
+                            "ordinamento",
+                            "ordering",
+                            "\"ASC\"",
+                            "\"true\"",
+                            "\"DESC\"",
+                            "\"reverse\"",
+                            "\"TABLE init tipo sort \"",
+                            "\"st-sort-default=\"\"",
+                            "\"\" st-sort=\"\"",
+                            "\"\"\"",
+                            "\">\"",
                             "\"</th>\"",
                             "\"</tr></thead>\"",
                             "\"<tbody><tr ng-repeat=\"record in data\">\"",
                             "j",
+                            "\"TABLE costruzione righe\"",
                             "\"<td>{{record.\"",
                             "\"}}</td>\"",
                             "\"</tr></tbody>\"",
@@ -100707,43 +101023,49 @@
                             "\"<div st-pagination=\"\" st-items-by-page=\"itemsByPage\" st-displayed-pages=\"5\"></div>\"",
                             "\"</td>\"",
                             "\"</tr></tfoot>\"",
-                            "\"</table>\"",
+                            "\"</table></div>\"",
                             "compiled",
                             "append",
                             "\"TABLE setData\"",
                             "data",
                             "getFlowList",
+                            "\"getData.length \"",
                             "flow",
                             "getData",
+                            "\" stringify table: \"",
+                            "JSON",
+                            "stringify",
                             "record",
-                            "\"getHeader.length \"",
                             "push",
+                            "\"data length \"",
+                            "g",
+                            "\"TABLE data: \"",
                             "itemsByPage",
-                            10,
+                            "getMaxItemsPage",
                             "\"norris-nrti\"",
                             "angular",
                             "module",
                             "directive"
                         ]
                     },
-                    "length": 454,
-                    "vocabulary": 103,
-                    "difficulty": 20.539772727272727,
-                    "volume": 3035.6712393411813,
-                    "effort": 62351.997330786195,
-                    "bugs": 1.0118904131137272,
-                    "time": 3463.999851710344
+                    "length": 670,
+                    "vocabulary": 129,
+                    "difficulty": 28.216216216216218,
+                    "volume": 4697.52226113358,
+                    "effort": 132546.303800634,
+                    "bugs": 1.5658407537111934,
+                    "time": 7363.683544479666
                 },
                 "params": 9,
                 "line": 2,
-                "cyclomaticDensity": 14.285714285714285
+                "cyclomaticDensity": 18.181818181818183
             },
             "functions": [
                 {
                     "name": "<anonymous>",
                     "sloc": {
                         "logical": 7,
-                        "physical": 114
+                        "physical": 131
                     },
                     "cyclomatic": 1,
                     "halstead": {
@@ -100791,7 +101113,7 @@
                     "name": "link",
                     "sloc": {
                         "logical": 5,
-                        "physical": 102
+                        "physical": 119
                     },
                     "cyclomatic": 1,
                     "halstead": {
@@ -100882,14 +101204,14 @@
                 {
                     "name": "<anonymous>",
                     "sloc": {
-                        "logical": 3,
-                        "physical": 6
+                        "logical": 4,
+                        "physical": 7
                     },
                     "cyclomatic": 2,
                     "halstead": {
                         "operators": {
                             "distinct": 4,
-                            "total": 6,
+                            "total": 8,
                             "identifiers": [
                                 "if",
                                 "!==",
@@ -100898,8 +101220,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 7,
-                            "total": 9,
+                            "distinct": 8,
+                            "total": 11,
                             "identifiers": [
                                 "newValue",
                                 "oldValue",
@@ -100907,32 +101229,33 @@
                                 "console",
                                 "log",
                                 "scope",
+                                "setData",
                                 "init"
                             ]
                         },
-                        "length": 15,
-                        "vocabulary": 11,
-                        "difficulty": 2.5714285714285716,
-                        "volume": 51.89147427955947,
-                        "effort": 133.43521957601007,
-                        "bugs": 0.01729715809318649,
-                        "time": 7.413067754222782
+                        "length": 19,
+                        "vocabulary": 12,
+                        "difficulty": 2.75,
+                        "volume": 68.11428751370197,
+                        "effort": 187.3142906626804,
+                        "bugs": 0.022704762504567322,
+                        "time": 10.406349481260023
                     },
                     "params": 2,
                     "line": 37,
-                    "cyclomaticDensity": 66.66666666666666
+                    "cyclomaticDensity": 50
                 },
                 {
                     "name": "<anonymous>",
                     "sloc": {
-                        "logical": 3,
-                        "physical": 6
+                        "logical": 4,
+                        "physical": 7
                     },
                     "cyclomatic": 2,
                     "halstead": {
                         "operators": {
                             "distinct": 4,
-                            "total": 6,
+                            "total": 8,
                             "identifiers": [
                                 "if",
                                 "!==",
@@ -100941,8 +101264,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 7,
-                            "total": 9,
+                            "distinct": 8,
+                            "total": 11,
                             "identifiers": [
                                 "newValue",
                                 "oldValue",
@@ -100950,32 +101273,33 @@
                                 "console",
                                 "log",
                                 "scope",
-                                "setData"
+                                "setData",
+                                "init"
                             ]
                         },
-                        "length": 15,
-                        "vocabulary": 11,
-                        "difficulty": 2.5714285714285716,
-                        "volume": 51.89147427955947,
-                        "effort": 133.43521957601007,
-                        "bugs": 0.01729715809318649,
-                        "time": 7.413067754222782
+                        "length": 19,
+                        "vocabulary": 12,
+                        "difficulty": 2.75,
+                        "volume": 68.11428751370197,
+                        "effort": 187.3142906626804,
+                        "bugs": 0.022704762504567322,
+                        "time": 10.406349481260023
                     },
                     "params": 2,
-                    "line": 44,
-                    "cyclomaticDensity": 66.66666666666666
+                    "line": 45,
+                    "cyclomaticDensity": 50
                 },
                 {
                     "name": "scope.init",
                     "sloc": {
-                        "logical": 21,
-                        "physical": 49
+                        "logical": 35,
+                        "physical": 63
                     },
-                    "cyclomatic": 3,
+                    "cyclomatic": 7,
                     "halstead": {
                         "operators": {
-                            "distinct": 8,
-                            "total": 98,
+                            "distinct": 11,
+                            "total": 166,
                             "identifiers": [
                                 "()",
                                 ".",
@@ -100984,12 +101308,15 @@
                                 "+",
                                 "for",
                                 "<",
-                                "++ (postfix)"
+                                "++ (postfix)",
+                                "if",
+                                "===",
+                                "else"
                             ]
                         },
                         "operands": {
-                            "distinct": 47,
-                            "total": 106,
+                            "distinct": 64,
+                            "total": 173,
                             "identifiers": [
                                 "\"TABLE init\"",
                                 "console",
@@ -101014,18 +101341,35 @@
                                 "scope",
                                 "$parent",
                                 "getTitle",
-                                "\"<table st-table=\"data\" class=\"table table-striped\">\"",
+                                "\"<div><table st-table=\"data\" class=\"table table-striped\">\"",
                                 "\"<thead><tr>\"",
                                 "i",
                                 0,
                                 "getHeaders",
                                 "length",
-                                "\"<th st-sort=\"data.\"",
-                                "\"\">\"",
+                                "\"<th \"",
+                                "\"TABLE init sortable \"",
+                                "getSortable",
+                                "\"TABLE init headers[i] \"",
+                                "\"column sort \"",
+                                "getSort",
+                                "column",
+                                "ordinamento",
+                                "ordering",
+                                "\"ASC\"",
+                                "\"true\"",
+                                "\"DESC\"",
+                                "\"reverse\"",
+                                "\"TABLE init tipo sort \"",
+                                "\"st-sort-default=\"\"",
+                                "\"\" st-sort=\"\"",
+                                "\"\"\"",
+                                "\">\"",
                                 "\"</th>\"",
                                 "\"</tr></thead>\"",
                                 "\"<tbody><tr ng-repeat=\"record in data\">\"",
                                 "j",
+                                "\"TABLE costruzione righe\"",
                                 "\"<td>{{record.\"",
                                 "\"}}</td>\"",
                                 "\"</tr></tbody>\"",
@@ -101034,94 +101378,102 @@
                                 "\"<div st-pagination=\"\" st-items-by-page=\"itemsByPage\" st-displayed-pages=\"5\"></div>\"",
                                 "\"</td>\"",
                                 "\"</tr></tfoot>\"",
-                                "\"</table>\"",
+                                "\"</table></div>\"",
                                 "compiled",
                                 "$compile",
                                 "append"
                             ]
                         },
-                        "length": 204,
-                        "vocabulary": 55,
-                        "difficulty": 9.02127659574468,
-                        "volume": 1179.3973815590307,
-                        "effort": 10639.669995341043,
-                        "bugs": 0.3931324605196769,
-                        "time": 591.0927775189468
+                        "length": 339,
+                        "vocabulary": 75,
+                        "difficulty": 14.8671875,
+                        "volume": 2111.5695360781033,
+                        "effort": 31393.100212161175,
+                        "bugs": 0.7038565120260344,
+                        "time": 1744.061122897843
                     },
                     "params": 0,
-                    "line": 51,
-                    "cyclomaticDensity": 14.285714285714285
+                    "line": 53,
+                    "cyclomaticDensity": 20
                 },
                 {
                     "name": "scope.setData",
                     "sloc": {
-                        "logical": 12,
-                        "physical": 28
+                        "logical": 17,
+                        "physical": 29
                     },
-                    "cyclomatic": 3,
+                    "cyclomatic": 5,
                     "halstead": {
                         "operators": {
-                            "distinct": 10,
-                            "total": 64,
+                            "distinct": 12,
+                            "total": 101,
                             "identifiers": [
                                 "()",
                                 ".",
                                 "var",
                                 "=",
                                 "[]",
+                                "if",
+                                ">",
+                                "+",
                                 "for",
                                 "<",
                                 "++ (postfix)",
-                                "{}",
-                                "+"
+                                "{}"
                             ]
                         },
                         "operands": {
-                            "distinct": 22,
-                            "total": 61,
+                            "distinct": 28,
+                            "total": 97,
                             "identifiers": [
                                 "\"TABLE setData\"",
                                 "console",
                                 "log",
                                 "data",
                                 "<anonymous>",
-                                "i",
-                                0,
                                 "scope",
                                 "$parent",
                                 "table",
                                 "getFlowList",
+                                "length",
+                                0,
+                                "\"getData.length \"",
                                 "flow",
                                 "getData",
-                                "length",
+                                "\" stringify table: \"",
+                                "JSON",
+                                "stringify",
+                                "i",
                                 "record",
-                                "\"getHeader.length \"",
-                                "getHeaders",
                                 "j",
+                                "getHeaders",
                                 "value",
                                 "push",
+                                "\"data length \"",
+                                "g",
+                                "\"TABLE data: \"",
                                 "itemsByPage",
-                                10
+                                "getMaxItemsPage"
                             ]
                         },
-                        "length": 125,
-                        "vocabulary": 32,
-                        "difficulty": 13.863636363636365,
-                        "volume": 625,
-                        "effort": 8664.772727272728,
-                        "bugs": 0.20833333333333334,
-                        "time": 481.37626262626264
+                        "length": 198,
+                        "vocabulary": 40,
+                        "difficulty": 20.785714285714285,
+                        "volume": 1053.7417627876978,
+                        "effort": 21902.775212230004,
+                        "bugs": 0.3512472542625659,
+                        "time": 1216.820845123889
                     },
                     "params": 0,
-                    "line": 101,
-                    "cyclomaticDensity": 25
+                    "line": 117,
+                    "cyclomaticDensity": 29.411764705882355
                 }
             ],
             "dependencies": [],
-            "maintainability": 110.42285319792953,
-            "loc": 7.714285714285714,
-            "cyclomatic": 2,
-            "effort": 2946.2321652141973,
+            "maintainability": 101.6816674321889,
+            "loc": 10.714285714285714,
+            "cyclomatic": 2.857142857142857,
+            "effort": 7817.545142921446,
             "params": 1.2857142857142858,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/frontend/app/View/GraphsView/TableView.js"
         },
@@ -104177,9 +104529,9 @@
     ],
     "changeCost": 2.941176470588235,
     "coreSize": 0,
-    "loc": 5.593695205786408,
-    "cyclomatic": 1.9268700481725356,
-    "effort": 2095.021811108693,
-    "params": 0.9379969697026861,
-    "maintainability": 121.14537152592709
+    "loc": 5.724414160034773,
+    "cyclomatic": 1.9676030080231424,
+    "effort": 2251.5886128834472,
+    "params": 0.9257420677419018,
+    "maintainability": 120.71160148732373
 }
