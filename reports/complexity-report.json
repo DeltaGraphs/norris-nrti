@@ -10,7 +10,7 @@
                 "halstead": {
                     "operators": {
                         "distinct": 24,
-                        "total": 396,
+                        "total": 397,
                         "identifiers": [
                             "=",
                             ".",
@@ -143,13 +143,13 @@
                             "\"number\""
                         ]
                     },
-                    "length": 792,
+                    "length": 793,
                     "vocabulary": 123,
                     "difficulty": 48,
-                    "volume": 5498.471488228678,
-                    "effort": 263926.63143497653,
-                    "bugs": 1.8328238294095593,
-                    "time": 14662.590635276474
+                    "volume": 5505.414002734017,
+                    "effort": 264259.8721312328,
+                    "bugs": 1.8351380009113392,
+                    "time": 14681.104007290713
                 },
                 "params": 14,
                 "line": 2,
@@ -551,7 +551,7 @@
                     "halstead": {
                         "operators": {
                             "distinct": 13,
-                            "total": 63,
+                            "total": 64,
                             "identifiers": [
                                 "if",
                                 "||",
@@ -595,13 +595,13 @@
                                 "isHEX"
                             ]
                         },
-                        "length": 119,
+                        "length": 120,
                         "vocabulary": 34,
                         "difficulty": 17.333333333333332,
-                        "volume": 605.4080781087905,
-                        "effort": 10493.740020552368,
-                        "bugs": 0.20180269270293016,
-                        "time": 582.9855566973538
+                        "volume": 610.4955409500408,
+                        "effort": 10581.922709800707,
+                        "bugs": 0.2034985136500136,
+                        "time": 587.8845949889281
                     },
                     "params": 1,
                     "line": 139,
@@ -725,10 +725,10 @@
                 }
             ],
             "dependencies": [],
-            "maintainability": 99.5127966796507,
+            "maintainability": 99.50837107098897,
             "loc": 12.727272727272727,
             "cyclomatic": 6.181818181818182,
-            "effort": 6191.027377910691,
+            "effort": 6199.043986024176,
             "params": 1.2727272727272727,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/helpers/functionHelper.js"
         },
@@ -18175,7 +18175,7 @@
     "coreSize": 37.5,
     "loc": 10.69552452755578,
     "cyclomatic": 4.348697656510157,
-    "effort": 8253.283319393517,
+    "effort": 8253.533838397063,
     "params": 1.1462226141913645,
-    "maintainability": 104.67151804971041
+    "maintainability": 104.67137974943974
 }

@@ -66,7 +66,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">1.83</p>
+      <p class="stat">1.84</p>
     </div>
   </div>
 </div>
@@ -245,7 +245,7 @@ module.exports.isValidMapMarker= function(marker){
 				}
 				return true;
 			}
-			if (marker.type===&#039;icon&#039; &amp;&amp; marker.icon!==undefined &amp;&amp; typeof marker.icon===&#039;string&#039; &amp;&amp; marker.path!==undefined &amp;&amp; marker.path===&#039;string&#039;){
+			if (marker.type===&#039;icon&#039; &amp;&amp; marker.icon!==undefined &amp;&amp; typeof marker.icon===&#039;string&#039; &amp;&amp; marker.path!==undefined &amp;&amp; typeof marker.path===&#039;string&#039;){
 				//may check if file exists
 				return true;
 			}

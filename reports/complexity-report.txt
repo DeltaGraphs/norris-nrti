@@ -1,8 +1,8 @@
 Mean per-function logical LOC: 10.69552452755578
 Mean per-function parameter count: 1.1462226141913645
 Mean per-function cyclomatic complexity: 4.348697656510157
-Mean per-function Halstead effort: 8253.283319393517
-Mean per-module maintainability index: 104.67151804971041
+Mean per-function Halstead effort: 8253.533838397063
+Mean per-module maintainability index: 104.67137974943974
 First-order density: 5.95703125%
 Change cost: 21.875%
 Core size: 37.5%
@@ -14,7 +14,7 @@ Core size: 37.5%
   Mean parameter count: 1.2727272727272727
   Cyclomatic complexity: 58
   Cyclomatic complexity density: 38.15789473684211%
-  Maintainability index: 99.5127966796507
+  Maintainability index: 99.50837107098897
   Dependency count: 0
 
   Function: <anonymous>.replaceAll
@@ -113,8 +113,8 @@ Core size: 37.5%
     Cyclomatic complexity: 11
     Cyclomatic complexity density: 55.00000000000001%
     Halstead difficulty: 17.333333333333332
-    Halstead volume: 605.4080781087905
-    Halstead effort: 10493.740020552368
+    Halstead volume: 610.4955409500408
+    Halstead effort: 10581.922709800707
 
   Function: <anonymous>.isValidInterpolation
     Line No.: 170
