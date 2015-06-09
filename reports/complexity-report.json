@@ -10,7 +10,7 @@
                 "halstead": {
                     "operators": {
                         "distinct": 24,
-                        "total": 390,
+                        "total": 396,
                         "identifiers": [
                             "=",
                             ".",
@@ -39,8 +39,8 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 98,
-                        "total": 390,
+                        "distinct": 99,
+                        "total": 396,
                         "identifiers": [
                             "\"use strict\"",
                             "String",
@@ -118,6 +118,7 @@
                             "\"icon\"",
                             "icon",
                             "\"string\"",
+                            "path",
                             "\"text\"",
                             "text",
                             "color",
@@ -142,13 +143,13 @@
                             "\"number\""
                         ]
                     },
-                    "length": 780,
-                    "vocabulary": 122,
-                    "difficulty": 47.755102040816325,
-                    "volume": 5405.975123299052,
-                    "effort": 258162.89364326085,
-                    "bugs": 1.8019917077663508,
-                    "time": 14342.382980181159
+                    "length": 792,
+                    "vocabulary": 123,
+                    "difficulty": 48,
+                    "volume": 5498.471488228678,
+                    "effort": 263926.63143497653,
+                    "bugs": 1.8328238294095593,
+                    "time": 14662.590635276474
                 },
                 "params": 14,
                 "line": 2,
@@ -550,7 +551,7 @@
                     "halstead": {
                         "operators": {
                             "distinct": 13,
-                            "total": 57,
+                            "total": 63,
                             "identifiers": [
                                 "if",
                                 "||",
@@ -568,8 +569,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 20,
-                            "total": 50,
+                            "distinct": 21,
+                            "total": 56,
                             "identifiers": [
                                 "marker",
                                 "undefined",
@@ -586,6 +587,7 @@
                                 "\"icon\"",
                                 "icon",
                                 "\"string\"",
+                                "path",
                                 "\"text\"",
                                 "text",
                                 "color",
@@ -593,13 +595,13 @@
                                 "isHEX"
                             ]
                         },
-                        "length": 107,
-                        "vocabulary": 33,
-                        "difficulty": 16.25,
-                        "volume": 539.7501707713545,
-                        "effort": 8770.94027503451,
-                        "bugs": 0.17991672359045152,
-                        "time": 487.2744597241395
+                        "length": 119,
+                        "vocabulary": 34,
+                        "difficulty": 17.333333333333332,
+                        "volume": 605.4080781087905,
+                        "effort": 10493.740020552368,
+                        "bugs": 0.20180269270293016,
+                        "time": 582.9855566973538
                     },
                     "params": 1,
                     "line": 139,
@@ -723,10 +725,10 @@
                 }
             ],
             "dependencies": [],
-            "maintainability": 99.60042764541231,
+            "maintainability": 99.5127966796507,
             "loc": 12.727272727272727,
             "cyclomatic": 6.181818181818182,
-            "effort": 6034.40921922725,
+            "effort": 6191.027377910691,
             "params": 1.2727272727272727,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/helpers/functionHelper.js"
         },
@@ -10307,7 +10309,7 @@
             "aggregate": {
                 "sloc": {
                     "logical": 131,
-                    "physical": 206
+                    "physical": 207
                 },
                 "cyclomatic": 35,
                 "halstead": {
@@ -10464,7 +10466,7 @@
                     "name": "MapChartFlowModel",
                     "sloc": {
                         "logical": 19,
-                        "physical": 32
+                        "physical": 33
                     },
                     "cyclomatic": 5,
                     "halstead": {
@@ -10613,7 +10615,7 @@
                         "time": 1629.6984327196606
                     },
                     "params": 1,
-                    "line": 57,
+                    "line": 58,
                     "cyclomaticDensity": 50
                 },
                 {
@@ -10671,7 +10673,7 @@
                         "time": 155.4975094905046
                     },
                     "params": 1,
-                    "line": 92,
+                    "line": 93,
                     "cyclomaticDensity": 25
                 },
                 {
@@ -10744,7 +10746,7 @@
                         "time": 649.3551457449141
                     },
                     "params": 2,
-                    "line": 104,
+                    "line": 105,
                     "cyclomaticDensity": 44.44444444444444
                 },
                 {
@@ -10817,7 +10819,7 @@
                         "time": 1069.526122403388
                     },
                     "params": 1,
-                    "line": 134,
+                    "line": 135,
                     "cyclomaticDensity": 34.61538461538461
                 },
                 {
@@ -10883,7 +10885,7 @@
                         "time": 343.93761134181307
                     },
                     "params": 1,
-                    "line": 172,
+                    "line": 173,
                     "cyclomaticDensity": 38.46153846153847
                 },
                 {
@@ -10943,7 +10945,7 @@
                         "time": 96.11806852012515
                     },
                     "params": 0,
-                    "line": 193,
+                    "line": 194,
                     "cyclomaticDensity": 9.090909090909092
                 }
             ],
@@ -18173,7 +18175,7 @@
     "coreSize": 37.5,
     "loc": 10.69552452755578,
     "cyclomatic": 4.348697656510157,
-    "effort": 8248.38900193466,
+    "effort": 8253.283319393517,
     "params": 1.1462226141913645,
-    "maintainability": 104.67425651739046
+    "maintainability": 104.67151804971041
 }
