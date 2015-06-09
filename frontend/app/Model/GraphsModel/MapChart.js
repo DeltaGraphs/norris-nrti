@@ -98,7 +98,6 @@ angular.module('norris-nrti')
     }
 
     MapChart.prototype.updateParameters = function(info) {
-        console.log('MAPCHART MODEL updateParameters' +JSON.stringify(info));
         var json = split(info);
         var gJson = json.graphJson;
         var mJson = json.mapJson;

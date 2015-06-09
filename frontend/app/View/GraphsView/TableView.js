@@ -30,25 +30,23 @@ angular.module('norris-nrti')
         	attrs.$observe('url', function(value) {
                 console.log('TABLE observ url ' + value);
                 if (value) {
-                    //scope.$parent.socketConnection(value);
-                    scope.setData();
-                    scope.init();
+                    scope.$parent.socketConnection(value);
                 }
             });
 
             scope.$parent.$watch('changedP', function(newValue, oldValue){
                 if (newValue !== oldValue) {
                     console.log('TABLE watch changedP');
-                    //scope.init();
+                    scope.init();
                 }
             }, true);
 
-            /*scope.$parent.$watch('changedP', function(newValue, oldValue){
+            scope.$parent.$watch('changedD', function(newValue, oldValue){
                 if(newValue !== oldValue){
-                    console.log('BARCHART watch changedP');                    
-                    scope.render();
+                    console.log('BARCHART watch changedD');                    
+                    scope.setData();
                 }
-            }, true);*/
+            }, true);
 
             scope.init = function(){
                 console.log('TABLE init');
@@ -88,7 +86,7 @@ angular.module('norris-nrti')
 
                 table = table + '<tfoot><tr>' +
                                     '<td colspan="5" class="text-center">' +
-                                        '<div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>' +
+                                        '<div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="5"></div>' +
                                     '</td>' +
                                 '</tr></tfoot>';
 
