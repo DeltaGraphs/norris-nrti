@@ -57,7 +57,8 @@ angular.module('app')
                 }
             }, true);*/
 
-            scope.init = function(){  
+            scope.init = function(){
+                
                 element.empty();
                 console.log('BARCHART init');
                 var barchart, legend, onPoint, control;
@@ -84,7 +85,7 @@ angular.module('app')
                 if (scope.$parent.barChart.getBarOrientation() === 'V'){
                     barchart = '<div class="graphtitle">'+ scope.$parent.barChart.getTitle() +'</div>' +
                                 '<nvd3-multi-bar-chart data="data" nodata=" " id="'+ id +'" ' +
-                                'xaxisticksformat="xAxisTickFormatFunction()" yaxistickformat="yAxisTickFormatFunction()" showxaxis="true" showyaxis="true" ' +
+                                'xaxisticksformat="xAxisTickFormatFunction()" showxaxis="true" showyaxis="true" ' +
                                 'rotatelabels="-90" interactive="true" tooltips="'+ onPoint +'" showlegend="'+ legend +'" ' +
                                 'xaxislabel="'+ scope.$parent.barChart.getX().getName() +'" ' +
                                 'showcontrols="'+ control +'" color="colorFunction()" ' +
