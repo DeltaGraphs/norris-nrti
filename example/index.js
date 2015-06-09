@@ -442,7 +442,7 @@ var repeatTable=function(){
         index4=0;
         table.deleteAllFlows();
     }else{
-        tableFlow1.addRecord(data2[index4][0]);
+        tableFlow1.addRecord(data2[index4]);
     }
 };
 
