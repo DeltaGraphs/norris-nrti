@@ -37,15 +37,15 @@ describe('Norris', function() {
     });
 
     it('returns null when passed invalid parameters', function() {
-        assert.strictEqual((new Norris('abc', 'def', 2)).hasOwnProperty('_app'), false);
+        assert.strictEqual((new Norris('abc', 'def', 2, 'baseURL')).hasOwnProperty('_app'), false);
     });
 
     it('returns null when passed invalid route', function() {
-        assert.strictEqual((new Norris(app, io, '/')).hasOwnProperty('_app'), false);
+        assert.strictEqual((new Norris(app, io, '/', 'baseURL')).hasOwnProperty('_app'), false);
     });
 
     it('returns null if the pagelistmodel is not created', function() {
-        assert.strictEqual((new Norris(app, io, '/  ')).hasOwnProperty('_app'), false);
+        assert.strictEqual((new Norris(app, io, '/  ', 'baseURL')).hasOwnProperty('_app'), false);
     });
 
     it('set param values to properties', function() {

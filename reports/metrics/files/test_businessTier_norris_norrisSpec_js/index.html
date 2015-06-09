@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">14.75</p>
+      <p class="stat">14.84</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">1.98</p>
+      <p class="stat">1.99</p>
     </div>
   </div>
 </div>
@@ -128,15 +128,15 @@ describe(&#039;Norris&#039;, function() {
     });
 
     it(&#039;returns null when passed invalid parameters&#039;, function() {
-        assert.strictEqual((new Norris(&#039;abc&#039;, &#039;def&#039;, 2)).hasOwnProperty(&#039;_app&#039;), false);
+        assert.strictEqual((new Norris(&#039;abc&#039;, &#039;def&#039;, 2, &#039;baseURL&#039;)).hasOwnProperty(&#039;_app&#039;), false);
     });
 
     it(&#039;returns null when passed invalid route&#039;, function() {
-        assert.strictEqual((new Norris(app, io, &#039;/&#039;)).hasOwnProperty(&#039;_app&#039;), false);
+        assert.strictEqual((new Norris(app, io, &#039;/&#039;, &#039;baseURL&#039;)).hasOwnProperty(&#039;_app&#039;), false);
     });
 
     it(&#039;returns null if the pagelistmodel is not created&#039;, function() {
-        assert.strictEqual((new Norris(app, io, &#039;/  &#039;)).hasOwnProperty(&#039;_app&#039;), false);
+        assert.strictEqual((new Norris(app, io, &#039;/  &#039;, &#039;baseURL&#039;)).hasOwnProperty(&#039;_app&#039;), false);
     });
 
     it(&#039;set param values to properties&#039;, function() {
