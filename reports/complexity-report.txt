@@ -1,8 +1,8 @@
-Mean per-function logical LOC: 10.71505577755578
+Mean per-function logical LOC: 10.69552452755578
 Mean per-function parameter count: 1.1462226141913645
 Mean per-function cyclomatic complexity: 4.348697656510157
-Mean per-function Halstead effort: 8258.293993323801
-Mean per-module maintainability index: 104.65260195070391
+Mean per-function Halstead effort: 8248.38900193466
+Mean per-module maintainability index: 104.67425651739046
 First-order density: 5.95703125%
 Change cost: 21.875%
 Core size: 37.5%
@@ -1149,27 +1149,27 @@ Core size: 37.5%
 
 /home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/page/page.js
 
-  Physical LOC: 242
-  Logical LOC: 153
+  Physical LOC: 237
+  Logical LOC: 148
   Mean parameter count: 1.125
   Cyclomatic complexity: 29
-  Cyclomatic complexity density: 18.954248366013072%
-  Maintainability index: 92.52474679994597
+  Cyclomatic complexity density: 19.594594594594593%
+  Maintainability index: 93.21769293391573
   Dependency count: 5
 
   Function: Page
     Line No.: 23
-    Physical LOC: 30
-    Logical LOC: 20
+    Physical LOC: 25
+    Logical LOC: 15
     Parameter count: 3
     Cyclomatic complexity: 10
-    Cyclomatic complexity density: 50%
-    Halstead difficulty: 14.166666666666666
-    Halstead volume: 840.7524692701438
-    Halstead effort: 11910.659981327037
+    Cyclomatic complexity density: 66.66666666666666%
+    Halstead difficulty: 13.75
+    Halstead volume: 681.8168862332301
+    Halstead effort: 9374.982185706915
 
   Function: <anonymous>.createBarChart
-    Line No.: 54
+    Line No.: 49
     Physical LOC: 35
     Logical LOC: 24
     Parameter count: 1
@@ -1180,7 +1180,7 @@ Core size: 37.5%
     Halstead effort: 17668.00354536416
 
   Function: <anonymous>.createLineChart
-    Line No.: 90
+    Line No.: 85
     Physical LOC: 35
     Logical LOC: 24
     Parameter count: 1
@@ -1191,7 +1191,7 @@ Core size: 37.5%
     Halstead effort: 17668.00354536416
 
   Function: <anonymous>.createMapChart
-    Line No.: 126
+    Line No.: 121
     Physical LOC: 35
     Logical LOC: 24
     Parameter count: 1
@@ -1202,7 +1202,7 @@ Core size: 37.5%
     Halstead effort: 17668.00354536416
 
   Function: <anonymous>.createTable
-    Line No.: 162
+    Line No.: 157
     Physical LOC: 35
     Logical LOC: 24
     Parameter count: 1
@@ -1213,7 +1213,7 @@ Core size: 37.5%
     Halstead effort: 17668.00354536416
 
   Function: <anonymous>.updateProperties
-    Line No.: 198
+    Line No.: 193
     Physical LOC: 14
     Logical LOC: 6
     Parameter count: 1
@@ -1224,7 +1224,7 @@ Core size: 37.5%
     Halstead effort: 1419.50439022327
 
   Function: <anonymous>.getConfigJSON
-    Line No.: 213
+    Line No.: 208
     Physical LOC: 17
     Logical LOC: 13
     Parameter count: 0
@@ -1235,7 +1235,7 @@ Core size: 37.5%
     Halstead effort: 6312.607210334537
 
   Function: <anonymous>.graphChanged
-    Line No.: 231
+    Line No.: 226
     Physical LOC: 10
     Logical LOC: 3
     Parameter count: 1

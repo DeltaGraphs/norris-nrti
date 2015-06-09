@@ -62,7 +62,7 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">31.32</p>
+      <p class="stat">31.16</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
@@ -166,7 +166,7 @@ describe(&#039;Page&#039;, function() {
     });
 
     it(&#039;returns null when there is no valid networkHandler in params&#039;, function() {
-        assert.strictEqual((new Page({ID:&#039;abc&#039;}, {}, new ParamMock())).hasOwnProperty(&#039;_name&#039;), false);
+        assert.strictEqual((new Page({ID:&#039;abc&#039;}, 111, new ParamMock())).hasOwnProperty(&#039;_name&#039;), false);
     });
 
     it(&#039;returns null if the PageModel is not created&#039;, function() {
