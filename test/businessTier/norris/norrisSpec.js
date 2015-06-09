@@ -45,7 +45,7 @@ describe('Norris', function() {
     });
 
     it('set param values to properties', function() {
-        var nor=new Norris(app, io, '/norris');
+        var nor=new Norris(app, io, '/norris', 'baseURL');
         assert.deepEqual(nor._app, app);
         assert.deepEqual(nor._io, io);
         assert.deepEqual(nor._pageList, new PageListModel('norris'));
@@ -68,7 +68,7 @@ describe('Norris', function() {
         });
 
         it('returns null if the passed ID is already used', function() {
-            var nor=new Norris(app, io, '/norris');
+            var nor=new Norris(app, io, '/norris', 'baseURL');
             nor._pages.push({_page: {_ID: 'abc'}});
             assert.strictEqual(nor.createPage({ID: 'abc'}), null);
         });
@@ -79,7 +79,7 @@ describe('Norris', function() {
         });
 
         it('behaves correctly with the right parameters', function() {
-            var nor=new Norris(app, io, '/norris');
+            var nor=new Norris(app, io, '/norris', 'http://0.0.0.0:5000');
             var socketURL = 'http://0.0.0.0:5000/norris';
             var options ={
                 transports: ['websocket'],
@@ -108,7 +108,7 @@ describe('Norris', function() {
 
     describe('#getConfigJSON', function() {
         it('returns the correct JSON', function() {
-            var nor = new Norris(app, io, '/norris');
+            var nor = new Norris(app, io, '/norris', 'baseURL');
             var p1=nor.createPage({ID: 'page1', name:'Page one'});
             nor.createPage({ID: 'page2', name:'Page two'});
 
@@ -197,7 +197,7 @@ describe('Norris', function() {
 
     describe('#pageChanged', function() {
         it('sends the message over the socket', function() {
-            var nor = new Norris(app, io, '/norris');
+            var nor = new Norris(app, io, '/norris', 'http://0.0.0.0:5000');
             var socketURL = 'http://0.0.0.0:5000/norris';
             var options ={
                 transports: ['websocket'],
