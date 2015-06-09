@@ -98,7 +98,7 @@ module.exports = function(grunt) {
         concat: {
             css: {
                 src: [&#039;frontend/app/View/**/*.css&#039;], // array of folders
-                dest: &#039;frontend/app/dist/tmp/concat.css&#039;
+                dest: &#039;frontend/app/dist/norris-nrti.css&#039;
             },
             js: {
                 src: [ // array of folders
@@ -107,20 +107,20 @@ module.exports = function(grunt) {
                     &#039;frontend/app/Controller/**/*.js&#039;,
                     &#039;frontend/app/View/**/*.js&#039;
                 ],
-                dest: &#039;frontend/app/dist/tmp/concat.js&#039;
+                dest: &#039;frontend/app/dist/norris-nrti.js&#039;
             }
         },
         cssmin: {
             dist: {
                 files: {
-                    &#039;frontend/app/dist/norris-nrti.min.css&#039;: [ &#039;frontend/app/dist/tmp/concat.css&#039; ]
+                    &#039;frontend/app/dist/norris-nrti.min.css&#039;: [ &#039;frontend/app/dist/norris-nrti.css&#039; ]
                 }
             }
         },
         uglify: {
             build: {
                 files: {
-                    &#039;frontend/app/dist/norris-nrti.min.js&#039;: [&#039;frontend/app/dist/tmp/concat.js&#039;]
+                    &#039;frontend/app/dist/norris-nrti.min.js&#039;: [&#039;frontend/app/dist/norris-nrti.js&#039;]
                 }
             }
         }
