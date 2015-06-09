@@ -19,6 +19,7 @@ var PageModel = require('../../../lib/dataTier/page/pageModel.js');
 var MapChart = require('../../../lib/businessTier/graph/mapChart.js');
 var LineChart = require('../../../lib/businessTier/graph/lineChart.js');
 var BarChart = require('../../../lib/businessTier/graph/barChart.js');
+var Table = require('../../../lib/businessTier/graph/table.js');
 var assert = require('assert');
 
 var Norris = require('../../../lib/businessTier/norris/norris.js');
@@ -254,7 +255,7 @@ describe('Page', function() {
                 'force new connection': true
             };
             var expJSON = {
-                ID: 'page1',
+                ID: 'page3',
                 graph: {
                     ID: 'line1',
                     title: '',
@@ -300,7 +301,7 @@ describe('Page', function() {
                 'force new connection': true
             };
             var expJSON = {
-                ID: 'page1',
+                ID: 'page4',
                 graph: {
                     ID: 'bar1',
                     title: '',
@@ -312,6 +313,52 @@ describe('Page', function() {
             assert.deepEqual(page4.createBarChart({ID: 'bar1'}) instanceof BarChart, true);
             assert.strictEqual(nor4._pages[0]._graphs.length, 1);
             assert.strictEqual(nor4._pageList._pages[0]._graphs.length, 1);
+            var client1 = ioclient.connect(socketURL, options);
+            client1.on('insertGraph', function(message) {
+                assert.strictEqual(message, expJSON);
+            });
+        });
+    });
+
+    describe('#createTable', function() {
+        it('returns null if no parameter is passed', function() {
+            assert.deepEqual(page1.createTable(), null);
+        });
+
+        it('returns null if the passed parameter does not contain an ID', function() {
+            assert.deepEqual(page1.createTable({p: 'abvs'}), null);
+        });
+
+        it('returns null if the passed ID is already used', function() {
+            page1.createTable({ID: 'm1'});
+            assert.deepEqual(page1.createTable({ID: 'm1'}), null);
+        });
+
+        it('returns null if the tableModel is not created', function() {
+            assert.deepEqual(page1.createTable({ID: ''}), null);
+        });
+
+        it('behaves correctly with the right parameters', function() {
+            var nor5 = new Norris(app, io, '/norris', 'http://0.0.0.0:5000');
+            var page5 = nor5.createPage({ID: 'page3'});
+            var socketURL = 'http://0.0.0.0:5000/page5';
+            var options ={
+                transports: ['websocket'],
+                'force new connection': true
+            };
+            var expJSON = {
+                ID: 'page5',
+                graph: {
+                    ID: 'table1',
+                    title: '',
+                    type: 'Table',
+                    socketURL: '/page5/table1'
+                }
+            };
+            //var stPage = new Page({ID: 'page1'}, nor._networkHandler, nor);
+            assert.deepEqual(page5.createTable({ID: 'table1'}) instanceof Table, true);
+            assert.strictEqual(nor5._pages[0]._graphs.length, 1);
+            assert.strictEqual(nor5._pageList._pages[0]._graphs.length, 1);
             var client1 = ioclient.connect(socketURL, options);
             client1.on('insertGraph', function(message) {
                 assert.strictEqual(message, expJSON);
