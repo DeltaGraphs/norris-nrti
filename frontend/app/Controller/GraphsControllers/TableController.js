@@ -122,7 +122,7 @@ angular.module('norris-nrti')
 		socket.on('insertFlow', function(info){
 			console.log('insertFlow');
 			console.log('insert flow' + JSON.stringify(info));
-			var flow = MapChartFlowFactory.build(info.properties);
+			var flow = TableFlowFactory.build(info.properties);
 			flow.initializeData(info);
 			$scope.table.addFlow(info.properties.ID, flow);
 			$scope.changedD = !$scope.changedD;

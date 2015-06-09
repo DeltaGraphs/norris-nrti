@@ -2,7 +2,7 @@
 'use strict';
 
 /*
-* Name :  app.js
+* Name :  norris-nrti.js
 * Module : FrontEnd
 * Location : /frontend/app
 *

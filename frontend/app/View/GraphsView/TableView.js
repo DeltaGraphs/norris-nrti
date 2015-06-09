@@ -106,7 +106,7 @@ angular.module('norris-nrti')
                                     '</td>' +
                                 '</tr></tfoot>';
 
-                table = table + '</table></div>';
+                table = table + '</table><div>';
                 
                 console.log(table);
             	var compiled = $compile(table)(scope);
