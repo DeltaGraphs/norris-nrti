@@ -24,7 +24,7 @@ describe('TableFlowFactory', function(){
 
 	var TableFlowFactory;
 
-	beforeEach(angular.mock.module('app'));
+	beforeEach(angular.mock.module('norris-nrti'));
 
 	beforeEach(inject(function(_TableFlowFactory_){
 		TableFlowFactory = _TableFlowFactory_;

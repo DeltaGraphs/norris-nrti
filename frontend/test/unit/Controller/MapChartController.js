@@ -18,7 +18,7 @@
 
 describe('MapChartController', function(){
 
-	beforeEach(angular.mock.module('app'));
+	beforeEach(angular.mock.module('norris-nrti'));
 
 	var scope;
 	var controller;

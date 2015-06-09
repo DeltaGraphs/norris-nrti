@@ -23,7 +23,7 @@ describe('MapChartFactory', function(){
 	var MapChartFactory;
 	var MapChartFlowFactory;
 
-	beforeEach(angular.mock.module('app'));
+	beforeEach(angular.mock.module('norris-nrti'));
 
 	beforeEach(inject(function(_MapChartFactory_, $injector){
 		MapChartFactory = _MapChartFactory_;

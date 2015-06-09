@@ -22,7 +22,7 @@ describe('FlowFactory', function(){
 
 	var FlowFactory;
 
-	beforeEach(angular.mock.module('app'));
+	beforeEach(angular.mock.module('norris-nrti'));
 
 	beforeEach(inject(function(_FlowFactory_){
 		FlowFactory = _FlowFactory_;

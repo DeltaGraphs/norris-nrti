@@ -25,7 +25,7 @@ describe('PagesList', function(){
 
 	var PagesList;
 
-	beforeEach(angular.mock.module('app'));
+	beforeEach(angular.mock.module('norris-nrti'));
 
 	beforeEach(inject(function(_PagesList_){
 		PagesList = _PagesList_;

@@ -23,7 +23,7 @@ describe('PageFactory', function(){
 
 	var PageFactory;
 
-	beforeEach(angular.mock.module('app'));
+	beforeEach(angular.mock.module('norris-nrti'));
 
 	beforeEach(inject(function(_PageFactory_){
 		PageFactory = _PageFactory_;

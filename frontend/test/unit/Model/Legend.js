@@ -22,7 +22,7 @@ describe('LegendFactory', function(){
 
 	var LegendFactory;
 
-	beforeEach(angular.mock.module('app'));
+	beforeEach(angular.mock.module('norris-nrti'));
 
 	beforeEach(inject(function(_LegendFactory_){
 		LegendFactory = _LegendFactory_;

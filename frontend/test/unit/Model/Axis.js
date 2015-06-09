@@ -26,7 +26,7 @@ describe('AxisFactory', function(){
 
 	var AxisFactory = null;
 
-	beforeEach(angular.mock.module('app'));
+	beforeEach(angular.mock.module('norris-nrti'));
 
 	beforeEach(inject(function (_AxisFactory_) {
 		AxisFactory = _AxisFactory_;

@@ -29,7 +29,7 @@ describe('BarChartFactory', function(){
 	var BarChartFactory;
 	var BarChartFlowFactory;
 
-	beforeEach(angular.mock.module('app'));
+	beforeEach(angular.mock.module('norris-nrti'));
 
 	beforeEach(inject(function(_BarChartFactory_, $injector){
 		BarChartFactory = _BarChartFactory_;

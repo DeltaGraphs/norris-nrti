@@ -30,7 +30,7 @@ describe('GraphFactory', function(){
 	var FlowFactory;
 	var LineChartFlowFactory;
 
-	beforeEach(angular.mock.module('app'));
+	beforeEach(angular.mock.module('norris-nrti'));
 
 	beforeEach(inject(function(_GraphFactory_, $injector){
 		GraphFactory = _GraphFactory_;

@@ -24,7 +24,7 @@ describe('LineChartFlowFactory', function(){
 
 	var LineChartFlowFactory;
 
-	beforeEach(angular.mock.module('app'));
+	beforeEach(angular.mock.module('norris-nrti'));
 
 	beforeEach(inject(function(_LineChartFlowFactory_){
 		LineChartFlowFactory = _LineChartFlowFactory_;
