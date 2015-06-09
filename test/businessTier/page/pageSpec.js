@@ -104,12 +104,12 @@ describe('Page', function() {
                     {
                         ID: 'map1',
                         title: '',
-                        socketURL: '/page2/map1'
+                        socketURL: 'http://0.0.0.0:5000/page2/map1'
                     },
                     {
                         ID: 'line1',
                         title: '',
-                        socketURL: '/page2/line1'
+                        socketURL: 'http://0.0.0.0:5000/page2/line1'
                     }
                 ]
             };
@@ -200,7 +200,7 @@ describe('Page', function() {
         });
 
         it('behaves correctly with the right parameters', function() {
-            var nor2 = new Norris(app, io, '/norris');
+            var nor2 = new Norris(app, io, '/norris', 'http://0.0.0.0:5000');
             var page4 = nor2.createPage({ID: 'page4'});
             var socketURL = 'http://0.0.0.0:5000/page4';
             var options ={
@@ -246,7 +246,7 @@ describe('Page', function() {
         });
 
         it('behaves correctly with the right parameters', function() {
-            var nor3 = new Norris(app, io, '/norris');
+            var nor3 = new Norris(app, io, '/norris', 'http://0.0.0.0:5000');
             var page3 = nor3.createPage({ID: 'page3'});
             var socketURL = 'http://0.0.0.0:5000/page3';
             var options ={
@@ -292,7 +292,7 @@ describe('Page', function() {
         });
 
         it('behaves correctly with the right parameters', function() {
-            var nor4 = new Norris(app, io, '/norris');
+            var nor4 = new Norris(app, io, '/norris', 'http://0.0.0.0:5000');
             var page4 = nor4.createPage({ID: 'page4'});
             var socketURL = 'http://0.0.0.0:5000/page3';
             var options ={
