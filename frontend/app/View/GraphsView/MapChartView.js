@@ -283,25 +283,30 @@ angular.module('norris-nrti')
             scope.legend = function() {
                 var parent = element.children()[2];
                 while(parent.firstChild) {
+                    console.log('removeChild of legend');
                     parent.removeChild(parent.firstChild);
                 }
-                console.log('legend ' + JSON.stringify(scope.$parent.mapChart.getLegend()));
                 if (scope.$parent.mapChart.getLegend() !== null) {
                     parent.setAttribute('style', 'background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + '; color: '+ scope.$parent.mapChart.getLegend().getFontColor());
                     var ul = document.createElement('ul');
                     ul.setAttribute('style', 'list-style-type: none');
                     parent.appendChild(ul);
                     for (var i=0; i<scope.$parent.mapChart.getFlowList().length; i++) {
-                        var li = document.createElement('li');
-                        var square = document.createElement('div');
-                        square.setAttribute('style', 'height: 15px; width: 15px; float: left; background-color: ' + scope.$parent.mapChart.getFlowList()[i].flow.getTrace().strokeColor);
-                        var spanText = document.createElement('div');
-                        var text = document.createTextNode('\u00A0\u00A0\u00A0\u00A0' + scope.$parent.mapChart.getFlowList()[i].flow.getName());
-                        spanText.appendChild(text);
-                        spanText.setAttribute('style', 'float:left;');
-                        li.appendChild(square);
-                        li.appendChild(spanText);
-                        ul.appendChild(li);
+                        if (scope.$parent.mapChart.getFlowList()[i].flow.getData().length){
+                            var li = document.createElement('li');
+                            var square = document.createElement('div');
+                            square.setAttribute('style', 'height: 15px; width: 15px; float: left; background-color: ' + scope.$parent.mapChart.getFlowList()[i].flow.getTrace().strokeColor);
+                            var spanText = document.createElement('div');
+                            var text = document.createTextNode('\u00A0\u00A0\u00A0\u00A0' + scope.$parent.mapChart.getFlowList()[i].flow.getName());
+                            spanText.appendChild(text);
+                            spanText.setAttribute('style', 'float:left;');
+                            li.appendChild(square);
+                            li.appendChild(spanText);
+                            ul.appendChild(li);
+                        }
+                        else{
+                            parent.removeChild();
+                        }
                     }
                 }
 
