@@ -37,18 +37,18 @@ angular.module('norris-nrti')
 				console.log('LINECHART configGraph');
 				$scope.lineChart.updateParameters(info.properties);
 				$scope.lineChart.initializeData(info.data);
-				$scope.changedP = !$scope.changedP;
 				$scope.changedD = !$scope.changedD;
+				$scope.changedP = !$scope.changedP;
 				count++;
 			}
 		});
 		socket.on('updateGraphProp', function(info){
-			console.log('LINECHART updateGraphProp');
+			console.log('LINECHART updateGraphProp' + JSON.stringify(info));
 			$scope.lineChart.updateParameters(info);
 			$scope.changedP = !$scope.changedP;
 		});
 		socket.on('insertFlow', function(info){
-			console.log('LINECHART insert flow' + JSON.stringify(info));
+			console.log('LINECHART insert flow');
 			var flow = LineChartFlowFactory.build(info.properties); // no properties perchè non ci sono dati
 			flow.initializeData(info);
 			$scope.lineChart.addFlow(info.properties.ID, flow);
@@ -59,8 +59,8 @@ angular.module('norris-nrti')
 		socket.on('deleteFlow', function(info){
 			console.log('LINECHART deleteFlow');
 			$scope.lineChart.deleteFlow(info.ID);
-			$scope.changedP = !$scope.changedP;
 			$scope.changedD = !$scope.changedD;
+			$scope.changedP = !$scope.changedP;
 			//$scope.changedF = !$scope.changedF;
 		});
 		socket.on('updateFlowProp', function(info){
@@ -70,10 +70,10 @@ angular.module('norris-nrti')
 					$scope.lineChart.getFlowList()[i].flow.updateParameters(info);
 				}
 			}
-			$scope.changedD = !$scope.changedD;
+			$scope.changedP = !$scope.changedP;
 		});
 		socket.on('updateFlowData', function(data){
-			console.log('LINECHART updateFlowData ' + JSON.stringify(data));
+			console.log('LINECHART updateFlowData ' + data.action);
 			switch (data.action){
 				case 'insertRecords':
 					$scope.lineChart.streamUpdate(data);

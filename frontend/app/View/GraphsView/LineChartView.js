@@ -23,7 +23,7 @@ angular.module('norris-nrti')
         scope: {
             url: '@'
 		},
-		bindToController: true,
+		//bindToController: true,
         //template: '<div>ciao, sono il line chart</div>',
         link: function(scope, element, attrs){
 
@@ -37,7 +37,6 @@ angular.module('norris-nrti')
             scope.$parent.$watch('changedP', function(newValue, oldValue){
                 if (newValue !== oldValue) {
                     console.log('LINECHART watch changedP');
-                    scope.setData();
                     scope.init();
                 }
             }, true);

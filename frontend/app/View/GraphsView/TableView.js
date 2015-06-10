@@ -34,40 +34,30 @@ angular.module('norris-nrti')
                 }
             });
 
-            scope.$parent.$watch('changedP', function(newValue, oldValue){
+            scope.$parent.$watch('changed', function(newValue, oldValue){
                 if (newValue !== oldValue) {
                     console.log('TABLE watch changedP');
                     scope.setData();
-                    scope.init();
+                    console.log('scope.data.length: ' +scope.data.length);
+                    if (scope.data.length > 0) {
+                        scope.init();
+                    }
                 }
             }, true);
 
-            scope.$parent.$watch('changedD', function(newValue, oldValue){
+            /*scope.$parent.$watch('changedD', function(newValue, oldValue){
                 if(newValue !== oldValue){
                     console.log('TABLE watch changedD');                    
                     scope.setData();
                     scope.init();
                 }
-            }, true);
+            }, true);*/
 
             scope.init = function(){
                 console.log('TABLE init');
             	element.empty();
-                var table = '<div ng-table-pagination="tableParams" template-url="\'pager.html\'"></div>';
-                table = table + '<div ng-table-pagination="tableParams">' +
-                                    '<ul class="pagination ng-table-pagination">' +
-                                        '<li ng-class="{\'disabled\': !page.active}" ng-repeat="page in pages" ng-switch="page.type">' +
-                                            '<a ng-switch-when="prev" ng-click="params.page(page.number)" href="">&laquo;</a>' +
-                                            '<a ng-switch-when="first" ng-click="params.page(page.number)" href=""><span ng-bind="page.number"></span></a>' +
-                                            '<a ng-switch-when="page" ng-click="params.page(page.number)" href=""><span ng-bind="page.number"></span></a>' +
-                                            '<a ng-switch-when="more" ng-click="params.page(page.number)" href="">&#8230;</a>' +
-                                            '<a ng-switch-when="last" ng-click="params.page(page.number)" href=""><span ng-bind="page.number"></span></a>' +
-                                            '<a ng-switch-when="next" ng-click="params.page(page.number)" href="">&raquo;</a>' +
-                                        '</li>' +
-                                    '</ul>' +
-                                '</div>';
 
-                table =  table + '<div class="graphtitle">'+ scope.$parent.table.getTitle() +'</div>';   
+                var table = '<div class="graphtitle">'+ scope.$parent.table.getTitle() +'</div>';   
 
                 table = table + '<div><table st-table="data" class="table table-striped"';
                     
@@ -82,9 +72,7 @@ angular.module('norris-nrti')
                 table = table + '<thead><tr>';
                 for (var i=0; i<scope.$parent.table.getHeaders().length; i++) {
                     table = table + '<th ';
-                    console.log('TABLE init sortable ' + scope.$parent.table.getSortable());
                     if (scope.$parent.table.getSortable()) {
-                        console.log('TABLE init headers[i] '+ scope.$parent.table.getHeaders()[i] +'column sort ' + scope.$parent.table.getSort().column);
                         if (scope.$parent.table.getHeaders()[i] === scope.$parent.table.getSort().column ) {
                             var ordinamento;
                             if (scope.$parent.table.getSort().ordering === 'ASC') {
@@ -92,7 +80,6 @@ angular.module('norris-nrti')
                             } else if (scope.$parent.table.getSort().ordering === 'DESC'){
                                 ordinamento = 'reverse';
                             } 
-                            console.log('TABLE init tipo sort ' + ordinamento);
                             table = table + 'st-sort-default="'+ ordinamento +'" st-sort="'+ scope.$parent.table.getHeaders()[i] +'"';
                         }
                     }
@@ -103,11 +90,9 @@ angular.module('norris-nrti')
                 table = table + '<tbody><tr ng-repeat="record in data">';
                 i = 0;
                 for (var j=0; j<scope.$parent.table.getHeaders().length; j++){
-                    console.log('TABLE costruzione righe');
-                    table = table + '<td >{{record.'+ scope.$parent.table.getHeaders()[j] +'}}</td>';
+                    table = table + '<td style="background-color:'+ scope.appearance[i][j].bg +'; color:'+ scope.appearance[i][j].text +';">{{record.'+ scope.$parent.table.getHeaders()[j] +'}}</td>';
                     i++;
                 }
-                //style="background-color:'+ scope.appearance[i][j].bg +'; color:'+ scope.appearance[i][j].text +';"
                 table = table + '</tr></tbody>';
 
                 table = table + '<tfoot><tr>' +
@@ -118,9 +103,7 @@ angular.module('norris-nrti')
 
                 table = table + '</table><div>';
                 
-                console.log(table);
             	var compiled = $compile(table)(scope);
-
                 element.append(compiled);
             };
 
@@ -132,7 +115,7 @@ angular.module('norris-nrti')
                 var data = [];
                 var appearance = [];
                 if (scope.$parent.table.getFlowList().length > 0) {
-                    console.log('getData.length ' + scope.$parent.table.getFlowList()[0].flow.getData().length + ' stringify table: ' + JSON.stringify(scope.$parent.table));
+                    console.log('TABLE getData.length ' + scope.$parent.table.getFlowList()[0].flow.getData().length);
                     for (var i=0; i<scope.$parent.table.getFlowList()[0].flow.getData().length; i++) {
                         var record = {};
                         var look = [];
@@ -144,25 +127,17 @@ angular.module('norris-nrti')
                         appearance.push(look);
                     }
                 }
-                console.log('appearance length ' +appearance.length);
+                console.log('data. length: ' + data.length);
+                /*console.log('appearance length ' + appearance.length);
                 for (var g=0; g<appearance.length; g++) {
                     console.log('appearance['+ g +'] length ' +appearance[g].length);
                     for (var f=0; f<appearance[g].length; f++) {
                         console.log('TABLE appearance: ' + appearance[g][f].bg + ' ' + appearance[g][f].text);
                     }
-                }
+                }*/
                 scope.data = data;
                 scope.appearance = appearance;
                 scope.itemsByPage = scope.$parent.table.getMaxItemsPage();
-                /*scope.tableParams = new ngTableParams({
-                    page: 1,            // show first page
-                    count: scope.$parent.table.getMaxItemsPage()         // count per page
-                }, {
-                    total: data.length, // length of data
-                    data: function ($defer, params) {
-                        $defer.resolve(data.slice((params.page() - 1) * params.count(), params.page() * params.count()));
-                    }
-                });*/
             };
         }
     };

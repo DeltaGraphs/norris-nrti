@@ -29,48 +29,48 @@ angular.module('norris-nrti')
 	};
 
 	var count = 0;
-	$scope.changedP = true;
-	$scope.changedD = true;
+	$scope.changed = true;
+	//$scope.changedD = true;
 	this.listenOnEvents = function(){
 		console.log('listen ON EVENTS');
 		socket.on('configGraph', function(info){
+			console.log('TABLE config graph');
 			if (count === 0) {
 				count++;
 				$scope.table.updateParameters(info.properties);
 				$scope.table.initializeData(info.data);
-				$scope.changedD = !$scope.changedD;
-				$scope.changedP = !$scope.changedP;  
+				$scope.changed = !$scope.changed;
+				//$scope.changedP = !$scope.changedP;  
 	        }
 		});
 		socket.on('updateGraphProp', function(info){
-			console.log('updateGraphProp');
+			console.log('TABLE updateGraphProp');
 			$scope.table.updateParameters(info);
-			$scope.changedP = !$scope.changedP;
+			$scope.changed = !$scope.changed;
 		});
 		socket.on('insertFlow', function(info){
-			console.log('insertFlow');
-			console.log('insert flow' + JSON.stringify(info));
+			console.log('TABLE  insert flow' + JSON.stringify(info));
 			var flow = TableFlowFactory.build(info.properties);
 			flow.initializeData(info, $scope.table.getAddRowOn());
 			$scope.table.addFlow(info.properties.ID, flow);
-			$scope.changedD = !$scope.changedD;
+			$scope.changed = !$scope.changed;
 		});
 		socket.on('deleteFlow', function(info){
-			console.log('deleteFlow');
+			console.log('TABLE  deleteFlow');
 			$scope.table.deleteFlow(info.ID);
-			$scope.changedD = !$scope.changedD;
+			$scope.changed = !$scope.changed;
 		});
 		socket.on('updateFlowProp', function(info){
-			console.log('updateFlowProp');
+			console.log('TABLE  updateFlowProp');
 			for (var i=0; i<$scope.table.getFlowList().length; i++){
 				if ($scope.table.getFlowList()[i].id === info.ID){
 					$scope.table.getFlowList()[i].flow.updateParameters(info);
 				}
 			}
-			$scope.changedD = !$scope.changedD;
+			$scope.changed = !$scope.changed;
 		});
 		socket.on('updateFlowData', function(data){
-			console.log('updateFlowData ' + data.action);
+			console.log('TABLE  updateFlowData ' + data.action);
 			switch (data.action){
 				case 'insertRecords':
 					$scope.table.streamUpdate(data);
@@ -85,7 +85,7 @@ angular.module('norris-nrti')
 					$scope.table.replaceData(data);
 					break;
 			}
-			$scope.changedD = !$scope.changedD;
+			$scope.changed = !$scope.changed;
 		});
 
 	};
