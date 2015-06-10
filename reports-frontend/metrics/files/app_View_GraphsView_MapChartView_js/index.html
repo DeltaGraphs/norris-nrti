@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">57.65</p>
+      <p class="stat">57.45</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">311</p>
+      <p class="stat">316</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">45.50</p>
+      <p class="stat">47.92</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">4.02</p>
+      <p class="stat">4.04</p>
     </div>
   </div>
 </div>
@@ -374,25 +374,30 @@ angular.module(&#039;norris-nrti&#039;)
             scope.legend = function() {
                 var parent = element.children()[2];
                 while(parent.firstChild) {
+                    console.log(&#039;removeChild of legend&#039;);
                     parent.removeChild(parent.firstChild);
                 }
-                console.log(&#039;legend &#039; + JSON.stringify(scope.$parent.mapChart.getLegend()));
                 if (scope.$parent.mapChart.getLegend() !== null) {
                     parent.setAttribute(&#039;style&#039;, &#039;background-color: &#039; + scope.$parent.mapChart.getLegend().getBackgroundColor() + &#039;; color: &#039;+ scope.$parent.mapChart.getLegend().getFontColor());
                     var ul = document.createElement(&#039;ul&#039;);
                     ul.setAttribute(&#039;style&#039;, &#039;list-style-type: none&#039;);
                     parent.appendChild(ul);
                     for (var i=0; i&lt;scope.$parent.mapChart.getFlowList().length; i++) {
-                        var li = document.createElement(&#039;li&#039;);
-                        var square = document.createElement(&#039;div&#039;);
-                        square.setAttribute(&#039;style&#039;, &#039;height: 15px; width: 15px; float: left; background-color: &#039; + scope.$parent.mapChart.getFlowList()[i].flow.getTrace().strokeColor);
-                        var spanText = document.createElement(&#039;div&#039;);
-                        var text = document.createTextNode(&#039;\u00A0\u00A0\u00A0\u00A0&#039; + scope.$parent.mapChart.getFlowList()[i].flow.getName());
-                        spanText.appendChild(text);
-                        spanText.setAttribute(&#039;style&#039;, &#039;float:left;&#039;);
-                        li.appendChild(square);
-                        li.appendChild(spanText);
-                        ul.appendChild(li);
+                        if (scope.$parent.mapChart.getFlowList()[i].flow.getData().length){
+                            var li = document.createElement(&#039;li&#039;);
+                            var square = document.createElement(&#039;div&#039;);
+                            square.setAttribute(&#039;style&#039;, &#039;height: 15px; width: 15px; float: left; background-color: &#039; + scope.$parent.mapChart.getFlowList()[i].flow.getTrace().strokeColor);
+                            var spanText = document.createElement(&#039;div&#039;);
+                            var text = document.createTextNode(&#039;\u00A0\u00A0\u00A0\u00A0&#039; + scope.$parent.mapChart.getFlowList()[i].flow.getName());
+                            spanText.appendChild(text);
+                            spanText.setAttribute(&#039;style&#039;, &#039;float:left;&#039;);
+                            li.appendChild(square);
+                            li.appendChild(spanText);
+                            ul.appendChild(li);
+                        }
+                        else{
+                            parent.removeChild();
+                        }
                     }
                 }
 

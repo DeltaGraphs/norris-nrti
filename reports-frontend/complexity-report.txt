@@ -1,8 +1,8 @@
-Mean per-function logical LOC: 5.694457797040141
+Mean per-function logical LOC: 5.700013352595697
 Mean per-function parameter count: 0.9321520928596804
-Mean per-function cyclomatic complexity: 2.038141350355799
-Mean per-function Halstead effort: 2422.820713984479
-Mean per-module maintainability index: 120.30996176386505
+Mean per-function cyclomatic complexity: 2.0399932022076515
+Mean per-function Halstead effort: 2429.2625821372403
+Mean per-module maintainability index: 120.3004019552965
 First-order density: 0%
 Change cost: 2.7777777777777777%
 Core size: 0%
@@ -67033,17 +67033,17 @@ Core size: 0%
 
 /home/travis/build/DeltaGraphs/norris-nrti/frontend/app/View/GraphsView/MapChartView.js
 
-  Physical LOC: 311
-  Logical LOC: 186
+  Physical LOC: 316
+  Logical LOC: 189
   Mean parameter count: 1.2666666666666666
-  Cyclomatic complexity: 27
-  Cyclomatic complexity density: 14.516129032258066%
-  Maintainability index: 98.57765672573763
+  Cyclomatic complexity: 28
+  Cyclomatic complexity density: 14.814814814814813%
+  Maintainability index: 98.23350361726924
   Dependency count: 0
 
   Function: <anonymous>
     Line No.: 18
-    Physical LOC: 295
+    Physical LOC: 300
     Logical LOC: 7
     Parameter count: 1
     Cyclomatic complexity: 1
@@ -67054,7 +67054,7 @@ Core size: 0%
 
   Function: link
     Line No.: 28
-    Physical LOC: 283
+    Physical LOC: 288
     Logical LOC: 12
     Parameter count: 3
     Cyclomatic complexity: 1
@@ -67197,14 +67197,14 @@ Core size: 0%
 
   Function: scope.legend
     Line No.: 283
-    Physical LOC: 26
-    Logical LOC: 21
+    Physical LOC: 31
+    Logical LOC: 24
     Parameter count: 0
-    Cyclomatic complexity: 4
-    Cyclomatic complexity density: 19.047619047619047%
-    Halstead difficulty: 13.152173913043478
-    Halstead volume: 1265.737133073749
-    Halstead effort: 16647.194902383002
+    Cyclomatic complexity: 5
+    Cyclomatic complexity density: 20.833333333333336%
+    Halstead difficulty: 15.2
+    Halstead volume: 1324.0660332153964
+    Halstead effort: 20125.803704874023
 
 /home/travis/build/DeltaGraphs/norris-nrti/frontend/app/View/GraphsView/TableView.js
 
