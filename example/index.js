@@ -210,12 +210,14 @@ var lineChart=page1.createLineChart({
     },
     xAxis:{
         name: 'tempo',
-        color: '#000000'
+        color: '#000000',
+        scale: 'linear'
         //ecc
     },
     yAxis:{
         name: 'temperatura',
-        color: '#000000'
+        color: '#000000',
+        scale: 'linear'
         //ecc
     },
     backGroundColor: '#FFFFFF',
@@ -223,7 +225,6 @@ var lineChart=page1.createLineChart({
     horizontalGrid: true,
     verticalGrid: true,
     legendOnPoint: true,
-    scale: 'linear',
     interpolation: 'monotone',
     area: true
 });
@@ -283,6 +284,15 @@ var repeatLine=function(){
     }
     console.log('lineChart index: '+index2);
     index2++;
+    if(index===4) {
+        lineChart.updateProperties({viewFinder: false, verticalGrid: false});
+   }
+    elseif(index===6) {
+        lineChart.updateProperties({xAxis: {scale:'logarithmic'}, legendOnPoint: false, legend:{position:'SE'}});
+    }
+    else if(index===8) {
+        lineChart.updateProperties({horizontalGrid: false, interpolation: 'step', area: false});   
+    }
     if (index2>=12){
         index2=0;
         lineChart.deleteAllFlows();
