@@ -82,7 +82,7 @@ var mapChart=page1.createMapChart({
     },
     latitude: 45.4113311,
     longitude: 11.8876318,
-    mapType: 'roadMap',
+    mapType: 'roadmap',
     mapWidth: 2000,
     mapHeight: 2000,
     legendOnPoint: true
@@ -94,11 +94,11 @@ var mapChartFlow=mapChart.createMapChartFlow({
     name: 'linea 22',
     marker:{
         //'type': 'shape',//shape, icon, text
-        'type': 'text',
+        'type': 'shape',
         //gli attributi qui sotto dipendono dal tipo di marker!!!!!
-        //'shape': 'circle',//circle, triangle, square, diamond
+        'shape': 'bus',//circle, triangle, square, diamond
         //'icon': 'http://i.imgur.com/W0QgS4N.png'//path
-        'text': '#colpaDiPipo',//string
+        //'text': '#colpaDiPipo',//string
         'color' : '#FFC4F6'
     },
     trace:{
@@ -191,6 +191,10 @@ var repeat=function(){
     index++;
     if (index>30){
         index=0;
+        mapChart.updateProperties({mapType:'roadmap', legendOnPoint:true, legend: {position:'NW'}});
+    }
+    else if(index===15) {
+        mapChart.updateProperties({mapType:'terrain', legendOnPoint:false, legend: {position:'SW'}});
     }
 };
 
@@ -283,11 +287,11 @@ var repeatLine=function(){
     }
     console.log('lineChart index: '+index2);
     index2++;
-    if(index===4) {
+    /*if(index===4) {
         lineChart.updateProperties({viewFinder: false, verticalGrid: false});
-   }
-    else if(index===6) {
-        lineChart.updateProperties({xAxis: {scale:'logarithmic'}, legendOnPoint: false, legend:{position:'SE'}});
+    }*/
+    if(index===6) {
+        lineChart.updateProperties({xAxis: {scale:'logarithmic'}, legendOnPoint: false, viewFinder: false, verticalGrid: false, legend:{position:'SE'}});
     }
     else if(index===8) {
         lineChart.updateProperties({horizontalGrid: false, interpolation: 'step'});   
