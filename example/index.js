@@ -448,9 +448,13 @@ var repeatTable=function(){
     }
     console.log('table index: '+index4);
     index4++;
+    if(index4===15) {
+        table.updateProperties({addRowOn:'top'});
+    }
     if (index4>30){
         index4=0;
         table.deleteAllFlows();
+        table.updateProperties({addRowOn:'bottom'});
     }else{
         tableFlow1.addRecord(data2[index4]);
     }
