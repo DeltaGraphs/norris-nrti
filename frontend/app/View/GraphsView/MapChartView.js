@@ -24,7 +24,7 @@ angular.module('norris-nrti')
             url: '@'
 		},
 		//bindToController: true,
-        template: '<div></div><div></div><div></div>',
+        template: '<div>{{title}}</div><div></div><div></div>',
     	link: function (scope, element, attrs) {
 
             attrs.$observe('url', function(value) {
@@ -37,11 +37,10 @@ angular.module('norris-nrti')
             scope.$parent.$watch('changedP', function(newValue, oldValue){
                 if (newValue !== oldValue) {
                     console.log('MAPCHART watch changedP');
-                    var parentTitle = element.children()[0];
-                    var text = document.createTextNode(scope.$parent.mapChart.getTitle());
-                    parentTitle.appendChild(text);
-                    var parentMap = element.children()[1];
-                    parentMap.setAttribute('style', 'height:'+ scope.$parent.mapChart.getHeight() +'px;width:'+ scope.$parent.mapChart.getWidth() +'px');
+                    scope.legend();
+                    scope.title = scope.$parent.mapChart.getTitle();
+                    //var parentMap = element.children()[1];
+                    //parentMap.setAttribute('style', 'height:'+ scope.$parent.mapChart.getHeight() +'px; width:'+ scope.$parent.mapChart.getWidth() +'px; position: relative;');
                     scope.init();
                 }
             }, true);
@@ -53,12 +52,12 @@ angular.module('norris-nrti')
                 }
             }, true);
 
-            scope.$parent.$watch('changedF', function(newValue, oldValue){
+            /*scope.$parent.$watch('changedF', function(newValue, oldValue){
                 if(newValue !== oldValue){
                     console.log('MAPCHART watch changedF');                    
                     scope.legend();
                 }
-            }, true);
+            }, true);*/
 
             var map;
             var markers = [];
@@ -159,7 +158,6 @@ angular.module('norris-nrti')
                     }
                 }
 
-                scope.legend();
                 
             };
 
@@ -181,7 +179,7 @@ angular.module('norris-nrti')
                         switch (scope.$parent.mapChart.getFlowList()[i].flow.getMarker().type) {
                             case 'shape':
                                 var type;
-                                switch (scope.$parent.mapChart.getFlowList()[i].flow.getMarker().shape) { //circle, triangle, square, diamond
+                                switch (scope.$parent.mapChart.getFlowList()[i].flow.getMarker().shape) { //circle, triangle, square, diamond, bus
                                     case 'circle':
                                         type = attrs.url + '/img/c.png';
                                         break;
@@ -195,7 +193,7 @@ angular.module('norris-nrti')
                                         type = attrs.url + '/img/d.png';
                                         break;
                                     case 'bus':
-                                        type = attrs.url + '/img/bus.png';
+                                        type = attrs.url + '/img/b.png';
                                         break;
                                 }
                                 marker = new google.maps.Marker({
@@ -252,28 +250,36 @@ angular.module('norris-nrti')
             function changePosition(map,parent){
                 switch (scope.$parent.mapChart.getLegend().getPosition()) {
                     case 'N':
-                        map.setAttribute('style', 'posizione: relative;');
-                        parent.setAttribute('style', 'position: relative; top: -' + scope.$parent.mapChart.getWidth() + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + '; color: '+ scope.$parent.mapChart.getLegend().getFontColor() + ';');
+                        map.setAttribute('style', 'height:'+ scope.$parent.mapChart.getHeight() +'px; width:'+ scope.$parent.mapChart.getWidth() +'px; position: relative; bottom: -30px;');
+                        parent.setAttribute('style', 'position: relative; top: -' + scope.$parent.mapChart.getHeight() + 'px; right: -' + (scope.$parent.mapChart.getWidth()/2) + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'E':
-                        parent.setAttribute('style', 'position: relative; top: -' + scope.$parent.mapChart.getHeight()/2 + 'px; right: -' + (scope.$parent.mapChart.getWidth()+20) + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + '; color: '+ scope.$parent.mapChart.getLegend().getFontColor() + ';');
+                        map.setAttribute('style', 'height:'+ scope.$parent.mapChart.getHeight() +'px; width:'+ scope.$parent.mapChart.getWidth() +'px; position: relative; right: 0;');
+                        parent.setAttribute('style', 'position: relative; top: -' + (scope.$parent.mapChart.getHeight()/2) + 'px; right: -' + (scope.$parent.mapChart.getWidth()+20) + 'px;  background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'S':
+                        map.setAttribute('style', 'height:'+ scope.$parent.mapChart.getHeight() +'px; width:'+ scope.$parent.mapChart.getWidth() +'px; position: relative;');
+                        parent.setAttribute('style', 'position: relative; right: -' + ((scope.$parent.mapChart.getWidth()/2)+20) + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'W':
-                        parent.setAttribute('style', 'position: relative; top: -' + scope.$parent.mapChart.getHeight() + 'px; left: -' + (scope.$parent.mapChart.getWidth()+20) + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + '; color: '+ scope.$parent.mapChart.getLegend().getFontColor() + ';');
+                        map.setAttribute('style', 'height:'+ scope.$parent.mapChart.getHeight() +'px; width:'+ scope.$parent.mapChart.getWidth() +'px; position: relative; right: -100px;');
+                        parent.setAttribute('style', 'position: relative; top: -' + (scope.$parent.mapChart.getHeight()/2) + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'NE':
-                        parent.setAttribute('style', 'position: relative; top: -' + scope.$parent.mapChart.getHeight() + 'px; right: -' + (scope.$parent.mapChart.getWidth()+20) + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + '; color: '+ scope.$parent.mapChart.getLegend().getFontColor() + ';');
+                        map.setAttribute('style', 'height:'+ scope.$parent.mapChart.getHeight() +'px; width:'+ scope.$parent.mapChart.getWidth() +'px; position: relative; bottom: 0;');
+                        parent.setAttribute('style', 'position: relative; top: -' + scope.$parent.mapChart.getHeight() + 'px; right: -' + (scope.$parent.mapChart.getWidth()+20) + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'NW':
-                        parent.setAttribute('style', 'position: relative; left: -' + (scope.$parent.mapChart.getWidth()+20) + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + '; color: '+ scope.$parent.mapChart.getLegend().getFontColor() + ';');
+                        map.setAttribute('style', 'height:'+ scope.$parent.mapChart.getHeight() +'px; width:'+ scope.$parent.mapChart.getWidth() +'px; position: relative; bottom: -30px;');
+                        parent.setAttribute('style', 'position: relative; top: -' + scope.$parent.mapChart.getHeight() + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'SE':
-                        parent.setAttribute('style', 'position: relative; right: -' + (scope.$parent.mapChart.getWidth()+20) + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + '; color: '+ scope.$parent.mapChart.getLegend().getFontColor() + ';');
+                        map.setAttribute('style', 'height:'+ scope.$parent.mapChart.getHeight() +'px; width:'+ scope.$parent.mapChart.getWidth() +'px; position: relative;');
+                        parent.setAttribute('style', 'position: relative; right: -' + (scope.$parent.mapChart.getWidth()+20) + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'SW':
-                        parent.setAttribute('style', 'position: relative; left: -' + (scope.$parent.mapChart.getWidth()+20) + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + '; color: '+ scope.$parent.mapChart.getLegend().getFontColor() + ';');
+                        map.setAttribute('style', 'height:'+ scope.$parent.mapChart.getHeight() +'px; width:'+ scope.$parent.mapChart.getWidth() +'px; position: relative; bottom: 0;');
+                        parent.setAttribute('style', 'position: relative; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
                         break;
                 }
             }
@@ -294,11 +300,11 @@ angular.module('norris-nrti')
                     for (var i=0; i<scope.$parent.mapChart.getFlowList().length; i++) {
                         if (scope.$parent.mapChart.getFlowList()[i].flow.getData().length){
                             var square = document.createElement('div');
-                            square.setAttribute('style', 'height: 15px; float: left; width: 15px; background-color: ' + scope.$parent.mapChart.getFlowList()[i].flow.getTrace().strokeColor);
+                            square.setAttribute('style', 'float: left; height: 15px; width: 15px; background-color: ' + scope.$parent.mapChart.getFlowList()[i].flow.getTrace().strokeColor);
                             var spanText = document.createElement('div');
                             var text = document.createTextNode('\u00A0\u00A0\u00A0\u00A0' + scope.$parent.mapChart.getFlowList()[i].flow.getName());
                             spanText.appendChild(text);
-                            spanText.setAttribute('style', 'float:left;');
+                            spanText.setAttribute('style', 'float:left; color: '+ scope.$parent.mapChart.getLegend().getFontColor() + ';');
                             parent.appendChild(square);
                             parent.appendChild(spanText);
                         }

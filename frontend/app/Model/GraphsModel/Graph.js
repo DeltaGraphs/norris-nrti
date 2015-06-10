@@ -69,9 +69,9 @@ angular.module('norris-nrti')
 				}
 				if (info.enableLegend !== undefined) {
 					this._enableLegend = info.enableLegend;
-					if (this._enableLegend && info.legend !== undefined) {
+				}
+				if (this._enableLegend && info.legend !== undefined) {
 						this._legend = LegendFactory.build(info.legend);
-					}
 				}
 				if (info.horizontalGrid !== undefined) {
 					this._horizontalGrid = info.horizontalGrid;
