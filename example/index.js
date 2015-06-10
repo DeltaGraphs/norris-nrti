@@ -287,7 +287,7 @@ var repeatLine=function(){
     if(index===4) {
         lineChart.updateProperties({viewFinder: false, verticalGrid: false});
    }
-    elseif(index===6) {
+    else if(index===6) {
         lineChart.updateProperties({xAxis: {scale:'logarithmic'}, legendOnPoint: false, legend:{position:'SE'}});
     }
     else if(index===8) {
