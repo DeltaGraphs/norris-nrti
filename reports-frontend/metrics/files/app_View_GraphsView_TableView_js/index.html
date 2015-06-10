@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">57.53</p>
+      <p class="stat">58.30</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">168</p>
+      <p class="stat">143</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">30.18</p>
+      <p class="stat">30.35</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">1.82</p>
+      <p class="stat">1.40</p>
     </div>
   </div>
 </div>
@@ -125,40 +125,30 @@ angular.module(&#039;norris-nrti&#039;)
                 }
             });
 
-            scope.$parent.$watch(&#039;changedP&#039;, function(newValue, oldValue){
+            scope.$parent.$watch(&#039;changed&#039;, function(newValue, oldValue){
                 if (newValue !== oldValue) {
                     console.log(&#039;TABLE watch changedP&#039;);
                     scope.setData();
-                    scope.init();
+                    console.log(&#039;scope.data.length: &#039; +scope.data.length);
+                    if (scope.data.length &gt; 0) {
+                        scope.init();
+                    }
                 }
             }, true);
 
-            scope.$parent.$watch(&#039;changedD&#039;, function(newValue, oldValue){
+            /*scope.$parent.$watch(&#039;changedD&#039;, function(newValue, oldValue){
                 if(newValue !== oldValue){
                     console.log(&#039;TABLE watch changedD&#039;);                    
                     scope.setData();
                     scope.init();
                 }
-            }, true);
+            }, true);*/
 
             scope.init = function(){
                 console.log(&#039;TABLE init&#039;);
             	element.empty();
-                var table = &#039;&lt;div ng-table-pagination=&quot;tableParams&quot; template-url=&quot;\&#039;pager.html\&#039;&quot;&gt;&lt;/div&gt;&#039;;
-                table = table + &#039;&lt;div ng-table-pagination=&quot;tableParams&quot;&gt;&#039; +
-                                    &#039;&lt;ul class=&quot;pagination ng-table-pagination&quot;&gt;&#039; +
-                                        &#039;&lt;li ng-class=&quot;{\&#039;disabled\&#039;: !page.active}&quot; ng-repeat=&quot;page in pages&quot; ng-switch=&quot;page.type&quot;&gt;&#039; +
-                                            &#039;&lt;a ng-switch-when=&quot;prev&quot; ng-click=&quot;params.page(page.number)&quot; href=&quot;&quot;&gt;&amp;laquo;&lt;/a&gt;&#039; +
-                                            &#039;&lt;a ng-switch-when=&quot;first&quot; ng-click=&quot;params.page(page.number)&quot; href=&quot;&quot;&gt;&lt;span ng-bind=&quot;page.number&quot;&gt;&lt;/span&gt;&lt;/a&gt;&#039; +
-                                            &#039;&lt;a ng-switch-when=&quot;page&quot; ng-click=&quot;params.page(page.number)&quot; href=&quot;&quot;&gt;&lt;span ng-bind=&quot;page.number&quot;&gt;&lt;/span&gt;&lt;/a&gt;&#039; +
-                                            &#039;&lt;a ng-switch-when=&quot;more&quot; ng-click=&quot;params.page(page.number)&quot; href=&quot;&quot;&gt;&amp;#8230;&lt;/a&gt;&#039; +
-                                            &#039;&lt;a ng-switch-when=&quot;last&quot; ng-click=&quot;params.page(page.number)&quot; href=&quot;&quot;&gt;&lt;span ng-bind=&quot;page.number&quot;&gt;&lt;/span&gt;&lt;/a&gt;&#039; +
-                                            &#039;&lt;a ng-switch-when=&quot;next&quot; ng-click=&quot;params.page(page.number)&quot; href=&quot;&quot;&gt;&amp;raquo;&lt;/a&gt;&#039; +
-                                        &#039;&lt;/li&gt;&#039; +
-                                    &#039;&lt;/ul&gt;&#039; +
-                                &#039;&lt;/div&gt;&#039;;
 
-                table =  table + &#039;&lt;div class=&quot;graphtitle&quot;&gt;&#039;+ scope.$parent.table.getTitle() +&#039;&lt;/div&gt;&#039;;   
+                var table = &#039;&lt;div class=&quot;graphtitle&quot;&gt;&#039;+ scope.$parent.table.getTitle() +&#039;&lt;/div&gt;&#039;;   
 
                 table = table + &#039;&lt;div&gt;&lt;table st-table=&quot;data&quot; class=&quot;table table-striped&quot;&#039;;
                     
@@ -173,9 +163,7 @@ angular.module(&#039;norris-nrti&#039;)
                 table = table + &#039;&lt;thead&gt;&lt;tr&gt;&#039;;
                 for (var i=0; i&lt;scope.$parent.table.getHeaders().length; i++) {
                     table = table + &#039;&lt;th &#039;;
-                    console.log(&#039;TABLE init sortable &#039; + scope.$parent.table.getSortable());
                     if (scope.$parent.table.getSortable()) {
-                        console.log(&#039;TABLE init headers[i] &#039;+ scope.$parent.table.getHeaders()[i] +&#039;column sort &#039; + scope.$parent.table.getSort().column);
                         if (scope.$parent.table.getHeaders()[i] === scope.$parent.table.getSort().column ) {
                             var ordinamento;
                             if (scope.$parent.table.getSort().ordering === &#039;ASC&#039;) {
@@ -183,7 +171,6 @@ angular.module(&#039;norris-nrti&#039;)
                             } else if (scope.$parent.table.getSort().ordering === &#039;DESC&#039;){
                                 ordinamento = &#039;reverse&#039;;
                             } 
-                            console.log(&#039;TABLE init tipo sort &#039; + ordinamento);
                             table = table + &#039;st-sort-default=&quot;&#039;+ ordinamento +&#039;&quot; st-sort=&quot;&#039;+ scope.$parent.table.getHeaders()[i] +&#039;&quot;&#039;;
                         }
                     }
@@ -194,11 +181,9 @@ angular.module(&#039;norris-nrti&#039;)
                 table = table + &#039;&lt;tbody&gt;&lt;tr ng-repeat=&quot;record in data&quot;&gt;&#039;;
                 i = 0;
                 for (var j=0; j&lt;scope.$parent.table.getHeaders().length; j++){
-                    console.log(&#039;TABLE costruzione righe&#039;);
-                    table = table + &#039;&lt;td &gt;{{record.&#039;+ scope.$parent.table.getHeaders()[j] +&#039;}}&lt;/td&gt;&#039;;
+                    table = table + &#039;&lt;td style=&quot;background-color:&#039;+ scope.appearance[i][j].bg +&#039;; color:&#039;+ scope.appearance[i][j].text +&#039;;&quot;&gt;{{record.&#039;+ scope.$parent.table.getHeaders()[j] +&#039;}}&lt;/td&gt;&#039;;
                     i++;
                 }
-                //style=&quot;background-color:&#039;+ scope.appearance[i][j].bg +&#039;; color:&#039;+ scope.appearance[i][j].text +&#039;;&quot;
                 table = table + &#039;&lt;/tr&gt;&lt;/tbody&gt;&#039;;
 
                 table = table + &#039;&lt;tfoot&gt;&lt;tr&gt;&#039; +
@@ -209,9 +194,7 @@ angular.module(&#039;norris-nrti&#039;)
 
                 table = table + &#039;&lt;/table&gt;&lt;div&gt;&#039;;
                 
-                console.log(table);
             	var compiled = $compile(table)(scope);
-
                 element.append(compiled);
             };
 
@@ -223,7 +206,7 @@ angular.module(&#039;norris-nrti&#039;)
                 var data = [];
                 var appearance = [];
                 if (scope.$parent.table.getFlowList().length &gt; 0) {
-                    console.log(&#039;getData.length &#039; + scope.$parent.table.getFlowList()[0].flow.getData().length + &#039; stringify table: &#039; + JSON.stringify(scope.$parent.table));
+                    console.log(&#039;TABLE getData.length &#039; + scope.$parent.table.getFlowList()[0].flow.getData().length);
                     for (var i=0; i&lt;scope.$parent.table.getFlowList()[0].flow.getData().length; i++) {
                         var record = {};
                         var look = [];
@@ -235,25 +218,17 @@ angular.module(&#039;norris-nrti&#039;)
                         appearance.push(look);
                     }
                 }
-                console.log(&#039;appearance length &#039; +appearance.length);
+                console.log(&#039;data. length: &#039; + data.length);
+                /*console.log(&#039;appearance length &#039; + appearance.length);
                 for (var g=0; g&lt;appearance.length; g++) {
                     console.log(&#039;appearance[&#039;+ g +&#039;] length &#039; +appearance[g].length);
                     for (var f=0; f&lt;appearance[g].length; f++) {
                         console.log(&#039;TABLE appearance: &#039; + appearance[g][f].bg + &#039; &#039; + appearance[g][f].text);
                     }
-                }
+                }*/
                 scope.data = data;
                 scope.appearance = appearance;
                 scope.itemsByPage = scope.$parent.table.getMaxItemsPage();
-                /*scope.tableParams = new ngTableParams({
-                    page: 1,            // show first page
-                    count: scope.$parent.table.getMaxItemsPage()         // count per page
-                }, {
-                    total: data.length, // length of data
-                    data: function ($defer, params) {
-                        $defer.resolve(data.slice((params.page() - 1) * params.count(), params.page() * params.count()));
-                    }
-                });*/
             };
         }
     };
