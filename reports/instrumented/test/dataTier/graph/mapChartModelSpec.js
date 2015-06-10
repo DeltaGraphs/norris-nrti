@@ -187,7 +187,7 @@ describe('mapChartModel', function() {
             assert.strictEqual(updates.height, 200);
             assert.strictEqual(updates.width, 350);
             assert.strictEqual(updates.enableLegend, true);
-            assert.deepEqual(updates.legend.getProperties(), legend1.getProperties());
+            assert.deepEqual(updates.legend, legend1.getProperties());
         });
         it('does not update the properties with wrong param', function() {
             var properties={

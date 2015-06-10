@@ -12967,7 +12967,7 @@
                 "halstead": {
                     "operators": {
                         "distinct": 22,
-                        "total": 345,
+                        "total": 347,
                         "identifiers": [
                             "var",
                             "=",
@@ -12995,7 +12995,7 @@
                     },
                     "operands": {
                         "distinct": 86,
-                        "total": 377,
+                        "total": 379,
                         "identifiers": [
                             "\"use strict\"",
                             "GraphModel",
@@ -13085,13 +13085,13 @@
                             "exports"
                         ]
                     },
-                    "length": 722,
+                    "length": 726,
                     "vocabulary": 108,
-                    "difficulty": 48.22093023255814,
-                    "volume": 4877.028776562025,
-                    "effort": 235174.86437677577,
-                    "bugs": 1.6256762588540083,
-                    "time": 13065.27024315421
+                    "difficulty": 48.47674418604651,
+                    "volume": 4904.048326570679,
+                    "effort": 237732.2962031763,
+                    "bugs": 1.6346827755235596,
+                    "time": 13207.349789065349
                 },
                 "params": 11,
                 "line": 2,
@@ -13239,7 +13239,7 @@
                     "halstead": {
                         "operators": {
                             "distinct": 10,
-                            "total": 103,
+                            "total": 105,
                             "identifiers": [
                                 "if",
                                 "!==",
@@ -13255,7 +13255,7 @@
                         },
                         "operands": {
                             "distinct": 30,
-                            "total": 109,
+                            "total": 111,
                             "identifiers": [
                                 "params",
                                 "undefined",
@@ -13289,13 +13289,13 @@
                                 "_legendOnPoint"
                             ]
                         },
-                        "length": 212,
+                        "length": 216,
                         "vocabulary": 40,
-                        "difficulty": 18.166666666666668,
-                        "volume": 1128.2487561161208,
-                        "effort": 20496.519069442864,
-                        "bugs": 0.37608291870537364,
-                        "time": 1138.695503857937
+                        "difficulty": 18.5,
+                        "volume": 1149.5364684956703,
+                        "effort": 21266.4246671699,
+                        "bugs": 0.3831788228318901,
+                        "time": 1181.4680370649944
                     },
                     "params": 1,
                     "line": 62,
@@ -13703,10 +13703,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 111.47227774023051,
+            "maintainability": 111.39729273324,
             "loc": 7.090909090909091,
             "cyclomatic": 2.8181818181818183,
-            "effort": 3157.3789842030833,
+            "effort": 3227.3704021782673,
             "params": 1,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/dataTier/graph/lineChartModel.js"
         },
@@ -18176,7 +18176,7 @@
     "coreSize": 37.5,
     "loc": 10.69552452755578,
     "cyclomatic": 4.348697656510157,
-    "effort": 8250.180590323069,
+    "effort": 8252.367822134793,
     "params": 1.1462226141913645,
-    "maintainability": 104.67216447432091
+    "maintainability": 104.66982119285247
 }
