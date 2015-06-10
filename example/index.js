@@ -290,17 +290,16 @@ var repeatLine=function(){
     /*if(index===4) {
         lineChart.updateProperties({viewFinder: false, verticalGrid: false});
     }*/
-    if(index===6) {
+    /*if(index===6) {
         lineChart.updateProperties({xAxis: {scale:'logarithmic'}, legendOnPoint: false, verticalGrid: false, legend:{position:'SE'}});
     }
     else if(index===8) {
         lineChart.updateProperties({horizontalGrid: false, interpolation: 'step'});   
-    }
+    }*/
     if (index2>=12){
         index2=0;
         var vF = lineChart.getProperties().viewFinder;
-        vF = (vF==='top')?'bottom':'top';
-        lineChart.updateProperties({viewFinder:vF, verticalGrid:true, horizontalGrid:true, legendOnPoint: true, legend:{position:'NE'},interpolation:'linear'});
+        lineChart.updateProperties({viewFinder:!vF, verticalGrid:true, horizontalGrid:true, legendOnPoint: true, legend:{position:'NE'},interpolation:'linear'});
         lineChart.deleteAllFlows();
     }else{
         lineChartFlow.addRecord(lineData[index2-1]);
