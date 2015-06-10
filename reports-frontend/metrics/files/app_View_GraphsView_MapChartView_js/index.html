@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">56.53</p>
+      <p class="stat">55.50</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">311</p>
+      <p class="stat">317</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">53.44</p>
+      <p class="stat">56.02</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">5.14</p>
+      <p class="stat">5.34</p>
     </div>
   </div>
 </div>
@@ -115,7 +115,7 @@ angular.module(&#039;norris-nrti&#039;)
             url: &#039;@&#039;
 		},
 		//bindToController: true,
-        template: &#039;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&#039;,
+        template: &#039;&lt;div&gt;{{title}}&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&#039;,
     	link: function (scope, element, attrs) {
 
             attrs.$observe(&#039;url&#039;, function(value) {
@@ -128,11 +128,10 @@ angular.module(&#039;norris-nrti&#039;)
             scope.$parent.$watch(&#039;changedP&#039;, function(newValue, oldValue){
                 if (newValue !== oldValue) {
                     console.log(&#039;MAPCHART watch changedP&#039;);
-                    var parentTitle = element.children()[0];
-                    var text = document.createTextNode(scope.$parent.mapChart.getTitle());
-                    parentTitle.appendChild(text);
-                    var parentMap = element.children()[1];
-                    parentMap.setAttribute(&#039;style&#039;, &#039;height:&#039;+ scope.$parent.mapChart.getHeight() +&#039;px;width:&#039;+ scope.$parent.mapChart.getWidth() +&#039;px&#039;);
+                    scope.legend();
+                    scope.title = scope.$parent.mapChart.getTitle();
+                    //var parentMap = element.children()[1];
+                    //parentMap.setAttribute(&#039;style&#039;, &#039;height:&#039;+ scope.$parent.mapChart.getHeight() +&#039;px; width:&#039;+ scope.$parent.mapChart.getWidth() +&#039;px; position: relative;&#039;);
                     scope.init();
                 }
             }, true);
@@ -144,12 +143,12 @@ angular.module(&#039;norris-nrti&#039;)
                 }
             }, true);
 
-            scope.$parent.$watch(&#039;changedF&#039;, function(newValue, oldValue){
+            /*scope.$parent.$watch(&#039;changedF&#039;, function(newValue, oldValue){
                 if(newValue !== oldValue){
                     console.log(&#039;MAPCHART watch changedF&#039;);                    
                     scope.legend();
                 }
-            }, true);
+            }, true);*/
 
             var map;
             var markers = [];
@@ -250,7 +249,6 @@ angular.module(&#039;norris-nrti&#039;)
                     }
                 }
 
-                scope.legend();
                 
             };
 
@@ -272,7 +270,7 @@ angular.module(&#039;norris-nrti&#039;)
                         switch (scope.$parent.mapChart.getFlowList()[i].flow.getMarker().type) {
                             case &#039;shape&#039;:
                                 var type;
-                                switch (scope.$parent.mapChart.getFlowList()[i].flow.getMarker().shape) { //circle, triangle, square, diamond
+                                switch (scope.$parent.mapChart.getFlowList()[i].flow.getMarker().shape) { //circle, triangle, square, diamond, bus
                                     case &#039;circle&#039;:
                                         type = attrs.url + &#039;/img/c.png&#039;;
                                         break;
@@ -286,7 +284,7 @@ angular.module(&#039;norris-nrti&#039;)
                                         type = attrs.url + &#039;/img/d.png&#039;;
                                         break;
                                     case &#039;bus&#039;:
-                                        type = attrs.url + &#039;/img/bus.png&#039;;
+                                        type = attrs.url + &#039;/img/b.png&#039;;
                                         break;
                                 }
                                 marker = new google.maps.Marker({
@@ -343,28 +341,36 @@ angular.module(&#039;norris-nrti&#039;)
             function changePosition(map,parent){
                 switch (scope.$parent.mapChart.getLegend().getPosition()) {
                     case &#039;N&#039;:
-                        map.setAttribute(&#039;style&#039;, &#039;posizione: relative;&#039;);
-                        parent.setAttribute(&#039;style&#039;, &#039;position: relative; top: -&#039; + scope.$parent.mapChart.getWidth() + &#039;px; background-color: &#039; + scope.$parent.mapChart.getLegend().getBackgroundColor() + &#039;; color: &#039;+ scope.$parent.mapChart.getLegend().getFontColor() + &#039;;&#039;);
+                        map.setAttribute(&#039;style&#039;, &#039;height:&#039;+ scope.$parent.mapChart.getHeight() +&#039;px; width:&#039;+ scope.$parent.mapChart.getWidth() +&#039;px; position: relative; bottom: -30px;&#039;);
+                        parent.setAttribute(&#039;style&#039;, &#039;position: relative; top: -&#039; + scope.$parent.mapChart.getHeight() + &#039;px; right: -&#039; + (scope.$parent.mapChart.getWidth()/2) + &#039;px; background-color: &#039; + scope.$parent.mapChart.getLegend().getBackgroundColor() + &#039;;&#039;);
                         break;
                     case &#039;E&#039;:
-                        parent.setAttribute(&#039;style&#039;, &#039;position: relative; top: -&#039; + scope.$parent.mapChart.getHeight()/2 + &#039;px; right: -&#039; + (scope.$parent.mapChart.getWidth()+20) + &#039;px; background-color: &#039; + scope.$parent.mapChart.getLegend().getBackgroundColor() + &#039;; color: &#039;+ scope.$parent.mapChart.getLegend().getFontColor() + &#039;;&#039;);
+                        map.setAttribute(&#039;style&#039;, &#039;height:&#039;+ scope.$parent.mapChart.getHeight() +&#039;px; width:&#039;+ scope.$parent.mapChart.getWidth() +&#039;px; position: relative; right: 0;&#039;);
+                        parent.setAttribute(&#039;style&#039;, &#039;position: relative; top: -&#039; + (scope.$parent.mapChart.getHeight()/2) + &#039;px; right: -&#039; + (scope.$parent.mapChart.getWidth()+20) + &#039;px;  background-color: &#039; + scope.$parent.mapChart.getLegend().getBackgroundColor() + &#039;;&#039;);
                         break;
                     case &#039;S&#039;:
+                        map.setAttribute(&#039;style&#039;, &#039;height:&#039;+ scope.$parent.mapChart.getHeight() +&#039;px; width:&#039;+ scope.$parent.mapChart.getWidth() +&#039;px; position: relative;&#039;);
+                        parent.setAttribute(&#039;style&#039;, &#039;position: relative; right: -&#039; + ((scope.$parent.mapChart.getWidth()/2)+20) + &#039;px; background-color: &#039; + scope.$parent.mapChart.getLegend().getBackgroundColor() + &#039;;&#039;);
                         break;
                     case &#039;W&#039;:
-                        parent.setAttribute(&#039;style&#039;, &#039;position: relative; top: -&#039; + scope.$parent.mapChart.getHeight() + &#039;px; left: -&#039; + (scope.$parent.mapChart.getWidth()+20) + &#039;px; background-color: &#039; + scope.$parent.mapChart.getLegend().getBackgroundColor() + &#039;; color: &#039;+ scope.$parent.mapChart.getLegend().getFontColor() + &#039;;&#039;);
+                        map.setAttribute(&#039;style&#039;, &#039;height:&#039;+ scope.$parent.mapChart.getHeight() +&#039;px; width:&#039;+ scope.$parent.mapChart.getWidth() +&#039;px; position: relative; right: -100px;&#039;);
+                        parent.setAttribute(&#039;style&#039;, &#039;position: relative; top: -&#039; + (scope.$parent.mapChart.getHeight()/2) + &#039;px; background-color: &#039; + scope.$parent.mapChart.getLegend().getBackgroundColor() + &#039;;&#039;);
                         break;
                     case &#039;NE&#039;:
-                        parent.setAttribute(&#039;style&#039;, &#039;position: relative; top: -&#039; + scope.$parent.mapChart.getHeight() + &#039;px; right: -&#039; + (scope.$parent.mapChart.getWidth()+20) + &#039;px; background-color: &#039; + scope.$parent.mapChart.getLegend().getBackgroundColor() + &#039;; color: &#039;+ scope.$parent.mapChart.getLegend().getFontColor() + &#039;;&#039;);
+                        map.setAttribute(&#039;style&#039;, &#039;height:&#039;+ scope.$parent.mapChart.getHeight() +&#039;px; width:&#039;+ scope.$parent.mapChart.getWidth() +&#039;px; position: relative; bottom: 0;&#039;);
+                        parent.setAttribute(&#039;style&#039;, &#039;position: relative; top: -&#039; + scope.$parent.mapChart.getHeight() + &#039;px; right: -&#039; + (scope.$parent.mapChart.getWidth()+20) + &#039;px; background-color: &#039; + scope.$parent.mapChart.getLegend().getBackgroundColor() + &#039;;&#039;);
                         break;
                     case &#039;NW&#039;:
-                        parent.setAttribute(&#039;style&#039;, &#039;position: relative; left: -&#039; + (scope.$parent.mapChart.getWidth()+20) + &#039;px; background-color: &#039; + scope.$parent.mapChart.getLegend().getBackgroundColor() + &#039;; color: &#039;+ scope.$parent.mapChart.getLegend().getFontColor() + &#039;;&#039;);
+                        map.setAttribute(&#039;style&#039;, &#039;height:&#039;+ scope.$parent.mapChart.getHeight() +&#039;px; width:&#039;+ scope.$parent.mapChart.getWidth() +&#039;px; position: relative; bottom: -30px;&#039;);
+                        parent.setAttribute(&#039;style&#039;, &#039;position: relative; top: -&#039; + scope.$parent.mapChart.getHeight() + &#039;px; background-color: &#039; + scope.$parent.mapChart.getLegend().getBackgroundColor() + &#039;;&#039;);
                         break;
                     case &#039;SE&#039;:
-                        parent.setAttribute(&#039;style&#039;, &#039;position: relative; right: -&#039; + (scope.$parent.mapChart.getWidth()+20) + &#039;px; background-color: &#039; + scope.$parent.mapChart.getLegend().getBackgroundColor() + &#039;; color: &#039;+ scope.$parent.mapChart.getLegend().getFontColor() + &#039;;&#039;);
+                        map.setAttribute(&#039;style&#039;, &#039;height:&#039;+ scope.$parent.mapChart.getHeight() +&#039;px; width:&#039;+ scope.$parent.mapChart.getWidth() +&#039;px; position: relative;&#039;);
+                        parent.setAttribute(&#039;style&#039;, &#039;position: relative; right: -&#039; + (scope.$parent.mapChart.getWidth()+20) + &#039;px; background-color: &#039; + scope.$parent.mapChart.getLegend().getBackgroundColor() + &#039;;&#039;);
                         break;
                     case &#039;SW&#039;:
-                        parent.setAttribute(&#039;style&#039;, &#039;position: relative; left: -&#039; + (scope.$parent.mapChart.getWidth()+20) + &#039;px; background-color: &#039; + scope.$parent.mapChart.getLegend().getBackgroundColor() + &#039;; color: &#039;+ scope.$parent.mapChart.getLegend().getFontColor() + &#039;;&#039;);
+                        map.setAttribute(&#039;style&#039;, &#039;height:&#039;+ scope.$parent.mapChart.getHeight() +&#039;px; width:&#039;+ scope.$parent.mapChart.getWidth() +&#039;px; position: relative; bottom: 0;&#039;);
+                        parent.setAttribute(&#039;style&#039;, &#039;position: relative; background-color: &#039; + scope.$parent.mapChart.getLegend().getBackgroundColor() + &#039;;&#039;);
                         break;
                 }
             }
@@ -385,11 +391,11 @@ angular.module(&#039;norris-nrti&#039;)
                     for (var i=0; i&lt;scope.$parent.mapChart.getFlowList().length; i++) {
                         if (scope.$parent.mapChart.getFlowList()[i].flow.getData().length){
                             var square = document.createElement(&#039;div&#039;);
-                            square.setAttribute(&#039;style&#039;, &#039;height: 15px; float: left; width: 15px; background-color: &#039; + scope.$parent.mapChart.getFlowList()[i].flow.getTrace().strokeColor);
+                            square.setAttribute(&#039;style&#039;, &#039;float: left; height: 15px; width: 15px; background-color: &#039; + scope.$parent.mapChart.getFlowList()[i].flow.getTrace().strokeColor);
                             var spanText = document.createElement(&#039;div&#039;);
                             var text = document.createTextNode(&#039;\u00A0\u00A0\u00A0\u00A0&#039; + scope.$parent.mapChart.getFlowList()[i].flow.getName());
                             spanText.appendChild(text);
-                            spanText.setAttribute(&#039;style&#039;, &#039;float:left;&#039;);
+                            spanText.setAttribute(&#039;style&#039;, &#039;float:left; color: &#039;+ scope.$parent.mapChart.getLegend().getFontColor() + &#039;;&#039;);
                             parent.appendChild(square);
                             parent.appendChild(spanText);
                         }
