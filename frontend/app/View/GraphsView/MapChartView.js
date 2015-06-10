@@ -304,9 +304,6 @@ angular.module('norris-nrti')
                             li.appendChild(spanText);
                             ul.appendChild(li);
                         }
-                        else{
-                            parent.removeChild();
-                        }
                     }
                 }
 

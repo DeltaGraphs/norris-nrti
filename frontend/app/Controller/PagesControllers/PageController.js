@@ -48,7 +48,8 @@ angular.module('norris-nrti')
 			$scope.page.updateParameters(info.properties);
 			$scope.page.initializeData(info.data);
 			$scope.graphs = matrix($scope.page.getGraphsList());
-
+			console.log($scope.page.getGraphsList().toString());
+			console.log($scope.graphs.toString());
 		});
 		socket.on('updatePageProp', function(info){
 			$scope.page.updateParameters(info);
@@ -62,10 +63,21 @@ angular.module('norris-nrti')
 	function matrix(list) {
 		var array = [];
 		var count = 0;
-		for (var i=0;count<list.length && i<$scope.page.getGraphsPerCol(); i++) {
+		console.log('list.length ' + list.length + ' $scope.page.getGraphsPerCol() ' + $scope.page.getGraphsPerCol());
+		var graphsPerCol = $scope.page.getGraphsPerCol();
+		var graphsPerRow = $scope.page.getGraphsPerRow();
+		if (graphsPerCol === -1){
+			graphsPerRow = 1;
+			graphsPerCol = list.length;
+		}
+		if (graphsPerRow === -1){
+			graphsPerRow = list.length;
+			graphsPerCol = 1;
+		}
+		for (var i=0;count<list.length && i<graphsPerCol; i++) {
 			array[i] = [];
-			for (var j=0;count<list.length && j<$scope.page.getGraphsPerRow(); j++) {
-				array[i].push(list[$scope.page.getGraphsPerRow()*i+j]);
+			for (var j=0;count<list.length && j<graphsPerRow; j++) {
+				array[i].push(list[graphsPerRow*i+j]);
 				count++;
 			}
 		}

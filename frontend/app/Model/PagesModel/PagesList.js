@@ -30,7 +30,7 @@ angular.module('norris-nrti')
 				for (var i=0; i<info.data.length; i++){
 					var count = 0;
 					for (var j=0; j<pagesList.length; j++) {
-						if (pagesList[j].id === info.data[i].ID){
+						if (pagesList[j].id === info.data[i].properties.ID){
 							count++;
 						}
 					}

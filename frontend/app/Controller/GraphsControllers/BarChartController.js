@@ -34,7 +34,7 @@ angular.module('norris-nrti')
 	//$scope.changedF = true;
 	this.listenOnEvents = function(){
 		console.log('BARCHART listenOnEvents');
-		socket.on('configGraph', function(info){
+		/*socket.on('configGraph', function(info){
 			if (count === 0){
 				console.log('BARCHART configGraph');
 				$scope.barChart.updateParameters(info.properties);
@@ -90,7 +90,7 @@ angular.module('norris-nrti')
 					break;
 			}
 			$scope.changedD = !$scope.changedD;
-		});
+		});*/
 	};
 
 
