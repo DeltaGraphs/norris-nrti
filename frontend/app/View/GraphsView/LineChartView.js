@@ -48,12 +48,12 @@ angular.module('norris-nrti')
                 }
             }, true);
 
-            scope.$parent.$watch('changedF', function(newValue, oldValue){
+            /*scope.$parent.$watch('changedF', function(newValue, oldValue){
                 if(newValue !== oldValue){
                     console.log('LINECHART watch changedF');                    
                     //scope.legend();
                 }
-            }, true);
+            }, true);*/
 
             scope.init = function(){
                 console.log('LINECHART init');
@@ -79,7 +79,7 @@ angular.module('norris-nrti')
                     linechart = '<div class="graphtitle">'+ scope.$parent.lineChart.getTitle() +'</div>' +
                                 '<nvd3-line-with-focus-chart data="data" nodata=" " id="'+ id +'" ' +
                                 'yaxistickformat="yAxisTickFormatFunction()" xaxistickformat="xAxisTickFormatFunction()" x2axistickformat="xAxisTickFormatFunction()" ' +
-                                'margin="{left:30,top:30,bottom:30,right:30}" margin2="{left:30,top:30,bottom:30,right:30}" interactive="true" showlegend="'+ legend +'" tooltips="'+ onPoint +'" ' +
+                                'margin="{left:30,top:30,bottom:30,right:30}" margin2="{left:30,top:30,bottom:30,right:30}" interactive="true" tooltips="'+ onPoint +'" ' +
                                 'color="colorFunction()" ' + 
                                 'xaxisrotatelabels="-90" x2axisrotatelables="-90" interpolate="' + scope.$parent.lineChart.getInterpolation() +'">' + // perchè colorFunction ritorna null per adesso
                                 '<svg style="width:'+ scope.$parent.lineChart.getWidth() +'px; height:'+ scope.$parent.lineChart.getHeight() +'px;"></svg></nvd3-line-with-focus-chart>';
@@ -87,7 +87,7 @@ angular.module('norris-nrti')
                     linechart = '<div class="graphtitle">'+ scope.$parent.lineChart.getTitle() +'</div>' +
                                 '<nvd3-line-chart data="data" id="'+ id +'" ' +
                                 'yaxistickformat="yAxisTickFormatFunction()" xaxistickformat="xAxisTickFormatFunction()" ' +
-                                'margin="{left:30,top:30,bottom:30,right:30}" interactive="true" showlegend="'+ legend +'" tooltips="'+ onPoint +'" ' +
+                                'margin="{left:30,top:30,bottom:30,right:30}" interactive="true" tooltips="'+ onPoint +'" ' +
                                 'xaxisrotatelabels="-90" interpolate="' + scope.$parent.lineChart.getInterpolation() +'" ' +
                                 'color="colorFunction()" ' +
                                 'showxaxis="true" showyaxis="true">' +
@@ -97,6 +97,7 @@ angular.module('norris-nrti')
                 var compiled = $compile(linechart)(scope);
                 element.append(compiled);
 
+                scope.legend();
             };
 
             scope.xAxisTickFormatFunction = function(){
@@ -142,32 +143,72 @@ angular.module('norris-nrti')
                 scope.colorArray = colorArray;
             };
 
-            /*scope.legend = function() {
-                var parent = element.children()[1];
+            function changePosition(chart,parent){
+                switch (scope.$parent.lineChart.getLegend().getPosition()) {
+                    case 'N':
+                        //chart.setAttribute('style', 'position: relative; bottom: -30px;');
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.lineChart.getHeight() + 'px; right: -' + (scope.$parent.lineChart.getWidth()/2) + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
+                        break;
+                    case 'E':
+                        //chart.setAttribute('style', 'position: relative; right: 0;');
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + (scope.$parent.lineChart.getHeight()/2) + 'px; right: -' + scope.$parent.lineChart.getWidth() + 'px;  background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
+                        break;
+                    case 'S':
+                        //chart.setAttribute('style', 'position: relative;');
+                        parent.setAttribute('style', 'float: left; position: relative; right: -' + (scope.$parent.lineChart.getWidth()/2) + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
+                        break;
+                    case 'W':
+                        //chart.setAttribute('style', 'position: relative; right: -100px;');
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + (scope.$parent.lineChart.getHeight()/2) + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
+                        break;
+                    case 'NE':
+                        //chart.setAttribute('style', 'position: relative; bottom: 0;');
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.lineChart.getHeight() + 'px; right: -' + scope.$parent.lineChart.getWidth() + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
+                        break;
+                    case 'NW':
+                        //chart.setAttribute('style', 'position: relative; bottom: -30px;');
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.lineChart.getHeight() + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
+                        break;
+                    case 'SE':
+                        //chart.setAttribute('style', 'position: relative;');
+                        parent.setAttribute('style', 'float: left; position: relative; right: -' + scope.$parent.lineChart.getWidth() + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
+                        break;
+                    case 'SW':
+                        //chart.setAttribute('style', 'height:'+ scope.$parent.lineChart.getHeight() +'px; width:'+ scope.$parent.lineChart.getWidth() +'px; position: relative; bottom: 0;');
+                        parent.setAttribute('style', 'float: left; position: relative; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
+                        break;
+                }
+            }
+
+            scope.legend = function() {
+                var chart = element.children()[1];
+                var parent = document.createElement('div');
+
+                changePosition(chart,parent);
+
                 while(parent.firstChild) {
                     parent.removeChild(parent.firstChild);
                 }
-                console.log('legend ' + JSON.stringify(scope.$parent.lineChart.getLegend()));
                 if (scope.$parent.lineChart.getLegend() !== null) {
-                    parent.setAttribute('style', 'background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + '; color: '+ scope.$parent.lineChart.getLegend().getFontColor());
-                    var ul = document.createElement('ul');
-                    ul.setAttribute('style', 'list-style-type: none');
-                    parent.appendChild(ul);
+                    //parent.setAttribute('style', 'background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + '; color: '+ scope.$parent.lineChart.getLegend().getFontColor());
+                    var div = document.createElement('div');
                     for (var i=0; i<scope.$parent.lineChart.getFlowList().length; i++) {
-                        var li = document.createElement('li');
-                        var square = document.createElement('div');
-                        square.setAttribute('style', 'height: 15px; width: 15px; float: left; background-color: ' + scope.$parent.lineChart.getFlowList()[i].flow.getTrace().strokeColor);
-                        var spanText = document.createElement('div');
-                        var text = document.createTextNode('\u00A0\u00A0\u00A0\u00A0' + scope.$parent.lineChart.getFlowList()[i].flow.getName());
-                        spanText.appendChild(text);
-                        li.appendChild(square);
-                        li.appendChild(spanText);
-                        console.log(ul);
-                        ul.appendChild(li);
+                        if (scope.$parent.lineChart.getFlowList()[i].flow.getData().length){
+                            var square = document.createElement('div');
+                            square.setAttribute('style', 'float: left; height: 15px; width: 15px; background-color: ' + scope.$parent.lineChart.getFlowList()[i].flow.getFlowColor() + ';');
+                            var spanText = document.createElement('div');
+                            var text = document.createTextNode('\u00A0\u00A0\u00A0\u00A0' + scope.$parent.lineChart.getFlowList()[i].flow.getName());
+                            spanText.setAttribute('style', 'color: '+ scope.$parent.lineChart.getLegend().getFontColor() + ';');
+                            spanText.appendChild(text);
+                            div.appendChild(square);
+                            div.appendChild(spanText);
+                            parent.appendChild(div);
+                        }
                     }
                 }
+                element.append(parent);
+            };
 
-            };*/
 
         }
     };

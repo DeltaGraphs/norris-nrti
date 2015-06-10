@@ -37,8 +37,8 @@ angular.module('norris-nrti')
         if (json.enableLegend !== undefined) {
             graphJson.enableLegend = json.enableLegend;
         }
-        if (json.legend !== undefined && graphJson.enableLegend !== false) {
-                graphJson.legend = json.legend;
+        if (json.legend !== undefined) {
+            graphJson.legend = json.legend;
         }
         if (json.horizontalGrid !== undefined) {
             graphJson.horizontalGrid = json.horizontalGrid;

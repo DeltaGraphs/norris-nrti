@@ -40,10 +40,10 @@ angular.module('norris-nrti')
 		}
 		if (json.enableLegend !== undefined) {
 			graphJson.enableLegend = json.enableLegend;
-			if (graphJson.enableLegend === true && json.legend !== undefined) {
-				graphJson.legend = json.legend;
-			}
 		}
+        if (json.legend !== undefined) {
+            graphJson.legend = json.legend;
+        }
 		if (json.horizontalGrid  !== undefined) {
 			graphJson.horizontalGrid = json.horizontalGrid;
 		}
