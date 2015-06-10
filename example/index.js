@@ -89,6 +89,8 @@ var mapChart=page1.createMapChart({
 });
 console.log('Grafico inserito: '+mapChart);
 
+var legendPositions = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
+
 var mapChartFlow=mapChart.createMapChartFlow({
     ID:'flow1',
     name: 'linea 22',
@@ -187,14 +189,15 @@ var data2=[{'0':875,'IdMezzo':875,'1':45.42533493042,'WGS84Fi':45.42533493042,'2
 var index=0;
 var repeat=function(){
     mapChartFlow.updateMovie(data[index]);
+    mapChart.updateProperties({legend: {position:legendPositions[index%8]});
     console.log('map index:'+index);
     index++;
     if (index>30){
         index=0;
-        mapChart.updateProperties({mapType:'roadmap', legendOnPoint:true, legend: {position:'NW'}});
+        mapChart.updateProperties({mapType:'roadmap', legendOnPoint:true});
     }
     else if(index===15) {
-        mapChart.updateProperties({mapType:'terrain', legendOnPoint:false, legend: {position:'SW'}});
+        mapChart.updateProperties({mapType:'terrain', legendOnPoint:false});
     }
 };
 
