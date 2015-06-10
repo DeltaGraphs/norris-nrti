@@ -19,7 +19,7 @@ angular.module('norris-nrti')
 .factory('UrlProvider', function(){
 	
 	function UrlProvider() {
-		this._url;
+		this._url = '';
 	}
 	
 	UrlProvider.prototype.setUrl = function(newUrl) {
