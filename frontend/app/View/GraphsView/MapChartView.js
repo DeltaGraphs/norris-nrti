@@ -179,11 +179,11 @@ angular.module('norris-nrti')
                         scope.legend();
                         break;
                     case 'NW':
-                        var parent0 = element.children()[0];
-                        var parent1 = element.children()[1];
-                        parent1.setAttribute('style', 'position: relative; bottom: 0px');
+                        var parent0 = element.children()[1];
+                        var parent1 = element.children()[2];
+                        parent0.setAttribute('style', 'position: relative;');
                         parent1.setAttribute('style', 'position: relative; left: 0px; top: 0px');
-                        $compile(element.contents());
+                        //$compile(element.contents());
                         scope.legend();
                         break;
                     case 'SE':
@@ -192,6 +192,7 @@ angular.module('norris-nrti')
                     case 'SW':
                         break;
                 }*/
+
                 scope.legend();
                 
             };
@@ -253,7 +254,7 @@ angular.module('norris-nrti')
                                 break;
                         }
                         if (scope.$parent.mapChart.getLegendOnPoint() === true){
-                            addLegendOnPoint(marker, scope.$parent.mapChart.getFlowList()[i].flow.getName());
+                            addLegendOnPoint(marker, scope.$parent.mapChart.getFlowList()[i].flow.getName() + ' ' + scope.$parent.mapChart.getFlowList()[i].flow.getData().markerID);
                         }
                         markers.push(marker);
 
@@ -299,7 +300,7 @@ angular.module('norris-nrti')
                             var spanText = document.createElement('div');
                             var text = document.createTextNode('\u00A0\u00A0\u00A0\u00A0' + scope.$parent.mapChart.getFlowList()[i].flow.getName());
                             spanText.appendChild(text);
-                            spanText.setAttribute('style', 'float:left;');
+                            //spanText.setAttribute('style', 'float:left;');
                             li.appendChild(square);
                             li.appendChild(spanText);
                             ul.appendChild(li);
