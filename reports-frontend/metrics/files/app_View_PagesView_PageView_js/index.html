@@ -158,22 +158,22 @@ angular.module(&#039;norris-nrti&#039;)
 						switch (graph.type) {
 							case &#039;BarChart&#039; : 
 								div.setAttribute(&#039;ng-controller&#039;, &#039;BarChartController&#039;);
-								div.setAttribute(&#039;style&#039;, &#039;margin-left: 50px;&#039;);
+								div.setAttribute(&#039;style&#039;, &#039;margin: 50px;&#039;);
 								div.innerHTML = &#039;&lt;bar-chart url=&quot;&#039;+ graph.url +&#039;&quot;&gt;&lt;/bar-chart&gt;&#039;;
 								break;
 							case &#039;LineChart&#039; : 
 								div.setAttribute(&#039;ng-controller&#039;, &#039;LineChartController&#039;);
-								div.setAttribute(&#039;style&#039;, &#039;margin-left: 50px;&#039;);
+								div.setAttribute(&#039;style&#039;, &#039;margin: 50px;&#039;);
 								div.innerHTML = &#039;&lt;line-chart url=&quot;&#039;+ graph.url +&#039;&quot;&gt;&lt;/line-chart&gt;&#039;;
 								break;
 							case &#039;MapChart&#039; : 
 								div.setAttribute(&#039;ng-controller&#039;, &#039;MapChartController&#039;);
-								div.setAttribute(&#039;style&#039;, &#039;margin-left: 50px;&#039;);
+								div.setAttribute(&#039;style&#039;, &#039;margin: 50px;&#039;);
 								div.innerHTML = &#039;&lt;map-chart url=&quot;&#039;+ graph.url +&#039;&quot;&gt;&lt;/map-chart&gt;&#039;;
 								break;
 							case &#039;Table&#039; :
 								div.setAttribute(&#039;ng-controller&#039;, &#039;TableController&#039;);
-								div.setAttribute(&#039;style&#039;, &#039;margin-left: 50px;&#039;);
+								div.setAttribute(&#039;style&#039;, &#039;margin: 50px;&#039;);
 								div.innerHTML = &#039;&lt;table-chart url=&quot;&#039;+ graph.url +&#039;&quot;&gt;&lt;/table-chart&gt;&#039;;
 								break;
 						}

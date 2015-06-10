@@ -30,10 +30,10 @@
 		<error line="151" column="44" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
 		<error line="175" column="39" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
 		<error line="179" column="47" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
-		<error line="198" column="46" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
-		<error line="205" column="46" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
-		<error line="212" column="46" severity="warning" message="&apos;MapLabel&apos; is not defined." source="jshint.W117" />
-		<error line="237" column="21" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
+		<error line="201" column="46" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
+		<error line="208" column="46" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
+		<error line="215" column="46" severity="warning" message="&apos;MapLabel&apos; is not defined." source="jshint.W117" />
+		<error line="240" column="21" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
 	</file>
 	<file name="app/View/PagesView/PageView.js">
 		<error line="31" column="17" severity="warning" message="Read only." source="jshint.W020" />
