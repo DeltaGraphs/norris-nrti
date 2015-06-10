@@ -194,6 +194,9 @@ angular.module('norris-nrti')
                                     case 'diamond':
                                         type = attrs.url + '/img/d.png';
                                         break;
+                                    case 'bus':
+                                        type = attrs.url + '/img/bus.png';
+                                        break;
                                 }
                                 marker = new google.maps.Marker({
                                     position: coordinates,
@@ -246,47 +249,56 @@ angular.module('norris-nrti')
                 
             };
 
-            scope.legend = function() {
-                var parent = element.children()[2];
+            function changePosition(map,parent){
                 switch (scope.$parent.mapChart.getLegend().getPosition()) {
                     case 'N':
+                        map.setAttribute('style', 'posizione: relative;');
                         parent.setAttribute('style', 'position: relative; top: -' + scope.$parent.mapChart.getWidth() + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + '; color: '+ scope.$parent.mapChart.getLegend().getFontColor() + ';');
                         break;
                     case 'E':
-                        parent.setAttribute('style', 'position: relative; top: -' + scope.$parent.mapChart.getHeight()/2 + 'px; right: -' + ((scope.$parent.mapChart.getWidth()/2)+20) + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + '; color: '+ scope.$parent.mapChart.getLegend().getFontColor() + ';');
+                        parent.setAttribute('style', 'position: relative; top: -' + scope.$parent.mapChart.getHeight()/2 + 'px; right: -' + (scope.$parent.mapChart.getWidth()+20) + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + '; color: '+ scope.$parent.mapChart.getLegend().getFontColor() + ';');
                         break;
                     case 'S':
                         break;
                     case 'W':
-                        parent.setAttribute('style', 'position: relative; top: -' + scope.$parent.mapChart.getHeight()/2 + 'px; left: -' + ((scope.$parent.mapChart.getWidth()/2)+20) + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + '; color: '+ scope.$parent.mapChart.getLegend().getFontColor() + ';');
+                        parent.setAttribute('style', 'position: relative; top: -' + scope.$parent.mapChart.getHeight() + 'px; left: -' + (scope.$parent.mapChart.getWidth()+20) + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + '; color: '+ scope.$parent.mapChart.getLegend().getFontColor() + ';');
                         break;
                     case 'NE':
-                        parent.setAttribute('style', 'position: relative; top: -' + scope.$parent.mapChart.getWidth() + 'px; right: -' + ((scope.$parent.mapChart.getWidth()/2)+20) + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + '; color: '+ scope.$parent.mapChart.getLegend().getFontColor() + ';');
+                        parent.setAttribute('style', 'position: relative; top: -' + scope.$parent.mapChart.getHeight() + 'px; right: -' + (scope.$parent.mapChart.getWidth()+20) + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + '; color: '+ scope.$parent.mapChart.getLegend().getFontColor() + ';');
                         break;
                     case 'NW':
-                        parent.setAttribute('style', 'position: relative; left: -' + ((scope.$parent.mapChart.getWidth()/2)+20) + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + '; color: '+ scope.$parent.mapChart.getLegend().getFontColor() + ';');
+                        parent.setAttribute('style', 'position: relative; left: -' + (scope.$parent.mapChart.getWidth()+20) + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + '; color: '+ scope.$parent.mapChart.getLegend().getFontColor() + ';');
                         break;
                     case 'SE':
-                        parent.setAttribute('style', 'position: relative; right: -' + ((scope.$parent.mapChart.getWidth()/2)+20) + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + '; color: '+ scope.$parent.mapChart.getLegend().getFontColor() + ';');
+                        parent.setAttribute('style', 'position: relative; right: -' + (scope.$parent.mapChart.getWidth()+20) + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + '; color: '+ scope.$parent.mapChart.getLegend().getFontColor() + ';');
                         break;
                     case 'SW':
-                        parent.setAttribute('style', 'position: relative; left: -' + ((scope.$parent.mapChart.getWidth()/2)+20) + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + '; color: '+ scope.$parent.mapChart.getLegend().getFontColor() + ';');
+                        parent.setAttribute('style', 'position: relative; left: -' + (scope.$parent.mapChart.getWidth()+20) + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + '; color: '+ scope.$parent.mapChart.getLegend().getFontColor() + ';');
                         break;
                 }
+            }
+
+            scope.legend = function() {
+                var map = element.children()[1];
+                var parent = element.children()[2];
+                
+                changePosition(map,parent);
+
                 while(parent.firstChild) {
                     console.log('removeChild of legend');
                     parent.removeChild(parent.firstChild);
                 }
                 if (scope.$parent.mapChart.getLegend() !== null) {
                     //parent.setAttribute('style', 'background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + '; color: '+ scope.$parent.mapChart.getLegend().getFontColor());
+                    console.log(scope.$parent.mapChart.getLegend().getPosition());
                     for (var i=0; i<scope.$parent.mapChart.getFlowList().length; i++) {
                         if (scope.$parent.mapChart.getFlowList()[i].flow.getData().length){
                             var square = document.createElement('div');
-                            square.setAttribute('style', 'height: 15px; width: 15px; background-color: ' + scope.$parent.mapChart.getFlowList()[i].flow.getTrace().strokeColor);
+                            square.setAttribute('style', 'height: 15px; float: left; width: 15px; background-color: ' + scope.$parent.mapChart.getFlowList()[i].flow.getTrace().strokeColor);
                             var spanText = document.createElement('div');
                             var text = document.createTextNode('\u00A0\u00A0\u00A0\u00A0' + scope.$parent.mapChart.getFlowList()[i].flow.getName());
                             spanText.appendChild(text);
-                            //spanText.setAttribute('style', 'float:left;');
+                            spanText.setAttribute('style', 'float:left;');
                             parent.appendChild(square);
                             parent.appendChild(spanText);
                         }
