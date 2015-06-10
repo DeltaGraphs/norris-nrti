@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">56.13</p>
+      <p class="stat">51.89</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">46</p>
+      <p class="stat">68</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">6.28</p>
+      <p class="stat">6.71</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.19</p>
+      <p class="stat">0.29</p>
     </div>
   </div>
 </div>
@@ -100,6 +100,10 @@ module.exports = function(grunt) {
                 src: [&#039;frontend/app/View/**/*.css&#039;], // array of folders
                 dest: &#039;frontend/app/dist/norris-nrti.css&#039;
             },
+            cssComplete: {
+                src: [&#039;frontend/app/View/**/*.css&#039;,&#039;bower_components/bootstrap/dist/css/bootstrap.min.css&#039;], // array of folders
+                dest: &#039;frontend/app/dist/norris-nrti.complete.css&#039;
+            },
             js: {
                 src: [ // array of folders
                     &#039;frontend/app/norris-nrti.js&#039;,
@@ -108,19 +112,37 @@ module.exports = function(grunt) {
                     &#039;frontend/app/View/**/*.js&#039;
                 ],
                 dest: &#039;frontend/app/dist/norris-nrti.js&#039;
+            },
+            jsComplete: {
+                src: [ // array of folders
+                    &#039;frontend/app/norris-nrti.js&#039;,
+                    &#039;frontend/app/Model/**/*.js&#039;,
+                    &#039;frontend/app/Controller/**/*.js&#039;,
+                    &#039;frontend/app/View/**/*.js&#039;,
+                    &#039;frontend/app/bower_components/sio-client/socket.io.js&#039;,
+                    &#039;frontend/app/bower_components/angular/angular.min.js&#039;,
+                    &#039;frontend/app/bower_components/jquery/dist/jquery.min.js&#039;,
+                    &#039;frontend/app/bower_components/bootstrap/dist/js/bootstrap.min.js&#039;,
+                    &#039;frontend/app/bower_components/angular-route/angular-route.js&#039;,
+                    &#039;frontend/app/bower_components/d3/d3.min.js&#039;,
+                    &#039;frontend/app/bower_components/angular-smart-table/dist/smart-table.min.js&#039;,
+                ],
+                dest: &#039;frontend/app/dist/norris-nrti.complete.js&#039;
             }
         },
         cssmin: {
             dist: {
                 files: {
-                    &#039;frontend/app/dist/norris-nrti.min.css&#039;: [ &#039;frontend/app/dist/norris-nrti.css&#039; ]
+                    &#039;frontend/app/dist/norris-nrti.min.css&#039;: [ &#039;frontend/app/dist/norris-nrti.css&#039; ],
+                    &#039;frontend/app/dist/norris-nrti.complete.min.css&#039;: [ &#039;frontend/app/dist/norris-nrti.complete.css&#039; ]
                 }
             }
         },
         uglify: {
             build: {
                 files: {
-                    &#039;frontend/app/dist/norris-nrti.min.js&#039;: [&#039;frontend/app/dist/norris-nrti.js&#039;]
+                    &#039;frontend/app/dist/norris-nrti.min.js&#039;: [&#039;frontend/app/dist/norris-nrti.js&#039;],
+                    &#039;frontend/app/dist/norris-nrti.complete.min.js&#039;: [&#039;frontend/app/dist/norris-nrti.complete.js&#039;]
                 }
             }
         }
