@@ -299,7 +299,8 @@ var repeatLine=function(){
     if (index2>=12){
         index2=0;
         var vF = lineChart.getProperties().viewFinder;
-        lineChart.updateProperties({viewFinder:!vF, verticalGrid:true, horizontalGrid:true, legendOnPoint: true, legend:{position:'NE'},interpolation:'linear'});
+        vF = (vF==='top')?'bottom':'top';
+        lineChart.updateProperties({viewFinder:vF, verticalGrid:true, horizontalGrid:true, legendOnPoint: true, legend:{position:'NE'},interpolation:'linear'});
         lineChart.deleteAllFlows();
     }else{
         lineChartFlow.addRecord(lineData[index2-1]);
