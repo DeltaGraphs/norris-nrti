@@ -8813,7 +8813,8 @@ angular.module('norris-nrti')
 	MapChartFlow.prototype.inPlaceUpdate = function(newData) {
 		for (var i = 0; i<this._data.length; i++){
             if (this._data[i].norrisRecordID === newData.norrisRecordID){
-                this._data[i] = { 'norrisRecordID' : newData.norrisRecordID, 'value' : newData.value };
+            	this._data[i] = newData;
+                //this._data[i] = { 'norrisRecordID' : newData.norrisRecordID, 'value' : newData.value };
             }
         }
     };
@@ -8939,11 +8940,7 @@ angular.module('norris-nrti')
 			if (addRowOn === 'bottom') {
 				this._data.push(newData.records[i]);
 			} else if (addRowOn === 'top') {
-				if (this._data.length === 0) {
-					this._data.push(newData.records[i]);
-				} else if (this._data.length > 0){
-					this._data.unshift(newData.records[i]);
-				}
+				this._data.unshift(newData.records[i]);
 			}
 		}
 	};
@@ -9148,9 +9145,9 @@ angular.module('norris-nrti')
         }
         if (json.enableLegend !== undefined) {
             graphJson.enableLegend = json.enableLegend;
-            if (graphJson.enableLegend && json.legend !== undefined) {
-                graphJson.legend = json.legend;
-            }
+        }
+        if (json.legend !== undefined) {
+            graphJson.legend = json.legend;
         }
         if (json.horizontalGrid !== undefined) {
             graphJson.horizontalGrid = json.horizontalGrid;
@@ -9491,9 +9488,9 @@ angular.module('norris-nrti')
 				}
 				if (info.enableLegend !== undefined) {
 					this._enableLegend = info.enableLegend;
-					if (this._enableLegend && info.legend !== undefined) {
+				}
+				if (this._enableLegend && info.legend !== undefined) {
 						this._legend = LegendFactory.build(info.legend);
-					}
 				}
 				if (info.horizontalGrid !== undefined) {
 					this._horizontalGrid = info.horizontalGrid;
@@ -9693,10 +9690,10 @@ angular.module('norris-nrti')
 		}
 		if (json.enableLegend !== undefined) {
 			graphJson.enableLegend = json.enableLegend;
-			if (graphJson.enableLegend === true && json.legend !== undefined) {
-				graphJson.legend = json.legend;
-			}
 		}
+        if (json.legend !== undefined) {
+            graphJson.legend = json.legend;
+        }
 		if (json.horizontalGrid  !== undefined) {
 			graphJson.horizontalGrid = json.horizontalGrid;
 		}
@@ -9926,9 +9923,9 @@ angular.module('norris-nrti')
         }
         if (json.enableLegend !== undefined) {
             graphJson.enableLegend = json.enableLegend;
-            if (json.legend !== undefined && graphJson.enableLegend !== false) {
-                graphJson.legend = json.legend;
-            }
+        }
+        if (json.legend !== undefined) {
+            graphJson.legend = json.legend;
         }
         if (json.horizontalGrid !== undefined) {
             graphJson.horizontalGrid = json.horizontalGrid;
@@ -10660,7 +10657,7 @@ angular.module('norris-nrti')
 .factory('UrlProvider', function(){
 	
 	function UrlProvider() {
-		this._url;
+		this._url = '';
 	}
 	
 	UrlProvider.prototype.setUrl = function(newUrl) {
@@ -10707,7 +10704,7 @@ angular.module('norris-nrti')
 	//$scope.changedF = true;
 	this.listenOnEvents = function(){
 		console.log('BARCHART listenOnEvents');
-		/*socket.on('configGraph', function(info){
+		socket.on('configGraph', function(info){
 			if (count === 0){
 				console.log('BARCHART configGraph');
 				$scope.barChart.updateParameters(info.properties);
@@ -10763,9 +10760,8 @@ angular.module('norris-nrti')
 					break;
 			}
 			$scope.changedD = !$scope.changedD;
-		});*/
+		});
 	};
-
 
 	$scope.socketConnection = this.socketConnection;
 	$scope.listenOnEvents = this.listenOnEvents;
@@ -10805,34 +10801,35 @@ angular.module('norris-nrti')
 	//$scope.changedF = true;
 	this.listenOnEvents = function(){
 		console.log('LINECHART listenOnEvents');
-		/*socket.on('configGraph', function(info){
+		socket.on('configGraph', function(info){
 			if (count === 0){
 				console.log('LINECHART configGraph');
 				$scope.lineChart.updateParameters(info.properties);
 				$scope.lineChart.initializeData(info.data);
-				$scope.changedP = !$scope.changedP;
 				$scope.changedD = !$scope.changedD;
+				$scope.changedP = !$scope.changedP;
 				count++;
 			}
 		});
 		socket.on('updateGraphProp', function(info){
-			console.log('LINECHART updateGraphProp');
+			console.log('LINECHART updateGraphProp' + JSON.stringify(info));
 			$scope.lineChart.updateParameters(info);
 			$scope.changedP = !$scope.changedP;
 		});
 		socket.on('insertFlow', function(info){
-			console.log('LINECHART insert flow' + JSON.stringify(info));
-			var flow = LineChartFlowFactory.build(info); // no properties perchè non ci sono dati
+			console.log('LINECHART insert flow');
+			var flow = LineChartFlowFactory.build(info.properties); // no properties perchè non ci sono dati
 			flow.initializeData(info);
-			$scope.lineChart.addFlow(info.ID, flow);
+			$scope.lineChart.addFlow(info.properties.ID, flow);
 			$scope.changedD = !$scope.changedD;
+			$scope.changedP = !$scope.changedP;
 			//$scope.changedF = !$scope.changedF;
 		});
 		socket.on('deleteFlow', function(info){
 			console.log('LINECHART deleteFlow');
 			$scope.lineChart.deleteFlow(info.ID);
-			//$scope.changedP = !$scope.changedP;
 			$scope.changedD = !$scope.changedD;
+			$scope.changedP = !$scope.changedP;
 			//$scope.changedF = !$scope.changedF;
 		});
 		socket.on('updateFlowProp', function(info){
@@ -10842,7 +10839,7 @@ angular.module('norris-nrti')
 					$scope.lineChart.getFlowList()[i].flow.updateParameters(info);
 				}
 			}
-			$scope.changedD = !$scope.changedD;
+			$scope.changedP = !$scope.changedP;
 		});
 		socket.on('updateFlowData', function(data){
 			console.log('LINECHART updateFlowData ' + data.action);
@@ -10861,7 +10858,7 @@ angular.module('norris-nrti')
 					break;
 			}
 			$scope.changedD = !$scope.changedD;
-		});*/
+		});
 	};
 
 	$scope.socketConnection = this.socketConnection;
@@ -11002,48 +10999,48 @@ angular.module('norris-nrti')
 	};
 
 	var count = 0;
-	$scope.changedP = true;
-	$scope.changedD = true;
+	$scope.changed = true;
+	//$scope.changedD = true;
 	this.listenOnEvents = function(){
 		console.log('listen ON EVENTS');
 		socket.on('configGraph', function(info){
+			console.log('TABLE config graph');
 			if (count === 0) {
 				count++;
 				$scope.table.updateParameters(info.properties);
 				$scope.table.initializeData(info.data);
-				$scope.changedD = !$scope.changedD;
-				$scope.changedP = !$scope.changedP;  
+				$scope.changed = !$scope.changed;
+				//$scope.changedP = !$scope.changedP;  
 	        }
 		});
 		socket.on('updateGraphProp', function(info){
-			console.log('updateGraphProp');
+			console.log('TABLE updateGraphProp');
 			$scope.table.updateParameters(info);
-			$scope.changedP = !$scope.changedP;
+			$scope.changed = !$scope.changed;
 		});
 		socket.on('insertFlow', function(info){
-			console.log('insertFlow');
-			console.log('insert flow' + JSON.stringify(info));
+			console.log('TABLE  insert flow' + JSON.stringify(info));
 			var flow = TableFlowFactory.build(info.properties);
-			flow.initializeData(info, table.getAddRowOn());
+			flow.initializeData(info, $scope.table.getAddRowOn());
 			$scope.table.addFlow(info.properties.ID, flow);
-			$scope.changedD = !$scope.changedD;
+			$scope.changed = !$scope.changed;
 		});
 		socket.on('deleteFlow', function(info){
-			console.log('deleteFlow');
+			console.log('TABLE  deleteFlow');
 			$scope.table.deleteFlow(info.ID);
-			$scope.changedD = !$scope.changedD;
+			$scope.changed = !$scope.changed;
 		});
 		socket.on('updateFlowProp', function(info){
-			console.log('updateFlowProp');
+			console.log('TABLE  updateFlowProp');
 			for (var i=0; i<$scope.table.getFlowList().length; i++){
 				if ($scope.table.getFlowList()[i].id === info.ID){
 					$scope.table.getFlowList()[i].flow.updateParameters(info);
 				}
 			}
-			$scope.changedD = !$scope.changedD;
+			$scope.changed = !$scope.changed;
 		});
 		socket.on('updateFlowData', function(data){
-			console.log('updateFlowData ' + data.action);
+			console.log('TABLE  updateFlowData ' + data.action);
 			switch (data.action){
 				case 'insertRecords':
 					$scope.table.streamUpdate(data);
@@ -11058,7 +11055,7 @@ angular.module('norris-nrti')
 					$scope.table.replaceData(data);
 					break;
 			}
-			$scope.changedD = !$scope.changedD;
+			$scope.changed = !$scope.changed;
 		});
 
 	};
@@ -11233,7 +11230,7 @@ angular.module('norris-nrti')
 angular.module('norris-nrti')
 .controller('RootController', ['$scope', 'UrlProvider', function($scope, UrlProvider){
 	console.log('dentro root controller');
-    $scope.url;
+    $scope.url = '';
     $scope.$watch('url', function(newValue, oldValue) {
     	console.log('dentro watch root');
     	console.log('newValue: ' + newValue + ', oldValue: ' +oldValue );              
@@ -11268,9 +11265,10 @@ angular.module('norris-nrti')
             url: '@'
 		},
 		//bindToController: true,
+        //template: '<div></div>',
         //template: '<nvd3-multi-bar-chart data="exampleData" id="exampleId" width="1000" height="600" showxaxis="true" showyaxis="true" rotatelabels="90"><svg></svg></nvd3-multi-bar-chart>',
         link: function(scope, element, attrs){
-
+            
         	attrs.$observe('url', function(value) {
                 console.log('BARCHART observ url ' + value);
                 if (value) {
@@ -11281,6 +11279,7 @@ angular.module('norris-nrti')
             scope.$parent.$watch('changedP', function(newValue, oldValue){
                 if (newValue !== oldValue) {
                     console.log('BARCHART watch changedP');
+                    //scope.legend();
                     scope.init();
                 }
             }, true);
@@ -11324,20 +11323,20 @@ angular.module('norris-nrti')
                     onPoint = false;
                 }
                 if (scope.$parent.barChart.getBarOrientation() === 'V'){
-                    barchart = '<div><div class="graphtitle">'+ scope.$parent.barChart.getTitle() +'</div>' +
+                    barchart = '<div style="position: relative;"><div class="graphtitle">'+ scope.$parent.barChart.getTitle() +'</div>' +
                                 '<nvd3-multi-bar-chart data="data" nodata=" " id="'+ id +'" ' +
                                 'xaxisticksformat="xAxisTickFormatFunction()" showxaxis="true" showyaxis="true" ' +
-                                'rotatelabels="-90" interactive="true" tooltips="'+ onPoint +'" showlegend="'+ legend +'" ' +
+                                'rotatelabels="-90" interactive="true" tooltips="'+ onPoint +'" ' +
                                 'xaxislabel="'+ scope.$parent.barChart.getX().getName() +'" ' +
                                 'showcontrols="'+ control +'" color="colorFunction()" ' +
                                 'width="'+ scope.$parent.barChart.getWidth() +'" height="'+ scope.$parent.barChart.getHeight() +'">' +
                                 '<svg></svg></nvd3-multi-bar-chart></div>';
                     //barchart = barchart + '<svg width="'+ scope.$parent.barChart.getWidth() +'" height="'+ scope.$parent.barChart.getHeight() +'"></svg></nvd3-multi-bar-chart>';
                 }else if(scope.$parent.barChart.getBarOrientation() === 'H'){
-                    barchart = '<div><div class="graphtitle">'+ scope.$parent.barChart.getTitle() +'</div>' +
+                    barchart = '<div style="position: relative;"><div class="graphtitle">'+ scope.$parent.barChart.getTitle() +'</div>' +
                                 '<nvd3-multi-bar-horizontal-chart data="data" nodata=" " id="'+ id +'" ' +
                                 'xaxisticksformat="xAxisTickFormatFunction()" yaxistickformat="yAxisTickFormatFunction()" showxaxis="true" showyaxis="true" ' +
-                                'rotatelabels="-90" interactive="true" tooltips="'+ onPoint +'" showlegend="'+ legend +'" ' +
+                                'rotatelabels="-90" interactive="true" tooltips="'+ onPoint +'" ' +
                                 'xaxislabel="'+ scope.$parent.barChart.getX().getName() +'" ' +
                                 'showcontrols="'+ control +'" color="colorFunction()" ' +
                                 'width="'+ scope.$parent.barChart.getWidth() +'" height="'+ scope.$parent.barChart.getHeight() +'">' +
@@ -11345,35 +11344,9 @@ angular.module('norris-nrti')
                     //barchart = barchart + '<svg width="'+ scope.$parent.barChart.getWidth() +'" height="'+ scope.$parent.barChart.getHeight() +'"></svg></nvd3-multi-bar-horizontal-chart>';
                 }
                 
-                /*switch (scope.$parent.barChart.getLegend().getPosition()) {
-                    case 'N':
-
-                        break;
-                    case 'E':
-
-                        break;
-                    case 'S':
-
-                        break;
-                    case 'W':
-                        
-                        break;
-                    case 'NE':
-                        
-                        break;
-                    case 'NW':
-                        
-                        break;
-                    case 'SE':
-                        
-                        break;
-                    case 'SW':
-                        break;
-                }*/
-
                 var compiled = $compile(barchart)(scope);
                 element.append(compiled);
-                
+                scope.legend();
             };
             
             scope.colorArray = [];
@@ -11433,32 +11406,71 @@ angular.module('norris-nrti')
 
             };
 
-            /*scope.legend = function() {
-                var parent = element.children()[1];
+            function changePosition(chart,parent){
+                switch (scope.$parent.barChart.getLegend().getPosition()) {
+                    case 'N':
+                        //chart.setAttribute('style', 'position: relative; bottom: -30px;');
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.barChart.getHeight() + 'px; right: -' + (scope.$parent.barChart.getWidth()/2) + 'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
+                        break;
+                    case 'E':
+                        //chart.setAttribute('style', 'position: relative; right: 0;');
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + (scope.$parent.barChart.getHeight()/2) + 'px; right: -' + scope.$parent.barChart.getWidth() + 'px;  background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
+                        break;
+                    case 'S':
+                        //chart.setAttribute('style', 'position: relative;');
+                        parent.setAttribute('style', 'float: left; position: relative; right: -' + (scope.$parent.barChart.getWidth()/2) + 'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
+                        break;
+                    case 'W':
+                        //chart.setAttribute('style', 'position: relative; right: -100px;');
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + (scope.$parent.barChart.getHeight()/2) + 'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
+                        break;
+                    case 'NE':
+                        //chart.setAttribute('style', 'position: relative; bottom: 0;');
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.barChart.getHeight() + 'px; right: -' + scope.$parent.barChart.getWidth() + 'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
+                        break;
+                    case 'NW':
+                        //chart.setAttribute('style', 'position: relative; bottom: -30px;');
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.barChart.getHeight() + 'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
+                        break;
+                    case 'SE':
+                        //chart.setAttribute('style', 'position: relative;');
+                        parent.setAttribute('style', 'float: left; position: relative; right: -' + scope.$parent.barChart.getWidth() + 'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
+                        break;
+                    case 'SW':
+                        //chart.setAttribute('style', 'height:'+ scope.$parent.barChart.getHeight() +'px; width:'+ scope.$parent.barChart.getWidth() +'px; position: relative; bottom: 0;');
+                        parent.setAttribute('style', 'float: left; position: relative; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
+                        break;
+                }
+            }
+
+            scope.legend = function() {
+                var chart = element.children()[1];
+                var parent = document.createElement('div');
+
+                changePosition(chart,parent);
+
                 while(parent.firstChild) {
                     parent.removeChild(parent.firstChild);
                 }
-                console.log('legend ' + JSON.stringify(scope.$parent.barChart.getLegend()));
                 if (scope.$parent.barChart.getLegend() !== null) {
-                    parent.setAttribute('style', 'background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + '; color: '+ scope.$parent.barChart.getLegend().getFontColor());
-                    var ul = document.createElement('ul');
-                    ul.setAttribute('style', 'list-style-type: none');
-                    parent.appendChild(ul);
+                    //parent.setAttribute('style', 'background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + '; color: '+ scope.$parent.barChart.getLegend().getFontColor());
+                    var div = document.createElement('div');
                     for (var i=0; i<scope.$parent.barChart.getFlowList().length; i++) {
-                        var li = document.createElement('li');
-                        var square = document.createElement('div');
-                        square.setAttribute('style', 'height: 15px; width: 15px; float: left; background-color: ' + scope.$parent.barChart.getFlowList()[i].flow.getTrace().strokeColor);
-                        var spanText = document.createElement('div');
-                        var text = document.createTextNode('\u00A0\u00A0\u00A0\u00A0' + scope.$parent.barChart.getFlowList()[i].flow.getName());
-                        spanText.appendChild(text);
-                        li.appendChild(square);
-                        li.appendChild(spanText);
-                        console.log(ul);
-                        ul.appendChild(li);
+                        if (scope.$parent.barChart.getFlowList()[i].flow.getData().length){
+                            var square = document.createElement('div');
+                            square.setAttribute('style', 'float: left; height: 15px; width: 15px; background-color: ' + scope.$parent.barChart.getFlowList()[i].flow.getFlowColor() + ';');
+                            var spanText = document.createElement('div');
+                            var text = document.createTextNode('\u00A0\u00A0\u00A0\u00A0' + scope.$parent.barChart.getFlowList()[i].flow.getName());
+                            spanText.setAttribute('style', 'color: '+ scope.$parent.barChart.getLegend().getFontColor() + ';');
+                            spanText.appendChild(text);
+                            div.appendChild(square);
+                            div.appendChild(spanText);
+                            parent.appendChild(div);
+                        }
                     }
                 }
-
-            };*/
+                element.append(parent);
+            };
 
         }
     };
@@ -11491,18 +11503,6 @@ angular.module('norris-nrti')
 		//bindToController: true,
         //template: '<div>ciao, sono il line chart</div>',
         link: function(scope, element, attrs){
-            scope.exampleData = [
-                {
-                    'key' : 'Quantity',
-                    'area' : true,
-                    'values' : [
-                        [ 1136005200000 , 127.0] , [ 1138683600000 , 127.0] , [ 1141102800000 , 127.0] , [ 1143781200000 , 0] , [ 1146369600000 , 0] , [ 1149048000000 , 0] , [ 1151640000000 , 0] , [ 1154318400000 , 0] , [ 1156996800000 , 0] , [ 1159588800000 , 389.94860] , [ 1162270800000 , 389.94860] , [ 1164862800000 , 389.94860] , [ 1167541200000 , 356.47000] , [ 1170219600000 , 356.47000] , [ 1172638800000 , 356.47000] , [ 1175313600000 , 264.84930] , [ 1177905600000 , 264.84930] , [ 1180584000000 , 264.84930] , [ 1183176000000 , 252.29930] , [ 1185854400000 , 252.29930] , [ 1188532800000 , 252.29930] , [ 1191124800000 , 290.65010] , [ 1193803200000 , 290.65010] , [ 1196398800000 , 290.65010] , [ 1199077200000 , 220.67610] , [ 1201755600000 , 220.67610] , [ 1204261200000 , 220.67610] , [ 1206936000000 , 228.77260] , [ 1209528000000 , 228.77260] , [ 1212206400000 , 228.77260] , [ 1214798400000 , 273.26460] , [ 1217476800000 , 273.26460] , [ 1220155200000 , 273.26460] , [ 1222747200000 , 259.91960] , [ 1225425600000 , 259.91960] , [ 1228021200000 , 259.91960] , [ 1230699600000 , 192.43870] , [ 1233378000000 , 192.43870] , [ 1235797200000 , 192.43870] , [ 1238472000000 , 175.63110] , [ 1241064000000 , 175.63110] , [ 1243742400000 , 175.63110] , [ 1246334400000 , 174.34700] , [ 1249012800000 , 174.34700] , [ 1251691200000 , 174.34700] , [ 1254283200000 , 151.90100] , [ 1256961600000 , 151.90100] , [ 1259557200000 , 151.90100] , [ 1262235600000 , 159.14440] , [ 1264914000000 , 159.14440] , [ 1267333200000 , 159.14440] , [ 1270008000000 , 154.37840] , [ 1272600000000 , 154.37840] , [ 1275278400000 , 154.37840] , [ 1277870400000 , 130.99150] , [ 1280548800000 , 130.99150] , [ 1283227200000 , 130.99150] , [ 1285819200000 , 133.18750] , [ 1288497600000 , 133.18750] , [ 1291093200000 , 133.18750] , [ 1293771600000 , 133.18750] , [ 1296450000000 , 115.46950] , [ 1298869200000 , 115.46950] , [ 1301544000000 , 119.40250] , [ 1304136000000 , 119.40250] , [ 1306814400000 , 119.40250] , [ 1309406400000 , 119.40250] , [ 1312084800000 , 119.40250] , [ 1314763200000 , 124.45250] , [ 1317355200000 , 47.50000] , [ 1320033600000 , 47.50000] , [ 1322629200000 , 47.50000] , [ 1325307600000 , 69.00330] , [ 1327986000000 , 69.00330] , [ 1330491600000 , 69.00330] , [ 1333166400000 , 51.47330] , [ 1335758400000 , 51.47330]]
-                },
-                {
-                    'key' : 'Price',
-                    'values' : [ [ 1136005200000 , 71.89] , [ 1138683600000 , 75.51] , [ 1141102800000 , 68.49] , [ 1143781200000 , 62.72] , [ 1146369600000 , 70.39] , [ 1149048000000 , 59.77] , [ 1151640000000 , 57.27] , [ 1154318400000 , 67.96] , [ 1156996800000 , 67.85] , [ 1159588800000 , 76.98] , [ 1162270800000 , 81.08] , [ 1164862800000 , 91.66] , [ 1167541200000 , 84.84] , [ 1170219600000 , 85.73] , [ 1172638800000 , 84.61] , [ 1175313600000 , 92.91] , [ 1177905600000 , 99.8] , [ 1180584000000 , 121.191] , [ 1183176000000 , 122.04] , [ 1185854400000 , 131.76] , [ 1188532800000 , 138.48] , [ 1191124800000 , 153.47] , [ 1193803200000 , 189.95] , [ 1196398800000 , 182.22] , [ 1199077200000 , 198.08] , [ 1201755600000 , 135.36] , [ 1204261200000 , 125.02] , [ 1206936000000 , 143.5] , [ 1209528000000 , 173.95] , [ 1212206400000 , 188.75] , [ 1214798400000 , 167.44] , [ 1217476800000 , 158.95] , [ 1220155200000 , 169.53] , [ 1222747200000 , 113.66] , [ 1225425600000 , 107.59] , [ 1228021200000 , 92.67] , [ 1230699600000 , 85.35] , [ 1233378000000 , 90.13] , [ 1235797200000 , 89.31] , [ 1238472000000 , 105.12] , [ 1241064000000 , 125.83] , [ 1243742400000 , 135.81] , [ 1246334400000 , 142.43] , [ 1249012800000 , 163.39] , [ 1251691200000 , 168.21] , [ 1254283200000 , 185.35] , [ 1256961600000 , 188.5] , [ 1259557200000 , 199.91] , [ 1262235600000 , 210.732] , [ 1264914000000 , 192.063] , [ 1267333200000 , 204.62] , [ 1270008000000 , 235.0] , [ 1272600000000 , 261.09] , [ 1275278400000 , 256.88] , [ 1277870400000 , 251.53] , [ 1280548800000 , 257.25] , [ 1283227200000 , 243.1] , [ 1285819200000 , 283.75] , [ 1288497600000 , 300.98] , [ 1291093200000 , 311.15] , [ 1293771600000 , 322.56] , [ 1296450000000 , 339.32] , [ 1298869200000 , 353.21] , [ 1301544000000 , 348.5075] , [ 1304136000000 , 350.13] , [ 1306814400000 , 347.83] , [ 1309406400000 , 335.67] , [ 1312084800000 , 390.48] , [ 1314763200000 , 384.83] , [ 1317355200000 , 381.32] , [ 1320033600000 , 404.78] , [ 1322629200000 , 382.2] , [ 1325307600000 , 405.0] , [ 1327986000000 , 456.48] , [ 1330491600000 , 542.44] , [ 1333166400000 , 599.55] , [ 1335758400000 , 583.98] ]
-                }
-            ];
 
         	attrs.$observe('url', function(value) {
                 console.log('LINECHART observ url ' + value);
@@ -11525,20 +11525,21 @@ angular.module('norris-nrti')
                 }
             }, true);
 
-            scope.$parent.$watch('changedF', function(newValue, oldValue){
+            /*scope.$parent.$watch('changedF', function(newValue, oldValue){
                 if(newValue !== oldValue){
                     console.log('LINECHART watch changedF');                    
                     //scope.legend();
                 }
-            }, true);
+            }, true);*/
 
             scope.init = function(){
-                element.empty();
                 console.log('LINECHART init');
 
                 var linechart, legend, onPoint;
                 var str = scope.url.split('/');
                 var id = str[str.length-1];
+
+                element.empty();
 
                 if (scope.$parent.lineChart.getLegend() !== null){
                     legend = true;
@@ -11550,29 +11551,30 @@ angular.module('norris-nrti')
                 } else {
                     onPoint = false;
                 }
-
+                console.log('LINECHART creo');
                 if (scope.$parent.lineChart.getViewFinder() === true) {
                     linechart = '<div class="graphtitle">'+ scope.$parent.lineChart.getTitle() +'</div>' +
                                 '<nvd3-line-with-focus-chart data="data" nodata=" " id="'+ id +'" ' +
                                 'yaxistickformat="yAxisTickFormatFunction()" xaxistickformat="xAxisTickFormatFunction()" x2axistickformat="xAxisTickFormatFunction()" ' +
-                                'margin="{left:80,top:50,bottom:30,right:50}" margin2="{left:80,top:50,bottom:30,right:50}" interactive="true" showlegend="'+ legend +'" tooltips="'+ onPoint +'" ' +
-                                'color="colorFunction()"' + 
+                                'margin="{left:30,top:30,bottom:30,right:30}" margin2="{left:30,top:30,bottom:30,right:30}" interactive="true" tooltips="'+ onPoint +'" ' +
+                                'color="colorFunction()" ' + 
                                 'xaxisrotatelabels="-90" x2axisrotatelables="-90" interpolate="' + scope.$parent.lineChart.getInterpolation() +'">' + // perchè colorFunction ritorna null per adesso
-                                '<svg style="width: '+ scope.$parent.lineChart.getWidth() +'px; height: '+ scope.$parent.lineChart.getHeight() +'px;"></svg></nvd3-line-with-focus-chart>';
+                                '<svg style="width:'+ scope.$parent.lineChart.getWidth() +'px; height:'+ scope.$parent.lineChart.getHeight() +'px;"></svg></nvd3-line-with-focus-chart>';
                 } else {
                     linechart = '<div class="graphtitle">'+ scope.$parent.lineChart.getTitle() +'</div>' +
                                 '<nvd3-line-chart data="data" id="'+ id +'" ' +
                                 'yaxistickformat="yAxisTickFormatFunction()" xaxistickformat="xAxisTickFormatFunction()" ' +
-                                'margin="{left:80,top:50,bottom:30,right:50}" interactive="true" showlegend="'+ legend +'" tooltips="'+ onPoint +'" ' +
+                                'margin="{left:30,top:30,bottom:30,right:30}" interactive="true" tooltips="'+ onPoint +'" ' +
                                 'xaxisrotatelabels="-90" interpolate="' + scope.$parent.lineChart.getInterpolation() +'" ' +
                                 'color="colorFunction()" ' +
                                 'showxaxis="true" showyaxis="true">' +
-                                'svg style="width: '+ scope.$parent.lineChart.getWidth() +'px; height: '+ scope.$parent.lineChart.getHeight() +'px;"></svg></nvd3-line-chart>';
+                                '<svg style="width:'+ scope.$parent.lineChart.getWidth() +'px; height:'+ scope.$parent.lineChart.getHeight() +'px;"></svg></nvd3-line-chart>';
                 }
 
                 var compiled = $compile(linechart)(scope);
                 element.append(compiled);
 
+                scope.legend();
             };
 
             scope.xAxisTickFormatFunction = function(){
@@ -11601,16 +11603,15 @@ angular.module('norris-nrti')
                 var data = [];
                 var colorArray = [];
 
+                console.log('LINECHART setdata length ' + scope.$parent.lineChart.getFlowList().length);
                 for (var i=0; i<scope.$parent.lineChart.getFlowList().length; i++) {
                     var key = scope.$parent.lineChart.getFlowList()[i].flow.getName();
                     var area = scope.$parent.lineChart.getFlowList()[i].flow.getArea();
                     colorArray.push(scope.$parent.lineChart.getFlowList()[i].flow.getFlowColor());
                     var values = [];
-                    console.log('LINECHART setdata length ' + scope.$parent.lineChart.getFlowList().length);
                     for (var j=0; j<scope.$parent.lineChart.getFlowList()[i].flow.getData().length; j++) {
                         var value = [scope.$parent.lineChart.getFlowList()[i].flow.getData()[j].value[0], scope.$parent.lineChart.getFlowList()[i].flow.getData()[j].value[1]];
                         values.push(value);
-                        //values.splice(scope.$parent.barChart.getFlowList()[i].flow.getData()[j].value[0], 0, value);
                     }
                     data.push({ 'key': key, 'area' : area, 'values': values});
                     console.log('LINECHART data ' + data.toString());
@@ -11619,32 +11620,72 @@ angular.module('norris-nrti')
                 scope.colorArray = colorArray;
             };
 
-            /*scope.legend = function() {
-                var parent = element.children()[1];
+            function changePosition(chart,parent){
+                switch (scope.$parent.lineChart.getLegend().getPosition()) {
+                    case 'N':
+                        //chart.setAttribute('style', 'position: relative; bottom: -30px;');
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.lineChart.getHeight() + 'px; right: -' + (scope.$parent.lineChart.getWidth()/2) + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
+                        break;
+                    case 'E':
+                        //chart.setAttribute('style', 'position: relative; right: 0;');
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + (scope.$parent.lineChart.getHeight()/2) + 'px; right: -' + scope.$parent.lineChart.getWidth() + 'px;  background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
+                        break;
+                    case 'S':
+                        //chart.setAttribute('style', 'position: relative;');
+                        parent.setAttribute('style', 'float: left; position: relative; right: -' + (scope.$parent.lineChart.getWidth()/2) + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
+                        break;
+                    case 'W':
+                        //chart.setAttribute('style', 'position: relative; right: -100px;');
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + (scope.$parent.lineChart.getHeight()/2) + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
+                        break;
+                    case 'NE':
+                        //chart.setAttribute('style', 'position: relative; bottom: 0;');
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.lineChart.getHeight() + 'px; right: -' + scope.$parent.lineChart.getWidth() + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
+                        break;
+                    case 'NW':
+                        //chart.setAttribute('style', 'position: relative; bottom: -30px;');
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.lineChart.getHeight() + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
+                        break;
+                    case 'SE':
+                        //chart.setAttribute('style', 'position: relative;');
+                        parent.setAttribute('style', 'float: left; position: relative; right: -' + scope.$parent.lineChart.getWidth() + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
+                        break;
+                    case 'SW':
+                        //chart.setAttribute('style', 'height:'+ scope.$parent.lineChart.getHeight() +'px; width:'+ scope.$parent.lineChart.getWidth() +'px; position: relative; bottom: 0;');
+                        parent.setAttribute('style', 'float: left; position: relative; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
+                        break;
+                }
+            }
+
+            scope.legend = function() {
+                var chart = element.children()[1];
+                var parent = document.createElement('div');
+
+                changePosition(chart,parent);
+
                 while(parent.firstChild) {
                     parent.removeChild(parent.firstChild);
                 }
-                console.log('legend ' + JSON.stringify(scope.$parent.lineChart.getLegend()));
                 if (scope.$parent.lineChart.getLegend() !== null) {
-                    parent.setAttribute('style', 'background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + '; color: '+ scope.$parent.lineChart.getLegend().getFontColor());
-                    var ul = document.createElement('ul');
-                    ul.setAttribute('style', 'list-style-type: none');
-                    parent.appendChild(ul);
+                    //parent.setAttribute('style', 'background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + '; color: '+ scope.$parent.lineChart.getLegend().getFontColor());
+                    var div = document.createElement('div');
                     for (var i=0; i<scope.$parent.lineChart.getFlowList().length; i++) {
-                        var li = document.createElement('li');
-                        var square = document.createElement('div');
-                        square.setAttribute('style', 'height: 15px; width: 15px; float: left; background-color: ' + scope.$parent.lineChart.getFlowList()[i].flow.getTrace().strokeColor);
-                        var spanText = document.createElement('div');
-                        var text = document.createTextNode('\u00A0\u00A0\u00A0\u00A0' + scope.$parent.lineChart.getFlowList()[i].flow.getName());
-                        spanText.appendChild(text);
-                        li.appendChild(square);
-                        li.appendChild(spanText);
-                        console.log(ul);
-                        ul.appendChild(li);
+                        if (scope.$parent.lineChart.getFlowList()[i].flow.getData().length){
+                            var square = document.createElement('div');
+                            square.setAttribute('style', 'float: left; height: 15px; width: 15px; background-color: ' + scope.$parent.lineChart.getFlowList()[i].flow.getFlowColor() + ';');
+                            var spanText = document.createElement('div');
+                            var text = document.createTextNode('\u00A0\u00A0\u00A0\u00A0' + scope.$parent.lineChart.getFlowList()[i].flow.getName());
+                            spanText.setAttribute('style', 'color: '+ scope.$parent.lineChart.getLegend().getFontColor() + ';');
+                            spanText.appendChild(text);
+                            div.appendChild(square);
+                            div.appendChild(spanText);
+                            parent.appendChild(div);
+                        }
                     }
                 }
+                element.append(parent);
+            };
 
-            };*/
 
         }
     };
@@ -11666,7 +11707,7 @@ angular.module('norris-nrti')
 
 
 angular.module('norris-nrti')
-.directive('mapChart', function($compile){
+.directive('mapChart', function(){
 	return {
 		restrict: 'E',
 		//controller : 'MapChartController',
@@ -11675,7 +11716,7 @@ angular.module('norris-nrti')
             url: '@'
 		},
 		//bindToController: true,
-        template: '<div></div><div></div><div></div>',
+        template: '<div>{{title}}</div><div></div><div></div>',
     	link: function (scope, element, attrs) {
 
             attrs.$observe('url', function(value) {
@@ -11688,11 +11729,10 @@ angular.module('norris-nrti')
             scope.$parent.$watch('changedP', function(newValue, oldValue){
                 if (newValue !== oldValue) {
                     console.log('MAPCHART watch changedP');
-                    var parentTitle = element.children()[0];
-                    var text = document.createTextNode(scope.$parent.mapChart.getTitle());
-                    parentTitle.appendChild(text);
-                    var parentMap = element.children()[1];
-                    parentMap.setAttribute('style', 'height:'+ scope.$parent.mapChart.getHeight() +'px;width:'+ scope.$parent.mapChart.getWidth() +'px');
+                    scope.legend();
+                    scope.title = scope.$parent.mapChart.getTitle();
+                    //var parentMap = element.children()[1];
+                    //parentMap.setAttribute('style', 'height:'+ scope.$parent.mapChart.getHeight() +'px; width:'+ scope.$parent.mapChart.getWidth() +'px; position: relative;');
                     scope.init();
                 }
             }, true);
@@ -11704,12 +11744,12 @@ angular.module('norris-nrti')
                 }
             }, true);
 
-            scope.$parent.$watch('changedF', function(newValue, oldValue){
+            /*scope.$parent.$watch('changedF', function(newValue, oldValue){
                 if(newValue !== oldValue){
                     console.log('MAPCHART watch changedF');                    
                     scope.legend();
                 }
-            }, true);
+            }, true);*/
 
             var map;
             var markers = [];
@@ -11810,40 +11850,6 @@ angular.module('norris-nrti')
                     }
                 }
 
-                /*switch (scope.$parent.mapChart.getLegend().getPosition()) {
-                    case 'N':
-
-                        break;
-                    case 'E':
-
-                        break;
-                    case 'S':
-
-                        break;
-                    case 'W':
-                        
-                        break;
-                    case 'NE':
-                        var parent = element.children()[1];
-                        parent.setAttribute('style', 'position: relative; left: 0px;');
-                        console.log('parent ' + parent.toString());
-                        scope.legend();
-                        break;
-                    case 'NW':
-                        var parent0 = element.children()[0];
-                        var parent1 = element.children()[1];
-                        parent1.setAttribute('style', 'position: relative; bottom: 0px');
-                        parent1.setAttribute('style', 'position: relative; left: 0px; top: 0px');
-                        $compile(element.contents());
-                        scope.legend();
-                        break;
-                    case 'SE':
-                        
-                        break;
-                    case 'SW':
-                        break;
-                }*/
-                scope.legend();
                 
             };
 
@@ -11865,7 +11871,7 @@ angular.module('norris-nrti')
                         switch (scope.$parent.mapChart.getFlowList()[i].flow.getMarker().type) {
                             case 'shape':
                                 var type;
-                                switch (scope.$parent.mapChart.getFlowList()[i].flow.getMarker().shape) { //circle, triangle, square, diamond
+                                switch (scope.$parent.mapChart.getFlowList()[i].flow.getMarker().shape) { //circle, triangle, square, diamond, bus
                                     case 'circle':
                                         type = attrs.url + '/img/c.png';
                                         break;
@@ -11877,6 +11883,9 @@ angular.module('norris-nrti')
                                         break;
                                     case 'diamond':
                                         type = attrs.url + '/img/d.png';
+                                        break;
+                                    case 'bus':
+                                        type = attrs.url + '/img/b.png';
                                         break;
                                 }
                                 marker = new google.maps.Marker({
@@ -11904,12 +11913,11 @@ angular.module('norris-nrti')
                                 break;
                         }
                         if (scope.$parent.mapChart.getLegendOnPoint() === true){
-                            addLegendOnPoint(marker, scope.$parent.mapChart.getFlowList()[i].flow.getName());
+                            addLegendOnPoint(marker, scope.$parent.mapChart.getFlowList()[i].flow.getName() + ' ' + scope.$parent.mapChart.getFlowList()[i].flow.getData().markerID);
                         }
                         markers.push(marker);
 
                     }
-
 
                     
                 }
@@ -11931,29 +11939,66 @@ angular.module('norris-nrti')
                 
             };
 
+            function changePosition(map,parent){
+                switch (scope.$parent.mapChart.getLegend().getPosition()) {
+                    case 'N':
+                        map.setAttribute('style', 'height:'+ scope.$parent.mapChart.getHeight() +'px; width:'+ scope.$parent.mapChart.getWidth() +'px; position: relative; bottom: -30px;');
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.mapChart.getHeight() + 'px; right: -' + (scope.$parent.mapChart.getWidth()/2) + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
+                        break;
+                    case 'E':
+                        map.setAttribute('style', 'height:'+ scope.$parent.mapChart.getHeight() +'px; width:'+ scope.$parent.mapChart.getWidth() +'px; position: relative; right: 0;');
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + (scope.$parent.mapChart.getHeight()/2) + 'px; right: -' + scope.$parent.mapChart.getWidth() + 'px;  background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
+                        break;
+                    case 'S':
+                        map.setAttribute('style', 'height:'+ scope.$parent.mapChart.getHeight() +'px; width:'+ scope.$parent.mapChart.getWidth() +'px; position: relative;');
+                        parent.setAttribute('style', 'float: left; position: relative; right: -' + (scope.$parent.mapChart.getWidth()/2) + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
+                        break;
+                    case 'W':
+                        map.setAttribute('style', 'height:'+ scope.$parent.mapChart.getHeight() +'px; width:'+ scope.$parent.mapChart.getWidth() +'px; position: relative; right: -100px;');
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + (scope.$parent.mapChart.getHeight()/2) + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
+                        break;
+                    case 'NE':
+                        map.setAttribute('style', 'height:'+ scope.$parent.mapChart.getHeight() +'px; width:'+ scope.$parent.mapChart.getWidth() +'px; position: relative; bottom: 0;');
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.mapChart.getHeight() + 'px; right: -' + scope.$parent.mapChart.getWidth() + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
+                        break;
+                    case 'NW':
+                        map.setAttribute('style', 'height:'+ scope.$parent.mapChart.getHeight() +'px; width:'+ scope.$parent.mapChart.getWidth() +'px; position: relative; bottom: -30px;');
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.mapChart.getHeight() + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
+                        break;
+                    case 'SE':
+                        map.setAttribute('style', 'height:'+ scope.$parent.mapChart.getHeight() +'px; width:'+ scope.$parent.mapChart.getWidth() +'px; position: relative;');
+                        parent.setAttribute('style', 'float: left; position: relative; right: -' + scope.$parent.mapChart.getWidth() + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
+                        break;
+                    case 'SW':
+                        map.setAttribute('style', 'height:'+ scope.$parent.mapChart.getHeight() +'px; width:'+ scope.$parent.mapChart.getWidth() +'px; position: relative; bottom: 0;');
+                        parent.setAttribute('style', 'float: left; position: relative; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
+                        break;
+                }
+            }
+
             scope.legend = function() {
+                var map = element.children()[1];
                 var parent = element.children()[2];
+                
+                changePosition(map,parent);
+
                 while(parent.firstChild) {
-                    console.log('removeChild of legend');
                     parent.removeChild(parent.firstChild);
                 }
                 if (scope.$parent.mapChart.getLegend() !== null) {
-                    parent.setAttribute('style', 'background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + '; color: '+ scope.$parent.mapChart.getLegend().getFontColor());
-                    var ul = document.createElement('ul');
-                    ul.setAttribute('style', 'list-style-type: none');
-                    parent.appendChild(ul);
+                    //parent.setAttribute('style', 'background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + '; color: '+ scope.$parent.mapChart.getLegend().getFontColor());
+                    var div = document.createElement('div');
                     for (var i=0; i<scope.$parent.mapChart.getFlowList().length; i++) {
                         if (scope.$parent.mapChart.getFlowList()[i].flow.getData().length){
-                            var li = document.createElement('li');
                             var square = document.createElement('div');
-                            square.setAttribute('style', 'height: 15px; width: 15px; float: left; background-color: ' + scope.$parent.mapChart.getFlowList()[i].flow.getTrace().strokeColor);
+                            square.setAttribute('style', 'float: left; height: 15px; width: 15px; background-color: ' + scope.$parent.mapChart.getFlowList()[i].flow.getTrace().strokeColor);
                             var spanText = document.createElement('div');
                             var text = document.createTextNode('\u00A0\u00A0\u00A0\u00A0' + scope.$parent.mapChart.getFlowList()[i].flow.getName());
+                            spanText.setAttribute('style', 'color: '+ scope.$parent.mapChart.getLegend().getFontColor() + ';');
                             spanText.appendChild(text);
-                            spanText.setAttribute('style', 'float:left;');
-                            li.appendChild(square);
-                            li.appendChild(spanText);
-                            ul.appendChild(li);
+                            div.appendChild(square);
+                            div.appendChild(spanText);
+                            parent.appendChild(div);
                         }
                     }
                 }
@@ -11999,40 +12044,30 @@ angular.module('norris-nrti')
                 }
             });
 
-            scope.$parent.$watch('changedP', function(newValue, oldValue){
+            scope.$parent.$watch('changed', function(newValue, oldValue){
                 if (newValue !== oldValue) {
                     console.log('TABLE watch changedP');
                     scope.setData();
-                    scope.init();
+                    console.log('scope.data.length: ' +scope.data.length);
+                    if (scope.data.length > 0) {
+                        scope.init();
+                    }
                 }
             }, true);
 
-            scope.$parent.$watch('changedD', function(newValue, oldValue){
+            /*scope.$parent.$watch('changedD', function(newValue, oldValue){
                 if(newValue !== oldValue){
                     console.log('TABLE watch changedD');                    
                     scope.setData();
                     scope.init();
                 }
-            }, true);
+            }, true);*/
 
             scope.init = function(){
                 console.log('TABLE init');
             	element.empty();
-                var table = '<div ng-table-pagination="tableParams" template-url="\'pager.html\'"></div>';
-                table = table + '<div ng-table-pagination="tableParams">' +
-                                    '<ul class="pagination ng-table-pagination">' +
-                                        '<li ng-class="{\'disabled\': !page.active}" ng-repeat="page in pages" ng-switch="page.type">' +
-                                            '<a ng-switch-when="prev" ng-click="params.page(page.number)" href="">&laquo;</a>' +
-                                            '<a ng-switch-when="first" ng-click="params.page(page.number)" href=""><span ng-bind="page.number"></span></a>' +
-                                            '<a ng-switch-when="page" ng-click="params.page(page.number)" href=""><span ng-bind="page.number"></span></a>' +
-                                            '<a ng-switch-when="more" ng-click="params.page(page.number)" href="">&#8230;</a>' +
-                                            '<a ng-switch-when="last" ng-click="params.page(page.number)" href=""><span ng-bind="page.number"></span></a>' +
-                                            '<a ng-switch-when="next" ng-click="params.page(page.number)" href="">&raquo;</a>' +
-                                        '</li>' +
-                                    '</ul>' +
-                                '</div>';
 
-                table =  table + '<div class="graphtitle">'+ scope.$parent.table.getTitle() +'</div>';   
+                var table = '<div class="graphtitle">'+ scope.$parent.table.getTitle() +'</div>';   
 
                 table = table + '<div><table st-table="data" class="table table-striped"';
                     
@@ -12047,9 +12082,7 @@ angular.module('norris-nrti')
                 table = table + '<thead><tr>';
                 for (var i=0; i<scope.$parent.table.getHeaders().length; i++) {
                     table = table + '<th ';
-                    console.log('TABLE init sortable ' + scope.$parent.table.getSortable());
                     if (scope.$parent.table.getSortable()) {
-                        console.log('TABLE init headers[i] '+ scope.$parent.table.getHeaders()[i] +'column sort ' + scope.$parent.table.getSort().column);
                         if (scope.$parent.table.getHeaders()[i] === scope.$parent.table.getSort().column ) {
                             var ordinamento;
                             if (scope.$parent.table.getSort().ordering === 'ASC') {
@@ -12057,7 +12090,6 @@ angular.module('norris-nrti')
                             } else if (scope.$parent.table.getSort().ordering === 'DESC'){
                                 ordinamento = 'reverse';
                             } 
-                            console.log('TABLE init tipo sort ' + ordinamento);
                             table = table + 'st-sort-default="'+ ordinamento +'" st-sort="'+ scope.$parent.table.getHeaders()[i] +'"';
                         }
                     }
@@ -12068,11 +12100,9 @@ angular.module('norris-nrti')
                 table = table + '<tbody><tr ng-repeat="record in data">';
                 i = 0;
                 for (var j=0; j<scope.$parent.table.getHeaders().length; j++){
-                    console.log('TABLE costruzione righe');
-                    table = table + '<td >{{record.'+ scope.$parent.table.getHeaders()[j] +'}}</td>';
+                    table = table + '<td style="background-color:'+ scope.appearance[i][j].bg +'; color:'+ scope.appearance[i][j].text +';">{{record.'+ scope.$parent.table.getHeaders()[j] +'}}</td>';
                     i++;
                 }
-                //style="background-color:'+ scope.appearance[i][j].bg +'; color:'+ scope.appearance[i][j].text +';"
                 table = table + '</tr></tbody>';
 
                 table = table + '<tfoot><tr>' +
@@ -12083,9 +12113,7 @@ angular.module('norris-nrti')
 
                 table = table + '</table><div>';
                 
-                console.log(table);
             	var compiled = $compile(table)(scope);
-
                 element.append(compiled);
             };
 
@@ -12097,7 +12125,7 @@ angular.module('norris-nrti')
                 var data = [];
                 var appearance = [];
                 if (scope.$parent.table.getFlowList().length > 0) {
-                    console.log('getData.length ' + scope.$parent.table.getFlowList()[0].flow.getData().length + ' stringify table: ' + JSON.stringify(scope.$parent.table));
+                    console.log('TABLE getData.length ' + scope.$parent.table.getFlowList()[0].flow.getData().length);
                     for (var i=0; i<scope.$parent.table.getFlowList()[0].flow.getData().length; i++) {
                         var record = {};
                         var look = [];
@@ -12109,25 +12137,17 @@ angular.module('norris-nrti')
                         appearance.push(look);
                     }
                 }
-                console.log('appearance length ' +appearance.length);
+                console.log('data. length: ' + data.length);
+                /*console.log('appearance length ' + appearance.length);
                 for (var g=0; g<appearance.length; g++) {
                     console.log('appearance['+ g +'] length ' +appearance[g].length);
                     for (var f=0; f<appearance[g].length; f++) {
                         console.log('TABLE appearance: ' + appearance[g][f].bg + ' ' + appearance[g][f].text);
                     }
-                }
+                }*/
                 scope.data = data;
                 scope.appearance = appearance;
                 scope.itemsByPage = scope.$parent.table.getMaxItemsPage();
-                /*scope.tableParams = new ngTableParams({
-                    page: 1,            // show first page
-                    count: scope.$parent.table.getMaxItemsPage()         // count per page
-                }, {
-                    total: data.length, // length of data
-                    data: function ($defer, params) {
-                        $defer.resolve(data.slice((params.page() - 1) * params.count(), params.page() * params.count()));
-                    }
-                });*/
             };
         }
     };
@@ -12201,18 +12221,22 @@ angular.module('norris-nrti')
 						switch (graph.type) {
 							case 'BarChart' : 
 								div.setAttribute('ng-controller', 'BarChartController');
+								div.setAttribute('style', 'margin: 50px;');
 								div.innerHTML = '<bar-chart url="'+ graph.url +'"></bar-chart>';
 								break;
 							case 'LineChart' : 
 								div.setAttribute('ng-controller', 'LineChartController');
+								div.setAttribute('style', 'margin: 50px;');
 								div.innerHTML = '<line-chart url="'+ graph.url +'"></line-chart>';
 								break;
 							case 'MapChart' : 
 								div.setAttribute('ng-controller', 'MapChartController');
+								div.setAttribute('style', 'margin: 50px;');
 								div.innerHTML = '<map-chart url="'+ graph.url +'"></map-chart>';
 								break;
 							case 'Table' :
 								div.setAttribute('ng-controller', 'TableController');
+								div.setAttribute('style', 'margin: 50px;');
 								div.innerHTML = '<table-chart url="'+ graph.url +'"></table-chart>';
 								break;
 						}
@@ -12222,7 +12246,7 @@ angular.module('norris-nrti')
 					}
 				}
 
-				parent.setAttribute('style', 'height:'+ 900*scope.page.getGraphsPerCol() +'px; width:'+ 1300*scope.page.getGraphsPerRow() +'px;');
+				parent.setAttribute('style', 'height:'+ 1000*scope.page.getGraphsPerCol() +'px; width:'+ 1500*scope.page.getGraphsPerRow() +'px;');
 
 				var el = $compile(parent)(scope);
 				element.parent().append( el );
@@ -13105,6 +13129,11 @@ angular.module('norris-nrti')
                             });
                         }
                     }, (attrs.objectequality === undefined ? false : (attrs.objectequality === "true")));
+                    
+                    element.$on('$destroy', function() {
+                        console.log('NVD3: hulk, distruggeeeee!!');
+                        scope.$destroy();
+                    });
                 }
             };
         }])
@@ -13546,6 +13575,10 @@ angular.module('norris-nrti')
                             });
                         }
                     }, (attrs.objectequality === undefined ? false : (attrs.objectequality === "true")));
+                    
+                    /*element.on('$destroy' function() {
+                        scope.$destroy();
+                    });*/
                 }
             };
         }])
@@ -13924,6 +13957,10 @@ angular.module('norris-nrti')
                             });
                         }
                     }, (attrs.objectequality === undefined ? false : (attrs.objectequality === "true")));
+                    
+                    /*element.on('$destroy' function() {
+                        scope.$destroy();
+                    });*/
                 }
             };
         }])
@@ -14555,6 +14592,11 @@ angular.module('norris-nrti')
                             });
                         }
                     }, (attrs.objectequality === undefined ? false : (attrs.objectequality === "true")));
+                    
+                    element.$on('$destroy', function() {
+                        console.log('NVD3: hulk, distruggeeeee!!');
+                        scope.$destroy();
+                    });
                 }
             };
         }])
