@@ -225,8 +225,7 @@ var lineChart=page1.createLineChart({
     horizontalGrid: true,
     verticalGrid: true,
     legendOnPoint: true,
-    interpolation: 'monotone',
-    area: true
+    interpolation: 'monotone'
 });
 console.log('Grafico inserito: '+lineChart);
 
@@ -291,10 +290,11 @@ var repeatLine=function(){
         lineChart.updateProperties({xAxis: {scale:'logarithmic'}, legendOnPoint: false, legend:{position:'SE'}});
     }
     else if(index===8) {
-        lineChart.updateProperties({horizontalGrid: false, interpolation: 'step', area: false});   
+        lineChart.updateProperties({horizontalGrid: false, interpolation: 'step'});   
     }
     if (index2>=12){
         index2=0;
+        lineChart.updateProperties({viewFinder:true, verticalGrid:true, horizontalGrid:true, legendOnPoint: true, legend:{position:'NE'},interpolation:'linear'});
         lineChart.deleteAllFlows();
     }else{
         lineChartFlow.addRecord(lineData[index2-1]);
