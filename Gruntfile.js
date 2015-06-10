@@ -24,10 +24,6 @@ module.exports = function(grunt) {
             },
             jsComplete: {
                 src: [ // array of folders
-                    'frontend/app/norris-nrti.js',
-                    'frontend/app/Model/**/*.js',
-                    'frontend/app/Controller/**/*.js',
-                    'frontend/app/View/**/*.js',
                     'frontend/app/bower_components/sio-client/socket.io.js',
                     'frontend/app/bower_components/angular/angular.min.js',
                     'frontend/app/bower_components/jquery/dist/jquery.min.js',
@@ -35,6 +31,11 @@ module.exports = function(grunt) {
                     'frontend/app/bower_components/angular-route/angular-route.js',
                     'frontend/app/bower_components/d3/d3.min.js',
                     'frontend/app/bower_components/angular-smart-table/dist/smart-table.min.js',
+                    'frontend/app/norris-nrti.js',
+                    'frontend/app/Model/**/*.js',
+                    'frontend/app/Controller/**/*.js',
+                    'frontend/app/View/**/*.js',
+                    
                 ],
                 dest: 'frontend/app/dist/norris-nrti.complete.js'
             }
