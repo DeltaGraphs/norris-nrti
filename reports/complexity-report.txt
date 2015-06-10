@@ -1,8 +1,8 @@
 Mean per-function logical LOC: 10.701206345737598
 Mean per-function parameter count: 1.1462226141913645
 Mean per-function cyclomatic complexity: 4.351538565601066
-Mean per-function Halstead effort: 8252.468968268295
-Mean per-module maintainability index: 104.66247798333777
+Mean per-function Halstead effort: 8252.547014062617
+Mean per-module maintainability index: 104.66243378375542
 First-order density: 5.95703125%
 Change cost: 21.875%
 Core size: 37.5%
@@ -14,7 +14,7 @@ Core size: 37.5%
   Mean parameter count: 1.2727272727272727
   Cyclomatic complexity: 59
   Cyclomatic complexity density: 38.311688311688314%
-  Maintainability index: 99.36544494094177
+  Maintainability index: 99.36403055430678
   Dependency count: 0
 
   Function: <anonymous>.replaceAll
@@ -96,25 +96,25 @@ Core size: 37.5%
 
   Function: <anonymous>.isValidMarker
     Line No.: 122
-    Physical LOC: 19
-    Logical LOC: 16
+    Physical LOC: 17
+    Logical LOC: 14
     Parameter count: 1
-    Cyclomatic complexity: 7
-    Cyclomatic complexity density: 43.75%
-    Halstead difficulty: 2.7777777777777777
-    Halstead volume: 98.9912279734977
-    Halstead effort: 274.97563325971583
+    Cyclomatic complexity: 6
+    Cyclomatic complexity density: 42.857142857142854%
+    Halstead difficulty: 2.8125
+    Halstead volume: 85.11011351724513
+    Halstead effort: 239.37219426725193
 
   Function: <anonymous>.isValidMapMarker
-    Line No.: 141
-    Physical LOC: 31
-    Logical LOC: 20
+    Line No.: 139
+    Physical LOC: 33
+    Logical LOC: 22
     Parameter count: 1
-    Cyclomatic complexity: 11
-    Cyclomatic complexity density: 55.00000000000001%
-    Halstead difficulty: 16.25
-    Halstead volume: 539.7501707713545
-    Halstead effort: 8770.94027503451
+    Cyclomatic complexity: 12
+    Cyclomatic complexity density: 54.54545454545454%
+    Halstead difficulty: 15.785714285714285
+    Halstead volume: 559.6209125375374
+    Halstead effort: 8834.015833628268
 
   Function: <anonymous>.isValidInterpolation
     Line No.: 172

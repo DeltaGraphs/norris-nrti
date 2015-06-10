@@ -110,12 +110,12 @@
                             "\"triangle\"",
                             "\"circle\"",
                             "\"diamond\"",
-                            "\"bus\"",
                             "isValidMapMarker",
                             "\"object\"",
                             "type",
                             "\"shape\"",
                             "shape",
+                            "\"bus\"",
                             "\"icon\"",
                             "icon",
                             "\"string\"",
@@ -499,14 +499,14 @@
                 {
                     "name": "<anonymous>.isValidMarker",
                     "sloc": {
-                        "logical": 16,
-                        "physical": 19
+                        "logical": 14,
+                        "physical": 17
                     },
-                    "cyclomatic": 7,
+                    "cyclomatic": 6,
                     "halstead": {
                         "operators": {
                             "distinct": 5,
-                            "total": 16,
+                            "total": 14,
                             "identifiers": [
                                 "switch",
                                 "case",
@@ -516,8 +516,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 9,
-                            "total": 10,
+                            "distinct": 8,
+                            "total": 9,
                             "identifiers": [
                                 "marker",
                                 "\"none\"",
@@ -525,34 +525,33 @@
                                 "\"triangle\"",
                                 "\"circle\"",
                                 "\"diamond\"",
-                                "\"bus\"",
                                 false,
                                 true
                             ]
                         },
-                        "length": 26,
-                        "vocabulary": 14,
-                        "difficulty": 2.7777777777777777,
-                        "volume": 98.9912279734977,
-                        "effort": 274.97563325971583,
-                        "bugs": 0.0329970759911659,
-                        "time": 15.276424069984213
+                        "length": 23,
+                        "vocabulary": 13,
+                        "difficulty": 2.8125,
+                        "volume": 85.11011351724513,
+                        "effort": 239.37219426725193,
+                        "bugs": 0.028370037839081708,
+                        "time": 13.298455237069552
                     },
                     "params": 1,
                     "line": 122,
-                    "cyclomaticDensity": 43.75
+                    "cyclomaticDensity": 42.857142857142854
                 },
                 {
                     "name": "<anonymous>.isValidMapMarker",
                     "sloc": {
-                        "logical": 20,
-                        "physical": 31
+                        "logical": 22,
+                        "physical": 33
                     },
-                    "cyclomatic": 11,
+                    "cyclomatic": 12,
                     "halstead": {
                         "operators": {
                             "distinct": 13,
-                            "total": 57,
+                            "total": 59,
                             "identifiers": [
                                 "if",
                                 "||",
@@ -570,8 +569,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 20,
-                            "total": 50,
+                            "distinct": 21,
+                            "total": 51,
                             "identifiers": [
                                 "marker",
                                 "undefined",
@@ -583,6 +582,7 @@
                                 "\"triangle\"",
                                 "\"circle\"",
                                 "\"diamond\"",
+                                "\"bus\"",
                                 false,
                                 true,
                                 "\"icon\"",
@@ -595,17 +595,17 @@
                                 "isHEX"
                             ]
                         },
-                        "length": 107,
-                        "vocabulary": 33,
-                        "difficulty": 16.25,
-                        "volume": 539.7501707713545,
-                        "effort": 8770.94027503451,
-                        "bugs": 0.17991672359045152,
-                        "time": 487.2744597241395
+                        "length": 110,
+                        "vocabulary": 34,
+                        "difficulty": 15.785714285714285,
+                        "volume": 559.6209125375374,
+                        "effort": 8834.015833628268,
+                        "bugs": 0.18654030417917913,
+                        "time": 490.77865742379265
                     },
                     "params": 1,
-                    "line": 141,
-                    "cyclomaticDensity": 55.00000000000001
+                    "line": 139,
+                    "cyclomaticDensity": 54.54545454545454
                 },
                 {
                     "name": "<anonymous>.isValidInterpolation",
@@ -725,10 +725,10 @@
                 }
             ],
             "dependencies": [],
-            "maintainability": 99.36544494094177,
+            "maintainability": 99.36403055430678,
             "loc": 12.909090909090908,
             "cyclomatic": 6.2727272727272725,
-            "effort": 6037.645895499291,
+            "effort": 6040.143360917591,
             "params": 1.2727272727272727,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/helpers/functionHelper.js"
         },
@@ -18178,7 +18178,7 @@
     "coreSize": 37.5,
     "loc": 10.701206345737598,
     "cyclomatic": 4.351538565601066,
-    "effort": 8252.468968268295,
+    "effort": 8252.547014062617,
     "params": 1.1462226141913645,
-    "maintainability": 104.66247798333777
+    "maintainability": 104.66243378375542
 }
