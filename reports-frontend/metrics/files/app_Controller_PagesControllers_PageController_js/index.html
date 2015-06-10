@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">66.84</p>
+      <p class="stat">63.89</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">78</p>
+      <p class="stat">90</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">23.07</p>
+      <p class="stat">28.58</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.78</p>
+      <p class="stat">0.95</p>
     </div>
   </div>
 </div>
@@ -139,7 +139,8 @@ angular.module(&#039;norris-nrti&#039;)
 			$scope.page.updateParameters(info.properties);
 			$scope.page.initializeData(info.data);
 			$scope.graphs = matrix($scope.page.getGraphsList());
-
+			console.log($scope.page.getGraphsList().toString());
+			console.log($scope.graphs.toString());
 		});
 		socket.on(&#039;updatePageProp&#039;, function(info){
 			$scope.page.updateParameters(info);
@@ -153,10 +154,21 @@ angular.module(&#039;norris-nrti&#039;)
 	function matrix(list) {
 		var array = [];
 		var count = 0;
-		for (var i=0;count&lt;list.length &amp;&amp; i&lt;$scope.page.getGraphsPerCol(); i++) {
+		console.log(&#039;list.length &#039; + list.length + &#039; $scope.page.getGraphsPerCol() &#039; + $scope.page.getGraphsPerCol());
+		var graphsPerCol = $scope.page.getGraphsPerCol();
+		var graphsPerRow = $scope.page.getGraphsPerRow();
+		if (graphsPerCol === -1){
+			graphsPerRow = 1;
+			graphsPerCol = list.length;
+		}
+		if (graphsPerRow === -1){
+			graphsPerRow = list.length;
+			graphsPerCol = 1;
+		}
+		for (var i=0;count&lt;list.length &amp;&amp; i&lt;graphsPerCol; i++) {
 			array[i] = [];
-			for (var j=0;count&lt;list.length &amp;&amp; j&lt;$scope.page.getGraphsPerRow(); j++) {
-				array[i].push(list[$scope.page.getGraphsPerRow()*i+j]);
+			for (var j=0;count&lt;list.length &amp;&amp; j&lt;graphsPerRow; j++) {
+				array[i].push(list[graphsPerRow*i+j]);
 				count++;
 			}
 		}
