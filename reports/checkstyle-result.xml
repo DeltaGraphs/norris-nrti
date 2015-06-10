@@ -1,3 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <checkstyle version="4.3">
+	<file name="lib/businessTier/flow/barChartFlow.js">
+		<error line="149" column="2" severity="warning" message="Missing semicolon." source="jshint.W033" />
+	</file>
+	<file name="lib/businessTier/flow/lineChartFlow.js">
+		<error line="145" column="2" severity="warning" message="Missing semicolon." source="jshint.W033" />
+	</file>
+	<file name="lib/businessTier/flow/mapChartFlow.js">
+		<error line="175" column="2" severity="warning" message="Missing semicolon." source="jshint.W033" />
+	</file>
+	<file name="lib/businessTier/flow/tableFlow.js">
+		<error line="151" column="2" severity="warning" message="Missing semicolon." source="jshint.W033" />
+	</file>
 </checkstyle>
