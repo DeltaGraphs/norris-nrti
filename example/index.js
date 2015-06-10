@@ -291,14 +291,15 @@ var repeatLine=function(){
         lineChart.updateProperties({viewFinder: false, verticalGrid: false});
     }*/
     if(index===6) {
-        lineChart.updateProperties({xAxis: {scale:'logarithmic'}, legendOnPoint: false, viewFinder: false, verticalGrid: false, legend:{position:'SE'}});
+        lineChart.updateProperties({xAxis: {scale:'logarithmic'}, legendOnPoint: false, verticalGrid: false, legend:{position:'SE'}});
     }
     else if(index===8) {
         lineChart.updateProperties({horizontalGrid: false, interpolation: 'step'});   
     }
     if (index2>=12){
         index2=0;
-        lineChart.updateProperties({viewFinder:true, verticalGrid:true, horizontalGrid:true, legendOnPoint: true, legend:{position:'NE'},interpolation:'linear'});
+        var vF = lineChart.getProperties().viewFinder;
+        lineChart.updateProperties({viewFinder:!vF, verticalGrid:true, horizontalGrid:true, legendOnPoint: true, legend:{position:'NE'},interpolation:'linear'});
         lineChart.deleteAllFlows();
     }else{
         lineChartFlow.addRecord(lineData[index2-1]);
