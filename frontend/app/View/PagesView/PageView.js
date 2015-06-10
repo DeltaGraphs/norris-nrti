@@ -67,18 +67,22 @@ angular.module('norris-nrti')
 						switch (graph.type) {
 							case 'BarChart' : 
 								div.setAttribute('ng-controller', 'BarChartController');
+								div.setAttribute('style', 'margin-left: 50px;');
 								div.innerHTML = '<bar-chart url="'+ graph.url +'"></bar-chart>';
 								break;
 							case 'LineChart' : 
 								div.setAttribute('ng-controller', 'LineChartController');
+								div.setAttribute('style', 'margin-left: 50px;');
 								div.innerHTML = '<line-chart url="'+ graph.url +'"></line-chart>';
 								break;
 							case 'MapChart' : 
 								div.setAttribute('ng-controller', 'MapChartController');
+								div.setAttribute('style', 'margin-left: 50px;');
 								div.innerHTML = '<map-chart url="'+ graph.url +'"></map-chart>';
 								break;
 							case 'Table' :
 								div.setAttribute('ng-controller', 'TableController');
+								div.setAttribute('style', 'margin-left: 50px;');
 								div.innerHTML = '<table-chart url="'+ graph.url +'"></table-chart>';
 								break;
 						}
@@ -88,7 +92,7 @@ angular.module('norris-nrti')
 					}
 				}
 
-				parent.setAttribute('style', 'height:'+ 900*scope.page.getGraphsPerCol() +'px; width:'+ 1300*scope.page.getGraphsPerRow() +'px;');
+				parent.setAttribute('style', 'height:'+ 1000*scope.page.getGraphsPerCol() +'px; width:'+ 1500*scope.page.getGraphsPerRow() +'px;');
 
 				var el = $compile(parent)(scope);
 				element.parent().append( el );

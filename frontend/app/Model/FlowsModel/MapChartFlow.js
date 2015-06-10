@@ -110,7 +110,8 @@ angular.module('norris-nrti')
 	MapChartFlow.prototype.inPlaceUpdate = function(newData) {
 		for (var i = 0; i<this._data.length; i++){
             if (this._data[i].norrisRecordID === newData.norrisRecordID){
-                this._data[i] = { 'norrisRecordID' : newData.norrisRecordID, 'value' : newData.value };
+            	this._data[i] = newData;
+                //this._data[i] = { 'norrisRecordID' : newData.norrisRecordID, 'value' : newData.value };
             }
         }
     };
