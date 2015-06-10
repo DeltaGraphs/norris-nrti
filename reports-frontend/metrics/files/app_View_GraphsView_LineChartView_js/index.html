@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">67.89</p>
+      <p class="stat">62.76</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">173</p>
+      <p class="stat">214</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">28.71</p>
+      <p class="stat">46.99</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">1.51</p>
+      <p class="stat">2.81</p>
     </div>
   </div>
 </div>
@@ -139,12 +139,12 @@ angular.module(&#039;norris-nrti&#039;)
                 }
             }, true);
 
-            scope.$parent.$watch(&#039;changedF&#039;, function(newValue, oldValue){
+            /*scope.$parent.$watch(&#039;changedF&#039;, function(newValue, oldValue){
                 if(newValue !== oldValue){
                     console.log(&#039;LINECHART watch changedF&#039;);                    
                     //scope.legend();
                 }
-            }, true);
+            }, true);*/
 
             scope.init = function(){
                 console.log(&#039;LINECHART init&#039;);
@@ -170,7 +170,7 @@ angular.module(&#039;norris-nrti&#039;)
                     linechart = &#039;&lt;div class=&quot;graphtitle&quot;&gt;&#039;+ scope.$parent.lineChart.getTitle() +&#039;&lt;/div&gt;&#039; +
                                 &#039;&lt;nvd3-line-with-focus-chart data=&quot;data&quot; nodata=&quot; &quot; id=&quot;&#039;+ id +&#039;&quot; &#039; +
                                 &#039;yaxistickformat=&quot;yAxisTickFormatFunction()&quot; xaxistickformat=&quot;xAxisTickFormatFunction()&quot; x2axistickformat=&quot;xAxisTickFormatFunction()&quot; &#039; +
-                                &#039;margin=&quot;{left:30,top:30,bottom:30,right:30}&quot; margin2=&quot;{left:30,top:30,bottom:30,right:30}&quot; interactive=&quot;true&quot; showlegend=&quot;&#039;+ legend +&#039;&quot; tooltips=&quot;&#039;+ onPoint +&#039;&quot; &#039; +
+                                &#039;margin=&quot;{left:30,top:30,bottom:30,right:30}&quot; margin2=&quot;{left:30,top:30,bottom:30,right:30}&quot; interactive=&quot;true&quot; tooltips=&quot;&#039;+ onPoint +&#039;&quot; &#039; +
                                 &#039;color=&quot;colorFunction()&quot; &#039; + 
                                 &#039;xaxisrotatelabels=&quot;-90&quot; x2axisrotatelables=&quot;-90&quot; interpolate=&quot;&#039; + scope.$parent.lineChart.getInterpolation() +&#039;&quot;&gt;&#039; + // perchè colorFunction ritorna null per adesso
                                 &#039;&lt;svg style=&quot;width:&#039;+ scope.$parent.lineChart.getWidth() +&#039;px; height:&#039;+ scope.$parent.lineChart.getHeight() +&#039;px;&quot;&gt;&lt;/svg&gt;&lt;/nvd3-line-with-focus-chart&gt;&#039;;
@@ -178,7 +178,7 @@ angular.module(&#039;norris-nrti&#039;)
                     linechart = &#039;&lt;div class=&quot;graphtitle&quot;&gt;&#039;+ scope.$parent.lineChart.getTitle() +&#039;&lt;/div&gt;&#039; +
                                 &#039;&lt;nvd3-line-chart data=&quot;data&quot; id=&quot;&#039;+ id +&#039;&quot; &#039; +
                                 &#039;yaxistickformat=&quot;yAxisTickFormatFunction()&quot; xaxistickformat=&quot;xAxisTickFormatFunction()&quot; &#039; +
-                                &#039;margin=&quot;{left:30,top:30,bottom:30,right:30}&quot; interactive=&quot;true&quot; showlegend=&quot;&#039;+ legend +&#039;&quot; tooltips=&quot;&#039;+ onPoint +&#039;&quot; &#039; +
+                                &#039;margin=&quot;{left:30,top:30,bottom:30,right:30}&quot; interactive=&quot;true&quot; tooltips=&quot;&#039;+ onPoint +&#039;&quot; &#039; +
                                 &#039;xaxisrotatelabels=&quot;-90&quot; interpolate=&quot;&#039; + scope.$parent.lineChart.getInterpolation() +&#039;&quot; &#039; +
                                 &#039;color=&quot;colorFunction()&quot; &#039; +
                                 &#039;showxaxis=&quot;true&quot; showyaxis=&quot;true&quot;&gt;&#039; +
@@ -188,6 +188,7 @@ angular.module(&#039;norris-nrti&#039;)
                 var compiled = $compile(linechart)(scope);
                 element.append(compiled);
 
+                scope.legend();
             };
 
             scope.xAxisTickFormatFunction = function(){
@@ -233,32 +234,72 @@ angular.module(&#039;norris-nrti&#039;)
                 scope.colorArray = colorArray;
             };
 
-            /*scope.legend = function() {
-                var parent = element.children()[1];
+            function changePosition(chart,parent){
+                switch (scope.$parent.lineChart.getLegend().getPosition()) {
+                    case &#039;N&#039;:
+                        //chart.setAttribute(&#039;style&#039;, &#039;position: relative; bottom: -30px;&#039;);
+                        parent.setAttribute(&#039;style&#039;, &#039;float: left; position: relative; top: -&#039; + scope.$parent.lineChart.getHeight() + &#039;px; right: -&#039; + (scope.$parent.lineChart.getWidth()/2) + &#039;px; background-color: &#039; + scope.$parent.lineChart.getLegend().getBackgroundColor() + &#039;;&#039;);
+                        break;
+                    case &#039;E&#039;:
+                        //chart.setAttribute(&#039;style&#039;, &#039;position: relative; right: 0;&#039;);
+                        parent.setAttribute(&#039;style&#039;, &#039;float: left; position: relative; top: -&#039; + (scope.$parent.lineChart.getHeight()/2) + &#039;px; right: -&#039; + scope.$parent.lineChart.getWidth() + &#039;px;  background-color: &#039; + scope.$parent.lineChart.getLegend().getBackgroundColor() + &#039;;&#039;);
+                        break;
+                    case &#039;S&#039;:
+                        //chart.setAttribute(&#039;style&#039;, &#039;position: relative;&#039;);
+                        parent.setAttribute(&#039;style&#039;, &#039;float: left; position: relative; right: -&#039; + (scope.$parent.lineChart.getWidth()/2) + &#039;px; background-color: &#039; + scope.$parent.lineChart.getLegend().getBackgroundColor() + &#039;;&#039;);
+                        break;
+                    case &#039;W&#039;:
+                        //chart.setAttribute(&#039;style&#039;, &#039;position: relative; right: -100px;&#039;);
+                        parent.setAttribute(&#039;style&#039;, &#039;float: left; position: relative; top: -&#039; + (scope.$parent.lineChart.getHeight()/2) + &#039;px; background-color: &#039; + scope.$parent.lineChart.getLegend().getBackgroundColor() + &#039;;&#039;);
+                        break;
+                    case &#039;NE&#039;:
+                        //chart.setAttribute(&#039;style&#039;, &#039;position: relative; bottom: 0;&#039;);
+                        parent.setAttribute(&#039;style&#039;, &#039;float: left; position: relative; top: -&#039; + scope.$parent.lineChart.getHeight() + &#039;px; right: -&#039; + scope.$parent.lineChart.getWidth() + &#039;px; background-color: &#039; + scope.$parent.lineChart.getLegend().getBackgroundColor() + &#039;;&#039;);
+                        break;
+                    case &#039;NW&#039;:
+                        //chart.setAttribute(&#039;style&#039;, &#039;position: relative; bottom: -30px;&#039;);
+                        parent.setAttribute(&#039;style&#039;, &#039;float: left; position: relative; top: -&#039; + scope.$parent.lineChart.getHeight() + &#039;px; background-color: &#039; + scope.$parent.lineChart.getLegend().getBackgroundColor() + &#039;;&#039;);
+                        break;
+                    case &#039;SE&#039;:
+                        //chart.setAttribute(&#039;style&#039;, &#039;position: relative;&#039;);
+                        parent.setAttribute(&#039;style&#039;, &#039;float: left; position: relative; right: -&#039; + scope.$parent.lineChart.getWidth() + &#039;px; background-color: &#039; + scope.$parent.lineChart.getLegend().getBackgroundColor() + &#039;;&#039;);
+                        break;
+                    case &#039;SW&#039;:
+                        //chart.setAttribute(&#039;style&#039;, &#039;height:&#039;+ scope.$parent.lineChart.getHeight() +&#039;px; width:&#039;+ scope.$parent.lineChart.getWidth() +&#039;px; position: relative; bottom: 0;&#039;);
+                        parent.setAttribute(&#039;style&#039;, &#039;float: left; position: relative; background-color: &#039; + scope.$parent.lineChart.getLegend().getBackgroundColor() + &#039;;&#039;);
+                        break;
+                }
+            }
+
+            scope.legend = function() {
+                var chart = element.children()[1];
+                var parent = document.createElement(&#039;div&#039;);
+
+                changePosition(chart,parent);
+
                 while(parent.firstChild) {
                     parent.removeChild(parent.firstChild);
                 }
-                console.log(&#039;legend &#039; + JSON.stringify(scope.$parent.lineChart.getLegend()));
                 if (scope.$parent.lineChart.getLegend() !== null) {
-                    parent.setAttribute(&#039;style&#039;, &#039;background-color: &#039; + scope.$parent.lineChart.getLegend().getBackgroundColor() + &#039;; color: &#039;+ scope.$parent.lineChart.getLegend().getFontColor());
-                    var ul = document.createElement(&#039;ul&#039;);
-                    ul.setAttribute(&#039;style&#039;, &#039;list-style-type: none&#039;);
-                    parent.appendChild(ul);
+                    //parent.setAttribute(&#039;style&#039;, &#039;background-color: &#039; + scope.$parent.lineChart.getLegend().getBackgroundColor() + &#039;; color: &#039;+ scope.$parent.lineChart.getLegend().getFontColor());
+                    var div = document.createElement(&#039;div&#039;);
                     for (var i=0; i&lt;scope.$parent.lineChart.getFlowList().length; i++) {
-                        var li = document.createElement(&#039;li&#039;);
-                        var square = document.createElement(&#039;div&#039;);
-                        square.setAttribute(&#039;style&#039;, &#039;height: 15px; width: 15px; float: left; background-color: &#039; + scope.$parent.lineChart.getFlowList()[i].flow.getTrace().strokeColor);
-                        var spanText = document.createElement(&#039;div&#039;);
-                        var text = document.createTextNode(&#039;\u00A0\u00A0\u00A0\u00A0&#039; + scope.$parent.lineChart.getFlowList()[i].flow.getName());
-                        spanText.appendChild(text);
-                        li.appendChild(square);
-                        li.appendChild(spanText);
-                        console.log(ul);
-                        ul.appendChild(li);
+                        if (scope.$parent.lineChart.getFlowList()[i].flow.getData().length){
+                            var square = document.createElement(&#039;div&#039;);
+                            square.setAttribute(&#039;style&#039;, &#039;float: left; height: 15px; width: 15px; background-color: &#039; + scope.$parent.lineChart.getFlowList()[i].flow.getFlowColor() + &#039;;&#039;);
+                            var spanText = document.createElement(&#039;div&#039;);
+                            var text = document.createTextNode(&#039;\u00A0\u00A0\u00A0\u00A0&#039; + scope.$parent.lineChart.getFlowList()[i].flow.getName());
+                            spanText.setAttribute(&#039;style&#039;, &#039;color: &#039;+ scope.$parent.lineChart.getLegend().getFontColor() + &#039;;&#039;);
+                            spanText.appendChild(text);
+                            div.appendChild(square);
+                            div.appendChild(spanText);
+                            parent.appendChild(div);
+                        }
                     }
                 }
+                element.append(parent);
+            };
 
-            };*/
 
         }
     };

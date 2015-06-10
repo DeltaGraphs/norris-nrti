@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">65.52</p>
+      <p class="stat">61.86</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">222</p>
+      <p class="stat">237</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">35.46</p>
+      <p class="stat">54.57</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">1.75</p>
+      <p class="stat">3.13</p>
     </div>
   </div>
 </div>
@@ -117,6 +117,7 @@ angular.module(&#039;norris-nrti&#039;)
             url: &#039;@&#039;
 		},
 		//bindToController: true,
+        //template: &#039;&lt;div&gt;&lt;/div&gt;&#039;,
         //template: &#039;&lt;nvd3-multi-bar-chart data=&quot;exampleData&quot; id=&quot;exampleId&quot; width=&quot;1000&quot; height=&quot;600&quot; showxaxis=&quot;true&quot; showyaxis=&quot;true&quot; rotatelabels=&quot;90&quot;&gt;&lt;svg&gt;&lt;/svg&gt;&lt;/nvd3-multi-bar-chart&gt;&#039;,
         link: function(scope, element, attrs){
             
@@ -130,6 +131,7 @@ angular.module(&#039;norris-nrti&#039;)
             scope.$parent.$watch(&#039;changedP&#039;, function(newValue, oldValue){
                 if (newValue !== oldValue) {
                     console.log(&#039;BARCHART watch changedP&#039;);
+                    //scope.legend();
                     scope.init();
                 }
             }, true);
@@ -173,20 +175,20 @@ angular.module(&#039;norris-nrti&#039;)
                     onPoint = false;
                 }
                 if (scope.$parent.barChart.getBarOrientation() === &#039;V&#039;){
-                    barchart = &#039;&lt;div&gt;&lt;div class=&quot;graphtitle&quot;&gt;&#039;+ scope.$parent.barChart.getTitle() +&#039;&lt;/div&gt;&#039; +
+                    barchart = &#039;&lt;div style=&quot;position: relative;&quot;&gt;&lt;div class=&quot;graphtitle&quot;&gt;&#039;+ scope.$parent.barChart.getTitle() +&#039;&lt;/div&gt;&#039; +
                                 &#039;&lt;nvd3-multi-bar-chart data=&quot;data&quot; nodata=&quot; &quot; id=&quot;&#039;+ id +&#039;&quot; &#039; +
                                 &#039;xaxisticksformat=&quot;xAxisTickFormatFunction()&quot; showxaxis=&quot;true&quot; showyaxis=&quot;true&quot; &#039; +
-                                &#039;rotatelabels=&quot;-90&quot; interactive=&quot;true&quot; tooltips=&quot;&#039;+ onPoint +&#039;&quot; showlegend=&quot;&#039;+ legend +&#039;&quot; &#039; +
+                                &#039;rotatelabels=&quot;-90&quot; interactive=&quot;true&quot; tooltips=&quot;&#039;+ onPoint +&#039;&quot; &#039; +
                                 &#039;xaxislabel=&quot;&#039;+ scope.$parent.barChart.getX().getName() +&#039;&quot; &#039; +
                                 &#039;showcontrols=&quot;&#039;+ control +&#039;&quot; color=&quot;colorFunction()&quot; &#039; +
                                 &#039;width=&quot;&#039;+ scope.$parent.barChart.getWidth() +&#039;&quot; height=&quot;&#039;+ scope.$parent.barChart.getHeight() +&#039;&quot;&gt;&#039; +
                                 &#039;&lt;svg&gt;&lt;/svg&gt;&lt;/nvd3-multi-bar-chart&gt;&lt;/div&gt;&#039;;
                     //barchart = barchart + &#039;&lt;svg width=&quot;&#039;+ scope.$parent.barChart.getWidth() +&#039;&quot; height=&quot;&#039;+ scope.$parent.barChart.getHeight() +&#039;&quot;&gt;&lt;/svg&gt;&lt;/nvd3-multi-bar-chart&gt;&#039;;
                 }else if(scope.$parent.barChart.getBarOrientation() === &#039;H&#039;){
-                    barchart = &#039;&lt;div&gt;&lt;div class=&quot;graphtitle&quot;&gt;&#039;+ scope.$parent.barChart.getTitle() +&#039;&lt;/div&gt;&#039; +
+                    barchart = &#039;&lt;div style=&quot;position: relative;&quot;&gt;&lt;div class=&quot;graphtitle&quot;&gt;&#039;+ scope.$parent.barChart.getTitle() +&#039;&lt;/div&gt;&#039; +
                                 &#039;&lt;nvd3-multi-bar-horizontal-chart data=&quot;data&quot; nodata=&quot; &quot; id=&quot;&#039;+ id +&#039;&quot; &#039; +
                                 &#039;xaxisticksformat=&quot;xAxisTickFormatFunction()&quot; yaxistickformat=&quot;yAxisTickFormatFunction()&quot; showxaxis=&quot;true&quot; showyaxis=&quot;true&quot; &#039; +
-                                &#039;rotatelabels=&quot;-90&quot; interactive=&quot;true&quot; tooltips=&quot;&#039;+ onPoint +&#039;&quot; showlegend=&quot;&#039;+ legend +&#039;&quot; &#039; +
+                                &#039;rotatelabels=&quot;-90&quot; interactive=&quot;true&quot; tooltips=&quot;&#039;+ onPoint +&#039;&quot; &#039; +
                                 &#039;xaxislabel=&quot;&#039;+ scope.$parent.barChart.getX().getName() +&#039;&quot; &#039; +
                                 &#039;showcontrols=&quot;&#039;+ control +&#039;&quot; color=&quot;colorFunction()&quot; &#039; +
                                 &#039;width=&quot;&#039;+ scope.$parent.barChart.getWidth() +&#039;&quot; height=&quot;&#039;+ scope.$parent.barChart.getHeight() +&#039;&quot;&gt;&#039; +
@@ -194,35 +196,9 @@ angular.module(&#039;norris-nrti&#039;)
                     //barchart = barchart + &#039;&lt;svg width=&quot;&#039;+ scope.$parent.barChart.getWidth() +&#039;&quot; height=&quot;&#039;+ scope.$parent.barChart.getHeight() +&#039;&quot;&gt;&lt;/svg&gt;&lt;/nvd3-multi-bar-horizontal-chart&gt;&#039;;
                 }
                 
-                /*switch (scope.$parent.barChart.getLegend().getPosition()) {
-                    case &#039;N&#039;:
-
-                        break;
-                    case &#039;E&#039;:
-
-                        break;
-                    case &#039;S&#039;:
-
-                        break;
-                    case &#039;W&#039;:
-                        
-                        break;
-                    case &#039;NE&#039;:
-                        
-                        break;
-                    case &#039;NW&#039;:
-                        
-                        break;
-                    case &#039;SE&#039;:
-                        
-                        break;
-                    case &#039;SW&#039;:
-                        break;
-                }*/
-
                 var compiled = $compile(barchart)(scope);
                 element.append(compiled);
-                
+                scope.legend();
             };
             
             scope.colorArray = [];
@@ -282,32 +258,71 @@ angular.module(&#039;norris-nrti&#039;)
 
             };
 
-            /*scope.legend = function() {
-                var parent = element.children()[1];
+            function changePosition(chart,parent){
+                switch (scope.$parent.barChart.getLegend().getPosition()) {
+                    case &#039;N&#039;:
+                        //chart.setAttribute(&#039;style&#039;, &#039;position: relative; bottom: -30px;&#039;);
+                        parent.setAttribute(&#039;style&#039;, &#039;float: left; position: relative; top: -&#039; + scope.$parent.barChart.getHeight() + &#039;px; right: -&#039; + (scope.$parent.barChart.getWidth()/2) + &#039;px; background-color: &#039; + scope.$parent.barChart.getLegend().getBackgroundColor() + &#039;;&#039;);
+                        break;
+                    case &#039;E&#039;:
+                        //chart.setAttribute(&#039;style&#039;, &#039;position: relative; right: 0;&#039;);
+                        parent.setAttribute(&#039;style&#039;, &#039;float: left; position: relative; top: -&#039; + (scope.$parent.barChart.getHeight()/2) + &#039;px; right: -&#039; + scope.$parent.barChart.getWidth() + &#039;px;  background-color: &#039; + scope.$parent.barChart.getLegend().getBackgroundColor() + &#039;;&#039;);
+                        break;
+                    case &#039;S&#039;:
+                        //chart.setAttribute(&#039;style&#039;, &#039;position: relative;&#039;);
+                        parent.setAttribute(&#039;style&#039;, &#039;float: left; position: relative; right: -&#039; + (scope.$parent.barChart.getWidth()/2) + &#039;px; background-color: &#039; + scope.$parent.barChart.getLegend().getBackgroundColor() + &#039;;&#039;);
+                        break;
+                    case &#039;W&#039;:
+                        //chart.setAttribute(&#039;style&#039;, &#039;position: relative; right: -100px;&#039;);
+                        parent.setAttribute(&#039;style&#039;, &#039;float: left; position: relative; top: -&#039; + (scope.$parent.barChart.getHeight()/2) + &#039;px; background-color: &#039; + scope.$parent.barChart.getLegend().getBackgroundColor() + &#039;;&#039;);
+                        break;
+                    case &#039;NE&#039;:
+                        //chart.setAttribute(&#039;style&#039;, &#039;position: relative; bottom: 0;&#039;);
+                        parent.setAttribute(&#039;style&#039;, &#039;float: left; position: relative; top: -&#039; + scope.$parent.barChart.getHeight() + &#039;px; right: -&#039; + scope.$parent.barChart.getWidth() + &#039;px; background-color: &#039; + scope.$parent.barChart.getLegend().getBackgroundColor() + &#039;;&#039;);
+                        break;
+                    case &#039;NW&#039;:
+                        //chart.setAttribute(&#039;style&#039;, &#039;position: relative; bottom: -30px;&#039;);
+                        parent.setAttribute(&#039;style&#039;, &#039;float: left; position: relative; top: -&#039; + scope.$parent.barChart.getHeight() + &#039;px; background-color: &#039; + scope.$parent.barChart.getLegend().getBackgroundColor() + &#039;;&#039;);
+                        break;
+                    case &#039;SE&#039;:
+                        //chart.setAttribute(&#039;style&#039;, &#039;position: relative;&#039;);
+                        parent.setAttribute(&#039;style&#039;, &#039;float: left; position: relative; right: -&#039; + scope.$parent.barChart.getWidth() + &#039;px; background-color: &#039; + scope.$parent.barChart.getLegend().getBackgroundColor() + &#039;;&#039;);
+                        break;
+                    case &#039;SW&#039;:
+                        //chart.setAttribute(&#039;style&#039;, &#039;height:&#039;+ scope.$parent.barChart.getHeight() +&#039;px; width:&#039;+ scope.$parent.barChart.getWidth() +&#039;px; position: relative; bottom: 0;&#039;);
+                        parent.setAttribute(&#039;style&#039;, &#039;float: left; position: relative; background-color: &#039; + scope.$parent.barChart.getLegend().getBackgroundColor() + &#039;;&#039;);
+                        break;
+                }
+            }
+
+            scope.legend = function() {
+                var chart = element.children()[1];
+                var parent = document.createElement(&#039;div&#039;);
+
+                changePosition(chart,parent);
+
                 while(parent.firstChild) {
                     parent.removeChild(parent.firstChild);
                 }
-                console.log(&#039;legend &#039; + JSON.stringify(scope.$parent.barChart.getLegend()));
                 if (scope.$parent.barChart.getLegend() !== null) {
-                    parent.setAttribute(&#039;style&#039;, &#039;background-color: &#039; + scope.$parent.barChart.getLegend().getBackgroundColor() + &#039;; color: &#039;+ scope.$parent.barChart.getLegend().getFontColor());
-                    var ul = document.createElement(&#039;ul&#039;);
-                    ul.setAttribute(&#039;style&#039;, &#039;list-style-type: none&#039;);
-                    parent.appendChild(ul);
+                    //parent.setAttribute(&#039;style&#039;, &#039;background-color: &#039; + scope.$parent.barChart.getLegend().getBackgroundColor() + &#039;; color: &#039;+ scope.$parent.barChart.getLegend().getFontColor());
+                    var div = document.createElement(&#039;div&#039;);
                     for (var i=0; i&lt;scope.$parent.barChart.getFlowList().length; i++) {
-                        var li = document.createElement(&#039;li&#039;);
-                        var square = document.createElement(&#039;div&#039;);
-                        square.setAttribute(&#039;style&#039;, &#039;height: 15px; width: 15px; float: left; background-color: &#039; + scope.$parent.barChart.getFlowList()[i].flow.getTrace().strokeColor);
-                        var spanText = document.createElement(&#039;div&#039;);
-                        var text = document.createTextNode(&#039;\u00A0\u00A0\u00A0\u00A0&#039; + scope.$parent.barChart.getFlowList()[i].flow.getName());
-                        spanText.appendChild(text);
-                        li.appendChild(square);
-                        li.appendChild(spanText);
-                        console.log(ul);
-                        ul.appendChild(li);
+                        if (scope.$parent.barChart.getFlowList()[i].flow.getData().length){
+                            var square = document.createElement(&#039;div&#039;);
+                            square.setAttribute(&#039;style&#039;, &#039;float: left; height: 15px; width: 15px; background-color: &#039; + scope.$parent.barChart.getFlowList()[i].flow.getFlowColor() + &#039;;&#039;);
+                            var spanText = document.createElement(&#039;div&#039;);
+                            var text = document.createTextNode(&#039;\u00A0\u00A0\u00A0\u00A0&#039; + scope.$parent.barChart.getFlowList()[i].flow.getName());
+                            spanText.setAttribute(&#039;style&#039;, &#039;color: &#039;+ scope.$parent.barChart.getLegend().getFontColor() + &#039;;&#039;);
+                            spanText.appendChild(text);
+                            div.appendChild(square);
+                            div.appendChild(spanText);
+                            parent.appendChild(div);
+                        }
                     }
                 }
-
-            };*/
+                element.append(parent);
+            };
 
         }
     };
