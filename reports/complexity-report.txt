@@ -1,8 +1,8 @@
 Mean per-function logical LOC: 10.69552452755578
 Mean per-function parameter count: 1.1462226141913645
 Mean per-function cyclomatic complexity: 4.348697656510157
-Mean per-function Halstead effort: 8248.38900193466
-Mean per-module maintainability index: 104.67425651739046
+Mean per-function Halstead effort: 8250.180590323069
+Mean per-module maintainability index: 104.67216447432091
 First-order density: 5.95703125%
 Change cost: 21.875%
 Core size: 37.5%
@@ -1761,7 +1761,7 @@ Core size: 37.5%
   Mean parameter count: 0.8888888888888888
   Cyclomatic complexity: 22
   Cyclomatic complexity density: 24.175824175824175%
-  Maintainability index: 107.7356208262032
+  Maintainability index: 107.69784729211644
   Dependency count: 4
 
   Function: BarChartModel
@@ -1793,9 +1793,9 @@ Core size: 37.5%
     Parameter count: 1
     Cyclomatic complexity: 12
     Cyclomatic complexity density: 52.17391304347826%
-    Halstead difficulty: 20.544117647058822
-    Halstead volume: 1350.9958616971
-    Halstead effort: 27755.017923394833
+    Halstead difficulty: 20.27142857142857
+    Halstead volume: 1391.9376129263674
+    Halstead effort: 28216.563896321644
 
   Function: <anonymous>.getData
     Line No.: 102
@@ -1870,7 +1870,7 @@ Core size: 37.5%
   Mean parameter count: 0.6666666666666666
   Cyclomatic complexity: 15
   Cyclomatic complexity density: 35.714285714285715%
-  Maintainability index: 99.07964407950882
+  Maintainability index: 99.09110213473338
   Dependency count: 1
 
   Function: GraphModel
@@ -1902,9 +1902,9 @@ Core size: 37.5%
     Parameter count: 1
     Cyclomatic complexity: 11
     Cyclomatic complexity density: 64.70588235294117%
-    Halstead difficulty: 23.35185185185185
-    Halstead volume: 1021.8101942183737
-    Halstead effort: 23861.16027609943
+    Halstead difficulty: 22.75
+    Halstead volume: 1044.7226409005264
+    Halstead effort: 23767.440080486973
 
 /home/travis/build/DeltaGraphs/norris-nrti/lib/dataTier/graph/legendModel.js
 
@@ -1956,7 +1956,7 @@ Core size: 37.5%
   Mean parameter count: 1
   Cyclomatic complexity: 21
   Cyclomatic complexity density: 21.875%
-  Maintainability index: 111.51290763959383
+  Maintainability index: 111.47227774023051
   Dependency count: 4
 
   Function: LineChartModel
@@ -1988,9 +1988,9 @@ Core size: 37.5%
     Parameter count: 1
     Cyclomatic complexity: 10
     Cyclomatic complexity density: 47.61904761904761%
-    Halstead difficulty: 18.448275862068964
-    Halstead volume: 1088.7928570856232
-    Halstead effort: 20086.350984165805
+    Halstead difficulty: 18.166666666666668
+    Halstead volume: 1128.2487561161208
+    Halstead effort: 20496.519069442864
 
   Function: <anonymous>.getData
     Line No.: 96

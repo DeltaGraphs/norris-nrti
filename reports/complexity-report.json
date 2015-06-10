@@ -11758,7 +11758,7 @@
                 "halstead": {
                     "operators": {
                         "distinct": 22,
-                        "total": 340,
+                        "total": 344,
                         "identifiers": [
                             "var",
                             "=",
@@ -11786,7 +11786,7 @@
                     },
                     "operands": {
                         "distinct": 87,
-                        "total": 374,
+                        "total": 376,
                         "identifiers": [
                             "\"use strict\"",
                             "GraphModel",
@@ -11877,13 +11877,13 @@
                             "exports"
                         ]
                     },
-                    "length": 714,
+                    "length": 720,
                     "vocabulary": 109,
-                    "difficulty": 47.28735632183908,
-                    "volume": 4832.483607890726,
-                    "effort": 228515.3742857752,
-                    "bugs": 1.6108278692969085,
-                    "time": 12695.298571431957
+                    "difficulty": 47.54022988505747,
+                    "volume": 4873.092713839386,
+                    "effort": 231667.947867123,
+                    "bugs": 1.624364237946462,
+                    "time": 12870.4415481735
                 },
                 "params": 8,
                 "line": 2,
@@ -12035,7 +12035,7 @@
                     "halstead": {
                         "operators": {
                             "distinct": 11,
-                            "total": 119,
+                            "total": 123,
                             "identifiers": [
                                 "if",
                                 "!==",
@@ -12051,8 +12051,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 34,
-                            "total": 127,
+                            "distinct": 35,
+                            "total": 129,
                             "identifiers": [
                                 "params",
                                 "undefined",
@@ -12076,6 +12076,7 @@
                                 "xAxis",
                                 "_xAxis",
                                 "updateProperties",
+                                "getProperties",
                                 "yAxis",
                                 "_yAxis",
                                 "groupingControl",
@@ -12090,13 +12091,13 @@
                                 "_legendOnPoint"
                             ]
                         },
-                        "length": 246,
-                        "vocabulary": 45,
-                        "difficulty": 20.544117647058822,
-                        "volume": 1350.9958616971,
-                        "effort": 27755.017923394833,
-                        "bugs": 0.45033195389903335,
-                        "time": 1541.9454401886019
+                        "length": 252,
+                        "vocabulary": 46,
+                        "difficulty": 20.27142857142857,
+                        "volume": 1391.9376129263674,
+                        "effort": 28216.563896321644,
+                        "bugs": 0.46397920430878914,
+                        "time": 1567.5868831289802
                     },
                     "params": 1,
                     "line": 63,
@@ -12408,10 +12409,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 107.7356208262032,
+            "maintainability": 107.69784729211644,
             "loc": 8.222222222222221,
             "cyclomatic": 3.3333333333333335,
-            "effort": 4617.536827342181,
+            "effort": 4668.819713222937,
             "params": 0.8888888888888888,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/dataTier/graph/barChartModel.js"
         },
@@ -12425,7 +12426,7 @@
                 "halstead": {
                     "operators": {
                         "distinct": 16,
-                        "total": 162,
+                        "total": 164,
                         "identifiers": [
                             "var",
                             "=",
@@ -12447,7 +12448,7 @@
                     },
                     "operands": {
                         "distinct": 47,
-                        "total": 177,
+                        "total": 178,
                         "identifiers": [
                             "\"use strict\"",
                             "LegendModel",
@@ -12498,13 +12499,13 @@
                             "exports"
                         ]
                     },
-                    "length": 339,
+                    "length": 342,
                     "vocabulary": 63,
-                    "difficulty": 30.127659574468087,
-                    "volume": 2026.2978940664718,
-                    "effort": 61047.613148896264,
-                    "bugs": 0.6754326313554906,
-                    "time": 3391.53406382757
+                    "difficulty": 30.29787234042553,
+                    "volume": 2044.2297338369715,
+                    "effort": 61935.811510294625,
+                    "bugs": 0.6814099112789905,
+                    "time": 3440.8784172385904
                 },
                 "params": 2,
                 "line": 2,
@@ -12639,7 +12640,7 @@
                     "halstead": {
                         "operators": {
                             "distinct": 13,
-                            "total": 95,
+                            "total": 97,
                             "identifiers": [
                                 "if",
                                 "!==",
@@ -12657,8 +12658,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 27,
-                            "total": 97,
+                            "distinct": 28,
+                            "total": 98,
                             "identifiers": [
                                 "params",
                                 "undefined",
@@ -12686,16 +12687,17 @@
                                 "legend",
                                 "_legend",
                                 "updateProperties",
+                                "getProperties",
                                 351
                             ]
                         },
-                        "length": 192,
-                        "vocabulary": 40,
-                        "difficulty": 23.35185185185185,
-                        "volume": 1021.8101942183737,
-                        "effort": 23861.16027609943,
-                        "bugs": 0.3406033980727912,
-                        "time": 1325.6200153388572
+                        "length": 195,
+                        "vocabulary": 41,
+                        "difficulty": 22.75,
+                        "volume": 1044.7226409005264,
+                        "effort": 23767.440080486973,
+                        "bugs": 0.34824088030017547,
+                        "time": 1320.4133378048318
                     },
                     "params": 1,
                     "line": 47,
@@ -12709,10 +12711,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 99.07964407950882,
+            "maintainability": 99.09110213473338,
             "loc": 12,
             "cyclomatic": 5.666666666666667,
-            "effort": 9340.162534903573,
+            "effort": 9308.922469699422,
             "params": 0.6666666666666666,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/dataTier/graph/graphModel.js"
         },
@@ -12965,7 +12967,7 @@
                 "halstead": {
                     "operators": {
                         "distinct": 22,
-                        "total": 341,
+                        "total": 345,
                         "identifiers": [
                             "var",
                             "=",
@@ -12993,7 +12995,7 @@
                     },
                     "operands": {
                         "distinct": 86,
-                        "total": 375,
+                        "total": 377,
                         "identifiers": [
                             "\"use strict\"",
                             "GraphModel",
@@ -13083,13 +13085,13 @@
                             "exports"
                         ]
                     },
-                    "length": 716,
+                    "length": 722,
                     "vocabulary": 108,
-                    "difficulty": 47.96511627906976,
-                    "volume": 4836.499451549043,
-                    "effort": 231983.258577207,
-                    "bugs": 1.6121664838496812,
-                    "time": 12887.958809844833
+                    "difficulty": 48.22093023255814,
+                    "volume": 4877.028776562025,
+                    "effort": 235174.86437677577,
+                    "bugs": 1.6256762588540083,
+                    "time": 13065.27024315421
                 },
                 "params": 11,
                 "line": 2,
@@ -13237,7 +13239,7 @@
                     "halstead": {
                         "operators": {
                             "distinct": 10,
-                            "total": 99,
+                            "total": 103,
                             "identifiers": [
                                 "if",
                                 "!==",
@@ -13252,8 +13254,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 29,
-                            "total": 107,
+                            "distinct": 30,
+                            "total": 109,
                             "identifiers": [
                                 "params",
                                 "undefined",
@@ -13265,6 +13267,7 @@
                                 "xAxis",
                                 "_xAxis",
                                 "updateProperties",
+                                "getProperties",
                                 "yAxis",
                                 "_yAxis",
                                 "backgroundColor",
@@ -13286,13 +13289,13 @@
                                 "_legendOnPoint"
                             ]
                         },
-                        "length": 206,
-                        "vocabulary": 39,
-                        "difficulty": 18.448275862068964,
-                        "volume": 1088.7928570856232,
-                        "effort": 20086.350984165805,
-                        "bugs": 0.3629309523618744,
-                        "time": 1115.9083880092114
+                        "length": 212,
+                        "vocabulary": 40,
+                        "difficulty": 18.166666666666668,
+                        "volume": 1128.2487561161208,
+                        "effort": 20496.519069442864,
+                        "bugs": 0.37608291870537364,
+                        "time": 1138.695503857937
                     },
                     "params": 1,
                     "line": 62,
@@ -13700,10 +13703,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 111.51290763959383,
+            "maintainability": 111.47227774023051,
             "loc": 7.090909090909091,
             "cyclomatic": 2.8181818181818183,
-            "effort": 3120.090976450623,
+            "effort": 3157.3789842030833,
             "params": 1,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/dataTier/graph/lineChartModel.js"
         },
@@ -18173,7 +18176,7 @@
     "coreSize": 37.5,
     "loc": 10.69552452755578,
     "cyclomatic": 4.348697656510157,
-    "effort": 8248.38900193466,
+    "effort": 8250.180590323069,
     "params": 1.1462226141913645,
-    "maintainability": 104.67425651739046
+    "maintainability": 104.67216447432091
 }
