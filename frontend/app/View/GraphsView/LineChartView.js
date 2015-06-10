@@ -56,12 +56,13 @@ angular.module('norris-nrti')
             }, true);
 
             scope.init = function(){
-                element.empty();
                 console.log('LINECHART init');
 
                 var linechart, legend, onPoint;
                 var str = scope.url.split('/');
                 var id = str[str.length-1];
+
+                element.empty();
 
                 if (scope.$parent.lineChart.getLegend() !== null){
                     legend = true;
@@ -73,7 +74,7 @@ angular.module('norris-nrti')
                 } else {
                     onPoint = false;
                 }
-
+                console.log('LINECHART creo');
                 if (scope.$parent.lineChart.getViewFinder() === true) {
                     linechart = '<div class="graphtitle">'+ scope.$parent.lineChart.getTitle() +'</div>' +
                                 '<nvd3-line-with-focus-chart data="data" nodata=" " id="'+ id +'" ' +

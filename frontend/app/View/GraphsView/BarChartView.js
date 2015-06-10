@@ -28,7 +28,7 @@ angular.module('norris-nrti')
 		//bindToController: true,
         //template: '<nvd3-multi-bar-chart data="exampleData" id="exampleId" width="1000" height="600" showxaxis="true" showyaxis="true" rotatelabels="90"><svg></svg></nvd3-multi-bar-chart>',
         link: function(scope, element, attrs){
-
+            
         	attrs.$observe('url', function(value) {
                 console.log('BARCHART observ url ' + value);
                 if (value) {
