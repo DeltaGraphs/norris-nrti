@@ -51,7 +51,7 @@ angular.module('norris-nrti')
 			console.log('insertFlow');
 			console.log('insert flow' + JSON.stringify(info));
 			var flow = TableFlowFactory.build(info.properties);
-			flow.initializeData(info, table.getAddRowOn());
+			flow.initializeData(info, $scope.table.getAddRowOn());
 			$scope.table.addFlow(info.properties.ID, flow);
 			$scope.changedD = !$scope.changedD;
 		});

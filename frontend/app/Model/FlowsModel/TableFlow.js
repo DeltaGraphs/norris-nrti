@@ -84,11 +84,7 @@ angular.module('norris-nrti')
 			if (addRowOn === 'bottom') {
 				this._data.push(newData.records[i]);
 			} else if (addRowOn === 'top') {
-				if (this._data.length === 0) {
-					this._data.push(newData.records[i]);
-				} else if (this._data.length > 0){
-					this._data.unshift(newData.records[i]);
-				}
+				this._data.unshift(newData.records[i]);
 			}
 		}
 	};
