@@ -1,20 +1,20 @@
-Mean per-function logical LOC: 10.69552452755578
+Mean per-function logical LOC: 10.701206345737598
 Mean per-function parameter count: 1.1462226141913645
-Mean per-function cyclomatic complexity: 4.348697656510157
-Mean per-function Halstead effort: 8252.367822134793
-Mean per-module maintainability index: 104.66982119285247
+Mean per-function cyclomatic complexity: 4.351538565601066
+Mean per-function Halstead effort: 8252.468968268295
+Mean per-module maintainability index: 104.66247798333777
 First-order density: 5.95703125%
 Change cost: 21.875%
 Core size: 37.5%
 
 /home/travis/build/DeltaGraphs/norris-nrti/lib/helpers/functionHelper.js
 
-  Physical LOC: 216
-  Logical LOC: 152
+  Physical LOC: 218
+  Logical LOC: 154
   Mean parameter count: 1.2727272727272727
-  Cyclomatic complexity: 58
-  Cyclomatic complexity density: 38.15789473684211%
-  Maintainability index: 99.60042764541231
+  Cyclomatic complexity: 59
+  Cyclomatic complexity density: 38.311688311688314%
+  Maintainability index: 99.36544494094177
   Dependency count: 0
 
   Function: <anonymous>.replaceAll
@@ -96,17 +96,17 @@ Core size: 37.5%
 
   Function: <anonymous>.isValidMarker
     Line No.: 122
-    Physical LOC: 17
-    Logical LOC: 14
+    Physical LOC: 19
+    Logical LOC: 16
     Parameter count: 1
-    Cyclomatic complexity: 6
-    Cyclomatic complexity density: 42.857142857142854%
-    Halstead difficulty: 2.8125
-    Halstead volume: 85.11011351724513
-    Halstead effort: 239.37219426725193
+    Cyclomatic complexity: 7
+    Cyclomatic complexity density: 43.75%
+    Halstead difficulty: 2.7777777777777777
+    Halstead volume: 98.9912279734977
+    Halstead effort: 274.97563325971583
 
   Function: <anonymous>.isValidMapMarker
-    Line No.: 139
+    Line No.: 141
     Physical LOC: 31
     Logical LOC: 20
     Parameter count: 1
@@ -117,7 +117,7 @@ Core size: 37.5%
     Halstead effort: 8770.94027503451
 
   Function: <anonymous>.isValidInterpolation
-    Line No.: 170
+    Line No.: 172
     Physical LOC: 17
     Logical LOC: 14
     Parameter count: 1
@@ -128,7 +128,7 @@ Core size: 37.5%
     Halstead effort: 239.37219426725193
 
   Function: <anonymous>.isValidTrace
-    Line No.: 188
+    Line No.: 190
     Physical LOC: 30
     Logical LOC: 18
     Parameter count: 1

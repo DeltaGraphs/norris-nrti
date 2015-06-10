@@ -3,14 +3,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 152,
-                    "physical": 216
+                    "logical": 154,
+                    "physical": 218
                 },
-                "cyclomatic": 58,
+                "cyclomatic": 59,
                 "halstead": {
                     "operators": {
                         "distinct": 24,
-                        "total": 390,
+                        "total": 392,
                         "identifiers": [
                             "=",
                             ".",
@@ -39,8 +39,8 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 98,
-                        "total": 390,
+                        "distinct": 99,
+                        "total": 391,
                         "identifiers": [
                             "\"use strict\"",
                             "String",
@@ -110,6 +110,7 @@
                             "\"triangle\"",
                             "\"circle\"",
                             "\"diamond\"",
+                            "\"bus\"",
                             "isValidMapMarker",
                             "\"object\"",
                             "type",
@@ -142,17 +143,17 @@
                             "\"number\""
                         ]
                     },
-                    "length": 780,
-                    "vocabulary": 122,
-                    "difficulty": 47.755102040816325,
-                    "volume": 5405.975123299052,
-                    "effort": 258162.89364326085,
-                    "bugs": 1.8019917077663508,
-                    "time": 14342.382980181159
+                    "length": 783,
+                    "vocabulary": 123,
+                    "difficulty": 47.39393939393939,
+                    "volume": 5435.988857680625,
+                    "effort": 257632.92646704538,
+                    "bugs": 1.8119962858935417,
+                    "time": 14312.9403592803
                 },
                 "params": 14,
                 "line": 2,
-                "cyclomaticDensity": 38.15789473684211
+                "cyclomaticDensity": 38.311688311688314
             },
             "functions": [
                 {
@@ -498,14 +499,14 @@
                 {
                     "name": "<anonymous>.isValidMarker",
                     "sloc": {
-                        "logical": 14,
-                        "physical": 17
+                        "logical": 16,
+                        "physical": 19
                     },
-                    "cyclomatic": 6,
+                    "cyclomatic": 7,
                     "halstead": {
                         "operators": {
                             "distinct": 5,
-                            "total": 14,
+                            "total": 16,
                             "identifiers": [
                                 "switch",
                                 "case",
@@ -515,8 +516,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 8,
-                            "total": 9,
+                            "distinct": 9,
+                            "total": 10,
                             "identifiers": [
                                 "marker",
                                 "\"none\"",
@@ -524,21 +525,22 @@
                                 "\"triangle\"",
                                 "\"circle\"",
                                 "\"diamond\"",
+                                "\"bus\"",
                                 false,
                                 true
                             ]
                         },
-                        "length": 23,
-                        "vocabulary": 13,
-                        "difficulty": 2.8125,
-                        "volume": 85.11011351724513,
-                        "effort": 239.37219426725193,
-                        "bugs": 0.028370037839081708,
-                        "time": 13.298455237069552
+                        "length": 26,
+                        "vocabulary": 14,
+                        "difficulty": 2.7777777777777777,
+                        "volume": 98.9912279734977,
+                        "effort": 274.97563325971583,
+                        "bugs": 0.0329970759911659,
+                        "time": 15.276424069984213
                     },
                     "params": 1,
                     "line": 122,
-                    "cyclomaticDensity": 42.857142857142854
+                    "cyclomaticDensity": 43.75
                 },
                 {
                     "name": "<anonymous>.isValidMapMarker",
@@ -602,7 +604,7 @@
                         "time": 487.2744597241395
                     },
                     "params": 1,
-                    "line": 139,
+                    "line": 141,
                     "cyclomaticDensity": 55.00000000000001
                 },
                 {
@@ -647,7 +649,7 @@
                         "time": 13.298455237069552
                     },
                     "params": 1,
-                    "line": 170,
+                    "line": 172,
                     "cyclomaticDensity": 42.857142857142854
                 },
                 {
@@ -718,15 +720,15 @@
                         "time": 1581.6374639864885
                     },
                     "params": 1,
-                    "line": 188,
+                    "line": 190,
                     "cyclomaticDensity": 94.44444444444444
                 }
             ],
             "dependencies": [],
-            "maintainability": 99.60042764541231,
-            "loc": 12.727272727272727,
-            "cyclomatic": 6.181818181818182,
-            "effort": 6034.40921922725,
+            "maintainability": 99.36544494094177,
+            "loc": 12.909090909090908,
+            "cyclomatic": 6.2727272727272725,
+            "effort": 6037.645895499291,
             "params": 1.2727272727272727,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/helpers/functionHelper.js"
         },
@@ -18174,9 +18176,9 @@
     ],
     "changeCost": 21.875,
     "coreSize": 37.5,
-    "loc": 10.69552452755578,
-    "cyclomatic": 4.348697656510157,
-    "effort": 8252.367822134793,
+    "loc": 10.701206345737598,
+    "cyclomatic": 4.351538565601066,
+    "effort": 8252.468968268295,
     "params": 1.1462226141913645,
-    "maintainability": 104.66982119285247
+    "maintainability": 104.66247798333777
 }
