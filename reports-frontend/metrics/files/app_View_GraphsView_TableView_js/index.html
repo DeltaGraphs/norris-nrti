@@ -44,7 +44,7 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">58.30</p>
+      <p class="stat">58.33</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">30.35</p>
+      <p class="stat">30.32</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">1.40</p>
+      <p class="stat">1.42</p>
     </div>
   </div>
 </div>
@@ -205,14 +205,14 @@ angular.module(&#039;norris-nrti&#039;)
                 console.log(&#039;TABLE setData&#039;);
                 var data = [];
                 var appearance = [];
-                if (scope.$parent.table.getFlowList().length &gt; 0) {
-                    console.log(&#039;TABLE getData.length &#039; + scope.$parent.table.getFlowList()[0].flow.getData().length);
-                    for (var i=0; i&lt;scope.$parent.table.getFlowList()[0].flow.getData().length; i++) {
+                for (var k=0; k&lt;scope.$parent.table.getFlowList().length; k++) {
+                    console.log(&#039;TABLE getData.length &#039; + scope.$parent.table.getFlowList()[k].flow.getData().length);
+                    for (var i=0; i&lt;scope.$parent.table.getFlowList()[k].flow.getData().length; i++) {
                         var record = {};
                         var look = [];
                         for (var j=0; j&lt;scope.$parent.table.getHeaders().length; j++) {
-                            record[scope.$parent.table.getHeaders()[j]] = scope.$parent.table.getFlowList()[0].flow.getData()[i].value[j];
-                            look[j] = scope.$parent.table.getFlowList()[0].flow.getData()[i].appearance[j];
+                            record[scope.$parent.table.getHeaders()[j]] = scope.$parent.table.getFlowList()[k].flow.getData()[i].value[j];
+                            look[j] = scope.$parent.table.getFlowList()[k].flow.getData()[i].appearance[j];
                         }
                         data.push(record);
                         appearance.push(look);
