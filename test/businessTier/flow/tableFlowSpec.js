@@ -204,4 +204,23 @@ describe('TableFlow', function() {
             assert.deepEqual(mock.p2[mock.p1.length-1],{'ID': 'flow1', 'name':'tabella','filters':'temperatura>3'});
         });
     });
+
+    describe('#getProperties', function() {
+        it('returns the param properties', function() {
+            var prop={
+                ID: 'flow1',
+                columnKeys: ['213'],
+                columnFormats: {'213':'toInt'},
+                maxItems: 2,
+                maxItemsSaved: 1000
+            };
+            var flow1=new TableFlow(prop, new socketMock());
+            var result=flow1.getProperties();
+            assert.strictEqual(result.ID, prop.ID);
+            assert.strictEqual(result.columnKeys, prop.columnKeys);
+            assert.strictEqual(result.columnFormats, prop.columnFormats);
+            assert.strictEqual(result.maxItems, prop.maxItems);
+            assert.strictEqual(result.maxItemsSaved, prop.maxItemsSaved);
+        });
+    });
 });

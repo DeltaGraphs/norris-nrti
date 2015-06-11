@@ -155,6 +155,7 @@ describe('FunctionHelper', function() {
             assert.strictEqual(FH.isValidMapMarker({type: 'shape', shape: 'triangle'}), true);
             assert.strictEqual(FH.isValidMapMarker({type: 'shape', shape: 'circle'}), true);
             assert.strictEqual(FH.isValidMapMarker({type: 'shape', shape: 'diamond'}), true);
+            assert.strictEqual(FH.isValidMapMarker({type: 'shape', shape: 'bus'}), true);
         });
         it('returns false for invalid shape', function() {
             assert.strictEqual(FH.isValidMapMarker({type: 'shape'}), false);

@@ -482,7 +482,7 @@ prop03.ID = 'tab03';
 prop03.title = 'linea 03';
 var table03 = page3.createTable(prop03);
 var tableFlow_03 = table03.createTableFlow({ID:'flow03', name:'linea 03', columnKeys:['IdMezzo', 'capolinea']});var prop05 = tableProps;
-tableFlow_03.getProperties();
+//tableFlow_03.getProperties();
 
 
 /////////////////////////////////////////////

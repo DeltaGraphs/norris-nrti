@@ -281,4 +281,46 @@ describe('MapChartFlow', function() {
             assert.strictEqual(hMock.p2[2].filters, 'temperature>0');
         });
     });
+
+    describe('#getProperties', function() {
+        it('returns the param properties', function() {
+            var marker={
+                type: 'shape',
+                shape: 'triangle'
+            };
+            var trace={
+                type: 'area',
+                coordinates:[
+                    [1,2],
+                    [3,4],
+                ],
+                strokeColor: '#FFF',
+                fillColor: '#FFF'
+            };
+            var prop={
+                ID: 'flow1',
+                longitudeKey: 'x',
+                latitudeKey: 'y',
+                objectKey: 'ID',
+                longitudeFormat: 'coordinates',
+                latitudeFormat: 'geographic',
+                marker: marker,
+                trace: trace,
+                trailLength: 2,
+                maxItemsSaved: 1000
+            };
+            var flow1=new MapChartFlow(prop, new socketMock());
+            var result=flow1.getProperties();
+            assert.strictEqual(result.ID, prop.ID);
+            assert.strictEqual(result.longitudeKey, prop.longitudeKey);
+            assert.strictEqual(result.latitudeKey, prop.latitudeKey);
+            assert.strictEqual(result.objectKey, prop.objectKey);
+            assert.strictEqual(result.longitudeFormat, prop.longitudeFormat);
+            assert.strictEqual(result.latitudeFormat, prop.latitudeFormat);
+            assert.deepEqual(result.marker, prop.marker);
+            assert.deepEqual(result.trace, prop.trace);
+            assert.strictEqual(result.trailLength, prop.trailLength);
+            assert.strictEqual(result.maxItemsSaved, prop.maxItemsSaved);
+        });
+    });
 });
