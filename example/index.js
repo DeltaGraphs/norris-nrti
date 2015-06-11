@@ -475,13 +475,13 @@ var myVar4=setInterval(function () {repeatTable();}, 5000);
 /////////////////////////////////////////////
 // THIRD PAGE - CONTAINS THE APS TABLES
 /////////////////////////////////////////////
-page3 = norris.createPage({ID:'page3', name:'APS tables'});
+/*page3 = norris.createPage({ID:'page3', name:'APS tables'});
 
 var prop03 = tableProps;
 prop03.ID = 'tab03';
 prop03.title = 'linea 03';
 var table03 = page3.createTable(prop03);
-var tableFlow_03 = table03.createTableFlow({ID:'flow03', name:'linea 03', columnKeys:['IdMezzo', 'capolinea']});var prop05 = tableProps;
+var tableFlow_03 = table03.createTableFlow({ID:'flow03', name:'linea 03', columnKeys:['IdMezzo', 'capolinea']});var prop05 = tableProps;*/
 //tableFlow_03.getProperties();
 
 
