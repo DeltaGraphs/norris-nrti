@@ -59,15 +59,13 @@ angular.module('norris-nrti')
 
                 var table = '<div class="graphtitle">'+ scope.$parent.table.getTitle() +'</div>';   
 
-                table = table + '<div><table st-table="data" class="table table-striped"';
+                table = table + '<div><table st-table="data" ';
                     
-                //da inserire dopo in base alla griglia si/no
-                //
-                /*if () {
+                if (table.getAppearance().border !== undefined) {
                     table = table + 'class="table table-striped table-bordered">';
-                } else if () {
+                } else {
                     table = table + 'class="table-condensed table-striped">';
-                }*/
+                }
 
                 table = table + '<thead><tr>';
                 for (var i=0; i<scope.$parent.table.getHeaders().length; i++) {
