@@ -20,8 +20,8 @@ angular.module('norris-nrti')
 .controller('MapChartController', ['$scope', '$location', 'MapChartFactory', 'MapChartFlowFactory', 'SocketServicesFactory', function($scope, $location, MapChartFactory, MapChartFlowFactory, SocketServicesFactory){
 
 	var socket;
-
-	$scope.mapChart = MapChartFactory.build();
+	var mapChart = MapChartFactory.build();
+	$scope.mapChart = mapChart;
 
 	var count1 = 0;
 	this.socketConnection = function(url){

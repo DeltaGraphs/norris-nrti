@@ -114,14 +114,14 @@ angular.module('norris-nrti')
                 console.log('TABLE setData');
                 var data = [];
                 var appearance = [];
-                if (scope.$parent.table.getFlowList().length > 0) {
-                    console.log('TABLE getData.length ' + scope.$parent.table.getFlowList()[0].flow.getData().length);
-                    for (var i=0; i<scope.$parent.table.getFlowList()[0].flow.getData().length; i++) {
+                for (var k=0; k<scope.$parent.table.getFlowList().length; k++) {
+                    console.log('TABLE getData.length ' + scope.$parent.table.getFlowList()[k].flow.getData().length);
+                    for (var i=0; i<scope.$parent.table.getFlowList()[k].flow.getData().length; i++) {
                         var record = {};
                         var look = [];
                         for (var j=0; j<scope.$parent.table.getHeaders().length; j++) {
-                            record[scope.$parent.table.getHeaders()[j]] = scope.$parent.table.getFlowList()[0].flow.getData()[i].value[j];
-                            look[j] = scope.$parent.table.getFlowList()[0].flow.getData()[i].appearance[j];
+                            record[scope.$parent.table.getHeaders()[j]] = scope.$parent.table.getFlowList()[k].flow.getData()[i].value[j];
+                            look[j] = scope.$parent.table.getFlowList()[k].flow.getData()[i].appearance[j];
                         }
                         data.push(record);
                         appearance.push(look);

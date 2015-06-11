@@ -19,8 +19,8 @@ angular.module('norris-nrti')
 .controller('TableController', ['$scope', '$location', 'TableFactory', 'TableFlowFactory', 'SocketServicesFactory', function($scope, $location, TableFactory, TableFlowFactory, SocketServicesFactory){
 
 	var socket;
-
-	$scope.table = TableFactory.build();
+	var table = TableFactory.build();
+	$scope.table = table;
 
 	this.socketConnection = function(url){
 		console.log('TABLE socketConnection ' + url);

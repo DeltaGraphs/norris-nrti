@@ -19,7 +19,8 @@
 angular.module('norris-nrti')
 .controller('PageController', ['$scope', '$location', '$routeParams', 'PagesList', 'PageFactory', 'SocketServicesFactory', function($scope, $location, $routeParams, PagesList, PageFactory, SocketServicesFactory){
 
-	$scope.page = PagesList.prototype.getPagesList()[$routeParams.pageId].page;
+	var page = PagesList.prototype.getPagesList()[$routeParams.pageId].page;
+	$scope.page = page;
 	$scope.previous = false;
 	$scope.next = false;
 	var a = $routeParams.pageId - 1;

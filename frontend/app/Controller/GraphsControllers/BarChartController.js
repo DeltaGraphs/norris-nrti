@@ -20,7 +20,8 @@ angular.module('norris-nrti')
 .controller('BarChartController', ['$scope', '$location', 'BarChartFactory', 'BarChartFlowFactory', 'SocketServicesFactory', function($scope, $location, BarChartFactory, BarChartFlowFactory, SocketServicesFactory){
 
 	var socket;
-	$scope.barChart = BarChartFactory.build();
+	var barChart = BarChartFactory.build();
+	$scope.barChart = barChart;
 
 	this.socketConnection = function(url){
 		console.log('BARCHART socketConnection ' + url);
