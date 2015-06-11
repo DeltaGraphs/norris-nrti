@@ -31,5 +31,5 @@ var norrisConfig = function($routeProvider) {
     ; /* fine definizione di routeProvider */
 };
 
-var norris = angular.module('norris-nrti', ['ngRoute', 'smart-table']).config(norrisConfig); /* definisce un
+var norris = angular.module('norris-nrti', ['ngRoute', 'nvd3ChartDirectives', 'smart-table']).config(norrisConfig); /* definisce un
 namespace (chiamato modulo) */
