@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">150</p>
+      <p class="stat">152</p>
     </div>
   </div>
   <div class="row historical">
@@ -133,6 +133,63 @@ MapChartModel.prototype = Object.create(GraphModel.prototype);
 MapChartModel.prototype.constructor = MapChartModel;
 MapChartModel.prototype.parent = GraphModel.prototype;
 
+MapChartModel.prototype.addFlow = function(flow) {
+	if(flow instanceof MapChartFlowModel) {
+		this._flows.push(flow);
+	}
+};
+
+MapChartModel.prototype.addRecord = function(flowID, record) {
+	var filteredFlows = this._flows.filter(function(flow) {return flow.getProperties().ID === flowID;});
+	if(filteredFlows.length &gt; 0) {
+		var flow = filteredFlows[0];
+		return flow.addRecord(record);
+	}
+	else {
+		return 231;
+	}
+};
+
+MapChartModel.prototype.deleteAllFlows = function() {
+	this._flows = [];
+};
+
+MapChartModel.prototype.deleteFlow = function(ID) {
+	if(typeof ID === &#039;string&#039;) {
+		for(var i=0; i &lt; this._flows.length; i++) {
+			if(this._flows[i].getProperties().ID === ID) {
+				this._flows.splice(i, 1);
+			}
+		}
+	}
+};
+
+MapChartModel.prototype.deleteRecord = function(flowID, ID) {
+	var filteredFlows = this._flows.filter(function(flow) {return flow.getProperties().ID === flowID;});
+	if(filteredFlows.length &gt; 0) {
+		var flow = filteredFlows[0];
+		return flow.deleteRecord(ID);
+	}
+	else {
+		return 231;
+	}
+};
+
+MapChartModel.prototype.getData = function() {
+	var graphData=[];
+	var flows= this._flows.length;
+
+	//build graphData by iterating every flow in _flows
+	for(var i=0; i&lt;flows; i++){
+		graphData[i]={
+			properties: this._flows[i].getProperties(),
+			data: this._flows[i].getData()
+		};
+	}//for flows
+
+	return graphData;
+};
+
 MapChartModel.prototype.getProperties = function() {
 	var res = this.parent.getProperties.call(this);
 	res.latitude = this._latitude;
@@ -170,41 +227,6 @@ MapChartModel.prototype.updateProperties = function(params) {
 	return 331;
 };
 
-MapChartModel.prototype.getData = function() {
-	var graphData=[];
-	var flows= this._flows.length;
-
-	//build graphData by iterating every flow in _flows
-	for(var i=0; i&lt;flows; i++){
-		graphData[i]={
-			properties: this._flows[i].getProperties(),
-			data: this._flows[i].getData()
-		};
-	}//for flows
-
-	return graphData;
-};
-
-MapChartModel.prototype.addFlow = function(flow) {
-	if(flow instanceof MapChartFlowModel) {
-		this._flows.push(flow);
-	}
-};
-
-MapChartModel.prototype.deleteFlow = function(ID) {
-	if(typeof ID === &#039;string&#039;) {
-		for(var i=0; i &lt; this._flows.length; i++) {
-			if(this._flows[i].getProperties().ID === ID) {
-				this._flows.splice(i, 1);
-			}
-		}
-	}
-};
-
-MapChartModel.prototype.deleteAllFlows = function() {
-	this._flows = [];
-};
-
 MapChartModel.prototype.updateRecord = function(flowID, ID, newRecord) {
 	var filteredFlows = this._flows.filter(function(flow) {return flow.getProperties().ID === flowID;});
 	if(filteredFlows.length &gt; 0) {
@@ -217,27 +239,7 @@ MapChartModel.prototype.updateRecord = function(flowID, ID, newRecord) {
 	}
 };
 
-MapChartModel.prototype.addRecord = function(flowID, record) {
-	var filteredFlows = this._flows.filter(function(flow) {return flow.getProperties().ID === flowID;});
-	if(filteredFlows.length &gt; 0) {
-		var flow = filteredFlows[0];
-		return flow.addRecord(record);
-	}
-	else {
-		return 231;
-	}
-};
 
-MapChartModel.prototype.deleteRecord = function(flowID, ID) {
-	var filteredFlows = this._flows.filter(function(flow) {return flow.getProperties().ID === flowID;});
-	if(filteredFlows.length &gt; 0) {
-		var flow = filteredFlows[0];
-		return flow.deleteRecord(ID);
-	}
-	else {
-		return 231;
-	}
-};
 
 module.exports = MapChartModel;</textarea>
   </div>

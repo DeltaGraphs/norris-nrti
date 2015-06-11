@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">97</p>
+      <p class="stat">99</p>
     </div>
   </div>
   <div class="row historical">
@@ -135,6 +135,30 @@ function PageModel(params) {
 	}
 }
 
+PageModel.prototype.addGraph=function(graph){
+	if (graph instanceof GraphModel){
+		this._graphs.push(graph);
+		return true;
+	}
+	return 411;
+};
+
+
+PageModel.prototype.getData=function(){
+	var pageData=[];
+	var graphs= this._graphs.length;
+
+	//build pageData by iterating every graph in _graphs
+	for(var i=0; i&lt;graphs; i++){
+		pageData[i]={
+			properties: this._graphs[i].getProperties(),
+			data: this._graphs[i].getData()
+		};
+	}//for graphs
+
+	return pageData;
+};
+
 PageModel.prototype.getProperties=function(){
 	return {
 		ID: this._ID,
@@ -163,28 +187,6 @@ PageModel.prototype.updateProperties=function(params){
 	}
 };
 
-PageModel.prototype.getData=function(){
-	var pageData=[];
-	var graphs= this._graphs.length;
-
-	//build pageData by iterating every graph in _graphs
-	for(var i=0; i&lt;graphs; i++){
-		pageData[i]={
-			properties: this._graphs[i].getProperties(),
-			data: this._graphs[i].getData()
-		};
-	}//for graphs
-
-	return pageData;
-};
-
-PageModel.prototype.addGraph=function(graph){
-	if (graph instanceof GraphModel){
-		this._graphs.push(graph);
-		return true;
-	}
-	return 411;
-};
 
 module.exports = PageModel;</textarea>
   </div>
