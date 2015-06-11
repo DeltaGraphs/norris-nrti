@@ -178,4 +178,33 @@ describe('LineChartFlow', function() {
             assert.deepEqual(mock.p2[mock.p1.length-1],{'ID': 'flow1', 'name':'grafico tempo-temperatura','filters':'temperatura>3','xKey':'tempo','yKey':'temperatura'});
         });
     });
+
+    describe('#getProperties', function() {
+        it('returns the param properties', function() {
+            var prop={
+                ID: 'flow1',
+                xKey: 'temperature',
+                yKey: 'pressure',
+                xFormat: 'toInt',
+                yFormat: 'toFloat',
+                flowColor: '#FFFFFF',
+                marker: 'diamond',
+                area: true,
+                maxItems: 2,
+                maxItemsSaved: 1000
+            };
+            var flow1=new LineChartFlow(prop, new socketMock());
+            var result=flow1.getProperties();
+            assert.strictEqual(result.ID, prop.ID);
+            assert.strictEqual(result.xKey, prop.xKey);
+            assert.strictEqual(result.yKey, prop.yKey);
+            assert.strictEqual(result.xFormat, prop.xFormat);
+            assert.strictEqual(result.yFormat, prop.yFormat);
+            assert.strictEqual(result.flowColor, prop.flowColor);
+            assert.strictEqual(result.marker, prop.marker);
+            assert.strictEqual(result.area, prop.area);
+            assert.strictEqual(result.maxItems, prop.maxItems);
+            assert.strictEqual(result.maxItemsSaved, prop.maxItemsSaved);
+        });
+    });
 });

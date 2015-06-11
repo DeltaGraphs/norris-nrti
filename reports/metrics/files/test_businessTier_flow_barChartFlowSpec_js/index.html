@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">63.52</p>
+      <p class="stat">63.30</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">169</p>
+      <p class="stat">193</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">26.06</p>
+      <p class="stat">26.10</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">2.11</p>
+      <p class="stat">2.46</p>
     </div>
   </div>
 </div>
@@ -256,6 +256,30 @@ describe(&#039;BarChartFlow&#039;, function() {
             });
             assert.strictEqual(mock.p1[mock.p1.length-1],&#039;updateFlowProp&#039;);
             assert.deepEqual(mock.p2[mock.p1.length-1],{&#039;ID&#039;: &#039;flow1&#039;, &#039;name&#039;:&#039;grafico tempo-temperatura&#039;,&#039;filters&#039;:&#039;temperatura&gt;3&#039;,&#039;indexKey&#039;:&#039;tempo&#039;,&#039;valueKey&#039;:&#039;temperatura&#039;});
+        });
+    });
+
+    describe(&#039;#getProperties&#039;, function() {
+        it(&#039;returns the param properties&#039;, function() {
+            var prop={
+                ID: &#039;flow1&#039;,
+                indexKey: &#039;temperature&#039;,
+                valueKey: &#039;pressure&#039;,
+                indexFormat: &#039;toInt&#039;,
+                valueFormat: &#039;toFloat&#039;,
+                flowColor: &#039;#FFFFFF&#039;
+            };
+            var flow1=new BarChartFlow(prop, new socketMock(),[
+                {temperature: 2, pressure: 4},
+                {temperature: 2, pressure: 4}
+            ]);
+            var result=flow1.getProperties();
+            assert.strictEqual(result.ID, prop.ID);
+            assert.strictEqual(result.indexKey, prop.indexKey);
+            assert.strictEqual(result.valueKey, prop.valueKey);
+            assert.strictEqual(result.indexFormat, prop.indexFormat);
+            assert.strictEqual(result.valueFormat, prop.valueFormat);
+            assert.strictEqual(result.flowColor, prop.flowColor);
         });
     });
 });</textarea>
