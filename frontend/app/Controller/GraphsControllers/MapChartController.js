@@ -60,13 +60,11 @@ angular.module('norris-nrti')
 			flow.initializeData(info);
 			$scope.mapChart.addFlow(info.ID, flow);
 			$scope.changedD = !$scope.changedD;
-			$scope.changedF = !$scope.changedF;
 		});
 		socket.on('deleteFlow', function(info){
 			console.log('MAPCHART deleteFlow');
 			$scope.mapChart.deleteFlow(info.ID);
 			$scope.changedD = !$scope.changedD;
-			$scope.changedF = !$scope.changedF;
 		});
 		socket.on('updateFlowProp', function(info){
 			console.log('MAPCHART updateFlowProp');

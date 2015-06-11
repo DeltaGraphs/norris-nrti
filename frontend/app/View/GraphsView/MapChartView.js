@@ -52,13 +52,6 @@ angular.module('norris-nrti')
                 }
             }, true);
 
-            /*scope.$parent.$watch('changedF', function(newValue, oldValue){
-                if(newValue !== oldValue){
-                    console.log('MAPCHART watch changedF');                    
-                    scope.legend();
-                }
-            }, true);*/
-
             var map;
             var markers = [];
             var polylines = [];

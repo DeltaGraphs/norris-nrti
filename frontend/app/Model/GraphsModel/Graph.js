@@ -39,8 +39,6 @@ angular.module('norris-nrti')
 		this._width = null;
 		this._legend = null;
 		this._enableLegend = false;
-		this._horizontalGrid = true;
-		this._verticalGrid = true;
 		this._url = null;
 		if (info !== undefined) {
 			if (info.title !== undefined) {
@@ -72,12 +70,6 @@ angular.module('norris-nrti')
 				}
 				if (this._enableLegend && info.legend !== undefined) {
 						this._legend = LegendFactory.build(info.legend);
-				}
-				if (info.horizontalGrid !== undefined) {
-					this._horizontalGrid = info.horizontalGrid;
-				}
-				if (info.verticalGrid !== undefined) {
-					this._verticalGrid = info.verticalGrid;
 				}
 			}
 		},
@@ -126,12 +118,6 @@ angular.module('norris-nrti')
 			} else {
 				return null;
 			}
-		},
-		getHGrid : function() {
-			return this._horizontalGrid;
-		},
-		getVGrid : function() {
-			return this._verticalGrid;
 		},
 		getUrl : function() {
 			return this._url;

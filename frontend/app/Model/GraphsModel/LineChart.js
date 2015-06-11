@@ -44,12 +44,6 @@ angular.module('norris-nrti')
         if (json.legend !== undefined) {
             graphJson.legend = json.legend;
         }
-		if (json.horizontalGrid  !== undefined) {
-			graphJson.horizontalGrid = json.horizontalGrid;
-		}
-		if (json.verticalGrid !== undefined) {
-			graphJson.verticalGrid = json.verticalGrid;
-		}
 
 		var lineJson = {};
         if (json.legendOnPoint !== undefined) {
@@ -70,6 +64,12 @@ angular.module('norris-nrti')
         if (json.interpolation !== undefined) {
             lineJson.interpolation = json.interpolation;
         }
+        if (json.horizontalGrid !== undefined) {
+            lineJson.horizontalGrid = json.horizontalGrid;
+        }
+        if (json.verticalGrid !== undefined) {
+            lineJson.verticalGrid = json.verticalGrid;
+        }
 
 		return {
 			'graphJson' : graphJson,
@@ -87,6 +87,8 @@ angular.module('norris-nrti')
         this._viewFinder = false;
         this._backgroundColor = '#FFF';
         this._interpolation = 'linear';
+        this._hGrid = null;
+        this._vGrid = null;
         this._graph = GraphFactory.build(info);
     }
 
@@ -116,6 +118,12 @@ angular.module('norris-nrti')
                 }
                 if (lJson.interpolation !== undefined) {
                     this._interpolation = lJson.interpolation;
+                }
+                if (lJson.horizontalGrid !== undefined) {
+                    this._horizontalGrid = lJson.horizontalGrid;
+                }
+                if (lJson.verticalGrid !== undefined) {
+                    this._verticalGrid = lJson.verticalGrid;
                 }
             }
             if (info.flows !== undefined) {
@@ -197,10 +205,10 @@ angular.module('norris-nrti')
         return this._graph.getLegend();
     };
     LineChart.prototype.getHGrid = function() {
-        return this._graph.getHGrid();
+        return this._horizontalGrid;
     };
     LineChart.prototype.getVGrid = function() {
-        return this._graph.getVGrid();
+        return this._verticalGrid;
     };
     LineChart.prototype.getUrl = function() {
         return this._graph.getUrl();

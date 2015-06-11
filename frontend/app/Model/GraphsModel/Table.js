@@ -36,12 +36,6 @@ angular.module('norris-nrti')
 		if (json.width !== undefined) {
 			graphJson.width = json.width;
 		}
-		if (json.enableLegend !== undefined) {
-			graphJson.enableLegend = json.enableLegend;
-			if (json.legend !== undefined  && graphJson.enableLegend !== false) {
-				graphJson.legend = json.legend;
-			}
-		}
 		if (json.horizontalGrid !== undefined) {
 			graphJson.horizontalGrid = json.horizontalGrid;
 		}
@@ -196,12 +190,6 @@ angular.module('norris-nrti')
     };
     Table.prototype.getLegend = function() {
         return this._graph.getLegend();
-    };
-    Table.prototype.getHGrid = function() {
-        return this._graph.getHGrid();
-    };
-    Table.prototype.getVGrid = function() {
-        return this._graph.getVGrid();
     };
     Table.prototype.getUrl = function() {
         return this._graph.getUrl();

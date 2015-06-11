@@ -34,6 +34,7 @@ angular.module('norris-nrti')
         this._sortable = true;
         this._groupingControl = true;
         this._legendOnPoint = false;
+        this._horizontalGrid = null;
         this._graph = GraphFactory.build(info);
     }
 
@@ -53,12 +54,6 @@ angular.module('norris-nrti')
         }
         if (json.legend !== undefined) {
             graphJson.legend = json.legend;
-        }
-        if (json.horizontalGrid !== undefined) {
-            graphJson.horizontalGrid = json.horizontalGrid;
-        }
-        if (json.verticalGrid !== undefined) {
-            graphJson.verticalGrid = json.verticalGrid;
         }
 
         var barJson = {};
@@ -85,6 +80,9 @@ angular.module('norris-nrti')
         }
         if (json.legendOnPoint !== undefined) {
             barJson.legendOnPoint = json.legendOnPoint;
+        }
+        if (json.horizontalGrid !== undefined) {
+            barJson.horizontalGrid = json.horizontalGrid;
         }
 
         return {
@@ -125,6 +123,9 @@ angular.module('norris-nrti')
                 }
                 if (bJson.legendOnPoint !== undefined) {
                     this._legendOnPoint = bJson.legendOnPoint;
+                }
+                if (bJson.horizontalGrid !== undefined) {
+                    this._horizontalGrid = bJson.horizontalGrid;
                 }
             }
             if (info.flows !== undefined) {
