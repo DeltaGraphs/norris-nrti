@@ -66,8 +66,7 @@ angular.module('norris-nrti')
 		this._data = [];
 		this._flowColor = '#000';
 		this._marker = 'square';
-		this._interpolation = 'linear';
-		this._area = '#FFF';
+		this._area = false;
 		this._maxItem = 20;
 
 		var json = split(info);
