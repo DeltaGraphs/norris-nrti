@@ -68,7 +68,7 @@ describe('GraphFactory', function(){
 
 		var json = {
 			'title' : 'grafico1',
-			'url' : 'http://localhost/page1/grafico1'
+			'socketURL' : 'http://localhost/page1/grafico1'
 		};
 		var Graph;
 
@@ -99,10 +99,8 @@ describe('GraphFactory', function(){
 			'title' : 'graficoNuovo',
 			'height' : 300,
 			'width' : 300,
-			'enabledLegend' : true,
-			'legend' : {},
-			'horizontalGrid' : true,
-			'verticalGrid' : true
+			'enabledLegend' : false,
+			'legend' : {}
 		};
 		var Graph;
 
@@ -125,13 +123,7 @@ describe('GraphFactory', function(){
 			expect(Graph.getWidth()).toEqual(300);
 		});
 		it('graph updated with the correct legend', function(){
-			expect(Graph.getLegend()).toEqual({ _position: 'right', _fontColor: '#000', _backgroundColor: '#FFF' });
-		});
-		it('graph updated with the correct horizontalGrid', function(){
-			expect(Graph.getHGrid()).toEqual(true);
-		});
-		it('graph updated with the correct verticalGrid', function(){
-			expect(Graph.getVGrid()).toEqual(true);
+			expect(Graph.getLegend()).toEqual(null);
 		});
 
 	});

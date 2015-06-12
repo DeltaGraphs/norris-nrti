@@ -68,7 +68,7 @@ describe('BarChartFactory', function(){
 			expect(BarChart.getY()).toEqual(null);
 		});
 		it('graph created with the correct barOrientation', function(){
-			expect(BarChart.getBarOrientation()).toEqual('vertical');
+			expect(BarChart.getBarOrientation()).toEqual('V');
 		});
 		it('graph created with the correct headers', function(){
 			expect(BarChart.getHeaders()).toEqual([]);
@@ -79,8 +79,8 @@ describe('BarChartFactory', function(){
 		it('graph created with the correct sortable', function(){
 			expect(BarChart.getSortable()).toEqual(true);
 		});
-		it('graph created with the correct barsGrouping', function(){
-			expect(BarChart.getBarsGrouping()).toEqual('grouped');
+		it('graph created with the correct grouping control', function(){
+			expect(BarChart.getGroupingControl()).toEqual(true);
 		});
 		it('graph created with the correct legendOnPoint', function(){
 			expect(BarChart.getLegendOnPoint()).toEqual(false);
@@ -173,10 +173,10 @@ describe('BarChartFactory', function(){
 			expect(BarChart).toBeDefined();
 		});
 		it('graph updated with the correct axisX', function(){
-			expect(BarChart.getX()).toEqual({ _name: null, _color: '#FFF', _minValue: null, _maxValue: null, _ticks: 10, _scale: 'linear' });
+			expect(BarChart.getX()).toEqual(null);
 		});
 		it('graph updated with the correct axisY', function(){
-			expect(BarChart.getY()).toEqual({_name: null, _color: '#FFF', _minValue: null, _maxValue: null, _ticks: 10, _scale: 'linear' });
+			expect(BarChart.getY()).toEqual(null);
 		});
 		it('graph updated with the correct barOrientation', function(){
 			expect(BarChart.getBarOrientation()).toEqual('vertical');
@@ -190,8 +190,8 @@ describe('BarChartFactory', function(){
 		it('graph updated with the correct sortable', function(){
 			expect(BarChart.getSortable()).toEqual(false);
 		});
-		it('graph updated with the correct barsGrouping', function(){
-			expect(BarChart.getBarsGrouping()).toEqual('stacked');
+		it('graph updated with the correct grouping control', function(){
+			expect(BarChart.getGroupingControl()).toEqual('stacked');
 		});
 		it('graph updated with the correct legendOnPoint', function(){
 			expect(BarChart.getLegendOnPoint()).toEqual(true);

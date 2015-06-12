@@ -55,6 +55,9 @@ angular.module('norris-nrti')
         if (json.legend !== undefined) {
             graphJson.legend = json.legend;
         }
+        if (json.socketURL !== undefined) {
+            graphJson.socketURL = json.socketURL;
+        }
 
         var barJson = {};
         if (json.xAxis !== undefined) {
