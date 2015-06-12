@@ -24,9 +24,9 @@ describe('MapChartController', function(){
 	var controller;
 	var notify;
 
-    beforeEach(inject(function($rootScope, $controller, _socketFacory_){
+    beforeEach(inject(function($rootScope, $controller, _socketFactory_){
     	scope = $rootScope.$new();
-    	notify = _socketFacory_;
+    	notify = _socketFactory_;
         controller = $controller('MapChartController', { $scope : scope });
     }));
 
@@ -62,7 +62,7 @@ describe('MapChartController', function(){
 								'type':'shape',
 								'shape':'bus',
 								'color':'#FFC4F6'
-							},
+							}
 						}
 					]
 				}
