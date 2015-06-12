@@ -84,8 +84,8 @@ angular.module('norris-nrti')
         if (json.legendOnPoint !== undefined) {
             barJson.legendOnPoint = json.legendOnPoint;
         }
-        if (json.horizontalGrid !== undefined) {
-            barJson.horizontalGrid = json.horizontalGrid;
+        if (json.grid !== undefined) {
+            barJson.grid = json.grid;
         }
 
         return {
@@ -127,8 +127,8 @@ angular.module('norris-nrti')
                 if (bJson.legendOnPoint !== undefined) {
                     this._legendOnPoint = bJson.legendOnPoint;
                 }
-                if (bJson.horizontalGrid !== undefined) {
-                    this._horizontalGrid = bJson.horizontalGrid;
+                if (bJson.grid !== undefined) {
+                    this._horizontalGrid = bJson.grid;
                 }
             }
             if (info.flows !== undefined) {

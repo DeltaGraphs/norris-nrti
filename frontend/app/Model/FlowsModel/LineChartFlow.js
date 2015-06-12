@@ -43,9 +43,6 @@ angular.module('norris-nrti')
 	        if (json.marker !== undefined) {
 	            lineFlowJson.marker = json.marker;
 	        }
-	        if (json.interpolation !== undefined) {
-	            lineFlowJson.interpolation = json.interpolation;
-	        }
 	        if (json.area !== undefined) {
 	            lineFlowJson.area = json.area;
 	        }
@@ -83,9 +80,6 @@ angular.module('norris-nrti')
 	        if (lfJson.marker !== undefined) {
 	            this._marker = lfJson.marker;
 	        }
-	        if (lfJson.interpolation !== undefined) {
-	            this._interpolation = lfJson.interpolation;
-	        }
 	        if (lfJson.area !== undefined) {
 	            this._areaColor = lfJson.area;
 	        }
@@ -109,9 +103,6 @@ angular.module('norris-nrti')
 		        }
 		        if (lfJson.marker !== undefined) {
 		            this._marker = lfJson.marker;
-		        }
-		        if (lfJson.interpolation !== undefined) {
-		            this._interpolation = lfJson.interpolation;
 		        }
 		        if (lfJson.area !== undefined) {
 		            this._area = lfJson.area;
@@ -160,9 +151,6 @@ angular.module('norris-nrti')
 	};
 	LineChartFlow.prototype.getMarker = function() {
 		return this._marker;
-	};
-	LineChartFlow.prototype.getInterpolation = function() {
-		return this._interpolation;
 	};
 	LineChartFlow.prototype.getArea = function() {
 		return this._area;

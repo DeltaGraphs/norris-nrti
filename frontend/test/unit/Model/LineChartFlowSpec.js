@@ -52,11 +52,8 @@ describe('LineChartFlowFactory', function(){
 		it('constructor create the flow with the correct marker', function(){
 			expect(LineChartFlow.getMarker()).toEqual('square');
 		});
-		it('constructor create the flow with the correct interpolation', function(){
-			expect(LineChartFlow.getInterpolation()).toEqual('linear');
-		});
-		it('constructor create the flow with the correct area color', function(){
-			expect(LineChartFlow.getAreaColor()).toEqual('#FFF');
+		it('constructor create the flow with the correct area', function(){
+			expect(LineChartFlow.getArea()).toEqual(false);
 		});
 		it('constructor create the flow with the correct max item displayed', function(){
 			expect(LineChartFlow.getMaxItem()).toEqual(20);
@@ -71,7 +68,7 @@ describe('LineChartFlowFactory', function(){
 			'flowColor' : '#F2F',
 			'marker' : 'furly',
 			'interpolation' : 'single',
-			'area' : '#F2F',
+			'area' : true,
 			'maxItem' : 20
 		};
 
@@ -95,11 +92,8 @@ describe('LineChartFlowFactory', function(){
 		it('constructor create the flow with the correct marker', function(){
 			expect(LineChartFlow.getMarker()).toEqual('furly');
 		});
-		it('constructor create the flow with the correct interpolation', function(){
-			expect(LineChartFlow.getInterpolation()).toEqual('single');
-		});
-		it('constructor create the flow with the correct area color', function(){
-			expect(LineChartFlow.getAreaColor()).toEqual('#F2F');
+		it('constructor create the flow with the correct area', function(){
+			expect(LineChartFlow.getArea()).toEqual(true);
 		});
 		it('constructor create the flow with the correct max item displayed', function(){
 			expect(LineChartFlow.getMaxItem()).toEqual(20);
@@ -151,8 +145,7 @@ describe('LineChartFlowFactory', function(){
 			'name' : 'flusso2',
 			'flowColor' : '#F1F',
 			'marker' : 'furly1',
-			'interpolation' : 'cubic',
-			'area' : '#F1F',
+			'area' : false,
 			'maxItem' : 15
 		};
 		var LineChartFlow;
@@ -172,11 +165,8 @@ describe('LineChartFlowFactory', function(){
 		it('flow updated with the correct marker', function(){
 			expect(LineChartFlow.getMarker()).toEqual('furly1');
 		});
-		it('flow updated with the correct interpolation', function(){
-			expect(LineChartFlow.getInterpolation()).toEqual('cubic');
-		});
-		it('flow updated with the correct area color', function(){
-			expect(LineChartFlow.getAreaColor()).toEqual('#F1F');
+		it('flow updated with the correct area', function(){
+			expect(LineChartFlow.getArea()).toEqual(false);
 		});
 		it('flow updated with the correct max item displayed', function(){
 			expect(LineChartFlow.getMaxItem()).toEqual(15);
