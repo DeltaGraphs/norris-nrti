@@ -131,7 +131,7 @@ describe(&#039;LineChartFactory&#039;, function(){
 
 		var json = {
 			&#039;title&#039; : &#039;fottutissimografico&#039;,
-			&#039;url&#039; : &#039;localhost/page1/grafico1&#039;
+			&#039;socketURL&#039; : &#039;localhost/page1/grafico1&#039;
 		};
 
 		var LineChart;
@@ -169,7 +169,7 @@ describe(&#039;LineChartFactory&#039;, function(){
 			expect(LineChart.getBackground()).toEqual(&#039;#FFF&#039;);
 		});
 		it(&#039;graph created with the correct interpolation&#039;, function(){
-			expect(LineChart.getInerpolation()).toEqual(&#039;linear&#039;);
+			expect(LineChart.getInterpolation()).toEqual(&#039;linear&#039;);
 		});
 		it(&#039;graph created with the correct horizontalGrid&#039;, function(){
 			expect(LineChart.getHGrid()).toEqual(false);
@@ -275,7 +275,7 @@ describe(&#039;LineChartFactory&#039;, function(){
 			expect(LineChart.getFlowList().length).toEqual(3);
 		});
 		it(&#039;graph created with the correct interpolation&#039;, function(){
-			expect(LineChart.getInerpolation()).toEqual(&#039;linear&#039;);
+			expect(LineChart.getInterpolation()).toEqual(&#039;linear&#039;);
 		});
 		it(&#039;graph created with the correct horizontalGrid&#039;, function(){
 			expect(LineChart.getHGrid()).toEqual(true);

@@ -136,7 +136,7 @@ describe(&#039;LegendFactory&#039;, function(){
 		});
 
 		it(&#039;constructor create the page with the correct position&#039;, function(){
-			expect(Legend.getPosition()).toEqual(&#039;right&#039;);
+			expect(Legend.getPosition()).toEqual(&#039;E&#039;);
 		});
 		it(&#039;constructor create the page with the correct font color&#039;, function(){
 			expect(Legend.getFontColor()).toEqual(&#039;#000&#039;);
@@ -150,7 +150,7 @@ describe(&#039;LegendFactory&#039;, function(){
 	describe(&#039;Constructor&#039;, function(){
 
 		var json = 	{
-			&#039;position&#039; : &#039;left&#039;,
+			&#039;position&#039; : &#039;W&#039;,
 			&#039;fontColor&#039; : &#039;#AFA&#039;,
 			&#039;backgroundColor&#039; : &#039;#F00&#039;,
 		};
@@ -169,7 +169,7 @@ describe(&#039;LegendFactory&#039;, function(){
 		});
 
 		it(&#039;constructor create the page with the correct position&#039;, function(){
-			expect(Legend.getPosition()).toEqual(&#039;left&#039;);
+			expect(Legend.getPosition()).toEqual(&#039;W&#039;);
 		});
 		it(&#039;constructor create the page with the correct font color&#039;, function(){
 			expect(Legend.getFontColor()).toEqual(&#039;#AFA&#039;);
@@ -183,7 +183,7 @@ describe(&#039;LegendFactory&#039;, function(){
 	describe(&#039;updateParameters&#039;, function(){
 
 		var json = 	{
-			&#039;position&#039; : &#039;top&#039;,
+			&#039;position&#039; : &#039;S&#039;,
 			&#039;fontColor&#039; : &#039;#F00&#039;,
 			&#039;backgroundColor&#039; : &#039;#AFA&#039;,
 		};
@@ -199,7 +199,7 @@ describe(&#039;LegendFactory&#039;, function(){
 		});
 
 		it(&#039;constructor create the page with the correct position&#039;, function(){
-			expect(Legend.getPosition()).toEqual(&#039;top&#039;);
+			expect(Legend.getPosition()).toEqual(&#039;S&#039;);
 		});
 		it(&#039;constructor create the page with the correct font color&#039;, function(){
 			expect(Legend.getFontColor()).toEqual(&#039;#F00&#039;);
