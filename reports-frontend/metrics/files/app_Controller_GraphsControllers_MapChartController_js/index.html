@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">25.56</p>
+      <p class="stat">25.07</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.90</p>
+      <p class="stat">0.87</p>
     </div>
   </div>
 </div>
@@ -108,7 +108,7 @@
 */
 
 angular.module(&#039;norris-nrti&#039;)
-.controller(&#039;MapChartController&#039;, [&#039;$scope&#039;, &#039;$location&#039;, &#039;MapChartFactory&#039;, &#039;MapChartFlowFactory&#039;, &#039;SocketServicesFactory&#039;, function($scope, $location, MapChartFactory, MapChartFlowFactory, SocketServicesFactory){
+.controller(&#039;MapChartController&#039;, function($scope, $location, MapChartFactory, MapChartFlowFactory, SocketServicesFactory){
 
 	var socket;
 	var mapChart = MapChartFactory.build();
@@ -190,7 +190,7 @@ angular.module(&#039;norris-nrti&#039;)
 	$scope.socketConnection = this.socketConnection;
 	$scope.listenOnEvents = this.listenOnEvents;
 
-}]);</textarea>
+});</textarea>
   </div>
 </div>
 
