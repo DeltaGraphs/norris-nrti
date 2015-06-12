@@ -40,7 +40,7 @@ describe('BarChartFactory', function(){
 
 		var json = {
 			'title' : 'fottutissimografico',
-			'url' : 'localhost/page1/grafico1'
+			'socketURL' : 'localhost/page1/grafico1'
 		};
 		var BarChart;
 

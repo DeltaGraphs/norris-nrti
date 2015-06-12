@@ -34,7 +34,7 @@ describe('MapChartFactory', function(){
 
 		var json = {
 			'title' : 'fottutissimografico',
-			'url' : 'localhost/page1/grafico1'
+			'socketURL' : 'localhost/page1/grafico1'
 		};
 
 		var MapChart;
@@ -67,10 +67,13 @@ describe('MapChartFactory', function(){
 			expect(MapChart.getLongitude()).toEqual(11.8876318);
 		});
 		it('graph created with the correct mapType', function(){
-			expect(MapChart.getMapType()).toEqual('terrain');
+			expect(MapChart.getMapType()).toEqual('roadmap');
 		});
 		it('graph created with the correct zoom', function(){
-			expect(MapChart.getZoom()).toEqual(true);
+			expect(MapChart.getZoomable()).toEqual(true);
+		});
+		it('graph created with the correct drag', function(){
+			expect(MapChart.getDraggable()).toEqual(true);
 		});
 		it('graph created with the correct mapWidth', function(){
 			expect(MapChart.getMapWidth()).toEqual(0);

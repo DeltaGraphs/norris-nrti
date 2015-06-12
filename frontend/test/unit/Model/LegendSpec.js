@@ -45,7 +45,7 @@ describe('LegendFactory', function(){
 		});
 
 		it('constructor create the page with the correct position', function(){
-			expect(Legend.getPosition()).toEqual('right');
+			expect(Legend.getPosition()).toEqual('E');
 		});
 		it('constructor create the page with the correct font color', function(){
 			expect(Legend.getFontColor()).toEqual('#000');
@@ -59,7 +59,7 @@ describe('LegendFactory', function(){
 	describe('Constructor', function(){
 
 		var json = 	{
-			'position' : 'left',
+			'position' : 'W',
 			'fontColor' : '#AFA',
 			'backgroundColor' : '#F00',
 		};
@@ -78,7 +78,7 @@ describe('LegendFactory', function(){
 		});
 
 		it('constructor create the page with the correct position', function(){
-			expect(Legend.getPosition()).toEqual('left');
+			expect(Legend.getPosition()).toEqual('W');
 		});
 		it('constructor create the page with the correct font color', function(){
 			expect(Legend.getFontColor()).toEqual('#AFA');
@@ -92,7 +92,7 @@ describe('LegendFactory', function(){
 	describe('updateParameters', function(){
 
 		var json = 	{
-			'position' : 'top',
+			'position' : 'S',
 			'fontColor' : '#F00',
 			'backgroundColor' : '#AFA',
 		};
@@ -108,7 +108,7 @@ describe('LegendFactory', function(){
 		});
 
 		it('constructor create the page with the correct position', function(){
-			expect(Legend.getPosition()).toEqual('top');
+			expect(Legend.getPosition()).toEqual('S');
 		});
 		it('constructor create the page with the correct font color', function(){
 			expect(Legend.getFontColor()).toEqual('#F00');

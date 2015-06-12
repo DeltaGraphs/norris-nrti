@@ -40,7 +40,7 @@ describe('LineChartFactory', function(){
 
 		var json = {
 			'title' : 'fottutissimografico',
-			'url' : 'localhost/page1/grafico1'
+			'socketURL' : 'localhost/page1/grafico1'
 		};
 
 		var LineChart;
@@ -78,7 +78,7 @@ describe('LineChartFactory', function(){
 			expect(LineChart.getBackground()).toEqual('#FFF');
 		});
 		it('graph created with the correct interpolation', function(){
-			expect(LineChart.getInerpolation()).toEqual('linear');
+			expect(LineChart.getInterpolation()).toEqual('linear');
 		});
 		it('graph created with the correct horizontalGrid', function(){
 			expect(LineChart.getHGrid()).toEqual(false);
@@ -184,7 +184,7 @@ describe('LineChartFactory', function(){
 			expect(LineChart.getFlowList().length).toEqual(3);
 		});
 		it('graph created with the correct interpolation', function(){
-			expect(LineChart.getInerpolation()).toEqual('linear');
+			expect(LineChart.getInterpolation()).toEqual('linear');
 		});
 		it('graph created with the correct horizontalGrid', function(){
 			expect(LineChart.getHGrid()).toEqual(true);

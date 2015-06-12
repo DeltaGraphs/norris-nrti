@@ -24,7 +24,7 @@ angular.module('norris-nrti')
 .factory('LegendFactory', function(){
 
     function Legend(info){
-        this._position = 'right';
+        this._position = 'E';
         this._fontColor = '#000';
         this._backgroundColor = '#FFF';
 
@@ -55,7 +55,7 @@ angular.module('norris-nrti')
         }
     };
 
-        //contructor : Legend,
+    //contructor : Legend,
 
     Legend.prototype.getPosition = function(){
         return this._position;
