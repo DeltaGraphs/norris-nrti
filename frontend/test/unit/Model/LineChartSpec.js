@@ -169,10 +169,10 @@ describe('LineChartFactory', function(){
 			expect(LineChart.getLegendOnPoint()).toEqual(true);
 		});
 		it('graph updated with the correct axisX', function(){
-			expect(LineChart.getX()).toEqual({ _name: null, _color: '#FFF', _minValue: null, _maxValue: null, _ticks: 10, _scale: 'linear' });
+			expect(LineChart.getX()).toBeDefined();
 		});
 		it('graph updated with the correct axisY', function(){
-			expect(LineChart.getY()).toEqual({ _name: null, _color: '#FFF', _minValue: null, _maxValue: null, _ticks: 10, _scale: 'linear' });
+			expect(LineChart.getY()).toBeDefined();
 		});
 		it('graph updated with the correct viewFinder', function(){
 			expect(LineChart.getViewFinder()).toEqual(true);

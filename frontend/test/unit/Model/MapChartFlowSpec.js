@@ -62,7 +62,7 @@ describe('MapChartFlowFactory', function(){
 		var json = {
 			'name' : 'flusso1',
 			'marker' : 'furly',
-			'maxItem' : '20',
+			'maxItem' : 20,
 			'trace' : 'bubu'
 		};
 
@@ -84,7 +84,7 @@ describe('MapChartFlowFactory', function(){
 			expect(MapChartFlow.getMarker()).toEqual('furly');
 		});
 		it('constructor create the flow with the correct max item displayed', function(){
-			expect(MapChartFlow.getMaxItem()).toEqual('20');
+			expect(MapChartFlow.getMaxItem()).toEqual(20);
 		});
 		it('constructor create the flow with the correct trace', function(){
 			expect(MapChartFlow.getTrace()).toEqual('bubu');
@@ -133,7 +133,7 @@ describe('MapChartFlowFactory', function(){
 		var json = {
 			'name' : 'flusso2',
 			'marker' : 'furly1',
-			'maxItem' : '45',
+			'maxItem' : 45,
 			'trace' : 'flow'
 		};
 		var MapChartFlow;
@@ -151,7 +151,7 @@ describe('MapChartFlowFactory', function(){
 			expect(MapChartFlow.getMarker()).toEqual('furly1');
 		});
 		it('flow updated with the correct max item displayed', function(){
-			expect(MapChartFlow.getMaxItem()).toEqual('45');
+			expect(MapChartFlow.getMaxItem()).toEqual(45);
 		});
 		it('flow updated with the correct trace', function(){
 			expect(MapChartFlow.getTrace()).toEqual('flow');

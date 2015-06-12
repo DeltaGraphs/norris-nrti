@@ -176,7 +176,10 @@ describe('MapChartFactory', function(){
 			expect(MapChart.getMapType()).toEqual('terrain');
 		});
 		it('graph updated with the correct zoom', function(){
-			expect(MapChart.getZoom()).toEqual(false);
+			expect(MapChart.getZoomable()).toEqual(false);
+		});
+		it('graph update with the correct drag', function(){
+			expect(MapChart.getDraggable()).toEqual(true);
 		});
 		it('graph updated with the correct flows', function(){
             expect(MapChart.getFlowList().length).toEqual(3);

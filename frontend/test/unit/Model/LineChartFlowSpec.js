@@ -309,4 +309,37 @@ describe('LineChartFlowFactory', function(){
 		});
 	});
 
+	describe('deleteData', function(){
+
+		var data = {
+			records: [
+				{ 
+					'NorrisRecordID' : 'record1',
+					'value' : [ 14.5364864646, 11.5646546516]
+				}
+			]
+		};
+
+		var delData = {
+			'NorrisRecordID' : 'record1',
+			'value' : [ 14.5364864646, 11.5646546516]
+		};
+
+		var LineChartFlow;
+
+		beforeEach(function(){
+			LineChartFlow = LineChartFlowFactory.build();
+			LineChartFlow.initializeData(data);
+			LineChartFlow.deleteData(delData);
+		});
+
+		afterEach(function(){
+			LineChartFlow = null;
+		});
+
+		it('data removed in the correct way', function(){
+			expect(LineChartFlow.getData().length).toEqual(0);
+		});
+	});
+
 });

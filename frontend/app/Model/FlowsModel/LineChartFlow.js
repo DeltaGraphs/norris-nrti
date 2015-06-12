@@ -81,7 +81,7 @@ angular.module('norris-nrti')
 	            this._marker = lfJson.marker;
 	        }
 	        if (lfJson.area !== undefined) {
-	            this._areaColor = lfJson.area;
+	            this._area = lfJson.area;
 	        }
 	        if (lfJson.maxItem !== undefined) {
 	            this._maxItem = lfJson.maxItem;

@@ -146,7 +146,6 @@ angular.module('norris-nrti')
 
     MapChart.prototype.initializeData = function(newData) {  //inizialization data of flows
         if (newData !== undefined) {
-            console.log('MAPCHART MODEL initialize ' + JSON.stringify(newData));
             var fList = this._graph.getFlowList();
             for (var i=0; i<newData.length; i++) {
                 for (var j=0; j<fList.length; j++) {
