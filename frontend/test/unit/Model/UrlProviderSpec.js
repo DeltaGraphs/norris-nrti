@@ -39,7 +39,7 @@ describe('UrlProvider', function(){
 			urlProvider = null;
 		});
 
-		it('BarChart created', function(){
+		it('urlProvider created', function(){
 			expect(urlProvider).toBeDefined();
 		});
 
@@ -57,7 +57,7 @@ describe('UrlProvider', function(){
 			urlProvider = null;
 		});
 
-		it('BarChart created', function(){
+		it('urlProvider updated', function(){
 			expect(urlProvider.getUrl()).toEqual('');
 			urlProvider.setUrl('localhost/page/map');
 			expect(urlProvider.getUrl()).toEqual('localhost/page/map');

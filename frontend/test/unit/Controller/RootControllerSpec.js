@@ -15,3 +15,23 @@
 * =================================================================================================
 *
 */
+
+describe('RootController', function(){
+	'use strict';
+
+	var RootController;
+
+	beforeEach(angular.mock.module('norris-nrti'));
+
+	 beforeEach(inject(function($rootScope, $controller){
+    	scope = $rootScope.$new();
+        controller = $controller('RootController', { $scope : scope });
+    }));
+
+	describe('watch', function(){
+		expect(scope.url).toBe('');
+		scope.$apply('scope.url="localhost/page/map"');
+		expect(scope.url).toBe('localhost/page/map');
+	});
+
+});
