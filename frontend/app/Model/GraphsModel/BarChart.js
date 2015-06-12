@@ -241,7 +241,7 @@ angular.module('norris-nrti')
         return this._legendOnPoint;
     };
     BarChart.prototype.getHGrid = function() {
-        return this._horizontalGrid();
+        return this._horizontalGrid;
     };
 
     function BarChartFactory(){}

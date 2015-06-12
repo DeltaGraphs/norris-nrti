@@ -23,7 +23,7 @@
 */
 
 angular.module('norris-nrti')
-.factory('TableFactory', ['GraphFactory', 'CellFactory', 'TableFlowFactory', function(GraphFactory, CellFactory, TableFlowFactory){
+.factory('TableFactory', ['GraphFactory', 'TableFlowFactory', function(GraphFactory, TableFlowFactory){
 
 	function split(json) {
 		var graphJson = {};

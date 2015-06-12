@@ -33,8 +33,8 @@ angular.module('norris-nrti')
 	        }
 
 	        
-	        if (json.maxItems !== undefined) {
-	            tableFlowJson.maxItems = json.maxItems;
+	        if (json.maxItemsSaved !== undefined) {
+	            tableFlowJson.maxItems = json.maxItemsSaved;
 	        }
 	    }
 

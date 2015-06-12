@@ -52,7 +52,7 @@ describe('TableFlowFactory', function(){
 		var json = {
 			'dataFormat' : 'int',
 			'name' : 'flusso1',
-			'maxItem' : '20'
+			'maxItemsSaved' : 20
 		};
 		var TableFlow;
 
@@ -65,7 +65,7 @@ describe('TableFlowFactory', function(){
 		});
 
 		it('constructor create the flow with the correct max item displayed', function(){
-			expect(TableFlow.getMaxItem()).toEqual('20');
+			expect(TableFlow.getMaxItem()).toEqual(20);
 		});
 
 	});
@@ -102,7 +102,7 @@ describe('TableFlowFactory', function(){
 	describe('updateParameters', function(){
 		var json = {
 			'name' : 'flusso2',
-			'maxItem' : 15
+			'maxItemsSaved' : 15
 		};
 		var TableFlow;
 
@@ -142,7 +142,7 @@ describe('TableFlowFactory', function(){
 
 		beforeEach(function(){
 			TableFlow = TableFlowFactory.build();
-			TableFlow.initializeData(data);
+			TableFlow.initializeData(data,'top');
 		});
 
 		afterEach(function(){
@@ -178,7 +178,7 @@ describe('TableFlowFactory', function(){
 
 		beforeEach(function(){
 			TableFlow = TableFlowFactory.build();
-			TableFlow.initializeData(data);
+			TableFlow.initializeData(data,'bottom');
 		});
 
 		afterEach(function(){
@@ -212,7 +212,7 @@ describe('TableFlowFactory', function(){
 
 		beforeEach(function(){
 			TableFlow = TableFlowFactory.build();
-			TableFlow.initializeData(data);
+			TableFlow.initializeData(data,'bottom');
 			TableFlow.inPlaceUpdate(update);
 		});
 
