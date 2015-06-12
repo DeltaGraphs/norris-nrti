@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">74.06</p>
+      <p class="stat">74.50</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">323</p>
+      <p class="stat">376</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">16.27</p>
+      <p class="stat">18.22</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">2.35</p>
+      <p class="stat">2.88</p>
     </div>
   </div>
 </div>
@@ -168,6 +168,15 @@ describe(&#039;LineChartFactory&#039;, function(){
 		it(&#039;graph created with the correct background&#039;, function(){
 			expect(LineChart.getBackground()).toEqual(&#039;#FFF&#039;);
 		});
+		it(&#039;graph created with the correct interpolation&#039;, function(){
+			expect(LineChart.getInerpolation()).toEqual(&#039;linear&#039;);
+		});
+		it(&#039;graph created with the correct horizontalGrid&#039;, function(){
+			expect(LineChart.getHGrid()).toEqual(false);
+		});
+		it(&#039;graph created with the correct verticalGrid&#039;, function(){
+			expect(LineChart.getVGrid()).toEqual(false);
+		});
 
 	});
 
@@ -225,13 +234,14 @@ describe(&#039;LineChartFactory&#039;, function(){
 			&#039;height&#039; : 400,
 			&#039;width&#039; : 400,
 			&#039;enabledLegend&#039; : false,
-			&#039;horizontalGrid&#039; : false,
-			&#039;verticalGrid&#039; : false,
 			&#039;legendOnPoint&#039; : true,
 			&#039;viewFinder&#039; : true,
 			&#039;axisX&#039; : {},
 			&#039;axisY&#039; : {},
 			&#039;backgroundColor&#039; : &#039;#000&#039;,
+			&#039;interpolation&#039; : &#039;linear&#039;,
+			&#039;horizontalGrid&#039; : true,
+			&#039;verticalGrid&#039; : true,
 			&#039;flows&#039; : [{&#039;ID&#039; : &#039;f1&#039;},{&#039;ID&#039; : &#039;f2&#039;},{&#039;ID&#039; : &#039;f3&#039;}]
 		};
 
@@ -263,6 +273,15 @@ describe(&#039;LineChartFactory&#039;, function(){
 		});
 		it(&#039;graph updated with the correct flow&#039;, function(){
 			expect(LineChart.getFlowList().length).toEqual(3);
+		});
+		it(&#039;graph created with the correct interpolation&#039;, function(){
+			expect(LineChart.getInerpolation()).toEqual(&#039;linear&#039;);
+		});
+		it(&#039;graph created with the correct horizontalGrid&#039;, function(){
+			expect(LineChart.getHGrid()).toEqual(true);
+		});
+		it(&#039;graph created with the correct verticalGrid&#039;, function(){
+			expect(LineChart.getVGrid()).toEqual(true);
 		});
 		
 	});
@@ -434,6 +453,40 @@ describe(&#039;LineChartFactory&#039;, function(){
 			expect(LineChart.getFlowList()[0].flow.getData().length).toEqual(2);
 		});
 
+	});
+
+	describe(&#039;deleteData&#039;, function(){
+
+		var data = [
+			{
+				&#039;ID&#039; : &#039;2&#039;,
+				&#039;records&#039; : [{&#039;NorrisRecordID&#039; : &#039;record2&#039;, &#039;value&#039; : [3,3] }]
+			}
+		];
+
+		var delData = {
+			&#039;ID&#039; : &#039;2&#039;,
+			&#039;NorrisRecordID&#039; : &#039;record2&#039;
+		};
+		
+		var newFlow;
+		var LineChart;
+
+		beforeEach(function(){
+			newFlow = LineChartFlowFactory.build();
+			LineChart = LineChartFactory.build();
+			LineChart.addFlow(data[0].ID, newFlow);
+			LineChart.initializeData(data);
+			LineChart.deleteData(delData);
+		});
+
+		afterEach(function(){
+			LineChart = null;
+		});
+
+		it(&#039;deleteData in the correct way&#039;, function(){
+			expect(LineChart.getFlowList()[0].flow.getData().length).toEqual(0);
+		});
 	});
 
 });</textarea>

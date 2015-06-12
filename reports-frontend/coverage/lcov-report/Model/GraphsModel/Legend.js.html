@@ -15,10 +15,10 @@
 <div class="header high">
     <h1>Code coverage report for <span class="entity">Model/GraphsModel/Legend.js</span></h1>
     <h2>
-        Statements: <span class="metric">100% <small>(27 / 27)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">100% <small>(30 / 30)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Branches: <span class="metric">56.25% <small>(9 / 16)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Functions: <span class="metric">87.5% <small>(7 / 8)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">100% <small>(27 / 27)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">100% <small>(30 / 30)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
     <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">Model/GraphsModel/</a> &#187; Legend.js</div>
@@ -101,10 +101,7 @@
 74
 75
 76
-77
-78
-79
-80</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+77</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -147,11 +144,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">116</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">133</span>
 <span class="cline-any cline-yes">3</span>
 <span class="cline-any cline-yes">3</span>
 <span class="cline-any cline-yes">3</span>
@@ -166,23 +159,24 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">133</span>
 <span class="cline-any cline-yes">3</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">133</span>
 <span class="cline-any cline-yes">3</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">133</span>
 <span class="cline-any cline-yes">3</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">116</span>
+<span class="cline-any cline-yes">133</span>
 <span class="cline-any cline-yes">11</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">116</span>
+<span class="cline-any cline-yes">133</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*jshint node: true */
 'use strict';
 &nbsp;
@@ -226,33 +220,30 @@ angular.module('norris-nrti')
         }
     }
 &nbsp;
-    Legend.prototype = {
-&nbsp;
-        contructor : Legend,
-&nbsp;
-        updateParameters : function(info){
-            <span class="missing-if-branch" title="else path not taken" >E</span>if (info !== undefined) {
-                <span class="missing-if-branch" title="else path not taken" >E</span>if (info.position !== undefined) {
-                    this._position = info.position;
-                }
-                <span class="missing-if-branch" title="else path not taken" >E</span>if (info.fontColor !== undefined) {
-                    this._fontColor = info.fontColor;
-                }
-                <span class="missing-if-branch" title="else path not taken" >E</span>if (info.backgroundColor !== undefined) {
-                    this._backgroundColor = info.backgroundColor;
-                }
+    Legend.prototype.updateParameters = function(info){
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (info !== undefined) {
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (info.position !== undefined) {
+                this._position = info.position;
             }
-        },
-&nbsp;
-        getPosition : function(){
-            return this._position;
-        },
-        getFontColor : function(){
-            return this._fontColor;
-        },
-        getBackgroundColor : function(){
-            return this._backgroundColor;
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (info.fontColor !== undefined) {
+                this._fontColor = info.fontColor;
+            }
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (info.backgroundColor !== undefined) {
+                this._backgroundColor = info.backgroundColor;
+            }
         }
+    };
+&nbsp;
+        //contructor : Legend,
+&nbsp;
+    Legend.prototype.getPosition = function(){
+        return this._position;
+    };
+    Legend.prototype.getFontColor = function(){
+        return this._fontColor;
+    };
+    Legend.prototype.getBackgroundColor = function(){
+        return this._backgroundColor;
     };
 &nbsp;
 <span class="fstat-no" title="function not covered" >    function LegendFactory() {</span>}
@@ -267,7 +258,7 @@ angular.module('norris-nrti')
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Jun 12 2015 08:04:27 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Jun 12 2015 08:34:26 GMT+0000 (UTC)</div>
 </div>
 <script src="../../prettify.js"></script>
 <script>
