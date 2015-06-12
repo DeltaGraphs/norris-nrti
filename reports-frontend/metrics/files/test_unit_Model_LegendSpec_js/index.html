@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">13.25</p>
+      <p class="stat">12.37</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.54</p>
+      <p class="stat">0.55</p>
     </div>
   </div>
 </div>
@@ -198,13 +198,13 @@ describe(&#039;LegendFactory&#039;, function(){
 			Legend = null;
 		});
 
-		it(&#039;constructor create the page with the correct position&#039;, function(){
+		it(&#039;legend updated with the correct position&#039;, function(){
 			expect(Legend.getPosition()).toEqual(&#039;S&#039;);
 		});
-		it(&#039;constructor create the page with the correct font color&#039;, function(){
+		it(&#039;legend updated with the correct font color&#039;, function(){
 			expect(Legend.getFontColor()).toEqual(&#039;#F00&#039;);
 		});
-		it(&#039;constructor create the page with the correct background&#039;, function(){
+		it(&#039;legend updated with the correct background&#039;, function(){
 			expect(Legend.getBackgroundColor()).toEqual(&#039;#AFA&#039;);
 		});
 
