@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">78.02</p>
+      <p class="stat">77.83</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">321</p>
+      <p class="stat">311</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">18.67</p>
+      <p class="stat">18.33</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">1.68</p>
+      <p class="stat">1.56</p>
     </div>
   </div>
 </div>
@@ -143,11 +143,8 @@ describe(&#039;LineChartFlowFactory&#039;, function(){
 		it(&#039;constructor create the flow with the correct marker&#039;, function(){
 			expect(LineChartFlow.getMarker()).toEqual(&#039;square&#039;);
 		});
-		it(&#039;constructor create the flow with the correct interpolation&#039;, function(){
-			expect(LineChartFlow.getInterpolation()).toEqual(&#039;linear&#039;);
-		});
-		it(&#039;constructor create the flow with the correct area color&#039;, function(){
-			expect(LineChartFlow.getAreaColor()).toEqual(&#039;#FFF&#039;);
+		it(&#039;constructor create the flow with the correct area&#039;, function(){
+			expect(LineChartFlow.getArea()).toEqual(false);
 		});
 		it(&#039;constructor create the flow with the correct max item displayed&#039;, function(){
 			expect(LineChartFlow.getMaxItem()).toEqual(20);
@@ -162,7 +159,7 @@ describe(&#039;LineChartFlowFactory&#039;, function(){
 			&#039;flowColor&#039; : &#039;#F2F&#039;,
 			&#039;marker&#039; : &#039;furly&#039;,
 			&#039;interpolation&#039; : &#039;single&#039;,
-			&#039;area&#039; : &#039;#F2F&#039;,
+			&#039;area&#039; : true,
 			&#039;maxItem&#039; : 20
 		};
 
@@ -186,11 +183,8 @@ describe(&#039;LineChartFlowFactory&#039;, function(){
 		it(&#039;constructor create the flow with the correct marker&#039;, function(){
 			expect(LineChartFlow.getMarker()).toEqual(&#039;furly&#039;);
 		});
-		it(&#039;constructor create the flow with the correct interpolation&#039;, function(){
-			expect(LineChartFlow.getInterpolation()).toEqual(&#039;single&#039;);
-		});
-		it(&#039;constructor create the flow with the correct area color&#039;, function(){
-			expect(LineChartFlow.getAreaColor()).toEqual(&#039;#F2F&#039;);
+		it(&#039;constructor create the flow with the correct area&#039;, function(){
+			expect(LineChartFlow.getArea()).toEqual(true);
 		});
 		it(&#039;constructor create the flow with the correct max item displayed&#039;, function(){
 			expect(LineChartFlow.getMaxItem()).toEqual(20);
@@ -242,8 +236,7 @@ describe(&#039;LineChartFlowFactory&#039;, function(){
 			&#039;name&#039; : &#039;flusso2&#039;,
 			&#039;flowColor&#039; : &#039;#F1F&#039;,
 			&#039;marker&#039; : &#039;furly1&#039;,
-			&#039;interpolation&#039; : &#039;cubic&#039;,
-			&#039;area&#039; : &#039;#F1F&#039;,
+			&#039;area&#039; : false,
 			&#039;maxItem&#039; : 15
 		};
 		var LineChartFlow;
@@ -263,11 +256,8 @@ describe(&#039;LineChartFlowFactory&#039;, function(){
 		it(&#039;flow updated with the correct marker&#039;, function(){
 			expect(LineChartFlow.getMarker()).toEqual(&#039;furly1&#039;);
 		});
-		it(&#039;flow updated with the correct interpolation&#039;, function(){
-			expect(LineChartFlow.getInterpolation()).toEqual(&#039;cubic&#039;);
-		});
-		it(&#039;flow updated with the correct area color&#039;, function(){
-			expect(LineChartFlow.getAreaColor()).toEqual(&#039;#F1F&#039;);
+		it(&#039;flow updated with the correct area&#039;, function(){
+			expect(LineChartFlow.getArea()).toEqual(false);
 		});
 		it(&#039;flow updated with the correct max item displayed&#039;, function(){
 			expect(LineChartFlow.getMaxItem()).toEqual(15);
