@@ -16,30 +16,13 @@
 *
 */
 
-describe('MapChartController', function() {
-    var scope, $controller;
-
-    beforeEach(module('norris-nrti'));
-
-    beforeEach(inject(function($rootScope, _$controller_){
-    	$controller = _$controller_;
-        scope = $rootScope.$new();
-        var controller = $controller('MapChartController', { $scope : scope });
-    }));
-
-    it('should have a method to check if the path is active', function() {
-        expect(scope.mapChart).toBeDefined();
-    });
-});
-
-/*describe('MapChartController', function(){
+describe('MapChartController', function(){
 
 	beforeEach(angular.mock.module('norris-nrti'));
 
-	var scope;
-	var controller;
-	var MapChartFactory;
-	//var notify;
+	var scope, $controller;
+	var SocketServicesFactory;
+	var socket;
 	var json = {
 			'title' : 'graficonuovo',
 			'url' : 'localhost',
@@ -57,26 +40,26 @@ describe('MapChartController', function() {
 			'flows' : [{'ID' : '1'},{'ID' : '2'},{'ID' : '3'}]
 	};
 
+    beforeEach(inject(function($rootScope, _$controller_, $injector){
+    	scope = $rootScope.$new();
+    	$controller = _$controller_;
+    	SocketServicesFactory = $injector.get(SocketServicesFactory);
+    	socket = SocketServicesFactory.build();
+        var controller = $controller('MapChartController', { $scope : scope });
+    }));	
+
     describe('listenOnEvent', function(){
-		beforeEach(inject(function ($rootScope, $controller, $injector) {
-	    	MapChartFactory = $injector.get('MapChartFactory');
-	        scope = $rootScope.$new();
-	        scope.mapChart = MapChartFactory.build(json);
-	        //notify = _notify_;
-	        controller = $controller('MapChartController', {    // "lo conosci il MapChartController?" cit. Barney
-	        	$scope : scope
-	        });
-	    }));
+    	it('scope.mapChart is is defined', function() {
+    		expect(scope.mapChart).toBeDefined();
+    	});
 
-	    it ('listenOnEvent works fine', function(){
-
-	    	expect(scope.mapChart).toBeDefined();
+	    it('configGraph works fine', function(){
 			expect(scope.mapChart.getTitle()).toEqual('graficonuovo');
-			/*notify.receive('configGraph',{
+			socket.receive('configGraph',{
 				'properties' : {
 					'title' : 'titolocambiato'
 				},
-				'data' : data
+				'data' : []
 			});
 			expect(scope.mapChart.getTitle()).toEqual('titolocambiato');
 			expect(scope.mapChart.getFlowList()[0].flow.getData()[0].value[0]).toEqual(0);
@@ -87,7 +70,7 @@ describe('MapChartController', function() {
 
 	//});
 
-	describe('listenOnEvent', function(){
+	/*describe('listenOnEvent', function(){
 
 		var data = [
 			{
@@ -112,6 +95,6 @@ describe('MapChartController', function() {
 			expect(scope.mapChart.getTitle()).toEqual('titolocambiato');
 			expect(scope.mapChart.getFlowList()[0].flow.getData()[0].value[0]).toEqual(0);
 		});
-	});
+	});*/
 	
-});*/
+});
