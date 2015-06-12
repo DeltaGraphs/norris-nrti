@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">75.09</p>
+      <p class="stat">74.28</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">376</p>
+      <p class="stat">411</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">18.00</p>
+      <p class="stat">19.52</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">2.77</p>
+      <p class="stat">3.22</p>
     </div>
   </div>
 </div>
@@ -349,6 +349,41 @@ describe(&#039;LineChartFactory&#039;, function(){
 
 		it(&#039;delete flow from graph&#039;, function(){
 			expect(LineChart.getFlowList().length).toEqual(1);
+		});
+
+	});
+	
+	describe(&#039;replaceData&#039;, function(){
+
+		var json1 = {
+			&#039;ID&#039; : 	&#039;flusso1&#039;,
+			&#039;name&#039; : &#039;sonda 1&#039;,
+			&#039;records&#039; : [{&#039;NorrisRecordID&#039; : &#039;record2&#039;, &#039;value&#039; : [3,3] }, {&#039;NorrisRecordID&#039; : &#039;record3&#039;, &#039;value&#039; : [4,4] }]
+		};
+
+		var json = {
+			&#039;ID&#039; : &#039;flusso1&#039;,
+			&#039;records&#039; :	[{&#039;NorrisRecordID&#039; : &#039;record4&#039;, &#039;value&#039; : [5,5] }, {&#039;NorrisRecordID&#039; : &#039;record5&#039;, &#039;value&#039; : [6,6] }]
+		};
+
+		var LineChart, Flow;
+
+		beforeEach(function(){
+			Flow = LineChartFlowFactory.build();
+			Flow.inizializeData(json1);
+			LineChart = LineChartFactory.build();
+			LineChart.addFlow(json1.ID, Flow);
+			LineChart.replaceData(json);
+		});
+
+		afterEach(function(){
+			Flow = null;
+			LineChart = null;
+		});
+
+		it(&#039;delete flow from graph&#039;, function(){
+			expect(LineChart.getFlowList()[0].flow.getData()[0].value[0]).toEqual(5);
+			expect(LineChart.getFlowList()[0].flow.getData()[1].value[0]).toEqual(6);
 		});
 
 	});
