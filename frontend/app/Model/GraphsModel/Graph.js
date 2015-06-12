@@ -50,81 +50,79 @@ angular.module('norris-nrti')
 		}		
 	}
 
-	Graph.prototype = {
-
-		constructor : Graph,
-
-		updateParameters : function(info) { //abstract
-			if (info !== undefined) {
-				if (info.title !== undefined) {
-					this._title = info.title;
-				}
-				if (info.height !== undefined) {
-					this._height = info.height;
-				}
-				if (info.width !== undefined) {
-					this._width = info.width;
-				}
-				if (info.enableLegend !== undefined) {
-					this._enableLegend = info.enableLegend;
-				}
-				if (this._enableLegend && info.legend !== undefined) {
-						this._legend = LegendFactory.build(info.legend);
-				}
+	Graph.prototype.updateParameters = function(info) {
+		if (info !== undefined) {
+			if (info.title !== undefined) {
+				this._title = info.title;
 			}
-		},
-		addFlow : function(newId, newFlow) { //abstract
-			var count = 0;
-
-			for (var i = 0; i<this._flowList.length; i++) {
-				if (this._flowList[i].id === newId) {
-					count++;
-				}
+			if (info.height !== undefined) {
+				this._height = info.height;
 			}
-
-		    if(count === 0) {
-		        this._flowList.push({ id: newId, flow: newFlow});
+			if (info.width !== undefined) {
+				this._width = info.width;
 			}
-			// error
-		},
-		deleteFlow : function(flowID) {
-	        for (var i = 0; i<this._flowList.length; i++){
-	            if (this._flowList[i].id === flowID){
-	                this._flowList.splice(i,1);
-	            }
-	        }
-		},
-		replaceData : function(newData) {
-			for (var i = 0;i<this._flowList.length; i++) {
-				if (this._flowList[i].id === newData.ID){
-	                this._flowList[i].flow.emptyData();
-	                this._flowList[i].flow.initializeData(newData);
-	            }
+			if (info.enableLegend !== undefined) {
+				this._enableLegend = info.enableLegend;
 			}
-		},
-		
-		getTitle : function() {
-			return this._title;
-		},
-		getHeight : function() {
-			return this._height;
-		},
-		getWidth : function() {
-			return this._width;
-		},
-		getLegend : function() {
-			if (this._enableLegend) {
-				return this._legend;
-			} else {
-				return null;
+			if (this._enableLegend && info.legend !== undefined) {
+					this._legend = LegendFactory.build(info.legend);
 			}
-		},
-		getUrl : function() {
-			return this._url;
-		},
-		getFlowList : function() {
-			return this._flowList;
 		}
+	};
+
+		//constructor : Graph,
+
+	Graph.prototype.addFlow = function(newId, newFlow) {
+		var count = 0;
+
+		for (var i = 0; i<this._flowList.length; i++) {
+			if (this._flowList[i].id === newId) {
+				count++;
+			}
+		}
+
+	    if(count === 0) {
+	        this._flowList.push({ id: newId, flow: newFlow});
+		}
+		// error
+	};
+	Graph.prototype.deleteFlow = function(flowID) {
+        for (var i = 0; i<this._flowList.length; i++){
+            if (this._flowList[i].id === flowID){
+                this._flowList.splice(i,1);
+            }
+        }
+	};
+	Graph.prototype.replaceData = function(newData) {
+		for (var i = 0;i<this._flowList.length; i++) {
+			if (this._flowList[i].id === newData.ID){
+                this._flowList[i].flow.emptyData();
+                this._flowList[i].flow.initializeData(newData);
+            }
+		}
+	};
+	
+	Graph.prototype.getTitle = function() {
+		return this._title;
+	};
+	Graph.prototype.getHeight = function() {
+		return this._height;
+	};
+	Graph.prototype.getWidth = function() {
+		return this._width;
+	};
+	Graph.prototype.getLegend = function() {
+		if (this._enableLegend) {
+			return this._legend;
+		} else {
+			return null;
+		}
+	};
+	Graph.prototype.getUrl = function() {
+		return this._url;
+	};
+	Graph.prototype.getFlowList = function() {
+		return this._flowList;
 	};
 
 	function GraphFactory() {}

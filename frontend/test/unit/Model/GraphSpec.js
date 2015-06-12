@@ -58,6 +58,15 @@ describe('GraphFactory', function(){
 		it('constructor create the graph with the correct title', function(){
 			expect(Graph.getTitle()).toEqual(null);
 		});
+		it('constructor create the graph with the correct height', function(){
+			expect(Graph.getHeight()).toEqual(null);
+		});
+		it('constructor create the graph with the correct width', function(){
+			expect(Graph.getWidth()).toEqual(null);
+		});
+		it('constructor create the graph with the correct legend', function(){
+			expect(Graph.getLegend()).toEqual(null);
+		});
 		it('constructor create the graph with the correct url', function(){
 			expect(Graph.getUrl()).toEqual(null);
 		});
@@ -86,6 +95,15 @@ describe('GraphFactory', function(){
 
 		it('constructor create the graph with the correct title', function(){
 			expect(Graph.getTitle()).toEqual('grafico1');
+		});
+		it('constructor create the graph with the correct height', function(){
+			expect(Graph.getHeight()).toEqual(null);
+		});
+		it('constructor create the graph with the correct width', function(){
+			expect(Graph.getWidth()).toEqual(null);
+		});
+		it('constructor create the graph with the correct legend', function(){
+			expect(Graph.getLegend()).toEqual(null);
 		});
 		it('constructor create the graph with the correct url', function(){
 			expect(Graph.getUrl()).toEqual('http://localhost/page1/grafico1');
@@ -124,6 +142,9 @@ describe('GraphFactory', function(){
 		});
 		it('graph updated with the correct legend', function(){
 			expect(Graph.getLegend()).toEqual(null);
+		});
+		it('constructor create the graph with the correct url', function(){
+			expect(Graph.getUrl()).toEqual(null);
 		});
 
 	});

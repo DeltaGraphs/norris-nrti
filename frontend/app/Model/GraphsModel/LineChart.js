@@ -90,8 +90,8 @@ angular.module('norris-nrti')
         this._viewFinder = false;
         this._backgroundColor = '#FFF';
         this._interpolation = 'linear';
-        this._hGrid = null;
-        this._vGrid = null;
+        this._horizontalGrid = false;
+        this._verticalGrid = false;
         this._graph = GraphFactory.build(info);
     }
 
@@ -207,12 +207,6 @@ angular.module('norris-nrti')
     LineChart.prototype.getLegend = function() {
         return this._graph.getLegend();
     };
-    LineChart.prototype.getHGrid = function() {
-        return this._horizontalGrid;
-    };
-    LineChart.prototype.getVGrid = function() {
-        return this._verticalGrid;
-    };
     LineChart.prototype.getUrl = function() {
         return this._graph.getUrl();
     };
@@ -236,6 +230,12 @@ angular.module('norris-nrti')
     };
     LineChart.prototype.getInterpolation = function() {
         return this._interpolation;
+    };
+    LineChart.prototype.getHGrid = function() {
+        return this._horizontalGrid;
+    };
+    LineChart.prototype.getVGrid = function() {
+        return this._verticalGrid;
     };
 
     function LineChartFactory(){}

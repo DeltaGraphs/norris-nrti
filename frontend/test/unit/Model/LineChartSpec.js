@@ -77,6 +77,15 @@ describe('LineChartFactory', function(){
 		it('graph created with the correct background', function(){
 			expect(LineChart.getBackground()).toEqual('#FFF');
 		});
+		it('graph created with the correct interpolation', function(){
+			expect(LineChart.getInerpolation()).toEqual('linear');
+		});
+		it('graph created with the correct horizontalGrid', function(){
+			expect(LineChart.getHGrid()).toEqual(false);
+		});
+		it('graph created with the correct verticalGrid', function(){
+			expect(LineChart.getVGrid()).toEqual(false);
+		});
 
 	});
 
@@ -134,13 +143,14 @@ describe('LineChartFactory', function(){
 			'height' : 400,
 			'width' : 400,
 			'enabledLegend' : false,
-			'horizontalGrid' : false,
-			'verticalGrid' : false,
 			'legendOnPoint' : true,
 			'viewFinder' : true,
 			'axisX' : {},
 			'axisY' : {},
 			'backgroundColor' : '#000',
+			'interpolation' : 'linear',
+			'horizontalGrid' : true,
+			'verticalGrid' : true,
 			'flows' : [{'ID' : 'f1'},{'ID' : 'f2'},{'ID' : 'f3'}]
 		};
 
@@ -172,6 +182,15 @@ describe('LineChartFactory', function(){
 		});
 		it('graph updated with the correct flow', function(){
 			expect(LineChart.getFlowList().length).toEqual(3);
+		});
+		it('graph created with the correct interpolation', function(){
+			expect(LineChart.getInerpolation()).toEqual('linear');
+		});
+		it('graph created with the correct horizontalGrid', function(){
+			expect(LineChart.getHGrid()).toEqual(true);
+		});
+		it('graph created with the correct verticalGrid', function(){
+			expect(LineChart.getVGrid()).toEqual(true);
 		});
 		
 	});
@@ -343,6 +362,40 @@ describe('LineChartFactory', function(){
 			expect(LineChart.getFlowList()[0].flow.getData().length).toEqual(2);
 		});
 
+	});
+
+	describe('deleteData', function(){
+
+		var data = [
+			{
+				'ID' : '2',
+				'records' : [{'NorrisRecordID' : 'record2', 'value' : [3,3] }]
+			}
+		];
+
+		var delData = {
+			'ID' : '2',
+			'NorrisRecordID' : 'record2'
+		};
+		
+		var newFlow;
+		var LineChart;
+
+		beforeEach(function(){
+			newFlow = LineChartFlowFactory.build();
+			LineChart = LineChartFactory.build();
+			LineChart.addFlow(data[0].ID, newFlow);
+			LineChart.initializeData(data);
+			LineChart.deleteData(delData);
+		});
+
+		afterEach(function(){
+			LineChart = null;
+		});
+
+		it('deleteData in the correct way', function(){
+			expect(LineChart.getFlowList()[0].flow.getData().length).toEqual(0);
+		});
 	});
 
 });

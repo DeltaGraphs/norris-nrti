@@ -41,33 +41,30 @@ angular.module('norris-nrti')
         }
     }
 
-    Legend.prototype = {
-
-        contructor : Legend,
-
-        updateParameters : function(info){
-            if (info !== undefined) {
-                if (info.position !== undefined) {
-                    this._position = info.position;
-                }
-                if (info.fontColor !== undefined) {
-                    this._fontColor = info.fontColor;
-                }
-                if (info.backgroundColor !== undefined) {
-                    this._backgroundColor = info.backgroundColor;
-                }
+    Legend.prototype.updateParameters = function(info){
+        if (info !== undefined) {
+            if (info.position !== undefined) {
+                this._position = info.position;
             }
-        },
-
-        getPosition : function(){
-            return this._position;
-        },
-        getFontColor : function(){
-            return this._fontColor;
-        },
-        getBackgroundColor : function(){
-            return this._backgroundColor;
+            if (info.fontColor !== undefined) {
+                this._fontColor = info.fontColor;
+            }
+            if (info.backgroundColor !== undefined) {
+                this._backgroundColor = info.backgroundColor;
+            }
         }
+    };
+
+        //contructor : Legend,
+
+    Legend.prototype.getPosition = function(){
+        return this._position;
+    };
+    Legend.prototype.getFontColor = function(){
+        return this._fontColor;
+    };
+    Legend.prototype.getBackgroundColor = function(){
+        return this._backgroundColor;
     };
 
     function LegendFactory() {}

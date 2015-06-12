@@ -88,6 +88,9 @@ describe('BarChartFactory', function(){
 		it('graph created with the correct flow', function(){
 			expect(BarChart.getFlowList().length).toEqual(0);
 		});
+		it('graph created with the correct horizontalGrid', function(){
+			expect(BarChart.getHGrid().length).toEqual(false);
+		});
 
 	});
 
@@ -146,16 +149,15 @@ describe('BarChartFactory', function(){
 			'height' : 400,
 			'width' : 400,
 			'enabledLegend' : false,
-			'horizontalGrid' : false,
-			'verticalGrid' : false,
 			'axisX' : {},
 			'axisY' : {},
 			'barOrientation' : 'vertical',
 			'headers' : ['colonna1'],
 			'backgroundColor' : '#F0F',
 			'sortable' : false,
-			'barsGrouping' : 'stacked',
+			'groupingControl' : false,
 			'legendOnPoint' : true,
+			'horizontalGrid' : false,
 			'flows' : [{'ID' : 'f1'},{ 'ID' : 'f2'},{'ID' : 'f3'}]
 		};
 		var BarChart;
@@ -191,13 +193,16 @@ describe('BarChartFactory', function(){
 			expect(BarChart.getSortable()).toEqual(false);
 		});
 		it('graph updated with the correct grouping control', function(){
-			expect(BarChart.getGroupingControl()).toEqual('stacked');
+			expect(BarChart.getGroupingControl()).toEqual(false);
 		});
 		it('graph updated with the correct legendOnPoint', function(){
 			expect(BarChart.getLegendOnPoint()).toEqual(true);
 		});
 		it('graph updated with the correct flow', function(){
 			expect(BarChart.getFlowList().length).toEqual(3);
+		});
+		it('graph created with the correct horizontalGrid', function(){
+			expect(BarChart.getHGrid().length).toEqual(0);
 		});
 		
 	});
@@ -323,6 +328,40 @@ describe('BarChartFactory', function(){
 			expect(BarChart.getFlowList()[0].flow.getData()[0].value[0]).toEqual(3);
 			BarChart.inPlaceUpdate(data1);
 			expect(BarChart.getFlowList()[0].flow.getData()[0].value[0]).toEqual(4);
+		});
+	});
+
+	describe('deleteData', function(){
+
+		var data = [
+			{
+				'ID' : '2',
+				'records' : [{'NorrisRecordID' : 'record2', 'value' : [3,3] }]
+			}
+		];
+
+		var delData = {
+			'ID' : '2',
+			'NorrisRecordID' : 'record2'
+		};
+		
+		var newFlow;
+		var BarChart;
+
+		beforeEach(function(){
+			newFlow = BarChartFlowFactory.build();
+			BarChart = BarChartFactory.build();
+			BarChart.addFlow(data[0].ID, newFlow);
+			BarChart.initializeData(data);
+			BarChart.deleteData(delData);
+		});
+
+		afterEach(function(){
+			BarChart = null;
+		});
+
+		it('deleteData in the correct way', function(){
+			expect(BarChart.getFlowList()[0].flow.getData().length).toEqual(0);
 		});
 	});
 

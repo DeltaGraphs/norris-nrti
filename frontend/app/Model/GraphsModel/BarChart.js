@@ -34,7 +34,7 @@ angular.module('norris-nrti')
         this._sortable = true;
         this._groupingControl = true;
         this._legendOnPoint = false;
-        this._horizontalGrid = null;
+        this._horizontalGrid = false;
         this._graph = GraphFactory.build(info);
     }
 
@@ -143,7 +143,6 @@ angular.module('norris-nrti')
 
     BarChart.prototype.addFlow = function(newId, newFlow) {
         if (newFlow.constructor.name === 'BarChartFlow') {
-            console.log('BARCHART constructor.name');
             this._graph.addFlow(newId, newFlow);
         }
     };
@@ -211,12 +210,6 @@ angular.module('norris-nrti')
     BarChart.prototype.getLegend = function() {
         return this._graph.getLegend();
     };
-    BarChart.prototype.getHGrid = function() {
-        return this._graph.getHGrid();
-    };
-    BarChart.prototype.getVGrid = function() {
-        return this._graph.getVGrid();
-    };
     BarChart.prototype.getUrl = function() {
         return this._graph.getUrl();
     };
@@ -246,6 +239,9 @@ angular.module('norris-nrti')
     };
     BarChart.prototype.getLegendOnPoint = function() {
         return this._legendOnPoint;
+    };
+    BarChart.prototype.getHGrid = function() {
+        return this._horizontalGrid();
     };
 
     function BarChartFactory(){}

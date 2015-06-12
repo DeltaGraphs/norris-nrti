@@ -55,49 +55,46 @@ angular.module('norris-nrti')
         }
     }
 
-    Axis.prototype = {
-        updateParameters : function(info){
-            if (info !== undefined) {
-                if (info.name !== undefined) {
-                    this._name = info.name;
-                }
-                if (info.color !== undefined) {
-                    this._color = info.color;
-                }
-                if (info.minIndex !== undefined) {
-                    this._minValue = info.minIndex;
-                }
-                if (info.maxIndex !== undefined) {
-                    this._maxValue = info.maxIndex;
-                }
-                if (info.ticks !== undefined) {
-                    this._ticks = info.ticks;
-                }
-                if (info.scale !== undefined) {
-                    this._scale = info.scale;
-                }
+    Axis.prototype.updateParameters = function(info){
+        if (info !== undefined) {
+            if (info.name !== undefined) {
+                this._name = info.name;
             }
-        },
-
-        getName : function(){
-            return this._name;
-        },
-        getColor : function(){
-            return this._color;
-        },
-        getMinValue : function(){
-            return this._minValue;
-        },
-        getMaxValue : function(){
-            return this._maxValue;
-        },
-        getTicks : function(){
-            return this._ticks;
-        },
-        getScale : function(){
-            return this._scale;
+            if (info.color !== undefined) {
+                this._color = info.color;
+            }
+            if (info.minIndex !== undefined) {
+                this._minValue = info.minIndex;
+            }
+            if (info.maxIndex !== undefined) {
+                this._maxValue = info.maxIndex;
+            }
+            if (info.ticks !== undefined) {
+                this._ticks = info.ticks;
+            }
+            if (info.scale !== undefined) {
+                this._scale = info.scale;
+            }
         }
+    };
 
+    Axis.prototype.getName = function(){
+        return this._name;
+    };
+    Axis.prototype.getColor = function(){
+        return this._color;
+    };
+    Axis.prototype.getMinValue = function(){
+        return this._minValue;
+    };
+    Axis.prototype.getMaxValue = function(){
+        return this._maxValue;
+    };
+    Axis.prototype.getTicks = function(){
+        return this._ticks;
+    };
+    Axis.prototype.getScale = function(){
+        return this._scale;
     };
 
     function AxisFactory() {}
