@@ -62,7 +62,7 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">8.18</p>
+      <p class="stat">8.30</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
@@ -113,11 +113,11 @@ describe(&#039;MapChartController&#039;, function(){
 
 	var scope;
 	var controller;
-	var socket;
+	var notify;
 
-    beforeEach(inject(function($rootScope, $controller, _notify_){
+    beforeEach(inject(function($rootScope, $controller, _socketFactory_){
     	scope = $rootScope.$new();
-    	notify = _notify_;
+    	notify = _socketFactory_;
         controller = $controller(&#039;MapChartController&#039;, { $scope : scope });
     }));
 
@@ -153,7 +153,7 @@ describe(&#039;MapChartController&#039;, function(){
 								&#039;type&#039;:&#039;shape&#039;,
 								&#039;shape&#039;:&#039;bus&#039;,
 								&#039;color&#039;:&#039;#FFC4F6&#039;
-							},
+							}
 						}
 					]
 				}
