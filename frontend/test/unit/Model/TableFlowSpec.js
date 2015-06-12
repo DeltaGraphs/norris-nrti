@@ -241,7 +241,7 @@ describe('TableFlowFactory', function(){
 
 		beforeEach(function(){
 			TableFlow = TableFlowFactory.build();
-			TableFlow.streamUpdate(data);
+			TableFlow.streamUpdate(data, 'bottom');
 		});
 
 		afterEach(function(){

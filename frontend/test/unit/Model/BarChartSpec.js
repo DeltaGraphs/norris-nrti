@@ -157,7 +157,7 @@ describe('BarChartFactory', function(){
 			'sortable' : false,
 			'groupingControl' : false,
 			'legendOnPoint' : true,
-			'horizontalGrid' : false,
+			'grid' : false,
 			'flows' : [{'ID' : 'f1'},{ 'ID' : 'f2'},{'ID' : 'f3'}]
 		};
 		var BarChart;
@@ -202,7 +202,7 @@ describe('BarChartFactory', function(){
 			expect(BarChart.getFlowList().length).toEqual(3);
 		});
 		it('graph created with the correct horizontalGrid', function(){
-			expect(BarChart.getHGrid().length).toEqual(0);
+			expect(BarChart.getHGrid().length).toEqual(false);
 		});
 		
 	});

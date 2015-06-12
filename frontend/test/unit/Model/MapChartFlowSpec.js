@@ -62,7 +62,7 @@ describe('MapChartFlowFactory', function(){
 		var json = {
 			'name' : 'flusso1',
 			'marker' : 'furly',
-			'maxItemSaved' : 20,
+			'maxItemsSaved' : 20,
 			'trace' : 'bubu'
 		};
 
@@ -133,7 +133,7 @@ describe('MapChartFlowFactory', function(){
 		var json = {
 			'name' : 'flusso2',
 			'marker' : 'furly1',
-			'maxItemSaved' : 45,
+			'maxItemsSaved' : 45,
 			'trace' : 'flow'
 		};
 		var MapChartFlow;

@@ -36,7 +36,7 @@ describe('TableFactory', function(){
 
 		var json = {
 			'title' : 'fottutissimografico',
-			'url' : 'localhost/page1/grafico1'
+			'socketURL' : 'localhost/page1/grafico1'
 		};
 		var Table;
 
@@ -64,7 +64,7 @@ describe('TableFactory', function(){
 			expect(Table.getMaxItemsPage()).toEqual(20);
 		});
 		it('graph created with the correct add data position', function(){
-			expect(Table.getAddRowOn()).toEqual('up');
+			expect(Table.getAddRowOn()).toEqual('top');
 		});
 		it('graph created with the correct sortable', function(){
 			expect(Table.getSortable()).toEqual(true);
@@ -142,7 +142,7 @@ describe('TableFactory', function(){
 			'colunms' : 9,
 			'headers' : ['ciao','amici'],
 			'itemDisplayedPerPage' : 5,
-			'addDataPosition' : 'up',
+			'addRowOn' : 'top',
 			'sortable' : false,
 			'appearance' : { 
 				border: {
@@ -186,7 +186,7 @@ describe('TableFactory', function(){
 			expect(Table.getMaxItemsPage()).toEqual(20);
 		});
 		it('graph updated with the correct add data position', function(){
-			expect(Table.getAddRowOn()).toEqual('up');
+			expect(Table.getAddRowOn()).toEqual('top');
 		});
 		it('graph updated with the correct sortable', function(){
 			expect(Table.getSortable()).toEqual(false);
@@ -364,5 +364,40 @@ describe('TableFactory', function(){
 			expect(Table.getFlowList()[0].flow.getData().length).toEqual(2);
 		});
 	});
+
+	describe('deleteData', function(){
+
+		var data = [
+			{
+				'ID' : '2',
+				'records' : [{'NorrisRecordID' : 'record2', 'value' : [3,3] }]
+			}
+		];
+
+		var delData = {
+			'ID' : '2',
+			'NorrisRecordID' : 'record2'
+		};
+		
+		var newFlow;
+		var Table;
+
+		beforeEach(function(){
+			newFlow = TableFlowFactory.build();
+			Table = TableFactory.build();
+			Table.addFlow(data[0].ID, newFlow);
+			Table.initializeData(data, 'bottom');
+			Table.deleteData(delData);
+		});
+
+		afterEach(function(){
+			Table = null;
+		});
+
+		it('deleteData in the correct way', function(){
+			expect(Table.getFlowList()[0].flow.getData().length).toEqual(0);
+		});
+	});
+
 
 });
