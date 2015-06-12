@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 // Karma 
 module.exports = function(config) {
@@ -32,7 +32,7 @@ module.exports = function(config) {
 			'app/View/*.js',
 			'app/Controller/*.js',
 			'test/unit/Model/*.js',
-			'test/unit/Controller/MapChartController.js',
+			'test/unit/Controller/*.js',
 			'test/unit/View/*.js'
 		],
 

@@ -16,7 +16,29 @@
 *
 */
 
-describe('MapChartController', function(){
+describe('MapChartController', function() {
+    var scope, $location, createController;
+
+    beforeEach(angular.mock.module('norris-nrti'));
+
+    beforeEach(inject(function($rootScope, $controller, _$location_){
+        $location = _$location_;
+        scope = $rootScope.$new();
+
+        createController = function() {
+            return $controller('MapChartController', {
+                '$scope': scope
+            });
+        };
+    }));
+
+    it('should have a method to check if the path is active', function() {
+        var controller = createController();
+        expect(scope.mapChart).toBeDefined();
+    });
+});
+
+/*describe('MapChartController', function(){
 
 	beforeEach(angular.mock.module('norris-nrti'));
 
@@ -63,7 +85,7 @@ describe('MapChartController', function(){
 				'data' : data
 			});
 			expect(scope.mapChart.getTitle()).toEqual('titolocambiato');
-			expect(scope.mapChart.getFlowList()[0].flow.getData()[0].value[0]).toEqual(0);*/
+			expect(scope.mapChart.getFlowList()[0].flow.getData()[0].value[0]).toEqual(0);
 		});
     });
     
@@ -71,7 +93,7 @@ describe('MapChartController', function(){
 
 	//});
 
-	/*describe('listenOnEvent', function(){
+	describe('listenOnEvent', function(){
 
 		var data = [
 			{
@@ -96,6 +118,6 @@ describe('MapChartController', function(){
 			expect(scope.mapChart.getTitle()).toEqual('titolocambiato');
 			expect(scope.mapChart.getFlowList()[0].flow.getData()[0].value[0]).toEqual(0);
 		});
-	});*/
+	});
 
-});
+});*/
