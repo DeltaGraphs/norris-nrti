@@ -1,3 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <checkstyle version="4.3">
+	<file name="test/unit/Model/UrlProviderSpec.js">
+		<error line="20" column="5" severity="warning" message="Unnecessary directive &quot;use strict&quot;." source="jshint.W034" />
+	</file>
 </checkstyle>
