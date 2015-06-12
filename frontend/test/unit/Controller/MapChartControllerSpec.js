@@ -22,11 +22,11 @@ describe('MapChartController', function(){
 
 	var scope;
 	var controller;
-	var socket;
+	var notify;
 
-    beforeEach(inject(function($rootScope, $controller, _notify_){
+    beforeEach(inject(function($rootScope, $controller, _socketFacory_){
     	scope = $rootScope.$new();
-    	notify = _notify_;
+    	notify = _socketFacory_;
         controller = $controller('MapChartController', { $scope : scope });
     }));
 
