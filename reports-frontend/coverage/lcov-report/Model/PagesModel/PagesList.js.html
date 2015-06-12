@@ -12,13 +12,13 @@
     </style>
 </head>
 <body>
-<div class="header medium">
+<div class="header high">
     <h1>Code coverage report for <span class="entity">Model/PagesModel/PagesList.js</span></h1>
     <h2>
-        Statements: <span class="metric">66.67% <small>(16 / 24)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Branches: <span class="metric">41.67% <small>(5 / 12)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">80.77% <small>(21 / 26)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">50% <small>(6 / 12)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Functions: <span class="metric">66.67% <small>(4 / 6)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">69.57% <small>(16 / 23)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">84% <small>(21 / 25)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
     <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">Model/PagesModel/</a> &#187; PagesList.js</div>
@@ -93,10 +93,7 @@
 66
 67
 68
-69
-70
-71
-72</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+69</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -126,15 +123,15 @@
 <span class="cline-any cline-yes">5</span>
 <span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -143,27 +140,24 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">3</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5</span>
@@ -199,13 +193,13 @@ angular.module('norris-nrti')
 				for (var i=0; i&lt;info.data.length; i++){
 					var count = 0;
 					for (var j=0; j&lt;pagesList.length; j++) {
-<span class="cstat-no" title="statement not covered" >						if (pagesList[j].id === info.data[i].properties.ID){</span>
+						<span class="missing-if-branch" title="if path not taken" >I</span>if (pagesList[j].id === info.data[i].properties.ID){
 <span class="cstat-no" title="statement not covered" >							count++;</span>
 						}
 					}
 	    			<span class="missing-if-branch" title="else path not taken" >E</span>if(count === 0) {
 	    				var page = PageFactory.build(info.data[i]);
-<span class="cstat-no" title="statement not covered" >	       				pagesList.push({ 'id' : info.data[i].properties.ID, 'page' : page});</span>
+	       				pagesList.push({ 'id' : info.data[i].properties.ID, 'page' : page});
 					} 
 					// error
 				}
@@ -213,28 +207,25 @@ angular.module('norris-nrti')
 		}
 	}
 	
-	PagesList.prototype = {
-&nbsp;
-		addPage: function(page) { // da cambiare DP
-			var filteredPages = pagesList.filter(<span class="fstat-no" title="function not covered" >function(page) {<span class="cstat-no" title="statement not covered" ></span>return page.ID === pagesList.id;}</span>);
-			<span class="missing-if-branch" title="else path not taken" >E</span>if(filteredPages.length === 0) {
-				var newPage = PageFactory.build(page);
-<span class="cstat-no" title="statement not covered" >   				pagesList.push({ 'id' : page.ID, 'page' : newPage});</span>
-			}
-			// error
-		},
-&nbsp;
-		updatePage: <span class="fstat-no" title="function not covered" >function(info) {</span>
-<span class="cstat-no" title="statement not covered" >			for (var j=0; j&lt;pagesList.length; j++) {</span>
-<span class="cstat-no" title="statement not covered" >				if (pagesList[j].id === info.ID){</span>
-<span class="cstat-no" title="statement not covered" >					pagesList[j].updateParameters(info);</span>
-				}
-			}
-		},
-&nbsp;
-		getPagesList: function(){
-			return pagesList;
+	PagesList.prototype.addPage = function(page) { // da cambiare DP
+		var filteredPages = pagesList.filter(<span class="fstat-no" title="function not covered" >function(page) {<span class="cstat-no" title="statement not covered" ></span>return page.properties.ID === pagesList.id;}</span>);
+		<span class="missing-if-branch" title="else path not taken" >E</span>if(filteredPages.length === 0) {
+			var newPage = PageFactory.build(page);
+				pagesList.push({ 'id' : page.ID, 'page' : newPage});
 		}
+		// error
+	};
+&nbsp;
+	PagesList.prototype.updatePage = <span class="fstat-no" title="function not covered" >function(info) {</span>
+<span class="cstat-no" title="statement not covered" >		for (var j=0; j&lt;pagesList.length; j++) {</span>
+<span class="cstat-no" title="statement not covered" >			if (pagesList[j].id === info.ID){</span>
+<span class="cstat-no" title="statement not covered" >				pagesList[j].updateParameters(info);</span>
+			}
+		}
+	};
+&nbsp;
+	PagesList.prototype.getPagesList = function(){
+		return pagesList;
 	};
 &nbsp;
 	return( PagesList );
@@ -243,7 +234,7 @@ angular.module('norris-nrti')
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Jun 12 2015 10:52:03 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Jun 12 2015 11:07:42 GMT+0000 (UTC)</div>
 </div>
 <script src="../../prettify.js"></script>
 <script>
