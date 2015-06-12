@@ -3,6 +3,7 @@
 	"version": "0.0.1",
 	"dependencies": {
 		"angular": "latest",
+		"angular-socket-io": "latest",
 		"bootstrap": "~3.3.4",
 		"angular-route": "latest",
 		"sio-client": "latest",
