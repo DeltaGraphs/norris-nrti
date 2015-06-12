@@ -107,13 +107,13 @@ describe('LegendFactory', function(){
 			Legend = null;
 		});
 
-		it('constructor create the page with the correct position', function(){
+		it('legend updated with the correct position', function(){
 			expect(Legend.getPosition()).toEqual('S');
 		});
-		it('constructor create the page with the correct font color', function(){
+		it('legend updated with the correct font color', function(){
 			expect(Legend.getFontColor()).toEqual('#F00');
 		});
-		it('constructor create the page with the correct background', function(){
+		it('legend updated with the correct background', function(){
 			expect(Legend.getBackgroundColor()).toEqual('#AFA');
 		});
 

@@ -45,16 +45,16 @@ describe('PageFactory', function(){
 		});
 
 		it('constructor create the page with the correct name', function(){
-			expect(Page.getName()).toEqual(null);
+			expect(Page.getName()).toEqual('Titolo di default');
 		});
 		it('constructor create the page with the correct description', function(){
-			expect(Page.getDescription()).toEqual(null);
+			expect(Page.getDescription()).toEqual('');
 		});
 		it('constructor create the page with the correct number of graphsPerRow', function(){
-			expect(Page.getGraphsPerRow()).toEqual(null);
+			expect(Page.getGraphsPerRow()).toEqual(1);
 		});
 		it('constructor create the page with the correct number of graphsPerCol', function(){
-			expect(Page.getGraphsPerCol()).toEqual(null);
+			expect(Page.getGraphsPerCol()).toEqual(5);
 		});
 		it('constructor create the page with the correct socketURL', function(){
 			expect(Page.getUrl()).toEqual(null);
@@ -68,13 +68,15 @@ describe('PageFactory', function(){
 	describe('Constructor', function(){
 
 		var json = 	{
-			'ID' : 'page1',
-			'name' : 'Pagina Uno',
-			'description' : 'questa è la pagina uno',
-			'graphsPerRow' : 4,
-			'graphsPerCol' : 4,
-			'socketURL' : 'http://localhost/page1',
-			'graphs' : [
+			'properties' : {
+				'ID' : 'page1',
+				'name' : 'Pagina Uno',
+				'description' : 'questa è la pagina uno',
+				'graphsPerRow' : 4,
+				'graphsPerCol' : 4,
+				'socketURL' : 'http://localhost/page1'
+			}
+			'data' : [
 				{ 
 					'ID' : 'grafico1', 
 					'type' : 'LineChart' 

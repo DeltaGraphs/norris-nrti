@@ -59,67 +59,66 @@ angular.module('norris-nrti')
         }
     }
 
-    Page.prototype = {
-
-        constructor : Page,
-
-        updateParameters: function(info){
-            if (info !== undefined) {
-                if (info.name !== undefined) {
-                    this._name = info.name;
-                }
-                if (info.description !== undefined) {
-                    this._description = info.description;
-                }
-                if (info.graphsPerRow !== undefined) {
-                    this._graphsPerRow = info.graphsPerRow;
-                }
-                if (info.graphsPerCol !== undefined) {
-                    this._graphsPerCol = info.graphsPerCol;
-                }
+    Page.prototype.updateParameters = function(info){
+        if (info !== undefined) {
+            if (info.name !== undefined) {
+                this._name = info.name;
             }
-        },
-        initializeData: function(data) {
-            if (data !== undefined) {
-                for (var i=0; i<data.length; i++) {
-                    this.addGraph(data[i]);
-                }
+            if (info.description !== undefined) {
+                this._description = info.description;
             }
-        },
-        addGraph: function(graph){
-            if (graph !== undefined) {
-                var count = 0;
-                for (var j=0; j<this._graphsList.length; j++) {
-                    if (this._graphsList[j].id === graph.ID){
-                        count++;
-                    }
-                }
-                if (count === 0){
-                    this._graphsList.push( {'id' : graph.ID, 'type' : graph.type, 'url' : graph.socketURL} );          
-                }
-            // error
+            if (info.graphsPerRow !== undefined) {
+                this._graphsPerRow = info.graphsPerRow;
             }
-            // error
-        },
-
-        getGraphsList: function(){
-            return this._graphsList;
-        },
-        getName: function(){
-            return this._name;
-        },
-        getDescription: function(){
-            return this._description;
-        },
-        getGraphsPerRow: function(){
-            return  this._graphsPerRow;
-        },
-        getGraphsPerCol: function(){
-            return  this._graphsPerCol;
-        },
-        getUrl: function(){
-            return this._url;
+            if (info.graphsPerCol !== undefined) {
+                this._graphsPerCol = info.graphsPerCol;
+            }
         }
+    };
+
+    //constructor : Page,
+
+    
+    Page.prototype.initializeData = function(data) {
+        if (data !== undefined) {
+            for (var i=0; i<data.length; i++) {
+                this.addGraph(data[i]);
+            }
+        }
+    },
+    Page.prototype.addGraph = function(graph){
+        if (graph !== undefined) {
+            var count = 0;
+            for (var j=0; j<this._graphsList.length; j++) {
+                if (this._graphsList[j].id === graph.ID){
+                    count++;
+                }
+            }
+            if (count === 0){
+                this._graphsList.push( {'id' : graph.ID, 'type' : graph.type, 'url' : graph.socketURL} );          
+            }
+        // error
+        }
+        // error
+    };
+
+    Page.prototype.getGraphsList = function(){
+        return this._graphsList;
+    };
+    Page.prototype.getName = function(){
+        return this._name;
+    };
+    Page.prototype.getDescription = function(){
+        return this._description;
+    };
+    Page.prototype.getGraphsPerRow = function(){
+        return  this._graphsPerRow;
+    };
+    Page.prototype.getGraphsPerCol = function(){
+        return  this._graphsPerCol;
+    };
+    Page.prototype.getUrl = function(){
+        return this._url;
     };
 
     function PageFactory() {}

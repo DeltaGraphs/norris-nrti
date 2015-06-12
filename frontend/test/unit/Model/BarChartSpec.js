@@ -89,7 +89,7 @@ describe('BarChartFactory', function(){
 			expect(BarChart.getFlowList().length).toEqual(0);
 		});
 		it('graph created with the correct horizontalGrid', function(){
-			expect(BarChart.getHGrid().length).toEqual(false);
+			expect(BarChart.getHGrid()).toEqual(false);
 		});
 
 	});
@@ -201,8 +201,8 @@ describe('BarChartFactory', function(){
 		it('graph updated with the correct flow', function(){
 			expect(BarChart.getFlowList().length).toEqual(3);
 		});
-		it('graph created with the correct horizontalGrid', function(){
-			expect(BarChart.getHGrid().length).toEqual(false);
+		it('graph updated with the correct horizontalGrid', function(){
+			expect(BarChart.getHGrid()).toEqual(false);
 		});
 		
 	});

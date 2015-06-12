@@ -143,7 +143,7 @@ describe('GraphFactory', function(){
 		it('graph updated with the correct legend', function(){
 			expect(Graph.getLegend()).toEqual(null);
 		});
-		it('constructor create the graph with the correct url', function(){
+		it('graph updated with the correct url', function(){
 			expect(Graph.getUrl()).toEqual(null);
 		});
 

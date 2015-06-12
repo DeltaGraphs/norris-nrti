@@ -183,13 +183,13 @@ describe('LineChartFactory', function(){
 		it('graph updated with the correct flow', function(){
 			expect(LineChart.getFlowList().length).toEqual(3);
 		});
-		it('graph created with the correct interpolation', function(){
+		it('graph updated with the correct interpolation', function(){
 			expect(LineChart.getInterpolation()).toEqual('linear');
 		});
-		it('graph created with the correct horizontalGrid', function(){
+		it('graph updated with the correct horizontalGrid', function(){
 			expect(LineChart.getHGrid()).toEqual(true);
 		});
-		it('graph created with the correct verticalGrid', function(){
+		it('graph updated with the correct verticalGrid', function(){
 			expect(LineChart.getVGrid()).toEqual(true);
 		});
 		
