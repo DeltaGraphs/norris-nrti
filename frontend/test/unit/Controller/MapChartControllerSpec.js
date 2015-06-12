@@ -43,18 +43,18 @@ describe('MapChartController', function(){
     beforeEach(inject(function($rootScope, _$controller_, $injector){
     	scope = $rootScope.$new();
     	$controller = _$controller_;
-    	SocketServicesFactory = $injector.get(SocketServicesFactory);
+    	SocketServicesFactory = $injector.get('SocketServicesFactory');
     	socket = SocketServicesFactory.build();
         var controller = $controller('MapChartController', { $scope : scope });
     }));	
 
-    describe('listenOnEvent', function(){
-    	it('scope.mapChart is is defined', function() {
-    		expect(scope.mapChart).toBeDefined();
-    	});
+    it('scope.mapChart is defined', function() {
+		expect(scope.mapChart).toBeDefined();
+	});
 
+    describe('listenOnEvent', function(){
+    	
 	    it('configGraph works fine', function(){
-			expect(scope.mapChart.getTitle()).toEqual('graficonuovo');
 			socket.receive('configGraph',{
 				'properties' : {
 					'title' : 'titolocambiato'
