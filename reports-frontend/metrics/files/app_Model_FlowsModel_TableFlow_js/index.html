@@ -139,7 +139,7 @@ angular.module(&#039;norris-nrti&#039;)
 
     function TableFlow(info) {
     	this._data = [];
-		this._maxItem = 100;
+		this._maxItems = 100;
 
 		var json = split(info);
 		var fJson = json.flowJson;
@@ -148,7 +148,7 @@ angular.module(&#039;norris-nrti&#039;)
 		this._flow = FlowFactory.build(fJson);
 
         if (tfJson.maxItems !== undefined) {
-            this._maxItem = tfJson.maxItems;
+            this._maxItems = tfJson.maxItems;
         }
 	}
 
