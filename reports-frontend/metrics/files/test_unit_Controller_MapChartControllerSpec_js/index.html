@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">78.27</p>
+      <p class="stat">77.28</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">39</p>
+      <p class="stat">32</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">6.56</p>
+      <p class="stat">5.48</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.12</p>
+      <p class="stat">0.10</p>
     </div>
   </div>
 </div>
@@ -108,24 +108,17 @@
 */
 
 describe(&#039;MapChartController&#039;, function() {
-    var scope, $location, $controller;
+    var scope, $controller, controller;
 
     beforeEach(angular.mock.module(&#039;norris-nrti&#039;));
 
     beforeEach(inject(function($rootScope, _$controller_, _$location_){
     	$controller = _$controller_;
-        $location = _$location_;
         scope = $rootScope.$new();
-
-        createController = function() {
-            return $controller(&#039;MapChartController&#039;, {
-                &#039;$scope&#039;: scope
-            });
-        };
+        controller = $controller(&#039;MapChartController&#039;, { $scope : scope });
     }));
 
     it(&#039;should have a method to check if the path is active&#039;, function() {
-        var controller = createController();
         expect(scope.mapChart).toBeDefined();
     });
 });
