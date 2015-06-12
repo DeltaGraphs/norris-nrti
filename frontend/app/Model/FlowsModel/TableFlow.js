@@ -56,8 +56,8 @@ angular.module('norris-nrti')
 
 		this._flow = FlowFactory.build(fJson);
 
-        if (tfJson.maxItem !== undefined) {
-            this._maxItem = tfJson.maxItem;
+        if (tfJson.maxItems !== undefined) {
+            this._maxItem = tfJson.maxItems;
         }
 	}
 

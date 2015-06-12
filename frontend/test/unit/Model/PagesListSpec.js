@@ -53,11 +53,10 @@ describe('PagesList', function(){
 	describe('Constructor', function(){
 
 		var json = {
-			'name' : 'name',
 			'data' : [
-				{ 'ID' : '1' },
-				{ 'ID' : '2' },
-				{ 'ID' : '3' }
+				{ 'properties': {'ID' : '1' }},
+				{ 'properties' : { 'ID' : '2' }},
+				{ 'properties' : { 'ID' : '3' }}
 			]
 		};
 		
@@ -80,7 +79,9 @@ describe('PagesList', function(){
 
 	describe('addPage', function(){
 		var json = {
-			'ID' : '4'
+			'properties' : {
+				'ID' : '4'
+			}
 		};
 
 		beforeEach(function(){

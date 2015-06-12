@@ -44,28 +44,25 @@ angular.module('norris-nrti')
 		}
 	}
 	
-	PagesList.prototype = {
-
-		addPage: function(page) { // da cambiare DP
-			var filteredPages = pagesList.filter(function(page) {return page.ID === pagesList.id;});
-			if(filteredPages.length === 0) {
-				var newPage = PageFactory.build(page);
-   				pagesList.push({ 'id' : page.ID, 'page' : newPage});
-			}
-			// error
-		},
-
-		updatePage: function(info) {
-			for (var j=0; j<pagesList.length; j++) {
-				if (pagesList[j].id === info.ID){
-					pagesList[j].updateParameters(info);
-				}
-			}
-		},
-
-		getPagesList: function(){
-			return pagesList;
+	PagesList.prototype.addPage = function(page) { // da cambiare DP
+		var filteredPages = pagesList.filter(function(page) {return page.properties.ID === pagesList.id;});
+		if(filteredPages.length === 0) {
+			var newPage = PageFactory.build(page);
+				pagesList.push({ 'id' : page.ID, 'page' : newPage});
 		}
+		// error
+	};
+
+	PagesList.prototype.updatePage = function(info) {
+		for (var j=0; j<pagesList.length; j++) {
+			if (pagesList[j].id === info.ID){
+				pagesList[j].updateParameters(info);
+			}
+		}
+	};
+
+	PagesList.prototype.getPagesList = function(){
+		return pagesList;
 	};
 
 	return( PagesList );

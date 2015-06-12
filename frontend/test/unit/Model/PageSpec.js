@@ -135,8 +135,7 @@ describe('PageFactory', function(){
 			'name' : 'Pagina n-esima',
 			'description' : 'questa è la pagina n-esima',
 			'graphsPerRow' : 4,
-			'graphsPerCol' : 4,
-			'socketURL' : 'http://localhost/pageN'
+			'graphsPerCol' : 4
 		};
 		var Page;
 
@@ -160,9 +159,6 @@ describe('PageFactory', function(){
 		});
 		it('page updated with the correct number of graphsPerCol', function(){
 			expect(Page.getGraphsPerCol()).toEqual(4);
-		});
-		it('page updated with the correct socketURL', function(){
-			expect(Page.getUrl()).toEqual('http://localhost/pageN');
 		});
 
 	});
