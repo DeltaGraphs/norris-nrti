@@ -44,18 +44,22 @@ describe('MapChartController', function(){
     beforeEach(inject(function($rootScope, $controller, $injector){
     	scope = $rootScope.$new();
     	SocketServicesFactory = $injector.get('SocketServicesFactory');
-    	socket = SocketServicesFactory.build();
-        controller = $controller('MapChartController', { $scope : scope, socket : socket });
+    	socket = SocketServicesFactory.build('http://norris-nrti-dev.herokuapp.com/page1/map1');
+        controller = $controller('MapChartController', { $scope : scope });
     }));
 
     it('scope.mapChart is defined', function() {
 		expect(scope.mapChart).toBeDefined();
 	});
 
+	it('scope.mapChart is defined', function() {
+		expect(socket).toBeDefined();
+	});
+
     describe('listenOnEvent', function(){
     	
 	    it('configGraph works fine', function(){
-			socket.receive('configGraph',{
+			socket.on('configGraph',{
 				'properties' : {
 					'title' : 'titolocambiato'
 				},
