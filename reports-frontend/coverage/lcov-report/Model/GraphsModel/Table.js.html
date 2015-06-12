@@ -1,0 +1,720 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for Model/GraphsModel/Table.js</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../prettify.css">
+    <link rel="stylesheet" href="../../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1>Code coverage report for <span class="entity">Model/GraphsModel/Table.js</span></h1>
+    <h2>
+        Statements: <span class="metric">3.36% <small>(4 / 119)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">0% <small>(0 / 60)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">0% <small>(0 / 25)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">3.36% <small>(4 / 119)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">Model/GraphsModel/</a> &#187; Table.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*jshint node: true */
+'use strict';
+&nbsp;
+/*
+* Name :  Table.js
+* Module : FrontEnd::Model::GraphsModel
+* Location : /frontend/app/Model/GraphsModel
+*
+* History :
+* Version       Date        Programmer                  Description
+* ===============================================================================================================
+* 0.3.0         2015-05-18  Maria Giovanna Chinellato   Modified general structure, some fixes
+*
+* 0.2.1         2015-05-15  Maria Giovanna Chinellato   Fix methods test
+*
+* 0.1.1         2015-05-15  Francesco Rossetto          Various fix, insert inzializeData
+*
+* 0.1.0         2015-05-14  Maria Giovanna Chinellato   Add all attributes and all methods
+*
+* 0.0.1         2015-05-14  Maria Giovanna Chinellato   Initial code          
+* ===============================================================================================================
+*
+*/
+&nbsp;
+angular.module('norris-nrti')
+.factory('TableFactory', ['GraphFactory', 'CellFactory', 'TableFlowFactory', <span class="fstat-no" title="function not covered" >function(GraphFactory, CellFactory, TableFlowFactory){</span>
+&nbsp;
+<span class="fstat-no" title="function not covered" >	function split(json) {</span>
+<span class="cstat-no" title="statement not covered" >		var graphJson = {};</span>
+<span class="cstat-no" title="statement not covered" >		if (json.title !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >			graphJson.title = json.title;</span>
+		}
+<span class="cstat-no" title="statement not covered" >		if (json.height !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >			graphJson.height = json.height;</span>
+		}
+<span class="cstat-no" title="statement not covered" >		if (json.width !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >			graphJson.width = json.width;</span>
+		}
+<span class="cstat-no" title="statement not covered" >		if (json.horizontalGrid !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >			graphJson.horizontalGrid = json.horizontalGrid;</span>
+		}
+<span class="cstat-no" title="statement not covered" >		if (json.verticalGrid !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >			graphJson.verticalGrid = json.verticalGrid;</span>
+		}
+&nbsp;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		var tableJson = {};</span>
+<span class="cstat-no" title="statement not covered" >		if (json.headers !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >			tableJson.headers = json.headers;</span>
+		}
+<span class="cstat-no" title="statement not covered" >		if (json.maxItemsPage !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >			tableJson.maxItemsPage = json.maxItemsPage;</span>
+		}
+<span class="cstat-no" title="statement not covered" >		if (json.addRowOn !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >			tableJson.addRowOn = json.addRowOn;</span>
+		}
+<span class="cstat-no" title="statement not covered" >		if (json.sortable !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >			tableJson.sortable = json.sortable;</span>
+		}
+<span class="cstat-no" title="statement not covered" >        if (json.sort !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >            tableJson.sort = json.sort;</span>
+        }
+<span class="cstat-no" title="statement not covered" >        if (json.appearance !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >            tableJson.appearance = json.appearance;</span>
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		return {</span>
+			'graphJson' : graphJson,
+			'tableJson' : tableJson
+		};
+	}
+&nbsp;
+    //Table.prototype.test = function _Test(expressionStr) { return eval(expressionStr); };
+&nbsp;
+    // create our new custom object that reuse the original object constructor
+<span class="fstat-no" title="function not covered" >    function Table(info) {</span>
+<span class="cstat-no" title="statement not covered" >        this._headers = [];</span>
+<span class="cstat-no" title="statement not covered" >        this._maxItemsPage = 20;</span>
+<span class="cstat-no" title="statement not covered" >        this._addRowOn = 'top';</span>
+<span class="cstat-no" title="statement not covered" >        this._sortable = true;</span>
+<span class="cstat-no" title="statement not covered" >        this._sort = null;</span>
+<span class="cstat-no" title="statement not covered" >        this._appearance = null;</span>
+<span class="cstat-no" title="statement not covered" >        this._graph = GraphFactory.build(info);</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    Table.prototype.updateParameters = <span class="fstat-no" title="function not covered" >function(info) {</span></span>
+<span class="cstat-no" title="statement not covered" >        if (info !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >            var json = split(info);</span>
+<span class="cstat-no" title="statement not covered" >            var gJson = json.graphJson;</span>
+<span class="cstat-no" title="statement not covered" >            var tJson = json.tableJson;</span>
+            
+<span class="cstat-no" title="statement not covered" >            if (Object.keys(gJson).length !== 0) {</span>
+<span class="cstat-no" title="statement not covered" >                this._graph.updateParameters(gJson);</span>
+            } 
+<span class="cstat-no" title="statement not covered" >            if (Object.keys(tJson).length !== 0) {</span>
+<span class="cstat-no" title="statement not covered" >                if (tJson.headers !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >                    for (var z=0; z&lt;tJson.headers.length; z++) { </span>
+<span class="cstat-no" title="statement not covered" >                        this._headers.push(tJson.headers[z]);</span>
+                    }
+                }
+<span class="cstat-no" title="statement not covered" >                if (tJson.maxItemsPage !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >                    this._maxItemsPage = tJson.maxItemsPage;</span>
+                }
+<span class="cstat-no" title="statement not covered" >                if (tJson.addRowOn !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >                    this._addRowOn = tJson.addRowOn;</span>
+                }
+<span class="cstat-no" title="statement not covered" >                if (tJson.sortable !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >                    this._sortable = tJson.sortable;</span>
+                }
+<span class="cstat-no" title="statement not covered" >                if (tJson.sort !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >                    this._sort = tJson.sort;</span>
+                }
+<span class="cstat-no" title="statement not covered" >                if (tJson.appearance !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >                    this._appearance = tJson.appearance;</span>
+                }
+            }
+<span class="cstat-no" title="statement not covered" >            if (info.flows !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >                for (var y=0; y&lt;info.flows.length; y++) {</span>
+<span class="cstat-no" title="statement not covered" >                    var newflow = TableFlowFactory.build(info.flows[y]);</span>
+<span class="cstat-no" title="statement not covered" >                    this.addFlow(info.flows[y].ID, newflow);</span>
+                }
+            }
+        }
+    };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    Table.prototype.addFlow = <span class="fstat-no" title="function not covered" >function(ID, newFlow) {</span></span>
+<span class="cstat-no" title="statement not covered" >        if (newFlow.constructor.name === 'TableFlow') {</span>
+<span class="cstat-no" title="statement not covered" >            this._graph.addFlow(ID, newFlow);</span>
+        }
+    };
+<span class="cstat-no" title="statement not covered" >    Table.prototype.deleteFlow = <span class="fstat-no" title="function not covered" >function(ID) {</span></span>
+<span class="cstat-no" title="statement not covered" >        this._graph.deleteFlow(ID);</span>
+    };
+<span class="cstat-no" title="statement not covered" >    Table.prototype.replaceData = <span class="fstat-no" title="function not covered" >function(newData){</span></span>
+<span class="cstat-no" title="statement not covered" >        this._graph.replaceData(newData);</span>
+    };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    Table.prototype.initializeData = <span class="fstat-no" title="function not covered" >function(newData) {</span>  //inizialization data of flows</span>
+<span class="cstat-no" title="statement not covered" >        if (newData !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >            for (var i=0; i&lt;newData.length; i++) {</span>
+<span class="cstat-no" title="statement not covered" >                for (var j=0; j&lt;this._graph.getFlowList().length; j++) {</span>
+<span class="cstat-no" title="statement not covered" >                    if (this._graph.getFlowList()[j].id === newData[i].ID) {</span>
+<span class="cstat-no" title="statement not covered" >                        this._graph.getFlowList()[j].flow.initializeData(newData[i], this._addRowOn);</span>
+                    }
+                }
+            }
+        }
+    };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    Table.prototype.inPlaceUpdate = <span class="fstat-no" title="function not covered" >function(newData) {</span></span>
+<span class="cstat-no" title="statement not covered" >        if (newData !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >            var fList = this._graph.getFlowList();</span>
+<span class="cstat-no" title="statement not covered" >            for (var j=0; j&lt;fList.length; j++) {</span>
+<span class="cstat-no" title="statement not covered" >                if (fList[j].id === newData.ID) {</span>
+<span class="cstat-no" title="statement not covered" >                    fList[j].flow.inPlaceUpdate(newData);</span>
+                }
+            }
+        }
+    };
+<span class="cstat-no" title="statement not covered" >    Table.prototype.streamUpdate = <span class="fstat-no" title="function not covered" >function(newData) {</span></span>
+<span class="cstat-no" title="statement not covered" >        if (newData !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >            var fList = this._graph.getFlowList();</span>
+<span class="cstat-no" title="statement not covered" >            for (var j=0; j&lt;fList.length; j++) {</span>
+<span class="cstat-no" title="statement not covered" >                if (fList[j].id === newData.ID) {</span>
+<span class="cstat-no" title="statement not covered" >                    fList[j].flow.streamUpdate(newData, this._addRowOn);</span>
+                }
+            }
+        }
+    };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    Table.prototype.deleteData = <span class="fstat-no" title="function not covered" >function(delData) {</span></span>
+<span class="cstat-no" title="statement not covered" >        if (delData !== undefined){</span>
+<span class="cstat-no" title="statement not covered" >            var fList = this._graph.getFlowList();</span>
+<span class="cstat-no" title="statement not covered" >            for (var j=0; j&lt;fList.length; j++) {</span>
+<span class="cstat-no" title="statement not covered" >                if (fList[j].id === delData.ID) {</span>
+<span class="cstat-no" title="statement not covered" >                    fList[j].flow.deleteData(delData);</span>
+                }
+            }
+        }
+    };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    Table.prototype.getTitle = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >        return this._graph.getTitle();</span>
+    };
+<span class="cstat-no" title="statement not covered" >    Table.prototype.getHeight = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >        return this._graph.getHeight();</span>
+    };
+<span class="cstat-no" title="statement not covered" >    Table.prototype.getWidth = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >        return this._graph.getWidth();</span>
+    };
+<span class="cstat-no" title="statement not covered" >    Table.prototype.getLegend = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >        return this._graph.getLegend();</span>
+    };
+<span class="cstat-no" title="statement not covered" >    Table.prototype.getUrl = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >        return this._graph.getUrl();</span>
+    };
+<span class="cstat-no" title="statement not covered" >    Table.prototype.getFlowList = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >        return this._graph.getFlowList();</span>
+    };
+<span class="cstat-no" title="statement not covered" >    Table.prototype.getHeaders = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >    return this._headers;</span>
+    };
+<span class="cstat-no" title="statement not covered" >    Table.prototype.getMaxItemsPage = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >        return this._maxItemsPage;</span>
+    };
+<span class="cstat-no" title="statement not covered" >    Table.prototype.getAddRowOn = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >        return this._addRowOn;</span>
+    };
+<span class="cstat-no" title="statement not covered" >    Table.prototype.getSortable = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >        return this._sortable;</span>
+    };
+<span class="cstat-no" title="statement not covered" >    Table.prototype.getSort = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >        return this._sort;</span>
+    };
+<span class="cstat-no" title="statement not covered" >    Table.prototype.getAppearance = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >        return this._appearance;</span>
+    };
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function TableFactory() {</span>}
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    TableFactory.build = <span class="fstat-no" title="function not covered" >function(info) {</span></span>
+<span class="cstat-no" title="statement not covered" >        return new Table(info);</span>
+    };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return TableFactory;</span>
+}]);</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Jun 12 2015 07:38:49 GMT+0000 (UTC)</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

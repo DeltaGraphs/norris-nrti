@@ -1,0 +1,810 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for Model/GraphsModel/BarChart.js</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../prettify.css">
+    <link rel="stylesheet" href="../../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header high">
+    <h1>Code coverage report for <span class="entity">Model/GraphsModel/BarChart.js</span></h1>
+    <h2>
+        Statements: <span class="metric">82.39% <small>(117 / 142)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">44.44% <small>(32 / 72)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">65.52% <small>(19 / 29)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">82.39% <small>(117 / 142)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">Model/GraphsModel/</a> &#187; BarChart.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">30</span>
+<span class="cline-any cline-yes">30</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">35</span>
+<span class="cline-any cline-yes">35</span>
+<span class="cline-any cline-yes">35</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*jshint node: true */
+'use strict';
+&nbsp;
+/*
+* Name :  BarChart.js
+* Module : FrontEnd::Model::GraphsModel
+* Location : /frontend/app/Model/GraphsModel
+*
+* History :
+* Version       Date        Programmer                  Description
+* ===============================================================================================================
+* 0.3.0         2015-05-18  Francesco Rossetto          Modified general structure, some fixes
+*
+* 0.2.1         2015-05-15  Francesco Rossetto          Various fixes, insert inzializeData
+*
+* 0.2.0         2015-05-14  Maria Giovanna Chinellato   Add all methods and fix class
+*
+* 0.1.0         2015-05-14  Maria Giovanna Chinellato   Add all attributes, add methods split and updateParameter
+*
+* 0.0.1         2015-05-14  Maria Giovanna Chinellato   Initial code      
+* ===============================================================================================================
+*
+*/
+&nbsp;
+angular.module('norris-nrti')
+.factory('BarChartFactory', ['GraphFactory','AxisFactory', 'BarChartFlowFactory', function(GraphFactory, AxisFactory, BarChartFlowFactory){
+&nbsp;
+    function BarChart(info) {
+        this._axisX = null;
+        this._axisY = null;
+        this._barOrientation = 'V';
+        this._headers = [];
+        this._background = '#FFF';
+        this._sortable = true;
+        this._groupingControl = true;
+        this._legendOnPoint = false;
+        this._horizontalGrid = null;
+        this._graph = GraphFactory.build(info);
+    }
+&nbsp;
+    function split(json) {
+        var graphJson = {};
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (json.title !== undefined) {
+            graphJson.title = json.title;
+        }
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (json.height !== undefined) {
+            graphJson.height = json.height;
+        }
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (json.width !== undefined) {
+            graphJson.width = json.width;
+        }
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (json.enableLegend !== undefined) {
+<span class="cstat-no" title="statement not covered" >            graphJson.enableLegend = json.enableLegend;</span>
+        }
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (json.legend !== undefined) {
+<span class="cstat-no" title="statement not covered" >            graphJson.legend = json.legend;</span>
+        }
+&nbsp;
+        var barJson = {};
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (json.xAxis !== undefined) {
+<span class="cstat-no" title="statement not covered" >            barJson.xAxis = json.xAxis;</span>
+        }
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (json.yAxis !== undefined) {
+<span class="cstat-no" title="statement not covered" >            barJson.yAxis = json.yAxis;</span>
+        }
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (json.barOrientation !== undefined) {
+            barJson.barOrientation = json.barOrientation;
+        }
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (json.headers !== undefined) {
+            barJson.headers = json.headers;
+        }
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (json.backgroundColor !== undefined) {
+            barJson.backgroundColor = json.backgroundColor;
+        }
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (json.sortable !== undefined) {
+            barJson.sortable = json.sortable;
+        }
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (json.groupingControl !== undefined) {
+<span class="cstat-no" title="statement not covered" >            barJson.groupingControl = json.groupingControl;</span>
+        }
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (json.legendOnPoint !== undefined) {
+            barJson.legendOnPoint = json.legendOnPoint;
+        }
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (json.horizontalGrid !== undefined) {
+            barJson.horizontalGrid = json.horizontalGrid;
+        }
+&nbsp;
+        return {
+            'graphJson' : graphJson,
+            'barJson' : barJson
+        };
+    }
+&nbsp;
+    BarChart.prototype.updateParameters = function(info) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (info !== undefined) {
+            var json = split(info);
+            var gJson = json.graphJson;
+            var bJson = json.barJson;
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (Object.keys(gJson).length !== 0) {
+                this._graph.updateParameters(gJson);
+            } 
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (Object.keys(bJson).length !== 0) {
+                <span class="missing-if-branch" title="if path not taken" >I</span>if (bJson.xAxis !== undefined) {
+<span class="cstat-no" title="statement not covered" >                    this._axisX = AxisFactory.build(bJson.xAxis);</span>
+                }
+                <span class="missing-if-branch" title="if path not taken" >I</span>if (bJson.yAxis !== undefined) {
+<span class="cstat-no" title="statement not covered" >                    this._axisY = AxisFactory.build(bJson.yAxis);</span>
+                }
+                <span class="missing-if-branch" title="else path not taken" >E</span>if (bJson.barOrientation !== undefined) {
+                    this._barOrientation = bJson.barOrientation;
+                }
+                <span class="missing-if-branch" title="else path not taken" >E</span>if (bJson.headers !== undefined) {
+                    this._headers = bJson.headers;
+                }
+                <span class="missing-if-branch" title="else path not taken" >E</span>if (bJson.backgroundColor !== undefined) {
+                    this._background = bJson.backgroundColor;
+                }
+                <span class="missing-if-branch" title="else path not taken" >E</span>if (bJson.sortable !== undefined) {
+                    this._sortable = bJson.sortable;
+                }
+                <span class="missing-if-branch" title="if path not taken" >I</span>if (bJson.groupingControl !== undefined) {
+<span class="cstat-no" title="statement not covered" >                    this._groupingControl = bJson.groupingControl;</span>
+                }
+                <span class="missing-if-branch" title="else path not taken" >E</span>if (bJson.legendOnPoint !== undefined) {
+                    this._legendOnPoint = bJson.legendOnPoint;
+                }
+                <span class="missing-if-branch" title="else path not taken" >E</span>if (bJson.horizontalGrid !== undefined) {
+                    this._horizontalGrid = bJson.horizontalGrid;
+                }
+            }
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (info.flows !== undefined) {
+                for (var i=0; i&lt;info.flows.length; i++) {
+                    var newflow = BarChartFlowFactory.build(info.flows[i]);
+                    this.addFlow(info.flows[i].ID, newflow);
+                }
+            }
+        }
+        
+    };
+&nbsp;
+    BarChart.prototype.addFlow = function(newId, newFlow) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (newFlow.constructor.name === 'BarChartFlow') {
+            console.log('BARCHART constructor.name');
+            this._graph.addFlow(newId, newFlow);
+        }
+    };
+    BarChart.prototype.deleteFlow = function(ID) {
+        this._graph.deleteFlow(ID);
+    };
+    BarChart.prototype.replaceData = <span class="fstat-no" title="function not covered" >function(newData){</span>
+<span class="cstat-no" title="statement not covered" >        this._graph.replaceData(newData);</span>
+    };
+&nbsp;
+    BarChart.prototype.initializeData = function(newData) {  //inizialization data of flows
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (newData !== undefined) {
+            var fList = this._graph.getFlowList();
+            for (var i=0; i&lt;newData.length; i++) {
+                for (var j=0; j&lt;fList.length; j++) {
+                    <span class="missing-if-branch" title="else path not taken" >E</span>if (fList[j].id === newData[i].ID) {
+                        fList[j].flow.initializeData(newData[i]);
+                    }
+                }
+            }
+        }   
+    };
+&nbsp;
+    // update data
+    BarChart.prototype.inPlaceUpdate = function(newData) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (newData !== undefined) {
+            for (var j=0; j&lt;this._graph.getFlowList().length; j++) {
+                <span class="missing-if-branch" title="else path not taken" >E</span>if (this._graph.getFlowList()[j].id === newData.ID) {
+                    this._graph.getFlowList()[j].flow.inPlaceUpdate(newData);
+                }
+            }
+        }   
+    };
+    BarChart.prototype.addRecords = <span class="fstat-no" title="function not covered" >function(newData) {</span>
+<span class="cstat-no" title="statement not covered" >        if (newData !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >            var fList = this._graph.getFlowList();</span>
+<span class="cstat-no" title="statement not covered" >            for (var j=0; j&lt;fList.length; j++) {</span>
+<span class="cstat-no" title="statement not covered" >                if (fList[j].id === newData.ID) {</span>
+<span class="cstat-no" title="statement not covered" >                    fList[j].flow.addRecords(newData);</span>
+                }
+            }
+        }
+    };
+    BarChart.prototype.deleteData = <span class="fstat-no" title="function not covered" >function(delData) {</span>
+<span class="cstat-no" title="statement not covered" >        if (delData !== undefined){</span>
+<span class="cstat-no" title="statement not covered" >            var fList = this._graph.getFlowList();</span>
+<span class="cstat-no" title="statement not covered" >            for (var j=0; j&lt;fList.length; j++) {</span>
+<span class="cstat-no" title="statement not covered" >                if (fList[j].id === delData.ID) {</span>
+<span class="cstat-no" title="statement not covered" >                    fList[j].flow.deleteData(delData);</span>
+                }
+            }
+        }
+    };
+&nbsp;
+    // get method
+    BarChart.prototype.getTitle = function() {
+        return this._graph.getTitle();
+    };
+    BarChart.prototype.getHeight = <span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >        return this._graph.getHeight();</span>
+    };
+    BarChart.prototype.getWidth = <span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >        return this._graph.getWidth();</span>
+    };
+    BarChart.prototype.getLegend = <span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >        return this._graph.getLegend();</span>
+    };
+    BarChart.prototype.getHGrid = <span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >        return this._graph.getHGrid();</span>
+    };
+    BarChart.prototype.getVGrid = <span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >        return this._graph.getVGrid();</span>
+    };
+    BarChart.prototype.getUrl = function() {
+        return this._graph.getUrl();
+    };
+    BarChart.prototype.getFlowList = function() {
+        return this._graph.getFlowList();
+    };
+    BarChart.prototype.getX = function() {
+        return this._axisX;
+    };
+    BarChart.prototype.getY = function() {
+        return this._axisY;
+    };
+    BarChart.prototype.getBarOrientation = function() {
+        return this._barOrientation;
+    };
+    BarChart.prototype.getHeaders = function() {
+        return this._headers;
+    };
+    BarChart.prototype.getBackground = function() {
+        return this._background;
+    };
+    BarChart.prototype.getSortable = function() {
+        return this._sortable;
+    };
+    BarChart.prototype.getGroupingControl = <span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >        return this._groupingControl;</span>
+    };
+    BarChart.prototype.getLegendOnPoint = function() {
+        return this._legendOnPoint;
+    };
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function BarChartFactory(){</span>}
+&nbsp;
+    BarChartFactory.build = function(info) {
+        return new BarChart(info);
+    };
+&nbsp;
+    return BarChartFactory;
+&nbsp;
+}]);</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Jun 12 2015 07:38:49 GMT+0000 (UTC)</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>
