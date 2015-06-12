@@ -261,6 +261,41 @@ describe('LineChartFactory', function(){
 		});
 
 	});
+	
+	describe('replaceData', function(){
+
+		var json1 = {
+			'ID' : 	'flusso1',
+			'name' : 'sonda 1',
+			'records' : [{'NorrisRecordID' : 'record2', 'value' : [3,3] }, {'NorrisRecordID' : 'record3', 'value' : [4,4] }]
+		};
+
+		var json = {
+			'ID' : 'flusso1',
+			'records' :	[{'NorrisRecordID' : 'record4', 'value' : [5,5] }, {'NorrisRecordID' : 'record5', 'value' : [6,6] }]
+		};
+
+		var LineChart, Flow;
+
+		beforeEach(function(){
+			Flow = LineChartFlowFactory.build();
+			Flow.inizializeData(json1);
+			LineChart = LineChartFactory.build();
+			LineChart.addFlow(json1.ID, Flow);
+			LineChart.replaceData(json);
+		});
+
+		afterEach(function(){
+			Flow = null;
+			LineChart = null;
+		});
+
+		it('delete flow from graph', function(){
+			expect(LineChart.getFlowList()[0].flow.getData()[0].value[0]).toEqual(5);
+			expect(LineChart.getFlowList()[0].flow.getData()[1].value[0]).toEqual(6);
+		});
+
+	});
 
 	describe('inizializeData', function(){
 

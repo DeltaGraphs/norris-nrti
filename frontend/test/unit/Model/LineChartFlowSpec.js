@@ -329,7 +329,7 @@ describe('LineChartFlowFactory', function(){
 
 		beforeEach(function(){
 			LineChartFlow = LineChartFlowFactory.build();
-			LineChartFlow.initializeData(data);
+			LineChartFlow.initializeData(data,'bottom');
 			LineChartFlow.deleteData(delData);
 		});
 

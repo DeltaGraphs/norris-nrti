@@ -269,6 +269,41 @@ describe('BarChartFactory', function(){
 
 	});
 
+	describe('replaceData', function(){
+
+		var json1 = {
+			'ID' : 	'flusso1',
+			'name' : 'sonda 1',
+			'records' : [{'NorrisRecordID' : 'record2', 'value' : [3,3] }, {'NorrisRecordID' : 'record3', 'value' : [4,4] }]
+		};
+
+		var json = {
+			'ID' : 'flusso1',
+			'records' :	[{'NorrisRecordID' : 'record4', 'value' : [5,5] }, {'NorrisRecordID' : 'record5', 'value' : [6,6] }]
+		};
+
+		var BarChart, Flow;
+
+		beforeEach(function(){
+			Flow = BarChartFlowFactory.build();
+			Flow.inizializeData(json1);
+			BarChart = BarChartFactory.build();
+			BarChart.addFlow(json1.ID, Flow);
+			BarChart.replaceData(json);
+		});
+
+		afterEach(function(){
+			Flow = null;
+			BarChart = null;
+		});
+
+		it('delete flow from graph', function(){
+			expect(BarChart.getFlowList()[0].flow.getData()[0].value[0]).toEqual(5);
+			expect(BarChart.getFlowList()[0].flow.getData()[1].value[0]).toEqual(6);
+		});
+
+	});
+
 	describe('inizializeData', function(){
 
 		var data = [

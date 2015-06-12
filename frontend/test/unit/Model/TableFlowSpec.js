@@ -253,4 +253,37 @@ describe('TableFlowFactory', function(){
 		});
 	});
 
+	describe('deleteData', function(){
+
+		var data = {
+			records: [
+				{ 
+					'NorrisRecordID' : 'record1',
+					'value' : [ 14.5364864646, 11.5646546516]
+				}
+			]
+		};
+
+		var delData = {
+			'NorrisRecordID' : 'record1',
+			'value' : [ 14.5364864646, 11.5646546516]
+		};
+
+		var TableFlow;
+
+		beforeEach(function(){
+			TableFlow = tableFlowFactory.build();
+			TableFlow.initializeData(data);
+			TableFlow.deleteData(delData);
+		});
+
+		afterEach(function(){
+			TableFlow = null;
+		});
+
+		it('data removed in the correct way', function(){
+			expect(TableFlow.getData().length).toEqual(0);
+		});
+	});
+
 });
