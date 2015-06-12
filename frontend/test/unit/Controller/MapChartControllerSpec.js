@@ -24,22 +24,6 @@ describe('MapChartController', function(){
 	var controller;
 	var SocketServicesFactory;
 	var socket;
-	var json = {
-			'title' : 'graficonuovo',
-			'url' : 'localhost',
-			'height' : 400,
-			'width' : 400,
-			'enabledLegend' : false,
-			'horizontalGrid' : false,
-			'verticalGrid' : false,
-			'legendOnPoint' : false,
-			'latitude' : 3,
-			'longitude' : 3,
-			'scale' : 999,
-			'mapType' : 'terrain',
-			'zoom' : false,
-			'flows' : [{'ID' : '1'},{'ID' : '2'},{'ID' : '3'}]
-	};
 
     beforeEach(inject(function($rootScope, $controller, $injector){
     	scope = $rootScope.$new();
@@ -59,14 +43,46 @@ describe('MapChartController', function(){
     describe('listenOnEvent', function(){
     	
 	    it('configGraph works fine', function(){
-			socket.on('configGraph',{
-				'properties' : {
-					'title' : 'titolocambiato'
-				},
-				'data' : []
+			socket.on('configGraph', {
+				'properties':{
+					'ID':'map1',
+					'title':'APS',
+					'type':'MapChart',
+					'height':600,
+					'width':1000,
+					'enableLegend':true,
+					'legendOnPoint':true,
+					'latitude':45.4113311,
+					'longitude':11.8876318,
+					'mapType':'roadmap',
+					'mapWidth':2000,
+					'mapHeight':2000,
+					'legend':{
+						'position':'NW',
+						'fontColor':'#00AA00',
+						'backgroundColor':'#FFAAFF'
+					},
+					'flows':[
+						{
+							'ID':'flow1',
+							'name':'linea 22',
+							'filters':null,
+							'longitudeKey':'2',
+							'latitudeKey':'1',
+							'objectKey':'0',
+							'longitudeFormat':'coordinates',
+							'latitudeFormat':'coordinates',
+							'marker':{
+								'type':'shape',
+								'shape':'bus',
+								'color':'#FFC4F6'
+							},
+						}
+					]
+				}
 			});
-			expect(scope.mapChart.getTitle()).toEqual('titolocambiato');
-			expect(scope.mapChart.getFlowList()[0].flow.getData()[0].value[0]).toEqual(0);
+			expect(scope.mapChart.getTitle()).toEqual('APS');
+			expect(scope.mapChart.getFlowList().length).toEqual(1);
 		});
     });
     
