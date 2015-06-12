@@ -24,7 +24,7 @@ module.exports = function(config) {
 			/*'app/bower_components/angular-sanitize/angular-sanitize.js',
 			'app/bower_components/angular-cookies/angular-cookies.js',*/
 			//'app/bower_components/underscore/underscore.js',
-			'app/app.js',
+			'app/norris-nrti.js',
 			'app/Model/*.js',
 			'app/Model/GraphsModel/*.js',
 			'app/Model/FlowsModel/*.js',
