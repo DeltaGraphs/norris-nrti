@@ -279,7 +279,7 @@ describe('LineChartFactory', function(){
 
 		beforeEach(function(){
 			Flow = LineChartFlowFactory.build();
-			Flow.inizializeData(json1);
+			Flow.initializeData(json1);
 			LineChart = LineChartFactory.build();
 			LineChart.addFlow(json1.ID, Flow);
 			LineChart.replaceData(json);

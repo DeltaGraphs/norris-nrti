@@ -286,7 +286,7 @@ describe('BarChartFactory', function(){
 
 		beforeEach(function(){
 			Flow = BarChartFlowFactory.build();
-			Flow.inizializeData(json1);
+			Flow.initializeData(json1);
 			BarChart = BarChartFactory.build();
 			BarChart.addFlow(json1.ID, Flow);
 			BarChart.replaceData(json);

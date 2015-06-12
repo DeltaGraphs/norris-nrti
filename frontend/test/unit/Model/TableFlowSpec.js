@@ -272,8 +272,8 @@ describe('TableFlowFactory', function(){
 		var TableFlow;
 
 		beforeEach(function(){
-			TableFlow = tableFlowFactory.build();
-			TableFlow.initializeData(data);
+			TableFlow = TableFlowFactory.build();
+			TableFlow.initializeData(data,'top');
 			TableFlow.deleteData(delData);
 		});
 

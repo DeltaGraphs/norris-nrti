@@ -116,7 +116,7 @@ angular.module('norris-nrti')
 		return this._data;
 	};
 	TableFlow.prototype.getMaxItem = function() {
-		return this._maxItem;
+		return this._maxItems;
 	};
 
 	function TableFlowFactory() {}

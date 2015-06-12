@@ -278,7 +278,7 @@ describe('MapChartFactory', function(){
 
 		beforeEach(function(){
 			Flow = MapChartFlowFactory.build();
-			Flow.inizializeData(json1);
+			Flow.initializeData(json1);
 			MapChart = MapChartFactory.build();
 			MapChart.addFlow(json1.ID, Flow);
 			MapChart.replaceData(json);
