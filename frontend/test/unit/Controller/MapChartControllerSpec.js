@@ -22,13 +22,11 @@ describe('MapChartController', function(){
 
 	var scope;
 	var controller;
-	var SocketServicesFactory;
 	var socket;
 
-    beforeEach(inject(function($rootScope, $controller, $injector){
+    beforeEach(inject(function($rootScope, $controller, _notify_){
     	scope = $rootScope.$new();
-    	SocketServicesFactory = $injector.get('SocketServicesFactory');
-    	socket = SocketServicesFactory.build('http://norris-nrti-dev.herokuapp.com/page1/map1');
+    	notify = _notify_;
         controller = $controller('MapChartController', { $scope : scope });
     }));
 
@@ -37,31 +35,19 @@ describe('MapChartController', function(){
 	});
 
 	it('scope.mapChart is defined', function() {
-		expect(socket).toBeDefined();
+		expect(notify).toBeDefined();
 	});
 
     describe('listenOnEvent', function(){
     	
 	    it('configGraph works fine', function(){
-			socket.on('configGraph', {
+			notify.receive('configGraph', {
 				'properties':{
 					'ID':'map1',
 					'title':'APS',
 					'type':'MapChart',
 					'height':600,
 					'width':1000,
-					'enableLegend':true,
-					'legendOnPoint':true,
-					'latitude':45.4113311,
-					'longitude':11.8876318,
-					'mapType':'roadmap',
-					'mapWidth':2000,
-					'mapHeight':2000,
-					'legend':{
-						'position':'NW',
-						'fontColor':'#00AA00',
-						'backgroundColor':'#FFAAFF'
-					},
 					'flows':[
 						{
 							'ID':'flow1',
@@ -82,8 +68,118 @@ describe('MapChartController', function(){
 				}
 			});
 			expect(scope.mapChart.getTitle()).toEqual('APS');
+			expect(scope.mapChart.getHeight()).toEqual(600);
+			expect(scope.mapChart.getWidth()).toEqual(1000);
 			expect(scope.mapChart.getFlowList().length).toEqual(1);
 		});
+
+		it('updateGraphProp works fine', function(){
+			notify.receive('updateGraphProp', {
+				'height':1000,
+				'width':600
+			});
+			expect(scope.mapChart.getHeight()).toEqual(1000);
+			expect(scope.mapChart.getWidth()).toEqual(600);
+		});
+
+		/*it('configGraph works fine', function(){
+			socket.on('configGraph', {
+				'properties':{
+					'ID':'map1',
+					'title':'APS',
+					'type':'MapChart',
+					'height':600,
+					'width':1000,
+					'flows':[
+						{
+							'ID':'flow1',
+							'name':'linea 22',
+							'filters':null,
+							'longitudeKey':'2',
+							'latitudeKey':'1',
+							'objectKey':'0',
+							'longitudeFormat':'coordinates',
+							'latitudeFormat':'coordinates',
+							'marker':{
+								'type':'shape',
+								'shape':'bus',
+								'color':'#FFC4F6'
+							},
+						}
+					]
+				}
+			});
+			expect(scope.mapChart.getTitle()).toEqual('APS');
+			expect(scope.mapChart.getHeight()).toEqual(600);
+			expect(scope.mapChart.getWidth()).toEqual(1000);
+			expect(scope.mapChart.getFlowList().length).toEqual(1);
+		});
+
+		it('configGraph works fine', function(){
+			socket.on('configGraph', {
+				'properties':{
+					'ID':'map1',
+					'title':'APS',
+					'type':'MapChart',
+					'height':600,
+					'width':1000,
+					'flows':[
+						{
+							'ID':'flow1',
+							'name':'linea 22',
+							'filters':null,
+							'longitudeKey':'2',
+							'latitudeKey':'1',
+							'objectKey':'0',
+							'longitudeFormat':'coordinates',
+							'latitudeFormat':'coordinates',
+							'marker':{
+								'type':'shape',
+								'shape':'bus',
+								'color':'#FFC4F6'
+							},
+						}
+					]
+				}
+			});
+			expect(scope.mapChart.getTitle()).toEqual('APS');
+			expect(scope.mapChart.getHeight()).toEqual(600);
+			expect(scope.mapChart.getWidth()).toEqual(1000);
+			expect(scope.mapChart.getFlowList().length).toEqual(1);
+		});
+
+		it('configGraph works fine', function(){
+			socket.on('configGraph', {
+				'properties':{
+					'ID':'map1',
+					'title':'APS',
+					'type':'MapChart',
+					'height':600,
+					'width':1000,
+					'flows':[
+						{
+							'ID':'flow1',
+							'name':'linea 22',
+							'filters':null,
+							'longitudeKey':'2',
+							'latitudeKey':'1',
+							'objectKey':'0',
+							'longitudeFormat':'coordinates',
+							'latitudeFormat':'coordinates',
+							'marker':{
+								'type':'shape',
+								'shape':'bus',
+								'color':'#FFC4F6'
+							},
+						}
+					]
+				}
+			});
+			expect(scope.mapChart.getTitle()).toEqual('APS');
+			expect(scope.mapChart.getHeight()).toEqual(600);
+			expect(scope.mapChart.getWidth()).toEqual(1000);
+			expect(scope.mapChart.getFlowList().length).toEqual(1);
+		});*/
     });
     
 	//describe('socketConnection', function(){
