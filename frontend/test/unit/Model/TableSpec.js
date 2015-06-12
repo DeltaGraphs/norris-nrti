@@ -296,8 +296,8 @@ describe('TableFactory', function(){
 		});
 
 		it('delete flow from graph', function(){
-			expect(Table.getFlowList()[0].flow.getData()[0].value[0]).toEqual(5);
-			expect(Table.getFlowList()[0].flow.getData()[1].value[0]).toEqual(6);
+			expect(Table.getFlowList()[0].flow.getData()[0].value[0]).toEqual(6);
+			expect(Table.getFlowList()[0].flow.getData()[1].value[0]).toEqual(5);
 		});
 
 	});
