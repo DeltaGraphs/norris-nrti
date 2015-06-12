@@ -248,7 +248,7 @@ describe(&#039;BarChartFactory&#039;, function(){
 			&#039;sortable&#039; : false,
 			&#039;groupingControl&#039; : false,
 			&#039;legendOnPoint&#039; : true,
-			&#039;horizontalGrid&#039; : false,
+			&#039;grid&#039; : false,
 			&#039;flows&#039; : [{&#039;ID&#039; : &#039;f1&#039;},{ &#039;ID&#039; : &#039;f2&#039;},{&#039;ID&#039; : &#039;f3&#039;}]
 		};
 		var BarChart;
@@ -293,7 +293,7 @@ describe(&#039;BarChartFactory&#039;, function(){
 			expect(BarChart.getFlowList().length).toEqual(3);
 		});
 		it(&#039;graph created with the correct horizontalGrid&#039;, function(){
-			expect(BarChart.getHGrid().length).toEqual(0);
+			expect(BarChart.getHGrid().length).toEqual(false);
 		});
 		
 	});
