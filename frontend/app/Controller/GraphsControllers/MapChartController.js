@@ -17,7 +17,7 @@
 */
 
 angular.module('norris-nrti')
-.controller('MapChartController', ['$scope', '$location', 'MapChartFactory', 'MapChartFlowFactory', 'SocketServicesFactory', function($scope, $location, MapChartFactory, MapChartFlowFactory, SocketServicesFactory){
+.controller('MapChartController', function($scope, $location, MapChartFactory, MapChartFlowFactory, SocketServicesFactory){
 
 	var socket;
 	var mapChart = MapChartFactory.build();
@@ -99,4 +99,4 @@ angular.module('norris-nrti')
 	$scope.socketConnection = this.socketConnection;
 	$scope.listenOnEvents = this.listenOnEvents;
 
-}]);
+});
