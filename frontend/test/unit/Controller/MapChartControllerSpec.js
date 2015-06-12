@@ -20,7 +20,8 @@ describe('MapChartController', function(){
 
 	beforeEach(angular.mock.module('norris-nrti'));
 
-	var scope, $controller;
+	var scope;
+	var controller;
 	var SocketServicesFactory;
 	var socket;
 	var json = {
@@ -40,13 +41,12 @@ describe('MapChartController', function(){
 			'flows' : [{'ID' : '1'},{'ID' : '2'},{'ID' : '3'}]
 	};
 
-    beforeEach(inject(function($rootScope, _$controller_, $injector){
+    beforeEach(inject(function($rootScope, $controller, $injector){
     	scope = $rootScope.$new();
-    	$controller = _$controller_;
     	SocketServicesFactory = $injector.get('SocketServicesFactory');
     	socket = SocketServicesFactory.build();
-        var controller = $controller('MapChartController', { $scope : scope });
-    }));	
+        controller = $controller('MapChartController', { $scope : scope, socket : socket });
+    }));
 
     it('scope.mapChart is defined', function() {
 		expect(scope.mapChart).toBeDefined();
