@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">68.42</p>
+      <p class="stat">67.21</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">103</p>
+      <p class="stat">119</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">7.18</p>
+      <p class="stat">6.11</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.45</p>
+      <p class="stat">0.49</p>
     </div>
   </div>
 </div>
@@ -115,22 +115,6 @@ describe(&#039;MapChartController&#039;, function(){
 	var controller;
 	var SocketServicesFactory;
 	var socket;
-	var json = {
-			&#039;title&#039; : &#039;graficonuovo&#039;,
-			&#039;url&#039; : &#039;localhost&#039;,
-			&#039;height&#039; : 400,
-			&#039;width&#039; : 400,
-			&#039;enabledLegend&#039; : false,
-			&#039;horizontalGrid&#039; : false,
-			&#039;verticalGrid&#039; : false,
-			&#039;legendOnPoint&#039; : false,
-			&#039;latitude&#039; : 3,
-			&#039;longitude&#039; : 3,
-			&#039;scale&#039; : 999,
-			&#039;mapType&#039; : &#039;terrain&#039;,
-			&#039;zoom&#039; : false,
-			&#039;flows&#039; : [{&#039;ID&#039; : &#039;1&#039;},{&#039;ID&#039; : &#039;2&#039;},{&#039;ID&#039; : &#039;3&#039;}]
-	};
 
     beforeEach(inject(function($rootScope, $controller, $injector){
     	scope = $rootScope.$new();
@@ -150,14 +134,46 @@ describe(&#039;MapChartController&#039;, function(){
     describe(&#039;listenOnEvent&#039;, function(){
     	
 	    it(&#039;configGraph works fine&#039;, function(){
-			socket.on(&#039;configGraph&#039;,{
-				&#039;properties&#039; : {
-					&#039;title&#039; : &#039;titolocambiato&#039;
-				},
-				&#039;data&#039; : []
+			socket.on(&#039;configGraph&#039;, {
+				&#039;properties&#039;:{
+					&#039;ID&#039;:&#039;map1&#039;,
+					&#039;title&#039;:&#039;APS&#039;,
+					&#039;type&#039;:&#039;MapChart&#039;,
+					&#039;height&#039;:600,
+					&#039;width&#039;:1000,
+					&#039;enableLegend&#039;:true,
+					&#039;legendOnPoint&#039;:true,
+					&#039;latitude&#039;:45.4113311,
+					&#039;longitude&#039;:11.8876318,
+					&#039;mapType&#039;:&#039;roadmap&#039;,
+					&#039;mapWidth&#039;:2000,
+					&#039;mapHeight&#039;:2000,
+					&#039;legend&#039;:{
+						&#039;position&#039;:&#039;NW&#039;,
+						&#039;fontColor&#039;:&#039;#00AA00&#039;,
+						&#039;backgroundColor&#039;:&#039;#FFAAFF&#039;
+					},
+					&#039;flows&#039;:[
+						{
+							&#039;ID&#039;:&#039;flow1&#039;,
+							&#039;name&#039;:&#039;linea 22&#039;,
+							&#039;filters&#039;:null,
+							&#039;longitudeKey&#039;:&#039;2&#039;,
+							&#039;latitudeKey&#039;:&#039;1&#039;,
+							&#039;objectKey&#039;:&#039;0&#039;,
+							&#039;longitudeFormat&#039;:&#039;coordinates&#039;,
+							&#039;latitudeFormat&#039;:&#039;coordinates&#039;,
+							&#039;marker&#039;:{
+								&#039;type&#039;:&#039;shape&#039;,
+								&#039;shape&#039;:&#039;bus&#039;,
+								&#039;color&#039;:&#039;#FFC4F6&#039;
+							},
+						}
+					]
+				}
 			});
-			expect(scope.mapChart.getTitle()).toEqual(&#039;titolocambiato&#039;);
-			expect(scope.mapChart.getFlowList()[0].flow.getData()[0].value[0]).toEqual(0);
+			expect(scope.mapChart.getTitle()).toEqual(&#039;APS&#039;);
+			expect(scope.mapChart.getFlowList().length).toEqual(1);
 		});
     });
     
