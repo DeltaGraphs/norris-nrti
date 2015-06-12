@@ -17,15 +17,14 @@
 */
 
 describe('MapChartController', function() {
-    var scope, $controller, MapChartController;
+    var scope, $controller;
 
-    beforeEach(angular.mock.module('norris-nrti'));
+    beforeEach(module('norris-nrti'));
 
-    beforeEach(inject(function($rootScope, _$controller_, _$location_, _MapChartController_){
+    beforeEach(inject(function($rootScope, _$controller_){
     	$controller = _$controller_;
-    	MapChartController = _MapChartController_;
         scope = $rootScope.$new();
-        var controller = $controller(MapChartController, { $scope : scope });
+        var controller = $controller('MapChartController', { $scope : scope });
     }));
 
     it('should have a method to check if the path is active', function() {
