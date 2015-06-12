@@ -17,11 +17,12 @@
 */
 
 describe('MapChartController', function() {
-    var scope, $location, createController;
+    /*var scope, $location, $controller;
 
     beforeEach(angular.mock.module('norris-nrti'));
 
-    beforeEach(inject(function($rootScope, $controller, _$location_){
+    beforeEach(inject(function($rootScope, _$controller_, _$location_){
+    	$controller = _$controller_
         $location = _$location_;
         scope = $rootScope.$new();
 
@@ -38,7 +39,7 @@ describe('MapChartController', function() {
     });
 });
 
-/*describe('MapChartController', function(){
+describe('MapChartController', function(){
 
 	beforeEach(angular.mock.module('norris-nrti'));
 
@@ -119,5 +120,5 @@ describe('MapChartController', function() {
 			expect(scope.mapChart.getFlowList()[0].flow.getData()[0].value[0]).toEqual(0);
 		});
 	});
-
-});*/
+	*/
+});

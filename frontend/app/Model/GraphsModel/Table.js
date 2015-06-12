@@ -132,7 +132,12 @@ angular.module('norris-nrti')
         this._graph.deleteFlow(ID);
     };
     Table.prototype.replaceData = function(newData){
-        this._graph.replaceData(newData);
+        for (var i = 0;i<this._graph.getFlowList().length; i++) {
+            if (this._graph.getFlowList()[i].id === newData.ID){
+                this._graph.getFlowList()[i].flow.emptyData();
+                this._graph.getFlowList()[i].flow.initializeData(newData, this._addRowOn);
+            }
+        }
     };
 
     Table.prototype.initializeData = function(newData) {  //inizialization data of flows
