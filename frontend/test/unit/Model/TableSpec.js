@@ -284,7 +284,7 @@ describe('TableFactory', function(){
 
 		beforeEach(function(){
 			Flow = TableFlowFactory.build();
-			Flow.initializeData(json1);
+			Flow.initializeData(json1,'bottom');
 			Table = TableFactory.build();
 			Table.addFlow(json1.ID, Flow);
 			Table.replaceData(json);
