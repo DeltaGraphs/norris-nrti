@@ -75,7 +75,7 @@ describe('PageFactory', function(){
 				'graphsPerRow' : 4,
 				'graphsPerCol' : 4,
 				'socketURL' : 'http://localhost/page1'
-			}
+			},
 			'data' : [
 				{ 
 					'ID' : 'grafico1', 
