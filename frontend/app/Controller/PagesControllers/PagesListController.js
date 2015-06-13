@@ -22,33 +22,31 @@ angular.module('norris-nrti')
 	var socket;
 	var pagesList;
 
-	var url = UrlProvider.prototype.getUrl();
+	var url = UrlProvider.prototype.getUrl(); // recupera l'url a cui deve connettersi il socket
 
+	// funzione che connette il socket all'url e chiama la funzione listenOnEvent
 	this.socketConnection = function() {
 		socket = SocketServicesFactory.build(url);
-		console.log('socketConnection');
 		this.listenOnEvents();
 	};
 
+	// funzione che mette in ascolto il socket su alcuni eventi
 	this.listenOnEvents = function() {
-		socket.on('configPageList', function(info){
-			console.log('configPageList');
-			console.log(JSON.stringify(info));
-			pagesList = new PagesList(info);
-			$scope.pagesList = pagesList.getPagesList();
+		socket.on('configPageList', function(info){ // ascolta sull'evento 'configPageList' (ricevuto come risposta alla connessione)
+			pagesList = new PagesList(info); // crea una nuova PagesList
+			$scope.pagesList = pagesList.getPagesList(); // rende disponibile la lista delle pagine sullo scope
 		});
-		socket.on('insertPage', function(info) {
-			console.log('insertPage');
-			pagesList.addPage(info);
-			$scope.pagesList = pagesList.getPagesList();
+		socket.on('insertPage', function(info) { // ascolta sull'evento 'insertPage'
+			pagesList.addPage(info); // aggiunge una pagina alla lista
+			$scope.pagesList = pagesList.getPagesList(); // rende disponibile la lista delle pagine sullo scope
 		});
-		socket.on('updatePage', function(info) {
-			pagesList.updatePage(info);
-			$scope.pagesList = pagesList.getPagesList();
+		socket.on('updatePage', function(info) { // ascolta sull'evento 'updatePage'
+			$scope.pagesList = pagesList.getPagesList(); // rende disponibile la lista delle pagine sullo scope
 		});
 
 	};
 
+	// vengono rese disponibili alcune funzioni sullo $scope
 	$scope.socketConnection = this.socketConnection;
 	$scope.listenOnEvents = this.listenOnEvents;
 	

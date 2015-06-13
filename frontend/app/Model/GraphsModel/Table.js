@@ -25,6 +25,7 @@
 angular.module('norris-nrti')
 .factory('TableFactory', ['GraphFactory', 'TableFlowFactory', function(GraphFactory, TableFlowFactory){
 
+    // funzione di utilità che ha lo scopo di separare le proprietà legate al grafico generale da quelle legate al bar chart
 	function split(json) {
 		var graphJson = {};
 		if (json.title !== undefined) {
@@ -70,9 +71,7 @@ angular.module('norris-nrti')
 		};
 	}
 
-    //Table.prototype.test = function _Test(expressionStr) { return eval(expressionStr); };
-
-    // create our new custom object that reuse the original object constructor
+    // costruttore di default di una Table
     function Table(info) {
         this._headers = [];
         this._maxItemsPage = 20;
@@ -83,6 +82,7 @@ angular.module('norris-nrti')
         this._graph = GraphFactory.build(info);
     }
 
+    // funzione che ha lo scopo di aggiornare i campi dati dela table
     Table.prototype.updateParameters = function(info) {
         if (info !== undefined) {
             var json = split(info);
@@ -123,14 +123,17 @@ angular.module('norris-nrti')
         }
     };
 
+    // aggiunge un nuovo flusso alla lista di flussi
     Table.prototype.addFlow = function(ID, newFlow) {
-        if (newFlow.constructor.name === 'TableFlow') {
+        if (newFlow.constructor.name === 'TableFlow') { // controlla che il flusso da inserire sia del tipo giusto
             this._graph.addFlow(ID, newFlow);
         }
     };
+    // elimina il flusso con id === ID
     Table.prototype.deleteFlow = function(ID) {
         this._graph.deleteFlow(ID);
     };
+    // rimpiazza i dati di un flusso con altri dati
     Table.prototype.replaceData = function(newData){
         for (var i = 0;i<this._graph.getFlowList().length; i++) {
             if (this._graph.getFlowList()[i].id === newData.ID){
@@ -140,6 +143,7 @@ angular.module('norris-nrti')
         }
     };
 
+    // inizializza i dati dei flussi presenti nella lista
     Table.prototype.initializeData = function(newData) {  //inizialization data of flows
         if (newData !== undefined) {
             for (var i=0; i<newData.length; i++) {
@@ -152,6 +156,7 @@ angular.module('norris-nrti')
         }
     };
 
+    // funzione che permette l'aggiornamento di tipo in place dei dati
     Table.prototype.inPlaceUpdate = function(newData) {
         if (newData !== undefined) {
             var fList = this._graph.getFlowList();
@@ -162,6 +167,7 @@ angular.module('norris-nrti')
             }
         }
     };
+    // funzione che permette l'aggiornamento di tipo stream dei dati
     Table.prototype.streamUpdate = function(newData) {
         if (newData !== undefined) {
             var fList = this._graph.getFlowList();
@@ -172,7 +178,7 @@ angular.module('norris-nrti')
             }
         }
     };
-
+    // funzione che permette di eliminare i dati di un flusso
     Table.prototype.deleteData = function(delData) {
         if (delData !== undefined){
             var fList = this._graph.getFlowList();
@@ -185,46 +191,45 @@ angular.module('norris-nrti')
     };
 
     Table.prototype.getTitle = function() {
-        return this._graph.getTitle();
+        return this._graph.getTitle(); // ritorna il titolo del grafico
     };
     Table.prototype.getHeight = function() {
-        return this._graph.getHeight();
+        return this._graph.getHeight(); // ritorna l'altezza del grafico
     };
     Table.prototype.getWidth = function() {
-        return this._graph.getWidth();
-    };
-    Table.prototype.getLegend = function() {
-        return this._graph.getLegend();
+        return this._graph.getWidth(); // ritorna la larghezza del grafico
     };
     Table.prototype.getUrl = function() {
-        return this._graph.getUrl();
+        return this._graph.getUrl(); // ritorna l'url relativo al grafico
     };
     Table.prototype.getFlowList = function() {
-        return this._graph.getFlowList();
+        return this._graph.getFlowList(); // ritorna la lista dei flussi presenti nel grafico
+    };
     };
     Table.prototype.getHeaders = function() {
-    return this._headers;
+    return this._headers; // ritorna gli header della tabella
     };
     Table.prototype.getMaxItemsPage = function() {
-        return this._maxItemsPage;
+        return this._maxItemsPage; // ritorna il massimo numero di elementi visualizzabili per pagina di tabella
     };
     Table.prototype.getAddRowOn = function() {
-        return this._addRowOn;
+        return this._addRowOn; // ritorna la posizione di aggiunta record (top o bottom)
     };
     Table.prototype.getSortable = function() {
-        return this._sortable;
+        return this._sortable; // ritorna true se è disponibile la funzionalità di ordinamento della tabella per colonne
     };
     Table.prototype.getSort = function() {
-        return this._sort;
+        return this._sort; // ritorna le colonne su cui è possibile ordinare la tabella
     };
     Table.prototype.getAppearance = function() {
-        return this._appearance;
+        return this._appearance; // ritorna un array che definisce l'aspetto delle celle
     };
 
+    // costruttore di default di TableFactory
     function TableFactory() {}
 
     TableFactory.build = function(info) {
-        return new Table(info);
+        return new Table(info); // ritorna una nuova istanza di Table
     };
 
     return TableFactory;

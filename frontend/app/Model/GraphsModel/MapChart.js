@@ -23,6 +23,7 @@
 angular.module('norris-nrti')
 .factory('MapChartFactory',['GraphFactory', 'MapChartFlowFactory', function(GraphFactory, MapChartFlowFactory){
 
+    // funzione di utilità che ha lo scopo di separare le proprietà legate al grafico generale da quelle legate al bar chart
     function split(json) {
         var graphJson = {};
         if (json.title !== undefined) {
@@ -75,9 +76,7 @@ angular.module('norris-nrti')
         };
     }
 
-    //MapChart.prototype.test = function _Test(expressionStr) { return eval(expressionStr); };
-
-    // create our new custom object that reuse the original object constructor
+    // costruttore di default di un MapChart
     function MapChart(info) {
         this._legendOnPoint = false;
         this._latitude = 45.4113311;
@@ -91,6 +90,7 @@ angular.module('norris-nrti')
         this._graph = GraphFactory.build(info);
     }
 
+    // funzione che ha lo scopo di aggiornare i campi dati del map chart
     MapChart.prototype.updateParameters = function(info) {
         var json = split(info);
         var gJson = json.graphJson;
@@ -124,6 +124,7 @@ angular.module('norris-nrti')
                 this._mapHeight = mJson.mapHeight;
             }
         }
+        // aggiunge i flussi relativi all'istanza di map chart
         if (info.flows !== undefined) {
             for (var i=0; i<info.flows.length; i++) {
                 var newflow = MapChartFlowFactory.build(info.flows[i]);
@@ -132,18 +133,22 @@ angular.module('norris-nrti')
         }
     };
 
+    // aggiunge un nuovo flusso alla lista di flussi
     MapChart.prototype.addFlow = function(ID, newFlow) {
-        if (newFlow.constructor.name === 'MapChartFlow') {
+        if (newFlow.constructor.name === 'MapChartFlow') { // controlla che il flusso da inserire sia del tipo giusto
             this._graph.addFlow(ID, newFlow);
         }
     };
+    // elimina il flusso con id === ID
     MapChart.prototype.deleteFlow = function(ID) {
         this._graph.deleteFlow(ID);
     };
+    // rimpiazza i dati di un flusso con altri dati
     MapChart.prototype.replaceData = function(newData){
         this._graph.replaceData(newData);
     };
 
+    // inizializza i dati dei flussi presenti nella lista
     MapChart.prototype.initializeData = function(newData) {  //inizialization data of flows
         if (newData !== undefined) {
             var fList = this._graph.getFlowList();
@@ -157,7 +162,7 @@ angular.module('norris-nrti')
         }
     };
 
-    // update data
+    // funzione che permette l'aggiornamento di tipo in place dei dati
     MapChart.prototype.inPlaceUpdate = function(newData) {
         if (newData !== undefined) {
             var fList = this._graph.getFlowList();
@@ -168,6 +173,7 @@ angular.module('norris-nrti')
             }
         }
     };
+    // funzione che permette l'aggiornamento di tipo stream dei dati
     MapChart.prototype.streamUpdate = function(newData) {
         if (newData !== undefined) {
             var fList = this._graph.getFlowList();
@@ -178,6 +184,7 @@ angular.module('norris-nrti')
             }
         }
     };
+    // funzione che permette di eliminare i dati di un flusso
     MapChart.prototype.deleteData = function(delData) {
         if (delData !== undefined){
             var fList = this._graph.getFlowList();
@@ -190,52 +197,54 @@ angular.module('norris-nrti')
     };
 
     MapChart.prototype.getTitle = function() {
-        return this._graph.getTitle();
+        return this._graph.getTitle(); // ritorna il titolo del grafico
     };
     MapChart.prototype.getHeight = function() {
-        return this._graph.getHeight();
+        return this._graph.getHeight(); // ritorna l'altezza del grafico
     };
     MapChart.prototype.getWidth = function() {
-        return this._graph.getWidth();
+        return this._graph.getWidth(); // ritorna la larghezza del grafico
     };
     MapChart.prototype.getLegend = function() {
-        return this._graph.getLegend();
+        return this._graph.getLegend(); // ritorna la legenda del grafico se questa è disponibile
     };
     MapChart.prototype.getUrl = function() {
-        return this._graph.getUrl();
+        return this._graph.getUrl(); // ritorna l'url relativo al grafico
     };
     MapChart.prototype.getFlowList = function() {
-        return this._graph.getFlowList();
+        return this._graph.getFlowList(); // ritorna la lista dei flussi presenti nel grafico
+    };
     };
     MapChart.prototype.getLegendOnPoint = function() {
-        return this._legendOnPoint;
+        return this._legendOnPoint; // ritorna true se è disponibile la legend on point
     };
     MapChart.prototype.getLatitude = function() {
-        return this._latitude;
+        return this._latitude; // ritorna la latitudine del centro della mappa
     };
     MapChart.prototype.getLongitude = function() {
-        return this._longitude;
+        return this._longitude; // ritorna la longitudine del centro della mappa
     };
     MapChart.prototype.getMapType = function() {
-        return this._mapType;
+        return this._mapType; // ritorna il tipo della mappa (roadmap, terrain, satellite, hybrid)
     };
     MapChart.prototype.getZoomable = function() {
-        return this._zoom;
+        return this._zoom; // ritorna true se è disponibile la funzionalità 'zoom' sulla mappa
     };
     MapChart.prototype.getDraggable = function() {
-        return this._drag;
+        return this._drag; // ritorna true se è disponibile la funzionalità 'drag' sulla mappa
     };    
     MapChart.prototype.getMapWidth = function() {
-        return this._mapWidth;
+        return this._mapWidth; // ritorna la larghezza (in metri) della mappa (quanti metri devono essere visilìbili)
     };
     MapChart.prototype.getMapHeight = function() {
-        return this._mapHeight;
+        return this._mapHeight; // ritorna l'altezza (in metri) della mappa (quanti metri devono essere visilìbili)
     };
 
+    // costruttore di default di MapChartFactory
     function MapChartFactory() {}
 
     MapChartFactory.build = function(info) {
-        return new MapChart(info);
+        return new MapChart(info); // ritorna una nuova istanza di MapChart
     };
 
     return MapChartFactory;

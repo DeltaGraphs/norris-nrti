@@ -20,11 +20,11 @@ angular.module('norris-nrti')
 .controller('BarChartController', ['$scope', '$location', 'BarChartFactory', 'BarChartFlowFactory', 'SocketServicesFactory', function($scope, $location, BarChartFactory, BarChartFlowFactory, SocketServicesFactory){
 
 	var socket;
-	var barChart = BarChartFactory.build();
+	var barChart = BarChartFactory.build(); // crea un bar chart di default
 	$scope.barChart = barChart;
 
+	// funzione che connette il socket all'url e chiama la funzione listenOnEvent
 	this.socketConnection = function(url){
-		console.log('BARCHART socketConnection ' + url);
 		socket = SocketServicesFactory.build(url);
 		this.listenOnEvents();
 	};
@@ -32,68 +32,60 @@ angular.module('norris-nrti')
 	var count = 0;
 	$scope.changedP = true;
 	$scope.changedD = true;
-	//$scope.changedF = true;
+
+	// funzione che mette in ascolto il socket su alcuni eventi
 	this.listenOnEvents = function(){
-		console.log('BARCHART listenOnEvents');
-		socket.on('configGraph', function(info){
+		socket.on('configGraph', function(info){ // ascolta sull'evento 'configGraph' (ricevuto come risposta alla connessione)
 			if (count === 0){
-				console.log('BARCHART configGraph');
-				$scope.barChart.updateParameters(info.properties);
-				$scope.barChart.initializeData(info.data);
-				$scope.changedD = !$scope.changedD;
-				$scope.changedP = !$scope.changedP;
+				$scope.barChart.updateParameters(info.properties); // aggiorna le proprietà del bar chart di default con i dati appena ricevuti
+				$scope.barChart.initializeData(info.data); // inizializza i flussi con i dati
+				$scope.changedD = !$scope.changedD; // 'notifica' cambiamento dati
+				$scope.changedP = !$scope.changedP; // 'notifica' cambiamento proprietà
 				count++;
 			}
 		});
-		socket.on('updateGraphProp', function(info){
-			console.log('BARCHART updateGraphProp');
-			$scope.barChart.updateParameters(info);
-			$scope.changedP = !$scope.changedP;
+		socket.on('updateGraphProp', function(info){ // ascolta sull'evento 'updateGraphProp'
+			$scope.barChart.updateParameters(info); // aggiorna le proprietà del bar chart con i dati appena ricevuti
+			$scope.changedP = !$scope.changedP; // 'notifica' cambiamento proprietà
 		});
-		socket.on('insertFlow', function(info){
-			console.log('BARCHART insert flow');
-			var flow = BarChartFlowFactory.build(info.properties);
-			flow.initializeData(info);
-			$scope.barChart.addFlow(info.properties.ID, flow);
-			$scope.changedD = !$scope.changedD;
-
-			//$scope.changedF = !$scope.changedF;
+		socket.on('insertFlow', function(info){ // ascolta sull'evento 'insertFlow'
+			var flow = BarChartFlowFactory.build(info.properties); // crea un flusso di default
+			flow.initializeData(info); // inizializzail flusso
+			$scope.barChart.addFlow(info.properties.ID, flow); // aggiunge il flusso al grafico
+			$scope.changedD = !$scope.changedD; // 'notifica' cambiamento dati
 		});
-		socket.on('deleteFlow', function(info){
-			console.log('BARCHART deleteFlow');
-			$scope.barChart.deleteFlow(info.ID);
-			$scope.changedD = !$scope.changedD;
-			//$scope.changedF = !$scope.changedF;
+		socket.on('deleteFlow', function(info){ // ascolta sull'evento 'deleteFlow'
+			$scope.barChart.deleteFlow(info.ID); // elimina un flusso
+			$scope.changedD = !$scope.changedD; // 'notifica' cambiamento dati
 		});
-		socket.on('updateFlowProp', function(info){
-			console.log('BARCHART updateFlowProp'  + JSON.stringify($scope.barChart));
+		socket.on('updateFlowProp', function(info){ // ascolta sull'evento 'updateFlowProp'
 			for (var i=0; i<$scope.barChart.getFlowList().length; i++){
 				if ($scope.barChart.getFlowList()[i].id === info.ID){
-					$scope.barChart.getFlowList()[i].flow.updateParameters(info);
+					$scope.barChart.getFlowList()[i].flow.updateParameters(info); // aggiorna le proprietà di un flusso
 				}
 			}
-			$scope.changedD = !$scope.changedD;
+			$scope.changedD = !$scope.changedD; // 'notifica' cambiamento dati
 		});
-		socket.on('updateFlowData', function(data){
-			console.log('BARCHART updateFlowData');
+		socket.on('updateFlowData', function(data){ // ascolta sull'evento 'updateFlowData'
 			switch (data.action){
 				case 'insertRecords':
-					$scope.barChart.addRecords(data);
+					$scope.barChart.addRecords(data); // aggiunge record
 					break;
 				case 'deleteRecord':
-					$scope.barChart.deleteData(data);
+					$scope.barChart.deleteData(data); // elimina dati
 					break;
 				case 'updateRecord':
-					$scope.barChart.inPlaceUpdate(data);
+					$scope.barChart.inPlaceUpdate(data); // effettua aggiornamento in place
 					break;
 				case 'replaceData':
-					$scope.barChart.replaceData(data);
+					$scope.barChart.replaceData(data); // rimpiazza dei dati
 					break;
 			}
-			$scope.changedD = !$scope.changedD;
+			$scope.changedD = !$scope.changedD; // 'notifica' cambiamento dati
 		});
 	};
 
+	// mette a disposizione delle funzioni sullo scope
 	$scope.socketConnection = this.socketConnection;
 	$scope.listenOnEvents = this.listenOnEvents;
 

@@ -31,8 +31,9 @@
 angular.module('norris-nrti')
 .factory('GraphFactory', ['LegendFactory', function(LegendFactory){
 
-
+	// costruttore di default
 	function Graph(info){
+		// campi dati di Graph
 		this._flowList = [];
 		this._title = null;
 		this._height = null;
@@ -40,6 +41,8 @@ angular.module('norris-nrti')
 		this._legend = null;
 		this._enableLegend = false;
 		this._url = null;
+
+		// controlla se ci sono dei campi dati da impostare, altrimenti crea un grafico di default
 		if (info !== undefined) {
 			if (info.title !== undefined) {
 				this._title = info.title;
@@ -50,6 +53,7 @@ angular.module('norris-nrti')
 		}		
 	}
 
+	// funzione che aggiorna i campi dati del grafico
 	Graph.prototype.updateParameters = function(info) {
 		if (info !== undefined) {
 			if (info.title !== undefined) {
@@ -70,22 +74,22 @@ angular.module('norris-nrti')
 		}
 	};
 
-		//constructor : Graph,
-
+	// funzione che aggiunge un flusso alla lista dei flussi
 	Graph.prototype.addFlow = function(newId, newFlow) {
 		var count = 0;
 
-		for (var i = 0; i<this._flowList.length; i++) {
+		for (var i = 0; i<this._flowList.length; i++) { // conta i flussi presenti nella lista che hanno lo stesso id del nuovo flusso
 			if (this._flowList[i].id === newId) {
 				count++;
 			}
 		}
 
-	    if(count === 0) {
-	        this._flowList.push({ id: newId, flow: newFlow});
+	    if(count === 0) { // controlla il numero di flusso della lista che hanno lo stesso id del nuovo flusso
+	        this._flowList.push({ id: newId, flow: newFlow}); // inserisce il nuovo flusso nella lista solo se non è già presente u flusso con lo stesso id
 		}
 		// error
 	};
+	// elimina un flusso dalla lista dei flussi
 	Graph.prototype.deleteFlow = function(flowID) {
         for (var i = 0; i<this._flowList.length; i++){
             if (this._flowList[i].id === flowID){
@@ -93,6 +97,7 @@ angular.module('norris-nrti')
             }
         }
 	};
+	// rimpiazza i dati di un flusso con dei nuovi dati
 	Graph.prototype.replaceData = function(newData) {
 		for (var i = 0;i<this._flowList.length; i++) {
 			if (this._flowList[i].id === newData.ID){
@@ -103,32 +108,33 @@ angular.module('norris-nrti')
 	};
 	
 	Graph.prototype.getTitle = function() {
-		return this._title;
+		return this._title; // ritorna il titolo del grafico
 	};
 	Graph.prototype.getHeight = function() {
-		return this._height;
+		return this._height; // ritorna l'altezza del grafico
 	};
 	Graph.prototype.getWidth = function() {
-		return this._width;
+		return this._width; // ritorna la larghezza del grafico
 	};
 	Graph.prototype.getLegend = function() {
-		if (this._enableLegend) {
-			return this._legend;
+		if (this._enableLegend) { // controlla se la legenda è disponibile
+			return this._legend; // ritorna la legenda
 		} else {
-			return null;
+			return null; // ritorna null perchè la legenda non è disponibile
 		}
 	};
 	Graph.prototype.getUrl = function() {
-		return this._url;
+		return this._url; // ritorna l'url del grafico
 	};
 	Graph.prototype.getFlowList = function() {
-		return this._flowList;
+		return this._flowList; // ritorna la lista dei flussi
 	};
 
+	// costruttore di default di GraphFactory
 	function GraphFactory() {}
 
 	GraphFactory.build = function(info) {
-		return new Graph(info);
+		return new Graph(info); // ritorna una nuova istanza di Graph
 	};
 	
 	return( GraphFactory );

@@ -21,22 +21,24 @@
 angular.module('norris-nrti')
 .factory('PagesList', ['PageFactory', function(PageFactory){
 
+	// campi dati di Pageslist
 	var pagesList = [];
 
+	// Costruttore di PagesList
 	function PagesList(info) {
 
-		if (info !== undefined) {
-			if (info.data !== undefined) {
-				for (var i=0; i<info.data.length; i++){
+		if (info !== undefined) { // controlla che il JSON 'info' sia defito
+			if (info.data !== undefined) { // controlla che il campo 'data' del JSON sia definito
+				for (var i=0; i<info.data.length; i++){ // scorre l'array di pagine da inserire della lista
 					var count = 0;
-					for (var j=0; j<pagesList.length; j++) {
+					for (var j=0; j<pagesList.length; j++) { // conta le pagine presenti in lista con lo stesso id della nuova pagina
 						if (pagesList[j].id === info.data[i].properties.ID){
 							count++;
 						}
 					}
-	    			if(count === 0) {
-	    				var page = PageFactory.build(info.data[i]);
-	       				pagesList.push({ 'id' : info.data[i].properties.ID, 'page' : page});
+	    			if(count === 0) { // controlla che non siano presenti pagine con lo stesso id della nuova pagina 
+	    				var page = PageFactory.build(info.data[i]); // crea una nuova pagina
+	       				pagesList.push({ 'id' : info.data[i].properties.ID, 'page' : page}); // inserisce la pagina nella lista delle pagine
 					} 
 					// error
 				}
@@ -44,15 +46,16 @@ angular.module('norris-nrti')
 		}
 	}
 	
-	PagesList.prototype.addPage = function(page) { // da cambiare DP
-		var filteredPages = pagesList.filter(function(page) {return page.properties.ID === pagesList.id;});
-		if(filteredPages.length === 0) {
-			var newPage = PageFactory.build(page);
-				pagesList.push({ 'id' : page.ID, 'page' : newPage});
+	PagesList.prototype.addPage = function(page) {
+		var filteredPages = pagesList.filter(function(page) {return page.properties.ID === pagesList.id;}); // crea un array con le pagine che hanno lo stesso id di 'page'
+		if(filteredPages.length === 0) { // controlla che non ci siano pagine con lo stesso id di 'page'
+			var newPage = PageFactory.build(page); // crea una nuova pagina
+			pagesList.push({ 'id' : page.ID, 'page' : newPage}); // aggiunge la nuova pagina alla lista
 		}
 		// error
 	};
 
+	// chiama la funzione updatePage della pagina che necessità di aggiornamenti
 	PagesList.prototype.updatePage = function(info) {
 		for (var j=0; j<pagesList.length; j++) {
 			if (pagesList[j].id === info.ID){
@@ -62,7 +65,7 @@ angular.module('norris-nrti')
 	};
 
 	PagesList.prototype.getPagesList = function(){
-		return pagesList;
+		return pagesList; // ritorna la lista della pagine
 	};
 
 	return( PagesList );

@@ -25,7 +25,9 @@
 angular.module('norris-nrti')
 .factory('AxisFactory', function(){
 
+    // costruttore di Axis
     function Axis(info){
+        // campi dati di axis e valori di default
         this._name = null;
         this._color = '#FFF';
         this._minValue = null;
@@ -33,6 +35,7 @@ angular.module('norris-nrti')
         this._ticks = 10;
         this._scale = 'linear';
 
+        // controlla se ci sono dei campi dati da impostare, altrimenti crea un asse di default
         if (info !== undefined) {
             if (info.name !== undefined) {
                 this._name = info.name;
@@ -55,6 +58,7 @@ angular.module('norris-nrti')
         }
     }
 
+    // funzine che aggiorna i campi dati di un asse
     Axis.prototype.updateParameters = function(info){
         if (info !== undefined) {
             if (info.name !== undefined) {
@@ -79,28 +83,29 @@ angular.module('norris-nrti')
     };
 
     Axis.prototype.getName = function(){
-        return this._name;
+        return this._name; // ritorna il nome dell'asse
     };
     Axis.prototype.getColor = function(){
-        return this._color;
+        return this._color; // ritona il colore dell'asse
     };
     Axis.prototype.getMinValue = function(){
-        return this._minValue;
+        return this._minValue; // ritorna il minimo valore dell'asse
     };
     Axis.prototype.getMaxValue = function(){
-        return this._maxValue;
+        return this._maxValue; // ritorna il massimo valore dell'asse
     };
     Axis.prototype.getTicks = function(){
-        return this._ticks;
+        return this._ticks; // ritorna il valore dei tick
     };
     Axis.prototype.getScale = function(){
-        return this._scale;
+        return this._scale; // ritorna la scale dell'asse
     };
 
+    // costruttore di default di AxisFactory
     function AxisFactory() {}
 
     AxisFactory.build = function(info) {
-        return new Axis(info);
+        return new Axis(info); // ritorna l'istanza di un nuovo asse
     };
     return( AxisFactory );
 });

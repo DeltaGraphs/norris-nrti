@@ -19,52 +19,47 @@
 angular.module('norris-nrti')
 .controller('PageController', ['$scope', '$location', '$routeParams', 'PagesList', 'PageFactory', 'SocketServicesFactory', function($scope, $location, $routeParams, PagesList, PageFactory, SocketServicesFactory){
 
-	var page = PagesList.prototype.getPagesList()[$routeParams.pageId].page;
+	var page = PagesList.prototype.getPagesList()[$routeParams.pageId].page; // recupera la pagina corrente
 	$scope.page = page;
 	$scope.previous = false;
 	$scope.next = false;
 	var a = $routeParams.pageId - 1;
-	console.log('$routeParams.pageId - 1 ' + a);
 	if (PagesList.prototype.getPagesList()[parseInt($routeParams.pageId) - 1] !== undefined) {
-		$scope.previous = true;
-		console.log('$scope.previous ' + $scope.previous);
+		$scope.previous = true; // se è presente una pagina precedente mette il flag a true
 	}
 	var b = $routeParams.pageId + 1;
-	console.log('$routeParams.pageId + 1 ' + b);
 	if (PagesList.prototype.getPagesList()[parseInt($routeParams.pageId) + 1] !== undefined) {
-		$scope.next = true;
-		console.log('$scope.next ' + $scope.next);
+		$scope.next = true; // se è presente una pagina successiva mette il flag a true
 	}
-	var url = $scope.page.getUrl();
+	var url = $scope.page.getUrl(); // recupera l'url a cui deve connettersi il socket
 	var socket;
 
+	// funzione che connette il socket all'url e chiama la funzione listenOnEvent
 	this.socketConnection = function(){
-		console.log('socketconnection page: ' + url);
 		socket = SocketServicesFactory.build(url);
 		this.listenOnEvents();
 	};
 
+	// funzione che mette in ascolto il socket su alcuni eventi
 	this.listenOnEvents = function(){
-		socket.on('configPage', function(info){
-			$scope.page.updateParameters(info.properties);
-			$scope.page.initializeData(info.data);
+		socket.on('configPage', function(info){ // ascolta sull'evento 'configPage' (ricevuto come risposta alla connessione)
+			$scope.page.updateParameters(info.properties); // modifica i campi di default con i valori esatti della pagina
+			$scope.page.initializeData(info.data); // inizializza i dati della pagina (aggiunge i grafici presenti in essa)
 			$scope.graphs = matrix($scope.page.getGraphsList());
-			console.log($scope.page.getGraphsList().toString());
-			console.log($scope.graphs.toString());
 		});
-		socket.on('updatePageProp', function(info){
-			$scope.page.updateParameters(info);
+		socket.on('updatePageProp', function(info){ // ascolta sull'evento 'updatePageProp'
+			$scope.page.updateParameters(info); // aggiorna le proprietà della pagina
 		});
-		socket.on('insertGraph', function(info){
-			$scope.page.addGraph(info);
+		socket.on('insertGraph', function(info){ // ascolta sull'evento 'insertGraph'
+			$scope.page.addGraph(info); // inserisce un nuovo grafico alla lista dei grafici presente in $scope.page
 			$scope.graphs = matrix($scope.page.getGraphsList());
 		});
 	};
 
+	// funzione di utilità che dispone i grafici in un array per la successiva visualizzazione
 	function matrix(list) {
 		var array = [];
 		var count = 0;
-		console.log('list.length ' + list.length + ' $scope.page.getGraphsPerCol() ' + $scope.page.getGraphsPerCol());
 		var graphsPerCol = $scope.page.getGraphsPerCol();
 		var graphsPerRow = $scope.page.getGraphsPerRow();
 		if (graphsPerCol === -1){
@@ -85,6 +80,7 @@ angular.module('norris-nrti')
 		return array;
 	}
 
+	// vengono rese disponibili alcune funzioni sullo $scope
 	$scope.graphs = [];
 	$scope.socketConnection = this.socketConnection;
 	$scope.listenOnEvents = this.listenOnEvents;
