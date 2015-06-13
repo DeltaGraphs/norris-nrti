@@ -46,7 +46,7 @@ describe('PagesListView', function(){
 			'</div>');
 
     	element = $compile(element)(scope);
-    	scope.$digest();
+    	scope.$apply();
 
   	}));
 

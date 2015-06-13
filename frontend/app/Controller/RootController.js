@@ -17,11 +17,8 @@
 
 angular.module('norris-nrti')
 .controller('RootController', ['$scope', 'UrlProvider', function($scope, UrlProvider){
-	console.log('dentro root controller');
     $scope.url = '';
-    $scope.$watch('url', function(newValue, oldValue) {
-    	console.log('dentro watch root');
-    	console.log('newValue: ' + newValue + ', oldValue: ' +oldValue );              
+    $scope.$watch('url', function(newValue, oldValue) {            
         UrlProvider.prototype.setUrl(newValue);
     }, true);
 }]);
