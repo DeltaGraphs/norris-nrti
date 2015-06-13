@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">76</p>
+      <p class="stat">78</p>
     </div>
   </div>
   <div class="row historical">
@@ -114,11 +114,13 @@
 angular.module(&#039;norris-nrti&#039;)
 .factory(&#039;LegendFactory&#039;, function(){
 
+    // costruttore di Legend
     function Legend(info){
         this._position = &#039;E&#039;;
         this._fontColor = &#039;#000&#039;;
         this._backgroundColor = &#039;#FFF&#039;;
 
+        // imposta i valori dei campi dati se il JSON &#039;info&#039; è definito, altrimenti lascia i valori di default
         if (info !== undefined){
             if (info.position !== undefined) {
                 this._position = info.position;
@@ -132,6 +134,7 @@ angular.module(&#039;norris-nrti&#039;)
         }
     }
 
+    // funzione che aggiorna i valori dei campi dati della legenda
     Legend.prototype.updateParameters = function(info){
         if (info !== undefined) {
             if (info.position !== undefined) {
@@ -146,22 +149,21 @@ angular.module(&#039;norris-nrti&#039;)
         }
     };
 
-    //contructor : Legend,
-
     Legend.prototype.getPosition = function(){
-        return this._position;
+        return this._position; // ritorna la posizione della legenda
     };
     Legend.prototype.getFontColor = function(){
-        return this._fontColor;
+        return this._fontColor; // ritorna il colore del testo della legenda
     };
     Legend.prototype.getBackgroundColor = function(){
-        return this._backgroundColor;
+        return this._backgroundColor; // ritorna il colore di background della legenda
     };
 
+    // costruttore di default di LegendFactory
     function LegendFactory() {}
 
     LegendFactory.build = function(info) {
-        return new Legend(info);
+        return new Legend(info); // ritorna una nuova istanza di Legend
     };
     
     return( LegendFactory );

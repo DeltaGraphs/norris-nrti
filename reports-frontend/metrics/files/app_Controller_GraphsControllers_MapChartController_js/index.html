@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">67.37</p>
+      <p class="stat">68.94</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">101</p>
+      <p class="stat">97</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">25.07</p>
+      <p class="stat">24.69</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.87</p>
+      <p class="stat">0.73</p>
     </div>
   </div>
 </div>
@@ -111,13 +111,13 @@ angular.module(&#039;norris-nrti&#039;)
 .controller(&#039;MapChartController&#039;, function($scope, $location, MapChartFactory, MapChartFlowFactory, SocketServicesFactory){
 
 	var socket;
-	var mapChart = MapChartFactory.build();
+	var mapChart = MapChartFactory.build(); // crea un map chart di default
 	$scope.mapChart = mapChart;
 
+	// funzione che connette il socket all&#039;url e chiama la funzione listenOnEvent
 	var count1 = 0;
 	this.socketConnection = function(url){
 		if (count1 === 0) {
-			console.log(&#039;MAPCHART socketConnection &#039; + url);
 			socket = SocketServicesFactory.build(url);
 			this.listenOnEvents();
 			count1++;
@@ -128,65 +128,61 @@ angular.module(&#039;norris-nrti&#039;)
 	$scope.changedP = true;
 	$scope.changedD = true;
 	$scope.changedF = true;
+
+	// funzione che mette in ascolto il socket su alcuni eventi
 	this.listenOnEvents = function(){
-		console.log(&#039;MAPCHART listenOnEvents&#039;);
-		socket.on(&#039;configGraph&#039;, function(info){
+		socket.on(&#039;configGraph&#039;, function(info){ // ascolta sull&#039;evento &#039;configGraph&#039; (ricevuto come risposta alla connessione)
 			if (count === 0) {
-				console.log(&#039;MAPCHART configGraph&#039;);
 				count++;
-				$scope.mapChart.updateParameters(info.properties);
-				$scope.mapChart.initializeData(info.data);
-				$scope.changedP = !$scope.changedP;
-				$scope.changedD = !$scope.changedD;
+				$scope.mapChart.updateParameters(info.properties); // aggiorna le proprietà del map chart di default con i dati appena ricevuti
+				$scope.mapChart.initializeData(info.data); // inizializza i flussi con i dati
+				$scope.changedP = !$scope.changedP; // &#039;notifica&#039; cambiamento proprietà
+				$scope.changedD = !$scope.changedD; // &#039;notifica&#039; cambiamento dati
 	        }
 		});
-		socket.on(&#039;updateGraphProp&#039;, function(info){
-			console.log(&#039;MAPCHART updateGraphProp&#039;);
-			$scope.mapChart.updateParameters(info);
-			$scope.changedP = !$scope.changedP;
+		socket.on(&#039;updateGraphProp&#039;, function(info){ // ascolta sull&#039;evento &#039;updateGraphProp&#039;
+			$scope.mapChart.updateParameters(info); // aggiorna le proprietà del map chart con i dati appena ricevuti
+			$scope.changedP = !$scope.changedP; // &#039;notifica&#039; cambiamento proprietà
 		});
-		socket.on(&#039;insertFlow&#039;, function(info){
-			console.log(&#039;MAPCHART insert flow&#039; + JSON.stringify(info));
-			var flow = MapChartFlowFactory.build(info.properties);
-			flow.initializeData(info);
-			$scope.mapChart.addFlow(info.ID, flow);
-			$scope.changedD = !$scope.changedD;
+		socket.on(&#039;insertFlow&#039;, function(info){ // ascolta sull&#039;evento &#039;insertFlow&#039;
+			var flow = MapChartFlowFactory.build(info.properties); // crea un flusso di default
+			flow.initializeData(info); // inizializzail flusso
+			$scope.mapChart.addFlow(info.ID, flow); // aggiunge il flusso al grafico
+			$scope.changedD = !$scope.changedD; // &#039;notifica&#039; cambiamento dati
 		});
-		socket.on(&#039;deleteFlow&#039;, function(info){
-			console.log(&#039;MAPCHART deleteFlow&#039;);
-			$scope.mapChart.deleteFlow(info.ID);
-			$scope.changedD = !$scope.changedD;
+		socket.on(&#039;deleteFlow&#039;, function(info){ // ascolta sull&#039;evento &#039;deleteFlow&#039;
+			$scope.mapChart.deleteFlow(info.ID); // elimina un flusso
+			$scope.changedD = !$scope.changedD; // &#039;notifica&#039; cambiamento dati
 		});
-		socket.on(&#039;updateFlowProp&#039;, function(info){
-			console.log(&#039;MAPCHART updateFlowProp&#039;);
+		socket.on(&#039;updateFlowProp&#039;, function(info){ // ascolta sull&#039;evento &#039;updateFlowProp&#039;
 			for (var i=0; i&lt;$scope.mapChart.getFlowList().length; i++){
 				if ($scope.mapChart.getFlowList()[i].id === info.ID){
-					$scope.mapChart.getFlowList()[i].flow.updateParameters(info);
+					$scope.mapChart.getFlowList()[i].flow.updateParameters(info); // aggiorna le proprietà dei flussi
 				}
 			}
-			$scope.changedD = !$scope.changedD;
+			$scope.changedD = !$scope.changedD; // &#039;notifica&#039; cambiamento dati
 		});
-		socket.on(&#039;updateFlowData&#039;, function(data){
-			console.log(&#039;MAPCHART updateFlowData &#039; + data.action);
+		socket.on(&#039;updateFlowData&#039;, function(data){ // ascolta sull&#039;evento &#039;updateFlowData&#039;
 			switch (data.action){
 				case &#039;insertRecords&#039;:
-					$scope.mapChart.streamUpdate(data);
+					$scope.mapChart.streamUpdate(data); // effettua un aggiornamento di tipo stream
 					break;
 				case &#039;deleteRecord&#039;:
-					$scope.mapChart.deleteData(data);
+					$scope.mapChart.deleteData(data); // elimina dei dati
 					break;
 				case &#039;updateRecord&#039;:
-					$scope.mapChart.inPlaceUpdate(data);
+					$scope.mapChart.inPlaceUpdate(data); // effettua aggiornamento di tipo in place
 					break;
 				case &#039;replaceData&#039;:
-					$scope.mapChart.replaceData(data);
+					$scope.mapChart.replaceData(data); // rimpiazza dei dati
 					break;
 			}
-			$scope.changedD = !$scope.changedD;
+			$scope.changedD = !$scope.changedD; // &#039;notifica&#039; cambiamento dati
 		});
 
 	};
 
+	// mette a disposizione delle funzioni sullo scope
 	$scope.socketConnection = this.socketConnection;
 	$scope.listenOnEvents = this.listenOnEvents;
 
