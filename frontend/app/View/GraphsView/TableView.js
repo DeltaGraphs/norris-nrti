@@ -54,7 +54,6 @@ angular.module('norris-nrti')
             }, true);*/
 
             scope.init = function(){
-                console.log('TABLE init');
             	element.empty();
 
                 var table = '<div class="graphtitle">'+ scope.$parent.table.getTitle() +'</div>';   

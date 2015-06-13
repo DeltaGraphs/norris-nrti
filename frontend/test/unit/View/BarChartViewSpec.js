@@ -2,7 +2,7 @@
 'use strict';
 
 /*
-* Name :  MapChartViewSpec.js
+* Name :  BarChartViewSpec.js
 * Module : UnitTest
 * Location : /frontend/test/unit/View
 *
@@ -16,25 +16,26 @@
 *
 */
 
-describe('MapChartView', function(){
+describe('BarChartView', function(){
 
 	beforeEach(angular.mock.module('norris-nrti'));
 
-	var html, element, scope, map, MapChartFactory;
+	var html, element, scope, bar, BarChartFactory;
 	var json = {
 		'properties' : {
-			'title' : 'prova'
+			'title' : 'prova',
+			'barOrientation' : 'H'
 		}
 	};
-
+	
 	beforeEach(inject(function($rootScope, $compile, $injector) {
-		MapChartFactory = $injector.get('MapChartFactory');
-		map = MapChartFactory.build();
-		map.updateParameters(json);
+		BarChartFactory = $injector.get('BarChartFactory');
+		bar = BarChartFactory.build();
+		bar.updateParameters(json);
     	scope = $rootScope.$new();
-    	html = angular.element('<map-chart url="http://example/map.com"></map-chart>');
+    	html = angular.element('<bar-chart url="http://example/bar.com"></bar-chart>');
 
-    	scope.mapChart = map;
+    	scope.barChart = bar;
 
     	element = $compile(html)(scope);
     	scope.$digest();
@@ -43,11 +44,10 @@ describe('MapChartView', function(){
 
   	describe('template', function() {
 		it('works fine', function() {
-			var mapChart = element.find('map-chart');
-			expect(mapChart).toBeDefined();
-			var div = element.find('div');
+			var barChart = element.find('bar-chart');
+			expect(barChart).toBeDefined();
+			var div = element.find('nvd3-multi-bar-horizontal-chart');
 			expect(div).toBeDefined();
-			expect(div.text()).toEqual(map.getTitle());
 		});
 	});
 

@@ -2,7 +2,7 @@
 'use strict';
 
 /*
-* Name :  MapChartViewSpec.js
+* Name :  LineChartViewSpec.js
 * Module : UnitTest
 * Location : /frontend/test/unit/View
 *
@@ -16,25 +16,26 @@
 *
 */
 
-describe('MapChartView', function(){
+describe('LineChartView', function(){
 
 	beforeEach(angular.mock.module('norris-nrti'));
 
-	var html, element, scope, map, MapChartFactory;
+	var html, element, scope, line, LineChartFactory;
 	var json = {
 		'properties' : {
-			'title' : 'prova'
+			'title' : 'prova',
+			'viewFinder' : true
 		}
 	};
-
+	
 	beforeEach(inject(function($rootScope, $compile, $injector) {
-		MapChartFactory = $injector.get('MapChartFactory');
-		map = MapChartFactory.build();
-		map.updateParameters(json);
+		LineChartFactory = $injector.get('LineChartFactory');
+		line = LineChartFactory.build();
+		line.updateParameters(json);
     	scope = $rootScope.$new();
-    	html = angular.element('<map-chart url="http://example/map.com"></map-chart>');
+    	html = angular.element('<line-chart url="http://example/line.com"></line-chart>');
 
-    	scope.mapChart = map;
+    	scope.lineChart = line;
 
     	element = $compile(html)(scope);
     	scope.$digest();
@@ -43,11 +44,10 @@ describe('MapChartView', function(){
 
   	describe('template', function() {
 		it('works fine', function() {
-			var mapChart = element.find('map-chart');
-			expect(mapChart).toBeDefined();
-			var div = element.find('div');
-			expect(div).toBeDefined();
-			expect(div.text()).toEqual(map.getTitle());
+			var lineChart = element.find('line-chart');
+			expect(lineChart).toBeDefined();
+			var chart = element.find('nvd3-line-with-focus-chart');
+			expect(chart).toBeDefined();
 		});
 	});
 

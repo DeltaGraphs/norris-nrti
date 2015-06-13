@@ -2,7 +2,7 @@
 'use strict';
 
 /*
-* Name :  MapChartViewSpec.js
+* Name :  TableViewSpec.js
 * Module : UnitTest
 * Location : /frontend/test/unit/View
 *
@@ -16,25 +16,25 @@
 *
 */
 
-describe('MapChartView', function(){
+describe('TableView', function(){
 
 	beforeEach(angular.mock.module('norris-nrti'));
 
-	var html, element, scope, map, MapChartFactory;
+	var html, element, scope, table, TableFactory;
 	var json = {
 		'properties' : {
 			'title' : 'prova'
 		}
 	};
-
+	
 	beforeEach(inject(function($rootScope, $compile, $injector) {
-		MapChartFactory = $injector.get('MapChartFactory');
-		map = MapChartFactory.build();
-		map.updateParameters(json);
+		TableFactory = $injector.get('TableFactory');
+		table = TableFactory.build();
+		table.updateProperties(json);
     	scope = $rootScope.$new();
-    	html = angular.element('<map-chart url="http://example/map.com"></map-chart>');
+    	html = angular.element('<table-chart url="http://example/table.com"></table-chart>');
 
-    	scope.mapChart = map;
+    	scope.tableChart = table;
 
     	element = $compile(html)(scope);
     	scope.$digest();
@@ -43,11 +43,10 @@ describe('MapChartView', function(){
 
   	describe('template', function() {
 		it('works fine', function() {
-			var mapChart = element.find('map-chart');
-			expect(mapChart).toBeDefined();
-			var div = element.find('div');
-			expect(div).toBeDefined();
-			expect(div.text()).toEqual(map.getTitle());
+			var tableChart = element.find('table-chart');
+			expect(tableChart).toBeDefined();
+			var tag = element.find('table');
+			expect(tag).toBeDefined();
 		});
 	});
 
