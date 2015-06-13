@@ -38,15 +38,16 @@ describe('PagesListView', function(){
 
     	element = angular.element('<div id="pagesList">' + 
 					'<ul>' +
-					'<li ng-repeat="page in pagesList">' +
-						'<a ng-href="#/page/{{$index}}"> {{ page.page.getName() }} </a>' +
-						'<p> {{ page.page.getDescription() }} </p>' +
-					'</li>' +
+						'<li ng-repeat="page in pagesList">' +
+							'<a ng-href="#/page/{{$index}}"> {{ page.page.getName() }} </a>' +
+							'<p> {{ page.page.getDescription() }} </p>' +
+						'</li>' +
 					'</ul>' +
 			'</div>');
 
     	element = $compile(element)(scope);
     	scope.$apply();
+    	console.log(element.html);
 
   	}));
 
