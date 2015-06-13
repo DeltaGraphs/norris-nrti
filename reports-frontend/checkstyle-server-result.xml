@@ -7,4 +7,7 @@
 	<file name="test/unit/Model/UrlProviderSpec.js">
 		<error line="20" column="5" severity="warning" message="Unnecessary directive &quot;use strict&quot;." source="jshint.W034" />
 	</file>
+	<file name="test/unit/View/LineChartViewSpec.js">
+		<error line="59" column="13" severity="warning" message="&apos;bar&apos; is not defined." source="jshint.W117" />
+	</file>
 </checkstyle>
