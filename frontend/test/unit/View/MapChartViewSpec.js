@@ -47,7 +47,6 @@ describe('MapChartView', function(){
 			expect(mapChart).toBeDefined();
 			var div = element.find('div');
 			expect(div).toBeDefined();
-			expect(div.text()).toEqual(map.getTitle());
 		});
 	});
 
