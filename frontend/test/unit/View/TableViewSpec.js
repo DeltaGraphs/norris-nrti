@@ -30,7 +30,7 @@ describe('TableView', function(){
 	beforeEach(inject(function($rootScope, $compile, $injector) {
 		TableFactory = $injector.get('TableFactory');
 		table = TableFactory.build();
-		table.updateProperties(json);
+		table.updateParameters(json);
     	scope = $rootScope.$new();
     	html = angular.element('<table-chart url="http://example/table.com"></table-chart>');
 
