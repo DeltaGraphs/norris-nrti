@@ -20,11 +20,11 @@ describe('PageView', function(){
 
 	beforeEach(angular.mock.module('norris-nrti'));
 
-	var element, scope, PageView;
+	var html, element, scope;
 
-	beforeEach(inject(function($rootScope, $compile, $injector) {
+	beforeEach(inject(function($rootScope, $compile) {
     	scope = $rootScope.$new();
-    	var html = angular.element('<page></page>');
+    	html = angular.element('<page></page>');
 
     	scope.graphs = [
     		{ 'id' : 1, 'type' : 'MapChart', 'url' : 'http://example/map.com'},
@@ -33,7 +33,7 @@ describe('PageView', function(){
     		{ 'id' : 4, 'type' : 'Table', 'url' : 'http://example/table.com'}
     	];
 
-    	element = $compile(element)(scope);
+    	element = $compile(html)(scope);
     	scope.$digest();
 
   	}));
@@ -41,8 +41,13 @@ describe('PageView', function(){
   	describe('template', function() {
 		it('works fine', function() {
 			var map = element.find('map-chart');
+			var line = element.find('line-chart');
 			var bar = element.find('bar-chart');
-			expect(elm).toBeDefined();
+			var tab = element.find('table-chart');
+			expect(map).toBeDefined();
+			expect(line).toBeDefined();
+			expect(bar).toBeDefined();
+			expect(tab).toBeDefined();
 		});
 	});
 
