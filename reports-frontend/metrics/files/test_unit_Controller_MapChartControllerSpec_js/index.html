@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">73.34</p>
+      <p class="stat">73.12</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">297</p>
+      <p class="stat">299</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,7 +62,7 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">10.67</p>
+      <p class="stat">11.66</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
@@ -117,29 +117,31 @@ describe(&#039;MapChartController&#039;, function(){
 		this.events = {};
 
 		// Receive Events
-		this.on = function(eventName, callback){
-			if(!this.events[eventName]){
-				this.events[eventName] = [];
-			}
-			this.events[eventName].push(callback);
-		};
+		return {
+			on : function(eventName, callback){
+				if(!this.events[eventName]){
+					this.events[eventName] = [];
+				}
+				this.events[eventName].push(callback);
+			},
 
 		// Send Events
-		this.emit = function(eventName, data, emitCallback){
-			if(this.events[eventName]){
-				angular.forEach(this.events[eventName], function(callback){
-					$rootScope.$apply(function() {
-						callback(data);
+			emit: function(eventName, data, emitCallback){
+				if(this.events[eventName]){
+					angular.forEach(this.events[eventName], function(callback){
+						$rootScope.$apply(function() {
+							callback(data);
+						});
 					});
-				});
-			}
-			if(emitCallback){
-				emitCallback();
+				}
+				if(emitCallback){
+					emitCallback();
+				}
 			}
 		};
 
 	};
-
+	
     beforeEach(inject(function($rootScope, $controller){
     	scope = $rootScope.$new();
         controller = $controller(&#039;MapChartController&#039;, { $scope : scope, socket : socket });
