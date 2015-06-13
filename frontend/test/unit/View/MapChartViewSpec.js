@@ -2,7 +2,7 @@
 'use strict';
 
 /*
-* Name :  PagesViewSpec.js
+* Name :  MapChartViewSpec.js
 * Module : UnitTest
 * Location : /frontend/test/unit/View
 *
@@ -16,22 +16,26 @@
 *
 */
 
-describe('PageView', function(){
+describe('MapChartView', function(){
 
 	beforeEach(angular.mock.module('norris-nrti'));
 
-	var html, element, scope;
+	var html, element, scope, MapChartFactory;
 
-	beforeEach(inject(function($rootScope, $compile) {
+	beforeEach(inject(function($rootScope, $compile, $injector) {
+		MapChartFactory = $injector.get('MapChartFactory');
+		var map = MapChartFactory.build();
     	scope = $rootScope.$new();
-    	html = angular.element('<page></page>');
+    	html = angular.element('<map-chart url="http://example/map.com"></map-chart>');
 
-    	scope.graphs = [
+    	/*scope.graphs = [
     		{ 'id' : 1, 'type' : 'MapChart', 'url' : 'http://example/map.com'},
     		{ 'id' : 2, 'type' : 'LineChart', 'url' : 'http://example/line.com'},
     		{ 'id' : 3, 'type' : 'BarChart', 'url' : 'http://example/bar.com'},
     		{ 'id' : 4, 'type' : 'Table', 'url' : 'http://example/table.com'}
-    	];
+    	];*/
+
+    	scope.mapChart = map;
 
     	element = $compile(html)(scope);
     	scope.$digest();
@@ -41,13 +45,7 @@ describe('PageView', function(){
   	describe('template', function() {
 		it('works fine', function() {
 			var map = element.find('map-chart');
-			var line = element.find('line-chart');
-			var bar = element.find('bar-chart');
-			var tab = element.find('table-chart');
 			expect(map).toBeDefined();
-			expect(line).toBeDefined();
-			expect(bar).toBeDefined();
-			expect(tab).toBeDefined();
 		});
 	});
 
