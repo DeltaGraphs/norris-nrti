@@ -20,11 +20,11 @@ describe('MapChartView', function(){
 
 	beforeEach(angular.mock.module('norris-nrti'));
 
-	var html, element, scope, MapChartFactory;
+	var html, element, scope, map, MapChartFactory;
 
 	beforeEach(inject(function($rootScope, $compile, $injector) {
 		MapChartFactory = $injector.get('MapChartFactory');
-		var map = MapChartFactory.build();
+		map = MapChartFactory.build();
     	scope = $rootScope.$new();
     	html = angular.element('<map-chart url="http://example/map.com"></map-chart>');
 
@@ -44,8 +44,11 @@ describe('MapChartView', function(){
 
   	describe('template', function() {
 		it('works fine', function() {
-			var map = element.find('map-chart');
-			expect(map).toBeDefined();
+			var mapChart = element.find('map-chart');
+			expect(mapChart).toBeDefined();
+			var div = element.find('div');
+			expect(div).toBeDefined();
+			expect(div.text()).toEqual(map.getTitle());
 		});
 	});
 
