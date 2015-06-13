@@ -7,11 +7,4 @@
 	<file name="test/unit/Model/UrlProviderSpec.js">
 		<error line="20" column="5" severity="warning" message="Unnecessary directive &quot;use strict&quot;." source="jshint.W034" />
 	</file>
-	<file name="test/unit/View/PageViewSpec.js">
-		<error line="45" column="20" severity="warning" message="&apos;elm&apos; is not defined." source="jshint.W117" />
-		<error line="23" column="25" severity="warning" message="&apos;PageView&apos; is defined but never used." source="jshint.W098" />
-		<error line="27" column="13" severity="warning" message="&apos;html&apos; is defined but never used." source="jshint.W098" />
-		<error line="43" column="17" severity="warning" message="&apos;map&apos; is defined but never used." source="jshint.W098" />
-		<error line="44" column="17" severity="warning" message="&apos;bar&apos; is defined but never used." source="jshint.W098" />
-	</file>
 </checkstyle>
