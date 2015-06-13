@@ -50,7 +50,7 @@ describe('MapChartController', function(){
 		};
 
 	};
-	
+
     beforeEach(inject(function($rootScope, $controller){
     	scope = $rootScope.$new();
         controller = $controller('MapChartController', { $scope : scope, socket : socket });
@@ -65,7 +65,7 @@ describe('MapChartController', function(){
 		expect(scope.mapChart).toBeDefined();
 	});
 
-	describe('listenOnEvent', function(){
+	/*describe('listenOnEvent', function(){
     	
 	    it('configGraph works fine', function(){
 			socket.on('configGraph', {
@@ -100,9 +100,7 @@ describe('MapChartController', function(){
 			expect(scope.mapChart.getFlowList().length).toEqual(1);
 		});
 
-	});
-
-	
+	});*/
 
 	/*var scope;
 	var controller;

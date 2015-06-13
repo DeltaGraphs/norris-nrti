@@ -1,3 +1,6 @@
+/*jshint node: true */
+'use strict';
+
 /*
 * Name :  RootControllerSpec.js
 * Module : UnitTest
@@ -25,9 +28,11 @@ describe('RootController', function(){
     }));
 
 	describe('watch', function(){
-		expect(scope.url).toBe('');
-		scope.$apply('scope.url="localhost/page/map"');
-		expect(scope.url).toBe('localhost/page/map');
+		it('works fine', function(){
+			expect(scope.url).toBe('');
+			scope.$apply('scope.url="localhost/page/map"');
+			expect(scope.url).toBe('localhost/page/map');
+		});
 	});
 
 });
