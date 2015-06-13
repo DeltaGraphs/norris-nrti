@@ -52,7 +52,7 @@ describe('PagesListView', function(){
 
   	describe('template', function() {
 		it('works fine', function() {
-			var elm = element.find('pagesList');
+			var elm = element.find('ul');
 			expect(elm.list.length).toBe(3);
 		});
 	});

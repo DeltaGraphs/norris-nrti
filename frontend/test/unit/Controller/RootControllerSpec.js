@@ -1,6 +1,3 @@
-/*jshint node: true */
-'use strict';
-
 /*
 * Name :  RootControllerSpec.js
 * Module : UnitTest
