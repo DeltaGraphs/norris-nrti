@@ -46,14 +46,13 @@ describe('PagesListView', function(){
 			'</div>');
 
     	element = $compile(element)(scope);
-    	scope.$apply();
-    	console.log(element.html);
+    	scope.$digest();
 
   	}));
 
   	describe('template', function() {
 		it('works fine', function() {
-			var elm = element.find('div');
+			var elm = element.find('li');
 			expect(elm.list.length).toBe(3);
 		});
 	});
