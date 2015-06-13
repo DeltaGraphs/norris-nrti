@@ -14,7 +14,6 @@
 */
 
 describe('RootController', function(){
-	'use strict';
 
 	var scope;
 
