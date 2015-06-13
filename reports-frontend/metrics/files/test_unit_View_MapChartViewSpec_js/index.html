@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">60</p>
+      <p class="stat">53</p>
     </div>
   </div>
   <div class="row historical">
@@ -117,20 +117,13 @@ describe(&#039;MapChartView&#039;, function(){
 			&#039;title&#039; : &#039;prova&#039;
 		}
 	};
-	
+
 	beforeEach(inject(function($rootScope, $compile, $injector) {
 		MapChartFactory = $injector.get(&#039;MapChartFactory&#039;);
 		map = MapChartFactory.build();
-		map.updateProperties(json);
+		map.updateParameters(json);
     	scope = $rootScope.$new();
     	html = angular.element(&#039;&lt;map-chart url=&quot;http://example/map.com&quot;&gt;&lt;/map-chart&gt;&#039;);
-
-    	/*scope.graphs = [
-    		{ &#039;id&#039; : 1, &#039;type&#039; : &#039;MapChart&#039;, &#039;url&#039; : &#039;http://example/map.com&#039;},
-    		{ &#039;id&#039; : 2, &#039;type&#039; : &#039;LineChart&#039;, &#039;url&#039; : &#039;http://example/line.com&#039;},
-    		{ &#039;id&#039; : 3, &#039;type&#039; : &#039;BarChart&#039;, &#039;url&#039; : &#039;http://example/bar.com&#039;},
-    		{ &#039;id&#039; : 4, &#039;type&#039; : &#039;Table&#039;, &#039;url&#039; : &#039;http://example/table.com&#039;}
-    	];*/
 
     	scope.mapChart = map;
 
