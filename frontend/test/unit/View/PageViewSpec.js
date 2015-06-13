@@ -16,7 +16,7 @@
 *
 */
 
-describe('PagesListView', function(){
+describe('PageView', function(){
 
 	beforeEach(angular.mock.module('norris-nrti'));
 
