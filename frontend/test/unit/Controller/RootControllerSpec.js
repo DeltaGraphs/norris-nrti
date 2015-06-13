@@ -27,7 +27,7 @@ describe('RootController', function(){
 	describe('watch', function(){
 		it('works fine', function(){
 			expect(scope.url).toBe('');
-			scope.$apply('scope.url="localhost/page/map"');
+			scope.$apply('url="localhost/page/map"');
 			expect(scope.url).toBe('localhost/page/map');
 		});
 	});
