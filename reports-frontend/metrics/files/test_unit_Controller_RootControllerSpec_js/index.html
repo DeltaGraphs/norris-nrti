@@ -118,7 +118,7 @@ describe(&#039;RootController&#039;, function(){
 	describe(&#039;watch&#039;, function(){
 		it(&#039;works fine&#039;, function(){
 			expect(scope.url).toBe(&#039;&#039;);
-			scope.$apply(&#039;scope.url=&quot;localhost/page/map&quot;&#039;);
+			scope.$apply(&#039;url=&quot;localhost/page/map&quot;&#039;);
 			expect(scope.url).toBe(&#039;localhost/page/map&#039;);
 		});
 	});
