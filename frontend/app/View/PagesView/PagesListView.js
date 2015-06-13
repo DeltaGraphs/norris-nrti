@@ -30,7 +30,7 @@ angular.module('norris-nrti')
 						'<p> {{ page.page.getDescription() }} </p>' +
 					'</li>' +
 					'</ul>' +
-		'</div>',
+			'</div>',
 		link: function (scope, element, attrs) {
 			scope.socketConnection();
 		}

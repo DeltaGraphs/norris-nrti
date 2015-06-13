@@ -20,21 +20,21 @@ describe('PageView', function(){
 
 	beforeEach(angular.mock.module('norris-nrti'));
 
-	var element, scope, controller;
+	var element, scope, PageView;
 
-	beforeEach(inject(function($rootScope, $compile, $controller) {
+	beforeEach(inject(function($rootScope, $compile, $injector) {
     	scope = $rootScope.$new();
+    	var html = angular.element('<page></page>');
 
     	scope.graphs = [
     		{ 'id' : 1, 'type' : 'MapChart', 'url' : 'http://example/map.com'},
-    		{ 'id' : 1, 'type' : 'BarChart', 'url' : 'http://example/bar.com'},
+    		{ 'id' : 2, 'type' : 'LineChart', 'url' : 'http://example/line.com'},
+    		{ 'id' : 3, 'type' : 'BarChart', 'url' : 'http://example/bar.com'},
+    		{ 'id' : 4, 'type' : 'Table', 'url' : 'http://example/table.com'}
     	];
 
-    	controller = $controller('PageController', { $scope : scope });
-    	scope.render();
-
-    	//element = $compile(element)(scope);
-    	//scope.$digest();
+    	element = $compile(element)(scope);
+    	scope.$digest();
 
   	}));
 
