@@ -1,6 +1,3 @@
-/*jshint node: true */
-'use strict';
-
 /*
 * Name :  RootControllerSpec.js
 * Module : UnitTest
@@ -19,7 +16,7 @@
 describe('RootController', function(){
 	'use strict';
 
-	var RootController;
+	var scope;
 
 	beforeEach(angular.mock.module('norris-nrti'));
 
