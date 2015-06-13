@@ -43,11 +43,24 @@ describe('LineChartView', function(){
   	}));
 
   	describe('template', function() {
+  		var json ={
+  			'properties' : {
+				'viewFinder' : false
+			}
+  		};
+
 		it('works fine', function() {
 			var lineChart = element.find('line-chart');
 			expect(lineChart).toBeDefined();
-			var chart = element.find('nvd3-line-with-focus-chart');
-			expect(chart).toBeDefined();
+			var nvd3Focus = element.find('nvd3-line-with-focus-chart');
+			expect(nvd3Focus).toBeDefined();
+			var svgFocus = element.find('svg');
+			expect(svgFocus).toBeDefined();
+			bar.updateParameters(json);
+			var nvd3 = element.find('nvd3-line-chart');
+			expect(nvd3).toBeDefined();
+			var svg = element.find('svg');
+			expect(svg).toBeDefined();
 		});
 	});
 

@@ -52,13 +52,6 @@ angular.module('norris-nrti')
                 }
             }, true);
 
-            /*scope.$parent.$watch('changedF', function(newValue, oldValue){
-                if(newValue !== oldValue){
-                    console.log('BARCHART watch changedF');                    
-                    //scope.legend();
-                }
-            }, true);*/
-
             scope.init = function(){
                 console.log('BARCHART init');
                 element.empty();

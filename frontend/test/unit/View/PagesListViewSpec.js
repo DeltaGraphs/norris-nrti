@@ -36,14 +36,7 @@ describe('PagesListView', function(){
     		{ 'id': 3, 'page' : page3 }
     	];
 
-    	element = angular.element('<div id="pagesList">' + 
-					'<ul>' +
-						'<li ng-repeat="page in pagesList">' +
-							'<a ng-href="#/page/{{$index}}"> {{ page.page.getName() }} </a>' +
-							'<p> {{ page.page.getDescription() }} </p>' +
-						'</li>' +
-					'</ul>' +
-			'</div>');
+    	element = angular.element('<pages-list url="http://example.com"></pages-List>');
 
     	element = $compile(element)(scope);
     	scope.$digest();
