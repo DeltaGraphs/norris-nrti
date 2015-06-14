@@ -50,7 +50,7 @@ angular.module('norris-nrti')
 		});
 		socket.on('insertFlow', function(info){ // ascolta sull'evento 'insertFlow'
 			var flow = BarChartFlowFactory.build(info.properties); // crea un flusso di default
-			flow.initializeData(info); // inizializzail flusso
+			flow.initializeData(info); // inizializza il flusso
 			$scope.barChart.addFlow(info.properties.ID, flow); // aggiunge il flusso al grafico
 			$scope.changedD = !$scope.changedD; // 'notifica' cambiamento dati
 		});

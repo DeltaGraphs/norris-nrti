@@ -214,7 +214,6 @@ angular.module('norris-nrti')
     MapChart.prototype.getFlowList = function() {
         return this._graph.getFlowList(); // ritorna la lista dei flussi presenti nel grafico
     };
-    };
     MapChart.prototype.getLegendOnPoint = function() {
         return this._legendOnPoint; // ritorna true se è disponibile la legend on point
     };

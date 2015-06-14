@@ -17,15 +17,13 @@
 angular.module('norris-nrti')
 .directive('page', function($compile, $routeParams){
 	return {
-		restrict: 'E',
+		restrict: 'E', // direttiva di tipo elemento (tag)
 		controller : 'PageController',
 		replace: false,
-		scope: {
-			
-		},
-		template: '<div id="page"></div>',
+		scope: {},
+		template: '<div id="page"></div>', // template HTML inserito dalla direttiva
 		link: function (scope, element, attrs) {
-			scope.socketConnection();
+			scope.socketConnection(); // richiama la funzione del controller che permette di connettersi al server
 
 			scope.render = function() {
 				parent = element.children()[0];
@@ -33,22 +31,22 @@ angular.module('norris-nrti')
 
 				var commands = document.createElement('div');
 				commands.setAttribute('class', 'commands');
-				if (scope.previous) {
+				if (scope.previous) { // controlla se è presente una pagina precedente
 					var previous = document.createElement('div');
 					//previous.setAttribute('style', 'float:left;');
 					var pIndex = parseInt($routeParams.pageId) - 1;
-					previous.innerHTML = '<a ng-href="#/page/'+ pIndex +'" target="_self">PREVIOUS PAGE</a>';
+					previous.innerHTML = '<a ng-href="#/page/'+ pIndex +'" target="_self">PREVIOUS PAGE</a>'; // inserisce il link alla pagina precedente
 					commands.appendChild(previous);
 				}
 				var list = document.createElement('div');
 				list.innerHTML = '<a ng-href="/" target="_self">RETURN TO PAGES LIST</a>';
 				//list.setAttribute('style', 'float:left;');
 				commands.appendChild(list);
-				if (scope.next) {
+				if (scope.next) { // controlla se è presente una pagina successiva
 					var next = document.createElement('div');
 					//next.setAttribute('style', 'float:left;');
 					var nIndex = parseInt($routeParams.pageId) + 1;
-					next.innerHTML = '<a ng-href="#/page/'+ nIndex +'" target="_self">NEXT PAGE</a>';
+					next.innerHTML = '<a ng-href="#/page/'+ nIndex +'" target="_self">NEXT PAGE</a>'; // inserisce il link alla pagina successiva
 					commands.appendChild(next);
 				}
 				parent.appendChild(commands);
@@ -57,6 +55,7 @@ angular.module('norris-nrti')
 				table.className = 'graphstable';
 				parent.appendChild(table);
 
+				// crea la tabella con i grafici
 				for(var i=0; i<scope.graphs.length; i++) {
 					var line = scope.graphs[i];
 					var row = table.insertRow(i);
@@ -98,7 +97,7 @@ angular.module('norris-nrti')
 				element.parent().append( el );
        		};
 
-       		scope.$watch('graphs', function(){
+       		scope.$watch('graphs', function(){ // ad ogni inserimento o modifica della lista dei grafici viene chiamata la funzione render che ne aggiorna la visualizzazione
        			if (scope.graphs.length > 0) {
 	          		scope.render();
 	          	}

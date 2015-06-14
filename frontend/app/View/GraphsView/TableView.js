@@ -17,42 +17,30 @@
 angular.module('norris-nrti')
 .directive('tableChart', function($compile){
 	return {
-		restrict: 'E',
-		//controller : 'TableController',
+		restrict: 'E', // direttiva di tipo elemento (tag)
 		replace: false,
 		scope: {
-            url: '@'
+            url: '@' // attributo della direttiva
 		},
 		bindToController: true,
-        //template: '<div>table {{url}}</div>',
         link: function(scope, element, attrs){
 
         	attrs.$observe('url', function(value) {
-                console.log('TABLE observ url ' + value);
                 if (value) {
-                    scope.$parent.socketConnection(value);
+                    scope.$parent.socketConnection(value); // richiama la funzione del controller che permette di connettersi al server
                 }
             });
 
             scope.$parent.$watch('changed', function(newValue, oldValue){
                 if (newValue !== oldValue) {
-                    console.log('TABLE watch changedP');
-                    scope.setData();
-                    console.log('scope.data.length: ' +scope.data.length);
+                    scope.setData(); // chiama la funzione che organizza i dati da visualizzare
                     if (scope.data.length > 0) {
-                        scope.init();
+                        scope.init(); // chiama la funzione init che crea la tabella
                     }
                 }
             }, true);
 
-            /*scope.$parent.$watch('changedD', function(newValue, oldValue){
-                if(newValue !== oldValue){
-                    console.log('TABLE watch changedD');                    
-                    scope.setData();
-                    scope.init();
-                }
-            }, true);*/
-
+            // crea il codice HTML da inserire nella pagina per creare la tabella
             scope.init = function(){
             	element.empty();
 
@@ -60,7 +48,7 @@ angular.module('norris-nrti')
 
                 table = table + '<div><table st-table="data" ';
                     
-                if (table.getAppearance().border !== undefined) {
+                if (scope.$parent.table.getAppearance().border !== undefined) {
                     table = table + 'class="table table-striped table-bordered">';
                 } else {
                     table = table + 'class="table-condensed table-striped">';
@@ -107,6 +95,7 @@ angular.module('norris-nrti')
             scope.data = [];
             scope.appearance = [];
 
+            // imposta i dati da visualizzare
             scope.setData = function(){
                 console.log('TABLE setData');
                 var data = [];

@@ -220,7 +220,6 @@ angular.module('norris-nrti')
     LineChart.prototype.getFlowList = function() {
         return this._graph.getFlowList(); // ritorna la lista dei flussi presenti nel grafico
     };
-    };
     LineChart.prototype.getX = function() {
         return this._axisX; // ritorna l'asse X
     };

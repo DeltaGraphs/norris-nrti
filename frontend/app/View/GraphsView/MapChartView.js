@@ -17,38 +17,32 @@
 angular.module('norris-nrti')
 .directive('mapChart', function(){
 	return {
-		restrict: 'E',
-		//controller : 'MapChartController',
+		restrict: 'E', // direttiva di tipo elemento (tag)
         replace: false,
         scope: {
-            url: '@'
+            url: '@' // attributo della direttiva
 		},
-		//bindToController: true,
-        template: '<div>{{title}}</div><div></div><div></div>',
+        template: '<div>{{title}}</div><div></div><div></div>', // template HTML inserito dalla direttiva
+        bindToController: true,
     	link: function (scope, element, attrs) {
 
             attrs.$observe('url', function(value) {
-                console.log('MAPCHART observ url ' + value);
                 if (value) {
-                    scope.$parent.socketConnection(value);
+                    scope.$parent.socketConnection(value); // richiama la funzione del controller che permette di connettersi al server
                 }
             });
 
             scope.$parent.$watch('changedP', function(newValue, oldValue){
                 if (newValue !== oldValue) {
-                    console.log('MAPCHART watch changedP');
-                    scope.legend();
-                    scope.title = scope.$parent.mapChart.getTitle();
-                    //var parentMap = element.children()[1];
-                    //parentMap.setAttribute('style', 'height:'+ scope.$parent.mapChart.getHeight() +'px; width:'+ scope.$parent.mapChart.getWidth() +'px; position: relative;');
-                    scope.init();
+                    scope.legend(); // crea la legenda
+                    scope.title = scope.$parent.mapChart.getTitle(); // inserisce il titolo
+                    scope.init(); // crea la mappa
                 }
             }, true);
 
             scope.$parent.$watch('changedD', function(newValue, oldValue){
-                if(newValue !== oldValue){
-                    console.log('MAPCHART watch changedD');                    
-                    scope.render();
+                if(newValue !== oldValue){                
+                    scope.render(); // inserisce i dati sulla mappa
                 }
             }, true);
 
@@ -84,6 +78,7 @@ angular.module('norris-nrti')
                 return Math.min(latZoom, lngZoom, ZOOM_MAX);
             }
 
+            // imposta lo zoom dinamicamente (in base all'altezza e larghezza che si desidera visualizzare)
             function setZoom(){
                 var latLng = new google.maps.LatLng(scope.$parent.mapChart.getLatitude(), scope.$parent.mapChart.getLongitude());
                 var mapDim = { height: scope.$parent.mapChart.getHeight(), width: scope.$parent.mapChart.getWidth() };
@@ -99,10 +94,12 @@ angular.module('norris-nrti')
                 return getBoundsZoomLevel(bounds,mapDim);
             }
 
+            // crea la mappa da visualizzare
             scope.init = function(){
 
                 var zoom = setZoom();
 
+                // opzioni iniziali della mappa
                 var mapOptions = {
                     center: new google.maps.LatLng(scope.$parent.mapChart.getLatitude(), scope.$parent.mapChart.getLongitude()),
                     zoom: zoom,
@@ -119,6 +116,7 @@ angular.module('norris-nrti')
 
                 map = new google.maps.Map(element.children()[1], mapOptions);
 
+                // impostazione del tipo di mappa da visualizzare
                 switch (scope.$parent.mapChart.getMapType()) {
                     case 'roadmap':
                         map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
@@ -133,6 +131,7 @@ angular.module('norris-nrti')
                         map.setMapTypeId(google.maps.MapTypeId.TERRAIN);
                         break;
                 }
+                // inserimento del tracciato (se presente)
                 for (var i=0; i<scope.$parent.mapChart.getFlowList().length; i++){
                     if (scope.$parent.mapChart.getFlowList()[i].flow.getTrace().type === 'poly'){
                         var polyline = [];
@@ -149,22 +148,20 @@ angular.module('norris-nrti')
                         }));
                         polylines[i].setMap(map);
                     }
-                }
-
-                
+                }                
             };
 
+            // inizializza i dati sulla mappa
             scope.render = function(){
-                console.log('render');
 
                 for (var z = 0; z < markers.length; z++) {
                     markers[z].setMap(null);
                 }
                 markers = [];
 
-                // Instantiate an info window to hold step text.
                 var stepDisplay = new google.maps.InfoWindow();
                 
+                // inserisce i marker per ogni flusso di dati presente nel grafico
                 for (var i=0; i<scope.$parent.mapChart.getFlowList().length; i++){
                     for (var j=0; j<scope.$parent.mapChart.getFlowList()[i].flow.getData().length; j++){
                         var coordinates = new google.maps.LatLng(scope.$parent.mapChart.getFlowList()[i].flow.getData()[j].value[0], scope.$parent.mapChart.getFlowList()[i].flow.getData()[j].value[1]);
@@ -225,7 +222,7 @@ angular.module('norris-nrti')
 
 
 
-                // add legend on point
+                // aggiunge la legenda sui marker
                 function addLegendOnPoint(marker,text) {
 
                     google.maps.event.addListener(marker, 'click', function() {
@@ -234,12 +231,10 @@ angular.module('norris-nrti')
                         stepDisplay.setContent(text);
                         stepDisplay.open(map, marker);
                     });
-                }
-
-                console.log('fine render');
-                
+                }            
             };
 
+            // posiziona la legenda a nord, est, sud, ovest, nord-est, nosrd-ovest, sud-est o sud-ovest del grafico
             function changePosition(map,parent){
                 switch (scope.$parent.mapChart.getLegend().getPosition()) {
                     case 'N':
@@ -277,6 +272,7 @@ angular.module('norris-nrti')
                 }
             }
 
+            // crea la legenda del grafico
             scope.legend = function() {
                 var map = element.children()[1];
                 var parent = element.children()[2];
@@ -287,7 +283,6 @@ angular.module('norris-nrti')
                     parent.removeChild(parent.firstChild);
                 }
                 if (scope.$parent.mapChart.getLegend() !== null) {
-                    //parent.setAttribute('style', 'background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + '; color: '+ scope.$parent.mapChart.getLegend().getFontColor());
                     var div = document.createElement('div');
                     for (var i=0; i<scope.$parent.mapChart.getFlowList().length; i++) {
                         if (scope.$parent.mapChart.getFlowList()[i].flow.getData().length){
@@ -303,9 +298,7 @@ angular.module('norris-nrti')
                         }
                     }
                 }
-
             };
-
 		}
 	};
 });

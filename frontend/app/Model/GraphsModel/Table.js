@@ -205,7 +205,6 @@ angular.module('norris-nrti')
     Table.prototype.getFlowList = function() {
         return this._graph.getFlowList(); // ritorna la lista dei flussi presenti nel grafico
     };
-    };
     Table.prototype.getHeaders = function() {
     return this._headers; // ritorna gli header della tabella
     };

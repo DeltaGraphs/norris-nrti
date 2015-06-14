@@ -17,12 +17,10 @@
 angular.module('norris-nrti')
 .directive('pagesList', function(){
 	return {
-		restrict: 'E',
+		restrict: 'E', // direttiva di tipo elemento (tag)
 		replace: false,
-		controller: 'PagesListController',
-		scope: {
-
-		},
+		controller: 'PagesListController', // controller associato
+		scope: {},
 		template: '<div id="pagesList">' + 
 					'<ul>' +
 					'<li ng-repeat="page in pagesList">' +
@@ -30,9 +28,9 @@ angular.module('norris-nrti')
 						'<p> {{ page.page.getDescription() }} </p>' +
 					'</li>' +
 					'</ul>' +
-			'</div>',
+			'</div>', // template HTML inserito dalla direttiva
 		link: function (scope, element, attrs) {
-			scope.socketConnection();
+			scope.socketConnection(); // richiama la funzione del controller che permette di connettersi al server
 		}
 
 	};
