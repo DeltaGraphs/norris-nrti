@@ -19,8 +19,8 @@ angular.module('norris-nrti')
 	return {
 		restrict: 'E', // direttiva di tipo elemento (tag)
         replace: false,
-        scope: {
-            url: '@' // attributo della direttiva
+        scope: { // attributo della direttiva
+            url: '@'
 		},
         template: '<div>{{title}}</div><div></div><div></div>', // template HTML inserito dalla direttiva
         bindToController: true,

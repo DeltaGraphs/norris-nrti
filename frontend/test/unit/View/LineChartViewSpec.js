@@ -23,8 +23,10 @@ describe('LineChartView', function(){
 	var html, element, scope, line, LineChartFactory;
 	var json = {
 		'properties' : {
-			'title' : 'prova',
-			'viewFinder' : true
+			'title' : 'prova1',
+			'viewFinder' : true,
+			'enableLegend' : true,
+			'legendOnPoint' : false
 		}
 	};
 	
@@ -45,20 +47,28 @@ describe('LineChartView', function(){
   	describe('template', function() {
   		var json ={
   			'properties' : {
-				'viewFinder' : false
+  				'title' : 'prova2',
+				'viewFinder' : false,
+				'enableLegend' : false,
+				'legendOnPoint' : true
 			}
   		};
 
 		it('works fine', function() {
 			var lineChart = element.find('line-chart');
 			expect(lineChart).toBeDefined();
+			expect(lineChart.attr('url')).toEqual('http://example/line.com');
 			var nvd3Focus = element.find('nvd3-line-with-focus-chart');
 			expect(nvd3Focus).toBeDefined();
+			expect(nvd3Focus.attr('showlegend')).toEqual(true);
+			expect(nvd3Focus.attr('tooltips')).toEqual(false);
 			var svgFocus = element.find('svg');
 			expect(svgFocus).toBeDefined();
 			bar.updateParameters(json);
 			var nvd3 = element.find('nvd3-line-chart');
 			expect(nvd3).toBeDefined();
+			expect(nvd3.attr('showlegend')).toEqual(false);
+			expect(nvd3Focus.attr('tooltips')).toEqual(true);
 			var svg = element.find('svg');
 			expect(svg).toBeDefined();
 		});

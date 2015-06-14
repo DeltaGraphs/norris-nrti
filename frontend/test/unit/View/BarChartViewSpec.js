@@ -23,8 +23,11 @@ describe('BarChartView', function(){
 	var html, element, scope, bar, BarChartFactory;
 	var info = {
 		'properties' : {
-			'title' : 'prova',
-			'barOrientation' : 'H'
+			'title' : 'prova1',
+			'barOrientation' : 'H',
+			'enableLegend' : false,
+			'legendOnPoint' : true,
+			'groupingControl' : true
 		}
 	};
 	
@@ -45,20 +48,31 @@ describe('BarChartView', function(){
   	describe('template', function() {
   		var json  = {
 			'properties' : {
-				'barOrientation' : 'V'
+				'title' : 'prova2',
+				'barOrientation' : 'V',
+				'enableLegend' : true,
+				'legendOnPoint' : false,
+				'groupingControl' : false
 			}
 		};
 
 		it('works fine', function() {
 			var barChart = element.find('bar-chart');
 			expect(barChart).toBeDefined();
+			expect(barChart.attr('url')).toEqual('http://example/bar.com');
 			var nvd3H = element.find('nvd3-multi-bar-horizontal-chart');
 			expect(nvd3H).toBeDefined();
+			expect(nvd3H.attr('showlegend')).toEqual(true);
+			expect(nvd3H.attr('tooltips')).toEqual(false);
+			expect(nvd3H.attr('showcontrols')).toEqual(false);
 			var svgH = element.find('svg');
 			expect(svgH).toBeDefined();
 			bar.updateParameters(json);
 			var nvd3V = element.find('nvd3-multi-bar-chart');
 			expect(nvd3V).toBeDefined();
+			expect(nvd3V.attr('showlegend')).toEqual(true);
+			expect(nvd3V.attr('tooltips')).toEqual(false);
+			expect(nvd3V.attr('showcontrols')).toEqual(false);
 			var svgV = element.find('svg');
 			expect(svgV).toBeDefined();
 		});

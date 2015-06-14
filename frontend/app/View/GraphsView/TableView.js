@@ -16,11 +16,11 @@
 
 angular.module('norris-nrti')
 .directive('tableChart', function($compile){
-	return {
+	return { // attributo della direttiva
 		restrict: 'E', // direttiva di tipo elemento (tag)
 		replace: false,
 		scope: {
-            url: '@' // attributo della direttiva
+            url: '@'
 		},
 		bindToController: true,
         link: function(scope, element, attrs){
@@ -97,11 +97,9 @@ angular.module('norris-nrti')
 
             // imposta i dati da visualizzare
             scope.setData = function(){
-                console.log('TABLE setData');
                 var data = [];
                 var appearance = [];
                 for (var k=0; k<scope.$parent.table.getFlowList().length; k++) {
-                    console.log('TABLE getData.length ' + scope.$parent.table.getFlowList()[k].flow.getData().length);
                     for (var i=0; i<scope.$parent.table.getFlowList()[k].flow.getData().length; i++) {
                         var record = {};
                         var look = [];
@@ -113,7 +111,6 @@ angular.module('norris-nrti')
                         appearance.push(look);
                     }
                 }
-                console.log('data. length: ' + data.length);
                 /*console.log('appearance length ' + appearance.length);
                 for (var g=0; g<appearance.length; g++) {
                     console.log('appearance['+ g +'] length ' +appearance[g].length);
