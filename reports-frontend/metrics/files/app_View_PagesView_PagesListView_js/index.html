@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">38</p>
+      <p class="stat">36</p>
     </div>
   </div>
   <div class="row historical">
@@ -108,12 +108,10 @@
 angular.module(&#039;norris-nrti&#039;)
 .directive(&#039;pagesList&#039;, function(){
 	return {
-		restrict: &#039;E&#039;,
+		restrict: &#039;E&#039;, // direttiva di tipo elemento (tag)
 		replace: false,
-		controller: &#039;PagesListController&#039;,
-		scope: {
-
-		},
+		controller: &#039;PagesListController&#039;, // controller associato
+		scope: {},
 		template: &#039;&lt;div id=&quot;pagesList&quot;&gt;&#039; + 
 					&#039;&lt;ul&gt;&#039; +
 					&#039;&lt;li ng-repeat=&quot;page in pagesList&quot;&gt;&#039; +
@@ -121,9 +119,9 @@ angular.module(&#039;norris-nrti&#039;)
 						&#039;&lt;p&gt; {{ page.page.getDescription() }} &lt;/p&gt;&#039; +
 					&#039;&lt;/li&gt;&#039; +
 					&#039;&lt;/ul&gt;&#039; +
-			&#039;&lt;/div&gt;&#039;,
+			&#039;&lt;/div&gt;&#039;, // template HTML inserito dalla direttiva
 		link: function (scope, element, attrs) {
-			scope.socketConnection();
+			scope.socketConnection(); // richiama la funzione del controller che permette di connettersi al server
 		}
 
 	};

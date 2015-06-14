@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">55.50</p>
+      <p class="stat">55.69</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">310</p>
+      <p class="stat">303</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">55.63</p>
+      <p class="stat">56.05</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">5.30</p>
+      <p class="stat">5.22</p>
     </div>
   </div>
 </div>
@@ -108,38 +108,32 @@
 angular.module(&#039;norris-nrti&#039;)
 .directive(&#039;mapChart&#039;, function(){
 	return {
-		restrict: &#039;E&#039;,
-		//controller : &#039;MapChartController&#039;,
+		restrict: &#039;E&#039;, // direttiva di tipo elemento (tag)
         replace: false,
         scope: {
-            url: &#039;@&#039;
+            url: &#039;@&#039; // attributo della direttiva
 		},
-		//bindToController: true,
-        template: &#039;&lt;div&gt;{{title}}&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&#039;,
+        template: &#039;&lt;div&gt;{{title}}&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&#039;, // template HTML inserito dalla direttiva
+        bindToController: true,
     	link: function (scope, element, attrs) {
 
             attrs.$observe(&#039;url&#039;, function(value) {
-                console.log(&#039;MAPCHART observ url &#039; + value);
                 if (value) {
-                    scope.$parent.socketConnection(value);
+                    scope.$parent.socketConnection(value); // richiama la funzione del controller che permette di connettersi al server
                 }
             });
 
             scope.$parent.$watch(&#039;changedP&#039;, function(newValue, oldValue){
                 if (newValue !== oldValue) {
-                    console.log(&#039;MAPCHART watch changedP&#039;);
-                    scope.legend();
-                    scope.title = scope.$parent.mapChart.getTitle();
-                    //var parentMap = element.children()[1];
-                    //parentMap.setAttribute(&#039;style&#039;, &#039;height:&#039;+ scope.$parent.mapChart.getHeight() +&#039;px; width:&#039;+ scope.$parent.mapChart.getWidth() +&#039;px; position: relative;&#039;);
-                    scope.init();
+                    scope.legend(); // crea la legenda
+                    scope.title = scope.$parent.mapChart.getTitle(); // inserisce il titolo
+                    scope.init(); // crea la mappa
                 }
             }, true);
 
             scope.$parent.$watch(&#039;changedD&#039;, function(newValue, oldValue){
-                if(newValue !== oldValue){
-                    console.log(&#039;MAPCHART watch changedD&#039;);                    
-                    scope.render();
+                if(newValue !== oldValue){                
+                    scope.render(); // inserisce i dati sulla mappa
                 }
             }, true);
 
@@ -175,6 +169,7 @@ angular.module(&#039;norris-nrti&#039;)
                 return Math.min(latZoom, lngZoom, ZOOM_MAX);
             }
 
+            // imposta lo zoom dinamicamente (in base all&#039;altezza e larghezza che si desidera visualizzare)
             function setZoom(){
                 var latLng = new google.maps.LatLng(scope.$parent.mapChart.getLatitude(), scope.$parent.mapChart.getLongitude());
                 var mapDim = { height: scope.$parent.mapChart.getHeight(), width: scope.$parent.mapChart.getWidth() };
@@ -190,10 +185,12 @@ angular.module(&#039;norris-nrti&#039;)
                 return getBoundsZoomLevel(bounds,mapDim);
             }
 
+            // crea la mappa da visualizzare
             scope.init = function(){
 
                 var zoom = setZoom();
 
+                // opzioni iniziali della mappa
                 var mapOptions = {
                     center: new google.maps.LatLng(scope.$parent.mapChart.getLatitude(), scope.$parent.mapChart.getLongitude()),
                     zoom: zoom,
@@ -210,6 +207,7 @@ angular.module(&#039;norris-nrti&#039;)
 
                 map = new google.maps.Map(element.children()[1], mapOptions);
 
+                // impostazione del tipo di mappa da visualizzare
                 switch (scope.$parent.mapChart.getMapType()) {
                     case &#039;roadmap&#039;:
                         map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
@@ -224,6 +222,7 @@ angular.module(&#039;norris-nrti&#039;)
                         map.setMapTypeId(google.maps.MapTypeId.TERRAIN);
                         break;
                 }
+                // inserimento del tracciato (se presente)
                 for (var i=0; i&lt;scope.$parent.mapChart.getFlowList().length; i++){
                     if (scope.$parent.mapChart.getFlowList()[i].flow.getTrace().type === &#039;poly&#039;){
                         var polyline = [];
@@ -240,22 +239,20 @@ angular.module(&#039;norris-nrti&#039;)
                         }));
                         polylines[i].setMap(map);
                     }
-                }
-
-                
+                }                
             };
 
+            // inizializza i dati sulla mappa
             scope.render = function(){
-                console.log(&#039;render&#039;);
 
                 for (var z = 0; z &lt; markers.length; z++) {
                     markers[z].setMap(null);
                 }
                 markers = [];
 
-                // Instantiate an info window to hold step text.
                 var stepDisplay = new google.maps.InfoWindow();
                 
+                // inserisce i marker per ogni flusso di dati presente nel grafico
                 for (var i=0; i&lt;scope.$parent.mapChart.getFlowList().length; i++){
                     for (var j=0; j&lt;scope.$parent.mapChart.getFlowList()[i].flow.getData().length; j++){
                         var coordinates = new google.maps.LatLng(scope.$parent.mapChart.getFlowList()[i].flow.getData()[j].value[0], scope.$parent.mapChart.getFlowList()[i].flow.getData()[j].value[1]);
@@ -316,7 +313,7 @@ angular.module(&#039;norris-nrti&#039;)
 
 
 
-                // add legend on point
+                // aggiunge la legenda sui marker
                 function addLegendOnPoint(marker,text) {
 
                     google.maps.event.addListener(marker, &#039;click&#039;, function() {
@@ -325,12 +322,10 @@ angular.module(&#039;norris-nrti&#039;)
                         stepDisplay.setContent(text);
                         stepDisplay.open(map, marker);
                     });
-                }
-
-                console.log(&#039;fine render&#039;);
-                
+                }            
             };
 
+            // posiziona la legenda a nord, est, sud, ovest, nord-est, nosrd-ovest, sud-est o sud-ovest del grafico
             function changePosition(map,parent){
                 switch (scope.$parent.mapChart.getLegend().getPosition()) {
                     case &#039;N&#039;:
@@ -368,6 +363,7 @@ angular.module(&#039;norris-nrti&#039;)
                 }
             }
 
+            // crea la legenda del grafico
             scope.legend = function() {
                 var map = element.children()[1];
                 var parent = element.children()[2];
@@ -378,7 +374,6 @@ angular.module(&#039;norris-nrti&#039;)
                     parent.removeChild(parent.firstChild);
                 }
                 if (scope.$parent.mapChart.getLegend() !== null) {
-                    //parent.setAttribute(&#039;style&#039;, &#039;background-color: &#039; + scope.$parent.mapChart.getLegend().getBackgroundColor() + &#039;; color: &#039;+ scope.$parent.mapChart.getLegend().getFontColor());
                     var div = document.createElement(&#039;div&#039;);
                     for (var i=0; i&lt;scope.$parent.mapChart.getFlowList().length; i++) {
                         if (scope.$parent.mapChart.getFlowList()[i].flow.getData().length){
@@ -394,9 +389,7 @@ angular.module(&#039;norris-nrti&#039;)
                         }
                     }
                 }
-
             };
-
 		}
 	};
 });</textarea>

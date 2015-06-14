@@ -141,7 +141,7 @@ angular.module(&#039;norris-nrti&#039;)
 		});
 		socket.on(&#039;insertFlow&#039;, function(info){ // ascolta sull&#039;evento &#039;insertFlow&#039;
 			var flow = BarChartFlowFactory.build(info.properties); // crea un flusso di default
-			flow.initializeData(info); // inizializzail flusso
+			flow.initializeData(info); // inizializza il flusso
 			$scope.barChart.addFlow(info.properties.ID, flow); // aggiunge il flusso al grafico
 			$scope.changedD = !$scope.changedD; // &#039;notifica&#039; cambiamento dati
 		});

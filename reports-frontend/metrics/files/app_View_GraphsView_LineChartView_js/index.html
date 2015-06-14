@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">62.76</p>
+      <p class="stat">63.36</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">214</p>
+      <p class="stat">192</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">46.32</p>
+      <p class="stat">47.12</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">2.84</p>
+      <p class="stat">2.69</p>
     </div>
   </div>
 </div>
@@ -108,46 +108,34 @@
 angular.module(&#039;norris-nrti&#039;)
 .directive(&#039;lineChart&#039;, function($compile){
 	return {
-		restrict: &#039;E&#039;,
-		//controller : &#039;LineChartController&#039;,
+		restrict: &#039;E&#039;, // direttiva di tipo elemento (tag)
 		replace: false,
         scope: {
-            url: &#039;@&#039;
+            url: &#039;@&#039; // attributo della direttiva
 		},
-		//bindToController: true,
-        //template: &#039;&lt;div&gt;ciao, sono il line chart&lt;/div&gt;&#039;,
+        bindToController: true,
         link: function(scope, element, attrs){
 
         	attrs.$observe(&#039;url&#039;, function(value) {
-                console.log(&#039;LINECHART observ url &#039; + value);
                 if (value) {
-                    scope.$parent.socketConnection(value);
+                    scope.$parent.socketConnection(value); // richiama la funzione del controller che permette di connettersi al server
                 }
             });
 
             scope.$parent.$watch(&#039;changedP&#039;, function(newValue, oldValue){
                 if (newValue !== oldValue) {
-                    console.log(&#039;LINECHART watch changedP&#039;);
-                    scope.init();
+                    scope.init(); // crea  il grafico chiamando la funzione apposita
                 }
             }, true);
 
             scope.$parent.$watch(&#039;changedD&#039;, function(newValue, oldValue){
                 if(newValue !== oldValue){
-                    console.log(&#039;LINECHART watch changedD&#039;);                    
-                    scope.setData();
+                    scope.setData(); // richiama la funzione che imposta i dati ad ogni cambiamento dei dati dei flussi del grafico
                 }
             }, true);
 
-            /*scope.$parent.$watch(&#039;changedF&#039;, function(newValue, oldValue){
-                if(newValue !== oldValue){
-                    console.log(&#039;LINECHART watch changedF&#039;);                    
-                    //scope.legend();
-                }
-            }, true);*/
-
+            // inserisce il codice HTML che crea il grafico desiderato
             scope.init = function(){
-                console.log(&#039;LINECHART init&#039;);
 
                 var linechart, legend, onPoint;
                 var str = scope.url.split(&#039;/&#039;);
@@ -165,7 +153,6 @@ angular.module(&#039;norris-nrti&#039;)
                 } else {
                     onPoint = false;
                 }
-                console.log(&#039;LINECHART creo&#039;);
                 if (scope.$parent.lineChart.getViewFinder() === true) {
                     linechart = &#039;&lt;div class=&quot;graphtitle&quot;&gt;&#039;+ scope.$parent.lineChart.getTitle() +&#039;&lt;/div&gt;&#039; +
                                 &#039;&lt;nvd3-line-with-focus-chart data=&quot;data&quot; nodata=&quot; &quot; id=&quot;&#039;+ id +&#039;&quot; &#039; +
@@ -191,18 +178,21 @@ angular.module(&#039;norris-nrti&#039;)
                 scope.legend();
             };
 
+            // funzione che imposta il tick dell&#039;asse X
             scope.xAxisTickFormatFunction = function(){
                 return function(d){
                     return d;
                 };
             };
 
+            // funzione che imposta il tick dell&#039;asse Y
             scope.yAxisTickFormatFunction = function(){
                 return function(d){
                     return d;
                 };
             };
 
+            // imposta il colore dei flussi
             scope.colorArray = [];
             scope.colorFunction = function() {
                 return function(d, i) {
@@ -210,14 +200,12 @@ angular.module(&#039;norris-nrti&#039;)
                 };
             };
 
+            // imposta i dati da visualizzare
             scope.data;
-            
-
             scope.setData = function(){
                 var data = [];
                 var colorArray = [];
 
-                console.log(&#039;LINECHART setdata length &#039; + scope.$parent.lineChart.getFlowList().length);
                 for (var i=0; i&lt;scope.$parent.lineChart.getFlowList().length; i++) {
                     var key = scope.$parent.lineChart.getFlowList()[i].flow.getName();
                     var area = scope.$parent.lineChart.getFlowList()[i].flow.getArea();
@@ -228,49 +216,42 @@ angular.module(&#039;norris-nrti&#039;)
                         values.push(value);
                     }
                     data.push({ &#039;key&#039;: key, &#039;area&#039; : area, &#039;values&#039;: values});
-                    console.log(&#039;LINECHART data &#039; + data.toString());
                 }
                 scope.data = data;
                 scope.colorArray = colorArray;
             };
 
+            // posiziona la legenda a nord, est, sud, ovest, nord-est, nosrd-ovest, sud-est o sud-ovest del grafico
             function changePosition(chart,parent){
                 switch (scope.$parent.lineChart.getLegend().getPosition()) {
                     case &#039;N&#039;:
-                        //chart.setAttribute(&#039;style&#039;, &#039;position: relative; bottom: -30px;&#039;);
                         parent.setAttribute(&#039;style&#039;, &#039;float: left; position: relative; top: -&#039; + scope.$parent.lineChart.getHeight() + &#039;px; right: -&#039; + (scope.$parent.lineChart.getWidth()/2) + &#039;px; background-color: &#039; + scope.$parent.lineChart.getLegend().getBackgroundColor() + &#039;;&#039;);
                         break;
                     case &#039;E&#039;:
-                        //chart.setAttribute(&#039;style&#039;, &#039;position: relative; right: 0;&#039;);
                         parent.setAttribute(&#039;style&#039;, &#039;float: left; position: relative; top: -&#039; + (scope.$parent.lineChart.getHeight()/2) + &#039;px; right: -&#039; + scope.$parent.lineChart.getWidth() + &#039;px;  background-color: &#039; + scope.$parent.lineChart.getLegend().getBackgroundColor() + &#039;;&#039;);
                         break;
                     case &#039;S&#039;:
-                        //chart.setAttribute(&#039;style&#039;, &#039;position: relative;&#039;);
                         parent.setAttribute(&#039;style&#039;, &#039;float: left; position: relative; right: -&#039; + (scope.$parent.lineChart.getWidth()/2) + &#039;px; background-color: &#039; + scope.$parent.lineChart.getLegend().getBackgroundColor() + &#039;;&#039;);
                         break;
                     case &#039;W&#039;:
-                        //chart.setAttribute(&#039;style&#039;, &#039;position: relative; right: -100px;&#039;);
                         parent.setAttribute(&#039;style&#039;, &#039;float: left; position: relative; top: -&#039; + (scope.$parent.lineChart.getHeight()/2) + &#039;px; background-color: &#039; + scope.$parent.lineChart.getLegend().getBackgroundColor() + &#039;;&#039;);
                         break;
                     case &#039;NE&#039;:
-                        //chart.setAttribute(&#039;style&#039;, &#039;position: relative; bottom: 0;&#039;);
                         parent.setAttribute(&#039;style&#039;, &#039;float: left; position: relative; top: -&#039; + scope.$parent.lineChart.getHeight() + &#039;px; right: -&#039; + scope.$parent.lineChart.getWidth() + &#039;px; background-color: &#039; + scope.$parent.lineChart.getLegend().getBackgroundColor() + &#039;;&#039;);
                         break;
                     case &#039;NW&#039;:
-                        //chart.setAttribute(&#039;style&#039;, &#039;position: relative; bottom: -30px;&#039;);
                         parent.setAttribute(&#039;style&#039;, &#039;float: left; position: relative; top: -&#039; + scope.$parent.lineChart.getHeight() + &#039;px; background-color: &#039; + scope.$parent.lineChart.getLegend().getBackgroundColor() + &#039;;&#039;);
                         break;
                     case &#039;SE&#039;:
-                        //chart.setAttribute(&#039;style&#039;, &#039;position: relative;&#039;);
                         parent.setAttribute(&#039;style&#039;, &#039;float: left; position: relative; right: -&#039; + scope.$parent.lineChart.getWidth() + &#039;px; background-color: &#039; + scope.$parent.lineChart.getLegend().getBackgroundColor() + &#039;;&#039;);
                         break;
                     case &#039;SW&#039;:
-                        //chart.setAttribute(&#039;style&#039;, &#039;height:&#039;+ scope.$parent.lineChart.getHeight() +&#039;px; width:&#039;+ scope.$parent.lineChart.getWidth() +&#039;px; position: relative; bottom: 0;&#039;);
                         parent.setAttribute(&#039;style&#039;, &#039;float: left; position: relative; background-color: &#039; + scope.$parent.lineChart.getLegend().getBackgroundColor() + &#039;;&#039;);
                         break;
                 }
             }
 
+            // crea la legenda del grafico
             scope.legend = function() {
                 var chart = element.children()[1];
                 var parent = document.createElement(&#039;div&#039;);
@@ -281,7 +262,6 @@ angular.module(&#039;norris-nrti&#039;)
                     parent.removeChild(parent.firstChild);
                 }
                 if (scope.$parent.lineChart.getLegend() !== null) {
-                    //parent.setAttribute(&#039;style&#039;, &#039;background-color: &#039; + scope.$parent.lineChart.getLegend().getBackgroundColor() + &#039;; color: &#039;+ scope.$parent.lineChart.getLegend().getFontColor());
                     var div = document.createElement(&#039;div&#039;);
                     for (var i=0; i&lt;scope.$parent.lineChart.getFlowList().length; i++) {
                         if (scope.$parent.lineChart.getFlowList()[i].flow.getData().length){
@@ -299,8 +279,6 @@ angular.module(&#039;norris-nrti&#039;)
                 }
                 element.append(parent);
             };
-
-
         }
     };
 });</textarea>
