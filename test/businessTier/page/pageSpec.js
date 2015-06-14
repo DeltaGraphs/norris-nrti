@@ -365,4 +365,22 @@ describe('Page', function() {
             });
         });
     });
+describe('#getProperties', function() {
+        it('returns the JSON with the properties', function() {
+            var properties={
+                ID: 'page1',
+                name: 'page one',
+                description: 'page with many graphs',
+                graphsPerRow: 2,
+                graphsPerCol: 3,
+            };
+            var page1=new Page(properties);
+            var prop=page1.getProperties();
+            assert.strictEqual(prop.ID, 'page1');
+            assert.strictEqual(prop.name, 'page one');
+            assert.strictEqual(prop.description, 'page with many graphs');
+            assert.strictEqual(prop.graphsPerRow, 2);
+            assert.strictEqual(prop.graphsPerCol, 3);
+        });
+    });
 });
