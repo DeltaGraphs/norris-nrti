@@ -112,8 +112,8 @@ angular.module(&#039;norris-nrti&#039;)
 	return {
 		restrict: &#039;E&#039;, // direttiva di tipo elemento (tag)
 		replace: false,
-		scope: {
-            url: &#039;@&#039; // attributo della direttiva
+		scope: { // attributo della direttiva
+            url: &#039;@&#039;
 		},
         
         link: function(scope, element, attrs){
