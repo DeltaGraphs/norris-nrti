@@ -62,7 +62,7 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">7.82</p>
+      <p class="stat">7.98</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
@@ -152,7 +152,7 @@ describe(&#039;LineChartView&#039;, function(){
 			expect(nvd3Focus).toBeDefined();
 			var svgFocus = element.find(&#039;svg&#039;);
 			expect(svgFocus).toBeDefined();
-			bar.updateParameters(json);
+			line.updateParameters(json);
 			var nvd3 = element.find(&#039;nvd3-line-chart&#039;);
 			expect(nvd3).toBeDefined();
 			var svg = element.find(&#039;svg&#039;);
