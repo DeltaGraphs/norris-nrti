@@ -45,13 +45,9 @@ describe('PageView', function(){
 			var bar = element.find('bar-chart');
 			var tab = element.find('table-chart');
 			expect(map).toBeDefined();
-			expect(map).toHaveAttr('url','http://example/map.com');
 			expect(line).toBeDefined();
-			expect(line).toHaveAttr('url','http://example/line.com');
 			expect(bar).toBeDefined();
-			expect(bar).toHaveAttr('url','http://example/bar.com');
 			expect(tab).toBeDefined();
-			expect(tab).toHaveAttr('url','http://example/table.com');
 		});
 	});
 

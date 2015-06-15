@@ -61,7 +61,7 @@ describe('LineChartView', function(){
 			expect(nvd3Focus).toBeDefined();
 			var svgFocus = element.find('svg');
 			expect(svgFocus).toBeDefined();
-			bar.updateParameters(json);
+			line.updateParameters(json);
 			var nvd3 = element.find('nvd3-line-chart');
 			expect(nvd3).toBeDefined();
 			var svg = element.find('svg');
