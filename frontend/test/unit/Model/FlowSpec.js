@@ -73,7 +73,7 @@ describe('FlowFactory', function(){
 
 	});
 
-	describe('updateParameters', function(){
+	describe('#updateParameters', function(){
 		var json = {
 			'name' : 'flussoString1'
 		};
