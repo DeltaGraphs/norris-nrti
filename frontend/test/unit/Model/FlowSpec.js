@@ -18,7 +18,7 @@
 *
 */
 
-describe('FlowFactory', function(){
+describe('Flow', function(){
 
 	var FlowFactory;
 

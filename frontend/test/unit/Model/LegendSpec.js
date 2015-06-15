@@ -18,7 +18,7 @@
 *
 */
 
-describe('LegendFactory', function(){
+describe('Legend', function(){
 
 	var LegendFactory;
 

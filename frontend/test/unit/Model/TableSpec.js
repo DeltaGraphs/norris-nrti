@@ -19,7 +19,7 @@
 *
 */
 
-describe('TableFactory', function(){
+describe('Table', function(){
 	'use strict';
 
 	var TableFactory;

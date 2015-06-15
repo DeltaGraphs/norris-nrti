@@ -20,7 +20,7 @@
 *
 */
 
-describe('MapChartFlowFactory', function(){
+describe('MapChartFlow', function(){
 
 	var MapChartFlowFactory;
 

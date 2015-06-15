@@ -23,7 +23,7 @@
 *
 */
 
-describe('BarChartFactory', function(){
+describe('BarChart', function(){
 	'use strict';
 
 	var BarChartFactory;

@@ -20,7 +20,7 @@
 *
 */
 
-describe('TableFlowFactory', function(){
+describe('TableFlow', function(){
 
 	var TableFlowFactory;
 

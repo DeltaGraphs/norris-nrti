@@ -23,7 +23,7 @@
 */
 
 
-describe('GraphFactory', function(){
+describe('Graph', function(){
 
 	var GraphFactory;
 	var LegendFactory;

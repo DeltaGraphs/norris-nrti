@@ -23,7 +23,7 @@
 *
 */
 
-describe('LineChartFactory', function(){
+describe('LineChart', function(){
 	'use strict';
 
 	var LineChartFactory;

@@ -17,7 +17,7 @@
 *
 */
 
-describe('MapChartFactory', function(){
+describe('MapChart', function(){
 	'use strict';
 
 	var MapChartFactory;

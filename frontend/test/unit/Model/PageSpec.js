@@ -19,7 +19,7 @@
 *
 */
 
-describe('PageFactory', function(){
+describe('Page', function(){
 
 	var PageFactory;
 

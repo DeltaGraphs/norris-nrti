@@ -22,7 +22,7 @@
 *
 */
 
-describe('AxisFactory', function(){
+describe('Axis', function(){
 
 	var AxisFactory = null;
 
