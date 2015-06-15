@@ -57,18 +57,18 @@ describe('LineChartView', function(){
 		it('works fine', function() {
 			var lineChart = element.find('line-chart');
 			expect(lineChart).toBeDefined();
-			expect(lineChart.attr('url')).toEqual('http://example/line.com');
+			expect(lineChart).toHaveAttr('url','http://example/line.com');
 			var nvd3Focus = element.find('nvd3-line-with-focus-chart');
 			expect(nvd3Focus).toBeDefined();
-			expect(nvd3Focus.attr('showlegend')).toEqual(true);
-			expect(nvd3Focus.attr('tooltips')).toEqual(false);
+			expect(nvd3Focus).toHaveAttr('showlegend','true');
+			expect(nvd3Focus).toEqual('tooltips','false');
 			var svgFocus = element.find('svg');
 			expect(svgFocus).toBeDefined();
 			bar.updateParameters(json);
 			var nvd3 = element.find('nvd3-line-chart');
 			expect(nvd3).toBeDefined();
-			expect(nvd3.attr('showlegend')).toEqual(false);
-			expect(nvd3Focus.attr('tooltips')).toEqual(true);
+			expect(nvd3).toHaveAttr('showlegend','false');
+			expect(nvd3Focus).toHaveAttr('tooltips','true');
 			var svg = element.find('svg');
 			expect(svg).toBeDefined();
 		});

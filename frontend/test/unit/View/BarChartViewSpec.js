@@ -59,20 +59,20 @@ describe('BarChartView', function(){
 		it('works fine', function() {
 			var barChart = element.find('bar-chart');
 			expect(barChart).toBeDefined();
-			expect(barChart.attr('url')).toEqual('http://example/bar.com');
+			expect(barChart).toHaveAttr('url','http://example/bar.com');
 			var nvd3H = element.find('nvd3-multi-bar-horizontal-chart');
 			expect(nvd3H).toBeDefined();
-			expect(nvd3H.attr('showlegend')).toEqual(true);
-			expect(nvd3H.attr('tooltips')).toEqual(false);
-			expect(nvd3H.attr('showcontrols')).toEqual(false);
+			expect(nvd3H).toHaveAttr('showlegend','true');
+			expect(nvd3H).toHaveAttr('tooltips','false');
+			expect(nvd3H).toHaveAttr('showcontrols','false');
 			var svgH = element.find('svg');
 			expect(svgH).toBeDefined();
 			bar.updateParameters(json);
 			var nvd3V = element.find('nvd3-multi-bar-chart');
 			expect(nvd3V).toBeDefined();
-			expect(nvd3V.attr('showlegend')).toEqual(true);
-			expect(nvd3V.attr('tooltips')).toEqual(false);
-			expect(nvd3V.attr('showcontrols')).toEqual(false);
+			expect(nvd3V).toHaveAttr('showlegend','true');
+			expect(nvd3V).toHaveAttr('tooltips','false');
+			expect(nvd3V).toHaveAttr('showcontrols','false');
 			var svgV = element.find('svg');
 			expect(svgV).toBeDefined();
 		});
