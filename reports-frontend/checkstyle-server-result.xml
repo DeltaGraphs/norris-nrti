@@ -8,6 +8,6 @@
 		<error line="20" column="5" severity="warning" message="Unnecessary directive &quot;use strict&quot;." source="jshint.W034" />
 	</file>
 	<file name="test/unit/View/LineChartViewSpec.js">
-		<error line="67" column="13" severity="warning" message="&apos;bar&apos; is not defined." source="jshint.W117" />
+		<error line="66" column="13" severity="warning" message="&apos;bar&apos; is not defined." source="jshint.W117" />
 	</file>
 </checkstyle>
