@@ -101,7 +101,9 @@
 74
 75
 76
-77</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+77
+78
+79</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -126,11 +128,13 @@
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">11</span>
 <span class="cline-any cline-yes">11</span>
 <span class="cline-any cline-yes">11</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">11</span>
 <span class="cline-any cline-yes">4</span>
 <span class="cline-any cline-yes">4</span>
@@ -144,30 +148,30 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">146</span>
-<span class="cline-any cline-yes">3</span>
-<span class="cline-any cline-yes">3</span>
-<span class="cline-any cline-yes">3</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3</span>
-<span class="cline-any cline-yes">3</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3</span>
-<span class="cline-any cline-yes">3</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">146</span>
 <span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">146</span>
 <span class="cline-any cline-yes">3</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">146</span>
 <span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">146</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
@@ -202,11 +206,13 @@
 angular.module('norris-nrti')
 .factory('LegendFactory', function(){
 &nbsp;
+    // costruttore di Legend
     function Legend(info){
         this._position = 'E';
         this._fontColor = '#000';
         this._backgroundColor = '#FFF';
 &nbsp;
+        // imposta i valori dei campi dati se il JSON 'info' è definito, altrimenti lascia i valori di default
         if (info !== undefined){
             <span class="missing-if-branch" title="else path not taken" >E</span>if (info.position !== undefined) {
                 this._position = info.position;
@@ -220,6 +226,7 @@ angular.module('norris-nrti')
         }
     }
 &nbsp;
+    // funzione che aggiorna i valori dei campi dati della legenda
     Legend.prototype.updateParameters = function(info){
         <span class="missing-if-branch" title="else path not taken" >E</span>if (info !== undefined) {
             <span class="missing-if-branch" title="else path not taken" >E</span>if (info.position !== undefined) {
@@ -234,22 +241,21 @@ angular.module('norris-nrti')
         }
     };
 &nbsp;
-    //contructor : Legend,
-&nbsp;
     Legend.prototype.getPosition = function(){
-        return this._position;
+        return this._position; // ritorna la posizione della legenda
     };
     Legend.prototype.getFontColor = function(){
-        return this._fontColor;
+        return this._fontColor; // ritorna il colore del testo della legenda
     };
     Legend.prototype.getBackgroundColor = function(){
-        return this._backgroundColor;
+        return this._backgroundColor; // ritorna il colore di background della legenda
     };
 &nbsp;
+    // costruttore di default di LegendFactory
 <span class="fstat-no" title="function not covered" >    function LegendFactory() {</span>}
 &nbsp;
     LegendFactory.build = function(info) {
-        return new Legend(info);
+        return new Legend(info); // ritorna una nuova istanza di Legend
     };
     
     return( LegendFactory );
@@ -258,7 +264,7 @@ angular.module('norris-nrti')
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Jun 13 2015 14:29:34 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Jun 15 2015 18:15:17 GMT+0000 (UTC)</div>
 </div>
 <script src="../../prettify.js"></script>
 <script>

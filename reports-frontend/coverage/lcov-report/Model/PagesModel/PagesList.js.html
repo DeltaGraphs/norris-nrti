@@ -93,7 +93,10 @@
 66
 67
 68
-69</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+69
+70
+71
+72</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -116,7 +119,9 @@
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -144,6 +149,7 @@
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -184,22 +190,24 @@
 angular.module('norris-nrti')
 .factory('PagesList', ['PageFactory', function(PageFactory){
 &nbsp;
+	// campi dati di Pageslist
 	var pagesList = [];
 &nbsp;
+	// Costruttore di PagesList
 	function PagesList(info) {
 &nbsp;
-		if (info !== undefined) {
-			<span class="missing-if-branch" title="else path not taken" >E</span>if (info.data !== undefined) {
-				for (var i=0; i&lt;info.data.length; i++){
+		if (info !== undefined) { // controlla che il JSON 'info' sia defito
+			<span class="missing-if-branch" title="else path not taken" >E</span>if (info.data !== undefined) { // controlla che il campo 'data' del JSON sia definito
+				for (var i=0; i&lt;info.data.length; i++){ // scorre l'array di pagine da inserire della lista
 					var count = 0;
-					for (var j=0; j&lt;pagesList.length; j++) {
+					for (var j=0; j&lt;pagesList.length; j++) { // conta le pagine presenti in lista con lo stesso id della nuova pagina
 						<span class="missing-if-branch" title="if path not taken" >I</span>if (pagesList[j].id === info.data[i].properties.ID){
 <span class="cstat-no" title="statement not covered" >							count++;</span>
 						}
 					}
-	    			<span class="missing-if-branch" title="else path not taken" >E</span>if(count === 0) {
-	    				var page = PageFactory.build(info.data[i]);
-	       				pagesList.push({ 'id' : info.data[i].properties.ID, 'page' : page});
+	    			<span class="missing-if-branch" title="else path not taken" >E</span>if(count === 0) { // controlla che non siano presenti pagine con lo stesso id della nuova pagina 
+	    				var page = PageFactory.build(info.data[i]); // crea una nuova pagina
+	       				pagesList.push({ 'id' : info.data[i].properties.ID, 'page' : page}); // inserisce la pagina nella lista delle pagine
 					} 
 					// error
 				}
@@ -207,15 +215,16 @@ angular.module('norris-nrti')
 		}
 	}
 	
-	PagesList.prototype.addPage = function(page) { // da cambiare DP
-		var filteredPages = pagesList.filter(<span class="fstat-no" title="function not covered" >function(page) {<span class="cstat-no" title="statement not covered" ></span>return page.properties.ID === pagesList.id;}</span>);
-		<span class="missing-if-branch" title="else path not taken" >E</span>if(filteredPages.length === 0) {
-			var newPage = PageFactory.build(page);
-				pagesList.push({ 'id' : page.ID, 'page' : newPage});
+	PagesList.prototype.addPage = function(page) {
+		var filteredPages = pagesList.filter(<span class="fstat-no" title="function not covered" >function(page) {<span class="cstat-no" title="statement not covered" ></span>return page.properties.ID === pagesList.id;}</span>); // crea un array con le pagine che hanno lo stesso id di 'page'
+		<span class="missing-if-branch" title="else path not taken" >E</span>if(filteredPages.length === 0) { // controlla che non ci siano pagine con lo stesso id di 'page'
+			var newPage = PageFactory.build(page); // crea una nuova pagina
+			pagesList.push({ 'id' : page.ID, 'page' : newPage}); // aggiunge la nuova pagina alla lista
 		}
 		// error
 	};
 &nbsp;
+	// chiama la funzione updatePage della pagina che necessità di aggiornamenti
 	PagesList.prototype.updatePage = <span class="fstat-no" title="function not covered" >function(info) {</span>
 <span class="cstat-no" title="statement not covered" >		for (var j=0; j&lt;pagesList.length; j++) {</span>
 <span class="cstat-no" title="statement not covered" >			if (pagesList[j].id === info.ID){</span>
@@ -225,7 +234,7 @@ angular.module('norris-nrti')
 	};
 &nbsp;
 	PagesList.prototype.getPagesList = function(){
-		return pagesList;
+		return pagesList; // ritorna la lista della pagine
 	};
 &nbsp;
 	return( PagesList );
@@ -234,7 +243,7 @@ angular.module('norris-nrti')
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Jun 13 2015 14:29:34 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Jun 15 2015 18:15:17 GMT+0000 (UTC)</div>
 </div>
 <script src="../../prettify.js"></script>
 <script>

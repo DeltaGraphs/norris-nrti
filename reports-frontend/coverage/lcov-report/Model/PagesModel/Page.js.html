@@ -155,7 +155,11 @@
 128
 129
 130
-131</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+131
+132
+133
+134
+135</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -184,13 +188,16 @@
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">29</span>
 <span class="cline-any cline-yes">29</span>
 <span class="cline-any cline-yes">29</span>
 <span class="cline-any cline-yes">29</span>
 <span class="cline-any cline-yes">29</span>
 <span class="cline-any cline-yes">29</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">29</span>
 <span class="cline-any cline-yes">14</span>
@@ -216,30 +223,30 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">25</span>
-<span class="cline-any cline-yes">4</span>
-<span class="cline-any cline-yes">4</span>
-<span class="cline-any cline-yes">4</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4</span>
-<span class="cline-any cline-yes">4</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4</span>
-<span class="cline-any cline-yes">4</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4</span>
-<span class="cline-any cline-yes">4</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">25</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -263,10 +270,10 @@
 <span class="cline-any cline-yes">3</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">25</span>
-<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">3</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">25</span>
-<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">3</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">25</span>
 <span class="cline-any cline-yes">3</span>
@@ -276,6 +283,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">25</span>
 <span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
@@ -291,7 +299,7 @@
 /*
 * Name :  Page.js
 * Module : FrontEnd::Model::PagesModel
-* Location : /frontend/app/Model
+* Location : /frontend/app/Model/PagesModel
 *
 * History :
 * Version       Date        Programmer                  Description
@@ -314,7 +322,9 @@
 angular.module('norris-nrti')
 .factory('PageFactory', function(){
 &nbsp;
+    // Costruttore di page
     function Page(info){
+        // campi dati di Page e valori di default
         this._graphsList = [];
         this._name = 'Titolo di default';
         this._description = '';
@@ -322,30 +332,32 @@ angular.module('norris-nrti')
         this._graphsPerCol = 5;
         this._url = null;
 &nbsp;
-        if (info !== undefined) {
-            if (info.properties.name !== undefined) {
-                this._name = info.properties.name;
+&nbsp;
+        if (info !== undefined) { // controlla che un json sia definito, se non lo è non modifica nessun campo dati
+            if (info.properties.name !== undefined) { // controlla che il campo 'name' sia definito
+                this._name = info.properties.name; // imposta la proprietà name
             }
-            if (info.properties.description !== undefined) {
-                this._description = info.properties.description;
+            if (info.properties.description !== undefined) { // controlla che il campo 'description' sia definito
+                this._description = info.properties.description; // imposta la proprietà description
             }
-            if (info.properties.graphsPerRow !== undefined) {
-                this._graphsPerRow = info.properties.graphsPerRow;
+            if (info.properties.graphsPerRow !== undefined) { // controlla che il campo 'graphsPerRow' sia definito
+                this._graphsPerRow = info.properties.graphsPerRow; // imposta la proprietà graphsPerRow
             }
-            if (info.properties.graphsPerCol !== undefined) {
-                this._graphsPerCol = info.properties.graphsPerCol;
+            if (info.properties.graphsPerCol !== undefined) { // controlla che il campo 'graphsPerCol' sia definito
+                this._graphsPerCol = info.properties.graphsPerCol; // imposta la proprietà graphsPerCol
             }
-            if (info.properties.socketURL !== undefined) {
-                this._url = info.properties.socketURL;
+            if (info.properties.socketURL !== undefined) { // controlla che il campo 'socketURL' sia definito
+                this._url = info.properties.socketURL; // imposta la proprietà socketURL
             }
-            if (info.data !== undefined) {
+            if (info.data !== undefined) { // controlla che il campo 'data' sia definito
                 for (var i=0; i&lt;info.data.length; i++){
-                    this.addGraph(info.data[i]);
+                    this.addGraph(info.data[i]); // aggiunge un grafico alla graphsList
                 }
             }
         }
     }
 &nbsp;
+    // funzione che aggiorna i campi dati prsenti nel JSON info
     Page.prototype.updateParameters = function(info){
         <span class="missing-if-branch" title="else path not taken" >E</span>if (info !== undefined) {
             <span class="missing-if-branch" title="else path not taken" >E</span>if (info.name !== undefined) {
@@ -363,9 +375,7 @@ angular.module('norris-nrti')
         }
     };
 &nbsp;
-    //constructor : Page,
-&nbsp;
-    
+    // funzione che inizializza i dati della pagina aggiungendo i grafici presenti nel JSON data alla lista dei grafici
     Page.prototype.initializeData = <span class="fstat-no" title="function not covered" >function(data) {</span>
 <span class="cstat-no" title="statement not covered" >        if (data !== undefined) {</span>
 <span class="cstat-no" title="statement not covered" >            for (var i=0; i&lt;data.length; i++) {</span>
@@ -373,15 +383,16 @@ angular.module('norris-nrti')
             }
         }
     },
+    // funzione che aggiunge un grafico a graphsList
     Page.prototype.addGraph = function(graph){
-        <span class="missing-if-branch" title="else path not taken" >E</span>if (graph !== undefined) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (graph !== undefined) { // controlla che il JSON sia definito
             var count = 0;
-            for (var j=0; j&lt;this._graphsList.length; j++) {
+            for (var j=0; j&lt;this._graphsList.length; j++) { // conta i grafici presenti nella lista che hanno lo stesso id del nuovo grafico
                 <span class="missing-if-branch" title="if path not taken" >I</span>if (this._graphsList[j].id === graph.ID){
 <span class="cstat-no" title="statement not covered" >                    count++;</span>
                 }
             }
-            <span class="missing-if-branch" title="else path not taken" >E</span>if (count === 0){
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (count === 0){ // controlla che non sia già presente nella lista un grafico con lo stesso id
                 this._graphsList.push( {'id' : graph.ID, 'type' : graph.type, 'url' : graph.socketURL} );          
             }
         // error
@@ -390,28 +401,29 @@ angular.module('norris-nrti')
     };
 &nbsp;
     Page.prototype.getGraphsList = function(){
-        return this._graphsList;
+        return this._graphsList; // ritorna la lista dei grafici
     };
     Page.prototype.getName = function(){
-        return this._name;
+        return this._name; // ritorna il nome della pagina
     };
     Page.prototype.getDescription = function(){
-        return this._description;
+        return this._description; // ritorna la descrizione della pagina
     };
     Page.prototype.getGraphsPerRow = function(){
-        return  this._graphsPerRow;
+        return  this._graphsPerRow; // ritorna il numero di grafici visualizzabili per riga
     };
     Page.prototype.getGraphsPerCol = function(){
-        return  this._graphsPerCol;
+        return  this._graphsPerCol; // ritorna il numero di grafici visualizzabili per colonna
     };
     Page.prototype.getUrl = function(){
-        return this._url;
+        return this._url; // ritorna l'url che invia i dati relativi alla pagina
     };
 &nbsp;
+    // costruttore di default di PageFactory
 <span class="fstat-no" title="function not covered" >    function PageFactory() {</span>}
 &nbsp;
     PageFactory.build = function(info) {
-        return new Page(info);
+        return new Page(info); // ritorna un'istanza di Page
     };
 &nbsp;
     return PageFactory;
@@ -420,7 +432,7 @@ angular.module('norris-nrti')
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Jun 13 2015 14:29:34 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Jun 15 2015 18:15:17 GMT+0000 (UTC)</div>
 </div>
 <script src="../../prettify.js"></script>
 <script>
