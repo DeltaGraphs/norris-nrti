@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">70.52</p>
+      <p class="stat">62.63</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">53</p>
+      <p class="stat">76</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">6.32</p>
+      <p class="stat">8.84</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.24</p>
+      <p class="stat">0.52</p>
     </div>
   </div>
 </div>
@@ -114,8 +114,10 @@ describe(&#039;LineChartView&#039;, function(){
 	var html, element, scope, line, LineChartFactory;
 	var json = {
 		&#039;properties&#039; : {
-			&#039;title&#039; : &#039;prova&#039;,
-			&#039;viewFinder&#039; : true
+			&#039;title&#039; : &#039;prova1&#039;,
+			&#039;viewFinder&#039; : true,
+			&#039;enableLegend&#039; : true,
+			&#039;legendOnPoint&#039; : false
 		}
 	};
 	
@@ -133,12 +135,33 @@ describe(&#039;LineChartView&#039;, function(){
 
   	}));
 
-  	describe(&#039;template&#039;, function() {
+  	describe(&#039;#template&#039;, function() {
+  		var json ={
+  			&#039;properties&#039; : {
+  				&#039;title&#039; : &#039;prova2&#039;,
+				&#039;viewFinder&#039; : false,
+				&#039;enableLegend&#039; : false,
+				&#039;legendOnPoint&#039; : true
+			}
+  		};
+
 		it(&#039;works fine&#039;, function() {
 			var lineChart = element.find(&#039;line-chart&#039;);
 			expect(lineChart).toBeDefined();
-			var chart = element.find(&#039;nvd3-line-with-focus-chart&#039;);
-			expect(chart).toBeDefined();
+			expect(lineChart.attr(&#039;url&#039;)).toEqual(&#039;http://example/line.com&#039;);
+			var nvd3Focus = element.find(&#039;nvd3-line-with-focus-chart&#039;);
+			expect(nvd3Focus).toBeDefined();
+			expect(nvd3Focus.attr(&#039;showlegend&#039;)).toEqual(true);
+			expect(nvd3Focus.attr(&#039;tooltips&#039;)).toEqual(false);
+			var svgFocus = element.find(&#039;svg&#039;);
+			expect(svgFocus).toBeDefined();
+			bar.updateParameters(json);
+			var nvd3 = element.find(&#039;nvd3-line-chart&#039;);
+			expect(nvd3).toBeDefined();
+			expect(nvd3.attr(&#039;showlegend&#039;)).toEqual(false);
+			expect(nvd3Focus.attr(&#039;tooltips&#039;)).toEqual(true);
+			var svg = element.find(&#039;svg&#039;);
+			expect(svg).toBeDefined();
 		});
 	});
 

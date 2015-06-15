@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">70.98</p>
+      <p class="stat">67.70</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">52</p>
+      <p class="stat">62</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">6.46</p>
+      <p class="stat">7.07</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.23</p>
+      <p class="stat">0.33</p>
     </div>
   </div>
 </div>
@@ -112,7 +112,7 @@ describe(&#039;TableView&#039;, function(){
 	beforeEach(angular.mock.module(&#039;norris-nrti&#039;));
 
 	var html, element, scope, table, TableFactory;
-	var json = {
+	var info = {
 		&#039;properties&#039; : {
 			&#039;title&#039; : &#039;prova&#039;
 		}
@@ -121,7 +121,7 @@ describe(&#039;TableView&#039;, function(){
 	beforeEach(inject(function($rootScope, $compile, $injector) {
 		TableFactory = $injector.get(&#039;TableFactory&#039;);
 		table = TableFactory.build();
-		table.updateParameters(json);
+		table.updateParameters(info);
     	scope = $rootScope.$new();
     	html = angular.element(&#039;&lt;table-chart url=&quot;http://example/table.com&quot;&gt;&lt;/table-chart&gt;&#039;);
 
@@ -132,12 +132,22 @@ describe(&#039;TableView&#039;, function(){
 
   	}));
 
-  	describe(&#039;template&#039;, function() {
+  	describe(&#039;#template&#039;, function() {
+  		var json = {
+			&#039;properties&#039; : {
+				&#039;appearance&#039; : {
+					&#039;border&#039; : {}
+				}
+			}
+		};
 		it(&#039;works fine&#039;, function() {
 			var tableChart = element.find(&#039;table-chart&#039;);
 			expect(tableChart).toBeDefined();
 			var tag = element.find(&#039;table&#039;);
 			expect(tag).toBeDefined();
+			expect(tag.attr(&#039;class&#039;)).toEqual(&#039;table table-striped table-bordered&#039;);
+			table.updateParameters(json);
+			expect(tag.attr(&#039;class&#039;)).toEqual(&#039;table-condensed table-striped&#039;);
 		});
 	});
 
