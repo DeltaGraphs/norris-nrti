@@ -59,7 +59,6 @@ describe('BarChartView', function(){
 		it('works fine', function() {
 			var barChart = element.find('bar-chart');
 			expect(barChart).toBeDefined();
-			expect(barChart).toHaveAttr('url','http://example/bar.com');
 			var nvd3H = element.find('nvd3-multi-bar-horizontal-chart');
 			expect(nvd3H).toBeDefined();
 			expect(nvd3H).toHaveAttr('showlegend','true');

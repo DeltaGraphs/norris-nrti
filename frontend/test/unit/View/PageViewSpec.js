@@ -51,7 +51,7 @@ describe('PageView', function(){
 			expect(bar).toBeDefined();
 			expect(bar).toHaveAttr('url','http://example/bar.com');
 			expect(tab).toBeDefined();
-			expect(tab).toBeDefined('url','http://example/table.com');
+			expect(tab).toHaveAttr('url','http://example/table.com');
 		});
 	});
 

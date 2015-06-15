@@ -57,7 +57,6 @@ describe('LineChartView', function(){
 		it('works fine', function() {
 			var lineChart = element.find('line-chart');
 			expect(lineChart).toBeDefined();
-			expect(lineChart).toHaveAttr('url','http://example/line.com');
 			var nvd3Focus = element.find('nvd3-line-with-focus-chart');
 			expect(nvd3Focus).toBeDefined();
 			expect(nvd3Focus).toHaveAttr('showlegend','true');
