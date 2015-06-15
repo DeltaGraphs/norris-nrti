@@ -66,7 +66,7 @@ describe('MapChartController', function(){
 		});
     });
 
-	/*dddescribe('listenOnEvent', function(){
+	/*deeescribe('listenOnEvent', function(){
     	
 	    it('configGraph works fine', function(){
 			socket.on('configGraph', {
@@ -121,7 +121,7 @@ describe('MapChartController', function(){
 		expect(notify).toBeDefined();
 	});
 
-    dddescribe('listenOnEvent', function(){
+    deeescribe('listenOnEvent', function(){
     	
 	    it('configGraph works fine', function(){
 			notify.receive('configGraph', {
@@ -265,11 +265,11 @@ describe('MapChartController', function(){
 		});
     });
     
-	//dddescribe('socketConnection', function(){
+	//deeescribe('socketConnection', function(){
 
 	//});
 
-	dddescribe('listenOnEvent', function(){
+	deeescribe('listenOnEvent', function(){
 
 		var data = [
 			{

@@ -81,7 +81,7 @@ describe('BarChartFlowFactory', function(){
 		});
 	});
 
-	/*dddescribe('split', function(){
+	/*deeescribe('split', function(){
 		var res;
 		var json = {};
 		var json1 = json;

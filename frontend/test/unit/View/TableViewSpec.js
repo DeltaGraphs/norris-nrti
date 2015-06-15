@@ -21,7 +21,7 @@ describe('TableView', function(){
 	beforeEach(angular.mock.module('norris-nrti'));
 
 	var html, element, scope, table, TableFactory;
-	var json = {
+	var info = {
 		'properties' : {
 			'title' : 'prova'
 		}
@@ -30,7 +30,7 @@ describe('TableView', function(){
 	beforeEach(inject(function($rootScope, $compile, $injector) {
 		TableFactory = $injector.get('TableFactory');
 		table = TableFactory.build();
-		table.updateParameters(json);
+		table.updateParameters(info);
     	scope = $rootScope.$new();
     	html = angular.element('<table-chart url="http://example/table.com"></table-chart>');
 
@@ -42,11 +42,21 @@ describe('TableView', function(){
   	}));
 
   	describe('#template', function() {
+  		var json = {
+			'properties' : {
+				'appearance' : {
+					'border' : {}
+				}
+			}
+		};
 		it('works fine', function() {
 			var tableChart = element.find('table-chart');
 			expect(tableChart).toBeDefined();
 			var tag = element.find('table');
 			expect(tag).toBeDefined();
+			expect(tag.attr('class')).toEqual('table table-striped table-bordered');
+			table.updateParameters(json);
+			expect(tag.attr('class')).toEqual('table-condensed table-striped');
 		});
 	});
 
