@@ -54,9 +54,7 @@ describe('TableView', function(){
 			expect(tableChart).toBeDefined();
 			var tag = element.find('table');
 			expect(tag).toBeDefined();
-			//expect(tag).toHaveAttr('class','table table-striped table-bordered');
 			table.updateParameters(json);
-			//expect(tag).toHaveAttr('class','table-condensed table-striped');
 		});
 	});
 

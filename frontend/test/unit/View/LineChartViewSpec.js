@@ -59,15 +59,11 @@ describe('LineChartView', function(){
 			expect(lineChart).toBeDefined();
 			var nvd3Focus = element.find('nvd3-line-with-focus-chart');
 			expect(nvd3Focus).toBeDefined();
-			//expect(nvd3Focus).toHaveAttr('showlegend','true');
-			//expect(nvd3Focus).toEqual('tooltips','false');
 			var svgFocus = element.find('svg');
 			expect(svgFocus).toBeDefined();
 			bar.updateParameters(json);
 			var nvd3 = element.find('nvd3-line-chart');
 			expect(nvd3).toBeDefined();
-			//expect(nvd3).toHaveAttr('showlegend','false');
-			//expect(nvd3Focus).toHaveAttr('tooltips','true');
 			var svg = element.find('svg');
 			expect(svg).toBeDefined();
 		});
