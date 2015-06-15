@@ -28,7 +28,7 @@ describe('FlowFactory', function(){
 		FlowFactory = _FlowFactory_;
 	}));
 
-	describe('Constructor', function(){
+	describe('Default constructor', function(){
 
 		var Flow;
 

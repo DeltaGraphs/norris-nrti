@@ -43,7 +43,7 @@ describe('PagesListView', function(){
 
   	}));
 
-  	describe('template', function() {
+  	describe('#template', function() {
 		it('works fine', function() {
 			var elm = element.find('li');
 			expect(elm.length).toBe(3);

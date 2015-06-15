@@ -44,7 +44,7 @@ describe('LineChartView', function(){
 
   	}));
 
-  	describe('template', function() {
+  	describe('#template', function() {
   		var json ={
   			'properties' : {
   				'title' : 'prova2',

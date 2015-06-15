@@ -77,7 +77,7 @@ describe('PagesList', function(){
 
 	});
 
-	describe('addPage', function(){
+	describe('#addPage', function(){
 		var json = {
 			'properties' : {
 				'ID' : '4'

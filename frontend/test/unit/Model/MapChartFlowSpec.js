@@ -92,7 +92,7 @@ describe('MapChartFlowFactory', function(){
 
 	});
 
-	/*describe('split', function(){
+	/*dddescribe('split', function(){
 		var res;
 		var json = {};
 		var json1 = json;
@@ -129,7 +129,7 @@ describe('MapChartFlowFactory', function(){
 
 	});*/
 
-	describe('updateParameters', function(){
+	describe('#updateParameters', function(){
 		var json = {
 			'name' : 'flusso2',
 			'marker' : 'furly1',
@@ -159,7 +159,7 @@ describe('MapChartFlowFactory', function(){
 
 	});
 
-	describe('initializeData', function(){
+	describe('#initializeData', function(){
 		var data = {
 			records: [
 				{ 
@@ -193,7 +193,7 @@ describe('MapChartFlowFactory', function(){
 		});
 	});
 
-	describe('emptyData', function(){
+	describe('#emptyData', function(){
 
 		var data = {
 			'records' : [
@@ -231,7 +231,7 @@ describe('MapChartFlowFactory', function(){
 
 	});
 
-	describe('inPlaceUpdate', function(){
+	describe('#inPlaceUpdate', function(){
 		var data = {
 			records: [
 				{ 
@@ -263,7 +263,7 @@ describe('MapChartFlowFactory', function(){
 		});
 	});
 
-	describe('streamUpdate', function(){
+	describe('#streamUpdate', function(){
 		var data = {
 			records: [
 				{ 
@@ -288,7 +288,7 @@ describe('MapChartFlowFactory', function(){
 		});
 	});
 
-	describe('deleteData', function(){
+	describe('#deleteData', function(){
 
 		var data = {
 			records: [

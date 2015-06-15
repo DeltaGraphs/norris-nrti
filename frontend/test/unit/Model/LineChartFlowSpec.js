@@ -101,7 +101,7 @@ describe('LineChartFlowFactory', function(){
 
 	});
 
-	/*describe('split', function(){
+	/*dddescribe('split', function(){
 		var res;
 		var json = {};
 		var json1 = json;
@@ -140,7 +140,7 @@ describe('LineChartFlowFactory', function(){
 
 	});*/
 
-	describe('updateParameters', function(){
+	describe('#updateParameters', function(){
 		var json = {
 			'name' : 'flusso2',
 			'flowColor' : '#F1F',
@@ -174,7 +174,7 @@ describe('LineChartFlowFactory', function(){
 
 	});
 
-	describe('initializeData', function(){
+	describe('#initializeData', function(){
 
 		var data = {
 			'records' : [
@@ -210,7 +210,7 @@ describe('LineChartFlowFactory', function(){
 
 	});
 
-	describe('emptyData', function(){
+	describe('#emptyData', function(){
 
 		var data = {
 			'records' : [
@@ -248,7 +248,7 @@ describe('LineChartFlowFactory', function(){
 
 	});
 
-	describe('inPlaceUpdate', function(){
+	describe('#inPlaceUpdate', function(){
 		
 		var data = {
 			'records' : [
@@ -283,7 +283,7 @@ describe('LineChartFlowFactory', function(){
 		
 	});
 
-	describe('streamUpdate', function(){
+	describe('#streamUpdate', function(){
 		
 		var data = {
 			'records' : [
@@ -309,7 +309,7 @@ describe('LineChartFlowFactory', function(){
 		});
 	});
 
-	describe('deleteData', function(){
+	describe('#deleteData', function(){
 
 		var data = {
 			records: [

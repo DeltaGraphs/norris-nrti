@@ -41,7 +41,7 @@ describe('TableView', function(){
 
   	}));
 
-  	describe('template', function() {
+  	describe('#template', function() {
 		it('works fine', function() {
 			var tableChart = element.find('table-chart');
 			expect(tableChart).toBeDefined();

@@ -41,7 +41,7 @@ describe('MapChartView', function(){
 
   	}));
 
-  	describe('template', function() {
+  	describe('#template', function() {
 		it('works fine', function() {
 			var mapChart = element.find('map-chart');
 			expect(mapChart).toBeDefined();

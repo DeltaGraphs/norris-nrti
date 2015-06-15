@@ -84,7 +84,7 @@ describe('MapChartFactory', function(){
 
 	});
 
-	/*describe('split', function(){
+	/*dddescribe('split', function(){
 		var res;
 		var json = {};
 		var json1 = json;
@@ -132,7 +132,7 @@ describe('MapChartFactory', function(){
 	});*/
 
 
-	describe('updateParameters', function(){
+	describe('#updateParameters', function(){
 		var json = {
 			'title' : 'graficonuovo',
 			'height' : 400,
@@ -194,7 +194,7 @@ describe('MapChartFactory', function(){
 		
 	});
 	
-	describe('addFlow', function(){
+	describe('#addFlow', function(){
 
 		var json = {
 			'ID' : 	'flusso1',
@@ -227,7 +227,7 @@ describe('MapChartFactory', function(){
 
 	});
 
-	describe('deleteFlow', function(){
+	describe('#deleteFlow', function(){
 
 		var json1 = {
 			'ID' : 	'flusso1',
@@ -261,7 +261,7 @@ describe('MapChartFactory', function(){
 
 	});
 
-	describe('replaceData', function(){
+	describe('#replaceData', function(){
 
 		var json1 = {
 			'ID' : 	'flusso1',
@@ -296,7 +296,7 @@ describe('MapChartFactory', function(){
 
 	});
 
-	describe('inizializeData', function(){
+	describe('#inizializeData', function(){
 
 		var data = [
 			{
@@ -323,7 +323,7 @@ describe('MapChartFactory', function(){
 		});
 	});
 
-	describe('inPlaceUpdate', function(){
+	describe('#inPlaceUpdate', function(){
 
 		var data = [
 			{
@@ -357,7 +357,7 @@ describe('MapChartFactory', function(){
 		});
 	});
 
-	describe('streamUpdate', function(){
+	describe('#streamUpdate', function(){
 
 		var data = [
 			{
@@ -393,7 +393,7 @@ describe('MapChartFactory', function(){
 		});
 	});
 
-	describe('deleteData', function(){
+	describe('#deleteData', function(){
 
 		var data = [
 			{

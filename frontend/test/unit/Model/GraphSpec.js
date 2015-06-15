@@ -111,7 +111,7 @@ describe('GraphFactory', function(){
 
 	});
 
-	describe('updateParameters', function(){
+	describe('#updateParameters', function(){
 
 		var json = {
 			'title' : 'graficoNuovo',
@@ -149,7 +149,7 @@ describe('GraphFactory', function(){
 
 	});
 	
-	describe('addFlow', function(){
+	describe('#addFlow', function(){
 
 		var json = {
 			'ID' : 	'flusso1',
@@ -174,7 +174,7 @@ describe('GraphFactory', function(){
 
 	});
 
-	describe('deleteFlow', function(){
+	describe('#deleteFlow', function(){
 
 		var json1 = {
 			'ID' : 	'flusso1',
@@ -208,7 +208,7 @@ describe('GraphFactory', function(){
 
 	});
 
-	describe('replaceData', function(){
+	describe('#replaceData', function(){
 
 		var json1 = {
 			'ID' : 	'flusso1',

@@ -81,7 +81,7 @@ describe('BarChartFlowFactory', function(){
 		});
 	});
 
-	/*describe('split', function(){
+	/*dddescribe('split', function(){
 		var res;
 		var json = {};
 		var json1 = json;
@@ -112,7 +112,7 @@ describe('BarChartFlowFactory', function(){
 
 	});*/
 
-	describe('updateParameters', function(){
+	describe('#updateParameters', function(){
 		
 		var json = {
 			'name' : 'flusso2',
@@ -136,7 +136,7 @@ describe('BarChartFlowFactory', function(){
 
 	});
 
-	describe('inizializeData', function(){
+	describe('#inizializeData', function(){
 		var data = {
 			'records' : [
 				{},
@@ -161,7 +161,7 @@ describe('BarChartFlowFactory', function(){
 
 	});
 
-	describe('emptyData', function(){
+	describe('#emptyData', function(){
 
 		var data = {
 			'records' : [
@@ -199,7 +199,7 @@ describe('BarChartFlowFactory', function(){
 
 	});
 
-	describe('inPlaceUpdate', function(){
+	describe('#inPlaceUpdate', function(){
 		var data = {
 			'records' : [
 				{ 

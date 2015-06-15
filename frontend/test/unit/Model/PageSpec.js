@@ -128,7 +128,7 @@ describe('PageFactory', function(){
 	});
 
 	
-	describe('updateParameters', function(){
+	describe('#updateParameters', function(){
 
 		var json = 	{
 			'ID' : 'pageN',
@@ -163,7 +163,7 @@ describe('PageFactory', function(){
 
 	});
 
-	describe('addGraph', function(){
+	describe('#addGraph', function(){
 
 		var json = {
 			'ID' : 'graficoN',

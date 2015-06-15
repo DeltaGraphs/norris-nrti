@@ -56,16 +56,17 @@ describe('MapChartController', function(){
         controller = $controller('MapChartController', { $scope : scope, socket : socket });
     }));
 
+    describe('#istances defined',{
+    	it('controller is defined', function() {
+			expect(controller).toBeDefined();
+		});
 
-    it('controller is defined', function() {
-		expect(controller).toBeDefined();
-	});
+	    it('scope.mapChart is defined', function() {
+			expect(scope.mapChart).toBeDefined();
+		});
+    });
 
-    it('scope.mapChart is defined', function() {
-		expect(scope.mapChart).toBeDefined();
-	});
-
-	/*describe('listenOnEvent', function(){
+	/*dddescribe('listenOnEvent', function(){
     	
 	    it('configGraph works fine', function(){
 			socket.on('configGraph', {
@@ -120,7 +121,7 @@ describe('MapChartController', function(){
 		expect(notify).toBeDefined();
 	});
 
-    describe('listenOnEvent', function(){
+    dddescribe('listenOnEvent', function(){
     	
 	    it('configGraph works fine', function(){
 			notify.receive('configGraph', {
@@ -264,11 +265,11 @@ describe('MapChartController', function(){
 		});
     });
     
-	//describe('socketConnection', function(){
+	//dddescribe('socketConnection', function(){
 
 	//});
 
-	describe('listenOnEvent', function(){
+	dddescribe('listenOnEvent', function(){
 
 		var data = [
 			{

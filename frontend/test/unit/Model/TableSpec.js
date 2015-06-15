@@ -78,7 +78,7 @@ describe('TableFactory', function(){
 
 	});
 
-	/*describe('split', function(){
+	/*dddescribe('split', function(){
 		var res;
 		var json = {};
 		var json1 = json;
@@ -130,7 +130,7 @@ describe('TableFactory', function(){
 	});*/
 
 
-	describe('updateParameters', function(){
+	describe('#updateParameters', function(){
 		var json = {
 			'title' : 'graficonuovo',
 			'height' : 400,
@@ -203,7 +203,7 @@ describe('TableFactory', function(){
 		
 	});
 	
-	describe('addFlow', function(){
+	describe('#addFlow', function(){
 
 		var json = {
 			'ID' : 	'flusso1',
@@ -233,7 +233,7 @@ describe('TableFactory', function(){
 
 	});
 
-	describe('deleteFlow', function(){
+	describe('#deleteFlow', function(){
 
 		var json1 = {
 			'ID' : 	'flusso1',
@@ -267,7 +267,7 @@ describe('TableFactory', function(){
 
 	});
 
-	describe('replaceData', function(){
+	describe('#replaceData', function(){
 
 		var json1 = {
 			'ID' : 	'flusso1',
@@ -303,7 +303,7 @@ describe('TableFactory', function(){
 	});
 
 
-	describe('inizializeData', function(){
+	describe('#inizializeData', function(){
 
 		var data = [
 			{
@@ -331,7 +331,7 @@ describe('TableFactory', function(){
 		});
 	});
 
-	describe('inPlaceUpdate', function(){
+	describe('#inPlaceUpdate', function(){
 
 		var data = [
 			{
@@ -365,7 +365,7 @@ describe('TableFactory', function(){
 		});
 	});
 
-	describe('streamUpdate', function(){
+	describe('#streamUpdate', function(){
 
 		var data = [
 			{
@@ -401,7 +401,7 @@ describe('TableFactory', function(){
 		});
 	});
 
-	describe('deleteData', function(){
+	describe('#deleteData', function(){
 
 		var data = [
 			{

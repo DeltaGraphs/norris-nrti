@@ -89,7 +89,7 @@ describe('LegendFactory', function(){
 
 	});
 
-	describe('updateParameters', function(){
+	describe('#updateParameters', function(){
 
 		var json = 	{
 			'position' : 'S',

@@ -70,7 +70,7 @@ describe('TableFlowFactory', function(){
 
 	});
 
-	/*describe('split', function(){
+	/*dddescribe('split', function(){
 		var res;
 		var json = {};
 		var json1 = json;
@@ -99,7 +99,7 @@ describe('TableFlowFactory', function(){
 
 	});*/
 
-	describe('updateParameters', function(){
+	describe('#updateParameters', function(){
 		var json = {
 			'name' : 'flusso2',
 			'maxItemsSaved' : 15
@@ -121,7 +121,7 @@ describe('TableFlowFactory', function(){
 
 	});
 
-	describe('inizializeData', function(){
+	describe('#inizializeData', function(){
 		var data = {
 			records: [
 				{ 
@@ -155,7 +155,7 @@ describe('TableFlowFactory', function(){
 
 	});
 
-	describe('emptyData', function(){
+	describe('#emptyData', function(){
 
 		var data = {
 			'records' : [
@@ -193,7 +193,7 @@ describe('TableFlowFactory', function(){
 
 	});
 
-	describe('inPlaceUpdate', function(){
+	describe('#inPlaceUpdate', function(){
 
 		var data = {
 			records: [
@@ -228,7 +228,7 @@ describe('TableFlowFactory', function(){
 
 	});
 
-	describe('streamUpdate', function(){
+	describe('#streamUpdate', function(){
 		var data = {
 			records: [
 				{ 
@@ -253,7 +253,7 @@ describe('TableFlowFactory', function(){
 		});
 	});
 
-	describe('deleteData', function(){
+	describe('#deleteData', function(){
 
 		var data = {
 			records: [
