@@ -2,9 +2,9 @@
 'use strict';
 
 /*
-* Name :  MapChart.js
-* Module : FrontEnd::View
-* Location : /frontend/app/View
+* Name :  MapChartView.js
+* Module : FrontEnd::View::GraphsView
+* Location : /frontend/app/View/GraphsView
 *
 * History :
 * Version       Date        Programmer                  Description

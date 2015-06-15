@@ -4,7 +4,7 @@
 /*
 * Name :  Page.js
 * Module : FrontEnd::Model::PagesModel
-* Location : /frontend/app/Model
+* Location : /frontend/app/Model/PagesModel
 *
 * History :
 * Version       Date        Programmer                  Description

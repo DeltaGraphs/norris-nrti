@@ -2,9 +2,9 @@
 'use strict';
 
 /*
-* Name :  barChart.js
-* Module : FrontEnd::View
-* Location : /frontend/app/View
+* Name :  CarChartView.js
+* Module : FrontEnd::View::GraphsView
+* Location : /frontend/app/View/GraphsView
 *
 * History :
 * Version       Date        Programmer                  Description

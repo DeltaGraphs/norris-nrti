@@ -4,7 +4,7 @@
 /*
 * Name :  Flow.js
 * Module : FrontEnd::Model::FlowsModel
-* Location : /frontend/app/Model/FlFactory.buildowsModel
+* Location : /frontend/app/Model/FlowsModel
 *
 * History :
 * Version       Date        Programmer                  Description

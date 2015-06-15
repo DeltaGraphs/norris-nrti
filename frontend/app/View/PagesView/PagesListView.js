@@ -3,7 +3,7 @@
 
 /*
 * Name :  PagesListView.js
-* Module : FrontEnd::View
+* Module : FrontEnd::View::PagesView
 * Location : /frontend/app/PagesView
 *
 * History :
