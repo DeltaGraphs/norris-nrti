@@ -19,7 +19,7 @@ var LegendModel = require('../../../lib/dataTier/graph/legendModel.js');
 var TableFlowModel = require('../../../lib/dataTier/flow/tableFlowModel.js');
 var assert = require('assert');
 
-describe('tableModel', function() {
+describe('TableModel', function() {
 
     it('returns null when there are no params', function() {
         assert.strictEqual((new TableModel()).hasOwnProperty('_title'), false);
