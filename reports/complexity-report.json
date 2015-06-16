@@ -3616,7 +3616,7 @@
             "aggregate": {
                 "sloc": {
                     "logical": 127,
-                    "physical": 199
+                    "physical": 198
                 },
                 "cyclomatic": 22,
                 "halstead": {
@@ -3914,7 +3914,7 @@
                     "name": "<anonymous>.createBarChartFlow",
                     "sloc": {
                         "logical": 22,
-                        "physical": 37
+                        "physical": 36
                     },
                     "cyclomatic": 6,
                     "halstead": {
@@ -4061,7 +4061,7 @@
                         "time": 318.69715453335493
                     },
                     "params": 1,
-                    "line": 109,
+                    "line": 108,
                     "cyclomaticDensity": 33.33333333333333
                 },
                 {
@@ -4112,7 +4112,7 @@
                         "time": 39.2116385856331
                     },
                     "params": 0,
-                    "line": 132,
+                    "line": 131,
                     "cyclomaticDensity": 50
                 },
                 {
@@ -4153,7 +4153,7 @@
                         "time": 5.547368752524047
                     },
                     "params": 3,
-                    "line": 139,
+                    "line": 138,
                     "cyclomaticDensity": 100
                 },
                 {
@@ -4200,7 +4200,7 @@
                         "time": 21.632597927536054
                     },
                     "params": 1,
-                    "line": 144,
+                    "line": 143,
                     "cyclomaticDensity": 66.66666666666666
                 },
                 {
@@ -4238,7 +4238,7 @@
                         "time": 1.5078947920873411
                     },
                     "params": 0,
-                    "line": 152,
+                    "line": 151,
                     "cyclomaticDensity": 100
                 },
                 {
@@ -4335,7 +4335,7 @@
                         "time": 1733.0292759738302
                     },
                     "params": 0,
-                    "line": 156,
+                    "line": 155,
                     "cyclomaticDensity": 8.333333333333332
                 }
             ],
