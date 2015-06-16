@@ -20,7 +20,7 @@ var LineChartFlowModel = require('../../../lib/dataTier/flow/lineChartFlowModel.
 var AxisModel = require('../../../lib/dataTier/graph/axisModel.js');
 var assert = require('assert');
 
-describe('lineChartModel', function() {
+describe('LineChartModel', function() {
 
     it('returns null when there are no params', function() {
         assert.strictEqual((new LineChartModel()).hasOwnProperty('_title'), false);
