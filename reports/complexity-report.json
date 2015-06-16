@@ -8889,14 +8889,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 31,
-                    "physical": 54
+                    "logical": 30,
+                    "physical": 52
                 },
                 "cyclomatic": 14,
                 "halstead": {
                     "operators": {
-                        "distinct": 19,
-                        "total": 90,
+                        "distinct": 17,
+                        "total": 89,
                         "identifiers": [
                             "var",
                             "=",
@@ -8910,8 +8910,6 @@
                             "<",
                             ".",
                             "return",
-                            "{}",
-                            ":",
                             "switch",
                             "case",
                             ">",
@@ -8921,7 +8919,7 @@
                     },
                     "operands": {
                         "distinct": 39,
-                        "total": 94,
+                        "total": 93,
                         "identifiers": [
                             "\"use strict\"",
                             "HF",
@@ -8949,8 +8947,8 @@
                             "_value",
                             "value",
                             "prototype",
-                            "<anonymous>",
                             "validateRecord",
+                            "<anonymous>",
                             "record",
                             null,
                             false,
@@ -8964,17 +8962,17 @@
                             "exports"
                         ]
                     },
-                    "length": 184,
-                    "vocabulary": 58,
-                    "difficulty": 22.897435897435898,
-                    "volume": 1077.8685031034731,
-                    "effort": 24680.42495567696,
-                    "bugs": 0.35928950103449103,
-                    "time": 1371.1347197598311
+                    "length": 182,
+                    "vocabulary": 56,
+                    "difficulty": 20.26923076923077,
+                    "volume": 1056.938595814484,
+                    "effort": 21423.332307470504,
+                    "bugs": 0.35231286527149464,
+                    "time": 1190.1851281928057
                 },
                 "params": 2,
                 "line": 2,
-                "cyclomaticDensity": 45.16129032258064
+                "cyclomaticDensity": 46.666666666666664
             },
             "functions": [
                 {
@@ -9042,7 +9040,7 @@
                     "cyclomaticDensity": 50
                 },
                 {
-                    "name": "validateRecord",
+                    "name": "<anonymous>.validateRecord",
                     "sloc": {
                         "logical": 15,
                         "physical": 19
@@ -9096,7 +9094,7 @@
                         "time": 510.3334551124615
                     },
                     "params": 1,
-                    "line": 35,
+                    "line": 34,
                     "cyclomaticDensity": 66.66666666666666
                 }
             ],
@@ -9117,14 +9115,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 30,
-                    "physical": 54
+                    "logical": 29,
+                    "physical": 52
                 },
                 "cyclomatic": 6,
                 "halstead": {
                     "operators": {
-                        "distinct": 15,
-                        "total": 68,
+                        "distinct": 13,
+                        "total": 69,
                         "identifiers": [
                             "var",
                             "=",
@@ -9138,14 +9136,12 @@
                             "[]",
                             "forin",
                             "new",
-                            "===",
-                            "{}",
-                            ":"
+                            "==="
                         ]
                     },
                     "operands": {
                         "distinct": 36,
-                        "total": 73,
+                        "total": 74,
                         "identifiers": [
                             "\"use strict\"",
                             "FilterConditionModel",
@@ -9185,17 +9181,17 @@
                             "exports"
                         ]
                     },
-                    "length": 141,
-                    "vocabulary": 51,
-                    "difficulty": 15.208333333333332,
-                    "volume": 799.811973217981,
-                    "effort": 12163.807092690126,
-                    "bugs": 0.2666039910726603,
-                    "time": 675.767060705007
+                    "length": 143,
+                    "vocabulary": 49,
+                    "difficulty": 13.36111111111111,
+                    "volume": 802.9035077084748,
+                    "effort": 10727.682977993787,
+                    "bugs": 0.26763450256949156,
+                    "time": 595.9823876663215
                 },
                 "params": 2,
                 "line": 2,
-                "cyclomaticDensity": 20
+                "cyclomaticDensity": 20.689655172413794
             },
             "functions": [
                 {
@@ -9267,7 +9263,7 @@
                     "cyclomaticDensity": 29.411764705882355
                 },
                 {
-                    "name": "validateRecord",
+                    "name": "<anonymous>.validateRecord",
                     "sloc": {
                         "logical": 5,
                         "physical": 8
@@ -9309,11 +9305,11 @@
                         "time": 29.1897210691083
                     },
                     "params": 1,
-                    "line": 43,
+                    "line": 42,
                     "cyclomaticDensity": 40
                 },
                 {
-                    "name": "getFilterText",
+                    "name": "<anonymous>.getFilterText",
                     "sloc": {
                         "logical": 1,
                         "physical": 3
@@ -9345,7 +9341,7 @@
                         "time": 0.4444444444444444
                     },
                     "params": 0,
-                    "line": 51,
+                    "line": 50,
                     "cyclomaticDensity": 100
                 }
             ],

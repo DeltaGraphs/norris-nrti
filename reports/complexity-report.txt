@@ -1367,11 +1367,11 @@ Core size: 37.5%
 
 /home/travis/build/DeltaGraphs/norris-nrti/lib/dataTier/flow/filterConditionModel.js
 
-  Physical LOC: 54
-  Logical LOC: 31
+  Physical LOC: 52
+  Logical LOC: 30
   Mean parameter count: 1
   Cyclomatic complexity: 14
-  Cyclomatic complexity density: 45.16129032258064%
+  Cyclomatic complexity density: 46.666666666666664%
   Maintainability index: 99.86887286625834
   Dependency count: 1
 
@@ -1386,8 +1386,8 @@ Core size: 37.5%
     Halstead volume: 325
     Halstead effort: 2808.928571428571
 
-  Function: validateRecord
-    Line No.: 35
+  Function: <anonymous>.validateRecord
+    Line No.: 34
     Physical LOC: 19
     Logical LOC: 15
     Parameter count: 1
@@ -1399,11 +1399,11 @@ Core size: 37.5%
 
 /home/travis/build/DeltaGraphs/norris-nrti/lib/dataTier/flow/filterModel.js
 
-  Physical LOC: 54
-  Logical LOC: 30
+  Physical LOC: 52
+  Logical LOC: 29
   Mean parameter count: 0.6666666666666666
   Cyclomatic complexity: 6
-  Cyclomatic complexity density: 20%
+  Cyclomatic complexity density: 20.689655172413794%
   Maintainability index: 112.12689885530688
   Dependency count: 1
 
@@ -1418,8 +1418,8 @@ Core size: 37.5%
     Halstead volume: 444.61355012403885
     Halstead effort: 4890.749051364427
 
-  Function: validateRecord
-    Line No.: 43
+  Function: <anonymous>.validateRecord
+    Line No.: 42
     Physical LOC: 8
     Logical LOC: 5
     Parameter count: 1
@@ -1429,8 +1429,8 @@ Core size: 37.5%
     Halstead volume: 87.56916320732489
     Halstead effort: 525.4149792439493
 
-  Function: getFilterText
-    Line No.: 51
+  Function: <anonymous>.getFilterText
+    Line No.: 50
     Physical LOC: 3
     Logical LOC: 1
     Parameter count: 0
