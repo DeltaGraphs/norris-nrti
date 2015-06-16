@@ -20,7 +20,7 @@ var BarChartFlowModel = require('../../../lib/dataTier/flow/barChartFlowModel.js
 var AxisModel = require('../../../lib/dataTier/graph/axisModel.js');
 var assert = require('assert');
 
-describe('barChartModel', function() {
+describe('BarChartModel', function() {
 
     it('returns null when there are no params', function() {
         assert.strictEqual((new BarChartModel()).hasOwnProperty('_title'), false);

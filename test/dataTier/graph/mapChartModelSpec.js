@@ -19,7 +19,7 @@ var LegendModel = require('../../../lib/dataTier/graph/legendModel.js');
 var MapChartFlowModel = require('../../../lib/dataTier/flow/mapChartFlowModel.js');
 var assert = require('assert');
 
-describe('mapChartModel', function() {
+describe('MapChartModel', function() {
 
     it('returns null when there are no params', function() {
         assert.strictEqual((new MapChartModel()).hasOwnProperty('_title'), false);
