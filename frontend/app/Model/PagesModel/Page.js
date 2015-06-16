@@ -9,6 +9,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 1.0.0         2015-05-20  Francesco Rossetto          Tested
+*
 * 0.1.4         2015-05-18  Maria Giovanna Chinellato   Fix attributes
 *
 * 0.1.3         2015-05-14  Francesco Rossetto          Fix addGraph

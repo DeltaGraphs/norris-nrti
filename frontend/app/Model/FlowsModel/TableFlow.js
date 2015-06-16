@@ -9,7 +9,9 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
-* 0.2.0         2015-05-18  Maria Giovanna Chinellato	Modified general structure, some fixes
+* 1.0.0         2015-05-22  Maria Giovanna Chinellato	Tested
+*
+* 0.2.0         2015-05-16  Maria Giovanna Chinellato	Modified general structure, some fixes
 *
 * 0.1.1         2015-05-15  Maria Giovanna Chinellato	Various fix
 *

@@ -9,13 +9,13 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
-* 0.2.0         2015-05-18  Maria Giovanna Chinellato	Modified general structure, some fixes
+* 0.2.0         2015-05-19  Maria Giovanna Chinellato	Modified general structure, some fixes
 *
-* 0.1.1         2015-05-17  Maria Giovanna Chinellato   Fix code
+* 0.1.1         2015-05-19  Maria Giovanna Chinellato   Fix code
 *
-* 0.1.0			2015-05-15	Maria Giovanna Chinellato	Add test of Model::MapChartFlow.js
+* 0.1.0			2015-05-19	Maria Giovanna Chinellato	Add test of Model::MapChartFlow.js
 *
-* 0.0.1			2015-05-15	Maria Giovanna Chinellato	Initial code
+* 0.0.1			2015-05-18	Maria Giovanna Chinellato	Initial code
 * =================================================================================================
 *
 */

@@ -9,14 +9,13 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
-* 0.1.2         2015-05-17  Maria Giovanna Chinellato   Fix code
+* 0.1.2         2015-05-19  Maria Giovanna Chinellato   Fix code
 *
-* 0.1.1			2015-05-14	Francesco Rossetto			Completato anche addPage
+* 0.1.1			2015-05-19	Francesco Rossetto			Completato anche addPage
 * 
-* 0.1.0			2015-05-13	Maria Giovanna Chinellato	Codifica del test sul Model
-*														PagesList.js
+* 0.1.0			2015-05-17	Maria Giovanna Chinellato	Add test on Model::PagesList.js
 *
-* 0.0.1			2015-05-13	Maria Giovanna Chinellato	Creazione file
+* 0.0.1			2015-05-15	Maria Giovanna Chinellato	Initial code
 * =================================================================================================
 *
 */

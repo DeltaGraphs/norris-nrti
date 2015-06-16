@@ -9,11 +9,11 @@
 * History :
 * Version       Date        Programmer                  Description
 * =======================================================================================================================
-* 0.1.1         2015-05-17  Maria Giovanna Chinellato   Fix code
+* 0.1.1         2015-05-20  Maria Giovanna Chinellato   Fix code
 *
-* 0.1.0			2015-05-13	Rossetto Francesco			Add test of Model::Page, describe all method
+* 0.1.0			2015-05-20	Rossetto Francesco			Add test of Model::Page, describe all method
 *
-* 0.0.1			2015-05-13	Rossetto Francesco			Initial code
+* 0.0.1			2015-05-18	Rossetto Francesco			Initial code
 *
 * =======================================================================================================================
 *

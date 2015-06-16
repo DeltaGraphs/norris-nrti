@@ -2,7 +2,7 @@
 'use strict';
 
 /*
-* Name :  LineChartFlow.js
+* Name :  LineChartFlowSpec.js
 * Module : UnitTest
 * Location : /frontend/test/unit/Model
 *

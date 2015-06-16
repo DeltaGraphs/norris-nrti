@@ -9,6 +9,10 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 1.0.0         2015-06-14  Francesco Rossetto		   Tested     
+*
+* 0.1.1         2015-06-04  Maria Giovanna Chinellato   Fix link function      
+*
 * 0.1.0			2015-05-30	Francesco Rossetto			Add all attributes and all methods	
 *
 * 0.0.1         2015-05-30  Francesco Rossetto			Initial code      

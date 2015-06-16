@@ -8,7 +8,9 @@
 *
 * History :
 * Version       Date        Programmer                  Description
-* ===============================================================================================================7
+* ===============================================================================================================
+* 1.0.0         2015-05-21  Maria Giovanna Chinellato   Tested
+*
 * 0.1.3         2015-05-18  Maria Giovanna Chinellato   Fix attributes
 *
 * 0.1.2         2015-05-17  Maria Giovanna Chinellato   Fix code

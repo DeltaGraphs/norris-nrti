@@ -9,6 +9,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * ===============================================================================================================
+* 1.0.0         2015-05-19  Maria Giovanna Chinellato   Tested
+*
 * 0.3.0         2015-05-18  Francesco Rossetto          Modified general structure, some fixes
 *
 * 0.2.2			2015-05-15	Francesco Rossetto			Various fixes, insert inzializeData

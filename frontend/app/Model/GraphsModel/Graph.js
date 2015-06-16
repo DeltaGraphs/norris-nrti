@@ -9,6 +9,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 1.0.0			2015-05-21	Maria Giovanna Chinellato	Tested
+*
 * 0.1.5			2015-05-18	Maria Giovanna Chinellato	Fix methods addFlow and deleteFlow
 *
 * 0.1.4			2015-05-15	Francesco Rossetto			Various fixes

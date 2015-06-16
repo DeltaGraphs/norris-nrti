@@ -9,7 +9,13 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
-* 0.0.1         2015-06-02  Maria Giovanna Chinellato   Initial code      
+* 1.0.0         2015-06-13  Maria Giovanna Chinellato   Tested     
+*
+* 0.1.0         2015-06-05  Maria Giovanna Chinellato   Add init, setData and legend function     
+*
+* 0.0.2         2015-06-03  Francesco Rossetto          Add link function, observe and watch      
+*
+* 0.0.1         2015-06-02  Francesco Rossetto          Initial code      
 * =================================================================================================
 */
 

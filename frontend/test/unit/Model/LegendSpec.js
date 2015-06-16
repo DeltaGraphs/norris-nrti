@@ -11,9 +11,9 @@
 * =======================================================================================================================
 * 0.1.1         2015-05-17  Maria Giovanna Chinellato   Fix code
 *
-* 0.1.0			2015-05-15	Rossetto Francesco			Add test of Model::Legend, describe all method
+* 0.1.0			2015-05-17	Rossetto Francesco			Add test of Model::Legend, describe all method
 *
-* 0.0.1			2015-05-15	Rossetto Francesco			Initial code
+* 0.0.1			2015-05-16	Rossetto Francesco			Initial code
 * =======================================================================================================================
 *
 */

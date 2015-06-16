@@ -6,13 +6,13 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
-* 0.1.2         2015-05-17  Maria Giovanna Chinellato   Fix code
+* 0.1.2         2015-05-19  Maria Giovanna Chinellato   Fix code
 *
-* 0.1.1			2015-05-15	Maria Giovanna Chinellato	Fix test of Model::MapChart
+* 0.1.1			2015-05-19	Maria Giovanna Chinellato	Fix test of Model::MapChart
 *
-* 0.1.0			2015-05-15	Francesco Rossetto			Add test of Model::MapChart.js
+* 0.1.0			2015-05-19	Francesco Rossetto			Add test of Model::MapChart.js
 *
-* 0.0.1			2015-05-15	Francesco Rossetto			Initial code
+* 0.0.1			2015-05-18	Francesco Rossetto			Initial code
 * =================================================================================================
 *
 */
