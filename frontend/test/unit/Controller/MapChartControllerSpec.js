@@ -56,7 +56,7 @@ describe('MapChartController', function(){
         controller = $controller('MapChartController', { $scope : scope, socket : socket });
     }));
 
-    describe('#istances defined', function(){
+    describe('Constructor', function(){
     	it('controller is defined', function() {
 			expect(controller).toBeDefined();
 		});

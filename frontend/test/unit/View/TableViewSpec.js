@@ -41,7 +41,7 @@ describe('TableView', function(){
 
   	}));
 
-  	describe('#template', function() {
+  	describe('Constructor', function() {
   		var json = {
 			'properties' : {
 				'appearance' : {

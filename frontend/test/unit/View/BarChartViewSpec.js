@@ -45,7 +45,7 @@ describe('BarChartView', function(){
 
   	}));
 
-  	describe('#template', function() {
+  	describe('Constructor', function() {
   		var json  = {
 			'properties' : {
 				'title' : 'prova2',

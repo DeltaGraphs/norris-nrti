@@ -20,7 +20,9 @@ angular.module('norris-nrti')
 .controller('BarChartController', ['$scope', '$location', 'BarChartFactory', 'BarChartFlowFactory', 'SocketServicesFactory', function($scope, $location, BarChartFactory, BarChartFlowFactory, SocketServicesFactory){
 
 	var socket;
-	var barChart = BarChartFactory.build(); // crea un bar chart di default
+
+	// crea un bar chart di default
+	var barChart = BarChartFactory.build();
 	$scope.barChart = barChart;
 
 	// funzione che connette il socket all'url e chiama la funzione listenOnEvent

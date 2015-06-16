@@ -34,20 +34,15 @@ angular.module('norris-nrti')
 		}
 	}
 
-	Flow.prototype = {
-
-		constructor : Flow,
-
-		updateParameters : function(info) { //abstract
-			if (info !== undefined) {
-				if (info.name !== undefined){
-					this._name = info.name;
-				}
+	Flow.prototype.updateParameters = function(info) { //abstract
+		if (info !== undefined) {
+			if (info.name !== undefined){
+				this._name = info.name;
 			}
-		},
-		getName : function() {
-			return this._name;
 		}
+	};
+	Flow.prototype.getName = function() {
+		return this._name;
 	};
 
 	function FlowFactory(){}

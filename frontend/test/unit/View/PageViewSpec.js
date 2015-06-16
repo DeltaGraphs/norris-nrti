@@ -38,7 +38,7 @@ describe('PageView', function(){
 
   	}));
 
-  	describe('#template', function() {
+  	describe('Constructor', function() {
 		it('works fine', function() {
 			var map = element.find('map-chart');
 			var line = element.find('line-chart');

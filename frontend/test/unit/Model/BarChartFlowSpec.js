@@ -136,7 +136,7 @@ describe('BarChartFlow', function(){
 
 	});
 
-	describe('#inizializeData', function(){
+	describe('#initializeData', function(){
 		var data = {
 			'records' : [
 				{},

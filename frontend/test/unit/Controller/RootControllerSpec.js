@@ -24,7 +24,7 @@ describe('RootController', function(){
         controller = $controller('RootController', { $scope : scope });
     }));
 
-	describe('#watch', function(){
+	describe('Constructor', function(){
 		it('works fine', function(){
 			expect(scope.url).toBe('');
 			scope.$apply('url="localhost/page/map"');

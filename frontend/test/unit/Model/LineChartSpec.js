@@ -297,7 +297,7 @@ describe('LineChart', function(){
 
 	});
 
-	describe('#inizializeData', function(){
+	describe('#initializeData', function(){
 
 		var data = [
 			{

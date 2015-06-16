@@ -45,7 +45,7 @@ describe('UrlProvider', function(){
 
 	});
 
-	describe('#Update', function(){
+	describe('#setUrl', function(){
 
 		var urlProvider;
 
