@@ -59,7 +59,7 @@ console.log('Pagina inserita: '+page2);
 // INSERT EMPTY GRAPH FOR BALKY
 /////////////////////////////////////////////////
 page2.createBarChart({
-    ID: 'bar1',
+    ID: 'empty',
     title: 'Empty Bar Chart',
     barOrientation: 'H'
 });
