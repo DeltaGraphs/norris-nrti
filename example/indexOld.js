@@ -72,8 +72,8 @@ console.log('Grafico vuoto inserito');
 var mapChart=page1.createMapChart({
     ID: 'map1',
     title: 'APS',
-    height: 350,
-    width: 500,
+    height: 600,
+    width: 1000,
     enableLegend: true,
     legend: {
         position: 'NW',
@@ -89,7 +89,7 @@ var mapChart=page1.createMapChart({
 });
 console.log('Grafico inserito: '+mapChart);
 
-//var legendPositions = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
+var legendPositions = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
 
 var mapChartFlow=mapChart.createMapChartFlow({
     ID:'flow1',
@@ -211,8 +211,8 @@ var myVar=setInterval(function () {repeat();}, 5000);
 var lineChart=page1.createLineChart({
     ID: 'line1',
     title: 'LINEE',
-    height: 350,
-    width: 500,
+    height: 600,
+    width: 1000,
     enableLegend: true,
     legend: {
         position: 'NE',
@@ -304,7 +304,7 @@ var repeatLine=function(){
     if (index2>=12){
         index2=0;
         var vF = lineChart.getProperties().viewFinder;
-        //lineChart.updateProperties({viewFinder:!vF, verticalGrid:true, horizontalGrid:true, legendOnPoint: true, legend:{position:'NE'},interpolation:'linear'});
+        lineChart.updateProperties({viewFinder:!vF, verticalGrid:true, horizontalGrid:true, legendOnPoint: true, legend:{position:'NE'},interpolation:'linear'});
         lineChart.deleteAllFlows();
     }else{
         lineChartFlow.addRecord(lineData[index2-1]);
@@ -317,7 +317,7 @@ var myVar2=setInterval(function () {repeatLine();}, 5000);
 /////////////////////////////////////////////////
 //TEST BAR CHART
 /////////////////////////////////////////////////
-var barChart=page2.createBarChart({
+var barChart=page1.createBarChart({
     ID: 'bar1',
     title: 'BARRE',
     height: 600,
@@ -392,12 +392,12 @@ var repeatBar=function(){
     }
     console.log('barchart index: '+index3);
     index3++;
-    /*if (index3==3){
+    if (index3==3){
         barChart.updateProperties({barOrientation:'H'});
-    }*/
+    }
     if (index3>4){
         index3=0;
-        //barChart.updateProperties({barOrientation:'V'});
+        barChart.updateProperties({barOrientation:'V'});
         barChart.deleteAllFlows();
     }else{
         barChartFlow1.updateRecord(index3, {tempo: index3+1, pressione: index3+1});
@@ -411,7 +411,7 @@ var myVar3=setInterval(function () {repeatBar();}, 5000);
 /////////////////////////////////////////////////
 //TEST TABLE
 /////////////////////////////////////////////////
-var table=page2.createTable({
+var table=page1.createTable({
     ID: 'table1',
     title: 'Tabella',
     height: 600,
@@ -458,13 +458,13 @@ var repeatTable=function(){
     }
     console.log('table index: '+index4);
     index4++;
-    /*if(index4===15) {
+    if(index4===15) {
         table.updateProperties({addRowOn:'top'});
-    }*/
+    }
     if (index4>30){
         index4=0;
         table.deleteAllFlows();
-        //table.updateProperties({addRowOn:'bottom'});
+        table.updateProperties({addRowOn:'bottom'});
     }else{
         tableFlow1.addRecord(data2[index4]);
     }
