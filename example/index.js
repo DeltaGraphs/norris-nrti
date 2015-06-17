@@ -89,7 +89,7 @@ var mapChart=page1.createMapChart({
 });
 console.log('Grafico inserito: '+mapChart);
 
-//var legendPositions = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
+var legendPositions = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
 
 var mapChartFlow=mapChart.createMapChartFlow({
     ID:'flow1',
