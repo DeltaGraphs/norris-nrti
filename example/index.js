@@ -72,8 +72,8 @@ console.log('Grafico vuoto inserito');*/
 var mapChart=page1.createMapChart({
     ID: 'map1',
     title: 'APS',
-    height: 350,
-    width: 500,
+    height: 600,
+    width: 1000,
     enableLegend: true,
     legend: {
         position: 'NE',
@@ -211,8 +211,8 @@ var myVar=setInterval(function () {repeat();}, 5000);
 var lineChart=page1.createLineChart({
     ID: 'line1',
     title: 'LINEE',
-    height: 350,
-    width: 500,
+    height: 600,
+    width: 1000,
     enableLegend: true,
     legend: {
         position: 'NE',
@@ -426,20 +426,20 @@ var table=page2.createTable({
     },
     appearance: {
         border: {
-            color: '#00AA00', //#xxxxxx,
+            color: '#ECECEA', //#xxxxxx,
             width: 1 // > 0
         },
         rowEven: {
-            textColor: ['#00AB00', '#AA0000'],
-            backgroundColor: ['#FAAFFF', '#FFFAFF']
+            textColor: ['#74AFAD', '#74AFAD'],
+            backgroundColor: ['#ECECEA', '#ECECEA']
         },
         rowOdd: {
-            textColor: ['#BB0000', '#BB0000'],
-            backgroundColor: ['#AAFFFF', '#FAAAFF']
+            textColor: ['#ECECEA', '#ECECEA'],
+            backgroundColor: ['#74AFAD', '#74AFAD']
         },
         headers: {
-            textColor: ['#00CC00', '#00CC00'],
-            backgroundColor: ['#FFAAFF', '#FABCDF']
+            textColor: ['#ECECEA', '#ECECEA'],
+            backgroundColor: ['#558C89', '#558C89']
         }
     },
 });
