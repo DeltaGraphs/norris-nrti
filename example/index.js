@@ -58,12 +58,12 @@ console.log('Pagina inserita: '+page2);
 /////////////////////////////////////////////////
 // INSERT EMPTY GRAPH FOR BALKY
 /////////////////////////////////////////////////
-page2.createBarChart({
+/*page2.createBarChart({
     ID: 'empty',
     title: 'Empty Bar Chart',
     barOrientation: 'H'
 });
-console.log('Grafico vuoto inserito');
+console.log('Grafico vuoto inserito');*/
 
 
 /////////////////////////////////////////////////
