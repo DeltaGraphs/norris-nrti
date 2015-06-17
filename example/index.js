@@ -42,7 +42,7 @@ var page1=norris.createPage({
     ID:'page1',
     name: 'Pagina 1',
     description: 'Questa è una bella pagina',
-    graphsPerRow: 2,
+    graphsPerRow: 1,
     graphsPerCol: 10
 });
 console.log('Pagina inserita: '+page1);
@@ -50,7 +50,7 @@ var page2=norris.createPage({
     ID:'page2',
     name: 'Pagina 2',
     description: 'Questa è una bella pagina 2',
-    graphsPerRow: 2,
+    graphsPerRow: 1,
     graphsPerCol: 10
 });
 console.log('Pagina inserita: '+page2);
@@ -76,7 +76,7 @@ var mapChart=page1.createMapChart({
     width: 500,
     enableLegend: true,
     legend: {
-        position: 'NW',
+        position: 'NE',
         fontColor: '#00AA00',
         backgroundColor: '#FFAAFF'
     },
@@ -189,18 +189,18 @@ var data2=[{'0':875,'IdMezzo':875,'1':45.42533493042,'WGS84Fi':45.42533493042,'2
 var index=0;
 var repeat=function(){
     mapChartFlow.updateMovie(data[index]);
-    if(index%4===0) {
+    /*if(index%4===0) {
         mapChart.updateProperties({legend: {position:legendPositions[(index/4)%8]}});
-    }
+    }*/
     console.log('map index:'+index);
     index++;
     if (index>30){
         index=0;
-        mapChart.updateProperties({mapType:'roadmap', legendOnPoint:true});
+        //mapChart.updateProperties({mapType:'roadmap', legendOnPoint:true});
     }
-    else if(index===15) {
+    /*else if(index===15) {
         mapChart.updateProperties({mapType:'terrain', legendOnPoint:false});
-    }
+    }*/
 };
 
 var myVar=setInterval(function () {repeat();}, 5000);
