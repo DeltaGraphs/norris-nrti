@@ -17,7 +17,7 @@
 		<error line="23" column="45" severity="warning" message="&apos;oldValue&apos; is defined but never used." source="jshint.W098" />
 	</file>
 	<file name="app/View/GraphsView/BarChartView.js">
-		<error line="126" column="19" severity="warning" message="Expected an assignment or function call and instead saw an expression." source="jshint.W030" />
+		<error line="128" column="19" severity="warning" message="Expected an assignment or function call and instead saw an expression." source="jshint.W030" />
 	</file>
 	<file name="app/View/GraphsView/LineChartView.js">
 		<error line="119" column="19" severity="warning" message="Expected an assignment or function call and instead saw an expression." source="jshint.W030" />
