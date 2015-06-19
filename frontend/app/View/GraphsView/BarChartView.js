@@ -9,6 +9,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 1.0.1         2015-06-19  Maria Giovanna Chinellato   Fix svg tag     
+*
 * 1.0.0         2015-06-13  Maria Giovanna Chinellato   Tested     
 *
 * 0.2.0         2015-06-10  Francesco Rossetto          Add init, setData and legend function    
@@ -81,18 +83,18 @@ angular.module('norris-nrti')
                                 'xaxisticksformat="xAxisTickFormatFunction()" showxaxis="true" showyaxis="true" ' +
                                 'rotatelabels="-90" interactive="true" tooltips="'+ onPoint +'" showlegend="' + legend + '" ' +
                                 'xaxislabel="'+ scope.$parent.barChart.getX().getName() +'" ' +
-                                'showcontrols="'+ control +'" color="colorFunction()" ' +
-                                'width="'+ scope.$parent.barChart.getWidth() +'" height="'+ scope.$parent.barChart.getHeight() +'">' +
-                                '<svg></svg></nvd3-multi-bar-chart></div>';
+                                'showcontrols="'+ control +'" color="colorFunction()">' +
+                                //'width="'+ scope.$parent.barChart.getWidth() +'" height="'+ scope.$parent.barChart.getHeight() +'">' +
+                                '<svg style="width: '+ scope.$parent.barChart.getWidth() +'; height: '+ scope.$parent.barChart.getHeight() +';"></svg></nvd3-multi-bar-chart></div>';
                 }else if(scope.$parent.barChart.getBarOrientation() === 'H'){
                     barchart = '<div style="position: relative;"><div class="graphtitle">'+ scope.$parent.barChart.getTitle() +'</div>' +
                                 '<nvd3-multi-bar-horizontal-chart data="data" nodata=" " id="'+ id +'" ' +
                                 'xaxisticksformat="xAxisTickFormatFunction()" yaxistickformat="yAxisTickFormatFunction()" showxaxis="true" showyaxis="true" ' +
                                 'rotatelabels="-90" interactive="true" tooltips="'+ onPoint +'" showlegend="' + legend + '" ' +
                                 'xaxislabel="'+ scope.$parent.barChart.getX().getName() +'" ' +
-                                'showcontrols="'+ control +'" color="colorFunction()" ' +
-                                'width="'+ scope.$parent.barChart.getWidth() +'" height="'+ scope.$parent.barChart.getHeight() +'">' +
-                                '<svg></svg></nvd3-multi-bar-horizontal-chart></div>';
+                                'showcontrols="'+ control +'" color="colorFunction()">' +
+                                //'width="'+ scope.$parent.barChart.getWidth() +'" height="'+ scope.$parent.barChart.getHeight() +'">' +
+                                '<svg style="width: '+ scope.$parent.barChart.getWidth() +'; height: '+ scope.$parent.barChart.getHeight() +';"></svg></nvd3-multi-bar-horizontal-chart></div>';
                 }
                 
                 var compiled = $compile(barchart)(scope);
