@@ -389,7 +389,7 @@ angular.module(&#039;norris-nrti&#039;)
                             square.setAttribute(&#039;style&#039;, &#039;float: left; height: 15px; width: 15px; background-color: &#039; + scope.$parent.mapChart.getFlowList()[i].flow.getTrace().strokeColor);
                             var spanText = document.createElement(&#039;div&#039;);
                             var text = document.createTextNode(&#039;\u00A0\u00A0\u00A0\u00A0&#039; + scope.$parent.mapChart.getFlowList()[i].flow.getName());
-                            spanText.setAttribute(&#039;style&#039;, &#039;color: &#039;+ scope.$parent.mapChart.getLegend().getFontColor() + &#039;;&#039;);
+                            spanText.setAttribute(&#039;style&#039;, &#039;width: 100px; color: &#039;+ scope.$parent.mapChart.getLegend().getFontColor() + &#039;;&#039;);
                             spanText.appendChild(text);
                             div.appendChild(square);
                             div.appendChild(spanText);
