@@ -42,7 +42,7 @@ var page1=norris.createPage({
     ID:'page1',
     name: 'Pagina 1',
     description: 'Questa è una bella pagina',
-    graphsPerRow: 1,
+    graphsPerRow: 2,
     graphsPerCol: 10
 });
 console.log('Pagina inserita: '+page1);
@@ -50,7 +50,7 @@ var page2=norris.createPage({
     ID:'page2',
     name: 'Pagina 2',
     description: 'Questa è una bella pagina 2',
-    graphsPerRow: 1,
+    graphsPerRow: 2,
     graphsPerCol: 10
 });
 console.log('Pagina inserita: '+page2);
@@ -58,12 +58,12 @@ console.log('Pagina inserita: '+page2);
 /////////////////////////////////////////////////
 // INSERT EMPTY GRAPH FOR BALKY
 /////////////////////////////////////////////////
-/*page2.createBarChart({
-    ID: 'empty',
+page2.createBarChart({
+    ID: 'bar1',
     title: 'Empty Bar Chart',
     barOrientation: 'H'
 });
-console.log('Grafico vuoto inserito');*/
+console.log('Grafico vuoto inserito');
 
 
 /////////////////////////////////////////////////
@@ -76,7 +76,7 @@ var mapChart=page1.createMapChart({
     width: 1000,
     enableLegend: true,
     legend: {
-        position: 'NE',
+        position: 'NW',
         fontColor: '#00AA00',
         backgroundColor: '#FFAAFF'
     },
@@ -85,7 +85,7 @@ var mapChart=page1.createMapChart({
     mapType: 'roadmap',
     mapWidth: 2000,
     mapHeight: 2000,
-    legendOnPoint: false
+    legendOnPoint: true
 });
 console.log('Grafico inserito: '+mapChart);
 
@@ -151,56 +151,56 @@ var data=[[{'0':875,'IdMezzo':875,'1':45.42533493042,'WGS84Fi':45.42533493042,'2
 [{'0':880,'IdMezzo':880,'1':45.433990478516,'WGS84Fi':45.433990478516,'2':11.916083335876,'WGS84La':11.916083335876,'3':75,'Girometro':75,'4':0,'StatoPorte':0,'capolinea':'Capolinea Torre'},{'0':867,'IdMezzo':867,'1':45.37548828125,'WGS84Fi':45.37548828125,'2':11.847896575928,'WGS84La':11.847896575928,'3':54,'Girometro':54,'4':0,'StatoPorte':0,'capolinea':'Capolinea Torre'},{'0':805,'IdMezzo':805,'1':45.415977478027,'WGS84Fi':45.415977478027,'2':11.882206916809,'WGS84La':11.882206916809,'3':17,'Girometro':17,'4':0,'StatoPorte':0},{'0':837,'IdMezzo':837,'1':45.425231933594,'WGS84Fi':45.425231933594,'2':11.901452064514,'WGS84La':11.901452064514,'3':14,'Girometro':14,'4':0,'StatoPorte':0,'capolinea':'Capolinea Torre'},{'0':875,'IdMezzo':875,'1':45.424133300781,'WGS84Fi':45.424133300781,'2':11.884558677673,'WGS84La':11.884558677673,'3':246,'Girometro':246,'4':0,'StatoPorte':0,'capolinea':'Capolinea Giarre Via Olmi'},{'0':835,'IdMezzo':835,'1':45.391250610352,'WGS84Fi':45.391250610352,'2':11.870534896851,'WGS84La':11.870534896851,'3':260,'Girometro':260,'4':0,'StatoPorte':0,'capolinea':'Capolinea Mandria via Monselice'},{'0':814,'IdMezzo':814,'1':45.410614013672,'WGS84Fi':45.410614013672,'2':11.877920150757,'WGS84La':11.877920150757,'3':322,'Girometro':322,'4':0,'StatoPorte':0,'capolinea':'Capolinea Mandria via Monselice'},{'0':845,'IdMezzo':845,'1':45.4006690979,'WGS84Fi':45.4006690979,'2':11.877795219421,'WGS84La':11.877795219421,'3':239,'Girometro':239,'4':0,'StatoPorte':0,'capolinea':'Capolinea Torre'}]
 ];
 
-var data2=[{'0':875,'IdMezzo':875,'1':45.42533493042,'WGS84Fi':45.42533493042,'2':11.902134895325,'WGS84La':11.902134895325, appearance:[{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'}]},
-{'0':837,'IdMezzo':837,'1':45.39281463623,'WGS84Fi':45.39281463623,'2':11.871248245239,'WGS84La':11.871248245239, appearance:[{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'}]},
-{'0':875,'IdMezzo':875,'1':45.426074981689,'WGS84Fi':45.426074981689,'2':11.907616615295,'WGS84La':11.907616615295, appearance:[{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'}]},
-{'0':805,'IdMezzo':805,'1':45.386032104492,'WGS84Fi':45.386032104492,'2':11.865413665771,'WGS84La':11.865413665771, appearance:[{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'}]},
-{'0':837,'IdMezzo':837,'1':45.397495269775,'WGS84Fi':45.397495269775,'2':11.874231338501,'WGS84La':11.874231338501, appearance:[{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'}]},
-{'0':837,'IdMezzo':837,'1':45.397689819336,'WGS84Fi':45.397689819336,'2':11.874346733093,'WGS84La':11.874346733093, appearance:[{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'}]},
-{'0':880,'IdMezzo':880,'1':45.412399291992,'WGS84Fi':45.412399291992,'2':11.878684997559,'WGS84La':11.878684997559, appearance:[{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'}]},
-{'0':875,'IdMezzo':875,'1':45.431159973145,'WGS84Fi':45.431159973145,'2':11.914177894592,'WGS84La':11.914177894592, appearance:[{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'}]},
-{'0':805,'IdMezzo':805,'1':45.387706756592,'WGS84Fi':45.387706756592,'2':11.868689537048,'WGS84La':11.868689537048, appearance:[{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'}]},
-{'0':814,'IdMezzo':814,'1':45.43616104126,'WGS84Fi':45.43616104126,'2':11.917216300964,'WGS84La':11.917216300964, appearance:[{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'}]},
-{'0':814,'IdMezzo':814,'1':45.43616104126,'WGS84Fi':45.43616104126,'2':11.917216300964,'WGS84La':11.917216300964, appearance:[{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'}]},
-{'0':875,'IdMezzo':875,'1':45.43480682373,'WGS84Fi':45.43480682373,'2':11.916501998901,'WGS84La':11.916501998901, appearance:[{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'}]},
-{'0':837,'IdMezzo':837,'1':45.399394989014,'WGS84Fi':45.399394989014,'2':11.877456665039,'WGS84La':11.877456665039, appearance:[{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'}]},
-{'0':835,'IdMezzo':835,'1':45.420070648193,'WGS84Fi':45.420070648193,'2':11.878535270691,'WGS84La':11.878535270691, appearance:[{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'}]},
-{'0':867,'IdMezzo':867,'1':45.389148712158,'WGS84Fi':45.389148712158,'2':11.869828224182,'WGS84La':11.869828224182, appearance:[{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'}]},
-{'0':814,'IdMezzo':814,'1':45.434585571289,'WGS84Fi':45.434585571289,'2':11.913011550903,'WGS84La':11.913011550903, appearance:[{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'}]},
-{'0':867,'IdMezzo':867,'1':45.386985778809,'WGS84Fi':45.386985778809,'2':11.86462688446,'WGS84La':11.86462688446, appearance:[{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'}]},
-{'0':835,'IdMezzo':835,'1':45.413475036621,'WGS84Fi':45.413475036621,'2':11.87677192688,'WGS84La':11.87677192688, appearance:[{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'}]},
-{'0':814,'IdMezzo':814,'1':45.425636291504,'WGS84Fi':45.425636291504,'2':11.903347969055,'WGS84La':11.903347969055, appearance:[{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'}]},
-{'0':867,'IdMezzo':867,'1':45.379734039307,'WGS84Fi':45.379734039307,'2':11.852473258972,'WGS84La':11.852473258972, appearance:[{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'}]},
-{'0':814,'IdMezzo':814,'1':45.424877166748,'WGS84Fi':45.424877166748,'2':11.897101402283,'WGS84La':11.897101402283, appearance:[{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'}]},
-{'0':814,'IdMezzo':814,'1':45.423728942871,'WGS84Fi':45.423728942871,'2':11.890828132629,'WGS84La':11.890828132629, appearance:[{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'}]},
-{'0':835,'IdMezzo':835,'1':45.406368255615,'WGS84Fi':45.406368255615,'2':11.877844810486,'WGS84La':11.877844810486, appearance:[{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'}]},
-{'0':835,'IdMezzo':835,'1':45.406368255615,'WGS84Fi':45.406368255615,'2':11.877844810486,'WGS84La':11.877844810486, appearance:[{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'}]},
-{'0':814,'IdMezzo':814,'1':45.423042297363,'WGS84Fi':45.423042297363,'2':11.88371181488,'WGS84La':11.88371181488, appearance:[{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'}]},
-{'0':875,'IdMezzo':875,'1':45.427635192871,'WGS84Fi':45.427635192871,'2':11.913996696472,'WGS84La':11.913996696472, appearance:[{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'}]},
-{'0':814,'IdMezzo':814,'1':45.42191696167,'WGS84Fi':45.42191696167,'2':11.882615089417,'WGS84La':11.882615089417, appearance:[{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'}]},
-{'0':805,'IdMezzo':805,'1':45.414463043213,'WGS84Fi':45.414463043213,'2':11.875088691711,'WGS84La':11.875088691711, appearance:[{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'}]},
-{'0':814,'IdMezzo':814,'1':45.420356750488,'WGS84Fi':45.420356750488,'2':11.879591941833,'WGS84La':11.879591941833, appearance:[{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'}]},
-{'0':875,'IdMezzo':875,'1':45.425220489502,'WGS84Fi':45.425220489502,'2':11.897508621216,'WGS84La':11.897508621216, appearance:[{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'}]},
-{'0':814,'IdMezzo':814,'1':45.414813995361,'WGS84Fi':45.414813995361,'2':11.874758720398,'WGS84La':11.874758720398, appearance:[{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'}]},
-{'0':805,'IdMezzo':805,'1':45.416721343994,'WGS84Fi':45.416721343994,'2':11.87973690033,'WGS84La':11.87973690033, appearance:[{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'}]},
-{'0':880,'IdMezzo':880,'1':45.433990478516,'WGS84Fi':45.433990478516,'2':11.916083335876,'WGS84La':11.916083335876, appearance:[{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'},{bg: '#74AFAD',text: '#ECECEA'}]},
+var data2=[{'0':875,'IdMezzo':875,'1':45.42533493042,'WGS84Fi':45.42533493042,'2':11.902134895325,'WGS84La':11.902134895325, appearance:[{bg: '#FFAAFF',text: '#FFAAAA'},{bg: '#FFAAFF',text: '#FFABBA'},{bg: '#FFAAFF',text: '#FFAACC'}]},
+{'0':837,'IdMezzo':837,'1':45.39281463623,'WGS84Fi':45.39281463623,'2':11.871248245239,'WGS84La':11.871248245239, appearance:[{bg: '#FFAAFF',text: '#FFAAAA'},{bg: '#FFAAFF',text: '#FFABBA'},{bg: '#FFAAFF',text: '#FFAACC'}]},
+{'0':875,'IdMezzo':875,'1':45.426074981689,'WGS84Fi':45.426074981689,'2':11.907616615295,'WGS84La':11.907616615295, appearance:[{bg: '#FFAAFF',text: '#FFAAAA'},{bg: '#FFAAFF',text: '#FFABBA'},{bg: '#FFAAFF',text: '#FFAACC'}]},
+{'0':805,'IdMezzo':805,'1':45.386032104492,'WGS84Fi':45.386032104492,'2':11.865413665771,'WGS84La':11.865413665771, appearance:[{bg: '#FFAAFF',text: '#FFAAAA'},{bg: '#FFAAFF',text: '#FFABBA'},{bg: '#FFAAFF',text: '#FFAACC'}]},
+{'0':837,'IdMezzo':837,'1':45.397495269775,'WGS84Fi':45.397495269775,'2':11.874231338501,'WGS84La':11.874231338501, appearance:[{bg: '#FFAAFF',text: '#FFAAAA'},{bg: '#FFAAFF',text: '#FFABBA'},{bg: '#FFAAFF',text: '#FFAACC'}]},
+{'0':837,'IdMezzo':837,'1':45.397689819336,'WGS84Fi':45.397689819336,'2':11.874346733093,'WGS84La':11.874346733093, appearance:[{bg: '#FFAAFF',text: '#FFAAAA'},{bg: '#FFAAFF',text: '#FFABBA'},{bg: '#FFAAFF',text: '#FFAACC'}]},
+{'0':880,'IdMezzo':880,'1':45.412399291992,'WGS84Fi':45.412399291992,'2':11.878684997559,'WGS84La':11.878684997559, appearance:[{bg: '#FFAAFF',text: '#FFAAAA'},{bg: '#FFAAFF',text: '#FFABBA'},{bg: '#FFAAFF',text: '#FFAACC'}]},
+{'0':875,'IdMezzo':875,'1':45.431159973145,'WGS84Fi':45.431159973145,'2':11.914177894592,'WGS84La':11.914177894592, appearance:[{bg: '#FFAAFF',text: '#FFAAAA'},{bg: '#FFAAFF',text: '#FFABBA'},{bg: '#FFAAFF',text: '#FFAACC'}]},
+{'0':805,'IdMezzo':805,'1':45.387706756592,'WGS84Fi':45.387706756592,'2':11.868689537048,'WGS84La':11.868689537048, appearance:[{bg: '#FFAAFF',text: '#FFAAAA'},{bg: '#FFAAFF',text: '#FFABBA'},{bg: '#FFAAFF',text: '#FFAACC'}]},
+{'0':814,'IdMezzo':814,'1':45.43616104126,'WGS84Fi':45.43616104126,'2':11.917216300964,'WGS84La':11.917216300964, appearance:[{bg: '#FFAAFF',text: '#FFAAAA'},{bg: '#FFAAFF',text: '#FFABBA'},{bg: '#FFAAFF',text: '#FFAACC'}]},
+{'0':814,'IdMezzo':814,'1':45.43616104126,'WGS84Fi':45.43616104126,'2':11.917216300964,'WGS84La':11.917216300964, appearance:[{bg: '#FFAAFF',text: '#FFAAAA'},{bg: '#FFAAFF',text: '#FFABBA'},{bg: '#FFAAFF',text: '#FFAACC'}]},
+{'0':875,'IdMezzo':875,'1':45.43480682373,'WGS84Fi':45.43480682373,'2':11.916501998901,'WGS84La':11.916501998901, appearance:[{bg: '#FFAAFF',text: '#FFAAAA'},{bg: '#FFAAFF',text: '#FFABBA'},{bg: '#FFAAFF',text: '#FFAACC'}]},
+{'0':837,'IdMezzo':837,'1':45.399394989014,'WGS84Fi':45.399394989014,'2':11.877456665039,'WGS84La':11.877456665039, appearance:[{bg: '#FFAAFF',text: '#FFAAAA'},{bg: '#FFAAFF',text: '#FFABBA'},{bg: '#FFAAFF',text: '#FFAACC'}]},
+{'0':835,'IdMezzo':835,'1':45.420070648193,'WGS84Fi':45.420070648193,'2':11.878535270691,'WGS84La':11.878535270691, appearance:[{bg: '#FFAAFF',text: '#FFAAAA'},{bg: '#FFAAFF',text: '#FFABBA'},{bg: '#FFAAFF',text: '#FFAACC'}]},
+{'0':867,'IdMezzo':867,'1':45.389148712158,'WGS84Fi':45.389148712158,'2':11.869828224182,'WGS84La':11.869828224182, appearance:[{bg: '#FFAAFF',text: '#FFAAAA'},{bg: '#FFAAFF',text: '#FFABBA'},{bg: '#FFAAFF',text: '#FFAACC'}]},
+{'0':814,'IdMezzo':814,'1':45.434585571289,'WGS84Fi':45.434585571289,'2':11.913011550903,'WGS84La':11.913011550903, appearance:[{bg: '#FFAAFF',text: '#FFAAAA'},{bg: '#FFAAFF',text: '#FFABBA'},{bg: '#FFAAFF',text: '#FFAACC'}]},
+{'0':867,'IdMezzo':867,'1':45.386985778809,'WGS84Fi':45.386985778809,'2':11.86462688446,'WGS84La':11.86462688446, appearance:[{bg: '#FFAAFF',text: '#FFAAAA'},{bg: '#FFAAFF',text: '#FFABBA'},{bg: '#FFAAFF',text: '#FFAACC'}]},
+{'0':835,'IdMezzo':835,'1':45.413475036621,'WGS84Fi':45.413475036621,'2':11.87677192688,'WGS84La':11.87677192688, appearance:[{bg: '#FFAAFF',text: '#FFAAAA'},{bg: '#FFAAFF',text: '#FFABBA'},{bg: '#FFAAFF',text: '#FFAACC'}]},
+{'0':814,'IdMezzo':814,'1':45.425636291504,'WGS84Fi':45.425636291504,'2':11.903347969055,'WGS84La':11.903347969055, appearance:[{bg: '#FFAAFF',text: '#FFAAAA'},{bg: '#FFAAFF',text: '#FFABBA'},{bg: '#FFAAFF',text: '#FFAACC'}]},
+{'0':867,'IdMezzo':867,'1':45.379734039307,'WGS84Fi':45.379734039307,'2':11.852473258972,'WGS84La':11.852473258972, appearance:[{bg: '#FFAAFF',text: '#FFAAAA'},{bg: '#FFAAFF',text: '#FFABBA'},{bg: '#FFAAFF',text: '#FFAACC'}]},
+{'0':814,'IdMezzo':814,'1':45.424877166748,'WGS84Fi':45.424877166748,'2':11.897101402283,'WGS84La':11.897101402283, appearance:[{bg: '#FFAAFF',text: '#FFAAAA'},{bg: '#FFAAFF',text: '#FFABBA'},{bg: '#FFAAFF',text: '#FFAACC'}]},
+{'0':814,'IdMezzo':814,'1':45.423728942871,'WGS84Fi':45.423728942871,'2':11.890828132629,'WGS84La':11.890828132629, appearance:[{bg: '#FFAAFF',text: '#FFAAAA'},{bg: '#FFAAFF',text: '#FFABBA'},{bg: '#FFAAFF',text: '#FFAACC'}]},
+{'0':835,'IdMezzo':835,'1':45.406368255615,'WGS84Fi':45.406368255615,'2':11.877844810486,'WGS84La':11.877844810486, appearance:[{bg: '#FFAAFF',text: '#FFAAAA'},{bg: '#FFAAFF',text: '#FFABBA'},{bg: '#FFAAFF',text: '#FFAACC'}]},
+{'0':835,'IdMezzo':835,'1':45.406368255615,'WGS84Fi':45.406368255615,'2':11.877844810486,'WGS84La':11.877844810486, appearance:[{bg: '#FFAAFF',text: '#FFAAAA'},{bg: '#FFAAFF',text: '#FFABBA'},{bg: '#FFAAFF',text: '#FFAACC'}]},
+{'0':814,'IdMezzo':814,'1':45.423042297363,'WGS84Fi':45.423042297363,'2':11.88371181488,'WGS84La':11.88371181488, appearance:[{bg: '#FFAAFF',text: '#FFAAAA'},{bg: '#FFAAFF',text: '#FFABBA'},{bg: '#FFAAFF',text: '#FFAACC'}]},
+{'0':875,'IdMezzo':875,'1':45.427635192871,'WGS84Fi':45.427635192871,'2':11.913996696472,'WGS84La':11.913996696472, appearance:[{bg: '#FFAAFF',text: '#FFAAAA'},{bg: '#FFAAFF',text: '#FFABBA'},{bg: '#FFAAFF',text: '#FFAACC'}]},
+{'0':814,'IdMezzo':814,'1':45.42191696167,'WGS84Fi':45.42191696167,'2':11.882615089417,'WGS84La':11.882615089417, appearance:[{bg: '#FFAAFF',text: '#FFAAAA'},{bg: '#FFAAFF',text: '#FFABBA'},{bg: '#FFAAFF',text: '#FFAACC'}]},
+{'0':805,'IdMezzo':805,'1':45.414463043213,'WGS84Fi':45.414463043213,'2':11.875088691711,'WGS84La':11.875088691711, appearance:[{bg: '#FFAAFF',text: '#FFAAAA'},{bg: '#FFAAFF',text: '#FFABBA'},{bg: '#FFAAFF',text: '#FFAACC'}]},
+{'0':814,'IdMezzo':814,'1':45.420356750488,'WGS84Fi':45.420356750488,'2':11.879591941833,'WGS84La':11.879591941833, appearance:[{bg: '#FFAAFF',text: '#FFAAAA'},{bg: '#FFAAFF',text: '#FFABBA'},{bg: '#FFAAFF',text: '#FFAACC'}]},
+{'0':875,'IdMezzo':875,'1':45.425220489502,'WGS84Fi':45.425220489502,'2':11.897508621216,'WGS84La':11.897508621216, appearance:[{bg: '#FFAAFF',text: '#FFAAAA'},{bg: '#FFAAFF',text: '#FFABBA'},{bg: '#FFAAFF',text: '#FFAACC'}]},
+{'0':814,'IdMezzo':814,'1':45.414813995361,'WGS84Fi':45.414813995361,'2':11.874758720398,'WGS84La':11.874758720398, appearance:[{bg: '#FFAAFF',text: '#FFAAAA'},{bg: '#FFAAFF',text: '#FFABBA'},{bg: '#FFAAFF',text: '#FFAACC'}]},
+{'0':805,'IdMezzo':805,'1':45.416721343994,'WGS84Fi':45.416721343994,'2':11.87973690033,'WGS84La':11.87973690033, appearance:[{bg: '#FFAAFF',text: '#FFAAAA'},{bg: '#FFAAFF',text: '#FFABBA'},{bg: '#FFAAFF',text: '#FFAACC'}]},
+{'0':880,'IdMezzo':880,'1':45.433990478516,'WGS84Fi':45.433990478516,'2':11.916083335876,'WGS84La':11.916083335876, appearance:[{bg: '#FFAAFF',text: '#FFAAAA'},{bg: '#FFAAFF',text: '#FFABBA'},{bg: '#FFAAFF',text: '#FFAACC'}]}
 ];
 
 var index=0;
 var repeat=function(){
     mapChartFlow.updateMovie(data[index]);
-    /*if(index%4===0) {
+    if(index%4===0) {
         mapChart.updateProperties({legend: {position:legendPositions[(index/4)%8]}});
-    }*/
+    }
     console.log('map index:'+index);
     index++;
     if (index>30){
         index=0;
-        //mapChart.updateProperties({mapType:'roadmap', legendOnPoint:true});
+        mapChart.updateProperties({mapType:'roadmap', legendOnPoint:true});
     }
-    /*else if(index===15) {
+    else if(index===15) {
         mapChart.updateProperties({mapType:'terrain', legendOnPoint:false});
-    }*/
+    }
 };
 
 var myVar=setInterval(function () {repeat();}, 5000);
@@ -304,7 +304,7 @@ var repeatLine=function(){
     if (index2>=12){
         index2=0;
         var vF = lineChart.getProperties().viewFinder;
-        //lineChart.updateProperties({viewFinder:!vF, verticalGrid:true, horizontalGrid:true, legendOnPoint: true, legend:{position:'NE'},interpolation:'linear'});
+        lineChart.updateProperties({viewFinder:!vF, verticalGrid:true, horizontalGrid:true, legendOnPoint: true, legend:{position:'NE'},interpolation:'linear'});
         lineChart.deleteAllFlows();
     }else{
         lineChartFlow.addRecord(lineData[index2-1]);
@@ -317,7 +317,7 @@ var myVar2=setInterval(function () {repeatLine();}, 5000);
 /////////////////////////////////////////////////
 //TEST BAR CHART
 /////////////////////////////////////////////////
-var barChart=page2.createBarChart({
+var barChart=page1.createBarChart({
     ID: 'bar1',
     title: 'BARRE',
     height: 600,
@@ -392,12 +392,12 @@ var repeatBar=function(){
     }
     console.log('barchart index: '+index3);
     index3++;
-    /*if (index3==3){
+    if (index3==3){
         barChart.updateProperties({barOrientation:'H'});
-    }*/
+    }
     if (index3>4){
         index3=0;
-        //barChart.updateProperties({barOrientation:'V'});
+        barChart.updateProperties({barOrientation:'V'});
         barChart.deleteAllFlows();
     }else{
         barChartFlow1.updateRecord(index3, {tempo: index3+1, pressione: index3+1});
@@ -411,7 +411,7 @@ var myVar3=setInterval(function () {repeatBar();}, 5000);
 /////////////////////////////////////////////////
 //TEST TABLE
 /////////////////////////////////////////////////
-var table=page2.createTable({
+var table=page1.createTable({
     ID: 'table1',
     title: 'Tabella',
     height: 600,
@@ -426,20 +426,20 @@ var table=page2.createTable({
     },
     appearance: {
         border: {
-            color: '#ECECEA', //#xxxxxx,
+            color: '#00AA00', //#xxxxxx,
             width: 1 // > 0
         },
         rowEven: {
-            textColor: ['#74AFAD', '#74AFAD'],
-            backgroundColor: ['#ECECEA', '#ECECEA']
+            textColor: ['#00AB00', '#AA0000'],
+            backgroundColor: ['#FAAFFF', '#FFFAFF']
         },
         rowOdd: {
-            textColor: ['#ECECEA', '#ECECEA'],
-            backgroundColor: ['#74AFAD', '#74AFAD']
+            textColor: ['#BB0000', '#BB0000'],
+            backgroundColor: ['#AAFFFF', '#FAAAFF']
         },
         headers: {
-            textColor: ['#ECECEA', '#ECECEA'],
-            backgroundColor: ['#558C89', '#558C89']
+            textColor: ['#00CC00', '#00CC00'],
+            backgroundColor: ['#FFAAFF', '#FABCDF']
         }
     },
 });
@@ -458,13 +458,13 @@ var repeatTable=function(){
     }
     console.log('table index: '+index4);
     index4++;
-    /*if(index4===15) {
+    if(index4===15) {
         table.updateProperties({addRowOn:'top'});
-    }*/
+    }
     if (index4>30){
         index4=0;
         table.deleteAllFlows();
-        //table.updateProperties({addRowOn:'bottom'});
+        table.updateProperties({addRowOn:'bottom'});
     }else{
         tableFlow1.addRecord(data2[index4]);
     }
