@@ -6,6 +6,9 @@
 	<file name="app/Model/SocketServices.js">
 		<error line="23" column="22" severity="warning" message="&apos;io&apos; is not defined." source="jshint.W117" />
 	</file>
+	<file name="app/Controller/GraphsControllers/TableController.js">
+		<error line="31" column="9" severity="warning" message="&apos;count&apos; is defined but never used." source="jshint.W098" />
+	</file>
 	<file name="app/Controller/PagesControllers/PageController.js">
 		<error line="26" column="9" severity="warning" message="&apos;a&apos; is defined but never used." source="jshint.W098" />
 		<error line="30" column="9" severity="warning" message="&apos;b&apos; is defined but never used." source="jshint.W098" />
@@ -17,10 +20,10 @@
 		<error line="23" column="45" severity="warning" message="&apos;oldValue&apos; is defined but never used." source="jshint.W098" />
 	</file>
 	<file name="app/View/GraphsView/BarChartView.js">
-		<error line="128" column="19" severity="warning" message="Expected an assignment or function call and instead saw an expression." source="jshint.W030" />
+		<error line="137" column="19" severity="warning" message="Expected an assignment or function call and instead saw an expression." source="jshint.W030" />
 	</file>
 	<file name="app/View/GraphsView/LineChartView.js">
-		<error line="119" column="19" severity="warning" message="Expected an assignment or function call and instead saw an expression." source="jshint.W030" />
+		<error line="125" column="19" severity="warning" message="Expected an assignment or function call and instead saw an expression." source="jshint.W030" />
 	</file>
 	<file name="app/View/GraphsView/MapChartView.js">
 		<error line="91" column="34" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
@@ -74,34 +77,34 @@
 		<error line="308" column="9" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
 		<error line="314" column="9" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
 		<error line="316" column="5" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
-		<error line="1069" column="71" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
-		<error line="1071" column="29" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="1068" column="71" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="1070" column="29" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="1077" column="94" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
 		<error line="1078" column="94" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
-		<error line="1079" column="94" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
-		<error line="1082" column="107" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
-		<error line="1090" column="116" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
-		<error line="1096" column="37" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
-		<error line="1100" column="37" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
-		<error line="1104" column="37" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
-		<error line="1108" column="37" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
-		<error line="1112" column="37" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
-		<error line="1116" column="37" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
-		<error line="1120" column="37" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
-		<error line="1124" column="37" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
-		<error line="1128" column="37" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
-		<error line="1132" column="37" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
-		<error line="1136" column="37" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
-		<error line="1140" column="37" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
-		<error line="1146" column="49" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
-		<error line="1150" column="21" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
-		<error line="1152" column="14" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
-		<error line="1236" column="71" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
-		<error line="1238" column="29" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="1081" column="107" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="1089" column="116" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="1095" column="37" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="1099" column="37" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="1103" column="37" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="1107" column="37" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="1111" column="37" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="1115" column="37" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="1119" column="37" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="1123" column="37" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="1127" column="37" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="1131" column="37" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="1135" column="37" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="1139" column="37" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="1145" column="49" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="1149" column="21" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="1151" column="14" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="1235" column="71" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="1237" column="29" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="1244" column="94" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
 		<error line="1245" column="94" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
-		<error line="1246" column="94" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
-		<error line="1257" column="115" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
-		<error line="1267" column="37" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
-		<error line="1267" column="37" severity="error" message="Too many errors. (48% scanned)." source="jshint.E043" />
+		<error line="1256" column="115" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="1266" column="37" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
+		<error line="1266" column="37" severity="error" message="Too many errors. (48% scanned)." source="jshint.E043" />
 	</file>
 	<file name="app/View/maplabel-compiled.js">
 		<error line="18" column="1" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
