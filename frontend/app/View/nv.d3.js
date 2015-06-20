@@ -6331,7 +6331,7 @@ nv.models.lineWithFocusChart = function() {
     , dispatch = d3.dispatch('tooltipShow', 'tooltipHide', 'brush')
     , transitionDuration = 250
     ;
-    console.log('margin2 ' + JSON.stringify(margin2));
+    
   lines
     .clipEdge(true)
     ;
