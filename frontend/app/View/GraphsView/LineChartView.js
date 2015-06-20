@@ -39,6 +39,7 @@ angular.module('norris-nrti')
 
             scope.$parent.$watch('changedP', function(newValue, oldValue){
                 if (newValue !== oldValue) {
+                    element.empty();
                     scope.init(); // crea  il grafico chiamando la funzione apposita
                 }
             }, true);
@@ -49,14 +50,19 @@ angular.module('norris-nrti')
                 }
             }, true);
 
+            scope.$on('$destroy', function() {
+                for (var j=0; j<element.children().length; j++){
+                    var nvd3 = element.children()[j];
+                    nvd3.select( '*' ).remove();
+                }
+            }); 
+
             // inserisce il codice HTML che crea il grafico desiderato
             scope.init = function(){
 
                 var linechart, legend, onPoint;
                 var str = scope.url.split('/');
                 var id = str[str.length-1];
-
-                element.empty();
 
                 if (scope.$parent.lineChart.getLegend() !== null){
                     legend = true;

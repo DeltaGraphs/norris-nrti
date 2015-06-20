@@ -43,6 +43,7 @@ angular.module('norris-nrti')
 
             scope.$parent.$watch('changedP', function(newValue, oldValue){
                 if (newValue !== oldValue) {
+                    element.empty();
                     scope.init(); // crea  il grafico chiamando la funzione apposita
                 }
             }, true);
@@ -53,10 +54,18 @@ angular.module('norris-nrti')
                 }
             }, true);
 
+            scope.$on('$destroy', function() {
+                for (var j=0; j<element.children().length; j++){
+                    var nvd3 = element.children()[j];
+                    nvd3.select( '*' ).remove();
+                }
+            }); 
             // inserisce il codice HTML che crea il grafico desiderato
             scope.init = function(){
-                element.empty();
-                var barchart, legend, onPoint, control;
+                   
+                
+                var barchart = null;
+                var legend, onPoint, control;
                 var str = scope.url.split('/');
                 var id = str[str.length-1];
                 if (scope.$parent.barChart.getLegend() !== null){
@@ -86,7 +95,7 @@ angular.module('norris-nrti')
                                 'showcontrols="'+ control +'" color="colorFunction()">' +
                                 //'width="'+ scope.$parent.barChart.getWidth() +'" height="'+ scope.$parent.barChart.getHeight() +'">' +
                                 '<svg style="width: '+ scope.$parent.barChart.getWidth() +'; height: '+ scope.$parent.barChart.getHeight() +';"></svg></nvd3-multi-bar-chart></div>';
-                }else if(scope.$parent.barChart.getBarOrientation() === 'H'){
+                }else {
                     barchart = '<div style="position: relative;"><div class="graphtitle">'+ scope.$parent.barChart.getTitle() +'</div>' +
                                 '<nvd3-multi-bar-horizontal-chart data="data" nodata=" " id="'+ id +'" ' +
                                 'xaxisticksformat="xAxisTickFormatFunction()" yaxistickformat="yAxisTickFormatFunction()" showxaxis="true" showyaxis="true" ' +

@@ -827,8 +827,7 @@
                         }
                     }, (attrs.objectequality === undefined ? false : (attrs.objectequality === "true")));
                     
-                    element.$on('$destroy', function() {
-                        console.log('NVD3: hulk, distruggeeeee!!');
+                    element.on('$destroy', function() {
                         scope.$destroy();
                     });
                 }
@@ -1273,9 +1272,9 @@
                         }
                     }, (attrs.objectequality === undefined ? false : (attrs.objectequality === "true")));
                     
-                    /*element.on('$destroy' function() {
+                    element.on('$destroy', function() {
                         scope.$destroy();
-                    });*/
+                    });
                 }
             };
         }])
@@ -1655,9 +1654,9 @@
                         }
                     }, (attrs.objectequality === undefined ? false : (attrs.objectequality === "true")));
                     
-                    /*element.on('$destroy' function() {
+                    element.on('$destroy', function() {
                         scope.$destroy();
-                    });*/
+                    });
                 }
             };
         }])
@@ -2290,8 +2289,7 @@
                         }
                     }, (attrs.objectequality === undefined ? false : (attrs.objectequality === "true")));
                     
-                    element.$on('$destroy', function() {
-                        console.log('NVD3: hulk, distruggeeeee!!');
+                    element.on('$destroy', function() {
                         scope.$destroy();
                     });
                 }
