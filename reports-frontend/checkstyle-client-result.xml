@@ -6,9 +6,6 @@
 	<file name="app/Model/SocketServices.js">
 		<error line="23" column="22" severity="warning" message="&apos;io&apos; is not defined." source="jshint.W117" />
 	</file>
-	<file name="app/Controller/GraphsControllers/TableController.js">
-		<error line="31" column="9" severity="warning" message="&apos;count&apos; is defined but never used." source="jshint.W098" />
-	</file>
 	<file name="app/Controller/PagesControllers/PageController.js">
 		<error line="26" column="9" severity="warning" message="&apos;a&apos; is defined but never used." source="jshint.W098" />
 		<error line="30" column="9" severity="warning" message="&apos;b&apos; is defined but never used." source="jshint.W098" />
@@ -19,32 +16,35 @@
 	<file name="app/Controller/RootController.js">
 		<error line="23" column="45" severity="warning" message="&apos;oldValue&apos; is defined but never used." source="jshint.W098" />
 	</file>
+	<file name="app/View/GraphsView/BarChartView.js">
+		<error line="143" column="19" severity="warning" message="Expected an assignment or function call and instead saw an expression." source="jshint.W030" />
+	</file>
 	<file name="app/View/GraphsView/LineChartView.js">
-		<error line="125" column="19" severity="warning" message="Expected an assignment or function call and instead saw an expression." source="jshint.W030" />
+		<error line="130" column="19" severity="warning" message="Expected an assignment or function call and instead saw an expression." source="jshint.W030" />
 	</file>
 	<file name="app/View/GraphsView/MapChartView.js">
-		<error line="91" column="34" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
-		<error line="94" column="33" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
-		<error line="98" column="34" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
-		<error line="112" column="33" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
-		<error line="114" column="32" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
-		<error line="125" column="27" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
-		<error line="130" column="42" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
-		<error line="133" column="42" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
-		<error line="136" column="42" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
-		<error line="139" column="42" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
-		<error line="148" column="47" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
-		<error line="150" column="44" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
-		<error line="170" column="39" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
-		<error line="175" column="47" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
-		<error line="197" column="46" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
-		<error line="204" column="46" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
-		<error line="211" column="46" severity="warning" message="&apos;MapLabel&apos; is not defined." source="jshint.W117" />
-		<error line="236" column="21" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
+		<error line="93" column="34" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
+		<error line="96" column="33" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
+		<error line="100" column="34" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
+		<error line="114" column="33" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
+		<error line="116" column="32" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
+		<error line="127" column="27" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
+		<error line="132" column="42" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
+		<error line="135" column="42" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
+		<error line="138" column="42" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
+		<error line="141" column="42" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
+		<error line="150" column="47" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
+		<error line="152" column="44" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
+		<error line="172" column="39" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
+		<error line="177" column="47" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
+		<error line="199" column="46" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
+		<error line="206" column="46" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
+		<error line="213" column="46" severity="warning" message="&apos;MapLabel&apos; is not defined." source="jshint.W117" />
+		<error line="238" column="21" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
 	</file>
 	<file name="app/View/PagesView/PageView.js">
-		<error line="33" column="17" severity="warning" message="Read only." source="jshint.W020" />
-		<error line="29" column="41" severity="warning" message="&apos;attrs&apos; is defined but never used." source="jshint.W098" />
+		<error line="35" column="17" severity="warning" message="Read only." source="jshint.W020" />
+		<error line="31" column="41" severity="warning" message="&apos;attrs&apos; is defined but never used." source="jshint.W098" />
 	</file>
 	<file name="app/View/PagesView/PagesListView.js">
 		<error line="36" column="41" severity="warning" message="&apos;attrs&apos; is defined but never used." source="jshint.W098" />
