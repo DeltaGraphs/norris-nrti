@@ -9,6 +9,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 1.0.0         2015-06-21  Maria Giovanna Chinellato   Fix legend function
+*
 * 1.0.0         2015-06-14  Maria Giovanna Chinellato   Tested
 *
 * 0.1.0         2015-06-06  Francesco Rossetto          Add utility function    
@@ -42,7 +44,6 @@ angular.module('norris-nrti')
 
             scope.$parent.$watch('changedP', function(newValue, oldValue){
                 if (newValue !== oldValue) {
-                    scope.legend(); // crea la legenda
                     scope.title = scope.$parent.mapChart.getTitle(); // inserisce il titolo
                     scope.init(); // crea la mappa
                 }
@@ -50,6 +51,7 @@ angular.module('norris-nrti')
 
             scope.$parent.$watch('changedD', function(newValue, oldValue){
                 if(newValue !== oldValue){                
+                    scope.legend(); // crea la legenda
                     scope.render(); // inserisce i dati sulla mappa
                 }
             }, true);

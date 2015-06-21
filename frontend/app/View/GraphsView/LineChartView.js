@@ -9,6 +9,10 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 1.0.2         2015-06-21  Maria Giovanna Chinellato   Fix legend update     
+*
+* 1.0.1         2015-06-19  Maria Giovanna Chinellato   Fix svg tag     
+*
 * 1.0.0         2015-06-13  Maria Giovanna Chinellato   Tested     
 *
 * 0.1.0         2015-06-05  Maria Giovanna Chinellato   Add init, setData and legend function     
@@ -30,7 +34,7 @@ angular.module('norris-nrti')
 		},
         bindToController: true,
         link: function(scope, element, attrs){
-
+            element.empty();
         	attrs.$observe('url', function(value) {
                 if (value) {
                     scope.$parent.socketConnection(value); // richiama la funzione del controller che permette di connettersi al server
@@ -46,6 +50,7 @@ angular.module('norris-nrti')
 
             scope.$parent.$watch('changedD', function(newValue, oldValue){
                 if(newValue !== oldValue){
+                    scope.legend(); // richiama la funzione che crea la legenda relativa al grafico
                     scope.setData(); // richiama la funzione che imposta i dati ad ogni cambiamento dei dati dei flussi del grafico
                 }
             }, true);
@@ -53,7 +58,7 @@ angular.module('norris-nrti')
             scope.$on('$destroy', function() {
                 for (var j=0; j<element.children().length; j++){
                     var nvd3 = element.children()[j];
-                    nvd3.select( '*' ).remove();
+                    nvd3.select('*').remove();
                 }
             }); 
 
@@ -96,7 +101,7 @@ angular.module('norris-nrti')
                 var compiled = $compile(linechart)(scope);
                 element.append(compiled);
 
-                scope.legend();
+                
             };
 
             // funzione che imposta il tick dell'asse X
@@ -175,13 +180,13 @@ angular.module('norris-nrti')
             // crea la legenda del grafico
             scope.legend = function() {
                 var chart = element.children()[1];
+                if (element.children()[2]){
+                    element.children()[2].remove();
+                }
                 var parent = document.createElement('div');
 
                 changePosition(chart,parent);
 
-                while(parent.firstChild) {
-                    parent.removeChild(parent.firstChild);
-                }
                 if (scope.$parent.lineChart.getLegend() !== null) {
                     var div = document.createElement('div');
                     for (var i=0; i<scope.$parent.lineChart.getFlowList().length; i++) {

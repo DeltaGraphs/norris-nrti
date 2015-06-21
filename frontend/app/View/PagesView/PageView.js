@@ -9,7 +9,9 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
-* 1.0.0         2015-06-14  Francesco Rossetto		   Tested     
+* 1.0.1         2015-06-14  Maria Giovanna Chinellato   Fix page size     
+*
+* 1.0.0         2015-06-14  Francesco Rossetto		    Tested     
 *
 * 0.1.1         2015-06-04  Maria Giovanna Chinellato   Fix link function      
 *
@@ -95,7 +97,7 @@ angular.module('norris-nrti')
 					}
 				}
 
-				parent.setAttribute('style', 'height:'+ 1000*scope.page.getGraphsPerCol() +'px; width:'+ 1500*scope.page.getGraphsPerRow() +'px;');
+				parent.setAttribute('style', 'height:'+ 1000*scope.graphs.length +'px; width:'+ 1500*scope.graphs[0].length +'px;');
 
 				var el = $compile(parent)(scope);
 				element.parent().append( el );
