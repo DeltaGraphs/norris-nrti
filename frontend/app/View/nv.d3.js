@@ -584,6 +584,7 @@ window.nv.tooltip.* also has various helper methods.
                 //Finally, add any offset of the containing <div> on the whole page.
                 left += chartContainer.offsetLeft + svgOffset.left - 2*chartContainer.scrollLeft;
                 top += chartContainer.offsetTop + svgOffset.top - 2*chartContainer.scrollTop;
+                console.log(left + ', ' + top);
             }
 
             if (snapDistance && snapDistance > 0) {

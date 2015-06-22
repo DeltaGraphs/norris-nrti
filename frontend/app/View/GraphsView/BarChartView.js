@@ -2,13 +2,15 @@
 'use strict';
 
 /*
-* Name :  CarChartView.js
+* Name :  BarChartView.js
 * Module : FrontEnd::View::GraphsView
 * Location : /frontend/app/View/GraphsView
 *
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 1.0.3         2015-06-22  Maria Giovanna Chinellato   Fix flow color     
+*
 * 1.0.2         2015-06-21  Maria Giovanna Chinellato   Fix legend update     
 *
 * 1.0.1         2015-06-19  Maria Giovanna Chinellato   Fix svg tag     
@@ -36,6 +38,7 @@ angular.module('norris-nrti')
 		},
         
         link: function(scope, element, attrs){
+
             element.empty();
         	attrs.$observe('url', function(value) {
                 if (value) {
@@ -45,15 +48,15 @@ angular.module('norris-nrti')
 
             scope.$parent.$watch('changedP', function(newValue, oldValue){
                 if (newValue !== oldValue) {
-                    element.empty();
+                    element.empty(); // elimina i tag HTML relativi al bar chart
                     scope.init(); // crea  il grafico chiamando la funzione apposita
                 }
             }, true);
 
             scope.$parent.$watch('changedD', function(newValue, oldValue){
                 if(newValue !== oldValue){
-                    scope.legend();  // richiama la funzione che crea la legenda relativa al grafico
                     scope.setData(); // richiama la funzione che imposta i dati ad ogni cambiamento dei dati dei flussi del grafico
+                    scope.legend();  // richiama la funzione che crea la legenda relativa al grafico
                 }
             }, true);
 
@@ -65,7 +68,7 @@ angular.module('norris-nrti')
             }); 
             // inserisce il codice HTML che crea il grafico desiderato
             scope.init = function(){
-            
+                
                 var barchart = null;
                 var legend, onPoint, control;
                 var str = scope.url.split('/');
@@ -90,7 +93,7 @@ angular.module('norris-nrti')
                 }
                 if (scope.$parent.barChart.getBarOrientation() === 'V'){
                     barchart = '<div class="graphtitle">'+ scope.$parent.barChart.getTitle() +'</div>' +
-                                '<nvd3-multi-bar-chart data="data" id="'+ id +'" ' +
+                                '<nvd3-multi-bar-chart data="data" nodata=" " id="'+ id +'" ' +
                                 'xaxisticksformat="xAxisTickFormatFunction()" yaxistickformat="yAxisTickFormatFunction()" showxaxis="true" showyaxis="true" ' +
                                 'rotatelabels="-90" interactive="true" tooltips="'+ onPoint +'" showlegend="' + legend + '" ' +
                                 'xaxislabel="'+ scope.$parent.barChart.getX().getName() +'" ';
@@ -99,9 +102,9 @@ angular.module('norris-nrti')
                     }*/
                     barchart = barchart + 'color="colorFunction()" showcontrols="'+ control +'">' +
                                 '<svg style="width: '+ scope.$parent.barChart.getWidth() +'; height: '+ scope.$parent.barChart.getHeight() +';"></svg></nvd3-multi-bar-chart>';
-                }else {
+                }else if(scope.$parent.barChart.getBarOrientation() === 'H'){
                     barchart = '<div class="graphtitle">'+ scope.$parent.barChart.getTitle() +'</div>' +
-                                '<nvd3-multi-bar-horizontal-chart data="data" id="'+ id +'" ' +
+                                '<nvd3-multi-bar-horizontal-chart data="data" nodata=" " id="'+ id +'" ' +
                                 'xaxisticksformat="xAxisTickFormatFunction()" yaxistickformat="yAxisTickFormatFunction()" showxaxis="true" showyaxis="true" ' +
                                 'rotatelabels="-90" interactive="true" tooltips="'+ onPoint +'" showlegend="' + legend + '" ' +
                                 'xaxislabel="'+ scope.$parent.barChart.getX().getName() +'" ';
@@ -144,14 +147,17 @@ angular.module('norris-nrti')
             scope.setData = function(){
                 var data = [];
                 var colorArray = [];
-
                 for (var i=0; i<scope.$parent.barChart.getFlowList().length; i++) {
                     var key;
                     var values = [];
                     key = scope.$parent.barChart.getFlowList()[i].flow.getName();
-                    colorArray.push(scope.$parent.barChart.getFlowList()[i].flow.getFlowColor());
+                    if (scope.$parent.barChart.getFlowList()[i].flow.getFlowColor() !== undefined && scope.$parent.barChart.getFlowList()[i].flow.getFlowColor() !== null){
+                       colorArray.push(scope.$parent.barChart.getFlowList()[i].flow.getFlowColor());
+                    }
+                    else{
+                       colorArray.push(scope.$parent.defaultColorFlow[i]); 
+                    }
                     for (var j=0; j<scope.$parent.barChart.getFlowList()[i].flow.getData().length; j++) {
-                        console.log('getData.length ' + scope.$parent.barChart.getFlowList()[i].flow.getData().length);
                         var value = [scope.$parent.barChart.getFlowList()[i].flow.getData()[j].value[0], scope.$parent.barChart.getFlowList()[i].flow.getData()[j].value[1]];
                         values.push(value);
                     }
@@ -169,10 +175,10 @@ angular.module('norris-nrti')
                         values[y][0] = scope.$parent.barChart.getHeaders()[values[y][0]-1];
                     }
                     data.push({ 'key': key, 'values': values});
+                    scope.data = data;
+                    
                 }
-                scope.data = data;
                 scope.colorArray = colorArray;
-
             };
 
             // posiziona la legenda a nord, est, sud, ovest, nord-est, nord-ovest, sud-est o sud-ovest del grafico
@@ -221,7 +227,7 @@ angular.module('norris-nrti')
                     for (var i=0; i<scope.$parent.barChart.getFlowList().length; i++) {
                         if (scope.$parent.barChart.getFlowList()[i].flow.getData().length){
                             var square = document.createElement('div');
-                            square.setAttribute('style', 'float: left; height: 15px; width: 15px; background-color: ' + scope.$parent.barChart.getFlowList()[i].flow.getFlowColor() + ';');
+                            square.setAttribute('style', 'float: left; height: 15px; width: 15px; background-color: ' + scope.colorArray[i] + ';');
                             var spanText = document.createElement('div');
                             var text = document.createTextNode('\u00A0\u00A0\u00A0\u00A0' + scope.$parent.barChart.getFlowList()[i].flow.getName());
                             spanText.setAttribute('style', 'width: 100px; color: '+ scope.$parent.barChart.getLegend().getFontColor() + ';');

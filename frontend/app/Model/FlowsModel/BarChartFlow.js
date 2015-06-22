@@ -49,7 +49,7 @@ angular.module('norris-nrti')
 
     function BarChartFlow(info) {
     	this._data = [];
-		this._flowColor = '#000';
+		this._flowColor = undefined;
 		this._flow = null;
 
 		var json = split(info);

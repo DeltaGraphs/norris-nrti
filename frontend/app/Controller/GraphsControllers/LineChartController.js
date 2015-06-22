@@ -17,7 +17,7 @@
 */
 
 angular.module('norris-nrti')
-.controller('LineChartController', ['$scope', '$location', 'LineChartFactory', 'LineChartFlowFactory', 'SocketServicesFactory', function($scope, $location, LineChartFactory, LineChartFlowFactory, SocketServicesFactory){
+.controller('LineChartController', ['$scope', '$location', 'LineChartFactory', 'LineChartFlowFactory', 'SocketServicesFactory', 'ColorPicker', function($scope, $location, LineChartFactory, LineChartFlowFactory, SocketServicesFactory, ColorPicker){
 
 	var socket;
 	var lineChart = LineChartFactory.build(); // crea un line chart di default
@@ -89,4 +89,5 @@ angular.module('norris-nrti')
 	// mette a disposizione delle funzioni sullo scope
 	$scope.socketConnection = this.socketConnection;
 	$scope.listenOnEvents = this.listenOnEvents;
+	$scope.defaultColorFlow = ColorPicker.getDefaultColor();
 }]);

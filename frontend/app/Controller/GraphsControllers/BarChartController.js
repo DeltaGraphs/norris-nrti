@@ -17,7 +17,7 @@
 */
 
 angular.module('norris-nrti')
-.controller('BarChartController', ['$scope', '$location', 'BarChartFactory', 'BarChartFlowFactory', 'SocketServicesFactory', function($scope, $location, BarChartFactory, BarChartFlowFactory, SocketServicesFactory){
+.controller('BarChartController', ['$scope', '$location', 'BarChartFactory', 'BarChartFlowFactory', 'SocketServicesFactory', 'ColorPicker', function($scope, $location, BarChartFactory, BarChartFlowFactory, SocketServicesFactory, ColorPicker){
 
 	var socket;
 
@@ -50,7 +50,6 @@ angular.module('norris-nrti')
 			console.log('updateGraphProp');
 			$scope.barChart.updateParameters(info); // aggiorna le proprietà del bar chart con i dati appena ricevuti
 			$scope.changedP = !$scope.changedP; // 'notifica' cambiamento proprietà
-
 		});
 		socket.on('insertFlow', function(info){ // ascolta sull'evento 'insertFlow'
 			var flow = BarChartFlowFactory.build(info.properties); // crea un flusso di default
@@ -92,5 +91,6 @@ angular.module('norris-nrti')
 	// mette a disposizione delle funzioni sullo scope
 	$scope.socketConnection = this.socketConnection;
 	$scope.listenOnEvents = this.listenOnEvents;
+	$scope.defaultColorFlow = ColorPicker.getDefaultColor();
 
 }]);

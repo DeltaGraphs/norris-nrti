@@ -9,6 +9,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 1.0.3         2015-06-22  Maria Giovanna Chinellato   Fix flow color     
+*
 * 1.0.2         2015-06-21  Maria Giovanna Chinellato   Fix legend update     
 *
 * 1.0.1         2015-06-19  Maria Giovanna Chinellato   Fix svg tag     
@@ -34,6 +36,7 @@ angular.module('norris-nrti')
 		},
         bindToController: true,
         link: function(scope, element, attrs){
+
             element.empty();
         	attrs.$observe('url', function(value) {
                 if (value) {
@@ -43,15 +46,15 @@ angular.module('norris-nrti')
 
             scope.$parent.$watch('changedP', function(newValue, oldValue){
                 if (newValue !== oldValue) {
-                    element.empty();
+                    element.empty(); // elimina i tag HTML relativi al line chart
                     scope.init(); // crea  il grafico chiamando la funzione apposita
                 }
             }, true);
 
             scope.$parent.$watch('changedD', function(newValue, oldValue){
                 if(newValue !== oldValue){
-                    scope.legend(); // richiama la funzione che crea la legenda relativa al grafico
                     scope.setData(); // richiama la funzione che imposta i dati ad ogni cambiamento dei dati dei flussi del grafico
+                    scope.legend(); // richiama la funzione che crea la legenda relativa al grafico
                 }
             }, true);
 
@@ -81,7 +84,7 @@ angular.module('norris-nrti')
                 }
                 if (scope.$parent.lineChart.getViewFinder() === true) {
                     linechart = '<div class="graphtitle">'+ scope.$parent.lineChart.getTitle() +'</div>' +
-                                '<nvd3-line-with-focus-chart data="data" id="'+ id +'" ' +
+                                '<nvd3-line-with-focus-chart data="data" nodata=" " id="'+ id +'" ' +
                                 'yaxistickformat="yAxisTickFormatFunction()" xaxistickformat="xAxisTickFormatFunction()" x2axistickformat="xAxisTickFormatFunction()" ' +
                                 'margin="{left:30,top:30,bottom:30,right:30}" margin2="{left:30,top:30,bottom:30,right:30}" interactive="true" tooltips="'+ onPoint +'" ' +
                                 'showlegend="' + legend + '" color="colorFunction()" ' + 
@@ -89,7 +92,7 @@ angular.module('norris-nrti')
                                 '<svg style="width:'+ scope.$parent.lineChart.getWidth() +'px; height:'+ scope.$parent.lineChart.getHeight() +'px;"></svg></nvd3-line-with-focus-chart>';
                 } else {
                     linechart = '<div class="graphtitle">'+ scope.$parent.lineChart.getTitle() +'</div>' +
-                                '<nvd3-line-chart data="data" id="'+ id +'" ' +
+                                '<nvd3-line-chart data="data" nodata=" " id="'+ id +'" ' +
                                 'yaxistickformat="yAxisTickFormatFunction()" xaxistickformat="xAxisTickFormatFunction()" ' +
                                 'margin="{left:30,top:30,bottom:30,right:30}" interactive="true" tooltips="'+ onPoint +'" showlegend="' + legend + '" ' +
                                 'xaxisrotatelabels="-90" interpolate="' + scope.$parent.lineChart.getInterpolation() +'" ' +
@@ -135,7 +138,12 @@ angular.module('norris-nrti')
                 for (var i=0; i<scope.$parent.lineChart.getFlowList().length; i++) {
                     var key = scope.$parent.lineChart.getFlowList()[i].flow.getName();
                     var area = scope.$parent.lineChart.getFlowList()[i].flow.getArea();
-                    colorArray.push(scope.$parent.lineChart.getFlowList()[i].flow.getFlowColor());
+                    if (scope.$parent.lineChart.getFlowList()[i].flow.getFlowColor() !== undefined && scope.$parent.lineChart.getFlowList()[i].flow.getFlowColor() !== null){
+                       colorArray.push(scope.$parent.lineChart.getFlowList()[i].flow.getFlowColor());
+                    }
+                    else{
+                       colorArray.push(scope.$parent.defaultColorFlow[i]); 
+                    }
                     var values = [];
                     for (var j=0; j<scope.$parent.lineChart.getFlowList()[i].flow.getData().length; j++) {
                         var value = [scope.$parent.lineChart.getFlowList()[i].flow.getData()[j].value[0], scope.$parent.lineChart.getFlowList()[i].flow.getData()[j].value[1]];
@@ -192,7 +200,7 @@ angular.module('norris-nrti')
                     for (var i=0; i<scope.$parent.lineChart.getFlowList().length; i++) {
                         if (scope.$parent.lineChart.getFlowList()[i].flow.getData().length){
                             var square = document.createElement('div');
-                            square.setAttribute('style', 'float: left; height: 15px; width: 15px; background-color: ' + scope.$parent.lineChart.getFlowList()[i].flow.getFlowColor() + ';');
+                            square.setAttribute('style', 'float: left; height: 15px; width: 15px; background-color: ' + scope.colorArray[i] + ';');
                             var spanText = document.createElement('div');
                             var text = document.createTextNode('\u00A0\u00A0\u00A0\u00A0' + scope.$parent.lineChart.getFlowList()[i].flow.getName());
                             spanText.setAttribute('style', 'color: '+ scope.$parent.lineChart.getLegend().getFontColor() + ';');
