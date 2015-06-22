@@ -44,7 +44,7 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">69.56</p>
+      <p class="stat">69.33</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">24.50</p>
+      <p class="stat">23.67</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.74</p>
+      <p class="stat">0.77</p>
     </div>
   </div>
 </div>
@@ -108,7 +108,7 @@
 */
 
 angular.module(&#039;norris-nrti&#039;)
-.controller(&#039;BarChartController&#039;, [&#039;$scope&#039;, &#039;$location&#039;, &#039;BarChartFactory&#039;, &#039;BarChartFlowFactory&#039;, &#039;SocketServicesFactory&#039;, function($scope, $location, BarChartFactory, BarChartFlowFactory, SocketServicesFactory){
+.controller(&#039;BarChartController&#039;, [&#039;$scope&#039;, &#039;$location&#039;, &#039;BarChartFactory&#039;, &#039;BarChartFlowFactory&#039;, &#039;SocketServicesFactory&#039;, &#039;ColorPicker&#039;, function($scope, $location, BarChartFactory, BarChartFlowFactory, SocketServicesFactory, ColorPicker){
 
 	var socket;
 
@@ -141,7 +141,6 @@ angular.module(&#039;norris-nrti&#039;)
 			console.log(&#039;updateGraphProp&#039;);
 			$scope.barChart.updateParameters(info); // aggiorna le proprietà del bar chart con i dati appena ricevuti
 			$scope.changedP = !$scope.changedP; // &#039;notifica&#039; cambiamento proprietà
-
 		});
 		socket.on(&#039;insertFlow&#039;, function(info){ // ascolta sull&#039;evento &#039;insertFlow&#039;
 			var flow = BarChartFlowFactory.build(info.properties); // crea un flusso di default
@@ -183,6 +182,7 @@ angular.module(&#039;norris-nrti&#039;)
 	// mette a disposizione delle funzioni sullo scope
 	$scope.socketConnection = this.socketConnection;
 	$scope.listenOnEvents = this.listenOnEvents;
+	$scope.defaultColorFlow = ColorPicker.getDefaultColor();
 
 }]);</textarea>
   </div>

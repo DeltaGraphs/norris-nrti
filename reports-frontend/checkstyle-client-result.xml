@@ -17,10 +17,10 @@
 		<error line="23" column="45" severity="warning" message="&apos;oldValue&apos; is defined but never used." source="jshint.W098" />
 	</file>
 	<file name="app/View/GraphsView/BarChartView.js">
-		<error line="143" column="19" severity="warning" message="Expected an assignment or function call and instead saw an expression." source="jshint.W030" />
+		<error line="146" column="19" severity="warning" message="Expected an assignment or function call and instead saw an expression." source="jshint.W030" />
 	</file>
 	<file name="app/View/GraphsView/LineChartView.js">
-		<error line="130" column="19" severity="warning" message="Expected an assignment or function call and instead saw an expression." source="jshint.W030" />
+		<error line="133" column="19" severity="warning" message="Expected an assignment or function call and instead saw an expression." source="jshint.W030" />
 	</file>
 	<file name="app/View/GraphsView/MapChartView.js">
 		<error line="93" column="34" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />

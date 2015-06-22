@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">62.79</p>
+      <p class="stat">62.27</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">238</p>
+      <p class="stat">244</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">53.78</p>
+      <p class="stat">57.10</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">3.08</p>
+      <p class="stat">3.15</p>
     </div>
   </div>
 </div>
@@ -93,13 +93,15 @@
 &#039;use strict&#039;;
 
 /*
-* Name :  CarChartView.js
+* Name :  BarChartView.js
 * Module : FrontEnd::View::GraphsView
 * Location : /frontend/app/View/GraphsView
 *
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 1.0.3         2015-06-22  Maria Giovanna Chinellato   Fix flow color     
+*
 * 1.0.2         2015-06-21  Maria Giovanna Chinellato   Fix legend update     
 *
 * 1.0.1         2015-06-19  Maria Giovanna Chinellato   Fix svg tag     
@@ -127,6 +129,7 @@ angular.module(&#039;norris-nrti&#039;)
 		},
         
         link: function(scope, element, attrs){
+
             element.empty();
         	attrs.$observe(&#039;url&#039;, function(value) {
                 if (value) {
@@ -136,15 +139,15 @@ angular.module(&#039;norris-nrti&#039;)
 
             scope.$parent.$watch(&#039;changedP&#039;, function(newValue, oldValue){
                 if (newValue !== oldValue) {
-                    element.empty();
+                    element.empty(); // elimina i tag HTML relativi al bar chart
                     scope.init(); // crea  il grafico chiamando la funzione apposita
                 }
             }, true);
 
             scope.$parent.$watch(&#039;changedD&#039;, function(newValue, oldValue){
                 if(newValue !== oldValue){
-                    scope.legend();  // richiama la funzione che crea la legenda relativa al grafico
                     scope.setData(); // richiama la funzione che imposta i dati ad ogni cambiamento dei dati dei flussi del grafico
+                    scope.legend();  // richiama la funzione che crea la legenda relativa al grafico
                 }
             }, true);
 
@@ -156,7 +159,7 @@ angular.module(&#039;norris-nrti&#039;)
             }); 
             // inserisce il codice HTML che crea il grafico desiderato
             scope.init = function(){
-            
+                
                 var barchart = null;
                 var legend, onPoint, control;
                 var str = scope.url.split(&#039;/&#039;);
@@ -181,7 +184,7 @@ angular.module(&#039;norris-nrti&#039;)
                 }
                 if (scope.$parent.barChart.getBarOrientation() === &#039;V&#039;){
                     barchart = &#039;&lt;div class=&quot;graphtitle&quot;&gt;&#039;+ scope.$parent.barChart.getTitle() +&#039;&lt;/div&gt;&#039; +
-                                &#039;&lt;nvd3-multi-bar-chart data=&quot;data&quot; id=&quot;&#039;+ id +&#039;&quot; &#039; +
+                                &#039;&lt;nvd3-multi-bar-chart data=&quot;data&quot; nodata=&quot; &quot; id=&quot;&#039;+ id +&#039;&quot; &#039; +
                                 &#039;xaxisticksformat=&quot;xAxisTickFormatFunction()&quot; yaxistickformat=&quot;yAxisTickFormatFunction()&quot; showxaxis=&quot;true&quot; showyaxis=&quot;true&quot; &#039; +
                                 &#039;rotatelabels=&quot;-90&quot; interactive=&quot;true&quot; tooltips=&quot;&#039;+ onPoint +&#039;&quot; showlegend=&quot;&#039; + legend + &#039;&quot; &#039; +
                                 &#039;xaxislabel=&quot;&#039;+ scope.$parent.barChart.getX().getName() +&#039;&quot; &#039;;
@@ -190,9 +193,9 @@ angular.module(&#039;norris-nrti&#039;)
                     }*/
                     barchart = barchart + &#039;color=&quot;colorFunction()&quot; showcontrols=&quot;&#039;+ control +&#039;&quot;&gt;&#039; +
                                 &#039;&lt;svg style=&quot;width: &#039;+ scope.$parent.barChart.getWidth() +&#039;; height: &#039;+ scope.$parent.barChart.getHeight() +&#039;;&quot;&gt;&lt;/svg&gt;&lt;/nvd3-multi-bar-chart&gt;&#039;;
-                }else {
+                }else if(scope.$parent.barChart.getBarOrientation() === &#039;H&#039;){
                     barchart = &#039;&lt;div class=&quot;graphtitle&quot;&gt;&#039;+ scope.$parent.barChart.getTitle() +&#039;&lt;/div&gt;&#039; +
-                                &#039;&lt;nvd3-multi-bar-horizontal-chart data=&quot;data&quot; id=&quot;&#039;+ id +&#039;&quot; &#039; +
+                                &#039;&lt;nvd3-multi-bar-horizontal-chart data=&quot;data&quot; nodata=&quot; &quot; id=&quot;&#039;+ id +&#039;&quot; &#039; +
                                 &#039;xaxisticksformat=&quot;xAxisTickFormatFunction()&quot; yaxistickformat=&quot;yAxisTickFormatFunction()&quot; showxaxis=&quot;true&quot; showyaxis=&quot;true&quot; &#039; +
                                 &#039;rotatelabels=&quot;-90&quot; interactive=&quot;true&quot; tooltips=&quot;&#039;+ onPoint +&#039;&quot; showlegend=&quot;&#039; + legend + &#039;&quot; &#039; +
                                 &#039;xaxislabel=&quot;&#039;+ scope.$parent.barChart.getX().getName() +&#039;&quot; &#039;;
@@ -235,14 +238,17 @@ angular.module(&#039;norris-nrti&#039;)
             scope.setData = function(){
                 var data = [];
                 var colorArray = [];
-
                 for (var i=0; i&lt;scope.$parent.barChart.getFlowList().length; i++) {
                     var key;
                     var values = [];
                     key = scope.$parent.barChart.getFlowList()[i].flow.getName();
-                    colorArray.push(scope.$parent.barChart.getFlowList()[i].flow.getFlowColor());
+                    if (scope.$parent.barChart.getFlowList()[i].flow.getFlowColor() !== undefined &amp;&amp; scope.$parent.barChart.getFlowList()[i].flow.getFlowColor() !== null){
+                       colorArray.push(scope.$parent.barChart.getFlowList()[i].flow.getFlowColor());
+                    }
+                    else{
+                       colorArray.push(scope.$parent.defaultColorFlow[i]); 
+                    }
                     for (var j=0; j&lt;scope.$parent.barChart.getFlowList()[i].flow.getData().length; j++) {
-                        console.log(&#039;getData.length &#039; + scope.$parent.barChart.getFlowList()[i].flow.getData().length);
                         var value = [scope.$parent.barChart.getFlowList()[i].flow.getData()[j].value[0], scope.$parent.barChart.getFlowList()[i].flow.getData()[j].value[1]];
                         values.push(value);
                     }
@@ -260,10 +266,10 @@ angular.module(&#039;norris-nrti&#039;)
                         values[y][0] = scope.$parent.barChart.getHeaders()[values[y][0]-1];
                     }
                     data.push({ &#039;key&#039;: key, &#039;values&#039;: values});
+                    scope.data = data;
+                    
                 }
-                scope.data = data;
                 scope.colorArray = colorArray;
-
             };
 
             // posiziona la legenda a nord, est, sud, ovest, nord-est, nord-ovest, sud-est o sud-ovest del grafico
@@ -312,7 +318,7 @@ angular.module(&#039;norris-nrti&#039;)
                     for (var i=0; i&lt;scope.$parent.barChart.getFlowList().length; i++) {
                         if (scope.$parent.barChart.getFlowList()[i].flow.getData().length){
                             var square = document.createElement(&#039;div&#039;);
-                            square.setAttribute(&#039;style&#039;, &#039;float: left; height: 15px; width: 15px; background-color: &#039; + scope.$parent.barChart.getFlowList()[i].flow.getFlowColor() + &#039;;&#039;);
+                            square.setAttribute(&#039;style&#039;, &#039;float: left; height: 15px; width: 15px; background-color: &#039; + scope.colorArray[i] + &#039;;&#039;);
                             var spanText = document.createElement(&#039;div&#039;);
                             var text = document.createTextNode(&#039;\u00A0\u00A0\u00A0\u00A0&#039; + scope.$parent.barChart.getFlowList()[i].flow.getName());
                             spanText.setAttribute(&#039;style&#039;, &#039;width: 100px; color: &#039;+ scope.$parent.barChart.getLegend().getFontColor() + &#039;;&#039;);
