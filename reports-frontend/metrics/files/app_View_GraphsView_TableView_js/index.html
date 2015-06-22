@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">58.80</p>
+      <p class="stat">55.90</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">132</p>
+      <p class="stat">159</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">29.37</p>
+      <p class="stat">31.56</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">1.31</p>
+      <p class="stat">1.77</p>
     </div>
   </div>
 </div>
@@ -100,6 +100,10 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 1.0.2         2015-06-22  Maria Giovanna Chinellato   Fix appearance of table
+*
+* 1.0.1         2015-06-22  Maria Giovanna Chinellato   Fix update of data
+*
 * 1.0.0         2015-06-13  Francesco Rossetto          Tested
 *
 * 0.1.0         2015-06-05  Maria Giovanna Chinellato   Add function: init and setData, fix code   
@@ -131,8 +135,10 @@ angular.module(&#039;norris-nrti&#039;)
             scope.$parent.$watch(&#039;changed&#039;, function(newValue, oldValue){
                 if (newValue !== oldValue) {
                     scope.setData(); // chiama la funzione che organizza i dati da visualizzare
-                    if (scope.data.length &gt; 0) {
+                    if (scope.displayed.length &gt; 0 &amp;&amp; scope.$parent.changedP === true) {
+                        console.log(&#039;changedP&#039;);
                         scope.init(); // chiama la funzione init che crea la tabella
+                        scope.$parent.changedP = false;
                     }
                 }
             }, true);
@@ -140,40 +146,61 @@ angular.module(&#039;norris-nrti&#039;)
             // crea il codice HTML da inserire nella pagina per creare la tabella
             scope.init = function(){
             	element.empty();
+                var border = &#039;border: 1px solid black;&#039;;
+                var noBorder = &#039;class=&quot;table-condensed table-striped&quot;&#039;;
+                var headers = &#039;color: #000; background-color: #FFF;&#039;;
+                var cell = &#039;color: #000; background-color: #FFF&#039;;
+                if (scope.$parent.table.getAppearance().border !== undefined) {
+                    border = &#039;border:&#039; + scope.$parent.table.getAppearance().border.width + &#039;px solid &#039; + scope.$parent.table.getAppearance().border.color + &#039;;&#039;;
+                }
+                var tableStyle = &#039;style=&quot;&#039; + border + &#039; &#039;;
+                var cellStyle = &#039;style=&quot;&#039; + border + &#039; &quot;&#039;;
 
                 var table = &#039;&lt;div class=&quot;graphtitle&quot;&gt;&#039;+ scope.$parent.table.getTitle() +&#039;&lt;/div&gt;&#039;;   
 
-                table = table + &#039;&lt;div&gt;&lt;table st-table=&quot;data&quot; &#039;;
-                    
-                if (scope.$parent.table.getAppearance().border !== undefined) {
-                    table = table + &#039;class=&quot;table table-striped table-bordered&quot;&gt;&#039;;
-                } else {
-                    table = table + &#039;class=&quot;table-condensed table-striped&quot;&gt;&#039;;
-                }
+                table = table + &#039;&lt;table st-table=&quot;displayed&quot; st-safe-src=&quot;rowCollection&quot; &#039;;
 
                 table = table + &#039;&lt;thead&gt;&lt;tr&gt;&#039;;
                 for (var i=0; i&lt;scope.$parent.table.getHeaders().length; i++) {
                     table = table + &#039;&lt;th &#039;;
                     if (scope.$parent.table.getSortable()) {
-                        if (scope.$parent.table.getHeaders()[i] === scope.$parent.table.getSort().column ) {
-                            var ordinamento;
-                            if (scope.$parent.table.getSort().ordering === &#039;ASC&#039;) {
-                                ordinamento = &#039;true&#039;;
-                            } else if (scope.$parent.table.getSort().ordering === &#039;DESC&#039;){
-                                ordinamento = &#039;reverse&#039;;
-                            } 
-                            table = table + &#039;st-sort-default=&quot;&#039;+ ordinamento +&#039;&quot; st-sort=&quot;&#039;+ scope.$parent.table.getHeaders()[i] +&#039;&quot;&#039;;
+                        if (scope.$parent.table.getAppearance().headers !== undefined) {
+                            headers = &#039;color:&#039; + scope.$parent.table.getAppearance().headers.textColor[i] + &#039;; background-color:&#039; + scope.$parent.table.getAppearance().headers.backgroundColor[i] + &#039;; &#039;;
                         }
+                        if (scope.$parent.table.getAppearance().border !== undefined) {
+                            table = table + tableStyle + headers + &#039; &quot; &#039;;
+                        } else {
+                            table = table + noBorder + &#039;style=&quot;&#039; + headers + &#039; &quot; &#039;;
+                        }
+                        //for (var f=0; f&lt;scope.$parent.table.getSort().columns.length; f++){ // for multicolunms sorting
+                            //if (scope.$parent.table.getHeaders()[i] === scope.$parent.table.getSort().columns[f]) {
+                            if (scope.$parent.table.getHeaders()[i] === scope.$parent.table.getSort().column) {
+                                var ordinamento;
+                                if (scope.$parent.table.getSort().ordering === &#039;ASC&#039;) {
+                                    ordinamento = &#039;true&#039;;
+                                } else if (scope.$parent.table.getSort().ordering === &#039;DESC&#039;){
+                                    ordinamento = &#039;reverse&#039;;
+                                } 
+                                table = table + &#039;st-sort-default=&quot;&#039;+ ordinamento +&#039;&quot; st-sort=&quot;&#039;+ scope.$parent.table.getHeaders()[i] +&#039;&quot;&#039;;
+                            }
+                        //}
                     }
                     table = table + &#039;&gt;&#039;+ scope.$parent.table.getHeaders()[i] +&#039;&lt;/th&gt;&#039;;
                 }
                 table = table + &#039;&lt;/tr&gt;&lt;/thead&gt;&#039;;
 
-                table = table + &#039;&lt;tbody&gt;&lt;tr ng-repeat=&quot;record in data&quot;&gt;&#039;;
+                table = table + &#039;&lt;tbody&gt;&lt;tr ng-repeat=&quot;record in displayed&quot;&gt;&#039;;
                 i = 0;
                 for (var j=0; j&lt;scope.$parent.table.getHeaders().length; j++){
-                    table = table + &#039;&lt;td style=&quot;background-color:&#039;+ scope.appearance[i][j].bg +&#039;; color:&#039;+ scope.appearance[i][j].text +&#039;;&quot;&gt;{{record.&#039;+ scope.$parent.table.getHeaders()[j] +&#039;}}&lt;/td&gt;&#039;;
-                    i++;
+                    //table = table + &#039;&lt;td style=&quot;background-color:&#039;+ scope.appearance[i][j].bg +&#039;; color:&#039;+ scope.appearance[i][j].text +&#039;;&quot;&gt;{{record.&#039;+ scope.$parent.table.getHeaders()[j] +&#039;}}&lt;/td&gt;&#039;;
+                    //i++;
+                    table = table + &#039;&lt;td &#039;;
+                    if (scope.$parent.table.getAppearance().border !== undefined) {
+                        table = table + cellStyle;
+                    } else {
+                        table = table + noBorder;
+                    }
+                    table = table + &#039;&gt;{{record.&#039;+ scope.$parent.table.getHeaders()[j] +&#039;}}&lt;/td&gt;&#039;;
                 }
                 table = table + &#039;&lt;/tr&gt;&lt;/tbody&gt;&#039;;
 
@@ -183,18 +210,19 @@ angular.module(&#039;norris-nrti&#039;)
                                     &#039;&lt;/td&gt;&#039; +
                                 &#039;&lt;/tr&gt;&lt;/tfoot&gt;&#039;;
 
-                table = table + &#039;&lt;/table&gt;&lt;div&gt;&#039;;
+                table = table + &#039;&lt;/table&gt;&#039;;
                 
             	var compiled = $compile(table)(scope);
                 element.append(compiled);
             };
 
-            scope.data = [];
+            scope.displayed = [].concat(scope.rowCollection);
+            scope.rowCollection = [];
             scope.appearance = [];
 
             // imposta i dati da visualizzare
             scope.setData = function(){
-                var data = [];
+                scope.rowCollection = []; // array che contiene una copia dei dati per permettere paginazione e ordinamento con dati dinamici
                 var appearance = [];
                 for (var k=0; k&lt;scope.$parent.table.getFlowList().length; k++) {
                     for (var i=0; i&lt;scope.$parent.table.getFlowList()[k].flow.getData().length; i++) {
@@ -204,7 +232,7 @@ angular.module(&#039;norris-nrti&#039;)
                             record[scope.$parent.table.getHeaders()[j]] = scope.$parent.table.getFlowList()[k].flow.getData()[i].value[j];
                             look[j] = scope.$parent.table.getFlowList()[k].flow.getData()[i].appearance[j];
                         }
-                        data.push(record);
+                        scope.rowCollection.push(record);
                         appearance.push(look);
                     }
                 }
@@ -215,7 +243,6 @@ angular.module(&#039;norris-nrti&#039;)
                         console.log(&#039;TABLE appearance: &#039; + appearance[g][f].bg + &#039; &#039; + appearance[g][f].text);
                     }
                 }*/
-                scope.data = data;
                 scope.appearance = appearance;
                 scope.itemsByPage = scope.$parent.table.getMaxItemsPage();
             };
