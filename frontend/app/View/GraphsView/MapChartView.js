@@ -9,7 +9,9 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
-* 1.0.0         2015-06-21  Maria Giovanna Chinellato   Fix legend function
+* 1.0.2         2015-06-22  Maria Giovanna Chinellato   Fix legendOnPoint
+*
+* 1.0.1         2015-06-21  Maria Giovanna Chinellato   Fix legend function
 *
 * 1.0.0         2015-06-14  Maria Giovanna Chinellato   Tested
 *
@@ -221,7 +223,7 @@ angular.module('norris-nrti')
                                 break;
                         }
                         if (scope.$parent.mapChart.getLegendOnPoint() === true){
-                            addLegendOnPoint(marker, scope.$parent.mapChart.getFlowList()[i].flow.getName() + ' ' + scope.$parent.mapChart.getFlowList()[i].flow.getData().markerID);
+                            addLegendOnPoint(marker, scope.$parent.mapChart.getFlowList()[i].flow.getName() + ' ' + scope.$parent.mapChart.getFlowList()[i].flow.getData()[j].markerID);
                         }
                         markers.push(marker);
 
