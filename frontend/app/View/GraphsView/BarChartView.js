@@ -38,7 +38,6 @@ angular.module('norris-nrti')
 		},
         
         link: function(scope, element, attrs){
-
             element.empty();
         	attrs.$observe('url', function(value) {
                 if (value) {
@@ -143,19 +142,23 @@ angular.module('norris-nrti')
             };
 
             // imposta i dati da visualizzare
-            scope.data;
+            scope.data = [];
             scope.setData = function(){
                 var data = [];
                 var colorArray = [];
+                console.log('prima del for ' + scope.$parent.barChart.getFlowList().length);
                 for (var i=0; i<scope.$parent.barChart.getFlowList().length; i++) {
+                    console.log('dentro il for ' + scope.$parent.barChart.getFlowList().length);
                     var key;
                     var values = [];
                     key = scope.$parent.barChart.getFlowList()[i].flow.getName();
                     if (scope.$parent.barChart.getFlowList()[i].flow.getFlowColor() !== undefined && scope.$parent.barChart.getFlowList()[i].flow.getFlowColor() !== null){
                        colorArray.push(scope.$parent.barChart.getFlowList()[i].flow.getFlowColor());
+                       console.log('colore da server');
                     }
                     else{
                        colorArray.push(scope.$parent.defaultColorFlow[i]); 
+                       console.log('colore default');
                     }
                     for (var j=0; j<scope.$parent.barChart.getFlowList()[i].flow.getData().length; j++) {
                         var value = [scope.$parent.barChart.getFlowList()[i].flow.getData()[j].value[0], scope.$parent.barChart.getFlowList()[i].flow.getData()[j].value[1]];
@@ -175,14 +178,15 @@ angular.module('norris-nrti')
                         values[y][0] = scope.$parent.barChart.getHeaders()[values[y][0]-1];
                     }
                     data.push({ 'key': key, 'values': values});
-                    scope.data = data;
-                    
                 }
+                console.log('fuori dal for ' + scope.$parent.barChart.getFlowList().length);
                 scope.colorArray = colorArray;
+                scope.data = data;
             };
 
             // posiziona la legenda a nord, est, sud, ovest, nord-est, nord-ovest, sud-est o sud-ovest del grafico
             function changePosition(chart,parent){
+
                 switch (scope.$parent.barChart.getLegend().getPosition()) {
                     case 'N':
                         parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.barChart.getHeight() + 'px; right: -' + (scope.$parent.barChart.getWidth()/2) + 'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
