@@ -365,8 +365,8 @@ var repeatBar=function(){
                 ID:'flow1',
                 name: 'grafico tempo-pressione',
                 indexKey: 'tempo',
-                valueKey: 'pressione',
-                flowColor: '#33AAFF'
+                valueKey: 'pressione'
+                //flowColor: '#33AAFF'
             },[
                 {tempo: 1, pressione: 3},
                 {tempo: 2, pressione: 10},
@@ -379,8 +379,8 @@ var repeatBar=function(){
                 ID:'flow2',
                 name: 'grafico tempo-umidita',
                 indexKey: 'tempo',
-                valueKey: 'umidita',
-                flowColor: '#22CC55'
+                valueKey: 'umidita'
+                //flowColor: '#22CC55'
             },[
                 {tempo: 1, umidita: 7},
                 {tempo: 2, umidita: 20},
