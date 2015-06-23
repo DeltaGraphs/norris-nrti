@@ -27,9 +27,9 @@ describe('MapChartController', function(){
 	var controller;
 	var socket;
 
-	beforeEach(inject(function($rootScope, $controller, $injector){
+	beforeEach(inject(function($rootScope, $controller, _SocketServicesFactory_){
 		scope = $rootScope.$new();
-		socket = $injector.get('SocketServicesFactory');
+		socket = _SocketServicesFactory_;
 		controller = $controller('MapChartController', { $scope : scope });
 	}));
 
