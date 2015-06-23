@@ -15,9 +15,9 @@
 * =================================================================================================
 *
 */
-var mockSocket = angular.module('mockSocket', ['ngRoute'])
+//var mockSocket = angular.module('mockSocket', ['ngRoute'])
 
-angular.module('mockSocket')
+angular.module(' norris-nrti')
 .factory('SocketServicesFactory', function ($rootScope) {
 
 	this.events = {};

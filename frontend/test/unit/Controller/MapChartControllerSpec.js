@@ -21,7 +21,7 @@
 describe('MapChartController', function(){
 
 	beforeEach(angular.mock.module('norris-nrti'));
-	beforeEach(angular.mock.module('mockSocket'));
+	//beforeEach(angular.mock.module('mockSocket'));
 
 	var scope;
 	var controller;
@@ -43,126 +43,126 @@ describe('MapChartController', function(){
 
 	describe('#listenOnEvent', function(){
 
-	it('configGraph works fine', function(){
-		var configGraph = false;
+		it('configGraph works fine', function(){
+			var configGraph = false;
 
-		socket.on('configGraph', function(){
-			configGraph = true;
+			socket.on('configGraph', function(){
+				configGraph = true;
+			});
+
+			expect(configGraph).toEqual(true);
+			//expect(scope.mapChart.getHeight()).toEqual(600);
+			//expect(scope.mapChart.getWidth()).toEqual(1000);
+			//expect(scope.mapChart.getFlowList().length).toEqual(1);
 		});
 
-		expect(configGraph).toEqual(true);
-		//expect(scope.mapChart.getHeight()).toEqual(600);
-		//expect(scope.mapChart.getWidth()).toEqual(1000);
-		//expect(scope.mapChart.getFlowList().length).toEqual(1);
-	});
+	    /*it('updateGraphProp works fine', function(){
+	      notify.receive('updateGraphProp', {
+	        'height':1000,
+	        'width':600
+	      });
+	      expect(scope.mapChart.getHeight()).toEqual(1000);
+	      expect(scope.mapChart.getWidth()).toEqual(600);
+	    });
 
-    /*it('updateGraphProp works fine', function(){
-      notify.receive('updateGraphProp', {
-        'height':1000,
-        'width':600
-      });
-      expect(scope.mapChart.getHeight()).toEqual(1000);
-      expect(scope.mapChart.getWidth()).toEqual(600);
-    });
+	    it('configGraph works fine', function(){
+	      socket.on('configGraph', {
+	        'properties':{
+	          'ID':'map1',
+	          'title':'APS',
+	          'type':'MapChart',
+	          'height':600,
+	          'width':1000,
+	          'flows':[
+	            {
+	              'ID':'flow1',
+	              'name':'linea 22',
+	              'filters':null,
+	              'longitudeKey':'2',
+	              'latitudeKey':'1',
+	              'objectKey':'0',
+	              'longitudeFormat':'coordinates',
+	              'latitudeFormat':'coordinates',
+	              'marker':{
+	                'type':'shape',
+	                'shape':'bus',
+	                'color':'#FFC4F6'
+	              },
+	            }
+	          ]
+	        }
+	      });
+	      expect(scope.mapChart.getTitle()).toEqual('APS');
+	      expect(scope.mapChart.getHeight()).toEqual(600);
+	      expect(scope.mapChart.getWidth()).toEqual(1000);
+	      expect(scope.mapChart.getFlowList().length).toEqual(1);
+	    });
 
-    it('configGraph works fine', function(){
-      socket.on('configGraph', {
-        'properties':{
-          'ID':'map1',
-          'title':'APS',
-          'type':'MapChart',
-          'height':600,
-          'width':1000,
-          'flows':[
-            {
-              'ID':'flow1',
-              'name':'linea 22',
-              'filters':null,
-              'longitudeKey':'2',
-              'latitudeKey':'1',
-              'objectKey':'0',
-              'longitudeFormat':'coordinates',
-              'latitudeFormat':'coordinates',
-              'marker':{
-                'type':'shape',
-                'shape':'bus',
-                'color':'#FFC4F6'
-              },
-            }
-          ]
-        }
-      });
-      expect(scope.mapChart.getTitle()).toEqual('APS');
-      expect(scope.mapChart.getHeight()).toEqual(600);
-      expect(scope.mapChart.getWidth()).toEqual(1000);
-      expect(scope.mapChart.getFlowList().length).toEqual(1);
-    });
+	    it('configGraph works fine', function(){
+	      socket.on('configGraph', {
+	        'properties':{
+	          'ID':'map1',
+	          'title':'APS',
+	          'type':'MapChart',
+	          'height':600,
+	          'width':1000,
+	          'flows':[
+	            {
+	              'ID':'flow1',
+	              'name':'linea 22',
+	              'filters':null,
+	              'longitudeKey':'2',
+	              'latitudeKey':'1',
+	              'objectKey':'0',
+	              'longitudeFormat':'coordinates',
+	              'latitudeFormat':'coordinates',
+	              'marker':{
+	                'type':'shape',
+	                'shape':'bus',
+	                'color':'#FFC4F6'
+	              },
+	            }
+	          ]
+	        }
+	      });
+	      expect(scope.mapChart.getTitle()).toEqual('APS');
+	      expect(scope.mapChart.getHeight()).toEqual(600);
+	      expect(scope.mapChart.getWidth()).toEqual(1000);
+	      expect(scope.mapChart.getFlowList().length).toEqual(1);
+	    });
 
-    it('configGraph works fine', function(){
-      socket.on('configGraph', {
-        'properties':{
-          'ID':'map1',
-          'title':'APS',
-          'type':'MapChart',
-          'height':600,
-          'width':1000,
-          'flows':[
-            {
-              'ID':'flow1',
-              'name':'linea 22',
-              'filters':null,
-              'longitudeKey':'2',
-              'latitudeKey':'1',
-              'objectKey':'0',
-              'longitudeFormat':'coordinates',
-              'latitudeFormat':'coordinates',
-              'marker':{
-                'type':'shape',
-                'shape':'bus',
-                'color':'#FFC4F6'
-              },
-            }
-          ]
-        }
-      });
-      expect(scope.mapChart.getTitle()).toEqual('APS');
-      expect(scope.mapChart.getHeight()).toEqual(600);
-      expect(scope.mapChart.getWidth()).toEqual(1000);
-      expect(scope.mapChart.getFlowList().length).toEqual(1);
-    });
-
-    it('configGraph works fine', function(){
-      socket.on('configGraph', {
-        'properties':{
-          'ID':'map1',
-          'title':'APS',
-          'type':'MapChart',
-          'height':600,
-          'width':1000,
-          'flows':[
-            {
-              'ID':'flow1',
-              'name':'linea 22',
-              'filters':null,
-              'longitudeKey':'2',
-              'latitudeKey':'1',
-              'objectKey':'0',
-              'longitudeFormat':'coordinates',
-              'latitudeFormat':'coordinates',
-              'marker':{
-                'type':'shape',
-                'shape':'bus',
-                'color':'#FFC4F6'
-              },
-            }
-          ]
-        }
-      });
-      expect(scope.mapChart.getTitle()).toEqual('APS');
-      expect(scope.mapChart.getHeight()).toEqual(600);
-      expect(scope.mapChart.getWidth()).toEqual(1000);
-      expect(scope.mapChart.getFlowList().length).toEqual(1);
-    });*/
+	    it('configGraph works fine', function(){
+	      socket.on('configGraph', {
+	        'properties':{
+	          'ID':'map1',
+	          'title':'APS',
+	          'type':'MapChart',
+	          'height':600,
+	          'width':1000,
+	          'flows':[
+	            {
+	              'ID':'flow1',
+	              'name':'linea 22',
+	              'filters':null,
+	              'longitudeKey':'2',
+	              'latitudeKey':'1',
+	              'objectKey':'0',
+	              'longitudeFormat':'coordinates',
+	              'latitudeFormat':'coordinates',
+	              'marker':{
+	                'type':'shape',
+	                'shape':'bus',
+	                'color':'#FFC4F6'
+	              },
+	            }
+	          ]
+	        }
+	      });
+	      expect(scope.mapChart.getTitle()).toEqual('APS');
+	      expect(scope.mapChart.getHeight()).toEqual(600);
+	      expect(scope.mapChart.getWidth()).toEqual(1000);
+	      expect(scope.mapChart.getFlowList().length).toEqual(1);
+	    });*/
     });
     
   //deeescribe('socketConnection', function(){
