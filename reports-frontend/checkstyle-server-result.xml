@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <checkstyle version="4.3">
 	<file name="test/unit/Controller/MapChartControllerSpec.js">
+		<error line="31" column="18" severity="warning" message="&apos;_socketFactory_&apos; is not defined." source="jshint.W117" />
 		<error line="43" column="5" severity="warning" message="&apos;deeescribe&apos; is not defined." source="jshint.W117" />
 		<error line="88" column="13" severity="warning" message="&apos;socket&apos; is not defined." source="jshint.W117" />
 		<error line="121" column="13" severity="warning" message="&apos;socket&apos; is not defined." source="jshint.W117" />
