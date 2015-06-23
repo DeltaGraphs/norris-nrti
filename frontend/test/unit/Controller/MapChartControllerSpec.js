@@ -31,12 +31,16 @@ describe('MapChartController', function(){
     	SocketServicesFactory = $injector.get('SocketServicesFactory');
     	socket = SocketServicesFactory.build('http://norris-nrti-dev.herokuapp.com/page1/map1');
     	scope = $rootScope.$new();
-        controller = $controller('MapChartController', { $scope : scope, socket : socket });
+        controller = $controller('MapChartController', { $scope : scope });
     }));
 
     describe('Constructor', function(){
     	it('controller is defined', function() {
 			expect(controller).toBeDefined();
+		});
+
+    	it('controller is defined', function() {
+			expect(socket).toBeDefined();
 		});
 
 	    it('scope.mapChart is defined', function() {

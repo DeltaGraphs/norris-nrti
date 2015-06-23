@@ -47,7 +47,7 @@ describe('BarChartFlow', function(){
 		});
 
 		it('constructor create the flow with the correct flowColor', function(){
-			expect(BarChartFlow.getFlowColor()).toEqual('#000');
+			expect(BarChartFlow.getFlowColor()).toEqual(undefined);
 		});
 	});
 
