@@ -21,7 +21,7 @@
 describe('MapChartController', function(){
 
   beforeEach(angular.mock.module('norris-nrti'));
-  beforeEach(angular.mock,module('norris-nrti-mock-socket'));
+  beforeEach(angular.mock,module('mockSocket'));
 
   var scope;
   var controller;
