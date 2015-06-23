@@ -28,7 +28,7 @@ describe('MapChartController', function(){
 
     beforeEach(inject(function($rootScope, $controller, socketFactory){
     	scope = $rootScope.$new();
-    	notify = _socketFactory_;
+    	notify = socketFactory;
         controller = $controller('MapChartController', { $scope : scope });
     }));
 
@@ -40,7 +40,7 @@ describe('MapChartController', function(){
 		expect(notify).toBeDefined();
 	});
 
-    deeescribe('listenOnEvent', function(){
+    describe('listenOnEvent', function(){
     	
 	    it('configGraph works fine', function(){
 			notify.receive('configGraph', {
