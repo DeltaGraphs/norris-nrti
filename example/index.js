@@ -472,6 +472,26 @@ var repeatTable=function(){
 
 var myVar4=setInterval(function () {repeatTable();}, 5000);
 
+var repeatModPage=function(){
+    var currentdate = new Date();
+    var datetime = 'Last Sync: ' + currentdate.getDate() + '/' +
+                    (currentdate.getMonth()+1)  + '/' +
+                    currentdate.getFullYear() + ' @ ' +
+                    currentdate.getHours() + ':' +
+                    currentdate.getMinutes() + ':' +
+                    currentdate.getSeconds();
+
+    page1.updateProperties({
+        name: 'Pagina 1 '+datetime,
+        description: 'Questa è una bella pagina '+datetime
+    });
+    mapChart.updateProperties({title: 'APS '+datetime});
+    lineChart.updateProperties({title: 'LINEE'+datetime});
+    barChart.updateProperties({title: 'BARRE '+datetime});
+    table.updateProperties({title: 'Tabella '+datetime});
+};
+var myVar5=setInterval(function () {repeatModPage();}, 7500);
+
 /////////////////////////////////////////////
 // THIRD PAGE - CONTAINS THE APS TABLES
 /////////////////////////////////////////////
