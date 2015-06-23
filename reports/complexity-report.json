@@ -7677,7 +7677,7 @@
                 "halstead": {
                     "operators": {
                         "distinct": 21,
-                        "total": 547,
+                        "total": 548,
                         "identifiers": [
                             "var",
                             "=",
@@ -7703,8 +7703,8 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 95,
-                        "total": 614,
+                        "distinct": 96,
+                        "total": 615,
                         "identifiers": [
                             "\"use strict\"",
                             "PageModel",
@@ -7794,6 +7794,7 @@
                             0,
                             "length",
                             "graphChanged",
+                            "\"graphChanged : \"",
                             "\"  \"",
                             "JSON",
                             "stringify",
@@ -7803,13 +7804,13 @@
                             "exports"
                         ]
                     },
-                    "length": 1161,
-                    "vocabulary": 116,
-                    "difficulty": 67.86315789473684,
-                    "volume": 7962.115935343111,
-                    "effort": 540334.3308963899,
-                    "bugs": 2.6540386451143703,
-                    "time": 30018.57393868833
+                    "length": 1163,
+                    "vocabulary": 117,
+                    "difficulty": 67.265625,
+                    "volume": 7990.2341688755,
+                    "effort": 537468.095265766,
+                    "bugs": 2.6634113896251663,
+                    "time": 29859.33862587589
                 },
                 "params": 9,
                 "line": 2,
@@ -8376,7 +8377,7 @@
                     "halstead": {
                         "operators": {
                             "distinct": 8,
-                            "total": 35,
+                            "total": 36,
                             "identifiers": [
                                 "()",
                                 "+",
@@ -8389,10 +8390,11 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 16,
-                            "total": 38,
+                            "distinct": 17,
+                            "total": 39,
                             "identifiers": [
                                 "params",
+                                "\"graphChanged : \"",
                                 "eventType",
                                 "\"  \"",
                                 "JSON",
@@ -8410,13 +8412,13 @@
                                 "pageChanged"
                             ]
                         },
-                        "length": 73,
-                        "vocabulary": 24,
-                        "difficulty": 9.5,
-                        "volume": 334.70226255264447,
-                        "effort": 3179.6714942501226,
-                        "bugs": 0.11156742085088149,
-                        "time": 176.64841634722904
+                        "length": 75,
+                        "vocabulary": 25,
+                        "difficulty": 9.176470588235293,
+                        "volume": 348.2892142331043,
+                        "effort": 3196.0657306096628,
+                        "bugs": 0.1160964047443681,
+                        "time": 177.55920725609238
                     },
                     "params": 1,
                     "line": 230,
@@ -8450,10 +8452,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 95.26781190554078,
+            "maintainability": 95.26719573067902,
             "loc": 15,
             "cyclomatic": 4.111111111111111,
-            "effort": 10109.546840914341,
+            "effort": 10111.368422732068,
             "params": 1,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/page/page.js"
         },
@@ -18377,7 +18379,7 @@
     "coreSize": 37.5,
     "loc": 10.336250988594738,
     "cyclomatic": 4.2653158473470985,
-    "effort": 7978.91597603962,
+    "effort": 7978.9729004714245,
     "params": 1.1159770784770788,
-    "maintainability": 105.14771037651337
+    "maintainability": 105.14769112104895
 }
