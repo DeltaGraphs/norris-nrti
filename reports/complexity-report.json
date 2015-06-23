@@ -7677,7 +7677,7 @@
                 "halstead": {
                     "operators": {
                         "distinct": 21,
-                        "total": 538,
+                        "total": 539,
                         "identifiers": [
                             "var",
                             "=",
@@ -7704,7 +7704,7 @@
                     },
                     "operands": {
                         "distinct": 92,
-                        "total": 604,
+                        "total": 605,
                         "identifiers": [
                             "\"use strict\"",
                             "PageModel",
@@ -7800,13 +7800,13 @@
                             "exports"
                         ]
                     },
-                    "length": 1142,
+                    "length": 1144,
                     "vocabulary": 113,
-                    "difficulty": 68.93478260869566,
-                    "volume": 7788.6443750781455,
-                    "effort": 536908.5068124522,
-                    "bugs": 2.596214791692715,
-                    "time": 29828.25037846957
+                    "difficulty": 69.04891304347827,
+                    "volume": 7802.284733002976,
+                    "effort": 538739.2800695805,
+                    "bugs": 2.600761577667659,
+                    "time": 29929.960003865584
                 },
                 "params": 9,
                 "line": 2,
@@ -8266,7 +8266,7 @@
                     "halstead": {
                         "operators": {
                             "distinct": 3,
-                            "total": 3,
+                            "total": 4,
                             "identifiers": [
                                 "return",
                                 "()",
@@ -8274,20 +8274,21 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 2,
-                            "total": 2,
+                            "distinct": 3,
+                            "total": 3,
                             "identifiers": [
+                                "this",
                                 "_page",
                                 "getProperties"
                             ]
                         },
-                        "length": 5,
-                        "vocabulary": 5,
+                        "length": 7,
+                        "vocabulary": 6,
                         "difficulty": 1.5,
-                        "volume": 11.60964047443681,
-                        "effort": 17.414460711655217,
-                        "bugs": 0.0038698801581456034,
-                        "time": 0.9674700395364009
+                        "volume": 18.094737505048094,
+                        "effort": 27.14210625757214,
+                        "bugs": 0.006031579168349364,
+                        "time": 1.5078947920873411
                     },
                     "params": 0,
                     "line": 208,
@@ -8440,10 +8441,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 95.42737337327029,
+            "maintainability": 95.42700354234478,
             "loc": 14.88888888888889,
             "cyclomatic": 4.111111111111111,
-            "effort": 9994.581822433953,
+            "effort": 9995.662671939055,
             "params": 1,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/page/page.js"
         },
@@ -18367,7 +18368,7 @@
     "coreSize": 37.5,
     "loc": 10.332778766372517,
     "cyclomatic": 4.2653158473470985,
-    "effort": 7975.323319212108,
+    "effort": 7975.357095759142,
     "params": 1.1159770784770788,
-    "maintainability": 105.15269667237992
+    "maintainability": 105.15268511516351
 }
