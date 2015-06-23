@@ -32,4 +32,4 @@ var norrisConfig = function($routeProvider) {
 };
 
 var norris = angular.module('norris-nrti', ['ngRoute']).config(norrisConfig); /* definisce un
-namespace (chiamato modulo) */
+namespace (chiamato modulo) */ 
