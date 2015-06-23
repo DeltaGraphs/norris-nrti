@@ -24,14 +24,17 @@ describe('MapChartController', function(){
 
 	var scope;
 	var controller;
-	var SocketServicesFactory;
 	var socket;
 	
-    beforeEach(inject(function($rootScope, $controller, $injector){
-    	SocketServicesFactory = $injector.get('SocketServicesFactory');
-    	socket = SocketServicesFactory.build('http://norris-nrti-dev.herokuapp.com/page1/map1');
+    beforeEach(inject(function($rootScope, $controller){
+    	//var socketURL = 'http://0.0.0.0:5000/namespace';
+        var options ={
+            transports: ['websocket'],
+            'force new connection': true
+        };
+    	socket = io.connect('http://norris-nrti-dev.herokuapp.com/page1/map1',options);
     	scope = $rootScope.$new();
-        controller = $controller('MapChartController', { $scope : scope });
+        controller = $controller('MapChartController', { $scope : scope, socket : socket });
     }));
 
     describe('Constructor', function(){
