@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">79.79</p>
+      <p class="stat">79.76</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">196</p>
+      <p class="stat">198</p>
     </div>
   </div>
   <div class="row historical">
@@ -111,39 +111,41 @@
 
 describe(&#039;MapChartController&#039;, function(){
 
-  beforeEach(angular.mock.module(&#039;norris-nrti&#039;));
-  beforeEach(angular.mock,module(&#039;mockSocket&#039;));
+	beforeEach(angular.mock.module(&#039;norris-nrti&#039;));
+	beforeEach(angular.mock.module(&#039;mockSocket&#039;));
 
-  var scope;
-  var controller;
-  var socket;
+	var scope;
+	var controller;
+	var socket;
 
-    beforeEach(inject(function($rootScope, $controller, $injector){
+	beforeEach(inject(function($rootScope, $controller, $injector){
 		scope = $rootScope.$new();
 		socket = $injector.get(&#039;SocketServicesFactory&#039;);
 		controller = $controller(&#039;MapChartController&#039;, { $scope : scope });
-    }));
+	}));
 
-    it(&#039;scope.mapChart is defined&#039;, function() {
-    expect(scope.mapChart).toBeDefined();
-  });
+	it(&#039;scope.mapChart is defined&#039;, function() {
+		expect(scope.mapChart).toBeDefined();
+	});
 
-  it(&#039;controller is defined&#039;, function() {
-    expect(controller).toBeDefined();
-  });
+	it(&#039;controller is defined&#039;, function() {
+		expect(controller).toBeDefined();
+	});
 
-    describe(&#039;#listenOnEvent&#039;, function(){
-      
-		it(&#039;configGraph works fine&#039;, function(){
+	describe(&#039;#listenOnEvent&#039;, function(){
+
+	it(&#039;configGraph works fine&#039;, function(){
 		var configGraph = false;
+
 		socket.on(&#039;configGraph&#039;, function(){
 			configGraph = true;
 		});
+
 		expect(configGraph).toEqual(true);
 		//expect(scope.mapChart.getHeight()).toEqual(600);
 		//expect(scope.mapChart.getWidth()).toEqual(1000);
 		//expect(scope.mapChart.getFlowList().length).toEqual(1);
-    });
+	});
 
     /*it(&#039;updateGraphProp works fine&#039;, function(){
       notify.receive(&#039;updateGraphProp&#039;, {
