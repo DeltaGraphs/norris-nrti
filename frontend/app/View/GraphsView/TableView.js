@@ -58,29 +58,37 @@ angular.module('norris-nrti')
                 var border = 'border: 1px solid black;';
                 var noBorder = 'class="table-condensed table-striped"';
                 var headers = 'color: #000; background-color: #FFF;';
-                var cell = 'color: #000; background-color: #FFF';
+                
                 if (scope.$parent.table.getAppearance().border !== undefined) {
                     border = 'border:' + scope.$parent.table.getAppearance().border.width + 'px solid ' + scope.$parent.table.getAppearance().border.color + ';';
                 }
                 var tableStyle = 'style="' + border + ' ';
-                var cellStyle = 'style="' + border + ' "';
+                var str = scope.url.split('/');
+                var id = str[str.length-1];
+                var table = '<style>';
+                if(scope.$parent.table.getAppearance().rowOdd !== undefined && scope.$parent.table.getAppearance().rowEven !== undefined){
+                    for (var td=0;td<scope.$parent.table.getHeaders().length;td++){
+                        table = table + 'table #' + id +  ' tr:nth-child(odd) td:nth-child(' + (td+1) + '){ color: ' + scope.$parent.table.getAppearance().rowOdd.textColor[0] + '; ';
+                        table = table + 'background-color: ' + scope.$parent.table.getAppearance().rowOdd.backgroundColor[td] + ';} ';
+                        table = table + 'table #' + id +  ' tr:nth-child(even) td:nth-child(' + (td+1) + '){ color: ' + scope.$parent.table.getAppearance().rowEven.textColor[0] + '; ';
+                        table = table + 'background-color: ' + scope.$parent.table.getAppearance().rowEven.backgroundColor[td] + ';}';  
+                    }
+                }
 
-                var table = '<div class="graphtitle">'+ scope.$parent.table.getTitle() +'</div>';   
-
-                table = table + '<table st-table="displayed" st-safe-src="rowCollection" ';
+                table = table + '</style><div class="graphtitle">'+ scope.$parent.table.getTitle() +'</div><table id="' + id + '" st-table="displayed" st-safe-src="rowCollection" ';
 
                 table = table + '<thead><tr>';
                 for (var i=0; i<scope.$parent.table.getHeaders().length; i++) {
                     table = table + '<th ';
+                    if (scope.$parent.table.getAppearance().headers !== undefined) {
+                        headers = 'color:' + scope.$parent.table.getAppearance().headers.textColor[i] + '; background-color:' + scope.$parent.table.getAppearance().headers.backgroundColor[i] + '; ';
+                    }
+                    if (scope.$parent.table.getAppearance().border !== undefined) {
+                        table = table + tableStyle + headers + ' " ';
+                    } else {
+                        table = table + noBorder + 'style="' + headers + ' " ';
+                    }
                     if (scope.$parent.table.getSortable()) {
-                        if (scope.$parent.table.getAppearance().headers !== undefined) {
-                            headers = 'color:' + scope.$parent.table.getAppearance().headers.textColor[i] + '; background-color:' + scope.$parent.table.getAppearance().headers.backgroundColor[i] + '; ';
-                        }
-                        if (scope.$parent.table.getAppearance().border !== undefined) {
-                            table = table + tableStyle + headers + ' " ';
-                        } else {
-                            table = table + noBorder + 'style="' + headers + ' " ';
-                        }
                         //for (var f=0; f<scope.$parent.table.getSort().columns.length; f++){ // for multicolunms sorting
                             //if (scope.$parent.table.getHeaders()[i] === scope.$parent.table.getSort().columns[f]) {
                             if (scope.$parent.table.getHeaders()[i] === scope.$parent.table.getSort().column) {
@@ -98,23 +106,34 @@ angular.module('norris-nrti')
                 }
                 table = table + '</tr></thead>';
 
-                table = table + '<tbody><tr ng-repeat="record in displayed">';
-                i = 0;
+                table = table + '<tbody><tr ng-repeat="line in displayed">';
+                //i = 0;
                 for (var j=0; j<scope.$parent.table.getHeaders().length; j++){
                     //table = table + '<td style="background-color:'+ scope.appearance[i][j].bg +'; color:'+ scope.appearance[i][j].text +';">{{record.'+ scope.$parent.table.getHeaders()[j] +'}}</td>';
+                    //var cellText = 'color: #000;';
+                    //var cellBG = 'background-color: #FFF;';
+                    //if (scope.appearance[i][j] !== undefined){
+                        //if (scope.appearance[i][j].bg !== undefined){
+                    var cellBG = 'background-color: {{line.appearance.' + scope.$parent.table.getHeaders()[j] + '.bg}};'; // + scope.appearance[i][j].bg + ';';
+                        //}
+                        //if (scope.appearance[i][j].text !== undefined){
+                    var cellText = 'color: {{line.appearance' + scope.$parent.table.getHeaders()[j] + '.text}};'; // + scope.appearance[i][j].text + ';';
+                        //}
+                    //}
                     //i++;
+                    var cellStyle = 'style="' + border + cellBG + cellText + '"';
                     table = table + '<td ';
                     if (scope.$parent.table.getAppearance().border !== undefined) {
                         table = table + cellStyle;
                     } else {
-                        table = table + noBorder;
+                        table = table + noBorder + cellStyle;
                     }
-                    table = table + '>{{record.'+ scope.$parent.table.getHeaders()[j] +'}}</td>';
+                    table = table + '>{{line.record.'+ scope.$parent.table.getHeaders()[j] +'}}</td>';
                 }
                 table = table + '</tr></tbody>';
 
                 table = table + '<tfoot><tr>' +
-                                    '<td colspan="5" class="text-center">' +
+                                    '<td  style="background-color: #FFF;" colspan="5" class="text-center">' +
                                         '<div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="5"></div>' +
                                     '</td>' +
                                 '</tr></tfoot>';
@@ -127,22 +146,25 @@ angular.module('norris-nrti')
 
             scope.displayed = [].concat(scope.rowCollection);
             scope.rowCollection = [];
-            scope.appearance = [];
+            //scope.appearance;
 
             // imposta i dati da visualizzare
             scope.setData = function(){
                 scope.rowCollection = []; // array che contiene una copia dei dati per permettere paginazione e ordinamento con dati dinamici
-                var appearance = [];
+                //scope.appearance = [];
+                //var appearance = ;
                 for (var k=0; k<scope.$parent.table.getFlowList().length; k++) {
                     for (var i=0; i<scope.$parent.table.getFlowList()[k].flow.getData().length; i++) {
+                        var appearance = {};
                         var record = {};
-                        var look = [];
                         for (var j=0; j<scope.$parent.table.getHeaders().length; j++) {
+                            if (scope.$parent.table.getFlowList()[k].flow.getData()[i].appearance !== undefined){
+                                appearance[scope.$parent.table.getHeaders()[j]] = scope.$parent.table.getFlowList()[k].flow.getData()[i].appearance[j];
+                            }
                             record[scope.$parent.table.getHeaders()[j]] = scope.$parent.table.getFlowList()[k].flow.getData()[i].value[j];
-                            look[j] = scope.$parent.table.getFlowList()[k].flow.getData()[i].appearance[j];
                         }
-                        scope.rowCollection.push(record);
-                        appearance.push(look);
+                        scope.rowCollection.push({'appearance': appearance, 'record': record});
+
                     }
                 }
                 /*console.log('appearance length ' + appearance.length);
@@ -152,7 +174,7 @@ angular.module('norris-nrti')
                         console.log('TABLE appearance: ' + appearance[g][f].bg + ' ' + appearance[g][f].text);
                     }
                 }*/
-                scope.appearance = appearance;
+                //scope.appearance = appearance;
                 scope.itemsByPage = scope.$parent.table.getMaxItemsPage();
             };
         }
