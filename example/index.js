@@ -430,16 +430,16 @@ var table=page1.createTable({
             width: 1 // > 0
         },
         rowEven: {
-            textColor: ['#1F3D99', '#000000', '#000000'],
-            backgroundColor: ['#99E2F2', '#F2E899', '#D699F2']
+            textColor: ['#1F3D99', '#000000'],
+            backgroundColor: ['#99E2F2', '#F2E899']
         },
         rowOdd: {
-            textColor: ['#000000', '#1F3D99', '#000000'],
-            backgroundColor: ['#99F2DF', '#D9F299', '#F299AC']
+            textColor: ['#000000', '#1F3D99'],
+            backgroundColor: ['#99F2DF', '#D9F299']
         },
         headers: {
-            textColor: ['#FFFFFF', '#FFFFFF', '#000000'],
-            backgroundColor: ['#2FBA38', '#2F3ABA', '#FF8833']
+            textColor: ['#FFFFFF', '#FFFFFF'],
+            backgroundColor: ['#2FBA38', '#2F3ABA']
         }
     },
 });
