@@ -7670,14 +7670,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 150,
-                    "physical": 241
+                    "logical": 151,
+                    "physical": 242
                 },
                 "cyclomatic": 29,
                 "halstead": {
                     "operators": {
                         "distinct": 21,
-                        "total": 539,
+                        "total": 547,
                         "identifiers": [
                             "var",
                             "=",
@@ -7703,8 +7703,8 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 92,
-                        "total": 605,
+                        "distinct": 95,
+                        "total": 614,
                         "identifiers": [
                             "\"use strict\"",
                             "PageModel",
@@ -7796,21 +7796,24 @@
                             "graphChanged",
                             "\"string\"",
                             "\"\"",
+                            "\"  \"",
+                            "JSON",
+                            "stringify",
                             "module",
                             "exports"
                         ]
                     },
-                    "length": 1144,
-                    "vocabulary": 113,
-                    "difficulty": 69.04891304347827,
-                    "volume": 7802.284733002976,
-                    "effort": 538739.2800695805,
-                    "bugs": 2.600761577667659,
-                    "time": 29929.960003865584
+                    "length": 1161,
+                    "vocabulary": 116,
+                    "difficulty": 67.86315789473684,
+                    "volume": 7962.115935343111,
+                    "effort": 540334.3308963899,
+                    "bugs": 2.6540386451143703,
+                    "time": 30018.57393868833
                 },
                 "params": 9,
                 "line": 2,
-                "cyclomaticDensity": 19.333333333333332
+                "cyclomaticDensity": 19.205298013245034
             },
             "functions": [
                 {
@@ -8366,14 +8369,14 @@
                 {
                     "name": "<anonymous>.graphChanged",
                     "sloc": {
-                        "logical": 3,
-                        "physical": 10
+                        "logical": 4,
+                        "physical": 11
                     },
                     "cyclomatic": 2,
                     "halstead": {
                         "operators": {
-                            "distinct": 7,
-                            "total": 27,
+                            "distinct": 8,
+                            "total": 35,
                             "identifiers": [
                                 "if",
                                 "&&",
@@ -8381,12 +8384,13 @@
                                 ".",
                                 "===",
                                 "typeof (prefix)",
-                                "()"
+                                "()",
+                                "+"
                             ]
                         },
                         "operands": {
-                            "distinct": 11,
-                            "total": 29,
+                            "distinct": 16,
+                            "total": 38,
                             "identifiers": [
                                 "params",
                                 "undefined",
@@ -8397,21 +8401,26 @@
                                 "this",
                                 "_pageSocket",
                                 "sendMessage",
+                                "\"  \"",
+                                "JSON",
+                                "stringify",
+                                "console",
+                                "log",
                                 "_norris",
                                 "pageChanged"
                             ]
                         },
-                        "length": 56,
-                        "vocabulary": 18,
-                        "difficulty": 9.227272727272727,
-                        "volume": 233.51580008076948,
-                        "effort": 2154.7139734725547,
-                        "bugs": 0.07783860002692317,
-                        "time": 119.70633185958637
+                        "length": 73,
+                        "vocabulary": 24,
+                        "difficulty": 9.5,
+                        "volume": 334.70226255264447,
+                        "effort": 3179.6714942501226,
+                        "bugs": 0.11156742085088149,
+                        "time": 176.64841634722904
                     },
                     "params": 1,
                     "line": 230,
-                    "cyclomaticDensity": 66.66666666666666
+                    "cyclomaticDensity": 50
                 }
             ],
             "dependencies": [
@@ -8441,10 +8450,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 95.42700354234478,
-            "loc": 14.88888888888889,
+            "maintainability": 95.26781190554078,
+            "loc": 15,
             "cyclomatic": 4.111111111111111,
-            "effort": 9995.662671939055,
+            "effort": 10109.546840914341,
             "params": 1,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/page/page.js"
         },
@@ -18366,9 +18375,9 @@
     ],
     "changeCost": 21.875,
     "coreSize": 37.5,
-    "loc": 10.332778766372517,
+    "loc": 10.336250988594738,
     "cyclomatic": 4.2653158473470985,
-    "effort": 7975.357095759142,
+    "effort": 7978.91597603962,
     "params": 1.1159770784770788,
-    "maintainability": 105.15268511516351
+    "maintainability": 105.14771037651337
 }
