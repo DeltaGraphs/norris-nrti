@@ -7794,11 +7794,11 @@
                             0,
                             "length",
                             "graphChanged",
-                            "\"string\"",
-                            "\"\"",
                             "\"  \"",
                             "JSON",
                             "stringify",
+                            "\"string\"",
+                            "\"\"",
                             "module",
                             "exports"
                         ]
@@ -8378,14 +8378,14 @@
                             "distinct": 8,
                             "total": 35,
                             "identifiers": [
+                                "()",
+                                "+",
+                                ".",
                                 "if",
                                 "&&",
                                 "!==",
-                                ".",
                                 "===",
-                                "typeof (prefix)",
-                                "()",
-                                "+"
+                                "typeof (prefix)"
                             ]
                         },
                         "operands": {
@@ -8393,19 +8393,19 @@
                             "total": 38,
                             "identifiers": [
                                 "params",
-                                "undefined",
                                 "eventType",
+                                "\"  \"",
+                                "JSON",
+                                "stringify",
+                                "console",
+                                "log",
+                                "undefined",
                                 "\"string\"",
                                 "\"\"",
                                 "\"object\"",
                                 "this",
                                 "_pageSocket",
                                 "sendMessage",
-                                "\"  \"",
-                                "JSON",
-                                "stringify",
-                                "console",
-                                "log",
                                 "_norris",
                                 "pageChanged"
                             ]

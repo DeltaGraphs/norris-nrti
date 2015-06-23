@@ -319,11 +319,11 @@ Page.prototype.getConfigJSON = function() {
 };
 
 Page.prototype.graphChanged = function(params) {
+	console.log(params.eventType+&#039;  &#039;+JSON.stringify(params.params));
 	if(params!==undefined &amp;&amp; params.eventType!==undefined &amp;&amp; params.params!== undefined &amp;&amp;
 		typeof params.eventType === &#039;string&#039; &amp;&amp; params.eventType !== &#039;&#039; &amp;&amp; typeof params.params === &#039;object&#039;) {
 		//notify the page sockets
 		this._pageSocket.sendMessage(params.eventType, params.params);
-		console.log(params.eventType+&#039;  &#039;+JSON.stringify(params.params));
 	}
 
 	//notify norris about the graph update
