@@ -24,72 +24,6 @@ describe('MapChartController', function(){
 
 	var scope;
 	var controller;
-	var socket;
-	
-    beforeEach(inject(function($rootScope, $controller){
-    	//var socketURL = 'http://0.0.0.0:5000/namespace';
-        var options ={
-            transports: ['websocket'],
-            'force new connection': true
-        };
-    	socket = io.connect('http://norris-nrti-dev.herokuapp.com/page1/map1',options);
-    	scope = $rootScope.$new();
-        controller = $controller('MapChartController', { $scope : scope, socket : socket });
-    }));
-
-    describe('Constructor', function(){
-    	it('controller is defined', function() {
-			expect(controller).toBeDefined();
-		});
-
-    	it('controller is defined', function() {
-			expect(socket).toBeDefined();
-		});
-
-	    it('scope.mapChart is defined', function() {
-			expect(scope.mapChart).toBeDefined();
-		});
-    });
-
-	describe('listenOnEvent', function(){
-    	
-	    it('configGraph works fine', function(){
-			socket.on('configGraph', {
-				'properties':{
-					'ID':'map1',
-					'title':'APS',
-					'type':'MapChart',
-					'height':600,
-					'width':1000,
-					'flows':[
-						{
-							'ID':'flow1',
-							'name':'linea 22',
-							'filters':null,
-							'longitudeKey':'2',
-							'latitudeKey':'1',
-							'objectKey':'0',
-							'longitudeFormat':'coordinates',
-							'latitudeFormat':'coordinates',
-							'marker':{
-								'type':'shape',
-								'shape':'bus',
-								'color':'#FFC4F6'
-							}
-						}
-					]
-				}
-			});
-			expect(scope.mapChart.getTitle()).toEqual('APS');
-			expect(scope.mapChart.getHeight()).toEqual(600);
-			expect(scope.mapChart.getWidth()).toEqual(1000);
-			expect(scope.mapChart.getFlowList().length).toEqual(1);
-		});
-
-	});
-
-	/*var scope;
-	var controller;
 	var notify;
 
     beforeEach(inject(function($rootScope, $controller, _socketFactory_){
@@ -279,6 +213,6 @@ describe('MapChartController', function(){
 			expect(scope.mapChart.getTitle()).toEqual('titolocambiato');
 			expect(scope.mapChart.getFlowList()[0].flow.getData()[0].value[0]).toEqual(0);
 		});
-	});*/
+	});
 	
 });
