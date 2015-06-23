@@ -66,6 +66,8 @@ angular.module('norris-nrti')
                 var str = scope.url.split('/');
                 var id = str[str.length-1];
                 var table = '<style>';
+
+                // mette l'aspetto delle celle di riga pari e di riga dispari
                 if(scope.$parent.table.getAppearance().rowOdd !== undefined && scope.$parent.table.getAppearance().rowEven !== undefined){
                     for (var td=0;td<scope.$parent.table.getHeaders().length;td++){
                         table = table + 'table #' + id +  ' tr:nth-child(odd) td:nth-child(' + (td+1) + '){ color: ' + scope.$parent.table.getAppearance().rowOdd.textColor[0] + '; ';
