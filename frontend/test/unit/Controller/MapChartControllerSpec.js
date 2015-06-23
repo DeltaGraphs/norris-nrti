@@ -20,39 +20,41 @@
 
 describe('MapChartController', function(){
 
-  beforeEach(angular.mock.module('norris-nrti'));
-  beforeEach(angular.mock,module('mockSocket'));
+	beforeEach(angular.mock.module('norris-nrti'));
+	beforeEach(angular.mock.module('mockSocket'));
 
-  var scope;
-  var controller;
-  var socket;
+	var scope;
+	var controller;
+	var socket;
 
-    beforeEach(inject(function($rootScope, $controller, $injector){
+	beforeEach(inject(function($rootScope, $controller, $injector){
 		scope = $rootScope.$new();
 		socket = $injector.get('SocketServicesFactory');
 		controller = $controller('MapChartController', { $scope : scope });
-    }));
+	}));
 
-    it('scope.mapChart is defined', function() {
-    expect(scope.mapChart).toBeDefined();
-  });
+	it('scope.mapChart is defined', function() {
+		expect(scope.mapChart).toBeDefined();
+	});
 
-  it('controller is defined', function() {
-    expect(controller).toBeDefined();
-  });
+	it('controller is defined', function() {
+		expect(controller).toBeDefined();
+	});
 
-    describe('#listenOnEvent', function(){
-      
-		it('configGraph works fine', function(){
+	describe('#listenOnEvent', function(){
+
+	it('configGraph works fine', function(){
 		var configGraph = false;
+
 		socket.on('configGraph', function(){
 			configGraph = true;
 		});
+
 		expect(configGraph).toEqual(true);
 		//expect(scope.mapChart.getHeight()).toEqual(600);
 		//expect(scope.mapChart.getWidth()).toEqual(1000);
 		//expect(scope.mapChart.getFlowList().length).toEqual(1);
-    });
+	});
 
     /*it('updateGraphProp works fine', function(){
       notify.receive('updateGraphProp', {
