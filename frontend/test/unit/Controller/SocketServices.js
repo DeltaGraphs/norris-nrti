@@ -17,7 +17,7 @@
 */
 //var mockSocket = angular.module('mockSocket', ['ngRoute'])
 
-angular.module(' norris-nrti')
+angular.module('norris-nrti')
 .factory('SocketServicesFactory', function ($rootScope) {
 
 	this.events = {};
@@ -43,5 +43,7 @@ angular.module(' norris-nrti')
 			emitCallback();
 		}
 	};
+
+	return this;
 
 });
