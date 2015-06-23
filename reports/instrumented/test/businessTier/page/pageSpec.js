@@ -374,7 +374,7 @@ describe('#getProperties', function() {
                 graphsPerRow: 2,
                 graphsPerCol: 3,
             };
-            var page1=new Page(properties);
+            var page1=new Page({ID:'page1'}, nor._networkHandler, nor);
             var prop=page1.getProperties();
             assert.strictEqual(prop.ID, 'page1');
             assert.strictEqual(prop.name, 'page one');

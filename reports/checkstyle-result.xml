@@ -3,4 +3,7 @@
 	<file name="lib/businessTier/page/page.js">
 		<error line="210" column="2" severity="warning" message="Missing semicolon." source="jshint.W033" />
 	</file>
+	<file name="test/businessTier/page/pageSpec.js">
+		<error line="370" column="17" severity="warning" message="&apos;properties&apos; is defined but never used." source="jshint.W098" />
+	</file>
 </checkstyle>
