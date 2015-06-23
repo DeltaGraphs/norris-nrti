@@ -6,6 +6,12 @@
 	<file name="app/Model/SocketServices.js">
 		<error line="23" column="22" severity="warning" message="&apos;io&apos; is not defined." source="jshint.W117" />
 	</file>
+	<file name="app/Controller/GraphsControllers/BarChartController.js">
+		<error line="34" column="9" severity="warning" message="&apos;count&apos; is defined but never used." source="jshint.W098" />
+	</file>
+	<file name="app/Controller/GraphsControllers/LineChartController.js">
+		<error line="31" column="9" severity="warning" message="&apos;count&apos; is defined but never used." source="jshint.W098" />
+	</file>
 	<file name="app/Controller/PagesControllers/PageController.js">
 		<error line="26" column="9" severity="warning" message="&apos;a&apos; is defined but never used." source="jshint.W098" />
 		<error line="30" column="9" severity="warning" message="&apos;b&apos; is defined but never used." source="jshint.W098" />
@@ -38,9 +44,6 @@
 		<error line="208" column="46" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
 		<error line="215" column="46" severity="warning" message="&apos;MapLabel&apos; is not defined." source="jshint.W117" />
 		<error line="240" column="21" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
-	</file>
-	<file name="app/View/GraphsView/TableView.js">
-		<error line="61" column="21" severity="warning" message="&apos;cell&apos; is defined but never used." source="jshint.W098" />
 	</file>
 	<file name="app/View/PagesView/PageView.js">
 		<error line="35" column="17" severity="warning" message="Read only." source="jshint.W020" />

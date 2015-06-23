@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">55.90</p>
+      <p class="stat">53.72</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">159</p>
+      <p class="stat">181</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">31.56</p>
+      <p class="stat">36.37</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">1.77</p>
+      <p class="stat">2.38</p>
     </div>
   </div>
 </div>
@@ -149,29 +149,37 @@ angular.module(&#039;norris-nrti&#039;)
                 var border = &#039;border: 1px solid black;&#039;;
                 var noBorder = &#039;class=&quot;table-condensed table-striped&quot;&#039;;
                 var headers = &#039;color: #000; background-color: #FFF;&#039;;
-                var cell = &#039;color: #000; background-color: #FFF&#039;;
+                
                 if (scope.$parent.table.getAppearance().border !== undefined) {
                     border = &#039;border:&#039; + scope.$parent.table.getAppearance().border.width + &#039;px solid &#039; + scope.$parent.table.getAppearance().border.color + &#039;;&#039;;
                 }
                 var tableStyle = &#039;style=&quot;&#039; + border + &#039; &#039;;
-                var cellStyle = &#039;style=&quot;&#039; + border + &#039; &quot;&#039;;
+                var str = scope.url.split(&#039;/&#039;);
+                var id = str[str.length-1];
+                var table = &#039;&lt;style&gt;&#039;;
+                if(scope.$parent.table.getAppearance().rowOdd !== undefined &amp;&amp; scope.$parent.table.getAppearance().rowEven !== undefined){
+                    for (var td=0;td&lt;scope.$parent.table.getHeaders().length;td++){
+                        table = table + &#039;table #&#039; + id +  &#039; tr:nth-child(odd) td:nth-child(&#039; + (td+1) + &#039;){ color: &#039; + scope.$parent.table.getAppearance().rowOdd.textColor[0] + &#039;; &#039;;
+                        table = table + &#039;background-color: &#039; + scope.$parent.table.getAppearance().rowOdd.backgroundColor[td] + &#039;;} &#039;;
+                        table = table + &#039;table #&#039; + id +  &#039; tr:nth-child(even) td:nth-child(&#039; + (td+1) + &#039;){ color: &#039; + scope.$parent.table.getAppearance().rowEven.textColor[0] + &#039;; &#039;;
+                        table = table + &#039;background-color: &#039; + scope.$parent.table.getAppearance().rowEven.backgroundColor[td] + &#039;;}&#039;;  
+                    }
+                }
 
-                var table = &#039;&lt;div class=&quot;graphtitle&quot;&gt;&#039;+ scope.$parent.table.getTitle() +&#039;&lt;/div&gt;&#039;;   
-
-                table = table + &#039;&lt;table st-table=&quot;displayed&quot; st-safe-src=&quot;rowCollection&quot; &#039;;
+                table = table + &#039;&lt;/style&gt;&lt;div class=&quot;graphtitle&quot;&gt;&#039;+ scope.$parent.table.getTitle() +&#039;&lt;/div&gt;&lt;table id=&quot;&#039; + id + &#039;&quot; st-table=&quot;displayed&quot; st-safe-src=&quot;rowCollection&quot; &#039;;
 
                 table = table + &#039;&lt;thead&gt;&lt;tr&gt;&#039;;
                 for (var i=0; i&lt;scope.$parent.table.getHeaders().length; i++) {
                     table = table + &#039;&lt;th &#039;;
+                    if (scope.$parent.table.getAppearance().headers !== undefined) {
+                        headers = &#039;color:&#039; + scope.$parent.table.getAppearance().headers.textColor[i] + &#039;; background-color:&#039; + scope.$parent.table.getAppearance().headers.backgroundColor[i] + &#039;; &#039;;
+                    }
+                    if (scope.$parent.table.getAppearance().border !== undefined) {
+                        table = table + tableStyle + headers + &#039; &quot; &#039;;
+                    } else {
+                        table = table + noBorder + &#039;style=&quot;&#039; + headers + &#039; &quot; &#039;;
+                    }
                     if (scope.$parent.table.getSortable()) {
-                        if (scope.$parent.table.getAppearance().headers !== undefined) {
-                            headers = &#039;color:&#039; + scope.$parent.table.getAppearance().headers.textColor[i] + &#039;; background-color:&#039; + scope.$parent.table.getAppearance().headers.backgroundColor[i] + &#039;; &#039;;
-                        }
-                        if (scope.$parent.table.getAppearance().border !== undefined) {
-                            table = table + tableStyle + headers + &#039; &quot; &#039;;
-                        } else {
-                            table = table + noBorder + &#039;style=&quot;&#039; + headers + &#039; &quot; &#039;;
-                        }
                         //for (var f=0; f&lt;scope.$parent.table.getSort().columns.length; f++){ // for multicolunms sorting
                             //if (scope.$parent.table.getHeaders()[i] === scope.$parent.table.getSort().columns[f]) {
                             if (scope.$parent.table.getHeaders()[i] === scope.$parent.table.getSort().column) {
@@ -189,23 +197,34 @@ angular.module(&#039;norris-nrti&#039;)
                 }
                 table = table + &#039;&lt;/tr&gt;&lt;/thead&gt;&#039;;
 
-                table = table + &#039;&lt;tbody&gt;&lt;tr ng-repeat=&quot;record in displayed&quot;&gt;&#039;;
-                i = 0;
+                table = table + &#039;&lt;tbody&gt;&lt;tr ng-repeat=&quot;line in displayed&quot;&gt;&#039;;
+                //i = 0;
                 for (var j=0; j&lt;scope.$parent.table.getHeaders().length; j++){
                     //table = table + &#039;&lt;td style=&quot;background-color:&#039;+ scope.appearance[i][j].bg +&#039;; color:&#039;+ scope.appearance[i][j].text +&#039;;&quot;&gt;{{record.&#039;+ scope.$parent.table.getHeaders()[j] +&#039;}}&lt;/td&gt;&#039;;
+                    //var cellText = &#039;color: #000;&#039;;
+                    //var cellBG = &#039;background-color: #FFF;&#039;;
+                    //if (scope.appearance[i][j] !== undefined){
+                        //if (scope.appearance[i][j].bg !== undefined){
+                    var cellBG = &#039;background-color: {{line.appearance.&#039; + scope.$parent.table.getHeaders()[j] + &#039;.bg}};&#039;; // + scope.appearance[i][j].bg + &#039;;&#039;;
+                        //}
+                        //if (scope.appearance[i][j].text !== undefined){
+                    var cellText = &#039;color: {{line.appearance&#039; + scope.$parent.table.getHeaders()[j] + &#039;.text}};&#039;; // + scope.appearance[i][j].text + &#039;;&#039;;
+                        //}
+                    //}
                     //i++;
+                    var cellStyle = &#039;style=&quot;&#039; + border + cellBG + cellText + &#039;&quot;&#039;;
                     table = table + &#039;&lt;td &#039;;
                     if (scope.$parent.table.getAppearance().border !== undefined) {
                         table = table + cellStyle;
                     } else {
-                        table = table + noBorder;
+                        table = table + noBorder + cellStyle;
                     }
-                    table = table + &#039;&gt;{{record.&#039;+ scope.$parent.table.getHeaders()[j] +&#039;}}&lt;/td&gt;&#039;;
+                    table = table + &#039;&gt;{{line.record.&#039;+ scope.$parent.table.getHeaders()[j] +&#039;}}&lt;/td&gt;&#039;;
                 }
                 table = table + &#039;&lt;/tr&gt;&lt;/tbody&gt;&#039;;
 
                 table = table + &#039;&lt;tfoot&gt;&lt;tr&gt;&#039; +
-                                    &#039;&lt;td colspan=&quot;5&quot; class=&quot;text-center&quot;&gt;&#039; +
+                                    &#039;&lt;td  style=&quot;background-color: #FFF;&quot; colspan=&quot;5&quot; class=&quot;text-center&quot;&gt;&#039; +
                                         &#039;&lt;div st-pagination=&quot;&quot; st-items-by-page=&quot;itemsByPage&quot; st-displayed-pages=&quot;5&quot;&gt;&lt;/div&gt;&#039; +
                                     &#039;&lt;/td&gt;&#039; +
                                 &#039;&lt;/tr&gt;&lt;/tfoot&gt;&#039;;
@@ -218,22 +237,25 @@ angular.module(&#039;norris-nrti&#039;)
 
             scope.displayed = [].concat(scope.rowCollection);
             scope.rowCollection = [];
-            scope.appearance = [];
+            //scope.appearance;
 
             // imposta i dati da visualizzare
             scope.setData = function(){
                 scope.rowCollection = []; // array che contiene una copia dei dati per permettere paginazione e ordinamento con dati dinamici
-                var appearance = [];
+                //scope.appearance = [];
+                //var appearance = ;
                 for (var k=0; k&lt;scope.$parent.table.getFlowList().length; k++) {
                     for (var i=0; i&lt;scope.$parent.table.getFlowList()[k].flow.getData().length; i++) {
+                        var appearance = {};
                         var record = {};
-                        var look = [];
                         for (var j=0; j&lt;scope.$parent.table.getHeaders().length; j++) {
+                            if (scope.$parent.table.getFlowList()[k].flow.getData()[i].appearance !== undefined){
+                                appearance[scope.$parent.table.getHeaders()[j]] = scope.$parent.table.getFlowList()[k].flow.getData()[i].appearance[j];
+                            }
                             record[scope.$parent.table.getHeaders()[j]] = scope.$parent.table.getFlowList()[k].flow.getData()[i].value[j];
-                            look[j] = scope.$parent.table.getFlowList()[k].flow.getData()[i].appearance[j];
                         }
-                        scope.rowCollection.push(record);
-                        appearance.push(look);
+                        scope.rowCollection.push({&#039;appearance&#039;: appearance, &#039;record&#039;: record});
+
                     }
                 }
                 /*console.log(&#039;appearance length &#039; + appearance.length);
@@ -243,7 +265,7 @@ angular.module(&#039;norris-nrti&#039;)
                         console.log(&#039;TABLE appearance: &#039; + appearance[g][f].bg + &#039; &#039; + appearance[g][f].text);
                     }
                 }*/
-                scope.appearance = appearance;
+                //scope.appearance = appearance;
                 scope.itemsByPage = scope.$parent.table.getMaxItemsPage();
             };
         }
