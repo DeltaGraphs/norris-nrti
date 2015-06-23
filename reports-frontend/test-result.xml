@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <testsuites>
-  <testsuite name="PhantomJS 1.9.8 (Linux 0.0.0)" package="" timestamp="2015-06-23T20:09:02" id="0" hostname="testing-worker-linux-docker-06a804ef-3232-linux-6" tests="252" errors="0" failures="4" time="0.511">
+  <testsuite name="PhantomJS 1.9.8 (Linux 0.0.0)" package="" timestamp="2015-06-23T20:25:01" id="0" hostname="testing-worker-linux-docker-e1d07e08-3226-linux-4" tests="257" errors="0" failures="9" time="0.566">
     <properties>
       <property name="browser.fullName" value="Mozilla/5.0 (Unknown; Linux x86_64) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.8 Safari/534.34"/>
     </properties>
-    <testcase name="instance defined" time="0.007" classname="PhantomJS 1.9.8 (Linux 0.0.0).Axis Default constructor"/>
-    <testcase name="constructor create the page with the correct name" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).Axis Default constructor"/>
+    <testcase name="instance defined" time="0.012" classname="PhantomJS 1.9.8 (Linux 0.0.0).Axis Default constructor"/>
+    <testcase name="constructor create the page with the correct name" time="0.003" classname="PhantomJS 1.9.8 (Linux 0.0.0).Axis Default constructor"/>
     <testcase name="constructor create the page with the correct color" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Axis Default constructor"/>
     <testcase name="constructor create the page with the correct minValue" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Axis Default constructor"/>
     <testcase name="constructor create the page with the correct maxValue" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Axis Default constructor"/>
@@ -14,117 +14,117 @@
     <testcase name="instance defined" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Axis Constructor"/>
     <testcase name="constructor create the page with the correct name" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Axis Constructor"/>
     <testcase name="constructor create the page with the correct color" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Axis Constructor"/>
-    <testcase name="constructor create the page with the correct minValue" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Axis Constructor"/>
-    <testcase name="constructor create the page with the correct maxValue" time="0.005" classname="PhantomJS 1.9.8 (Linux 0.0.0).Axis Constructor"/>
+    <testcase name="constructor create the page with the correct minValue" time="0" classname="PhantomJS 1.9.8 (Linux 0.0.0).Axis Constructor"/>
+    <testcase name="constructor create the page with the correct maxValue" time="0.004" classname="PhantomJS 1.9.8 (Linux 0.0.0).Axis Constructor"/>
     <testcase name="constructor create the page with the correct ticks" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Axis Constructor"/>
-    <testcase name="constructor create the page with the correct scale" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Axis Constructor"/>
+    <testcase name="constructor create the page with the correct scale" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).Axis Constructor"/>
     <testcase name="Axis updated with the correct name" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Axis #updateParameters"/>
     <testcase name="Axis updated with the correct color" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Axis #updateParameters"/>
-    <testcase name="Axis updated with the correct minValue" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).Axis #updateParameters"/>
-    <testcase name="Axis updated with the correct maxValue" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).Axis #updateParameters"/>
+    <testcase name="Axis updated with the correct minValue" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Axis #updateParameters"/>
+    <testcase name="Axis updated with the correct maxValue" time="0.011" classname="PhantomJS 1.9.8 (Linux 0.0.0).Axis #updateParameters"/>
     <testcase name="Axis updated with the correct getTicks" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Axis #updateParameters"/>
-    <testcase name="Axis updated with the correct scale" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Axis #updateParameters"/>
+    <testcase name="Axis updated with the correct scale" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).Axis #updateParameters"/>
     <testcase name="instance defined" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChartFlow Default constructor"/>
     <testcase name="constructor create the flow with the correct flowColor" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChartFlow Default constructor"/>
     <testcase name="instance defined" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChartFlow Constructor"/>
     <testcase name="constructor create the flow with the correct flowColor" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChartFlow Constructor"/>
     <testcase name="cflow updated with the correct flowColor" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChartFlow #updateParameters"/>
-    <testcase name="data inizialized in the correct way" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChartFlow #initializeData"/>
+    <testcase name="data inizialized in the correct way" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChartFlow #initializeData"/>
     <testcase name="data empty in the correct way" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChartFlow #emptyData"/>
-    <testcase name="data updated in the correct way" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChartFlow #inPlaceUpdate"/>
-    <testcase name="BarChart created" time="0.003" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChart Constructor"/>
-    <testcase name="graph Constructor called" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChart Constructor"/>
+    <testcase name="data updated in the correct way" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChartFlow #inPlaceUpdate"/>
+    <testcase name="BarChart created" time="0.004" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChart Constructor"/>
+    <testcase name="graph Constructor called" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChart Constructor"/>
     <testcase name="graph Constructor called" time="0.004" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChart Constructor"/>
     <testcase name="graph created with the correct axisX" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChart Constructor"/>
     <testcase name="graph created with the correct axisY" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChart Constructor"/>
     <testcase name="graph created with the correct barOrientation" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChart Constructor"/>
     <testcase name="graph created with the correct headers" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChart Constructor"/>
-    <testcase name="graph created with the correct background" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChart Constructor"/>
+    <testcase name="graph created with the correct background" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChart Constructor"/>
     <testcase name="graph created with the correct sortable" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChart Constructor"/>
     <testcase name="graph created with the correct grouping control" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChart Constructor"/>
-    <testcase name="graph created with the correct legendOnPoint" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChart Constructor"/>
-    <testcase name="graph created with the correct flow" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChart Constructor"/>
+    <testcase name="graph created with the correct legendOnPoint" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChart Constructor"/>
+    <testcase name="graph created with the correct flow" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChart Constructor"/>
     <testcase name="graph created with the correct horizontalGrid" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChart Constructor"/>
-    <testcase name="BarChart created" time="0.003" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChart #updateParameters"/>
-    <testcase name="graph updated with the correct axisX" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChart #updateParameters"/>
-    <testcase name="graph updated with the correct axisY" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChart #updateParameters"/>
-    <testcase name="graph updated with the correct barOrientation" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChart #updateParameters"/>
-    <testcase name="graph updated with the correct headers" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChart #updateParameters"/>
+    <testcase name="BarChart created" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChart #updateParameters"/>
+    <testcase name="graph updated with the correct axisX" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChart #updateParameters"/>
+    <testcase name="graph updated with the correct axisY" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChart #updateParameters"/>
+    <testcase name="graph updated with the correct barOrientation" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChart #updateParameters"/>
+    <testcase name="graph updated with the correct headers" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChart #updateParameters"/>
     <testcase name="graph updated with the correct background" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChart #updateParameters"/>
-    <testcase name="graph updated with the correct sortable" time="0.003" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChart #updateParameters"/>
-    <testcase name="graph updated with the correct grouping control" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChart #updateParameters"/>
+    <testcase name="graph updated with the correct sortable" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChart #updateParameters"/>
+    <testcase name="graph updated with the correct grouping control" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChart #updateParameters"/>
     <testcase name="graph updated with the correct legendOnPoint" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChart #updateParameters"/>
-    <testcase name="graph updated with the correct flow" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChart #updateParameters"/>
-    <testcase name="graph updated with the correct horizontalGrid" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChart #updateParameters"/>
-    <testcase name="graph addFlow called with the correct parameters" time="0.006" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChart #addFlow"/>
-    <testcase name="delete flow from graph" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChart #deleteFlow"/>
+    <testcase name="graph updated with the correct flow" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChart #updateParameters"/>
+    <testcase name="graph updated with the correct horizontalGrid" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChart #updateParameters"/>
+    <testcase name="graph addFlow called with the correct parameters" time="0.009" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChart #addFlow"/>
+    <testcase name="delete flow from graph" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChart #deleteFlow"/>
     <testcase name="delete flow from graph" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChart #replaceData"/>
     <testcase name="BarChartFlow inizializeData called in the right way" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChart #initializeData"/>
     <testcase name="BarChartFlow inPlaceUpdate called in the right way" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChart #inPlaceUpdate"/>
     <testcase name="deleteData in the correct way" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChart #deleteData"/>
-    <testcase name="instance defined" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).Flow Default constructor"/>
-    <testcase name="constructor create the flow with the correct name" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).Flow Default constructor"/>
+    <testcase name="instance defined" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Flow Default constructor"/>
+    <testcase name="constructor create the flow with the correct name" time="0.004" classname="PhantomJS 1.9.8 (Linux 0.0.0).Flow Default constructor"/>
     <testcase name="instance defined" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Flow Constructor"/>
     <testcase name="constructor create the flow with the correct name" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Flow Constructor"/>
     <testcase name="flow updated with the correct name" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Flow #updateParameters"/>
-    <testcase name="instance defined" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).Graph Default constructor"/>
+    <testcase name="instance defined" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Graph Default constructor"/>
     <testcase name="constructor create the graph with the correct title" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Graph Default constructor"/>
-    <testcase name="constructor create the graph with the correct height" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Graph Default constructor"/>
+    <testcase name="constructor create the graph with the correct height" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).Graph Default constructor"/>
     <testcase name="constructor create the graph with the correct width" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Graph Default constructor"/>
     <testcase name="constructor create the graph with the correct legend" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Graph Default constructor"/>
     <testcase name="constructor create the graph with the correct url" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Graph Default constructor"/>
     <testcase name="instance defined" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Graph Constructor"/>
-    <testcase name="constructor create the graph with the correct title" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Graph Constructor"/>
+    <testcase name="constructor create the graph with the correct title" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).Graph Constructor"/>
     <testcase name="constructor create the graph with the correct height" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Graph Constructor"/>
     <testcase name="constructor create the graph with the correct width" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Graph Constructor"/>
     <testcase name="constructor create the graph with the correct legend" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Graph Constructor"/>
-    <testcase name="constructor create the graph with the correct url" time="0.016" classname="PhantomJS 1.9.8 (Linux 0.0.0).Graph Constructor"/>
+    <testcase name="constructor create the graph with the correct url" time="0.011" classname="PhantomJS 1.9.8 (Linux 0.0.0).Graph Constructor"/>
     <testcase name="graph updated with the correct title" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).Graph #updateParameters"/>
     <testcase name="graph updated with the correct height" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Graph #updateParameters"/>
     <testcase name="graph updated with the correct width" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Graph #updateParameters"/>
     <testcase name="graph updated with the correct legend" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Graph #updateParameters"/>
     <testcase name="graph updated with the correct url" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Graph #updateParameters"/>
-    <testcase name="add flow into graph" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Graph #addFlow"/>
+    <testcase name="add flow into graph" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).Graph #addFlow"/>
     <testcase name="delete flow from graph" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Graph #deleteFlow"/>
-    <testcase name="delete flow from graph" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Graph #replaceData"/>
+    <testcase name="delete flow from graph" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).Graph #replaceData"/>
     <testcase name="instance defined" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Legend Default constructor"/>
     <testcase name="constructor create the page with the correct position" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Legend Default constructor"/>
     <testcase name="constructor create the page with the correct font color" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Legend Default constructor"/>
     <testcase name="constructor create the page with the correct background" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Legend Default constructor"/>
     <testcase name="instance defined" time="0.012" classname="PhantomJS 1.9.8 (Linux 0.0.0).Legend Constructor"/>
-    <testcase name="constructor create the page with the correct position" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Legend Constructor"/>
+    <testcase name="constructor create the page with the correct position" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).Legend Constructor"/>
     <testcase name="constructor create the page with the correct font color" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Legend Constructor"/>
-    <testcase name="constructor create the page with the correct background" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Legend Constructor"/>
-    <testcase name="legend updated with the correct position" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Legend #updateParameters"/>
-    <testcase name="legend updated with the correct font color" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Legend #updateParameters"/>
-    <testcase name="legend updated with the correct background" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Legend #updateParameters"/>
-    <testcase name="instance defined" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChartFlow Default constructor"/>
-    <testcase name="constructor create the flow with the correct flowColor" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChartFlow Default constructor"/>
-    <testcase name="constructor create the flow with the correct marker" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChartFlow Default constructor"/>
-    <testcase name="constructor create the flow with the correct area" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChartFlow Default constructor"/>
-    <testcase name="constructor create the flow with the correct max item displayed" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChartFlow Default constructor"/>
-    <testcase name="instance defined" time="0.006" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChartFlow Constructor"/>
-    <testcase name="constructor create the flow with the correct flowColor" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChartFlow Constructor"/>
-    <testcase name="constructor create the flow with the correct marker" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChartFlow Constructor"/>
-    <testcase name="constructor create the flow with the correct area" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChartFlow Constructor"/>
-    <testcase name="constructor create the flow with the correct max item displayed" time="0.011" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChartFlow Constructor"/>
-    <testcase name="flow updated with the correct flowColor" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChartFlow #updateParameters"/>
-    <testcase name="flow updated with the correct marker" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChartFlow #updateParameters"/>
+    <testcase name="constructor create the page with the correct background" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).Legend Constructor"/>
+    <testcase name="legend updated with the correct position" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).Legend #updateParameters"/>
+    <testcase name="legend updated with the correct font color" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).Legend #updateParameters"/>
+    <testcase name="legend updated with the correct background" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).Legend #updateParameters"/>
+    <testcase name="instance defined" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChartFlow Default constructor"/>
+    <testcase name="constructor create the flow with the correct flowColor" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChartFlow Default constructor"/>
+    <testcase name="constructor create the flow with the correct marker" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChartFlow Default constructor"/>
+    <testcase name="constructor create the flow with the correct area" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChartFlow Default constructor"/>
+    <testcase name="constructor create the flow with the correct max item displayed" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChartFlow Default constructor"/>
+    <testcase name="instance defined" time="0.008" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChartFlow Constructor"/>
+    <testcase name="constructor create the flow with the correct flowColor" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChartFlow Constructor"/>
+    <testcase name="constructor create the flow with the correct marker" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChartFlow Constructor"/>
+    <testcase name="constructor create the flow with the correct area" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChartFlow Constructor"/>
+    <testcase name="constructor create the flow with the correct max item displayed" time="0.012" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChartFlow Constructor"/>
+    <testcase name="flow updated with the correct flowColor" time="0.003" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChartFlow #updateParameters"/>
+    <testcase name="flow updated with the correct marker" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChartFlow #updateParameters"/>
     <testcase name="flow updated with the correct area" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChartFlow #updateParameters"/>
-    <testcase name="flow updated with the correct max item displayed" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChartFlow #updateParameters"/>
+    <testcase name="flow updated with the correct max item displayed" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChartFlow #updateParameters"/>
     <testcase name="data initialized in the correct way" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChartFlow #initializeData"/>
     <testcase name="data empty in the correct way" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChartFlow #emptyData"/>
-    <testcase name="data updated in the correct way" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChartFlow #inPlaceUpdate"/>
-    <testcase name="streamUpdate call initializedData in the correct way" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChartFlow #streamUpdate"/>
+    <testcase name="data updated in the correct way" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChartFlow #inPlaceUpdate"/>
+    <testcase name="streamUpdate call initializedData in the correct way" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChartFlow #streamUpdate"/>
     <testcase name="data removed in the correct way" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChartFlow #deleteData"/>
     <testcase name="LineChart created" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChart Constructor"/>
     <testcase name="graph Constructor called" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChart Constructor"/>
     <testcase name="graph Constructor called" time="0.011" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChart Constructor"/>
-    <testcase name="graph created with the correct legendOnPoint" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChart Constructor"/>
+    <testcase name="graph created with the correct legendOnPoint" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChart Constructor"/>
     <testcase name="graph created with the correct axisX" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChart Constructor"/>
     <testcase name="graph created with the correct axisY" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChart Constructor"/>
-    <testcase name="graph created with the correct viewFinder" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChart Constructor"/>
-    <testcase name="graph created with the correct background" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChart Constructor"/>
+    <testcase name="graph created with the correct viewFinder" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChart Constructor"/>
+    <testcase name="graph created with the correct background" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChart Constructor"/>
     <testcase name="graph created with the correct interpolation" time="0.005" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChart Constructor"/>
     <testcase name="graph created with the correct horizontalGrid" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChart Constructor"/>
     <testcase name="graph created with the correct verticalGrid" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChart Constructor"/>
@@ -134,15 +134,15 @@
     <testcase name="graph updated with the correct viewFinder" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChart #updateParameters"/>
     <testcase name="graph updated with the correct background" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChart #updateParameters"/>
     <testcase name="graph updated with the correct flow" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChart #updateParameters"/>
-    <testcase name="graph updated with the correct interpolation" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChart #updateParameters"/>
-    <testcase name="graph updated with the correct horizontalGrid" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChart #updateParameters"/>
+    <testcase name="graph updated with the correct interpolation" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChart #updateParameters"/>
+    <testcase name="graph updated with the correct horizontalGrid" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChart #updateParameters"/>
     <testcase name="graph updated with the correct verticalGrid" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChart #updateParameters"/>
     <testcase name="graph addFlow called with the correct parameters" time="0.011" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChart #addFlow"/>
-    <testcase name="delete flow from graph" time="0.006" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChart #deleteFlow"/>
-    <testcase name="delete flow from graph" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChart #replaceData"/>
+    <testcase name="delete flow from graph" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChart #deleteFlow"/>
+    <testcase name="delete flow from graph" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChart #replaceData"/>
     <testcase name="LineChartFlow inizializeData called in the right way" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChart #initializeData"/>
     <testcase name="LineChartFlow inPlaceUpdate called in the right way" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChart #inPlaceUpdate"/>
-    <testcase name="LineChartFlow streamUpdate called in the right way" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChart #streamUpdate"/>
+    <testcase name="LineChartFlow streamUpdate called in the right way" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChart #streamUpdate"/>
     <testcase name="deleteData in the correct way" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChart #deleteData"/>
     <testcase name="instance defined" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChartFlow Default constructor"/>
     <testcase name="constructor create the flow with the correct marker" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChartFlow Default constructor"/>
@@ -152,7 +152,7 @@
     <testcase name="constructor create the flow with the correct marker" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChartFlow Constructor"/>
     <testcase name="constructor create the flow with the correct max item displayed" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChartFlow Constructor"/>
     <testcase name="constructor create the flow with the correct trace" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChartFlow Constructor"/>
-    <testcase name="flow updated with the correct marker" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChartFlow #updateParameters"/>
+    <testcase name="flow updated with the correct marker" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChartFlow #updateParameters"/>
     <testcase name="flow updated with the correct max item displayed" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChartFlow #updateParameters"/>
     <testcase name="flow updated with the correct trace" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChartFlow #updateParameters"/>
     <testcase name="data initialize in the correct way" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChartFlow #initializeData"/>
@@ -160,17 +160,17 @@
     <testcase name="data updated in the correct way" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChartFlow #inPlaceUpdate"/>
     <testcase name="streamUpdate call initializedData in the correct way" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChartFlow #streamUpdate"/>
     <testcase name="data removed in the correct way" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChartFlow #deleteData"/>
-    <testcase name="MapChart created" time="0.012" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChart Constructor"/>
-    <testcase name="graph Constructor called" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChart Constructor"/>
+    <testcase name="MapChart created" time="0.011" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChart Constructor"/>
+    <testcase name="graph Constructor called" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChart Constructor"/>
     <testcase name="graph Constructor called" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChart Constructor"/>
     <testcase name="graph created with the correct legendOnPoint" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChart Constructor"/>
-    <testcase name="graph created with the correct latitude" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChart Constructor"/>
-    <testcase name="graph created with the correct longitude" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChart Constructor"/>
+    <testcase name="graph created with the correct latitude" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChart Constructor"/>
+    <testcase name="graph created with the correct longitude" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChart Constructor"/>
     <testcase name="graph created with the correct mapType" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChart Constructor"/>
     <testcase name="graph created with the correct zoom" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChart Constructor"/>
-    <testcase name="graph created with the correct drag" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChart Constructor"/>
-    <testcase name="graph created with the correct mapWidth" time="0.006" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChart Constructor"/>
-    <testcase name="graph created with the correct mapHeight" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChart Constructor"/>
+    <testcase name="graph created with the correct drag" time="0.006" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChart Constructor"/>
+    <testcase name="graph created with the correct mapWidth" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChart Constructor"/>
+    <testcase name="graph created with the correct mapHeight" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChart Constructor"/>
     <testcase name="MapChart created" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChart #updateParameters"/>
     <testcase name="graph updated with the correct legendOnPoint" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChart #updateParameters"/>
     <testcase name="graph updated with the correct latitude" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChart #updateParameters"/>
@@ -179,30 +179,30 @@
     <testcase name="graph updated with the correct zoom" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChart #updateParameters"/>
     <testcase name="graph update with the correct drag" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChart #updateParameters"/>
     <testcase name="graph updated with the correct flows" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChart #updateParameters"/>
-    <testcase name="graph updated with the correct mapWidth" time="0.012" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChart #updateParameters"/>
-    <testcase name="graph updated with the correct mapHeight" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChart #updateParameters"/>
-    <testcase name="add flow into mapchart" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChart #addFlow"/>
-    <testcase name="delete flow from graph" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChart #deleteFlow"/>
-    <testcase name="delete flow from graph" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChart #replaceData"/>
-    <testcase name="inizialize flowList" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChart #initializeData"/>
-    <testcase name="inizialize flowList" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChart #inPlaceUpdate"/>
+    <testcase name="graph updated with the correct mapWidth" time="0.011" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChart #updateParameters"/>
+    <testcase name="graph updated with the correct mapHeight" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChart #updateParameters"/>
+    <testcase name="add flow into mapchart" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChart #addFlow"/>
+    <testcase name="delete flow from graph" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChart #deleteFlow"/>
+    <testcase name="delete flow from graph" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChart #replaceData"/>
+    <testcase name="inizialize flowList" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChart #initializeData"/>
+    <testcase name="inizialize flowList" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChart #inPlaceUpdate"/>
     <testcase name="inizialize flowList" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChart #streamUpdate"/>
-    <testcase name="deleteData in the correct way" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChart #deleteData"/>
+    <testcase name="deleteData in the correct way" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChart #deleteData"/>
     <testcase name="instance defined" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Page Default constructor"/>
-    <testcase name="constructor create the page with the correct name" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Page Default constructor"/>
-    <testcase name="constructor create the page with the correct description" time="0.016" classname="PhantomJS 1.9.8 (Linux 0.0.0).Page Default constructor"/>
+    <testcase name="constructor create the page with the correct name" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).Page Default constructor"/>
+    <testcase name="constructor create the page with the correct description" time="0.015" classname="PhantomJS 1.9.8 (Linux 0.0.0).Page Default constructor"/>
     <testcase name="constructor create the page with the correct number of graphsPerRow" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Page Default constructor"/>
     <testcase name="constructor create the page with the correct number of graphsPerCol" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Page Default constructor"/>
     <testcase name="constructor create the page with the correct socketURL" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Page Default constructor"/>
     <testcase name="constructor create the page with the correct number of graphs" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Page Default constructor"/>
-    <testcase name="instance defined" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Page Constructor"/>
+    <testcase name="instance defined" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).Page Constructor"/>
     <testcase name="constructor create the page with the correct name" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Page Constructor"/>
     <testcase name="constructor create the page with the correct description" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Page Constructor"/>
     <testcase name="constructor create the page with the correct number of graphsPerRow" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Page Constructor"/>
     <testcase name="constructor create the page with the correct number of graphsPerCol" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Page Constructor"/>
     <testcase name="constructor create the page with the correct socketURL" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Page Constructor"/>
     <testcase name="constructor create the page with the correct number of graphs" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Page Constructor"/>
-    <testcase name="page updated with the correct name" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Page #updateParameters"/>
+    <testcase name="page updated with the correct name" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).Page #updateParameters"/>
     <testcase name="page updated with the correct description" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Page #updateParameters"/>
     <testcase name="page updated with the correct number of graphsPerRow" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Page #updateParameters"/>
     <testcase name="page updated with the correct number of graphsPerCol" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Page #updateParameters"/>
@@ -215,37 +215,37 @@
     <testcase name="default constructor create the flow in the correct way" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).TableFlow Default constructor"/>
     <testcase name="constructor create the flow with the correct max item displayed" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).TableFlow Constructor"/>
     <testcase name="flow updated with the correct max item displayed" time="0.006" classname="PhantomJS 1.9.8 (Linux 0.0.0).TableFlow #updateParameters"/>
-    <testcase name="data inizialize in the correct way" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).TableFlow #initializeData"/>
-    <testcase name="data empty in the correct way" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).TableFlow #emptyData"/>
-    <testcase name="data updated in the correct way" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).TableFlow #inPlaceUpdate"/>
+    <testcase name="data inizialize in the correct way" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).TableFlow #initializeData"/>
+    <testcase name="data empty in the correct way" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).TableFlow #emptyData"/>
+    <testcase name="data updated in the correct way" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).TableFlow #inPlaceUpdate"/>
     <testcase name="streamUpdate call initializedData in the correct way" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).TableFlow #streamUpdate"/>
     <testcase name="data removed in the correct way" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).TableFlow #deleteData"/>
     <testcase name="Table created" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Table Constructor"/>
-    <testcase name="graph Constructor called" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Table Constructor"/>
+    <testcase name="graph Constructor called" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).Table Constructor"/>
     <testcase name="graph Constructor called" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Table Constructor"/>
     <testcase name="graph created with the correct headers" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Table Constructor"/>
-    <testcase name="graph created with the correct item displayed per page" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).Table Constructor"/>
+    <testcase name="graph created with the correct item displayed per page" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Table Constructor"/>
     <testcase name="graph created with the correct add data position" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Table Constructor"/>
-    <testcase name="graph created with the correct sortable" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Table Constructor"/>
+    <testcase name="graph created with the correct sortable" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).Table Constructor"/>
     <testcase name="graph created with the correct sort" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Table Constructor"/>
-    <testcase name="graph created with the correct appearance" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).Table Constructor"/>
+    <testcase name="graph created with the correct appearance" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Table Constructor"/>
     <testcase name="Table created" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).Table #updateParameters"/>
     <testcase name="graph updated with the correct headers" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Table #updateParameters"/>
-    <testcase name="graph updated with the correct item displayed per page" time="0.011" classname="PhantomJS 1.9.8 (Linux 0.0.0).Table #updateParameters"/>
-    <testcase name="graph updated with the correct add data position" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).Table #updateParameters"/>
+    <testcase name="graph updated with the correct item displayed per page" time="0.012" classname="PhantomJS 1.9.8 (Linux 0.0.0).Table #updateParameters"/>
+    <testcase name="graph updated with the correct add data position" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Table #updateParameters"/>
     <testcase name="graph updated with the correct sortable" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Table #updateParameters"/>
-    <testcase name="graph updated with the correct sort" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Table #updateParameters"/>
+    <testcase name="graph updated with the correct sort" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).Table #updateParameters"/>
     <testcase name="graph updated with the correct appearance" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Table #updateParameters"/>
     <testcase name="graph updated with the correct flow" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Table #updateParameters"/>
     <testcase name="graph addFlow called with the correct parameters" time="0.006" classname="PhantomJS 1.9.8 (Linux 0.0.0).Table #addFlow"/>
-    <testcase name="delete flow from graph" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Table #deleteFlow"/>
+    <testcase name="delete flow from graph" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).Table #deleteFlow"/>
     <testcase name="delete flow from graph" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Table #replaceData"/>
-    <testcase name="TableFlow inizializeData called in the right way" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Table #initializeData"/>
-    <testcase name="TableFlow inPlaceUpdate called in the right way" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).Table #inPlaceUpdate"/>
-    <testcase name="inizialize flowList" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).Table #streamUpdate"/>
-    <testcase name="deleteData in the correct way" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Table #deleteData"/>
-    <testcase name="urlProvider created" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).UrlProvider Constructor"/>
-    <testcase name="urlProvider updated" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).UrlProvider #setUrl"/>
+    <testcase name="TableFlow inizializeData called in the right way" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).Table #initializeData"/>
+    <testcase name="TableFlow inPlaceUpdate called in the right way" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Table #inPlaceUpdate"/>
+    <testcase name="inizialize flowList" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).Table #streamUpdate"/>
+    <testcase name="deleteData in the correct way" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).Table #deleteData"/>
+    <testcase name="urlProvider created" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).UrlProvider Constructor"/>
+    <testcase name="urlProvider updated" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).UrlProvider #setUrl"/>
     <testcase name="scope.mapChart is defined" time="0.004" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChartController">
       <failure type="">Error: [$injector:unpr] Unknown provider: socketFactoryProvider &lt;- socketFactory
 http://errors.angularjs.org/1.4.0/$injector/unpr?p0=socketFactoryProvider%20%3C-%20socketFactory
@@ -275,7 +275,77 @@ http://errors.angularjs.org/1.4.0/$injector/unpr?p0=socketFactoryProvider%20%3C-
     at /home/travis/build/DeltaGraphs/norris-nrti/frontend/test/unit/Controller/MapChartControllerSpec.js:40
 </failure>
     </testcase>
-    <testcase name="encountered a declaration exception" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChartController">
+    <testcase name="configGraph works fine" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChartController listenOnEvent">
+      <failure type="">Error: [$injector:unpr] Unknown provider: socketFactoryProvider &lt;- socketFactory
+http://errors.angularjs.org/1.4.0/$injector/unpr?p0=socketFactoryProvider%20%3C-%20socketFactory
+    at /home/travis/build/DeltaGraphs/norris-nrti/frontend/app/bower_components/angular/angular.js:4238
+    at getService (/home/travis/build/DeltaGraphs/norris-nrti/frontend/app/bower_components/angular/angular.js:4385)
+    at /home/travis/build/DeltaGraphs/norris-nrti/frontend/app/bower_components/angular/angular.js:4243
+    at getService (/home/travis/build/DeltaGraphs/norris-nrti/frontend/app/bower_components/angular/angular.js:4385)
+    at invoke (/home/travis/build/DeltaGraphs/norris-nrti/frontend/app/bower_components/angular/angular.js:4417)
+    at workFn (/home/travis/build/DeltaGraphs/norris-nrti/frontend/app/bower_components/angular-mocks/angular-mocks.js:2420)
+</failure>
+      <failure type="">TypeError: &apos;undefined&apos; is not an object (evaluating &apos;notify.receive&apos;)
+    at /home/travis/build/DeltaGraphs/norris-nrti/frontend/test/unit/Controller/MapChartControllerSpec.js:46
+</failure>
+    </testcase>
+    <testcase name="updateGraphProp works fine" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChartController listenOnEvent">
+      <failure type="">Error: [$injector:unpr] Unknown provider: socketFactoryProvider &lt;- socketFactory
+http://errors.angularjs.org/1.4.0/$injector/unpr?p0=socketFactoryProvider%20%3C-%20socketFactory
+    at /home/travis/build/DeltaGraphs/norris-nrti/frontend/app/bower_components/angular/angular.js:4238
+    at getService (/home/travis/build/DeltaGraphs/norris-nrti/frontend/app/bower_components/angular/angular.js:4385)
+    at /home/travis/build/DeltaGraphs/norris-nrti/frontend/app/bower_components/angular/angular.js:4243
+    at getService (/home/travis/build/DeltaGraphs/norris-nrti/frontend/app/bower_components/angular/angular.js:4385)
+    at invoke (/home/travis/build/DeltaGraphs/norris-nrti/frontend/app/bower_components/angular/angular.js:4417)
+    at workFn (/home/travis/build/DeltaGraphs/norris-nrti/frontend/app/bower_components/angular-mocks/angular-mocks.js:2420)
+</failure>
+      <failure type="">TypeError: &apos;undefined&apos; is not an object (evaluating &apos;notify.receive&apos;)
+    at /home/travis/build/DeltaGraphs/norris-nrti/frontend/test/unit/Controller/MapChartControllerSpec.js:79
+</failure>
+    </testcase>
+    <testcase name="configGraph works fine" time="0.001" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChartController listenOnEvent">
+      <failure type="">Error: [$injector:unpr] Unknown provider: socketFactoryProvider &lt;- socketFactory
+http://errors.angularjs.org/1.4.0/$injector/unpr?p0=socketFactoryProvider%20%3C-%20socketFactory
+    at /home/travis/build/DeltaGraphs/norris-nrti/frontend/app/bower_components/angular/angular.js:4238
+    at getService (/home/travis/build/DeltaGraphs/norris-nrti/frontend/app/bower_components/angular/angular.js:4385)
+    at /home/travis/build/DeltaGraphs/norris-nrti/frontend/app/bower_components/angular/angular.js:4243
+    at getService (/home/travis/build/DeltaGraphs/norris-nrti/frontend/app/bower_components/angular/angular.js:4385)
+    at invoke (/home/travis/build/DeltaGraphs/norris-nrti/frontend/app/bower_components/angular/angular.js:4417)
+    at workFn (/home/travis/build/DeltaGraphs/norris-nrti/frontend/app/bower_components/angular-mocks/angular-mocks.js:2420)
+</failure>
+      <failure type="">ReferenceError: Can&apos;t find variable: socket
+    at /home/travis/build/DeltaGraphs/norris-nrti/frontend/test/unit/Controller/MapChartControllerSpec.js:88
+</failure>
+    </testcase>
+    <testcase name="configGraph works fine" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChartController listenOnEvent">
+      <failure type="">Error: [$injector:unpr] Unknown provider: socketFactoryProvider &lt;- socketFactory
+http://errors.angularjs.org/1.4.0/$injector/unpr?p0=socketFactoryProvider%20%3C-%20socketFactory
+    at /home/travis/build/DeltaGraphs/norris-nrti/frontend/app/bower_components/angular/angular.js:4238
+    at getService (/home/travis/build/DeltaGraphs/norris-nrti/frontend/app/bower_components/angular/angular.js:4385)
+    at /home/travis/build/DeltaGraphs/norris-nrti/frontend/app/bower_components/angular/angular.js:4243
+    at getService (/home/travis/build/DeltaGraphs/norris-nrti/frontend/app/bower_components/angular/angular.js:4385)
+    at invoke (/home/travis/build/DeltaGraphs/norris-nrti/frontend/app/bower_components/angular/angular.js:4417)
+    at workFn (/home/travis/build/DeltaGraphs/norris-nrti/frontend/app/bower_components/angular-mocks/angular-mocks.js:2420)
+</failure>
+      <failure type="">ReferenceError: Can&apos;t find variable: socket
+    at /home/travis/build/DeltaGraphs/norris-nrti/frontend/test/unit/Controller/MapChartControllerSpec.js:121
+</failure>
+    </testcase>
+    <testcase name="configGraph works fine" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChartController listenOnEvent">
+      <failure type="">Error: [$injector:unpr] Unknown provider: socketFactoryProvider &lt;- socketFactory
+http://errors.angularjs.org/1.4.0/$injector/unpr?p0=socketFactoryProvider%20%3C-%20socketFactory
+    at /home/travis/build/DeltaGraphs/norris-nrti/frontend/app/bower_components/angular/angular.js:4238
+    at getService (/home/travis/build/DeltaGraphs/norris-nrti/frontend/app/bower_components/angular/angular.js:4385)
+    at /home/travis/build/DeltaGraphs/norris-nrti/frontend/app/bower_components/angular/angular.js:4243
+    at getService (/home/travis/build/DeltaGraphs/norris-nrti/frontend/app/bower_components/angular/angular.js:4385)
+    at invoke (/home/travis/build/DeltaGraphs/norris-nrti/frontend/app/bower_components/angular/angular.js:4417)
+    at workFn (/home/travis/build/DeltaGraphs/norris-nrti/frontend/app/bower_components/angular-mocks/angular-mocks.js:2420)
+</failure>
+      <failure type="">ReferenceError: Can&apos;t find variable: socket
+    at /home/travis/build/DeltaGraphs/norris-nrti/frontend/test/unit/Controller/MapChartControllerSpec.js:154
+</failure>
+    </testcase>
+    <testcase name="encountered a declaration exception" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChartController">
       <failure type="">Error: [$injector:unpr] Unknown provider: socketFactoryProvider &lt;- socketFactory
 http://errors.angularjs.org/1.4.0/$injector/unpr?p0=socketFactoryProvider%20%3C-%20socketFactory
     at /home/travis/build/DeltaGraphs/norris-nrti/frontend/app/bower_components/angular/angular.js:4238
@@ -286,21 +356,21 @@ http://errors.angularjs.org/1.4.0/$injector/unpr?p0=socketFactoryProvider%20%3C-
     at workFn (/home/travis/build/DeltaGraphs/norris-nrti/frontend/app/bower_components/angular-mocks/angular-mocks.js:2420)
 </failure>
       <failure type="">ReferenceError: Can&apos;t find variable: deeescribe
-    at /home/travis/build/DeltaGraphs/norris-nrti/frontend/test/unit/Controller/MapChartControllerSpec.js:185
+    at /home/travis/build/DeltaGraphs/norris-nrti/frontend/test/unit/Controller/MapChartControllerSpec.js:216
     at /home/travis/build/DeltaGraphs/norris-nrti/frontend/test/unit/Controller/MapChartControllerSpec.js:218
 </failure>
     </testcase>
-    <testcase name="works fine" time="0.006" classname="PhantomJS 1.9.8 (Linux 0.0.0).RootController Constructor"/>
-    <testcase name="works fine" time="0.005" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChartView Constructor"/>
-    <testcase name="works fine" time="0.003" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChartView Constructor"/>
-    <testcase name="works fine" time="0.012" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChartView Constructor"/>
-    <testcase name="works fine" time="0.002" classname="PhantomJS 1.9.8 (Linux 0.0.0).PageView Constructor"/>
+    <testcase name="works fine" time="0.01" classname="PhantomJS 1.9.8 (Linux 0.0.0).RootController Constructor"/>
+    <testcase name="works fine" time="0.019" classname="PhantomJS 1.9.8 (Linux 0.0.0).BarChartView Constructor"/>
+    <testcase name="works fine" time="0.014" classname="PhantomJS 1.9.8 (Linux 0.0.0).LineChartView Constructor"/>
+    <testcase name="works fine" time="0.003" classname="PhantomJS 1.9.8 (Linux 0.0.0).MapChartView Constructor"/>
+    <testcase name="works fine" time="0.004" classname="PhantomJS 1.9.8 (Linux 0.0.0).PageView Constructor"/>
     <testcase name="works fine" time="0.003" classname="PhantomJS 1.9.8 (Linux 0.0.0).PagesListView Constructor">
       <failure type="">Expected 0 to be 3.
     at /home/travis/build/DeltaGraphs/norris-nrti/frontend/test/unit/View/PagesListViewSpec.js:49
 </failure>
     </testcase>
-    <testcase name="works fine" time="0.009" classname="PhantomJS 1.9.8 (Linux 0.0.0).TableView Constructor"/>
+    <testcase name="works fine" time="0.003" classname="PhantomJS 1.9.8 (Linux 0.0.0).TableView Constructor"/>
     <system-out><![CDATA[
 ]]></system-out>
     <system-err/>
