@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for Model/FlowsModel/Flow.js</title>
+    <title>Code coverage report for Model/GraphsModel/ColorPicker.js</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../../prettify.css">
     <link rel="stylesheet" href="../../base.css">
@@ -12,16 +12,16 @@
     </style>
 </head>
 <body>
-<div class="header high">
-    <h1>Code coverage report for <span class="entity">Model/FlowsModel/Flow.js</span></h1>
+<div class="header low">
+    <h1>Code coverage report for <span class="entity">Model/GraphsModel/ColorPicker.js</span></h1>
     <h2>
-        Statements: <span class="metric">100% <small>(16 / 16)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Branches: <span class="metric">75% <small>(6 / 8)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Functions: <span class="metric">83.33% <small>(5 / 6)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">100% <small>(16 / 16)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">25% <small>(1 / 4)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">100% <small>(0 / 0)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">0% <small>(0 / 2)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">25% <small>(1 / 4)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
-    <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">Model/FlowsModel/</a> &#187; Flow.js</div>
+    <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">Model/GraphsModel/</a> &#187; ColorPicker.js</div>
 </div>
 <div class="body">
 <pre><table class="coverage">
@@ -73,21 +73,7 @@
 46
 47
 48
-49
-50
-51
-52
-53
-54
-55
-56</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+49</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -106,90 +92,83 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">208</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">208</span>
-<span class="cline-any cline-yes">202</span>
-<span class="cline-any cline-yes">21</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">192</span>
-<span class="cline-any cline-yes">10</span>
-<span class="cline-any cline-yes">10</span>
-<span class="cline-any cline-yes">10</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">192</span>
-<span class="cline-any cline-yes">3</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">192</span>
-<span class="cline-any cline-yes">208</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">192</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*jshint node: true */
 'use strict';
 &nbsp;
 /*
-* Name :  Flow.js
-* Module : FrontEnd::Model::FlowsModel
-* Location : /frontend/app/Model/FlowsModel
+* Name :  ColorPicker.js
+* Module : FrontEnd::Model::GraphsModel
+* Location : /frontend/app/Model/GraphsModel
 *
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
-* 1.0.0         2015-05-20  Maria Giovanna Chinellato	Tested
+* 0.1.0         2015-06-22  Maria GiovannaChinellato    Add all attributes and add initial code for methods 
 *
-* 0.1.2         2015-05-17  Maria Giovanna Chinellato	Fix attributes
-*
-* 0.1.1         2015-05-16  Maria Giovanna Chinellato	Fix updateParameters
-*
-* 0.1.0         2015-05-16  Maria Giovanna Chinellato	Add all attributes and all methods
-*
-* 0.0.1         2015-05-15  Maria Giovanna Chinellato	Initial code
+* 0.0.1         2015-06-22  Maria Giovanna Chinellato   Initial code      
 * =================================================================================================
-*
 */
 &nbsp;
 angular.module('norris-nrti')
-.factory('FlowFactory', function(){
+.factory('ColorPicker', <span class="fstat-no" title="function not covered" >function(){</span>
+<span class="cstat-no" title="statement not covered" >	var defaultColorFlow = [</span>
+        '#1f77b4',
+        '#aec7e8',
+        '#ff7f0e',
+        '#ffbb78',
+        '#2ca02c',
+        '#98df8a',
+        '#d62728',
+        '#ff9896',
+        '#9467bd',
+        '#c5b0d5',
+        '#8c564b',
+        '#c49c94',
+        '#e377c2',
+        '#f7b6d2',
+        '#7f7f7f',
+        '#c7c7c7',
+        '#bcbd22',
+        '#dbdb8d',
+        '#17becf',
+        '#9edae5'
+    ];
 &nbsp;
-	function Flow(info){
-		
-		this._name = null;
-&nbsp;
-		if (info !== undefined) {
-			if (info.name !== undefined){
-				this._name = info.name;
-			}
-		}
-	}
-&nbsp;
-	Flow.prototype.updateParameters = function(info) { //abstract
-		<span class="missing-if-branch" title="else path not taken" >E</span>if (info !== undefined) {
-			<span class="missing-if-branch" title="else path not taken" >E</span>if (info.name !== undefined){
-				this._name = info.name;
-			}
-		}
-	};
-	Flow.prototype.getName = function() {
-		return this._name;
-	};
-&nbsp;
-<span class="fstat-no" title="function not covered" >	function FlowFactory(){</span>}
-&nbsp;
-    FlowFactory.build = function(info) {
-        return new Flow(info);
+<span class="cstat-no" title="statement not covered" >    return {</span>
+    	getDefaultColor : <span class="fstat-no" title="function not covered" >function(){</span>
+<span class="cstat-no" title="statement not covered" >    		return defaultColorFlow;</span>
+    	}
     };
-	return( FlowFactory );
+&nbsp;
 });</pre></td></tr>
 </table></pre>
 

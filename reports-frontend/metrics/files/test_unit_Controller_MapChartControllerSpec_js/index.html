@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">79.95</p>
+      <p class="stat">70.35</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">298</p>
+      <p class="stat">276</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">13.83</p>
+      <p class="stat">7.11</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.29</p>
+      <p class="stat">0.47</p>
     </div>
   </div>
 </div>
@@ -100,6 +100,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.1.0         2015-05-25  Maria Giovanna Chinellato   fix configGraph
+*
 * 0.1.0         2015-05-25  Maria Giovanna Chinellato   Add all attributes and all methods
 *
 * 0.0.1         2015-05-25  Maria Giovanna Chinellato   Initial code      
@@ -113,41 +115,17 @@ describe(&#039;MapChartController&#039;, function(){
 
 	var scope;
 	var controller;
-	var socket = function($rootScope){
-		this.events = {};
-
-		// Receive Events
-		return {
-			on : function(eventName, callback){
-				if(!this.events[eventName]){
-					this.events[eventName] = [];
-				}
-				this.events[eventName].push(callback);
-			},
-
-		// Send Events
-			emit: function(eventName, data, emitCallback){
-				if(this.events[eventName]){
-					angular.forEach(this.events[eventName], function(callback){
-						$rootScope.$apply(function() {
-							callback(data);
-						});
-					});
-				}
-				if(emitCallback){
-					emitCallback();
-				}
-			}
-		};
-
-	};
-
-    beforeEach(inject(function($rootScope, $controller){
+	var SocketServicesFactory;
+	var socket;
+	
+    beforeEach(inject(function($rootScope, $controller, $injector){
+    	SocketServicesFactory = $injector.get(&#039;SocketServicesFactory&#039;);
+    	socket = SocketServicesFactory.build(&#039;http://norris-nrti-dev.herokuapp.com/page1/map1&#039;);
     	scope = $rootScope.$new();
         controller = $controller(&#039;MapChartController&#039;, { $scope : scope, socket : socket });
     }));
 
-    describe(&#039;#istances defined&#039;, function(){
+    describe(&#039;Constructor&#039;, function(){
     	it(&#039;controller is defined&#039;, function() {
 			expect(controller).toBeDefined();
 		});
@@ -157,7 +135,7 @@ describe(&#039;MapChartController&#039;, function(){
 		});
     });
 
-	/*deeescribe(&#039;listenOnEvent&#039;, function(){
+	describe(&#039;listenOnEvent&#039;, function(){
     	
 	    it(&#039;configGraph works fine&#039;, function(){
 			socket.on(&#039;configGraph&#039;, {
@@ -192,7 +170,7 @@ describe(&#039;MapChartController&#039;, function(){
 			expect(scope.mapChart.getFlowList().length).toEqual(1);
 		});
 
-	});*/
+	});
 
 	/*var scope;
 	var controller;
