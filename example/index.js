@@ -473,6 +473,7 @@ var repeatTable=function(){
 var myVar4=setInterval(function () {repeatTable();}, 5000);
 
 var repeatModPage=function(){
+    console.log('..........updateProperties.........');
     var currentdate = new Date();
     var datetime = 'Last Sync: ' + currentdate.getDate() + '/' +
                     (currentdate.getMonth()+1)  + '/' +
