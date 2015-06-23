@@ -22,36 +22,12 @@ describe('MapChartController', function(){
 
 	var scope;
 	var controller;
-	var socket = function($rootScope){
-		this.events = {};
-
-		// Receive Events
-		return {
-			on : function(eventName, callback){
-				if(!this.events[eventName]){
-					this.events[eventName] = [];
-				}
-				this.events[eventName].push(callback);
-			},
-
-		// Send Events
-			emit: function(eventName, data, emitCallback){
-				if(this.events[eventName]){
-					angular.forEach(this.events[eventName], function(callback){
-						$rootScope.$apply(function() {
-							callback(data);
-						});
-					});
-				}
-				if(emitCallback){
-					emitCallback();
-				}
-			}
-		};
-
-	};
-
-    beforeEach(inject(function($rootScope, $controller){
+	var SocketServicesFactory;
+	var socket;
+	
+    beforeEach(inject(function($rootScope, $controller, $injector){
+    	SocketServicesFactory = $injector.get('SocketServicesFactory');
+    	socket = SocketServicesFactory.build('http://norris-nrti-dev.herokuapp.com/page1/map1');
     	scope = $rootScope.$new();
         controller = $controller('MapChartController', { $scope : scope, socket : socket });
     }));
@@ -66,7 +42,7 @@ describe('MapChartController', function(){
 		});
     });
 
-	/*deeescribe('listenOnEvent', function(){
+	describe('listenOnEvent', function(){
     	
 	    it('configGraph works fine', function(){
 			socket.on('configGraph', {
@@ -101,7 +77,7 @@ describe('MapChartController', function(){
 			expect(scope.mapChart.getFlowList().length).toEqual(1);
 		});
 
-	});*/
+	});
 
 	/*var scope;
 	var controller;
