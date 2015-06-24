@@ -198,7 +198,7 @@ describe('LineChart', function() {
             var lineChart=new LineChart({ID: 'dada'}, pMock, mock);
             lineChart.updateProperties({title: 'graph one', height: 200, width: 350, enableLegend: true, backgroundColor: '#EEEEEE', legendOnPoint: true, viewFinder: true, horizontalGrid: true, verticalGrid: true, interpolation:'step'});
             assert.strictEqual(mock.p1,'updateGraphProp');
-            assert.deepEqual(mock.p2,{'title':'graph one','height':200,'width':350,'enableLegend':true,'backgroundColor':'#EEEEEE','horizontalGrid':true,'verticalGrid':true,'viewFinder':true,'legendOnPoint':true, 'interpolation':'step'});
+            assert.deepEqual(mock.p2,{ID: 'dada','title':'graph one','height':200,'width':350,'enableLegend':true,'backgroundColor':'#EEEEEE','horizontalGrid':true,'verticalGrid':true,'viewFinder':true,'legendOnPoint':true, 'interpolation':'step'});
         });
     });
     describe('#getProperties', function() {

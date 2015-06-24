@@ -47,12 +47,12 @@ var socketMockHistory=function(){
 
 var pageMock=function(){
     this._page='';
-    this._p1 = '';
-    this._p2 = '';
+    this.p1 = '';
+    this.p2 = '';
 
     this.graphChanged=function(params) {
-        this._p1 = params.eventType;
-        this._p2 = params.params;
+        this.p1 = params.eventType;
+        this.p2 = params.params;
     };
 };
 

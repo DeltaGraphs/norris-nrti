@@ -235,7 +235,7 @@ describe('MapChart', function() {
             var mapChart=new MapChart({ID: 'dada'}, pMock, mock);
             mapChart.updateProperties({title: 'graph one'});
             assert.strictEqual(mock.p1,'updateGraphProp');
-            assert.deepEqual(mock.p2,{'title':'graph one'});
+            assert.deepEqual(mock.p2,{ID: 'dada', 'title':'graph one'});
         });
     });
     describe('#getProperties', function() {

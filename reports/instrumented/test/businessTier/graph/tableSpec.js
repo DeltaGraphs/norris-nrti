@@ -201,9 +201,9 @@ describe('Table', function() {
     describe('#getProperties', function() {
         it('returned a correct JSON', function() {
             var mock=new socketMock();
-            var table=new Table({ID: 'table1', title: 'graph one', height: 200, width: 350, sortable: true, addRowOn: 'top', headers: ['column1','h2'], sort:{column: 'col1', ordering: 'ASC'}}, new pageMock(), mock);
+            var table=new Table({ID: 'table1', title: 'graph one', height: 200, width: 350, sortable: true, addRowOn: 'top', headers: ['column1','h2'], sort:{column: ['col1'], ordering: ['ASC']}}, new pageMock(), mock);
             table.createTableFlow({ ID:'flow1', name: 'tabella', columnKeys: ['col1','col2']});
-            assert.deepEqual(table.getProperties(),{'ID':'table1','title':'graph one','type':'Table','height':200,'width':350,'enableLegend':false,'legend':{'position':'NE','fontColor':'#000000','backgroundColor':'#FFFFFF'},'sortable':true,'sort':{'column':'col1','ordering':'ASC'},'maxItemsPage':10,'headers':['column1','h2'],'appearance':{'border':{'color':'#000000','width':1},'rowEven':{'textColor':['#000000','#000000'],'backgroundColor':['#FFFFFF','#FFFFFF']},'rowOdd':{'textColor':['#000000','#000000'],'backgroundColor':['#FFFFFF','#FFFFFF']},'headers':{'textColor':['#000000','#000000'],'backgroundColor':['#FFFFFF','#FFFFFF']}},'addRowOn':'top'});
+            assert.deepEqual(table.getProperties(),{'ID':'table1','title':'graph one','type':'Table','height':200,'width':350,'enableLegend':false,'legend':{'position':'NE','fontColor':'#000000','backgroundColor':'#FFFFFF'},'sortable':true,'sort':{column: ['col1'], ordering: ['ASC']},'maxItemsPage':10,'headers':['column1','h2'],'appearance':{'border':{'color':'#000000','width':1},'rowEven':{'textColor':['#000000','#000000'],'backgroundColor':['#FFFFFF','#FFFFFF']},'rowOdd':{'textColor':['#000000','#000000'],'backgroundColor':['#FFFFFF','#FFFFFF']},'headers':{'textColor':['#000000','#000000'],'backgroundColor':['#FFFFFF','#FFFFFF']}},'addRowOn':'top'});
         });
     });
     describe('#getConfigJSON', function() {

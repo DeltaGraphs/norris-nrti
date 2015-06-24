@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">28.35</p>
+      <p class="stat">28.70</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">4.03</p>
+      <p class="stat">4.02</p>
     </div>
   </div>
 </div>
@@ -138,12 +138,12 @@ var socketMockHistory=function(){
 
 var pageMock=function(){
     this._page=&#039;&#039;;
-    this._p1 = &#039;&#039;;
-    this._p2 = &#039;&#039;;
+    this.p1 = &#039;&#039;;
+    this.p2 = &#039;&#039;;
 
     this.graphChanged=function(params) {
-        this._p1 = params.eventType;
-        this._p2 = params.params;
+        this.p1 = params.eventType;
+        this.p2 = params.params;
     };
 };
 
