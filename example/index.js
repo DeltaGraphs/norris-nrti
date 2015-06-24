@@ -421,8 +421,8 @@ var table=page1.createTable({
     addRowOn: 'top',
     headers: ['IDMezzo', 'WGS84Fi', 'WGS84La'],
     sort: {
-        column: 'IDMezzo',
-        ordering: 'DESC'
+        column: ['IDMezzo','WGS84Fi'],
+        ordering: ['DESC','ASC']
     },
     appearance: {
         border: {
@@ -555,10 +555,10 @@ app.get('/', function (req, res) {
 
 // questo middleware non permetterà di raggiungere altre richieste scritte al di sotto di questa funzione
 // utilizzabile come 404
-/*app.use(function(req, res, next) {
+app.use(function(req, res, next) {
 	res.status(404).send('404 Not Found');
 });
-*/
+
 //app.listen(3000); // si mette in ascolto su http://127.0.0.1:3000/
 var port = process.env.PORT || 3000;
 server.listen(port);
