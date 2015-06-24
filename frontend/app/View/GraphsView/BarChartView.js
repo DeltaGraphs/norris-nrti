@@ -99,9 +99,6 @@ angular.module('norris-nrti')
                                 'xaxisticksformat="xAxisTickFormatFunction()" yaxistickformat="yAxisTickFormatFunction()" showxaxis="true" showyaxis="true" ' +
                                 'rotatelabels="-90" interactive="true" tooltips="'+ onPoint +'" showlegend="' + legend + '" ' +
                                 'xaxislabel="'+ scope.$parent.barChart.getX().getName() +'" ';
-                    /*if (scope.colorArray.length>0){
-                        barchart = barchart + 'color="colorFunction()" ';
-                    }*/
                     barchart = barchart + 'color="colorFunction()" showcontrols="'+ control +'">' +
                                 '<svg style="width: '+ scope.$parent.barChart.getWidth() +'; height: '+ scope.$parent.barChart.getHeight() +';"></svg></nvd3-multi-bar-chart>';
                 }else if(scope.$parent.barChart.getBarOrientation() === 'H'){
@@ -110,9 +107,6 @@ angular.module('norris-nrti')
                                 'xaxisticksformat="xAxisTickFormatFunction()" yaxistickformat="yAxisTickFormatFunction()" showxaxis="true" showyaxis="true" ' +
                                 'rotatelabels="-90" interactive="true" tooltips="'+ onPoint +'" showlegend="' + legend + '" ' +
                                 'xaxislabel="'+ scope.$parent.barChart.getX().getName() +'" ';
-                    /*if (scope.colorArray.length>0){
-                        barchart = barchart + 'color="colorFunction()" ';
-                    }*/
                     barchart = barchart + 'color="colorFunction()" showcontrols="'+ control +'">' +
                                 '<svg style="width: '+ scope.$parent.barChart.getWidth() +'; height: '+ scope.$parent.barChart.getHeight() +';"></svg></nvd3-multi-bar-horizontal-chart>';
                 }
