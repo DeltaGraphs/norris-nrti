@@ -1066,14 +1066,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 25,
-                    "physical": 51
+                    "logical": 24,
+                    "physical": 50
                 },
                 "cyclomatic": 6,
                 "halstead": {
                     "operators": {
                         "distinct": 14,
-                        "total": 73,
+                        "total": 66,
                         "identifiers": [
                             "function",
                             "if",
@@ -1086,14 +1086,14 @@
                             "return",
                             "=",
                             "&&",
-                            "+",
                             "else",
-                            "var"
+                            "var",
+                            "+"
                         ]
                     },
                     "operands": {
-                        "distinct": 40,
-                        "total": 93,
+                        "distinct": 36,
+                        "total": 85,
                         "identifiers": [
                             "\"use strict\"",
                             "Socket",
@@ -1118,10 +1118,6 @@
                             "<anonymous>",
                             "event",
                             "data",
-                            "\"sendMessage : \"",
-                            "\"  \"",
-                            "JSON",
-                            "stringify",
                             "emit",
                             "attachObject",
                             "obj",
@@ -1137,17 +1133,17 @@
                             "exports"
                         ]
                     },
-                    "length": 166,
-                    "vocabulary": 54,
-                    "difficulty": 16.275000000000002,
-                    "volume": 955.3113253591358,
-                    "effort": 15547.691820219938,
-                    "bugs": 0.3184371084530453,
-                    "time": 863.7606566788854
+                    "length": 151,
+                    "vocabulary": 50,
+                    "difficulty": 16.52777777777778,
+                    "volume": 852.2222846559833,
+                    "effort": 14085.34053806417,
+                    "bugs": 0.28407409488532775,
+                    "time": 782.5189187813428
                 },
                 "params": 7,
                 "line": 2,
-                "cyclomaticDensity": 24
+                "cyclomaticDensity": 25
             },
             "functions": [
                 {
@@ -1210,52 +1206,45 @@
                 {
                     "name": "<anonymous>.sendMessage",
                     "sloc": {
-                        "logical": 3,
-                        "physical": 6
+                        "logical": 2,
+                        "physical": 5
                     },
                     "cyclomatic": 2,
                     "halstead": {
                         "operators": {
-                            "distinct": 6,
-                            "total": 14,
+                            "distinct": 5,
+                            "total": 7,
                             "identifiers": [
                                 "if",
                                 "&&",
                                 "!==",
                                 "()",
-                                "+",
                                 "."
                             ]
                         },
                         "operands": {
-                            "distinct": 12,
-                            "total": 19,
+                            "distinct": 6,
+                            "total": 11,
                             "identifiers": [
                                 "event",
                                 "data",
                                 "undefined",
-                                "\"sendMessage : \"",
-                                "\"  \"",
-                                "JSON",
-                                "stringify",
-                                "console",
-                                "log",
                                 "this",
                                 "_namespace",
                                 "emit"
                             ]
                         },
-                        "length": 33,
-                        "vocabulary": 18,
-                        "difficulty": 4.75,
-                        "volume": 137.6075250475963,
-                        "effort": 653.6357439760825,
-                        "bugs": 0.04586917501586544,
-                        "time": 36.313096887560135
+                        "length": 18,
+                        "vocabulary": 11,
+                        "difficulty": 4.583333333333333,
+                        "volume": 62.26976913547136,
+                        "effort": 285.40310853757705,
+                        "bugs": 0.020756589711823786,
+                        "time": 15.855728252087614
                     },
                     "params": 2,
                     "line": 29,
-                    "cyclomaticDensity": 66.66666666666666
+                    "cyclomaticDensity": 100
                 },
                 {
                     "name": "<anonymous>.attachObject",
@@ -1311,7 +1300,7 @@
                         "time": 81.63028458588383
                     },
                     "params": 2,
-                    "line": 36,
+                    "line": 35,
                     "cyclomaticDensity": 25
                 },
                 {
@@ -1355,15 +1344,15 @@
                         "time": 5.642996528912931
                     },
                     "params": 1,
-                    "line": 42,
+                    "line": 41,
                     "cyclomaticDensity": 50
                 }
             ],
             "dependencies": [],
-            "maintainability": 121.27301079046919,
-            "loc": 5,
+            "maintainability": 122.45057083387637,
+            "loc": 4.75,
             "cyclomatic": 2.25,
-            "effort": 955.1475320664063,
+            "effort": 863.0893732067798,
             "params": 1.75,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/presentationTier/socket.js"
         },
@@ -7725,14 +7714,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 152,
-                    "physical": 243
+                    "logical": 148,
+                    "physical": 241
                 },
                 "cyclomatic": 29,
                 "halstead": {
                     "operators": {
                         "distinct": 21,
-                        "total": 550,
+                        "total": 535,
                         "identifiers": [
                             "var",
                             "=",
@@ -7758,8 +7747,8 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 97,
-                        "total": 618,
+                        "distinct": 90,
+                        "total": 599,
                         "identifiers": [
                             "\"use strict\"",
                             "PageModel",
@@ -7843,34 +7832,27 @@
                             "properties",
                             "PData",
                             "getData",
-                            "\"PDATA\"",
-                            "dir",
                             "i",
                             0,
                             "length",
                             "graphChanged",
-                            "\"graphChanged : \"",
-                            "\"  \"",
-                            "JSON",
-                            "stringify",
                             "\"string\"",
                             "\"\"",
-                            "\"I AM NOTIFYING THE CLIENTS\"",
                             "module",
                             "exports"
                         ]
                     },
-                    "length": 1168,
-                    "vocabulary": 118,
-                    "difficulty": 66.89690721649484,
-                    "volume": 8038.927081654631,
-                    "effort": 537779.3591016175,
-                    "bugs": 2.6796423605515436,
-                    "time": 29876.63106120097
+                    "length": 1134,
+                    "vocabulary": 111,
+                    "difficulty": 69.88333333333334,
+                    "volume": 7704.867592441021,
+                    "effort": 538441.8302517534,
+                    "bugs": 2.56828919748034,
+                    "time": 29913.4350139863
                 },
                 "params": 9,
                 "line": 2,
-                "cyclomaticDensity": 19.078947368421055
+                "cyclomaticDensity": 19.594594594594593
             },
             "functions": [
                 {
@@ -8357,14 +8339,14 @@
                 {
                     "name": "<anonymous>.getConfigJSON",
                     "sloc": {
-                        "logical": 13,
+                        "logical": 11,
                         "physical": 17
                     },
                     "cyclomatic": 2,
                     "halstead": {
                         "operators": {
                             "distinct": 12,
-                            "total": 48,
+                            "total": 44,
                             "identifiers": [
                                 "var",
                                 "=",
@@ -8381,8 +8363,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 25,
-                            "total": 51,
+                            "distinct": 21,
+                            "total": 45,
                             "identifiers": [
                                 "ret",
                                 "<anonymous>",
@@ -8393,10 +8375,6 @@
                                 "data",
                                 "PData",
                                 "getData",
-                                "\"PDATA\"",
-                                "console",
-                                "log",
-                                "dir",
                                 "i",
                                 0,
                                 "length",
@@ -8411,57 +8389,49 @@
                                 "push"
                             ]
                         },
-                        "length": 99,
-                        "vocabulary": 37,
-                        "difficulty": 12.24,
-                        "volume": 515.735883197266,
-                        "effort": 6312.607210334537,
-                        "bugs": 0.17191196106575535,
-                        "time": 350.70040057414093
+                        "length": 89,
+                        "vocabulary": 33,
+                        "difficulty": 12.857142857142858,
+                        "volume": 448.95107662290235,
+                        "effort": 5772.2281280087445,
+                        "bugs": 0.14965035887430078,
+                        "time": 320.67934044493023
                     },
                     "params": 0,
                     "line": 212,
-                    "cyclomaticDensity": 15.384615384615385
+                    "cyclomaticDensity": 18.181818181818183
                 },
                 {
                     "name": "<anonymous>.graphChanged",
                     "sloc": {
-                        "logical": 5,
-                        "physical": 12
+                        "logical": 3,
+                        "physical": 10
                     },
                     "cyclomatic": 2,
                     "halstead": {
                         "operators": {
-                            "distinct": 8,
-                            "total": 38,
+                            "distinct": 7,
+                            "total": 27,
                             "identifiers": [
-                                "()",
-                                "+",
-                                ".",
                                 "if",
                                 "&&",
                                 "!==",
+                                ".",
                                 "===",
-                                "typeof (prefix)"
+                                "typeof (prefix)",
+                                "()"
                             ]
                         },
                         "operands": {
-                            "distinct": 18,
-                            "total": 42,
+                            "distinct": 11,
+                            "total": 29,
                             "identifiers": [
                                 "params",
-                                "\"graphChanged : \"",
-                                "eventType",
-                                "\"  \"",
-                                "JSON",
-                                "stringify",
-                                "console",
-                                "log",
                                 "undefined",
+                                "eventType",
                                 "\"string\"",
                                 "\"\"",
                                 "\"object\"",
-                                "\"I AM NOTIFYING THE CLIENTS\"",
                                 "this",
                                 "_pageSocket",
                                 "sendMessage",
@@ -8469,17 +8439,17 @@
                                 "pageChanged"
                             ]
                         },
-                        "length": 80,
-                        "vocabulary": 26,
-                        "difficulty": 9.333333333333334,
-                        "volume": 376.0351774512874,
-                        "effort": 3509.6616562120157,
-                        "bugs": 0.12534505915042912,
-                        "time": 194.98120312288975
+                        "length": 56,
+                        "vocabulary": 18,
+                        "difficulty": 9.227272727272727,
+                        "volume": 233.51580008076948,
+                        "effort": 2154.7139734725547,
+                        "bugs": 0.07783860002692317,
+                        "time": 119.70633185958637
                     },
                     "params": 1,
                     "line": 230,
-                    "cyclomaticDensity": 40
+                    "cyclomaticDensity": 66.66666666666666
                 }
             ],
             "dependencies": [
@@ -8509,10 +8479,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 95.1358728591766,
-            "loc": 15.11111111111111,
+            "maintainability": 95.6912224192595,
+            "loc": 14.666666666666666,
             "cyclomatic": 4.111111111111111,
-            "effort": 10146.212414465663,
+            "effort": 9935.620551680633,
             "params": 1,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/page/page.js"
         },
@@ -18434,9 +18404,9 @@
     ],
     "changeCost": 21.875,
     "coreSize": 37.5,
-    "loc": 10.385225104756355,
+    "loc": 10.363523715867466,
     "cyclomatic": 4.2653158473470985,
-    "effort": 7990.484097997647,
+    "effort": 7981.0262848212515,
     "params": 1.1159770784770788,
-    "maintainability": 105.04651045709875
+    "maintainability": 105.10066388220783
 }
