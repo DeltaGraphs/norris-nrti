@@ -31,6 +31,14 @@ var socketMock=function(){
     };
 };
 
+var pageMock=function(){
+    this.p1=null;
+    this._page='flow1';
+    this.graphChanged=function(p1){
+        this.p1=p1;
+    };
+};
+
 var socketMockHistory=function(){
     this.p1=[];
     this.p2=[];
@@ -183,7 +191,7 @@ describe('Table', function() {
         });
         it('updated properties', function() {
             var mock = new socketMock();
-            var table=new Table({ID: 'dada'}, {_page: 'dssada'}, mock);
+            var table=new Table({ID: 'dada'}, new pageMock(), mock);
             table.updateProperties({title: 'graph one', height: 200, width: 350, sortable: true, addRowOn: 'top', headers: ['column1','h2'], sort:{column: 'col1', ordering: 'ASC'}});
             assert.strictEqual(mock.p1,'updateGraphProp');
             assert.deepEqual(mock.p2,{title: 'graph one', height: 200, width: 350, sortable: true, addRowOn: 'top', headers: ['column1','h2'], sort:{column: 'col1', ordering: 'ASC'}});
@@ -192,7 +200,7 @@ describe('Table', function() {
     describe('#getProperties', function() {
         it('returned a correct JSON', function() {
             var mock=new socketMock();
-            var table=new Table({ID: 'table1', title: 'graph one', height: 200, width: 350, sortable: true, addRowOn: 'top', headers: ['column1','h2'], sort:{column: 'col1', ordering: 'ASC'}}, {_page: 'dssada'}, mock);
+            var table=new Table({ID: 'table1', title: 'graph one', height: 200, width: 350, sortable: true, addRowOn: 'top', headers: ['column1','h2'], sort:{column: 'col1', ordering: 'ASC'}}, new pageMock(), mock);
             table.createTableFlow({ ID:'flow1', name: 'tabella', columnKeys: ['col1','col2']});
             assert.deepEqual(table.getProperties(),{'ID':'table1','title':'graph one','type':'Table','height':200,'width':350,'enableLegend':false,'legend':{'position':'NE','fontColor':'#000000','backgroundColor':'#FFFFFF'},'sortable':true,'sort':{'column':'col1','ordering':'ASC'},'maxItemsPage':10,'headers':['column1','h2'],'appearance':{'border':{'color':'#000000','width':1},'rowEven':{'textColor':['#000000','#000000'],'backgroundColor':['#FFFFFF','#FFFFFF']},'rowOdd':{'textColor':['#000000','#000000'],'backgroundColor':['#FFFFFF','#FFFFFF']},'headers':{'textColor':['#000000','#000000'],'backgroundColor':['#FFFFFF','#FFFFFF']}},'addRowOn':'top'});
         });
@@ -200,7 +208,7 @@ describe('Table', function() {
     describe('#getConfigJSON', function() {
         it('returned a correct JSON', function() {
             var mock=new socketMock();
-            var table=new Table({ID: 'dada'}, {_page: 'dssada'}, mock);
+            var table=new Table({ID: 'dada'}, new pageMock(), mock);
             table.createTableFlow({ ID:'flow1', name: 'tabella', columnKeys: ['col1','col2']});
             var recID=table.addRecord('flow1',{'col1': 1, 'col2': 25, appearance: [{bg:'#000', text:'#FFF'},{bg:'#000', text:'#FFF'}]});
             assert.deepEqual(table.getConfigJSON(),{'properties':{'ID':'dada','title':'','type':'Table','height':400,'width':500,'enableLegend':false,'legend':{'position':'NE','fontColor':'#000000','backgroundColor':'#FFFFFF'},'sortable':false,'sort':null,'maxItemsPage':10,'headers':[],'appearance':{'border':{'color':'#000000','width':1},'rowEven':{'textColor':[],'backgroundColor':[]},'rowOdd':{'textColor':[],'backgroundColor':[]},'headers':{'textColor':[],'backgroundColor':[]}},'addRowOn':'bottom','flows':[{'ID':'flow1','name':'tabella','filters':null,'columnKeys':['col1','col2'],'columnFormats':null,'maxItems':50,'maxItemsSaved':500}]},'data':[{'ID':'flow1','records':[{norrisRecordID: recID, value: [1,25], appearance: [{bg:'#000', text:'#FFF'},{bg:'#000', text:'#FFF'}]}]}]});
