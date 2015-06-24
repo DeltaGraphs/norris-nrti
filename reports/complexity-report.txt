@@ -1,8 +1,8 @@
-Mean per-function logical LOC: 10.494473842130091
+Mean per-function logical LOC: 10.471036342130091
 Mean per-function parameter count: 1.1159770784770788
 Mean per-function cyclomatic complexity: 4.286401705932956
-Mean per-function Halstead effort: 8275.582250600395
-Mean per-module maintainability index: 104.8679510241004
+Mean per-function Halstead effort: 8268.712401596722
+Mean per-module maintainability index: 104.97323049257642
 First-order density: 5.95703125%
 Change cost: 21.875%
 Core size: 37.5%
@@ -1074,12 +1074,12 @@ Core size: 37.5%
 
 /home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/networkHandler/networkHandler.js
 
-  Physical LOC: 54
-  Logical LOC: 26
+  Physical LOC: 51
+  Logical LOC: 23
   Mean parameter count: 1.75
   Cyclomatic complexity: 17
-  Cyclomatic complexity density: 65.38461538461539%
-  Maintainability index: 120.40413537226037
+  Cyclomatic complexity density: 73.91304347826086%
+  Maintainability index: 123.773078363493
   Dependency count: 2
 
   Function: NetworkHandler
@@ -1095,36 +1095,36 @@ Core size: 37.5%
 
   Function: <anonymous>.addPageToRouting
     Line No.: 35
-    Physical LOC: 7
-    Logical LOC: 4
-    Parameter count: 1
-    Cyclomatic complexity: 4
-    Cyclomatic complexity density: 100%
-    Halstead difficulty: 6
-    Halstead volume: 174.22857502740396
-    Halstead effort: 1045.3714501644238
-
-  Function: <anonymous>.addGraphToRouting
-    Line No.: 42
-    Physical LOC: 7
-    Logical LOC: 4
-    Parameter count: 1
-    Cyclomatic complexity: 4
-    Cyclomatic complexity density: 100%
-    Halstead difficulty: 6
-    Halstead volume: 174.22857502740396
-    Halstead effort: 1045.3714501644238
-
-  Function: <anonymous>.createSocket
-    Line No.: 49
     Physical LOC: 6
     Logical LOC: 3
     Parameter count: 1
+    Cyclomatic complexity: 4
+    Cyclomatic complexity density: 133.33333333333331%
+    Halstead difficulty: 5.333333333333333
+    Halstead volume: 133.97977094150824
+    Halstead effort: 714.5587783547105
+
+  Function: <anonymous>.addGraphToRouting
+    Line No.: 41
+    Physical LOC: 6
+    Logical LOC: 3
+    Parameter count: 1
+    Cyclomatic complexity: 4
+    Cyclomatic complexity density: 133.33333333333331%
+    Halstead difficulty: 5.333333333333333
+    Halstead volume: 133.97977094150824
+    Halstead effort: 714.5587783547105
+
+  Function: <anonymous>.createSocket
+    Line No.: 47
+    Physical LOC: 5
+    Logical LOC: 2
+    Parameter count: 1
     Cyclomatic complexity: 1
-    Cyclomatic complexity density: 33.33333333333333%
-    Halstead difficulty: 4.8125
-    Halstead volume: 74.23092131656186
-    Halstead effort: 357.23630883595393
+    Cyclomatic complexity density: 50%
+    Halstead difficulty: 3.5
+    Halstead volume: 39.863137138648355
+    Halstead effort: 139.52097998526924
 
 /home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/norris/norris.js
 

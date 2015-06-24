@@ -6914,14 +6914,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 26,
-                    "physical": 54
+                    "logical": 23,
+                    "physical": 51
                 },
                 "cyclomatic": 17,
                 "halstead": {
                     "operators": {
-                        "distinct": 14,
-                        "total": 107,
+                        "distinct": 13,
+                        "total": 98,
                         "identifiers": [
                             "var",
                             "=",
@@ -6935,13 +6935,12 @@
                             ".",
                             "<",
                             "return",
-                            "new",
-                            "+"
+                            "new"
                         ]
                     },
                     "operands": {
-                        "distinct": 49,
-                        "total": 123,
+                        "distinct": 46,
+                        "total": 111,
                         "identifiers": [
                             "\"use strict\"",
                             "Socket",
@@ -6979,32 +6978,29 @@
                             "namespacePage",
                             1,
                             false,
-                            "\"####addPageToRouting:\"",
                             "\"page\"",
                             "addRoutingPath",
                             "addGraphToRouting",
                             "namespaceGraph",
-                            "\"####addGraphToRouting:\"",
                             "\"graph\"",
                             "createSocket",
                             "namespace",
-                            "\"####createSocket:\"",
                             "sock",
                             "module",
                             "exports"
                         ]
                     },
-                    "length": 230,
-                    "vocabulary": 63,
-                    "difficulty": 17.57142857142857,
-                    "volume": 1374.7743824049808,
-                    "effort": 24156.749862258945,
-                    "bugs": 0.45825812746832695,
-                    "time": 1342.041659014386
+                    "length": 209,
+                    "vocabulary": 59,
+                    "difficulty": 15.684782608695652,
+                    "volume": 1229.472397316625,
+                    "effort": 19284.00727530315,
+                    "bugs": 0.40982413243887494,
+                    "time": 1071.3337375168417
                 },
                 "params": 7,
                 "line": 2,
-                "cyclomaticDensity": 65.38461538461539
+                "cyclomaticDensity": 73.91304347826086
             },
             "functions": [
                 {
@@ -7077,14 +7073,14 @@
                 {
                     "name": "<anonymous>.addPageToRouting",
                     "sloc": {
-                        "logical": 4,
-                        "physical": 7
+                        "logical": 3,
+                        "physical": 6
                     },
                     "cyclomatic": 4,
                     "halstead": {
                         "operators": {
-                            "distinct": 9,
-                            "total": 18,
+                            "distinct": 8,
+                            "total": 15,
                             "identifiers": [
                                 "if",
                                 "||",
@@ -7093,13 +7089,12 @@
                                 "<",
                                 ".",
                                 "()",
-                                "return",
-                                "+"
+                                "return"
                             ]
                         },
                         "operands": {
-                            "distinct": 15,
-                            "total": 20,
+                            "distinct": 12,
+                            "total": 16,
                             "identifiers": [
                                 "namespacePage",
                                 "\"string\"",
@@ -7109,38 +7104,35 @@
                                 "indexOf",
                                 0,
                                 false,
-                                "\"####addPageToRouting:\"",
-                                "console",
-                                "log",
                                 "\"page\"",
                                 "this",
                                 "_routes",
                                 "addRoutingPath"
                             ]
                         },
-                        "length": 38,
-                        "vocabulary": 24,
-                        "difficulty": 6,
-                        "volume": 174.22857502740396,
-                        "effort": 1045.3714501644238,
-                        "bugs": 0.058076191675801324,
-                        "time": 58.07619167580132
+                        "length": 31,
+                        "vocabulary": 20,
+                        "difficulty": 5.333333333333333,
+                        "volume": 133.97977094150824,
+                        "effort": 714.5587783547105,
+                        "bugs": 0.04465992364716941,
+                        "time": 39.69770990859503
                     },
                     "params": 1,
                     "line": 35,
-                    "cyclomaticDensity": 100
+                    "cyclomaticDensity": 133.33333333333331
                 },
                 {
                     "name": "<anonymous>.addGraphToRouting",
                     "sloc": {
-                        "logical": 4,
-                        "physical": 7
+                        "logical": 3,
+                        "physical": 6
                     },
                     "cyclomatic": 4,
                     "halstead": {
                         "operators": {
-                            "distinct": 9,
-                            "total": 18,
+                            "distinct": 8,
+                            "total": 15,
                             "identifiers": [
                                 "if",
                                 "||",
@@ -7149,13 +7141,12 @@
                                 "<",
                                 ".",
                                 "()",
-                                "return",
-                                "+"
+                                "return"
                             ]
                         },
                         "operands": {
-                            "distinct": 15,
-                            "total": 20,
+                            "distinct": 12,
+                            "total": 16,
                             "identifiers": [
                                 "namespaceGraph",
                                 "\"string\"",
@@ -7165,73 +7156,65 @@
                                 "indexOf",
                                 0,
                                 false,
-                                "\"####addGraphToRouting:\"",
-                                "console",
-                                "log",
                                 "\"graph\"",
                                 "this",
                                 "_routes",
                                 "addRoutingPath"
                             ]
                         },
-                        "length": 38,
-                        "vocabulary": 24,
-                        "difficulty": 6,
-                        "volume": 174.22857502740396,
-                        "effort": 1045.3714501644238,
-                        "bugs": 0.058076191675801324,
-                        "time": 58.07619167580132
+                        "length": 31,
+                        "vocabulary": 20,
+                        "difficulty": 5.333333333333333,
+                        "volume": 133.97977094150824,
+                        "effort": 714.5587783547105,
+                        "bugs": 0.04465992364716941,
+                        "time": 39.69770990859503
                     },
                     "params": 1,
-                    "line": 42,
-                    "cyclomaticDensity": 100
+                    "line": 41,
+                    "cyclomaticDensity": 133.33333333333331
                 },
                 {
                     "name": "<anonymous>.createSocket",
                     "sloc": {
-                        "logical": 3,
-                        "physical": 6
+                        "logical": 2,
+                        "physical": 5
                     },
                     "cyclomatic": 1,
                     "halstead": {
                         "operators": {
-                            "distinct": 7,
-                            "total": 8,
+                            "distinct": 5,
+                            "total": 5,
                             "identifiers": [
-                                "()",
-                                "+",
-                                ".",
                                 "var",
                                 "=",
                                 "new",
+                                ".",
                                 "return"
                             ]
                         },
                         "operands": {
-                            "distinct": 8,
-                            "total": 11,
+                            "distinct": 5,
+                            "total": 7,
                             "identifiers": [
                                 "namespace",
-                                "\"####createSocket:\"",
-                                "console",
-                                "log",
                                 "sock",
                                 "this",
                                 "_io",
                                 "Socket"
                             ]
                         },
-                        "length": 19,
-                        "vocabulary": 15,
-                        "difficulty": 4.8125,
-                        "volume": 74.23092131656186,
-                        "effort": 357.23630883595393,
-                        "bugs": 0.024743640438853954,
-                        "time": 19.84646160199744
+                        "length": 12,
+                        "vocabulary": 10,
+                        "difficulty": 3.5,
+                        "volume": 39.863137138648355,
+                        "effort": 139.52097998526924,
+                        "bugs": 0.013287712379549451,
+                        "time": 7.75116555473718
                     },
                     "params": 1,
-                    "line": 49,
-                    "cyclomaticDensity": 33.33333333333333
+                    "line": 47,
+                    "cyclomaticDensity": 50
                 }
             ],
             "dependencies": [
@@ -7246,10 +7229,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 120.40413537226037,
-            "loc": 4.5,
+            "maintainability": 123.773078363493,
+            "loc": 3.75,
             "cyclomatic": 5,
-            "effort": 1922.3396080106463,
+            "effort": 1702.5044398931186,
             "params": 1.75,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/networkHandler/networkHandler.js"
         },
@@ -18493,9 +18476,9 @@
     ],
     "changeCost": 21.875,
     "coreSize": 37.5,
-    "loc": 10.494473842130091,
+    "loc": 10.471036342130091,
     "cyclomatic": 4.286401705932956,
-    "effort": 8275.582250600395,
+    "effort": 8268.712401596722,
     "params": 1.1159770784770788,
-    "maintainability": 104.8679510241004
+    "maintainability": 104.97323049257642
 }
