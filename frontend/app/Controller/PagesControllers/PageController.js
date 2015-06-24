@@ -18,10 +18,10 @@
 
 angular.module('norris-nrti')
 .controller('PageController', ['$scope', '$location', '$routeParams', 'PagesList', 'PageFactory', 'SocketServicesFactory', function($scope, $location, $routeParams, PagesList, PageFactory, SocketServicesFactory){
-
+	console.log('controller PAge');
 	var page = PagesList.prototype.getPagesList()[$routeParams.pageId].page; // recupera la pagina corrente
 	$scope.page = page;
-	$scope.previous = false;
+	/*$scope.previous = false;
 	$scope.next = false;
 	var a = $routeParams.pageId - 1;
 	if (PagesList.prototype.getPagesList()[parseInt($routeParams.pageId) - 1] !== undefined) {
@@ -30,11 +30,11 @@ angular.module('norris-nrti')
 	var b = $routeParams.pageId + 1;
 	if (PagesList.prototype.getPagesList()[parseInt($routeParams.pageId) + 1] !== undefined) {
 		$scope.next = true; // se è presente una pagina successiva mette il flag a true
-	}
+	}*/
 	var url = $scope.page.getUrl(); // recupera l'url a cui deve connettersi il socket
+
 	var socket;
 
-	// funzione che connette il socket all'url e chiama la funzione listenOnEvent
 	this.socketConnection = function(){
 		socket = SocketServicesFactory.build(url);
 		this.listenOnEvents();
@@ -47,13 +47,30 @@ angular.module('norris-nrti')
 			$scope.page.initializeData(info.data); // inizializza i dati della pagina (aggiunge i grafici presenti in essa)
 			$scope.graphs = matrix($scope.page.getGraphsList());
 		});
-		socket.on('updatePageProp', function(info){ // ascolta sull'evento 'updatePageProp'
+		/*socket.on('updatePageProp', function(info){ // ascolta sull'evento 'updatePageProp'
 			$scope.page.updateParameters(info); // aggiorna le proprietà della pagina
-		});
+		});*/
 		socket.on('insertGraph', function(info){ // ascolta sull'evento 'insertGraph'
 			$scope.page.addGraph(info); // inserisce un nuovo grafico alla lista dei grafici presente in $scope.page
 			$scope.graphs = matrix($scope.page.getGraphsList());
 		});
+	};
+
+	// funzione che connette il socket all'url e chiama la funzione listenOnEvent
+	/*this.socketConnection = function(){
+		socket = SocketServicesFactory.build(url);
+		this.listenOnEvents();
+	};
+	this.socketConnection();*/
+
+	this.previous = function(id){
+		console.log('prev');
+		$location.path('/page/' + id);
+	};
+
+	this.next = function(id){
+		console.log('next');
+		$location.path('/page/' + id);
 	};
 
 	// funzione di utilità che dispone i grafici in un array per la successiva visualizzazione
@@ -84,5 +101,7 @@ angular.module('norris-nrti')
 	$scope.graphs = [];
 	$scope.socketConnection = this.socketConnection;
 	$scope.listenOnEvents = this.listenOnEvents;
+	$scope.previous = this.previous;
+	$scope.next = this.next;
 	
 }]);

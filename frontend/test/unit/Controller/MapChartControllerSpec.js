@@ -9,7 +9,9 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
-* 0.1.0         2015-06-23  Maria Giovanna Chinellato   fix configGraph
+* 0.1.2         2015-06-24  Maria Giovanna Chinellato   fix describe 'MapChartController'
+*
+* 0.1.1         2015-06-23  Maria Giovanna Chinellato   fix configGraph
 *
 * 0.1.0         2015-05-25  Maria Giovanna Chinellato   Add all attributes and all methods
 *
@@ -20,19 +22,21 @@
 
 describe('MapChartController', function(){
 
-	beforeEach(angular.mock.module('norris-nrti'));
-	//beforeEach(angular.mock.module('mockSocket'));
-
 	var scope;
 	var controller;
 	var socket;
 
-	beforeEach(inject(function($rootScope, $controller, _SocketServicesFactory_){
-		scope = $rootScope.$new();
-		socket = _SocketServicesFactory_;
-		controller = $controller('MapChartController', { $scope : scope });
-	}));
+	beforeEach(function(){
+		angular.mock.module('norris-nrti');
+		angular.mock.module('mockSocket');
+		inject(function($rootScope, $controller, $injector){
+			scope = $rootScope.$new();
+			socket = $injector.get('SocketServicesFactory');
+			controller = $controller('MapChartController', { $scope : scope });
+		});
+	});
 
+	
 	it('scope.mapChart is defined', function() {
 		expect(scope.mapChart).toBeDefined();
 	});
@@ -47,6 +51,7 @@ describe('MapChartController', function(){
 			var configGraph = false;
 
 			socket.on('configGraph', function(){
+				console.log('configGraph');
 				configGraph = true;
 			});
 

@@ -41,6 +41,7 @@ angular.module('norris-nrti')
 			$scope.pagesList = pagesList.getPagesList(); // rende disponibile la lista delle pagine sullo scope
 		});
 		socket.on('updatePage', function(info) { // ascolta sull'evento 'updatePage'
+			pagesList.updatePage(info);
 			$scope.pagesList = pagesList.getPagesList(); // rende disponibile la lista delle pagine sullo scope
 		});
 

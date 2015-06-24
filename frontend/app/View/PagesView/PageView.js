@@ -37,11 +37,11 @@ angular.module('norris-nrti')
 
 				var commands = document.createElement('div');
 				commands.setAttribute('class', 'commands');
-				if (scope.previous) { // controlla se è presente una pagina precedente
+				/*if (scope.previous) { // controlla se è presente una pagina precedente
 					var previous = document.createElement('div');
 					//previous.setAttribute('style', 'float:left;');
 					var pIndex = parseInt($routeParams.pageId) - 1;
-					previous.innerHTML = '<a ng-href="#/page/'+ pIndex +'" target="_self">PREVIOUS PAGE</a>'; // inserisce il link alla pagina precedente
+					previous.innerHTML = '<a ng-click="previous('+pIndex+')" target="_self">PREVIOUS PAGE</a>'; // inserisce il link alla pagina precedente
 					commands.appendChild(previous);
 				}
 				var list = document.createElement('div');
@@ -52,9 +52,12 @@ angular.module('norris-nrti')
 					var next = document.createElement('div');
 					//next.setAttribute('style', 'float:left;');
 					var nIndex = parseInt($routeParams.pageId) + 1;
-					next.innerHTML = '<a ng-href="#/page/'+ nIndex +'" target="_self">NEXT PAGE</a>'; // inserisce il link alla pagina successiva
+					next.innerHTML = '<a ng-click="next('+nIndex+')" target="_self">NEXT PAGE</a>'; // inserisce il link alla pagina successiva
 					commands.appendChild(next);
-				}
+				}*/
+				var list = document.createElement('div');
+				list.innerHTML = '<a ng-href="/" target="_self">RETURN TO PAGES LIST</a>';
+				commands.appendChild(list);
 				parent.appendChild(commands);
 
 				var table = document.createElement('table');

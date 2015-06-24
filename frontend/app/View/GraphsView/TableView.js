@@ -169,14 +169,6 @@ angular.module('norris-nrti')
 
                     }
                 }
-                /*console.log('appearance length ' + appearance.length);
-                for (var g=0; g<appearance.length; g++) {
-                    console.log('appearance['+ g +'] length ' +appearance[g].length);
-                    for (var f=0; f<appearance[g].length; f++) {
-                        console.log('TABLE appearance: ' + appearance[g][f].bg + ' ' + appearance[g][f].text);
-                    }
-                }*/
-                //scope.appearance = appearance;
                 scope.itemsByPage = scope.$parent.table.getMaxItemsPage();
             };
         }

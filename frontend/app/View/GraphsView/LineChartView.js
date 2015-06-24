@@ -54,7 +54,9 @@ angular.module('norris-nrti')
             scope.$parent.$watch('changedD', function(newValue, oldValue){
                 if(newValue !== oldValue){
                     scope.setData(); // richiama la funzione che imposta i dati ad ogni cambiamento dei dati dei flussi del grafico
-                    scope.legend(); // richiama la funzione che crea la legenda relativa al grafico
+                    if (scope.$parent.lineChart.getLegend() !== null){
+                        scope.legend();  // richiama la funzione che crea la legenda relativa al grafico
+                    }
                 }
             }, true);
 

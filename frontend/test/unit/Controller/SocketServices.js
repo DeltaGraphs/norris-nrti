@@ -9,15 +9,17 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.1.1         2015-06-24  Maria Giovanna Chinellato   Fix module
+*
 * 0.1.0         2015-06-23  Maria Giovanna Chinellato   Add all attributes and all methods
 *
 * 0.0.1         2015-06-23  Maria Giovanna Chinellato   Initial code      
 * =================================================================================================
 *
 */
-//var mockSocket = angular.module('mockSocket', ['ngRoute'])
+var mockSocket = angular.module('mockSocket', []);
 
-angular.module('norris-nrti')
+angular.module('mockSocket')
 .factory('SocketServicesFactory', function ($rootScope) {
 
 	this.events = {};

@@ -49,8 +49,13 @@ angular.module('norris-nrti')
 	}
 	
 	PagesList.prototype.addPage = function(page) {
-		var filteredPages = pagesList.filter(function(page) {return page.properties.ID === pagesList.id;}); // crea un array con le pagine che hanno lo stesso id di 'page'
-		if(filteredPages.length === 0) { // controlla che non ci siano pagine con lo stesso id di 'page'
+		var count = 0;
+		for (var j=0; j<pagesList.length; j++) {
+			if (pagesList[j].id === page.properties.ID){
+				count++;
+			}
+		}
+		if (count === 0){
 			var newPage = PageFactory.build(page); // crea una nuova pagina
 			pagesList.push({ 'id' : page.ID, 'page' : newPage}); // aggiunge la nuova pagina alla lista
 		}
@@ -61,7 +66,7 @@ angular.module('norris-nrti')
 	PagesList.prototype.updatePage = function(info) {
 		for (var j=0; j<pagesList.length; j++) {
 			if (pagesList[j].id === info.ID){
-				pagesList[j].updateParameters(info);
+				pagesList[j].page.updateParameters(info);
 			}
 		}
 	};

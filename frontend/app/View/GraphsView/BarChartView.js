@@ -47,7 +47,7 @@ angular.module('norris-nrti')
 
             scope.$parent.$watch('changedP', function(newValue, oldValue){
                 if (newValue !== oldValue) {
-                    element.empty(); // elimina i tag HTML relativi al bar chart
+                    element.empty();
                     scope.init(); // crea  il grafico chiamando la funzione apposita
                 }
             }, true);
@@ -55,7 +55,9 @@ angular.module('norris-nrti')
             scope.$parent.$watch('changedD', function(newValue, oldValue){
                 if(newValue !== oldValue){
                     scope.setData(); // richiama la funzione che imposta i dati ad ogni cambiamento dei dati dei flussi del grafico
-                    scope.legend();  // richiama la funzione che crea la legenda relativa al grafico
+                    if (scope.$parent.barChart.getLegend() !== null){
+                        scope.legend();  // richiama la funzione che crea la legenda relativa al grafico
+                    }
                 }
             }, true);
 
@@ -63,11 +65,12 @@ angular.module('norris-nrti')
                 for (var j=0; j<element.children().length; j++){
                     var nvd3 = element.children()[j];
                     nvd3.select('*').remove();
+                    nvd3.select('svg').remove();
                 }
             }); 
             // inserisce il codice HTML che crea il grafico desiderato
             scope.init = function(){
-                
+                element.empty(); // elimina i tag HTML relativi al bar chart
                 var barchart = null;
                 var legend, onPoint, control;
                 var str = scope.url.split('/');

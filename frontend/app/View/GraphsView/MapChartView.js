@@ -53,7 +53,9 @@ angular.module('norris-nrti')
 
             scope.$parent.$watch('changedD', function(newValue, oldValue){
                 if(newValue !== oldValue){                
-                    scope.legend(); // crea la legenda
+                    if (scope.$parent.mapChart.getLegend() !== null){
+                        scope.legend();  // richiama la funzione che crea la legenda relativa al grafico
+                    }
                     scope.render(); // inserisce i dati sulla mappa
                 }
             }, true);
