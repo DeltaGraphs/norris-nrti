@@ -14853,8 +14853,8 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 110,
-                        "total": 926,
+                        "distinct": 109,
+                        "total": 928,
                         "identifiers": [
                             "\"use strict\"",
                             "GraphModel",
@@ -14918,7 +14918,8 @@
                             "\"boolean\"",
                             "column",
                             "ordering",
-                            "\"array\"",
+                            "Array",
+                            "isArray",
                             "check",
                             true,
                             "ii",
@@ -14928,8 +14929,6 @@
                             "\"ASC\"",
                             "\"DESC\"",
                             "\"number\"",
-                            "Array",
-                            "isArray",
                             "prevHLength",
                             "\"#FFFFFF\"",
                             "j",
@@ -14968,13 +14967,13 @@
                             "exports"
                         ]
                     },
-                    "length": 1819,
-                    "vocabulary": 134,
-                    "difficulty": 101.01818181818182,
-                    "volume": 12853.216237442688,
-                    "effort": 1298408.5348223923,
-                    "bugs": 4.284405412480896,
-                    "time": 72133.80749013291
+                    "length": 1821,
+                    "vocabulary": 133,
+                    "difficulty": 102.16513761467891,
+                    "volume": 12847.669315047666,
+                    "effort": 1312583.9035997323,
+                    "bugs": 4.282556438349222,
+                    "time": 72921.3279777629
                 },
                 "params": 11,
                 "line": 2,
@@ -15151,8 +15150,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 61,
-                            "total": 656,
+                            "distinct": 60,
+                            "total": 658,
                             "identifiers": [
                                 "params",
                                 "undefined",
@@ -15167,7 +15166,8 @@
                                 "sort",
                                 "column",
                                 "ordering",
-                                "\"array\"",
+                                "Array",
+                                "isArray",
                                 "check",
                                 true,
                                 "ii",
@@ -15182,8 +15182,6 @@
                                 "\"number\"",
                                 "_maxItemsPage",
                                 "headers",
-                                "Array",
-                                "isArray",
                                 "prevHLength",
                                 "_headers",
                                 "_appearance",
@@ -15217,13 +15215,13 @@
                                 "_addRowOn"
                             ]
                         },
-                        "length": 1304,
-                        "vocabulary": 80,
-                        "difficulty": 102.1639344262295,
-                        "volume": 8243.79423573312,
-                        "effort": 842218.4537227672,
-                        "bugs": 2.74793141191104,
-                        "time": 46789.91409570929
+                        "length": 1306,
+                        "vocabulary": 79,
+                        "difficulty": 104.18333333333334,
+                        "volume": 8232.737657119296,
+                        "effort": 857714.0515775454,
+                        "bugs": 2.744245885706432,
+                        "time": 47650.780643196966
                     },
                     "params": 1,
                     "line": 74,
@@ -15623,10 +15621,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 88.0001965870348,
+            "maintainability": 87.93906558423708,
             "loc": 15.181818181818182,
             "cyclomatic": 5.818181818181818,
-            "effort": 78107.55519734907,
+            "effort": 79516.2459114198,
             "params": 1,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/dataTier/graph/tableModel.js"
         },
@@ -18472,7 +18470,7 @@
     "coreSize": 37.5,
     "loc": 10.477980786574538,
     "cyclomatic": 4.293346150377401,
-    "effort": 8233.602362915213,
+    "effort": 8277.623947729924,
     "params": 1.1159770784770788,
-    "maintainability": 104.9443621266469
+    "maintainability": 104.94245178280947
 }

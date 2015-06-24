@@ -1,8 +1,8 @@
 Mean per-function logical LOC: 10.477980786574538
 Mean per-function parameter count: 1.1159770784770788
 Mean per-function cyclomatic complexity: 4.293346150377401
-Mean per-function Halstead effort: 8233.602362915213
-Mean per-module maintainability index: 104.9443621266469
+Mean per-function Halstead effort: 8277.623947729924
+Mean per-module maintainability index: 104.94245178280947
 First-order density: 5.95703125%
 Change cost: 21.875%
 Core size: 37.5%
@@ -2295,7 +2295,7 @@ Core size: 37.5%
   Mean parameter count: 1
   Cyclomatic complexity: 54
   Cyclomatic complexity density: 29.347826086956523%
-  Maintainability index: 88.0001965870348
+  Maintainability index: 87.93906558423708
   Dependency count: 3
 
   Function: TableModel
@@ -2327,9 +2327,9 @@ Core size: 37.5%
     Parameter count: 1
     Cyclomatic complexity: 43
     Cyclomatic complexity density: 41.74757281553398%
-    Halstead difficulty: 102.1639344262295
-    Halstead volume: 8243.79423573312
-    Halstead effort: 842218.4537227672
+    Halstead difficulty: 104.18333333333334
+    Halstead volume: 8232.737657119296
+    Halstead effort: 857714.0515775454
 
   Function: <anonymous>.getData
     Line No.: 210
