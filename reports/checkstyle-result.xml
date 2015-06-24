@@ -1,3 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <checkstyle version="4.3">
+	<file name="lib/dataTier/graph/tableModel.js">
+		<error line="80" column="135" severity="warning" message="Invalid typeof value &apos;array&apos;" source="jshint.W122" />
+		<error line="80" column="178" severity="warning" message="Invalid typeof value &apos;array&apos;" source="jshint.W122" />
+	</file>
 </checkstyle>

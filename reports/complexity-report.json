@@ -14817,14 +14817,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 177,
-                    "physical": 258
+                    "logical": 184,
+                    "physical": 267
                 },
-                "cyclomatic": 51,
+                "cyclomatic": 54,
                 "halstead": {
                     "operators": {
-                        "distinct": 22,
-                        "total": 877,
+                        "distinct": 24,
+                        "total": 893,
                         "identifiers": [
                             "var",
                             "=",
@@ -14841,18 +14841,20 @@
                             "{}",
                             ":",
                             "&&",
-                            ">",
-                            "else",
                             "for",
                             "<",
                             "++ (postfix)",
+                            "! (prefix)",
+                            "break",
+                            ">",
+                            "else",
                             "-",
                             "instanceof"
                         ]
                     },
                     "operands": {
-                        "distinct": 106,
-                        "total": 911,
+                        "distinct": 110,
+                        "total": 926,
                         "identifiers": [
                             "\"use strict\"",
                             "GraphModel",
@@ -14916,15 +14918,19 @@
                             "\"boolean\"",
                             "column",
                             "ordering",
+                            "\"array\"",
+                            "check",
+                            true,
+                            "ii",
+                            0,
+                            "i",
+                            "length",
                             "\"ASC\"",
                             "\"DESC\"",
                             "\"number\"",
-                            0,
                             "Array",
                             "isArray",
                             "prevHLength",
-                            "length",
-                            "i",
                             "\"#FFFFFF\"",
                             "j",
                             "push",
@@ -14962,17 +14968,17 @@
                             "exports"
                         ]
                     },
-                    "length": 1788,
-                    "vocabulary": 128,
-                    "difficulty": 94.5377358490566,
-                    "volume": 12516,
-                    "effort": 1183234.3018867925,
-                    "bugs": 4.172,
-                    "time": 65735.2389937107
+                    "length": 1819,
+                    "vocabulary": 134,
+                    "difficulty": 101.01818181818182,
+                    "volume": 12853.216237442688,
+                    "effort": 1298408.5348223923,
+                    "bugs": 4.284405412480896,
+                    "time": 72133.80749013291
                 },
                 "params": 11,
                 "line": 2,
-                "cyclomaticDensity": 28.8135593220339
+                "cyclomaticDensity": 29.347826086956523
             },
             "functions": [
                 {
@@ -15114,14 +15120,14 @@
                 {
                     "name": "<anonymous>.updateProperties",
                     "sloc": {
-                        "logical": 96,
-                        "physical": 126
+                        "logical": 103,
+                        "physical": 135
                     },
-                    "cyclomatic": 40,
+                    "cyclomatic": 43,
                     "halstead": {
                         "operators": {
-                            "distinct": 17,
-                            "total": 632,
+                            "distinct": 19,
+                            "total": 648,
                             "identifiers": [
                                 "if",
                                 "!==",
@@ -15132,19 +15138,21 @@
                                 "&&",
                                 "===",
                                 "typeof (prefix)",
-                                "||",
-                                ">",
-                                "else",
                                 "for",
                                 "<",
                                 "++ (postfix)",
+                                "! (prefix)",
+                                "||",
+                                "break",
+                                ">",
+                                "else",
                                 "-",
                                 "return"
                             ]
                         },
                         "operands": {
-                            "distinct": 56,
-                            "total": 641,
+                            "distinct": 61,
+                            "total": 656,
                             "identifiers": [
                                 "params",
                                 "undefined",
@@ -15159,21 +15167,25 @@
                                 "sort",
                                 "column",
                                 "ordering",
-                                "\"string\"",
+                                "\"array\"",
+                                "check",
+                                true,
+                                "ii",
+                                0,
+                                "i",
+                                "length",
                                 "\"ASC\"",
                                 "\"DESC\"",
+                                false,
                                 "_sort",
                                 "maxItemsPage",
                                 "\"number\"",
-                                0,
                                 "_maxItemsPage",
                                 "headers",
                                 "Array",
                                 "isArray",
                                 "prevHLength",
                                 "_headers",
-                                "length",
-                                "i",
                                 "_appearance",
                                 "rowEven",
                                 "textColor",
@@ -15189,6 +15201,7 @@
                                 "border",
                                 "\"object\"",
                                 "color",
+                                "\"string\"",
                                 "FH",
                                 "isHEX",
                                 "width",
@@ -15204,17 +15217,17 @@
                                 "_addRowOn"
                             ]
                         },
-                        "length": 1273,
-                        "vocabulary": 73,
-                        "difficulty": 97.29464285714286,
-                        "volume": 7879.646663454262,
-                        "effort": 766647.4079612598,
-                        "bugs": 2.6265488878180876,
-                        "time": 42591.522664514436
+                        "length": 1304,
+                        "vocabulary": 80,
+                        "difficulty": 102.1639344262295,
+                        "volume": 8243.79423573312,
+                        "effort": 842218.4537227672,
+                        "bugs": 2.74793141191104,
+                        "time": 46789.91409570929
                     },
                     "params": 1,
                     "line": 74,
-                    "cyclomaticDensity": 41.66666666666667
+                    "cyclomaticDensity": 41.74757281553398
                 },
                 {
                     "name": "<anonymous>.getData",
@@ -15268,7 +15281,7 @@
                         "time": 146.8586954483787
                     },
                     "params": 0,
-                    "line": 201,
+                    "line": 210,
                     "cyclomaticDensity": 25
                 },
                 {
@@ -15309,7 +15322,7 @@
                         "time": 5.91719333602565
                     },
                     "params": 1,
-                    "line": 216,
+                    "line": 225,
                     "cyclomaticDensity": 100
                 },
                 {
@@ -15361,7 +15374,7 @@
                         "time": 103.36611360272276
                     },
                     "params": 1,
-                    "line": 222,
+                    "line": 231,
                     "cyclomaticDensity": 80
                 },
                 {
@@ -15399,7 +15412,7 @@
                         "time": 1.292481250360578
                     },
                     "params": 0,
-                    "line": 232,
+                    "line": 241,
                     "cyclomaticDensity": 100
                 },
                 {
@@ -15456,7 +15469,7 @@
                         "time": 65.44934817463752
                     },
                     "params": 3,
-                    "line": 236,
+                    "line": 245,
                     "cyclomaticDensity": 28.57142857142857
                 },
                 {
@@ -15496,7 +15509,7 @@
                         "time": 4.166666666666667
                     },
                     "params": 1,
-                    "line": 237,
+                    "line": 246,
                     "cyclomaticDensity": 100
                 },
                 {
@@ -15549,7 +15562,7 @@
                         "time": 52.89082229929424
                     },
                     "params": 2,
-                    "line": 248,
+                    "line": 257,
                     "cyclomaticDensity": 33.33333333333333
                 },
                 {
@@ -15589,7 +15602,7 @@
                         "time": 4.166666666666667
                     },
                     "params": 1,
-                    "line": 249,
+                    "line": 258,
                     "cyclomaticDensity": 100
                 }
             ],
@@ -15610,10 +15623,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 89.019795167746,
-            "loc": 14.545454545454545,
-            "cyclomatic": 5.545454545454546,
-            "effort": 71237.46012812112,
+            "maintainability": 88.0001965870348,
+            "loc": 15.181818181818182,
+            "cyclomatic": 5.818181818181818,
+            "effort": 78107.55519734907,
             "params": 1,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/dataTier/graph/tableModel.js"
         },
@@ -18457,9 +18470,9 @@
     ],
     "changeCost": 21.875,
     "coreSize": 37.5,
-    "loc": 10.458094422938174,
-    "cyclomatic": 4.284823423104673,
-    "effort": 8018.911892001841,
+    "loc": 10.477980786574538,
+    "cyclomatic": 4.293346150377401,
+    "effort": 8233.602362915213,
     "params": 1.1159770784770788,
-    "maintainability": 104.97622458229412
+    "maintainability": 104.9443621266469
 }
