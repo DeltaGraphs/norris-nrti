@@ -44,7 +44,7 @@ describe('MapChartController', function(){
 	describe('socketConnection', function(){
 
 		beforeEach(function(){
-			socketConnection("http://norris-nrti-dev.herokuapp.com/page1/map1");
+			controller.socketConnection("http://norris-nrti-dev.herokuapp.com/page1/map1");
 		});
 
 		it('socketConnection works fine', function(){

@@ -44,7 +44,7 @@ describe('LineChartController', function(){
 	describe('socketConnection', function(){
 
 		beforeEach(function(){
-			socketConnection("http://norris-nrti-dev.herokuapp.com/page1/line1");
+			controller.socketConnection("http://norris-nrti-dev.herokuapp.com/page1/line1");
 		});
 
 		it('socketConnection works fine', function(){
