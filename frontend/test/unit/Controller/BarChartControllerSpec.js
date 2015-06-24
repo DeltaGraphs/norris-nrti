@@ -25,32 +25,25 @@ describe('BarChartController', function(){
 	var scope;
 	var controller;
 
-	beforeEach(angular.mock.module('norris-nrti'));
+	beforeEach(function(){
+		angular.mock.module('norris-nrti');
+		inject(function($rootScope, $controller){
+			scope = $rootScope.$new();
+			controller = $controller('BarChartController', { $scope : scope });
+			controller.socketConnection('http://norris-nrti-dev.herokuapp.com/norris/page1/map1');
+		});
+	});
 
-	beforeEach(inject(function($rootScope, $controller){
-		scope = $rootScope.$new();
-		controller = $controller('BarChartController', { $scope : scope });
-	}));
+	it('scope.mapChart is defined', function() {
+		expect(scope.barChart).toBeDefined();
+	});
 
-	/*it('controller is defined', function() {
+	it('controller is defined', function() {
 		expect(controller).toBeDefined();
 	});
 
-	it('scope.barChart is defined', function() {
-		expect(scope.barChart).toBeDefined();
-	});*/
-
-
-	describe('socketConnection', function(){
-
-	
-		beforeEach(function(){
-			controller.socketConnection('http://norris-nrti-dev.herokuapp.com/norris/page1/bar1');
-		});
-
-		it('socketConnection works fine', function(){
-			expect(scope.socket).toBeDefined();
-			expect(scope.count).toEqual(1);
-		});
+	it('socketConnection works fine', function(){
+		expect(scope.count).toEqual(1);
 	});
+
 });
