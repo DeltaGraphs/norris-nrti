@@ -394,6 +394,14 @@ describe('TableModel', function() {
             assert.strictEqual(graph1._headers[1], 'col2');
             assert.deepEqual(graph1._appearance, default2colAppearance);
         });
+        it('does not updates sort options if not valid', function() {
+            var properties={
+                sort: {column: ['col1'], ordering:['AAA']},
+            };
+            var graph1=new TableModel({ID: 'graph1'});
+            graph1.updateProperties(properties);
+            assert.strictEqual(graph1._sort, null);
+        });
     });
 
     describe('#getData', function() {
