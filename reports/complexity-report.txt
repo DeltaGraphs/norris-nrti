@@ -1,8 +1,8 @@
 Mean per-function logical LOC: 10.53006411990787
 Mean per-function parameter count: 1.1159770784770788
 Mean per-function cyclomatic complexity: 4.303762817044068
-Mean per-function Halstead effort: 8314.90478487378
-Mean per-module maintainability index: 104.83374968318905
+Mean per-function Halstead effort: 8315.896592953244
+Mean per-module maintainability index: 104.83343850818564
 First-order density: 5.95703125%
 Change cost: 21.875%
 Core size: 37.5%
@@ -1198,7 +1198,7 @@ Core size: 37.5%
   Mean parameter count: 1
   Cyclomatic complexity: 31
   Cyclomatic complexity density: 18.452380952380953%
-  Maintainability index: 93.08162685046223
+  Maintainability index: 93.07166925035291
   Dependency count: 5
 
   Function: Page
@@ -1208,9 +1208,9 @@ Core size: 37.5%
     Parameter count: 3
     Cyclomatic complexity: 10
     Cyclomatic complexity density: 66.66666666666666%
-    Halstead difficulty: 13.844827586206897
-    Halstead volume: 718.4602928097939
-    Halstead effort: 9946.95888148732
+    Halstead difficulty: 14.03448275862069
+    Halstead volume: 729.1041489995687
+    Halstead effort: 10232.599608373257
 
   Function: <anonymous>.createBarChart
     Line No.: 49
