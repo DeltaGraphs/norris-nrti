@@ -37,7 +37,8 @@ var page1 = nor.createPage({ID: 'page1'});
 function ParamMock() {
     this._app = null;
     this._io = null;
-    this._networkHandler ={_norrisNamespace:'norris'};
+    this._networkHandler = null;
+    this._norrisNamespace = 'norris';
     this._pageListSocket = null;
     this._pageList = null;
 }
