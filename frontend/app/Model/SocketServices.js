@@ -39,9 +39,6 @@ angular.module('norris-nrti')
                         }
                     });
                 });
-            },
-            disconnect: function(){
-                socket.disconnect();
             }
         };
     }
