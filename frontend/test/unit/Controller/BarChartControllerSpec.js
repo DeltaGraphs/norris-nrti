@@ -48,8 +48,6 @@ describe('BarChartController', function(){
 			controller.socketConnection('http://norris-nrti-dev.herokuapp.com/page1/bar1');
 		});
 
-		
-
 		/*
 
 		it('socketConnection works fine', function(){
