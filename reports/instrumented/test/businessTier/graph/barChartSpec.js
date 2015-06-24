@@ -45,6 +45,17 @@ var socketMockHistory=function(){
     };
 };
 
+var pageMock=function(){
+    this._page='';
+    this._p1 = '';
+    this._p2 = '';
+
+    this.graphChanged(params) {
+        this._p1 = params.eventType;
+        this._p2 = params.params;
+    }
+}
+
 describe('BarChart', function() {
     it('returns 361 when there are no params', function() {
         assert.strictEqual(new BarChart().hasOwnProperty('_dataBarChart'),false);
@@ -158,11 +169,14 @@ describe('BarChart', function() {
             assert.strictEqual(mock.p2,null);
         });
         it('updated properties', function() {
+            var pMock = new pageMock();
             var mock = new socketMock();
             var barChart=new BarChart({ID: 'dada'}, {_page: 'dssada'}, mock);
             barChart.updateProperties({title: 'graph one', height: 200, width: 350, enableLegend: true, backgroundColor: '#EEEEEE', legendOnPoint: true, sortable: true, grid: true, barOrientation: 'H', groupingControl:true});
             assert.strictEqual(mock.p1,'updateGraphProp');
             assert.deepEqual(mock.p2,{'title':'graph one','height':200,'width':350,'enableLegend':true,'backgroundColor':'#EEEEEE','grid':true,'legendOnPoint':true, 'groupingControl':true,'sortable':true,'barOrientation':'H'});
+            assert.strictEqual(pMock.p1,'updateGraph');
+            assert.deepEqual(pMock.p2, {title: 'graph one', height: 200, width: 350, enableLegend: true, backgroundColor: '#EEEEEE', legendOnPoint: true, sortable: true, grid: true, barOrientation: 'H', groupingControl:true});
         });
     });
 
