@@ -1066,14 +1066,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 24,
-                    "physical": 50
+                    "logical": 25,
+                    "physical": 51
                 },
                 "cyclomatic": 6,
                 "halstead": {
                     "operators": {
                         "distinct": 14,
-                        "total": 66,
+                        "total": 73,
                         "identifiers": [
                             "function",
                             "if",
@@ -1086,14 +1086,14 @@
                             "return",
                             "=",
                             "&&",
+                            "+",
                             "else",
-                            "var",
-                            "+"
+                            "var"
                         ]
                     },
                     "operands": {
-                        "distinct": 36,
-                        "total": 85,
+                        "distinct": 40,
+                        "total": 93,
                         "identifiers": [
                             "\"use strict\"",
                             "Socket",
@@ -1118,6 +1118,10 @@
                             "<anonymous>",
                             "event",
                             "data",
+                            "\"sendMessage : \"",
+                            "\"  \"",
+                            "JSON",
+                            "stringify",
                             "emit",
                             "attachObject",
                             "obj",
@@ -1133,17 +1137,17 @@
                             "exports"
                         ]
                     },
-                    "length": 151,
-                    "vocabulary": 50,
-                    "difficulty": 16.52777777777778,
-                    "volume": 852.2222846559833,
-                    "effort": 14085.34053806417,
-                    "bugs": 0.28407409488532775,
-                    "time": 782.5189187813428
+                    "length": 166,
+                    "vocabulary": 54,
+                    "difficulty": 16.275000000000002,
+                    "volume": 955.3113253591358,
+                    "effort": 15547.691820219938,
+                    "bugs": 0.3184371084530453,
+                    "time": 863.7606566788854
                 },
                 "params": 7,
                 "line": 2,
-                "cyclomaticDensity": 25
+                "cyclomaticDensity": 24
             },
             "functions": [
                 {
@@ -1206,45 +1210,52 @@
                 {
                     "name": "<anonymous>.sendMessage",
                     "sloc": {
-                        "logical": 2,
-                        "physical": 5
+                        "logical": 3,
+                        "physical": 6
                     },
                     "cyclomatic": 2,
                     "halstead": {
                         "operators": {
-                            "distinct": 5,
-                            "total": 7,
+                            "distinct": 6,
+                            "total": 14,
                             "identifiers": [
                                 "if",
                                 "&&",
                                 "!==",
                                 "()",
+                                "+",
                                 "."
                             ]
                         },
                         "operands": {
-                            "distinct": 6,
-                            "total": 11,
+                            "distinct": 12,
+                            "total": 19,
                             "identifiers": [
                                 "event",
                                 "data",
                                 "undefined",
+                                "\"sendMessage : \"",
+                                "\"  \"",
+                                "JSON",
+                                "stringify",
+                                "console",
+                                "log",
                                 "this",
                                 "_namespace",
                                 "emit"
                             ]
                         },
-                        "length": 18,
-                        "vocabulary": 11,
-                        "difficulty": 4.583333333333333,
-                        "volume": 62.26976913547136,
-                        "effort": 285.40310853757705,
-                        "bugs": 0.020756589711823786,
-                        "time": 15.855728252087614
+                        "length": 33,
+                        "vocabulary": 18,
+                        "difficulty": 4.75,
+                        "volume": 137.6075250475963,
+                        "effort": 653.6357439760825,
+                        "bugs": 0.04586917501586544,
+                        "time": 36.313096887560135
                     },
                     "params": 2,
                     "line": 29,
-                    "cyclomaticDensity": 100
+                    "cyclomaticDensity": 66.66666666666666
                 },
                 {
                     "name": "<anonymous>.attachObject",
@@ -1300,7 +1311,7 @@
                         "time": 81.63028458588383
                     },
                     "params": 2,
-                    "line": 35,
+                    "line": 36,
                     "cyclomaticDensity": 25
                 },
                 {
@@ -1344,15 +1355,15 @@
                         "time": 5.642996528912931
                     },
                     "params": 1,
-                    "line": 41,
+                    "line": 42,
                     "cyclomaticDensity": 50
                 }
             ],
             "dependencies": [],
-            "maintainability": 122.45057083387637,
-            "loc": 4.75,
+            "maintainability": 121.27301079046919,
+            "loc": 5,
             "cyclomatic": 2.25,
-            "effort": 863.0893732067798,
+            "effort": 955.1475320664063,
             "params": 1.75,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/presentationTier/socket.js"
         },
@@ -18423,9 +18434,9 @@
     ],
     "changeCost": 21.875,
     "coreSize": 37.5,
-    "loc": 10.377412604756355,
+    "loc": 10.385225104756355,
     "cyclomatic": 4.2653158473470985,
-    "effort": 7987.607280533284,
+    "effort": 7990.484097997647,
     "params": 1.1159770784770788,
-    "maintainability": 105.08330920845523
+    "maintainability": 105.04651045709875
 }

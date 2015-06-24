@@ -1,8 +1,8 @@
-Mean per-function logical LOC: 10.377412604756355
+Mean per-function logical LOC: 10.385225104756355
 Mean per-function parameter count: 1.1159770784770788
 Mean per-function cyclomatic complexity: 4.2653158473470985
-Mean per-function Halstead effort: 7987.607280533284
-Mean per-module maintainability index: 105.08330920845523
+Mean per-function Halstead effort: 7990.484097997647
+Mean per-module maintainability index: 105.04651045709875
 First-order density: 5.95703125%
 Change cost: 21.875%
 Core size: 37.5%
@@ -183,12 +183,12 @@ Core size: 37.5%
 
 /home/travis/build/DeltaGraphs/norris-nrti/lib/presentationTier/socket.js
 
-  Physical LOC: 50
-  Logical LOC: 24
+  Physical LOC: 51
+  Logical LOC: 25
   Mean parameter count: 1.75
   Cyclomatic complexity: 6
-  Cyclomatic complexity density: 25%
-  Maintainability index: 122.45057083387637
+  Cyclomatic complexity density: 24%
+  Maintainability index: 121.27301079046919
   Dependency count: 0
 
   Function: Socket
@@ -204,17 +204,17 @@ Core size: 37.5%
 
   Function: <anonymous>.sendMessage
     Line No.: 29
-    Physical LOC: 5
-    Logical LOC: 2
+    Physical LOC: 6
+    Logical LOC: 3
     Parameter count: 2
     Cyclomatic complexity: 2
-    Cyclomatic complexity density: 100%
-    Halstead difficulty: 4.583333333333333
-    Halstead volume: 62.26976913547136
-    Halstead effort: 285.40310853757705
+    Cyclomatic complexity density: 66.66666666666666%
+    Halstead difficulty: 4.75
+    Halstead volume: 137.6075250475963
+    Halstead effort: 653.6357439760825
 
   Function: <anonymous>.attachObject
-    Line No.: 35
+    Line No.: 36
     Physical LOC: 15
     Logical LOC: 8
     Parameter count: 2
@@ -225,7 +225,7 @@ Core size: 37.5%
     Halstead effort: 1469.345122545909
 
   Function: clientHandle
-    Line No.: 41
+    Line No.: 42
     Physical LOC: 4
     Logical LOC: 2
     Parameter count: 1
