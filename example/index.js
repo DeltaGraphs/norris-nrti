@@ -570,7 +570,7 @@ app.get('*', function(req, res, next) {
     err.status = 404;
     next(err);
 });
- */
+
 // handling 404 errors
 app.use(function(err, req, res, next) {
     if(err.status !== 404) {
@@ -579,7 +579,7 @@ app.use(function(err, req, res, next) {
 
     res.send(err.message || '** no unicorns here **');
 });
-
+ */
 
 //app.listen(3000); // si mette in ascolto su http://127.0.0.1:3000/
 var port = process.env.PORT || 3000;
