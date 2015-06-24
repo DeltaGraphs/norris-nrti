@@ -3615,14 +3615,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 128,
+                    "logical": 130,
                     "physical": 199
                 },
                 "cyclomatic": 22,
                 "halstead": {
                     "operators": {
                         "distinct": 22,
-                        "total": 428,
+                        "total": 431,
                         "identifiers": [
                             "var",
                             "=",
@@ -3649,8 +3649,8 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 122,
-                        "total": 474,
+                        "distinct": 124,
+                        "total": 478,
                         "identifiers": [
                             "\"use strict\"",
                             "Graph",
@@ -3734,6 +3734,8 @@
                             "record",
                             "updateProperties",
                             "\"updateGraphProp\"",
+                            "eventType",
+                            "\"updateGraph\"",
                             "_page",
                             "graphChanged",
                             "getProperties",
@@ -3776,17 +3778,17 @@
                             "exports"
                         ]
                     },
-                    "length": 902,
-                    "vocabulary": 144,
-                    "difficulty": 42.73770491803279,
-                    "volume": 6467.272351300966,
-                    "effort": 276396.3773744528,
-                    "bugs": 2.155757450433655,
-                    "time": 15355.354298580709
+                    "length": 909,
+                    "vocabulary": 146,
+                    "difficulty": 42.403225806451616,
+                    "volume": 6535.550524021936,
+                    "effort": 277128.42463957536,
+                    "bugs": 2.1785168413406453,
+                    "time": 15396.02359108752
                 },
                 "params": 11,
                 "line": 2,
-                "cyclomaticDensity": 17.1875
+                "cyclomaticDensity": 16.923076923076923
             },
             "functions": [
                 {
@@ -4161,26 +4163,28 @@
                 {
                     "name": "<anonymous>.updateProperties",
                     "sloc": {
-                        "logical": 4,
+                        "logical": 6,
                         "physical": 8
                     },
                     "cyclomatic": 2,
                     "halstead": {
                         "operators": {
-                            "distinct": 6,
-                            "total": 13,
+                            "distinct": 8,
+                            "total": 16,
                             "identifiers": [
                                 "if",
                                 "!==",
                                 "var",
                                 "=",
                                 "()",
-                                "."
+                                ".",
+                                "{}",
+                                ":"
                             ]
                         },
                         "operands": {
-                            "distinct": 11,
-                            "total": 17,
+                            "distinct": 14,
+                            "total": 21,
                             "identifiers": [
                                 "params",
                                 "undefined",
@@ -4191,21 +4195,24 @@
                                 "\"updateGraphProp\"",
                                 "_graphSocket",
                                 "sendMessage",
+                                "<anonymous>",
+                                "eventType",
+                                "\"updateGraph\"",
                                 "_page",
                                 "graphChanged"
                             ]
                         },
-                        "length": 30,
-                        "vocabulary": 17,
-                        "difficulty": 4.636363636363637,
-                        "volume": 122.6238852375102,
-                        "effort": 568.5289224648201,
-                        "bugs": 0.040874628412503396,
-                        "time": 31.58494013693445
+                        "length": 37,
+                        "vocabulary": 22,
+                        "difficulty": 6,
+                        "volume": 164.99896988958,
+                        "effort": 989.99381933748,
+                        "bugs": 0.05499965662986,
+                        "time": 54.99965662986
                     },
                     "params": 1,
                     "line": 143,
-                    "cyclomaticDensity": 50
+                    "cyclomaticDensity": 33.33333333333333
                 },
                 {
                     "name": "<anonymous>.getProperties",
@@ -4365,10 +4372,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 99.59982413598475,
-            "loc": 12.222222222222221,
+            "maintainability": 99.28697525294956,
+            "loc": 12.444444444444445,
             "cyclomatic": 3.3333333333333335,
-            "effort": 7621.649189981438,
+            "effort": 7668.478622967288,
             "params": 1.2222222222222223,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/graph/barChart.js"
         },
@@ -4500,14 +4507,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 129,
+                    "logical": 131,
                     "physical": 196
                 },
                 "cyclomatic": 20,
                 "halstead": {
                     "operators": {
                         "distinct": 22,
-                        "total": 412,
+                        "total": 415,
                         "identifiers": [
                             "var",
                             "=",
@@ -4534,8 +4541,8 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 123,
-                        "total": 458,
+                        "distinct": 125,
+                        "total": 462,
                         "identifiers": [
                             "\"use strict\"",
                             "Graph",
@@ -4619,6 +4626,8 @@
                             "updateRecord",
                             "updateProperties",
                             "\"updateGraphProp\"",
+                            "eventType",
+                            "\"updateGraph\"",
                             "_page",
                             "graphChanged",
                             "getProperties",
@@ -4662,17 +4671,17 @@
                             "exports"
                         ]
                     },
-                    "length": 870,
-                    "vocabulary": 145,
-                    "difficulty": 40.959349593495936,
-                    "volume": 6246.520908312993,
-                    "effort": 255853.43362667365,
-                    "bugs": 2.082173636104331,
-                    "time": 14214.079645926315
+                    "length": 877,
+                    "vocabulary": 147,
+                    "difficulty": 40.656,
+                    "volume": 6314.112646421491,
+                    "effort": 256706.56375291213,
+                    "bugs": 2.1047042154738302,
+                    "time": 14261.475764050674
                 },
                 "params": 12,
                 "line": 2,
-                "cyclomaticDensity": 15.503875968992247
+                "cyclomaticDensity": 15.267175572519085
             },
             "functions": [
                 {
@@ -5086,26 +5095,28 @@
                 {
                     "name": "<anonymous>.updateProperties",
                     "sloc": {
-                        "logical": 4,
+                        "logical": 6,
                         "physical": 7
                     },
                     "cyclomatic": 2,
                     "halstead": {
                         "operators": {
-                            "distinct": 6,
-                            "total": 13,
+                            "distinct": 8,
+                            "total": 16,
                             "identifiers": [
                                 "if",
                                 "!==",
                                 "var",
                                 "=",
                                 "()",
-                                "."
+                                ".",
+                                "{}",
+                                ":"
                             ]
                         },
                         "operands": {
-                            "distinct": 11,
-                            "total": 17,
+                            "distinct": 14,
+                            "total": 21,
                             "identifiers": [
                                 "params",
                                 "undefined",
@@ -5116,21 +5127,24 @@
                                 "\"updateGraphProp\"",
                                 "_graphSocket",
                                 "sendMessage",
+                                "<anonymous>",
+                                "eventType",
+                                "\"updateGraph\"",
                                 "_page",
                                 "graphChanged"
                             ]
                         },
-                        "length": 30,
-                        "vocabulary": 17,
-                        "difficulty": 4.636363636363637,
-                        "volume": 122.6238852375102,
-                        "effort": 568.5289224648201,
-                        "bugs": 0.040874628412503396,
-                        "time": 31.58494013693445
+                        "length": 37,
+                        "vocabulary": 22,
+                        "difficulty": 6,
+                        "volume": 164.99896988958,
+                        "effort": 989.99381933748,
+                        "bugs": 0.05499965662986,
+                        "time": 54.99965662986
                     },
                     "params": 1,
                     "line": 141,
-                    "cyclomaticDensity": 50
+                    "cyclomaticDensity": 33.33333333333333
                 },
                 {
                     "name": "<anonymous>.getProperties",
@@ -5283,24 +5297,24 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 102.51585321945441,
-            "loc": 11.1,
+            "maintainability": 102.19882171045927,
+            "loc": 11.3,
             "cyclomatic": 2.9,
-            "effort": 5175.4523968834255,
+            "effort": 5217.598886570691,
             "params": 1.2,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/graph/lineChart.js"
         },
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 133,
+                    "logical": 135,
                     "physical": 202
                 },
                 "cyclomatic": 21,
                 "halstead": {
                     "operators": {
                         "distinct": 22,
-                        "total": 421,
+                        "total": 424,
                         "identifiers": [
                             "var",
                             "=",
@@ -5327,8 +5341,8 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 123,
-                        "total": 470,
+                        "distinct": 125,
+                        "total": 474,
                         "identifiers": [
                             "\"use strict\"",
                             "Graph",
@@ -5412,6 +5426,8 @@
                             "updateRecord",
                             "updateProperties",
                             "\"updateGraphProp\"",
+                            "eventType",
+                            "\"updateGraph\"",
                             "_page",
                             "graphChanged",
                             "getProperties",
@@ -5455,17 +5471,17 @@
                             "exports"
                         ]
                     },
-                    "length": 891,
-                    "vocabulary": 145,
-                    "difficulty": 42.03252032520325,
-                    "volume": 6397.298999203306,
-                    "effort": 268894.6002104154,
-                    "bugs": 2.1324329997344353,
-                    "time": 14938.588900578632
+                    "length": 898,
+                    "vocabulary": 147,
+                    "difficulty": 41.711999999999996,
+                    "volume": 6465.305765663055,
+                    "effort": 269680.8340973373,
+                    "bugs": 2.155101921887685,
+                    "time": 14982.268560963184
                 },
                 "params": 14,
                 "line": 2,
-                "cyclomaticDensity": 15.789473684210526
+                "cyclomaticDensity": 15.555555555555555
             },
             "functions": [
                 {
@@ -5924,26 +5940,28 @@
                 {
                     "name": "<anonymous>.updateProperties",
                     "sloc": {
-                        "logical": 4,
+                        "logical": 6,
                         "physical": 7
                     },
                     "cyclomatic": 2,
                     "halstead": {
                         "operators": {
-                            "distinct": 6,
-                            "total": 13,
+                            "distinct": 8,
+                            "total": 16,
                             "identifiers": [
                                 "if",
                                 "!==",
                                 "var",
                                 "=",
                                 "()",
-                                "."
+                                ".",
+                                "{}",
+                                ":"
                             ]
                         },
                         "operands": {
-                            "distinct": 11,
-                            "total": 17,
+                            "distinct": 14,
+                            "total": 21,
                             "identifiers": [
                                 "params",
                                 "undefined",
@@ -5954,21 +5972,24 @@
                                 "\"updateGraphProp\"",
                                 "_graphSocket",
                                 "sendMessage",
+                                "<anonymous>",
+                                "eventType",
+                                "\"updateGraph\"",
                                 "_page",
                                 "graphChanged"
                             ]
                         },
-                        "length": 30,
-                        "vocabulary": 17,
-                        "difficulty": 4.636363636363637,
-                        "volume": 122.6238852375102,
-                        "effort": 568.5289224648201,
-                        "bugs": 0.040874628412503396,
-                        "time": 31.58494013693445
+                        "length": 37,
+                        "vocabulary": 22,
+                        "difficulty": 6,
+                        "volume": 164.99896988958,
+                        "effort": 989.99381933748,
+                        "bugs": 0.05499965662986,
+                        "time": 54.99965662986
                     },
                     "params": 1,
                     "line": 148,
-                    "cyclomaticDensity": 50
+                    "cyclomaticDensity": 33.33333333333333
                 },
                 {
                     "name": "<anonymous>.getProperties",
@@ -6121,24 +6142,24 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 103.96883094394502,
-            "loc": 10.363636363636363,
+            "maintainability": 103.65927838339381,
+            "loc": 10.545454545454545,
             "cyclomatic": 2.8181818181818183,
-            "effort": 4693.3664622624665,
+            "effort": 4731.681452887254,
             "params": 1.2727272727272727,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/graph/mapChart.js"
         },
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 120,
+                    "logical": 122,
                     "physical": 184
                 },
                 "cyclomatic": 23,
                 "halstead": {
                     "operators": {
                         "distinct": 22,
-                        "total": 358,
+                        "total": 361,
                         "identifiers": [
                             "var",
                             "=",
@@ -6165,8 +6186,8 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 94,
-                        "total": 390,
+                        "distinct": 96,
+                        "total": 394,
                         "identifiers": [
                             "\"use strict\"",
                             "Graph",
@@ -6244,6 +6265,8 @@
                             "updateRecord",
                             "updateProperties",
                             "\"updateGraphProp\"",
+                            "eventType",
+                            "\"updateGraph\"",
                             "_page",
                             "graphChanged",
                             "getProperties",
@@ -6264,17 +6287,17 @@
                             "exports"
                         ]
                     },
-                    "length": 748,
-                    "vocabulary": 116,
-                    "difficulty": 45.638297872340424,
-                    "volume": 5129.769784355423,
-                    "effort": 234113.9614349443,
-                    "bugs": 1.7099232614518078,
-                    "time": 13006.331190830238
+                    "length": 755,
+                    "vocabulary": 118,
+                    "difficulty": 45.145833333333336,
+                    "volume": 5196.39550226819,
+                    "effort": 234595.6052794827,
+                    "bugs": 1.7321318340893967,
+                    "time": 13033.089182193484
                 },
                 "params": 12,
                 "line": 2,
-                "cyclomaticDensity": 19.166666666666668
+                "cyclomaticDensity": 18.852459016393443
             },
             "functions": [
                 {
@@ -6682,26 +6705,28 @@
                 {
                     "name": "<anonymous>.updateProperties",
                     "sloc": {
-                        "logical": 4,
+                        "logical": 6,
                         "physical": 7
                     },
                     "cyclomatic": 2,
                     "halstead": {
                         "operators": {
-                            "distinct": 6,
-                            "total": 13,
+                            "distinct": 8,
+                            "total": 16,
                             "identifiers": [
                                 "if",
                                 "!==",
                                 "var",
                                 "=",
                                 "()",
-                                "."
+                                ".",
+                                "{}",
+                                ":"
                             ]
                         },
                         "operands": {
-                            "distinct": 11,
-                            "total": 17,
+                            "distinct": 14,
+                            "total": 21,
                             "identifiers": [
                                 "params",
                                 "undefined",
@@ -6712,21 +6737,24 @@
                                 "\"updateGraphProp\"",
                                 "_graphSocket",
                                 "sendMessage",
+                                "<anonymous>",
+                                "eventType",
+                                "\"updateGraph\"",
                                 "_page",
                                 "graphChanged"
                             ]
                         },
-                        "length": 30,
-                        "vocabulary": 17,
-                        "difficulty": 4.636363636363637,
-                        "volume": 122.6238852375102,
-                        "effort": 568.5289224648201,
-                        "bugs": 0.040874628412503396,
-                        "time": 31.58494013693445
+                        "length": 37,
+                        "vocabulary": 22,
+                        "difficulty": 6,
+                        "volume": 164.99896988958,
+                        "effort": 989.99381933748,
+                        "bugs": 0.05499965662986,
+                        "time": 54.99965662986
                     },
                     "params": 1,
                     "line": 138,
-                    "cyclomaticDensity": 50
+                    "cyclomaticDensity": 33.33333333333333
                 },
                 {
                     "name": "<anonymous>.getProperties",
@@ -6859,10 +6887,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 104.32513676441113,
-            "loc": 10.2,
+            "maintainability": 103.97883138467563,
+            "loc": 10.4,
             "cyclomatic": 3.2,
-            "effort": 4521.352776135884,
+            "effort": 4563.49926582315,
             "params": 1.2,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/graph/table.js"
         },
@@ -18393,9 +18421,9 @@
     ],
     "changeCost": 21.875,
     "coreSize": 37.5,
-    "loc": 10.348814119907871,
+    "loc": 10.373940382534133,
     "cyclomatic": 4.2653158473470985,
-    "effort": 7981.223486948322,
+    "effort": 7986.5184057916085,
     "params": 1.1159770784770788,
-    "maintainability": 105.1275923710746
+    "maintainability": 105.08741304818969
 }

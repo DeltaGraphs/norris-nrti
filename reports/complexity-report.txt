@@ -1,8 +1,8 @@
-Mean per-function logical LOC: 10.348814119907871
+Mean per-function logical LOC: 10.373940382534133
 Mean per-function parameter count: 1.1159770784770788
 Mean per-function cyclomatic complexity: 4.2653158473470985
-Mean per-function Halstead effort: 7981.223486948322
-Mean per-module maintainability index: 105.1275923710746
+Mean per-function Halstead effort: 7986.5184057916085
+Mean per-module maintainability index: 105.08741304818969
 First-order density: 5.95703125%
 Change cost: 21.875%
 Core size: 37.5%
@@ -574,11 +574,11 @@ Core size: 37.5%
 /home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/graph/barChart.js
 
   Physical LOC: 199
-  Logical LOC: 128
+  Logical LOC: 130
   Mean parameter count: 1.2222222222222223
   Cyclomatic complexity: 22
-  Cyclomatic complexity density: 17.1875%
-  Maintainability index: 99.59982413598475
+  Cyclomatic complexity density: 16.923076923076923%
+  Maintainability index: 99.28697525294956
   Dependency count: 4
 
   Function: BarChart
@@ -650,13 +650,13 @@ Core size: 37.5%
   Function: <anonymous>.updateProperties
     Line No.: 143
     Physical LOC: 8
-    Logical LOC: 4
+    Logical LOC: 6
     Parameter count: 1
     Cyclomatic complexity: 2
-    Cyclomatic complexity density: 50%
-    Halstead difficulty: 4.636363636363637
-    Halstead volume: 122.6238852375102
-    Halstead effort: 568.5289224648201
+    Cyclomatic complexity density: 33.33333333333333%
+    Halstead difficulty: 6
+    Halstead volume: 164.99896988958
+    Halstead effort: 989.99381933748
 
   Function: <anonymous>.getProperties
     Line No.: 152
@@ -704,11 +704,11 @@ Core size: 37.5%
 /home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/graph/lineChart.js
 
   Physical LOC: 196
-  Logical LOC: 129
+  Logical LOC: 131
   Mean parameter count: 1.2
   Cyclomatic complexity: 20
-  Cyclomatic complexity density: 15.503875968992247%
-  Maintainability index: 102.51585321945441
+  Cyclomatic complexity density: 15.267175572519085%
+  Maintainability index: 102.19882171045927
   Dependency count: 3
 
   Function: LineChart
@@ -791,13 +791,13 @@ Core size: 37.5%
   Function: <anonymous>.updateProperties
     Line No.: 141
     Physical LOC: 7
-    Logical LOC: 4
+    Logical LOC: 6
     Parameter count: 1
     Cyclomatic complexity: 2
-    Cyclomatic complexity density: 50%
-    Halstead difficulty: 4.636363636363637
-    Halstead volume: 122.6238852375102
-    Halstead effort: 568.5289224648201
+    Cyclomatic complexity density: 33.33333333333333%
+    Halstead difficulty: 6
+    Halstead volume: 164.99896988958
+    Halstead effort: 989.99381933748
 
   Function: <anonymous>.getProperties
     Line No.: 149
@@ -824,11 +824,11 @@ Core size: 37.5%
 /home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/graph/mapChart.js
 
   Physical LOC: 202
-  Logical LOC: 133
+  Logical LOC: 135
   Mean parameter count: 1.2727272727272727
   Cyclomatic complexity: 21
-  Cyclomatic complexity density: 15.789473684210526%
-  Maintainability index: 103.96883094394502
+  Cyclomatic complexity density: 15.555555555555555%
+  Maintainability index: 103.65927838339381
   Dependency count: 3
 
   Function: MapChart
@@ -922,13 +922,13 @@ Core size: 37.5%
   Function: <anonymous>.updateProperties
     Line No.: 148
     Physical LOC: 7
-    Logical LOC: 4
+    Logical LOC: 6
     Parameter count: 1
     Cyclomatic complexity: 2
-    Cyclomatic complexity density: 50%
-    Halstead difficulty: 4.636363636363637
-    Halstead volume: 122.6238852375102
-    Halstead effort: 568.5289224648201
+    Cyclomatic complexity density: 33.33333333333333%
+    Halstead difficulty: 6
+    Halstead volume: 164.99896988958
+    Halstead effort: 989.99381933748
 
   Function: <anonymous>.getProperties
     Line No.: 156
@@ -955,11 +955,11 @@ Core size: 37.5%
 /home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/graph/table.js
 
   Physical LOC: 184
-  Logical LOC: 120
+  Logical LOC: 122
   Mean parameter count: 1.2
   Cyclomatic complexity: 23
-  Cyclomatic complexity density: 19.166666666666668%
-  Maintainability index: 104.32513676441113
+  Cyclomatic complexity density: 18.852459016393443%
+  Maintainability index: 103.97883138467563
   Dependency count: 3
 
   Function: Table
@@ -1042,13 +1042,13 @@ Core size: 37.5%
   Function: <anonymous>.updateProperties
     Line No.: 138
     Physical LOC: 7
-    Logical LOC: 4
+    Logical LOC: 6
     Parameter count: 1
     Cyclomatic complexity: 2
-    Cyclomatic complexity density: 50%
-    Halstead difficulty: 4.636363636363637
-    Halstead volume: 122.6238852375102
-    Halstead effort: 568.5289224648201
+    Cyclomatic complexity density: 33.33333333333333%
+    Halstead difficulty: 6
+    Halstead volume: 164.99896988958
+    Halstead effort: 989.99381933748
 
   Function: <anonymous>.getProperties
     Line No.: 146
