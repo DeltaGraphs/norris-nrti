@@ -472,6 +472,7 @@ var repeatTable=function(){
 
 var myVar4=setInterval(function () {repeatTable();}, 5000);
 
+nPage=3;
 var repeatModPage=function(){
     console.log('..........updateProperties.........');
     var currentdate = new Date();
@@ -490,8 +491,17 @@ var repeatModPage=function(){
     lineChart.updateProperties({title: 'LINEE'+datetime});
     barChart.updateProperties({title: 'BARRE '+datetime});
     table.updateProperties({title: 'Tabella '+datetime});
+    var p=norris.createPage({
+        ID:'page'+nPage,
+        name: 'Pagina '+nPage,
+        description: 'Questa è una bella pagina '+nPage
+    });
+    p.createTable({ID: 'table'+nPage});
+    p.createBarChart({ID: 'bar'+nPage});
+    p.createLineChart({ID: 'line'+nPage});
+    p.createMapChart({ID: 'map'+nPage});
 };
-var myVar5=setInterval(function () {repeatModPage();}, 7500);
+var myVar5=setInterval(function () {repeatModPage();}, 12500);
 
 /////////////////////////////////////////////
 // THIRD PAGE - CONTAINS THE APS TABLES
