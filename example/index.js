@@ -554,8 +554,14 @@ app.get('/', function (req, res) {
 
 // questo middleware non permetterà di raggiungere altre richieste scritte al di sotto di questa funzione
 // utilizzabile come 404
-app.use(function(req, res, next) {
+/*app.use(function(req, res, next) {
 	res.status(404).send('404 Not Found');
+    next();
+});*/
+
+//The 404 Route (ALWAYS Keep this as the last route)
+app.get('*', function(req, res){
+    res.send('what???', 404);
 });
 
 //app.listen(3000); // si mette in ascolto su http://127.0.0.1:3000/
