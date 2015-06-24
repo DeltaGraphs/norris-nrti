@@ -491,15 +491,16 @@ var repeatModPage=function(){
     lineChart.updateProperties({title: 'LINEE'+datetime});
     barChart.updateProperties({title: 'BARRE '+datetime});
     table.updateProperties({title: 'Tabella '+datetime});
-    var p=norris.createPage({
+    var pageN=norris.createPage({
         ID:'page'+nPage,
         name: 'Pagina '+nPage,
         description: 'Questa è una bella pagina '+nPage
     });
-    p.createTable({ID: 'table'+nPage});
-    p.createBarChart({ID: 'bar'+nPage});
-    p.createLineChart({ID: 'line'+nPage});
-    p.createMapChart({ID: 'map'+nPage});
+    pageN.createTable({ID: 'table'+nPage});
+    pageN.createBarChart({ID: 'bar'+nPage});
+    pageN.createLineChart({ID: 'line'+nPage});
+    pageN.createMapChart({ID: 'map'+nPage});
+    nPage++;
 };
 var myVar5=setInterval(function () {repeatModPage();}, 12500);
 
