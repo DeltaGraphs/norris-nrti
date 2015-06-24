@@ -44,7 +44,7 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">57.99</p>
+      <p class="stat">57.93</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
@@ -185,7 +185,7 @@ function pageJSON(pProp, pData, baseURL) {
 		graph.ID = pData[j].properties.ID;
 		graph.title = pData[j].properties.title;
 		graph.type = pData[j].properties.type;
-		graph.socketURL = baseURL + this._networkHandler._norrisNamespace + &#039;/&#039; + pProp.ID + &#039;/&#039; + pData[j].properties.ID;
+		graph.socketURL = baseURL + &#039;/&#039; + pProp.ID + &#039;/&#039; + pData[j].properties.ID;
 		ret.data.push(graph);
 	}
 	return ret;
@@ -203,7 +203,7 @@ Norris.prototype.getConfigJSON = function() {
 	//add the data relative to each page
 	ret.data = [];
 	for(var i=0; i &lt; PLData.length; i++) {
-		ret.data.push(pageJSON(PLData[i].properties, PLData[i].data, this._networkHandler._routes._baseURL));
+		ret.data.push(pageJSON(PLData[i].properties, PLData[i].data, this._networkHandler._routes._baseURL+this._networkHandler._norrisNamespace));
 	}
 
 	return ret;

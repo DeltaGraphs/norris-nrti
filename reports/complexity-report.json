@@ -7371,11 +7371,11 @@
                             "graph",
                             "title",
                             "type",
-                            "_norrisNamespace",
                             "getConfigJSON",
                             "PLData",
                             "getName",
                             "i",
+                            "_norrisNamespace",
                             "pageChanged",
                             "eventType",
                             "\"\"",
@@ -7560,7 +7560,7 @@
                     "halstead": {
                         "operators": {
                             "distinct": 11,
-                            "total": 66,
+                            "total": 63,
                             "identifiers": [
                                 "var",
                                 "=",
@@ -7576,8 +7576,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 23,
-                            "total": 76,
+                            "distinct": 20,
+                            "total": 73,
                             "identifiers": [
                                 "pProp",
                                 "pData",
@@ -7598,19 +7598,16 @@
                                 "graph",
                                 "title",
                                 "type",
-                                "this",
-                                "_networkHandler",
-                                "_norrisNamespace",
                                 "push"
                             ]
                         },
-                        "length": 142,
-                        "vocabulary": 34,
-                        "difficulty": 18.17391304347826,
-                        "volume": 722.4197234575482,
-                        "effort": 13129.193235011095,
-                        "bugs": 0.2408065744858494,
-                        "time": 729.399624167283
+                        "length": 136,
+                        "vocabulary": 31,
+                        "difficulty": 20.075,
+                        "volume": 673.7706982126151,
+                        "effort": 13525.946766618248,
+                        "bugs": 0.22459023273753836,
+                        "time": 751.4414870343471
                     },
                     "params": 3,
                     "line": 83,
@@ -7625,8 +7622,8 @@
                     "cyclomatic": 2,
                     "halstead": {
                         "operators": {
-                            "distinct": 10,
-                            "total": 34,
+                            "distinct": 11,
+                            "total": 37,
                             "identifiers": [
                                 "var",
                                 "=",
@@ -7637,12 +7634,13 @@
                                 "for",
                                 "<",
                                 "++ (postfix)",
+                                "+",
                                 "return"
                             ]
                         },
                         "operands": {
-                            "distinct": 18,
-                            "total": 35,
+                            "distinct": 19,
+                            "total": 38,
                             "identifiers": [
                                 "PLData",
                                 "this",
@@ -7660,17 +7658,18 @@
                                 "_networkHandler",
                                 "_routes",
                                 "_baseURL",
+                                "_norrisNamespace",
                                 "pageJSON",
                                 "push"
                             ]
                         },
-                        "length": 69,
-                        "vocabulary": 28,
-                        "difficulty": 9.722222222222221,
-                        "volume": 331.7074896219747,
-                        "effort": 3224.933926880309,
-                        "bugs": 0.11056916320732489,
-                        "time": 179.16299593779496
+                        "length": 75,
+                        "vocabulary": 30,
+                        "difficulty": 11,
+                        "volume": 368.0167946706389,
+                        "effort": 4048.184741377028,
+                        "bugs": 0.12267226489021296,
+                        "time": 224.89915229872378
                     },
                     "params": 0,
                     "line": 103,
@@ -7742,10 +7741,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 99.1693331721425,
+            "maintainability": 99.06471859951597,
             "loc": 12.4,
             "cyclomatic": 5,
-            "effort": 7855.358922766213,
+            "effort": 8099.359791986988,
             "params": 1.8,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/norris/norris.js"
         },
@@ -18496,7 +18495,7 @@
     "coreSize": 37.5,
     "loc": 10.494473842130091,
     "cyclomatic": 4.286401705932956,
-    "effort": 8267.957223437244,
+    "effort": 8275.582250600395,
     "params": 1.1159770784770788,
-    "maintainability": 104.87122022949498
+    "maintainability": 104.8679510241004
 }

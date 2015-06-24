@@ -15,10 +15,10 @@
 <div class="header high">
     <h1>Code coverage report for <span class="entity">norris-nrti/lib/businessTier/norris/norris.js</span></h1>
     <h2>
-        Statements: <span class="metric">97.06% <small>(66 / 68)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">100% <small>(68 / 68)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Branches: <span class="metric">96.88% <small>(31 / 32)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Functions: <span class="metric">100% <small>(5 / 5)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">97.06% <small>(66 / 68)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">100% <small>(68 / 68)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
     <div class="path"><a href="../../../../index.html">All files</a> &#187; <a href="index.html">norris-nrti/lib/businessTier/norris/</a> &#187; norris.js</div>
@@ -234,29 +234,26 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">10</span>
-<span class="cline-any cline-yes">10</span>
-<span class="cline-any cline-yes">10</span>
-<span class="cline-any cline-yes">10</span>
-<span class="cline-any cline-yes">10</span>
-<span class="cline-any cline-yes">10</span>
-<span class="cline-any cline-yes">10</span>
-<span class="cline-any cline-yes">10</span>
-<span class="cline-any cline-yes">10</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">11</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -264,11 +261,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">13</span>
@@ -373,8 +373,8 @@ function pageJSON(pProp, pData, baseURL) {
 		graph.ID = pData[j].properties.ID;
 		graph.title = pData[j].properties.title;
 		graph.type = pData[j].properties.type;
-		graph.socketURL = baseURL + this._networkHandler._norrisNamespace + '/' + pProp.ID + '/' + pData[j].properties.ID;
-<span class="cstat-no" title="statement not covered" >		ret.data.push(graph);</span>
+		graph.socketURL = baseURL + '/' + pProp.ID + '/' + pData[j].properties.ID;
+		ret.data.push(graph);
 	}
 	return ret;
 }
@@ -391,10 +391,10 @@ Norris.prototype.getConfigJSON = function() {
 	//add the data relative to each page
 	ret.data = [];
 	for(var i=0; i &lt; PLData.length; i++) {
-		ret.data.push(pageJSON(PLData[i].properties, PLData[i].data, this._networkHandler._routes._baseURL));
+		ret.data.push(pageJSON(PLData[i].properties, PLData[i].data, this._networkHandler._routes._baseURL+this._networkHandler._norrisNamespace));
 	}
 &nbsp;
-<span class="cstat-no" title="statement not covered" >	return ret;</span>
+	return ret;
 };
 Norris.prototype.pageChanged = function(params) {
 	<span class="missing-if-branch" title="else path not taken" >E</span>if(params!==undefined &amp;&amp; params.eventType!==undefined &amp;&amp; params.params!== undefined &amp;&amp;
@@ -408,7 +408,7 @@ module.exports = Norris;</pre></td></tr>
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Jun 24 2015 16:21:01 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Jun 24 2015 16:26:09 GMT+0000 (UTC)</div>
 </div>
 <script src="../../../../prettify.js"></script>
 <script>
