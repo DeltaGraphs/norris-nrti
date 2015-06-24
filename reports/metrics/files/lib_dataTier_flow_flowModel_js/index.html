@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">64.79</p>
+      <p class="stat">65.47</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">137</p>
+      <p class="stat">150</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">49.16</p>
+      <p class="stat">46.79</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">1.25</p>
+      <p class="stat">1.19</p>
     </div>
   </div>
 </div>
@@ -108,6 +108,7 @@
 var FilterModel = require(&#039;./filterModel.js&#039;);
 var Helper = require(&#039;../../helpers/functionHelper.js&#039;);
 
+//class constructor
 function FlowModel(params) {
 	if(params===undefined || params.ID===undefined || typeof params.ID !== &#039;string&#039;|| params.ID.trim() === &#039;&#039;){ // ID field is required
 		console.log(&#039;Error: 251&#039;);
@@ -126,19 +127,23 @@ function FlowModel(params) {
 	this.updateBaseProperties(params);
 }
 
+//converts a record into a different format
 FlowModel.prototype.converter = function(record, key, format) {
 	return Helper.converter(record,key,format);
 };
 
+//generates an unique ID for a new record
 FlowModel.prototype.generateNorrisRecordID = function(){
 	var date = new Date();
 	if (this._progressiveIndex&gt;99){
 		this._progressiveIndex=0;
 	}
 	this._progressiveIndex++;
+	//to make the ID it uses the flow ID, the current datetime and a progressive number
 	return this._ID.concat(&#039;_&#039;).concat(date.getTime()).concat(&#039;_&#039;).concat(this._progressiveIndex);
 };
 
+//returns the flow properties
 FlowModel.prototype.getProperties = function(){
 	var f=null;
 	if (this._filters!==null){
@@ -151,6 +156,7 @@ FlowModel.prototype.getProperties = function(){
 	};
 };
 
+//returns the flow data
 FlowModel.prototype.getData = function(){
 	var flowData=[];
 	var records= this._records.length;
@@ -162,6 +168,7 @@ FlowModel.prototype.getData = function(){
 	return flowData;
 };
 
+//validates the whole flow data based on the filters
 FlowModel.prototype.validateData = function(){
 	var records= this._records.length;
 	for (var i=0; i&lt;records; i++){
@@ -169,20 +176,24 @@ FlowModel.prototype.validateData = function(){
 	}
 };
 
+//validates a single record based on the filters
 FlowModel.prototype.validateRecord = function(index){
+	//checks if the index is valid
 	if (typeof index === &#039;number&#039; &amp;&amp; index&gt;=0 &amp;&amp; index&lt;this._records.length){
 		this._records[index].norrisRecordIsValid = true;
 		if (this._filters !== null){
-			if (this._filters.validateRecord(this._records[index]) === true){
+			/*if (this._filters.validateRecord(this._records[index]) === true){
 				this._records[index].norrisRecordIsValid = true;
 			}
 			if (this._filters.validateRecord(this._records[index]) === false){
 				this._records[index].norrisRecordIsValid = false;
-			}
+			}*/
+			this._records[index].norrisRecordIsValid = this._filters.validateRecord(this._records[index]);
 		}
 	}
 };
 
+//updates the properties of the flow
 FlowModel.prototype.updateBaseProperties = function(params) {
 	if (params !== undefined){
 		//ID field can&#039;t be modified
@@ -191,6 +202,7 @@ FlowModel.prototype.updateBaseProperties = function(params) {
 			this._name=prop.name=params.name;
 		}
 
+		//creates a new filter if necessary
 		if(params.filters !== undefined &amp;&amp; typeof params.filters === &#039;string&#039;){
 			var filter=new FilterModel(params.filters);
 			if (filter.hasOwnProperty(&#039;_filterText&#039;)){	//valid FilterModel
@@ -199,12 +211,13 @@ FlowModel.prototype.updateBaseProperties = function(params) {
 				this.validateData();
 			}
 		}
+		//returns the actually modified values
 		return prop;
 	}
 	return 252;
 };
 
-
+//returns a record given its ID
 FlowModel.prototype.getRecordByID = function(ID){
 	if (typeof ID===&#039;string&#039; &amp;&amp; ID.indexOf(this._ID) !== -1) { // check if ID belong to this flow
 		var records=this._records.length;
