@@ -44,12 +44,12 @@ describe('MapChartController', function(){
 	describe('socketConnection', function(){
 
 		beforeEach(function(){
-			controller.socketConnection("http://norris-nrti-dev.herokuapp.com/page1/map1");
+			socketConnection("http://norris-nrti-dev.herokuapp.com/page1/map1");
 		});
 
 		it('socketConnection works fine', function(){
-			expect(controller.socket).toBeDefined();
-			expect(controller.count).toEqual(1);
+			expect(socket).toBeDefined();
+			expect(count).toEqual(1);
 		});
 	});
 });
