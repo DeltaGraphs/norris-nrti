@@ -32,12 +32,13 @@ describe('MapChartController', function(){
 		angular.mock.module('mockSocket');
 		inject(function($rootScope, $controller, $injector){
 			scope = $rootScope.$new();
-			//socket = $injector.get('SocketServicesFactory');
-			SocketServicesFactory = $injector.get('SocketServicesFactory');
-			socket = new SocketServicesFactory();
+			socket = $injector.get('SocketServicesFactory');
+			//SocketServicesFactory = $injector.get('SocketServicesFactory');
+			//socket = new SocketServicesFactory();
 			controller = $controller('MapChartController', { $scope : scope });
 		});
 	});
+
 
 	
 	it('scope.mapChart is defined', function() {
@@ -48,7 +49,21 @@ describe('MapChartController', function(){
 		expect(controller).toBeDefined();
 	});
 
-	describe('#listenOnEvent', function(){
+	it('configGraph works fine', function(){
+		var configGraph = false;
+
+		socket.on('configGraph', function(){
+			console.log('configGraph');
+			configGraph = true;
+		});
+
+		expect(configGraph).toEqual(true);
+		//expect(scope.mapChart.getHeight()).toEqual(600);
+		//expect(scope.mapChart.getWidth()).toEqual(1000);
+		//expect(scope.mapChart.getFlowList().length).toEqual(1);
+	});
+
+	/*describe('#listenOnEvent', function(){
 
 		it('configGraph works fine', function(){
 			var configGraph = false;
@@ -62,7 +77,7 @@ describe('MapChartController', function(){
 			//expect(scope.mapChart.getHeight()).toEqual(600);
 			//expect(scope.mapChart.getWidth()).toEqual(1000);
 			//expect(scope.mapChart.getFlowList().length).toEqual(1);
-		});
+		});*/
 
 	    /*it('updateGraphProp works fine', function(){
 	      notify.receive('updateGraphProp', {
@@ -171,7 +186,7 @@ describe('MapChartController', function(){
 	      expect(scope.mapChart.getWidth()).toEqual(1000);
 	      expect(scope.mapChart.getFlowList().length).toEqual(1);
 	    });*/
-    });
+    //});
     
   //deeescribe('socketConnection', function(){
 
