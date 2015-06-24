@@ -43,7 +43,7 @@ describe('TableControllerSpec', function(){
 	describe('socketConnection', function(){
 
 		beforeEach(function(){
-			controller.socketConnection("http://norris-nrti-dev.herokuapp.com/page2/table1");
+			controller.socketConnection("http://norris-nrti-dev.herokuapp.com/page1/table1");
 		});
 
 		it('socketConnection works fine', function(){
