@@ -46,5 +46,4 @@ angular.module('mockSocket')
 		}
 	};
 
-	return this;
 });
