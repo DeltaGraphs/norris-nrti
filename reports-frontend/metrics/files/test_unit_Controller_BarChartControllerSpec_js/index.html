@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">84.19</p>
+      <p class="stat">82.55</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">60</p>
+      <p class="stat">59</p>
     </div>
   </div>
   <div class="row historical">
@@ -116,13 +116,12 @@ describe(&#039;BarChartController&#039;, function(){
 	var scope;
 	var controller;
 
-	beforeEach(function(){
-		angular.mock.module(&#039;norris-nrti&#039;);
-		inject(function($rootScope, $controller){
-			scope = $rootScope.$new();
-			controller = $controller(&#039;BarChartController&#039;, { $scope : scope });
-		});
-	});
+	beforeEach(angular.mock.module(&#039;norris-nrti&#039;));
+
+	beforeEach(inject(function($rootScope, $controller){
+		scope = $rootScope.$new();
+		controller = $controller(&#039;BarChartController&#039;, { $scope : scope });
+	}));
 
 	it(&#039;controller is defined&#039;, function() {
 		expect(controller).toBeDefined();
