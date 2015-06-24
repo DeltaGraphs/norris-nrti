@@ -473,6 +473,7 @@ var repeatTable=function(){
 var myVar4=setInterval(function () {repeatTable();}, 5000);
 
 var nPage=3;
+var pageN=[];
 var repeatModPage=function(){
     console.log('..........updateProperties.........');
     var currentdate = new Date();
@@ -491,15 +492,15 @@ var repeatModPage=function(){
     lineChart.updateProperties({title: 'LINEE'+datetime});
     barChart.updateProperties({title: 'BARRE '+datetime});
     table.updateProperties({title: 'Tabella '+datetime});
-    var pageN=norris.createPage({
+    pageN.push(norris.createPage({
         ID:'page'+nPage,
         name: 'Pagina '+nPage,
         description: 'Questa è una bella pagina '+nPage
-    });
-    pageN.createTable({ID: 'table'+nPage});
-    pageN.createBarChart({ID: 'bar'+nPage});
-    pageN.createLineChart({ID: 'line'+nPage});
-    pageN.createMapChart({ID: 'map'+nPage});
+    }));
+    (pageN[pageN.length-1]).createTable({ID: 'table'+nPage});
+    (pageN[pageN.length-1]).createBarChart({ID: 'bar'+nPage});
+    (pageN[pageN.length-1]).createLineChart({ID: 'line'+nPage});
+    (pageN[pageN.length-1]).createMapChart({ID: 'map'+nPage});
     nPage++;
 };
 var myVar5=setInterval(function () {repeatModPage();}, 12500);
