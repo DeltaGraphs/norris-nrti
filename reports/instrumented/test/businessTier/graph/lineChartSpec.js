@@ -194,7 +194,8 @@ describe('LineChart', function() {
         });
         it('updated properties', function() {
             var mock = new socketMock();
-            var lineChart=new LineChart({ID: 'dada'}, {_page: 'dssada'}, mock);
+            var pMock = new pageMock();
+            var lineChart=new LineChart({ID: 'dada'}, pMock, mock);
             lineChart.updateProperties({title: 'graph one', height: 200, width: 350, enableLegend: true, backgroundColor: '#EEEEEE', legendOnPoint: true, viewFinder: true, horizontalGrid: true, verticalGrid: true, interpolation:'step'});
             assert.strictEqual(mock.p1,'updateGraphProp');
             assert.deepEqual(mock.p2,{'title':'graph one','height':200,'width':350,'enableLegend':true,'backgroundColor':'#EEEEEE','horizontalGrid':true,'verticalGrid':true,'viewFinder':true,'legendOnPoint':true, 'interpolation':'step'});
@@ -203,7 +204,8 @@ describe('LineChart', function() {
     describe('#getProperties', function() {
         it('returned a correct JSON', function() {
             var mock=new socketMock();
-            var lineChart=new LineChart({ID: 'dada'}, {_page: 'dssada'}, mock);
+            var pMock = new pageMock();
+            var lineChart=new LineChart({ID: 'dada'}, pMock, mock);
             lineChart.createLineChartFlow({ ID:'flow1', name: 'grafico tempo-temperatura', xKey: 'tempo', yKey: 'temperatura'});
             assert.deepEqual(lineChart.getProperties(),{'ID':'dada','title':'','type':'LineChart','height':400,'width':500,'enableLegend':false,'legend':{'position':'NE','fontColor':'#000000','backgroundColor':'#FFFFFF'},'horizontalGrid':false,'verticalGrid':false,'viewFinder':false,'xAxis':{'name':'','color':'#000000','maxIndex':null,'minIndex':null,'ticks':10,'scale':'linear'},'yAxis':{'name':'','color':'#000000','maxIndex':null,'minIndex':null,'ticks':10,'scale':'linear'},interpolation: 'linear', backgroundColor:'#FFFFFF','legendOnPoint':false});
         });
