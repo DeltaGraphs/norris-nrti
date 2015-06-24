@@ -88,6 +88,10 @@ angular.module('norris-nrti')
 		});
 	};
 
+	// variabili e funzioni a disposizione dei test
+	$scope.socket = socket;
+	$scope.count = count;
+
 	// mette a disposizione delle funzioni sullo scope
 	$scope.socketConnection = this.socketConnection;
 	$scope.listenOnEvents = this.listenOnEvents;

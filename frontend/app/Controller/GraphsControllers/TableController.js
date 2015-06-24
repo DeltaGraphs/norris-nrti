@@ -40,7 +40,6 @@ angular.module('norris-nrti')
 				$scope.table.updateParameters(info.properties); // aggiorna le proprietà della table di default con i dati appena ricevuti
 				$scope.table.initializeData(info.data); // inizializza i flussi con i dati
 				$scope.changed = !$scope.changed; // 'notifica' cambiamento dati e proprietà
-				console.log('changedP controller');
 				$scope.changedP = true;
 	        }
 		});
