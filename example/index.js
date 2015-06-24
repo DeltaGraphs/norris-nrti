@@ -513,7 +513,7 @@ interval(function(){
     lineChart.updateProperties({title: 'LINEE'+datetime});
     barChart.updateProperties({title: 'BARRE '+datetime});
     table.updateProperties({title: 'Tabella '+datetime});
-    pageN.push(norrisIstance.createPage({
+    pageN.push(norris.createPage({
         ID:'page'+nPage,
         name: 'Pagina '+nPage,
         description: 'Questa è una bella pagina '+nPage
