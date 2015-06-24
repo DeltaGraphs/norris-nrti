@@ -32,7 +32,7 @@ angular.module('norris-nrti')
 		this.listenOnEvents();
 	};
 
-	scope.count = 0;
+	$scope.count = 0;
 	$scope.changedP = true;
 	$scope.changedD = true;
 
@@ -44,7 +44,7 @@ angular.module('norris-nrti')
 				$scope.barChart.initializeData(info.data); // inizializza i flussi con i dati
 				$scope.changedD = !$scope.changedD; // 'notifica' cambiamento dati
 				$scope.changedP = !$scope.changedP; // 'notifica' cambiamento proprietà
-				scope.count = 1;
+				$scope.count = 1;
 			}
 		});
 		socket.on('updateGraphProp', function(info){ // ascolta sull'evento 'updateGraphProp'
