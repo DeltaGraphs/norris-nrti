@@ -42,6 +42,7 @@ angular.module('norris-nrti')
 				$scope.changed = !$scope.changed; // 'notifica' cambiamento dati e proprietà
 				console.log('changedP controller');
 				$scope.changedP = true;
+				$scope.predicate = $scope.table.getSort().column[0];
 	        }
 		});
 		socket.on('updateGraphProp', function(info){ // ascolta sull'evento 'updateGraphProp'
@@ -88,8 +89,18 @@ angular.module('norris-nrti')
 
 	};
 
+	
+	$scope.reverse = true;
+
+	this.order = function(predicate){
+        $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse : false;
+        $scope.predicate = predicate;
+	};
+
+
 	// mette a disposizione delle funzioni sullo scope
 	$scope.socketConnection = this.socketConnection;
 	$scope.listenOnEvents = this.listenOnEvents;
+	$scope.order = this.order;
 
 }]);

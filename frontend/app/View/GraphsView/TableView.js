@@ -92,9 +92,9 @@ angular.module('norris-nrti')
                     } else {
                         table = table + noBorder + 'style="' + headers + ' " ';
                     }
-                    if (scope.$parent.table.getSortable() === true) {
+                    if (scope.$parent.table.getSortable() === true && scope.$parent.table.getSort().column.length === 0) {
                         table = table + 'st-sort="record.'+ scope.$parent.table.getHeaders()[i] +'"';
-                        table = table + '><a>'+ scope.$parent.table.getHeaders()[i] +'</a></th>';
+                        table = table + '><a href="">'+ scope.$parent.table.getHeaders()[i] +'</a></th>';
                     }
                     else{
                         table = table + '>'+ scope.$parent.table.getHeaders()[i] +'</th>';
