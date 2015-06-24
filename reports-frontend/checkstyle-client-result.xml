@@ -32,6 +32,9 @@
 		<error line="217" column="46" severity="warning" message="&apos;MapLabel&apos; is not defined." source="jshint.W117" />
 		<error line="242" column="21" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
 	</file>
+	<file name="app/View/GraphsView/TableView.js">
+		<error line="30" column="45" severity="warning" message="&apos;$filter&apos; is defined but never used." source="jshint.W098" />
+	</file>
 	<file name="app/View/PagesView/PageView.js">
 		<error line="35" column="17" severity="warning" message="Read only." source="jshint.W020" />
 		<error line="24" column="39" severity="warning" message="&apos;$routeParams&apos; is defined but never used." source="jshint.W098" />

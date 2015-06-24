@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">53.72</p>
+      <p class="stat">51.60</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">175</p>
+      <p class="stat">189</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">36.37</p>
+      <p class="stat">40.07</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">2.38</p>
+      <p class="stat">2.84</p>
     </div>
   </div>
 </div>
@@ -100,6 +100,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 1.0.3         2015-06-24  Maria Giovanna Chinellato   Fix table sorting
+*
 * 1.0.2         2015-06-22  Maria Giovanna Chinellato   Fix appearance of table
 *
 * 1.0.1         2015-06-22  Maria Giovanna Chinellato   Fix update of data
@@ -116,7 +118,7 @@
 
 
 angular.module(&#039;norris-nrti&#039;)
-.directive(&#039;tableChart&#039;, function($compile){
+.directive(&#039;tableChart&#039;, function($compile, $filter){
 	return { // attributo della direttiva
 		restrict: &#039;E&#039;, // direttiva di tipo elemento (tag)
 		replace: false,
@@ -181,39 +183,51 @@ angular.module(&#039;norris-nrti&#039;)
                     } else {
                         table = table + noBorder + &#039;style=&quot;&#039; + headers + &#039; &quot; &#039;;
                     }
-                    if (scope.$parent.table.getSortable()) {
-                        //for (var f=0; f&lt;scope.$parent.table.getSort().columns.length; f++){ // for multicolunms sorting
-                            //if (scope.$parent.table.getHeaders()[i] === scope.$parent.table.getSort().columns[f]) {
-                            if (scope.$parent.table.getHeaders()[i] === scope.$parent.table.getSort().column) {
-                                var ordinamento;
-                                if (scope.$parent.table.getSort().ordering === &#039;ASC&#039;) {
-                                    ordinamento = &#039;true&#039;;
-                                } else if (scope.$parent.table.getSort().ordering === &#039;DESC&#039;){
-                                    ordinamento = &#039;reverse&#039;;
-                                } 
-                                table = table + &#039;st-sort-default=&quot;&#039;+ ordinamento +&#039;&quot; st-sort=&quot;&#039;+ scope.$parent.table.getHeaders()[i] +&#039;&quot;&#039;;
-                            }
-                        //}
+                    if (scope.$parent.table.getSortable() === true) {
+                        table = table + &#039;st-sort=&quot;record.&#039;+ scope.$parent.table.getHeaders()[i] +&#039;&quot;&#039;;
+                        table = table + &#039;&gt;&lt;a&gt;&#039;+ scope.$parent.table.getHeaders()[i] +&#039;&lt;/a&gt;&lt;/th&gt;&#039;;
                     }
-                    table = table + &#039;&gt;&#039;+ scope.$parent.table.getHeaders()[i] +&#039;&lt;/th&gt;&#039;;
+                    else{
+                        table = table + &#039;&gt;&#039;+ scope.$parent.table.getHeaders()[i] +&#039;&lt;/th&gt;&#039;;
+                    }
                 }
                 table = table + &#039;&lt;/tr&gt;&lt;/thead&gt;&#039;;
 
-                table = table + &#039;&lt;tbody&gt;&lt;tr ng-repeat=&quot;line in displayed&quot;&gt;&#039;;
+                // controlla se è abilitato qualche ordinamento da parte dello sviluppatore e ordina i record
+                if (scope.$parent.table.getSort().column.length &gt; 0){
+                    if (scope.$parent.table.getSort().column.length === 1){
+                        table = table + &#039;&lt;tbody&gt;&lt;tr ng-repeat=&quot;line in displayed | orderBy:\&#039;&#039;+ scope.$parent.table.getSort().column[0] +&#039;\&#039;&quot;&gt;&#039;;
+                    }
+                    else{
+                        var order = &#039; | orderBy:[&#039;;
+                        for (var s=0; s&lt;scope.$parent.table.getSort().column.length; s++){
+                            if (scope.$parent.table.getSort().ordering[s] === &#039;ASC&#039;){
+                                if (s === scope.$parent.table.getSort().column.length-1){
+                                    order = order + &#039;\&#039;record.&#039;+ scope.$parent.table.getSort().column[s] +&#039;\&#039;&#039;;
+                                }
+                                else{
+                                    order = order + &#039;\&#039;record.&#039;+ scope.$parent.table.getSort().column[s] +&#039;\&#039;,&#039;;
+                                }
+                            }
+                            else{
+                                if (s === scope.$parent.table.getSort().column.length-1){
+                                    order = order + &#039;\&#039;-record.&#039;+ scope.$parent.table.getSort().column[s] +&#039;\&#039;&#039;;
+                                }
+                                else{
+                                    order = order + &#039;\&#039;-record.&#039;+ scope.$parent.table.getSort().column[s] +&#039;\&#039;,&#039;;
+                                }
+                            }
+                        }
+                        table = table + &#039;&lt;tbody&gt;&lt;tr ng-repeat=&quot;line in displayed&#039; + order + &#039;]&quot;&gt;&#039;;
+                    }
+                }
+                else{
+                    table = table + &#039;&lt;tbody&gt;&lt;tr ng-repeat=&quot;line in displayed&quot;&gt;&#039;;
+                }
                 //i = 0;
                 for (var j=0; j&lt;scope.$parent.table.getHeaders().length; j++){
-                    //table = table + &#039;&lt;td style=&quot;background-color:&#039;+ scope.appearance[i][j].bg +&#039;; color:&#039;+ scope.appearance[i][j].text +&#039;;&quot;&gt;{{record.&#039;+ scope.$parent.table.getHeaders()[j] +&#039;}}&lt;/td&gt;&#039;;
-                    //var cellText = &#039;color: #000;&#039;;
-                    //var cellBG = &#039;background-color: #FFF;&#039;;
-                    //if (scope.appearance[i][j] !== undefined){
-                        //if (scope.appearance[i][j].bg !== undefined){
-                    var cellBG = &#039;background-color: {{line.appearance.&#039; + scope.$parent.table.getHeaders()[j] + &#039;.bg}};&#039;; // + scope.appearance[i][j].bg + &#039;;&#039;;
-                        //}
-                        //if (scope.appearance[i][j].text !== undefined){
-                    var cellText = &#039;color: {{line.appearance&#039; + scope.$parent.table.getHeaders()[j] + &#039;.text}};&#039;; // + scope.appearance[i][j].text + &#039;;&#039;;
-                        //}
-                    //}
-                    //i++;
+                    var cellBG = &#039;background-color: {{line.appearance.&#039; + scope.$parent.table.getHeaders()[j] + &#039;.bg}};&#039;;
+                    var cellText = &#039;color: {{line.appearance&#039; + scope.$parent.table.getHeaders()[j] + &#039;.text}};&#039;;
                     var cellStyle = &#039;style=&quot;&#039; + border + cellBG + cellText + &#039;&quot;&#039;;
                     table = table + &#039;&lt;td &#039;;
                     if (scope.$parent.table.getAppearance().border !== undefined) {
@@ -257,9 +271,9 @@ angular.module(&#039;norris-nrti&#039;)
                             record[scope.$parent.table.getHeaders()[j]] = scope.$parent.table.getFlowList()[k].flow.getData()[i].value[j];
                         }
                         scope.rowCollection.push({&#039;appearance&#039;: appearance, &#039;record&#039;: record});
-
                     }
                 }
+                //$filter(&#039;orderBy&#039;)(scope.rowCollection,);
                 scope.itemsByPage = scope.$parent.table.getMaxItemsPage();
             };
         }
