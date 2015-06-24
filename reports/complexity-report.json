@@ -735,14 +735,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 37,
-                    "physical": 86
+                    "logical": 38,
+                    "physical": 87
                 },
                 "cyclomatic": 16,
                 "halstead": {
                     "operators": {
                         "distinct": 19,
-                        "total": 136,
+                        "total": 141,
                         "identifiers": [
                             "var",
                             "=",
@@ -766,8 +766,8 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 62,
-                        "total": 165,
+                        "distinct": 63,
+                        "total": 171,
                         "identifiers": [
                             "\"use strict\"",
                             "Express",
@@ -828,22 +828,23 @@
                             "\"/../../frontend/app\"",
                             "static",
                             "use",
+                            "\"AGGIUNTO NAMESPACE \"",
                             true,
                             "module",
                             "exports"
                         ]
                     },
-                    "length": 301,
-                    "vocabulary": 81,
-                    "difficulty": 25.282258064516128,
-                    "volume": 1908.294850868272,
-                    "effort": 48246.00288283898,
-                    "bugs": 0.6360982836227573,
-                    "time": 2680.3334934910545
+                    "length": 312,
+                    "vocabulary": 82,
+                    "difficulty": 25.78571428571429,
+                    "volume": 1983.5562254408424,
+                    "effort": 51147.41409886744,
+                    "bugs": 0.6611854084802807,
+                    "time": 2841.5230054926355
                 },
                 "params": 7,
                 "line": 2,
-                "cyclomaticDensity": 43.24324324324324
+                "cyclomaticDensity": 42.10526315789473
             },
             "functions": [
                 {
@@ -913,14 +914,14 @@
                 {
                     "name": "<anonymous>.addRoutingPath",
                     "sloc": {
-                        "logical": 17,
-                        "physical": 51
+                        "logical": 18,
+                        "physical": 52
                     },
                     "cyclomatic": 9,
                     "halstead": {
                         "operators": {
                             "distinct": 15,
-                            "total": 63,
+                            "total": 68,
                             "identifiers": [
                                 "()",
                                 "+",
@@ -940,8 +941,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 36,
-                            "total": 75,
+                            "distinct": 37,
+                            "total": 81,
                             "identifiers": [
                                 "namespace",
                                 "filename",
@@ -978,20 +979,21 @@
                                 "\"pageList\"",
                                 "_exprApp",
                                 "_exprNorris",
+                                "\"AGGIUNTO NAMESPACE \"",
                                 true
                             ]
                         },
-                        "length": 138,
-                        "vocabulary": 51,
-                        "difficulty": 15.625000000000002,
-                        "volume": 782.7946971920665,
-                        "effort": 12231.16714362604,
-                        "bugs": 0.2609315657306888,
-                        "time": 679.5092857570022
+                        "length": 149,
+                        "vocabulary": 52,
+                        "difficulty": 16.41891891891892,
+                        "volume": 849.3655180030228,
+                        "effort": 13945.663572617199,
+                        "bugs": 0.28312183933434093,
+                        "time": 774.7590873676222
                     },
                     "params": 2,
                     "line": 35,
-                    "cyclomaticDensity": 52.94117647058824
+                    "cyclomaticDensity": 50
                 },
                 {
                     "name": "handle",
@@ -1064,10 +1066,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 102.27710747636795,
-            "loc": 10.666666666666666,
+            "maintainability": 101.4852920080975,
+            "loc": 11,
             "cyclomatic": 6,
-            "effort": 6381.916805743446,
+            "effort": 6953.415615407165,
             "params": 2.3333333333333335,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/presentationTier/routes.js"
         },
@@ -18476,9 +18478,9 @@
     ],
     "changeCost": 21.875,
     "coreSize": 37.5,
-    "loc": 10.53006411990787,
+    "loc": 10.540480786574538,
     "cyclomatic": 4.303762817044068,
-    "effort": 8319.91080675093,
+    "effort": 8337.770144552922,
     "params": 1.1159770784770788,
-    "maintainability": 104.83056130280883
+    "maintainability": 104.80581706942539
 }
