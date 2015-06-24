@@ -38,6 +38,7 @@ function ParamMock() {
     this._app = null;
     this._io = null;
     this._networkHandler = null;
+    this._networkHandler._networkHandler = 'norris';
     this._pageListSocket = null;
     this._pageList = null;
 }
@@ -83,7 +84,7 @@ describe('Page', function() {
         assert.deepEqual(page1._page, new PageModel({ID:'page1'}));
         assert.deepEqual(page1._networkHandler, new ParamMock());
         assert.deepEqual(page1._norris, new ParamMock());
-        assert.strictEqual(page1._pageNamespace, '/page1');
+        assert.strictEqual(page1._pageNamespace, 'norris/page1');
         assert.deepEqual(page1._pageSocket, new ParamMock());
         assert.strictEqual(page1._graphs.length, 0);
     });
@@ -105,12 +106,12 @@ describe('Page', function() {
                     {
                         ID: 'map1',
                         title: '',
-                        socketURL: 'http://0.0.0.0:5000/page2/map1'
+                        socketURL: 'http://0.0.0.0:5000/norris/page2/map1'
                     },
                     {
                         ID: 'line1',
                         title: '',
-                        socketURL: 'http://0.0.0.0:5000/page2/line1'
+                        socketURL: 'http://0.0.0.0:5000/norris/page2/line1'
                     }
                 ]
             };

@@ -17,35 +17,45 @@
 var MapChart = require('../../../lib/businessTier/graph/mapChart.js');
 var assert = require('assert');
 
-describe('MapChart', function() {
-    var socketMock=function(){
-        this.p1=null;
-        this.p2=null;
-        this._namespace='flow1';
-        this.attachObject=function(p1, p2){
-            this.p1=p1;
-            this.p2=p2;
-        };
-        this.sendMessage=function(p1, p2){
-            this.p1=p1;
-            this.p2=p2;
-        };
+var socketMock=function(){
+    this.p1=null;
+    this.p2=null;
+    this._namespace='flow1';
+    this.attachObject=function(p1, p2){
+        this.p1=p1;
+        this.p2=p2;
     };
-
-    var socketMockHistory=function(){
-        this.p1=[];
-        this.p2=[];
-        this._namespace='flow1';
-        this.sendMessage=function(p1, p2){
-            this.p1.push(p1);
-            this.p2.push(p2);
-        };
-        this.attachObject=function(p1, p2){
-            this.p1.push(p1);
-            this.p2.push(p2);
-        };
+    this.sendMessage=function(p1, p2){
+        this.p1=p1;
+        this.p2=p2;
     };
+};
 
+var socketMockHistory=function(){
+    this.p1=[];
+    this.p2=[];
+    this._namespace='flow1';
+    this.sendMessage=function(p1, p2){
+        this.p1.push(p1);
+        this.p2.push(p2);
+    };
+    this.attachObject=function(p1, p2){
+        this.p1.push(p1);
+        this.p2.push(p2);
+    };
+};
+var pageMock=function(){
+    this._page='';
+    this._p1 = '';
+    this._p2 = '';
+
+    this.graphChanged=function(params) {
+        this._p1 = params.eventType;
+        this._p2 = params.params;
+    };
+};
+
+describe('MapChart', function() {    
     it('returns null when there are no params', function() {
         assert.strictEqual((new MapChart()).hasOwnProperty('_dataMapChart'), false);
     });
@@ -221,7 +231,8 @@ describe('MapChart', function() {
         });
         it('updated properties', function() {
             var mock = new socketMock();
-            var mapChart=new MapChart({ID: 'dada'}, {_page: 'dssada'}, mock);
+            var pMock = new pageMock();
+            var mapChart=new MapChart({ID: 'dada'}, pMock, mock);
             mapChart.updateProperties({title: 'graph one'});
             assert.strictEqual(mock.p1,'updateGraphProp');
             assert.deepEqual(mock.p2,{'title':'graph one'});
