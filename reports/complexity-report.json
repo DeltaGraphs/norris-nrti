@@ -4544,7 +4544,7 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 126,
+                        "distinct": 125,
                         "total": 471,
                         "identifiers": [
                             "\"use strict\"",
@@ -4628,7 +4628,6 @@
                             "flow",
                             "updateRecord",
                             "updateProperties",
-                            "_dataMapChart",
                             "getProperties",
                             "\"updateGraphProp\"",
                             "title",
@@ -4676,12 +4675,12 @@
                         ]
                     },
                     "length": 895,
-                    "vocabulary": 148,
-                    "difficulty": 41.11904761904762,
-                    "volume": 6452.46076223791,
-                    "effort": 265319.04134249693,
-                    "bugs": 2.1508202540793033,
-                    "time": 14739.946741249829
+                    "vocabulary": 147,
+                    "difficulty": 41.448,
+                    "volume": 6443.706748628546,
+                    "effort": 267078.75731715595,
+                    "bugs": 2.147902249542849,
+                    "time": 14837.708739841997
                 },
                 "params": 12,
                 "line": 2,
@@ -5119,7 +5118,7 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 18,
+                            "distinct": 17,
                             "total": 30,
                             "identifiers": [
                                 "params",
@@ -5129,7 +5128,6 @@
                                 "_dataLineChart",
                                 "updateProperties",
                                 "ID",
-                                "_dataMapChart",
                                 "getProperties",
                                 "\"updateGraphProp\"",
                                 "_graphSocket",
@@ -5143,12 +5141,12 @@
                             ]
                         },
                         "length": 55,
-                        "vocabulary": 26,
-                        "difficulty": 6.666666666666667,
-                        "volume": 258.5241844977601,
-                        "effort": 1723.4945633184007,
-                        "bugs": 0.08617472816592002,
-                        "time": 95.74969796213337
+                        "vocabulary": 25,
+                        "difficulty": 7.0588235294117645,
+                        "volume": 255.41209043760983,
+                        "effort": 1802.9088736772458,
+                        "bugs": 0.08513736347920328,
+                        "time": 100.16160409318032
                     },
                     "params": 1,
                     "line": 141,
@@ -5305,10 +5303,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 101.85906229469421,
+            "maintainability": 101.85393290635722,
             "loc": 11.5,
             "cyclomatic": 3,
-            "effort": 5290.9489609687835,
+            "effort": 5298.890392004668,
             "params": 1.2,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/graph/lineChart.js"
         },
@@ -18421,7 +18419,7 @@
     "coreSize": 37.5,
     "loc": 10.38864997849373,
     "cyclomatic": 4.277878978660229,
-    "effort": 7990.990873675471,
+    "effort": 7991.239043395344,
     "params": 1.1159770784770788,
-    "maintainability": 105.0573088929575
+    "maintainability": 105.05714859957196
 }
