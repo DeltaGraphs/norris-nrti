@@ -9,6 +9,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 1.0.3         2015-06-24  Maria Giovanna Chinellato   Fix table sorting
+*
 * 1.0.2         2015-06-22  Maria Giovanna Chinellato   Fix appearance of table
 *
 * 1.0.1         2015-06-22  Maria Giovanna Chinellato   Fix update of data
@@ -25,7 +27,7 @@
 
 
 angular.module('norris-nrti')
-.directive('tableChart', function($compile){
+.directive('tableChart', function($compile, $filter){
 	return { // attributo della direttiva
 		restrict: 'E', // direttiva di tipo elemento (tag)
 		replace: false,
@@ -90,39 +92,51 @@ angular.module('norris-nrti')
                     } else {
                         table = table + noBorder + 'style="' + headers + ' " ';
                     }
-                    if (scope.$parent.table.getSortable()) {
-                        //for (var f=0; f<scope.$parent.table.getSort().columns.length; f++){ // for multicolunms sorting
-                            //if (scope.$parent.table.getHeaders()[i] === scope.$parent.table.getSort().columns[f]) {
-                            if (scope.$parent.table.getHeaders()[i] === scope.$parent.table.getSort().column) {
-                                var ordinamento;
-                                if (scope.$parent.table.getSort().ordering === 'ASC') {
-                                    ordinamento = 'true';
-                                } else if (scope.$parent.table.getSort().ordering === 'DESC'){
-                                    ordinamento = 'reverse';
-                                } 
-                                table = table + 'st-sort-default="'+ ordinamento +'" st-sort="'+ scope.$parent.table.getHeaders()[i] +'"';
-                            }
-                        //}
+                    if (scope.$parent.table.getSortable() === true) {
+                        table = table + 'st-sort="record.'+ scope.$parent.table.getHeaders()[i] +'"';
+                        table = table + '><a>'+ scope.$parent.table.getHeaders()[i] +'</a></th>';
                     }
-                    table = table + '>'+ scope.$parent.table.getHeaders()[i] +'</th>';
+                    else{
+                        table = table + '>'+ scope.$parent.table.getHeaders()[i] +'</th>';
+                    }
                 }
                 table = table + '</tr></thead>';
 
-                table = table + '<tbody><tr ng-repeat="line in displayed">';
+                // controlla se è abilitato qualche ordinamento da parte dello sviluppatore e ordina i record
+                if (scope.$parent.table.getSort().column.length > 0){
+                    if (scope.$parent.table.getSort().column.length === 1){
+                        table = table + '<tbody><tr ng-repeat="line in displayed | orderBy:\''+ scope.$parent.table.getSort().column[0] +'\'">';
+                    }
+                    else{
+                        var order = ' | orderBy:[';
+                        for (var s=0; s<scope.$parent.table.getSort().column.length; s++){
+                            if (scope.$parent.table.getSort().ordering[s] === 'ASC'){
+                                if (s === scope.$parent.table.getSort().column.length-1){
+                                    order = order + '\'record.'+ scope.$parent.table.getSort().column[s] +'\'';
+                                }
+                                else{
+                                    order = order + '\'record.'+ scope.$parent.table.getSort().column[s] +'\',';
+                                }
+                            }
+                            else{
+                                if (s === scope.$parent.table.getSort().column.length-1){
+                                    order = order + '\'-record.'+ scope.$parent.table.getSort().column[s] +'\'';
+                                }
+                                else{
+                                    order = order + '\'-record.'+ scope.$parent.table.getSort().column[s] +'\',';
+                                }
+                            }
+                        }
+                        table = table + '<tbody><tr ng-repeat="line in displayed' + order + ']">';
+                    }
+                }
+                else{
+                    table = table + '<tbody><tr ng-repeat="line in displayed">';
+                }
                 //i = 0;
                 for (var j=0; j<scope.$parent.table.getHeaders().length; j++){
-                    //table = table + '<td style="background-color:'+ scope.appearance[i][j].bg +'; color:'+ scope.appearance[i][j].text +';">{{record.'+ scope.$parent.table.getHeaders()[j] +'}}</td>';
-                    //var cellText = 'color: #000;';
-                    //var cellBG = 'background-color: #FFF;';
-                    //if (scope.appearance[i][j] !== undefined){
-                        //if (scope.appearance[i][j].bg !== undefined){
-                    var cellBG = 'background-color: {{line.appearance.' + scope.$parent.table.getHeaders()[j] + '.bg}};'; // + scope.appearance[i][j].bg + ';';
-                        //}
-                        //if (scope.appearance[i][j].text !== undefined){
-                    var cellText = 'color: {{line.appearance' + scope.$parent.table.getHeaders()[j] + '.text}};'; // + scope.appearance[i][j].text + ';';
-                        //}
-                    //}
-                    //i++;
+                    var cellBG = 'background-color: {{line.appearance.' + scope.$parent.table.getHeaders()[j] + '.bg}};';
+                    var cellText = 'color: {{line.appearance' + scope.$parent.table.getHeaders()[j] + '.text}};';
                     var cellStyle = 'style="' + border + cellBG + cellText + '"';
                     table = table + '<td ';
                     if (scope.$parent.table.getAppearance().border !== undefined) {
@@ -166,9 +180,9 @@ angular.module('norris-nrti')
                             record[scope.$parent.table.getHeaders()[j]] = scope.$parent.table.getFlowList()[k].flow.getData()[i].value[j];
                         }
                         scope.rowCollection.push({'appearance': appearance, 'record': record});
-
                     }
                 }
+                //$filter('orderBy')(scope.rowCollection,);
                 scope.itemsByPage = scope.$parent.table.getMaxItemsPage();
             };
         }
