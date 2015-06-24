@@ -32,9 +32,9 @@ describe('MapChartController', function(){
 		angular.mock.module('mockSocket');
 		inject(function($rootScope, $controller, $injector){
 			scope = $rootScope.$new();
-			socket = $injector.get('SocketServicesFactory');
-			//SocketServicesFactory = $injector.get('SocketServicesFactory');
-			//socket = new SocketServicesFactory();
+			//socket = $injector.get('SocketServicesFactory');
+			SocketServicesFactory = $injector.get('SocketServicesFactory');
+			socket = new SocketServicesFactory();
 			controller = $controller('MapChartController', { $scope : scope });
 		});
 	});
