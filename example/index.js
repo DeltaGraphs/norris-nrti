@@ -472,9 +472,30 @@ var repeatTable=function(){
 
 var myVar4=setInterval(function () {repeatTable();}, 5000);
 
+
+function interval(func, wait, times){
+    var interv = function(w, t){
+        return function(){
+            if(typeof t === 'undefined' || t-- > 0){
+                setTimeout(interv, w);
+                try{
+                    func.call(null);
+                }
+                catch(e){
+                    t = 0;
+                    throw e.toString();
+                }
+            }
+        };
+    }(wait, times);
+    setTimeout(interv, wait);
+};
+
+
 var nPage=3;
 var pageN=[];
-var repeatModPage=function(norrisIstance){
+//var repeatModPage=function(norrisIstance){
+interval(function(){
     console.log('..........updateProperties.........');
     var currentdate = new Date();
     var datetime = 'Last Sync: ' + currentdate.getDate() + '/' +
@@ -502,8 +523,9 @@ var repeatModPage=function(norrisIstance){
     (pageN[pageN.length-1]).createLineChart({ID: 'line'+nPage});
     (pageN[pageN.length-1]).createMapChart({ID: 'map'+nPage});
     nPage++;
-};
-var myVar5=setInterval(function () {repeatModPage(norris);}, 12500);
+}, 12500, 100);
+//};
+//var myVar5=setInterval(function () {repeatModPage(norris);}, 12500);
 
 /////////////////////////////////////////////
 // THIRD PAGE - CONTAINS THE APS TABLES
