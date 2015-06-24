@@ -49,35 +49,28 @@ describe('MapChartController', function(){
 		expect(controller).toBeDefined();
 	});
 
-	it('configGraph works fine', function(){
-		var configGraph = false;
+	describe('#listenOnEvent', function(){
+		var configGraph = null;
+
+		beforeEach(function(){
+			configGraph = false;
+		});
+
+		afterEach(function(){
+			configGraph = null;
+		});
 
 		socket.on('configGraph', function(){
 			console.log('configGraph');
 			configGraph = true;
 		});
 
-		expect(configGraph).toEqual(true);
-		//expect(scope.mapChart.getHeight()).toEqual(600);
-		//expect(scope.mapChart.getWidth()).toEqual(1000);
-		//expect(scope.mapChart.getFlowList().length).toEqual(1);
-	});
-
-	/*describe('#listenOnEvent', function(){
-
 		it('configGraph works fine', function(){
-			var configGraph = false;
-
-			socket.on('configGraph', function(){
-				console.log('configGraph');
-				configGraph = true;
-			});
-
 			expect(configGraph).toEqual(true);
 			//expect(scope.mapChart.getHeight()).toEqual(600);
 			//expect(scope.mapChart.getWidth()).toEqual(1000);
 			//expect(scope.mapChart.getFlowList().length).toEqual(1);
-		});*/
+		});
 
 	    /*it('updateGraphProp works fine', function(){
 	      notify.receive('updateGraphProp', {
@@ -186,7 +179,7 @@ describe('MapChartController', function(){
 	      expect(scope.mapChart.getWidth()).toEqual(1000);
 	      expect(scope.mapChart.getFlowList().length).toEqual(1);
 	    });*/
-    //});
+    });
     
   //deeescribe('socketConnection', function(){
 
