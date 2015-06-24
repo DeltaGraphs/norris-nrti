@@ -4,6 +4,9 @@
 		<error line="18" column="5" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
 		<error line="24" column="9" severity="warning" message="&apos;controller&apos; is not defined." source="jshint.W117" />
 	</file>
+	<file name="test/unit/Controller/SocketServices.js">
+		<error line="20" column="5" severity="warning" message="&apos;mockSocket&apos; is defined but never used." source="jshint.W098" />
+	</file>
 	<file name="test/unit/Model/UrlProviderSpec.js">
 		<error line="20" column="5" severity="warning" message="Unnecessary directive &quot;use strict&quot;." source="jshint.W034" />
 	</file>
