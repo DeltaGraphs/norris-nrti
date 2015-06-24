@@ -102,7 +102,7 @@ Page.prototype.createBarChart = function (params) {
     __cov_3lcmDxeukeGn43y_$VaRGg.s['36']++;
     var data = {
         ID: this._page._ID,
-        graph: {
+        data: {
             ID: graphProp.ID,
             title: graphProp.title,
             type: 'BarChart',
@@ -166,7 +166,7 @@ Page.prototype.createLineChart = function (params) {
     __cov_3lcmDxeukeGn43y_$VaRGg.s['55']++;
     var data = {
         ID: this._page._ID,
-        graph: {
+        data: {
             ID: graphProp.ID,
             title: graphProp.title,
             type: 'LineChart',
@@ -230,7 +230,7 @@ Page.prototype.createMapChart = function (params) {
     __cov_3lcmDxeukeGn43y_$VaRGg.s['74']++;
     var data = {
         ID: this._page._ID,
-        graph: {
+        data: {
             ID: graphProp.ID,
             title: graphProp.title,
             type: 'MapChart',
@@ -294,7 +294,7 @@ Page.prototype.createTable = function (params) {
     __cov_3lcmDxeukeGn43y_$VaRGg.s['93']++;
     var data = {
         ID: this._page._ID,
-        graph: {
+        data: {
             ID: graphProp.ID,
             title: graphProp.title,
             type: 'Table',
