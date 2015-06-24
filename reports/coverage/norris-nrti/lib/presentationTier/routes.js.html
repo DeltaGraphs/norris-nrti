@@ -15,10 +15,10 @@
 <div class="header high">
     <h1>Code coverage report for <span class="entity">norris-nrti/lib/presentationTier/routes.js</span></h1>
     <h2>
-        Statements: <span class="metric">84.85% <small>(28 / 33)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">85.29% <small>(29 / 34)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Branches: <span class="metric">90.48% <small>(19 / 21)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Functions: <span class="metric">66.67% <small>(2 / 3)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">84.85% <small>(28 / 33)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">85.29% <small>(29 / 34)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
     <div class="path"><a href="../../../index.html">All files</a> &#187; <a href="index.html">norris-nrti/lib/presentationTier/</a> &#187; routes.js</div>
@@ -111,7 +111,18 @@
 84
 85
 86
-87</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -156,11 +167,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">52</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">52</span>
-<span class="cline-any cline-yes">52</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">52</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">52</span>
@@ -175,18 +181,34 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">52</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">52</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">52</span>
+<span class="cline-any cline-yes">25</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">25</span>
 <span class="cline-any cline-yes">25</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25</span>
+<span class="cline-any cline-yes">25</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">27</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">27</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -240,11 +262,6 @@ Routes.prototype.addRoutingPath = function(namespace, filename) {
 		return false;
 	}
 &nbsp;
-	var app = Express();
-	// set render
-    app.set('view engine', 'ejs');
-    app.set('views', __dirname + '/views');
-&nbsp;
 	var nspNorris=this._norrisNamespace;
 	// dynamic baseURL -- commented
 	/*var baseURL='';
@@ -260,19 +277,35 @@ Routes.prototype.addRoutingPath = function(namespace, filename) {
 <span class="cstat-no" title="statement not covered" >		var norrisNamespace=req.protocol + '://' + req.get('host')+nspNorris;</span>
 <span class="cstat-no" title="statement not covered" >		res.render(filename,{fullURL:fullUrl, norrisNamespace : norrisNamespace});</span>
 	};
-	// set middleware
-	app.get('/', handle);
-	// set static file directory
-	app.use('/',Express.static(__dirname + '/../../frontend/app'));
-	
+&nbsp;
 	// routing as 
 	if(filename==='pageList'){
+		var app = Express();
+		// set render
+	    app.set('view engine', 'ejs');
+	    app.set('views', __dirname + '/views');
+&nbsp;
+		
+		// set middleware
+		app.get('/', handle);
+		// set static file directory
+		app.use('/',Express.static(__dirname + '/../../frontend/app'));
+	
+	
 		// attach to passed express middleware   XXXX.com/norris
 		this._exprApp.use(namespace, app);
 		this._exprNorris=app;
 	}else{
+&nbsp;
+&nbsp;
+		// set middleware
+		this._exprNorris.get(namespace, handle);
+		// set static file directory
+		this._exprNorris.use(namespace,Express.static(__dirname + '/../../frontend/app'));
+&nbsp;
+&nbsp;
 		// attach to norris express middleware   XXXX.com/norris/page1
-		this._exprNorris.use(namespace, app);
+		//this._exprNorris.use(namespace, app);
 	}
 &nbsp;
 	//routing as  XXXX.com/norris
@@ -288,7 +321,7 @@ module.exports = Routes;</pre></td></tr>
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Jun 24 2015 15:35:08 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Jun 24 2015 15:40:31 GMT+0000 (UTC)</div>
 </div>
 <script src="../../../prettify.js"></script>
 <script>

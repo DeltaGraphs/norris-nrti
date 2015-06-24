@@ -735,14 +735,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 37,
-                    "physical": 86
+                    "logical": 38,
+                    "physical": 97
                 },
                 "cyclomatic": 16,
                 "halstead": {
                     "operators": {
                         "distinct": 19,
-                        "total": 134,
+                        "total": 140,
                         "identifiers": [
                             "var",
                             "=",
@@ -767,7 +767,7 @@
                     },
                     "operands": {
                         "distinct": 62,
-                        "total": 163,
+                        "total": 171,
                         "identifiers": [
                             "\"use strict\"",
                             "Express",
@@ -804,13 +804,6 @@
                             "\"\n\"",
                             "\"Error: 912\"",
                             false,
-                            "app",
-                            "\"view engine\"",
-                            "\"ejs\"",
-                            "set",
-                            "\"views\"",
-                            "__dirname",
-                            "\"/views\"",
                             "nspNorris",
                             "handle",
                             "req",
@@ -825,6 +818,13 @@
                             "slice",
                             "fullURL",
                             "render",
+                            "app",
+                            "\"view engine\"",
+                            "\"ejs\"",
+                            "set",
+                            "\"views\"",
+                            "__dirname",
+                            "\"/views\"",
                             "\"/../../frontend/app\"",
                             "static",
                             "use",
@@ -833,17 +833,17 @@
                             "exports"
                         ]
                     },
-                    "length": 297,
+                    "length": 311,
                     "vocabulary": 81,
-                    "difficulty": 24.975806451612904,
-                    "volume": 1882.9354508567337,
-                    "effort": 47027.83138147826,
-                    "bugs": 0.6276451502855779,
-                    "time": 2612.6572989710144
+                    "difficulty": 26.201612903225808,
+                    "volume": 1971.6933508971185,
+                    "effort": 51661.54594407047,
+                    "bugs": 0.6572311169657061,
+                    "time": 2870.085885781693
                 },
                 "params": 7,
                 "line": 2,
-                "cyclomaticDensity": 43.24324324324324
+                "cyclomaticDensity": 42.10526315789473
             },
             "functions": [
                 {
@@ -913,14 +913,14 @@
                 {
                     "name": "<anonymous>.addRoutingPath",
                     "sloc": {
-                        "logical": 17,
-                        "physical": 51
+                        "logical": 18,
+                        "physical": 62
                     },
                     "cyclomatic": 9,
                     "halstead": {
                         "operators": {
                             "distinct": 15,
-                            "total": 61,
+                            "total": 67,
                             "identifiers": [
                                 "()",
                                 "+",
@@ -941,7 +941,7 @@
                         },
                         "operands": {
                             "distinct": 36,
-                            "total": 73,
+                            "total": 81,
                             "identifiers": [
                                 "namespace",
                                 "filename",
@@ -958,6 +958,12 @@
                                 0,
                                 "\"Error: 912\"",
                                 false,
+                                "nspNorris",
+                                "this",
+                                "_norrisNamespace",
+                                "handle",
+                                "<anonymous>",
+                                "\"pageList\"",
                                 "app",
                                 "Express",
                                 "\"view engine\"",
@@ -966,32 +972,26 @@
                                 "\"views\"",
                                 "__dirname",
                                 "\"/views\"",
-                                "nspNorris",
-                                "this",
-                                "_norrisNamespace",
-                                "handle",
-                                "<anonymous>",
                                 "get",
                                 "\"/../../frontend/app\"",
                                 "static",
                                 "use",
-                                "\"pageList\"",
                                 "_exprApp",
                                 "_exprNorris",
                                 true
                             ]
                         },
-                        "length": 134,
+                        "length": 148,
                         "vocabulary": 51,
-                        "difficulty": 15.208333333333332,
-                        "volume": 760.1049958241805,
-                        "effort": 11559.930144826078,
-                        "bugs": 0.2533683319413935,
-                        "time": 642.2183413792266
+                        "difficulty": 16.875,
+                        "volume": 839.5189506117814,
+                        "effort": 14166.882291573811,
+                        "bugs": 0.27983965020392715,
+                        "time": 787.049016198545
                     },
                     "params": 2,
                     "line": 35,
-                    "cyclomaticDensity": 52.94117647058824
+                    "cyclomaticDensity": 50
                 },
                 {
                     "name": "handle",
@@ -1053,7 +1053,7 @@
                         "time": 221.0122020689256
                     },
                     "params": 2,
-                    "line": 53,
+                    "line": 48,
                     "cyclomaticDensity": 28.57142857142857
                 }
             ],
@@ -1064,10 +1064,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 102.39916266444149,
-            "loc": 10.666666666666666,
+            "maintainability": 101.44921455721314,
+            "loc": 11,
             "cyclomatic": 6,
-            "effort": 6158.171139476792,
+            "effort": 7027.155188392703,
             "params": 2.3333333333333335,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/presentationTier/routes.js"
         },
@@ -18482,9 +18482,9 @@
     ],
     "changeCost": 21.875,
     "coreSize": 37.5,
-    "loc": 10.53006411990787,
+    "loc": 10.540480786574538,
     "cyclomatic": 4.303762817044068,
-    "effort": 8336.95769256486,
+    "effort": 8364.113444093482,
     "params": 1.1159770784770788,
-    "maintainability": 104.82703596565096
+    "maintainability": 104.79735008730007
 }
