@@ -25,13 +25,12 @@ describe('BarChartController', function(){
 	var scope;
 	var controller;
 
-	beforeEach(function(){
-		angular.mock.module('norris-nrti');
-		inject(function($rootScope, $controller){
-			scope = $rootScope.$new();
-			controller = $controller('BarChartController', { $scope : scope });
-		});
-	});
+	beforeEach(angular.mock.module('norris-nrti'));
+
+	beforeEach(inject(function($rootScope, $controller){
+		scope = $rootScope.$new();
+		controller = $controller('BarChartController', { $scope : scope });
+	}));
 
 	it('controller is defined', function() {
 		expect(controller).toBeDefined();
