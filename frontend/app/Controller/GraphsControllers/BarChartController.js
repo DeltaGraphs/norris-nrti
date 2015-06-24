@@ -32,19 +32,20 @@ angular.module('norris-nrti')
 		this.listenOnEvents();
 	};
 
-	$scope.count = 0;
+	var count = 0;
 	$scope.changedP = true;
 	$scope.changedD = true;
 
 	// funzione che mette in ascolto il socket su alcuni eventi
 	this.listenOnEvents = function(){
 		socket.on('configGraph', function(info){ // ascolta sull'evento 'configGraph' (ricevuto come risposta alla connessione)
-			if (scope.count === 0){
+			if (count === 0){
 				$scope.barChart.updateParameters(info.properties); // aggiorna le proprietà del bar chart di default con i dati appena ricevuti
 				$scope.barChart.initializeData(info.data); // inizializza i flussi con i dati
 				$scope.changedD = !$scope.changedD; // 'notifica' cambiamento dati
 				$scope.changedP = !$scope.changedP; // 'notifica' cambiamento proprietà
-				$scope.count = 1;
+				count++;
+				$scope.count = count;
 			}
 		});
 		socket.on('updateGraphProp', function(info){ // ascolta sull'evento 'updateGraphProp'
