@@ -564,13 +564,13 @@ app.get('/', function (req, res) {
     res.send('what???', 404);
 });
 */
-
+/*
 app.get('*', function(req, res, next) {
     var err = new Error();
     err.status = 404;
     next(err);
 });
- 
+ */
 // handling 404 errors
 app.use(function(err, req, res, next) {
     if(err.status !== 404) {
