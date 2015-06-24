@@ -176,7 +176,7 @@ describe('BarChart', function() {
             assert.strictEqual(mock.p1,'updateGraphProp');
             assert.deepEqual(mock.p2,{ID: 'dada', 'title':'graph one','height':200,'width':350,'enableLegend':true,'backgroundColor':'#EEEEEE','grid':true,'legendOnPoint':true, 'groupingControl':true,'sortable':true,'barOrientation':'H'});
             assert.strictEqual(pMock.p1,'updateGraph');
-            assert.deepEqual(pMock.p2, {title: 'graph one', height: 200, width: 350, enableLegend: true, backgroundColor: '#EEEEEE', legendOnPoint: true, sortable: true, grid: true, barOrientation: 'H', groupingControl:true});
+            assert.deepEqual(pMock.p2, {ID: 'dada', title: 'graph one', height: 200, width: 350, enableLegend: true, backgroundColor: '#EEEEEE', legendOnPoint: true, sortable: true, grid: true, barOrientation: 'H', groupingControl:true});
         });
     });
 
