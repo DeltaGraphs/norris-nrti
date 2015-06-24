@@ -1,8 +1,8 @@
 Mean per-function logical LOC: 10.53006411990787
 Mean per-function parameter count: 1.1159770784770788
 Mean per-function cyclomatic complexity: 4.303762817044068
-Mean per-function Halstead effort: 8314.589405753642
-Mean per-module maintainability index: 104.83384882202301
+Mean per-function Halstead effort: 8336.95769256486
+Mean per-module maintainability index: 104.82703596565096
 First-order density: 5.95703125%
 Change cost: 21.875%
 Core size: 37.5%
@@ -1198,7 +1198,7 @@ Core size: 37.5%
   Mean parameter count: 1
   Cyclomatic complexity: 31
   Cyclomatic complexity density: 18.452380952380953%
-  Maintainability index: 93.08479929314892
+  Maintainability index: 92.86678788924338
   Dependency count: 5
 
   Function: Page
@@ -1219,9 +1219,9 @@ Core size: 37.5%
     Parameter count: 1
     Cyclomatic complexity: 5
     Cyclomatic complexity density: 18.51851851851852%
-    Halstead difficulty: 17.10526315789474
-    Halstead volume: 1055.0711136066982
-    Halstead effort: 18047.26904853563
+    Halstead difficulty: 17.666666666666668
+    Halstead volume: 1128.6870641919363
+    Halstead effort: 19940.138134057543
 
   Function: <anonymous>.createLineChart
     Line No.: 89
@@ -1230,9 +1230,9 @@ Core size: 37.5%
     Parameter count: 1
     Cyclomatic complexity: 5
     Cyclomatic complexity density: 18.51851851851852%
-    Halstead difficulty: 17.276315789473685
-    Halstead volume: 1066.4159642906413
-    Halstead effort: 18423.738962021213
+    Halstead difficulty: 17.666666666666668
+    Halstead volume: 1128.6870641919363
+    Halstead effort: 19940.138134057543
 
   Function: <anonymous>.createMapChart
     Line No.: 129
@@ -1241,9 +1241,9 @@ Core size: 37.5%
     Parameter count: 1
     Cyclomatic complexity: 5
     Cyclomatic complexity density: 18.51851851851852%
-    Halstead difficulty: 17.276315789473685
-    Halstead volume: 1066.4159642906413
-    Halstead effort: 18423.738962021213
+    Halstead difficulty: 17.666666666666668
+    Halstead volume: 1128.6870641919363
+    Halstead effort: 19940.138134057543
 
   Function: <anonymous>.createTable
     Line No.: 169
@@ -1252,9 +1252,9 @@ Core size: 37.5%
     Parameter count: 1
     Cyclomatic complexity: 5
     Cyclomatic complexity density: 18.51851851851852%
-    Halstead difficulty: 17.276315789473685
-    Halstead volume: 1066.4159642906413
-    Halstead effort: 18423.738962021213
+    Halstead difficulty: 17.666666666666668
+    Halstead volume: 1128.6870641919363
+    Halstead effort: 19940.138134057543
 
   Function: <anonymous>.updateProperties
     Line No.: 209

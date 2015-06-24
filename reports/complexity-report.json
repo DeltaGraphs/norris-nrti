@@ -7742,7 +7742,7 @@
                 "halstead": {
                     "operators": {
                         "distinct": 21,
-                        "total": 576,
+                        "total": 597,
                         "identifiers": [
                             "var",
                             "=",
@@ -7769,7 +7769,7 @@
                     },
                     "operands": {
                         "distinct": 96,
-                        "total": 655,
+                        "total": 676,
                         "identifiers": [
                             "\"use strict\"",
                             "PageModel",
@@ -7802,10 +7802,10 @@
                             "_page",
                             "_norris",
                             "_pageNamespace",
-                            "_norrisNamespace",
                             "\"/\"",
                             "ID",
                             "_pageSocket",
+                            "_norrisNamespace",
                             "createSocket",
                             "\"configPage\"",
                             "attachObject",
@@ -7869,13 +7869,13 @@
                             "exports"
                         ]
                     },
-                    "length": 1231,
+                    "length": 1273,
                     "vocabulary": 117,
-                    "difficulty": 71.640625,
-                    "volume": 8457.418969807171,
-                    "effort": 605894.7808838419,
-                    "bugs": 2.8191396566023905,
-                    "time": 33660.82116021344
+                    "difficulty": 73.9375,
+                    "volume": 8745.974288029674,
+                    "effort": 646655.4739211941,
+                    "bugs": 2.915324762676558,
+                    "time": 35925.304106733005
                 },
                 "params": 9,
                 "line": 2,
@@ -7930,10 +7930,10 @@
                                 "_page",
                                 "_norris",
                                 "_pageNamespace",
-                                "_norrisNamespace",
                                 "\"/\"",
                                 "ID",
                                 "_pageSocket",
+                                "_norrisNamespace",
                                 "createSocket",
                                 "\"configPage\"",
                                 "attachObject",
@@ -7964,7 +7964,7 @@
                     "halstead": {
                         "operators": {
                             "distinct": 13,
-                            "total": 86,
+                            "total": 92,
                             "identifiers": [
                                 "if",
                                 "||",
@@ -7982,8 +7982,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 38,
-                            "total": 100,
+                            "distinct": 39,
+                            "total": 106,
                             "identifiers": [
                                 "params",
                                 "undefined",
@@ -7994,9 +7994,10 @@
                                 "_graphs",
                                 "getProperties",
                                 "graphSocket",
+                                "_networkHandler",
+                                "_norrisNamespace",
                                 "_pageNamespace",
                                 "\"/\"",
-                                "_networkHandler",
                                 "createSocket",
                                 "graph",
                                 "BarChart",
@@ -8025,13 +8026,13 @@
                                 "addGraphToRouting"
                             ]
                         },
-                        "length": 186,
-                        "vocabulary": 51,
-                        "difficulty": 17.10526315789474,
-                        "volume": 1055.0711136066982,
-                        "effort": 18047.26904853563,
-                        "bugs": 0.35169037120223273,
-                        "time": 1002.6260582519794
+                        "length": 198,
+                        "vocabulary": 52,
+                        "difficulty": 17.666666666666668,
+                        "volume": 1128.6870641919363,
+                        "effort": 19940.138134057543,
+                        "bugs": 0.3762290213973121,
+                        "time": 1107.7854518920858
                     },
                     "params": 1,
                     "line": 49,
@@ -8047,7 +8048,7 @@
                     "halstead": {
                         "operators": {
                             "distinct": 13,
-                            "total": 87,
+                            "total": 92,
                             "identifiers": [
                                 "if",
                                 "||",
@@ -8065,8 +8066,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 38,
-                            "total": 101,
+                            "distinct": 39,
+                            "total": 106,
                             "identifiers": [
                                 "params",
                                 "undefined",
@@ -8077,9 +8078,10 @@
                                 "_graphs",
                                 "getProperties",
                                 "graphSocket",
+                                "_networkHandler",
+                                "_norrisNamespace",
                                 "_pageNamespace",
                                 "\"/\"",
-                                "_networkHandler",
                                 "createSocket",
                                 "graph",
                                 "LineChart",
@@ -8108,13 +8110,13 @@
                                 "addGraphToRouting"
                             ]
                         },
-                        "length": 188,
-                        "vocabulary": 51,
-                        "difficulty": 17.276315789473685,
-                        "volume": 1066.4159642906413,
-                        "effort": 18423.738962021213,
-                        "bugs": 0.35547198809688046,
-                        "time": 1023.5410534456229
+                        "length": 198,
+                        "vocabulary": 52,
+                        "difficulty": 17.666666666666668,
+                        "volume": 1128.6870641919363,
+                        "effort": 19940.138134057543,
+                        "bugs": 0.3762290213973121,
+                        "time": 1107.7854518920858
                     },
                     "params": 1,
                     "line": 89,
@@ -8130,7 +8132,7 @@
                     "halstead": {
                         "operators": {
                             "distinct": 13,
-                            "total": 87,
+                            "total": 92,
                             "identifiers": [
                                 "if",
                                 "||",
@@ -8148,8 +8150,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 38,
-                            "total": 101,
+                            "distinct": 39,
+                            "total": 106,
                             "identifiers": [
                                 "params",
                                 "undefined",
@@ -8160,9 +8162,10 @@
                                 "_graphs",
                                 "getProperties",
                                 "graphSocket",
+                                "_networkHandler",
+                                "_norrisNamespace",
                                 "_pageNamespace",
                                 "\"/\"",
-                                "_networkHandler",
                                 "createSocket",
                                 "graph",
                                 "MapChart",
@@ -8191,13 +8194,13 @@
                                 "addGraphToRouting"
                             ]
                         },
-                        "length": 188,
-                        "vocabulary": 51,
-                        "difficulty": 17.276315789473685,
-                        "volume": 1066.4159642906413,
-                        "effort": 18423.738962021213,
-                        "bugs": 0.35547198809688046,
-                        "time": 1023.5410534456229
+                        "length": 198,
+                        "vocabulary": 52,
+                        "difficulty": 17.666666666666668,
+                        "volume": 1128.6870641919363,
+                        "effort": 19940.138134057543,
+                        "bugs": 0.3762290213973121,
+                        "time": 1107.7854518920858
                     },
                     "params": 1,
                     "line": 129,
@@ -8213,7 +8216,7 @@
                     "halstead": {
                         "operators": {
                             "distinct": 13,
-                            "total": 87,
+                            "total": 92,
                             "identifiers": [
                                 "if",
                                 "||",
@@ -8231,8 +8234,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 38,
-                            "total": 101,
+                            "distinct": 39,
+                            "total": 106,
                             "identifiers": [
                                 "params",
                                 "undefined",
@@ -8243,9 +8246,10 @@
                                 "_graphs",
                                 "getProperties",
                                 "graphSocket",
+                                "_networkHandler",
+                                "_norrisNamespace",
                                 "_pageNamespace",
                                 "\"/\"",
-                                "_networkHandler",
                                 "createSocket",
                                 "graph",
                                 "Table",
@@ -8274,13 +8278,13 @@
                                 "addGraphToRouting"
                             ]
                         },
-                        "length": 188,
-                        "vocabulary": 51,
-                        "difficulty": 17.276315789473685,
-                        "volume": 1066.4159642906413,
-                        "effort": 18423.738962021213,
-                        "bugs": 0.35547198809688046,
-                        "time": 1023.5410534456229
+                        "length": 198,
+                        "vocabulary": 52,
+                        "difficulty": 17.666666666666668,
+                        "volume": 1128.6870641919363,
+                        "effort": 19940.138134057543,
+                        "bugs": 0.3762290213973121,
+                        "time": 1107.7854518920858
                     },
                     "params": 1,
                     "line": 169,
@@ -8542,10 +8546,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 93.08479929314892,
+            "maintainability": 92.86678788924338,
             "loc": 16.88888888888889,
             "cyclomatic": 4.333333333333333,
-            "effort": 10874.612541441962,
+            "effort": 11590.397719400953,
             "params": 1,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/page/page.js"
         },
@@ -18480,7 +18484,7 @@
     "coreSize": 37.5,
     "loc": 10.53006411990787,
     "cyclomatic": 4.303762817044068,
-    "effort": 8314.589405753642,
+    "effort": 8336.95769256486,
     "params": 1.1159770784770788,
-    "maintainability": 104.83384882202301
+    "maintainability": 104.82703596565096
 }
