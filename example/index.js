@@ -494,8 +494,8 @@ function interval(func, wait, times){
 
 var nPage=3;
 var pageN=[];
-//var repeatModPage=function(norrisIstance){
-interval(function(){
+
+function chiamaFunzione(){
     console.log('..........updateProperties.........');
     var currentdate = new Date();
     var datetime = 'Last Sync: ' + currentdate.getDate() + '/' +
@@ -513,6 +513,7 @@ interval(function(){
     lineChart.updateProperties({title: 'LINEE'+datetime});
     barChart.updateProperties({title: 'BARRE '+datetime});
     table.updateProperties({title: 'Tabella '+datetime});
+    
     pageN.push(norris.createPage({
         ID:'page'+nPage,
         name: 'Pagina '+nPage,
@@ -523,6 +524,11 @@ interval(function(){
     (pageN[pageN.length-1]).createLineChart({ID: 'line'+nPage});
     (pageN[pageN.length-1]).createMapChart({ID: 'map'+nPage});
     nPage++;
+}
+
+//var repeatModPage=function(norrisIstance){ 
+interval(function(){
+    chiamaFunzione();
 }, 12500, 100);
 //};
 //var myVar5=setInterval(function () {repeatModPage(norris);}, 12500);
