@@ -7714,14 +7714,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 151,
-                    "physical": 242
+                    "logical": 152,
+                    "physical": 243
                 },
                 "cyclomatic": 29,
                 "halstead": {
                     "operators": {
                         "distinct": 21,
-                        "total": 548,
+                        "total": 550,
                         "identifiers": [
                             "var",
                             "=",
@@ -7747,8 +7747,8 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 96,
-                        "total": 615,
+                        "distinct": 97,
+                        "total": 618,
                         "identifiers": [
                             "\"use strict\"",
                             "PageModel",
@@ -7844,21 +7844,22 @@
                             "stringify",
                             "\"string\"",
                             "\"\"",
+                            "\"I AM NOTIFYING THE CLIENTS\"",
                             "module",
                             "exports"
                         ]
                     },
-                    "length": 1163,
-                    "vocabulary": 117,
-                    "difficulty": 67.265625,
-                    "volume": 7990.2341688755,
-                    "effort": 537468.095265766,
-                    "bugs": 2.6634113896251663,
-                    "time": 29859.33862587589
+                    "length": 1168,
+                    "vocabulary": 118,
+                    "difficulty": 66.89690721649484,
+                    "volume": 8038.927081654631,
+                    "effort": 537779.3591016175,
+                    "bugs": 2.6796423605515436,
+                    "time": 29876.63106120097
                 },
                 "params": 9,
                 "line": 2,
-                "cyclomaticDensity": 19.205298013245034
+                "cyclomaticDensity": 19.078947368421055
             },
             "functions": [
                 {
@@ -8414,14 +8415,14 @@
                 {
                     "name": "<anonymous>.graphChanged",
                     "sloc": {
-                        "logical": 4,
-                        "physical": 11
+                        "logical": 5,
+                        "physical": 12
                     },
                     "cyclomatic": 2,
                     "halstead": {
                         "operators": {
                             "distinct": 8,
-                            "total": 36,
+                            "total": 38,
                             "identifiers": [
                                 "()",
                                 "+",
@@ -8434,8 +8435,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 17,
-                            "total": 39,
+                            "distinct": 18,
+                            "total": 42,
                             "identifiers": [
                                 "params",
                                 "\"graphChanged : \"",
@@ -8449,6 +8450,7 @@
                                 "\"string\"",
                                 "\"\"",
                                 "\"object\"",
+                                "\"I AM NOTIFYING THE CLIENTS\"",
                                 "this",
                                 "_pageSocket",
                                 "sendMessage",
@@ -8456,17 +8458,17 @@
                                 "pageChanged"
                             ]
                         },
-                        "length": 75,
-                        "vocabulary": 25,
-                        "difficulty": 9.176470588235293,
-                        "volume": 348.2892142331043,
-                        "effort": 3196.0657306096628,
-                        "bugs": 0.1160964047443681,
-                        "time": 177.55920725609238
+                        "length": 80,
+                        "vocabulary": 26,
+                        "difficulty": 9.333333333333334,
+                        "volume": 376.0351774512874,
+                        "effort": 3509.6616562120157,
+                        "bugs": 0.12534505915042912,
+                        "time": 194.98120312288975
                     },
                     "params": 1,
                     "line": 230,
-                    "cyclomaticDensity": 50
+                    "cyclomaticDensity": 40
                 }
             ],
             "dependencies": [
@@ -8496,10 +8498,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 95.26719573067902,
-            "loc": 15,
+            "maintainability": 95.1358728591766,
+            "loc": 15.11111111111111,
             "cyclomatic": 4.111111111111111,
-            "effort": 10111.368422732068,
+            "effort": 10146.212414465663,
             "params": 1,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/page/page.js"
         },
@@ -18421,9 +18423,9 @@
     ],
     "changeCost": 21.875,
     "coreSize": 37.5,
-    "loc": 10.373940382534133,
+    "loc": 10.377412604756355,
     "cyclomatic": 4.2653158473470985,
-    "effort": 7986.5184057916085,
+    "effort": 7987.607280533284,
     "params": 1.1159770784770788,
-    "maintainability": 105.08741304818969
+    "maintainability": 105.08330920845523
 }
