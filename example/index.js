@@ -474,7 +474,7 @@ var myVar4=setInterval(function () {repeatTable();}, 5000);
 
 var nPage=3;
 var pageN=[];
-var repeatModPage=function(){
+var repeatModPage=function(norrisIstance){
     console.log('..........updateProperties.........');
     var currentdate = new Date();
     var datetime = 'Last Sync: ' + currentdate.getDate() + '/' +
@@ -492,7 +492,7 @@ var repeatModPage=function(){
     lineChart.updateProperties({title: 'LINEE'+datetime});
     barChart.updateProperties({title: 'BARRE '+datetime});
     table.updateProperties({title: 'Tabella '+datetime});
-    pageN.push(norris.createPage({
+    pageN.push(norrisIstance.createPage({
         ID:'page'+nPage,
         name: 'Pagina '+nPage,
         description: 'Questa è una bella pagina '+nPage
@@ -503,7 +503,7 @@ var repeatModPage=function(){
     (pageN[pageN.length-1]).createMapChart({ID: 'map'+nPage});
     nPage++;
 };
-var myVar5=setInterval(function () {repeatModPage();}, 12500);
+var myVar5=setInterval(function () {repeatModPage(norris);}, 12500);
 
 /////////////////////////////////////////////
 // THIRD PAGE - CONTAINS THE APS TABLES
