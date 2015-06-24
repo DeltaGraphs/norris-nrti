@@ -7727,14 +7727,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 148,
-                    "physical": 241
+                    "logical": 168,
+                    "physical": 261
                 },
-                "cyclomatic": 29,
+                "cyclomatic": 31,
                 "halstead": {
                     "operators": {
                         "distinct": 21,
-                        "total": 535,
+                        "total": 573,
                         "identifiers": [
                             "var",
                             "=",
@@ -7760,8 +7760,8 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 90,
-                        "total": 599,
+                        "distinct": 95,
+                        "total": 652,
                         "identifiers": [
                             "\"use strict\"",
                             "PageModel",
@@ -7816,6 +7816,7 @@
                             "addGraph",
                             "graphProp",
                             "data",
+                            "_ID",
                             "title",
                             "type",
                             "\"BarChart\"",
@@ -7824,6 +7825,8 @@
                             "_baseURL",
                             "\"insertGraph\"",
                             "sendMessage",
+                            "eventType",
+                            "pageChanged",
                             "addGraphToRouting",
                             "createLineChart",
                             "_dataLineChart",
@@ -7837,9 +7840,9 @@
                             "updateProperties",
                             "\"object\"",
                             "\"updatePageProp\"",
-                            "eventType",
+                            "description",
+                            "name",
                             "\"updatePage\"",
-                            "pageChanged",
                             "getConfigJSON",
                             "ret",
                             "properties",
@@ -7851,21 +7854,23 @@
                             "graphChanged",
                             "\"string\"",
                             "\"\"",
+                            "norrisData",
+                            "\"updateGraph\"",
                             "module",
                             "exports"
                         ]
                     },
-                    "length": 1134,
-                    "vocabulary": 111,
-                    "difficulty": 69.88333333333334,
-                    "volume": 7704.867592441021,
-                    "effort": 538441.8302517534,
-                    "bugs": 2.56828919748034,
-                    "time": 29913.4350139863
+                    "length": 1225,
+                    "vocabulary": 116,
+                    "difficulty": 72.06315789473685,
+                    "volume": 8401.026719031275,
+                    "effort": 605404.5149314539,
+                    "bugs": 2.8003422396770916,
+                    "time": 33633.58416285855
                 },
                 "params": 9,
                 "line": 2,
-                "cyclomaticDensity": 19.594594594594593
+                "cyclomaticDensity": 18.452380952380953
             },
             "functions": [
                 {
@@ -7942,14 +7947,14 @@
                 {
                     "name": "<anonymous>.createBarChart",
                     "sloc": {
-                        "logical": 24,
-                        "physical": 35
+                        "logical": 27,
+                        "physical": 39
                     },
                     "cyclomatic": 5,
                     "halstead": {
                         "operators": {
                             "distinct": 13,
-                            "total": 83,
+                            "total": 87,
                             "identifiers": [
                                 "if",
                                 "||",
@@ -7967,8 +7972,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 34,
-                            "total": 94,
+                            "distinct": 38,
+                            "total": 101,
                             "identifiers": [
                                 "params",
                                 "undefined",
@@ -7994,6 +7999,7 @@
                                 "graphProp",
                                 "data",
                                 "<anonymous>",
+                                "_ID",
                                 "title",
                                 "type",
                                 "\"BarChart\"",
@@ -8003,32 +8009,35 @@
                                 "\"insertGraph\"",
                                 "_pageSocket",
                                 "sendMessage",
+                                "eventType",
+                                "_norris",
+                                "pageChanged",
                                 "addGraphToRouting"
                             ]
                         },
-                        "length": 177,
-                        "vocabulary": 47,
-                        "difficulty": 17.970588235294116,
-                        "volume": 983.1622267469419,
-                        "effort": 17668.00354536416,
-                        "bugs": 0.3277207422489806,
-                        "time": 981.5557525202312
+                        "length": 188,
+                        "vocabulary": 51,
+                        "difficulty": 17.276315789473685,
+                        "volume": 1066.4159642906413,
+                        "effort": 18423.738962021213,
+                        "bugs": 0.35547198809688046,
+                        "time": 1023.5410534456229
                     },
                     "params": 1,
                     "line": 49,
-                    "cyclomaticDensity": 20.833333333333336
+                    "cyclomaticDensity": 18.51851851851852
                 },
                 {
                     "name": "<anonymous>.createLineChart",
                     "sloc": {
-                        "logical": 24,
-                        "physical": 35
+                        "logical": 27,
+                        "physical": 39
                     },
                     "cyclomatic": 5,
                     "halstead": {
                         "operators": {
                             "distinct": 13,
-                            "total": 83,
+                            "total": 87,
                             "identifiers": [
                                 "if",
                                 "||",
@@ -8046,8 +8055,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 34,
-                            "total": 94,
+                            "distinct": 38,
+                            "total": 101,
                             "identifiers": [
                                 "params",
                                 "undefined",
@@ -8073,6 +8082,7 @@
                                 "graphProp",
                                 "data",
                                 "<anonymous>",
+                                "_ID",
                                 "title",
                                 "type",
                                 "\"LineChart\"",
@@ -8082,32 +8092,35 @@
                                 "\"insertGraph\"",
                                 "_pageSocket",
                                 "sendMessage",
+                                "eventType",
+                                "_norris",
+                                "pageChanged",
                                 "addGraphToRouting"
                             ]
                         },
-                        "length": 177,
-                        "vocabulary": 47,
-                        "difficulty": 17.970588235294116,
-                        "volume": 983.1622267469419,
-                        "effort": 17668.00354536416,
-                        "bugs": 0.3277207422489806,
-                        "time": 981.5557525202312
+                        "length": 188,
+                        "vocabulary": 51,
+                        "difficulty": 17.276315789473685,
+                        "volume": 1066.4159642906413,
+                        "effort": 18423.738962021213,
+                        "bugs": 0.35547198809688046,
+                        "time": 1023.5410534456229
                     },
                     "params": 1,
-                    "line": 85,
-                    "cyclomaticDensity": 20.833333333333336
+                    "line": 89,
+                    "cyclomaticDensity": 18.51851851851852
                 },
                 {
                     "name": "<anonymous>.createMapChart",
                     "sloc": {
-                        "logical": 24,
-                        "physical": 35
+                        "logical": 27,
+                        "physical": 39
                     },
                     "cyclomatic": 5,
                     "halstead": {
                         "operators": {
                             "distinct": 13,
-                            "total": 83,
+                            "total": 87,
                             "identifiers": [
                                 "if",
                                 "||",
@@ -8125,8 +8138,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 34,
-                            "total": 94,
+                            "distinct": 38,
+                            "total": 101,
                             "identifiers": [
                                 "params",
                                 "undefined",
@@ -8152,6 +8165,7 @@
                                 "graphProp",
                                 "data",
                                 "<anonymous>",
+                                "_ID",
                                 "title",
                                 "type",
                                 "\"MapChart\"",
@@ -8161,32 +8175,35 @@
                                 "\"insertGraph\"",
                                 "_pageSocket",
                                 "sendMessage",
+                                "eventType",
+                                "_norris",
+                                "pageChanged",
                                 "addGraphToRouting"
                             ]
                         },
-                        "length": 177,
-                        "vocabulary": 47,
-                        "difficulty": 17.970588235294116,
-                        "volume": 983.1622267469419,
-                        "effort": 17668.00354536416,
-                        "bugs": 0.3277207422489806,
-                        "time": 981.5557525202312
+                        "length": 188,
+                        "vocabulary": 51,
+                        "difficulty": 17.276315789473685,
+                        "volume": 1066.4159642906413,
+                        "effort": 18423.738962021213,
+                        "bugs": 0.35547198809688046,
+                        "time": 1023.5410534456229
                     },
                     "params": 1,
-                    "line": 121,
-                    "cyclomaticDensity": 20.833333333333336
+                    "line": 129,
+                    "cyclomaticDensity": 18.51851851851852
                 },
                 {
                     "name": "<anonymous>.createTable",
                     "sloc": {
-                        "logical": 24,
-                        "physical": 35
+                        "logical": 27,
+                        "physical": 39
                     },
                     "cyclomatic": 5,
                     "halstead": {
                         "operators": {
                             "distinct": 13,
-                            "total": 83,
+                            "total": 87,
                             "identifiers": [
                                 "if",
                                 "||",
@@ -8204,8 +8221,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 34,
-                            "total": 94,
+                            "distinct": 38,
+                            "total": 101,
                             "identifiers": [
                                 "params",
                                 "undefined",
@@ -8231,6 +8248,7 @@
                                 "graphProp",
                                 "data",
                                 "<anonymous>",
+                                "_ID",
                                 "title",
                                 "type",
                                 "\"Table\"",
@@ -8240,32 +8258,35 @@
                                 "\"insertGraph\"",
                                 "_pageSocket",
                                 "sendMessage",
+                                "eventType",
+                                "_norris",
+                                "pageChanged",
                                 "addGraphToRouting"
                             ]
                         },
-                        "length": 177,
-                        "vocabulary": 47,
-                        "difficulty": 17.970588235294116,
-                        "volume": 983.1622267469419,
-                        "effort": 17668.00354536416,
-                        "bugs": 0.3277207422489806,
-                        "time": 981.5557525202312
+                        "length": 188,
+                        "vocabulary": 51,
+                        "difficulty": 17.276315789473685,
+                        "volume": 1066.4159642906413,
+                        "effort": 18423.738962021213,
+                        "bugs": 0.35547198809688046,
+                        "time": 1023.5410534456229
                     },
                     "params": 1,
-                    "line": 157,
-                    "cyclomaticDensity": 20.833333333333336
+                    "line": 169,
+                    "cyclomaticDensity": 18.51851851851852
                 },
                 {
                     "name": "<anonymous>.updateProperties",
                     "sloc": {
-                        "logical": 6,
-                        "physical": 14
+                        "logical": 9,
+                        "physical": 17
                     },
-                    "cyclomatic": 2,
+                    "cyclomatic": 4,
                     "halstead": {
                         "operators": {
-                            "distinct": 9,
-                            "total": 19,
+                            "distinct": 12,
+                            "total": 31,
                             "identifiers": [
                                 "if",
                                 "&&",
@@ -8274,13 +8295,16 @@
                                 "typeof (prefix)",
                                 "()",
                                 ".",
+                                "var",
+                                "=",
+                                "||",
                                 "{}",
                                 ":"
                             ]
                         },
                         "operands": {
-                            "distinct": 15,
-                            "total": 24,
+                            "distinct": 20,
+                            "total": 37,
                             "identifiers": [
                                 "params",
                                 "undefined",
@@ -8289,9 +8313,14 @@
                                 "this",
                                 "_page",
                                 "updateProperties",
+                                "data",
+                                "ID",
+                                "_ID",
                                 "\"updatePageProp\"",
                                 "_pageSocket",
                                 "sendMessage",
+                                "description",
+                                "name",
                                 "<anonymous>",
                                 "eventType",
                                 "\"updatePage\"",
@@ -8299,17 +8328,17 @@
                                 "pageChanged"
                             ]
                         },
-                        "length": 43,
-                        "vocabulary": 24,
-                        "difficulty": 7.2,
-                        "volume": 197.15338753100974,
-                        "effort": 1419.50439022327,
-                        "bugs": 0.06571779584366991,
-                        "time": 78.86135501240389
+                        "length": 68,
+                        "vocabulary": 32,
+                        "difficulty": 11.100000000000001,
+                        "volume": 340,
+                        "effort": 3774.0000000000005,
+                        "bugs": 0.11333333333333333,
+                        "time": 209.66666666666669
                     },
                     "params": 1,
-                    "line": 193,
-                    "cyclomaticDensity": 33.33333333333333
+                    "line": 209,
+                    "cyclomaticDensity": 44.44444444444444
                 },
                 {
                     "name": "<anonymous>.getProperties",
@@ -8346,14 +8375,14 @@
                         "time": 1.5078947920873411
                     },
                     "params": 0,
-                    "line": 208,
+                    "line": 227,
                     "cyclomaticDensity": 100
                 },
                 {
                     "name": "<anonymous>.getConfigJSON",
                     "sloc": {
                         "logical": 11,
-                        "physical": 17
+                        "physical": 15
                     },
                     "cyclomatic": 2,
                     "halstead": {
@@ -8411,20 +8440,20 @@
                         "time": 320.67934044493023
                     },
                     "params": 0,
-                    "line": 212,
+                    "line": 231,
                     "cyclomaticDensity": 18.181818181818183
                 },
                 {
                     "name": "<anonymous>.graphChanged",
                     "sloc": {
-                        "logical": 3,
-                        "physical": 10
+                        "logical": 8,
+                        "physical": 13
                     },
                     "cyclomatic": 2,
                     "halstead": {
                         "operators": {
-                            "distinct": 7,
-                            "total": 27,
+                            "distinct": 11,
+                            "total": 37,
                             "identifiers": [
                                 "if",
                                 "&&",
@@ -8432,12 +8461,16 @@
                                 ".",
                                 "===",
                                 "typeof (prefix)",
-                                "()"
+                                "()",
+                                "var",
+                                "=",
+                                "{}",
+                                ":"
                             ]
                         },
                         "operands": {
-                            "distinct": 11,
-                            "total": 29,
+                            "distinct": 18,
+                            "total": 41,
                             "identifiers": [
                                 "params",
                                 "undefined",
@@ -8448,21 +8481,28 @@
                                 "this",
                                 "_pageSocket",
                                 "sendMessage",
+                                "norrisData",
+                                "<anonymous>",
+                                "ID",
+                                "_page",
+                                "_ID",
+                                "data",
+                                "\"updateGraph\"",
                                 "_norris",
                                 "pageChanged"
                             ]
                         },
-                        "length": 56,
-                        "vocabulary": 18,
-                        "difficulty": 9.227272727272727,
-                        "volume": 233.51580008076948,
-                        "effort": 2154.7139734725547,
-                        "bugs": 0.07783860002692317,
-                        "time": 119.70633185958637
+                        "length": 78,
+                        "vocabulary": 29,
+                        "difficulty": 12.527777777777777,
+                        "volume": 378.92251761995067,
+                        "effort": 4747.057095738826,
+                        "bugs": 0.12630750587331688,
+                        "time": 263.72539420771255
                     },
                     "params": 1,
-                    "line": 230,
-                    "cyclomaticDensity": 66.66666666666666
+                    "line": 247,
+                    "cyclomaticDensity": 25
                 }
             ],
             "dependencies": [
@@ -8492,10 +8532,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 95.6912224192595,
-            "loc": 14.666666666666666,
-            "cyclomatic": 4.111111111111111,
-            "effort": 9935.620551680633,
+            "maintainability": 93.10165386636858,
+            "loc": 16.88888888888889,
+            "cyclomatic": 4.333333333333333,
+            "effort": 10821.151707088546,
             "params": 1,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/page/page.js"
         },
@@ -18417,9 +18457,9 @@
     ],
     "changeCost": 21.875,
     "coreSize": 37.5,
-    "loc": 10.38864997849373,
-    "cyclomatic": 4.277878978660229,
-    "effort": 7991.239043395344,
+    "loc": 10.458094422938174,
+    "cyclomatic": 4.284823423104673,
+    "effort": 8018.911892001841,
     "params": 1.1159770784770788,
-    "maintainability": 105.05714859957196
+    "maintainability": 104.97622458229412
 }
