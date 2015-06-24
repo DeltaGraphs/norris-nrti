@@ -50,11 +50,11 @@ var pageMock=function(){
     this._p1 = '';
     this._p2 = '';
 
-    this.graphChanged(params) {
+    this.graphChanged=function(params) {
         this._p1 = params.eventType;
         this._p2 = params.params;
-    }
-}
+    };
+};
 
 describe('BarChart', function() {
     it('returns 361 when there are no params', function() {
