@@ -1,8 +1,8 @@
-Mean per-function logical LOC: 10.477980786574538
+Mean per-function logical LOC: 10.53006411990787
 Mean per-function parameter count: 1.1159770784770788
-Mean per-function cyclomatic complexity: 4.293346150377401
-Mean per-function Halstead effort: 8277.623947729924
-Mean per-module maintainability index: 104.94245178280947
+Mean per-function cyclomatic complexity: 4.303762817044068
+Mean per-function Halstead effort: 8312.918754680097
+Mean per-module maintainability index: 104.83437552743614
 First-order density: 5.95703125%
 Change cost: 21.875%
 Core size: 37.5%
@@ -140,39 +140,39 @@ Core size: 37.5%
 
 /home/travis/build/DeltaGraphs/norris-nrti/lib/presentationTier/routes.js
 
-  Physical LOC: 70
-  Logical LOC: 32
+  Physical LOC: 86
+  Logical LOC: 37
   Mean parameter count: 2.3333333333333335
-  Cyclomatic complexity: 15
-  Cyclomatic complexity density: 46.875%
-  Maintainability index: 105.85760283638847
+  Cyclomatic complexity: 16
+  Cyclomatic complexity density: 43.24324324324324%
+  Maintainability index: 102.39916266444149
   Dependency count: 1
 
   Function: Routes
     Line No.: 20
-    Physical LOC: 13
-    Logical LOC: 7
+    Physical LOC: 14
+    Logical LOC: 8
     Parameter count: 3
     Cyclomatic complexity: 7
-    Cyclomatic complexity density: 100%
-    Halstead difficulty: 8.75
-    Halstead volume: 309.1341075233367
-    Halstead effort: 2704.923440829196
+    Cyclomatic complexity density: 87.5%
+    Halstead difficulty: 8.636363636363637
+    Halstead volume: 340
+    Halstead effort: 2936.3636363636365
 
   Function: <anonymous>.addRoutingPath
-    Line No.: 34
-    Physical LOC: 36
-    Logical LOC: 13
+    Line No.: 35
+    Physical LOC: 51
+    Logical LOC: 17
     Parameter count: 2
-    Cyclomatic complexity: 8
-    Cyclomatic complexity density: 61.53846153846154%
-    Halstead difficulty: 12.970588235294118
-    Halstead volume: 647.8556500836542
-    Halstead effort: 8403.068873143868
+    Cyclomatic complexity: 9
+    Cyclomatic complexity density: 52.94117647058824%
+    Halstead difficulty: 15.208333333333332
+    Halstead volume: 760.1049958241805
+    Halstead effort: 11559.930144826078
 
   Function: handle
-    Line No.: 51
-    Physical LOC: 10
+    Line No.: 53
+    Physical LOC: 11
     Logical LOC: 7
     Parameter count: 2
     Cyclomatic complexity: 2
