@@ -7742,7 +7742,7 @@
                 "halstead": {
                     "operators": {
                         "distinct": 21,
-                        "total": 577,
+                        "total": 576,
                         "identifiers": [
                             "var",
                             "=",
@@ -7769,7 +7769,7 @@
                     },
                     "operands": {
                         "distinct": 96,
-                        "total": 656,
+                        "total": 655,
                         "identifiers": [
                             "\"use strict\"",
                             "PageModel",
@@ -7802,8 +7802,8 @@
                             "_page",
                             "_norris",
                             "_pageNamespace",
-                            "\"/\"",
                             "_norrisNamespace",
+                            "\"/\"",
                             "ID",
                             "_pageSocket",
                             "createSocket",
@@ -7869,13 +7869,13 @@
                             "exports"
                         ]
                     },
-                    "length": 1233,
+                    "length": 1231,
                     "vocabulary": 117,
-                    "difficulty": 71.75,
-                    "volume": 8471.159699246338,
-                    "effort": 607805.7084209247,
-                    "bugs": 2.8237198997487796,
-                    "time": 33766.98380116248
+                    "difficulty": 71.640625,
+                    "volume": 8457.418969807171,
+                    "effort": 605894.7808838419,
+                    "bugs": 2.8191396566023905,
+                    "time": 33660.82116021344
                 },
                 "params": 9,
                 "line": 2,
@@ -7930,8 +7930,8 @@
                                 "_page",
                                 "_norris",
                                 "_pageNamespace",
-                                "\"/\"",
                                 "_norrisNamespace",
+                                "\"/\"",
                                 "ID",
                                 "_pageSocket",
                                 "createSocket",
@@ -7964,7 +7964,7 @@
                     "halstead": {
                         "operators": {
                             "distinct": 13,
-                            "total": 87,
+                            "total": 86,
                             "identifiers": [
                                 "if",
                                 "||",
@@ -7983,7 +7983,7 @@
                         },
                         "operands": {
                             "distinct": 38,
-                            "total": 101,
+                            "total": 100,
                             "identifiers": [
                                 "params",
                                 "undefined",
@@ -8025,13 +8025,13 @@
                                 "addGraphToRouting"
                             ]
                         },
-                        "length": 188,
+                        "length": 186,
                         "vocabulary": 51,
-                        "difficulty": 17.276315789473685,
-                        "volume": 1066.4159642906413,
-                        "effort": 18423.738962021213,
-                        "bugs": 0.35547198809688046,
-                        "time": 1023.5410534456229
+                        "difficulty": 17.10526315789474,
+                        "volume": 1055.0711136066982,
+                        "effort": 18047.26904853563,
+                        "bugs": 0.35169037120223273,
+                        "time": 1002.6260582519794
                     },
                     "params": 1,
                     "line": 49,
@@ -8542,10 +8542,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 93.07166925035291,
+            "maintainability": 93.08479929314892,
             "loc": 16.88888888888889,
             "cyclomatic": 4.333333333333333,
-            "effort": 10916.44253182925,
+            "effort": 10874.612541441962,
             "params": 1,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/page/page.js"
         },
@@ -18480,7 +18480,7 @@
     "coreSize": 37.5,
     "loc": 10.53006411990787,
     "cyclomatic": 4.303762817044068,
-    "effort": 8315.896592953244,
+    "effort": 8314.589405753642,
     "params": 1.1159770784770788,
-    "maintainability": 104.83343850818564
+    "maintainability": 104.83384882202301
 }
