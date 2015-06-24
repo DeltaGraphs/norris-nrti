@@ -191,10 +191,11 @@ describe('Table', function() {
         });
         it('updated properties', function() {
             var mock = new socketMock();
-            var table=new Table({ID: 'dada'}, new pageMock(), mock);
-            table.updateProperties({title: 'graph one', height: 200, width: 350, sortable: true, addRowOn: 'top', headers: ['column1','h2'], sort:{column: 'col1', ordering: 'ASC'}});
+            var pMock = new pageMock();
+            var table=new Table({ID: 'dada'}, pMock, mock);
+            table.updateProperties({title: 'graph one', height: 200, width: 350, sortable: true, addRowOn: 'top', headers: ['column1','h2'], sort:{column: ['col1'], ordering: ['ASC']}});
             assert.strictEqual(mock.p1,'updateGraphProp');
-            assert.deepEqual(mock.p2,{title: 'graph one', height: 200, width: 350, sortable: true, addRowOn: 'top', headers: ['column1','h2'], sort:{column: 'col1', ordering: 'ASC'}});
+            assert.deepEqual(mock.p2,{ID: 'dada', title: 'graph one', height: 200, width: 350, sortable: true, addRowOn: 'top', headers: ['column1','h2'], sort:{column: ['col1'], ordering: ['ASC']}});
         });
     });
     describe('#getProperties', function() {

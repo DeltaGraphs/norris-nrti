@@ -44,6 +44,16 @@ var socketMockHistory=function(){
         this.p2.push(p2);
     };
 };
+var pageMock=function(){
+    this._page='';
+    this._p1 = '';
+    this._p2 = '';
+
+    this.graphChanged=function(params) {
+        this._p1 = params.eventType;
+        this._p2 = params.params;
+    };
+};
 
 describe('LineChart', function() {
     it('returns 371 when there are no params', function() {
@@ -165,7 +175,8 @@ describe('LineChart', function() {
         });
         it('returned true - correctly updated', function() {
             var mock=new socketMock();
-            var lineChart=new LineChart({ID: 'dada'}, {_page: 'dssada'}, mock);
+            var pMock = new pageMock();
+            var lineChart=new LineChart({ID: 'dada'}, pMock, mock);
             lineChart.createLineChartFlow({ ID:'flow1', name: 'grafico tempo-temperatura', xKey: 'tempo', yKey: 'temperatura'});
             var recID=lineChart.addRecord('flow1',{'tempo': 1, 'temperatura': 25});
             assert.strictEqual(lineChart.updateRecord('flow1',recID,{'tempo': 3, 'temperatura': 7}),true);

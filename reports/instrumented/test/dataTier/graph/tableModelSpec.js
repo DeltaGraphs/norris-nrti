@@ -184,7 +184,7 @@ describe('TableModel', function() {
             enableLegend: true,
             legend: legend1.getProperties(),
             sortable: true,
-            sort: {column: 'col1', ordering:'DESC'},
+            sort: {column: ['col1'], ordering:['DESC']},
             maxItemsPage: 15,
             headers: ['col1', 'col2'],
             addRowOn: 'top'
@@ -197,7 +197,7 @@ describe('TableModel', function() {
         assert.strictEqual(graph1._enableLegend, true);
         assert.deepEqual(graph1._legend.getProperties(), legend1.getProperties());
         assert.strictEqual(graph1._sortable, true);
-        assert.deepEqual(graph1._sort, {column: 'col1', ordering:'DESC'});
+        assert.deepEqual(graph1._sort, {column: ['col1'], ordering:['DESC']});
         assert.strictEqual(graph1._maxItemsPage, 15);
         assert.strictEqual(graph1._headers[0], 'col1');
         assert.strictEqual(graph1._headers[1], 'col2');
@@ -214,7 +214,7 @@ describe('TableModel', function() {
             enableLegend: true,
             legend: legend1.getProperties(),
             sortable: true,
-            sort: {column: 'col1', ordering:'DESC'},
+            sort: {column: ['col1'], ordering:['DESC']},
             maxItemsPage: 15,
             headers: ['col1', 'col2'],
             appearance: example2colAppearance,
@@ -228,7 +228,7 @@ describe('TableModel', function() {
         assert.strictEqual(graph1._enableLegend, true);
         assert.deepEqual(graph1._legend.getProperties(), legend1.getProperties());
         assert.strictEqual(graph1._sortable, true);
-        assert.deepEqual(graph1._sort, {column: 'col1', ordering:'DESC'});
+        assert.deepEqual(graph1._sort, {column: ['col1'], ordering:['DESC']});
         assert.strictEqual(graph1._maxItemsPage, 15);
         assert.strictEqual(graph1._headers[0], 'col1');
         assert.strictEqual(graph1._headers[1], 'col2');
@@ -245,7 +245,7 @@ describe('TableModel', function() {
             enableLegend: true,
             legend: legend1.getProperties(),
             sortable: true,
-            sort: {column: 'col1', ordering:'DESC'},
+            sort: {column: ['col1'], ordering:['DESC']},
             maxItemsPage: 15,
             headers: ['col1', 'col2'],
             appearance: example2colAppearanceSV,
@@ -259,7 +259,7 @@ describe('TableModel', function() {
         assert.strictEqual(graph1._enableLegend, true);
         assert.deepEqual(graph1._legend.getProperties(), legend1.getProperties());
         assert.strictEqual(graph1._sortable, true);
-        assert.deepEqual(graph1._sort, {column: 'col1', ordering:'DESC'});
+        assert.deepEqual(graph1._sort, {column: ['col1'], ordering:['DESC']});
         assert.strictEqual(graph1._maxItemsPage, 15);
         assert.strictEqual(graph1._headers[0], 'col1');
         assert.strictEqual(graph1._headers[1], 'col2');
@@ -277,7 +277,7 @@ describe('TableModel', function() {
                 enableLegend: true,
                 legend: legend1.getProperties(),
                 sortable: true,
-                sort: {column: 'col1', ordering:'DESC'},
+                sort: {column: ['col1'], ordering:['DESC']},
                 maxItemsPage: 15,
                 headers: ['col1', 'col2'],
                 addRowOn: 'top'
@@ -293,7 +293,7 @@ describe('TableModel', function() {
             assert.strictEqual(prop.enableLegend, true);
             assert.deepEqual(prop.legend, legend1.getProperties());
             assert.strictEqual(prop.sortable, true);
-            assert.deepEqual(prop.sort, {column: 'col1', ordering:'DESC'});
+            assert.deepEqual(prop.sort, {column: ['col1'], ordering:['DESC']});
             assert.strictEqual(prop.maxItemsPage, 15);
             assert.strictEqual(prop.headers[0], 'col1');
             assert.strictEqual(prop.headers[1], 'col2');
@@ -311,7 +311,7 @@ describe('TableModel', function() {
                 enableLegend: true,
                 legend: legend1.getProperties(),
                 sortable: true,
-                sort: {column: 'col1', ordering:'DESC'},
+                sort: {column: ['col1'], ordering:['DESC']},
                 maxItemsPage: 15,
                 headers: ['col1', 'col2'],
                 addRowOn: 'top'
@@ -326,7 +326,7 @@ describe('TableModel', function() {
             assert.strictEqual(graph1._enableLegend, true);
             assert.deepEqual(graph1._legend.getProperties(), legend1.getProperties());
             assert.strictEqual(graph1._sortable, true);
-            assert.deepEqual(graph1._sort, {column: 'col1', ordering:'DESC'});
+            assert.deepEqual(graph1._sort, {column: ['col1'], ordering:['DESC']});
             assert.strictEqual(graph1._maxItemsPage, 15);
             assert.strictEqual(graph1._headers[0], 'col1');
             assert.strictEqual(graph1._headers[1], 'col2');

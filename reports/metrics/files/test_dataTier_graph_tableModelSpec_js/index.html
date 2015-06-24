@@ -44,7 +44,7 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">60.62</p>
+      <p class="stat">60.56</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">52.12</p>
+      <p class="stat">52.77</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">6.89</p>
+      <p class="stat">6.99</p>
     </div>
   </div>
 </div>
@@ -275,7 +275,7 @@ describe(&#039;TableModel&#039;, function() {
             enableLegend: true,
             legend: legend1.getProperties(),
             sortable: true,
-            sort: {column: &#039;col1&#039;, ordering:&#039;DESC&#039;},
+            sort: {column: [&#039;col1&#039;], ordering:[&#039;DESC&#039;]},
             maxItemsPage: 15,
             headers: [&#039;col1&#039;, &#039;col2&#039;],
             addRowOn: &#039;top&#039;
@@ -288,7 +288,7 @@ describe(&#039;TableModel&#039;, function() {
         assert.strictEqual(graph1._enableLegend, true);
         assert.deepEqual(graph1._legend.getProperties(), legend1.getProperties());
         assert.strictEqual(graph1._sortable, true);
-        assert.deepEqual(graph1._sort, {column: &#039;col1&#039;, ordering:&#039;DESC&#039;});
+        assert.deepEqual(graph1._sort, {column: [&#039;col1&#039;], ordering:[&#039;DESC&#039;]});
         assert.strictEqual(graph1._maxItemsPage, 15);
         assert.strictEqual(graph1._headers[0], &#039;col1&#039;);
         assert.strictEqual(graph1._headers[1], &#039;col2&#039;);
@@ -305,7 +305,7 @@ describe(&#039;TableModel&#039;, function() {
             enableLegend: true,
             legend: legend1.getProperties(),
             sortable: true,
-            sort: {column: &#039;col1&#039;, ordering:&#039;DESC&#039;},
+            sort: {column: [&#039;col1&#039;], ordering:[&#039;DESC&#039;]},
             maxItemsPage: 15,
             headers: [&#039;col1&#039;, &#039;col2&#039;],
             appearance: example2colAppearance,
@@ -319,7 +319,7 @@ describe(&#039;TableModel&#039;, function() {
         assert.strictEqual(graph1._enableLegend, true);
         assert.deepEqual(graph1._legend.getProperties(), legend1.getProperties());
         assert.strictEqual(graph1._sortable, true);
-        assert.deepEqual(graph1._sort, {column: &#039;col1&#039;, ordering:&#039;DESC&#039;});
+        assert.deepEqual(graph1._sort, {column: [&#039;col1&#039;], ordering:[&#039;DESC&#039;]});
         assert.strictEqual(graph1._maxItemsPage, 15);
         assert.strictEqual(graph1._headers[0], &#039;col1&#039;);
         assert.strictEqual(graph1._headers[1], &#039;col2&#039;);
@@ -336,7 +336,7 @@ describe(&#039;TableModel&#039;, function() {
             enableLegend: true,
             legend: legend1.getProperties(),
             sortable: true,
-            sort: {column: &#039;col1&#039;, ordering:&#039;DESC&#039;},
+            sort: {column: [&#039;col1&#039;], ordering:[&#039;DESC&#039;]},
             maxItemsPage: 15,
             headers: [&#039;col1&#039;, &#039;col2&#039;],
             appearance: example2colAppearanceSV,
@@ -350,7 +350,7 @@ describe(&#039;TableModel&#039;, function() {
         assert.strictEqual(graph1._enableLegend, true);
         assert.deepEqual(graph1._legend.getProperties(), legend1.getProperties());
         assert.strictEqual(graph1._sortable, true);
-        assert.deepEqual(graph1._sort, {column: &#039;col1&#039;, ordering:&#039;DESC&#039;});
+        assert.deepEqual(graph1._sort, {column: [&#039;col1&#039;], ordering:[&#039;DESC&#039;]});
         assert.strictEqual(graph1._maxItemsPage, 15);
         assert.strictEqual(graph1._headers[0], &#039;col1&#039;);
         assert.strictEqual(graph1._headers[1], &#039;col2&#039;);
@@ -368,7 +368,7 @@ describe(&#039;TableModel&#039;, function() {
                 enableLegend: true,
                 legend: legend1.getProperties(),
                 sortable: true,
-                sort: {column: &#039;col1&#039;, ordering:&#039;DESC&#039;},
+                sort: {column: [&#039;col1&#039;], ordering:[&#039;DESC&#039;]},
                 maxItemsPage: 15,
                 headers: [&#039;col1&#039;, &#039;col2&#039;],
                 addRowOn: &#039;top&#039;
@@ -384,7 +384,7 @@ describe(&#039;TableModel&#039;, function() {
             assert.strictEqual(prop.enableLegend, true);
             assert.deepEqual(prop.legend, legend1.getProperties());
             assert.strictEqual(prop.sortable, true);
-            assert.deepEqual(prop.sort, {column: &#039;col1&#039;, ordering:&#039;DESC&#039;});
+            assert.deepEqual(prop.sort, {column: [&#039;col1&#039;], ordering:[&#039;DESC&#039;]});
             assert.strictEqual(prop.maxItemsPage, 15);
             assert.strictEqual(prop.headers[0], &#039;col1&#039;);
             assert.strictEqual(prop.headers[1], &#039;col2&#039;);
@@ -402,7 +402,7 @@ describe(&#039;TableModel&#039;, function() {
                 enableLegend: true,
                 legend: legend1.getProperties(),
                 sortable: true,
-                sort: {column: &#039;col1&#039;, ordering:&#039;DESC&#039;},
+                sort: {column: [&#039;col1&#039;], ordering:[&#039;DESC&#039;]},
                 maxItemsPage: 15,
                 headers: [&#039;col1&#039;, &#039;col2&#039;],
                 addRowOn: &#039;top&#039;
@@ -417,7 +417,7 @@ describe(&#039;TableModel&#039;, function() {
             assert.strictEqual(graph1._enableLegend, true);
             assert.deepEqual(graph1._legend.getProperties(), legend1.getProperties());
             assert.strictEqual(graph1._sortable, true);
-            assert.deepEqual(graph1._sort, {column: &#039;col1&#039;, ordering:&#039;DESC&#039;});
+            assert.deepEqual(graph1._sort, {column: [&#039;col1&#039;], ordering:[&#039;DESC&#039;]});
             assert.strictEqual(graph1._maxItemsPage, 15);
             assert.strictEqual(graph1._headers[0], &#039;col1&#039;);
             assert.strictEqual(graph1._headers[1], &#039;col2&#039;);

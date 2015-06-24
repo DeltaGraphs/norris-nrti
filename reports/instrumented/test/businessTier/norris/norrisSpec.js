@@ -167,20 +167,20 @@ describe('Norris', function() {
                             'ID':'page1',
                             'name':'Page one',
                             'description':'',
-                            'socketURL':'baseURL/page1'
+                            'socketURL':'baseURL/norris/page1'
                         },
                         'data':[
                             {
                                 'ID':'map1',
                                 'title':'APS',
                                 'type':'MapChart',
-                                'socketURL':'baseURL/page1/map1'
+                                'socketURL':'baseURL/norris/page1/map1'
                             },
                             {
                                 'ID':'line1',
                                 'title':'LINEE',
                                 'type':'LineChart',
-                                'socketURL':'baseURL/page1/line1'
+                                'socketURL':'baseURL/norris/page1/line1'
                             }
                         ]
                     },
@@ -189,7 +189,7 @@ describe('Norris', function() {
                             'ID':'page2',
                             'name':'Page two',
                             'description': '',
-                            'socketURL':'baseURL/page2'
+                            'socketURL':'baseURL/norris/page2'
                         },
                         'data':[]
                     }
