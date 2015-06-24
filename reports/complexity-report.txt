@@ -1,8 +1,8 @@
 Mean per-function logical LOC: 10.494473842130091
 Mean per-function parameter count: 1.1159770784770788
 Mean per-function cyclomatic complexity: 4.286401705932956
-Mean per-function Halstead effort: 8270.436933009789
-Mean per-module maintainability index: 104.87014605073487
+Mean per-function Halstead effort: 8267.957223437244
+Mean per-module maintainability index: 104.87122022949498
 First-order density: 5.95703125%
 Change cost: 21.875%
 Core size: 37.5%
@@ -1133,7 +1133,7 @@ Core size: 37.5%
   Mean parameter count: 1.8
   Cyclomatic complexity: 21
   Cyclomatic complexity density: 29.166666666666668%
-  Maintainability index: 99.13495945181919
+  Maintainability index: 99.1693331721425
   Dependency count: 3
 
   Function: Norris
@@ -1165,9 +1165,9 @@ Core size: 37.5%
     Parameter count: 3
     Cyclomatic complexity: 2
     Cyclomatic complexity density: 11.76470588235294%
-    Halstead difficulty: 20.075
-    Halstead volume: 673.7706982126151
-    Halstead effort: 13525.946766618248
+    Halstead difficulty: 18.17391304347826
+    Halstead volume: 722.4197234575482
+    Halstead effort: 13129.193235011095
 
   Function: <anonymous>.getConfigJSON
     Line No.: 103
