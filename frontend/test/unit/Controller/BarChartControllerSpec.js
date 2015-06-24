@@ -48,7 +48,6 @@ describe('BarChartController', function(){
 		});
 
 		it('socketConnection works fine', function(){
-			expect(socket).toBeDefined();
 			expect(count).toEqual(1);
 		});
 	});
