@@ -20,12 +20,13 @@
 *
 */
 
-describe('TableControllerSpec', function(){
+describe('TableController', function(){
 
 	var scope;
 	var controller;
 
 	beforeEach(function(){
+		angular.mock.module('norris-nrti');
 		inject(function($rootScope, $controller){
 			scope = $rootScope.$new();
 			controller = $controller('TableController', { $scope : scope });

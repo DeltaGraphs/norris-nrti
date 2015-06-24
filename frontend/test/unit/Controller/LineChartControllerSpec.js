@@ -20,12 +20,13 @@
 *
 */
 
-describe('LineChartControllerSpec', function(){
+describe('LineChartController', function(){
 
 	var scope;
 	var controller;
 
 	beforeEach(function(){
+		angular.mock.module('norris-nrti');
 		inject(function($rootScope, $controller){
 			scope = $rootScope.$new();
 			controller = $controller('LineChartController', { $scope : scope });
