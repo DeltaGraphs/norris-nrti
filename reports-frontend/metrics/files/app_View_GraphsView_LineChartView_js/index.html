@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">62.93</p>
+      <p class="stat">62.41</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">219</p>
+      <p class="stat">225</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">48.79</p>
+      <p class="stat">48.76</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">2.95</p>
+      <p class="stat">3.10</p>
     </div>
   </div>
 </div>
@@ -161,7 +161,7 @@ angular.module(&#039;norris-nrti&#039;)
             // inserisce il codice HTML che crea il grafico desiderato
             scope.init = function(){
 
-                var linechart, legend, onPoint;
+                var linechart, legend, onPoint, ticks;
                 var str = scope.url.split(&#039;/&#039;);
                 var id = str[str.length-1];
 
@@ -175,11 +175,17 @@ angular.module(&#039;norris-nrti&#039;)
                 } else {
                     onPoint = false;
                 }
+                if (scope.$parent.lineChart.getX() !== null &amp;&amp; scope.$parent.lineChart.getX() !== undefined){
+                    ticks = scope.$parent.lineChart.getX().getTicks();
+                }
+                else{
+                    ticks = 10;
+                }
                 if (scope.$parent.lineChart.getViewFinder() === true) {
                     linechart = &#039;&lt;div class=&quot;graphtitle&quot;&gt;&#039;+ scope.$parent.lineChart.getTitle() +&#039;&lt;/div&gt;&#039; +
                                 &#039;&lt;nvd3-line-with-focus-chart data=&quot;data&quot; nodata=&quot; &quot; id=&quot;&#039;+ id +&#039;&quot; &#039; +
                                 &#039;yaxistickformat=&quot;yAxisTickFormatFunction()&quot; xaxistickformat=&quot;xAxisTickFormatFunction()&quot; x2axistickformat=&quot;xAxisTickFormatFunction()&quot; &#039; +
-                                &#039;margin=&quot;{left:30,top:30,bottom:30,right:30}&quot; margin2=&quot;{left:30,top:30,bottom:30,right:30}&quot; interactive=&quot;true&quot; tooltips=&quot;&#039;+ onPoint +&#039;&quot; &#039; +
+                                &#039;margin=&quot;{left:30,top:30,bottom:30,right:30}&quot; margin2=&quot;{left:30,top:30,bottom:30,right:30}&quot; xaxisticks=&quot;&#039; + ticks + &#039;&quot; x2axisticks=&quot;&#039; + ticks + &#039;&quot; interactive=&quot;true&quot; tooltips=&quot;&#039;+ onPoint +&#039;&quot; &#039; +
                                 &#039;showlegend=&quot;&#039; + legend + &#039;&quot; color=&quot;colorFunction()&quot; &#039; + 
                                 &#039;xaxisrotatelabels=&quot;-90&quot; x2axisrotatelables=&quot;-90&quot; interpolate=&quot;&#039; + scope.$parent.lineChart.getInterpolation() +&#039;&quot;&gt;&#039; + // perchè colorFunction ritorna null per adesso
                                 &#039;&lt;svg style=&quot;width:&#039;+ scope.$parent.lineChart.getWidth() +&#039;px; height:&#039;+ scope.$parent.lineChart.getHeight() +&#039;px;&quot;&gt;&lt;/svg&gt;&lt;/nvd3-line-with-focus-chart&gt;&#039;;
@@ -190,7 +196,7 @@ angular.module(&#039;norris-nrti&#039;)
                                 &#039;margin=&quot;{left:30,top:30,bottom:30,right:30}&quot; interactive=&quot;true&quot; tooltips=&quot;&#039;+ onPoint +&#039;&quot; showlegend=&quot;&#039; + legend + &#039;&quot; &#039; +
                                 &#039;xaxisrotatelabels=&quot;-90&quot; interpolate=&quot;&#039; + scope.$parent.lineChart.getInterpolation() +&#039;&quot; &#039; +
                                 &#039;color=&quot;colorFunction()&quot; &#039; +
-                                &#039;showxaxis=&quot;true&quot; showyaxis=&quot;true&quot;&gt;&#039; +
+                                &#039;showxaxis=&quot;true&quot; showyaxis=&quot;true&quot; xaxisticks=&quot;&#039; + ticks + &#039;&quot;&gt;&#039; +
                                 &#039;&lt;svg style=&quot;width:&#039;+ scope.$parent.lineChart.getWidth() +&#039;px; height:&#039;+ scope.$parent.lineChart.getHeight() +&#039;px;&quot;&gt;&lt;/svg&gt;&lt;/nvd3-line-chart&gt;&#039;;
                 }
 
