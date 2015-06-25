@@ -19,4 +19,7 @@
 	<file name="test/unit/Model/UrlProviderSpec.js">
 		<error line="20" column="5" severity="warning" message="Unnecessary directive &quot;use strict&quot;." source="jshint.W034" />
 	</file>
+	<file name="test/unit/View/PagesListViewSpec.js">
+		<error line="23" column="25" severity="warning" message="&apos;controller&apos; is defined but never used." source="jshint.W098" />
+	</file>
 </checkstyle>
