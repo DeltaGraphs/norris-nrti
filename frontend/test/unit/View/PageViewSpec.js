@@ -22,36 +22,45 @@ describe('PageView', function(){
 
 	beforeEach(angular.mock.module('norris-nrti'));
 
-	var html, element, scope, controller, PageFactory;
+	var html, info, element, scope, controller, PageFactory, PagesList, pagesList, route;
 
-	beforeEach(function(){
-		
-		module(function($provide){
-			$provide.controller('PageController', function($scope){
-				$scope.page = null;
-			});
-		});
+	beforeEach(inject(function($rootScope, $compile, $controller, $injector, $route) {
+    	scope = $rootScope.$new();
+    	route = $route.$new();
+    	PagesList = $injector.get('PagesList');
+    	info = {
+    		data: [
+    			{
+    				'properties': {
+    					'ID':'page1',
+    					'name':'Pagina 1 Last Sync: 25/6/2015 @ 19:21:56',
+    					'description':'Questa è una bella pagina Last Sync: 25/6/2015 @ 19:21:56',
+    					'socketURL':'http://norris-nrti-dev.herokuapp.com/norris/page1'
+    				}
+    			}
+        ]};
 
-		inject(function($rootScope, $compile, $controller, $injector) {
-	    	scope = $rootScope.$new();
-	    	PageFactory = $injector.get('PageFactory');
-	    	controller = $controller('PageController', { $scope : scope });
-	    	html = angular.element('<page></page>');
+        $route.pageId = 0;
 
-	    	scope.page = PageFactory.build();
+        pagesList = new PagesList(info);
 
-	    	scope.graphs = [
-	    		{ 'id' : 1, 'type' : 'MapChart', 'url' : 'http://example/map.com'},
-	    		{ 'id' : 2, 'type' : 'LineChart', 'url' : 'http://example/line.com'},
-	    		{ 'id' : 3, 'type' : 'BarChart', 'url' : 'http://example/bar.com'},
-	    		{ 'id' : 4, 'type' : 'Table', 'url' : 'http://example/table.com'}
-	    	];
+    	PageFactory = $injector.get('PageFactory');
+    	controller = $controller('PageController', { $scope : scope, PagesList : pagesList, $routeParams : route });
+    	html = angular.element('<page></page>');
 
-	    	element = $compile(html)(scope);
-	    	scope.$digest();
-	    });
+    	scope.page = PageFactory.build();
 
-  	});
+    	scope.graphs = [
+    		{ 'id' : 1, 'type' : 'MapChart', 'url' : 'http://example/map.com'},
+    		{ 'id' : 2, 'type' : 'LineChart', 'url' : 'http://example/line.com'},
+    		{ 'id' : 3, 'type' : 'BarChart', 'url' : 'http://example/bar.com'},
+    		{ 'id' : 4, 'type' : 'Table', 'url' : 'http://example/table.com'}
+    	];
+
+    	element = $compile(html)(scope);
+    	scope.$digest();
+
+  	}));
 
   	describe('Constructor', function() {
 		it('works fine', function() {
