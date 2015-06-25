@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">67.93</p>
+      <p class="stat">68.55</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">55</p>
+      <p class="stat">64</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">7.64</p>
+      <p class="stat">7.65</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.28</p>
+      <p class="stat">0.29</p>
     </div>
   </div>
 </div>
@@ -119,12 +119,21 @@ describe(&#039;PagesListView&#039;, function(){
 	beforeEach(inject(function($rootScope, $compile, $injector, $controller) {
     	scope = $rootScope.$new();
     	PageFactory = $injector.get(&#039;PageFactory&#039;);
-        controller = $controller(&#039;PagesListController&#039;, { $scope : scope });
+        //controller = $controller(&#039;PagesListController&#039;, { $scope : scope });
     	var page1 = PageFactory.build(),
     		page2 = PageFactory.build(),
     		page3 = PageFactory.build();
 
-    	html = angular.element(&#039;&lt;pages-list url=&quot;http://example.com&quot;&gt;&lt;/pages-List&gt;&#039;);
+        html = &#039;&lt;div id=&quot;pagesList&quot;&gt;&#039; + 
+                    &#039;&lt;ul&gt;&#039; +
+                    &#039;&lt;li ng-repeat=&quot;page in pagesList&quot;&gt;&#039; +
+                        &#039;&lt;a ng-href=&quot;#/page/{{$index}}&quot;&gt; {{ page.page.getName() }} &lt;/a&gt;&#039; +
+                        &#039;&lt;p&gt; {{ page.page.getDescription() }} &lt;/p&gt;&#039; +
+                    &#039;&lt;/li&gt;&#039; +
+                    &#039;&lt;/ul&gt;&#039; +
+            &#039;&lt;/div&gt;&#039;;
+
+    	//html = angular.element(&#039;&lt;pages-list url=&quot;http://example.com&quot;&gt;&lt;/pages-List&gt;&#039;);
 
         scope.pagesList = [
             { &#039;id&#039;: 1, &#039;page&#039; : page1 },
@@ -139,8 +148,8 @@ describe(&#039;PagesListView&#039;, function(){
 
   	describe(&#039;Constructor&#039;, function() {
 		it(&#039;works fine&#039;, function() {
-			var elm = element.find(&#039;li&#039;);
-			expect(elm.length).toBe(3);
+            var elm = element.find(&#039;li&#039;);
+            expect(elm.length).toBe(3);
 		});
 	});
 
