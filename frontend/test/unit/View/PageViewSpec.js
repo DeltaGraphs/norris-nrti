@@ -22,27 +22,23 @@ describe('PageView', function(){
 
 	beforeEach(angular.mock.module('norris-nrti'));
 
-	var html, info, element, scope, controller, PageFactory, PagesList, pagesList;
+	var html, page, element, scope, controller, PageFactory, PagesList;
 
 	beforeEach(inject(function($rootScope, $compile, $controller, $injector, $routeParams) {
     	scope = $rootScope.$new();
     	PagesList = $injector.get('PagesList');
     	PageFactory = $injector.get('PageFactory');
 
-    	info = {
-    		data: [
-    			{
-    				'properties': {
-    					'ID':'page1',
-    					'name':'Pagina 1 Last Sync: 25/6/2015 @ 19:21:56',
-    					'description':'Questa è una bella pagina Last Sync: 25/6/2015 @ 19:21:56',
-    					'socketURL':'http://norris-nrti-dev.herokuapp.com/norris/page1'
-    				}
-    			}
-        	]
+    	page = {
+			'properties': {
+				'ID':'page1',
+				'name':'Pagina 1 Last Sync: 25/6/2015 @ 19:21:56',
+				'description':'Questa è una bella pagina Last Sync: 25/6/2015 @ 19:21:56',
+				'socketURL':'http://norris-nrti-dev.herokuapp.com/norris/page1'
+			}
     	};
 
-        PagesList.prototype.addPage(info);
+        PagesList.prototype.addPage(page);
     	
     	controller = $controller('PageController', { $scope : scope, PagesList : PagesList, $routeParams : { pageId: '0' } });
     	html = angular.element('<page></page>');
