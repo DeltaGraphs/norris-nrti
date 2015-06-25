@@ -22,11 +22,10 @@ describe('PageView', function(){
 
 	beforeEach(angular.mock.module('norris-nrti'));
 
-	var html, info, element, scope, controller, PageFactory, PagesList, pagesList, route;
+	var html, info, element, scope, controller, PageFactory, PagesList, pagesList;
 
-	beforeEach(inject(function($rootScope, $compile, $controller, $injector, $route) {
+	beforeEach(inject(function($rootScope, $compile, $controller, $injector, $routeParams) {
     	scope = $rootScope.$new();
-    	route = $route.$new();
     	PagesList = $injector.get('PagesList');
     	info = {
     		data: [
@@ -40,12 +39,10 @@ describe('PageView', function(){
     			}
         ]};
 
-        $route.pageId = 0;
-
         pagesList = new PagesList(info);
 
     	PageFactory = $injector.get('PageFactory');
-    	controller = $controller('PageController', { $scope : scope, PagesList : pagesList, $routeParams : route });
+    	controller = $controller('PageController', { $scope : scope, PagesList : pagesList, $routeParams : { pageId: '0'} });
     	html = angular.element('<page></page>');
 
     	scope.page = PageFactory.build();
