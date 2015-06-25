@@ -52,7 +52,7 @@ describe('TableFlow', function(){
 		var json = {
 			'dataFormat' : 'int',
 			'name' : 'flusso1',
-			'maxItemsSaved' : 20
+			'maxItems' : 20
 		};
 		var TableFlow;
 
@@ -102,7 +102,7 @@ describe('TableFlow', function(){
 	describe('#updateParameters', function(){
 		var json = {
 			'name' : 'flusso2',
-			'maxItemsSaved' : 15
+			'maxItems' : 15
 		};
 		var TableFlow;
 
