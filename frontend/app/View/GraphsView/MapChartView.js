@@ -35,7 +35,7 @@ angular.module('norris-nrti')
             url: '@'
 		},
         template: '<div>{{title}}</div><div></div><div></div>', // template HTML inserito dalla direttiva
-        bindToController: true,
+        //bindToController: true,
     	link: function (scope, element, attrs) {
 
             attrs.$observe('url', function(value) {

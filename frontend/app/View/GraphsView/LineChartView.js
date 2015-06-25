@@ -34,7 +34,7 @@ angular.module('norris-nrti')
         scope: { // attributo della direttiva
             url: '@'
 		},
-        bindToController: true,
+        //bindToController: true,
         link: function(scope, element, attrs){
 
             element.empty();

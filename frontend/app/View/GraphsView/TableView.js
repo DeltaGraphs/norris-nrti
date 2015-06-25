@@ -34,7 +34,7 @@ angular.module('norris-nrti')
 		scope: {
             url: '@'
 		},
-		bindToController: true,
+		//bindToController: true,
         link: function(scope, element, attrs){
 
         	attrs.$observe('url', function(value) {
