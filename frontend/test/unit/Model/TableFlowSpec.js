@@ -42,7 +42,7 @@ describe('TableFlow', function(){
 		});
 
 		it('default constructor create the flow in the correct way', function(){
-			expect(TableFlow.getMaxItem()).toEqual(100);
+			expect(TableFlow.getMaxItem()).toEqual(null);
 		});
 
 	});
@@ -52,7 +52,7 @@ describe('TableFlow', function(){
 		var json = {
 			'dataFormat' : 'int',
 			'name' : 'flusso1',
-			'maxItemsSaved' : 20
+			'maxItems' : 20
 		};
 		var TableFlow;
 

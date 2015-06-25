@@ -56,7 +56,7 @@ describe('LineChartFlow', function(){
 			expect(LineChartFlow.getArea()).toEqual(false);
 		});
 		it('constructor create the flow with the correct max item displayed', function(){
-			expect(LineChartFlow.getMaxItem()).toEqual(20);
+			expect(LineChartFlow.getMaxItem()).toEqual(null);
 		});
 
 	});
