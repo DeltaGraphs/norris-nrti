@@ -37,10 +37,9 @@ describe('PageView', function(){
 				'socketURL':'http://norris-nrti-dev.herokuapp.com/norris/page1'
 			}
     	};
-
-        PagesList.prototype.addPage(page);
     	
-    	controller = $controller('PageController', { $scope : scope, PagesList : PagesList, $routeParams : { pageId: '0' } });
+    	controller = $controller('PageController', { $scope : scope, 'PagesList' : PagesList, $routeParams : { pageId: '0' } });
+    	PagesList.prototype.addPage(page);
     	html = angular.element('<page></page>');
 
     	scope.graphs = [
