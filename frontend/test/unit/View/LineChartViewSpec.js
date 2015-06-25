@@ -20,7 +20,7 @@ describe('LineChartView', function(){
 
 	beforeEach(angular.mock.module('norris-nrti'));
 
-	var html, element, scope, line, LineChartFactory;
+	var html, element, scope, line, LineChartFactory, controller;
 	var json = {
 		'properties' : {
 			'title' : 'prova1',
@@ -30,7 +30,7 @@ describe('LineChartView', function(){
 		}
 	};
 	
-	beforeEach(inject(function($rootScope, $compile, $injector) {
+	beforeEach(inject(function($rootScope, $compile, $injector, $controller) {
 		LineChartFactory = $injector.get('LineChartFactory');
 		line = LineChartFactory.build();
 		line.updateParameters(json);

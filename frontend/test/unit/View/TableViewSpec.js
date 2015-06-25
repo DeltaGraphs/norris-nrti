@@ -20,14 +20,14 @@ describe('TableView', function(){
 
 	beforeEach(angular.mock.module('norris-nrti'));
 
-	var html, element, scope, table, TableFactory;
+	var html, element, scope, table, TableFactory, controller;
 	var info = {
 		'properties' : {
 			'title' : 'prova'
 		}
 	};
 	
-	beforeEach(inject(function($rootScope, $compile, $injector) {
+	beforeEach(inject(function($rootScope, $compile, $injector, $controller) {
 		TableFactory = $injector.get('TableFactory');
 		table = TableFactory.build();
 		table.updateParameters(info);

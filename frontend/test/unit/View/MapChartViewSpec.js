@@ -20,14 +20,14 @@ describe('MapChartView', function(){
 
 	beforeEach(angular.mock.module('norris-nrti'));
 
-	var html, element, scope, map, MapChartFactory;
+	var html, element, scope, map, MapChartFactory, controller;
 	var json = {
 		'properties' : {
 			'title' : 'prova'
 		}
 	};
 
-	beforeEach(inject(function($rootScope, $compile, $injector) {
+	beforeEach(inject(function($rootScope, $compile, $injector, $controller) {
 		MapChartFactory = $injector.get('MapChartFactory');
 		map = MapChartFactory.build();
 		map.updateParameters(json);
