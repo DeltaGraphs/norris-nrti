@@ -41,8 +41,6 @@ describe('PagesListView', function(){
                     '</ul>' +
             '</div>';
 
-    	//html = angular.element('<pages-list url="http://example.com"></pages-List>');
-
         scope.pagesList = [
             { 'id': 1, 'page' : page1 },
             { 'id': 2, 'page' : page2 },
