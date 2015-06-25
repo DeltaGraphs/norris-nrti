@@ -42,7 +42,7 @@ describe('PageView', function(){
         	]
     	};
 
-        PagesList.addPage(info);
+        PagesList.prototype.addPage(info);
     	
     	controller = $controller('PageController', { $scope : scope, PagesList : PagesList, $routeParams : { pageId: '0' } });
     	html = angular.element('<page></page>');
