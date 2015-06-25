@@ -8599,7 +8599,7 @@
             "aggregate": {
                 "sloc": {
                     "logical": 62,
-                    "physical": 107
+                    "physical": 114
                 },
                 "cyclomatic": 20,
                 "halstead": {
@@ -8715,7 +8715,7 @@
                     "name": "BarChartFlowModel",
                     "sloc": {
                         "logical": 19,
-                        "physical": 28
+                        "physical": 29
                     },
                     "cyclomatic": 8,
                     "halstead": {
@@ -8851,14 +8851,14 @@
                         "time": 693.456420059708
                     },
                     "params": 1,
-                    "line": 54,
+                    "line": 56,
                     "cyclomaticDensity": 53.84615384615385
                 },
                 {
                     "name": "<anonymous>.updateRecord",
                     "sloc": {
                         "logical": 9,
-                        "physical": 14
+                        "physical": 15
                     },
                     "cyclomatic": 6,
                     "halstead": {
@@ -8914,7 +8914,7 @@
                         "time": 290.7149918247854
                     },
                     "params": 2,
-                    "line": 77,
+                    "line": 80,
                     "cyclomaticDensity": 66.66666666666666
                 },
                 {
@@ -8966,7 +8966,7 @@
                         "time": 52.94361916237019
                     },
                     "params": 0,
-                    "line": 92,
+                    "line": 97,
                     "cyclomaticDensity": 14.285714285714285
                 },
                 {
@@ -9011,7 +9011,7 @@
                         "time": 33.098377478928654
                     },
                     "params": 1,
-                    "line": 102,
+                    "line": 109,
                     "cyclomaticDensity": 100
                 }
             ],

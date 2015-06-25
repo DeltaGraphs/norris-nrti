@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">107</p>
+      <p class="stat">114</p>
     </div>
   </div>
   <div class="row historical">
@@ -126,6 +126,7 @@ function BarChartFlowModel(params, records) {
 
 	this.updateProperties(params);
 
+	//adds the given records to the flow
 	if(records!==undefined &amp;&amp; Array.isArray(records)){
 		var nRecords=records.length;
 		for (var i=0; i&lt;nRecords; i++){
@@ -142,6 +143,7 @@ BarChartFlowModel.prototype = Object.create(FlowModel.prototype);
 BarChartFlowModel.prototype.constructor = BarChartFlowModel;
 BarChartFlowModel.prototype.parent = FlowModel.prototype;
 
+//updates the flow properties
 BarChartFlowModel.prototype.updateProperties = function(params){
 	if (params!==undefined){
 		var prop=this.parent.updateBaseProperties.call(this, params);
@@ -165,10 +167,12 @@ BarChartFlowModel.prototype.updateProperties = function(params){
 	//return error
 };
 
+//updates a single record, given its index and the new value
 BarChartFlowModel.prototype.updateRecord = function(index, record){
 	if (record === undefined || record === null || typeof record !== &#039;object&#039;|| Array.isArray(record)){
 		return 111;
 	}
+	//checks if it&#039;s given a valid index
 	if ((typeof index === &#039;number&#039;) &amp;&amp; (index &lt; this._records.length &amp;&amp; index &gt;= 0)){
 		var oldID=this._records[index].norrisRecordID;
 		this._records[index]=record;
@@ -180,6 +184,7 @@ BarChartFlowModel.prototype.updateRecord = function(index, record){
 	return 112;
 };
 
+//returns the flow properties
 BarChartFlowModel.prototype.getProperties = function(){
 	var prop=this.parent.getProperties.call(this);
 	prop.indexKey=this._indexKey;
@@ -190,6 +195,8 @@ BarChartFlowModel.prototype.getProperties = function(){
 	return prop;
 
 };
+
+//returns a record given its index
 BarChartFlowModel.prototype.getRecordByIndex = function(index){
 	if (index!==undefined &amp;&amp; index&gt;=0 &amp;&amp; index&lt;this._records.length){
 		return this._records[index];
