@@ -22,13 +22,12 @@ describe('PagesListView', function(){
 
 	beforeEach(angular.mock.module('norris-nrti'));
 
-	var html, element, scope, controller;
+	var html, element, scope;
 	var PageFactory;
 
-	beforeEach(inject(function($rootScope, $compile, $injector, $controller) {
+	beforeEach(inject(function($rootScope, $compile, $injector) {
     	scope = $rootScope.$new();
     	PageFactory = $injector.get('PageFactory');
-        //controller = $controller('PagesListController', { $scope : scope });
     	var page1 = PageFactory.build(),
     		page2 = PageFactory.build(),
     		page3 = PageFactory.build();

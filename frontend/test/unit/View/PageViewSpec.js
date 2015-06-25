@@ -24,25 +24,34 @@ describe('PageView', function(){
 
 	var html, element, scope, controller, PageFactory;
 
-	beforeEach(inject(function($rootScope, $compile, $controller, $injector) {
-    	scope = $rootScope.$new();
-    	PageFactory = $injector.get('PageFactory');
-    	controller = $controller('PageController', { $scope : scope });
-    	html = angular.element('<page></page>');
+	beforeEach(function(){
+		
+		module(function($provide){
+			$provide.controller('PageController', function($scope){
+				$scope.page = null;
+			});
+		});
 
-    	scope.page = PageFactory.build();
+		inject(function($rootScope, $compile, $controller, $injector) {
+	    	scope = $rootScope.$new();
+	    	PageFactory = $injector.get('PageFactory');
+	    	controller = $controller('PageController', { $scope : scope });
+	    	html = angular.element('<page></page>');
 
-    	scope.graphs = [
-    		{ 'id' : 1, 'type' : 'MapChart', 'url' : 'http://example/map.com'},
-    		{ 'id' : 2, 'type' : 'LineChart', 'url' : 'http://example/line.com'},
-    		{ 'id' : 3, 'type' : 'BarChart', 'url' : 'http://example/bar.com'},
-    		{ 'id' : 4, 'type' : 'Table', 'url' : 'http://example/table.com'}
-    	];
+	    	scope.page = PageFactory.build();
 
-    	element = $compile(html)(scope);
-    	scope.$digest();
+	    	scope.graphs = [
+	    		{ 'id' : 1, 'type' : 'MapChart', 'url' : 'http://example/map.com'},
+	    		{ 'id' : 2, 'type' : 'LineChart', 'url' : 'http://example/line.com'},
+	    		{ 'id' : 3, 'type' : 'BarChart', 'url' : 'http://example/bar.com'},
+	    		{ 'id' : 4, 'type' : 'Table', 'url' : 'http://example/table.com'}
+	    	];
 
-  	}));
+	    	element = $compile(html)(scope);
+	    	scope.$digest();
+	    });
+
+  	});
 
   	describe('Constructor', function() {
 		it('works fine', function() {
