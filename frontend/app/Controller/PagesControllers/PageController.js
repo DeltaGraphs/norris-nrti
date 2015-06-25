@@ -18,7 +18,7 @@
 
 angular.module('norris-nrti')
 .controller('PageController', ['$scope', '$location', '$routeParams', 'PagesList', 'PageFactory', 'SocketServicesFactory', function($scope, $location, $routeParams, PagesList, PageFactory, SocketServicesFactory){
-	console.log('controller PAge');
+
 	var page = PagesList.prototype.getPagesList()[$routeParams.pageId].page; // recupera la pagina corrente
 	$scope.page = page;
 	/*$scope.previous = false;
@@ -35,6 +35,7 @@ angular.module('norris-nrti')
 
 	var socket;
 
+	// funzione che connette il socket all'url e chiama la funzione listenOnEvent
 	this.socketConnection = function(){
 		socket = SocketServicesFactory.build(url);
 		this.listenOnEvents();
@@ -56,14 +57,7 @@ angular.module('norris-nrti')
 		});
 	};
 
-	// funzione che connette il socket all'url e chiama la funzione listenOnEvent
-	/*this.socketConnection = function(){
-		socket = SocketServicesFactory.build(url);
-		this.listenOnEvents();
-	};
-	this.socketConnection();*/
-
-	this.previous = function(id){
+	/*this.previous = function(id){
 		console.log('prev');
 		$location.path('/page/' + id);
 	};
@@ -71,7 +65,7 @@ angular.module('norris-nrti')
 	this.next = function(id){
 		console.log('next');
 		$location.path('/page/' + id);
-	};
+	};*/
 
 	// funzione di utilità che dispone i grafici in un array per la successiva visualizzazione
 	function matrix(list) {
@@ -101,7 +95,7 @@ angular.module('norris-nrti')
 	$scope.graphs = [];
 	$scope.socketConnection = this.socketConnection;
 	$scope.listenOnEvents = this.listenOnEvents;
-	$scope.previous = this.previous;
-	$scope.next = this.next;
+	//$scope.previous = this.previous;
+	//$scope.next = this.next;
 	
 }]);
