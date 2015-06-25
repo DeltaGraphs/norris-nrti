@@ -41,7 +41,7 @@
 		<error line="31" column="41" severity="warning" message="&apos;attrs&apos; is defined but never used." source="jshint.W098" />
 	</file>
 	<file name="app/View/PagesView/PagesListView.js">
-		<error line="36" column="41" severity="warning" message="&apos;attrs&apos; is defined but never used." source="jshint.W098" />
-		<error line="36" column="32" severity="warning" message="&apos;element&apos; is defined but never used." source="jshint.W098" />
+		<error line="38" column="41" severity="warning" message="&apos;attrs&apos; is defined but never used." source="jshint.W098" />
+		<error line="38" column="32" severity="warning" message="&apos;element&apos; is defined but never used." source="jshint.W098" />
 	</file>
 </checkstyle>
