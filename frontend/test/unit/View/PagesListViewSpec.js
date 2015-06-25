@@ -46,7 +46,8 @@ describe('PagesListView', function(){
 
   	describe('Constructor', function() {
 		it('works fine', function() {
-			var elm = element.find('li');
+			//var elm = element.find('li');
+            var elm = element.children('li');
 			expect(elm.length).toBe(3);
 		});
 	});
