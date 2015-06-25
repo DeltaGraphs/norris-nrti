@@ -35,6 +35,7 @@ describe('LineChartView', function(){
 		line = LineChartFactory.build();
 		line.updateParameters(json);
     	scope = $rootScope.$new();
+    	controller = $controller('LineChartController', { $scope : scope });
     	html = angular.element('<line-chart url="http://example/line.com"></line-chart>');
 
     	scope.lineChart = line;

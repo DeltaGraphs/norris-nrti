@@ -32,6 +32,7 @@ describe('MapChartView', function(){
 		map = MapChartFactory.build();
 		map.updateParameters(json);
     	scope = $rootScope.$new();
+    	controller = $controller('MapChartController', { $scope : scope });
     	html = angular.element('<map-chart url="http://example/map.com"></map-chart>');
 
     	scope.mapChart = map;

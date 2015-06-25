@@ -32,6 +32,7 @@ describe('TableView', function(){
 		table = TableFactory.build();
 		table.updateParameters(info);
     	scope = $rootScope.$new();
+    	controller = $controller('TableController', { $scope : scope });
     	html = angular.element('<table-chart url="http://example/table.com"></table-chart>');
 
     	scope.tableChart = table;
