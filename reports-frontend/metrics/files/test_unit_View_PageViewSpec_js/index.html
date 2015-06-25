@@ -44,7 +44,7 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">60.66</p>
+      <p class="stat">60.95</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">8.70</p>
+      <p class="stat">8.69</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.53</p>
+      <p class="stat">0.51</p>
     </div>
   </div>
 </div>
@@ -118,6 +118,8 @@ describe(&#039;PageView&#039;, function(){
 	beforeEach(inject(function($rootScope, $compile, $controller, $injector, $routeParams) {
     	scope = $rootScope.$new();
     	PagesList = $injector.get(&#039;PagesList&#039;);
+    	PageFactory = $injector.get(&#039;PageFactory&#039;);
+
     	info = {
     		data: [
     			{
@@ -128,15 +130,13 @@ describe(&#039;PageView&#039;, function(){
     					&#039;socketURL&#039;:&#039;http://norris-nrti-dev.herokuapp.com/norris/page1&#039;
     				}
     			}
-        ]};
+        	]
+    	};
 
         pagesList = new PagesList(info);
-
-    	PageFactory = $injector.get(&#039;PageFactory&#039;);
-    	controller = $controller(&#039;PageController&#039;, { $scope : scope, PagesList : pagesList, $routeParams : { pageId: &#039;0&#039;} });
+    	
+    	controller = $controller(&#039;PageController&#039;, { $scope : scope, PagesList : pagesList, $routeParams : { pageId: &#039;0&#039; } });
     	html = angular.element(&#039;&lt;page&gt;&lt;/page&gt;&#039;);
-
-    	scope.page = PageFactory.build();
 
     	scope.graphs = [
     		{ &#039;id&#039; : 1, &#039;type&#039; : &#039;MapChart&#039;, &#039;url&#039; : &#039;http://example/map.com&#039;},
