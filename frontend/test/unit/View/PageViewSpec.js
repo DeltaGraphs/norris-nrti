@@ -27,6 +27,8 @@ describe('PageView', function(){
 	beforeEach(inject(function($rootScope, $compile, $controller, $injector, $routeParams) {
     	scope = $rootScope.$new();
     	PagesList = $injector.get('PagesList');
+    	PageFactory = $injector.get('PageFactory');
+
     	info = {
     		data: [
     			{
@@ -37,15 +39,13 @@ describe('PageView', function(){
     					'socketURL':'http://norris-nrti-dev.herokuapp.com/norris/page1'
     				}
     			}
-        ]};
+        	]
+    	};
 
         pagesList = new PagesList(info);
-
-    	PageFactory = $injector.get('PageFactory');
-    	controller = $controller('PageController', { $scope : scope, PagesList : pagesList, $routeParams : { pageId: '0'} });
+    	
+    	controller = $controller('PageController', { $scope : scope, PagesList : pagesList, $routeParams : { pageId: '0' } });
     	html = angular.element('<page></page>');
-
-    	scope.page = PageFactory.build();
 
     	scope.graphs = [
     		{ 'id' : 1, 'type' : 'MapChart', 'url' : 'http://example/map.com'},
