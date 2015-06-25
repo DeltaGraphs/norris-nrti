@@ -8901,9 +8901,8 @@ angular.module('norris-nrti')
 	            flowJson.name = json.name;
 	        }
 
-	        
-	        if (json.maxItemsSaved !== undefined) {
-	            tableFlowJson.maxItems = json.maxItemsSaved;
+	        if (json.maxItems !== undefined) {
+	            tableFlowJson.maxItems = json.maxItems;
 	        }
 	    }
 
@@ -10760,11 +10759,9 @@ angular.module('norris-nrti')
 				$scope.changedD = !$scope.changedD; // 'notifica' cambiamento dati
 				$scope.changedP = !$scope.changedP; // 'notifica' cambiamento proprietà
 				count++;
-				$scope.count = count;
 			}
 		});
 		socket.on('updateGraphProp', function(info){ // ascolta sull'evento 'updateGraphProp'
-			console.log('updateGraphProp');
 			$scope.barChart.updateParameters(info); // aggiorna le proprietà del bar chart con i dati appena ricevuti
 			$scope.changedP = !$scope.changedP; // 'notifica' cambiamento proprietà
 		});
@@ -10804,10 +10801,6 @@ angular.module('norris-nrti')
 			$scope.changedD = !$scope.changedD; // 'notifica' cambiamento dati
 		});
 	};
-
-	// variabili e funzioni a disposizione dei test
-	//$scope.socket = socket;
-	//$scope.count = count;
 
 	// mette a disposizione delle funzioni sullo scope
 	$scope.socketConnection = this.socketConnection;
@@ -11327,7 +11320,7 @@ angular.module('norris-nrti')
 		scope: { // attributo della direttiva
             url: '@'
 		},
-        
+        //bindToController: true,
         link: function(scope, element, attrs){
             element.empty();
         	attrs.$observe('url', function(value) {
@@ -11566,7 +11559,7 @@ angular.module('norris-nrti')
         scope: { // attributo della direttiva
             url: '@'
 		},
-        bindToController: true,
+        //bindToController: true,
         link: function(scope, element, attrs){
 
             element.empty();
@@ -11793,7 +11786,7 @@ angular.module('norris-nrti')
             url: '@'
 		},
         template: '<div>{{title}}</div><div></div><div></div>', // template HTML inserito dalla direttiva
-        bindToController: true,
+        //bindToController: true,
     	link: function (scope, element, attrs) {
 
             attrs.$observe('url', function(value) {
@@ -12110,7 +12103,7 @@ angular.module('norris-nrti')
 		scope: {
             url: '@'
 		},
-		bindToController: true,
+		//bindToController: true,
         link: function(scope, element, attrs){
 
         	attrs.$observe('url', function(value) {
