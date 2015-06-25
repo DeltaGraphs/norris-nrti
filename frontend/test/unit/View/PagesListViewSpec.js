@@ -28,12 +28,21 @@ describe('PagesListView', function(){
 	beforeEach(inject(function($rootScope, $compile, $injector, $controller) {
     	scope = $rootScope.$new();
     	PageFactory = $injector.get('PageFactory');
-        controller = $controller('PagesListController', { $scope : scope });
+        //controller = $controller('PagesListController', { $scope : scope });
     	var page1 = PageFactory.build(),
     		page2 = PageFactory.build(),
     		page3 = PageFactory.build();
 
-    	html = angular.element('<pages-list url="http://example.com"></pages-List>');
+        html = '<div id="pagesList">' + 
+                    '<ul>' +
+                    '<li ng-repeat="page in pagesList">' +
+                        '<a ng-href="#/page/{{$index}}"> {{ page.page.getName() }} </a>' +
+                        '<p> {{ page.page.getDescription() }} </p>' +
+                    '</li>' +
+                    '</ul>' +
+            '</div>';
+
+    	//html = angular.element('<pages-list url="http://example.com"></pages-List>');
 
         scope.pagesList = [
             { 'id': 1, 'page' : page1 },
@@ -48,8 +57,8 @@ describe('PagesListView', function(){
 
   	describe('Constructor', function() {
 		it('works fine', function() {
-			var elm = element.find('li');
-			expect(elm.length).toBe(3);
+            var elm = element.find('li');
+            expect(elm.length).toBe(3);
 		});
 	});
 
