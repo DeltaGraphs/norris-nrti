@@ -26,12 +26,10 @@ describe('PagesListView', function(){
 	beforeEach(inject(function($rootScope, $compile, $injector, $controller) {
     	scope = $rootScope.$new();
     	PageFactory = $injector.get('PageFactory');
-        controller = $controller('PagesListController', { $scope : scope });
+        //controller = $controller('PagesListController', { $scope : scope });
     	var page1 = PageFactory.build(),
     		page2 = PageFactory.build(),
     		page3 = PageFactory.build();
-
-    	
 
     	element = angular.element('<pages-list url="http://example.com"></pages-List>');
 
