@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">66.87</p>
+      <p class="stat">64.77</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">53</p>
+      <p class="stat">57</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">7.92</p>
+      <p class="stat">7.79</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.32</p>
+      <p class="stat">0.39</p>
     </div>
   </div>
 </div>
@@ -111,11 +111,15 @@ describe(&#039;PageView&#039;, function(){
 
 	beforeEach(angular.mock.module(&#039;norris-nrti&#039;));
 
-	var html, element, scope;
+	var html, element, scope, controller, PageFactory;
 
-	beforeEach(inject(function($rootScope, $compile) {
+	beforeEach(inject(function($rootScope, $compile, $controller, $injector) {
     	scope = $rootScope.$new();
+    	PageFactory = $injector.get(&#039;PageFactory&#039;);
+    	controller = $controller(&#039;PageController&#039;, { $scope : scope });
     	html = angular.element(&#039;&lt;page&gt;&lt;/page&gt;&#039;);
+
+    	scope.page = PageFactory.build();
 
     	scope.graphs = [
     		{ &#039;id&#039; : 1, &#039;type&#039; : &#039;MapChart&#039;, &#039;url&#039; : &#039;http://example/map.com&#039;},
