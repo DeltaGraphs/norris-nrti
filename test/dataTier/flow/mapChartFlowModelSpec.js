@@ -225,7 +225,7 @@ describe('MapChartFlowModel', function() {
             flow1.addRecord({temperature: 2});
             flow1.addRecord({temperature: 3});
             var ID4=flow1.addRecord({temperature: 4});
-            assert.strictEqual(flow1._records.length===3);
+            assert.strictEqual(flow1._records.length, 3);
             assert.strictEqual(flow1._records[2].norrisRecordID, ID4);
         });
     });
