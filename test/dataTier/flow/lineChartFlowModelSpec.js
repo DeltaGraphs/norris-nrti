@@ -118,6 +118,15 @@ describe('LineChartFlowModel', function() {
             assert.strictEqual(flow1._records.length, 1);
             assert.strictEqual(flow1._records[0].norrisRecordID.indexOf('flow1'), 0);
         });
+        it('replaces an old record', function() {
+            var flow1=new LineChartFlowModel({ID: 'flow1', maxItemsSaved: 3});
+            flow1.addRecord({temperature: 1});
+            flow1.addRecord({temperature: 2});
+            flow1.addRecord({temperature: 3});
+            var ID4=flow1.addRecord({temperature: 4});
+            assert.strictEqual(flow1._records.length===3);
+            assert.strictEqual(flow1._records[2].norrisRecordID, ID4);
+        });
     });
 
     describe('#updateRecord', function() {
