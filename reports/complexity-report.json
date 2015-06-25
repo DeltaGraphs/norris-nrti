@@ -10144,14 +10144,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 86,
-                    "physical": 137
+                    "logical": 88,
+                    "physical": 141
                 },
-                "cyclomatic": 23,
+                "cyclomatic": 24,
                 "halstead": {
                     "operators": {
                         "distinct": 20,
-                        "total": 320,
+                        "total": 328,
                         "identifiers": [
                             "var",
                             "=",
@@ -10176,8 +10176,8 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 86,
-                        "total": 358,
+                        "distinct": 87,
+                        "total": 368,
                         "identifiers": [
                             "\"use strict\"",
                             "FlowModel",
@@ -10241,10 +10241,11 @@
                             "record",
                             "\"object\"",
                             "_records",
-                            "push",
-                            "index",
                             "length",
                             1,
+                            "splice",
+                            "push",
+                            "index",
                             "generateNorrisRecordID",
                             "norrisRecordID",
                             "validateRecord",
@@ -10267,17 +10268,17 @@
                             "exports"
                         ]
                     },
-                    "length": 678,
-                    "vocabulary": 106,
-                    "difficulty": 41.627906976744185,
-                    "volume": 4561.530068193849,
-                    "effort": 189886.9493503951,
-                    "bugs": 1.5205100227312829,
-                    "time": 10549.274963910839
+                    "length": 696,
+                    "vocabulary": 107,
+                    "difficulty": 42.298850574712645,
+                    "volume": 4692.061022535198,
+                    "effort": 198468.7880796498,
+                    "bugs": 1.5640203408450661,
+                    "time": 11026.043782202767
                 },
                 "params": 5,
                 "line": 2,
-                "cyclomaticDensity": 26.744186046511626
+                "cyclomaticDensity": 27.27272727272727
             },
             "functions": [
                 {
@@ -10430,22 +10431,22 @@
                 {
                     "name": "<anonymous>.addRecord",
                     "sloc": {
-                        "logical": 9,
-                        "physical": 12
+                        "logical": 11,
+                        "physical": 16
                     },
-                    "cyclomatic": 2,
+                    "cyclomatic": 3,
                     "halstead": {
                         "operators": {
                             "distinct": 11,
-                            "total": 29,
+                            "total": 37,
                             "identifiers": [
                                 "if",
                                 "&&",
                                 "!==",
                                 "===",
                                 "typeof (prefix)",
-                                "()",
                                 ".",
+                                "()",
                                 "var",
                                 "=",
                                 "-",
@@ -10453,8 +10454,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 18,
-                            "total": 33,
+                            "distinct": 21,
+                            "total": 43,
                             "identifiers": [
                                 "record",
                                 "undefined",
@@ -10462,10 +10463,13 @@
                                 "\"object\"",
                                 "this",
                                 "_records",
+                                "length",
+                                "_maxItemsSaved",
+                                0,
+                                1,
+                                "splice",
                                 "push",
                                 "index",
-                                "length",
-                                1,
                                 "ID",
                                 "generateNorrisRecordID",
                                 "norrisRecordID",
@@ -10476,17 +10480,17 @@
                                 123
                             ]
                         },
-                        "length": 62,
-                        "vocabulary": 29,
-                        "difficulty": 10.083333333333332,
-                        "volume": 301.1948216979095,
-                        "effort": 3037.0477854539204,
-                        "bugs": 0.10039827389930317,
-                        "time": 168.72487696966223
+                        "length": 80,
+                        "vocabulary": 32,
+                        "difficulty": 11.261904761904761,
+                        "volume": 400,
+                        "effort": 4504.761904761905,
+                        "bugs": 0.13333333333333333,
+                        "time": 250.26455026455025
                     },
                     "params": 1,
                     "line": 80,
-                    "cyclomaticDensity": 22.22222222222222
+                    "cyclomaticDensity": 27.27272727272727
                 },
                 {
                     "name": "<anonymous>.updateRecord",
@@ -10558,7 +10562,7 @@
                         "time": 649.3551457449141
                     },
                     "params": 2,
-                    "line": 94,
+                    "line": 98,
                     "cyclomaticDensity": 44.44444444444444
                 },
                 {
@@ -10618,7 +10622,7 @@
                         "time": 96.11806852012515
                     },
                     "params": 0,
-                    "line": 123,
+                    "line": 127,
                     "cyclomaticDensity": 9.090909090909092
                 }
             ],
@@ -10634,24 +10638,24 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 95.4388003205123,
-            "loc": 14.8,
-            "cyclomatic": 5.4,
-            "effort": 10061.602769190325,
+            "maintainability": 94.90006093937531,
+            "loc": 15.2,
+            "cyclomatic": 5.6,
+            "effort": 10355.145593051924,
             "params": 1,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/dataTier/flow/lineChartFlowModel.js"
         },
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 131,
-                    "physical": 206
+                    "logical": 133,
+                    "physical": 210
                 },
-                "cyclomatic": 35,
+                "cyclomatic": 36,
                 "halstead": {
                     "operators": {
                         "distinct": 25,
-                        "total": 452,
+                        "total": 460,
                         "identifiers": [
                             "var",
                             "=",
@@ -10682,7 +10686,7 @@
                     },
                     "operands": {
                         "distinct": 99,
-                        "total": 492,
+                        "total": 502,
                         "identifiers": [
                             "\"use strict\"",
                             "FlowModel",
@@ -10751,9 +10755,10 @@
                             "record",
                             "\"object\"",
                             "_records",
+                            "length",
+                            "splice",
                             "push",
                             "index",
-                            "length",
                             "generateNorrisRecordID",
                             "norrisRecordID",
                             "validateRecord",
@@ -10778,24 +10783,23 @@
                             "keyRecord",
                             "validateData",
                             "deleteRecord",
-                            "splice",
                             134,
                             "getProperties",
                             "module",
                             "exports"
                         ]
                     },
-                    "length": 944,
+                    "length": 962,
                     "vocabulary": 124,
-                    "difficulty": 62.121212121212125,
-                    "volume": 6564.761317005211,
-                    "effort": 407810.93029880855,
-                    "bugs": 2.18825377233507,
-                    "time": 22656.16279437825
+                    "difficulty": 63.38383838383839,
+                    "volume": 6689.936850592175,
+                    "effort": 424033.8761360192,
+                    "bugs": 2.2299789501973915,
+                    "time": 23557.437563112177
                 },
                 "params": 7,
                 "line": 2,
-                "cyclomaticDensity": 26.717557251908396
+                "cyclomaticDensity": 27.06766917293233
             },
             "functions": [
                 {
@@ -10957,22 +10961,22 @@
                 {
                     "name": "<anonymous>.addRecord",
                     "sloc": {
-                        "logical": 8,
-                        "physical": 11
+                        "logical": 10,
+                        "physical": 15
                     },
-                    "cyclomatic": 2,
+                    "cyclomatic": 3,
                     "halstead": {
                         "operators": {
                             "distinct": 11,
-                            "total": 27,
+                            "total": 35,
                             "identifiers": [
                                 "if",
                                 "&&",
                                 "!==",
                                 "===",
                                 "typeof (prefix)",
-                                "()",
                                 ".",
+                                "()",
                                 "var",
                                 "=",
                                 "-",
@@ -10980,8 +10984,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 15,
-                            "total": 29,
+                            "distinct": 18,
+                            "total": 39,
                             "identifiers": [
                                 "record",
                                 "undefined",
@@ -10989,10 +10993,13 @@
                                 "\"object\"",
                                 "this",
                                 "_records",
+                                "length",
+                                "_maxItemsSaved",
+                                0,
+                                1,
+                                "splice",
                                 "push",
                                 "index",
-                                "length",
-                                1,
                                 "ID",
                                 "generateNorrisRecordID",
                                 "norrisRecordID",
@@ -11000,17 +11007,17 @@
                                 133
                             ]
                         },
-                        "length": 56,
-                        "vocabulary": 26,
-                        "difficulty": 10.633333333333333,
-                        "volume": 263.2246242159012,
-                        "effort": 2798.955170829083,
-                        "bugs": 0.0877415414053004,
-                        "time": 155.4975094905046
+                        "length": 74,
+                        "vocabulary": 29,
+                        "difficulty": 11.916666666666666,
+                        "volume": 359.49059363944036,
+                        "effort": 4283.929574203331,
+                        "bugs": 0.11983019787981346,
+                        "time": 237.99608745574062
                     },
                     "params": 1,
                     "line": 92,
-                    "cyclomaticDensity": 25
+                    "cyclomaticDensity": 30
                 },
                 {
                     "name": "<anonymous>.updateRecord",
@@ -11082,7 +11089,7 @@
                         "time": 649.3551457449141
                     },
                     "params": 2,
-                    "line": 104,
+                    "line": 108,
                     "cyclomaticDensity": 44.44444444444444
                 },
                 {
@@ -11155,7 +11162,7 @@
                         "time": 1069.526122403388
                     },
                     "params": 1,
-                    "line": 134,
+                    "line": 138,
                     "cyclomaticDensity": 34.61538461538461
                 },
                 {
@@ -11221,7 +11228,7 @@
                         "time": 343.93761134181307
                     },
                     "params": 1,
-                    "line": 172,
+                    "line": 176,
                     "cyclomaticDensity": 38.46153846153847
                 },
                 {
@@ -11281,7 +11288,7 @@
                         "time": 96.11806852012515
                     },
                     "params": 0,
-                    "line": 193,
+                    "line": 197,
                     "cyclomaticDensity": 9.090909090909092
                 }
             ],
@@ -11297,24 +11304,24 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 93.11046815249952,
-            "loc": 16.714285714285715,
-            "cyclomatic": 5.857142857142857,
-            "effort": 11110.45889407924,
+            "maintainability": 92.7656581787243,
+            "loc": 17,
+            "cyclomatic": 6,
+            "effort": 11322.598094561274,
             "params": 1,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/dataTier/flow/mapChartFlowModel.js"
         },
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 105,
-                    "physical": 168
+                    "logical": 107,
+                    "physical": 172
                 },
-                "cyclomatic": 37,
+                "cyclomatic": 38,
                 "halstead": {
                     "operators": {
                         "distinct": 25,
-                        "total": 393,
+                        "total": 401,
                         "identifiers": [
                             "var",
                             "=",
@@ -11344,8 +11351,8 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 83,
-                        "total": 415,
+                        "distinct": 84,
+                        "total": 425,
                         "identifiers": [
                             "\"use strict\"",
                             "FlowModel",
@@ -11412,9 +11419,10 @@
                             "isHEX",
                             "text",
                             "_records",
+                            1,
+                            "splice",
                             "push",
                             "index",
-                            1,
                             "generateNorrisRecordID",
                             "norrisRecordID",
                             "validateRecord",
@@ -11432,17 +11440,17 @@
                             "exports"
                         ]
                     },
-                    "length": 808,
-                    "vocabulary": 108,
-                    "difficulty": 62.5,
-                    "volume": 5457.949101748083,
-                    "effort": 341121.8188592552,
-                    "bugs": 1.819316367249361,
-                    "time": 18951.21215884751
+                    "length": 826,
+                    "vocabulary": 109,
+                    "difficulty": 63.24404761904761,
+                    "volume": 5590.520252265741,
+                    "effort": 353567.1290495446,
+                    "bugs": 1.863506750755247,
+                    "time": 19642.618280530252
                 },
                 "params": 5,
                 "line": 2,
-                "cyclomaticDensity": 35.23809523809524
+                "cyclomaticDensity": 35.51401869158878
             },
             "functions": [
                 {
@@ -11594,14 +11602,14 @@
                 {
                     "name": "<anonymous>.addRecord",
                     "sloc": {
-                        "logical": 20,
-                        "physical": 30
+                        "logical": 22,
+                        "physical": 34
                     },
-                    "cyclomatic": 8,
+                    "cyclomatic": 9,
                     "halstead": {
                         "operators": {
                             "distinct": 16,
-                            "total": 78,
+                            "total": 86,
                             "identifiers": [
                                 "var",
                                 "=",
@@ -11622,8 +11630,8 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 28,
-                            "total": 80,
+                            "distinct": 30,
+                            "total": 90,
                             "identifiers": [
                                 "rec",
                                 "record",
@@ -11645,9 +11653,11 @@
                                 false,
                                 "this",
                                 "_records",
+                                "_maxItemsSaved",
+                                1,
+                                "splice",
                                 "push",
                                 "index",
-                                1,
                                 "ID",
                                 "generateNorrisRecordID",
                                 "norrisRecordID",
@@ -11655,17 +11665,17 @@
                                 143
                             ]
                         },
-                        "length": 158,
-                        "vocabulary": 44,
-                        "difficulty": 22.857142857142858,
-                        "volume": 862.590195744693,
-                        "effort": 19716.347331307268,
-                        "bugs": 0.287530065248231,
-                        "time": 1095.3526295170705
+                        "length": 176,
+                        "vocabulary": 46,
+                        "difficulty": 24,
+                        "volume": 972.1469042660343,
+                        "effort": 23331.525702384824,
+                        "bugs": 0.3240489680886781,
+                        "time": 1296.1958723547125
                     },
                     "params": 1,
                     "line": 80,
-                    "cyclomaticDensity": 40
+                    "cyclomaticDensity": 40.909090909090914
                 },
                 {
                     "name": "<anonymous>.updateRecord",
@@ -11747,7 +11757,7 @@
                         "time": 2305.397743281572
                     },
                     "params": 2,
-                    "line": 112,
+                    "line": 116,
                     "cyclomaticDensity": 50
                 },
                 {
@@ -11797,7 +11807,7 @@
                         "time": 43.03576443796233
                     },
                     "params": 0,
-                    "line": 160,
+                    "line": 164,
                     "cyclomaticDensity": 16.666666666666664
                 }
             ],
@@ -11813,10 +11823,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 89.16206835230344,
-            "loc": 18.6,
-            "cyclomatic": 8.2,
-            "effort": 20767.79660734743,
+            "maintainability": 88.69478977072565,
+            "loc": 19,
+            "cyclomatic": 8.4,
+            "effort": 21490.832281562944,
             "params": 1,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/dataTier/flow/tableFlowModel.js"
         },
@@ -18621,9 +18631,9 @@
     ],
     "changeCost": 21.875,
     "coreSize": 37.5,
-    "loc": 10.446145607864358,
-    "cyclomatic": 4.279066332972583,
-    "effort": 8248.183126577562,
+    "loc": 10.480074179292927,
+    "cyclomatic": 4.296030618686869,
+    "effort": 8286.580554657536,
     "params": 1.1196338383838387,
-    "maintainability": 105.04244278328967
+    "maintainability": 105.00022941027436
 }

@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">43.47</p>
+      <p class="stat">43.74</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">356</p>
+      <p class="stat">365</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">78.43</p>
+      <p class="stat">86.59</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">14.03</p>
+      <p class="stat">14.28</p>
     </div>
   </div>
 </div>
@@ -309,6 +309,15 @@ describe(&#039;MapChartFlowModel&#039;, function() {
             assert.strictEqual(ID.indexOf(&#039;flow1&#039;), 0);
             assert.strictEqual(flow1._records.length, 1);
             assert.strictEqual(flow1._records[0].norrisRecordID.indexOf(&#039;flow1&#039;), 0);
+        });
+        it(&#039;replaces an old record&#039;, function() {
+            var flow1=new MapChartFlowModel({ID: &#039;flow1&#039;, maxItemsSaved: 3});
+            flow1.addRecord({temperature: 1});
+            flow1.addRecord({temperature: 2});
+            flow1.addRecord({temperature: 3});
+            var ID4=flow1.addRecord({temperature: 4});
+            assert.strictEqual(flow1._records.length===3);
+            assert.strictEqual(flow1._records[2].norrisRecordID, ID4);
         });
     });
 
