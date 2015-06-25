@@ -27,7 +27,7 @@ angular.module('norris-nrti')
 		controller : 'PageController',
 		replace: false,
 		scope: {},
-		template: '<div id="page"></div>', // template HTML inserito dalla direttiva
+		template: '<div id="page" style="width: 100%;"></div>', // template HTML inserito dalla direttiva
 		link: function (scope, element, attrs) {
 			scope.socketConnection(); // richiama la funzione del controller che permette di connettersi al server
 
@@ -62,6 +62,7 @@ angular.module('norris-nrti')
 
 				var table = document.createElement('table');
 				table.className = 'graphstable';
+				table.setAttribute('style', 'width: 100%;');
 				parent.appendChild(table);
 
 				// crea la tabella con i grafici
@@ -100,7 +101,7 @@ angular.module('norris-nrti')
 					}
 				}
 
-				parent.setAttribute('style', 'height:'+ 1000*scope.graphs.length +'px; width:'+ 1500*scope.graphs[0].length +'px;');
+				//parent.setAttribute('style', 'height:'+ 1000*scope.graphs.length +'px; width:'+ 1500*scope.graphs[0].length +'px;');
 
 				var el = $compile(parent)(scope);
 				element.parent().append( el );

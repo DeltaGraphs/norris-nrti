@@ -47,7 +47,6 @@ angular.module('norris-nrti')
                 if (newValue !== oldValue) {
                     scope.setData(); // chiama la funzione che organizza i dati da visualizzare
                     if (scope.displayed.length > 0 && scope.$parent.changedP === true) {
-                        console.log('changedP');
                         scope.init(); // chiama la funzione init che crea la tabella
                         scope.$parent.changedP = false;
                     }

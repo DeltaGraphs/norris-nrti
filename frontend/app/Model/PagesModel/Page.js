@@ -100,7 +100,7 @@ angular.module('norris-nrti')
                 }
             }
             if (count === 0){ // controlla che non sia già presente nella lista un grafico con lo stesso id
-                this._graphsList.push( {'id' : graph.ID, 'type' : graph.type, 'url' : graph.socketURL} );          
+                this._graphsList.push( {'id' : graph.ID, 'type' : graph.type, 'url' : graph.socketURL} );
             }
         // error
         }

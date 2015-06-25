@@ -70,7 +70,7 @@ angular.module('norris-nrti')
             // inserisce il codice HTML che crea il grafico desiderato
             scope.init = function(){
 
-                var linechart, legend, onPoint;
+                var linechart, legend, onPoint, ticks;
                 var str = scope.url.split('/');
                 var id = str[str.length-1];
 
@@ -84,11 +84,17 @@ angular.module('norris-nrti')
                 } else {
                     onPoint = false;
                 }
+                if (scope.$parent.lineChart.getX() !== null && scope.$parent.lineChart.getX() !== undefined){
+                    ticks = scope.$parent.lineChart.getX().getTicks();
+                }
+                else{
+                    ticks = 10;
+                }
                 if (scope.$parent.lineChart.getViewFinder() === true) {
                     linechart = '<div class="graphtitle">'+ scope.$parent.lineChart.getTitle() +'</div>' +
                                 '<nvd3-line-with-focus-chart data="data" nodata=" " id="'+ id +'" ' +
                                 'yaxistickformat="yAxisTickFormatFunction()" xaxistickformat="xAxisTickFormatFunction()" x2axistickformat="xAxisTickFormatFunction()" ' +
-                                'margin="{left:30,top:30,bottom:30,right:30}" margin2="{left:30,top:30,bottom:30,right:30}" interactive="true" tooltips="'+ onPoint +'" ' +
+                                'margin="{left:30,top:30,bottom:30,right:30}" margin2="{left:30,top:30,bottom:30,right:30}" xaxisticks="' + ticks + '" x2axisticks="' + ticks + '" interactive="true" tooltips="'+ onPoint +'" ' +
                                 'showlegend="' + legend + '" color="colorFunction()" ' + 
                                 'xaxisrotatelabels="-90" x2axisrotatelables="-90" interpolate="' + scope.$parent.lineChart.getInterpolation() +'">' + // perchè colorFunction ritorna null per adesso
                                 '<svg style="width:'+ scope.$parent.lineChart.getWidth() +'px; height:'+ scope.$parent.lineChart.getHeight() +'px;"></svg></nvd3-line-with-focus-chart>';
@@ -99,7 +105,7 @@ angular.module('norris-nrti')
                                 'margin="{left:30,top:30,bottom:30,right:30}" interactive="true" tooltips="'+ onPoint +'" showlegend="' + legend + '" ' +
                                 'xaxisrotatelabels="-90" interpolate="' + scope.$parent.lineChart.getInterpolation() +'" ' +
                                 'color="colorFunction()" ' +
-                                'showxaxis="true" showyaxis="true">' +
+                                'showxaxis="true" showyaxis="true" xaxisticks="' + ticks + '">' +
                                 '<svg style="width:'+ scope.$parent.lineChart.getWidth() +'px; height:'+ scope.$parent.lineChart.getHeight() +'px;"></svg></nvd3-line-chart>';
                 }
 
