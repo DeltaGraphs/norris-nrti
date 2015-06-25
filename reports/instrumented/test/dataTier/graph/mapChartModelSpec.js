@@ -315,6 +315,24 @@ describe('MapChartModel', function() {
             assert.strictEqual(graph1.updateRecord('flow1', ID, {temperature: 2}), true);
         });
     });
+    describe('#updateMovie', function() {
+        it('returns 231 if it doesn\'t find the wanted flow', function() {
+            var graph1=new MapChartModel({ID: 'graph1'});
+            graph1._flows[0] = new MapChartFlowModel({ID: 'flow1'});
+            assert.strictEqual(graph1.updateMovie('flow4', 0, {temperature: 2}), 231);
+        });
+        it('returns 131 if no valid record is passed', function() {
+            var graph1=new MapChartModel({ID: 'graph1'});
+            graph1._flows[0] = new MapChartFlowModel({ID: 'flow1'});
+            assert.strictEqual(graph1.updateMovie('flow1', null), 131);
+        });
+        it('returns recordsID if passed valid parameters', function() {
+            var graph1=new MapChartModel({ID: 'graph1'});
+            graph1._flows[0] = new MapChartFlowModel({ID: 'flow1'});
+            graph1._flows[0].addRecord({temperature: 3});
+            assert.strictEqual(Array.isArray(graph1.updateMovie('flow1', [{temperature: 2}])), true);
+        });
+    });
     describe('#addRecord', function() {
         it('returns 231 if it doesn\'t find the wanted flow', function() {
             var graph1=new MapChartModel({ID: 'graph1'});

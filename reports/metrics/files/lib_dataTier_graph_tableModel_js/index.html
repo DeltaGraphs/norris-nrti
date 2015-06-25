@@ -170,7 +170,7 @@ TableModel.prototype.updateProperties = function(params) {
 		}
 		if(params.sort!==undefined &amp;&amp; params.sort.column!==undefined &amp;&amp; params.sort.ordering!==undefined &amp;&amp; Array.isArray(params.sort.column) &amp;&amp; Array.isArray(params.sort.ordering)){
 			var check=true;
-			for(var ii=0; i&lt;params.sort.ordering.length;ii++){
+			for(var ii=0; ii&lt;params.sort.ordering.length;ii++){
 				if(!(params.sort.ordering[ii] === &#039;ASC&#039; || params.sort.ordering[ii] === &#039;DESC&#039;)){
 					check=false;
 					break;

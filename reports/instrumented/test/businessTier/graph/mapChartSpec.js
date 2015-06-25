@@ -219,6 +219,20 @@ describe('MapChart', function() {
             assert.strictEqual(mapChart.updateRecord('flow1',recID,{'lat': 3, 'long': 7}),true);
         });
     });
+    describe('#updateMovie', function() {
+        it('returned error - undefined record', function() {
+            var mock=new socketMock();
+            var mapChart=new MapChart({ID: 'dada'}, {_page: 'dssada'}, mock);
+            assert.strictEqual(typeof mapChart.updateMovie(),'number');
+        });
+        it('returned array with recID - correctly updated', function() {
+            var mock=new socketMock();
+            var mapChart=new MapChart({ID: 'dada'}, {_page: 'dssada'}, mock);
+            mapChart.createMapChartFlow({ ID:'flow1', name: 'grafico', latitudeKey: 'lat', longitudeKey:'long'});
+            mapChart.addRecord('flow1',{'lat': 1, 'long': 25});
+            assert.strictEqual(Array.isArray(mapChart.updateMovie('flow1',[{'lat': 3, 'long': 7}])), true);
+        });
+    });
     describe('#updateProperties', function() {
         it('no update - invalid params', function() {
             var mock = new socketMock();

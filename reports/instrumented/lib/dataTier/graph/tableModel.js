@@ -110,7 +110,7 @@ TableModel.prototype.updateProperties = function (params) {
             __cov_8F6braK7QgsgZvjoEVpBQg.s['36']++;
             var check = true;
             __cov_8F6braK7QgsgZvjoEVpBQg.s['37']++;
-            for (var ii = 0; i < params.sort.ordering.length; ii++) {
+            for (var ii = 0; ii < params.sort.ordering.length; ii++) {
                 __cov_8F6braK7QgsgZvjoEVpBQg.s['38']++;
                 if (!((__cov_8F6braK7QgsgZvjoEVpBQg.b['9'][0]++, params.sort.ordering[ii] === 'ASC') || (__cov_8F6braK7QgsgZvjoEVpBQg.b['9'][1]++, params.sort.ordering[ii] === 'DESC'))) {
                     __cov_8F6braK7QgsgZvjoEVpBQg.b['8'][0]++;
