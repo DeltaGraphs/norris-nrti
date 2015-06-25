@@ -42,9 +42,9 @@ describe('PageView', function(){
         	]
     	};
 
-        pagesList = new PagesList(info);
+        PagesList.addPage(info);
     	
-    	controller = $controller('PageController', { $scope : scope, PagesList : pagesList, $routeParams : { pageId: '0' } });
+    	controller = $controller('PageController', { $scope : scope, PagesList : PagesList, $routeParams : { pageId: '0' } });
     	html = angular.element('<page></page>');
 
     	scope.graphs = [
