@@ -124,14 +124,14 @@ describe(&#039;PagesListView&#039;, function(){
 
     	element = angular.element(&#039;&lt;pages-list url=&quot;http://example.com&quot;&gt;&lt;/pages-List&gt;&#039;);
 
-    	element = $compile(element)(scope);
-    	scope.$digest();
-
         scope.pagesList = [
             { &#039;id&#039;: 1, &#039;page&#039; : page1 },
             { &#039;id&#039;: 2, &#039;page&#039; : page2 },
             { &#039;id&#039;: 3, &#039;page&#039; : page3 }
         ];
+
+        element = $compile(element)(scope);
+        scope.$digest();
 
   	}));
 
