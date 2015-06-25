@@ -20,18 +20,17 @@ describe('PagesListView', function(){
 
 	beforeEach(angular.mock.module('norris-nrti'));
 
-	var element, scope, controller;
+	var html, element, scope;
 	var PageFactory;
 
-	beforeEach(inject(function($rootScope, $compile, $injector, $controller) {
+	beforeEach(inject(function($rootScope, $compile, $injector) {
     	scope = $rootScope.$new();
     	PageFactory = $injector.get('PageFactory');
-        //controller = $controller('PagesListController', { $scope : scope });
     	var page1 = PageFactory.build(),
     		page2 = PageFactory.build(),
     		page3 = PageFactory.build();
 
-    	element = angular.element('<pages-list url="http://example.com"></pages-List>');
+    	html = angular.element('<pages-list url="http://example.com"></pages-List>');
 
         scope.pagesList = [
             { 'id': 1, 'page' : page1 },
@@ -39,17 +38,14 @@ describe('PagesListView', function(){
             { 'id': 3, 'page' : page3 }
         ];
 
-        element = $compile(element)(scope);
+        element = $compile(html)(scope);
         scope.$digest();
 
   	}));
 
   	describe('Constructor', function() {
 		it('works fine', function() {
-            console.dir(element);
-			//var elm = element.find('li');
-            console.dir(elm);
-            var elm = element.children('li');
+			var elm = element.find('li');
 			expect(elm.length).toBe(3);
 		});
 	});
