@@ -9,6 +9,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 1.0.1         2015-06-25  Maria Giovanna Chinellato	Fix initializeData
+*
 * 1.0.0         2015-05-22  Maria Giovanna Chinellato	Tested
 *
 * 0.2.0         2015-05-16  Maria Giovanna Chinellato	Modified general structure, some fixes
@@ -50,7 +52,7 @@ angular.module('norris-nrti')
 
     function TableFlow(info) {
     	this._data = [];
-		this._maxItems = 100;
+		this._maxItems = null;
 
 		var json = split(info);
 		var fJson = json.flowJson;
@@ -83,10 +85,21 @@ angular.module('norris-nrti')
 
 	TableFlow.prototype.initializeData = function(newData, addRowOn) {
 		for (var i=0; i<newData.records.length; i++) {
-			if (addRowOn === 'bottom') {
-				this._data.push(newData.records[i]);
-			} else if (addRowOn === 'top') {
-				this._data.unshift(newData.records[i]);
+			if (this._maxItem !== null && this._data.length < this._maxItem){
+				if (addRowOn === 'bottom') {
+					this._data.push(newData.records[i]);
+				} else if (addRowOn === 'top') {
+					this._data.unshift(newData.records[i]);
+				}
+			}
+			else{
+				if (addRowOn === 'bottom') {
+					this._data.splice(0,1);
+					this._data.push(newData.records[i]);
+				} else if (addRowOn === 'top') {
+					this._data.splice(this._data.length-1,1);
+					this._data.unshift(newData.records[i]);
+				}
 			}
 		}
 	};
