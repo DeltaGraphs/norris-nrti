@@ -127,7 +127,7 @@ angular.module(&#039;norris-nrti&#039;)
 		scope: { // attributo della direttiva
             url: &#039;@&#039;
 		},
-        
+        //bindToController: true,
         link: function(scope, element, attrs){
             element.empty();
         	attrs.$observe(&#039;url&#039;, function(value) {
