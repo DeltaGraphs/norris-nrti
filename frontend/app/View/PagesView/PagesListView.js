@@ -9,6 +9,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.1.1         2015-06-25  Maria Giovanna Chinellato   Fix test
+*
 * 1.0.0         2015-06-14  Maria Giovanna Chinellato   Tested
 *
 * 0.0.2         2015-06-04  Maria Giovanna Chinellato   Add link function, observe and watch      

@@ -9,6 +9,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.1.1         2015-06-25  Maria Giovanna Chinellato   Fix test
+*
 * 0.1.0         2015-06-13  Maria Giovanna Chinellato   Add all attributes and all methods
 *
 * 0.0.1         2015-06-13  Maria Giovanna Chinellato   Initial code      
