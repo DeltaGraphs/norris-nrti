@@ -20,7 +20,7 @@ describe('BarChartView', function(){
 
 	beforeEach(angular.mock.module('norris-nrti'));
 
-	var html, element, scope, bar, BarChartFactory;
+	var html, element, scope, bar, BarChartFactory, controller;
 	var info = {
 		'properties' : {
 			'title' : 'prova1',
@@ -31,11 +31,12 @@ describe('BarChartView', function(){
 		}
 	};
 	
-	beforeEach(inject(function($rootScope, $compile, $injector) {
+	beforeEach(inject(function($rootScope, $compile, $injector, $controller) {
 		BarChartFactory = $injector.get('BarChartFactory');
 		bar = BarChartFactory.build();
 		bar.updateParameters(info);
     	scope = $rootScope.$new();
+    	controller = $controller('BarChartController', { $scope : scope });
     	html = angular.element('<bar-chart url="http://example/bar.com"></bar-chart>');
 
     	scope.barChart = bar;
