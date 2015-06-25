@@ -105,7 +105,7 @@ angular.module('norris-nrti')
 
 	MapChartFlow.prototype.initializeData = function(newData) {
 		for (var i=0; i<newData.records.length; i++) {
-			if (this._maxItem !== null && this._data.length < this._maxItem){
+			if (this._maxItem === null || this._data.length < this._maxItem){
 				this._data.push(newData.records[i]);
 			}
 			else{

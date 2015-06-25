@@ -85,7 +85,7 @@ angular.module('norris-nrti')
 
 	TableFlow.prototype.initializeData = function(newData, addRowOn) {
 		for (var i=0; i<newData.records.length; i++) {
-			if (this._maxItem !== null && this._data.length < this._maxItem){
+			if (this._maxItems === null || this._data.length < this._maxItems){
 				if (addRowOn === 'bottom') {
 					this._data.push(newData.records[i]);
 				} else if (addRowOn === 'top') {

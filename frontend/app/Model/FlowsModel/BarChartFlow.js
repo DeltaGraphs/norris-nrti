@@ -81,13 +81,7 @@ angular.module('norris-nrti')
 
 	BarChartFlow.prototype.initializeData = function(newData) {
 		for (var i=0; i<newData.records.length; i++) {
-			if (this._maxItem !== null && this._data.length < this._maxItem){
-				this._data.push(newData.records[i]);
-			}
-			else{
-				this._data.splice(0,1);
-				this._data.push(newData.records[i]);
-			}
+			this._data.push(newData.records[i]);
 		}
 	};
 	BarChartFlow.prototype.emptyData = function() {
