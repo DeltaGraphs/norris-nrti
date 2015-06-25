@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">53</p>
+      <p class="stat">54</p>
     </div>
   </div>
   <div class="row historical">
@@ -137,7 +137,8 @@ describe(&#039;PagesListView&#039;, function(){
 
   	describe(&#039;Constructor&#039;, function() {
 		it(&#039;works fine&#039;, function() {
-			var elm = element.find(&#039;li&#039;);
+			//var elm = element.find(&#039;li&#039;);
+            var elm = element.children(&#039;li&#039;);
 			expect(elm.length).toBe(3);
 		});
 	});
