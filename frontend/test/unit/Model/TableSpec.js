@@ -211,7 +211,7 @@ describe('Table', function(){
 
 		var fJson = {
 			'name' : 'flusso1',
-			'maxItem' : '5'
+			'maxItems' : '5'
 		};
 
 		var newFlow;

@@ -20,11 +20,15 @@ describe('PageView', function(){
 
 	beforeEach(angular.mock.module('norris-nrti'));
 
-	var html, element, scope;
+	var html, element, scope, controller, PageFactory;
 
-	beforeEach(inject(function($rootScope, $compile) {
+	beforeEach(inject(function($rootScope, $compile, $controller, $injector) {
     	scope = $rootScope.$new();
+    	PageFactory = $injector.get('PageFactory');
+    	controller = $controller('PageController', { $scope : scope });
     	html = angular.element('<page></page>');
+
+    	scope.page = PageFactory.build();
 
     	scope.graphs = [
     		{ 'id' : 1, 'type' : 'MapChart', 'url' : 'http://example/map.com'},
