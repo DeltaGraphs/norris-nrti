@@ -36,7 +36,7 @@ module.exports = function(config) {
 			'app/Controller/GraphsControllers/*.js',
 			'app/Controller/PagesControllers/*.js',
 			'test/unit/Model/*.js',
-			'test/unit/Controller/*.js',
+			//'test/unit/Controller/*.js',
 			'test/unit/View/*.js'
 		],
 
