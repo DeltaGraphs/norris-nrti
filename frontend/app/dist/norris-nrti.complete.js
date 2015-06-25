@@ -8336,8 +8336,9 @@ var norrisConfig = function($routeProvider) {
     ; /* fine definizione di routeProvider */
 };
 
-var norris = angular.module('norris-nrti', ['ngRoute', 'nvd3ChartDirectives', 'smart-table']).config(norrisConfig); /* definisce un
-namespace (chiamato modulo) */
+var norris = angular.module('norris-nrti', ['ngRoute', 'smart-table', 'nvd3ChartDirectives']).config(norrisConfig); /* definisce un
+namespace (chiamato modulo) */ 
+
 /*jshint node: true */
 'use strict';
 
@@ -8349,6 +8350,10 @@ namespace (chiamato modulo) */
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 1.0.1         2015-06-25  Maria Giovanna Chinellato	Fix initializeData
+*
+* 1.0.0			2015-05-20	Francesco Rossetto			Tested
+*
 * 0.2.0			2015-05-18	Francesco Rossetto			Modified general structure, some fixes
 *
 * 0.1.1         2015-05-15  Maria Giovanna Chinellato	Various fixes
@@ -8387,7 +8392,7 @@ angular.module('norris-nrti')
 
     function BarChartFlow(info) {
     	this._data = [];
-		this._flowColor = '#000';
+		this._flowColor = undefined;
 		this._flow = null;
 
 		var json = split(info);
@@ -8466,18 +8471,20 @@ angular.module('norris-nrti')
 /*
 * Name :  Flow.js
 * Module : FrontEnd::Model::FlowsModel
-* Location : /frontend/app/Model/FlFactory.buildowsModel
+* Location : /frontend/app/Model/FlowsModel
 *
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
-* 0.1.2         2015-05-18  Maria Giovanna Chinellato	Fix attributes
+* 1.0.0         2015-05-20  Maria Giovanna Chinellato	Tested
 *
-* 0.1.1         2015-05-14  Maria Giovanna Chinellato	Fix updateParameters
+* 0.1.2         2015-05-17  Maria Giovanna Chinellato	Fix attributes
 *
-* 0.1.0         2015-05-12  Maria Giovanna Chinellato	Add all attributes and all methods
+* 0.1.1         2015-05-16  Maria Giovanna Chinellato	Fix updateParameters
 *
-* 0.0.1         2015-05-12  Maria Giovanna Chinellato	Initial code
+* 0.1.0         2015-05-16  Maria Giovanna Chinellato	Add all attributes and all methods
+*
+* 0.0.1         2015-05-15  Maria Giovanna Chinellato	Initial code
 * =================================================================================================
 *
 */
@@ -8496,20 +8503,15 @@ angular.module('norris-nrti')
 		}
 	}
 
-	Flow.prototype = {
-
-		constructor : Flow,
-
-		updateParameters : function(info) { //abstract
-			if (info !== undefined) {
-				if (info.name !== undefined){
-					this._name = info.name;
-				}
+	Flow.prototype.updateParameters = function(info) { //abstract
+		if (info !== undefined) {
+			if (info.name !== undefined){
+				this._name = info.name;
 			}
-		},
-		getName : function() {
-			return this._name;
 		}
+	};
+	Flow.prototype.getName = function() {
+		return this._name;
 	};
 
 	function FlowFactory(){}
@@ -8530,6 +8532,10 @@ angular.module('norris-nrti')
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 1.0.1         2015-06-25  Maria Giovanna Chinellato	Fix initializeData
+*
+* 1.0.0         2015-05-18  Maria Giovanna Chinellato	Tested
+*
 * 0.2.0         2015-05-18  Maria Giovanna Chinellato	Modified general structure, some fixes
 *
 * 0.1.2         2015-05-15  Maria Giovanna Chinellato	Various fix
@@ -8564,9 +8570,6 @@ angular.module('norris-nrti')
 	        if (json.marker !== undefined) {
 	            lineFlowJson.marker = json.marker;
 	        }
-	        if (json.interpolation !== undefined) {
-	            lineFlowJson.interpolation = json.interpolation;
-	        }
 	        if (json.area !== undefined) {
 	            lineFlowJson.area = json.area;
 	        }
@@ -8587,9 +8590,8 @@ angular.module('norris-nrti')
 		this._data = [];
 		this._flowColor = '#000';
 		this._marker = 'square';
-		this._interpolation = 'linear';
-		this._area = '#FFF';
-		this._maxItem = 20;
+		this._area = false;
+		this._maxItem = null;
 
 		var json = split(info);
 		var fJson = json.flowJson;
@@ -8605,11 +8607,8 @@ angular.module('norris-nrti')
 	        if (lfJson.marker !== undefined) {
 	            this._marker = lfJson.marker;
 	        }
-	        if (lfJson.interpolation !== undefined) {
-	            this._interpolation = lfJson.interpolation;
-	        }
 	        if (lfJson.area !== undefined) {
-	            this._areaColor = lfJson.area;
+	            this._area = lfJson.area;
 	        }
 	        if (lfJson.maxItem !== undefined) {
 	            this._maxItem = lfJson.maxItem;
@@ -8632,9 +8631,6 @@ angular.module('norris-nrti')
 		        if (lfJson.marker !== undefined) {
 		            this._marker = lfJson.marker;
 		        }
-		        if (lfJson.interpolation !== undefined) {
-		            this._interpolation = lfJson.interpolation;
-		        }
 		        if (lfJson.area !== undefined) {
 		            this._area = lfJson.area;
 		        }
@@ -8647,7 +8643,13 @@ angular.module('norris-nrti')
 
 	LineChartFlow.prototype.initializeData = function(newData) {
 		for (var i=0; i<newData.records.length; i++) {
-			this._data.push(newData.records[i]);
+			if (this._maxItem === null || this._data.length < this._maxItem){
+				this._data.push(newData.records[i]);
+			}
+			else{
+				this._data.splice(0,1);
+				this._data.push(newData.records[i]);
+			}
 		}
 	};
 	LineChartFlow.prototype.emptyData = function() {
@@ -8683,9 +8685,6 @@ angular.module('norris-nrti')
 	LineChartFlow.prototype.getMarker = function() {
 		return this._marker;
 	};
-	LineChartFlow.prototype.getInterpolation = function() {
-		return this._interpolation;
-	};
 	LineChartFlow.prototype.getArea = function() {
 		return this._area;
 	};
@@ -8712,6 +8711,10 @@ angular.module('norris-nrti')
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 1.0.1         2015-06-25  Maria Giovanna Chinellato	Fix initializeData
+*
+* 1.0.0			2015-05-19	Francesco Rossetto			Tested
+*
 * 0.2.0			2015-05-18	Francesco Rossetto			Modified general structure, some fixes
 *
 * 0.1.1         2015-05-15  Maria Giovanna Chinellato	Various fixes
@@ -8757,7 +8760,7 @@ angular.module('norris-nrti')
     function MapChartFlow(info) {
     	this._data = [];
 		this._marker = null;
-		this._maxItem = 100;
+		this._maxItem = null;
 		this._trace = null;
 
 		var json = split(info);
@@ -8804,7 +8807,13 @@ angular.module('norris-nrti')
 
 	MapChartFlow.prototype.initializeData = function(newData) {
 		for (var i=0; i<newData.records.length; i++) {
-			this._data.push(newData.records[i]);
+			if (this._maxItem === null || this._data.length < this._maxItem){
+				this._data.push(newData.records[i]);
+			}
+			else{
+				this._data.splice(0,1);
+				this._data.push(newData.records[i]);
+			}
 		}
 	};
 	MapChartFlow.prototype.emptyData = function() {
@@ -8865,7 +8874,11 @@ angular.module('norris-nrti')
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
-* 0.2.0         2015-05-18  Maria Giovanna Chinellato	Modified general structure, some fixes
+* 1.0.1         2015-06-25  Maria Giovanna Chinellato	Fix initializeData
+*
+* 1.0.0         2015-05-22  Maria Giovanna Chinellato	Tested
+*
+* 0.2.0         2015-05-16  Maria Giovanna Chinellato	Modified general structure, some fixes
 *
 * 0.1.1         2015-05-15  Maria Giovanna Chinellato	Various fix
 *
@@ -8889,8 +8902,8 @@ angular.module('norris-nrti')
 	        }
 
 	        
-	        if (json.maxItems !== undefined) {
-	            tableFlowJson.maxItems = json.maxItems;
+	        if (json.maxItemsSaved !== undefined) {
+	            tableFlowJson.maxItems = json.maxItemsSaved;
 	        }
 	    }
 
@@ -8904,7 +8917,7 @@ angular.module('norris-nrti')
 
     function TableFlow(info) {
     	this._data = [];
-		this._maxItems = 100;
+		this._maxItems = null;
 
 		var json = split(info);
 		var fJson = json.flowJson;
@@ -8912,8 +8925,8 @@ angular.module('norris-nrti')
 
 		this._flow = FlowFactory.build(fJson);
 
-        if (tfJson.maxItem !== undefined) {
-            this._maxItem = tfJson.maxItem;
+        if (tfJson.maxItems !== undefined) {
+            this._maxItems = tfJson.maxItems;
         }
 	}
 
@@ -8937,10 +8950,21 @@ angular.module('norris-nrti')
 
 	TableFlow.prototype.initializeData = function(newData, addRowOn) {
 		for (var i=0; i<newData.records.length; i++) {
-			if (addRowOn === 'bottom') {
-				this._data.push(newData.records[i]);
-			} else if (addRowOn === 'top') {
-				this._data.unshift(newData.records[i]);
+			if (this._maxItems === null || this._data.length < this._maxItems){
+				if (addRowOn === 'bottom') {
+					this._data.push(newData.records[i]);
+				} else if (addRowOn === 'top') {
+					this._data.unshift(newData.records[i]);
+				}
+			}
+			else{
+				if (addRowOn === 'bottom') {
+					this._data.splice(0,1);
+					this._data.push(newData.records[i]);
+				} else if (addRowOn === 'top') {
+					this._data.splice(this._data.length-1,1);
+					this._data.unshift(newData.records[i]);
+				}
 			}
 		}
 	};
@@ -8972,7 +8996,7 @@ angular.module('norris-nrti')
 		return this._data;
 	};
 	TableFlow.prototype.getMaxItem = function() {
-		return this._maxItem;
+		return this._maxItems;
 	};
 
 	function TableFlowFactory() {}
@@ -8994,7 +9018,9 @@ angular.module('norris-nrti')
 *
 * History :
 * Version       Date        Programmer                  Description
-* ===============================================================================================================7
+* ===============================================================================================================
+* 1.0.0         2015-05-21  Maria Giovanna Chinellato   Tested
+*
 * 0.1.3         2015-05-18  Maria Giovanna Chinellato   Fix attributes
 *
 * 0.1.2         2015-05-17  Maria Giovanna Chinellato   Fix code
@@ -9011,7 +9037,9 @@ angular.module('norris-nrti')
 angular.module('norris-nrti')
 .factory('AxisFactory', function(){
 
+    // costruttore di Axis
     function Axis(info){
+        // campi dati di axis e valori di default
         this._name = null;
         this._color = '#FFF';
         this._minValue = null;
@@ -9019,6 +9047,7 @@ angular.module('norris-nrti')
         this._ticks = 10;
         this._scale = 'linear';
 
+        // controlla se ci sono dei campi dati da impostare, altrimenti crea un asse di default
         if (info !== undefined) {
             if (info.name !== undefined) {
                 this._name = info.name;
@@ -9041,55 +9070,54 @@ angular.module('norris-nrti')
         }
     }
 
-    Axis.prototype = {
-        updateParameters : function(info){
-            if (info !== undefined) {
-                if (info.name !== undefined) {
-                    this._name = info.name;
-                }
-                if (info.color !== undefined) {
-                    this._color = info.color;
-                }
-                if (info.minIndex !== undefined) {
-                    this._minValue = info.minIndex;
-                }
-                if (info.maxIndex !== undefined) {
-                    this._maxValue = info.maxIndex;
-                }
-                if (info.ticks !== undefined) {
-                    this._ticks = info.ticks;
-                }
-                if (info.scale !== undefined) {
-                    this._scale = info.scale;
-                }
+    // funzine che aggiorna i campi dati di un asse
+    Axis.prototype.updateParameters = function(info){
+        if (info !== undefined) {
+            if (info.name !== undefined) {
+                this._name = info.name;
             }
-        },
-
-        getName : function(){
-            return this._name;
-        },
-        getColor : function(){
-            return this._color;
-        },
-        getMinValue : function(){
-            return this._minValue;
-        },
-        getMaxValue : function(){
-            return this._maxValue;
-        },
-        getTicks : function(){
-            return this._ticks;
-        },
-        getScale : function(){
-            return this._scale;
+            if (info.color !== undefined) {
+                this._color = info.color;
+            }
+            if (info.minIndex !== undefined) {
+                this._minValue = info.minIndex;
+            }
+            if (info.maxIndex !== undefined) {
+                this._maxValue = info.maxIndex;
+            }
+            if (info.ticks !== undefined) {
+                this._ticks = info.ticks;
+            }
+            if (info.scale !== undefined) {
+                this._scale = info.scale;
+            }
         }
-
     };
 
+    Axis.prototype.getName = function(){
+        return this._name; // ritorna il nome dell'asse
+    };
+    Axis.prototype.getColor = function(){
+        return this._color; // ritona il colore dell'asse
+    };
+    Axis.prototype.getMinValue = function(){
+        return this._minValue; // ritorna il minimo valore dell'asse
+    };
+    Axis.prototype.getMaxValue = function(){
+        return this._maxValue; // ritorna il massimo valore dell'asse
+    };
+    Axis.prototype.getTicks = function(){
+        return this._ticks; // ritorna il valore dei tick
+    };
+    Axis.prototype.getScale = function(){
+        return this._scale; // ritorna la scale dell'asse
+    };
+
+    // costruttore di default di AxisFactory
     function AxisFactory() {}
 
     AxisFactory.build = function(info) {
-        return new Axis(info);
+        return new Axis(info); // ritorna l'istanza di un nuovo asse
     };
     return( AxisFactory );
 });
@@ -9104,15 +9132,17 @@ angular.module('norris-nrti')
 * History :
 * Version       Date        Programmer                  Description
 * ===============================================================================================================
-* 0.3.0         2015-05-18  Francesco Rossetto          Modified general structure, some fixes
+* 1.0.0         2015-05-21  Francesco Rossetto          Tested
 *
-* 0.2.1         2015-05-15  Francesco Rossetto          Various fixes, insert inzializeData
+* 0.3.0         2015-05-20  Francesco Rossetto          Modified general structure, some fixes
 *
-* 0.2.0         2015-05-14  Maria Giovanna Chinellato   Add all methods and fix class
+* 0.2.1         2015-05-19  Francesco Rossetto          Various fixes, insert inzializeData
 *
-* 0.1.0         2015-05-14  Maria Giovanna Chinellato   Add all attributes, add methods split and updateParameter
+* 0.2.0         2015-05-18  Maria Giovanna Chinellato   Add all methods and fix class
 *
-* 0.0.1         2015-05-14  Maria Giovanna Chinellato   Initial code      
+* 0.1.0         2015-05-18  Maria Giovanna Chinellato   Add all attributes, add methods split and updateParameter
+*
+* 0.0.1         2015-05-18  Maria Giovanna Chinellato   Initial code      
 * ===============================================================================================================
 *
 */
@@ -9120,18 +9150,7 @@ angular.module('norris-nrti')
 angular.module('norris-nrti')
 .factory('BarChartFactory', ['GraphFactory','AxisFactory', 'BarChartFlowFactory', function(GraphFactory, AxisFactory, BarChartFlowFactory){
 
-    function BarChart(info) {
-        this._axisX = null;
-        this._axisY = null;
-        this._barOrientation = 'V';
-        this._headers = [];
-        this._background = '#FFF';
-        this._sortable = true;
-        this._groupingControl = true;
-        this._legendOnPoint = false;
-        this._graph = GraphFactory.build(info);
-    }
-
+    // funzione di utilità che ha lo scopo di separare le proprietà legate al grafico generale da quelle legate al bar chart
     function split(json) {
         var graphJson = {};
         if (json.title !== undefined) {
@@ -9149,11 +9168,8 @@ angular.module('norris-nrti')
         if (json.legend !== undefined) {
             graphJson.legend = json.legend;
         }
-        if (json.horizontalGrid !== undefined) {
-            graphJson.horizontalGrid = json.horizontalGrid;
-        }
-        if (json.verticalGrid !== undefined) {
-            graphJson.verticalGrid = json.verticalGrid;
+        if (json.socketURL !== undefined) {
+            graphJson.socketURL = json.socketURL;
         }
 
         var barJson = {};
@@ -9181,6 +9197,9 @@ angular.module('norris-nrti')
         if (json.legendOnPoint !== undefined) {
             barJson.legendOnPoint = json.legendOnPoint;
         }
+        if (json.grid !== undefined) {
+            barJson.grid = json.grid;
+        }
 
         return {
             'graphJson' : graphJson,
@@ -9188,6 +9207,22 @@ angular.module('norris-nrti')
         };
     }
 
+    // costruttore di default di un BarChart
+    function BarChart(info) {
+        // campi dati di un bar chart e valori di default
+        this._axisX = null;
+        this._axisY = null;
+        this._barOrientation = 'V';
+        this._headers = [];
+        this._background = '#FFF';
+        this._sortable = true;
+        this._groupingControl = true;
+        this._legendOnPoint = false;
+        this._horizontalGrid = false;
+        this._graph = GraphFactory.build(info);
+    }
+
+    // funzione che ha lo scopo di aggiornare i campi dati del bar chart
     BarChart.prototype.updateParameters = function(info) {
         if (info !== undefined) {
             var json = split(info);
@@ -9221,7 +9256,11 @@ angular.module('norris-nrti')
                 if (bJson.legendOnPoint !== undefined) {
                     this._legendOnPoint = bJson.legendOnPoint;
                 }
+                if (bJson.grid !== undefined) {
+                    this._horizontalGrid = bJson.grid;
+                }
             }
+            // aggiunge i flussi relativi all'istanza di bar chart
             if (info.flows !== undefined) {
                 for (var i=0; i<info.flows.length; i++) {
                     var newflow = BarChartFlowFactory.build(info.flows[i]);
@@ -9232,19 +9271,22 @@ angular.module('norris-nrti')
         
     };
 
+    // aggiunge un nuovo flusso alla lista di flussi
     BarChart.prototype.addFlow = function(newId, newFlow) {
-        if (newFlow.constructor.name === 'BarChartFlow') {
-            console.log('BARCHART constructor.name');
+        if (newFlow.constructor.name === 'BarChartFlow') { // controlla che il flusso da inserire sia del tipo giusto
             this._graph.addFlow(newId, newFlow);
         }
     };
+    // elimina il flusso con id === ID
     BarChart.prototype.deleteFlow = function(ID) {
         this._graph.deleteFlow(ID);
     };
+    // rimpiazza i dati di un flusso con altri dati
     BarChart.prototype.replaceData = function(newData){
         this._graph.replaceData(newData);
     };
 
+    // inizializza i dati dei flussi presenti nella lista
     BarChart.prototype.initializeData = function(newData) {  //inizialization data of flows
         if (newData !== undefined) {
             var fList = this._graph.getFlowList();
@@ -9258,7 +9300,7 @@ angular.module('norris-nrti')
         }   
     };
 
-    // update data
+    // funzione che permette l'aggiornamento di tipo in place dei dati
     BarChart.prototype.inPlaceUpdate = function(newData) {
         if (newData !== undefined) {
             for (var j=0; j<this._graph.getFlowList().length; j++) {
@@ -9268,6 +9310,7 @@ angular.module('norris-nrti')
             }
         }   
     };
+    // funzione che permette di aggiongere un record ad un flusso esistente
     BarChart.prototype.addRecords = function(newData) {
         if (newData !== undefined) {
             var fList = this._graph.getFlowList();
@@ -9278,6 +9321,7 @@ angular.module('norris-nrti')
             }
         }
     };
+    // funzione che permette di eliminare i dati di un flusso
     BarChart.prototype.deleteData = function(delData) {
         if (delData !== undefined){
             var fList = this._graph.getFlowList();
@@ -9289,60 +9333,57 @@ angular.module('norris-nrti')
         }
     };
 
-    // get method
     BarChart.prototype.getTitle = function() {
-        return this._graph.getTitle();
+        return this._graph.getTitle(); // ritorna il titolo del grafico
     };
     BarChart.prototype.getHeight = function() {
-        return this._graph.getHeight();
+        return this._graph.getHeight(); // ritorna l'altezza del grafico
     };
     BarChart.prototype.getWidth = function() {
-        return this._graph.getWidth();
+        return this._graph.getWidth(); // ritorna la larghezza del grafico
     };
     BarChart.prototype.getLegend = function() {
-        return this._graph.getLegend();
-    };
-    BarChart.prototype.getHGrid = function() {
-        return this._graph.getHGrid();
-    };
-    BarChart.prototype.getVGrid = function() {
-        return this._graph.getVGrid();
+        return this._graph.getLegend(); // ritorna la legenda del grafico se questa è disponibile
     };
     BarChart.prototype.getUrl = function() {
-        return this._graph.getUrl();
+        return this._graph.getUrl(); // ritorna l'url relativo al grafico
     };
     BarChart.prototype.getFlowList = function() {
-        return this._graph.getFlowList();
+        return this._graph.getFlowList(); // ritorna la lista dei flussi presenti nel grafico
     };
     BarChart.prototype.getX = function() {
-        return this._axisX;
+        return this._axisX; // ritorna l'asse X
     };
     BarChart.prototype.getY = function() {
-        return this._axisY;
+        return this._axisY; // ritorna l'asse Y
     };
     BarChart.prototype.getBarOrientation = function() {
-        return this._barOrientation;
+        return this._barOrientation; // ritorna l'orientamento delle barre del bar chart (verticale: V, orizzontale: H)
     };
     BarChart.prototype.getHeaders = function() {
-        return this._headers;
+        return this._headers; // ritorna gli header relativi alle barre
     };
     BarChart.prototype.getBackground = function() {
-        return this._background;
+        return this._background; // ritorna il colore di background del grafico
     };
     BarChart.prototype.getSortable = function() {
-        return this._sortable;
+        return this._sortable; // ritorna true se è possibile ordinare il grafico dalla view
     };
     BarChart.prototype.getGroupingControl = function() {
-        return this._groupingControl;
+        return this._groupingControl; // ritorna true se è data la possibilità di cambiare la posizine delle barre da grouped a stacked e viceversa
     };
     BarChart.prototype.getLegendOnPoint = function() {
-        return this._legendOnPoint;
+        return this._legendOnPoint; // ritorna true se è disponibile la funzionalità legend on point
+    };
+    BarChart.prototype.getHGrid = function() {
+        return this._horizontalGrid; // ritorna se deve essere visualizzata la griglia orizzontale
     };
 
+    // costruttore di default di BarChartFactory
     function BarChartFactory(){}
 
     BarChartFactory.build = function(info) {
-        return new BarChart(info);
+        return new BarChart(info); // ritorna un'istanza di BarChart
     };
 
     return BarChartFactory;
@@ -9352,70 +9393,50 @@ angular.module('norris-nrti')
 'use strict';
 
 /*
-* Name :  Cell.js
+* Name :  ColorPicker.js
 * Module : FrontEnd::Model::GraphsModel
 * Location : /frontend/app/Model/GraphsModel
 *
 * History :
 * Version       Date        Programmer                  Description
-* ===============================================================================================================
-* 0.1.1         2015-05-18  Maria Giovanna Chinellato   Fix attributes
+* =================================================================================================
+* 0.1.0         2015-06-22  Maria GiovannaChinellato    Add all attributes and add initial code for methods 
 *
-* 0.1.0         2015-05-14  Maria Giovanna Chinellato   Add attributes and methods
-*
-* 0.0.1         2015-05-14  Maria Giovanna Chinellato   Initial code      
-* ===============================================================================================================
-*
+* 0.0.1         2015-06-22  Maria Giovanna Chinellato   Initial code      
+* =================================================================================================
 */
 
 angular.module('norris-nrti')
-.factory('CellFactory', function(){
+.factory('ColorPicker', function(){
+	var defaultColorFlow = [
+        '#1f77b4',
+        '#aec7e8',
+        '#ff7f0e',
+        '#ffbb78',
+        '#2ca02c',
+        '#98df8a',
+        '#d62728',
+        '#ff9896',
+        '#9467bd',
+        '#c5b0d5',
+        '#8c564b',
+        '#c49c94',
+        '#e377c2',
+        '#f7b6d2',
+        '#7f7f7f',
+        '#c7c7c7',
+        '#bcbd22',
+        '#dbdb8d',
+        '#17becf',
+        '#9edae5'
+    ];
 
-    function Cell(info){
-
-        this._background = '#FFF';
-        this._fontColor = '#000';
-        if (info !== undefined) {
-            if (info.background !== undefined) {
-                this._background = info.background;
-            }
-            if (info.fontColor !== undefined) {
-                this._fontColor = info.fontColor;
-            }
-        }
-    }
-
-    Cell.prototype = {
-
-        updateParameters : function(info){
-            if (info !== undefined) {
-                if (info.background) {
-                    this._background = info.background;
-                }
-                if (info.fontColor) {
-                    this._fontColor = info.fontColor;
-                }
-            }
-
-            return this;
-        },
-
-        getBackground : function(){
-            return this._background;
-        },
-        getFontColor : function(){
-            return this._fontColor;
-        }
-
+    return {
+    	getDefaultColor : function(){
+    		return defaultColorFlow;
+    	}
     };
 
-    function CellFactory() {}
-
-    CellFactory.build = function(info){
-        return new Cell(info);
-    };
-
-    return CellFactory;
 });
 /*jshint node: true */
 'use strict';
@@ -9428,6 +9449,8 @@ angular.module('norris-nrti')
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 1.0.0			2015-05-21	Maria Giovanna Chinellato	Tested
+*
 * 0.1.5			2015-05-18	Maria Giovanna Chinellato	Fix methods addFlow and deleteFlow
 *
 * 0.1.4			2015-05-15	Francesco Rossetto			Various fixes
@@ -9450,17 +9473,18 @@ angular.module('norris-nrti')
 angular.module('norris-nrti')
 .factory('GraphFactory', ['LegendFactory', function(LegendFactory){
 
-
+	// costruttore di default
 	function Graph(info){
+		// campi dati di Graph
 		this._flowList = [];
 		this._title = null;
 		this._height = null;
 		this._width = null;
 		this._legend = null;
 		this._enableLegend = false;
-		this._horizontalGrid = true;
-		this._verticalGrid = true;
 		this._url = null;
+
+		// controlla se ci sono dei campi dati da impostare, altrimenti crea un grafico di default
 		if (info !== undefined) {
 			if (info.title !== undefined) {
 				this._title = info.title;
@@ -9471,99 +9495,88 @@ angular.module('norris-nrti')
 		}		
 	}
 
-	Graph.prototype = {
-
-		constructor : Graph,
-
-		updateParameters : function(info) { //abstract
-			if (info !== undefined) {
-				if (info.title !== undefined) {
-					this._title = info.title;
-				}
-				if (info.height !== undefined) {
-					this._height = info.height;
-				}
-				if (info.width !== undefined) {
-					this._width = info.width;
-				}
-				if (info.enableLegend !== undefined) {
-					this._enableLegend = info.enableLegend;
-				}
-				if (this._enableLegend && info.legend !== undefined) {
-						this._legend = LegendFactory.build(info.legend);
-				}
-				if (info.horizontalGrid !== undefined) {
-					this._horizontalGrid = info.horizontalGrid;
-				}
-				if (info.verticalGrid !== undefined) {
-					this._verticalGrid = info.verticalGrid;
-				}
+	// funzione che aggiorna i campi dati del grafico
+	Graph.prototype.updateParameters = function(info) {
+		if (info !== undefined) {
+			if (info.title !== undefined) {
+				this._title = info.title;
 			}
-		},
-		addFlow : function(newId, newFlow) { //abstract
-			var count = 0;
-
-			for (var i = 0; i<this._flowList.length; i++) {
-				if (this._flowList[i].id === newId) {
-					count++;
-				}
+			if (info.height !== undefined) {
+				this._height = info.height;
 			}
-
-		    if(count === 0) {
-		        this._flowList.push({ id: newId, flow: newFlow});
+			if (info.width !== undefined) {
+				this._width = info.width;
 			}
-			// error
-		},
-		deleteFlow : function(flowID) {
-	        for (var i = 0; i<this._flowList.length; i++){
-	            if (this._flowList[i].id === flowID){
-	                this._flowList.splice(i,1);
-	            }
-	        }
-		},
-		replaceData : function(newData) {
-			for (var i = 0;i<this._flowList.length; i++) {
-				if (this._flowList[i].id === newData.ID){
-	                this._flowList[i].flow.emptyData();
-	                this._flowList[i].flow.initializeData(newData);
-	            }
+			if (info.enableLegend !== undefined) {
+				this._enableLegend = info.enableLegend;
 			}
-		},
-		
-		getTitle : function() {
-			return this._title;
-		},
-		getHeight : function() {
-			return this._height;
-		},
-		getWidth : function() {
-			return this._width;
-		},
-		getLegend : function() {
-			if (this._enableLegend) {
-				return this._legend;
-			} else {
-				return null;
+			if (this._enableLegend && info.legend !== undefined) {
+					this._legend = LegendFactory.build(info.legend);
 			}
-		},
-		getHGrid : function() {
-			return this._horizontalGrid;
-		},
-		getVGrid : function() {
-			return this._verticalGrid;
-		},
-		getUrl : function() {
-			return this._url;
-		},
-		getFlowList : function() {
-			return this._flowList;
 		}
 	};
 
+	// funzione che aggiunge un flusso alla lista dei flussi
+	Graph.prototype.addFlow = function(newId, newFlow) {
+		var count = 0;
+
+		for (var i = 0; i<this._flowList.length; i++) { // conta i flussi presenti nella lista che hanno lo stesso id del nuovo flusso
+			if (this._flowList[i].id === newId) {
+				count++;
+			}
+		}
+
+	    if(count === 0) { // controlla il numero di flusso della lista che hanno lo stesso id del nuovo flusso
+	        this._flowList.push({ id: newId, flow: newFlow}); // inserisce il nuovo flusso nella lista solo se non è già presente u flusso con lo stesso id
+		}
+		// error
+	};
+	// elimina un flusso dalla lista dei flussi
+	Graph.prototype.deleteFlow = function(flowID) {
+        for (var i = 0; i<this._flowList.length; i++){
+            if (this._flowList[i].id === flowID){
+                this._flowList.splice(i,1);
+            }
+        }
+	};
+	// rimpiazza i dati di un flusso con dei nuovi dati
+	Graph.prototype.replaceData = function(newData) {
+		for (var i = 0;i<this._flowList.length; i++) {
+			if (this._flowList[i].id === newData.ID){
+                this._flowList[i].flow.emptyData();
+                this._flowList[i].flow.initializeData(newData);
+            }
+		}
+	};
+	
+	Graph.prototype.getTitle = function() {
+		return this._title; // ritorna il titolo del grafico
+	};
+	Graph.prototype.getHeight = function() {
+		return this._height; // ritorna l'altezza del grafico
+	};
+	Graph.prototype.getWidth = function() {
+		return this._width; // ritorna la larghezza del grafico
+	};
+	Graph.prototype.getLegend = function() {
+		if (this._enableLegend) { // controlla se la legenda è disponibile
+			return this._legend; // ritorna la legenda
+		} else {
+			return null; // ritorna null perchè la legenda non è disponibile
+		}
+	};
+	Graph.prototype.getUrl = function() {
+		return this._url; // ritorna l'url del grafico
+	};
+	Graph.prototype.getFlowList = function() {
+		return this._flowList; // ritorna la lista dei flussi
+	};
+
+	// costruttore di default di GraphFactory
 	function GraphFactory() {}
 
 	GraphFactory.build = function(info) {
-		return new Graph(info);
+		return new Graph(info); // ritorna una nuova istanza di Graph
 	};
 	
 	return( GraphFactory );
@@ -9579,7 +9592,9 @@ angular.module('norris-nrti')
 * History :
 * Version       Date        Programmer                  Description
 * ===============================================================================================================
-* 0.1.2         2015-05-18  Maria Giovanna Chinellato   Fix attributes
+* 1.0.0         2015-05-17  Maria Giovanna Chinellato   Tested
+*
+* 0.1.2         2015-05-15  Maria Giovanna Chinellato   Fix attributes
 *
 * 0.1.1         2015-05-15  Francesco Rossetto          Variuos Fix
 *
@@ -9593,11 +9608,13 @@ angular.module('norris-nrti')
 angular.module('norris-nrti')
 .factory('LegendFactory', function(){
 
+    // costruttore di Legend
     function Legend(info){
-        this._position = 'right';
+        this._position = 'E';
         this._fontColor = '#000';
         this._backgroundColor = '#FFF';
 
+        // imposta i valori dei campi dati se il JSON 'info' è definito, altrimenti lascia i valori di default
         if (info !== undefined){
             if (info.position !== undefined) {
                 this._position = info.position;
@@ -9611,39 +9628,36 @@ angular.module('norris-nrti')
         }
     }
 
-    Legend.prototype = {
-
-        contructor : Legend,
-
-        updateParameters : function(info){
-            if (info !== undefined) {
-                if (info.position !== undefined) {
-                    this._position = info.position;
-                }
-                if (info.fontColor !== undefined) {
-                    this._fontColor = info.fontColor;
-                }
-                if (info.backgroundColor !== undefined) {
-                    this._backgroundColor = info.backgroundColor;
-                }
+    // funzione che aggiorna i valori dei campi dati della legenda
+    Legend.prototype.updateParameters = function(info){
+        if (info !== undefined) {
+            if (info.position !== undefined) {
+                this._position = info.position;
             }
-        },
-
-        getPosition : function(){
-            return this._position;
-        },
-        getFontColor : function(){
-            return this._fontColor;
-        },
-        getBackgroundColor : function(){
-            return this._backgroundColor;
+            if (info.fontColor !== undefined) {
+                this._fontColor = info.fontColor;
+            }
+            if (info.backgroundColor !== undefined) {
+                this._backgroundColor = info.backgroundColor;
+            }
         }
     };
 
+    Legend.prototype.getPosition = function(){
+        return this._position; // ritorna la posizione della legenda
+    };
+    Legend.prototype.getFontColor = function(){
+        return this._fontColor; // ritorna il colore del testo della legenda
+    };
+    Legend.prototype.getBackgroundColor = function(){
+        return this._backgroundColor; // ritorna il colore di background della legenda
+    };
+
+    // costruttore di default di LegendFactory
     function LegendFactory() {}
 
     LegendFactory.build = function(info) {
-        return new Legend(info);
+        return new Legend(info); // ritorna una nuova istanza di Legend
     };
     
     return( LegendFactory );
@@ -9659,6 +9673,8 @@ angular.module('norris-nrti')
 * History :
 * Version       Date        Programmer                  Description
 * ===============================================================================================================
+* 1.0.0         2015-05-19  Maria Giovanna Chinellato   Tested
+*
 * 0.3.0         2015-05-18  Francesco Rossetto          Modified general structure, some fixes
 *
 * 0.2.2			2015-05-15	Francesco Rossetto			Various fixes, insert inzializeData
@@ -9677,6 +9693,7 @@ angular.module('norris-nrti')
 angular.module('norris-nrti')
 .factory('LineChartFactory', ['GraphFactory', 'AxisFactory', 'LineChartFlowFactory', function(GraphFactory, AxisFactory, LineChartFlowFactory){
 
+    // funzione di utilità che ha lo scopo di separare le proprietà legate al grafico generale da quelle legate al bar chart
 	function split(json) {
 		var graphJson = {};
 		if (json.title !== undefined) {
@@ -9694,12 +9711,9 @@ angular.module('norris-nrti')
         if (json.legend !== undefined) {
             graphJson.legend = json.legend;
         }
-		if (json.horizontalGrid  !== undefined) {
-			graphJson.horizontalGrid = json.horizontalGrid;
-		}
-		if (json.verticalGrid !== undefined) {
-			graphJson.verticalGrid = json.verticalGrid;
-		}
+        if (json.socketURL !== undefined) {
+            graphJson.socketURL = json.socketURL;
+        }
 
 		var lineJson = {};
         if (json.legendOnPoint !== undefined) {
@@ -9720,6 +9734,12 @@ angular.module('norris-nrti')
         if (json.interpolation !== undefined) {
             lineJson.interpolation = json.interpolation;
         }
+        if (json.horizontalGrid !== undefined) {
+            lineJson.horizontalGrid = json.horizontalGrid;
+        }
+        if (json.verticalGrid !== undefined) {
+            lineJson.verticalGrid = json.verticalGrid;
+        }
 
 		return {
 			'graphJson' : graphJson,
@@ -9727,9 +9747,7 @@ angular.module('norris-nrti')
 		};
 	}
 
-	//LineChart.prototype.test = function _Test(expressionStr) { return eval(expressionStr); };
-
-    // create our new custom object that reuse the original object constructor
+    // costruttore di default di un LineChart
     function LineChart(info) {
         this._legendOnPoint = false;
         this._axisX = null;
@@ -9737,9 +9755,12 @@ angular.module('norris-nrti')
         this._viewFinder = false;
         this._backgroundColor = '#FFF';
         this._interpolation = 'linear';
+        this._horizontalGrid = false;
+        this._verticalGrid = false;
         this._graph = GraphFactory.build(info);
     }
 
+    // funzione che ha lo scopo di aggiornare i campi dati del line chart
     LineChart.prototype.updateParameters = function(info) {
         if (info !== undefined) {
             var json = split(info);
@@ -9767,7 +9788,14 @@ angular.module('norris-nrti')
                 if (lJson.interpolation !== undefined) {
                     this._interpolation = lJson.interpolation;
                 }
+                if (lJson.horizontalGrid !== undefined) {
+                    this._horizontalGrid = lJson.horizontalGrid;
+                }
+                if (lJson.verticalGrid !== undefined) {
+                    this._verticalGrid = lJson.verticalGrid;
+                }
             }
+            // aggiunge i flussi relativi all'istanza di line chart
             if (info.flows !== undefined) {
                 for (var i=0; i<info.flows.length; i++) {
                     var newflow = LineChartFlowFactory.build(info.flows[i]);
@@ -9777,18 +9805,22 @@ angular.module('norris-nrti')
         }
     };
 
+    // aggiunge un nuovo flusso alla lista di flussi
     LineChart.prototype.addFlow = function(newId, newFlow) {
-        if (newFlow.constructor.name === 'LineChartFlow') {
+        if (newFlow.constructor.name === 'LineChartFlow') { // controlla che il flusso da inserire sia del tipo giusto
             this._graph.addFlow(newId, newFlow);
         }
     };
+    // elimina il flusso con id === ID
     LineChart.prototype.deleteFlow = function(ID) {
         this._graph.deleteFlow(ID);
     };
+    // rimpiazza i dati di un flusso con altri dati
     LineChart.prototype.replaceData = function(newData){
         this._graph.replaceData(newData);
     };
 
+    // inizializza i dati dei flussi presenti nella lista
     LineChart.prototype.initializeData = function(newData) {  //inizialization data of flows
         if (newData !== undefined) {
             var fList = this._graph.getFlowList();
@@ -9802,7 +9834,7 @@ angular.module('norris-nrti')
         }
     };
     
-    // update data
+    // funzione che permette l'aggiornamento di tipo in place dei dati
     LineChart.prototype.inPlaceUpdate = function(newData) {
         if (newData !== undefined) {
             var fList = this._graph.getFlowList();
@@ -9813,6 +9845,7 @@ angular.module('norris-nrti')
             }
         }
     };
+    // funzione che permette l'aggiornamento di tipo stream dei dati
     LineChart.prototype.streamUpdate = function(newData) {
         if (newData !== undefined) {
            var fList = this._graph.getFlowList();
@@ -9823,6 +9856,7 @@ angular.module('norris-nrti')
             }
         }
     };
+    // funzione che permette di eliminare i dati di un flusso
     LineChart.prototype.deleteData = function(delData) {
         if (delData !== undefined){
             var fList = this._graph.getFlowList();
@@ -9835,52 +9869,53 @@ angular.module('norris-nrti')
     };
 
     LineChart.prototype.getTitle = function() {
-        return this._graph.getTitle();
+        return this._graph.getTitle(); // ritorna il titolo del grafico
     };
     LineChart.prototype.getHeight = function() {
-        return this._graph.getHeight();
+        return this._graph.getHeight(); // ritorna l'altezza del grafico
     };
     LineChart.prototype.getWidth = function() {
-        return this._graph.getWidth();
+        return this._graph.getWidth(); // ritorna la larghezza del grafico
     };
     LineChart.prototype.getLegend = function() {
-        return this._graph.getLegend();
-    };
-    LineChart.prototype.getHGrid = function() {
-        return this._graph.getHGrid();
-    };
-    LineChart.prototype.getVGrid = function() {
-        return this._graph.getVGrid();
+        return this._graph.getLegend(); // ritorna la legenda del grafico se questa è disponibile
     };
     LineChart.prototype.getUrl = function() {
-        return this._graph.getUrl();
+        return this._graph.getUrl(); // ritorna l'url relativo al grafico
     };
     LineChart.prototype.getFlowList = function() {
-        return this._graph.getFlowList();
+        return this._graph.getFlowList(); // ritorna la lista dei flussi presenti nel grafico
     };
     LineChart.prototype.getX = function() {
-        return this._axisX;
+        return this._axisX; // ritorna l'asse X
     };
     LineChart.prototype.getY = function() {
-        return this._axisY;
+        return this._axisY; // ritorna l'asse Y
     };
     LineChart.prototype.getViewFinder = function() {
-        return this._viewFinder;
+        return this._viewFinder; // ritorna true se il grafico deve essere creato con il view finder
     };
     LineChart.prototype.getBackground = function() {
-        return this._backgroundColor;
+        return this._backgroundColor; // ritorna il colore di background del grafico
     };
     LineChart.prototype.getLegendOnPoint = function() {
-        return this._legendOnPoint;
+        return this._legendOnPoint; // ritorna true se è disponibile la legend on point
     };
     LineChart.prototype.getInterpolation = function() {
-        return this._interpolation;
+        return this._interpolation; // ritorna il tipo di iterpolazione del grafico
+    };
+    LineChart.prototype.getHGrid = function() {
+        return this._horizontalGrid; // ritorna true se deve essere visibile la griglia orizzontale del line chart
+    };
+    LineChart.prototype.getVGrid = function() {
+        return this._verticalGrid; // ritorna true se deve essere visibile la griglia verticale del line chart
     };
 
+    // costruttore di default del LineChartFactory
     function LineChartFactory(){}
 
     LineChartFactory.build = function(info) {
-        return new LineChart(info);
+        return new LineChart(info); // ritorna una nuova istanza di LineChart
     };
 
     return LineChartFactory;
@@ -9896,6 +9931,8 @@ angular.module('norris-nrti')
 * History :
 * Version       Date        Programmer                  Description
 * ===============================================================================================================
+* 1.0.0         2015-05-19  Maria Giovanna Chinellato   Tested
+*
 * 0.2.0         2015-05-18  Maria Giovanna Chinellato   Modified general structure, some fixes
 *
 * 0.1.1         2015-05-15  Francesco Rossetto          Various fix, insert inzializeData
@@ -9910,6 +9947,7 @@ angular.module('norris-nrti')
 angular.module('norris-nrti')
 .factory('MapChartFactory',['GraphFactory', 'MapChartFlowFactory', function(GraphFactory, MapChartFlowFactory){
 
+    // funzione di utilità che ha lo scopo di separare le proprietà legate al grafico generale da quelle legate al bar chart
     function split(json) {
         var graphJson = {};
         if (json.title !== undefined) {
@@ -9926,12 +9964,6 @@ angular.module('norris-nrti')
         }
         if (json.legend !== undefined) {
             graphJson.legend = json.legend;
-        }
-        if (json.horizontalGrid !== undefined) {
-            graphJson.horizontalGrid = json.horizontalGrid;
-        }
-        if (json.verticalGrid !== undefined) {
-            graphJson.verticalGrid = json.verticalGrid;
         }
 
 
@@ -9968,9 +10000,7 @@ angular.module('norris-nrti')
         };
     }
 
-    //MapChart.prototype.test = function _Test(expressionStr) { return eval(expressionStr); };
-
-    // create our new custom object that reuse the original object constructor
+    // costruttore di default di un MapChart
     function MapChart(info) {
         this._legendOnPoint = false;
         this._latitude = 45.4113311;
@@ -9984,6 +10014,7 @@ angular.module('norris-nrti')
         this._graph = GraphFactory.build(info);
     }
 
+    // funzione che ha lo scopo di aggiornare i campi dati del map chart
     MapChart.prototype.updateParameters = function(info) {
         var json = split(info);
         var gJson = json.graphJson;
@@ -10017,6 +10048,7 @@ angular.module('norris-nrti')
                 this._mapHeight = mJson.mapHeight;
             }
         }
+        // aggiunge i flussi relativi all'istanza di map chart
         if (info.flows !== undefined) {
             for (var i=0; i<info.flows.length; i++) {
                 var newflow = MapChartFlowFactory.build(info.flows[i]);
@@ -10025,21 +10057,24 @@ angular.module('norris-nrti')
         }
     };
 
+    // aggiunge un nuovo flusso alla lista di flussi
     MapChart.prototype.addFlow = function(ID, newFlow) {
-        if (newFlow.constructor.name === 'MapChartFlow') {
+        if (newFlow.constructor.name === 'MapChartFlow') { // controlla che il flusso da inserire sia del tipo giusto
             this._graph.addFlow(ID, newFlow);
         }
     };
+    // elimina il flusso con id === ID
     MapChart.prototype.deleteFlow = function(ID) {
         this._graph.deleteFlow(ID);
     };
+    // rimpiazza i dati di un flusso con altri dati
     MapChart.prototype.replaceData = function(newData){
         this._graph.replaceData(newData);
     };
 
+    // inizializza i dati dei flussi presenti nella lista
     MapChart.prototype.initializeData = function(newData) {  //inizialization data of flows
         if (newData !== undefined) {
-            console.log('MAPCHART MODEL initialize ' + JSON.stringify(newData));
             var fList = this._graph.getFlowList();
             for (var i=0; i<newData.length; i++) {
                 for (var j=0; j<fList.length; j++) {
@@ -10051,7 +10086,7 @@ angular.module('norris-nrti')
         }
     };
 
-    // update data
+    // funzione che permette l'aggiornamento di tipo in place dei dati
     MapChart.prototype.inPlaceUpdate = function(newData) {
         if (newData !== undefined) {
             var fList = this._graph.getFlowList();
@@ -10062,6 +10097,7 @@ angular.module('norris-nrti')
             }
         }
     };
+    // funzione che permette l'aggiornamento di tipo stream dei dati
     MapChart.prototype.streamUpdate = function(newData) {
         if (newData !== undefined) {
             var fList = this._graph.getFlowList();
@@ -10072,6 +10108,7 @@ angular.module('norris-nrti')
             }
         }
     };
+    // funzione che permette di eliminare i dati di un flusso
     MapChart.prototype.deleteData = function(delData) {
         if (delData !== undefined){
             var fList = this._graph.getFlowList();
@@ -10084,58 +10121,53 @@ angular.module('norris-nrti')
     };
 
     MapChart.prototype.getTitle = function() {
-        return this._graph.getTitle();
+        return this._graph.getTitle(); // ritorna il titolo del grafico
     };
     MapChart.prototype.getHeight = function() {
-        return this._graph.getHeight();
+        return this._graph.getHeight(); // ritorna l'altezza del grafico
     };
     MapChart.prototype.getWidth = function() {
-        return this._graph.getWidth();
+        return this._graph.getWidth(); // ritorna la larghezza del grafico
     };
     MapChart.prototype.getLegend = function() {
-        return this._graph.getLegend();
-    };
-    MapChart.prototype.getHGrid = function() {
-        return this._graph.getHGrid();
-    };
-    MapChart.prototype.getVGrid = function() {
-        return this._graph.getVGrid();
+        return this._graph.getLegend(); // ritorna la legenda del grafico se questa è disponibile
     };
     MapChart.prototype.getUrl = function() {
-        return this._graph.getUrl();
+        return this._graph.getUrl(); // ritorna l'url relativo al grafico
     };
     MapChart.prototype.getFlowList = function() {
-        return this._graph.getFlowList();
+        return this._graph.getFlowList(); // ritorna la lista dei flussi presenti nel grafico
     };
     MapChart.prototype.getLegendOnPoint = function() {
-        return this._legendOnPoint;
+        return this._legendOnPoint; // ritorna true se è disponibile la legend on point
     };
     MapChart.prototype.getLatitude = function() {
-        return this._latitude;
+        return this._latitude; // ritorna la latitudine del centro della mappa
     };
     MapChart.prototype.getLongitude = function() {
-        return this._longitude;
+        return this._longitude; // ritorna la longitudine del centro della mappa
     };
     MapChart.prototype.getMapType = function() {
-        return this._mapType;
+        return this._mapType; // ritorna il tipo della mappa (roadmap, terrain, satellite, hybrid)
     };
     MapChart.prototype.getZoomable = function() {
-        return this._zoom;
+        return this._zoom; // ritorna true se è disponibile la funzionalità 'zoom' sulla mappa
     };
     MapChart.prototype.getDraggable = function() {
-        return this._drag;
+        return this._drag; // ritorna true se è disponibile la funzionalità 'drag' sulla mappa
     };    
     MapChart.prototype.getMapWidth = function() {
-        return this._mapWidth;
+        return this._mapWidth; // ritorna la larghezza (in metri) della mappa (quanti metri devono essere visilìbili)
     };
     MapChart.prototype.getMapHeight = function() {
-        return this._mapHeight;
+        return this._mapHeight; // ritorna l'altezza (in metri) della mappa (quanti metri devono essere visilìbili)
     };
 
+    // costruttore di default di MapChartFactory
     function MapChartFactory() {}
 
     MapChartFactory.build = function(info) {
-        return new MapChart(info);
+        return new MapChart(info); // ritorna una nuova istanza di MapChart
     };
 
     return MapChartFactory;
@@ -10151,6 +10183,8 @@ angular.module('norris-nrti')
 * History :
 * Version       Date        Programmer                  Description
 * ===============================================================================================================
+* 1.0.0         2015-05-21  Maria Giovanna Chinellato   Tested
+*
 * 0.3.0         2015-05-18  Maria Giovanna Chinellato   Modified general structure, some fixes
 *
 * 0.2.1         2015-05-15  Maria Giovanna Chinellato   Fix methods test
@@ -10165,8 +10199,9 @@ angular.module('norris-nrti')
 */
 
 angular.module('norris-nrti')
-.factory('TableFactory', ['GraphFactory', 'CellFactory', 'TableFlowFactory', function(GraphFactory, CellFactory, TableFlowFactory){
+.factory('TableFactory', ['GraphFactory', 'TableFlowFactory', function(GraphFactory, TableFlowFactory){
 
+    // funzione di utilità che ha lo scopo di separare le proprietà legate al grafico generale da quelle legate al bar chart
 	function split(json) {
 		var graphJson = {};
 		if (json.title !== undefined) {
@@ -10177,12 +10212,6 @@ angular.module('norris-nrti')
 		}
 		if (json.width !== undefined) {
 			graphJson.width = json.width;
-		}
-		if (json.enableLegend !== undefined) {
-			graphJson.enableLegend = json.enableLegend;
-			if (json.legend !== undefined  && graphJson.enableLegend !== false) {
-				graphJson.legend = json.legend;
-			}
 		}
 		if (json.horizontalGrid !== undefined) {
 			graphJson.horizontalGrid = json.horizontalGrid;
@@ -10218,9 +10247,7 @@ angular.module('norris-nrti')
 		};
 	}
 
-    //Table.prototype.test = function _Test(expressionStr) { return eval(expressionStr); };
-
-    // create our new custom object that reuse the original object constructor
+    // costruttore di default di una Table
     function Table(info) {
         this._headers = [];
         this._maxItemsPage = 20;
@@ -10231,6 +10258,7 @@ angular.module('norris-nrti')
         this._graph = GraphFactory.build(info);
     }
 
+    // funzione che ha lo scopo di aggiornare i campi dati dela table
     Table.prototype.updateParameters = function(info) {
         if (info !== undefined) {
             var json = split(info);
@@ -10271,18 +10299,27 @@ angular.module('norris-nrti')
         }
     };
 
+    // aggiunge un nuovo flusso alla lista di flussi
     Table.prototype.addFlow = function(ID, newFlow) {
-        if (newFlow.constructor.name === 'TableFlow') {
+        if (newFlow.constructor.name === 'TableFlow') { // controlla che il flusso da inserire sia del tipo giusto
             this._graph.addFlow(ID, newFlow);
         }
     };
+    // elimina il flusso con id === ID
     Table.prototype.deleteFlow = function(ID) {
         this._graph.deleteFlow(ID);
     };
+    // rimpiazza i dati di un flusso con altri dati
     Table.prototype.replaceData = function(newData){
-        this._graph.replaceData(newData);
+        for (var i = 0;i<this._graph.getFlowList().length; i++) {
+            if (this._graph.getFlowList()[i].id === newData.ID){
+                this._graph.getFlowList()[i].flow.emptyData();
+                this._graph.getFlowList()[i].flow.initializeData(newData, this._addRowOn);
+            }
+        }
     };
 
+    // inizializza i dati dei flussi presenti nella lista
     Table.prototype.initializeData = function(newData) {  //inizialization data of flows
         if (newData !== undefined) {
             for (var i=0; i<newData.length; i++) {
@@ -10295,6 +10332,7 @@ angular.module('norris-nrti')
         }
     };
 
+    // funzione che permette l'aggiornamento di tipo in place dei dati
     Table.prototype.inPlaceUpdate = function(newData) {
         if (newData !== undefined) {
             var fList = this._graph.getFlowList();
@@ -10305,6 +10343,7 @@ angular.module('norris-nrti')
             }
         }
     };
+    // funzione che permette l'aggiornamento di tipo stream dei dati
     Table.prototype.streamUpdate = function(newData) {
         if (newData !== undefined) {
             var fList = this._graph.getFlowList();
@@ -10315,7 +10354,7 @@ angular.module('norris-nrti')
             }
         }
     };
-
+    // funzione che permette di eliminare i dati di un flusso
     Table.prototype.deleteData = function(delData) {
         if (delData !== undefined){
             var fList = this._graph.getFlowList();
@@ -10328,52 +10367,44 @@ angular.module('norris-nrti')
     };
 
     Table.prototype.getTitle = function() {
-        return this._graph.getTitle();
+        return this._graph.getTitle(); // ritorna il titolo del grafico
     };
     Table.prototype.getHeight = function() {
-        return this._graph.getHeight();
+        return this._graph.getHeight(); // ritorna l'altezza del grafico
     };
     Table.prototype.getWidth = function() {
-        return this._graph.getWidth();
-    };
-    Table.prototype.getLegend = function() {
-        return this._graph.getLegend();
-    };
-    Table.prototype.getHGrid = function() {
-        return this._graph.getHGrid();
-    };
-    Table.prototype.getVGrid = function() {
-        return this._graph.getVGrid();
+        return this._graph.getWidth(); // ritorna la larghezza del grafico
     };
     Table.prototype.getUrl = function() {
-        return this._graph.getUrl();
+        return this._graph.getUrl(); // ritorna l'url relativo al grafico
     };
     Table.prototype.getFlowList = function() {
-        return this._graph.getFlowList();
+        return this._graph.getFlowList(); // ritorna la lista dei flussi presenti nel grafico
     };
     Table.prototype.getHeaders = function() {
-    return this._headers;
+    return this._headers; // ritorna gli header della tabella
     };
     Table.prototype.getMaxItemsPage = function() {
-        return this._maxItemsPage;
+        return this._maxItemsPage; // ritorna il massimo numero di elementi visualizzabili per pagina di tabella
     };
     Table.prototype.getAddRowOn = function() {
-        return this._addRowOn;
+        return this._addRowOn; // ritorna la posizione di aggiunta record (top o bottom)
     };
     Table.prototype.getSortable = function() {
-        return this._sortable;
+        return this._sortable; // ritorna true se è disponibile la funzionalità di ordinamento della tabella per colonne
     };
     Table.prototype.getSort = function() {
-        return this._sort;
+        return this._sort; // ritorna le colonne su cui è possibile ordinare la tabella
     };
     Table.prototype.getAppearance = function() {
-        return this._appearance;
+        return this._appearance; // ritorna un array che definisce l'aspetto delle celle
     };
 
+    // costruttore di default di TableFactory
     function TableFactory() {}
 
     TableFactory.build = function(info) {
-        return new Table(info);
+        return new Table(info); // ritorna una nuova istanza di Table
     };
 
     return TableFactory;
@@ -10384,11 +10415,13 @@ angular.module('norris-nrti')
 /*
 * Name :  Page.js
 * Module : FrontEnd::Model::PagesModel
-* Location : /frontend/app/Model
+* Location : /frontend/app/Model/PagesModel
 *
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 1.0.0         2015-05-20  Francesco Rossetto          Tested
+*
 * 0.1.4         2015-05-18  Maria Giovanna Chinellato   Fix attributes
 *
 * 0.1.3         2015-05-14  Francesco Rossetto          Fix addGraph
@@ -10407,7 +10440,9 @@ angular.module('norris-nrti')
 angular.module('norris-nrti')
 .factory('PageFactory', function(){
 
+    // Costruttore di page
     function Page(info){
+        // campi dati di Page e valori di default
         this._graphsList = [];
         this._name = 'Titolo di default';
         this._description = '';
@@ -10415,97 +10450,98 @@ angular.module('norris-nrti')
         this._graphsPerCol = 5;
         this._url = null;
 
-        if (info !== undefined) {
-            if (info.properties.name !== undefined) {
-                this._name = info.properties.name;
+
+        if (info !== undefined) { // controlla che un json sia definito, se non lo è non modifica nessun campo dati
+            if (info.properties.name !== undefined) { // controlla che il campo 'name' sia definito
+                this._name = info.properties.name; // imposta la proprietà name
             }
-            if (info.properties.description !== undefined) {
-                this._description = info.properties.description;
+            if (info.properties.description !== undefined) { // controlla che il campo 'description' sia definito
+                this._description = info.properties.description; // imposta la proprietà description
             }
-            if (info.properties.graphsPerRow !== undefined) {
-                this._graphsPerRow = info.properties.graphsPerRow;
+            if (info.properties.graphsPerRow !== undefined) { // controlla che il campo 'graphsPerRow' sia definito
+                this._graphsPerRow = info.properties.graphsPerRow; // imposta la proprietà graphsPerRow
             }
-            if (info.properties.graphsPerCol !== undefined) {
-                this._graphsPerCol = info.properties.graphsPerCol;
+            if (info.properties.graphsPerCol !== undefined) { // controlla che il campo 'graphsPerCol' sia definito
+                this._graphsPerCol = info.properties.graphsPerCol; // imposta la proprietà graphsPerCol
             }
-            if (info.properties.socketURL !== undefined) {
-                this._url = info.properties.socketURL;
+            if (info.properties.socketURL !== undefined) { // controlla che il campo 'socketURL' sia definito
+                this._url = info.properties.socketURL; // imposta la proprietà socketURL
             }
-            if (info.data !== undefined) {
+            if (info.data !== undefined) { // controlla che il campo 'data' sia definito
                 for (var i=0; i<info.data.length; i++){
-                    this.addGraph(info.data[i]);
+                    this.addGraph(info.data[i]); // aggiunge un grafico alla graphsList
                 }
             }
         }
     }
 
-    Page.prototype = {
-
-        constructor : Page,
-
-        updateParameters: function(info){
-            if (info !== undefined) {
-                if (info.name !== undefined) {
-                    this._name = info.name;
-                }
-                if (info.description !== undefined) {
-                    this._description = info.description;
-                }
-                if (info.graphsPerRow !== undefined) {
-                    this._graphsPerRow = info.graphsPerRow;
-                }
-                if (info.graphsPerCol !== undefined) {
-                    this._graphsPerCol = info.graphsPerCol;
-                }
+    // funzione che aggiorna i campi dati prsenti nel JSON info
+    Page.prototype.updateParameters = function(info){
+        if (info !== undefined) {
+            if (info.name !== undefined) {
+                this._name = info.name;
             }
-        },
-        initializeData: function(data) {
-            if (data !== undefined) {
-                for (var i=0; i<data.length; i++) {
-                    this.addGraph(data[i]);
-                }
+            if (info.description !== undefined) {
+                this._description = info.description;
             }
-        },
-        addGraph: function(graph){
-            if (graph !== undefined) {
-                var count = 0;
-                for (var j=0; j<this._graphsList.length; j++) {
-                    if (this._graphsList[j].id === graph.ID){
-                        count++;
-                    }
-                }
-                if (count === 0){
-                    this._graphsList.push( {'id' : graph.ID, 'type' : graph.type, 'url' : graph.socketURL} );          
-                }
-            // error
+            if (info.graphsPerRow !== undefined) {
+                this._graphsPerRow = info.graphsPerRow;
             }
-            // error
-        },
-
-        getGraphsList: function(){
-            return this._graphsList;
-        },
-        getName: function(){
-            return this._name;
-        },
-        getDescription: function(){
-            return this._description;
-        },
-        getGraphsPerRow: function(){
-            return  this._graphsPerRow;
-        },
-        getGraphsPerCol: function(){
-            return  this._graphsPerCol;
-        },
-        getUrl: function(){
-            return this._url;
+            if (info.graphsPerCol !== undefined) {
+                this._graphsPerCol = info.graphsPerCol;
+            }
         }
     };
 
+    // funzione che inizializza i dati della pagina aggiungendo i grafici presenti nel JSON data alla lista dei grafici
+    Page.prototype.initializeData = function(data) {
+        if (data !== undefined) {
+            for (var i=0; i<data.length; i++) {
+                this.addGraph(data[i]);
+            }
+        }
+    },
+    // funzione che aggiunge un grafico a graphsList
+    Page.prototype.addGraph = function(graph){
+        if (graph !== undefined) { // controlla che il JSON sia definito
+            var count = 0;
+            for (var j=0; j<this._graphsList.length; j++) { // conta i grafici presenti nella lista che hanno lo stesso id del nuovo grafico
+                if (this._graphsList[j].id === graph.ID){
+                    count++;
+                }
+            }
+            if (count === 0){ // controlla che non sia già presente nella lista un grafico con lo stesso id
+                this._graphsList.push( {'id' : graph.ID, 'type' : graph.type, 'url' : graph.socketURL} );
+            }
+        // error
+        }
+        // error
+    };
+
+    Page.prototype.getGraphsList = function(){
+        return this._graphsList; // ritorna la lista dei grafici
+    };
+    Page.prototype.getName = function(){
+        return this._name; // ritorna il nome della pagina
+    };
+    Page.prototype.getDescription = function(){
+        return this._description; // ritorna la descrizione della pagina
+    };
+    Page.prototype.getGraphsPerRow = function(){
+        return  this._graphsPerRow; // ritorna il numero di grafici visualizzabili per riga
+    };
+    Page.prototype.getGraphsPerCol = function(){
+        return  this._graphsPerCol; // ritorna il numero di grafici visualizzabili per colonna
+    };
+    Page.prototype.getUrl = function(){
+        return this._url; // ritorna l'url che invia i dati relativi alla pagina
+    };
+
+    // costruttore di default di PageFactory
     function PageFactory() {}
 
     PageFactory.build = function(info) {
-        return new Page(info);
+        return new Page(info); // ritorna un'istanza di Page
     };
 
     return PageFactory;
@@ -10521,6 +10557,8 @@ angular.module('norris-nrti')
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 1.0.0         2015-05-19  Maria Giovanna Chinellato	Tested
+*
 * 0.1.1         2015-05-18  Maria Giovanna Chinellato	Fix attributes
 *
 * 0.1.0         2015-05-12  Maria Giovanna Chinellato   Add all attributes and all methods
@@ -10533,22 +10571,24 @@ angular.module('norris-nrti')
 angular.module('norris-nrti')
 .factory('PagesList', ['PageFactory', function(PageFactory){
 
+	// campi dati di Pageslist
 	var pagesList = [];
 
+	// Costruttore di PagesList
 	function PagesList(info) {
 
-		if (info !== undefined) {
-			if (info.data !== undefined) {
-				for (var i=0; i<info.data.length; i++){
+		if (info !== undefined) { // controlla che il JSON 'info' sia defito
+			if (info.data !== undefined) { // controlla che il campo 'data' del JSON sia definito
+				for (var i=0; i<info.data.length; i++){ // scorre l'array di pagine da inserire della lista
 					var count = 0;
-					for (var j=0; j<pagesList.length; j++) {
+					for (var j=0; j<pagesList.length; j++) { // conta le pagine presenti in lista con lo stesso id della nuova pagina
 						if (pagesList[j].id === info.data[i].properties.ID){
 							count++;
 						}
 					}
-	    			if(count === 0) {
-	    				var page = PageFactory.build(info.data[i]);
-	       				pagesList.push({ 'id' : info.data[i].properties.ID, 'page' : page});
+	    			if(count === 0) { // controlla che non siano presenti pagine con lo stesso id della nuova pagina 
+	    				var page = PageFactory.build(info.data[i]); // crea una nuova pagina
+	       				pagesList.push({ 'id' : info.data[i].properties.ID, 'page' : page}); // inserisce la pagina nella lista delle pagine
 					} 
 					// error
 				}
@@ -10556,28 +10596,31 @@ angular.module('norris-nrti')
 		}
 	}
 	
-	PagesList.prototype = {
-
-		addPage: function(page) { // da cambiare DP
-			var filteredPages = pagesList.filter(function(page) {return page.ID === pagesList.id;});
-			if(filteredPages.length === 0) {
-				var newPage = PageFactory.build(page);
-   				pagesList.push({ 'id' : page.ID, 'page' : newPage});
+	PagesList.prototype.addPage = function(page) {
+		var count = 0;
+		for (var j=0; j<pagesList.length; j++) {
+			if (pagesList[j].id === page.properties.ID){
+				count++;
 			}
-			// error
-		},
-
-		updatePage: function(info) {
-			for (var j=0; j<pagesList.length; j++) {
-				if (pagesList[j].id === info.ID){
-					pagesList[j].updateParameters(info);
-				}
-			}
-		},
-
-		getPagesList: function(){
-			return pagesList;
 		}
+		if (count === 0){
+			var newPage = PageFactory.build(page); // crea una nuova pagina
+			pagesList.push({ 'id' : page.ID, 'page' : newPage}); // aggiunge la nuova pagina alla lista
+		}
+		// error
+	};
+
+	// chiama la funzione updatePage della pagina che necessità di aggiornamenti
+	PagesList.prototype.updatePage = function(info) {
+		for (var j=0; j<pagesList.length; j++) {
+			if (pagesList[j].id === info.ID){
+				pagesList[j].page.updateParameters(info);
+			}
+		}
+	};
+
+	PagesList.prototype.getPagesList = function(){
+		return pagesList; // ritorna la lista della pagine
 	};
 
 	return( PagesList );
@@ -10647,6 +10690,8 @@ angular.module('norris-nrti')
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 1.0.0         2015-06-21 Francesco Rossetto			Tested
+*
 * 0.1.0         2015-06-09 Francesco Rossetto			Add all attributes and methods
 *
 * 0.0.1         2015-06-09  Francesco Rossetto			Initial code      
@@ -10687,84 +10732,87 @@ angular.module('norris-nrti')
 */
 
 angular.module('norris-nrti')
-.controller('BarChartController', ['$scope', '$location', 'BarChartFactory', 'BarChartFlowFactory', 'SocketServicesFactory', function($scope, $location, BarChartFactory, BarChartFlowFactory, SocketServicesFactory){
+.controller('BarChartController', ['$scope', '$location', 'BarChartFactory', 'BarChartFlowFactory', 'SocketServicesFactory', 'ColorPicker', function($scope, $location, BarChartFactory, BarChartFlowFactory, SocketServicesFactory, ColorPicker){
 
 	var socket;
-	$scope.barChart = BarChartFactory.build();
 
+	// crea un bar chart di default
+	var barChart = BarChartFactory.build();
+	$scope.barChart = barChart;
+
+	// funzione che connette il socket all'url e chiama la funzione listenOnEvent
 	this.socketConnection = function(url){
-		console.log('BARCHART socketConnection ' + url);
 		socket = SocketServicesFactory.build(url);
+		$scope.socket = socket;
 		this.listenOnEvents();
 	};
 
 	var count = 0;
 	$scope.changedP = true;
 	$scope.changedD = true;
-	//$scope.changedF = true;
+
+	// funzione che mette in ascolto il socket su alcuni eventi
 	this.listenOnEvents = function(){
-		console.log('BARCHART listenOnEvents');
-		socket.on('configGraph', function(info){
+		socket.on('configGraph', function(info){ // ascolta sull'evento 'configGraph' (ricevuto come risposta alla connessione)
 			if (count === 0){
-				console.log('BARCHART configGraph');
-				$scope.barChart.updateParameters(info.properties);
-				$scope.barChart.initializeData(info.data);
-				$scope.changedD = !$scope.changedD;
-				$scope.changedP = !$scope.changedP;
+				$scope.barChart.updateParameters(info.properties); // aggiorna le proprietà del bar chart di default con i dati appena ricevuti
+				$scope.barChart.initializeData(info.data); // inizializza i flussi con i dati
+				$scope.changedD = !$scope.changedD; // 'notifica' cambiamento dati
+				$scope.changedP = !$scope.changedP; // 'notifica' cambiamento proprietà
 				count++;
+				$scope.count = count;
 			}
 		});
-		socket.on('updateGraphProp', function(info){
-			console.log('BARCHART updateGraphProp');
-			$scope.barChart.updateParameters(info);
-			$scope.changedP = !$scope.changedP;
+		socket.on('updateGraphProp', function(info){ // ascolta sull'evento 'updateGraphProp'
+			console.log('updateGraphProp');
+			$scope.barChart.updateParameters(info); // aggiorna le proprietà del bar chart con i dati appena ricevuti
+			$scope.changedP = !$scope.changedP; // 'notifica' cambiamento proprietà
 		});
-		socket.on('insertFlow', function(info){
-			console.log('BARCHART insert flow');
-			var flow = BarChartFlowFactory.build(info.properties);
-			flow.initializeData(info);
-			$scope.barChart.addFlow(info.properties.ID, flow);
-			$scope.changedD = !$scope.changedD;
-
-			//$scope.changedF = !$scope.changedF;
+		socket.on('insertFlow', function(info){ // ascolta sull'evento 'insertFlow'
+			var flow = BarChartFlowFactory.build(info.properties); // crea un flusso di default
+			flow.initializeData(info); // inizializza il flusso
+			$scope.barChart.addFlow(info.properties.ID, flow); // aggiunge il flusso al grafico
+			$scope.changedD = !$scope.changedD; // 'notifica' cambiamento dati
 		});
-		socket.on('deleteFlow', function(info){
-			console.log('BARCHART deleteFlow');
-			$scope.barChart.deleteFlow(info.ID);
-			$scope.changedD = !$scope.changedD;
-			//$scope.changedF = !$scope.changedF;
+		socket.on('deleteFlow', function(info){ // ascolta sull'evento 'deleteFlow'
+			$scope.barChart.deleteFlow(info.ID); // elimina un flusso
+			$scope.changedD = !$scope.changedD; // 'notifica' cambiamento dati
 		});
-		socket.on('updateFlowProp', function(info){
-			console.log('BARCHART updateFlowProp'  + JSON.stringify($scope.barChart));
+		socket.on('updateFlowProp', function(info){ // ascolta sull'evento 'updateFlowProp'
 			for (var i=0; i<$scope.barChart.getFlowList().length; i++){
 				if ($scope.barChart.getFlowList()[i].id === info.ID){
-					$scope.barChart.getFlowList()[i].flow.updateParameters(info);
+					$scope.barChart.getFlowList()[i].flow.updateParameters(info); // aggiorna le proprietà di un flusso
 				}
 			}
-			$scope.changedD = !$scope.changedD;
+			$scope.changedD = !$scope.changedD; // 'notifica' cambiamento dati
 		});
-		socket.on('updateFlowData', function(data){
-			console.log('BARCHART updateFlowData');
+		socket.on('updateFlowData', function(data){ // ascolta sull'evento 'updateFlowData'
 			switch (data.action){
 				case 'insertRecords':
-					$scope.barChart.addRecords(data);
+					$scope.barChart.addRecords(data); // aggiunge record
 					break;
 				case 'deleteRecord':
-					$scope.barChart.deleteData(data);
+					$scope.barChart.deleteData(data); // elimina dati
 					break;
 				case 'updateRecord':
-					$scope.barChart.inPlaceUpdate(data);
+					$scope.barChart.inPlaceUpdate(data); // effettua aggiornamento in place
 					break;
 				case 'replaceData':
-					$scope.barChart.replaceData(data);
+					$scope.barChart.replaceData(data); // rimpiazza dei dati
 					break;
 			}
-			$scope.changedD = !$scope.changedD;
+			$scope.changedD = !$scope.changedD; // 'notifica' cambiamento dati
 		});
 	};
 
+	// variabili e funzioni a disposizione dei test
+	//$scope.socket = socket;
+	//$scope.count = count;
+
+	// mette a disposizione delle funzioni sullo scope
 	$scope.socketConnection = this.socketConnection;
 	$scope.listenOnEvents = this.listenOnEvents;
+	$scope.defaultColorFlow = ColorPicker.getDefaultColor();
 
 }]);
 /*jshint node: true */
@@ -10786,83 +10834,79 @@ angular.module('norris-nrti')
 */
 
 angular.module('norris-nrti')
-.controller('LineChartController', ['$scope', '$location', 'LineChartFactory', 'LineChartFlowFactory', 'SocketServicesFactory', function($scope, $location, LineChartFactory, LineChartFlowFactory, SocketServicesFactory){
+.controller('LineChartController', ['$scope', '$location', 'LineChartFactory', 'LineChartFlowFactory', 'SocketServicesFactory', 'ColorPicker', function($scope, $location, LineChartFactory, LineChartFlowFactory, SocketServicesFactory, ColorPicker){
 
 	var socket;
-	$scope.lineChart = LineChartFactory.build();
+	var lineChart = LineChartFactory.build(); // crea un line chart di default
+	$scope.lineChart = lineChart;
+	
+	// funzione che connette il socket all'url e chiama la funzione listenOnEvent
 	this.socketConnection = function(url){
-		console.log('LINECHART socketConnection ' + url);
 		socket = SocketServicesFactory.build(url);
 		this.listenOnEvents();
 	};
 	var count = 0;
 	$scope.changedP = true;
 	$scope.changedD = true;
-	//$scope.changedF = true;
+
+	// funzione che mette in ascolto il socket su alcuni eventi
 	this.listenOnEvents = function(){
-		console.log('LINECHART listenOnEvents');
-		socket.on('configGraph', function(info){
+		socket.on('configGraph', function(info){ // ascolta sull'evento 'configGraph' (ricevuto come risposta alla connessione)
 			if (count === 0){
-				console.log('LINECHART configGraph');
-				$scope.lineChart.updateParameters(info.properties);
-				$scope.lineChart.initializeData(info.data);
-				$scope.changedD = !$scope.changedD;
-				$scope.changedP = !$scope.changedP;
+				$scope.lineChart.updateParameters(info.properties); // aggiorna le proprietà del line chart di default con i dati appena ricevuti
+				$scope.lineChart.initializeData(info.data); // inizializza i flussi con i dati
+				$scope.changedD = !$scope.changedD; // 'notifica' cambiamento dati
+				$scope.changedP = !$scope.changedP; // 'notifica' cambiamento proprietà
 				count++;
 			}
 		});
-		socket.on('updateGraphProp', function(info){
-			console.log('LINECHART updateGraphProp' + JSON.stringify(info));
-			$scope.lineChart.updateParameters(info);
-			$scope.changedP = !$scope.changedP;
+		socket.on('updateGraphProp', function(info){ // ascolta sull'evento 'updateGraphProp'
+			$scope.lineChart.updateParameters(info);  // aggiorna le proprietà del line chart con i dati appena ricevuti
+			$scope.changedP = !$scope.changedP; // 'notifica' cambiamento proprietà
 		});
-		socket.on('insertFlow', function(info){
-			console.log('LINECHART insert flow');
-			var flow = LineChartFlowFactory.build(info.properties); // no properties perchè non ci sono dati
-			flow.initializeData(info);
-			$scope.lineChart.addFlow(info.properties.ID, flow);
-			$scope.changedD = !$scope.changedD;
-			$scope.changedP = !$scope.changedP;
-			//$scope.changedF = !$scope.changedF;
+		socket.on('insertFlow', function(info){ // ascolta sull'evento 'insertFlow'
+			var flow = LineChartFlowFactory.build(info.properties); // crea un flusso di default
+			flow.initializeData(info); // inizializzail flusso
+			$scope.lineChart.addFlow(info.properties.ID, flow); // aggiunge il flusso al grafico
+			$scope.changedD = !$scope.changedD; // 'notifica' cambiamento dati
+			$scope.changedP = !$scope.changedP; // 'notifica' cambiamento proprietà
 		});
 		socket.on('deleteFlow', function(info){
-			console.log('LINECHART deleteFlow');
-			$scope.lineChart.deleteFlow(info.ID);
-			$scope.changedD = !$scope.changedD;
-			$scope.changedP = !$scope.changedP;
-			//$scope.changedF = !$scope.changedF;
+			$scope.lineChart.deleteFlow(info.ID); // elimina un flusso
+			$scope.changedD = !$scope.changedD; // 'notifica' cambiamento dati
+			$scope.changedP = !$scope.changedP; // 'notifica' cambiamento proprietà
 		});
-		socket.on('updateFlowProp', function(info){
-			console.log('LINECHART updateFlowProp');
+		socket.on('updateFlowProp', function(info){ // ascolta sull'evento 'updateFlowProp'
 			for (var i=0; i<$scope.barChart.getFlowList().length; i++){
 				if ($scope.lineChart.getFlowList()[i].id === info.ID){
-					$scope.lineChart.getFlowList()[i].flow.updateParameters(info);
+					$scope.lineChart.getFlowList()[i].flow.updateParameters(info); // aggiorna le proprietà dei flussi
 				}
 			}
-			$scope.changedP = !$scope.changedP;
+			$scope.changedP = !$scope.changedP; // 'notifica' cambiamento proprietà
 		});
 		socket.on('updateFlowData', function(data){
-			console.log('LINECHART updateFlowData ' + data.action);
 			switch (data.action){
 				case 'insertRecords':
-					$scope.lineChart.streamUpdate(data);
+					$scope.lineChart.streamUpdate(data); // effettua un aggiornamento di tipo stream
 					break;
 				case 'deleteRecord':
-					$scope.lineChart.deleteData(data);
+					$scope.lineChart.deleteData(data); // elimina dei dati
 					break;
 				case 'updateRecord':
-					$scope.lineChart.inPlaceUpdate(data);
+					$scope.lineChart.inPlaceUpdate(data);  // effettua aggiornamento di tipo in place
 					break;
 				case 'replaceData':
-					$scope.lineChart.replaceData(data);
+					$scope.lineChart.replaceData(data); // rimpiazza dei dati
 					break;
 			}
-			$scope.changedD = !$scope.changedD;
+			$scope.changedD = !$scope.changedD; // 'notifica' cambiamento dati
 		});
 	};
 
+	// mette a disposizione delle funzioni sullo scope
 	$scope.socketConnection = this.socketConnection;
 	$scope.listenOnEvents = this.listenOnEvents;
+	$scope.defaultColorFlow = ColorPicker.getDefaultColor();
 }]);
 /*jshint node: true */
 'use strict';
@@ -10875,6 +10919,8 @@ angular.module('norris-nrti')
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 1.0.0         2015-05-25  Francesco Rossetto		   Tested
+*
 * 0.1.0         2015-05-25  Maria Giovanna Chinellato   Add all attributes and all methods
 *
 * 0.0.1         2015-05-25  Maria Giovanna Chinellato   Initial code      
@@ -10883,16 +10929,16 @@ angular.module('norris-nrti')
 */
 
 angular.module('norris-nrti')
-.controller('MapChartController', ['$scope', '$location', 'MapChartFactory', 'MapChartFlowFactory', 'SocketServicesFactory', function($scope, $location, MapChartFactory, MapChartFlowFactory, SocketServicesFactory){
+.controller('MapChartController', function($scope, $location, MapChartFactory, MapChartFlowFactory, SocketServicesFactory){
 
 	var socket;
+	var mapChart = MapChartFactory.build(); // crea un map chart di default
+	$scope.mapChart = mapChart;
 
-	$scope.mapChart = MapChartFactory.build();
-
+	// funzione che connette il socket all'url e chiama la funzione listenOnEvent
 	var count1 = 0;
 	this.socketConnection = function(url){
 		if (count1 === 0) {
-			console.log('MAPCHART socketConnection ' + url);
 			socket = SocketServicesFactory.build(url);
 			this.listenOnEvents();
 			count1++;
@@ -10903,71 +10949,65 @@ angular.module('norris-nrti')
 	$scope.changedP = true;
 	$scope.changedD = true;
 	$scope.changedF = true;
+
+	// funzione che mette in ascolto il socket su alcuni eventi
 	this.listenOnEvents = function(){
-		console.log('MAPCHART listenOnEvents');
-		socket.on('configGraph', function(info){
+		socket.on('configGraph', function(info){ // ascolta sull'evento 'configGraph' (ricevuto come risposta alla connessione)
 			if (count === 0) {
-				console.log('MAPCHART configGraph');
 				count++;
-				$scope.mapChart.updateParameters(info.properties);
-				$scope.mapChart.initializeData(info.data);
-				$scope.changedP = !$scope.changedP;
-				$scope.changedD = !$scope.changedD;
+				$scope.mapChart.updateParameters(info.properties); // aggiorna le proprietà del map chart di default con i dati appena ricevuti
+				$scope.mapChart.initializeData(info.data); // inizializza i flussi con i dati
+				$scope.changedP = !$scope.changedP; // 'notifica' cambiamento proprietà
+				$scope.changedD = !$scope.changedD; // 'notifica' cambiamento dati
 	        }
 		});
-		socket.on('updateGraphProp', function(info){
-			console.log('MAPCHART updateGraphProp');
-			$scope.mapChart.updateParameters(info);
-			$scope.changedP = !$scope.changedP;
+		socket.on('updateGraphProp', function(info){ // ascolta sull'evento 'updateGraphProp'
+			$scope.mapChart.updateParameters(info); // aggiorna le proprietà del map chart con i dati appena ricevuti
+			$scope.changedP = !$scope.changedP; // 'notifica' cambiamento proprietà
 		});
-		socket.on('insertFlow', function(info){
-			console.log('MAPCHART insert flow' + JSON.stringify(info));
-			var flow = MapChartFlowFactory.build(info.properties);
-			flow.initializeData(info);
-			$scope.mapChart.addFlow(info.ID, flow);
-			$scope.changedD = !$scope.changedD;
-			$scope.changedF = !$scope.changedF;
+		socket.on('insertFlow', function(info){ // ascolta sull'evento 'insertFlow'
+			var flow = MapChartFlowFactory.build(info.properties); // crea un flusso di default
+			flow.initializeData(info); // inizializzail flusso
+			$scope.mapChart.addFlow(info.ID, flow); // aggiunge il flusso al grafico
+			$scope.changedD = !$scope.changedD; // 'notifica' cambiamento dati
 		});
-		socket.on('deleteFlow', function(info){
-			console.log('MAPCHART deleteFlow');
-			$scope.mapChart.deleteFlow(info.ID);
-			$scope.changedD = !$scope.changedD;
-			$scope.changedF = !$scope.changedF;
+		socket.on('deleteFlow', function(info){ // ascolta sull'evento 'deleteFlow'
+			$scope.mapChart.deleteFlow(info.ID); // elimina un flusso
+			$scope.changedD = !$scope.changedD; // 'notifica' cambiamento dati
 		});
-		socket.on('updateFlowProp', function(info){
-			console.log('MAPCHART updateFlowProp');
+		socket.on('updateFlowProp', function(info){ // ascolta sull'evento 'updateFlowProp'
 			for (var i=0; i<$scope.mapChart.getFlowList().length; i++){
 				if ($scope.mapChart.getFlowList()[i].id === info.ID){
-					$scope.mapChart.getFlowList()[i].flow.updateParameters(info);
+					$scope.mapChart.getFlowList()[i].flow.updateParameters(info); // aggiorna le proprietà dei flussi
 				}
 			}
-			$scope.changedD = !$scope.changedD;
+			$scope.changedD = !$scope.changedD; // 'notifica' cambiamento dati
 		});
-		socket.on('updateFlowData', function(data){
-			console.log('MAPCHART updateFlowData ' + data.action);
+		socket.on('updateFlowData', function(data){ // ascolta sull'evento 'updateFlowData'
 			switch (data.action){
 				case 'insertRecords':
-					$scope.mapChart.streamUpdate(data);
+					$scope.mapChart.streamUpdate(data); // effettua un aggiornamento di tipo stream
 					break;
 				case 'deleteRecord':
-					$scope.mapChart.deleteData(data);
+					$scope.mapChart.deleteData(data); // elimina dei dati
 					break;
 				case 'updateRecord':
-					$scope.mapChart.inPlaceUpdate(data);
+					$scope.mapChart.inPlaceUpdate(data); // effettua aggiornamento di tipo in place
 					break;
 				case 'replaceData':
-					$scope.mapChart.replaceData(data);
+					$scope.mapChart.replaceData(data); // rimpiazza dei dati
 					break;
 			}
-			$scope.changedD = !$scope.changedD;
+			$scope.changedD = !$scope.changedD; // 'notifica' cambiamento dati
 		});
 
 	};
 
+	// mette a disposizione delle funzioni sullo scope
 	$scope.socketConnection = this.socketConnection;
 	$scope.listenOnEvents = this.listenOnEvents;
 
-}]);
+});
 /*jshint node: true */
 'use strict';
 
@@ -10989,77 +11029,75 @@ angular.module('norris-nrti')
 .controller('TableController', ['$scope', '$location', 'TableFactory', 'TableFlowFactory', 'SocketServicesFactory', function($scope, $location, TableFactory, TableFlowFactory, SocketServicesFactory){
 
 	var socket;
+	var table = TableFactory.build(); // crea una table di default
+	$scope.table = table;
 
-	$scope.table = TableFactory.build();
-
+	// funzione che connette il socket all'url e chiama la funzione listenOnEvent
 	this.socketConnection = function(url){
-		console.log('TABLE socketConnection ' + url);
 		socket = SocketServicesFactory.build(url);
 		this.listenOnEvents();
 	};
 
 	var count = 0;
 	$scope.changed = true;
-	//$scope.changedD = true;
+	$scope.changedP = false;
+
+	// funzione che mette in ascolto il socket su alcuni eventi
 	this.listenOnEvents = function(){
-		console.log('listen ON EVENTS');
-		socket.on('configGraph', function(info){
-			console.log('TABLE config graph');
+		socket.on('configGraph', function(info){ // ascolta sull'evento 'configGraph' (ricevuto come risposta alla connessione)
 			if (count === 0) {
 				count++;
-				$scope.table.updateParameters(info.properties);
-				$scope.table.initializeData(info.data);
-				$scope.changed = !$scope.changed;
-				//$scope.changedP = !$scope.changedP;  
+				$scope.table.updateParameters(info.properties); // aggiorna le proprietà della table di default con i dati appena ricevuti
+				$scope.table.initializeData(info.data); // inizializza i flussi con i dati
+				$scope.changed = !$scope.changed; // 'notifica' cambiamento dati e proprietà
+				$scope.changedP = true;
 	        }
 		});
-		socket.on('updateGraphProp', function(info){
-			console.log('TABLE updateGraphProp');
-			$scope.table.updateParameters(info);
-			$scope.changed = !$scope.changed;
+		socket.on('updateGraphProp', function(info){ // ascolta sull'evento 'updateGraphProp'
+			$scope.table.updateParameters(info); // aggiorna le proprietà della table con i dati appena ricevuti
+			$scope.changed = !$scope.changed; // 'notifica' cambiamento proprietà
+			console.log('changedP controller');
+			$scope.changedP = true;
 		});
-		socket.on('insertFlow', function(info){
-			console.log('TABLE  insert flow' + JSON.stringify(info));
-			var flow = TableFlowFactory.build(info.properties);
-			flow.initializeData(info, $scope.table.getAddRowOn());
-			$scope.table.addFlow(info.properties.ID, flow);
-			$scope.changed = !$scope.changed;
+		socket.on('insertFlow', function(info){ // ascolta sull'evento 'insertFlow'
+			var flow = TableFlowFactory.build(info.properties); // crea un flusso di default
+			flow.initializeData(info, $scope.table.getAddRowOn()); // inizializzail flusso
+			$scope.table.addFlow(info.properties.ID, flow); // aggiunge il flusso al grafico
+			$scope.changed = !$scope.changed; // 'notifica' cambiamento dati
 		});
-		socket.on('deleteFlow', function(info){
-			console.log('TABLE  deleteFlow');
-			$scope.table.deleteFlow(info.ID);
-			$scope.changed = !$scope.changed;
+		socket.on('deleteFlow', function(info){ // ascolta sull'evento 'deleteFlow'
+			$scope.table.deleteFlow(info.ID); // elimina un flusso
+			$scope.changed = !$scope.changed; // 'notifica' cambiamento dati
 		});
-		socket.on('updateFlowProp', function(info){
-			console.log('TABLE  updateFlowProp');
+		socket.on('updateFlowProp', function(info){ // ascolta sull'evento 'updateFlowProp'
 			for (var i=0; i<$scope.table.getFlowList().length; i++){
 				if ($scope.table.getFlowList()[i].id === info.ID){
-					$scope.table.getFlowList()[i].flow.updateParameters(info);
+					$scope.table.getFlowList()[i].flow.updateParameters(info); // aggiorna le proprietà dei flussi
 				}
 			}
-			$scope.changed = !$scope.changed;
+			$scope.changed = !$scope.changed; // 'notifica' cambiamento dati
 		});
-		socket.on('updateFlowData', function(data){
-			console.log('TABLE  updateFlowData ' + data.action);
+		socket.on('updateFlowData', function(data){ // ascolta sull'evento 'updateFlowData'
 			switch (data.action){
 				case 'insertRecords':
-					$scope.table.streamUpdate(data);
+					$scope.table.streamUpdate(data); // effettua un aggiornamento di tipo stream
 					break;
 				case 'deleteRecord':
-					$scope.table.deleteData(data);
+					$scope.table.deleteData(data); // elimina dei dati
 					break;
 				case 'updateRecord':
-					$scope.table.inPlaceUpdate(data);
+					$scope.table.inPlaceUpdate(data); // effettua aggiornamento di tipo in place
 					break;
 				case 'replaceData':
-					$scope.table.replaceData(data);
+					$scope.table.replaceData(data); // rimpiazza dei dati
 					break;
 			}
-			$scope.changed = !$scope.changed;
+			$scope.changed = !$scope.changed; // 'notifica' cambiamento dati
 		});
 
 	};
 
+	// mette a disposizione delle funzioni sullo scope
 	$scope.socketConnection = this.socketConnection;
 	$scope.listenOnEvents = this.listenOnEvents;
 
@@ -11084,52 +11122,65 @@ angular.module('norris-nrti')
 
 angular.module('norris-nrti')
 .controller('PageController', ['$scope', '$location', '$routeParams', 'PagesList', 'PageFactory', 'SocketServicesFactory', function($scope, $location, $routeParams, PagesList, PageFactory, SocketServicesFactory){
-
-	$scope.page = PagesList.prototype.getPagesList()[$routeParams.pageId].page;
-	$scope.previous = false;
+	console.log('controller PAge');
+	var page = PagesList.prototype.getPagesList()[$routeParams.pageId].page; // recupera la pagina corrente
+	$scope.page = page;
+	/*$scope.previous = false;
 	$scope.next = false;
 	var a = $routeParams.pageId - 1;
-	console.log('$routeParams.pageId - 1 ' + a);
 	if (PagesList.prototype.getPagesList()[parseInt($routeParams.pageId) - 1] !== undefined) {
-		$scope.previous = true;
-		console.log('$scope.previous ' + $scope.previous);
+		$scope.previous = true; // se è presente una pagina precedente mette il flag a true
 	}
 	var b = $routeParams.pageId + 1;
-	console.log('$routeParams.pageId + 1 ' + b);
 	if (PagesList.prototype.getPagesList()[parseInt($routeParams.pageId) + 1] !== undefined) {
-		$scope.next = true;
-		console.log('$scope.next ' + $scope.next);
-	}
-	var url = $scope.page.getUrl();
+		$scope.next = true; // se è presente una pagina successiva mette il flag a true
+	}*/
+	var url = $scope.page.getUrl(); // recupera l'url a cui deve connettersi il socket
+
 	var socket;
 
 	this.socketConnection = function(){
-		console.log('socketconnection page: ' + url);
 		socket = SocketServicesFactory.build(url);
 		this.listenOnEvents();
 	};
 
+	// funzione che mette in ascolto il socket su alcuni eventi
 	this.listenOnEvents = function(){
-		socket.on('configPage', function(info){
-			$scope.page.updateParameters(info.properties);
-			$scope.page.initializeData(info.data);
+		socket.on('configPage', function(info){ // ascolta sull'evento 'configPage' (ricevuto come risposta alla connessione)
+			$scope.page.updateParameters(info.properties); // modifica i campi di default con i valori esatti della pagina
+			$scope.page.initializeData(info.data); // inizializza i dati della pagina (aggiunge i grafici presenti in essa)
 			$scope.graphs = matrix($scope.page.getGraphsList());
-			console.log($scope.page.getGraphsList().toString());
-			console.log($scope.graphs.toString());
 		});
-		socket.on('updatePageProp', function(info){
-			$scope.page.updateParameters(info);
-		});
-		socket.on('insertGraph', function(info){
-			$scope.page.addGraph(info);
+		/*socket.on('updatePageProp', function(info){ // ascolta sull'evento 'updatePageProp'
+			$scope.page.updateParameters(info); // aggiorna le proprietà della pagina
+		});*/
+		socket.on('insertGraph', function(info){ // ascolta sull'evento 'insertGraph'
+			$scope.page.addGraph(info); // inserisce un nuovo grafico alla lista dei grafici presente in $scope.page
 			$scope.graphs = matrix($scope.page.getGraphsList());
 		});
 	};
 
+	// funzione che connette il socket all'url e chiama la funzione listenOnEvent
+	/*this.socketConnection = function(){
+		socket = SocketServicesFactory.build(url);
+		this.listenOnEvents();
+	};
+	this.socketConnection();*/
+
+	this.previous = function(id){
+		console.log('prev');
+		$location.path('/page/' + id);
+	};
+
+	this.next = function(id){
+		console.log('next');
+		$location.path('/page/' + id);
+	};
+
+	// funzione di utilità che dispone i grafici in un array per la successiva visualizzazione
 	function matrix(list) {
 		var array = [];
 		var count = 0;
-		console.log('list.length ' + list.length + ' $scope.page.getGraphsPerCol() ' + $scope.page.getGraphsPerCol());
 		var graphsPerCol = $scope.page.getGraphsPerCol();
 		var graphsPerRow = $scope.page.getGraphsPerRow();
 		if (graphsPerCol === -1){
@@ -11150,9 +11201,12 @@ angular.module('norris-nrti')
 		return array;
 	}
 
+	// vengono rese disponibili alcune funzioni sullo $scope
 	$scope.graphs = [];
 	$scope.socketConnection = this.socketConnection;
 	$scope.listenOnEvents = this.listenOnEvents;
+	$scope.previous = this.previous;
+	$scope.next = this.next;
 	
 }]);
 /*jshint node: true */
@@ -11179,33 +11233,32 @@ angular.module('norris-nrti')
 	var socket;
 	var pagesList;
 
-	var url = UrlProvider.prototype.getUrl();
+	var url = UrlProvider.prototype.getUrl(); // recupera l'url a cui deve connettersi il socket
 
+	// funzione che connette il socket all'url e chiama la funzione listenOnEvent
 	this.socketConnection = function() {
 		socket = SocketServicesFactory.build(url);
-		console.log('socketConnection');
 		this.listenOnEvents();
 	};
 
+	// funzione che mette in ascolto il socket su alcuni eventi
 	this.listenOnEvents = function() {
-		socket.on('configPageList', function(info){
-			console.log('configPageList');
-			console.log(JSON.stringify(info));
-			pagesList = new PagesList(info);
-			$scope.pagesList = pagesList.getPagesList();
+		socket.on('configPageList', function(info){ // ascolta sull'evento 'configPageList' (ricevuto come risposta alla connessione)
+			pagesList = new PagesList(info); // crea una nuova PagesList
+			$scope.pagesList = pagesList.getPagesList(); // rende disponibile la lista delle pagine sullo scope
 		});
-		socket.on('insertPage', function(info) {
-			console.log('insertPage');
-			pagesList.addPage(info);
-			$scope.pagesList = pagesList.getPagesList();
+		socket.on('insertPage', function(info) { // ascolta sull'evento 'insertPage'
+			pagesList.addPage(info); // aggiunge una pagina alla lista
+			$scope.pagesList = pagesList.getPagesList(); // rende disponibile la lista delle pagine sullo scope
 		});
-		socket.on('updatePage', function(info) {
+		socket.on('updatePage', function(info) { // ascolta sull'evento 'updatePage'
 			pagesList.updatePage(info);
-			$scope.pagesList = pagesList.getPagesList();
+			$scope.pagesList = pagesList.getPagesList(); // rende disponibile la lista delle pagine sullo scope
 		});
 
 	};
 
+	// vengono rese disponibili alcune funzioni sullo $scope
 	$scope.socketConnection = this.socketConnection;
 	$scope.listenOnEvents = this.listenOnEvents;
 	
@@ -11221,6 +11274,8 @@ angular.module('norris-nrti')
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 1.0.0         2015-06-12 Francesco Rossetto			Tested
+*
 * 0.1.0         2015-06-09 Francesco Rossetto			Add all attributes and methods
 *
 * 0.0.1         2015-06-09  Francesco Rossetto			Initial code      
@@ -11229,11 +11284,8 @@ angular.module('norris-nrti')
 
 angular.module('norris-nrti')
 .controller('RootController', ['$scope', 'UrlProvider', function($scope, UrlProvider){
-	console.log('dentro root controller');
     $scope.url = '';
-    $scope.$watch('url', function(newValue, oldValue) {
-    	console.log('dentro watch root');
-    	console.log('newValue: ' + newValue + ', oldValue: ' +oldValue );              
+    $scope.$watch('url', function(newValue, oldValue) {            
         UrlProvider.prototype.setUrl(newValue);
     }, true);
 }]);
@@ -11241,14 +11293,26 @@ angular.module('norris-nrti')
 'use strict';
 
 /*
-* Name :  barChart.js
-* Module : FrontEnd::View
-* Location : /frontend/app/View
+* Name :  BarChartView.js
+* Module : FrontEnd::View::GraphsView
+* Location : /frontend/app/View/GraphsView
 *
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
-* 0.1.0         2015-06-09  Maria Giovanna Chinellato   Add all attributes and some methods 
+* 1.0.3         2015-06-22  Maria Giovanna Chinellato   Fix flow color     
+*
+* 1.0.2         2015-06-21  Maria Giovanna Chinellato   Fix legend update     
+*
+* 1.0.1         2015-06-19  Maria Giovanna Chinellato   Fix svg tag     
+*
+* 1.0.0         2015-06-13  Maria Giovanna Chinellato   Tested     
+*
+* 0.2.0         2015-06-10  Francesco Rossetto          Add init, setData and legend function    
+*
+* 0.1.1         2015-06-10  Maria Giovanna Chinellato   Add link function, observe and watch      
+*
+* 0.1.0         2015-06-09  Francesco Rossetto          Add all attributes and add initial code for methods 
 *
 * 0.0.1         2015-06-02  Maria Giovanna Chinellato   Initial code      
 * =================================================================================================
@@ -11258,50 +11322,48 @@ angular.module('norris-nrti')
 angular.module('norris-nrti')
 .directive('barChart', function($compile){
 	return {
-		restrict: 'E',
-		//controller : 'BarChartController',
+		restrict: 'E', // direttiva di tipo elemento (tag)
 		replace: false,
-		scope: {
+		scope: { // attributo della direttiva
             url: '@'
 		},
-		//bindToController: true,
-        //template: '<div></div>',
-        //template: '<nvd3-multi-bar-chart data="exampleData" id="exampleId" width="1000" height="600" showxaxis="true" showyaxis="true" rotatelabels="90"><svg></svg></nvd3-multi-bar-chart>',
+        
         link: function(scope, element, attrs){
-            
+            element.empty();
         	attrs.$observe('url', function(value) {
-                console.log('BARCHART observ url ' + value);
                 if (value) {
-                    scope.$parent.socketConnection(value);
+                    scope.$parent.socketConnection(value); // richiama la funzione del controller che permette di connettersi al server
                 }
             });
 
             scope.$parent.$watch('changedP', function(newValue, oldValue){
                 if (newValue !== oldValue) {
-                    console.log('BARCHART watch changedP');
-                    //scope.legend();
-                    scope.init();
+                    element.empty();
+                    scope.init(); // crea  il grafico chiamando la funzione apposita
                 }
             }, true);
 
             scope.$parent.$watch('changedD', function(newValue, oldValue){
                 if(newValue !== oldValue){
-                    console.log('BARCHART watch changedD');                    
-                    scope.setData();
+                    scope.setData(); // richiama la funzione che imposta i dati ad ogni cambiamento dei dati dei flussi del grafico
+                    if (scope.$parent.barChart.getLegend() !== null){
+                        scope.legend();  // richiama la funzione che crea la legenda relativa al grafico
+                    }
                 }
             }, true);
 
-            /*scope.$parent.$watch('changedF', function(newValue, oldValue){
-                if(newValue !== oldValue){
-                    console.log('BARCHART watch changedF');                    
-                    //scope.legend();
+            scope.$on('$destroy', function() {
+                for (var j=0; j<element.children().length; j++){
+                    var nvd3 = element.children()[j];
+                    nvd3.select('*').remove();
+                    nvd3.select('svg').remove();
                 }
-            }, true);*/
-
+            }); 
+            // inserisce il codice HTML che crea il grafico desiderato
             scope.init = function(){
-                console.log('BARCHART init');
-                element.empty();
-                var barchart, legend, onPoint, control;
+                element.empty(); // elimina i tag HTML relativi al bar chart
+                var barchart = null;
+                var legend, onPoint, control;
                 var str = scope.url.split('/');
                 var id = str[str.length-1];
                 if (scope.$parent.barChart.getLegend() !== null){
@@ -11323,32 +11385,29 @@ angular.module('norris-nrti')
                     onPoint = false;
                 }
                 if (scope.$parent.barChart.getBarOrientation() === 'V'){
-                    barchart = '<div style="position: relative;"><div class="graphtitle">'+ scope.$parent.barChart.getTitle() +'</div>' +
+                    barchart = '<div class="graphtitle">'+ scope.$parent.barChart.getTitle() +'</div>' +
                                 '<nvd3-multi-bar-chart data="data" nodata=" " id="'+ id +'" ' +
-                                'xaxisticksformat="xAxisTickFormatFunction()" showxaxis="true" showyaxis="true" ' +
-                                'rotatelabels="-90" interactive="true" tooltips="'+ onPoint +'" ' +
-                                'xaxislabel="'+ scope.$parent.barChart.getX().getName() +'" ' +
-                                'showcontrols="'+ control +'" color="colorFunction()" ' +
-                                'width="'+ scope.$parent.barChart.getWidth() +'" height="'+ scope.$parent.barChart.getHeight() +'">' +
-                                '<svg></svg></nvd3-multi-bar-chart></div>';
-                    //barchart = barchart + '<svg width="'+ scope.$parent.barChart.getWidth() +'" height="'+ scope.$parent.barChart.getHeight() +'"></svg></nvd3-multi-bar-chart>';
+                                'xaxisticksformat="xAxisTickFormatFunction()" yaxistickformat="yAxisTickFormatFunction()" showxaxis="true" showyaxis="true" ' +
+                                'rotatelabels="-90" interactive="true" tooltips="'+ onPoint +'" showlegend="' + legend + '" ' +
+                                'xaxislabel="'+ scope.$parent.barChart.getX().getName() +'" ';
+                    barchart = barchart + 'color="colorFunction()" showcontrols="'+ control +'">' +
+                                '<svg style="width: '+ scope.$parent.barChart.getWidth() +'; height: '+ scope.$parent.barChart.getHeight() +';"></svg></nvd3-multi-bar-chart>';
                 }else if(scope.$parent.barChart.getBarOrientation() === 'H'){
-                    barchart = '<div style="position: relative;"><div class="graphtitle">'+ scope.$parent.barChart.getTitle() +'</div>' +
+                    barchart = '<div class="graphtitle">'+ scope.$parent.barChart.getTitle() +'</div>' +
                                 '<nvd3-multi-bar-horizontal-chart data="data" nodata=" " id="'+ id +'" ' +
                                 'xaxisticksformat="xAxisTickFormatFunction()" yaxistickformat="yAxisTickFormatFunction()" showxaxis="true" showyaxis="true" ' +
-                                'rotatelabels="-90" interactive="true" tooltips="'+ onPoint +'" ' +
-                                'xaxislabel="'+ scope.$parent.barChart.getX().getName() +'" ' +
-                                'showcontrols="'+ control +'" color="colorFunction()" ' +
-                                'width="'+ scope.$parent.barChart.getWidth() +'" height="'+ scope.$parent.barChart.getHeight() +'">' +
-                                '<svg></svg></nvd3-multi-bar-horizontal-chart></div>';
-                    //barchart = barchart + '<svg width="'+ scope.$parent.barChart.getWidth() +'" height="'+ scope.$parent.barChart.getHeight() +'"></svg></nvd3-multi-bar-horizontal-chart>';
+                                'rotatelabels="-90" interactive="true" tooltips="'+ onPoint +'" showlegend="' + legend + '" ' +
+                                'xaxislabel="'+ scope.$parent.barChart.getX().getName() +'" ';
+                    barchart = barchart + 'color="colorFunction()" showcontrols="'+ control +'">' +
+                                '<svg style="width: '+ scope.$parent.barChart.getWidth() +'; height: '+ scope.$parent.barChart.getHeight() +';"></svg></nvd3-multi-bar-horizontal-chart>';
                 }
                 
                 var compiled = $compile(barchart)(scope);
                 element.append(compiled);
-                scope.legend();
+                
             };
             
+            // imposta il colore dei flussi
             scope.colorArray = [];
             scope.colorFunction = function() {
                 return function(d, i) {
@@ -11356,27 +11415,35 @@ angular.module('norris-nrti')
                 };
             };
 
+            // funzione che imposta il tick dell'asse X
             scope.xAxisTickFormatFunction = function(){
                 return function(d){
                     return d;
                 };
             };
 
+            // funzione che imposta il tick dell'asse Y
             scope.yAxisTickFormatFunction = function(){
                 return function(d){
                     return d;
                 };
             };
 
+            // imposta i dati da visualizzare
+            scope.data = [];
             scope.setData = function(){
                 var data = [];
                 var colorArray = [];
-
                 for (var i=0; i<scope.$parent.barChart.getFlowList().length; i++) {
                     var key;
                     var values = [];
                     key = scope.$parent.barChart.getFlowList()[i].flow.getName();
-                    colorArray.push(scope.$parent.barChart.getFlowList()[i].flow.getFlowColor());
+                    if (scope.$parent.barChart.getFlowList()[i].flow.getFlowColor() !== undefined && scope.$parent.barChart.getFlowList()[i].flow.getFlowColor() !== null){
+                       colorArray.push(scope.$parent.barChart.getFlowList()[i].flow.getFlowColor());
+                    }
+                    else{
+                       colorArray.push(scope.$parent.defaultColorFlow[i]);
+                    }
                     for (var j=0; j<scope.$parent.barChart.getFlowList()[i].flow.getData().length; j++) {
                         var value = [scope.$parent.barChart.getFlowList()[i].flow.getData()[j].value[0], scope.$parent.barChart.getFlowList()[i].flow.getData()[j].value[1]];
                         values.push(value);
@@ -11389,79 +11456,68 @@ angular.module('norris-nrti')
                             return (a[0] < b[0]) ? -1 : 1;
                         }
                     });
-                    for (var z=0; z<values.length; z++){
-                        console.log('[' + values[z][0] + ',' + values[z][1] + ']');
-                    }
+
+
                     for (var y=0; y<values.length; y++){
                         values[y][0] = scope.$parent.barChart.getHeaders()[values[y][0]-1];
                     }
-                    for (var g=0; g<values.length; g++){
-                        console.log('[' + values[g][0] + ',' + values[g][1] + ']');
-                    }
                     data.push({ 'key': key, 'values': values});
                 }
-                scope.data = data;
-                //console.log(' data.length ' + data.length);
                 scope.colorArray = colorArray;
-
+                scope.data = data;
             };
 
+            // posiziona la legenda a nord, est, sud, ovest, nord-est, nord-ovest, sud-est o sud-ovest del grafico
             function changePosition(chart,parent){
+
                 switch (scope.$parent.barChart.getLegend().getPosition()) {
                     case 'N':
-                        //chart.setAttribute('style', 'position: relative; bottom: -30px;');
                         parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.barChart.getHeight() + 'px; right: -' + (scope.$parent.barChart.getWidth()/2) + 'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'E':
-                        //chart.setAttribute('style', 'position: relative; right: 0;');
                         parent.setAttribute('style', 'float: left; position: relative; top: -' + (scope.$parent.barChart.getHeight()/2) + 'px; right: -' + scope.$parent.barChart.getWidth() + 'px;  background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'S':
-                        //chart.setAttribute('style', 'position: relative;');
                         parent.setAttribute('style', 'float: left; position: relative; right: -' + (scope.$parent.barChart.getWidth()/2) + 'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'W':
-                        //chart.setAttribute('style', 'position: relative; right: -100px;');
                         parent.setAttribute('style', 'float: left; position: relative; top: -' + (scope.$parent.barChart.getHeight()/2) + 'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'NE':
-                        //chart.setAttribute('style', 'position: relative; bottom: 0;');
                         parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.barChart.getHeight() + 'px; right: -' + scope.$parent.barChart.getWidth() + 'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'NW':
-                        //chart.setAttribute('style', 'position: relative; bottom: -30px;');
                         parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.barChart.getHeight() + 'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'SE':
-                        //chart.setAttribute('style', 'position: relative;');
                         parent.setAttribute('style', 'float: left; position: relative; right: -' + scope.$parent.barChart.getWidth() + 'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'SW':
-                        //chart.setAttribute('style', 'height:'+ scope.$parent.barChart.getHeight() +'px; width:'+ scope.$parent.barChart.getWidth() +'px; position: relative; bottom: 0;');
                         parent.setAttribute('style', 'float: left; position: relative; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
                         break;
                 }
             }
 
+            // crea la legenda del grafico
             scope.legend = function() {
                 var chart = element.children()[1];
+
+                if (element.children()[2]){
+                    element.children()[2].remove();
+                }
                 var parent = document.createElement('div');
 
                 changePosition(chart,parent);
 
-                while(parent.firstChild) {
-                    parent.removeChild(parent.firstChild);
-                }
                 if (scope.$parent.barChart.getLegend() !== null) {
-                    //parent.setAttribute('style', 'background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + '; color: '+ scope.$parent.barChart.getLegend().getFontColor());
                     var div = document.createElement('div');
                     for (var i=0; i<scope.$parent.barChart.getFlowList().length; i++) {
                         if (scope.$parent.barChart.getFlowList()[i].flow.getData().length){
                             var square = document.createElement('div');
-                            square.setAttribute('style', 'float: left; height: 15px; width: 15px; background-color: ' + scope.$parent.barChart.getFlowList()[i].flow.getFlowColor() + ';');
+                            square.setAttribute('style', 'float: left; height: 15px; width: 15px; background-color: ' + scope.colorArray[i] + ';');
                             var spanText = document.createElement('div');
                             var text = document.createTextNode('\u00A0\u00A0\u00A0\u00A0' + scope.$parent.barChart.getFlowList()[i].flow.getName());
-                            spanText.setAttribute('style', 'color: '+ scope.$parent.barChart.getLegend().getFontColor() + ';');
+                            spanText.setAttribute('style', 'width: 100px; color: '+ scope.$parent.barChart.getLegend().getFontColor() + ';');
                             spanText.appendChild(text);
                             div.appendChild(square);
                             div.appendChild(spanText);
@@ -11471,7 +11527,6 @@ angular.module('norris-nrti')
                 }
                 element.append(parent);
             };
-
         }
     };
 });
@@ -11479,14 +11534,26 @@ angular.module('norris-nrti')
 'use strict';
 
 /*
-* Name :  MapChart.js
-* Module : FrontEnd::View
-* Location : /frontend/app/View
+* Name :  LineChartView.js
+* Module : FrontEnd::View::GraphsView
+* Location : /frontend/app/View/GraphsView
 *
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
-* 0.0.1         2015-06-02  Maria Giovanna Chinellato   Initial code      
+* 1.0.3         2015-06-22  Maria Giovanna Chinellato   Fix flow color     
+*
+* 1.0.2         2015-06-21  Maria Giovanna Chinellato   Fix legend update     
+*
+* 1.0.1         2015-06-19  Maria Giovanna Chinellato   Fix svg tag     
+*
+* 1.0.0         2015-06-13  Maria Giovanna Chinellato   Tested     
+*
+* 0.1.0         2015-06-05  Maria Giovanna Chinellato   Add init, setData and legend function     
+*
+* 0.0.2         2015-06-03  Francesco Rossetto          Add link function, observe and watch      
+*
+* 0.0.1         2015-06-02  Francesco Rossetto          Initial code      
 * =================================================================================================
 */
 
@@ -11494,52 +11561,50 @@ angular.module('norris-nrti')
 angular.module('norris-nrti')
 .directive('lineChart', function($compile){
 	return {
-		restrict: 'E',
-		//controller : 'LineChartController',
+		restrict: 'E', // direttiva di tipo elemento (tag)
 		replace: false,
-        scope: {
+        scope: { // attributo della direttiva
             url: '@'
 		},
-		//bindToController: true,
-        //template: '<div>ciao, sono il line chart</div>',
+        bindToController: true,
         link: function(scope, element, attrs){
 
+            element.empty();
         	attrs.$observe('url', function(value) {
-                console.log('LINECHART observ url ' + value);
                 if (value) {
-                    scope.$parent.socketConnection(value);
+                    scope.$parent.socketConnection(value); // richiama la funzione del controller che permette di connettersi al server
                 }
             });
 
             scope.$parent.$watch('changedP', function(newValue, oldValue){
                 if (newValue !== oldValue) {
-                    console.log('LINECHART watch changedP');
-                    scope.init();
+                    element.empty(); // elimina i tag HTML relativi al line chart
+                    scope.init(); // crea  il grafico chiamando la funzione apposita
                 }
             }, true);
 
             scope.$parent.$watch('changedD', function(newValue, oldValue){
                 if(newValue !== oldValue){
-                    console.log('LINECHART watch changedD');                    
-                    scope.setData();
+                    scope.setData(); // richiama la funzione che imposta i dati ad ogni cambiamento dei dati dei flussi del grafico
+                    if (scope.$parent.lineChart.getLegend() !== null){
+                        scope.legend();  // richiama la funzione che crea la legenda relativa al grafico
+                    }
                 }
             }, true);
 
-            /*scope.$parent.$watch('changedF', function(newValue, oldValue){
-                if(newValue !== oldValue){
-                    console.log('LINECHART watch changedF');                    
-                    //scope.legend();
+            scope.$on('$destroy', function() {
+                for (var j=0; j<element.children().length; j++){
+                    var nvd3 = element.children()[j];
+                    nvd3.select('*').remove();
                 }
-            }, true);*/
+            }); 
 
+            // inserisce il codice HTML che crea il grafico desiderato
             scope.init = function(){
-                console.log('LINECHART init');
 
-                var linechart, legend, onPoint;
+                var linechart, legend, onPoint, ticks;
                 var str = scope.url.split('/');
                 var id = str[str.length-1];
-
-                element.empty();
 
                 if (scope.$parent.lineChart.getLegend() !== null){
                     legend = true;
@@ -11551,44 +11616,52 @@ angular.module('norris-nrti')
                 } else {
                     onPoint = false;
                 }
-                console.log('LINECHART creo');
+                if (scope.$parent.lineChart.getX() !== null && scope.$parent.lineChart.getX() !== undefined){
+                    ticks = scope.$parent.lineChart.getX().getTicks();
+                }
+                else{
+                    ticks = 10;
+                }
                 if (scope.$parent.lineChart.getViewFinder() === true) {
                     linechart = '<div class="graphtitle">'+ scope.$parent.lineChart.getTitle() +'</div>' +
                                 '<nvd3-line-with-focus-chart data="data" nodata=" " id="'+ id +'" ' +
                                 'yaxistickformat="yAxisTickFormatFunction()" xaxistickformat="xAxisTickFormatFunction()" x2axistickformat="xAxisTickFormatFunction()" ' +
-                                'margin="{left:30,top:30,bottom:30,right:30}" margin2="{left:30,top:30,bottom:30,right:30}" interactive="true" tooltips="'+ onPoint +'" ' +
-                                'color="colorFunction()" ' + 
+                                'margin="{left:30,top:30,bottom:30,right:30}" margin2="{left:30,top:30,bottom:30,right:30}" xaxisticks="' + ticks + '" x2axisticks="' + ticks + '" interactive="true" tooltips="'+ onPoint +'" ' +
+                                'showlegend="' + legend + '" color="colorFunction()" ' + 
                                 'xaxisrotatelabels="-90" x2axisrotatelables="-90" interpolate="' + scope.$parent.lineChart.getInterpolation() +'">' + // perchè colorFunction ritorna null per adesso
                                 '<svg style="width:'+ scope.$parent.lineChart.getWidth() +'px; height:'+ scope.$parent.lineChart.getHeight() +'px;"></svg></nvd3-line-with-focus-chart>';
                 } else {
                     linechart = '<div class="graphtitle">'+ scope.$parent.lineChart.getTitle() +'</div>' +
-                                '<nvd3-line-chart data="data" id="'+ id +'" ' +
+                                '<nvd3-line-chart data="data" nodata=" " id="'+ id +'" ' +
                                 'yaxistickformat="yAxisTickFormatFunction()" xaxistickformat="xAxisTickFormatFunction()" ' +
-                                'margin="{left:30,top:30,bottom:30,right:30}" interactive="true" tooltips="'+ onPoint +'" ' +
+                                'margin="{left:30,top:30,bottom:30,right:30}" interactive="true" tooltips="'+ onPoint +'" showlegend="' + legend + '" ' +
                                 'xaxisrotatelabels="-90" interpolate="' + scope.$parent.lineChart.getInterpolation() +'" ' +
                                 'color="colorFunction()" ' +
-                                'showxaxis="true" showyaxis="true">' +
+                                'showxaxis="true" showyaxis="true" xaxisticks="' + ticks + '">' +
                                 '<svg style="width:'+ scope.$parent.lineChart.getWidth() +'px; height:'+ scope.$parent.lineChart.getHeight() +'px;"></svg></nvd3-line-chart>';
                 }
 
                 var compiled = $compile(linechart)(scope);
                 element.append(compiled);
 
-                scope.legend();
+                
             };
 
+            // funzione che imposta il tick dell'asse X
             scope.xAxisTickFormatFunction = function(){
                 return function(d){
                     return d;
                 };
             };
 
+            // funzione che imposta il tick dell'asse Y
             scope.yAxisTickFormatFunction = function(){
                 return function(d){
                     return d;
                 };
             };
 
+            // imposta il colore dei flussi
             scope.colorArray = [];
             scope.colorFunction = function() {
                 return function(d, i) {
@@ -11596,83 +11669,78 @@ angular.module('norris-nrti')
                 };
             };
 
+            // imposta i dati da visualizzare
             scope.data;
-            
-
             scope.setData = function(){
                 var data = [];
                 var colorArray = [];
 
-                console.log('LINECHART setdata length ' + scope.$parent.lineChart.getFlowList().length);
                 for (var i=0; i<scope.$parent.lineChart.getFlowList().length; i++) {
                     var key = scope.$parent.lineChart.getFlowList()[i].flow.getName();
                     var area = scope.$parent.lineChart.getFlowList()[i].flow.getArea();
-                    colorArray.push(scope.$parent.lineChart.getFlowList()[i].flow.getFlowColor());
+                    if (scope.$parent.lineChart.getFlowList()[i].flow.getFlowColor() !== undefined && scope.$parent.lineChart.getFlowList()[i].flow.getFlowColor() !== null){
+                       colorArray.push(scope.$parent.lineChart.getFlowList()[i].flow.getFlowColor());
+                    }
+                    else{
+                       colorArray.push(scope.$parent.defaultColorFlow[i]); 
+                    }
                     var values = [];
                     for (var j=0; j<scope.$parent.lineChart.getFlowList()[i].flow.getData().length; j++) {
                         var value = [scope.$parent.lineChart.getFlowList()[i].flow.getData()[j].value[0], scope.$parent.lineChart.getFlowList()[i].flow.getData()[j].value[1]];
                         values.push(value);
                     }
                     data.push({ 'key': key, 'area' : area, 'values': values});
-                    console.log('LINECHART data ' + data.toString());
                 }
                 scope.data = data;
                 scope.colorArray = colorArray;
             };
 
+            // posiziona la legenda a nord, est, sud, ovest, nord-est, nosrd-ovest, sud-est o sud-ovest del grafico
             function changePosition(chart,parent){
                 switch (scope.$parent.lineChart.getLegend().getPosition()) {
                     case 'N':
-                        //chart.setAttribute('style', 'position: relative; bottom: -30px;');
                         parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.lineChart.getHeight() + 'px; right: -' + (scope.$parent.lineChart.getWidth()/2) + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'E':
-                        //chart.setAttribute('style', 'position: relative; right: 0;');
                         parent.setAttribute('style', 'float: left; position: relative; top: -' + (scope.$parent.lineChart.getHeight()/2) + 'px; right: -' + scope.$parent.lineChart.getWidth() + 'px;  background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'S':
-                        //chart.setAttribute('style', 'position: relative;');
                         parent.setAttribute('style', 'float: left; position: relative; right: -' + (scope.$parent.lineChart.getWidth()/2) + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'W':
-                        //chart.setAttribute('style', 'position: relative; right: -100px;');
                         parent.setAttribute('style', 'float: left; position: relative; top: -' + (scope.$parent.lineChart.getHeight()/2) + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'NE':
-                        //chart.setAttribute('style', 'position: relative; bottom: 0;');
                         parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.lineChart.getHeight() + 'px; right: -' + scope.$parent.lineChart.getWidth() + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'NW':
-                        //chart.setAttribute('style', 'position: relative; bottom: -30px;');
                         parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.lineChart.getHeight() + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'SE':
-                        //chart.setAttribute('style', 'position: relative;');
                         parent.setAttribute('style', 'float: left; position: relative; right: -' + scope.$parent.lineChart.getWidth() + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'SW':
-                        //chart.setAttribute('style', 'height:'+ scope.$parent.lineChart.getHeight() +'px; width:'+ scope.$parent.lineChart.getWidth() +'px; position: relative; bottom: 0;');
                         parent.setAttribute('style', 'float: left; position: relative; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
                         break;
                 }
             }
 
+            // crea la legenda del grafico
             scope.legend = function() {
                 var chart = element.children()[1];
+                if (element.children()[2]){
+                    element.children()[2].remove();
+                }
                 var parent = document.createElement('div');
 
                 changePosition(chart,parent);
 
-                while(parent.firstChild) {
-                    parent.removeChild(parent.firstChild);
-                }
                 if (scope.$parent.lineChart.getLegend() !== null) {
-                    //parent.setAttribute('style', 'background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + '; color: '+ scope.$parent.lineChart.getLegend().getFontColor());
                     var div = document.createElement('div');
                     for (var i=0; i<scope.$parent.lineChart.getFlowList().length; i++) {
                         if (scope.$parent.lineChart.getFlowList()[i].flow.getData().length){
                             var square = document.createElement('div');
-                            square.setAttribute('style', 'float: left; height: 15px; width: 15px; background-color: ' + scope.$parent.lineChart.getFlowList()[i].flow.getFlowColor() + ';');
+                            square.setAttribute('style', 'float: left; height: 15px; width: 15px; background-color: ' + scope.colorArray[i] + ';');
                             var spanText = document.createElement('div');
                             var text = document.createTextNode('\u00A0\u00A0\u00A0\u00A0' + scope.$parent.lineChart.getFlowList()[i].flow.getName());
                             spanText.setAttribute('style', 'color: '+ scope.$parent.lineChart.getLegend().getFontColor() + ';');
@@ -11685,8 +11753,6 @@ angular.module('norris-nrti')
                 }
                 element.append(parent);
             };
-
-
         }
     };
 });
@@ -11694,13 +11760,25 @@ angular.module('norris-nrti')
 'use strict';
 
 /*
-* Name :  MapChart.js
-* Module : FrontEnd::View
-* Location : /frontend/app/View
+* Name :  MapChartView.js
+* Module : FrontEnd::View::GraphsView
+* Location : /frontend/app/View/GraphsView
 *
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 1.0.2         2015-06-22  Maria Giovanna Chinellato   Fix legendOnPoint
+*
+* 1.0.1         2015-06-21  Maria Giovanna Chinellato   Fix legend function
+*
+* 1.0.0         2015-06-14  Maria Giovanna Chinellato   Tested
+*
+* 0.1.0         2015-06-06  Francesco Rossetto          Add utility function    
+*
+* 0.0.3         2015-06-04  Maria Giovanna Chinellato   Add init, render and legend function
+*
+* 0.0.2         2015-06-04  Maria Giovanna Chinellato   Add link function, observe and watch      
+*
 * 0.0.1         2015-05-25  Maria Giovanna Chinellato   Initial code      
 * =================================================================================================
 */
@@ -11709,47 +11787,36 @@ angular.module('norris-nrti')
 angular.module('norris-nrti')
 .directive('mapChart', function(){
 	return {
-		restrict: 'E',
-		//controller : 'MapChartController',
+		restrict: 'E', // direttiva di tipo elemento (tag)
         replace: false,
-        scope: {
+        scope: { // attributo della direttiva
             url: '@'
 		},
-		//bindToController: true,
-        template: '<div>{{title}}</div><div></div><div></div>',
+        template: '<div>{{title}}</div><div></div><div></div>', // template HTML inserito dalla direttiva
+        bindToController: true,
     	link: function (scope, element, attrs) {
 
             attrs.$observe('url', function(value) {
-                console.log('MAPCHART observ url ' + value);
                 if (value) {
-                    scope.$parent.socketConnection(value);
+                    scope.$parent.socketConnection(value); // richiama la funzione del controller che permette di connettersi al server
                 }
             });
 
             scope.$parent.$watch('changedP', function(newValue, oldValue){
                 if (newValue !== oldValue) {
-                    console.log('MAPCHART watch changedP');
-                    scope.legend();
-                    scope.title = scope.$parent.mapChart.getTitle();
-                    //var parentMap = element.children()[1];
-                    //parentMap.setAttribute('style', 'height:'+ scope.$parent.mapChart.getHeight() +'px; width:'+ scope.$parent.mapChart.getWidth() +'px; position: relative;');
-                    scope.init();
+                    scope.title = scope.$parent.mapChart.getTitle(); // inserisce il titolo
+                    scope.init(); // crea la mappa
                 }
             }, true);
 
             scope.$parent.$watch('changedD', function(newValue, oldValue){
-                if(newValue !== oldValue){
-                    console.log('MAPCHART watch changedD');                    
-                    scope.render();
+                if(newValue !== oldValue){                
+                    if (scope.$parent.mapChart.getLegend() !== null){
+                        scope.legend();  // richiama la funzione che crea la legenda relativa al grafico
+                    }
+                    scope.render(); // inserisce i dati sulla mappa
                 }
             }, true);
-
-            /*scope.$parent.$watch('changedF', function(newValue, oldValue){
-                if(newValue !== oldValue){
-                    console.log('MAPCHART watch changedF');                    
-                    scope.legend();
-                }
-            }, true);*/
 
             var map;
             var markers = [];
@@ -11783,6 +11850,7 @@ angular.module('norris-nrti')
                 return Math.min(latZoom, lngZoom, ZOOM_MAX);
             }
 
+            // imposta lo zoom dinamicamente (in base all'altezza e larghezza che si desidera visualizzare)
             function setZoom(){
                 var latLng = new google.maps.LatLng(scope.$parent.mapChart.getLatitude(), scope.$parent.mapChart.getLongitude());
                 var mapDim = { height: scope.$parent.mapChart.getHeight(), width: scope.$parent.mapChart.getWidth() };
@@ -11798,10 +11866,12 @@ angular.module('norris-nrti')
                 return getBoundsZoomLevel(bounds,mapDim);
             }
 
+            // crea la mappa da visualizzare
             scope.init = function(){
 
                 var zoom = setZoom();
 
+                // opzioni iniziali della mappa
                 var mapOptions = {
                     center: new google.maps.LatLng(scope.$parent.mapChart.getLatitude(), scope.$parent.mapChart.getLongitude()),
                     zoom: zoom,
@@ -11818,6 +11888,7 @@ angular.module('norris-nrti')
 
                 map = new google.maps.Map(element.children()[1], mapOptions);
 
+                // impostazione del tipo di mappa da visualizzare
                 switch (scope.$parent.mapChart.getMapType()) {
                     case 'roadmap':
                         map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
@@ -11832,6 +11903,7 @@ angular.module('norris-nrti')
                         map.setMapTypeId(google.maps.MapTypeId.TERRAIN);
                         break;
                 }
+                // inserimento del tracciato (se presente)
                 for (var i=0; i<scope.$parent.mapChart.getFlowList().length; i++){
                     if (scope.$parent.mapChart.getFlowList()[i].flow.getTrace().type === 'poly'){
                         var polyline = [];
@@ -11848,22 +11920,20 @@ angular.module('norris-nrti')
                         }));
                         polylines[i].setMap(map);
                     }
-                }
-
-                
+                }                
             };
 
+            // inizializza i dati sulla mappa
             scope.render = function(){
-                console.log('render');
 
                 for (var z = 0; z < markers.length; z++) {
                     markers[z].setMap(null);
                 }
                 markers = [];
 
-                // Instantiate an info window to hold step text.
                 var stepDisplay = new google.maps.InfoWindow();
                 
+                // inserisce i marker per ogni flusso di dati presente nel grafico
                 for (var i=0; i<scope.$parent.mapChart.getFlowList().length; i++){
                     for (var j=0; j<scope.$parent.mapChart.getFlowList()[i].flow.getData().length; j++){
                         var coordinates = new google.maps.LatLng(scope.$parent.mapChart.getFlowList()[i].flow.getData()[j].value[0], scope.$parent.mapChart.getFlowList()[i].flow.getData()[j].value[1]);
@@ -11913,7 +11983,7 @@ angular.module('norris-nrti')
                                 break;
                         }
                         if (scope.$parent.mapChart.getLegendOnPoint() === true){
-                            addLegendOnPoint(marker, scope.$parent.mapChart.getFlowList()[i].flow.getName() + ' ' + scope.$parent.mapChart.getFlowList()[i].flow.getData().markerID);
+                            addLegendOnPoint(marker, scope.$parent.mapChart.getFlowList()[i].flow.getName() + ' ' + scope.$parent.mapChart.getFlowList()[i].flow.getData()[j].markerID);
                         }
                         markers.push(marker);
 
@@ -11924,7 +11994,7 @@ angular.module('norris-nrti')
 
 
 
-                // add legend on point
+                // aggiunge la legenda sui marker
                 function addLegendOnPoint(marker,text) {
 
                     google.maps.event.addListener(marker, 'click', function() {
@@ -11933,12 +12003,10 @@ angular.module('norris-nrti')
                         stepDisplay.setContent(text);
                         stepDisplay.open(map, marker);
                     });
-                }
-
-                console.log('fine render');
-                
+                }            
             };
 
+            // posiziona la legenda a nord, est, sud, ovest, nord-est, nosrd-ovest, sud-est o sud-ovest del grafico
             function changePosition(map,parent){
                 switch (scope.$parent.mapChart.getLegend().getPosition()) {
                     case 'N':
@@ -11976,6 +12044,7 @@ angular.module('norris-nrti')
                 }
             }
 
+            // crea la legenda del grafico
             scope.legend = function() {
                 var map = element.children()[1];
                 var parent = element.children()[2];
@@ -11986,7 +12055,6 @@ angular.module('norris-nrti')
                     parent.removeChild(parent.firstChild);
                 }
                 if (scope.$parent.mapChart.getLegend() !== null) {
-                    //parent.setAttribute('style', 'background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + '; color: '+ scope.$parent.mapChart.getLegend().getFontColor());
                     var div = document.createElement('div');
                     for (var i=0; i<scope.$parent.mapChart.getFlowList().length; i++) {
                         if (scope.$parent.mapChart.getFlowList()[i].flow.getData().length){
@@ -11994,7 +12062,7 @@ angular.module('norris-nrti')
                             square.setAttribute('style', 'float: left; height: 15px; width: 15px; background-color: ' + scope.$parent.mapChart.getFlowList()[i].flow.getTrace().strokeColor);
                             var spanText = document.createElement('div');
                             var text = document.createTextNode('\u00A0\u00A0\u00A0\u00A0' + scope.$parent.mapChart.getFlowList()[i].flow.getName());
-                            spanText.setAttribute('style', 'color: '+ scope.$parent.mapChart.getLegend().getFontColor() + ';');
+                            spanText.setAttribute('style', 'width: 100px; color: '+ scope.$parent.mapChart.getLegend().getFontColor() + ';');
                             spanText.appendChild(text);
                             div.appendChild(square);
                             div.appendChild(spanText);
@@ -12002,9 +12070,7 @@ angular.module('norris-nrti')
                         }
                     }
                 }
-
             };
-
 		}
 	};
 });
@@ -12012,141 +12078,186 @@ angular.module('norris-nrti')
 'use strict';
 
 /*
-* Name :  MapChart.js
-* Module : FrontEnd::View
-* Location : /frontend/app/View
+* Name :  TableView.js
+* Module : FrontEnd::View::GraphsView
+* Location : /frontend/app/View/GraphsView
 *
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 1.0.3         2015-06-24  Maria Giovanna Chinellato   Fix table sorting
+*
+* 1.0.2         2015-06-22  Maria Giovanna Chinellato   Fix appearance of table
+*
+* 1.0.1         2015-06-22  Maria Giovanna Chinellato   Fix update of data
+*
+* 1.0.0         2015-06-13  Francesco Rossetto          Tested
+*
+* 0.1.0         2015-06-05  Maria Giovanna Chinellato   Add function: init and setData, fix code   
+*
+* 0.0.2         2015-06-04  Maria Giovanna Chinellato   Add link function, observe and watch      
+*
 * 0.0.1         2015-06-02  Maria Giovanna Chinellato   Initial code      
 * =================================================================================================
 */
 
 
 angular.module('norris-nrti')
-.directive('tableChart', function($compile){
-	return {
-		restrict: 'E',
-		//controller : 'TableController',
+.directive('tableChart', function($compile, $filter){
+	return { // attributo della direttiva
+		restrict: 'E', // direttiva di tipo elemento (tag)
 		replace: false,
 		scope: {
             url: '@'
 		},
 		bindToController: true,
-        //template: '<div>table {{url}}</div>',
         link: function(scope, element, attrs){
 
         	attrs.$observe('url', function(value) {
-                console.log('TABLE observ url ' + value);
                 if (value) {
-                    scope.$parent.socketConnection(value);
+                    scope.$parent.socketConnection(value); // richiama la funzione del controller che permette di connettersi al server
                 }
             });
 
             scope.$parent.$watch('changed', function(newValue, oldValue){
                 if (newValue !== oldValue) {
-                    console.log('TABLE watch changedP');
-                    scope.setData();
-                    console.log('scope.data.length: ' +scope.data.length);
-                    if (scope.data.length > 0) {
-                        scope.init();
+                    scope.setData(); // chiama la funzione che organizza i dati da visualizzare
+                    if (scope.displayed.length > 0 && scope.$parent.changedP === true) {
+                        scope.init(); // chiama la funzione init che crea la tabella
+                        scope.$parent.changedP = false;
                     }
                 }
             }, true);
 
-            /*scope.$parent.$watch('changedD', function(newValue, oldValue){
-                if(newValue !== oldValue){
-                    console.log('TABLE watch changedD');                    
-                    scope.setData();
-                    scope.init();
-                }
-            }, true);*/
-
+            // crea il codice HTML da inserire nella pagina per creare la tabella
             scope.init = function(){
-                console.log('TABLE init');
             	element.empty();
+                var border = 'border: 1px solid black;';
+                var noBorder = 'class="table-condensed table-striped"';
+                var headers = 'color: #000; background-color: #FFF;';
+                
+                if (scope.$parent.table.getAppearance().border !== undefined) {
+                    border = 'border:' + scope.$parent.table.getAppearance().border.width + 'px solid ' + scope.$parent.table.getAppearance().border.color + ';';
+                }
+                var tableStyle = 'style="' + border + ' ';
+                var str = scope.url.split('/');
+                var id = str[str.length-1];
+                var table = '<style>';
 
-                var table = '<div class="graphtitle">'+ scope.$parent.table.getTitle() +'</div>';   
+                // mette l'aspetto delle celle di riga pari e di riga dispari
+                if(scope.$parent.table.getAppearance().rowOdd !== undefined && scope.$parent.table.getAppearance().rowEven !== undefined){
+                    for (var td=0;td<scope.$parent.table.getHeaders().length;td++){
+                        table = table + 'table #' + id +  ' tr:nth-child(odd) td:nth-child(' + (td+1) + '){ color: ' + scope.$parent.table.getAppearance().rowOdd.textColor[0] + '; ';
+                        table = table + 'background-color: ' + scope.$parent.table.getAppearance().rowOdd.backgroundColor[td] + ';} ';
+                        table = table + 'table #' + id +  ' tr:nth-child(even) td:nth-child(' + (td+1) + '){ color: ' + scope.$parent.table.getAppearance().rowEven.textColor[0] + '; ';
+                        table = table + 'background-color: ' + scope.$parent.table.getAppearance().rowEven.backgroundColor[td] + ';}';  
+                    }
+                }
 
-                table = table + '<div><table st-table="data" class="table table-striped"';
-                    
-                //da inserire dopo in base alla griglia si/no
-                //
-                /*if () {
-                    table = table + 'class="table table-striped table-bordered">';
-                } else if () {
-                    table = table + 'class="table-condensed table-striped">';
-                }*/
+                table = table + '</style><div class="graphtitle">'+ scope.$parent.table.getTitle() +'</div><table id="' + id + '" st-table="displayed" st-safe-src="rowCollection" ';
 
                 table = table + '<thead><tr>';
                 for (var i=0; i<scope.$parent.table.getHeaders().length; i++) {
                     table = table + '<th ';
-                    if (scope.$parent.table.getSortable()) {
-                        if (scope.$parent.table.getHeaders()[i] === scope.$parent.table.getSort().column ) {
-                            var ordinamento;
-                            if (scope.$parent.table.getSort().ordering === 'ASC') {
-                                ordinamento = 'true';
-                            } else if (scope.$parent.table.getSort().ordering === 'DESC'){
-                                ordinamento = 'reverse';
-                            } 
-                            table = table + 'st-sort-default="'+ ordinamento +'" st-sort="'+ scope.$parent.table.getHeaders()[i] +'"';
-                        }
+                    if (scope.$parent.table.getAppearance().headers !== undefined) {
+                        headers = 'color:' + scope.$parent.table.getAppearance().headers.textColor[i] + '; background-color:' + scope.$parent.table.getAppearance().headers.backgroundColor[i] + '; ';
                     }
-                    table = table + '>'+ scope.$parent.table.getHeaders()[i] +'</th>';
+                    if (scope.$parent.table.getAppearance().border !== undefined) {
+                        table = table + tableStyle + headers + ' " ';
+                    } else {
+                        table = table + noBorder + 'style="' + headers + ' " ';
+                    }
+                    if (scope.$parent.table.getSortable() === true && scope.$parent.table.getSort().column.length === 0) {
+                        table = table + 'st-sort="record.'+ scope.$parent.table.getHeaders()[i] +'"';
+                        table = table + '><a href="">'+ scope.$parent.table.getHeaders()[i] +'</a></th>';
+                    }
+                    else{
+                        table = table + '>'+ scope.$parent.table.getHeaders()[i] +'</th>';
+                    }
                 }
                 table = table + '</tr></thead>';
 
-                table = table + '<tbody><tr ng-repeat="record in data">';
-                i = 0;
+                // controlla se è abilitato qualche ordinamento da parte dello sviluppatore e ordina i record
+                if (scope.$parent.table.getSort().column.length > 0){
+                    if (scope.$parent.table.getSort().column.length === 1){
+                        table = table + '<tbody><tr ng-repeat="line in displayed | orderBy:\''+ scope.$parent.table.getSort().column[0] +'\'">';
+                    }
+                    else{
+                        var order = ' | orderBy:[';
+                        for (var s=0; s<scope.$parent.table.getSort().column.length; s++){
+                            if (scope.$parent.table.getSort().ordering[s] === 'ASC'){
+                                if (s === scope.$parent.table.getSort().column.length-1){
+                                    order = order + '\'record.'+ scope.$parent.table.getSort().column[s] +'\'';
+                                }
+                                else{
+                                    order = order + '\'record.'+ scope.$parent.table.getSort().column[s] +'\',';
+                                }
+                            }
+                            else{
+                                if (s === scope.$parent.table.getSort().column.length-1){
+                                    order = order + '\'-record.'+ scope.$parent.table.getSort().column[s] +'\'';
+                                }
+                                else{
+                                    order = order + '\'-record.'+ scope.$parent.table.getSort().column[s] +'\',';
+                                }
+                            }
+                        }
+                        table = table + '<tbody><tr ng-repeat="line in displayed' + order + ']">';
+                    }
+                }
+                else{
+                    table = table + '<tbody><tr ng-repeat="line in displayed">';
+                }
+                //i = 0;
                 for (var j=0; j<scope.$parent.table.getHeaders().length; j++){
-                    table = table + '<td style="background-color:'+ scope.appearance[i][j].bg +'; color:'+ scope.appearance[i][j].text +';">{{record.'+ scope.$parent.table.getHeaders()[j] +'}}</td>';
-                    i++;
+                    var cellBG = 'background-color: {{line.appearance.' + scope.$parent.table.getHeaders()[j] + '.bg}};';
+                    var cellText = 'color: {{line.appearance' + scope.$parent.table.getHeaders()[j] + '.text}};';
+                    var cellStyle = 'style="' + border + cellBG + cellText + '"';
+                    table = table + '<td ';
+                    if (scope.$parent.table.getAppearance().border !== undefined) {
+                        table = table + cellStyle;
+                    } else {
+                        table = table + noBorder + cellStyle;
+                    }
+                    table = table + '>{{line.record.'+ scope.$parent.table.getHeaders()[j] +'}}</td>';
                 }
                 table = table + '</tr></tbody>';
 
                 table = table + '<tfoot><tr>' +
-                                    '<td colspan="5" class="text-center">' +
+                                    '<td  style="background-color: #FFF;" colspan="5" class="text-center">' +
                                         '<div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="5"></div>' +
                                     '</td>' +
                                 '</tr></tfoot>';
 
-                table = table + '</table><div>';
+                table = table + '</table>';
                 
             	var compiled = $compile(table)(scope);
                 element.append(compiled);
             };
 
-            scope.data = [];
-            scope.appearance = [];
+            scope.displayed = [].concat(scope.rowCollection);
+            scope.rowCollection = [];
+            //scope.appearance;
 
+            // imposta i dati da visualizzare
             scope.setData = function(){
-                console.log('TABLE setData');
-                var data = [];
-                var appearance = [];
-                if (scope.$parent.table.getFlowList().length > 0) {
-                    console.log('TABLE getData.length ' + scope.$parent.table.getFlowList()[0].flow.getData().length);
-                    for (var i=0; i<scope.$parent.table.getFlowList()[0].flow.getData().length; i++) {
+                scope.rowCollection = []; // array che contiene una copia dei dati per permettere paginazione e ordinamento con dati dinamici
+                //scope.appearance = [];
+                //var appearance = ;
+                for (var k=0; k<scope.$parent.table.getFlowList().length; k++) {
+                    for (var i=0; i<scope.$parent.table.getFlowList()[k].flow.getData().length; i++) {
+                        var appearance = {};
                         var record = {};
-                        var look = [];
                         for (var j=0; j<scope.$parent.table.getHeaders().length; j++) {
-                            record[scope.$parent.table.getHeaders()[j]] = scope.$parent.table.getFlowList()[0].flow.getData()[i].value[j];
-                            look[j] = scope.$parent.table.getFlowList()[0].flow.getData()[i].appearance[j];
+                            if (scope.$parent.table.getFlowList()[k].flow.getData()[i].appearance !== undefined){
+                                appearance[scope.$parent.table.getHeaders()[j]] = scope.$parent.table.getFlowList()[k].flow.getData()[i].appearance[j];
+                            }
+                            record[scope.$parent.table.getHeaders()[j]] = scope.$parent.table.getFlowList()[k].flow.getData()[i].value[j];
                         }
-                        data.push(record);
-                        appearance.push(look);
+                        scope.rowCollection.push({'appearance': appearance, 'record': record});
                     }
                 }
-                console.log('data. length: ' + data.length);
-                /*console.log('appearance length ' + appearance.length);
-                for (var g=0; g<appearance.length; g++) {
-                    console.log('appearance['+ g +'] length ' +appearance[g].length);
-                    for (var f=0; f<appearance[g].length; f++) {
-                        console.log('TABLE appearance: ' + appearance[g][f].bg + ' ' + appearance[g][f].text);
-                    }
-                }*/
-                scope.data = data;
-                scope.appearance = appearance;
+                //$filter('orderBy')(scope.rowCollection,);
                 scope.itemsByPage = scope.$parent.table.getMaxItemsPage();
             };
         }
@@ -12157,12 +12268,18 @@ angular.module('norris-nrti')
 
 /*
 * Name :  PageView.js
-* Module : FrontEnd::View
+* Module : FrontEnd::View::PagesView
 * Location : /frontend/app/PagesView
 *
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 1.0.1         2015-06-14  Maria Giovanna Chinellato   Fix page size     
+*
+* 1.0.0         2015-06-14  Francesco Rossetto		    Tested     
+*
+* 0.1.1         2015-06-04  Maria Giovanna Chinellato   Fix link function      
+*
 * 0.1.0			2015-05-30	Francesco Rossetto			Add all attributes and all methods	
 *
 * 0.0.1         2015-05-30  Francesco Rossetto			Initial code      
@@ -12171,15 +12288,13 @@ angular.module('norris-nrti')
 angular.module('norris-nrti')
 .directive('page', function($compile, $routeParams){
 	return {
-		restrict: 'E',
+		restrict: 'E', // direttiva di tipo elemento (tag)
 		controller : 'PageController',
 		replace: false,
-		scope: {
-			
-		},
-		template: '<div id="page"></div>',
+		scope: {},
+		template: '<div id="page" style="width: 100%;"></div>', // template HTML inserito dalla direttiva
 		link: function (scope, element, attrs) {
-			scope.socketConnection();
+			scope.socketConnection(); // richiama la funzione del controller che permette di connettersi al server
 
 			scope.render = function() {
 				parent = element.children()[0];
@@ -12187,30 +12302,35 @@ angular.module('norris-nrti')
 
 				var commands = document.createElement('div');
 				commands.setAttribute('class', 'commands');
-				if (scope.previous) {
+				/*if (scope.previous) { // controlla se è presente una pagina precedente
 					var previous = document.createElement('div');
 					//previous.setAttribute('style', 'float:left;');
 					var pIndex = parseInt($routeParams.pageId) - 1;
-					previous.innerHTML = '<a ng-href="#/page/'+ pIndex +'" target="_self">PREVIOUS PAGE</a>';
+					previous.innerHTML = '<a ng-click="previous('+pIndex+')" target="_self">PREVIOUS PAGE</a>'; // inserisce il link alla pagina precedente
 					commands.appendChild(previous);
 				}
 				var list = document.createElement('div');
 				list.innerHTML = '<a ng-href="/" target="_self">RETURN TO PAGES LIST</a>';
 				//list.setAttribute('style', 'float:left;');
 				commands.appendChild(list);
-				if (scope.next) {
+				if (scope.next) { // controlla se è presente una pagina successiva
 					var next = document.createElement('div');
 					//next.setAttribute('style', 'float:left;');
 					var nIndex = parseInt($routeParams.pageId) + 1;
-					next.innerHTML = '<a ng-href="#/page/'+ nIndex +'" target="_self">NEXT PAGE</a>';
+					next.innerHTML = '<a ng-click="next('+nIndex+')" target="_self">NEXT PAGE</a>'; // inserisce il link alla pagina successiva
 					commands.appendChild(next);
-				}
+				}*/
+				var list = document.createElement('div');
+				list.innerHTML = '<a ng-href="/" target="_self">RETURN TO PAGES LIST</a>';
+				commands.appendChild(list);
 				parent.appendChild(commands);
 
 				var table = document.createElement('table');
 				table.className = 'graphstable';
+				table.setAttribute('style', 'width: 100%;');
 				parent.appendChild(table);
 
+				// crea la tabella con i grafici
 				for(var i=0; i<scope.graphs.length; i++) {
 					var line = scope.graphs[i];
 					var row = table.insertRow(i);
@@ -12246,13 +12366,13 @@ angular.module('norris-nrti')
 					}
 				}
 
-				parent.setAttribute('style', 'height:'+ 1000*scope.page.getGraphsPerCol() +'px; width:'+ 1500*scope.page.getGraphsPerRow() +'px;');
+				//parent.setAttribute('style', 'height:'+ 1000*scope.graphs.length +'px; width:'+ 1500*scope.graphs[0].length +'px;');
 
 				var el = $compile(parent)(scope);
 				element.parent().append( el );
        		};
 
-       		scope.$watch('graphs', function(){
+       		scope.$watch('graphs', function(){ // ad ogni inserimento o modifica della lista dei grafici viene chiamata la funzione render che ne aggiorna la visualizzazione
        			if (scope.graphs.length > 0) {
 	          		scope.render();
 	          	}
@@ -12267,12 +12387,16 @@ angular.module('norris-nrti')
 
 /*
 * Name :  PagesListView.js
-* Module : FrontEnd::View
+* Module : FrontEnd::View::PagesView
 * Location : /frontend/app/PagesView
 *
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 1.0.0         2015-06-14  Maria Giovanna Chinellato   Tested
+*
+* 0.0.2         2015-06-04  Maria Giovanna Chinellato   Add link function, observe and watch      
+*
 * 0.0.1         2015-05-30  Maria Giovanna Chinellato   Initial code      
 * =================================================================================================
 */
@@ -12281,12 +12405,10 @@ angular.module('norris-nrti')
 angular.module('norris-nrti')
 .directive('pagesList', function(){
 	return {
-		restrict: 'E',
+		restrict: 'E', // direttiva di tipo elemento (tag)
 		replace: false,
-		controller: 'PagesListController',
-		scope: {
-
-		},
+		controller: 'PagesListController', // controller associato
+		scope: {},
 		template: '<div id="pagesList">' + 
 					'<ul>' +
 					'<li ng-repeat="page in pagesList">' +
@@ -12294,9 +12416,9 @@ angular.module('norris-nrti')
 						'<p> {{ page.page.getDescription() }} </p>' +
 					'</li>' +
 					'</ul>' +
-		'</div>',
+			'</div>', // template HTML inserito dalla direttiva
 		link: function (scope, element, attrs) {
-			scope.socketConnection();
+			scope.socketConnection(); // richiama la funzione del controller che permette di connettersi al server
 		}
 
 	};
@@ -13130,8 +13252,7 @@ angular.module('norris-nrti')
                         }
                     }, (attrs.objectequality === undefined ? false : (attrs.objectequality === "true")));
                     
-                    element.$on('$destroy', function() {
-                        console.log('NVD3: hulk, distruggeeeee!!');
+                    element.on('$destroy', function() {
                         scope.$destroy();
                     });
                 }
@@ -13576,9 +13697,9 @@ angular.module('norris-nrti')
                         }
                     }, (attrs.objectequality === undefined ? false : (attrs.objectequality === "true")));
                     
-                    /*element.on('$destroy' function() {
+                    element.on('$destroy', function() {
                         scope.$destroy();
-                    });*/
+                    });
                 }
             };
         }])
@@ -13958,9 +14079,9 @@ angular.module('norris-nrti')
                         }
                     }, (attrs.objectequality === undefined ? false : (attrs.objectequality === "true")));
                     
-                    /*element.on('$destroy' function() {
+                    element.on('$destroy', function() {
                         scope.$destroy();
-                    });*/
+                    });
                 }
             };
         }])
@@ -14593,8 +14714,7 @@ angular.module('norris-nrti')
                         }
                     }, (attrs.objectequality === undefined ? false : (attrs.objectequality === "true")));
                     
-                    element.$on('$destroy', function() {
-                        console.log('NVD3: hulk, distruggeeeee!!');
+                    element.on('$destroy', function() {
                         scope.$destroy();
                     });
                 }
@@ -15541,6 +15661,7 @@ window.nv.tooltip.* also has various helper methods.
                 //Finally, add any offset of the containing <div> on the whole page.
                 left += chartContainer.offsetLeft + svgOffset.left - 2*chartContainer.scrollLeft;
                 top += chartContainer.offsetTop + svgOffset.top - 2*chartContainer.scrollTop;
+                console.log(left + ', ' + top);
             }
 
             if (snapDistance && snapDistance > 0) {
@@ -21288,7 +21409,7 @@ nv.models.lineWithFocusChart = function() {
     , dispatch = d3.dispatch('tooltipShow', 'tooltipHide', 'brush')
     , transitionDuration = 250
     ;
-    console.log('margin2 ' + JSON.stringify(margin2));
+    
   lines
     .clipEdge(true)
     ;
