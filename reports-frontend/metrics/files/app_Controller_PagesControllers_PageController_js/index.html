@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">67.92</p>
+      <p class="stat">66.85</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">106</p>
+      <p class="stat">100</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">22.52</p>
+      <p class="stat">21.82</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.70</p>
+      <p class="stat">0.57</p>
     </div>
   </div>
 </div>
@@ -109,7 +109,7 @@
 
 angular.module(&#039;norris-nrti&#039;)
 .controller(&#039;PageController&#039;, [&#039;$scope&#039;, &#039;$location&#039;, &#039;$routeParams&#039;, &#039;PagesList&#039;, &#039;PageFactory&#039;, &#039;SocketServicesFactory&#039;, function($scope, $location, $routeParams, PagesList, PageFactory, SocketServicesFactory){
-	console.log(&#039;controller PAge&#039;);
+
 	var page = PagesList.prototype.getPagesList()[$routeParams.pageId].page; // recupera la pagina corrente
 	$scope.page = page;
 	/*$scope.previous = false;
@@ -126,6 +126,7 @@ angular.module(&#039;norris-nrti&#039;)
 
 	var socket;
 
+	// funzione che connette il socket all&#039;url e chiama la funzione listenOnEvent
 	this.socketConnection = function(){
 		socket = SocketServicesFactory.build(url);
 		this.listenOnEvents();
@@ -147,14 +148,7 @@ angular.module(&#039;norris-nrti&#039;)
 		});
 	};
 
-	// funzione che connette il socket all&#039;url e chiama la funzione listenOnEvent
-	/*this.socketConnection = function(){
-		socket = SocketServicesFactory.build(url);
-		this.listenOnEvents();
-	};
-	this.socketConnection();*/
-
-	this.previous = function(id){
+	/*this.previous = function(id){
 		console.log(&#039;prev&#039;);
 		$location.path(&#039;/page/&#039; + id);
 	};
@@ -162,7 +156,7 @@ angular.module(&#039;norris-nrti&#039;)
 	this.next = function(id){
 		console.log(&#039;next&#039;);
 		$location.path(&#039;/page/&#039; + id);
-	};
+	};*/
 
 	// funzione di utilità che dispone i grafici in un array per la successiva visualizzazione
 	function matrix(list) {
@@ -192,8 +186,8 @@ angular.module(&#039;norris-nrti&#039;)
 	$scope.graphs = [];
 	$scope.socketConnection = this.socketConnection;
 	$scope.listenOnEvents = this.listenOnEvents;
-	$scope.previous = this.previous;
-	$scope.next = this.next;
+	//$scope.previous = this.previous;
+	//$scope.next = this.next;
 	
 }]);</textarea>
   </div>
