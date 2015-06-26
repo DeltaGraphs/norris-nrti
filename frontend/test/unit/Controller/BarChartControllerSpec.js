@@ -91,8 +91,6 @@ describe('BarChartController', function(){
 
 		describe('#listenOnEvents', function(){
 
-			socket = SocketServicesFactory.build();
-			
 			var configGraph = false;
 			var updateGraphProp = false;
 			var insertFlow = false;
@@ -100,9 +98,17 @@ describe('BarChartController', function(){
 			var updateFlowProp = false;
 			var updateFlowData = false;
 
-			socket.on('configGraph', function(){
-				configGraph = true;
+			beforeEach(function(){
+				socket = SocketServicesFactory.build();
+				socket.on('configGraph', function(){
+					configGraph = true;
+				});
 			});
+
+			afterEach(function(){
+				socket = null;
+			});
+			
 			it('configGraph', function(){
 				expect(configGraph).toEqual(true);
 			});
