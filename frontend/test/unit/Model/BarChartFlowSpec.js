@@ -9,6 +9,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.2.1         2015-06-26  Maria Giovanna Chinellato	Fix initializeData
+*
 * 0.2.0         2015-05-20  Maria Giovanna Chinellato	Modified general structure, some fixes
 *
 * 0.1.1         2015-05-20  Maria Giovanna Chinellato   Fix code

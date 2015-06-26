@@ -9,6 +9,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.2.1         2015-06-26  Maria Giovanna Chinellato	Fix initializeData
+*
 * 0.2.0         2015-05-18  Maria Giovanna Chinellato	Modified general structure, some fixes
 *
 * 0.1.1         2015-05-17  Maria Giovanna Chinellato   Fix code
@@ -64,6 +66,7 @@ describe('LineChartFlow', function(){
 	describe('Constructor', function(){
 
 		var json = {
+			'dataFormat' : 'int',
 			'name' : 'flusso1',
 			'flowColor' : '#F2F',
 			'marker' : 'furly',
@@ -206,6 +209,74 @@ describe('LineChartFlow', function(){
 
 		it('data initialized in the correct way', function(){
 			expect(LineChartFlow.getData().length).toEqual(3);
+		});
+
+	});
+
+	describe('#initializeData', function(){
+
+		var data = {
+			'records' : [
+				{ 
+					'NorrisRecordID' : 'record1',
+					'value' : [ 12.5464546515, 11.15468766]
+				},
+				{ 
+					'NorrisRecordID' : 'record2',
+					'value' : [ 12.5464546515, 11.15468766]
+				}
+			]
+		};
+
+		var LineChartFlow;
+
+		beforeEach(function(){
+			LineChartFlow = LineChartFlowFactory.build({ 'maxItem' : 3 });
+			LineChartFlow.initializeData(data);
+		});
+
+		afterEach(function(){
+			LineChartFlow = null;
+		});
+
+		it('data initialized in the correct way', function(){
+			expect(LineChartFlow.getData().length).toEqual(2);
+		});
+
+	});
+
+	describe('#initializeData', function(){
+
+		var data = {
+			'records' : [
+				{ 
+					'NorrisRecordID' : 'record1',
+					'value' : [ 12.5464546515, 11.15468766]
+				},
+				{ 
+					'NorrisRecordID' : 'record2',
+					'value' : [ 12.5464546515, 11.15468766]
+				},
+				{ 
+					'NorrisRecordID' : 'record3',
+					'value' : [ 12.5464546515, 11.15468766]
+				}
+			]
+		};
+
+		var LineChartFlow;
+
+		beforeEach(function(){
+			LineChartFlow = LineChartFlowFactory.build({ 'maxItem' : 1 });
+			LineChartFlow.initializeData(data);
+		});
+
+		afterEach(function(){
+			LineChartFlow = null;
+		});
+
+		it('data initialized in the correct way', function(){
+			expect(LineChartFlow.getData().length).toEqual(1);
 		});
 
 	});
