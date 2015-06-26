@@ -9,6 +9,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =======================================================================================================================
+* 0.3.1			2015-06-26	Maria Giovanna Chinellato   Fix code
+*
 * 0.1.1         2015-05-17  Maria Giovanna Chinellato   Fix code
 *
 * 0.1.0			2015-05-17	Rossetto Francesco			Add test of Model::Legend, describe all method

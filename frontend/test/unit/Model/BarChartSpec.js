@@ -6,6 +6,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.3.1			2015-06-26	Maria Giovanna Chinellato   Fix code
+*
 * 0.3.0			2015-05-21	Francesco Rossetto			Restructured test
 *
 * 0.2.3         2015-05-21  Maria Giovanna Chinellato   Fix code
@@ -148,7 +150,7 @@ describe('BarChart', function(){
 			'title' : 'graficonuovo',
 			'height' : 400,
 			'width' : 400,
-			'enableLegend' : false,
+			'enableLegend' : true,
 			'legend' : {position: 'E'},
 			'socketURL' : 'http://example.com',
 			'axisX' : { name: 'asseX' },
@@ -407,9 +409,9 @@ describe('BarChart', function(){
 		});
 
 		it('data updated in the correct way', function(){
-			expect(BarChart.getFlowList()[0].getData().length).toEqual(1);
+			expect(BarChart.getFlowList()[0].flow.getData().length).toEqual(1);
 			BarChart.addRecords(add);
-			expect(BarChart.getFlowList()[0].getData().length).toEqual(2);
+			expect(BarChart.getFlowList()[0].flow.getData().length).toEqual(2);
 		});
 	});
 

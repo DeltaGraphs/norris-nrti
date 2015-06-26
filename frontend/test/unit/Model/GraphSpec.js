@@ -9,6 +9,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.1.4			2015-06-26	Maria Giovanna Chinellato   Fix code
+*
 * 0.1.3			2015-05-21	Maria Giovanna Chinellato	Fix test
 *
 * 0.1.2         2015-05-20  Maria Giovanna Chinellato   Fix code
@@ -117,8 +119,8 @@ describe('Graph', function(){
 			'title' : 'graficoNuovo',
 			'height' : 300,
 			'width' : 300,
-			'enabledLegend' : false,
-			'legend' : {}
+			'enableLegend' : true,
+			'legend' : { position: 'SE' }
 		};
 		var Graph;
 
@@ -141,7 +143,7 @@ describe('Graph', function(){
 			expect(Graph.getWidth()).toEqual(300);
 		});
 		it('graph updated with the correct legend', function(){
-			expect(Graph.getLegend()).toEqual(null);
+			expect(Graph.getLegend()).not.toEqual(null);
 		});
 		it('graph updated with the correct url', function(){
 			expect(Graph.getUrl()).toEqual(null);

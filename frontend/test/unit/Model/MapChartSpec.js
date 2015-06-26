@@ -6,6 +6,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.1.3			2015-06-26	Maria Giovanna Chinellato   Fix code
+*
 * 0.1.2         2015-05-19  Maria Giovanna Chinellato   Fix code
 *
 * 0.1.1			2015-05-19	Maria Giovanna Chinellato	Fix test of Model::MapChart
@@ -137,7 +139,8 @@ describe('MapChart', function(){
 			'title' : 'graficonuovo',
 			'height' : 400,
 			'width' : 400,
-			'enabledLegend' : false,
+			'enableLegend' : true,
+			'legend' : { position: 'N' },
 			'horizontalGrid' : false,
 			'verticalGrid' : false,
 			'legendOnPoint' : false,
@@ -165,6 +168,12 @@ describe('MapChart', function(){
 
 		it('graph updated with the correct legendOnPoint', function(){
 			expect(MapChart.getLegendOnPoint()).toEqual(false);
+		});
+		it('graph updated with the correct height', function(){
+			expect(MapChart.getHeight()).toEqual(400);
+		});
+		it('graph updated with the correct width', function(){
+			expect(MapChart.getWidth()).toEqual(400);
 		});
 		it('graph updated with the correct latitude', function(){
 			expect(MapChart.getLatitude()).toEqual(3);

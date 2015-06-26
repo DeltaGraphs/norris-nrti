@@ -6,6 +6,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.3.1			2015-06-26	Maria Giovanna Chinellato   Fix code
+*
 * 0.3.0			2015-05-18	Francesco Rossetto			Restructured test
 *
 * 0.2.3         2015-05-17  Maria Giovanna Chinellato   Fix code
@@ -38,15 +40,10 @@ describe('LineChart', function(){
 
 	describe('Constructor', function(){
 
-		var json = {
-			'title' : 'fottutissimografico',
-			'socketURL' : 'localhost/page1/grafico1'
-		};
-
 		var LineChart;
 
 		beforeEach(function(){
-			LineChart = LineChartFactory.build(json);
+			LineChart = LineChartFactory.build();
 		});
 
 		afterEach(function(){
@@ -57,10 +54,10 @@ describe('LineChart', function(){
 			expect(LineChart).toBeDefined();
 		});
 		it('graph Constructor called', function(){
-			expect(LineChart.getTitle()).toEqual('fottutissimografico');
+			expect(LineChart.getTitle()).toEqual(null);
 		});
 		it('graph Constructor called', function(){
-			expect(LineChart.getUrl()).toEqual('localhost/page1/grafico1');
+			expect(LineChart.getUrl()).toEqual(null);
 		});
 		it('graph created with the correct legendOnPoint', function(){
 			expect(LineChart.getLegendOnPoint()).toEqual(false);
@@ -140,9 +137,11 @@ describe('LineChart', function(){
 	describe('#updateParameters', function(){
 		var json = {
 			'title' : 'graficonuovo',
+			'socketURL' : 'localhost/page1/grafico1',
 			'height' : 400,
 			'width' : 400,
-			'enabledLegend' : false,
+			'enabledLegend' : true,
+			'legend' : { position: 'SW' },
 			'legendOnPoint' : true,
 			'viewFinder' : true,
 			'axisX' : {},
@@ -167,6 +166,12 @@ describe('LineChart', function(){
 		
 		it('graph updated with the correct legendOnPoint', function(){
 			expect(LineChart.getLegendOnPoint()).toEqual(true);
+		});
+		it('graph updated with the correct height', function(){
+			expect(LineChart.getHeight()).toEqual(400);
+		});
+		it('graph updated with the correct width', function(){
+			expect(LineChart.getWidth()).toEqual(400);
 		});
 		it('graph updated with the correct axisX', function(){
 			expect(LineChart.getX()).toBeDefined();
