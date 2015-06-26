@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">79.70</p>
+      <p class="stat">79.36</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">189</p>
+      <p class="stat">217</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">14.39</p>
+      <p class="stat">15.75</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">1.07</p>
+      <p class="stat">1.25</p>
     </div>
   </div>
 </div>
@@ -100,6 +100,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =======================================================================================================================
+* 0.1.2			2015-06-26	Maria Giovanna Chinellato   Fix code
+*
 * 0.1.1         2015-05-20  Maria Giovanna Chinellato   Fix code
 *
 * 0.1.0			2015-05-20	Rossetto Francesco			Add test of Model::Page, describe all method
@@ -254,6 +256,30 @@ describe(&#039;Page&#039;, function(){
 
 	});
 
+	describe(&#039;#initializeData&#039;, function(){
+
+		var json = [
+			{ &#039;ID&#039; : &#039;graph1&#039; },
+			{ &#039;ID&#039; : &#039;graph1&#039; }
+		];
+
+		var Page;
+		
+		beforeEach(function(){
+			Page = PageFactory.build();
+			Page.initializeData(json);
+		});
+
+		afterEach(function(){
+			Page = null;
+		});
+
+		it(&#039;graphs added correctly to the list&#039;, function(){
+			expect(Page.getGraphsList().length).toEqual(2);
+		});
+
+	});
+
 	describe(&#039;#addGraph&#039;, function(){
 
 		var json = {
@@ -273,6 +299,8 @@ describe(&#039;Page&#039;, function(){
 		});
 
 		it(&#039;graphs added correctly to the list&#039;, function(){
+			expect(Page.getGraphsList().length).toEqual(1);
+			Page.addGraph(json);
 			expect(Page.getGraphsList().length).toEqual(1);
 		});
 
