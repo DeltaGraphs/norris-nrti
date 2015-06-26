@@ -57,7 +57,7 @@ describe('PagesList', function(){
 			'data' : [
 				{ 'properties': {'ID' : '1' }},
 				{ 'properties' : { 'ID' : '2' }},
-				{ 'properties' : { 'ID' : '3' }}
+				{ 'properties' : { 'ID' : '2' }}
 			]
 		};
 		
@@ -73,7 +73,7 @@ describe('PagesList', function(){
 			expect(PagesList).toBeDefined();
 		});
 		it('constructor create an array with the exactly number of pages', function(){
-			expect(PagesList.getPagesList().length).toEqual(3);
+			expect(PagesList.getPagesList().length).toEqual(2);
 		});
 
 	});
@@ -96,8 +96,41 @@ describe('PagesList', function(){
 
 		it('page added to the pagesList', function(){
 			expect(PagesList.getPagesList().length).toEqual(1);
+			PagesList.addPage(json);
+			expect(PagesList.getPagesList().length).toEqual(1);
 		});
 
 	});
 	
+	describe('#updatePage', function(){
+		
+		var json = 	{
+			'ID' : 'pageN',
+			'name' : 'Pagina n-esima',
+			'description' : 'questa è la pagina n-esima',
+			'graphsPerRow' : 4,
+			'graphsPerCol' : 4
+		};
+
+		var update = {
+			'ID': 'pageN',
+			'name': 'Pagina nuova'
+		};
+
+		beforeEach(function(){
+			PagesList = new PagesList();
+			PagesList.addPage(json);
+			PagesList.updatePage(update);
+		});
+
+		afterEach(function(){
+			PagesList = null;
+		});
+
+		it('page added to the pagesList', function(){
+			expect(PagesList.getPagesList().length).toEqual(1);
+			expect(PagesList.getPagesList()[0].page.getName()).toEqual('Pagina nuova');
+		});
+
+	});
 });

@@ -140,7 +140,7 @@ describe('LineChart', function(){
 			'socketURL' : 'localhost/page1/grafico1',
 			'height' : 400,
 			'width' : 400,
-			'enabledLegend' : true,
+			'enableLegend' : true,
 			'legend' : { position: 'SW' },
 			'legendOnPoint' : true,
 			'viewFinder' : true,
