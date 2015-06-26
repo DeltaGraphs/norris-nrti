@@ -40,10 +40,12 @@ describe('BarChartController', function(){
 
 					return {
 					    on: function(eventName, callback){
-							if(this.events[eventName] === undefined){
+							if(this.events[eventName] !== undefined){
+								this.events[eventName].push(callback);
+							}
+							else{
 								this.events[eventName] = [];
 							}
-							this.events[eventName].push(callback);
 						},
 					    emit:function(eventName, data, emitCallback){
 							if(this.events[eventName]){
