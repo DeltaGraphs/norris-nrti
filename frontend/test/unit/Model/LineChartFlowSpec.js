@@ -93,7 +93,7 @@ describe('LineChartFlow', function(){
 		});
 
 		it('constructor create the flow with the correct name', function(){
-			expect(LineChartFlow.getName()).toEqual(null);
+			expect(LineChartFlow.getName()).toEqual('flusso1');
 		});
 		it('constructor create the flow with the correct flowColor', function(){
 			expect(LineChartFlow.getFlowColor()).toEqual('#F2F');

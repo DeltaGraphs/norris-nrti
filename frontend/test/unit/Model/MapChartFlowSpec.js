@@ -47,6 +47,9 @@ describe('MapChartFlow', function(){
 			expect(MapChartFlow).toBeDefined();
 		});
 
+		it('constructor create the flow with the correct name', function(){
+			expect(MapChartFlow.getName()).toEqual(null);
+		});
 		it('constructor create the flow with the correct marker', function(){
 			expect(MapChartFlow.getMarker()).toEqual(null);
 		});
@@ -82,6 +85,9 @@ describe('MapChartFlow', function(){
 			expect(MapChartFlow).toBeDefined();
 		});
 
+		it('constructor create the flow with the correct name', function(){
+			expect(MapChartFlow.getName()).toEqual('flusso1');
+		});
 		it('constructor create the flow with the correct marker', function(){
 			expect(MapChartFlow.getMarker()).toEqual('furly');
 		});
