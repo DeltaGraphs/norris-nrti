@@ -26,6 +26,7 @@ describe('BarChartController', function(){
 
 	var scope;
 	var controller;
+	var socket;
 
 	beforeEach(function(){
 		angular.mock.module('norris-nrti');
@@ -64,8 +65,9 @@ describe('BarChartController', function(){
 			});
 		});
 
-		inject(function($rootScope, $controller){
+		inject(function($rootScope, $controller, _SocketServicesFactory_){
 			scope = $rootScope.$new();
+			socket = _SocketServicesFactory_;
 			controller = $controller('BarChartController', { $scope : scope });
 		});
 	});
@@ -78,15 +80,24 @@ describe('BarChartController', function(){
 		expect(controller).toBeDefined();
 	});
 
-	describe('socketConnection', function(){
+	describe('#socketConnection', function(){
 
 		beforeEach(function(){
 			controller.socketConnection('http://norris-nrti-dev.herokuapp.com/page1/map1');
 		});
 
-		/*it('socketConnection works fine', function(){
-			expect(count).toEqual(1);
-		});*/
+		var configGraph = false;
+
+		socket.on('configGraph', function(){
+			configGraph = true;
+		});
+
+		describe('#listenOnEvents', function(){
+
+			it('configGraph', function(){
+				expect(configGraph).toEqual(true);
+			});
+		});
 	});
 
 });
