@@ -6,6 +6,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.2.3			2015-06-26	Maria Giovanna Chinellato   Fix code
+*
 * 0.2.2         2015-05-21  Maria Giovanna Chinellato   Fix code
 *
 * 0.2.1			2015-05-20	Maria Giovanna Chinellato	Fix test of Model::Table

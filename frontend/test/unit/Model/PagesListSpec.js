@@ -9,6 +9,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.1.3			2015-06-26	Maria Giovanna Chinellato   Fix code
+*
 * 0.1.2         2015-05-19  Maria Giovanna Chinellato   Fix code
 *
 * 0.1.1			2015-05-19	Francesco Rossetto			Completato anche addPage
