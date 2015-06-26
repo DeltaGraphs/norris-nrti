@@ -20,7 +20,7 @@
 var mockSocket = angular.module('mockSocket', []);
 
 angular.module('mockSocket')
-.factory('SocketServicesFactory', function ($rootScope) {
+.service('SocketServicesFactory', function ($rootScope) {
 
 	this.events = {};
 
@@ -45,7 +45,4 @@ angular.module('mockSocket')
 			emitCallback();
 		}
 	};
-
-	return this;
-
 });
