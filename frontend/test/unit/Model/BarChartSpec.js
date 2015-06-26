@@ -394,11 +394,12 @@ describe('BarChart', function(){
 			]
 		};
 
-		var BarChart;
+		var BarChart, BarChartFlow;
 
 		beforeEach(function(){
 			BarChart = BarChartFactory.build();
-			BarChart.initializeData(data);
+			BarChartFlow = BarChartFlowFactory.buil();
+			BarChart.addFlow(BarChartFlow);
 		});
 
 		afterEach(function(){
