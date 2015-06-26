@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">76.51</p>
+      <p class="stat">75.72</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">288</p>
+      <p class="stat">375</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">17.49</p>
+      <p class="stat">22.00</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">1.41</p>
+      <p class="stat">1.94</p>
     </div>
   </div>
 </div>
@@ -100,6 +100,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.2.1         2015-06-26  Maria Giovanna Chinellato	Fix initializeData
+*
 * 0.2.0         2015-05-22  Maria Giovanna Chinellato	Modified general structure, some fixes
 *
 * 0.1.1         2015-05-22  Maria Giovanna Chinellato   Fix code
@@ -136,6 +138,10 @@ describe(&#039;TableFlow&#039;, function(){
 			expect(TableFlow.getMaxItem()).toEqual(null);
 		});
 
+		it(&#039;default constructor create the flow with the correct name&#039;, function(){
+			expect(TableFlow.getName()).toEqual(null);
+		});
+
 	});
 
 	describe(&#039;Constructor&#039;, function(){
@@ -155,6 +161,9 @@ describe(&#039;TableFlow&#039;, function(){
 			TableFlow = null;
 		});
 
+		it(&#039;constructor create the flow with the correct name&#039;, function(){
+			expect(TableFlow.getName()).toEqual(&#039;flusso1&#039;);
+		});
 		it(&#039;constructor create the flow with the correct max item displayed&#039;, function(){
 			expect(TableFlow.getMaxItem()).toEqual(20);
 		});
@@ -242,6 +251,84 @@ describe(&#039;TableFlow&#039;, function(){
 
 		it(&#039;data inizialize in the correct way&#039;, function(){
 			expect(TableFlow.getData().length).toEqual(3);
+		});
+
+	});
+
+	describe(&#039;#initializeData&#039;, function(){
+
+		var data = {
+			&#039;records&#039; : [
+				{ 
+					&#039;NorrisRecordID&#039; : &#039;record1&#039;,
+					&#039;value&#039; : [ 12.5464546515, 11.15468766]
+				},
+				{ 
+					&#039;NorrisRecordID&#039; : &#039;record2&#039;,
+					&#039;value&#039; : [ 12.5464546515, 11.15468766]
+				}
+			]
+		};
+
+		var TableFlow;
+
+		beforeEach(function(){
+			TableFlow = TableFlowFactory.build({ &#039;maxItem&#039; : 3 });
+			TableFlow.initializeData(data, &#039;top&#039;);
+		});
+
+		afterEach(function(){
+			TableFlow = null;
+		});
+
+		it(&#039;data initialized in the correct way&#039;, function(){
+			expect(TableFlow.getData().length).toEqual(2);
+		});
+
+	});
+
+	describe(&#039;#initializeData&#039;, function(){
+
+		var data = {
+			&#039;records&#039; : [
+				{ 
+					&#039;NorrisRecordID&#039; : &#039;record1&#039;,
+					&#039;value&#039; : [ 12.5464546515, 11.15468766]
+				},
+				{ 
+					&#039;NorrisRecordID&#039; : &#039;record2&#039;,
+					&#039;value&#039; : [ 12.5464546515, 11.15468766]
+				},
+				{ 
+					&#039;NorrisRecordID&#039; : &#039;record3&#039;,
+					&#039;value&#039; : [ 12.5464546515, 11.15468766]
+				}
+			]
+		};
+
+		var data2 = {
+			&#039;records&#039; : [
+				{ 
+					&#039;NorrisRecordID&#039; : &#039;record4&#039;,
+					&#039;value&#039; : [ 12.5464546515, 11.15468766]
+				}
+			]
+		};
+
+		var TableFlow;
+
+		beforeEach(function(){
+			TableFlow = TableFlowFactory.build({ &#039;maxItem&#039; : 1 });
+			TableFlow.initializeData(data, &#039;top&#039;);
+			TableFlow.initializeData(data2, &#039;bottom&#039;);
+		});
+
+		afterEach(function(){
+			TableFlow = null;
+		});
+
+		it(&#039;data initialized in the correct way&#039;, function(){
+			expect(TableFlow.getData().length).toEqual(1);
 		});
 
 	});
