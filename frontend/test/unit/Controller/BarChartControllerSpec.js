@@ -79,8 +79,6 @@ describe('BarChartController', function(){
 
 	describe('#socketConnection', function(){
 
-		controller.socketConnection('http://norris-nrti-dev.herokuapp.com/page1/map1');
-
 		describe('#listenOnEvents', function(){
 
 			var configGraph = false;
