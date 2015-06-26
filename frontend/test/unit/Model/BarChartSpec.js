@@ -153,8 +153,8 @@ describe('BarChart', function(){
 			'enableLegend' : true,
 			'legend' : {position: 'E'},
 			'socketURL' : 'http://example.com',
-			'axisX' : { name: 'asseX' },
-			'axisY' : { name: 'asseY' },
+			'xAxis' : { name: 'asseX' },
+			'yAxis' : { name: 'asseY' },
 			'barOrientation' : 'vertical',
 			'headers' : ['colonna1'],
 			'backgroundColor' : '#F0F',
@@ -378,18 +378,15 @@ describe('BarChart', function(){
 
 	describe('#addRecords', function(){
 		
-		var data = {
-			'ID' : 'flusso1',
-			'records' : [
-				{ 
-					'NorrisRecordID' : 'record1',
-					'value' : [ 1, 1]
-				}
-			]
-		};
+		var data = [
+			{
+				'ID' : '1',
+				'records' : [{ 'NorrisRecordID' : '234321', 'value' : [0,1]}]
+			}
+		];
 
 		var add = {
-			'ID' : 'flusso1',
+			'ID' : '1',
 			'records' : [
 				{	'NorrisRecordID' : 'record2',
 					'value' : [ 1, 2]
