@@ -62,12 +62,13 @@ describe('BarChartController', function(){
 				};
 
 				return this;
+
 			});
 		});
 
-		inject(function($rootScope, $controller, _SocketServicesFactory_){
+		inject(function($rootScope, $controller, SocketServicesFactory){
 			scope = $rootScope.$new();
-			socket = _SocketServicesFactory_;
+			socket = SocketServicesFactory;
 			controller = $controller('BarChartController', { $scope : scope });
 		});
 	});
