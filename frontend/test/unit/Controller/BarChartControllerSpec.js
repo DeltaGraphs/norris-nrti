@@ -102,6 +102,21 @@ describe('BarChartController', function(){
 				socket.on('configGraph', function(){
 					configGraph = true;
 				});
+				socket.on('updateGraphProp', function(){
+					updateGraphProp = true;
+				});
+				socket.on('insertFlow', function(){
+					insertFlow = true;
+				});
+				socket.on('deleteFlow', function(){ 
+					deleteFlow = true;
+				});
+				socket.on('updateFlowProp', function(){
+					updateFlowProp = true;
+				});
+				socket.on('updateFlowData', function(){
+					updateFlowData = true;
+				});
 			});
 
 			afterEach(function(){
@@ -112,40 +127,29 @@ describe('BarChartController', function(){
 				expect(configGraph).toEqual(true);
 			});
 
-			/*socket.on('updateGraphProp', function(){
-				updateGraphProp = true;
-			});
 			it('updateGraphProp', function(){
 				expect(updateGraphProp).toEqual(true);
 			});
 
-			socket.on('insertFlow', function(){
-				insertFlow = true;
-			});
+			
 			it('insertFlow', function(){
 				expect(insertFlow).toEqual(true);
 			});
 
-			socket.on('deleteFlow', function(){ 
-				deleteFlow = true;
-			});
+			
 			it('deleteFlow', function(){
 				expect(deleteFlow).toEqual(true);
 			});
 
-			socket.on('updateFlowProp', function(){
-				updateFlowProp = true;
-			});
+			
 			it('updateFlowProp', function(){
 				expect(updateFlowProp).toEqual(true);
 			});
 
-			socket.on('updateFlowData', function(){
-				updateFlowData = true;
-			});
+			
 			it('updateFlowData', function(){
 				expect(updateFlowData).toEqual(true);
-			});*/
+			});
 		});
 	//});
 
