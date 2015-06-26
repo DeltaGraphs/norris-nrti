@@ -33,12 +33,12 @@ describe('BarChartController', function(){
 		angular.mock.module('norris-nrti');
 		angular.mock.module('mockSocket');
 		/*module(function($provide){
-			$provide.factio()
+			$provide.factory()
 		});*/
 
-		inject(function($rootScope, $controller, _SocketServicesFactory_){
+		inject(function($rootScope, $controller, $injector){
 			scope = $rootScope.$new();
-			SocketServicesFactory = _SocketServicesFactory_;
+			SocketServicesFactory = $injector.get('SocketServicesFactory');
 			controller = $controller('BarChartController', { $scope : scope });
 		});
 	});
