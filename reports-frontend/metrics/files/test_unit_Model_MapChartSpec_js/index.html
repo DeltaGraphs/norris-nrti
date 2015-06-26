@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">74.23</p>
+      <p class="stat">74.28</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">411</p>
+      <p class="stat">424</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">19.50</p>
+      <p class="stat">18.81</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">3.29</p>
+      <p class="stat">3.49</p>
     </div>
   </div>
 </div>
@@ -97,6 +97,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.1.3			2015-06-26	Maria Giovanna Chinellato   Fix code
+*
 * 0.1.2         2015-05-19  Maria Giovanna Chinellato   Fix code
 *
 * 0.1.1			2015-05-19	Maria Giovanna Chinellato	Fix test of Model::MapChart
@@ -228,7 +230,10 @@ describe(&#039;MapChart&#039;, function(){
 			&#039;title&#039; : &#039;graficonuovo&#039;,
 			&#039;height&#039; : 400,
 			&#039;width&#039; : 400,
-			&#039;enabledLegend&#039; : false,
+			&#039;mapWidth&#039; : 0,
+			&#039;mapHeight&#039; : 0,
+			&#039;enableLegend&#039; : true,
+			&#039;legend&#039; : { position: &#039;N&#039; },
 			&#039;horizontalGrid&#039; : false,
 			&#039;verticalGrid&#039; : false,
 			&#039;legendOnPoint&#039; : false,
@@ -236,6 +241,7 @@ describe(&#039;MapChart&#039;, function(){
 			&#039;longitude&#039; : 3,
 			&#039;scale&#039; : 999,
 			&#039;mapType&#039; : &#039;terrain&#039;,
+			&#039;drag&#039; : true,
 			&#039;zoom&#039; : false,
 			&#039;flows&#039; : [{&#039;ID&#039; : &#039;f1&#039;},{&#039;ID&#039; : &#039;f2&#039;},{&#039;ID&#039; : &#039;f3&#039;}]
 		};
@@ -256,6 +262,15 @@ describe(&#039;MapChart&#039;, function(){
 
 		it(&#039;graph updated with the correct legendOnPoint&#039;, function(){
 			expect(MapChart.getLegendOnPoint()).toEqual(false);
+		});
+		it(&#039;graph updated with the correct height&#039;, function(){
+			expect(MapChart.getHeight()).toEqual(400);
+		});
+		it(&#039;graph updated with the correct width&#039;, function(){
+			expect(MapChart.getWidth()).toEqual(400);
+		});
+		it(&#039;graph updated with the correct legend&#039;, function(){
+			expect(MapChart.getLegend()).not.toEqual(null);
 		});
 		it(&#039;graph updated with the correct latitude&#039;, function(){
 			expect(MapChart.getLatitude()).toEqual(3);

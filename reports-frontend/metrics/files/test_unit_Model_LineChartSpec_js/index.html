@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">74.28</p>
+      <p class="stat">74.56</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">411</p>
+      <p class="stat">414</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">19.65</p>
+      <p class="stat">19.27</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">3.22</p>
+      <p class="stat">3.31</p>
     </div>
   </div>
 </div>
@@ -97,6 +97,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.3.1			2015-06-26	Maria Giovanna Chinellato   Fix code
+*
 * 0.3.0			2015-05-18	Francesco Rossetto			Restructured test
 *
 * 0.2.3         2015-05-17  Maria Giovanna Chinellato   Fix code
@@ -129,15 +131,10 @@ describe(&#039;LineChart&#039;, function(){
 
 	describe(&#039;Constructor&#039;, function(){
 
-		var json = {
-			&#039;title&#039; : &#039;fottutissimografico&#039;,
-			&#039;socketURL&#039; : &#039;localhost/page1/grafico1&#039;
-		};
-
 		var LineChart;
 
 		beforeEach(function(){
-			LineChart = LineChartFactory.build(json);
+			LineChart = LineChartFactory.build();
 		});
 
 		afterEach(function(){
@@ -148,10 +145,10 @@ describe(&#039;LineChart&#039;, function(){
 			expect(LineChart).toBeDefined();
 		});
 		it(&#039;graph Constructor called&#039;, function(){
-			expect(LineChart.getTitle()).toEqual(&#039;fottutissimografico&#039;);
+			expect(LineChart.getTitle()).toEqual(null);
 		});
 		it(&#039;graph Constructor called&#039;, function(){
-			expect(LineChart.getUrl()).toEqual(&#039;localhost/page1/grafico1&#039;);
+			expect(LineChart.getUrl()).toEqual(null);
 		});
 		it(&#039;graph created with the correct legendOnPoint&#039;, function(){
 			expect(LineChart.getLegendOnPoint()).toEqual(false);
@@ -231,9 +228,11 @@ describe(&#039;LineChart&#039;, function(){
 	describe(&#039;#updateParameters&#039;, function(){
 		var json = {
 			&#039;title&#039; : &#039;graficonuovo&#039;,
+			&#039;socketURL&#039; : &#039;localhost/page1/grafico1&#039;,
 			&#039;height&#039; : 400,
 			&#039;width&#039; : 400,
-			&#039;enabledLegend&#039; : false,
+			&#039;enabledLegend&#039; : true,
+			&#039;legend&#039; : { position: &#039;SW&#039; },
 			&#039;legendOnPoint&#039; : true,
 			&#039;viewFinder&#039; : true,
 			&#039;axisX&#039; : {},
@@ -258,6 +257,12 @@ describe(&#039;LineChart&#039;, function(){
 		
 		it(&#039;graph updated with the correct legendOnPoint&#039;, function(){
 			expect(LineChart.getLegendOnPoint()).toEqual(true);
+		});
+		it(&#039;graph updated with the correct height&#039;, function(){
+			expect(LineChart.getHeight()).toEqual(400);
+		});
+		it(&#039;graph updated with the correct width&#039;, function(){
+			expect(LineChart.getWidth()).toEqual(400);
 		});
 		it(&#039;graph updated with the correct axisX&#039;, function(){
 			expect(LineChart.getX()).toBeDefined();
