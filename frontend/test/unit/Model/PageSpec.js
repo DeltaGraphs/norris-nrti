@@ -163,6 +163,30 @@ describe('Page', function(){
 
 	});
 
+	describe('#initializeData', function(){
+
+		var json = [
+			{ 'ID' : 'graph1' },
+			{ 'ID' : 'graph1' }
+		];
+
+		var Page;
+		
+		beforeEach(function(){
+			Page = PageFactory.build();
+			Page.initializeData(json);
+		});
+
+		afterEach(function(){
+			Page = null;
+		});
+
+		it('graphs added correctly to the list', function(){
+			expect(Page.getGraphsList().length).toEqual(2);
+		});
+
+	});
+
 	describe('#addGraph', function(){
 
 		var json = {
@@ -182,6 +206,8 @@ describe('Page', function(){
 		});
 
 		it('graphs added correctly to the list', function(){
+			expect(Page.getGraphsList().length).toEqual(1);
+			Page.addGraph(json);
 			expect(Page.getGraphsList().length).toEqual(1);
 		});
 
