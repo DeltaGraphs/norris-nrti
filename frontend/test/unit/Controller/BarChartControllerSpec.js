@@ -27,14 +27,15 @@ describe('BarChartController', function(){
 	var scope;
 	var controller;
 	var socket;
+	var SocketServicesFactory;
 
 	beforeEach(function(){
 		angular.mock.module('norris-nrti');
 		angular.mock.module('mockSocket');
 
-		inject(function($rootScope, $controller, _SocketServicesFactory_){
+		inject(function($rootScope, $controller, $injector){
 			scope = $rootScope.$new();
-			socket = _SocketServicesFactory_;
+			SocketServicesFactory = $injector.get('SocketServicesFactory');
 			controller = $controller('BarChartController', { $scope : scope });
 		});
 	});
@@ -51,6 +52,7 @@ describe('BarChartController', function(){
 	//describe('#socketConnection', function(){
 
 		describe('#listenOnEvents', function(){
+			socket = SocketServicesFactory.build();
 
 			var configGraph = false;
 			var updateGraphProp = false;
