@@ -9,6 +9,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.2.1         2015-06-26  Maria Giovanna Chinellato	Fix initializeData
+*
 * 0.2.0         2015-05-22  Maria Giovanna Chinellato	Modified general structure, some fixes
 *
 * 0.1.1         2015-05-22  Maria Giovanna Chinellato   Fix code
@@ -45,6 +47,10 @@ describe('TableFlow', function(){
 			expect(TableFlow.getMaxItem()).toEqual(null);
 		});
 
+		it('default constructor create the flow with the correct name', function(){
+			expect(TableFlow.getName()).toEqual(null);
+		});
+
 	});
 
 	describe('Constructor', function(){
@@ -64,6 +70,9 @@ describe('TableFlow', function(){
 			TableFlow = null;
 		});
 
+		it('constructor create the flow with the correct name', function(){
+			expect(TableFlow.getName()).toEqual('flusso1');
+		});
 		it('constructor create the flow with the correct max item displayed', function(){
 			expect(TableFlow.getMaxItem()).toEqual(20);
 		});
@@ -151,6 +160,84 @@ describe('TableFlow', function(){
 
 		it('data inizialize in the correct way', function(){
 			expect(TableFlow.getData().length).toEqual(3);
+		});
+
+	});
+
+	describe('#initializeData', function(){
+
+		var data = {
+			'records' : [
+				{ 
+					'NorrisRecordID' : 'record1',
+					'value' : [ 12.5464546515, 11.15468766]
+				},
+				{ 
+					'NorrisRecordID' : 'record2',
+					'value' : [ 12.5464546515, 11.15468766]
+				}
+			]
+		};
+
+		var TableFlow;
+
+		beforeEach(function(){
+			TableFlow = TableFlowFactory.build({ 'maxItem' : 3 });
+			TableFlow.initializeData(data, 'top');
+		});
+
+		afterEach(function(){
+			TableFlow = null;
+		});
+
+		it('data initialized in the correct way', function(){
+			expect(TableFlow.getData().length).toEqual(2);
+		});
+
+	});
+
+	describe('#initializeData', function(){
+
+		var data = {
+			'records' : [
+				{ 
+					'NorrisRecordID' : 'record1',
+					'value' : [ 12.5464546515, 11.15468766]
+				},
+				{ 
+					'NorrisRecordID' : 'record2',
+					'value' : [ 12.5464546515, 11.15468766]
+				},
+				{ 
+					'NorrisRecordID' : 'record3',
+					'value' : [ 12.5464546515, 11.15468766]
+				}
+			]
+		};
+
+		var data2 = {
+			'records' : [
+				{ 
+					'NorrisRecordID' : 'record4',
+					'value' : [ 12.5464546515, 11.15468766]
+				}
+			]
+		};
+
+		var TableFlow;
+
+		beforeEach(function(){
+			TableFlow = TableFlowFactory.build({ 'maxItem' : 1 });
+			TableFlow.initializeData(data, 'top');
+			TableFlow.initializeData(data2, 'bottom');
+		});
+
+		afterEach(function(){
+			TableFlow = null;
+		});
+
+		it('data initialized in the correct way', function(){
+			expect(TableFlow.getData().length).toEqual(1);
 		});
 
 	});
