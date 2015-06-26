@@ -27,8 +27,41 @@ describe('BarChartController', function(){
 	var scope;
 	var controller;
 
-	beforeEach(function(){
+	beforeEach(function($provide){
 		angular.mock.module('norris-nrti');
+		$provide.factory('SocketServicesFactory', function($rootScope){
+			this.events = {};
+			this.url;
+
+			this.build = function(url){
+				this.url = url;
+			};
+
+			// Receive Events
+			this.on = function(eventName, callback){
+				if(!this.events[eventName]){
+					this.events[eventName] = [];
+				}
+				this.events[eventName].push(callback);
+			};
+
+			// Send Events
+			this.emit = function(eventName, data, emitCallback){
+				if(this.events[eventName]){
+					angular.forEach(this.events[eventName], function(callback){
+						$rootScope.$apply(function() {
+							callback(data);
+						});
+					});
+				}
+				if(emitCallback){
+					emitCallback();
+				}
+			};
+
+			return this;
+		});
+		
 		inject(function($rootScope, $controller){
 			scope = $rootScope.$new();
 			controller = $controller('BarChartController', { $scope : scope });
@@ -46,11 +79,7 @@ describe('BarChartController', function(){
 	describe('socketConnection', function(){
 
 		beforeEach(function(){
-			controller.socketConnection("http://norris-nrti-dev.herokuapp.com/page1/map1");
-		});
-
-		it('socketConnection works fine', function(){
-			expect(scope.listeOnEvents).toHaveBeenCalled();
+			controller.socketConnection('http://norris-nrti-dev.herokuapp.com/page1/map1');
 		});
 
 		/*it('socketConnection works fine', function(){
