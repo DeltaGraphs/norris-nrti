@@ -45,7 +45,6 @@ angular.module('norris-nrti')
 		if (json.verticalGrid !== undefined) {
 			graphJson.verticalGrid = json.verticalGrid;
 		}
-        if(j)
 
 
 		var tableJson = {};
