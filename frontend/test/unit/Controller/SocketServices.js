@@ -49,7 +49,7 @@ angular.module('mockSocket')
 
 	function SocketServicesFactory() {}
 
-    SocketServicesFactory.build = function (url) {
+    SocketServicesFactory.build = function () {
         return new SocketServices();
     };
 
