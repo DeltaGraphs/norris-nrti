@@ -36,9 +36,10 @@ describe('BarChartController', function(){
 			$provide.factory('SocketServicesFactory', function($rootScope){
 				
 				function SocketServices() {
-					this.events = [];
+					//this.events = [];
 
 					return {
+						events : [],
 					    on: function(eventName, callback){
 							this.events.push(eventName);
 							$rootScope.$apply(callback);
