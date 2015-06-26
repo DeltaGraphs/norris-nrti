@@ -139,6 +139,8 @@ describe('MapChart', function(){
 			'title' : 'graficonuovo',
 			'height' : 400,
 			'width' : 400,
+			'mapWidth' : 0,
+			'mapHeight' : 0,
 			'enableLegend' : true,
 			'legend' : { position: 'N' },
 			'horizontalGrid' : false,
@@ -148,6 +150,7 @@ describe('MapChart', function(){
 			'longitude' : 3,
 			'scale' : 999,
 			'mapType' : 'terrain',
+			'drag' : true,
 			'zoom' : false,
 			'flows' : [{'ID' : 'f1'},{'ID' : 'f2'},{'ID' : 'f3'}]
 		};
@@ -174,6 +177,9 @@ describe('MapChart', function(){
 		});
 		it('graph updated with the correct width', function(){
 			expect(MapChart.getWidth()).toEqual(400);
+		});
+		it('graph updated with the correct legend', function(){
+			expect(MapChart.getLegend()).not.toEqual(null);
 		});
 		it('graph updated with the correct latitude', function(){
 			expect(MapChart.getLatitude()).toEqual(3);
