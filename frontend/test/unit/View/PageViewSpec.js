@@ -20,16 +20,19 @@
 
 describe('PageView', function(){
 
-	beforeEach(angular.mock.module('norris-nrti'));
+	beforeEach(function(){
+		angular.mock.module('norris-nrti');
+		angular.mock.module('mockPageController');
+	});
 
-	var html, page, element, scope, controller, PageFactory, PagesList;
+
+	var html, info, element, scope, controller, PageFactory;
 
 	beforeEach(inject(function($rootScope, $compile, $controller, $injector, $routeParams) {
     	scope = $rootScope.$new();
-    	PagesList = $injector.get('PagesList');
     	PageFactory = $injector.get('PageFactory');
 
-    	page = {
+    	info = {
 			'properties': {
 				'ID':'page1',
 				'name':'Pagina 1 Last Sync: 25/6/2015 @ 19:21:56',
@@ -38,8 +41,9 @@ describe('PageView', function(){
 			}
     	};
     	
-    	controller = $controller('PageController', { $scope : scope, PagesList : PagesList, $routeParams : { pageId: '0' } });
-    	PagesList.prototype.addPage(page);
+    	controller = $controller('PageController', { $scope : scope, $routeParams : { pageId: '0' } });
+    	scope.page = PageFactory.build(info);
+
     	html = angular.element('<page></page>');
 
     	scope.graphs = [
