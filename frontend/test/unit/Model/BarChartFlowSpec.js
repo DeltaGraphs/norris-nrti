@@ -48,7 +48,7 @@ describe('BarChartFlow', function(){
 			expect(BarChartFlow).toBeDefined();
 		});
 
-		it('constructor create the flow with the correct flowColor', function(){
+		it('constructor create the flow with the correct name', function(){
 			expect(BarChartFlow.getName()).toEqual(null);
 		});
 		it('constructor create the flow with the correct flowColor', function(){
@@ -77,7 +77,7 @@ describe('BarChartFlow', function(){
 			expect(BarChartFlow).toBeDefined();
 		});
 
-		it('constructor create the flow with the correct flowColor', function(){
+		it('constructor create the flow with the correct name', function(){
 			expect(BarChartFlow.getName()).toEqual('flusso1');
 		});
 		it('constructor create the flow with the correct flowColor', function(){

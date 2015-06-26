@@ -9,6 +9,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.2.1         2015-06-26  Maria Giovanna Chinellato	Fix initializeData
+*
 * 0.2.0         2015-05-19  Maria Giovanna Chinellato	Modified general structure, some fixes
 *
 * 0.1.1         2015-05-19  Maria Giovanna Chinellato   Fix code
@@ -191,6 +193,74 @@ describe('MapChartFlow', function(){
 		it('data initialize in the correct way', function(){
 			expect(MapChartFlow.getData().length).toEqual(3);
 		});
+	});
+
+	describe('#initializeData', function(){
+
+		var data = {
+			'records' : [
+				{ 
+					'NorrisRecordID' : 'record1',
+					'value' : [ 12.5464546515, 11.15468766]
+				},
+				{ 
+					'NorrisRecordID' : 'record2',
+					'value' : [ 12.5464546515, 11.15468766]
+				}
+			]
+		};
+
+		var MapChartFlow;
+
+		beforeEach(function(){
+			MapChartFlow = MapChartFlowFactory.build({ 'maxItem' : 3 });
+			MapChartFlow.initializeData(data);
+		});
+
+		afterEach(function(){
+			MapChartFlow = null;
+		});
+
+		it('data initialized in the correct way', function(){
+			expect(MapChartFlow.getData().length).toEqual(2);
+		});
+
+	});
+
+	describe('#initializeData', function(){
+
+		var data = {
+			'records' : [
+				{ 
+					'NorrisRecordID' : 'record1',
+					'value' : [ 12.5464546515, 11.15468766]
+				},
+				{ 
+					'NorrisRecordID' : 'record2',
+					'value' : [ 12.5464546515, 11.15468766]
+				},
+				{ 
+					'NorrisRecordID' : 'record3',
+					'value' : [ 12.5464546515, 11.15468766]
+				}
+			]
+		};
+
+		var MapChartFlow;
+
+		beforeEach(function(){
+			MapChartFlow = MapChartFlowFactory.build({ 'maxItemsSaved' : 1 });
+			MapChartFlow.initializeData(data);
+		});
+
+		afterEach(function(){
+			MapChartFlow = null;
+		});
+
+		it('data initialized in the correct way', function(){
+			expect(MapChartFlow.getData().length).toEqual(1);
+		});
+
 	});
 
 	describe('#emptyData', function(){

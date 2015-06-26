@@ -48,6 +48,9 @@ describe('LineChartFlow', function(){
 			expect(LineChartFlow).toBeDefined();
 		});
 
+		it('constructor create the flow with the correct name', function(){
+			expect(LineChartFlow.getName()).toEqual(null);
+		});
 		it('constructor create the flow with the correct flowColor', function(){
 			expect(LineChartFlow.getFlowColor()).toEqual('#000');
 		});
@@ -89,6 +92,9 @@ describe('LineChartFlow', function(){
 			expect(LineChartFlow).toBeDefined();
 		});
 
+		it('constructor create the flow with the correct name', function(){
+			expect(LineChartFlow.getName()).toEqual(null);
+		});
 		it('constructor create the flow with the correct flowColor', function(){
 			expect(LineChartFlow.getFlowColor()).toEqual('#F2F');
 		});
