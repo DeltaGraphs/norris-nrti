@@ -30,36 +30,7 @@ describe('BarChartController', function(){
 
 	beforeEach(function(){
 		angular.mock.module('norris-nrti');
-		module(function($provide){
-			$provide.factory('SocketServicesFactory', function($rootScope){
-				this.events = {};
-
-				// Receive Events
-				this.on = function(eventName, callback){
-					if(!this.events[eventName]){
-						this.events[eventName] = [];
-					}
-					this.events[eventName].push(callback);
-				};
-
-				// Send Events
-				this.emit = function(eventName, data, emitCallback){
-					if(this.events[eventName]){
-						angular.forEach(this.events[eventName], function(callback){
-							$rootScope.$apply(function() {
-								callback(data);
-							});
-						});
-					}
-					if(emitCallback){
-						emitCallback();
-					}
-				};
-
-				return this;
-
-			});
-		});
+		angular.mock.module('mockSocket');
 
 		inject(function($rootScope, $controller, $injector){
 			scope = $rootScope.$new();
@@ -82,14 +53,53 @@ describe('BarChartController', function(){
 		describe('#listenOnEvents', function(){
 
 			var configGraph = false;
+			var updateGraphProp = false;
+			var insertFlow = false;
+			var deleteFlow = false;
+			var updateFlowProp = false;
+			var updateFlowData = false;
 
 			socket.on('configGraph', function(){
 				configGraph = true;
 			});
-
 			it('configGraph', function(){
 				expect(configGraph).toEqual(true);
 			});
+
+			/*socket.on('updateGraphProp', function(){
+				updateGraphProp = true;
+			});
+			it('updateGraphProp', function(){
+				expect(updateGraphProp).toEqual(true);
+			});
+
+			socket.on('insertFlow', function(){
+				insertFlow = true;
+			});
+			it('insertFlow', function(){
+				expect(insertFlow).toEqual(true);
+			});
+
+			socket.on('deleteFlow', function(){ 
+				deleteFlow = true;
+			});
+			it('deleteFlow', function(){
+				expect(deleteFlow).toEqual(true);
+			});
+
+			socket.on('updateFlowProp', function(){
+				updateFlowProp = true;
+			});
+			it('updateFlowProp', function(){
+				expect(updateFlowProp).toEqual(true);
+			});
+
+			socket.on('updateFlowData', function(){
+				updateFlowData = true;
+			});
+			it('updateFlowData', function(){
+				expect(updateFlowData).toEqual(true);
+			});*/
 		});
 	});
 
