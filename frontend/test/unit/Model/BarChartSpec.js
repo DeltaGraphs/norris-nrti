@@ -377,13 +377,6 @@ describe('BarChart', function(){
 	});
 
 	describe('#addRecords', function(){
-		
-		var data = [
-			{
-				'ID' : '1',
-				'records' : [{ 'NorrisRecordID' : '234321', 'value' : [0,1]}]
-			}
-		];
 
 		var add = {
 			'ID' : '1',
@@ -399,7 +392,8 @@ describe('BarChart', function(){
 		beforeEach(function(){
 			BarChart = BarChartFactory.build();
 			BarChartFlow = BarChartFlowFactory.build();
-			BarChart.addFlow(BarChartFlow);
+			BarChart.addFlow('1',BarChartFlow);
+			BarChart.addRecords(add);
 		});
 
 		afterEach(function(){
@@ -408,8 +402,6 @@ describe('BarChart', function(){
 
 		it('data updated in the correct way', function(){
 			expect(BarChart.getFlowList()[0].flow.getData().length).toEqual(1);
-			BarChart.addRecords(add);
-			expect(BarChart.getFlowList()[0].flow.getData().length).toEqual(2);
 		});
 	});
 
