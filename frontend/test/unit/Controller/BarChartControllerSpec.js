@@ -40,7 +40,8 @@ describe('BarChartController', function(){
 
 					return {
 					    on: function(eventName, callback){
-							this.events.push(callback);
+							this.events.push(eventName);
+							$rootScope.$apply(callback);
 						}
 					    /*emit:function(eventName, data, emitCallback){
 							if(this.events[eventName]){
