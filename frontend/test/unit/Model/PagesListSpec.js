@@ -106,10 +106,12 @@ describe('PagesList', function(){
 		
 		var json = 	{
 			'ID' : 'pageN',
-			'name' : 'Pagina n-esima',
-			'description' : 'questa è la pagina n-esima',
-			'graphsPerRow' : 4,
-			'graphsPerCol' : 4
+			'properties': {
+				'name' : 'Pagina n-esima',
+				'description' : 'questa è la pagina n-esima',
+				'graphsPerRow' : 4,
+				'graphsPerCol' : 4
+			}
 		};
 
 		var update = {

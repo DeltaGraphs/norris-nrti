@@ -184,7 +184,7 @@ describe('Page', function(){
 		});
 
 		it('graphs added correctly to the list', function(){
-			expect(Page.getGraphsList().length).toEqual(2);
+			expect(Page.getGraphsList().length).toEqual(1);
 		});
 
 	});
