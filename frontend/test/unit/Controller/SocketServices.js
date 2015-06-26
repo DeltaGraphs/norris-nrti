@@ -23,7 +23,7 @@ angular.module('mockSocket')
 .service('SocketServicesFactory', function ($rootScope) {
 
 	this.events = {};
-
+	
 	// Receive Events
 	this.on = function(eventName, callback){
 		if(!this.events[eventName]){

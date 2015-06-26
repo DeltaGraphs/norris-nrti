@@ -32,9 +32,9 @@ describe('BarChartController', function(){
 		angular.mock.module('norris-nrti');
 		angular.mock.module('mockSocket');
 
-		inject(function($rootScope, $controller, $injector){
+		inject(function($rootScope, $controller, _SocketServicesFactory_){
 			scope = $rootScope.$new();
-			socket = $injector.get('SocketServicesFactory');
+			socket = _SocketServicesFactory_;
 			controller = $controller('BarChartController', { $scope : scope });
 		});
 	});
@@ -48,7 +48,7 @@ describe('BarChartController', function(){
 		expect(scope.barChart).toBeDefined();
 	});
 
-	describe('#socketConnection', function(){
+	//describe('#socketConnection', function(){
 
 		describe('#listenOnEvents', function(){
 
@@ -101,6 +101,6 @@ describe('BarChartController', function(){
 				expect(updateFlowData).toEqual(true);
 			});*/
 		});
-	});
+	//});
 
 });
