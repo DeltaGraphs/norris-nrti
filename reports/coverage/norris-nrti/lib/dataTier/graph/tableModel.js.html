@@ -292,7 +292,16 @@
 265
 266
 267
-268</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -311,6 +320,7 @@
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">70</span>
@@ -354,6 +364,7 @@
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">8</span>
 <span class="cline-any cline-yes">8</span>
@@ -363,6 +374,7 @@
 <span class="cline-any cline-yes">8</span>
 <span class="cline-any cline-yes">8</span>
 <span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
@@ -501,6 +513,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">3</span>
 <span class="cline-any cline-yes">3</span>
@@ -514,6 +527,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
@@ -522,6 +536,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-yes">2</span>
@@ -532,8 +547,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
@@ -545,6 +562,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -579,6 +597,7 @@ var GraphModel = require('./graphModel.js');
 var TableFlowModel = require('../flow/tableFlowModel.js');
 var FH = require('../../helpers/functionHelper.js');
 &nbsp;
+//if params are valid build object else return error
 function TableModel(params) {
 	if(params===undefined || params.ID===undefined || typeof params.ID !== 'string'|| params.ID.trim() === ''){ // ID field is required
 		console.log('Error: 342');
@@ -621,6 +640,7 @@ TableModel.prototype = Object.create(GraphModel.prototype);
 TableModel.prototype.constructor = TableModel;
 TableModel.prototype.parent = GraphModel.prototype;
 &nbsp;
+//return JSON with properties
 TableModel.prototype.getProperties = function() {
 	var res = this.parent.getProperties.call(this);
 	res.sortable = this._sortable;
@@ -632,6 +652,7 @@ TableModel.prototype.getProperties = function() {
 	return res;
 };
 &nbsp;
+//updates valid properties
 TableModel.prototype.updateProperties = function(params) {
 	<span class="missing-if-branch" title="else path not taken" >E</span>if (params !== undefined){
 		var prop=this.parent.updateBaseProperties.call(this, params);
@@ -768,6 +789,7 @@ TableModel.prototype.updateProperties = function(params) {
 	//return error
 };
 &nbsp;
+//return JSON with all data
 TableModel.prototype.getData = function() {
 	var graphData=[];
 	var flows= this._flows.length;
@@ -783,12 +805,14 @@ TableModel.prototype.getData = function() {
 	return graphData;
 };
 &nbsp;
+//if flow is valid, add it to flows
 TableModel.prototype.addFlow = function(flow) {
 	if(flow instanceof TableFlowModel) {
 		this._flows.push(flow);
 	}
 };
 &nbsp;
+//delete flow specified
 TableModel.prototype.deleteFlow = function(ID) {
 	<span class="missing-if-branch" title="else path not taken" >E</span>if(typeof ID === 'string') {
 		for(var i=0; i &lt; this._flows.length; i++) {
@@ -799,10 +823,12 @@ TableModel.prototype.deleteFlow = function(ID) {
 	}
 };
 &nbsp;
+//delete all flows
 TableModel.prototype.deleteAllFlows = function() {
 	this._flows = [];
 };
 &nbsp;
+//update record specified
 TableModel.prototype.updateRecord = function(flowID, ID, newRecord) {
 	var filteredFlows = this._flows.filter(function(flow) {return flow.getProperties().ID === flowID;});
 	if(filteredFlows.length &gt; 0) {
@@ -815,6 +841,7 @@ TableModel.prototype.updateRecord = function(flowID, ID, newRecord) {
 	}
 };
 &nbsp;
+//add record specified
 TableModel.prototype.addRecord = function(flowID, record) {
 	var filteredFlows = this._flows.filter(function(flow) {return flow.getProperties().ID === flowID;});
 	if(filteredFlows.length &gt; 0) {
@@ -831,7 +858,7 @@ module.exports = TableModel;</pre></td></tr>
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Jun 26 2015 20:05:32 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Jun 26 2015 20:26:12 GMT+0000 (UTC)</div>
 </div>
 <script src="../../../../prettify.js"></script>
 <script>

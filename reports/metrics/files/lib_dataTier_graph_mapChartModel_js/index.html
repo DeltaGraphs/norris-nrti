@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">162</p>
+      <p class="stat">174</p>
     </div>
   </div>
   <div class="row historical">
@@ -108,6 +108,7 @@
 var GraphModel = require(&#039;./graphModel.js&#039;);
 var MapChartFlowModel = require(&#039;../flow/mapChartFlowModel.js&#039;);
 
+//if params are valid build object else return error
 function MapChartModel(params) {
 	if(params===undefined || params.ID===undefined || typeof params.ID !== &#039;string&#039;|| params.ID.trim() === &#039;&#039;){ // ID field is required
 		console.log(&#039;Error: 332&#039;);
@@ -133,12 +134,14 @@ MapChartModel.prototype = Object.create(GraphModel.prototype);
 MapChartModel.prototype.constructor = MapChartModel;
 MapChartModel.prototype.parent = GraphModel.prototype;
 
+//if flow is valid, add it to flows
 MapChartModel.prototype.addFlow = function(flow) {
 	if(flow instanceof MapChartFlowModel) {
 		this._flows.push(flow);
 	}
 };
 
+//adds record to flow specified
 MapChartModel.prototype.addRecord = function(flowID, record) {
 	var filteredFlows = this._flows.filter(function(flow) {return flow.getProperties().ID === flowID;});
 	if(filteredFlows.length &gt; 0) {
@@ -150,10 +153,12 @@ MapChartModel.prototype.addRecord = function(flowID, record) {
 	}
 };
 
+//delete all flows
 MapChartModel.prototype.deleteAllFlows = function() {
 	this._flows = [];
 };
 
+//delete flow specified
 MapChartModel.prototype.deleteFlow = function(ID) {
 	if(typeof ID === &#039;string&#039;) {
 		for(var i=0; i &lt; this._flows.length; i++) {
@@ -164,6 +169,7 @@ MapChartModel.prototype.deleteFlow = function(ID) {
 	}
 };
 
+//delete record specified
 MapChartModel.prototype.deleteRecord = function(flowID, ID) {
 	var filteredFlows = this._flows.filter(function(flow) {return flow.getProperties().ID === flowID;});
 	if(filteredFlows.length &gt; 0) {
@@ -175,6 +181,7 @@ MapChartModel.prototype.deleteRecord = function(flowID, ID) {
 	}
 };
 
+//return JSON with all data
 MapChartModel.prototype.getData = function() {
 	var graphData=[];
 	var flows= this._flows.length;
@@ -190,6 +197,7 @@ MapChartModel.prototype.getData = function() {
 	return graphData;
 };
 
+//return JSON with properties
 MapChartModel.prototype.getProperties = function() {
 	var res = this.parent.getProperties.call(this);
 	res.latitude = this._latitude;
@@ -201,6 +209,7 @@ MapChartModel.prototype.getProperties = function() {
 	return res;
 };
 
+//updates valid properties
 MapChartModel.prototype.updateProperties = function(params) {
 	if (params !== undefined){
 		var prop=this.parent.updateBaseProperties.call(this, params);
@@ -227,6 +236,7 @@ MapChartModel.prototype.updateProperties = function(params) {
 	return 331;
 };
 
+//update record specified
 MapChartModel.prototype.updateRecord = function(flowID, ID, newRecord) {
 	var filteredFlows = this._flows.filter(function(flow) {return flow.getProperties().ID === flowID;});
 	if(filteredFlows.length &gt; 0) {
@@ -238,6 +248,8 @@ MapChartModel.prototype.updateRecord = function(flowID, ID, newRecord) {
 		return 231;
 	}
 };
+
+//perform update movie
 MapChartModel.prototype.updateMovie = function(flowID, newRecords) {
 	var filteredFlows = this._flows.filter(function(flow) {return flow.getProperties().ID === flowID;});
 	if(filteredFlows.length &gt; 0) {

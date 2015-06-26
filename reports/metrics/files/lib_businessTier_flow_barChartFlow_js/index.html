@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">150</p>
+      <p class="stat">155</p>
     </div>
   </div>
   <div class="row historical">
@@ -103,11 +103,14 @@
 * =========================================================
 * 0.0.1     2015-05-25   Filippo Rampado    Initial code
 * =========================================================
+* 0.0.2     2015-06-24   Filippo Rampado	Fix addRecord
+* =========================================================
 */
 
 var BarChartFlowModel=require(&#039;../../dataTier/flow/barChartFlowModel.js&#039;);
 var Flow=require(&#039;./flow.js&#039;);
 
+//build the object if graphsocket and params are valid
 function BarChartFlow(params, graphSocket, records) {
 	if (graphSocket===undefined || !(graphSocket.hasOwnProperty(&#039;_namespace&#039;))){
 		console.log(&#039;Error: 201&#039;);
@@ -125,6 +128,7 @@ BarChartFlow.prototype = Object.create(Flow.prototype);
 BarChartFlow.prototype.constructor = Flow;
 BarChartFlow.prototype.parent = Flow.prototype;
 
+//if ID and record are valid, updates the record and notify the clients to remove, add or simply modify the record 
 BarChartFlow.prototype.updateRecord = function(index, record){
 	if ((index===undefined)||(typeof index !== &#039;number&#039;)||(index &gt;= this._dataBarChartFlow._records.length || index &lt; 0)){
 		return 112;
@@ -134,8 +138,6 @@ BarChartFlow.prototype.updateRecord = function(index, record){
 	var newValid=this._dataBarChartFlow.getRecordByIndex(index).norrisRecordIsValid;
 	if (res===true ){
 		if (oldValid &amp;&amp; !newValid){
-            /*console.dir(&#039;Printing record ID&#039;);
-            console.dir(this._dataBarChartFlow.getRecordByIndex(index).norrisRecordID);*/
 			var data={
 				action: &#039;deleteRecord&#039;,
 				ID: this._dataBarChartFlow._ID,
@@ -176,6 +178,7 @@ BarChartFlow.prototype.updateRecord = function(index, record){
 	return res;
 };
 
+//it returns a JSON with all records
 BarChartFlow.prototype.getReplaceDataJSON = function(){
 	var records=[];
 	/*for(var key in this._dataBarChartFlow._records){
@@ -208,6 +211,7 @@ BarChartFlow.prototype.getReplaceDataJSON = function(){
 	};
 };
 
+//it updates properties and notify clients about it
 BarChartFlow.prototype.updateProperties = function(params){
 	if (params!==undefined){
 		var prop=this._dataBarChartFlow.updateProperties(params);
@@ -235,6 +239,7 @@ BarChartFlow.prototype.updateProperties = function(params){
 	}
 };
 
+//it returns model properties
 BarChartFlow.prototype.getProperties = function(){
 	return this._dataBarChartFlow.getProperties();
 };

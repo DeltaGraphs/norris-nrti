@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">199</p>
+      <p class="stat">209</p>
     </div>
   </div>
   <div class="row historical">
@@ -111,6 +111,7 @@ var Graph=require(&#039;./graph.js&#039;);
 var LineChartFlow=require(&#039;../flow/lineChartFlow.js&#039;);
 var LineChartModel=require(&#039;../../dataTier/graph/lineChartModel.js&#039;);
 
+//if params are valid build object, else return error
 function LineChart(params, page, graphSocket) {
 	if (params===undefined){
 		console.log(&#039;Error: 371&#039;);
@@ -137,6 +138,7 @@ LineChart.prototype = Object.create(Graph.prototype);
 LineChart.prototype.constructor = Graph;
 LineChart.prototype.parent = Graph.prototype;
 
+//if ID is valid return flow specified 
 LineChart.prototype.getFlowByID = function(ID){
 	if (typeof ID===&#039;string&#039;) {
 		var flows=this._flows.length;
@@ -158,6 +160,7 @@ LineChart.prototype.getFlowByID = function(ID){
 	return 272;
 };
 
+//if params and records are valid create and returns a flow object and notify graph clients
 LineChart.prototype.createLineChartFlow = function(params){
 	var lcf=new LineChartFlow(params, this._graphSocket);
 	if (!lcf.hasOwnProperty(&#039;_dataLineChartFlow&#039;)){
@@ -181,6 +184,7 @@ LineChart.prototype.createLineChartFlow = function(params){
 	return lcf;
 };
 
+//if ID is valid delete flow and notify clients
 LineChart.prototype.deleteFlow = function(ID){
 	if (typeof ID===&#039;string&#039;) {
 		var flows=this._flows.length;
@@ -204,6 +208,7 @@ LineChart.prototype.deleteFlow = function(ID){
 	return 273;
 };
 
+//delete all flows and notify clients
 LineChart.prototype.deleteAllFlows = function(){
 	while (this._flows.length&gt;0){
 		this._graphSocket.sendMessage(&#039;deleteFlow&#039;, {
@@ -213,6 +218,7 @@ LineChart.prototype.deleteAllFlows = function(){
 	}
 };
 
+//calls addRecord of flow
 LineChart.prototype.addRecord = function(flowID, record){
 	var flow=this.getFlowByID(flowID);
 	if (flow!==272){
@@ -221,6 +227,7 @@ LineChart.prototype.addRecord = function(flowID, record){
 	return 272;
 };
 
+//calls updateRecord of flow
 LineChart.prototype.updateRecord = function(flowID, ID, record){
 	var flow=this.getFlowByID(flowID);
 	if (flow!==272){
@@ -229,6 +236,7 @@ LineChart.prototype.updateRecord = function(flowID, ID, record){
 	return 272;
 };
 
+//update properties and notify clients
 LineChart.prototype.updateProperties = function(params){
 	if (params!==undefined){
 		var prop=this._dataLineChart.updateProperties(params);
@@ -240,10 +248,12 @@ LineChart.prototype.updateProperties = function(params){
 	}
 };
 
+//return graph properties
 LineChart.prototype.getProperties = function(){
 	return this._dataLineChart.getProperties();
 };
 
+//return JSON with graph properties, flows properties and data
 LineChart.prototype.getConfigJSON = function(){
 	var configJSON={};
 	var prop={};

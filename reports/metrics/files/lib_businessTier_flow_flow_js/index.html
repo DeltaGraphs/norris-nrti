@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">23</p>
+      <p class="stat">28</p>
     </div>
   </div>
   <div class="row historical">
@@ -103,12 +103,17 @@
 * =========================================================
 * 0.0.1     2015-05-20   Filippo Rampado    Initial code
 * =========================================================
+* 0.0.2     2015-05-24   Filippo Rampado    Add error code
+* =========================================================
 */
 function Flow(graphSocket) {
+	//check if graphsocket is not valid
 	if (graphSocket===undefined || !(graphSocket.hasOwnProperty(&#039;_namespace&#039;))){
+		//return error
 		console.log(&#039;Error: 201&#039;);
 		return;
 	}
+	//else build object
 	this._graphSocket=graphSocket;
 }
 

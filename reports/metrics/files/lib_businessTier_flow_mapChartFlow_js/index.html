@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">176</p>
+      <p class="stat">186</p>
     </div>
   </div>
   <div class="row historical">
@@ -103,11 +103,14 @@
 * =========================================================
 * 0.0.1     2015-05-20   Filippo Rampado    Initial code
 * =========================================================
+* 0.0.2     2015-06-24   Filippo Rampado	Fix addRecord
+* =========================================================
 */
 
 var MapChartFlowModel=require(&#039;../../dataTier/flow/mapChartFlowModel.js&#039;);
 var Flow=require(&#039;./flow.js&#039;);
 
+//build the object if graphsocket and params are valid
 function MapChartFlow(params, graphSocket) {
 	if (graphSocket===undefined || !(graphSocket.hasOwnProperty(&#039;_namespace&#039;))){
 		console.log(&#039;Error: 201&#039;);
@@ -125,6 +128,7 @@ MapChartFlow.prototype = Object.create(Flow.prototype);
 MapChartFlow.prototype.constructor = Flow;
 MapChartFlow.prototype.parent = Flow.prototype;
 
+//if record is valid, add the record and notify the clients
 MapChartFlow.prototype.addRecord = function(record){
 	var res=this._dataMapChartFlow.addRecord(record);
 	if (res!==133 &amp;&amp; this._dataMapChartFlow.getRecordByID(res).norrisRecordIsValid){
@@ -148,6 +152,7 @@ MapChartFlow.prototype.addRecord = function(record){
 	return res;
 };
 
+//id ID is valid, delete the record and notify clients
 MapChartFlow.prototype.deleteRecord = function(ID){
 	var record=this._dataMapChartFlow.getRecordByID(ID);
 	if (record!==155){
@@ -165,6 +170,7 @@ MapChartFlow.prototype.deleteRecord = function(ID){
 	return 155;
 };
 
+//if ID and record are valid, updates the record and notify the clients to remove, add or simply modify the record 
 MapChartFlow.prototype.updateRecord = function(ID, record){
 	var oldValid=this._dataMapChartFlow.getRecordByID(ID).norrisRecordIsValid;
 	var res=this._dataMapChartFlow.updateRecord(ID, record);
@@ -212,6 +218,7 @@ MapChartFlow.prototype.updateRecord = function(ID, record){
 	return res;
 };
 
+//it returns a JSON with all records
 MapChartFlow.prototype.getReplaceDataJSON = function(){
 	var records=[];
 	var dataRecords=this._dataMapChartFlow._records;
@@ -243,6 +250,7 @@ MapChartFlow.prototype.getReplaceDataJSON = function(){
 	};
 };
 
+//perform update movie and returns an array with IDs
 MapChartFlow.prototype.updateMovie = function(records){
 	var recIDs=this._dataMapChartFlow.updateMovie(records);
 	this._graphSocket.sendMessage(&#039;updateFlowData&#039;, this.getReplaceDataJSON());
@@ -250,6 +258,7 @@ MapChartFlow.prototype.updateMovie = function(records){
 };
 
 
+//it updates properties and notify clients about it
 MapChartFlow.prototype.updateProperties = function(params){
 	if (params!==undefined){
 		var prop=this._dataMapChartFlow.updateProperties(params);
@@ -261,6 +270,7 @@ MapChartFlow.prototype.updateProperties = function(params){
 	}
 };
 
+//it returns model properties
 MapChartFlow.prototype.getProperties = function(){
 	return this._dataMapChartFlow.getProperties();
 };

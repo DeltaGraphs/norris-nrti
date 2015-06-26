@@ -15,10 +15,10 @@
 <div class="header high">
     <h1>Code coverage report for <span class="entity">norris-nrti/lib/businessTier/norris/norris.js</span></h1>
     <h2>
-        Statements: <span class="metric">100% <small>(68 / 68)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">100% <small>(64 / 64)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Branches: <span class="metric">96.88% <small>(31 / 32)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Functions: <span class="metric">100% <small>(5 / 5)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">100% <small>(68 / 68)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">100% <small>(64 / 64)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
     <div class="path"><a href="../../../../index.html">All files</a> &#187; <a href="index.html">norris-nrti/lib/businessTier/norris/</a> &#187; norris.js</div>
@@ -151,7 +151,14 @@
 124
 125
 126
-127</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+127
+128
+129
+130
+131
+132</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -170,6 +177,7 @@
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">22</span>
@@ -191,8 +199,11 @@
 <span class="cline-any cline-yes">10</span>
 <span class="cline-any cline-yes">10</span>
 <span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">10</span>
 <span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -200,14 +211,11 @@
 <span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">11</span>
-<span class="cline-any cline-yes">11</span>
 <span class="cline-any cline-yes">3</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">10</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">10</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -215,7 +223,6 @@
 <span class="cline-any cline-yes">10</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">9</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -230,7 +237,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">9</span>
-<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
@@ -253,6 +260,7 @@
 <span class="cline-any cline-yes">11</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -269,6 +277,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">13</span>
@@ -291,12 +301,15 @@
 * =========================================================
 * 0.0.1     2015-05-19   Matteo Furlan    Initial code
 * =========================================================
+* 0.0.2     2015-06-20   Samuele Zanella  Fix pageChanged
+* =========================================================
 */
 &nbsp;
 var NetworkHandler=require('../networkHandler/networkHandler.js');
 var PageListModel=require('../../dataTier/pageList/pageListModel.js');
 var Page=require('../page/page.js');
 &nbsp;
+//stating objects: if params are valid, creates a network handles, a socket for the page list
 function Norris(app,io,namespace, baseURL){
 	if(app===undefined || io===undefined || namespace===undefined ||
 		typeof app !== 'function' || app.lazyrouter===undefined ||
@@ -317,23 +330,23 @@ function Norris(app,io,namespace, baseURL){
 	this._io=io;
 	this._networkHandler=new NetworkHandler(this._app,this._io,namespace,baseURL);
 	this._pageListSocket=this._networkHandler.createSocket(namespace);
+	//set event on page list connection
 	this._pageListSocket.attachObject(this,'configPageList');
 	this._pages=[];
 }
+&nbsp;
+//if params are valid creates and return a new page, and notify client 
 Norris.prototype.createPage = function(params) {
 	//check duplicated ID
 	if(params===undefined || params.ID===undefined){
 		return null;
 	}
-	console.log(47);
 	for (var key in this._pages) {
 		if(this._pages[key]._page._ID===params.ID){
 			console.log('Error: 522');
 			return null;
 		}
 	}
-	console.log(54);
-&nbsp;
 	//create the new page object
 	var newPage = new Page(params,this._networkHandler,this);
 &nbsp;
@@ -341,7 +354,6 @@ Norris.prototype.createPage = function(params) {
 	if(newPage._page===undefined){
 		return null;
 	}
-	console.log(63);
 	//add the page to the pageList in the Data Tier
 	this._pageList.addPage(newPage._page);
 &nbsp;
@@ -355,10 +367,10 @@ Norris.prototype.createPage = function(params) {
 	this._pages.push(newPage);
 &nbsp;
 	//return the created page
-	console.log(77);
 	return newPage;
 };
 &nbsp;
+//build a JSON of page with properties and data
 function pageJSON(pProp, pData, baseURL) {
 	var ret = {};
 	var prop={};
@@ -379,6 +391,7 @@ function pageJSON(pProp, pData, baseURL) {
 	return ret;
 }
 &nbsp;
+//returs a JSON with properties and data
 Norris.prototype.getConfigJSON = function() {
 	var PLData = this._pageList.getData();
 &nbsp;
@@ -396,6 +409,8 @@ Norris.prototype.getConfigJSON = function() {
 &nbsp;
 	return ret;
 };
+&nbsp;
+//notify page list client that one page is changed
 Norris.prototype.pageChanged = function(params) {
 	<span class="missing-if-branch" title="else path not taken" >E</span>if(params!==undefined &amp;&amp; params.eventType!==undefined &amp;&amp; params.params!== undefined &amp;&amp;
 		typeof params.eventType === 'string' &amp;&amp; params.eventType !== '' &amp;&amp; typeof params.params === 'object') {
@@ -408,7 +423,7 @@ module.exports = Norris;</pre></td></tr>
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Jun 26 2015 20:05:32 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Jun 26 2015 20:26:12 GMT+0000 (UTC)</div>
 </div>
 <script src="../../../../prettify.js"></script>
 <script>

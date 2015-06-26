@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">187</p>
+      <p class="stat">197</p>
     </div>
   </div>
   <div class="row historical">
@@ -103,14 +103,15 @@
 * =========================================================
 * 0.0.1     2015-06-06   Filippo Rampado    Initial code
 * =========================================================
+* 0.0.2     2015-06-29   Matteo Furlan      fix structure of returned JSON by getConfigJSON
+* =========================================================
 */
 
-/*var Socket=require(&#039;../../presentationTier/socket.js&#039;);
-var Page=require(&#039;../page/page.js&#039;);*/
 var Graph=require(&#039;./graph.js&#039;);
 var TableFlow=require(&#039;../flow/tableFlow.js&#039;);
 var TableModel=require(&#039;../../dataTier/graph/tableModel.js&#039;);
 
+//if params are valid build object, else return error
 function Table(params, page, graphSocket) {
 	if (params===undefined){
 		console.log(&#039;Error: 391&#039;);
@@ -137,6 +138,7 @@ Table.prototype = Object.create(Graph.prototype);
 Table.prototype.constructor = Graph;
 Table.prototype.parent = Graph.prototype;
 
+//if ID is valid return flow specified 
 Table.prototype.getFlowByID = function(ID){
 	if (typeof ID===&#039;string&#039;) {
 		var flows=this._flows.length;
@@ -158,6 +160,7 @@ Table.prototype.getFlowByID = function(ID){
 	return 292;
 };
 
+//if params and records are valid create and returns a flow object and notify graph clients
 Table.prototype.createTableFlow = function(params){
 	var tf=new TableFlow(params, this._graphSocket);
 	if (!tf.hasOwnProperty(&#039;_dataTableFlow&#039;)){
@@ -178,6 +181,7 @@ Table.prototype.createTableFlow = function(params){
 	return tf;
 };
 
+//if ID is valid delete flow and notify clients
 Table.prototype.deleteFlow = function(ID){
 	if (typeof ID===&#039;string&#039;) {
 		var flows=this._flows.length;
@@ -201,6 +205,7 @@ Table.prototype.deleteFlow = function(ID){
 	return 293;
 };
 
+//delete all flows and notify clients
 Table.prototype.deleteAllFlows = function(){
 	while (this._flows.length&gt;0){
 		this._graphSocket.sendMessage(&#039;deleteFlow&#039;, {
@@ -210,6 +215,7 @@ Table.prototype.deleteAllFlows = function(){
 	}
 };
 
+//calls addRecord of flow
 Table.prototype.addRecord = function(flowID, record){
 	var flow=this.getFlowByID(flowID);
 	if (flow!==292){
@@ -218,6 +224,7 @@ Table.prototype.addRecord = function(flowID, record){
 	return 292;
 };
 
+//calls updateRecord of flow
 Table.prototype.updateRecord = function(flowID, ID, record){
 	var flow=this.getFlowByID(flowID);
 	if (flow!==292){
@@ -226,6 +233,7 @@ Table.prototype.updateRecord = function(flowID, ID, record){
 	return 292;
 };
 
+//update properties and notify clients
 Table.prototype.updateProperties = function(params){
 	if (params!==undefined){
 		var prop=this._dataTable.updateProperties(params);
@@ -237,10 +245,12 @@ Table.prototype.updateProperties = function(params){
 	}
 };
 
+//return graph properties
 Table.prototype.getProperties = function(){
 	return this._dataTable.getProperties();
 };
 
+//return JSON with graph properties, flows properties and data
 Table.prototype.getConfigJSON = function(){
 	var configJSON={};
 	configJSON.properties=this._dataTable.getProperties();

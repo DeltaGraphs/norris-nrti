@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">78</p>
+      <p class="stat">81</p>
     </div>
   </div>
   <div class="row historical">
@@ -101,13 +101,15 @@
 * 
 * Version   Date         Programmer         Description
 * =========================================================
-* 0.0.1     2015-05-20   Matteo Furlan      Working version with addRoutingPath
 * 0.0.1     2015-05-18   Samuele Zanella    Initial code
+* =========================================================
+* 0.0.2     2015-05-20   Matteo Furlan      Working version with addRoutingPath
 * =========================================================
 */
 
 var Express = require(&#039;express&#039;);
 
+//if params are valid build object else return error
 function Routes(exprApp, norrisNamespace, baseURL) {
 	if(exprApp===undefined || norrisNamespace===undefined || exprApp.lazyrouter===undefined ||
 		typeof norrisNamespace !==&#039;string&#039; || norrisNamespace.length &lt; 1 ||
@@ -122,6 +124,7 @@ function Routes(exprApp, norrisNamespace, baseURL) {
     this.addRoutingPath(norrisNamespace,&#039;pageList&#039;); //page is pageList.ejs;
 }
 
+//if params are valid create a new Express app and set up it with params
 Routes.prototype.addRoutingPath = function(namespace, filename) {
 	console.log(&#039;addRoutingPath \n&#039;+namespace+&#039;\n&#039;+filename);
 	if(namespace===undefined || typeof namespace !==&#039;string&#039; || namespace.length &lt; 1 ||

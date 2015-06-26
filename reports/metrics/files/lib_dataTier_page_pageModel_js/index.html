@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">62.15</p>
+      <p class="stat">65.19</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">99</p>
+      <p class="stat">92</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">43.95</p>
+      <p class="stat">35.35</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.74</p>
+      <p class="stat">0.59</p>
     </div>
   </div>
 </div>
@@ -106,6 +106,7 @@
 */
 var GraphModel = require(&#039;../graph/graphModel.js&#039;);
 
+//if params are valid build object
 function PageModel(params) {
 	if(params===undefined) {
 		return;
@@ -121,20 +122,10 @@ function PageModel(params) {
 	this._graphsPerCol=-1;// default: vertical layout
 	this._graphs=[];
 
-	if(params.name!==undefined &amp;&amp; typeof params.name === &#039;string&#039;){
-		this._name=params.name;
-	}
-	if(params.description!==undefined &amp;&amp; typeof params.description === &#039;string&#039;){
-		this._description=params.description;
-	}
-	if(params.graphsPerRow!==undefined &amp;&amp; typeof params.graphsPerRow === &#039;number&#039;){
-		this._graphsPerRow=params.graphsPerRow;
-	}
-	if(params.graphsPerCol!==undefined &amp;&amp; typeof params.graphsPerCol === &#039;number&#039;){
-		this._graphsPerCol=params.graphsPerCol;
-	}
+	this.updateProperties(params);
 }
 
+//if graph is valid add it to graphs
 PageModel.prototype.addGraph=function(graph){
 	if (graph instanceof GraphModel){
 		this._graphs.push(graph);
@@ -143,7 +134,7 @@ PageModel.prototype.addGraph=function(graph){
 	return 411;
 };
 
-
+//return a JSON with properties and data of graphs
 PageModel.prototype.getData=function(){
 	var pageData=[];
 	var graphs= this._graphs.length;
@@ -159,6 +150,7 @@ PageModel.prototype.getData=function(){
 	return pageData;
 };
 
+//returns properties
 PageModel.prototype.getProperties=function(){
 	return {
 		ID: this._ID,
@@ -169,6 +161,7 @@ PageModel.prototype.getProperties=function(){
 	};
 };
 
+//updates valid params properties
 PageModel.prototype.updateProperties=function(params){
 	if (params !== undefined){
 		//field ID can&#039;t be modified

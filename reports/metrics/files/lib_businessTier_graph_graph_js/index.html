@@ -105,8 +105,7 @@
 * =========================================================
 */
 
-/*var Socket=require(&#039;../../presentationTier/socket.js&#039;);
-var Page=require(&#039;../page/page.js&#039;);*/
+//if params are valid build object, else return error
 function Graph(page, graphSocket) {
 	if (page===undefined || !(page.hasOwnProperty(&#039;_page&#039;))){
 		console.log(&#039;Error: 302&#039;);
@@ -119,6 +118,7 @@ function Graph(page, graphSocket) {
 	this._page=page;
 	this._graphSocket=graphSocket;
 	
+	//set event name on connection
 	this._graphSocket.attachObject(this, &#039;configGraph&#039;);
 }
 

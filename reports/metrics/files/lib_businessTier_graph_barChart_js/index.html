@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">57.78</p>
+      <p class="stat">57.87</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">203</p>
+      <p class="stat">210</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">43.12</p>
+      <p class="stat">43.20</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">2.24</p>
+      <p class="stat">2.22</p>
     </div>
   </div>
 </div>
@@ -103,15 +103,16 @@
 * =========================================================
 * 0.0.1     2015-06-01   Samuele Zanella    Initial code
 * =========================================================
+* 0.0.2     2015-06-27   Samuele Zanella    Fix some methos
+* =========================================================
 */
 
-/*var Socket=require(&#039;../../presentationTier/socket.js&#039;);
-var Page=require(&#039;../page/page.js&#039;);*/
 var Graph=require(&#039;./graph.js&#039;);
 var BarChartFlow=require(&#039;../flow/barChartFlow.js&#039;);
 var BarChartModel=require(&#039;../../dataTier/graph/barChartModel.js&#039;);
 var Helper = require(&#039;../../helpers/functionHelper.js&#039;);
 
+//if params are valid build object, else return error
 function BarChart(params, page, graphSocket) {
 	if (params===undefined){
 		console.log(&#039;Error: 361&#039;);
@@ -129,6 +130,7 @@ function BarChart(params, page, graphSocket) {
 	if (!bc.hasOwnProperty(&#039;_ID&#039;)){
 		return;
 	}
+	//call parent constructor
 	this.parent.constructor.call(this, page, graphSocket);
 	this._dataBarChart=bc;
 	this._flows=[];
@@ -138,6 +140,7 @@ BarChart.prototype = Object.create(Graph.prototype);
 BarChart.prototype.constructor = Graph;
 BarChart.prototype.parent = Graph.prototype;
 
+//if ID is valid return flow specified 
 BarChart.prototype.getFlowByID = function(ID){
 	if (typeof ID===&#039;string&#039;) {
 		var flows=this._flows.length;
@@ -159,6 +162,7 @@ BarChart.prototype.getFlowByID = function(ID){
 	return 262;
 };
 
+//if params and records are valid create and returns a flow object and notify graph clients
 BarChart.prototype.createBarChartFlow = function(params, records){
 	var bcf=new BarChartFlow(params, this._graphSocket, records);
 	if (!bcf.hasOwnProperty(&#039;_dataBarChartFlow&#039;)){
@@ -178,8 +182,7 @@ BarChart.prototype.createBarChartFlow = function(params, records){
 	if(params.flowColor!==undefined &amp;&amp; Helper.isHEX(params.flowColor)){
 		prop.properties.flowColor=params.flowColor;
 	}
-	//prop.records=records;
-	prop.records = [];//bcf.getReplaceDataJSON();
+	prop.records = [];
 	var dataRecords=bcf._dataBarChartFlow._records;
 	for (var i=0; i&lt;dataRecords.length; i++){
 		if (dataRecords[i].norrisRecordIsValid){
@@ -196,6 +199,7 @@ BarChart.prototype.createBarChartFlow = function(params, records){
 	return bcf;
 };
 
+//if ID is valid delete flow and notify clients
 BarChart.prototype.deleteFlow = function(ID){
 	if (typeof ID===&#039;string&#039;) {
 		var flows=this._flows.length;
@@ -219,6 +223,7 @@ BarChart.prototype.deleteFlow = function(ID){
 	return 263;
 };
 
+//delete all flows and notify clients
 BarChart.prototype.deleteAllFlows = function(){
 	while (this._flows.length&gt;0){
 		this._graphSocket.sendMessage(&#039;deleteFlow&#039;, {ID: this._flows[0]._dataBarChartFlow._ID});
@@ -226,11 +231,12 @@ BarChart.prototype.deleteAllFlows = function(){
 	}
 };
 
+//calls updateRecord of flow
 BarChart.prototype.updateRecord = function(flowID, index, record){
 	return this.getFlowByID(flowID).updateRecord(index, record);
 };
 
-
+//update properties and notify clients
 BarChart.prototype.updateProperties = function(params){
 	if (params!==undefined){
 		var prop=this._dataBarChart.updateProperties(params);
@@ -238,16 +244,17 @@ BarChart.prototype.updateProperties = function(params){
 		prop.ID = this._dataBarChart.getProperties().ID;
 		this._graphSocket.sendMessage(&#039;updateGraphProp&#039;, prop);
 		if(prop.title !== undefined) {
-			console.log(&#039;BARCHART UPDATE PROPERTIES&#039;);
 			this._page.graphChanged({eventType: &#039;updateGraph&#039;, params: prop});
 		}
 	}
 };
 
+//return graph properties
 BarChart.prototype.getProperties = function(){
 	return this._dataBarChart.getProperties();
 };
 
+//return JSON with graph properties, flows properties and data
 BarChart.prototype.getConfigJSON = function(){
 	var configJSON={};
 	var prop={};

@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">57.93</p>
+      <p class="stat">58.65</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">126</p>
+      <p class="stat">131</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">35.22</p>
+      <p class="stat">35.47</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">1.35</p>
+      <p class="stat">1.30</p>
     </div>
   </div>
 </div>
@@ -103,12 +103,15 @@
 * =========================================================
 * 0.0.1     2015-05-19   Matteo Furlan    Initial code
 * =========================================================
+* 0.0.2     2015-06-20   Samuele Zanella  Fix pageChanged
+* =========================================================
 */
 
 var NetworkHandler=require(&#039;../networkHandler/networkHandler.js&#039;);
 var PageListModel=require(&#039;../../dataTier/pageList/pageListModel.js&#039;);
 var Page=require(&#039;../page/page.js&#039;);
 
+//stating objects: if params are valid, creates a network handles, a socket for the page list
 function Norris(app,io,namespace, baseURL){
 	if(app===undefined || io===undefined || namespace===undefined ||
 		typeof app !== &#039;function&#039; || app.lazyrouter===undefined ||
@@ -129,23 +132,23 @@ function Norris(app,io,namespace, baseURL){
 	this._io=io;
 	this._networkHandler=new NetworkHandler(this._app,this._io,namespace,baseURL);
 	this._pageListSocket=this._networkHandler.createSocket(namespace);
+	//set event on page list connection
 	this._pageListSocket.attachObject(this,&#039;configPageList&#039;);
 	this._pages=[];
 }
+
+//if params are valid creates and return a new page, and notify client 
 Norris.prototype.createPage = function(params) {
 	//check duplicated ID
 	if(params===undefined || params.ID===undefined){
 		return null;
 	}
-	console.log(47);
 	for (var key in this._pages) {
 		if(this._pages[key]._page._ID===params.ID){
 			console.log(&#039;Error: 522&#039;);
 			return null;
 		}
 	}
-	console.log(54);
-
 	//create the new page object
 	var newPage = new Page(params,this._networkHandler,this);
 
@@ -153,7 +156,6 @@ Norris.prototype.createPage = function(params) {
 	if(newPage._page===undefined){
 		return null;
 	}
-	console.log(63);
 	//add the page to the pageList in the Data Tier
 	this._pageList.addPage(newPage._page);
 
@@ -167,10 +169,10 @@ Norris.prototype.createPage = function(params) {
 	this._pages.push(newPage);
 
 	//return the created page
-	console.log(77);
 	return newPage;
 };
 
+//build a JSON of page with properties and data
 function pageJSON(pProp, pData, baseURL) {
 	var ret = {};
 	var prop={};
@@ -191,6 +193,7 @@ function pageJSON(pProp, pData, baseURL) {
 	return ret;
 }
 
+//returs a JSON with properties and data
 Norris.prototype.getConfigJSON = function() {
 	var PLData = this._pageList.getData();
 
@@ -208,6 +211,8 @@ Norris.prototype.getConfigJSON = function() {
 
 	return ret;
 };
+
+//notify page list client that one page is changed
 Norris.prototype.pageChanged = function(params) {
 	if(params!==undefined &amp;&amp; params.eventType!==undefined &amp;&amp; params.params!== undefined &amp;&amp;
 		typeof params.eventType === &#039;string&#039; &amp;&amp; params.eventType !== &#039;&#039; &amp;&amp; typeof params.params === &#039;object&#039;) {

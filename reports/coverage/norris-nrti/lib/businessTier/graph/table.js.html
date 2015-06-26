@@ -213,7 +213,17 @@
 186
 187
 188
-189</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -234,6 +244,7 @@
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">46</span>
@@ -261,6 +272,7 @@
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">18</span>
 <span class="cline-any cline-yes">14</span>
@@ -282,6 +294,7 @@
 <span class="cline-any cline-yes">6</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">30</span>
 <span class="cline-any cline-yes">30</span>
@@ -300,6 +313,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">28</span>
 <span class="cline-any cline-yes">28</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
@@ -325,12 +339,14 @@
 <span class="cline-any cline-yes">4</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-yes">4</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -342,27 +358,31 @@
 <span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">4</span>
-<span class="cline-any cline-yes">4</span>
-<span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">4</span>
 <span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
@@ -415,14 +435,15 @@
 * =========================================================
 * 0.0.1     2015-06-06   Filippo Rampado    Initial code
 * =========================================================
+* 0.0.2     2015-06-29   Matteo Furlan      fix structure of returned JSON by getConfigJSON
+* =========================================================
 */
 &nbsp;
-/*var Socket=require('../../presentationTier/socket.js');
-var Page=require('../page/page.js');*/
 var Graph=require('./graph.js');
 var TableFlow=require('../flow/tableFlow.js');
 var TableModel=require('../../dataTier/graph/tableModel.js');
 &nbsp;
+//if params are valid build object, else return error
 function Table(params, page, graphSocket) {
 	if (params===undefined){
 		console.log('Error: 391');
@@ -449,6 +470,7 @@ Table.prototype = Object.create(Graph.prototype);
 Table.prototype.constructor = Graph;
 Table.prototype.parent = Graph.prototype;
 &nbsp;
+//if ID is valid return flow specified 
 Table.prototype.getFlowByID = function(ID){
 	if (typeof ID==='string') {
 		var flows=this._flows.length;
@@ -470,6 +492,7 @@ Table.prototype.getFlowByID = function(ID){
 	return 292;
 };
 &nbsp;
+//if params and records are valid create and returns a flow object and notify graph clients
 Table.prototype.createTableFlow = function(params){
 	var tf=new TableFlow(params, this._graphSocket);
 	if (!tf.hasOwnProperty('_dataTableFlow')){
@@ -490,6 +513,7 @@ Table.prototype.createTableFlow = function(params){
 	return tf;
 };
 &nbsp;
+//if ID is valid delete flow and notify clients
 Table.prototype.deleteFlow = function(ID){
 	if (typeof ID==='string') {
 		var flows=this._flows.length;
@@ -513,6 +537,7 @@ Table.prototype.deleteFlow = function(ID){
 	return 293;
 };
 &nbsp;
+//delete all flows and notify clients
 Table.prototype.deleteAllFlows = function(){
 	while (this._flows.length&gt;0){
 		this._graphSocket.sendMessage('deleteFlow', {
@@ -522,6 +547,7 @@ Table.prototype.deleteAllFlows = function(){
 	}
 };
 &nbsp;
+//calls addRecord of flow
 Table.prototype.addRecord = function(flowID, record){
 	var flow=this.getFlowByID(flowID);
 	if (flow!==292){
@@ -530,6 +556,7 @@ Table.prototype.addRecord = function(flowID, record){
 	return 292;
 };
 &nbsp;
+//calls updateRecord of flow
 Table.prototype.updateRecord = function(flowID, ID, record){
 	var flow=this.getFlowByID(flowID);
 	if (flow!==292){
@@ -538,6 +565,7 @@ Table.prototype.updateRecord = function(flowID, ID, record){
 	return 292;
 };
 &nbsp;
+//update properties and notify clients
 Table.prototype.updateProperties = function(params){
 	if (params!==undefined){
 		var prop=this._dataTable.updateProperties(params);
@@ -549,10 +577,12 @@ Table.prototype.updateProperties = function(params){
 	}
 };
 &nbsp;
+//return graph properties
 Table.prototype.getProperties = function(){
 	return this._dataTable.getProperties();
 };
 &nbsp;
+//return JSON with graph properties, flows properties and data
 Table.prototype.getConfigJSON = function(){
 	var configJSON={};
 	configJSON.properties=this._dataTable.getProperties();
@@ -594,7 +624,7 @@ module.exports = Table;
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Jun 26 2015 20:05:32 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Jun 26 2015 20:26:12 GMT+0000 (UTC)</div>
 </div>
 <script src="../../../../prettify.js"></script>
 <script>

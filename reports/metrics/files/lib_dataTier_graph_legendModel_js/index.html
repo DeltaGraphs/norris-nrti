@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">55</p>
+      <p class="stat">58</p>
     </div>
   </div>
   <div class="row historical">
@@ -106,6 +106,7 @@
 */
 var Helper = require(&#039;../../helpers/functionHelper.js&#039;);
 
+//build object with params specified
 function LegendModel(params) {
 	this._position=&#039;NE&#039;;
 	this._fontColor=&#039;#000000&#039;;
@@ -114,6 +115,7 @@ function LegendModel(params) {
 	this.updateProperties(params);
 }
 
+//returns JSON with properties
 LegendModel.prototype.getProperties=function(){
 	return {
 		position: this._position,
@@ -122,6 +124,7 @@ LegendModel.prototype.getProperties=function(){
 	};
 };
 
+//updates valid properties
 LegendModel.prototype.updateProperties=function(params){
 	if(params!==undefined) {
 		if(params.position!==undefined &amp;&amp; (

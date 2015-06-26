@@ -177,7 +177,17 @@
 150
 151
 152
-153</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+153
+154
+155
+156
+157
+158
+159
+160
+161</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -195,6 +205,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">43</span>
@@ -213,6 +224,7 @@
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">24</span>
 <span class="cline-any cline-yes">24</span>
@@ -236,6 +248,7 @@
 <span class="cline-any cline-yes">21</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
@@ -287,6 +300,7 @@
 <span class="cline-any cline-yes">8</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-yes">2</span>
@@ -314,6 +328,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
@@ -322,6 +337,7 @@
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -343,11 +359,14 @@
 * =========================================================
 * 0.0.1     2015-06-03   Matteo Furlan    Initial code
 * =========================================================
+* 0.0.2     2015-06-24   Filippo Rampado	Fix addRecord
+* =========================================================
 */
 &nbsp;
 var TableFlowModel=require('../../dataTier/flow/tableFlowModel.js');
 var Flow=require('./flow.js');
 &nbsp;
+//build the object if graphsocket and params are valid
 function TableFlow(params, graphSocket) {
 	if (graphSocket===undefined || !(graphSocket.hasOwnProperty('_namespace'))){
 		console.log('Error: 201');
@@ -365,6 +384,7 @@ TableFlow.prototype = Object.create(Flow.prototype);
 TableFlow.prototype.constructor = Flow;
 TableFlow.prototype.parent = Flow.prototype;
 &nbsp;
+//if record is valid, add the record and notify the clients
 TableFlow.prototype.addRecord = function(record){
 	var res=this._dataTableFlow.addRecord(record);
 	if (res!==143 &amp;&amp; this._dataTableFlow.getRecordByID(res).norrisRecordIsValid){
@@ -390,6 +410,7 @@ TableFlow.prototype.addRecord = function(record){
 	return res;
 };
 &nbsp;
+//if ID and record are valid, updates the record and notify the clients to remove, add or simply modify the record 
 TableFlow.prototype.updateRecord = function(ID, record){
 	var oldValid=this._dataTableFlow.getRecordByID(ID).norrisRecordIsValid;
 	var res=this._dataTableFlow.updateRecord(ID, record);
@@ -439,6 +460,7 @@ TableFlow.prototype.updateRecord = function(ID, record){
 	return res;
 };
 &nbsp;
+//it returns a JSON with all records
 TableFlow.prototype.getReplaceDataJSON = function(){
 	var records=[];
 	var dataRecords=this._dataTableFlow._records;
@@ -466,6 +488,7 @@ TableFlow.prototype.getReplaceDataJSON = function(){
 	};
 };
 &nbsp;
+//it updates properties and notify clients about it
 TableFlow.prototype.updateProperties = function(params){
 	<span class="missing-if-branch" title="else path not taken" >E</span>if (params!==undefined){
 		var prop=this._dataTableFlow.updateProperties(params);
@@ -477,6 +500,7 @@ TableFlow.prototype.updateProperties = function(params){
 	}
 };
 &nbsp;
+//it returns model properties
 TableFlow.prototype.getProperties = function(){
 	return this._dataTableFlow.getProperties();
 };
@@ -486,7 +510,7 @@ module.exports = TableFlow;</pre></td></tr>
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Jun 26 2015 20:05:32 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Jun 26 2015 20:26:12 GMT+0000 (UTC)</div>
 </div>
 <script src="../../../../prettify.js"></script>
 <script>

@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">146</p>
+      <p class="stat">161</p>
     </div>
   </div>
   <div class="row historical">
@@ -103,11 +103,14 @@
 * =========================================================
 * 0.0.1     2015-05-25   Filippo Rampado    Initial code
 * =========================================================
+* 0.0.2     2015-06-24   Filippo Rampado	Fix addRecord
+* =========================================================
 */
 
 var LineChartFlowModel=require(&#039;../../dataTier/flow/lineChartFlowModel.js&#039;);
 var Flow=require(&#039;./flow.js&#039;);
 
+//build the object if graphsocket and params are valid
 function LineChartFlow(params, graphSocket) {
 	if (graphSocket===undefined || !(graphSocket.hasOwnProperty(&#039;_namespace&#039;))){
 		console.log(&#039;Error: 201&#039;);
@@ -117,6 +120,7 @@ function LineChartFlow(params, graphSocket) {
 	if (!lc.hasOwnProperty(&#039;_ID&#039;)){
 		return;
 	}
+	//call parent constructor
 	this.parent.constructor.call(this, graphSocket);
 	this._dataLineChartFlow=lc;
 }
@@ -125,15 +129,18 @@ LineChartFlow.prototype = Object.create(Flow.prototype);
 LineChartFlow.prototype.constructor = Flow;
 LineChartFlow.prototype.parent = Flow.prototype;
 
+//if record is valid, add the record and notify the clients
 LineChartFlow.prototype.addRecord = function(record){
 	var res=this._dataLineChartFlow.addRecord(record);
 	if (res!==123 &amp;&amp; this._dataLineChartFlow.getRecordByID(res).norrisRecordIsValid){
+		//obtain data from record
 		var xKey=this._dataLineChartFlow._xKey;
 		var yKey=this._dataLineChartFlow._yKey;
 		var newValue=[null, null];
 		if (record[xKey]!==undefined &amp;&amp; typeof record[xKey]===&#039;number&#039; &amp;&amp; record[yKey]!==undefined &amp;&amp; typeof record[yKey]===&#039;number&#039;){
 			newValue=[record[xKey], record[yKey]];
 		}
+		//build JSON need by clients
 		var data={
 			action: &#039;insertRecords&#039;,
 			ID: this._dataLineChartFlow._ID,
@@ -142,17 +149,20 @@ LineChartFlow.prototype.addRecord = function(record){
 				value: newValue
 			}]
 		};
+		//send message to clients
 		this._graphSocket.sendMessage(&#039;updateFlowData&#039;, data);
 	}
 	return res;
 };
 
+//if ID and record are valid, updates the record and notify the clients to remove, add or simply modify the record 
 LineChartFlow.prototype.updateRecord = function(ID, record){
 	var oldValid=this._dataLineChartFlow.getRecordByID(ID).norrisRecordIsValid;
 	var res=this._dataLineChartFlow.updateRecord(ID, record);
 	var newValid=this._dataLineChartFlow.getRecordByID(ID).norrisRecordIsValid;
 	if (res===true ){
 		if (oldValid &amp;&amp; !newValid){
+			//new record must not be displayed
 			var data={
 				action: &#039;deleteRecord&#039;,
 				ID: this._dataLineChartFlow._ID,
@@ -168,6 +178,7 @@ LineChartFlow.prototype.updateRecord = function(ID, record){
 				newValue=[record[xKey], record[yKey]];
 			}
 			if (!oldValid){
+				//new record to be displayed
 				var data2={
 					action: &#039;insertRecords&#039;,
 					ID: this._dataLineChartFlow._ID,
@@ -179,6 +190,7 @@ LineChartFlow.prototype.updateRecord = function(ID, record){
 				this._graphSocket.sendMessage(&#039;updateFlowData&#039;, data2);
 			}
 			if (oldValid){
+				//record must be modified
 				var data3={
 					action: &#039;updateRecord&#039;,
 					ID: this._dataLineChartFlow._ID,
@@ -192,6 +204,7 @@ LineChartFlow.prototype.updateRecord = function(ID, record){
 	return res;
 };
 
+//it returns a JSON with all records
 LineChartFlow.prototype.getReplaceDataJSON = function(){
 	var records=[];
 	var dataRecords=this._dataLineChartFlow._records;
@@ -220,17 +233,19 @@ LineChartFlow.prototype.getReplaceDataJSON = function(){
 	};
 };
 
+//it updates properties and notify clients about it
 LineChartFlow.prototype.updateProperties = function(params){
 	if (params!==undefined){
 		var prop=this._dataLineChartFlow.updateProperties(params);
 		prop.ID=this._dataLineChartFlow._ID;
-		if (prop.filters !== undefined){//filters changed
+		if (prop.filters !== undefined){//filters are changed, so also data may be
 			this._graphSocket.sendMessage(&#039;updateFlowData&#039;, this.getReplaceDataJSON());
 		}
 		this._graphSocket.sendMessage(&#039;updateFlowProp&#039;, prop);
 	}
 };
 
+//it returns model properties
 LineChartFlow.prototype.getProperties = function(){
 	return this._dataLineChartFlow.getProperties();
 };

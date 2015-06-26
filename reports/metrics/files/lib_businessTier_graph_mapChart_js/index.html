@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">213</p>
+      <p class="stat">223</p>
     </div>
   </div>
   <div class="row historical">
@@ -101,8 +101,9 @@
 * 
 * Version   Date         Programmer         Description
 * =========================================================
-* 0.0.2     2015-05-29   Matteo Furlan      fix structure of returned JSON by getConfigJSON
 * 0.0.1     2015-05-20   Filippo Rampado    Initial code
+* =========================================================
+* 0.0.2     2015-05-29   Matteo Furlan      fix structure of returned JSON by getConfigJSON
 * =========================================================
 */
 
@@ -110,6 +111,7 @@ var Graph=require(&#039;./graph.js&#039;);
 var MapChartFlow=require(&#039;../flow/mapChartFlow.js&#039;);
 var MapChartModel=require(&#039;../../dataTier/graph/mapChartModel.js&#039;);
 
+//if params are valid build object, else return error
 function MapChart(params, page, graphSocket) {
 	if (params===undefined){
 		console.log(&#039;Error: 381&#039;);
@@ -136,6 +138,7 @@ MapChart.prototype = Object.create(Graph.prototype);
 MapChart.prototype.constructor = Graph;
 MapChart.prototype.parent = Graph.prototype;
 
+//if ID is valid return flow specified 
 MapChart.prototype.getFlowByID = function(ID){
 	if (typeof ID===&#039;string&#039;) {
 		var flows=this._flows.length;
@@ -157,6 +160,7 @@ MapChart.prototype.getFlowByID = function(ID){
 	return 282;
 };
 
+//if params and records are valid create and returns a flow object and notify graph clients
 MapChart.prototype.createMapChartFlow = function(params){
 	var mcf=new MapChartFlow(params, this._graphSocket);
 	if (!mcf.hasOwnProperty(&#039;_dataMapChartFlow&#039;)){
@@ -179,6 +183,7 @@ MapChart.prototype.createMapChartFlow = function(params){
 	return mcf;
 };
 
+//if ID is valid delete flow and notify clients
 MapChart.prototype.deleteFlow = function(ID){
 	if (typeof ID===&#039;string&#039;) {
 		var flows=this._flows.length;
@@ -202,6 +207,7 @@ MapChart.prototype.deleteFlow = function(ID){
 	return 283;
 };
 
+//delete all flows and notify clients
 MapChart.prototype.deleteAllFlows = function(){
 	while (this._flows.length&gt;0){
 		this._graphSocket.sendMessage(&#039;deleteFlow&#039;, {
@@ -227,6 +233,7 @@ MapChart.prototype.deleteRecord = function(flowID, ID){
 	return 282;
 };
 
+//calls updateRecord of flow
 MapChart.prototype.updateRecord = function(flowID, ID, record){
 	var flow=this.getFlowByID(flowID);
 	if (flow!==282){
@@ -235,6 +242,7 @@ MapChart.prototype.updateRecord = function(flowID, ID, record){
 	return 282;
 };
 
+//calls updateMovie of flow
 MapChart.prototype.updateMovie = function(flowID, records){
 	var flow=this.getFlowByID(flowID);
 	if (flow!==282){
@@ -243,7 +251,7 @@ MapChart.prototype.updateMovie = function(flowID, records){
 	return 282;
 };
 
-
+//update properties and notify clients
 MapChart.prototype.updateProperties = function(params){
 	if (params!==undefined){
 		var prop=this._dataMapChart.updateProperties(params);
@@ -255,10 +263,12 @@ MapChart.prototype.updateProperties = function(params){
 	}
 };
 
+//return graph properties
 MapChart.prototype.getProperties = function(){
 	return this._dataMapChart.getProperties();
 };
 
+//return JSON with graph properties, flows properties and data
 MapChart.prototype.getConfigJSON = function(){
 	var configJSON={};
 	var prop={};

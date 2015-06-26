@@ -202,7 +202,19 @@
 175
 176
 177
-178</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -220,6 +232,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">34</span>
@@ -237,6 +250,7 @@
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">22</span>
@@ -261,6 +275,7 @@
 <span class="cline-any cline-yes">22</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">4</span>
 <span class="cline-any cline-yes">4</span>
@@ -278,6 +293,7 @@
 <span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">9</span>
 <span class="cline-any cline-yes">9</span>
@@ -323,6 +339,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
@@ -356,21 +373,24 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -393,11 +413,14 @@
 * =========================================================
 * 0.0.1     2015-05-20   Filippo Rampado    Initial code
 * =========================================================
+* 0.0.2     2015-06-24   Filippo Rampado	Fix addRecord
+* =========================================================
 */
 &nbsp;
 var MapChartFlowModel=require('../../dataTier/flow/mapChartFlowModel.js');
 var Flow=require('./flow.js');
 &nbsp;
+//build the object if graphsocket and params are valid
 function MapChartFlow(params, graphSocket) {
 	if (graphSocket===undefined || !(graphSocket.hasOwnProperty('_namespace'))){
 		console.log('Error: 201');
@@ -415,6 +438,7 @@ MapChartFlow.prototype = Object.create(Flow.prototype);
 MapChartFlow.prototype.constructor = Flow;
 MapChartFlow.prototype.parent = Flow.prototype;
 &nbsp;
+//if record is valid, add the record and notify the clients
 MapChartFlow.prototype.addRecord = function(record){
 	var res=this._dataMapChartFlow.addRecord(record);
 	if (res!==133 &amp;&amp; this._dataMapChartFlow.getRecordByID(res).norrisRecordIsValid){
@@ -438,6 +462,7 @@ MapChartFlow.prototype.addRecord = function(record){
 	return res;
 };
 &nbsp;
+//id ID is valid, delete the record and notify clients
 MapChartFlow.prototype.deleteRecord = function(ID){
 	var record=this._dataMapChartFlow.getRecordByID(ID);
 	if (record!==155){
@@ -455,6 +480,7 @@ MapChartFlow.prototype.deleteRecord = function(ID){
 	return 155;
 };
 &nbsp;
+//if ID and record are valid, updates the record and notify the clients to remove, add or simply modify the record 
 MapChartFlow.prototype.updateRecord = function(ID, record){
 	var oldValid=this._dataMapChartFlow.getRecordByID(ID).norrisRecordIsValid;
 	var res=this._dataMapChartFlow.updateRecord(ID, record);
@@ -502,6 +528,7 @@ MapChartFlow.prototype.updateRecord = function(ID, record){
 	return res;
 };
 &nbsp;
+//it returns a JSON with all records
 MapChartFlow.prototype.getReplaceDataJSON = function(){
 	var records=[];
 	var dataRecords=this._dataMapChartFlow._records;
@@ -533,6 +560,7 @@ MapChartFlow.prototype.getReplaceDataJSON = function(){
 	};
 };
 &nbsp;
+//perform update movie and returns an array with IDs
 MapChartFlow.prototype.updateMovie = function(records){
 	var recIDs=this._dataMapChartFlow.updateMovie(records);
 	this._graphSocket.sendMessage('updateFlowData', this.getReplaceDataJSON());
@@ -540,6 +568,7 @@ MapChartFlow.prototype.updateMovie = function(records){
 };
 &nbsp;
 &nbsp;
+//it updates properties and notify clients about it
 MapChartFlow.prototype.updateProperties = function(params){
 	<span class="missing-if-branch" title="else path not taken" >E</span>if (params!==undefined){
 		var prop=this._dataMapChartFlow.updateProperties(params);
@@ -551,6 +580,7 @@ MapChartFlow.prototype.updateProperties = function(params){
 	}
 };
 &nbsp;
+//it returns model properties
 MapChartFlow.prototype.getProperties = function(){
 	return this._dataMapChartFlow.getProperties();
 };
@@ -561,7 +591,7 @@ module.exports = MapChartFlow;
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Jun 26 2015 20:05:32 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Jun 26 2015 20:26:12 GMT+0000 (UTC)</div>
 </div>
 <script src="../../../../prettify.js"></script>
 <script>

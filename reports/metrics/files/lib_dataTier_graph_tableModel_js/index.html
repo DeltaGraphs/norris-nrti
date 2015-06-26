@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">267</p>
+      <p class="stat">276</p>
     </div>
   </div>
   <div class="row historical">
@@ -109,6 +109,7 @@ var GraphModel = require(&#039;./graphModel.js&#039;);
 var TableFlowModel = require(&#039;../flow/tableFlowModel.js&#039;);
 var FH = require(&#039;../../helpers/functionHelper.js&#039;);
 
+//if params are valid build object else return error
 function TableModel(params) {
 	if(params===undefined || params.ID===undefined || typeof params.ID !== &#039;string&#039;|| params.ID.trim() === &#039;&#039;){ // ID field is required
 		console.log(&#039;Error: 342&#039;);
@@ -151,6 +152,7 @@ TableModel.prototype = Object.create(GraphModel.prototype);
 TableModel.prototype.constructor = TableModel;
 TableModel.prototype.parent = GraphModel.prototype;
 
+//return JSON with properties
 TableModel.prototype.getProperties = function() {
 	var res = this.parent.getProperties.call(this);
 	res.sortable = this._sortable;
@@ -162,6 +164,7 @@ TableModel.prototype.getProperties = function() {
 	return res;
 };
 
+//updates valid properties
 TableModel.prototype.updateProperties = function(params) {
 	if (params !== undefined){
 		var prop=this.parent.updateBaseProperties.call(this, params);
@@ -298,6 +301,7 @@ TableModel.prototype.updateProperties = function(params) {
 	//return error
 };
 
+//return JSON with all data
 TableModel.prototype.getData = function() {
 	var graphData=[];
 	var flows= this._flows.length;
@@ -313,12 +317,14 @@ TableModel.prototype.getData = function() {
 	return graphData;
 };
 
+//if flow is valid, add it to flows
 TableModel.prototype.addFlow = function(flow) {
 	if(flow instanceof TableFlowModel) {
 		this._flows.push(flow);
 	}
 };
 
+//delete flow specified
 TableModel.prototype.deleteFlow = function(ID) {
 	if(typeof ID === &#039;string&#039;) {
 		for(var i=0; i &lt; this._flows.length; i++) {
@@ -329,10 +335,12 @@ TableModel.prototype.deleteFlow = function(ID) {
 	}
 };
 
+//delete all flows
 TableModel.prototype.deleteAllFlows = function() {
 	this._flows = [];
 };
 
+//update record specified
 TableModel.prototype.updateRecord = function(flowID, ID, newRecord) {
 	var filteredFlows = this._flows.filter(function(flow) {return flow.getProperties().ID === flowID;});
 	if(filteredFlows.length &gt; 0) {
@@ -345,6 +353,7 @@ TableModel.prototype.updateRecord = function(flowID, ID, newRecord) {
 	}
 };
 
+//add record specified
 TableModel.prototype.addRecord = function(flowID, record) {
 	var filteredFlows = this._flows.filter(function(flow) {return flow.getProperties().ID === flowID;});
 	if(filteredFlows.length &gt; 0) {
