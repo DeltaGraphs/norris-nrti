@@ -182,7 +182,7 @@ describe('TableFlow', function(){
 		var TableFlow;
 
 		beforeEach(function(){
-			TableFlow = TableFlowFactory.build({ 'maxItem' : 3 });
+			TableFlow = TableFlowFactory.build({ 'maxItems' : 3 });
 			TableFlow.initializeData(data, 'top');
 		});
 
@@ -227,7 +227,7 @@ describe('TableFlow', function(){
 		var TableFlow;
 
 		beforeEach(function(){
-			TableFlow = TableFlowFactory.build({ 'maxItem' : 1 });
+			TableFlow = TableFlowFactory.build({ 'maxItems' : 1 });
 			TableFlow.initializeData(data, 'top');
 			TableFlow.initializeData(data2, 'bottom');
 		});
