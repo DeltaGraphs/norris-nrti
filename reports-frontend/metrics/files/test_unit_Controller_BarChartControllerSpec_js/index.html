@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">81.66</p>
+      <p class="stat">79.61</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">95</p>
+      <p class="stat">105</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">13.99</p>
+      <p class="stat">6.91</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.40</p>
+      <p class="stat">0.26</p>
     </div>
   </div>
 </div>
@@ -121,36 +121,7 @@ describe(&#039;BarChartController&#039;, function(){
 
 	beforeEach(function(){
 		angular.mock.module(&#039;norris-nrti&#039;);
-		module(function($provide){
-			$provide.factory(&#039;SocketServicesFactory&#039;, function($rootScope){
-				this.events = {};
-
-				// Receive Events
-				this.on = function(eventName, callback){
-					if(!this.events[eventName]){
-						this.events[eventName] = [];
-					}
-					this.events[eventName].push(callback);
-				};
-
-				// Send Events
-				this.emit = function(eventName, data, emitCallback){
-					if(this.events[eventName]){
-						angular.forEach(this.events[eventName], function(callback){
-							$rootScope.$apply(function() {
-								callback(data);
-							});
-						});
-					}
-					if(emitCallback){
-						emitCallback();
-					}
-				};
-
-				return this;
-
-			});
-		});
+		angular.mock.module(&#039;mockSocket&#039;);
 
 		inject(function($rootScope, $controller, $injector){
 			scope = $rootScope.$new();
@@ -173,14 +144,53 @@ describe(&#039;BarChartController&#039;, function(){
 		describe(&#039;#listenOnEvents&#039;, function(){
 
 			var configGraph = false;
+			var updateGraphProp = false;
+			var insertFlow = false;
+			var deleteFlow = false;
+			var updateFlowProp = false;
+			var updateFlowData = false;
 
 			socket.on(&#039;configGraph&#039;, function(){
 				configGraph = true;
 			});
-
 			it(&#039;configGraph&#039;, function(){
 				expect(configGraph).toEqual(true);
 			});
+
+			/*socket.on(&#039;updateGraphProp&#039;, function(){
+				updateGraphProp = true;
+			});
+			it(&#039;updateGraphProp&#039;, function(){
+				expect(updateGraphProp).toEqual(true);
+			});
+
+			socket.on(&#039;insertFlow&#039;, function(){
+				insertFlow = true;
+			});
+			it(&#039;insertFlow&#039;, function(){
+				expect(insertFlow).toEqual(true);
+			});
+
+			socket.on(&#039;deleteFlow&#039;, function(){ 
+				deleteFlow = true;
+			});
+			it(&#039;deleteFlow&#039;, function(){
+				expect(deleteFlow).toEqual(true);
+			});
+
+			socket.on(&#039;updateFlowProp&#039;, function(){
+				updateFlowProp = true;
+			});
+			it(&#039;updateFlowProp&#039;, function(){
+				expect(updateFlowProp).toEqual(true);
+			});
+
+			socket.on(&#039;updateFlowData&#039;, function(){
+				updateFlowData = true;
+			});
+			it(&#039;updateFlowData&#039;, function(){
+				expect(updateFlowData).toEqual(true);
+			});*/
 		});
 	});
 
