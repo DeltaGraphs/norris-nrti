@@ -47,6 +47,9 @@ describe('BarChartFlow', function(){
 		});
 
 		it('constructor create the flow with the correct flowColor', function(){
+			expect(BarChartFlow.getName()).toEqual(null);
+		});
+		it('constructor create the flow with the correct flowColor', function(){
 			expect(BarChartFlow.getFlowColor()).toEqual(undefined);
 		});
 	});
@@ -57,10 +60,6 @@ describe('BarChartFlow', function(){
 			'name' : 'flusso1',
 			'flowColor' : '#F2F'
 		};
-		//var f = {
-		//	'dataFormat' : 'int',
-		//	'name' : 'flusso1'
-		//};
 
 		var BarChartFlow;
 
@@ -76,6 +75,9 @@ describe('BarChartFlow', function(){
 			expect(BarChartFlow).toBeDefined();
 		});
 
+		it('constructor create the flow with the correct flowColor', function(){
+			expect(BarChartFlow.getName()).toEqual('flusso1');
+		});
 		it('constructor create the flow with the correct flowColor', function(){
 			expect(BarChartFlow.getFlowColor()).toEqual('#F2F');
 		});
@@ -155,7 +157,7 @@ describe('BarChartFlow', function(){
 			BarChartFlow = null;
 		});
 
-		it('data inizialized in the correct way', function(){
+		it('initialize data in the correct way', function(){
 			expect(BarChartFlow.getData().length).toEqual(3);
 		});
 
@@ -229,6 +231,40 @@ describe('BarChartFlow', function(){
 		it('data updated in the correct way', function(){
 			expect(BarChartFlow.getData()[0].value[0]).toEqual(1);
 			expect(BarChartFlow.getData()[0].value[1]).toEqual(2);
+		});
+
+	});
+
+	describe('#addRecord', function(){
+		var data = {
+			'records' : [
+				{ 
+					'NorrisRecordID' : 'record1',
+					'value' : [ 1, 1]
+				}
+			]
+		};
+
+		var add = {
+			'NorrisRecordID' : 'record2',
+			'value' : [ 1, 2]
+		};
+
+		var BarChartFlow;
+
+		beforeEach(function(){
+			BarChartFlow = BarChartFlowFactory.build();
+			BarChartFlow.initializeData(data);
+		});
+
+		afterEach(function(){
+			BarChartFlow = null;
+		});
+
+		it('data updated in the correct way', function(){
+			expect(BarChartFlow.getData().length).toEqual(1);
+			BarChartFlow.addRecord(add);
+			expect(BarChartFlow.getData().length).toEqual(2);
 		});
 
 	});
