@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">425</p>
+      <p class="stat">422</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,7 +62,7 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">18.63</p>
+      <p class="stat">18.76</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
@@ -244,8 +244,8 @@ describe(&#039;BarChart&#039;, function(){
 			&#039;enableLegend&#039; : true,
 			&#039;legend&#039; : {position: &#039;E&#039;},
 			&#039;socketURL&#039; : &#039;http://example.com&#039;,
-			&#039;axisX&#039; : { name: &#039;asseX&#039; },
-			&#039;axisY&#039; : { name: &#039;asseY&#039; },
+			&#039;xAxis&#039; : { name: &#039;asseX&#039; },
+			&#039;yAxis&#039; : { name: &#039;asseY&#039; },
 			&#039;barOrientation&#039; : &#039;vertical&#039;,
 			&#039;headers&#039; : [&#039;colonna1&#039;],
 			&#039;backgroundColor&#039; : &#039;#F0F&#039;,
@@ -469,18 +469,15 @@ describe(&#039;BarChart&#039;, function(){
 
 	describe(&#039;#addRecords&#039;, function(){
 		
-		var data = {
-			&#039;ID&#039; : &#039;flusso1&#039;,
-			&#039;records&#039; : [
-				{ 
-					&#039;NorrisRecordID&#039; : &#039;record1&#039;,
-					&#039;value&#039; : [ 1, 1]
-				}
-			]
-		};
+		var data = [
+			{
+				&#039;ID&#039; : &#039;1&#039;,
+				&#039;records&#039; : [{ &#039;NorrisRecordID&#039; : &#039;234321&#039;, &#039;value&#039; : [0,1]}]
+			}
+		];
 
 		var add = {
-			&#039;ID&#039; : &#039;flusso1&#039;,
+			&#039;ID&#039; : &#039;1&#039;,
 			&#039;records&#039; : [
 				{	&#039;NorrisRecordID&#039; : &#039;record2&#039;,
 					&#039;value&#039; : [ 1, 2]
