@@ -125,7 +125,6 @@ describe('Table', function(){
 	describe('#updateParameters', function(){
 		var json = {
 			'title' : 'graficonuovo',
-			'socketURL' : 'http://example.com',
 			'height' : 400,
 			'width' : 400,
 			'enabledLegend' : false,
@@ -177,7 +176,7 @@ describe('Table', function(){
 			expect(Table.getTitle()).toEqual('graficonuovo');
 		});
 		it('graph updated with the correct url', function(){
-			expect(Table.getUrl()).toEqual('http://example.com');
+			expect(Table.getUrl()).toEqual(null);
 		});
 		it('graph updated with the correct width', function(){
 			expect(Table.getWidth()).toEqual(400);
