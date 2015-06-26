@@ -31,7 +31,7 @@ describe('BarChartController', function(){
 	beforeEach(function(){
 		angular.mock.module('norris-nrti');
 		module(function($provide){
-			$provide.factory('SocketServicesFactory', function($rootScope){
+			$provide.service('SocketServicesFactory', function($rootScope){
 				this.events = {};
 				this.url;
 
@@ -60,8 +60,6 @@ describe('BarChartController', function(){
 						emitCallback();
 					}
 				};
-
-				return this;
 
 			});
 		});
