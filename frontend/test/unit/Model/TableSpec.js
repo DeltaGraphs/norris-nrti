@@ -123,6 +123,7 @@ describe('Table', function(){
 	describe('#updateParameters', function(){
 		var json = {
 			'title' : 'graficonuovo',
+			'socketURL' : 'http://example.com',
 			'height' : 400,
 			'width' : 400,
 			'enabledLegend' : false,
@@ -170,6 +171,18 @@ describe('Table', function(){
 			expect(Table).toBeDefined();
 		});
 
+		it('graph updated with the correct title', function(){
+			expect(Table.getTitle()).toEqual('graficonuovo');
+		});
+		it('graph updated with the correct url', function(){
+			expect(Table.getUrl()).toEqual('http://example.com');
+		});
+		it('graph updated with the correct width', function(){
+			expect(Table.getWidth()).toEqual(400);
+		});
+		it('graph updated with the correct height', function(){
+			expect(Table.getHeight()).toEqual(400);
+		});
 		it('graph updated with the correct headers', function(){
 			expect(Table.getHeaders().length).toEqual(2);
 		});
