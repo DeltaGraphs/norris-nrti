@@ -398,7 +398,7 @@ describe('BarChart', function(){
 
 		beforeEach(function(){
 			BarChart = BarChartFactory.build();
-			BarChartFlow = BarChartFlowFactory.buil();
+			BarChartFlow = BarChartFlowFactory.build();
 			BarChart.addFlow(BarChartFlow);
 		});
 
