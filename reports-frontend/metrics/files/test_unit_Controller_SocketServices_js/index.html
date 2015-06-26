@@ -113,17 +113,17 @@ var mockSocket = angular.module(&#039;mockSocket&#039;, []);
 angular.module(&#039;mockSocket&#039;)
 .factory(&#039;SocketServicesFactory&#039;, function ($rootScope) {
 
-	 function SocketServices() {
-        this.events = {};
+	function SocketServices() {
+		this.events = {};
 
-        return {
-            on: function(eventName, callback){
+		return {
+		    on: function(eventName, callback){
 				if(!this.events[eventName]){
 					this.events[eventName] = [];
 				}
 				this.events[eventName].push(callback);
 			},
-            emit:function(eventName, data, emitCallback){
+		    emit:function(eventName, data, emitCallback){
 				if(this.events[eventName]){
 					angular.forEach(this.events[eventName], function(callback){
 						$rootScope.$apply(function() {
@@ -135,16 +135,16 @@ angular.module(&#039;mockSocket&#039;)
 					emitCallback();
 				}
 			}
-        };
-    }
+		};
+	}
 
 	function SocketServicesFactory() {}
 
-    SocketServicesFactory.build = function () {
-        return new SocketServices();
-    };
+	SocketServicesFactory.build = function () {
+	return new SocketServices();
+	};
 
-    return SocketServicesFactory;
+	return SocketServicesFactory;
 });</textarea>
   </div>
 </div>

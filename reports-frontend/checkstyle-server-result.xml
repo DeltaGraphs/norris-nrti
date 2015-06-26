@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <checkstyle version="4.3">
+	<file name="test/unit/Controller/BarChartControllerSpec.js">
+		<error line="102" column="17" severity="warning" message="&apos;updateGraphProp&apos; is defined but never used." source="jshint.W098" />
+		<error line="103" column="17" severity="warning" message="&apos;insertFlow&apos; is defined but never used." source="jshint.W098" />
+		<error line="104" column="17" severity="warning" message="&apos;deleteFlow&apos; is defined but never used." source="jshint.W098" />
+		<error line="105" column="17" severity="warning" message="&apos;updateFlowProp&apos; is defined but never used." source="jshint.W098" />
+		<error line="106" column="17" severity="warning" message="&apos;updateFlowData&apos; is defined but never used." source="jshint.W098" />
+	</file>
 	<file name="test/unit/Controller/RootControllerSpec.js">
 		<error line="18" column="5" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
 		<error line="24" column="9" severity="warning" message="&apos;controller&apos; is not defined." source="jshint.W117" />
-	</file>
-	<file name="test/unit/Controller/BarChartControllerSpec.js">
-		<error line="67" column="17" severity="warning" message="&apos;updateGraphProp&apos; is defined but never used." source="jshint.W098" />
-		<error line="68" column="17" severity="warning" message="&apos;insertFlow&apos; is defined but never used." source="jshint.W098" />
-		<error line="69" column="17" severity="warning" message="&apos;deleteFlow&apos; is defined but never used." source="jshint.W098" />
-		<error line="70" column="17" severity="warning" message="&apos;updateFlowProp&apos; is defined but never used." source="jshint.W098" />
-		<error line="71" column="17" severity="warning" message="&apos;updateFlowData&apos; is defined but never used." source="jshint.W098" />
 	</file>
 	<file name="test/unit/Controller/SocketServices.js">
 		<error line="20" column="5" severity="warning" message="&apos;mockSocket&apos; is defined but never used." source="jshint.W098" />
