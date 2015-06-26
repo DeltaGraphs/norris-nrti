@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">75.23</p>
+      <p class="stat">74.87</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">378</p>
+      <p class="stat">425</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">18.23</p>
+      <p class="stat">18.58</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">3.01</p>
+      <p class="stat">3.49</p>
     </div>
   </div>
 </div>
@@ -239,9 +239,11 @@ describe(&#039;BarChart&#039;, function(){
 			&#039;title&#039; : &#039;graficonuovo&#039;,
 			&#039;height&#039; : 400,
 			&#039;width&#039; : 400,
-			&#039;enabledLegend&#039; : false,
-			&#039;axisX&#039; : {},
-			&#039;axisY&#039; : {},
+			&#039;enableLegend&#039; : false,
+			&#039;legend&#039; : {position: &#039;E&#039;},
+			&#039;socketURL&#039; : &#039;http://example.com&#039;,
+			&#039;axisX&#039; : { name: &#039;asseX&#039; },
+			&#039;axisY&#039; : { name: &#039;asseY&#039; },
 			&#039;barOrientation&#039; : &#039;vertical&#039;,
 			&#039;headers&#039; : [&#039;colonna1&#039;],
 			&#039;backgroundColor&#039; : &#039;#F0F&#039;,
@@ -265,11 +267,17 @@ describe(&#039;BarChart&#039;, function(){
 		it(&#039;BarChart created&#039;, function(){
 			expect(BarChart).toBeDefined();
 		});
+		it(&#039;graph updated with the correct height&#039;, function(){
+			expect(BarChart.getHeight()).toEqual(400);
+		});
+		it(&#039;graph updated with the correct width&#039;, function(){
+			expect(BarChart.getWidth()).toEqual(400);
+		});
 		it(&#039;graph updated with the correct axisX&#039;, function(){
-			expect(BarChart.getX()).toEqual(null);
+			expect(BarChart.getX()).not.toEqual(null);
 		});
 		it(&#039;graph updated with the correct axisY&#039;, function(){
-			expect(BarChart.getY()).toEqual(null);
+			expect(BarChart.getY()).not.toEqual(null);
 		});
 		it(&#039;graph updated with the correct barOrientation&#039;, function(){
 			expect(BarChart.getBarOrientation()).toEqual(&#039;vertical&#039;);
@@ -454,6 +462,45 @@ describe(&#039;BarChart&#039;, function(){
 			expect(BarChart.getFlowList()[0].flow.getData()[0].value[0]).toEqual(3);
 			BarChart.inPlaceUpdate(data1);
 			expect(BarChart.getFlowList()[0].flow.getData()[0].value[0]).toEqual(4);
+		});
+	});
+
+	describe(&#039;#addRecords&#039;, function(){
+		
+		var data = {
+			&#039;ID&#039; : &#039;flusso1&#039;,
+			&#039;records&#039; : [
+				{ 
+					&#039;NorrisRecordID&#039; : &#039;record1&#039;,
+					&#039;value&#039; : [ 1, 1]
+				}
+			]
+		};
+
+		var add = {
+			&#039;ID&#039; : &#039;flusso1&#039;,
+			&#039;records&#039; : [
+				{	&#039;NorrisRecordID&#039; : &#039;record2&#039;,
+					&#039;value&#039; : [ 1, 2]
+				}
+			]
+		};
+
+		var BarChart;
+
+		beforeEach(function(){
+			BarChart = BarChartFactory.build();
+			BarChart.initializeData(data);
+		});
+
+		afterEach(function(){
+			BarChart = null;
+		});
+
+		it(&#039;data updated in the correct way&#039;, function(){
+			expect(BarChart.getFlowList()[0].getData().length).toEqual(1);
+			BarChart.addRecords(add);
+			expect(BarChart.getFlowList()[0].getData().length).toEqual(2);
 		});
 	});
 
