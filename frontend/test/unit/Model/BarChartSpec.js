@@ -148,9 +148,11 @@ describe('BarChart', function(){
 			'title' : 'graficonuovo',
 			'height' : 400,
 			'width' : 400,
-			'enabledLegend' : false,
-			'axisX' : {},
-			'axisY' : {},
+			'enableLegend' : false,
+			'legend' : {position: 'E'},
+			'socketURL' : 'http://example.com',
+			'axisX' : { name: 'asseX' },
+			'axisY' : { name: 'asseY' },
 			'barOrientation' : 'vertical',
 			'headers' : ['colonna1'],
 			'backgroundColor' : '#F0F',
@@ -174,11 +176,17 @@ describe('BarChart', function(){
 		it('BarChart created', function(){
 			expect(BarChart).toBeDefined();
 		});
+		it('graph updated with the correct height', function(){
+			expect(BarChart.getHeight()).toEqual(400);
+		});
+		it('graph updated with the correct width', function(){
+			expect(BarChart.getWidth()).toEqual(400);
+		});
 		it('graph updated with the correct axisX', function(){
-			expect(BarChart.getX()).toEqual(null);
+			expect(BarChart.getX()).not.toEqual(null);
 		});
 		it('graph updated with the correct axisY', function(){
-			expect(BarChart.getY()).toEqual(null);
+			expect(BarChart.getY()).not.toEqual(null);
 		});
 		it('graph updated with the correct barOrientation', function(){
 			expect(BarChart.getBarOrientation()).toEqual('vertical');
@@ -363,6 +371,45 @@ describe('BarChart', function(){
 			expect(BarChart.getFlowList()[0].flow.getData()[0].value[0]).toEqual(3);
 			BarChart.inPlaceUpdate(data1);
 			expect(BarChart.getFlowList()[0].flow.getData()[0].value[0]).toEqual(4);
+		});
+	});
+
+	describe('#addRecords', function(){
+		
+		var data = {
+			'ID' : 'flusso1',
+			'records' : [
+				{ 
+					'NorrisRecordID' : 'record1',
+					'value' : [ 1, 1]
+				}
+			]
+		};
+
+		var add = {
+			'ID' : 'flusso1',
+			'records' : [
+				{	'NorrisRecordID' : 'record2',
+					'value' : [ 1, 2]
+				}
+			]
+		};
+
+		var BarChart;
+
+		beforeEach(function(){
+			BarChart = BarChartFactory.build();
+			BarChart.initializeData(data);
+		});
+
+		afterEach(function(){
+			BarChart = null;
+		});
+
+		it('data updated in the correct way', function(){
+			expect(BarChart.getFlowList()[0].getData().length).toEqual(1);
+			BarChart.addRecords(add);
+			expect(BarChart.getFlowList()[0].getData().length).toEqual(2);
 		});
 	});
 
