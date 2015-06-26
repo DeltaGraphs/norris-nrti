@@ -34,14 +34,10 @@ describe('Table', function(){
 
 	describe('Constructor', function(){
 
-		var json = {
-			'title' : 'fottutissimografico',
-			'socketURL' : 'localhost/page1/grafico1'
-		};
 		var Table;
 
 		beforeEach(function(){
-			Table = TableFactory.build(json);
+			Table = TableFactory.build();
 		});
 
 		afterEach(function(){
@@ -50,12 +46,6 @@ describe('Table', function(){
 
 		it('Table created', function(){
 			expect(Table).toBeDefined();
-		});
-		it('graph Constructor called', function(){
-			expect(Table.getTitle()).toEqual('fottutissimografico');
-		});
-		it('graph Constructor called', function(){
-			expect(Table.getUrl()).toEqual('localhost/page1/grafico1');
 		});
 		it('graph created with the correct headers', function(){
 			expect(Table.getHeaders()).toEqual([]);
@@ -138,10 +128,11 @@ describe('Table', function(){
 			'enabledLegend' : false,
 			'horizontalGrid' : false,
 			'verticalGrid' : false,
+			'sort' : { 'colunms' : ['ciao'], 'ordering' : 'DESC'},
 			'rows' : 6,
 			'colunms' : 9,
 			'headers' : ['ciao','amici'],
-			'itemDisplayedPerPage' : 5,
+			'maxItemsPage' : 5,
 			'addRowOn' : 'top',
 			'sortable' : false,
 			'appearance' : { 
@@ -183,7 +174,7 @@ describe('Table', function(){
 			expect(Table.getHeaders().length).toEqual(2);
 		});
 		it('graph updated with the correct item displayed per page', function(){
-			expect(Table.getMaxItemsPage()).toEqual(20);
+			expect(Table.getMaxItemsPage()).toEqual(5);
 		});
 		it('graph updated with the correct add data position', function(){
 			expect(Table.getAddRowOn()).toEqual('top');
@@ -192,7 +183,7 @@ describe('Table', function(){
 			expect(Table.getSortable()).toEqual(false);
 		});
 		it('graph updated with the correct sort', function(){
-			expect(Table.getSort()).toEqual(null);
+			expect(Table.getSort()).not.toEqual(null);
 		});
 		it('graph updated with the correct appearance', function(){
 			expect(Table.getAppearance().border.color).toEqual('#000000');
