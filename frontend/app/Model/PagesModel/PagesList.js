@@ -57,7 +57,7 @@ angular.module('norris-nrti')
 		}
 		if (count === 0){
 			var newPage = PageFactory.build(page); // crea una nuova pagina
-			pagesList.push({ 'id' : page.ID, 'page' : newPage}); // aggiunge la nuova pagina alla lista
+			pagesList.push({ 'id' : page.properties.ID, 'page' : newPage}); // aggiunge la nuova pagina alla lista
 		}
 		// error
 	};
