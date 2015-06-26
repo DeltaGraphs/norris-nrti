@@ -172,6 +172,8 @@ describe('Graph', function(){
 
 		it('add flow into graph', function(){
 			expect(Graph.getFlowList().length).toEqual(1);
+			Graph.addFlow(json.ID, Flow1);
+			expect(Graph.getFlowList().length).toEqual(1);
 		});
 
 	});
