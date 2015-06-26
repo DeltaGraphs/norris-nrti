@@ -28,10 +28,11 @@ angular.module('norris-nrti')
 	// funzione che connette il socket all'url e chiama la funzione listenOnEvent
 	this.socketConnection = function(url){
 		socket = SocketServicesFactory.build(url);
+		$scope.socket = socket;
 		this.listenOnEvents();
 	};
 
-	var count = 0;
+	$scope.count = 0;
 	$scope.changedP = true;
 	$scope.changedD = true;
 
@@ -43,10 +44,11 @@ angular.module('norris-nrti')
 				$scope.barChart.initializeData(info.data); // inizializza i flussi con i dati
 				$scope.changedD = !$scope.changedD; // 'notifica' cambiamento dati
 				$scope.changedP = !$scope.changedP; // 'notifica' cambiamento proprietà
-				count++;
+				count = 1;
 			}
 		});
 		socket.on('updateGraphProp', function(info){ // ascolta sull'evento 'updateGraphProp'
+			console.log('updateGraphProp');
 			$scope.barChart.updateParameters(info); // aggiorna le proprietà del bar chart con i dati appena ricevuti
 			$scope.changedP = !$scope.changedP; // 'notifica' cambiamento proprietà
 		});
@@ -86,6 +88,9 @@ angular.module('norris-nrti')
 			$scope.changedD = !$scope.changedD; // 'notifica' cambiamento dati
 		});
 	};
+
+	// variabili e funzioni a disposizione dei test
+	$scope.socket = socket;
 
 	// mette a disposizione delle funzioni sullo scope
 	$scope.socketConnection = this.socketConnection;

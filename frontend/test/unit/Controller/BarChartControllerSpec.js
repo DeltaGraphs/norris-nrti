@@ -9,8 +9,6 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
-* 0.1.3         2015-06-26  Maria Giovanna Chinellato	fix test
-*
 * 0.1.2         2015-06-24  Francesco Rossetto			fix describe 'BarChartController'
 *
 * 0.1.1         2015-06-23  Francesco Rossetto			fix configGraph
@@ -26,131 +24,31 @@ describe('BarChartController', function(){
 
 	var scope;
 	var controller;
-	var socket;
-	var SocketServicesFactory;
 
 	beforeEach(function(){
 		angular.mock.module('norris-nrti');
-		//angular.mock.module('mockSocket');
-		module(function($provide){
-			$provide.factory('SocketServicesFactory', function($rootScope){
-				
-				function SocketServices() {
-					//this.events = [];
-
-					return {
-						events : [],
-					    on: function(eventName, callback){
-							this.events.push(eventName);
-							$rootScope.$apply(callback);
-						}
-					    /*emit:function(eventName, data, emitCallback){
-							if(this.events[eventName]){
-								angular.forEach(this.events[eventName], function(callback){
-									$rootScope.$apply(function() {
-										callback(data);
-									});
-								});
-							}
-							if(emitCallback){
-								emitCallback();
-							}
-						}*/
-					};
-				}
-
-				function SocketServicesFactory() {}
-
-				SocketServicesFactory.build = function () {
-				return new SocketServices();
-				};
-
-				return SocketServicesFactory;
-
-			});
-		});
-
-		inject(function($rootScope, $controller, $injector){
+		inject(function($rootScope, $controller){
 			scope = $rootScope.$new();
-			SocketServicesFactory = $injector.get('SocketServicesFactory');
 			controller = $controller('BarChartController', { $scope : scope });
 		});
 	});
 
+	it('scope.barChart is defined', function() {
+		expect(scope.barChart).toBeDefined();
+	});
 
 	it('controller is defined', function() {
 		expect(controller).toBeDefined();
 	});
 
-	it('scope.mapChart is defined', function() {
-		expect(scope.barChart).toBeDefined();
-	});
+	describe('socketConnection', function(){
 
-	//describe('#socketConnection', function(){
-
-		describe('#listenOnEvents', function(){
-
-			var configGraph = false;
-			var updateGraphProp = false;
-			var insertFlow = false;
-			var deleteFlow = false;
-			var updateFlowProp = false;
-			var updateFlowData = false;
-
-			beforeEach(function(){
-				socket = SocketServicesFactory.build();
-				socket.on('configGraph', function(){
-					configGraph = true;
-				});
-				socket.on('updateGraphProp', function(){
-					updateGraphProp = true;
-				});
-				socket.on('insertFlow', function(){
-					insertFlow = true;
-				});
-				socket.on('deleteFlow', function(){ 
-					deleteFlow = true;
-				});
-				socket.on('updateFlowProp', function(){
-					updateFlowProp = true;
-				});
-				socket.on('updateFlowData', function(){
-					updateFlowData = true;
-				});
-			});
-
-			afterEach(function(){
-				socket = null;
-			});
-			
-			it('configGraph', function(){
-				expect(configGraph).toEqual(true);
-			});
-
-			it('updateGraphProp', function(){
-				expect(updateGraphProp).toEqual(true);
-			});
-
-			
-			it('insertFlow', function(){
-				expect(insertFlow).toEqual(true);
-			});
-
-			
-			it('deleteFlow', function(){
-				expect(deleteFlow).toEqual(true);
-			});
-
-			
-			it('updateFlowProp', function(){
-				expect(updateFlowProp).toEqual(true);
-			});
-
-			
-			it('updateFlowData', function(){
-				expect(updateFlowData).toEqual(true);
-			});
+		beforeEach(function(){
+			controller.socketConnection("http://norris-nrti-dev.herokuapp.com/page1/bar1");
 		});
-	//});
 
+		it('socketConnection works fine', function(){
+			expect(scope.socket).toBeDefined();
+		});
+	});
 });
