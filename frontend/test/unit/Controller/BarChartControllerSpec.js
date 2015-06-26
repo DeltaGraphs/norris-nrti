@@ -55,8 +55,14 @@ describe('BarChartController', function(){
 	//describe('#socketConnection', function(){
 
 		describe('#listenOnEvents', function(){
-			socket = SocketServicesFactory.build();
+			beforeEach(function(){
+				socket = SocketServicesFactory.build();
+			});
 
+			afterEach(function(){
+				socket = null;
+			});
+			
 			var configGraph = false;
 			var updateGraphProp = false;
 			var insertFlow = false;
