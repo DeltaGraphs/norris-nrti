@@ -31,10 +31,45 @@ describe('BarChartController', function(){
 
 	beforeEach(function(){
 		angular.mock.module('norris-nrti');
-		angular.mock.module('mockSocket');
-		/*module(function($provide){
-			$provide.factory()
-		});*/
+		//angular.mock.module('mockSocket');
+		module(function($provide){
+			$provide.factory('SocketServicesFactory', function($rootScope){
+				
+				function SocketServices() {
+					this.events = {};
+
+					return {
+					    on: function(eventName, callback){
+							if(!this.events[eventName]){
+								this.events[eventName] = [];
+							}
+							this.events[eventName].push(callback);
+						},
+					    emit:function(eventName, data, emitCallback){
+							if(this.events[eventName]){
+								angular.forEach(this.events[eventName], function(callback){
+									$rootScope.$apply(function() {
+										callback(data);
+									});
+								});
+							}
+							if(emitCallback){
+								emitCallback();
+							}
+						}
+					};
+				}
+
+				function SocketServicesFactory() {}
+
+				SocketServicesFactory.build = function () {
+				return new SocketServices();
+				};
+
+				return SocketServicesFactory;
+
+			});
+		});
 
 		inject(function($rootScope, $controller, $injector){
 			scope = $rootScope.$new();
