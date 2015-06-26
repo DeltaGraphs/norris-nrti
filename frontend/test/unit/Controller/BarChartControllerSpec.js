@@ -90,13 +90,8 @@ describe('BarChartController', function(){
 	//describe('#socketConnection', function(){
 
 		describe('#listenOnEvents', function(){
-			beforeEach(function(){
-				socket = SocketServicesFactory.build();
-			});
 
-			afterEach(function(){
-				socket = null;
-			});
+			socket = SocketServicesFactory.build();
 			
 			var configGraph = false;
 			var updateGraphProp = false;
