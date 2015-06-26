@@ -91,7 +91,7 @@ describe('SocketServicesFactory', function(){
 
 		beforeEach(function(){
 			socket = SocketServicesFactory.build();
-			socket.emit('eventName', function(){
+			socket.emit('eventName', { 'flag' : false } , function(){
 				flag = true;
 			});
 		});
