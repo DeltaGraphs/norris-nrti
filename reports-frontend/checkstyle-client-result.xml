@@ -6,6 +6,10 @@
 	<file name="app/Model/SocketServices.js">
 		<error line="23" column="22" severity="warning" message="&apos;io&apos; is not defined." source="jshint.W117" />
 	</file>
+	<file name="app/Controller/GraphsControllers/BarChartController.js">
+		<error line="42" column="17" severity="warning" message="&apos;count&apos; is not defined." source="jshint.W117" />
+		<error line="47" column="17" severity="warning" message="&apos;count&apos; is not defined." source="jshint.W117" />
+	</file>
 	<file name="app/Controller/RootController.js">
 		<error line="23" column="45" severity="warning" message="&apos;oldValue&apos; is defined but never used." source="jshint.W098" />
 	</file>
