@@ -9,6 +9,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.1.3         2015-06-26  Maria Giovanna Chinellato	fix test
+*
 * 0.1.2         2015-06-24  Francesco Rossetto			fix describe 'BarChartController'
 *
 * 0.1.1         2015-06-23  Francesco Rossetto			fix configGraph
@@ -45,6 +47,10 @@ describe('BarChartController', function(){
 
 		beforeEach(function(){
 			controller.socketConnection("http://norris-nrti-dev.herokuapp.com/page1/map1");
+		});
+
+		it('socketConnection works fine', function(){
+			expect(scope.listeOnEvents).toHaveBeenCalled();
 		});
 
 		/*it('socketConnection works fine', function(){

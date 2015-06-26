@@ -9,6 +9,8 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.1.3         2015-06-26  Maria Giovanna Chinellato	fix test
+*
 * 0.1.2         2015-06-24  Maria Giovanna Chinellato   fix describe 'MapChartController'
 *
 * 0.1.1         2015-06-23  Maria Giovanna Chinellato   fix configGraph
