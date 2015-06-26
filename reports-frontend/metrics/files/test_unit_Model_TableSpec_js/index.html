@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">73.31</p>
+      <p class="stat">73.09</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">418</p>
+      <p class="stat">409</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">19.47</p>
+      <p class="stat">19.33</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">3.27</p>
+      <p class="stat">3.19</p>
     </div>
   </div>
 </div>
@@ -125,14 +125,10 @@ describe(&#039;Table&#039;, function(){
 
 	describe(&#039;Constructor&#039;, function(){
 
-		var json = {
-			&#039;title&#039; : &#039;fottutissimografico&#039;,
-			&#039;socketURL&#039; : &#039;localhost/page1/grafico1&#039;
-		};
 		var Table;
 
 		beforeEach(function(){
-			Table = TableFactory.build(json);
+			Table = TableFactory.build();
 		});
 
 		afterEach(function(){
@@ -141,12 +137,6 @@ describe(&#039;Table&#039;, function(){
 
 		it(&#039;Table created&#039;, function(){
 			expect(Table).toBeDefined();
-		});
-		it(&#039;graph Constructor called&#039;, function(){
-			expect(Table.getTitle()).toEqual(&#039;fottutissimografico&#039;);
-		});
-		it(&#039;graph Constructor called&#039;, function(){
-			expect(Table.getUrl()).toEqual(&#039;localhost/page1/grafico1&#039;);
 		});
 		it(&#039;graph created with the correct headers&#039;, function(){
 			expect(Table.getHeaders()).toEqual([]);
@@ -229,10 +219,11 @@ describe(&#039;Table&#039;, function(){
 			&#039;enabledLegend&#039; : false,
 			&#039;horizontalGrid&#039; : false,
 			&#039;verticalGrid&#039; : false,
+			&#039;sort&#039; : { &#039;colunms&#039; : [&#039;ciao&#039;], &#039;ordering&#039; : &#039;DESC&#039;},
 			&#039;rows&#039; : 6,
 			&#039;colunms&#039; : 9,
 			&#039;headers&#039; : [&#039;ciao&#039;,&#039;amici&#039;],
-			&#039;itemDisplayedPerPage&#039; : 5,
+			&#039;maxItemsPage&#039; : 5,
 			&#039;addRowOn&#039; : &#039;top&#039;,
 			&#039;sortable&#039; : false,
 			&#039;appearance&#039; : { 
@@ -274,7 +265,7 @@ describe(&#039;Table&#039;, function(){
 			expect(Table.getHeaders().length).toEqual(2);
 		});
 		it(&#039;graph updated with the correct item displayed per page&#039;, function(){
-			expect(Table.getMaxItemsPage()).toEqual(20);
+			expect(Table.getMaxItemsPage()).toEqual(5);
 		});
 		it(&#039;graph updated with the correct add data position&#039;, function(){
 			expect(Table.getAddRowOn()).toEqual(&#039;top&#039;);
@@ -283,7 +274,7 @@ describe(&#039;Table&#039;, function(){
 			expect(Table.getSortable()).toEqual(false);
 		});
 		it(&#039;graph updated with the correct sort&#039;, function(){
-			expect(Table.getSort()).toEqual(null);
+			expect(Table.getSort()).not.toEqual(null);
 		});
 		it(&#039;graph updated with the correct appearance&#039;, function(){
 			expect(Table.getAppearance().border.color).toEqual(&#039;#000000&#039;);
