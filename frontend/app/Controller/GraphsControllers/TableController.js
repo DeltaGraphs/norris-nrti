@@ -25,6 +25,7 @@ angular.module('norris-nrti')
 	// funzione che connette il socket all'url e chiama la funzione listenOnEvent
 	this.socketConnection = function(url){
 		socket = SocketServicesFactory.build(url);
+		$scope.socket = socket;
 		this.listenOnEvents();
 	};
 

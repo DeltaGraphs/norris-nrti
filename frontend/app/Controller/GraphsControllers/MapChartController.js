@@ -30,6 +30,7 @@ angular.module('norris-nrti')
 	this.socketConnection = function(url){
 		if (count1 === 0) {
 			socket = SocketServicesFactory.build(url);
+			$scope.socket = socket;
 			this.listenOnEvents();
 			count1++;
 		}
@@ -92,6 +93,8 @@ angular.module('norris-nrti')
 		});
 
 	};
+	// variabili e funzioni a disposizione dei test
+	$scope.socket = socket;
 
 	// mette a disposizione delle funzioni sullo scope
 	$scope.socketConnection = this.socketConnection;

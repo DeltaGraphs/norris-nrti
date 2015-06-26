@@ -9,15 +9,11 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
-* 0.1.3         2015-06-26  Maria Giovanna Chinellato	fix test
-*
 * 0.1.2         2015-06-24  Francesco Rossetto			fix describe 'LineChartController'
 *
-* 0.1.1         2015-06-24  Francesco Rossetto			fix configGraph
+* 0.1.0         2015-05-25  Francesco Rossetto			Add all attributes and all methods
 *
-* 0.1.0         2015-06-24  Francesco Rossetto			Add all attributes and all methods
-*
-* 0.0.1         2015-06-24  Francesco Rossetto			Initial code      
+* 0.0.1         2015-05-25  Francesco Rossetto			Initial code      
 * =================================================================================================
 *
 */
@@ -49,8 +45,8 @@ describe('LineChartController', function(){
 			controller.socketConnection("http://norris-nrti-dev.herokuapp.com/page1/line1");
 		});
 
-		/*it('socketConnection works fine', function(){
-			expect(count).toEqual(1);
-		});*/
+		it('socketConnection works fine', function(){
+			expect(scope.socket).toBeDefined();
+		});
 	});
 });

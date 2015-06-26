@@ -32,10 +32,10 @@ angular.module('norris-nrti')
 		this.listenOnEvents();
 	};
 
-	$scope.count = 0;
+	var count = 0;
 	$scope.changedP = true;
 	$scope.changedD = true;
-
+	
 	// funzione che mette in ascolto il socket su alcuni eventi
 	this.listenOnEvents = function(){
 		socket.on('configGraph', function(info){ // ascolta sull'evento 'configGraph' (ricevuto come risposta alla connessione)
