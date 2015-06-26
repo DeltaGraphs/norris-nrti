@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">80.63</p>
+      <p class="stat">78.44</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">102</p>
+      <p class="stat">135</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">13.86</p>
+      <p class="stat">15.71</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.40</p>
+      <p class="stat">0.64</p>
     </div>
   </div>
 </div>
@@ -148,7 +148,7 @@ describe(&#039;PagesList&#039;, function(){
 			&#039;data&#039; : [
 				{ &#039;properties&#039;: {&#039;ID&#039; : &#039;1&#039; }},
 				{ &#039;properties&#039; : { &#039;ID&#039; : &#039;2&#039; }},
-				{ &#039;properties&#039; : { &#039;ID&#039; : &#039;3&#039; }}
+				{ &#039;properties&#039; : { &#039;ID&#039; : &#039;2&#039; }}
 			]
 		};
 		
@@ -164,7 +164,7 @@ describe(&#039;PagesList&#039;, function(){
 			expect(PagesList).toBeDefined();
 		});
 		it(&#039;constructor create an array with the exactly number of pages&#039;, function(){
-			expect(PagesList.getPagesList().length).toEqual(3);
+			expect(PagesList.getPagesList().length).toEqual(2);
 		});
 
 	});
@@ -187,10 +187,43 @@ describe(&#039;PagesList&#039;, function(){
 
 		it(&#039;page added to the pagesList&#039;, function(){
 			expect(PagesList.getPagesList().length).toEqual(1);
+			PagesList.addPage(json);
+			expect(PagesList.getPagesList().length).toEqual(1);
 		});
 
 	});
 	
+	describe(&#039;#updatePage&#039;, function(){
+		
+		var json = 	{
+			&#039;ID&#039; : &#039;pageN&#039;,
+			&#039;name&#039; : &#039;Pagina n-esima&#039;,
+			&#039;description&#039; : &#039;questa è la pagina n-esima&#039;,
+			&#039;graphsPerRow&#039; : 4,
+			&#039;graphsPerCol&#039; : 4
+		};
+
+		var update = {
+			&#039;ID&#039;: &#039;pageN&#039;,
+			&#039;name&#039;: &#039;Pagina nuova&#039;
+		};
+
+		beforeEach(function(){
+			PagesList = new PagesList();
+			PagesList.addPage(json);
+			PagesList.updatePage(update);
+		});
+
+		afterEach(function(){
+			PagesList = null;
+		});
+
+		it(&#039;page added to the pagesList&#039;, function(){
+			expect(PagesList.getPagesList().length).toEqual(1);
+			expect(PagesList.getPagesList()[0].page.getName()).toEqual(&#039;Pagina nuova&#039;);
+		});
+
+	});
 });</textarea>
   </div>
 </div>
