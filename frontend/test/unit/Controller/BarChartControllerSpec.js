@@ -36,18 +36,13 @@ describe('BarChartController', function(){
 			$provide.factory('SocketServicesFactory', function($rootScope){
 				
 				function SocketServices() {
-					this.events = {};
+					this.events = [];
 
 					return {
 					    on: function(eventName, callback){
-							if(this.events[eventName] !== undefined){
-								this.events[eventName].push(callback);
-							}
-							else{
-								this.events[eventName] = [];
-							}
-						},
-					    emit:function(eventName, data, emitCallback){
+							this.events.push(callback);
+						}
+					    /*emit:function(eventName, data, emitCallback){
 							if(this.events[eventName]){
 								angular.forEach(this.events[eventName], function(callback){
 									$rootScope.$apply(function() {
@@ -58,7 +53,7 @@ describe('BarChartController', function(){
 							if(emitCallback){
 								emitCallback();
 							}
-						}
+						}*/
 					};
 				}
 
