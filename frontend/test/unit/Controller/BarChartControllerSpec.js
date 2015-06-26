@@ -27,41 +27,43 @@ describe('BarChartController', function(){
 	var scope;
 	var controller;
 
-	beforeEach(function($provide){
+	beforeEach(function(){
 		angular.mock.module('norris-nrti');
-		$provide.factory('SocketServicesFactory', function($rootScope){
-			this.events = {};
-			this.url;
+		module(function($provide){
+			$provide.factory('SocketServicesFactory', function($rootScope){
+				this.events = {};
+				this.url;
 
-			this.build = function(url){
-				this.url = url;
-			};
+				this.build = function(url){
+					this.url = url;
+				};
 
-			// Receive Events
-			this.on = function(eventName, callback){
-				if(!this.events[eventName]){
-					this.events[eventName] = [];
-				}
-				this.events[eventName].push(callback);
-			};
+				// Receive Events
+				this.on = function(eventName, callback){
+					if(!this.events[eventName]){
+						this.events[eventName] = [];
+					}
+					this.events[eventName].push(callback);
+				};
 
-			// Send Events
-			this.emit = function(eventName, data, emitCallback){
-				if(this.events[eventName]){
-					angular.forEach(this.events[eventName], function(callback){
-						$rootScope.$apply(function() {
-							callback(data);
+				// Send Events
+				this.emit = function(eventName, data, emitCallback){
+					if(this.events[eventName]){
+						angular.forEach(this.events[eventName], function(callback){
+							$rootScope.$apply(function() {
+								callback(data);
+							});
 						});
-					});
-				}
-				if(emitCallback){
-					emitCallback();
-				}
-			};
+					}
+					if(emitCallback){
+						emitCallback();
+					}
+				};
 
-			return this;
+				return this;
+			});
 		});
-		
+
 		inject(function($rootScope, $controller){
 			scope = $rootScope.$new();
 			controller = $controller('BarChartController', { $scope : scope });
