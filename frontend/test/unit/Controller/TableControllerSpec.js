@@ -47,8 +47,8 @@ describe('TableController', function(){
 			controller.socketConnection("http://norris-nrti-dev.herokuapp.com/page1/table1");
 		});
 
-		it('socketConnection works fine', function(){
+		/*it('socketConnection works fine', function(){
 			expect(count).toEqual(1);
-		});
+		});*/
 	});
 });

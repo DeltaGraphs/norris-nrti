@@ -30,7 +30,6 @@ describe('BarChartController', function(){
 		inject(function($rootScope, $controller){
 			scope = $rootScope.$new();
 			controller = $controller('BarChartController', { $scope : scope });
-			controller.socketConnection('http://norris-nrti-dev.herokuapp.com/norris/page1/map1');
 		});
 	});
 
@@ -42,8 +41,15 @@ describe('BarChartController', function(){
 		expect(controller).toBeDefined();
 	});
 
-	it('socketConnection works fine', function(){
-		expect(scope.count).toEqual(1);
+	describe('socketConnection', function(){
+
+		beforeEach(function(){
+			controller.socketConnection("http://norris-nrti-dev.herokuapp.com/page1/map1");
+		});
+
+		/*it('socketConnection works fine', function(){
+			expect(count).toEqual(1);
+		});*/
 	});
 
 });
