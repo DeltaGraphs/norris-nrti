@@ -79,6 +79,7 @@ describe('PagesList', function(){
 	});
 
 	describe('#addPage', function(){
+		
 		var json = {
 			'properties' : {
 				'ID' : 4
@@ -105,8 +106,8 @@ describe('PagesList', function(){
 	describe('#updatePage', function(){
 		
 		var json = 	{
-			'ID' : 'pageN',
 			'properties': {
+				'ID' : 'pageN',
 				'name' : 'Pagina n-esima',
 				'description' : 'questa è la pagina n-esima',
 				'graphsPerRow' : 4,
