@@ -235,7 +235,7 @@ describe('BarChartFlow', function(){
 
 	});
 
-	describe('#addRecord', function(){
+	describe('#addRecords', function(){
 		var data = {
 			'records' : [
 				{ 
@@ -246,8 +246,11 @@ describe('BarChartFlow', function(){
 		};
 
 		var add = {
-			'NorrisRecordID' : 'record2',
-			'value' : [ 1, 2]
+			'records' : [
+				{	'NorrisRecordID' : 'record2',
+					'value' : [ 1, 2]
+				}
+			]
 		};
 
 		var BarChartFlow;
@@ -263,7 +266,7 @@ describe('BarChartFlow', function(){
 
 		it('data updated in the correct way', function(){
 			expect(BarChartFlow.getData().length).toEqual(1);
-			BarChartFlow.addRecord(add);
+			BarChartFlow.addRecords(add);
 			expect(BarChartFlow.getData().length).toEqual(2);
 		});
 
