@@ -15,10 +15,10 @@
 <div class="header low">
     <h1>Code coverage report for <span class="entity">View/GraphsView/TableView.js</span></h1>
     <h2>
-        Statements: <span class="metric">13.1% <small>(11 / 84)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Branches: <span class="metric">5.56% <small>(2 / 36)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">12.5% <small>(11 / 88)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">5% <small>(2 / 40)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Functions: <span class="metric">66.67% <small>(4 / 6)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">13.1% <small>(11 / 84)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">12.5% <small>(11 / 88)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
     <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">View/GraphsView/</a> &#187; TableView.js</div>
@@ -213,7 +213,12 @@
 186
 187
 188
-189</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+189
+190
+191
+192
+193
+194</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -275,6 +280,11 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -430,7 +440,7 @@
 &nbsp;
 &nbsp;
 angular.module('norris-nrti')
-.directive('tableChart', function($compile, $filter){
+.directive('tableChart', function($compile){
 	return { // attributo della direttiva
 		restrict: 'E', // direttiva di tipo elemento (tag)
 		replace: false,
@@ -463,8 +473,13 @@ angular.module('norris-nrti')
 <span class="cstat-no" title="statement not covered" >                var noBorder = 'class="table-condensed table-striped"';</span>
 <span class="cstat-no" title="statement not covered" >                var headers = 'color: #000; background-color: #FFF;';</span>
                 
-<span class="cstat-no" title="statement not covered" >                if (scope.$parent.table.getAppearance().border !== undefined) {</span>
-<span class="cstat-no" title="statement not covered" >                    border = 'border:' + scope.$parent.table.getAppearance().border.width + 'px solid ' + scope.$parent.table.getAppearance().border.color + ';';</span>
+<span class="cstat-no" title="statement not covered" >                if (scope.$parent.table.getAppearance().horizontalGrid !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >                    border = 'border-top:' + scope.$parent.table.getAppearance().horizontalGrid.width + 'px solid ' + scope.$parent.table.getAppearance().horizontalGrid.color + ';';</span>
+<span class="cstat-no" title="statement not covered" >                    border = border + 'border-bottom:' + scope.$parent.table.getAppearance().horizontalGrid.width + 'px solid ' + scope.$parent.table.getAppearance().horizontalGrid.color + ';';</span>
+                }
+<span class="cstat-no" title="statement not covered" >                if (scope.$parent.table.getAppearance().verticalGrid !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >                    border = border + 'border-left:' + scope.$parent.table.getAppearance().verticalGrid.width + 'px solid ' + scope.$parent.table.getAppearance().verticalGrid.color + ';';</span>
+<span class="cstat-no" title="statement not covered" >                    border = border + 'border-right:' + scope.$parent.table.getAppearance().verticalGrid.width + 'px solid ' + scope.$parent.table.getAppearance().verticalGrid.color + ';';</span>
                 }
 <span class="cstat-no" title="statement not covered" >                var tableStyle = 'style="' + border + ' ';</span>
 <span class="cstat-no" title="statement not covered" >                var str = scope.url.split('/');</span>
@@ -489,7 +504,7 @@ angular.module('norris-nrti')
 <span class="cstat-no" title="statement not covered" >                    if (scope.$parent.table.getAppearance().headers !== undefined) {</span>
 <span class="cstat-no" title="statement not covered" >                        headers = 'color:' + scope.$parent.table.getAppearance().headers.textColor[i] + '; background-color:' + scope.$parent.table.getAppearance().headers.backgroundColor[i] + '; ';</span>
                     }
-<span class="cstat-no" title="statement not covered" >                    if (scope.$parent.table.getAppearance().border !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >                    if (scope.$parent.table.getAppearance().horizontalGrid !== undefined || scope.$parent.table.getAppearance().verticalGrid !== undefined) {</span>
 <span class="cstat-no" title="statement not covered" >                        table = table + tableStyle + headers + ' " ';</span>
                     } else {
 <span class="cstat-no" title="statement not covered" >                        table = table + noBorder + 'style="' + headers + ' " ';</span>
@@ -594,7 +609,7 @@ angular.module('norris-nrti')
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Jun 27 2015 13:11:41 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Jun 27 2015 13:33:33 GMT+0000 (UTC)</div>
 </div>
 <script src="../../prettify.js"></script>
 <script>
