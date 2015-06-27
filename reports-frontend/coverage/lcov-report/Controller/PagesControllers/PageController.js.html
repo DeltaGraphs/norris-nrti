@@ -12,13 +12,13 @@
     </style>
 </head>
 <body>
-<div class="header low">
+<div class="header medium">
     <h1>Code coverage report for <span class="entity">Controller/PagesControllers/PageController.js</span></h1>
     <h2>
-        Statements: <span class="metric">46.15% <small>(18 / 39)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Branches: <span class="metric">0% <small>(0 / 8)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Functions: <span class="metric">50% <small>(3 / 6)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">46.15% <small>(18 / 39)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">67.5% <small>(27 / 40)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">37.5% <small>(3 / 8)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">66.67% <small>(4 / 6)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">67.5% <small>(27 / 40)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
     <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">Controller/PagesControllers/</a> &#187; PageController.js</div>
@@ -128,7 +128,9 @@
 101
 102
 103
-104</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+104
+105
+106</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -199,35 +201,37 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3</span>
-<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3</span>
 <span class="cline-any cline-yes">3</span>
 <span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -301,36 +305,38 @@ angular.module('norris-nrti')
 	};*/
 &nbsp;
 	// funzione di utilità che dispone i grafici in un array per la successiva visualizzazione
-<span class="fstat-no" title="function not covered" >	function matrix(list) {</span>
-<span class="cstat-no" title="statement not covered" >		var array = [];</span>
-<span class="cstat-no" title="statement not covered" >		var count = 0;</span>
-<span class="cstat-no" title="statement not covered" >		var graphsPerCol = $scope.page.getGraphsPerCol();</span>
-<span class="cstat-no" title="statement not covered" >		var graphsPerRow = $scope.page.getGraphsPerRow();</span>
-<span class="cstat-no" title="statement not covered" >		if (graphsPerCol === -1){</span>
+	function matrix(list) {
+		var array = [];
+		var count = 0;
+		var graphsPerCol = $scope.page.getGraphsPerCol();
+		var graphsPerRow = $scope.page.getGraphsPerRow();
+		<span class="missing-if-branch" title="if path not taken" >I</span>if (graphsPerCol === -1){
 <span class="cstat-no" title="statement not covered" >			graphsPerRow = 1;</span>
 <span class="cstat-no" title="statement not covered" >			graphsPerCol = list.length;</span>
 		}
-<span class="cstat-no" title="statement not covered" >		if (graphsPerRow === -1){</span>
+		<span class="missing-if-branch" title="if path not taken" >I</span>if (graphsPerRow === -1){
 <span class="cstat-no" title="statement not covered" >			graphsPerRow = list.length;</span>
 <span class="cstat-no" title="statement not covered" >			graphsPerCol = 1;</span>
 		}
-<span class="cstat-no" title="statement not covered" >		for (var i=0;count&lt;list.length &amp;&amp; i&lt;graphsPerCol; i++) {</span>
+		for (var i=0;count&lt;list.length &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >i&lt;graphsPerCol;</span> i++) {
 <span class="cstat-no" title="statement not covered" >			array[i] = [];</span>
 <span class="cstat-no" title="statement not covered" >			for (var j=0;count&lt;list.length &amp;&amp; j&lt;graphsPerRow; j++) {</span>
 <span class="cstat-no" title="statement not covered" >				array[i].push(list[graphsPerRow*i+j]);</span>
 <span class="cstat-no" title="statement not covered" >				count++;</span>
 			}
 		}
-<span class="cstat-no" title="statement not covered" >		return array;</span>
+		return array;
 	}
 	// variabili e funzioni a disposizione dei test
 	$scope.socket = socket;
 	$scope.url = url;
+	this.matrix = matrix;
 &nbsp;
 	// vengono rese disponibili alcune funzioni sullo $scope
 	$scope.graphs = [];
 	$scope.socketConnection = this.socketConnection;
 	$scope.listenOnEvents = this.listenOnEvents;
+&nbsp;
 	//$scope.previous = this.previous;
 	//$scope.next = this.next;
 	
@@ -339,7 +345,7 @@ angular.module('norris-nrti')
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Jun 27 2015 15:22:23 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Jun 27 2015 15:39:06 GMT+0000 (UTC)</div>
 </div>
 <script src="../../prettify.js"></script>
 <script>
