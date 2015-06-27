@@ -11970,7 +11970,7 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 87,
+                        "distinct": 88,
                         "total": 376,
                         "identifiers": [
                             "\"use strict\"",
@@ -12011,6 +12011,7 @@
                             "_backgroundColor",
                             "\"#FFFFFF\"",
                             "_grid",
+                            true,
                             "_legendOnPoint",
                             "_flows",
                             "updateProperties",
@@ -12063,12 +12064,12 @@
                         ]
                     },
                     "length": 720,
-                    "vocabulary": 109,
-                    "difficulty": 47.54022988505747,
-                    "volume": 4873.092713839386,
-                    "effort": 231667.947867123,
-                    "bugs": 1.624364237946462,
-                    "time": 12870.4415481735
+                    "vocabulary": 110,
+                    "difficulty": 47,
+                    "volume": 4882.578993737755,
+                    "effort": 229481.2127056745,
+                    "bugs": 1.6275263312459183,
+                    "time": 12748.956261426361
                 },
                 "params": 8,
                 "line": 2,
@@ -12101,7 +12102,7 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 31,
+                            "distinct": 32,
                             "total": 58,
                             "identifiers": [
                                 "params",
@@ -12132,18 +12133,19 @@
                                 "_backgroundColor",
                                 "\"#FFFFFF\"",
                                 "_grid",
+                                true,
                                 "_legendOnPoint",
                                 "_flows",
                                 "updateProperties"
                             ]
                         },
                         "length": 107,
-                        "vocabulary": 42,
-                        "difficulty": 10.29032258064516,
-                        "volume": 576.9779642373273,
-                        "effort": 5937.289373926045,
-                        "bugs": 0.1923259880791091,
-                        "time": 329.84940966255806
+                        "vocabulary": 43,
+                        "difficulty": 9.96875,
+                        "volume": 580.6103287531245,
+                        "effort": 5787.95921475771,
+                        "bugs": 0.1935367762510415,
+                        "time": 321.55328970876167
                     },
                     "params": 1,
                     "line": 23,
@@ -12594,10 +12596,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 107.69784729211644,
+            "maintainability": 107.71002307436167,
             "loc": 8.222222222222221,
             "cyclomatic": 3.3333333333333335,
-            "effort": 4668.819713222938,
+            "effort": 4652.227473315345,
             "params": 0.8888888888888888,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/dataTier/graph/barChartModel.js"
         },
@@ -13179,7 +13181,7 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 86,
+                        "distinct": 87,
                         "total": 379,
                         "identifiers": [
                             "\"use strict\"",
@@ -13219,6 +13221,7 @@
                             "_interpolation",
                             "\"linear\"",
                             "_horizontalGrid",
+                            true,
                             "_verticalGrid",
                             "_legendOnPoint",
                             "updateProperties",
@@ -13271,12 +13274,12 @@
                         ]
                     },
                     "length": 726,
-                    "vocabulary": 108,
-                    "difficulty": 48.47674418604651,
-                    "volume": 4904.048326570679,
-                    "effort": 237732.2962031763,
-                    "bugs": 1.6346827755235596,
-                    "time": 13207.349789065349
+                    "vocabulary": 109,
+                    "difficulty": 47.91954022988506,
+                    "volume": 4913.701819788048,
+                    "effort": 235462.33203099278,
+                    "bugs": 1.637900606596016,
+                    "time": 13081.240668388487
                 },
                 "params": 11,
                 "line": 2,
@@ -13309,7 +13312,7 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 30,
+                            "distinct": 31,
                             "total": 55,
                             "identifiers": [
                                 "params",
@@ -13339,18 +13342,19 @@
                                 "_interpolation",
                                 "\"linear\"",
                                 "_horizontalGrid",
+                                true,
                                 "_verticalGrid",
                                 "_legendOnPoint",
                                 "updateProperties"
                             ]
                         },
                         "length": 101,
-                        "vocabulary": 41,
-                        "difficulty": 10.083333333333332,
-                        "volume": 541.1127524664265,
-                        "effort": 5456.220254036467,
-                        "bugs": 0.18037091748880885,
-                        "time": 303.1233474464704
+                        "vocabulary": 42,
+                        "difficulty": 9.758064516129032,
+                        "volume": 544.6240597006548,
+                        "effort": 5314.476711595099,
+                        "bugs": 0.1815413532335516,
+                        "time": 295.24870619972774
                     },
                     "params": 1,
                     "line": 23,
@@ -13888,10 +13892,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 111.39729273324,
+            "maintainability": 111.41097494574271,
             "loc": 7.090909090909091,
             "cyclomatic": 2.8181818181818183,
-            "effort": 3227.3704021782683,
+            "effort": 3214.484625592689,
             "params": 1,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/dataTier/graph/lineChartModel.js"
         },
@@ -18468,7 +18472,7 @@
     "coreSize": 37.5,
     "loc": 10.297372159090909,
     "cyclomatic": 4.282394255050504,
-    "effort": 8426.246983933439,
+    "effort": 8425.325795918026,
     "params": 1.1196338383838387,
-    "maintainability": 105.45910093364058
+    "maintainability": 105.45990899597645
 }
