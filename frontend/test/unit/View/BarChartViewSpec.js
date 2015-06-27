@@ -49,7 +49,7 @@ describe('BarChartView', function(){
 
     	scope.barChart = bar;
 
-    	bar.updateParameters(info);
+    	scope.barChart.updateParameters(info);
     	scope.changedP = !scope.changedP;
 
     	element = $compile(html)(scope);
@@ -97,26 +97,73 @@ describe('BarChartView', function(){
 	describe('#setData', function() {
 
   		var json = {
-  			'title' : 'graficonuovo',
-			'height' : 400,
-			'width' : 400,
 			'enableLegend' : true,
-			'legend' : {position: 'E'},
-			'socketURL' : 'http://example.com',
-			'xAxis' : { name: 'asseX' },
-			'yAxis' : { name: 'asseY' },
-			'barOrientation' : 'V',
-			'headers' : ['colonna1'],
-			'backgroundColor' : '#F0F',
-			'sortable' : false,
-			'groupingControl' : false,
-			'legendOnPoint' : true,
-			'grid' : false,
+			'legend' : {position: 'N'},
 			'flows' : [{'ID' : 'f1'},{ 'ID' : 'f2'},{'ID' : 'f3'}]
 		};
 
 		it('works fine', function() {
 			scope.barChart.updateParameters(json);
+			scope.changedD = !scope.changedD;
+    		scope.$digest();
+		});
+
+	});
+
+	describe('#setData', function() {
+
+  		var json1 = {
+			'enableLegend' : true,
+			'legend' : {position: 'S'},
+			'flows' : [{'ID' : 'f1'},{ 'ID' : 'f2'},{'ID' : 'f3'}]
+		};
+
+		var json2 = {
+			'enableLegend' : true,
+			'legend' : {position: 'SE'},
+			'flows' : [{'ID' : 'f1'},{ 'ID' : 'f2'},{'ID' : 'f3'}]
+		};
+
+		var json3 = {
+			'enableLegend' : true,
+			'legend' : {position: 'SW'},
+			'flows' : [{'ID' : 'f1'},{ 'ID' : 'f2'},{'ID' : 'f3'}]
+		};
+
+		var json4 = {
+			'enableLegend' : true,
+			'legend' : {position: 'NW'},
+			'flows' : [{'ID' : 'f1'},{ 'ID' : 'f2'},{'ID' : 'f3'}]
+		};
+		var json5 = {
+			'enableLegend' : true,
+			'legend' : {position: 'W'},
+			'flows' : [{'ID' : 'f1'},{ 'ID' : 'f2'},{'ID' : 'f3'}]
+		};
+
+		var json6 = {
+			'enableLegend' : true,
+			'legend' : {position: 'NE'},
+			'flows' : [{'ID' : 'f1'},{ 'ID' : 'f2'},{'ID' : 'f3'}]
+		};
+
+		it('works fine', function() {
+			scope.barChart.updateParameters(json1);
+			scope.changedD = !scope.changedD;
+    		scope.$digest();
+    		scope.barChart.updateParameters(json2);
+			scope.changedD = !scope.changedD;
+    		scope.$digest();
+    		scope.barChart.updateParameters(json3);
+			scope.changedD = !scope.changedD;
+    		scope.$digest();
+    		scope.barChart.updateParameters(json4);
+			scope.changedD = !scope.changedD;
+    		scope.$digest();
+    		scope.barChart.updateParameters(json5);
+			scope.changedD = !scope.changedD;
+    		scope.$digest();
+    		scope.barChart.updateParameters(json6);
 			scope.changedD = !scope.changedD;
     		scope.$digest();
 		});
