@@ -15,10 +15,10 @@
 <div class="header low">
     <h1>Code coverage report for <span class="entity">View/GraphsView/BarChartView.js</span></h1>
     <h2>
-        Statements: <span class="metric">30.7% <small>(35 / 114)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Branches: <span class="metric">20% <small>(8 / 40)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">32.46% <small>(37 / 114)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">22.5% <small>(9 / 40)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Functions: <span class="metric">35.29% <small>(6 / 17)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">30.7% <small>(35 / 114)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">32.46% <small>(37 / 114)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
     <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">View/GraphsView/</a> &#187; BarChartView.js</div>
@@ -343,12 +343,6 @@
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -364,22 +358,28 @@
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -582,33 +582,33 @@ angular.module('norris-nrti')
                 var legend, onPoint, control;
                 var str = scope.url.split('/');
                 var id = str[str.length-1];
-                <span class="missing-if-branch" title="if path not taken" >I</span>if (scope.$parent.barChart.getLegend() !== null){
-<span class="cstat-no" title="statement not covered" >                    legend = true;</span>
+                <span class="missing-if-branch" title="else path not taken" >E</span>if (scope.$parent.barChart.getLegend() !== null){
+                    legend = true;
                 }
                 else{
-                    legend = false;
+<span class="cstat-no" title="statement not covered" >                    legend = false;</span>
                 }
-                <span class="missing-if-branch" title="else path not taken" >E</span>if (scope.$parent.barChart.getGroupingControl()){
-                    control = true;
-                }
-                else{
-<span class="cstat-no" title="statement not covered" >                    control = false;</span>
-                }
-                <span class="missing-if-branch" title="if path not taken" >I</span>if (scope.$parent.barChart.getLegendOnPoint()){
-<span class="cstat-no" title="statement not covered" >                    onPoint = true;</span>
+                <span class="missing-if-branch" title="if path not taken" >I</span>if (scope.$parent.barChart.getGroupingControl()){
+<span class="cstat-no" title="statement not covered" >                    control = true;</span>
                 }
                 else{
-                    onPoint = false;
+                    control = false;
                 }
-                <span class="missing-if-branch" title="else path not taken" >E</span>if (scope.$parent.barChart.getBarOrientation() === 'V'){
-                    barchart = '&lt;div class="graphtitle"&gt;'+ scope.$parent.barChart.getTitle() +'&lt;/div&gt;' +
+                <span class="missing-if-branch" title="else path not taken" >E</span>if (scope.$parent.barChart.getLegendOnPoint()){
+                    onPoint = true;
+                }
+                else{
+<span class="cstat-no" title="statement not covered" >                    onPoint = false;</span>
+                }
+                <span class="missing-if-branch" title="if path not taken" >I</span>if (scope.$parent.barChart.getBarOrientation() === 'V'){
+<span class="cstat-no" title="statement not covered" >                    barchart = '&lt;div class="graphtitle"&gt;'+ scope.$parent.barChart.getTitle() +'&lt;/div&gt;' +</span>
                                 '&lt;nvd3-multi-bar-chart data="data" nodata=" " id="'+ id +'" ' +
                                 'xaxisticksformat="xAxisTickFormatFunction()" yaxistickformat="yAxisTickFormatFunction()" showxaxis="true" showyaxis="true" ' +
                                 'rotatelabels="-90" interactive="true" tooltips="'+ onPoint +'" showlegend="' + legend + '" ' +
                                 'xaxislabel="'+ scope.$parent.barChart.getX().getName() +'" ';
 <span class="cstat-no" title="statement not covered" >                    barchart = barchart + 'color="colorFunction()" showcontrols="'+ control +'"&gt;' +</span>
                                 '&lt;svg style="width: '+ scope.$parent.barChart.getWidth() +'; height: '+ scope.$parent.barChart.getHeight() +';"&gt;&lt;/svg&gt;&lt;/nvd3-multi-bar-chart&gt;';
-                }else <span class="cstat-no" title="statement not covered" >if(scope.$parent.barChart.getBarOrientation() === 'H'){</span>
+                }else <span class="missing-if-branch" title="if path not taken" >I</span>if(scope.$parent.barChart.getBarOrientation() === 'H'){
 <span class="cstat-no" title="statement not covered" >                    barchart = '&lt;div class="graphtitle"&gt;'+ scope.$parent.barChart.getTitle() +'&lt;/div&gt;' +</span>
                                 '&lt;nvd3-multi-bar-horizontal-chart data="data" nodata=" " id="'+ id +'" ' +
                                 'xaxisticksformat="xAxisTickFormatFunction()" yaxistickformat="yAxisTickFormatFunction()" showxaxis="true" showyaxis="true" ' +
@@ -618,8 +618,8 @@ angular.module('norris-nrti')
                                 '&lt;svg style="width: '+ scope.$parent.barChart.getWidth() +'; height: '+ scope.$parent.barChart.getHeight() +';"&gt;&lt;/svg&gt;&lt;/nvd3-multi-bar-horizontal-chart&gt;';
                 }
                 
-<span class="cstat-no" title="statement not covered" >                var compiled = $compile(barchart)(scope);</span>
-<span class="cstat-no" title="statement not covered" >                element.append(compiled);</span>
+                var compiled = $compile(barchart)(scope);
+                element.append(compiled);
                 
             };
             
@@ -750,7 +750,7 @@ angular.module('norris-nrti')
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Jun 27 2015 09:52:14 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Jun 27 2015 10:00:20 GMT+0000 (UTC)</div>
 </div>
 <script src="../../prettify.js"></script>
 <script>
