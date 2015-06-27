@@ -3,14 +3,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 154,
-                    "physical": 218
+                    "logical": 156,
+                    "physical": 220
                 },
-                "cyclomatic": 59,
+                "cyclomatic": 60,
                 "halstead": {
                     "operators": {
                         "distinct": 24,
-                        "total": 392,
+                        "total": 394,
                         "identifiers": [
                             "=",
                             ".",
@@ -39,8 +39,8 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 99,
-                        "total": 391,
+                        "distinct": 100,
+                        "total": 392,
                         "identifiers": [
                             "\"use strict\"",
                             "String",
@@ -98,6 +98,7 @@
                             "parseInt",
                             "\"toFloat\"",
                             "isValidFormat",
+                            "\"toExp\"",
                             false,
                             true,
                             "isValidMapFormat",
@@ -143,17 +144,17 @@
                             "\"number\""
                         ]
                     },
-                    "length": 783,
-                    "vocabulary": 123,
-                    "difficulty": 47.39393939393939,
-                    "volume": 5435.988857680625,
-                    "effort": 257632.92646704538,
-                    "bugs": 1.8119962858935417,
-                    "time": 14312.9403592803
+                    "length": 786,
+                    "vocabulary": 124,
+                    "difficulty": 47.04,
+                    "volume": 5465.998299964084,
+                    "effort": 257120.56003031053,
+                    "bugs": 1.8219994333213614,
+                    "time": 14284.475557239473
                 },
                 "params": 14,
                 "line": 2,
-                "cyclomaticDensity": 38.311688311688314
+                "cyclomaticDensity": 38.46153846153847
             },
             "functions": [
                 {
@@ -415,14 +416,14 @@
                 {
                     "name": "<anonymous>.isValidFormat",
                     "sloc": {
-                        "logical": 8,
-                        "physical": 11
+                        "logical": 10,
+                        "physical": 13
                     },
-                    "cyclomatic": 3,
+                    "cyclomatic": 4,
                     "halstead": {
                         "operators": {
                             "distinct": 5,
-                            "total": 8,
+                            "total": 10,
                             "identifiers": [
                                 "switch",
                                 "case",
@@ -432,27 +433,28 @@
                             ]
                         },
                         "operands": {
-                            "distinct": 5,
-                            "total": 6,
+                            "distinct": 6,
+                            "total": 7,
                             "identifiers": [
                                 "format",
                                 "\"toInt\"",
                                 "\"toFloat\"",
+                                "\"toExp\"",
                                 false,
                                 true
                             ]
                         },
-                        "length": 14,
-                        "vocabulary": 10,
-                        "difficulty": 3,
-                        "volume": 46.50699332842308,
-                        "effort": 139.52097998526924,
-                        "bugs": 0.01550233110947436,
-                        "time": 7.75116555473718
+                        "length": 17,
+                        "vocabulary": 11,
+                        "difficulty": 2.916666666666667,
+                        "volume": 58.81033751683406,
+                        "effort": 171.53015109076603,
+                        "bugs": 0.019603445838944685,
+                        "time": 9.52945283837589
                     },
                     "params": 1,
                     "line": 100,
-                    "cyclomaticDensity": 37.5
+                    "cyclomaticDensity": 40
                 },
                 {
                     "name": "<anonymous>.isValidMapFormat",
@@ -493,7 +495,7 @@
                         "time": 7.75116555473718
                     },
                     "params": 1,
-                    "line": 111,
+                    "line": 113,
                     "cyclomaticDensity": 37.5
                 },
                 {
@@ -538,7 +540,7 @@
                         "time": 13.298455237069552
                     },
                     "params": 1,
-                    "line": 122,
+                    "line": 124,
                     "cyclomaticDensity": 42.857142857142854
                 },
                 {
@@ -604,7 +606,7 @@
                         "time": 490.77865742379265
                     },
                     "params": 1,
-                    "line": 139,
+                    "line": 141,
                     "cyclomaticDensity": 54.54545454545454
                 },
                 {
@@ -649,7 +651,7 @@
                         "time": 13.298455237069552
                     },
                     "params": 1,
-                    "line": 172,
+                    "line": 174,
                     "cyclomaticDensity": 42.857142857142854
                 },
                 {
@@ -720,15 +722,15 @@
                         "time": 1581.6374639864885
                     },
                     "params": 1,
-                    "line": 190,
+                    "line": 192,
                     "cyclomaticDensity": 94.44444444444444
                 }
             ],
             "dependencies": [],
-            "maintainability": 99.36403055430678,
-            "loc": 12.909090909090908,
-            "cyclomatic": 6.2727272727272725,
-            "effort": 6040.143360917591,
+            "maintainability": 99.13249678800253,
+            "loc": 13.090909090909092,
+            "cyclomatic": 6.363636363636363,
+            "effort": 6043.053285563545,
             "params": 1.2727272727272727,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/helpers/functionHelper.js"
         },
@@ -3615,14 +3617,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 132,
-                    "physical": 210
+                    "logical": 116,
+                    "physical": 192
                 },
                 "cyclomatic": 23,
                 "halstead": {
                     "operators": {
                         "distinct": 22,
-                        "total": 440,
+                        "total": 373,
                         "identifiers": [
                             "var",
                             "=",
@@ -3649,8 +3651,8 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 124,
-                        "total": 487,
+                        "distinct": 97,
+                        "total": 408,
                         "identifiers": [
                             "\"use strict\"",
                             "Graph",
@@ -3742,33 +3744,6 @@
                             "graphChanged",
                             "getConfigJSON",
                             "configJSON",
-                            "_title",
-                            "type",
-                            "_type",
-                            "height",
-                            "_height",
-                            "width",
-                            "_width",
-                            "enableLegend",
-                            "_enableLegend",
-                            "legendOnPoint",
-                            "_legendOnPoint",
-                            "backgroundColor",
-                            "_backgroundColor",
-                            "grid",
-                            "_grid",
-                            "groupingControl",
-                            "_groupingControl",
-                            "barOrientation",
-                            "_barOrientation",
-                            "legend",
-                            "_legend",
-                            "xAxis",
-                            "_xAxis",
-                            "yAxis",
-                            "_yAxis",
-                            "headers",
-                            "_headers",
                             "flowProp",
                             "data",
                             "flowData",
@@ -3778,17 +3753,17 @@
                             "exports"
                         ]
                     },
-                    "length": 927,
-                    "vocabulary": 146,
-                    "difficulty": 43.20161290322581,
-                    "volume": 6664.967366081776,
-                    "effort": 287937.34016209736,
-                    "bugs": 2.2216557886939254,
-                    "time": 15996.518897894297
+                    "length": 781,
+                    "vocabulary": 119,
+                    "difficulty": 46.2680412371134,
+                    "volume": 5384.852673143504,
+                    "effort": 249146.58553678397,
+                    "bugs": 1.7949508910478347,
+                    "time": 13841.476974265775
                 },
                 "params": 11,
                 "line": 2,
-                "cyclomaticDensity": 17.424242424242426
+                "cyclomaticDensity": 19.82758620689655
             },
             "functions": [
                 {
@@ -4258,69 +4233,38 @@
                 {
                     "name": "<anonymous>.getConfigJSON",
                     "sloc": {
-                        "logical": 36,
-                        "physical": 43
+                        "logical": 20,
+                        "physical": 25
                     },
                     "cyclomatic": 3,
                     "halstead": {
                         "operators": {
                             "distinct": 11,
-                            "total": 149,
+                            "total": 82,
                             "identifiers": [
                                 "var",
                                 "=",
                                 "{}",
-                                ".",
+                                ":",
                                 "()",
+                                ".",
                                 "[]",
                                 "for",
                                 "<",
                                 "++ (postfix)",
-                                ":",
                                 "return"
                             ]
                         },
                         "operands": {
-                            "distinct": 54,
-                            "total": 163,
+                            "distinct": 25,
+                            "total": 84,
                             "identifiers": [
                                 "configJSON",
                                 "<anonymous>",
-                                "prop",
-                                "ID",
+                                "properties",
                                 "this",
                                 "_dataBarChart",
-                                "_ID",
-                                "title",
-                                "_title",
-                                "type",
-                                "_type",
-                                "height",
-                                "_height",
-                                "width",
-                                "_width",
-                                "enableLegend",
-                                "_enableLegend",
-                                "legendOnPoint",
-                                "_legendOnPoint",
-                                "backgroundColor",
-                                "_backgroundColor",
-                                "grid",
-                                "_grid",
-                                "groupingControl",
-                                "_groupingControl",
-                                "barOrientation",
-                                "_barOrientation",
-                                "legend",
-                                "_legend",
                                 "getProperties",
-                                "xAxis",
-                                "_xAxis",
-                                "yAxis",
-                                "_yAxis",
-                                "headers",
-                                "_headers",
-                                "properties",
                                 "flowProp",
                                 "flows",
                                 "_flows",
@@ -4333,6 +4277,8 @@
                                 "push",
                                 "records",
                                 "getData",
+                                "ID",
+                                "_ID",
                                 "j",
                                 "norrisRecordID",
                                 "value",
@@ -4340,17 +4286,17 @@
                                 "_valueKey"
                             ]
                         },
-                        "length": 312,
-                        "vocabulary": 65,
-                        "difficulty": 16.60185185185185,
-                        "volume": 1878.9787576648778,
-                        "effort": 31194.526967528942,
-                        "bugs": 0.6263262525549592,
-                        "time": 1733.0292759738302
+                        "length": 166,
+                        "vocabulary": 36,
+                        "difficulty": 18.48,
+                        "volume": 858.2075502394238,
+                        "effort": 15859.675528424552,
+                        "bugs": 0.28606918341314125,
+                        "time": 881.0930849124751
                     },
                     "params": 0,
                     "line": 167,
-                    "cyclomaticDensity": 8.333333333333332
+                    "cyclomaticDensity": 15
                 }
             ],
             "dependencies": [
@@ -4375,10 +4321,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 98.9526530445589,
-            "loc": 12.666666666666666,
+            "maintainability": 102.25060143177632,
+            "loc": 10.88888888888889,
             "cyclomatic": 3.4444444444444446,
-            "effort": 7758.80251789393,
+            "effort": 6054.930135771219,
             "params": 1.2222222222222223,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/graph/barChart.js"
         },
@@ -4510,14 +4456,14 @@
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 133,
-                    "physical": 209
+                    "logical": 118,
+                    "physical": 191
                 },
                 "cyclomatic": 21,
                 "halstead": {
                     "operators": {
                         "distinct": 22,
-                        "total": 424,
+                        "total": 361,
                         "identifiers": [
                             "var",
                             "=",
@@ -4544,8 +4490,8 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 125,
-                        "total": 471,
+                        "distinct": 100,
+                        "total": 397,
                         "identifiers": [
                             "\"use strict\"",
                             "Graph",
@@ -4637,31 +4583,6 @@
                             "graphChanged",
                             "getConfigJSON",
                             "configJSON",
-                            "_title",
-                            "type",
-                            "_type",
-                            "height",
-                            "_height",
-                            "width",
-                            "_width",
-                            "enableLegend",
-                            "_enableLegend",
-                            "legendOnPoint",
-                            "_legendOnPoint",
-                            "backgroundColor",
-                            "_backgroundColor",
-                            "viewFinder",
-                            "_viewFinder",
-                            "horizontalGrid",
-                            "_horizontalGrid",
-                            "verticalGrid",
-                            "_verticalGrid",
-                            "legend",
-                            "_legend",
-                            "xAxis",
-                            "_xAxis",
-                            "yAxis",
-                            "_yAxis",
                             "flowProp",
                             "flowData",
                             "getData",
@@ -4674,17 +4595,17 @@
                             "exports"
                         ]
                     },
-                    "length": 895,
-                    "vocabulary": 147,
-                    "difficulty": 41.448,
-                    "volume": 6443.706748628546,
-                    "effort": 267078.75731715595,
-                    "bugs": 2.147902249542849,
-                    "time": 14837.708739841997
+                    "length": 758,
+                    "vocabulary": 122,
+                    "difficulty": 43.67,
+                    "volume": 5253.498901872668,
+                    "effort": 229420.29704477944,
+                    "bugs": 1.7511663006242228,
+                    "time": 12745.572058043303
                 },
                 "params": 12,
                 "line": 2,
-                "cyclomaticDensity": 15.789473684210526
+                "cyclomaticDensity": 17.796610169491526
             },
             "functions": [
                 {
@@ -5193,67 +5114,38 @@
                 {
                     "name": "<anonymous>.getConfigJSON",
                     "sloc": {
-                        "logical": 35,
-                        "physical": 43
+                        "logical": 20,
+                        "physical": 25
                     },
                     "cyclomatic": 3,
                     "halstead": {
                         "operators": {
                             "distinct": 11,
-                            "total": 145,
+                            "total": 82,
                             "identifiers": [
                                 "var",
                                 "=",
                                 "{}",
-                                ".",
+                                ":",
                                 "()",
+                                ".",
                                 "[]",
                                 "for",
                                 "<",
                                 "++ (postfix)",
-                                ":",
                                 "return"
                             ]
                         },
                         "operands": {
-                            "distinct": 52,
-                            "total": 158,
+                            "distinct": 25,
+                            "total": 84,
                             "identifiers": [
                                 "configJSON",
                                 "<anonymous>",
-                                "prop",
-                                "ID",
+                                "properties",
                                 "this",
                                 "_dataLineChart",
-                                "_ID",
-                                "title",
-                                "_title",
-                                "type",
-                                "_type",
-                                "height",
-                                "_height",
-                                "width",
-                                "_width",
-                                "enableLegend",
-                                "_enableLegend",
-                                "legendOnPoint",
-                                "_legendOnPoint",
-                                "backgroundColor",
-                                "_backgroundColor",
-                                "viewFinder",
-                                "_viewFinder",
-                                "horizontalGrid",
-                                "_horizontalGrid",
-                                "verticalGrid",
-                                "_verticalGrid",
-                                "legend",
-                                "_legend",
                                 "getProperties",
-                                "xAxis",
-                                "_xAxis",
-                                "yAxis",
-                                "_yAxis",
-                                "properties",
                                 "flowProp",
                                 "flows",
                                 "_flows",
@@ -5266,6 +5158,8 @@
                                 "push",
                                 "records",
                                 "getData",
+                                "ID",
+                                "_ID",
                                 "j",
                                 "norrisRecordID",
                                 "value",
@@ -5273,17 +5167,17 @@
                                 "_yKey"
                             ]
                         },
-                        "length": 303,
-                        "vocabulary": 63,
-                        "difficulty": 16.71153846153846,
-                        "volume": 1811.1158168204747,
-                        "effort": 30266.531631096008,
-                        "bugs": 0.6037052722734916,
-                        "time": 1681.4739795053338
+                        "length": 166,
+                        "vocabulary": 36,
+                        "difficulty": 18.48,
+                        "volume": 858.2075502394238,
+                        "effort": 15859.675528424552,
+                        "bugs": 0.28606918341314125,
+                        "time": 881.0930849124751
                     },
                     "params": 0,
                     "line": 166,
-                    "cyclomaticDensity": 8.571428571428571
+                    "cyclomaticDensity": 15
                 }
             ],
             "dependencies": [
@@ -5303,24 +5197,24 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 101.85393290635722,
-            "loc": 11.5,
+            "maintainability": 105.2032267974679,
+            "loc": 10,
             "cyclomatic": 3,
-            "effort": 5298.890392004668,
+            "effort": 3858.204781737523,
             "params": 1.2,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/graph/lineChart.js"
         },
         {
             "aggregate": {
                 "sloc": {
-                    "logical": 142,
-                    "physical": 223
+                    "logical": 128,
+                    "physical": 207
                 },
                 "cyclomatic": 23,
                 "halstead": {
                     "operators": {
                         "distinct": 22,
-                        "total": 447,
+                        "total": 392,
                         "identifiers": [
                             "var",
                             "=",
@@ -5347,8 +5241,8 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 126,
-                        "total": 499,
+                        "distinct": 103,
+                        "total": 432,
                         "identifiers": [
                             "\"use strict\"",
                             "Graph",
@@ -5441,29 +5335,6 @@
                             "graphChanged",
                             "getConfigJSON",
                             "configJSON",
-                            "_title",
-                            "type",
-                            "_type",
-                            "height",
-                            "_height",
-                            "width",
-                            "_width",
-                            "enableLegend",
-                            "_enableLegend",
-                            "legendOnPoint",
-                            "_legendOnPoint",
-                            "latitude",
-                            "_latitude",
-                            "longitude",
-                            "_longitude",
-                            "mapType",
-                            "_mapType",
-                            "mapWidth",
-                            "_mapWidth",
-                            "mapHeight",
-                            "_mapHeight",
-                            "legend",
-                            "_legend",
                             "flowProp",
                             "flowData",
                             "getData",
@@ -5478,17 +5349,17 @@
                             "exports"
                         ]
                     },
-                    "length": 946,
-                    "vocabulary": 148,
-                    "difficulty": 43.56349206349206,
-                    "volume": 6820.142883884986,
-                    "effort": 297109.24039400544,
-                    "bugs": 2.2733809612949956,
-                    "time": 16506.068910778078
+                    "length": 824,
+                    "vocabulary": 125,
+                    "difficulty": 46.13592233009709,
+                    "volume": 5739.806250561561,
+                    "effort": 264811.25536571397,
+                    "bugs": 1.913268750187187,
+                    "time": 14711.73640920633
                 },
                 "params": 16,
                 "line": 2,
-                "cyclomaticDensity": 16.19718309859155
+                "cyclomaticDensity": 17.96875
             },
             "functions": [
                 {
@@ -6088,65 +5959,38 @@
                 {
                     "name": "<anonymous>.getConfigJSON",
                     "sloc": {
-                        "logical": 35,
-                        "physical": 42
+                        "logical": 21,
+                        "physical": 26
                     },
                     "cyclomatic": 3,
                     "halstead": {
                         "operators": {
                             "distinct": 11,
-                            "total": 144,
+                            "total": 89,
                             "identifiers": [
                                 "var",
                                 "=",
                                 "{}",
-                                ".",
+                                ":",
                                 "()",
+                                ".",
                                 "[]",
                                 "for",
                                 "<",
                                 "++ (postfix)",
-                                ":",
                                 "return"
                             ]
                         },
                         "operands": {
-                            "distinct": 52,
-                            "total": 159,
+                            "distinct": 27,
+                            "total": 92,
                             "identifiers": [
                                 "configJSON",
                                 "<anonymous>",
-                                "prop",
-                                "ID",
+                                "properties",
                                 "this",
                                 "_dataMapChart",
-                                "_ID",
-                                "title",
-                                "_title",
-                                "type",
-                                "_type",
-                                "height",
-                                "_height",
-                                "width",
-                                "_width",
-                                "enableLegend",
-                                "_enableLegend",
-                                "legendOnPoint",
-                                "_legendOnPoint",
-                                "latitude",
-                                "_latitude",
-                                "longitude",
-                                "_longitude",
-                                "mapType",
-                                "_mapType",
-                                "mapWidth",
-                                "_mapWidth",
-                                "mapHeight",
-                                "_mapHeight",
-                                "legend",
-                                "_legend",
                                 "getProperties",
-                                "properties",
                                 "flowProp",
                                 "flows",
                                 "_flows",
@@ -6159,6 +6003,8 @@
                                 "push",
                                 "records",
                                 "getData",
+                                "ID",
+                                "_ID",
                                 "j",
                                 "norrisRecordID",
                                 "markerID",
@@ -6168,17 +6014,17 @@
                                 "_longitudeKey"
                             ]
                         },
-                        "length": 303,
-                        "vocabulary": 63,
-                        "difficulty": 16.81730769230769,
-                        "volume": 1811.1158168204747,
-                        "effort": 30458.091957875095,
-                        "bugs": 0.6037052722734916,
-                        "time": 1692.1162198819497
+                        "length": 181,
+                        "vocabulary": 38,
+                        "difficulty": 18.74074074074074,
+                        "volume": 949.8748799332889,
+                        "effort": 17801.358860972006,
+                        "bugs": 0.31662495997776297,
+                        "time": 988.9643811651115
                     },
                     "params": 0,
                     "line": 181,
-                    "cyclomaticDensity": 8.571428571428571
+                    "cyclomaticDensity": 14.285714285714285
                 }
             ],
             "dependencies": [
@@ -6198,10 +6044,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 104.46286490403483,
-            "loc": 10.166666666666666,
+            "maintainability": 107.36337601016889,
+            "loc": 9,
             "cyclomatic": 2.8333333333333335,
-            "effort": 4446.998490484263,
+            "effort": 3392.270732409006,
             "params": 1.3333333333333333,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/graph/mapChart.js"
         },
@@ -6209,13 +6055,13 @@
             "aggregate": {
                 "sloc": {
                     "logical": 124,
-                    "physical": 197
+                    "physical": 196
                 },
                 "cyclomatic": 24,
                 "halstead": {
                     "operators": {
                         "distinct": 22,
-                        "total": 370,
+                        "total": 369,
                         "identifiers": [
                             "var",
                             "=",
@@ -6243,7 +6089,7 @@
                     },
                     "operands": {
                         "distinct": 97,
-                        "total": 403,
+                        "total": 402,
                         "identifiers": [
                             "\"use strict\"",
                             "Graph",
@@ -6344,13 +6190,13 @@
                             "exports"
                         ]
                     },
-                    "length": 773,
+                    "length": 771,
                     "vocabulary": 119,
-                    "difficulty": 45.701030927835056,
-                    "volume": 5329.69413103704,
-                    "effort": 243572.51631842475,
-                    "bugs": 1.77656471034568,
-                    "time": 13531.806462134708
+                    "difficulty": 45.58762886597938,
+                    "volume": 5315.904495510425,
+                    "effort": 242339.4812283206,
+                    "bugs": 1.7719681651701416,
+                    "time": 13463.304512684477
                 },
                 "params": 12,
                 "line": 2,
@@ -6858,32 +6704,32 @@
                     "name": "<anonymous>.getConfigJSON",
                     "sloc": {
                         "logical": 29,
-                        "physical": 34
+                        "physical": 33
                     },
                     "cyclomatic": 6,
                     "halstead": {
                         "operators": {
                             "distinct": 13,
-                            "total": 103,
+                            "total": 102,
                             "identifiers": [
                                 "var",
                                 "=",
                                 "{}",
-                                ".",
+                                ":",
                                 "()",
+                                ".",
                                 "[]",
                                 "for",
                                 "<",
                                 "++ (postfix)",
                                 "if",
                                 "!==",
-                                ":",
                                 "return"
                             ]
                         },
                         "operands": {
                             "distinct": 30,
-                            "total": 105,
+                            "total": 104,
                             "identifiers": [
                                 "configJSON",
                                 "<anonymous>",
@@ -6917,13 +6763,13 @@
                                 "value"
                             ]
                         },
-                        "length": 208,
+                        "length": 206,
                         "vocabulary": 43,
-                        "difficulty": 22.75,
-                        "volume": 1128.6630689780363,
-                        "effort": 25677.084819250325,
-                        "bugs": 0.3762210229926788,
-                        "time": 1426.5047121805737
+                        "difficulty": 22.533333333333335,
+                        "volume": 1117.8105394686322,
+                        "effort": 25187.99748935985,
+                        "bugs": 0.37260351315621076,
+                        "time": 1399.333193853325
                     },
                     "params": 0,
                     "line": 163,
@@ -6947,10 +6793,10 @@
                     "type": "CommonJS"
                 }
             ],
-            "maintainability": 103.60278752035194,
+            "maintainability": 103.63899038830536,
             "loc": 10.6,
             "cyclomatic": 3.3,
-            "effort": 4644.790771257127,
+            "effort": 4595.882038268079,
             "params": 1.2,
             "path": "/home/travis/build/DeltaGraphs/norris-nrti/lib/businessTier/graph/table.js"
         },
@@ -18617,9 +18463,9 @@
     ],
     "changeCost": 21.875,
     "coreSize": 37.5,
-    "loc": 10.407851957070708,
-    "cyclomatic": 4.2710306186868685,
-    "effort": 8205.826724634973,
+    "loc": 10.274644886363635,
+    "cyclomatic": 4.273871527777778,
+    "effort": 8073.161582172218,
     "params": 1.1196338383838387,
-    "maintainability": 105.20505523953724
+    "maintainability": 105.49731844222823
 }

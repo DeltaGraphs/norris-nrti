@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">59.56</p>
+      <p class="stat">61.52</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">209</p>
+      <p class="stat">191</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">41.45</p>
+      <p class="stat">43.67</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">2.15</p>
+      <p class="stat">1.75</p>
     </div>
   </div>
 </div>
@@ -255,25 +255,7 @@ LineChart.prototype.getProperties = function(){
 
 //return JSON with graph properties, flows properties and data
 LineChart.prototype.getConfigJSON = function(){
-	var configJSON={};
-	var prop={};
-	prop.ID=this._dataLineChart._ID;
-	prop.title=this._dataLineChart._title;
-	prop.type=this._dataLineChart._type;
-	prop.height=this._dataLineChart._height;
-	prop.width=this._dataLineChart._width;
-	prop.enableLegend=this._dataLineChart._enableLegend;
-	prop.legendOnPoint=this._dataLineChart._legendOnPoint;
-	prop.backgroundColor=this._dataLineChart._backgroundColor;
-	prop.viewFinder=this._dataLineChart._viewFinder;
-	prop.horizontalGrid=this._dataLineChart._horizontalGrid;
-	prop.verticalGrid=this._dataLineChart._verticalGrid;
-	prop.legend=this._dataLineChart._legend.getProperties();
-	prop.xAxis=this._dataLineChart._xAxis.getProperties();
-	prop.yAxis=this._dataLineChart._yAxis.getProperties();
-	configJSON.properties=prop;
-	
-
+	var configJSON={properties: this._dataLineChart.getProperties()};
 	var flowProp=[];
 	var flows=this._flows.length;
 	configJSON.data=[];
