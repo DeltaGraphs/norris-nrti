@@ -37,7 +37,8 @@ angular.module('norris-nrti')
 
 	// funzione che connette il socket all'url e chiama la funzione listenOnEvent
 	this.socketConnection = function(){
-		socket = SocketServicesFactory.build(url);
+		socket = SocketServicesFactory.build($scope.url);
+		$scope.socket = socket;
 		this.listenOnEvents();
 	};
 
@@ -58,12 +59,10 @@ angular.module('norris-nrti')
 	};
 
 	/*this.previous = function(id){
-		console.log('prev');
 		$location.path('/page/' + id);
 	};
 
 	this.next = function(id){
-		console.log('next');
 		$location.path('/page/' + id);
 	};*/
 
@@ -90,6 +89,9 @@ angular.module('norris-nrti')
 		}
 		return array;
 	}
+	// variabili e funzioni a disposizione dei test
+	$scope.socket = socket;
+	$scope.url = url;
 
 	// vengono rese disponibili alcune funzioni sullo $scope
 	$scope.graphs = [];
