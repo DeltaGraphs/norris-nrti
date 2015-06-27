@@ -35,10 +35,8 @@ describe('TableModel', function() {
     
     var defaultLegend = new LegendModel();
     var defaultAppearance = {
-        border: {
-            color: '#000000',
-            width: 1
-        },
+        horizontalGrid: {'color': '#000000','width': 1},
+        verticalGrid: {'color': '#000000','width': 1},
         rowEven: {
             textColor: [],
             backgroundColor: []
@@ -53,10 +51,8 @@ describe('TableModel', function() {
         }
     };
     var default2colAppearance = {
-        border: {
-            color: '#000000',
-            width: 1
-        },
+        horizontalGrid: {'color': '#000000','width': 1},
+        verticalGrid: {'color': '#000000','width': 1},
         rowEven: {
             textColor: ['#000000', '#000000'],
             backgroundColor: ['#FFFFFF', '#FFFFFF']
@@ -72,10 +68,8 @@ describe('TableModel', function() {
     };
 
     var example2colAppearance = {
-        border: {
-            color: '#111111',
-            width: 1
-        },
+        horizontalGrid: {'color': '#111111','width': 1},
+        verticalGrid: {'color': '#111111','width': 1},
         rowEven: {
             textColor: ['#222222', '#333333'],
             backgroundColor: ['#444444', '#555555']
@@ -91,10 +85,8 @@ describe('TableModel', function() {
     };
 
     var  example2colAppearanceSV = {
-        border: {
-            color: '#111111',
-            width: 1
-        },
+        horizontalGrid: {'color': '#111111','width': 1},
+        verticalGrid: {'color': '#111111','width': 1},
         rowEven: {
             textColor: '#222222',
             backgroundColor: '#444444'
@@ -110,10 +102,8 @@ describe('TableModel', function() {
     };
 
     var  example2colAppearanceSVspread = {
-        border: {
-            color: '#111111',
-            width: 1
-        },
+        horizontalGrid: {'color': '#111111','width': 1},
+        verticalGrid: {'color': '#111111','width': 1},
         rowEven: {
             textColor: ['#222222', '#222222'],
             backgroundColor: ['#444444', '#444444']
