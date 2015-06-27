@@ -97,6 +97,21 @@ describe('BarChartView', function(){
 	describe('#setData', function() {
 
   		var json = {
+  			'title' : 'graficonuovo',
+			'height' : 400,
+			'width' : 400,
+			'enableLegend' : true,
+			'legend' : {position: 'E'},
+			'socketURL' : 'http://example.com',
+			'xAxis' : { name: 'asseX' },
+			'yAxis' : { name: 'asseY' },
+			'barOrientation' : 'V',
+			'headers' : ['colonna1'],
+			'backgroundColor' : '#F0F',
+			'sortable' : false,
+			'groupingControl' : false,
+			'legendOnPoint' : true,
+			'grid' : false,
 			'flows' : [{'ID' : 'f1'},{ 'ID' : 'f2'},{'ID' : 'f3'}]
 		};
 
