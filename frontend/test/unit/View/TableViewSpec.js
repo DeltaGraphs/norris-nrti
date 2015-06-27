@@ -56,7 +56,7 @@ describe('TableView', function(){
 			var tag = element.find('table');
 			expect(tag).toBeDefined();
 			table.updateParameters(json);
-			scope.changedP = !scope.changedP;
+			scope.changed = !scope.changed;
 		});
 	});
 

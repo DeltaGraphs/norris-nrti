@@ -68,6 +68,7 @@ describe('BarChartView', function(){
 			expect(svgH).toBeDefined();
 			bar.updateParameters(json);
 			scope.changedP = !scope.changedP;
+    		scope.$digest();
 			var nvd3V = element.find('nvd3-multi-bar-chart');
 			expect(nvd3V).toBeDefined();
 			var svgV = element.find('svg');
