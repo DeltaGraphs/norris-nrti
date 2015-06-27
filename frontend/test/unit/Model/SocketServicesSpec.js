@@ -25,7 +25,7 @@ describe('SocketServicesFactory', function(){
 	beforeEach(function(){
 		angular.mock.module('norris-nrti');
 		
-		/*module(function($provide){
+		module(function($provide){
 			$provide.factory('SocketServicesFactory', function($rootScope){
 				
 				function SocketServices() {
@@ -58,22 +58,14 @@ describe('SocketServicesFactory', function(){
 				return SocketServicesFactory;
 
 			});
-		});*/
+		});
 
 		inject(function($rootScope, $controller, $injector){
 			SocketServicesFactory = $injector.get('SocketServicesFactory');
 		});
-	});
+	});	
 
 	describe('#on', function(){
-
-		beforeEach(function(){
-			socket = SocketServicesFactory.build('http://norris-nrti-dev.herokuapp.com/norris');
-		});
-
-	});
-
-	/*describe('#on', function(){
 
 		var flag = false;
 
@@ -111,6 +103,6 @@ describe('SocketServicesFactory', function(){
 		it('work fine', function(){
 			expect(flag).toEqual(true);
 		});
-	});*/
+	});
 
 });
