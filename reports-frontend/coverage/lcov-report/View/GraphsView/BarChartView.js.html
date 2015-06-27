@@ -12,13 +12,13 @@
     </style>
 </head>
 <body>
-<div class="header low">
+<div class="header medium">
     <h1>Code coverage report for <span class="entity">View/GraphsView/BarChartView.js</span></h1>
     <h2>
-        Statements: <span class="metric">47.37% <small>(54 / 114)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Branches: <span class="metric">30% <small>(12 / 40)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Functions: <span class="metric">41.18% <small>(7 / 17)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">47.37% <small>(54 / 114)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">58.77% <small>(67 / 114)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">40% <small>(16 / 40)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">52.94% <small>(9 / 17)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">58.77% <small>(67 / 114)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
     <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">View/GraphsView/</a> &#187; BarChartView.js</div>
@@ -323,7 +323,7 @@
 <span class="cline-any cline-yes">3</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -446,13 +446,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -476,19 +476,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">3</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -501,7 +501,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -562,8 +562,8 @@ angular.module('norris-nrti')
             scope.$parent.$watch('changedD', function(newValue, oldValue){
                 if(newValue !== oldValue){
                     scope.setData(); // richiama la funzione che imposta i dati ad ogni cambiamento dei dati dei flussi del grafico
-                    <span class="missing-if-branch" title="if path not taken" >I</span>if (scope.$parent.barChart.getLegend() !== null){
-<span class="cstat-no" title="statement not covered" >                        scope.legend(); </span> // richiama la funzione che crea la legenda relativa al grafico
+                    <span class="missing-if-branch" title="else path not taken" >E</span>if (scope.$parent.barChart.getLegend() !== null){
+                        scope.legend();  // richiama la funzione che crea la legenda relativa al grafico
                     }
                 }
             }, true);
@@ -684,51 +684,51 @@ angular.module('norris-nrti')
             };
 &nbsp;
             // posiziona la legenda a nord, est, sud, ovest, nord-est, nord-ovest, sud-est o sud-ovest del grafico
-<span class="fstat-no" title="function not covered" >            function changePosition(chart,parent){</span>
+            function changePosition(chart,parent){
 &nbsp;
-<span class="cstat-no" title="statement not covered" >                switch (scope.$parent.barChart.getLegend().getPosition()) {</span>
-                    case 'N':
+                switch (scope.$parent.barChart.getLegend().getPosition()) {
+<span class="branch-0 cbranch-no" title="branch not covered" >                    case 'N':</span>
 <span class="cstat-no" title="statement not covered" >                        parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.barChart.getHeight() + 'px; right: -' + (scope.$parent.barChart.getWidth()/2) + 'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');</span>
 <span class="cstat-no" title="statement not covered" >                        break;</span>
                     case 'E':
-<span class="cstat-no" title="statement not covered" >                        parent.setAttribute('style', 'float: left; position: relative; top: -' + (scope.$parent.barChart.getHeight()/2) + 'px; right: -' + scope.$parent.barChart.getWidth() + 'px;  background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');</span>
-<span class="cstat-no" title="statement not covered" >                        break;</span>
-                    case 'S':
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + (scope.$parent.barChart.getHeight()/2) + 'px; right: -' + scope.$parent.barChart.getWidth() + 'px;  background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
+                        break;
+<span class="branch-2 cbranch-no" title="branch not covered" >                    case 'S':</span>
 <span class="cstat-no" title="statement not covered" >                        parent.setAttribute('style', 'float: left; position: relative; right: -' + (scope.$parent.barChart.getWidth()/2) + 'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');</span>
 <span class="cstat-no" title="statement not covered" >                        break;</span>
-                    case 'W':
+<span class="branch-3 cbranch-no" title="branch not covered" >                    case 'W':</span>
 <span class="cstat-no" title="statement not covered" >                        parent.setAttribute('style', 'float: left; position: relative; top: -' + (scope.$parent.barChart.getHeight()/2) + 'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');</span>
 <span class="cstat-no" title="statement not covered" >                        break;</span>
-                    case 'NE':
+<span class="branch-4 cbranch-no" title="branch not covered" >                    case 'NE':</span>
 <span class="cstat-no" title="statement not covered" >                        parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.barChart.getHeight() + 'px; right: -' + scope.$parent.barChart.getWidth() + 'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');</span>
 <span class="cstat-no" title="statement not covered" >                        break;</span>
-                    case 'NW':
+<span class="branch-5 cbranch-no" title="branch not covered" >                    case 'NW':</span>
 <span class="cstat-no" title="statement not covered" >                        parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.barChart.getHeight() + 'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');</span>
 <span class="cstat-no" title="statement not covered" >                        break;</span>
-                    case 'SE':
+<span class="branch-6 cbranch-no" title="branch not covered" >                    case 'SE':</span>
 <span class="cstat-no" title="statement not covered" >                        parent.setAttribute('style', 'float: left; position: relative; right: -' + scope.$parent.barChart.getWidth() + 'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');</span>
 <span class="cstat-no" title="statement not covered" >                        break;</span>
-                    case 'SW':
+<span class="branch-7 cbranch-no" title="branch not covered" >                    case 'SW':</span>
 <span class="cstat-no" title="statement not covered" >                        parent.setAttribute('style', 'float: left; position: relative; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');</span>
 <span class="cstat-no" title="statement not covered" >                        break;</span>
                 }
             }
 &nbsp;
             // crea la legenda del grafico
-            scope.legend = <span class="fstat-no" title="function not covered" >function() {</span>
-<span class="cstat-no" title="statement not covered" >                var chart = element.children()[1];</span>
+            scope.legend = function() {
+                var chart = element.children()[1];
 &nbsp;
-<span class="cstat-no" title="statement not covered" >                if (element.children()[2]){</span>
+                <span class="missing-if-branch" title="if path not taken" >I</span>if (element.children()[2]){
 <span class="cstat-no" title="statement not covered" >                    element.children()[2].remove();</span>
                 }
-<span class="cstat-no" title="statement not covered" >                var parent = document.createElement('div');</span>
+                var parent = document.createElement('div');
 &nbsp;
-<span class="cstat-no" title="statement not covered" >                changePosition(chart,parent);</span>
+                changePosition(chart,parent);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >                if (scope.$parent.barChart.getLegend() !== null) {</span>
-<span class="cstat-no" title="statement not covered" >                    var div = document.createElement('div');</span>
-<span class="cstat-no" title="statement not covered" >                    for (var i=0; i&lt;scope.$parent.barChart.getFlowList().length; i++) {</span>
-<span class="cstat-no" title="statement not covered" >                        if (scope.$parent.barChart.getFlowList()[i].flow.getData().length){</span>
+                <span class="missing-if-branch" title="else path not taken" >E</span>if (scope.$parent.barChart.getLegend() !== null) {
+                    var div = document.createElement('div');
+                    for (var i=0; i&lt;scope.$parent.barChart.getFlowList().length; i++) {
+                        <span class="missing-if-branch" title="if path not taken" >I</span>if (scope.$parent.barChart.getFlowList()[i].flow.getData().length){
 <span class="cstat-no" title="statement not covered" >                            var square = document.createElement('div');</span>
 <span class="cstat-no" title="statement not covered" >                            square.setAttribute('style', 'float: left; height: 15px; width: 15px; background-color: ' + scope.colorArray[i] + ';');</span>
 <span class="cstat-no" title="statement not covered" >                            var spanText = document.createElement('div');</span>
@@ -741,7 +741,7 @@ angular.module('norris-nrti')
                         }
                     }
                 }
-<span class="cstat-no" title="statement not covered" >                element.append(parent);</span>
+                element.append(parent);
             };
         }
     };
@@ -750,7 +750,7 @@ angular.module('norris-nrti')
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Jun 27 2015 11:49:53 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Jun 27 2015 11:57:50 GMT+0000 (UTC)</div>
 </div>
 <script src="../../prettify.js"></script>
 <script>
