@@ -27,7 +27,7 @@
 
 
 angular.module('norris-nrti')
-.directive('tableChart', function($compile, $filter){
+.directive('tableChart', function($compile){
 	return { // attributo della direttiva
 		restrict: 'E', // direttiva di tipo elemento (tag)
 		replace: false,
@@ -60,8 +60,13 @@ angular.module('norris-nrti')
                 var noBorder = 'class="table-condensed table-striped"';
                 var headers = 'color: #000; background-color: #FFF;';
                 
-                if (scope.$parent.table.getAppearance().border !== undefined) {
-                    border = 'border:' + scope.$parent.table.getAppearance().border.width + 'px solid ' + scope.$parent.table.getAppearance().border.color + ';';
+                if (scope.$parent.table.getAppearance().horizontalGrid !== undefined) {
+                    border = 'border-top:' + scope.$parent.table.getAppearance().horizontalGrid.width + 'px solid ' + scope.$parent.table.getAppearance().horizontalGrid.color + ';';
+                    border = border + 'border-bottom:' + scope.$parent.table.getAppearance().horizontalGrid.width + 'px solid ' + scope.$parent.table.getAppearance().horizontalGrid.color + ';';
+                }
+                if (scope.$parent.table.getAppearance().verticalGrid !== undefined) {
+                    border = border + 'border-left:' + scope.$parent.table.getAppearance().verticalGrid.width + 'px solid ' + scope.$parent.table.getAppearance().verticalGrid.color + ';';
+                    border = border + 'border-right:' + scope.$parent.table.getAppearance().verticalGrid.width + 'px solid ' + scope.$parent.table.getAppearance().verticalGrid.color + ';';
                 }
                 var tableStyle = 'style="' + border + ' ';
                 var str = scope.url.split('/');
@@ -86,7 +91,7 @@ angular.module('norris-nrti')
                     if (scope.$parent.table.getAppearance().headers !== undefined) {
                         headers = 'color:' + scope.$parent.table.getAppearance().headers.textColor[i] + '; background-color:' + scope.$parent.table.getAppearance().headers.backgroundColor[i] + '; ';
                     }
-                    if (scope.$parent.table.getAppearance().border !== undefined) {
+                    if (scope.$parent.table.getAppearance().horizontalGrid !== undefined || scope.$parent.table.getAppearance().verticalGrid !== undefined) {
                         table = table + tableStyle + headers + ' " ';
                     } else {
                         table = table + noBorder + 'style="' + headers + ' " ';
