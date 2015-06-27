@@ -3,9 +3,6 @@
 	<file name="test/unit/Controller/PageControllerSpec.js">
 		<error line="40" column="69" severity="warning" message="Missing semicolon." source="jshint.W033" />
 	</file>
-	<file name="test/unit/Controller/PagesListControllerSpec.js">
-		<error line="39" column="13" severity="warning" message="&apos;url&apos; is not defined." source="jshint.W117" />
-	</file>
 	<file name="test/unit/Controller/RootControllerSpec.js">
 		<error line="18" column="5" severity="error" message="Missing &quot;use strict&quot; statement." source="jshint.E007" />
 		<error line="24" column="9" severity="warning" message="&apos;controller&apos; is not defined." source="jshint.W117" />
