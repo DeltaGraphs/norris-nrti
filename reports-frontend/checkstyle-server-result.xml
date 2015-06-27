@@ -10,6 +10,13 @@
 	<file name="test/unit/Model/UrlProviderSpec.js">
 		<error line="20" column="5" severity="warning" message="Unnecessary directive &quot;use strict&quot;." source="jshint.W034" />
 	</file>
+	<file name="test/unit/View/BarChartViewSpec.js">
+		<error line="126" column="13" severity="warning" message="&apos;json2&apos; is defined but never used." source="jshint.W098" />
+		<error line="132" column="13" severity="warning" message="&apos;json3&apos; is defined but never used." source="jshint.W098" />
+		<error line="138" column="13" severity="warning" message="&apos;json4&apos; is defined but never used." source="jshint.W098" />
+		<error line="143" column="13" severity="warning" message="&apos;json5&apos; is defined but never used." source="jshint.W098" />
+		<error line="149" column="13" severity="warning" message="&apos;json6&apos; is defined but never used." source="jshint.W098" />
+	</file>
 	<file name="test/unit/View/PageController.js">
 		<error line="20" column="5" severity="warning" message="&apos;mockPageController&apos; is defined but never used." source="jshint.W098" />
 	</file>
