@@ -15,10 +15,10 @@
 <div class="header low">
     <h1>Code coverage report for <span class="entity">Controller/PagesControllers/PagesListController.js</span></h1>
     <h2>
-        Statements: <span class="metric">5.26% <small>(1 / 19)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">45.45% <small>(10 / 22)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Branches: <span class="metric">100% <small>(0 / 0)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Functions: <span class="metric">0% <small>(0 / 6)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">5.26% <small>(1 / 19)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">16.67% <small>(1 / 6)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">45.45% <small>(10 / 22)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
     <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">Controller/PagesControllers/</a> &#187; PagesListController.js</div>
@@ -78,7 +78,11 @@
 51
 52
 53
-54</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+54
+55
+56
+57
+58</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -99,23 +103,20 @@
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -124,12 +125,19 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*jshint node: true */
 'use strict';
@@ -150,21 +158,22 @@
 */
 &nbsp;
 angular.module('norris-nrti')
-.controller('PagesListController', ['$scope', '$location', 'PagesList', 'SocketServicesFactory', 'UrlProvider', <span class="fstat-no" title="function not covered" >function($scope, $location, PagesList, SocketServicesFactory, UrlProvider){</span>
+.controller('PagesListController', ['$scope', '$location', 'PagesList', 'SocketServicesFactory', 'UrlProvider', function($scope, $location, PagesList, SocketServicesFactory, UrlProvider){
 &nbsp;
-<span class="cstat-no" title="statement not covered" >	var socket;</span>
-<span class="cstat-no" title="statement not covered" >	var pagesList;</span>
+	var socket;
+	var pagesList;
 &nbsp;
-<span class="cstat-no" title="statement not covered" >	var url = UrlProvider.prototype.getUrl(); </span>// recupera l'url a cui deve connettersi il socket
+	var url = UrlProvider.prototype.getUrl(); // recupera l'url a cui deve connettersi il socket
 &nbsp;
 	// funzione che connette il socket all'url e chiama la funzione listenOnEvent
-<span class="cstat-no" title="statement not covered" >	this.socketConnection = <span class="fstat-no" title="function not covered" >function() {</span></span>
-<span class="cstat-no" title="statement not covered" >		socket = SocketServicesFactory.build(url);</span>
+	this.socketConnection = <span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >		socket = SocketServicesFactory.build($scope.url);</span>
+<span class="cstat-no" title="statement not covered" >		$scope.socket = socket;</span>
 <span class="cstat-no" title="statement not covered" >		this.listenOnEvents();</span>
 	};
 &nbsp;
 	// funzione che mette in ascolto il socket su alcuni eventi
-<span class="cstat-no" title="statement not covered" >	this.listenOnEvents = <span class="fstat-no" title="function not covered" >function() {</span></span>
+	this.listenOnEvents = <span class="fstat-no" title="function not covered" >function() {</span>
 <span class="cstat-no" title="statement not covered" >		socket.on('configPageList', <span class="fstat-no" title="function not covered" >function(info){</span> // ascolta sull'evento 'configPageList' (ricevuto come risposta alla connessione)</span>
 <span class="cstat-no" title="statement not covered" >			pagesList = new PagesList(info); </span>// crea una nuova PagesList
 <span class="cstat-no" title="statement not covered" >			$scope.pagesList = pagesList.getPagesList(); </span>// rende disponibile la lista delle pagine sullo scope
@@ -179,17 +188,20 @@ angular.module('norris-nrti')
 		});
 &nbsp;
 	};
+	// variabili e funzioni a disposizione dei test
+	$scope.socket = socket;
+	$scope.url = url;
 &nbsp;
 	// vengono rese disponibili alcune funzioni sullo $scope
-<span class="cstat-no" title="statement not covered" >	$scope.socketConnection = this.socketConnection;</span>
-<span class="cstat-no" title="statement not covered" >	$scope.listenOnEvents = this.listenOnEvents;</span>
+	$scope.socketConnection = this.socketConnection;
+	$scope.listenOnEvents = this.listenOnEvents;
 	
 }]);</pre></td></tr>
 </table></pre>
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Jun 27 2015 10:06:35 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Jun 27 2015 10:12:33 GMT+0000 (UTC)</div>
 </div>
 <script src="../../prettify.js"></script>
 <script>
