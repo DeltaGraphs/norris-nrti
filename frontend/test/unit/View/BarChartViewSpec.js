@@ -78,6 +78,8 @@ describe('BarChartView', function(){
 		};
 
 		it('works fine', function() {
+			var legend1 = element.children()[2];
+			expect(legend1).not.toBeDefined();
 			var barChart = element.find('bar-chart');
 			expect(barChart).toBeDefined();
 			var nvd3H = element.find('nvd3-multi-bar-horizontal-chart');
@@ -87,6 +89,9 @@ describe('BarChartView', function(){
 			scope.barChart.updateParameters(json);
 			scope.changedP = !scope.changedP;
     		scope.$digest();
+    		var legend2 = element.children()[2];
+			expect(legend2).toBeDefined();
+			expect(legend2.getAttribute('style')).toBe('float: left; position: relative; top: -' + (scope.barChart.getHeight()/2) + 'px; right: -' + scope.barChart.getWidth() + 'px;  background-color: ' + scope.$parent.getLegend().getBackgroundColor() + ';');
 			var nvd3V = element.find('nvd3-multi-bar-chart');
 			expect(nvd3V).toBeDefined();
 			var svgV = element.find('svg');
@@ -110,7 +115,7 @@ describe('BarChartView', function(){
 
 	});
 
-	describe('#setData', function() {
+	describe('#setLegend', function() {
 
   		var json1 = {
 			'enableLegend' : true,
@@ -151,21 +156,39 @@ describe('BarChartView', function(){
 			scope.barChart.updateParameters(json1);
 			scope.changedD = !scope.changedD;
     		scope.$digest();
+    		var legend1 = element.children()[2];
+			expect(legend1).toBeDefined();
+			expect(legend1.getAttribute('style')).toBe('float: left; position: relative; right: -' + (scope.barChart.getWidth()/2) + 'px; background-color: ' + scope.getLegend().getBackgroundColor() + ';');
     		scope.barChart.updateParameters(json2);
 			scope.changedD = !scope.changedD;
     		scope.$digest();
+    		var legend2 = element.children()[2];
+			expect(legend2).toBeDefined();
+			expect(legend2.getAttribute('style')).toBe('float: left; position: relative; right: -' + scope.barChart.getWidth() + 'px; background-color: ' + scope.barChart.getLegend().getBackgroundColor() + ';');
     		scope.barChart.updateParameters(json3);
 			scope.changedD = !scope.changedD;
     		scope.$digest();
+    		var legend3 = element.children()[2];
+			expect(legend3).toBeDefined();
+			expect(legend3.getAttribute('style')).toBe('float: left; position: relative; background-color: ' + scope.barChart.getLegend().getBackgroundColor() + ';');
     		scope.barChart.updateParameters(json4);
 			scope.changedD = !scope.changedD;
     		scope.$digest();
+    		var legend4 = element.children()[2];
+			expect(legend4).toBeDefined();
+			expect(legend4.getAttribute('style')).toBe('float: left; position: relative; top: -' + scope.barChart.getHeight() + 'px; background-color: ' + scope.barChart.getLegend().getBackgroundColor() + ';');
     		scope.barChart.updateParameters(json5);
 			scope.changedD = !scope.changedD;
     		scope.$digest();
+    		var legend5 = element.children()[2];
+			expect(legend5).toBeDefined();
+			expect(legend5.getAttribute('style')).toBe('float: left; position: relative; top: -' + (scope.barChart.getHeight()/2) + 'px; background-color: ' + scope.barChart.getLegend().getBackgroundColor() + ';');
     		scope.barChart.updateParameters(json6);
 			scope.changedD = !scope.changedD;
     		scope.$digest();
+    		var legend6 = element.children()[2];
+			expect(legend6).toBeDefined();
+			expect(legend6.getAttribute('style')).toBe('float: left; position: relative; top: -' + scope.barChart.getHeight() + 'px; right: -' + scope.barChart.getWidth() + 'px; background-color: ' + scope.barChart.getLegend().getBackgroundColor() + ';');
 		});
 
 	});
