@@ -24,14 +24,21 @@ describe('BarChartView', function(){
 
 	var html, element, scope, bar, BarChartFactory, controller;
 	var info = {
-		'properties' : {
-			'title' : 'prova1',
-			'barOrientation' : 'H',
+			'title' : 'graficonuovo',
+			'height' : 400,
+			'width' : 400,
 			'enableLegend' : false,
-			'legendOnPoint' : true,
-			'groupingControl' : true
-		}
-	};
+			'socketURL' : 'http://example.com',
+			'xAxis' : { name: 'asseX' },
+			'yAxis' : { name: 'asseY' },
+			'barOrientation' : 'H',
+			'headers' : ['colonna1'],
+			'backgroundColor' : '#F0F',
+			'sortable' : false,
+			'groupingControl' : true,
+			'legendOnPoint' : false,
+			'grid' : false
+		};
 	
 	beforeEach(inject(function($rootScope, $compile, $injector, $controller) {
 		BarChartFactory = $injector.get('BarChartFactory');
@@ -41,6 +48,7 @@ describe('BarChartView', function(){
     	html = angular.element('<bar-chart url="http://example/bar.com"></bar-chart>');
 
     	scope.barChart = bar;
+
     	bar.updateParameters(info);
 
     	element = $compile(html)(scope);
@@ -48,7 +56,8 @@ describe('BarChartView', function(){
 
   	}));
 
-  	describe('Constructor', function() {
+  	describe('#init', function() {
+
   		var json = {
 			'title' : 'graficonuovo',
 			'height' : 400,
@@ -58,14 +67,13 @@ describe('BarChartView', function(){
 			'socketURL' : 'http://example.com',
 			'xAxis' : { name: 'asseX' },
 			'yAxis' : { name: 'asseY' },
-			'barOrientation' : 'vertical',
+			'barOrientation' : 'V',
 			'headers' : ['colonna1'],
 			'backgroundColor' : '#F0F',
 			'sortable' : false,
 			'groupingControl' : false,
 			'legendOnPoint' : true,
-			'grid' : false,
-			'flows' : [{'ID' : 'f1'},{ 'ID' : 'f2'},{'ID' : 'f3'}]
+			'grid' : false
 		};
 
 		it('works fine', function() {
@@ -83,6 +91,20 @@ describe('BarChartView', function(){
 			var svgV = element.find('svg');
 			expect(svgV).toBeDefined();
 		});
+	});
+
+	describe('#setData', function() {
+
+  		var json = {
+			'flows' : [{'ID' : 'f1'},{ 'ID' : 'f2'},{'ID' : 'f3'}]
+		};
+
+		it('works fine', function() {
+			scope.barChart.updateParameters(json);
+			scope.changedD = !scope.changedD;
+    		scope.$digest();
+		});
+
 	});
 
 });
