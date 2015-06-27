@@ -31,8 +31,8 @@
 
 var TS=function(page){
 	var mapChart=page.createMapChart({
-		ID: 'map1',
-		title: 'APS',
+		ID: 'TSMapChart',
+		title: 'Test Bar Chart',
 		enableLegend: true,
 		legend: {
 		    position: 'NW',

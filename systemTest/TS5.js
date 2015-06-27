@@ -39,8 +39,8 @@
 
 var TS=function(page){
 	var table=page.createTable({
-	    ID: 'table1',
-	    title: 'Tabella',
+	    ID: 'TSTable',
+	    title: 'Test Table',
 	    sortable: true,
 	    maxItemsPage: 20,
 	    addRowOn: 'top',	//or bottom

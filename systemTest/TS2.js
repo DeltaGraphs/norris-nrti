@@ -41,7 +41,7 @@
 
 var TS=function(page){
     var barChart=page.createBarChart({
-	    ID: 'testBarChart',
+	    ID: 'TSBarChart',
 	    title: 'Test Bar Chart',
 	    enableLegend: true,
 	    legend: {

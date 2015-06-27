@@ -36,8 +36,8 @@
 
 var TS=function(page){
     var lineChart=page.createLineChart({
-	    ID: 'line1',
-	    title: 'LINEE',
+	    ID: 'TSLineChart',
+	    title: 'Test Line Chart',
 	    height: 600,
 	    width: 1000,
 	    enableLegend: true,
