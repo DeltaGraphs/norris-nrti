@@ -425,7 +425,11 @@ var table=page1.createTable({
         ordering: ['DESC','ASC']
     },
     appearance: {
-        border: {
+        horizontalGrid: {
+            color: '#00AA00', //#xxxxxx,
+            width: 1 // > 0
+        },
+        verticalGrid: {
             color: '#00AA00', //#xxxxxx,
             width: 1 // > 0
         },

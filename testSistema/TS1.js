@@ -23,6 +23,9 @@
 *   FBDE1.6.2   Il framework deve permettere all'utente sviluppatore di aggiornare la descrizione della pagina.
 *   FBDE1.6.3   Il framework deve permettere all'utente sviluppatore di aggiornare il massimo numero di grafici su una riga.
 *   FBDE1.6.4   Il framework deve permettere all'utente sviluppatore di aggiornare il massimo numero di grafici su una colonna. 
+*   FBOB2       Il framework deve dare la possibilità all'utente sviluppatore di creare grafici. 
+*   FBOB2.1     Il framework deve dare la possibilità all'utente sviluppatore di impostare un titolo nella creazione del grafico.
+*   FBDE2.2     Il framework deve dare la possibilità all'utente sviluppatore di creare un grafico senza impostare dati iniziali.
 *
 * History :
 * 
@@ -56,6 +59,20 @@ var TS=function(norris){
         ID: 'testTable',
         title: 'Empty Bar Chart'
     });
+    page.createBarChart({
+        ID: 'testBarChart2',
+    });
+    page.createLineChart({
+        ID: 'testLineChart2',
+    });
+    page.createMapChart({
+        ID: 'testMapChart2',
+    });
+    page.createTable({
+        ID: 'testTable2',
+    });
+
+    //testing updates -> requirements 1.6.*
     var change=false;
     var repeat=function(){
         if (change){

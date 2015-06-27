@@ -36,10 +36,12 @@ var page=norris.createPage({
 
 
 var TS1 = require('./TS1.js');
-//var TS2 = require('./TS2.js');
+var TS2 = require('./TS2.js');
+var TS3 = require('./TS3.js');
 
 TS1(norris);
-//TS2(page);
+TS2(page);
+TS3(page);
 
 
 
