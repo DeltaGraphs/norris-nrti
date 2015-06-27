@@ -93,11 +93,13 @@ angular.module('norris-nrti')
 	// variabili e funzioni a disposizione dei test
 	$scope.socket = socket;
 	$scope.url = url;
+	this.matrix = matrix;
 
 	// vengono rese disponibili alcune funzioni sullo $scope
 	$scope.graphs = [];
 	$scope.socketConnection = this.socketConnection;
 	$scope.listenOnEvents = this.listenOnEvents;
+
 	//$scope.previous = this.previous;
 	//$scope.next = this.next;
 	

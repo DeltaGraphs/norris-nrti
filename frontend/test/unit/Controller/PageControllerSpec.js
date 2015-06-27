@@ -23,8 +23,7 @@ describe('PageController', function(){
 
 	beforeEach(function(){
 		angular.mock.module('norris-nrti');
-		inject(function($rootScope, $controller, $routeParams){
-			$routeParams.pageId = 0;
+		inject(function($rootScope, $controller){
 			scope = $rootScope.$new();
 			controller = $controller('PageController', { $scope : scope });
 		});
