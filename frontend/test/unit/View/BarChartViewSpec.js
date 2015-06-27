@@ -36,12 +36,12 @@ describe('BarChartView', function(){
 	beforeEach(inject(function($rootScope, $compile, $injector, $controller) {
 		BarChartFactory = $injector.get('BarChartFactory');
 		bar = BarChartFactory.build();
-		bar.updateParameters(info);
     	scope = $rootScope.$new();
     	controller = $controller('BarChartController', { $scope : scope });
     	html = angular.element('<bar-chart url="http://example/bar.com"></bar-chart>');
 
     	scope.barChart = bar;
+    	bar.updateParameters(info);
 
     	element = $compile(html)(scope);
     	scope.$digest();
@@ -67,6 +67,7 @@ describe('BarChartView', function(){
 			var svgH = element.find('svg');
 			expect(svgH).toBeDefined();
 			bar.updateParameters(json);
+			scope.changedP = !scope.changedP;
 			var nvd3V = element.find('nvd3-multi-bar-chart');
 			expect(nvd3V).toBeDefined();
 			var svgV = element.find('svg');

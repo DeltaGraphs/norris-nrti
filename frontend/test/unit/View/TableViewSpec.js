@@ -47,9 +47,7 @@ describe('TableView', function(){
   	describe('Constructor', function() {
   		var json = {
 			'properties' : {
-				'appearance' : {
-					'border' : {}
-				}
+				'title' : 'TableViewSpec'
 			}
 		};
 		it('works fine', function() {
@@ -58,6 +56,7 @@ describe('TableView', function(){
 			var tag = element.find('table');
 			expect(tag).toBeDefined();
 			table.updateParameters(json);
+			scope.changedP = !scope.changedP;
 		});
 	});
 

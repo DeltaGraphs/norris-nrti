@@ -45,11 +45,19 @@ describe('MapChartView', function(){
   	}));
 
   	describe('Constructor', function() {
+  		var json = {
+			'properties' : {
+				'title' : 'MapChartViewSpec'
+			}
+		};
+
 		it('works fine', function() {
 			var mapChart = element.find('map-chart');
 			expect(mapChart).toBeDefined();
 			var div = element.find('div');
 			expect(div).toBeDefined();
+			map.updateParameters(json);
+			scope.changedP = !scope.changedP;
 		});
 	});
 
