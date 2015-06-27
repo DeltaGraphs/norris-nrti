@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">58.91</p>
+      <p class="stat">60.98</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">87</p>
+      <p class="stat">109</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">9.16</p>
+      <p class="stat">11.28</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.64</p>
+      <p class="stat">0.79</p>
     </div>
   </div>
 </div>
@@ -115,14 +115,21 @@ describe(&#039;BarChartView&#039;, function(){
 
 	var html, element, scope, bar, BarChartFactory, controller;
 	var info = {
-		&#039;properties&#039; : {
-			&#039;title&#039; : &#039;prova1&#039;,
-			&#039;barOrientation&#039; : &#039;H&#039;,
+			&#039;title&#039; : &#039;graficonuovo&#039;,
+			&#039;height&#039; : 400,
+			&#039;width&#039; : 400,
 			&#039;enableLegend&#039; : false,
-			&#039;legendOnPoint&#039; : true,
-			&#039;groupingControl&#039; : true
-		}
-	};
+			&#039;socketURL&#039; : &#039;http://example.com&#039;,
+			&#039;xAxis&#039; : { name: &#039;asseX&#039; },
+			&#039;yAxis&#039; : { name: &#039;asseY&#039; },
+			&#039;barOrientation&#039; : &#039;H&#039;,
+			&#039;headers&#039; : [&#039;colonna1&#039;],
+			&#039;backgroundColor&#039; : &#039;#F0F&#039;,
+			&#039;sortable&#039; : false,
+			&#039;groupingControl&#039; : true,
+			&#039;legendOnPoint&#039; : false,
+			&#039;grid&#039; : false
+		};
 	
 	beforeEach(inject(function($rootScope, $compile, $injector, $controller) {
 		BarChartFactory = $injector.get(&#039;BarChartFactory&#039;);
@@ -132,6 +139,7 @@ describe(&#039;BarChartView&#039;, function(){
     	html = angular.element(&#039;&lt;bar-chart url=&quot;http://example/bar.com&quot;&gt;&lt;/bar-chart&gt;&#039;);
 
     	scope.barChart = bar;
+
     	bar.updateParameters(info);
 
     	element = $compile(html)(scope);
@@ -139,7 +147,8 @@ describe(&#039;BarChartView&#039;, function(){
 
   	}));
 
-  	describe(&#039;Constructor&#039;, function() {
+  	describe(&#039;#init&#039;, function() {
+
   		var json = {
 			&#039;title&#039; : &#039;graficonuovo&#039;,
 			&#039;height&#039; : 400,
@@ -149,14 +158,13 @@ describe(&#039;BarChartView&#039;, function(){
 			&#039;socketURL&#039; : &#039;http://example.com&#039;,
 			&#039;xAxis&#039; : { name: &#039;asseX&#039; },
 			&#039;yAxis&#039; : { name: &#039;asseY&#039; },
-			&#039;barOrientation&#039; : &#039;vertical&#039;,
+			&#039;barOrientation&#039; : &#039;V&#039;,
 			&#039;headers&#039; : [&#039;colonna1&#039;],
 			&#039;backgroundColor&#039; : &#039;#F0F&#039;,
 			&#039;sortable&#039; : false,
 			&#039;groupingControl&#039; : false,
 			&#039;legendOnPoint&#039; : true,
-			&#039;grid&#039; : false,
-			&#039;flows&#039; : [{&#039;ID&#039; : &#039;f1&#039;},{ &#039;ID&#039; : &#039;f2&#039;},{&#039;ID&#039; : &#039;f3&#039;}]
+			&#039;grid&#039; : false
 		};
 
 		it(&#039;works fine&#039;, function() {
@@ -174,6 +182,20 @@ describe(&#039;BarChartView&#039;, function(){
 			var svgV = element.find(&#039;svg&#039;);
 			expect(svgV).toBeDefined();
 		});
+	});
+
+	describe(&#039;#setData&#039;, function() {
+
+  		var json = {
+			&#039;flows&#039; : [{&#039;ID&#039; : &#039;f1&#039;},{ &#039;ID&#039; : &#039;f2&#039;},{&#039;ID&#039; : &#039;f3&#039;}]
+		};
+
+		it(&#039;works fine&#039;, function() {
+			scope.barChart.updateParameters(json);
+			scope.changedD = !scope.changedD;
+    		scope.$digest();
+		});
+
 	});
 
 });</textarea>
