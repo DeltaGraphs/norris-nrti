@@ -114,6 +114,9 @@ describe('FunctionHelper', function() {
         it('returns true for toFloat', function() {
             assert.strictEqual(FH.isValidFormat('toFloat'), true);
         });
+        it('returns true for toExp', function() {
+            assert.strictEqual(FH.isValidFormat('toExp'), true);
+        });
         it('returns false for toHour', function() {
             assert.strictEqual(FH.isValidFormat('toHour'), false);
         });
