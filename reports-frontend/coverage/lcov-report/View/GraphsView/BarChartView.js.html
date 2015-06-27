@@ -1,0 +1,765 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for View/GraphsView/BarChartView.js</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../prettify.css">
+    <link rel="stylesheet" href="../../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1>Code coverage report for <span class="entity">View/GraphsView/BarChartView.js</span></h1>
+    <h2>
+        Statements: <span class="metric">17.54% <small>(20 / 114)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">7.5% <small>(3 / 40)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">29.41% <small>(5 / 17)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">17.54% <small>(20 / 114)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">View/GraphsView/</a> &#187; BarChartView.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*jshint node: true */
+'use strict';
+&nbsp;
+/*
+* Name :  BarChartView.js
+* Module : FrontEnd::View::GraphsView
+* Location : /frontend/app/View/GraphsView
+*
+* History :
+* Version       Date        Programmer                  Description
+* =================================================================================================
+* 1.0.3         2015-06-22  Maria Giovanna Chinellato   Fix flow color     
+*
+* 1.0.2         2015-06-21  Maria Giovanna Chinellato   Fix legend update     
+*
+* 1.0.1         2015-06-19  Maria Giovanna Chinellato   Fix svg tag     
+*
+* 1.0.0         2015-06-13  Maria Giovanna Chinellato   Tested     
+*
+* 0.2.0         2015-06-10  Francesco Rossetto          Add init, setData and legend function    
+*
+* 0.1.1         2015-06-10  Maria Giovanna Chinellato   Add link function, observe and watch      
+*
+* 0.1.0         2015-06-09  Francesco Rossetto          Add all attributes and add initial code for methods 
+*
+* 0.0.1         2015-06-02  Maria Giovanna Chinellato   Initial code      
+* =================================================================================================
+*/
+&nbsp;
+&nbsp;
+angular.module('norris-nrti')
+.directive('barChart', function($compile){
+	return {
+		restrict: 'E', // direttiva di tipo elemento (tag)
+		replace: false,
+		scope: { // attributo della direttiva
+            url: '@'
+		},
+        //bindToController: true,
+        link: function(scope, element, attrs){
+            element.empty();
+        	attrs.$observe('url', function(value) {
+                <span class="missing-if-branch" title="else path not taken" >E</span>if (value) {
+                    scope.$parent.socketConnection(value); // richiama la funzione del controller che permette di connettersi al server
+                }
+            });
+&nbsp;
+            scope.$parent.$watch('changedP', function(newValue, oldValue){
+                <span class="missing-if-branch" title="if path not taken" >I</span>if (newValue !== oldValue) {
+<span class="cstat-no" title="statement not covered" >                    element.empty();</span>
+<span class="cstat-no" title="statement not covered" >                    scope.init(); </span>// crea  il grafico chiamando la funzione apposita
+                }
+            }, true);
+&nbsp;
+            scope.$parent.$watch('changedD', function(newValue, oldValue){
+                <span class="missing-if-branch" title="if path not taken" >I</span>if(newValue !== oldValue){
+<span class="cstat-no" title="statement not covered" >                    scope.setData(); </span>// richiama la funzione che imposta i dati ad ogni cambiamento dei dati dei flussi del grafico
+<span class="cstat-no" title="statement not covered" >                    if (scope.$parent.barChart.getLegend() !== null){</span>
+<span class="cstat-no" title="statement not covered" >                        scope.legend(); </span> // richiama la funzione che crea la legenda relativa al grafico
+                    }
+                }
+            }, true);
+&nbsp;
+            scope.$on('$destroy', <span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >                for (var j=0; j&lt;element.children().length; j++){</span>
+<span class="cstat-no" title="statement not covered" >                    var nvd3 = element.children()[j];</span>
+<span class="cstat-no" title="statement not covered" >                    nvd3.select('*').remove();</span>
+<span class="cstat-no" title="statement not covered" >                    nvd3.select('svg').remove();</span>
+                }
+            }); 
+            // inserisce il codice HTML che crea il grafico desiderato
+            scope.init = <span class="fstat-no" title="function not covered" >function(){</span>
+<span class="cstat-no" title="statement not covered" >                element.empty(); </span>// elimina i tag HTML relativi al bar chart
+<span class="cstat-no" title="statement not covered" >                var barchart = null;</span>
+<span class="cstat-no" title="statement not covered" >                var legend, onPoint, control;</span>
+<span class="cstat-no" title="statement not covered" >                var str = scope.url.split('/');</span>
+<span class="cstat-no" title="statement not covered" >                var id = str[str.length-1];</span>
+<span class="cstat-no" title="statement not covered" >                if (scope.$parent.barChart.getLegend() !== null){</span>
+<span class="cstat-no" title="statement not covered" >                    legend = true;</span>
+                }
+                else{
+<span class="cstat-no" title="statement not covered" >                    legend = false;</span>
+                }
+<span class="cstat-no" title="statement not covered" >                if (scope.$parent.barChart.getGroupingControl()){</span>
+<span class="cstat-no" title="statement not covered" >                    control = true;</span>
+                }
+                else{
+<span class="cstat-no" title="statement not covered" >                    control = false;</span>
+                }
+<span class="cstat-no" title="statement not covered" >                if (scope.$parent.barChart.getLegendOnPoint()){</span>
+<span class="cstat-no" title="statement not covered" >                    onPoint = true;</span>
+                }
+                else{
+<span class="cstat-no" title="statement not covered" >                    onPoint = false;</span>
+                }
+<span class="cstat-no" title="statement not covered" >                if (scope.$parent.barChart.getBarOrientation() === 'V'){</span>
+<span class="cstat-no" title="statement not covered" >                    barchart = '&lt;div class="graphtitle"&gt;'+ scope.$parent.barChart.getTitle() +'&lt;/div&gt;' +</span>
+                                '&lt;nvd3-multi-bar-chart data="data" nodata=" " id="'+ id +'" ' +
+                                'xaxisticksformat="xAxisTickFormatFunction()" yaxistickformat="yAxisTickFormatFunction()" showxaxis="true" showyaxis="true" ' +
+                                'rotatelabels="-90" interactive="true" tooltips="'+ onPoint +'" showlegend="' + legend + '" ' +
+                                'xaxislabel="'+ scope.$parent.barChart.getX().getName() +'" ';
+<span class="cstat-no" title="statement not covered" >                    barchart = barchart + 'color="colorFunction()" showcontrols="'+ control +'"&gt;' +</span>
+                                '&lt;svg style="width: '+ scope.$parent.barChart.getWidth() +'; height: '+ scope.$parent.barChart.getHeight() +';"&gt;&lt;/svg&gt;&lt;/nvd3-multi-bar-chart&gt;';
+                }else <span class="cstat-no" title="statement not covered" >if(scope.$parent.barChart.getBarOrientation() === 'H'){</span>
+<span class="cstat-no" title="statement not covered" >                    barchart = '&lt;div class="graphtitle"&gt;'+ scope.$parent.barChart.getTitle() +'&lt;/div&gt;' +</span>
+                                '&lt;nvd3-multi-bar-horizontal-chart data="data" nodata=" " id="'+ id +'" ' +
+                                'xaxisticksformat="xAxisTickFormatFunction()" yaxistickformat="yAxisTickFormatFunction()" showxaxis="true" showyaxis="true" ' +
+                                'rotatelabels="-90" interactive="true" tooltips="'+ onPoint +'" showlegend="' + legend + '" ' +
+                                'xaxislabel="'+ scope.$parent.barChart.getX().getName() +'" ';
+<span class="cstat-no" title="statement not covered" >                    barchart = barchart + 'color="colorFunction()" showcontrols="'+ control +'"&gt;' +</span>
+                                '&lt;svg style="width: '+ scope.$parent.barChart.getWidth() +'; height: '+ scope.$parent.barChart.getHeight() +';"&gt;&lt;/svg&gt;&lt;/nvd3-multi-bar-horizontal-chart&gt;';
+                }
+                
+<span class="cstat-no" title="statement not covered" >                var compiled = $compile(barchart)(scope);</span>
+<span class="cstat-no" title="statement not covered" >                element.append(compiled);</span>
+                
+            };
+            
+            // imposta il colore dei flussi
+            scope.colorArray = [];
+            scope.colorFunction = <span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >                return <span class="fstat-no" title="function not covered" >function(d, i) {</span></span>
+<span class="cstat-no" title="statement not covered" >                    return scope.colorArray[i];</span>
+                };
+            };
+&nbsp;
+            // funzione che imposta il tick dell'asse X
+            scope.xAxisTickFormatFunction = <span class="fstat-no" title="function not covered" >function(){</span>
+<span class="cstat-no" title="statement not covered" >                return <span class="fstat-no" title="function not covered" >function(d){</span></span>
+<span class="cstat-no" title="statement not covered" >                    return d;</span>
+                };
+            };
+&nbsp;
+            // funzione che imposta il tick dell'asse Y
+            scope.yAxisTickFormatFunction = <span class="fstat-no" title="function not covered" >function(){</span>
+<span class="cstat-no" title="statement not covered" >                return <span class="fstat-no" title="function not covered" >function(d){</span></span>
+<span class="cstat-no" title="statement not covered" >                    return d;</span>
+                };
+            };
+&nbsp;
+            // imposta i dati da visualizzare
+            scope.data = [];
+            scope.setData = <span class="fstat-no" title="function not covered" >function(){</span>
+<span class="cstat-no" title="statement not covered" >                var data = [];</span>
+<span class="cstat-no" title="statement not covered" >                var colorArray = [];</span>
+<span class="cstat-no" title="statement not covered" >                for (var i=0; i&lt;scope.$parent.barChart.getFlowList().length; i++) {</span>
+<span class="cstat-no" title="statement not covered" >                    var key;</span>
+<span class="cstat-no" title="statement not covered" >                    var values = [];</span>
+<span class="cstat-no" title="statement not covered" >                    key = scope.$parent.barChart.getFlowList()[i].flow.getName();</span>
+<span class="cstat-no" title="statement not covered" >                    if (scope.$parent.barChart.getFlowList()[i].flow.getFlowColor() !== undefined &amp;&amp; scope.$parent.barChart.getFlowList()[i].flow.getFlowColor() !== null){</span>
+<span class="cstat-no" title="statement not covered" >                       colorArray.push(scope.$parent.barChart.getFlowList()[i].flow.getFlowColor());</span>
+                    }
+                    else{
+<span class="cstat-no" title="statement not covered" >                       colorArray.push(scope.$parent.defaultColorFlow[i]);</span>
+                    }
+<span class="cstat-no" title="statement not covered" >                    for (var j=0; j&lt;scope.$parent.barChart.getFlowList()[i].flow.getData().length; j++) {</span>
+<span class="cstat-no" title="statement not covered" >                        var value = [scope.$parent.barChart.getFlowList()[i].flow.getData()[j].value[0], scope.$parent.barChart.getFlowList()[i].flow.getData()[j].value[1]];</span>
+<span class="cstat-no" title="statement not covered" >                        values.push(value);</span>
+                    }
+<span class="cstat-no" title="statement not covered" >                    values.sort(<span class="fstat-no" title="function not covered" >function(a, b) {</span></span>
+<span class="cstat-no" title="statement not covered" >                        if (a[0] === b[0]) {</span>
+<span class="cstat-no" title="statement not covered" >                            return 0;</span>
+                        }
+                        else {
+<span class="cstat-no" title="statement not covered" >                            return (a[0] &lt; b[0]) ? -1 : 1;</span>
+                        }
+                    });
+&nbsp;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    for (var y=0; y&lt;values.length; y++){</span>
+<span class="cstat-no" title="statement not covered" >                        values[y][0] = scope.$parent.barChart.getHeaders()[values[y][0]-1];</span>
+                    }
+<span class="cstat-no" title="statement not covered" >                    data.push({ 'key': key, 'values': values});</span>
+                }
+<span class="cstat-no" title="statement not covered" >                scope.colorArray = colorArray;</span>
+<span class="cstat-no" title="statement not covered" >                scope.data = data;</span>
+            };
+&nbsp;
+            // posiziona la legenda a nord, est, sud, ovest, nord-est, nord-ovest, sud-est o sud-ovest del grafico
+<span class="fstat-no" title="function not covered" >            function changePosition(chart,parent){</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                switch (scope.$parent.barChart.getLegend().getPosition()) {</span>
+                    case 'N':
+<span class="cstat-no" title="statement not covered" >                        parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.barChart.getHeight() + 'px; right: -' + (scope.$parent.barChart.getWidth()/2) + 'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');</span>
+<span class="cstat-no" title="statement not covered" >                        break;</span>
+                    case 'E':
+<span class="cstat-no" title="statement not covered" >                        parent.setAttribute('style', 'float: left; position: relative; top: -' + (scope.$parent.barChart.getHeight()/2) + 'px; right: -' + scope.$parent.barChart.getWidth() + 'px;  background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');</span>
+<span class="cstat-no" title="statement not covered" >                        break;</span>
+                    case 'S':
+<span class="cstat-no" title="statement not covered" >                        parent.setAttribute('style', 'float: left; position: relative; right: -' + (scope.$parent.barChart.getWidth()/2) + 'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');</span>
+<span class="cstat-no" title="statement not covered" >                        break;</span>
+                    case 'W':
+<span class="cstat-no" title="statement not covered" >                        parent.setAttribute('style', 'float: left; position: relative; top: -' + (scope.$parent.barChart.getHeight()/2) + 'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');</span>
+<span class="cstat-no" title="statement not covered" >                        break;</span>
+                    case 'NE':
+<span class="cstat-no" title="statement not covered" >                        parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.barChart.getHeight() + 'px; right: -' + scope.$parent.barChart.getWidth() + 'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');</span>
+<span class="cstat-no" title="statement not covered" >                        break;</span>
+                    case 'NW':
+<span class="cstat-no" title="statement not covered" >                        parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.barChart.getHeight() + 'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');</span>
+<span class="cstat-no" title="statement not covered" >                        break;</span>
+                    case 'SE':
+<span class="cstat-no" title="statement not covered" >                        parent.setAttribute('style', 'float: left; position: relative; right: -' + scope.$parent.barChart.getWidth() + 'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');</span>
+<span class="cstat-no" title="statement not covered" >                        break;</span>
+                    case 'SW':
+<span class="cstat-no" title="statement not covered" >                        parent.setAttribute('style', 'float: left; position: relative; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');</span>
+<span class="cstat-no" title="statement not covered" >                        break;</span>
+                }
+            }
+&nbsp;
+            // crea la legenda del grafico
+            scope.legend = <span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >                var chart = element.children()[1];</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                if (element.children()[2]){</span>
+<span class="cstat-no" title="statement not covered" >                    element.children()[2].remove();</span>
+                }
+<span class="cstat-no" title="statement not covered" >                var parent = document.createElement('div');</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                changePosition(chart,parent);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                if (scope.$parent.barChart.getLegend() !== null) {</span>
+<span class="cstat-no" title="statement not covered" >                    var div = document.createElement('div');</span>
+<span class="cstat-no" title="statement not covered" >                    for (var i=0; i&lt;scope.$parent.barChart.getFlowList().length; i++) {</span>
+<span class="cstat-no" title="statement not covered" >                        if (scope.$parent.barChart.getFlowList()[i].flow.getData().length){</span>
+<span class="cstat-no" title="statement not covered" >                            var square = document.createElement('div');</span>
+<span class="cstat-no" title="statement not covered" >                            square.setAttribute('style', 'float: left; height: 15px; width: 15px; background-color: ' + scope.colorArray[i] + ';');</span>
+<span class="cstat-no" title="statement not covered" >                            var spanText = document.createElement('div');</span>
+<span class="cstat-no" title="statement not covered" >                            var text = document.createTextNode('\u00A0\u00A0\u00A0\u00A0' + scope.$parent.barChart.getFlowList()[i].flow.getName());</span>
+<span class="cstat-no" title="statement not covered" >                            spanText.setAttribute('style', 'width: 100px; color: '+ scope.$parent.barChart.getLegend().getFontColor() + ';');</span>
+<span class="cstat-no" title="statement not covered" >                            spanText.appendChild(text);</span>
+<span class="cstat-no" title="statement not covered" >                            div.appendChild(square);</span>
+<span class="cstat-no" title="statement not covered" >                            div.appendChild(spanText);</span>
+<span class="cstat-no" title="statement not covered" >                            parent.appendChild(div);</span>
+                        }
+                    }
+                }
+<span class="cstat-no" title="statement not covered" >                element.append(parent);</span>
+            };
+        }
+    };
+});</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Jun 27 2015 09:21:07 GMT+0000 (UTC)</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for View/PagesView/PageView.js</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../prettify.css">
+    <link rel="stylesheet" href="../../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1>Code coverage report for <span class="entity">View/PagesView/PageView.js</span></h1>
+    <h2>
+        Statements: <span class="metric">12.5% <small>(6 / 48)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">16.67% <small>(1 / 6)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">75% <small>(3 / 4)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">12.5% <small>(6 / 48)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">View/PagesView/</a> &#187; PageView.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*jshint node: true */
+'use strict';
+&nbsp;
+/*
+* Name :  PageView.js
+* Module : FrontEnd::View::PagesView
+* Location : /frontend/app/PagesView
+*
+* History :
+* Version       Date        Programmer                  Description
+* =================================================================================================
+* 1.0.1         2015-06-14  Maria Giovanna Chinellato   Fix page size     
+*
+* 1.0.0         2015-06-14  Francesco Rossetto		    Tested     
+*
+* 0.1.1         2015-06-04  Maria Giovanna Chinellato   Fix link function      
+*
+* 0.1.0			2015-05-30	Francesco Rossetto			Add all attributes and all methods	
+*
+* 0.0.1         2015-05-30  Francesco Rossetto			Initial code      
+* =================================================================================================
+*/
+angular.module('norris-nrti')
+.directive('page', function($compile, $routeParams){
+	return {
+		restrict: 'E', // direttiva di tipo elemento (tag)
+		controller : 'PageController',
+		replace: false,
+		scope: {},
+		template: '&lt;div id="page" style="width: 100%;"&gt;&lt;/div&gt;', // template HTML inserito dalla direttiva
+		link: function (scope, element, attrs) {
+			scope.socketConnection(); // richiama la funzione del controller che permette di connettersi al server
+&nbsp;
+			scope.render = <span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >				parent = element.children()[0];</span>
+<span class="cstat-no" title="statement not covered" >				element.empty();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >				var commands = document.createElement('div');</span>
+<span class="cstat-no" title="statement not covered" >				commands.setAttribute('class', 'commands');</span>
+				/*if (scope.previous) { // controlla se è presente una pagina precedente
+					var previous = document.createElement('div');
+					//previous.setAttribute('style', 'float:left;');
+					var pIndex = parseInt($routeParams.pageId) - 1;
+					previous.innerHTML = '&lt;a ng-click="previous('+pIndex+')" target="_self"&gt;PREVIOUS PAGE&lt;/a&gt;'; // inserisce il link alla pagina precedente
+					commands.appendChild(previous);
+				}
+				var list = document.createElement('div');
+				list.innerHTML = '&lt;a ng-href="/" target="_self"&gt;RETURN TO PAGES LIST&lt;/a&gt;';
+				//list.setAttribute('style', 'float:left;');
+				commands.appendChild(list);
+				if (scope.next) { // controlla se è presente una pagina successiva
+					var next = document.createElement('div');
+					//next.setAttribute('style', 'float:left;');
+					var nIndex = parseInt($routeParams.pageId) + 1;
+					next.innerHTML = '&lt;a ng-click="next('+nIndex+')" target="_self"&gt;NEXT PAGE&lt;/a&gt;'; // inserisce il link alla pagina successiva
+					commands.appendChild(next);
+				}*/
+<span class="cstat-no" title="statement not covered" >				var list = document.createElement('div');</span>
+<span class="cstat-no" title="statement not covered" >				list.innerHTML = '&lt;a ng-href="/" target="_self"&gt;RETURN TO PAGES LIST&lt;/a&gt;';</span>
+<span class="cstat-no" title="statement not covered" >				commands.appendChild(list);</span>
+<span class="cstat-no" title="statement not covered" >				parent.appendChild(commands);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >				var table = document.createElement('table');</span>
+<span class="cstat-no" title="statement not covered" >				table.className = 'graphstable';</span>
+<span class="cstat-no" title="statement not covered" >				table.setAttribute('style', 'width: 100%;');</span>
+<span class="cstat-no" title="statement not covered" >				parent.appendChild(table);</span>
+&nbsp;
+				// crea la tabella con i grafici
+<span class="cstat-no" title="statement not covered" >				for(var i=0; i&lt;scope.graphs.length; i++) {</span>
+<span class="cstat-no" title="statement not covered" >					var line = scope.graphs[i];</span>
+<span class="cstat-no" title="statement not covered" >					var row = table.insertRow(i);</span>
+<span class="cstat-no" title="statement not covered" >					for(var j=0; j&lt;line.length; j++) {</span>
+<span class="cstat-no" title="statement not covered" >						var div = document.createElement('div');</span>
+<span class="cstat-no" title="statement not covered" >						div.className = 'graph';</span>
+<span class="cstat-no" title="statement not covered" >						var graph = line[j];</span>
+<span class="cstat-no" title="statement not covered" >						switch (graph.type) {</span>
+							case 'BarChart' : 
+<span class="cstat-no" title="statement not covered" >								div.setAttribute('ng-controller', 'BarChartController');</span>
+<span class="cstat-no" title="statement not covered" >								div.setAttribute('style', 'margin: 50px;');</span>
+<span class="cstat-no" title="statement not covered" >								div.innerHTML = '&lt;bar-chart url="'+ graph.url +'"&gt;&lt;/bar-chart&gt;';</span>
+<span class="cstat-no" title="statement not covered" >								break;</span>
+							case 'LineChart' : 
+<span class="cstat-no" title="statement not covered" >								div.setAttribute('ng-controller', 'LineChartController');</span>
+<span class="cstat-no" title="statement not covered" >								div.setAttribute('style', 'margin: 50px;');</span>
+<span class="cstat-no" title="statement not covered" >								div.innerHTML = '&lt;line-chart url="'+ graph.url +'"&gt;&lt;/line-chart&gt;';</span>
+<span class="cstat-no" title="statement not covered" >								break;</span>
+							case 'MapChart' : 
+<span class="cstat-no" title="statement not covered" >								div.setAttribute('ng-controller', 'MapChartController');</span>
+<span class="cstat-no" title="statement not covered" >								div.setAttribute('style', 'margin: 50px;');</span>
+<span class="cstat-no" title="statement not covered" >								div.innerHTML = '&lt;map-chart url="'+ graph.url +'"&gt;&lt;/map-chart&gt;';</span>
+<span class="cstat-no" title="statement not covered" >								break;</span>
+							case 'Table' :
+<span class="cstat-no" title="statement not covered" >								div.setAttribute('ng-controller', 'TableController');</span>
+<span class="cstat-no" title="statement not covered" >								div.setAttribute('style', 'margin: 50px;');</span>
+<span class="cstat-no" title="statement not covered" >								div.innerHTML = '&lt;table-chart url="'+ graph.url +'"&gt;&lt;/table-chart&gt;';</span>
+<span class="cstat-no" title="statement not covered" >								break;</span>
+						}
+<span class="cstat-no" title="statement not covered" >						var cell = row.insertCell(j);</span>
+<span class="cstat-no" title="statement not covered" >						cell.setAttribute('align', 'center');</span>
+<span class="cstat-no" title="statement not covered" >						cell.appendChild(div);</span>
+					}
+				}
+&nbsp;
+				//parent.setAttribute('style', 'height:'+ 1000*scope.graphs.length +'px; width:'+ 1500*scope.graphs[0].length +'px;');
+&nbsp;
+<span class="cstat-no" title="statement not covered" >				var el = $compile(parent)(scope);</span>
+<span class="cstat-no" title="statement not covered" >				element.parent().append( el );</span>
+       		};
+&nbsp;
+       		scope.$watch('graphs', function(){ // ad ogni inserimento o modifica della lista dei grafici viene chiamata la funzione render che ne aggiorna la visualizzazione
+       			<span class="missing-if-branch" title="if path not taken" >I</span>if (scope.graphs.length &gt; 0) {
+<span class="cstat-no" title="statement not covered" >	          		scope.render();</span>
+	          	}
+        	}, true);
+&nbsp;
+		}
+&nbsp;
+	};
+});</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Jun 27 2015 09:21:07 GMT+0000 (UTC)</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>
