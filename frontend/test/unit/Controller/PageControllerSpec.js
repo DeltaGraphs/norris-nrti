@@ -9,10 +9,9 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
+* 0.1.0         2015-06-27  Francesco Rossetto			Add all attributes and all methods
 *
-* 0.1.0         2015-05-25  Francesco Rossetto			Add all attributes and all methods
-*
-* 0.0.1         2015-05-25  Francesco Rossetto			Initial code      
+* 0.0.1         2015-06-27  Francesco Rossetto			Initial code      
 * =================================================================================================
 *
 */
@@ -24,7 +23,8 @@ describe('PageController', function(){
 
 	beforeEach(function(){
 		angular.mock.module('norris-nrti');
-		inject(function($rootScope, $controller){
+		inject(function($rootScope, $controller, $routeParams){
+			$routeParams.pageId = 0;
 			scope = $rootScope.$new();
 			controller = $controller('PageController', { $scope : scope });
 		});
