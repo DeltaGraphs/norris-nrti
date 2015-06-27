@@ -78,24 +78,24 @@ describe('BarChartView', function(){
 		};
 
 		it('works fine', function() {
-			var legend1 = element.children()[2];
-			expect(legend1).not.toBeDefined();
 			var barChart = element.find('bar-chart');
 			expect(barChart).toBeDefined();
 			var nvd3H = element.find('nvd3-multi-bar-horizontal-chart');
 			expect(nvd3H).toBeDefined();
 			var svgH = element.find('svg');
 			expect(svgH).toBeDefined();
+			var legend1 = element.children()[2];
+			expect(legend1).not.toBeDefined();
 			scope.barChart.updateParameters(json);
 			scope.changedP = !scope.changedP;
     		scope.$digest();
-    		var legend2 = element.children()[2];
-			expect(legend2).toBeDefined();
-			expect(legend2.getAttribute('style')).toBe('float: left; position: relative; top: -' + (scope.barChart.getHeight()/2) + 'px; right: -' + scope.barChart.getWidth() + 'px;  background-color: ' + scope.$parent.getLegend().getBackgroundColor() + ';');
 			var nvd3V = element.find('nvd3-multi-bar-chart');
 			expect(nvd3V).toBeDefined();
 			var svgV = element.find('svg');
 			expect(svgV).toBeDefined();
+			var legend2 = element.children()[2];
+			expect(legend2).toBeDefined();
+			expect(legend2.getAttribute('style')).toBe('float: left; position: relative; top: -' + (scope.barChart.getHeight()/2) + 'px; right: -' + scope.barChart.getWidth() + 'px;  background-color: ' + scope.$parent.getLegend().getBackgroundColor() + ';');
 		});
 	});
 
