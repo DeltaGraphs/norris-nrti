@@ -1,8 +1,8 @@
-Mean per-function logical LOC: 10.274644886363635
+Mean per-function logical LOC: 10.297372159090909
 Mean per-function parameter count: 1.1196338383838387
-Mean per-function cyclomatic complexity: 4.273871527777778
-Mean per-function Halstead effort: 8073.161582172218
-Mean per-module maintainability index: 105.49731844222823
+Mean per-function cyclomatic complexity: 4.282394255050504
+Mean per-function Halstead effort: 8426.246983933439
+Mean per-module maintainability index: 105.45910093364058
 First-order density: 5.95703125%
 Change cost: 21.875%
 Core size: 37.5%
@@ -2323,27 +2323,27 @@ Core size: 37.5%
 
 /home/travis/build/DeltaGraphs/norris-nrti/lib/dataTier/graph/tableModel.js
 
-  Physical LOC: 276
-  Logical LOC: 184
+  Physical LOC: 288
+  Logical LOC: 192
   Mean parameter count: 1
-  Cyclomatic complexity: 54
-  Cyclomatic complexity density: 29.347826086956523%
-  Maintainability index: 87.93906558423708
+  Cyclomatic complexity: 57
+  Cyclomatic complexity density: 29.6875%
+  Maintainability index: 86.71610530943249
   Dependency count: 3
 
   Function: TableModel
     Line No.: 22
-    Physical LOC: 37
-    Logical LOC: 25
+    Physical LOC: 41
+    Logical LOC: 28
     Parameter count: 1
     Cyclomatic complexity: 5
-    Cyclomatic complexity density: 20%
-    Halstead difficulty: 11.526315789473685
-    Halstead volume: 773.2082979991372
-    Halstead effort: 8912.243013779529
+    Cyclomatic complexity density: 17.857142857142858%
+    Halstead difficulty: 12.153846153846153
+    Halstead volume: 833.84652526981
+    Halstead effort: 10134.44238404846
 
   Function: <anonymous>.getProperties
-    Line No.: 65
+    Line No.: 69
     Physical LOC: 10
     Logical LOC: 8
     Parameter count: 0
@@ -2354,18 +2354,18 @@ Core size: 37.5%
     Halstead effort: 1138.466660287404
 
   Function: <anonymous>.updateProperties
-    Line No.: 77
-    Physical LOC: 135
-    Logical LOC: 103
+    Line No.: 81
+    Physical LOC: 143
+    Logical LOC: 108
     Parameter count: 1
-    Cyclomatic complexity: 43
-    Cyclomatic complexity density: 41.74757281553398%
-    Halstead difficulty: 104.18333333333334
-    Halstead volume: 8232.737657119296
-    Halstead effort: 857714.0515775454
+    Cyclomatic complexity: 46
+    Cyclomatic complexity density: 42.592592592592595%
+    Halstead difficulty: 110.26229508196721
+    Halstead volume: 8894.952829506517
+    Halstead effort: 980777.9136272268
 
   Function: <anonymous>.getData
-    Line No.: 214
+    Line No.: 226
     Physical LOC: 14
     Logical LOC: 8
     Parameter count: 0
@@ -2376,7 +2376,7 @@ Core size: 37.5%
     Halstead effort: 2643.456518070817
 
   Function: <anonymous>.addFlow
-    Line No.: 230
+    Line No.: 242
     Physical LOC: 5
     Logical LOC: 2
     Parameter count: 1
@@ -2387,7 +2387,7 @@ Core size: 37.5%
     Halstead effort: 106.5094800484617
 
   Function: <anonymous>.deleteFlow
-    Line No.: 237
+    Line No.: 249
     Physical LOC: 9
     Logical LOC: 5
     Parameter count: 1
@@ -2398,7 +2398,7 @@ Core size: 37.5%
     Halstead effort: 1860.5900448490097
 
   Function: <anonymous>.deleteAllFlows
-    Line No.: 248
+    Line No.: 260
     Physical LOC: 3
     Logical LOC: 1
     Parameter count: 0
@@ -2409,7 +2409,7 @@ Core size: 37.5%
     Halstead effort: 23.264662506490403
 
   Function: <anonymous>.updateRecord
-    Line No.: 253
+    Line No.: 265
     Physical LOC: 11
     Logical LOC: 7
     Parameter count: 3
@@ -2420,7 +2420,7 @@ Core size: 37.5%
     Halstead effort: 1178.0882671434754
 
   Function: <anonymous>
-    Line No.: 254
+    Line No.: 266
     Physical LOC: 1
     Logical LOC: 1
     Parameter count: 1
@@ -2431,7 +2431,7 @@ Core size: 37.5%
     Halstead effort: 75
 
   Function: <anonymous>.addRecord
-    Line No.: 266
+    Line No.: 278
     Physical LOC: 10
     Logical LOC: 6
     Parameter count: 2
@@ -2442,7 +2442,7 @@ Core size: 37.5%
     Halstead effort: 952.0348013872964
 
   Function: <anonymous>
-    Line No.: 267
+    Line No.: 279
     Physical LOC: 1
     Logical LOC: 1
     Parameter count: 1

@@ -15,10 +15,10 @@
 <div class="header high">
     <h1>Code coverage report for <span class="entity">norris-nrti/lib/dataTier/graph/tableModel.js</span></h1>
     <h2>
-        Statements: <span class="metric">100% <small>(147 / 147)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Branches: <span class="metric">92.81% <small>(129 / 139)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">94.74% <small>(144 / 152)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">80.26% <small>(122 / 152)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Functions: <span class="metric">100% <small>(11 / 11)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">100% <small>(145 / 145)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">94.67% <small>(142 / 150)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
     <div class="path"><a href="../../../../index.html">All files</a> &#187; <a href="index.html">norris-nrti/lib/dataTier/graph/</a> &#187; tableModel.js</div>
@@ -301,7 +301,19 @@
 274
 275
 276
-277</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -337,6 +349,10 @@
 <span class="cline-any cline-yes">64</span>
 <span class="cline-any cline-yes">64</span>
 <span class="cline-any cline-yes">64</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -439,11 +455,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">72</span>
 <span class="cline-any cline-yes">3</span>
-<span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3</span>
@@ -613,7 +637,11 @@ function TableModel(params) {
 	this._maxItemsPage=10;
 	this._headers=[];
 	this._appearance= {
-		border: {
+		horizontalGrid: {
+			color: '#000000',
+			width: 1
+		},
+		veticalGrid: {
 			color: '#000000',
 			width: 1
 		},
@@ -714,12 +742,20 @@ TableModel.prototype.updateProperties = function(params) {
 			prop.headers=params.headers;
 		}
 		if(params.appearance!==undefined &amp;&amp; typeof params.appearance) {
-			if(params.appearance.border!==undefined &amp;&amp; typeof params.appearance.border === 'object') {
-				<span class="missing-if-branch" title="else path not taken" >E</span>if(params.appearance.border.color !== undefined &amp;&amp; typeof params.appearance.border.color === 'string' &amp;&amp; FH.isHEX(params.appearance.border.color)) {
-					this._appearance.border.color = params.appearance.border.color;
+			<span class="missing-if-branch" title="if path not taken" >I</span>if(params.appearance.horizontalGrid!==undefined &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >typeof params.appearance.horizontalGrid === 'object')</span> {
+<span class="cstat-no" title="statement not covered" >				if(params.appearance.horizontalGrid.color !== undefined &amp;&amp; typeof params.appearance.horizontalGrid.color === 'string' &amp;&amp; FH.isHEX(params.appearance.horizontalGrid.color)) {</span>
+<span class="cstat-no" title="statement not covered" >					this._appearance.horizontalGrid.color = params.appearance.horizontalGrid.color;</span>
 				}
-				<span class="missing-if-branch" title="else path not taken" >E</span>if(params.appearance.border.width !== undefined &amp;&amp; typeof params.appearance.border.width === 'number') {
-					this._appearance.border.width = params.appearance.border.width;
+<span class="cstat-no" title="statement not covered" >				if(params.appearance.horizontalGrid.width !== undefined &amp;&amp; typeof params.appearance.horizontalGrid.width === 'number') {</span>
+<span class="cstat-no" title="statement not covered" >					this._appearance.horizontalGrid.width = params.appearance.horizontalGrid.width;</span>
+				}
+			}
+			<span class="missing-if-branch" title="if path not taken" >I</span>if(params.appearance.verticalGrid!==undefined &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >typeof params.appearance.verticalGrid === 'object')</span> {
+<span class="cstat-no" title="statement not covered" >				if(params.appearance.verticalGrid.color !== undefined &amp;&amp; typeof params.appearance.verticalGrid.color === 'string' &amp;&amp; FH.isHEX(params.appearance.verticalGrid.color)) {</span>
+<span class="cstat-no" title="statement not covered" >					this._appearance.verticalGrid.color = params.appearance.verticalGrid.color;</span>
+				}
+<span class="cstat-no" title="statement not covered" >				if(params.appearance.verticalGrid.width !== undefined &amp;&amp; typeof params.appearance.verticalGrid.width === 'number') {</span>
+<span class="cstat-no" title="statement not covered" >					this._appearance.verticalGrid.width = params.appearance.verticalGrid.width;</span>
 				}
 			}
 			if(params.appearance.rowEven!==undefined &amp;&amp; typeof params.appearance.rowEven) {
@@ -858,7 +894,7 @@ module.exports = TableModel;</pre></td></tr>
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Jun 27 2015 10:38:13 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Jun 27 2015 11:31:19 GMT+0000 (UTC)</div>
 </div>
 <script src="../../../../prettify.js"></script>
 <script>
