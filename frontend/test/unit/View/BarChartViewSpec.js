@@ -50,6 +50,7 @@ describe('BarChartView', function(){
     	scope.barChart = bar;
 
     	bar.updateParameters(info);
+    	scope.changedP = !scope.changedP;
 
     	element = $compile(html)(scope);
     	scope.$digest();
