@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for Controller/PagesControllers/PagesListController.js</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../prettify.css">
+    <link rel="stylesheet" href="../../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1>Code coverage report for <span class="entity">Controller/PagesControllers/PagesListController.js</span></h1>
+    <h2>
+        Statements: <span class="metric">5.26% <small>(1 / 19)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">100% <small>(0 / 0)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">0% <small>(0 / 6)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">5.26% <small>(1 / 19)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">Controller/PagesControllers/</a> &#187; PagesListController.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*jshint node: true */
+'use strict';
+&nbsp;
+/*
+* Name :  PagesListController.js
+* Module : FrontEnd::Controller::PagesController
+* Location : /frontend/app/Controller/PagesController
+*
+* History :
+* Version       Date        Programmer                  Description
+* =================================================================================================
+* 0.1.0         2015-05-20  Maria Giovanna Chinellato   Add all attributes and all methods
+*
+* 0.0.1         2015-05-20  Maria Giovanna Chinellato   Initial code      
+* =================================================================================================
+*
+*/
+&nbsp;
+angular.module('norris-nrti')
+.controller('PagesListController', ['$scope', '$location', 'PagesList', 'SocketServicesFactory', 'UrlProvider', <span class="fstat-no" title="function not covered" >function($scope, $location, PagesList, SocketServicesFactory, UrlProvider){</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	var socket;</span>
+<span class="cstat-no" title="statement not covered" >	var pagesList;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	var url = UrlProvider.prototype.getUrl(); </span>// recupera l'url a cui deve connettersi il socket
+&nbsp;
+	// funzione che connette il socket all'url e chiama la funzione listenOnEvent
+<span class="cstat-no" title="statement not covered" >	this.socketConnection = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >		socket = SocketServicesFactory.build(url);</span>
+<span class="cstat-no" title="statement not covered" >		this.listenOnEvents();</span>
+	};
+&nbsp;
+	// funzione che mette in ascolto il socket su alcuni eventi
+<span class="cstat-no" title="statement not covered" >	this.listenOnEvents = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >		socket.on('configPageList', <span class="fstat-no" title="function not covered" >function(info){</span> // ascolta sull'evento 'configPageList' (ricevuto come risposta alla connessione)</span>
+<span class="cstat-no" title="statement not covered" >			pagesList = new PagesList(info); </span>// crea una nuova PagesList
+<span class="cstat-no" title="statement not covered" >			$scope.pagesList = pagesList.getPagesList(); </span>// rende disponibile la lista delle pagine sullo scope
+		});
+<span class="cstat-no" title="statement not covered" >		socket.on('insertPage', <span class="fstat-no" title="function not covered" >function(info) {</span> // ascolta sull'evento 'insertPage'</span>
+<span class="cstat-no" title="statement not covered" >			pagesList.addPage(info); </span>// aggiunge una pagina alla lista
+<span class="cstat-no" title="statement not covered" >			$scope.pagesList = pagesList.getPagesList(); </span>// rende disponibile la lista delle pagine sullo scope
+		});
+<span class="cstat-no" title="statement not covered" >		socket.on('updatePage', <span class="fstat-no" title="function not covered" >function(info) {</span> // ascolta sull'evento 'updatePage'</span>
+<span class="cstat-no" title="statement not covered" >			pagesList.updatePage(info);</span>
+<span class="cstat-no" title="statement not covered" >			$scope.pagesList = pagesList.getPagesList(); </span>// rende disponibile la lista delle pagine sullo scope
+		});
+&nbsp;
+	};
+&nbsp;
+	// vengono rese disponibili alcune funzioni sullo $scope
+<span class="cstat-no" title="statement not covered" >	$scope.socketConnection = this.socketConnection;</span>
+<span class="cstat-no" title="statement not covered" >	$scope.listenOnEvents = this.listenOnEvents;</span>
+	
+}]);</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Jun 27 2015 09:33:35 GMT+0000 (UTC)</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

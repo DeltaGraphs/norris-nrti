@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for Controller/GraphsControllers/TableController.js</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../prettify.css">
+    <link rel="stylesheet" href="../../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1>Code coverage report for <span class="entity">Controller/GraphsControllers/TableController.js</span></h1>
+    <h2>
+        Statements: <span class="metric">40% <small>(20 / 50)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">0% <small>(0 / 8)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">33.33% <small>(3 / 9)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">40% <small>(20 / 50)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">Controller/GraphsControllers/</a> &#187; TableController.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*jshint node: true */
+'use strict';
+&nbsp;
+/*
+* Name :  TableController.js
+* Module : FrontEnd::Controller::GraphsController
+* Location : /frontend/app/Controller/GraphsController
+*
+* History :
+* Version       Date        Programmer                  Description
+* =================================================================================================
+* 0.1.0         2015-06-04 Francesco Rossetto			Add all attributes and methods
+*
+* 0.0.1         2015-06-04  Francesco Rossetto			Initial code      
+* =================================================================================================
+*/
+&nbsp;
+angular.module('norris-nrti')
+.controller('TableController', ['$scope', '$location', 'TableFactory', 'TableFlowFactory', 'SocketServicesFactory', function($scope, $location, TableFactory, TableFlowFactory, SocketServicesFactory){
+&nbsp;
+	var socket;
+	var table = TableFactory.build(); // crea una table di default
+	$scope.table = table;
+&nbsp;
+	// funzione che connette il socket all'url e chiama la funzione listenOnEvent
+	this.socketConnection = function(url){
+		socket = SocketServicesFactory.build(url);
+		$scope.socket = socket;
+		this.listenOnEvents();
+	};
+&nbsp;
+	var count = 0;
+	$scope.changed = true;
+	$scope.changedP = false;
+&nbsp;
+	// funzione che mette in ascolto il socket su alcuni eventi
+	this.listenOnEvents = function(){
+		socket.on('configGraph', <span class="fstat-no" title="function not covered" >function(info){</span> // ascolta sull'evento 'configGraph' (ricevuto come risposta alla connessione)
+<span class="cstat-no" title="statement not covered" >			if (count === 0) {</span>
+<span class="cstat-no" title="statement not covered" >				count++;</span>
+<span class="cstat-no" title="statement not covered" >				$scope.table.updateParameters(info.properties); </span>// aggiorna le proprietà della table di default con i dati appena ricevuti
+<span class="cstat-no" title="statement not covered" >				$scope.table.initializeData(info.data); </span>// inizializza i flussi con i dati
+<span class="cstat-no" title="statement not covered" >				$scope.changed = !$scope.changed; </span>// 'notifica' cambiamento dati e proprietà
+<span class="cstat-no" title="statement not covered" >				$scope.changedP = true;</span>
+	        }
+		});
+		socket.on('updateGraphProp', <span class="fstat-no" title="function not covered" >function(info){</span> // ascolta sull'evento 'updateGraphProp'
+<span class="cstat-no" title="statement not covered" >			$scope.table.updateParameters(info); </span>// aggiorna le proprietà della table con i dati appena ricevuti
+<span class="cstat-no" title="statement not covered" >			$scope.changed = !$scope.changed; </span>// 'notifica' cambiamento proprietà
+<span class="cstat-no" title="statement not covered" >			console.log('changedP controller');</span>
+<span class="cstat-no" title="statement not covered" >			$scope.changedP = true;</span>
+		});
+		socket.on('insertFlow', <span class="fstat-no" title="function not covered" >function(info){</span> // ascolta sull'evento 'insertFlow'
+<span class="cstat-no" title="statement not covered" >			var flow = TableFlowFactory.build(info.properties); </span>// crea un flusso di default
+<span class="cstat-no" title="statement not covered" >			flow.initializeData(info, $scope.table.getAddRowOn()); </span>// inizializzail flusso
+<span class="cstat-no" title="statement not covered" >			$scope.table.addFlow(info.properties.ID, flow); </span>// aggiunge il flusso al grafico
+<span class="cstat-no" title="statement not covered" >			$scope.changed = !$scope.changed; </span>// 'notifica' cambiamento dati
+		});
+		socket.on('deleteFlow', <span class="fstat-no" title="function not covered" >function(info){</span> // ascolta sull'evento 'deleteFlow'
+<span class="cstat-no" title="statement not covered" >			$scope.table.deleteFlow(info.ID); </span>// elimina un flusso
+<span class="cstat-no" title="statement not covered" >			$scope.changed = !$scope.changed; </span>// 'notifica' cambiamento dati
+		});
+		socket.on('updateFlowProp', <span class="fstat-no" title="function not covered" >function(info){</span> // ascolta sull'evento 'updateFlowProp'
+<span class="cstat-no" title="statement not covered" >			for (var i=0; i&lt;$scope.table.getFlowList().length; i++){</span>
+<span class="cstat-no" title="statement not covered" >				if ($scope.table.getFlowList()[i].id === info.ID){</span>
+<span class="cstat-no" title="statement not covered" >					$scope.table.getFlowList()[i].flow.updateParameters(info); </span>// aggiorna le proprietà dei flussi
+				}
+			}
+<span class="cstat-no" title="statement not covered" >			$scope.changed = !$scope.changed; </span>// 'notifica' cambiamento dati
+		});
+		socket.on('updateFlowData', <span class="fstat-no" title="function not covered" >function(data){</span> // ascolta sull'evento 'updateFlowData'
+<span class="cstat-no" title="statement not covered" >			switch (data.action){</span>
+				case 'insertRecords':
+<span class="cstat-no" title="statement not covered" >					$scope.table.streamUpdate(data); </span>// effettua un aggiornamento di tipo stream
+<span class="cstat-no" title="statement not covered" >					break;</span>
+				case 'deleteRecord':
+<span class="cstat-no" title="statement not covered" >					$scope.table.deleteData(data); </span>// elimina dei dati
+<span class="cstat-no" title="statement not covered" >					break;</span>
+				case 'updateRecord':
+<span class="cstat-no" title="statement not covered" >					$scope.table.inPlaceUpdate(data); </span>// effettua aggiornamento di tipo in place
+<span class="cstat-no" title="statement not covered" >					break;</span>
+				case 'replaceData':
+<span class="cstat-no" title="statement not covered" >					$scope.table.replaceData(data); </span>// rimpiazza dei dati
+<span class="cstat-no" title="statement not covered" >					break;</span>
+			}
+<span class="cstat-no" title="statement not covered" >			$scope.changed = !$scope.changed; </span>// 'notifica' cambiamento dati
+		});
+&nbsp;
+	};
+&nbsp;
+	// mette a disposizione delle funzioni sullo scope
+	$scope.socketConnection = this.socketConnection;
+	$scope.listenOnEvents = this.listenOnEvents;
+&nbsp;
+}]);</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Jun 27 2015 09:33:35 GMT+0000 (UTC)</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>
