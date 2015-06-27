@@ -175,7 +175,7 @@ describe(&#039;BarChartView&#039;, function(){
 			expect(nvd3H).toBeDefined();
 			var svgH = element.find(&#039;svg&#039;);
 			expect(svgH).toBeDefined();
-			var legend1 = element.find(&#039;.barChartLegend&#039;);
+			var legend1 = element.find(&#039;div.barChartLegend&#039;);
 			expect(legend1).not.toBeDefined();
 			scope.barChart.updateParameters(json);
 			scope.changedP = !scope.changedP;
@@ -184,7 +184,7 @@ describe(&#039;BarChartView&#039;, function(){
 			expect(nvd3V).toBeDefined();
 			var svgV = element.find(&#039;svg&#039;);
 			expect(svgV).toBeDefined();
-			var legend2 = element.find(&#039;.barChartLegend&#039;);
+			var legend2 = element.find(&#039;div.barChartLegend&#039;);
 			expect(legend2).toBeDefined();
 			expect(legend2.getAttribute(&#039;style&#039;)).toBe(&#039;float: left; position: relative; top: -&#039; + (scope.barChart.getHeight()/2) + &#039;px; right: -&#039; + scope.barChart.getWidth() + &#039;px;  background-color: &#039; + scope.$parent.getLegend().getBackgroundColor() + &#039;;&#039;);
 		});
@@ -247,7 +247,7 @@ describe(&#039;BarChartView&#039;, function(){
 			scope.barChart.updateParameters(json1);
 			scope.changedD = !scope.changedD;
     		scope.$digest();
-    		var legend1 = element.find(&#039;.barChartLegend&#039;);
+    		var legend1 = element.find(&#039;div.barChartLegend&#039;);
 			expect(legend1).toBeDefined();
 			expect(legend1.getAttribute(&#039;style&#039;)).toBe(&#039;float: left; position: relative; right: -&#039; + (scope.barChart.getWidth()/2) + &#039;px; background-color: &#039; + scope.getLegend().getBackgroundColor() + &#039;;&#039;);
     		/*scope.barChart.updateParameters(json2);
