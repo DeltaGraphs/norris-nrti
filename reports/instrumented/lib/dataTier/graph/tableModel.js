@@ -42,7 +42,7 @@ function TableModel(params) {
             color: '#000000',
             width: 1
         },
-        veticalGrid: {
+        verticalGrid: {
             color: '#000000',
             width: 1
         },

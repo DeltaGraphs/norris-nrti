@@ -14853,7 +14853,7 @@
                         ]
                     },
                     "operands": {
-                        "distinct": 111,
+                        "distinct": 110,
                         "total": 984,
                         "identifiers": [
                             "\"use strict\"",
@@ -14894,7 +14894,7 @@
                             "\"#000000\"",
                             "width",
                             1,
-                            "veticalGrid",
+                            "verticalGrid",
                             "rowEven",
                             "textColor",
                             "backgroundColor",
@@ -14938,7 +14938,6 @@
                             "pop",
                             "\"object\"",
                             "isHEX",
-                            "verticalGrid",
                             "f",
                             "l",
                             "m",
@@ -14970,12 +14969,12 @@
                         ]
                     },
                     "length": 1932,
-                    "vocabulary": 135,
-                    "difficulty": 106.37837837837839,
-                    "volume": 13672.407733502207,
-                    "effort": 1454448.5632179645,
-                    "bugs": 4.557469244500735,
-                    "time": 80802.69795655359
+                    "vocabulary": 134,
+                    "difficulty": 107.34545454545454,
+                    "volume": 13651.684315964416,
+                    "effort": 1465446.258208253,
+                    "bugs": 4.550561438654805,
+                    "time": 81413.68101156961
                 },
                 "params": 11,
                 "line": 2,
@@ -15041,7 +15040,7 @@
                                 "\"#000000\"",
                                 "width",
                                 1,
-                                "veticalGrid",
+                                "verticalGrid",
                                 "rowEven",
                                 "textColor",
                                 "backgroundColor",
