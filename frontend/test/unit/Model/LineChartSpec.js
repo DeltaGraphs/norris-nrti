@@ -188,6 +188,9 @@ describe('LineChart', function(){
 		it('graph updated with the correct flow', function(){
 			expect(LineChart.getFlowList().length).toEqual(3);
 		});
+		it('graph updated with the correct legend', function(){
+			expect(LineChart.getLegend()).not.toEqual(null);
+		});
 		it('graph updated with the correct interpolation', function(){
 			expect(LineChart.getInterpolation()).toEqual('linear');
 		});

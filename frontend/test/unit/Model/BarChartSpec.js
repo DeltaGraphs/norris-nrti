@@ -205,6 +205,9 @@ describe('BarChart', function(){
 		it('graph updated with the correct grouping control', function(){
 			expect(BarChart.getGroupingControl()).toEqual(false);
 		});
+		it('graph updated with the correct legend', function(){
+			expect(BarChart.getLegend()).not.toEqual(null);
+		});
 		it('graph updated with the correct legendOnPoint', function(){
 			expect(BarChart.getLegendOnPoint()).toEqual(true);
 		});
