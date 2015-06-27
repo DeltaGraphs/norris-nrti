@@ -20,13 +20,16 @@
 
 var norrisConfig = function($routeProvider) {
     $routeProvider /* inizio definizione di routeProvider */
-        .when('/', {
+        .when('/norris', {
             //controller: 'PagesListController',
             template: '<pages-list></pages-list>'
         })
         .when('/page/:pageId', {
         	//controller : 'PageController',
         	template: '<page></page>'
+        })
+        .otherwise({
+            redirectTo: '/norris'
         })
     ; /* fine definizione di routeProvider */
 };
