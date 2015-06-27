@@ -217,6 +217,7 @@ angular.module('norris-nrti')
                 var parent = document.createElement('div');
 
                 changePosition(chart,parent);
+                parent.setAttribute('class','barChartLegend');
 
                 if (scope.$parent.barChart.getLegend() !== null) {
                     var div = document.createElement('div');
