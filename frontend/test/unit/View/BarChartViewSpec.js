@@ -49,14 +49,23 @@ describe('BarChartView', function(){
   	}));
 
   	describe('Constructor', function() {
-  		var json  = {
-			'properties' : {
-				'title' : 'prova2',
-				'barOrientation' : 'V',
-				'enableLegend' : true,
-				'legendOnPoint' : false,
-				'groupingControl' : false
-			}
+  		var json = {
+			'title' : 'graficonuovo',
+			'height' : 400,
+			'width' : 400,
+			'enableLegend' : true,
+			'legend' : {position: 'E'},
+			'socketURL' : 'http://example.com',
+			'xAxis' : { name: 'asseX' },
+			'yAxis' : { name: 'asseY' },
+			'barOrientation' : 'vertical',
+			'headers' : ['colonna1'],
+			'backgroundColor' : '#F0F',
+			'sortable' : false,
+			'groupingControl' : false,
+			'legendOnPoint' : true,
+			'grid' : false,
+			'flows' : [{'ID' : 'f1'},{ 'ID' : 'f2'},{'ID' : 'f3'}]
 		};
 
 		it('works fine', function() {
@@ -66,7 +75,7 @@ describe('BarChartView', function(){
 			expect(nvd3H).toBeDefined();
 			var svgH = element.find('svg');
 			expect(svgH).toBeDefined();
-			bar.updateParameters(json);
+			scope.barChart.updateParameters(json);
 			scope.changedP = !scope.changedP;
     		scope.$digest();
 			var nvd3V = element.find('nvd3-multi-bar-chart');
