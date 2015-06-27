@@ -76,7 +76,7 @@ var TS=function(norris){
     var change=false;
     var repeat=function(){
         if (change){
-            page.updateParameters({
+            page.updateProperties({
                 name: 'Pagina Test 2',
                 description: 'Questa non è una bella pagina',
                 graphsPerRow: 5,
@@ -84,7 +84,7 @@ var TS=function(norris){
             });
         }
         else{
-            page.updateParameters({
+            page.updateProperties({
                 name: 'Pagina Test',
                 description: 'Questa è una bella pagina',
                 graphsPerRow: 2,
