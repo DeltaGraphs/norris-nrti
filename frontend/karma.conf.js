@@ -61,9 +61,9 @@ module.exports = function(config) {
 			'app/View/*.js': ['coverage'],
 			'app/View/GraphsView/*.js': ['coverage'],
 			'app/View/PagesView/*.js': ['coverage'],
-			'app/Controllers/*.js': ['coverage'],
-			'app/Controllers/GraphsControllers/*.js': ['coverage'],
-			'app/Controllers/PagesControllers/*.js': ['coverage']
+			'app/Controller/*.js': ['coverage'],
+			'app/Controller/GraphsControllers/*.js': ['coverage'],
+			'app/Controller/PagesControllers/*.js': ['coverage']
 		},
 
 		// test results reporter to use
