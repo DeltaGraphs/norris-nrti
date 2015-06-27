@@ -58,7 +58,7 @@ var TS=function(page){
         ID:'flow1',
         name: 'grafico tempo-temperatura',
         xKey: 'tempo',
-        yKey: 'temperatura',
+        yKey: 'pressione',
         flowColor: '#B9D3EE',
         marker: 'triangle'
     });
