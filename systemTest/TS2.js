@@ -4,7 +4,7 @@
 /*
 * Name : TS2.js
 * Module : TS2
-* Location : /testSistema
+* Location : /systemTest
 *
 * Requirements tested:
 *	FBOB2.3 		Il framework deve dare la possibilità all'utente sviluppatore di creare un bar chart.

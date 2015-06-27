@@ -4,7 +4,7 @@
 /*
 * Name : TS3.js
 * Module : TS3
-* Location : /testSistema
+* Location : /systemTest
 *
 * Requirements tested:
 *	FBOB2.4 		Il framework deve dare la possibilità all'utente sviluppatore di creare un linechart.

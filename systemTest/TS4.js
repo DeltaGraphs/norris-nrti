@@ -4,20 +4,20 @@
 /*
 * Name : TS4.js
 * Module : TS4
-* Location : /testSistema
+* Location : /systemTest
 *
 * Requirements tested:
-*	FBOB2.5 Il framework deve dare la possibilità all'utente sviluppatore di creare un map chart.
-*	(FBDE2.5.1) Il framework deve consentire all'utente sviluppatore di impostare la possibilità di effettuare il trascinamento nel map chart, al momento della creazione.
-* 	FBOB2.5.2 Il framework deve consentire all'utente sviluppatore di impostare il punto centrale del map chart, nel momento della creazione.
-*	FBOB2.5.3 Il framework deve consentire all'utente sviluppatore di impostare la scala dell'area visualizzata nel map chart, al momento della creazione.
-* 	FBDE2.5.4 Il framework deve consentire all'utente sviluppatore di impostare il tipo della mappa del map chart, al momento della creazione.
-*	(FBDE2.5.5) Il framework deve consentire all'utente sviluppatore di impostare la possibilità di zoomare nel map chart, al momento della creazione.
-*	(FBDE2.5.6) Il framework deve consentire all'utente sviluppatore di impostare la griglia nel map chart, al momento della creazione.
-*	(FBDE2.5.6.1) Il framework deve permettere all'utente sviluppatore di abilitare la griglia orizzontale del map chart, al momento della creazione.
-*	(FBDE2.5.6.2) Il framework deve permettere all'utente sviluppatore di abilitare la griglia verticale del map chart, al momento della creazione.
-*	(FBDE2.5.6.3) Il framework deve permettere all'utente sviluppatore di disabilitare la griglia orizzontale del map chart, al momento della creazione.
-*	(FBDE2.5.6.4) Il framework deve permettere all'utente sviluppatore di disabilitare la griglia verticale del map chart, al momento della creazione.
+*	FBOB2.5 		Il framework deve dare la possibilità all'utente sviluppatore di creare un map chart.
+*	(FBDE2.5.1) 	Il framework deve consentire all'utente sviluppatore di impostare la possibilità di effettuare il trascinamento nel map chart, al momento della creazione.
+* 	FBOB2.5.2 		Il framework deve consentire all'utente sviluppatore di impostare il punto centrale del map chart, nel momento della creazione.
+*	FBOB2.5.3 		Il framework deve consentire all'utente sviluppatore di impostare la scala dell'area visualizzata nel map chart, al momento della creazione.
+* 	FBDE2.5.4 		Il framework deve consentire all'utente sviluppatore di impostare il tipo della mappa del map chart, al momento della creazione.
+*	(FBDE2.5.5) 	Il framework deve consentire all'utente sviluppatore di impostare la possibilità di zoomare nel map chart, al momento della creazione.
+*	(FBDE2.5.6) 	Il framework deve consentire all'utente sviluppatore di impostare la griglia nel map chart, al momento della creazione.
+*	(FBDE2.5.6.1)	Il framework deve permettere all'utente sviluppatore di abilitare la griglia orizzontale del map chart, al momento della creazione.
+*	(FBDE2.5.6.2) 	Il framework deve permettere all'utente sviluppatore di abilitare la griglia verticale del map chart, al momento della creazione.
+*	(FBDE2.5.6.3) 	Il framework deve permettere all'utente sviluppatore di disabilitare la griglia orizzontale del map chart, al momento della creazione.
+*	(FBDE2.5.6.4) 	Il framework deve permettere all'utente sviluppatore di disabilitare la griglia verticale del map chart, al momento della creazione.
 *
 * <<Requirements into brackets are not satisfied>>
 *

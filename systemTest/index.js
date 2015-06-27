@@ -3,8 +3,8 @@
 
 /*
 * Name : index.js
-* Module : TestSistema
-* Location : /testSistema
+* Module : SystemTest
+* Location : /SystemTest
 *
 * History :
 * 
@@ -38,11 +38,14 @@ var page=norris.createPage({
 var TS1 = require('./TS1.js');
 var TS2 = require('./TS2.js');
 var TS3 = require('./TS3.js');
+var TS4 = require('./TS4.js');
+var TS5 = require('./TS5.js');
 
 TS1(norris);
 TS2(page);
 TS3(page);
-
+TS4(page);
+TS5(page);
 
 
 

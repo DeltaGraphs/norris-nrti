@@ -4,7 +4,7 @@
 /*
 * Name : TS1.js
 * Module : TS1
-* Location : /testSistema
+* Location : /systemTest
 *
 * Requirements tested:
 *   FBOB1       Il framework deve dare la possibilità all'utente sviluppatore di creare delle pagine.

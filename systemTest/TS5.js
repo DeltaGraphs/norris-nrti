@@ -4,7 +4,7 @@
 /*
 * Name : TS5.js
 * Module : TS5
-* Location : /testSistema
+* Location : /systemTest
 *
 * Requirements tested:
 *	FBOB2.6 		Il framework deve dare la possibilità all'utente sviluppatore di creare una table.
