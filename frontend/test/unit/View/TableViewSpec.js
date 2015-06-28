@@ -46,13 +46,6 @@ describe('TableView', function(){
 			'title' : 'graficonuovo',
 			'height' : 400,
 			'width' : 400,
-			'appearance':{
-				'horizontalGrid':{'color':'#00AA00','width':1},
-				'verticalGrid':{'color':'#00AA00','width':1},
-				'rowEven':{'textColor':['#1F3D99','#000000'],'backgroundColor':['#99E2F2','#F2E899']},
-				'rowOdd':{'textColor':['#000000','#1F3D99'],'backgroundColor':['#99F2DF','#D9F299']},
-				'headers':{'textColor':['#FFFFFF','#FFFFFF'],'backgroundColor':['#2FBA38','#2F3ABA']}
-			},
 			'headers':['IDMezzo','WGS84Fi','WGS84La'],
 			'sortable' : true,
 			'maxItemsPage': 20,
@@ -66,6 +59,13 @@ describe('TableView', function(){
 			'height' : 400,
 			'width' : 400,
 			'sortable' :false,
+			'appearance':{
+				'horizontalGrid':{'color':'#00AA00','width':1},
+				'verticalGrid':{'color':'#00AA00','width':1},
+				'rowEven':{'textColor':['#1F3D99','#000000'],'backgroundColor':['#99E2F2','#F2E899']},
+				'rowOdd':{'textColor':['#000000','#1F3D99'],'backgroundColor':['#99F2DF','#D9F299']},
+				'headers':{'textColor':['#FFFFFF','#FFFFFF'],'backgroundColor':['#2FBA38','#2F3ABA']}
+			},
 			'headers':['IDMezzo','WGS84Fi','WGS84La'],
 			'sort' : {'column':['IDMezzo','WGS84Fi'],'ordering':['DESC','ASC']},
 			'socketURL' : 'http://example.com',
@@ -73,6 +73,17 @@ describe('TableView', function(){
 			'grid' : false,
 			'flows' : [{'ID' : 'f1'},{ 'ID' : 'f2'},{'ID' : 'f3'}]
 		};
+
+		var data = [
+			{
+				'ID':'f1',
+				'records':[
+					{'norrisRecordID':'flow1_1435482609499_1','value':[1,3]},
+					{'norrisRecordID':'flow1_1435482609499_2','value':[2,2]},
+					{'norrisRecordID':'flow1_1435482609499_3','value':[3,1]}
+				]
+			}
+		];
 
 		beforeEach(function(){
 			scope.table = TableFactory.build();
@@ -96,6 +107,7 @@ describe('TableView', function(){
 
 		it('works fine', function() {
 			scope.table.updateParameters(json);
+			scope.barChart.initializeData(data);
 			scope.changed = !scope.changed;
     		scope.$digest();
 			var tableChart = element.find('table-chart');
