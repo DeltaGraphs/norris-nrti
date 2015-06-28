@@ -75,11 +75,37 @@ describe('TableView', function(){
 			'flows' : [{'ID' : 'f1'},{ 'ID' : 'f2'},{'ID' : 'f3'}]
 		};
 
+		var json2 = {
+			'title' : 'graficonuovo',
+			'height' : 400,
+			'width' : 400,
+			'sortable' :false,
+			'appearance':{
+				'rowEven':{'textColor':['#1F3D99','#000000'],'backgroundColor':['#99E2F2','#F2E899']},
+				'rowOdd':{'textColor':['#000000','#1F3D99'],'backgroundColor':['#99F2DF','#D9F299']},
+				'headers':{'textColor':['#FFFFFF','#FFFFFF'],'backgroundColor':['#2FBA38','#2F3ABA']}
+			},
+			'headers':['IDMezzo','WGS84Fi','WGS84La','FWWsd'],
+			'sort' : {'column':[],'ordering':[]},
+			'socketURL' : 'http://example.com',
+			'backgroundColor' : '#F0F',
+			'grid' : false,
+			'flows' : [{'ID' : 'f1'},{ 'ID' : 'f2'},{'ID' : 'f3'}]
+		};
+
 		var data = [
 			{
 				'ID':'f1',
 				'records':[
-					{'norrisRecordID':'flow1_1435482609499_1','value':[1,3]},
+					{	
+						'norrisRecordID':'flow1_1435482609499_1',
+						'value':[1,3],
+						'appearance' : [
+							{'bg':'#FFAAFF','text':'#FFAAAA'},
+							{'bg':'#FFFFFF','text':'#000000'},
+							{'bg':'#FFAAFF','text':'#FFAACC'}
+						]
+					},
 					{'norrisRecordID':'flow1_1435482609499_2','value':[2,2]},
 					{'norrisRecordID':'flow1_1435482609499_3','value':[3,1]}
 				]
@@ -97,6 +123,7 @@ describe('TableView', function(){
 		it('works fine', function() {
 			scope.table.updateParameters(info);
 			scope.changed = !scope.changed;
+			scope.changedP = true;
     		scope.$digest();
 			var tableChart = element.find('table-chart');
 			expect(tableChart).toBeDefined();
@@ -108,6 +135,20 @@ describe('TableView', function(){
 
 		it('works fine', function() {
 			scope.table.updateParameters(json);
+			scope.table.initializeData(data);
+			scope.changedP = true;
+			scope.changed = !scope.changed;
+    		scope.$digest();
+			var tableChart = element.find('table-chart');
+			expect(tableChart).toBeDefined();
+			var tag = element.find('table');
+			expect(tag).toBeDefined();
+			table.updateParameters(json);
+			scope.changed = !scope.changed;
+		});
+
+		it('works fine', function() {
+			scope.table.updateParameters(json2);
 			scope.table.initializeData(data);
 			scope.changedP = true;
 			scope.changed = !scope.changed;
@@ -158,6 +199,7 @@ describe('TableView', function(){
 			scope.table.updateParameters(json);
 			scope.table.initializeData(data);
 			scope.changed = !scope.changed;
+			scope.changedP = true;
     		scope.$digest();
 		});
 
