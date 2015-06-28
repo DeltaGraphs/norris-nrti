@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">67.16</p>
+      <p class="stat">62.66</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">63</p>
+      <p class="stat">260</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">8.27</p>
+      <p class="stat">18.90</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.31</p>
+      <p class="stat">2.19</p>
     </div>
   </div>
 </div>
@@ -114,16 +114,10 @@ describe(&#039;MapChartView&#039;, function(){
 	beforeEach(angular.mock.module(&#039;norris-nrti&#039;));
 
 	var html, element, scope, map, MapChartFactory, controller;
-	var json = {
-		&#039;properties&#039; : {
-			&#039;title&#039; : &#039;prova&#039;
-		}
-	};
 
 	beforeEach(inject(function($rootScope, $compile, $injector, $controller) {
 		MapChartFactory = $injector.get(&#039;MapChartFactory&#039;);
 		map = MapChartFactory.build();
-		map.updateParameters(json);
     	scope = $rootScope.$new();
     	controller = $controller(&#039;MapChartController&#039;, { $scope : scope });
     	html = angular.element(&#039;&lt;map-chart url=&quot;http://example/map.com&quot;&gt;&lt;/map-chart&gt;&#039;);
@@ -136,13 +130,44 @@ describe(&#039;MapChartView&#039;, function(){
   	}));
 
   	describe(&#039;Constructor&#039;, function() {
-  		var json = {
-			&#039;properties&#039; : {
-				&#039;title&#039; : &#039;MapChartViewSpec&#039;
-			}
+  		var info = {
+			&#039;title&#039; : &#039;graficonuovo&#039;,
+			&#039;height&#039; : 400,
+			&#039;width&#039; : 400,
+			&#039;enableLegend&#039; : false,
+			&#039;socketURL&#039; : &#039;http://example.com&#039;,
+			&#039;backgroundColor&#039; : &#039;#F0F&#039;,
+			&#039;legendOnPoint&#039; : false,
+			&#039;grid&#039; : false
 		};
 
+  		var json = {
+			&#039;title&#039; : &#039;graficonuovo&#039;,
+			&#039;height&#039; : 400,
+			&#039;width&#039; : 400,
+			&#039;enableLegend&#039; : true,
+			&#039;legend&#039; : {position: &#039;E&#039;},
+			&#039;socketURL&#039; : &#039;http://example.com&#039;,
+			&#039;xAxis&#039; : { name: &#039;asseX&#039; },
+			&#039;yAxis&#039; : { name: &#039;asseY&#039; },
+			&#039;mapType&#039; : &#039;roadmap&#039;,
+			&#039;legendOnPoint&#039; : true,
+			&#039;grid&#039; : false,
+			&#039;flows&#039; : [{&#039;ID&#039; : &#039;f1&#039;},{ &#039;ID&#039; : &#039;f2&#039;},{&#039;ID&#039; : &#039;f3&#039;}]
+		};
+
+		beforeEach(function(){
+			scope.mapChart = MapChartFactory.build();
+		});
+
+		afterEach(function(){
+			scope.mapChart = null;
+		});
+
 		it(&#039;works fine&#039;, function() {
+			scope.mapChart.updateParameters(info);
+			scope.changedP = !scope.changedP;
+    		scope.$digest();
 			var mapChart = element.find(&#039;map-chart&#039;);
 			expect(mapChart).toBeDefined();
 			var div = element.find(&#039;div&#039;);
@@ -150,6 +175,178 @@ describe(&#039;MapChartView&#039;, function(){
 			map.updateParameters(json);
 			scope.changedP = !scope.changedP;
 		});
+
+		it(&#039;works fine&#039;, function() {
+			scope.mapChart.updateParameters(json);
+			scope.changedP = !scope.changedP;
+    		scope.$digest();
+			var mapChart = element.find(&#039;map-chart&#039;);
+			expect(mapChart).toBeDefined();
+			var div = element.find(&#039;div&#039;);
+			expect(div).toBeDefined();
+			map.updateParameters(json);
+			scope.changedP = !scope.changedP;
+		});
+	});
+
+	describe(&#039;#setData&#039;, function() {
+
+  		var json = {
+  			&#039;title&#039; : &#039;json&#039;,
+			&#039;enableLegend&#039; : true,
+			&#039;legend&#039; : {position: &#039;N&#039;},
+			&#039;flows&#039; : [{&#039;ID&#039; : &#039;f1&#039;, &#039;marker&#039;:{&#039;type&#039;:&#039;shape&#039;,&#039;shape&#039;:&#039;bus&#039;,&#039;color&#039;:&#039;#FFC4F6&#039;}},{ &#039;ID&#039; : &#039;f2&#039;, &#039;trace&#039;: {&#039;type&#039;:&#039;poly&#039;}},{&#039;ID&#039; : &#039;f3&#039;}]
+		};
+
+		var data = [
+			{
+				&#039;ID&#039;:&#039;f1&#039;,
+				&#039;records&#039;:[
+					{&#039;norrisRecordID&#039;:&#039;flow1_1435482609499_1&#039;,&#039;value&#039;:[1,3]},
+					{&#039;norrisRecordID&#039;:&#039;flow1_1435482609499_2&#039;,&#039;value&#039;:[2,2]},
+					{&#039;norrisRecordID&#039;:&#039;flow1_1435482609499_3&#039;,&#039;value&#039;:[3,1]}
+				]
+			}
+		];
+
+		it(&#039;works fine&#039;, function() {
+			scope.lineChart.updateParameters(json);
+			scope.lineChart.initializeData(data);
+			scope.changedD = !scope.changedD;
+    		scope.$digest();
+		});
+
+		/*it(&#039;set the correct flow color&#039;, function() {
+			var colorArray = scope.colorFunction();
+			expect(colorArray[0]).toEqual(&#039;#000000&#039;);
+			expect(colorArray[0]).toEqual(&#039;#BAAAEE&#039;);
+			expect(colorArray[0]).toEqual(&#039;#B9D3EE&#039;);
+		});*/
+
+	});
+
+  	describe(&#039;#setLegend&#039;, function() {
+
+  		var json1 = {
+  			&#039;title&#039; : &#039;json1&#039;,
+			&#039;enableLegend&#039; : true,
+			&#039;legend&#039; : {position: &#039;S&#039;},
+			&#039;flows&#039; : [{&#039;ID&#039; : &#039;f1&#039;},{ &#039;ID&#039; : &#039;f2&#039;},{&#039;ID&#039; : &#039;f3&#039;}]
+		};
+
+		var json2 = {
+			&#039;title&#039; : &#039;json2&#039;,
+			&#039;enableLegend&#039; : true,
+			&#039;legend&#039; : {position: &#039;SE&#039;},
+			&#039;flows&#039; : [{&#039;ID&#039; : &#039;f1&#039;},{ &#039;ID&#039; : &#039;f2&#039;},{&#039;ID&#039; : &#039;f3&#039;}]
+		};
+
+		var json3 = {
+			&#039;title&#039; : &#039;json3&#039;,
+			&#039;enableLegend&#039; : true,
+			&#039;legend&#039; : {position: &#039;SW&#039;},
+			&#039;flows&#039; : [{&#039;ID&#039; : &#039;f1&#039;},{ &#039;ID&#039; : &#039;f2&#039;},{&#039;ID&#039; : &#039;f3&#039;}]
+		};
+
+		var json4 = {
+			&#039;title&#039; : &#039;json4&#039;,
+			&#039;enableLegend&#039; : true,
+			&#039;legend&#039; : {position: &#039;NW&#039;},
+			&#039;flows&#039; : [{&#039;ID&#039; : &#039;f1&#039;},{ &#039;ID&#039; : &#039;f2&#039;},{&#039;ID&#039; : &#039;f3&#039;}]
+		};
+		var json5 = {
+			&#039;title&#039; : &#039;json5&#039;,
+			&#039;enableLegend&#039; : true,
+			&#039;legend&#039; : {position: &#039;W&#039;},
+			&#039;flows&#039; : [{&#039;ID&#039; : &#039;f1&#039;},{ &#039;ID&#039; : &#039;f2&#039;},{&#039;ID&#039; : &#039;f3&#039;}]
+		};
+
+		var json6 = {
+			&#039;title&#039; : &#039;json6&#039;,
+			&#039;enableLegend&#039; : true,
+			&#039;legend&#039; : {position: &#039;NE&#039;},
+			&#039;flows&#039; : [{&#039;ID&#039; : &#039;f1&#039;},{ &#039;ID&#039; : &#039;f2&#039;},{&#039;ID&#039; : &#039;f3&#039;}]
+		};
+
+		var json7 = {
+			&#039;title&#039; : &#039;json7&#039;,
+			&#039;enableLegend&#039; : true,
+			&#039;legend&#039; : {position: &#039;E&#039;},
+			&#039;flows&#039; : [{&#039;ID&#039; : &#039;f1&#039;},{ &#039;ID&#039; : &#039;f2&#039;},{&#039;ID&#039; : &#039;f3&#039;}]
+		};
+
+		beforeEach(function(){
+			scope.mapChart = MapChartFactory.build();
+		});
+
+		afterEach(function(){
+			scope.mapChart = null;
+		});
+
+		it(&#039;to S works fine&#039;, function() {
+			scope.mapChart.updateParameters(json1);
+			scope.changedD = !scope.changedD;
+    		scope.$digest();
+    		//var legend1 = element.find(&#039;div.mapChartLegend&#039;);
+    		//console.dir(legend1);
+			//expect(legend1).toBeDefined();
+			//expect(legend1.getAttribute(&#039;style&#039;)).toBe(&#039;float: left; position: relative; right: -&#039; + (scope.mapChart.getWidth()/2) + &#039;px; background-color: &#039; + scope.getLegend().getBackgroundColor() + &#039;;&#039;);
+    	});
+    		
+    	it(&#039;to SE works fine&#039;, function(){
+			scope.mapChart.updateParameters(json2);
+			scope.changedD = !scope.changedD;
+    		scope.$digest();
+    		//var legend2 = element.children()[2];
+			//expect(legend2).toBeDefined();
+			//expect(legend2.getAttribute(&#039;style&#039;)).toBe(&#039;float: left; position: relative; right: -&#039; + scope.mapChart.getWidth() + &#039;px; background-color: &#039; + scope.mapChart.getLegend().getBackgroundColor() + &#039;;&#039;);
+    	});
+    	
+    	it(&#039;to SW works fine&#039;, function(){
+    		scope.mapChart.updateParameters(json3);
+			scope.changedD = !scope.changedD;
+    		scope.$digest();
+    		//var legend3 = element.children()[2];
+			//expect(legend3).toBeDefined();
+			//expect(legend3.getAttribute(&#039;style&#039;)).toBe(&#039;float: left; position: relative; background-color: &#039; + scope.mapChart.getLegend().getBackgroundColor() + &#039;;&#039;);
+    	});	
+    		
+    	it(&#039;to NW works fine&#039;, function(){
+    		scope.mapChart.updateParameters(json4);
+			scope.changedD = !scope.changedD;
+    		scope.$digest();
+    		//var legend4 = element.children()[2];
+			//expect(legend4).toBeDefined();
+			//expect(legend4.getAttribute(&#039;style&#039;)).toBe(&#039;float: left; position: relative; top: -&#039; + scope.mapChart.getHeight() + &#039;px; background-color: &#039; + scope.mapChart.getLegend().getBackgroundColor() + &#039;;&#039;);
+		});
+
+		it(&#039;to W works fine&#039;, function(){
+    		scope.mapChart.updateParameters(json5);
+			scope.changedD = !scope.changedD;
+    		scope.$digest();
+    		//var legend5 = element.children()[2];
+			//expect(legend5).toBeDefined();
+			//expect(legend5.getAttribute(&#039;style&#039;)).toBe(&#039;float: left; position: relative; top: -&#039; + (scope.mapChart.getHeight()/2) + &#039;px; background-color: &#039; + scope.mapChart.getLegend().getBackgroundColor() + &#039;;&#039;);
+		});
+
+		it(&#039;to NE works fine&#039;, function(){
+    		scope.mapChart.updateParameters(json6);
+			scope.changedD = !scope.changedD;
+    		scope.$digest();
+    		//var legend6 = element.children()[2];
+			//expect(legend6).toBeDefined();
+			//expect(legend6.getAttribute(&#039;style&#039;)).toBe(&#039;float: left; position: relative; top: -&#039; + scope.mapChart.getHeight() + &#039;px; right: -&#039; + scope.mapChart.getWidth() + &#039;px; background-color: &#039; + scope.mapChart.getLegend().getBackgroundColor() + &#039;;&#039;);*/
+		});
+
+		it(&#039;to E works fine&#039;, function(){
+    		scope.mapChart.updateParameters(json7);
+			scope.changedD = !scope.changedD;
+    		scope.$digest();
+    		//var legend7 = element.find(&#039;div.mapChartLegend&#039;);
+			//expect(legend7).toBeDefined();
+			//expect(legend7.getAttribute(&#039;style&#039;)).toBe(&#039;float: left; position: relative; top: -&#039; + (scope.mapChart.getHeight()/2) + &#039;px; right: -&#039; + scope.mapChart.getWidth() + &#039;px;  background-color: &#039; + scope.$parent.getLegend().getBackgroundColor() + &#039;;&#039;);
+		});
+
 	});
 
 });</textarea>
