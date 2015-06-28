@@ -23,7 +23,24 @@ describe('BarChartView', function(){
 	beforeEach(angular.mock.module('norris-nrti'));
 
 	var html, element, scope, bar, BarChartFactory, controller;
-	var info = {
+	
+	beforeEach(inject(function($rootScope, $compile, $injector, $controller) {
+		BarChartFactory = $injector.get('BarChartFactory');
+		bar = BarChartFactory.build();
+    	scope = $rootScope.$new();
+    	controller = $controller('BarChartController', { $scope : scope });
+    	html = angular.element('<bar-chart url="http://example/bar.com"></bar-chart>');
+
+    	scope.barChart = bar;
+
+    	element = $compile(html)(scope);
+    	scope.$digest();
+
+  	}));
+
+  	describe('#init', function() {
+
+  		var info = {
 			'title' : 'graficonuovo',
 			'height' : 400,
 			'width' : 400,
@@ -39,25 +56,6 @@ describe('BarChartView', function(){
 			'legendOnPoint' : false,
 			'grid' : false
 		};
-	
-	beforeEach(inject(function($rootScope, $compile, $injector, $controller) {
-		BarChartFactory = $injector.get('BarChartFactory');
-		bar = BarChartFactory.build();
-    	scope = $rootScope.$new();
-    	controller = $controller('BarChartController', { $scope : scope });
-    	html = angular.element('<bar-chart url="http://example/bar.com"></bar-chart>');
-
-    	scope.barChart = bar;
-
-    	scope.barChart.updateParameters(info);
-    	scope.changedP = !scope.changedP;
-
-    	element = $compile(html)(scope);
-    	scope.$digest();
-
-  	}));
-
-  	describe('#init', function() {
 
   		var json = {
 			'title' : 'graficonuovo',
@@ -86,6 +84,9 @@ describe('BarChartView', function(){
 		});
 
 		it('default works fine', function() {
+			scope.barChart.updateParameters(info);
+			scope.changedP = !scope.changedP;
+    		scope.$digest();
 			var barChart = element.find('bar-chart');
 			expect(barChart).toBeDefined();
 			var nvd3H = element.find('nvd3-multi-bar-horizontal-chart');
@@ -114,6 +115,7 @@ describe('BarChartView', function(){
 	describe('#setData', function() {
 
   		var json = {
+  			'title' : 'json',
 			'enableLegend' : true,
 			'legend' : {position: 'N'},
 			'flows' : [{'ID' : 'f1'},{ 'ID' : 'f2'},{'ID' : 'f3'}]
@@ -130,35 +132,41 @@ describe('BarChartView', function(){
 	describe('#setLegend', function() {
 
   		var json1 = {
+  			'title' : 'json1',
 			'enableLegend' : true,
 			'legend' : {position: 'S'},
 			'flows' : [{'ID' : 'f1'},{ 'ID' : 'f2'},{'ID' : 'f3'}]
 		};
 
 		var json2 = {
+			'title' : 'json2',
 			'enableLegend' : true,
 			'legend' : {position: 'SE'},
 			'flows' : [{'ID' : 'f1'},{ 'ID' : 'f2'},{'ID' : 'f3'}]
 		};
 
 		var json3 = {
+			'title' : 'json3',
 			'enableLegend' : true,
 			'legend' : {position: 'SW'},
 			'flows' : [{'ID' : 'f1'},{ 'ID' : 'f2'},{'ID' : 'f3'}]
 		};
 
 		var json4 = {
+			'title' : 'json4',
 			'enableLegend' : true,
 			'legend' : {position: 'NW'},
 			'flows' : [{'ID' : 'f1'},{ 'ID' : 'f2'},{'ID' : 'f3'}]
 		};
 		var json5 = {
+			'title' : 'json5',
 			'enableLegend' : true,
 			'legend' : {position: 'W'},
 			'flows' : [{'ID' : 'f1'},{ 'ID' : 'f2'},{'ID' : 'f3'}]
 		};
 
 		var json6 = {
+			'title' : 'json6',
 			'enableLegend' : true,
 			'legend' : {position: 'NE'},
 			'flows' : [{'ID' : 'f1'},{ 'ID' : 'f2'},{'ID' : 'f3'}]
