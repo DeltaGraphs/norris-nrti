@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">55.55</p>
+      <p class="stat">64.15</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">196</p>
+      <p class="stat">231</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">18.51</p>
+      <p class="stat">18.64</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">1.59</p>
+      <p class="stat">1.78</p>
     </div>
   </div>
 </div>
@@ -168,7 +168,15 @@ describe(&#039;BarChartView&#039;, function(){
 			&#039;grid&#039; : false
 		};
 
-		it(&#039;works fine&#039;, function() {
+		beforeEach(function(){
+			scope.barChart = BarChartFactory.build();
+		});
+
+		afterEach(function(){
+			scope.barChart = null;
+		});
+
+		it(&#039;default works fine&#039;, function() {
 			var barChart = element.find(&#039;bar-chart&#039;);
 			expect(barChart).toBeDefined();
 			var nvd3H = element.find(&#039;nvd3-multi-bar-horizontal-chart&#039;);
@@ -177,6 +185,9 @@ describe(&#039;BarChartView&#039;, function(){
 			expect(svgH).toBeDefined();
 			//var legend1 = element.find(&#039;div.barChartLegend&#039;);
 			//expect(legend1).not.toBeDefined();
+		});
+
+		it(&#039;works fine&#039;, function(){
 			scope.barChart.updateParameters(json);
 			scope.changedP = !scope.changedP;
     		scope.$digest();
@@ -188,6 +199,7 @@ describe(&#039;BarChartView&#039;, function(){
 			//expect(legend2).toBeDefined();
 			//expect(legend2.getAttribute(&#039;style&#039;)).toBe(&#039;float: left; position: relative; top: -&#039; + (scope.barChart.getHeight()/2) + &#039;px; right: -&#039; + scope.barChart.getWidth() + &#039;px;  background-color: &#039; + scope.$parent.getLegend().getBackgroundColor() + &#039;;&#039;);
 		});
+
 	});
 
 	describe(&#039;#setData&#039;, function() {
@@ -243,7 +255,15 @@ describe(&#039;BarChartView&#039;, function(){
 			&#039;flows&#039; : [{&#039;ID&#039; : &#039;f1&#039;},{ &#039;ID&#039; : &#039;f2&#039;},{&#039;ID&#039; : &#039;f3&#039;}]
 		};
 
-		it(&#039;works fine&#039;, function() {
+		beforeEach(function(){
+			scope.barChart = BarChartFactory.build();
+		});
+
+		afterEach(function(){
+			scope.barChart = null;
+		});
+
+		it(&#039;to S works fine&#039;, function() {
 			scope.barChart.updateParameters(json1);
 			scope.changedD = !scope.changedD;
     		scope.$digest();
@@ -251,30 +271,45 @@ describe(&#039;BarChartView&#039;, function(){
     		//console.dir(legend1);
 			//expect(legend1).toBeDefined();
 			//expect(legend1.getAttribute(&#039;style&#039;)).toBe(&#039;float: left; position: relative; right: -&#039; + (scope.barChart.getWidth()/2) + &#039;px; background-color: &#039; + scope.getLegend().getBackgroundColor() + &#039;;&#039;);
-    		scope.barChart.updateParameters(json2);
+    	});
+    		
+    	it(&#039;to SE works fine&#039;, function(){
+			scope.barChart.updateParameters(json2);
 			scope.changedD = !scope.changedD;
     		scope.$digest();
     		//var legend2 = element.children()[2];
 			//expect(legend2).toBeDefined();
 			//expect(legend2.getAttribute(&#039;style&#039;)).toBe(&#039;float: left; position: relative; right: -&#039; + scope.barChart.getWidth() + &#039;px; background-color: &#039; + scope.barChart.getLegend().getBackgroundColor() + &#039;;&#039;);
+    	});
+    	
+    	it(&#039;to SW works fine&#039;, function(){
     		scope.barChart.updateParameters(json3);
 			scope.changedD = !scope.changedD;
     		scope.$digest();
     		//var legend3 = element.children()[2];
 			//expect(legend3).toBeDefined();
 			//expect(legend3.getAttribute(&#039;style&#039;)).toBe(&#039;float: left; position: relative; background-color: &#039; + scope.barChart.getLegend().getBackgroundColor() + &#039;;&#039;);
+    	});	
+    		
+    	it(&#039;to NW works fine&#039;, function(){
     		scope.barChart.updateParameters(json4);
 			scope.changedD = !scope.changedD;
     		scope.$digest();
     		//var legend4 = element.children()[2];
 			//expect(legend4).toBeDefined();
 			//expect(legend4.getAttribute(&#039;style&#039;)).toBe(&#039;float: left; position: relative; top: -&#039; + scope.barChart.getHeight() + &#039;px; background-color: &#039; + scope.barChart.getLegend().getBackgroundColor() + &#039;;&#039;);
+		});
+
+		it(&#039;to W works fine&#039;, function(){
     		scope.barChart.updateParameters(json5);
 			scope.changedD = !scope.changedD;
     		scope.$digest();
     		//var legend5 = element.children()[2];
 			//expect(legend5).toBeDefined();
 			//expect(legend5.getAttribute(&#039;style&#039;)).toBe(&#039;float: left; position: relative; top: -&#039; + (scope.barChart.getHeight()/2) + &#039;px; background-color: &#039; + scope.barChart.getLegend().getBackgroundColor() + &#039;;&#039;);
+		});
+
+		it(&#039;to E works fine&#039;, function(){
     		scope.barChart.updateParameters(json6);
 			scope.changedD = !scope.changedD;
     		scope.$digest();
