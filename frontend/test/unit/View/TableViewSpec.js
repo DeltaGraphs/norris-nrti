@@ -48,6 +48,7 @@ describe('TableView', function(){
 			'width' : 400,
 			'headers':['IDMezzo','WGS84Fi','WGS84La'],
 			'sortable' : true,
+			'sort' : {'column':[],'ordering':[]},
 			'maxItemsPage': 20,
 			'socketURL' : 'http://example.com',
 			'backgroundColor' : '#F0F',
@@ -61,13 +62,12 @@ describe('TableView', function(){
 			'sortable' :false,
 			'appearance':{
 				'horizontalGrid':{'color':'#00AA00','width':1},
-				'verticalGrid':{'color':'#00AA00','width':1},
 				'rowEven':{'textColor':['#1F3D99','#000000'],'backgroundColor':['#99E2F2','#F2E899']},
 				'rowOdd':{'textColor':['#000000','#1F3D99'],'backgroundColor':['#99F2DF','#D9F299']},
 				'headers':{'textColor':['#FFFFFF','#FFFFFF'],'backgroundColor':['#2FBA38','#2F3ABA']}
 			},
-			'headers':['IDMezzo','WGS84Fi','WGS84La'],
-			'sort' : {'column':['IDMezzo','WGS84Fi'],'ordering':['DESC','ASC']},
+			'headers':['IDMezzo','WGS84Fi','WGS84La','FWWsd'],
+			'sort' : {'column':['IDMezzo','WGS84Fi','WGS84La','FWWsd'],'ordering':['DESC','ASC','DESC','ASC']},
 			'socketURL' : 'http://example.com',
 			'backgroundColor' : '#F0F',
 			'grid' : false,
@@ -123,8 +123,22 @@ describe('TableView', function(){
 
 	describe('#setData', function() {
 
-  		var json = {
-  			'title' : 'json',
+		var json = {
+			'title' : 'graficonuovo',
+			'height' : 400,
+			'width' : 400,
+			'sortable' :false,
+			'appearance':{
+				'horizontalGrid':{'color':'#00AA00','width':1},
+				'rowEven':{'textColor':['#1F3D99','#000000'],'backgroundColor':['#99E2F2','#F2E899']},
+				'rowOdd':{'textColor':['#000000','#1F3D99'],'backgroundColor':['#99F2DF','#D9F299']},
+				'headers':{'textColor':['#FFFFFF','#FFFFFF'],'backgroundColor':['#2FBA38','#2F3ABA']}
+			},
+			'headers':['IDMezzo','WGS84Fi','WGS84La'],
+			'sort' : {'column':['IDMezzo'],'ordering':['DESC']},
+			'socketURL' : 'http://example.com',
+			'backgroundColor' : '#F0F',
+			'grid' : false,
 			'flows' : [{'ID' : 'f1', 'flowColor' : '#000000'},{ 'ID' : 'f2'},{'ID' : 'f3', 'flowColor' : '#B9D3EE'}]
 		};
 
@@ -145,13 +159,6 @@ describe('TableView', function(){
 			scope.changed = !scope.changed;
     		scope.$digest();
 		});
-
-		/*it('set the correct flow color', function() {
-			var colorArray = scope.colorFunction();
-			expect(colorArray[0]).toEqual('#000000');
-			expect(colorArray[0]).toEqual('#BAAAEE');
-			expect(colorArray[0]).toEqual('#B9D3EE');
-		});*/
 
 	});
 
