@@ -60,11 +60,11 @@ angular.module('norris-nrti')
                 var noBorder = 'class="table-condensed table-striped"';
                 var headers = 'color: #000; background-color: #FFF;';
                 
-                if (scope.$parent.table.getAppearance().horizontalGrid !== undefined) {
+                if (scope.$parent.table.getAppearance().horizontalGrid !== undefined && scope.$parent.table.getAppearance().horizontalGrid !== null) {
                     border = 'border-top:' + scope.$parent.table.getAppearance().horizontalGrid.width + 'px solid ' + scope.$parent.table.getAppearance().horizontalGrid.color + ';';
                     border = border + 'border-bottom:' + scope.$parent.table.getAppearance().horizontalGrid.width + 'px solid ' + scope.$parent.table.getAppearance().horizontalGrid.color + ';';
                 }
-                if (scope.$parent.table.getAppearance().verticalGrid !== undefined) {
+                if (scope.$parent.table.getAppearance().verticalGrid !== undefined && scope.$parent.table.getAppearance().verticalGrid !== null) {
                     border = border + 'border-left:' + scope.$parent.table.getAppearance().verticalGrid.width + 'px solid ' + scope.$parent.table.getAppearance().verticalGrid.color + ';';
                     border = border + 'border-right:' + scope.$parent.table.getAppearance().verticalGrid.width + 'px solid ' + scope.$parent.table.getAppearance().verticalGrid.color + ';';
                 }
@@ -91,7 +91,7 @@ angular.module('norris-nrti')
                     if (scope.$parent.table.getAppearance().headers !== undefined) {
                         headers = 'color:' + scope.$parent.table.getAppearance().headers.textColor[i] + '; background-color:' + scope.$parent.table.getAppearance().headers.backgroundColor[i] + '; ';
                     }
-                    if (scope.$parent.table.getAppearance().horizontalGrid !== undefined || scope.$parent.table.getAppearance().verticalGrid !== undefined) {
+                    if ((scope.$parent.table.getAppearance().horizontalGrid !== undefined && scope.$parent.table.getAppearance().horizontalGrid !== null) || (scope.$parent.table.getAppearance().verticalGrid !== undefined && scope.$parent.table.getAppearance().verticalGrid !== null)) {
                         table = table + tableStyle + headers + ' " ';
                     } else {
                         table = table + noBorder + 'style="' + headers + ' " ';
@@ -143,7 +143,7 @@ angular.module('norris-nrti')
                     var cellText = 'color: {{line.appearance' + scope.$parent.table.getHeaders()[j] + '.text}};';
                     var cellStyle = 'style="' + border + cellBG + cellText + '"';
                     table = table + '<td ';
-                    if (scope.$parent.table.getAppearance().horizontalGrid !== undefined || scope.$parent.table.getAppearance().verticalGrid !== undefined) {
+                    if ((scope.$parent.table.getAppearance().horizontalGrid !== undefined && scope.$parent.table.getAppearance().horizontalGrid !== null) || (scope.$parent.table.getAppearance().verticalGrid !== undefined && scope.$parent.table.getAppearance().verticalGrid !== undefined)) {
                         table = table + cellStyle;
                     } else {
                         table = table + noBorder + cellStyle;
