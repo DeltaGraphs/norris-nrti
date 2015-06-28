@@ -21,7 +21,6 @@
 describe('MapChartView', function(){
 
 	beforeEach(angular.mock.module('norris-nrti'));
-	beforeEach(angular.mock.module('googleAPI'));
 
 	var html, element, scope, map, MapChartFactory, controller;
 
@@ -39,7 +38,7 @@ describe('MapChartView', function(){
 
   	}));
 
-  	describe('Constructor', function() {
+  	/*describe('Constructor', function() {
   		var info = {
 			'title' : 'graficonuovo',
 			'height' : 400,
@@ -97,7 +96,7 @@ describe('MapChartView', function(){
 			map.updateParameters(json);
 			scope.changedP = !scope.changedP;
 		});
-	});
+	});*/
 
 	describe('#setData', function() {
 
