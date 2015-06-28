@@ -301,7 +301,12 @@ angular.module('norris-nrti')
                     for (var i=0; i<scope.$parent.mapChart.getFlowList().length; i++) {
                         if (scope.$parent.mapChart.getFlowList()[i].flow.getData().length){
                             var square = document.createElement('div');
-                            square.setAttribute('style', 'float: left; height: 15px; width: 15px; background-color: ' + scope.$parent.mapChart.getFlowList()[i].flow.getTrace().strokeColor);
+                            //if (scope.$parent.mapChart.getFlowList()[i].flow.getTrace() !== undefined && scope.$parent.mapChart.getFlowList()[i].flow.getTrace() !== null){
+                                square.setAttribute('style', 'float: left; height: 15px; width: 15px; background-color: ' + scope.$parent.mapChart.getFlowList()[i].flow.getTrace().strokeColor);
+                            //}
+                            /*else{
+                                square.setAttribute('style', 'float: left; height: 15px; width: 15px; background-color: ' + scope.$parent.mapChart.getFlowList()[i].flow.getFlowColor();
+                            }*/
                             var spanText = document.createElement('div');
                             var text = document.createTextNode('\u00A0\u00A0\u00A0\u00A0' + scope.$parent.mapChart.getFlowList()[i].flow.getName());
                             spanText.setAttribute('style', 'width: 100px; color: '+ scope.$parent.mapChart.getLegend().getFontColor() + ';');

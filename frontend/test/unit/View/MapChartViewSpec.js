@@ -140,48 +140,48 @@ describe('MapChartView', function(){
   			'title' : 'json1',
 			'enableLegend' : true,
 			'legend' : {position: 'S'},
-			'flows' : [{'ID' : 'f1'},{ 'ID' : 'f2'},{'ID' : 'f3'}]
+			'flows' : [{'ID' : 'f1', 'trace': {'type':'poly', 'strokeColor' : '#000'}},{ 'ID' : 'f2', 'trace': {'type':'poly', 'strokeColor' : '#000'}},{'ID' : 'f3', 'trace': {'type':'poly', 'strokeColor' : '#000'}}]
 		};
 
 		var json2 = {
 			'title' : 'json2',
 			'enableLegend' : true,
 			'legend' : {position: 'SE'},
-			'flows' : [{'ID' : 'f1'},{ 'ID' : 'f2'},{'ID' : 'f3'}]
+			'flows' : [{'ID' : 'f1', 'trace': {'type':'poly', 'strokeColor' : '#000'}},{ 'ID' : 'f2', 'trace': {'type':'poly', 'strokeColor' : '#000'}},{'ID' : 'f3', 'trace': {'type':'poly', 'strokeColor' : '#000'}}]
 		};
 
 		var json3 = {
 			'title' : 'json3',
 			'enableLegend' : true,
 			'legend' : {position: 'SW'},
-			'flows' : [{'ID' : 'f1'},{ 'ID' : 'f2'},{'ID' : 'f3'}]
+			'flows' : [{'ID' : 'f1', 'trace': {'type':'poly', 'strokeColor' : '#000'}},{ 'ID' : 'f2', 'trace': {'type':'poly', 'strokeColor' : '#000'}},{'ID' : 'f3', 'trace': {'type':'poly', 'strokeColor' : '#000'}}]
 		};
 
 		var json4 = {
 			'title' : 'json4',
 			'enableLegend' : true,
 			'legend' : {position: 'NW'},
-			'flows' : [{'ID' : 'f1'},{ 'ID' : 'f2'},{'ID' : 'f3'}]
+			'flows' : [{'ID' : 'f1', 'trace': {'type':'poly', 'strokeColor' : '#000'}},{ 'ID' : 'f2', 'trace': {'type':'poly', 'strokeColor' : '#000'}},{'ID' : 'f3', 'trace': {'type':'poly', 'strokeColor' : '#000'}}]
 		};
 		var json5 = {
 			'title' : 'json5',
 			'enableLegend' : true,
 			'legend' : {position: 'W'},
-			'flows' : [{'ID' : 'f1'},{ 'ID' : 'f2'},{'ID' : 'f3'}]
+			'flows' : [{'ID' : 'f1', 'trace': {'type':'poly', 'strokeColor' : '#000'}},{ 'ID' : 'f2', 'trace': {'type':'poly', 'strokeColor' : '#000'}},{'ID' : 'f3', 'trace': {'type':'poly', 'strokeColor' : '#000'}}]
 		};
 
 		var json6 = {
 			'title' : 'json6',
 			'enableLegend' : true,
 			'legend' : {position: 'NE'},
-			'flows' : [{'ID' : 'f1'},{ 'ID' : 'f2'},{'ID' : 'f3'}]
+			'flows' : [{'ID' : 'f1', 'trace': {'type':'poly', 'strokeColor' : '#000'}},{ 'ID' : 'f2', 'trace': {'type':'poly', 'strokeColor' : '#000'}},{'ID' : 'f3', 'trace': {'type':'poly', 'strokeColor' : '#000'}}]
 		};
 
 		var json7 = {
 			'title' : 'json7',
 			'enableLegend' : true,
 			'legend' : {position: 'E'},
-			'flows' : [{'ID' : 'f1'},{ 'ID' : 'f2'},{'ID' : 'f3'}]
+			'flows' : [{'ID' : 'f1', 'trace': {'type':'poly', 'strokeColor' : '#000'}},{ 'ID' : 'f2', 'trace': {'type':'poly', 'strokeColor' : '#000'}},{'ID' : 'f3', 'trace': {'type':'poly', 'strokeColor' : '#000'}}]
 		};
 
 		beforeEach(function(){
