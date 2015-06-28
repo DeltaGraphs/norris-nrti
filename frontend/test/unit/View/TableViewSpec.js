@@ -108,6 +108,7 @@ describe('TableView', function(){
 		it('works fine', function() {
 			scope.table.updateParameters(json);
 			scope.table.initializeData(data);
+			scope.changedP = true;
 			scope.changed = !scope.changed;
     		scope.$digest();
 			var tableChart = element.find('table-chart');
