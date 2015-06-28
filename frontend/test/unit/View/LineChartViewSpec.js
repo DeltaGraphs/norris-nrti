@@ -77,7 +77,7 @@ describe('LineChartView', function(){
 			'backgroundColor' : '#F0F',
 			'legendOnPoint' : true,
 			'grid' : false,
-			'flows' : [{'ID' : 'f1', 'flowColor' : '#000000'},{ 'ID' : 'f2'},{'ID' : 'f3'}]
+			'flows' : [{'ID' : 'f1'},{ 'ID' : 'f2'},{'ID' : 'f3'}]
 		};
 
 		beforeEach(function(){

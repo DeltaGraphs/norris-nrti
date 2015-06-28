@@ -55,11 +55,11 @@ angular.module('norris-nrti')
         if (json.legendOnPoint !== undefined) {
             lineJson.legendOnPoint = json.legendOnPoint;
         }
-		if (json.axisX !== undefined) {
-			lineJson.axisX = json.axisX;
+		if (json.xAxis !== undefined) {
+			lineJson.xAxis = json.xAxis;
 		}
-		if (json.axisY !== undefined) {
-			lineJson.axisY = json.axisY;
+		if (json.yAxis !== undefined) {
+			lineJson.yAxis = json.yAxis;
 		}
 		if (json.viewFinder !== undefined) {
 			lineJson.viewFinder = json.viewFinder;
@@ -109,11 +109,11 @@ angular.module('norris-nrti')
                 if (lJson.legendOnPoint !== undefined) {
                     this._legendOnPoint = lJson.legendOnPoint;
                 }
-                if (lJson.axisX !== undefined) {
-                    this._axisX = AxisFactory.build(lJson.axisX);
+                if (lJson.xAxis !== undefined) {
+                    this._axisX = AxisFactory.build(lJson.xAxis);
                 }
-                if (lJson.axisY !== undefined) {
-                    this._axisY = AxisFactory.build(lJson.axisY);
+                if (lJson.yAxis !== undefined) {
+                    this._axisY = AxisFactory.build(lJson.yAxis);
                 }
                 if (lJson.viewFinder !== undefined) {
                     this._viewFinder = lJson.viewFinder;
