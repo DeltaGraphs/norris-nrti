@@ -17,7 +17,6 @@
 		<error line="100" column="33" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
 		<error line="104" column="34" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
 		<error line="118" column="33" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
-		<error line="120" column="32" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
 		<error line="131" column="27" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
 		<error line="136" column="42" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />
 		<error line="139" column="42" severity="warning" message="&apos;google&apos; is not defined." source="jshint.W117" />

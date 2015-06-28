@@ -10,6 +10,9 @@
 	<file name="test/unit/Model/UrlProviderSpec.js">
 		<error line="20" column="5" severity="warning" message="Unnecessary directive &quot;use strict&quot;." source="jshint.W034" />
 	</file>
+	<file name="test/unit/View/GoogleAPIMock.js">
+		<error line="19" column="5" severity="warning" message="&apos;googleAPI&apos; is defined but never used." source="jshint.W098" />
+	</file>
 	<file name="test/unit/View/PageController.js">
 		<error line="20" column="5" severity="warning" message="&apos;mockPageController&apos; is defined but never used." source="jshint.W098" />
 	</file>
