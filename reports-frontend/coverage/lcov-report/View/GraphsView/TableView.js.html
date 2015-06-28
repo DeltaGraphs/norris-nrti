@@ -15,10 +15,10 @@
 <div class="header high">
     <h1>Code coverage report for <span class="entity">View/GraphsView/TableView.js</span></h1>
     <h2>
-        Statements: <span class="metric">98.86% <small>(87 / 88)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Branches: <span class="metric">92.86% <small>(39 / 42)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">100% <small>(88 / 88)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">92% <small>(46 / 50)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Functions: <span class="metric">100% <small>(6 / 6)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">98.86% <small>(87 / 88)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">100% <small>(88 / 88)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
     <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">View/GraphsView/</a> &#187; TableView.js</div>
@@ -328,34 +328,34 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4</span>
-<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">3</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">4</span>
-<span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4</span>
@@ -473,11 +473,11 @@ angular.module('norris-nrti')
                 var noBorder = 'class="table-condensed table-striped"';
                 var headers = 'color: #000; background-color: #FFF;';
                 
-                if (scope.$parent.table.getAppearance().horizontalGrid !== undefined) {
+                if (scope.$parent.table.getAppearance().horizontalGrid !== undefined &amp;&amp; scope.$parent.table.getAppearance().horizontalGrid !== null) {
                     border = 'border-top:' + scope.$parent.table.getAppearance().horizontalGrid.width + 'px solid ' + scope.$parent.table.getAppearance().horizontalGrid.color + ';';
                     border = border + 'border-bottom:' + scope.$parent.table.getAppearance().horizontalGrid.width + 'px solid ' + scope.$parent.table.getAppearance().horizontalGrid.color + ';';
                 }
-                if (scope.$parent.table.getAppearance().verticalGrid !== undefined) {
+                if (scope.$parent.table.getAppearance().verticalGrid !== undefined &amp;&amp; scope.$parent.table.getAppearance().verticalGrid !== null) {
                     border = border + 'border-left:' + scope.$parent.table.getAppearance().verticalGrid.width + 'px solid ' + scope.$parent.table.getAppearance().verticalGrid.color + ';';
                     border = border + 'border-right:' + scope.$parent.table.getAppearance().verticalGrid.width + 'px solid ' + scope.$parent.table.getAppearance().verticalGrid.color + ';';
                 }
@@ -504,7 +504,7 @@ angular.module('norris-nrti')
                     if (scope.$parent.table.getAppearance().headers !== undefined) {
                         headers = 'color:' + scope.$parent.table.getAppearance().headers.textColor[i] + '; background-color:' + scope.$parent.table.getAppearance().headers.backgroundColor[i] + '; ';
                     }
-                    if (scope.$parent.table.getAppearance().horizontalGrid !== undefined || scope.$parent.table.getAppearance().verticalGrid !== undefined) {
+                    if ((scope.$parent.table.getAppearance().horizontalGrid !== undefined &amp;&amp; scope.$parent.table.getAppearance().horizontalGrid !== null) || (scope.$parent.table.getAppearance().verticalGrid !== undefined &amp;&amp; <span class="branch-3 cbranch-no" title="branch not covered" >scope.$parent.table.getAppearance().verticalGrid !== null)</span>) {
                         table = table + tableStyle + headers + ' " ';
                     } else {
                         table = table + noBorder + 'style="' + headers + ' " ';
@@ -536,8 +536,8 @@ angular.module('norris-nrti')
                                 }
                             }
                             else{
-                                <span class="missing-if-branch" title="if path not taken" >I</span>if (s === scope.$parent.table.getSort().column.length-1){
-<span class="cstat-no" title="statement not covered" >                                    order = order + '\'-record.'+ scope.$parent.table.getSort().column[s] +'\'';</span>
+                                if (s === scope.$parent.table.getSort().column.length-1){
+                                    order = order + '\'-record.'+ scope.$parent.table.getSort().column[s] +'\'';
                                 }
                                 else{
                                     order = order + '\'-record.'+ scope.$parent.table.getSort().column[s] +'\',';
@@ -556,7 +556,7 @@ angular.module('norris-nrti')
                     var cellText = 'color: {{line.appearance' + scope.$parent.table.getHeaders()[j] + '.text}};';
                     var cellStyle = 'style="' + border + cellBG + cellText + '"';
                     table = table + '&lt;td ';
-                    if (scope.$parent.table.getAppearance().horizontalGrid !== undefined || scope.$parent.table.getAppearance().verticalGrid !== undefined) {
+                    if ((scope.$parent.table.getAppearance().horizontalGrid !== undefined &amp;&amp; scope.$parent.table.getAppearance().horizontalGrid !== null) || (scope.$parent.table.getAppearance().verticalGrid !== undefined &amp;&amp; <span class="branch-3 cbranch-no" title="branch not covered" >scope.$parent.table.getAppearance().verticalGrid !== undefined)</span>) {
                         table = table + cellStyle;
                     } else {
                         table = table + noBorder + cellStyle;
@@ -609,7 +609,7 @@ angular.module('norris-nrti')
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Jun 28 2015 16:21:56 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Jun 28 2015 16:30:16 GMT+0000 (UTC)</div>
 </div>
 <script src="../../prettify.js"></script>
 <script>

@@ -44,7 +44,7 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">50.74</p>
+      <p class="stat">50.49</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">47.43</p>
+      <p class="stat">49.73</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">3.21</p>
+      <p class="stat">3.40</p>
     </div>
   </div>
 </div>
@@ -151,11 +151,11 @@ angular.module(&#039;norris-nrti&#039;)
                 var noBorder = &#039;class=&quot;table-condensed table-striped&quot;&#039;;
                 var headers = &#039;color: #000; background-color: #FFF;&#039;;
                 
-                if (scope.$parent.table.getAppearance().horizontalGrid !== undefined) {
+                if (scope.$parent.table.getAppearance().horizontalGrid !== undefined &amp;&amp; scope.$parent.table.getAppearance().horizontalGrid !== null) {
                     border = &#039;border-top:&#039; + scope.$parent.table.getAppearance().horizontalGrid.width + &#039;px solid &#039; + scope.$parent.table.getAppearance().horizontalGrid.color + &#039;;&#039;;
                     border = border + &#039;border-bottom:&#039; + scope.$parent.table.getAppearance().horizontalGrid.width + &#039;px solid &#039; + scope.$parent.table.getAppearance().horizontalGrid.color + &#039;;&#039;;
                 }
-                if (scope.$parent.table.getAppearance().verticalGrid !== undefined) {
+                if (scope.$parent.table.getAppearance().verticalGrid !== undefined &amp;&amp; scope.$parent.table.getAppearance().verticalGrid !== null) {
                     border = border + &#039;border-left:&#039; + scope.$parent.table.getAppearance().verticalGrid.width + &#039;px solid &#039; + scope.$parent.table.getAppearance().verticalGrid.color + &#039;;&#039;;
                     border = border + &#039;border-right:&#039; + scope.$parent.table.getAppearance().verticalGrid.width + &#039;px solid &#039; + scope.$parent.table.getAppearance().verticalGrid.color + &#039;;&#039;;
                 }
@@ -182,7 +182,7 @@ angular.module(&#039;norris-nrti&#039;)
                     if (scope.$parent.table.getAppearance().headers !== undefined) {
                         headers = &#039;color:&#039; + scope.$parent.table.getAppearance().headers.textColor[i] + &#039;; background-color:&#039; + scope.$parent.table.getAppearance().headers.backgroundColor[i] + &#039;; &#039;;
                     }
-                    if (scope.$parent.table.getAppearance().horizontalGrid !== undefined || scope.$parent.table.getAppearance().verticalGrid !== undefined) {
+                    if ((scope.$parent.table.getAppearance().horizontalGrid !== undefined &amp;&amp; scope.$parent.table.getAppearance().horizontalGrid !== null) || (scope.$parent.table.getAppearance().verticalGrid !== undefined &amp;&amp; scope.$parent.table.getAppearance().verticalGrid !== null)) {
                         table = table + tableStyle + headers + &#039; &quot; &#039;;
                     } else {
                         table = table + noBorder + &#039;style=&quot;&#039; + headers + &#039; &quot; &#039;;
@@ -234,7 +234,7 @@ angular.module(&#039;norris-nrti&#039;)
                     var cellText = &#039;color: {{line.appearance&#039; + scope.$parent.table.getHeaders()[j] + &#039;.text}};&#039;;
                     var cellStyle = &#039;style=&quot;&#039; + border + cellBG + cellText + &#039;&quot;&#039;;
                     table = table + &#039;&lt;td &#039;;
-                    if (scope.$parent.table.getAppearance().horizontalGrid !== undefined || scope.$parent.table.getAppearance().verticalGrid !== undefined) {
+                    if ((scope.$parent.table.getAppearance().horizontalGrid !== undefined &amp;&amp; scope.$parent.table.getAppearance().horizontalGrid !== null) || (scope.$parent.table.getAppearance().verticalGrid !== undefined &amp;&amp; scope.$parent.table.getAppearance().verticalGrid !== undefined)) {
                         table = table + cellStyle;
                     } else {
                         table = table + noBorder + cellStyle;
