@@ -31,7 +31,7 @@ describe('PagesListView', function(){
     	var page1 = PageFactory.build(),
     		page2 = PageFactory.build(),
     		page3 = PageFactory.build();
-
+            
         html = '<div id="pagesList">' + 
                     '<ul>' +
                     '<li ng-repeat="page in pagesList">' +
