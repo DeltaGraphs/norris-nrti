@@ -46,12 +46,7 @@ describe('PageView', function(){
 
     	html = angular.element('<page></page>');
 
-    	scope.graphs = [
-    		{ 'id' : 1, 'type' : 'MapChart', 'url' : 'http://example/map.com'},
-    		{ 'id' : 2, 'type' : 'LineChart', 'url' : 'http://example/line.com'},
-    		{ 'id' : 3, 'type' : 'BarChart', 'url' : 'http://example/bar.com'},
-    		{ 'id' : 4, 'type' : 'Table', 'url' : 'http://example/table.com'}
-    	];
+    	
 
     	element = $compile(html)(scope);
     	scope.$digest();
@@ -59,6 +54,13 @@ describe('PageView', function(){
   	}));
 
   	describe('Constructor', function() {
+  		scope.graphs = [
+    		{ 'id' : 1, 'type' : 'MapChart', 'url' : 'http://example/map.com'},
+    		{ 'id' : 2, 'type' : 'LineChart', 'url' : 'http://example/line.com'},
+    		{ 'id' : 3, 'type' : 'BarChart', 'url' : 'http://example/bar.com'},
+    		{ 'id' : 4, 'type' : 'Table', 'url' : 'http://example/table.com'}
+    	];
+    	scope.$digest();
 		it('works fine', function() {
 			var map = element.find('map-chart');
 			var line = element.find('line-chart');
