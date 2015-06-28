@@ -107,7 +107,7 @@ describe('TableView', function(){
 
 		it('works fine', function() {
 			scope.table.updateParameters(json);
-			scope.barChart.initializeData(data);
+			scope.table.initializeData(data);
 			scope.changed = !scope.changed;
     		scope.$digest();
 			var tableChart = element.find('table-chart');
