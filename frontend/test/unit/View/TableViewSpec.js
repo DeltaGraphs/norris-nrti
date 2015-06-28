@@ -47,6 +47,7 @@ describe('TableView', function(){
 			'height' : 400,
 			'width' : 400,
 			'headers':['IDMezzo','WGS84Fi','WGS84La'],
+			'appearance' : {},
 			'sortable' : true,
 			'sort' : {'column':[],'ordering':[]},
 			'maxItemsPage': 20,
