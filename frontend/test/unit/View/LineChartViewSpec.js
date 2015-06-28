@@ -23,15 +23,7 @@ describe('LineChartView', function(){
 	beforeEach(angular.mock.module('norris-nrti'));
 
 	var html, element, scope, line, LineChartFactory, controller;
-	var json = {
-		'properties' : {
-			'title' : 'prova1',
-			'viewFinder' : true,
-			'enableLegend' : true,
-			'legendOnPoint' : false
-		}
-	};
-	
+
 	beforeEach(inject(function($rootScope, $compile, $injector, $controller) {
 		LineChartFactory = $injector.get('LineChartFactory');
 		line = LineChartFactory.build();
@@ -54,10 +46,7 @@ describe('LineChartView', function(){
 			'width' : 400,
 			'enableLegend' : false,
 			'socketURL' : 'http://example.com',
-			'xAxis' : { name: 'asseX' },
-			'yAxis' : { name: 'asseY' },
 			'viewFinder' : true,
-			'headers' : ['colonna1'],
 			'backgroundColor' : '#F0F',
 			'legendOnPoint' : false,
 			'grid' : false
@@ -70,10 +59,9 @@ describe('LineChartView', function(){
 			'enableLegend' : true,
 			'legend' : {position: 'E'},
 			'socketURL' : 'http://example.com',
-			'xAxis' : { name: 'asseX' },
+			'xAxis' : { name: 'asseX', ticks: 10 },
 			'yAxis' : { name: 'asseY' },
 			'viewFinder' : false,
-			'headers' : ['colonna1'],
 			'backgroundColor' : '#F0F',
 			'legendOnPoint' : true,
 			'grid' : false,
@@ -118,7 +106,9 @@ describe('LineChartView', function(){
   			'title' : 'json',
 			'enableLegend' : true,
 			'legend' : {position: 'N'},
-			'flows' : [{'ID' : 'f1', 'flowColor' : '#000000'},{ 'ID' : 'f2', 'flowColor' : '#BAAAEE'},{'ID' : 'f3', 'flowColor' : '#B9D3EE'}]
+			'xAxis' : { name: 'asseX' },
+			'yAxis' : { name: 'asseY' },
+			'flows' : [{'ID' : 'f1', 'flowColor' : '#000000'},{ 'ID' : 'f2'},{'ID' : 'f3', 'flowColor' : '#B9D3EE'}]
 		};
 
 		var data = [
