@@ -93,8 +93,6 @@ describe('BarChartView', function(){
 			expect(nvd3H).toBeDefined();
 			var svgH = element.find('svg');
 			expect(svgH).toBeDefined();
-			//var legend1 = element.find('div.barChartLegend');
-			//expect(legend1).not.toBeDefined();
 		});
 
 		it('works fine', function(){
@@ -105,9 +103,6 @@ describe('BarChartView', function(){
 			expect(nvd3V).toBeDefined();
 			var svgV = element.find('svg');
 			expect(svgV).toBeDefined();
-			//var legend2 = element.find('div.barChartLegend');
-			//expect(legend2).toBeDefined();
-			//expect(legend2.getAttribute('style')).toBe('float: left; position: relative; top: -' + (scope.barChart.getHeight()/2) + 'px; right: -' + scope.barChart.getWidth() + 'px;  background-color: ' + scope.$parent.getLegend().getBackgroundColor() + ';');
 		});
 
 	});
@@ -118,11 +113,23 @@ describe('BarChartView', function(){
   			'title' : 'json',
 			'enableLegend' : true,
 			'legend' : {position: 'N'},
-			'flows' : [{'ID' : 'f1'},{ 'ID' : 'f2'},{'ID' : 'f3'}]
+			'flows' : [{'ID' : 'f1', 'flowColor' : '#000000'},{ 'ID' : 'f2'},{'ID' : 'f3'}]
 		};
+
+		var data = [
+			{
+				'ID':'f1',
+				'records':[
+					{'norrisRecordID':'flow1_1435482609499_1','value':[1,3]},
+					{'norrisRecordID':'flow1_1435482609499_2','value':[2,2]},
+					{'norrisRecordID':'flow1_1435482609499_3','value':[3,1]}
+				]
+			}
+		];
 
 		it('works fine', function() {
 			scope.barChart.updateParameters(json);
+			scope.barChart.initializeData(data);
 			scope.changedD = !scope.changedD;
     		scope.$digest();
 		});
@@ -169,6 +176,13 @@ describe('BarChartView', function(){
 			'title' : 'json6',
 			'enableLegend' : true,
 			'legend' : {position: 'NE'},
+			'flows' : [{'ID' : 'f1'},{ 'ID' : 'f2'},{'ID' : 'f3'}]
+		};
+
+		var json7 = {
+			'title' : 'json7',
+			'enableLegend' : true,
+			'legend' : {position: 'E'},
 			'flows' : [{'ID' : 'f1'},{ 'ID' : 'f2'},{'ID' : 'f3'}]
 		};
 
@@ -226,13 +240,22 @@ describe('BarChartView', function(){
 			//expect(legend5.getAttribute('style')).toBe('float: left; position: relative; top: -' + (scope.barChart.getHeight()/2) + 'px; background-color: ' + scope.barChart.getLegend().getBackgroundColor() + ';');
 		});
 
-		it('to E works fine', function(){
+		it('to NE works fine', function(){
     		scope.barChart.updateParameters(json6);
 			scope.changedD = !scope.changedD;
     		scope.$digest();
     		//var legend6 = element.children()[2];
 			//expect(legend6).toBeDefined();
 			//expect(legend6.getAttribute('style')).toBe('float: left; position: relative; top: -' + scope.barChart.getHeight() + 'px; right: -' + scope.barChart.getWidth() + 'px; background-color: ' + scope.barChart.getLegend().getBackgroundColor() + ';');*/
+		});
+
+		it('to E works fine', function(){
+    		scope.barChart.updateParameters(json7);
+			scope.changedD = !scope.changedD;
+    		scope.$digest();
+    		//var legend7 = element.find('div.barChartLegend');
+			//expect(legend7).toBeDefined();
+			//expect(legend7.getAttribute('style')).toBe('float: left; position: relative; top: -' + (scope.barChart.getHeight()/2) + 'px; right: -' + scope.barChart.getWidth() + 'px;  background-color: ' + scope.$parent.getLegend().getBackgroundColor() + ';');
 		});
 
 	});
