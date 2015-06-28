@@ -30,14 +30,14 @@ module.exports = function(config) {
 			'app/Model/GraphsModel/*.js',
 			'app/Model/FlowsModel/*.js',
 			'app/Model/PagesModel/*.js',
-			'app/View/PagesView/*.js',
-			'app/View/GraphsView/*.js',
+			//'app/View/PagesView/*.js',
+			//'app/View/GraphsView/*.js',
 			'app/Controller/*.js',
 			'app/Controller/GraphsControllers/*.js',
 			'app/Controller/PagesControllers/*.js',
 			'test/unit/Model/*.js',
-			'test/unit/Controller/*.js',
-			'test/unit/View/*.js'
+			'test/unit/Controller/*.js'
+			//'test/unit/View/*.js'
 		],
 
 
@@ -58,9 +58,9 @@ module.exports = function(config) {
 			'app/Model/GraphsModel/*.js': ['coverage'],
 			'app/Model/FlowsModel/*.js': ['coverage'],
 			'app/Model/PagesModel/*.js': ['coverage'],
-			'app/View/*.js': ['coverage'],
-			'app/View/GraphsView/*.js': ['coverage'],
-			'app/View/PagesView/*.js': ['coverage'],
+			//'app/View/*.js': ['coverage'],
+			//'app/View/GraphsView/*.js': ['coverage'],
+			//'app/View/PagesView/*.js': ['coverage'],
 			'app/Controller/*.js': ['coverage'],
 			'app/Controller/GraphsControllers/*.js': ['coverage'],
 			'app/Controller/PagesControllers/*.js': ['coverage']
