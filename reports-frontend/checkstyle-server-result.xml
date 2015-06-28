@@ -10,6 +10,11 @@
 	<file name="test/unit/Model/UrlProviderSpec.js">
 		<error line="20" column="5" severity="warning" message="Unnecessary directive &quot;use strict&quot;." source="jshint.W034" />
 	</file>
+	<file name="test/unit/View/LineChartViewSpec.js">
+		<error line="84" column="31" severity="warning" message="&apos;lineChartFactory&apos; is not defined." source="jshint.W117" />
+		<error line="202" column="31" severity="warning" message="&apos;lineChartFactory&apos; is not defined." source="jshint.W117" />
+		<error line="26" column="9" severity="warning" message="&apos;json&apos; is defined but never used." source="jshint.W098" />
+	</file>
 	<file name="test/unit/View/PageController.js">
 		<error line="20" column="5" severity="warning" message="&apos;mockPageController&apos; is defined but never used." source="jshint.W098" />
 	</file>
