@@ -72,7 +72,8 @@ describe('BarChartView', function(){
 			'sortable' : false,
 			'groupingControl' : false,
 			'legendOnPoint' : true,
-			'grid' : false
+			'grid' : false,
+			'flows' : [{'ID' : 'f1', 'flowColor' : '#000000'},{ 'ID' : 'f2'},{'ID' : 'f3'}]
 		};
 
 		beforeEach(function(){
@@ -113,7 +114,7 @@ describe('BarChartView', function(){
   			'title' : 'json',
 			'enableLegend' : true,
 			'legend' : {position: 'N'},
-			'flows' : [{'ID' : 'f1', 'flowColor' : '#000000'},{ 'ID' : 'f2'},{'ID' : 'f3'}]
+			'flows' : [{'ID' : 'f1', 'flowColor' : '#000000'},{ 'ID' : 'f2', 'flowColor' : '#BAAAEE'},{'ID' : 'f3', 'flowColor' : '#B9D3EE'}]
 		};
 
 		var data = [
@@ -132,6 +133,13 @@ describe('BarChartView', function(){
 			scope.barChart.initializeData(data);
 			scope.changedD = !scope.changedD;
     		scope.$digest();
+		});
+
+		it('set the correct flow color', function() {
+			var colorArray = scope.colorFunction();
+			expect(colorArray[0]).toEqual('#000000');
+			expect(colorArray[0]).toEqual('#BAAAEE');
+			expect(colorArray[0]).toEqual('#B9D3EE');
 		});
 
 	});
