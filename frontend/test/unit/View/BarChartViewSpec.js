@@ -77,7 +77,15 @@ describe('BarChartView', function(){
 			'grid' : false
 		};
 
-		it('works fine', function() {
+		beforeEach(function(){
+			scope.barChart = BarChartFactory.build();
+		});
+
+		afterEach(function(){
+			scope.barChart = null;
+		});
+
+		it('default works fine', function() {
 			var barChart = element.find('bar-chart');
 			expect(barChart).toBeDefined();
 			var nvd3H = element.find('nvd3-multi-bar-horizontal-chart');
@@ -86,6 +94,9 @@ describe('BarChartView', function(){
 			expect(svgH).toBeDefined();
 			//var legend1 = element.find('div.barChartLegend');
 			//expect(legend1).not.toBeDefined();
+		});
+
+		it('works fine', function(){
 			scope.barChart.updateParameters(json);
 			scope.changedP = !scope.changedP;
     		scope.$digest();
@@ -97,6 +108,7 @@ describe('BarChartView', function(){
 			//expect(legend2).toBeDefined();
 			//expect(legend2.getAttribute('style')).toBe('float: left; position: relative; top: -' + (scope.barChart.getHeight()/2) + 'px; right: -' + scope.barChart.getWidth() + 'px;  background-color: ' + scope.$parent.getLegend().getBackgroundColor() + ';');
 		});
+
 	});
 
 	describe('#setData', function() {
@@ -152,7 +164,15 @@ describe('BarChartView', function(){
 			'flows' : [{'ID' : 'f1'},{ 'ID' : 'f2'},{'ID' : 'f3'}]
 		};
 
-		it('works fine', function() {
+		beforeEach(function(){
+			scope.barChart = BarChartFactory.build();
+		});
+
+		afterEach(function(){
+			scope.barChart = null;
+		});
+
+		it('to S works fine', function() {
 			scope.barChart.updateParameters(json1);
 			scope.changedD = !scope.changedD;
     		scope.$digest();
@@ -160,30 +180,45 @@ describe('BarChartView', function(){
     		//console.dir(legend1);
 			//expect(legend1).toBeDefined();
 			//expect(legend1.getAttribute('style')).toBe('float: left; position: relative; right: -' + (scope.barChart.getWidth()/2) + 'px; background-color: ' + scope.getLegend().getBackgroundColor() + ';');
-    		scope.barChart.updateParameters(json2);
+    	});
+    		
+    	it('to SE works fine', function(){
+			scope.barChart.updateParameters(json2);
 			scope.changedD = !scope.changedD;
     		scope.$digest();
     		//var legend2 = element.children()[2];
 			//expect(legend2).toBeDefined();
 			//expect(legend2.getAttribute('style')).toBe('float: left; position: relative; right: -' + scope.barChart.getWidth() + 'px; background-color: ' + scope.barChart.getLegend().getBackgroundColor() + ';');
+    	});
+    	
+    	it('to SW works fine', function(){
     		scope.barChart.updateParameters(json3);
 			scope.changedD = !scope.changedD;
     		scope.$digest();
     		//var legend3 = element.children()[2];
 			//expect(legend3).toBeDefined();
 			//expect(legend3.getAttribute('style')).toBe('float: left; position: relative; background-color: ' + scope.barChart.getLegend().getBackgroundColor() + ';');
+    	});	
+    		
+    	it('to NW works fine', function(){
     		scope.barChart.updateParameters(json4);
 			scope.changedD = !scope.changedD;
     		scope.$digest();
     		//var legend4 = element.children()[2];
 			//expect(legend4).toBeDefined();
 			//expect(legend4.getAttribute('style')).toBe('float: left; position: relative; top: -' + scope.barChart.getHeight() + 'px; background-color: ' + scope.barChart.getLegend().getBackgroundColor() + ';');
+		});
+
+		it('to W works fine', function(){
     		scope.barChart.updateParameters(json5);
 			scope.changedD = !scope.changedD;
     		scope.$digest();
     		//var legend5 = element.children()[2];
 			//expect(legend5).toBeDefined();
 			//expect(legend5.getAttribute('style')).toBe('float: left; position: relative; top: -' + (scope.barChart.getHeight()/2) + 'px; background-color: ' + scope.barChart.getLegend().getBackgroundColor() + ';');
+		});
+
+		it('to E works fine', function(){
     		scope.barChart.updateParameters(json6);
 			scope.changedD = !scope.changedD;
     		scope.$digest();
