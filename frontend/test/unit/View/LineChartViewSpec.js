@@ -81,7 +81,7 @@ describe('LineChartView', function(){
 		};
 
 		beforeEach(function(){
-			scope.lineChart = lineChartFactory.build();
+			scope.lineChart = LineChartFactory.build();
 		});
 
 		afterEach(function(){
@@ -199,7 +199,7 @@ describe('LineChartView', function(){
 		};
 
 		beforeEach(function(){
-			scope.lineChart = lineChartFactory.build();
+			scope.lineChart = LineChartFactory.build();
 		});
 
 		afterEach(function(){
