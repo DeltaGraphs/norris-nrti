@@ -62,6 +62,7 @@ describe('TableView', function(){
 			'sortable' :false,
 			'appearance':{
 				'horizontalGrid':{'color':'#00AA00','width':1},
+				'verticalGrid':{'color':'#00AA00','width':1},
 				'rowEven':{'textColor':['#1F3D99','#000000'],'backgroundColor':['#99E2F2','#F2E899']},
 				'rowOdd':{'textColor':['#000000','#1F3D99'],'backgroundColor':['#99F2DF','#D9F299']},
 				'headers':{'textColor':['#FFFFFF','#FFFFFF'],'backgroundColor':['#2FBA38','#2F3ABA']}

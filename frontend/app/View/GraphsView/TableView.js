@@ -143,7 +143,7 @@ angular.module('norris-nrti')
                     var cellText = 'color: {{line.appearance' + scope.$parent.table.getHeaders()[j] + '.text}};';
                     var cellStyle = 'style="' + border + cellBG + cellText + '"';
                     table = table + '<td ';
-                    if (scope.$parent.table.getAppearance().horizontalGrid !== undefined || scope.$parent.table.getAppearance().verticalGrid) {
+                    if (scope.$parent.table.getAppearance().horizontalGrid !== undefined || scope.$parent.table.getAppearance().verticalGrid !== undefined) {
                         table = table + cellStyle;
                     } else {
                         table = table + noBorder + cellStyle;
