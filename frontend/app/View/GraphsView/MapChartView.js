@@ -117,7 +117,7 @@ angular.module('norris-nrti')
                 var mapOptions = {
                     center: new google.maps.LatLng(scope.$parent.mapChart.getLatitude(), scope.$parent.mapChart.getLongitude()),
                     zoom: zoom,
-                    mapTypeId: google.maps.MapTypeId.ROADMAP,
+                    mapTypeId: scope.$parent.mapChart.getMapType(),
                     scrollwheel: scope.$parent.mapChart.getZoomable(),
                     draggable: scope.$parent.mapChart.getDraggable(),
                     panControl: scope.$parent.mapChart.getDraggable(),

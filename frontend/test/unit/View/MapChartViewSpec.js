@@ -9,7 +9,7 @@
 * History :
 * Version       Date        Programmer                  Description
 * =================================================================================================
-* 0.1.1         2015-06-25  Maria Giovanna Chinellato   Fix test
+* 0.1.1         2015-06-28  Maria Giovanna Chinellato   Fix test
 *
 * 0.1.0         2015-06-13  Maria Giovanna Chinellato   Add all attributes and all methods
 *
@@ -21,6 +21,7 @@
 describe('MapChartView', function(){
 
 	beforeEach(angular.mock.module('norris-nrti'));
+	beforeEach(angular.mock.module('googleAPI'));
 
 	var html, element, scope, map, MapChartFactory, controller;
 
@@ -119,8 +120,8 @@ describe('MapChartView', function(){
 		];
 
 		it('works fine', function() {
-			scope.lineChart.updateParameters(json);
-			scope.lineChart.initializeData(data);
+			scope.mapChart.updateParameters(json);
+			scope.mapChart.initializeData(data);
 			scope.changedD = !scope.changedD;
     		scope.$digest();
 		});
