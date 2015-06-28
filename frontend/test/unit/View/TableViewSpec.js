@@ -87,7 +87,7 @@ describe('TableView', function(){
 				'headers':{'textColor':['#FFFFFF','#FFFFFF'],'backgroundColor':['#2FBA38','#2F3ABA']}
 			},
 			'headers':['IDMezzo','WGS84Fi','WGS84La','FWWsd'],
-			'sort' : {'column':[],'ordering':[]},
+			'sort' : {'column':['IDMezzo','WGS84Fi',],'ordering':['ASC','DESC']},
 			'socketURL' : 'http://example.com',
 			'backgroundColor' : '#F0F',
 			'grid' : false,
