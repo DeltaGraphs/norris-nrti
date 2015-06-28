@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">64.15</p>
+      <p class="stat">63.61</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">231</p>
+      <p class="stat">239</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">18.64</p>
+      <p class="stat">18.12</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">1.78</p>
+      <p class="stat">1.86</p>
     </div>
   </div>
 </div>
@@ -114,7 +114,24 @@ describe(&#039;BarChartView&#039;, function(){
 	beforeEach(angular.mock.module(&#039;norris-nrti&#039;));
 
 	var html, element, scope, bar, BarChartFactory, controller;
-	var info = {
+	
+	beforeEach(inject(function($rootScope, $compile, $injector, $controller) {
+		BarChartFactory = $injector.get(&#039;BarChartFactory&#039;);
+		bar = BarChartFactory.build();
+    	scope = $rootScope.$new();
+    	controller = $controller(&#039;BarChartController&#039;, { $scope : scope });
+    	html = angular.element(&#039;&lt;bar-chart url=&quot;http://example/bar.com&quot;&gt;&lt;/bar-chart&gt;&#039;);
+
+    	scope.barChart = bar;
+
+    	element = $compile(html)(scope);
+    	scope.$digest();
+
+  	}));
+
+  	describe(&#039;#init&#039;, function() {
+
+  		var info = {
 			&#039;title&#039; : &#039;graficonuovo&#039;,
 			&#039;height&#039; : 400,
 			&#039;width&#039; : 400,
@@ -130,25 +147,6 @@ describe(&#039;BarChartView&#039;, function(){
 			&#039;legendOnPoint&#039; : false,
 			&#039;grid&#039; : false
 		};
-	
-	beforeEach(inject(function($rootScope, $compile, $injector, $controller) {
-		BarChartFactory = $injector.get(&#039;BarChartFactory&#039;);
-		bar = BarChartFactory.build();
-    	scope = $rootScope.$new();
-    	controller = $controller(&#039;BarChartController&#039;, { $scope : scope });
-    	html = angular.element(&#039;&lt;bar-chart url=&quot;http://example/bar.com&quot;&gt;&lt;/bar-chart&gt;&#039;);
-
-    	scope.barChart = bar;
-
-    	scope.barChart.updateParameters(info);
-    	scope.changedP = !scope.changedP;
-
-    	element = $compile(html)(scope);
-    	scope.$digest();
-
-  	}));
-
-  	describe(&#039;#init&#039;, function() {
 
   		var json = {
 			&#039;title&#039; : &#039;graficonuovo&#039;,
@@ -177,6 +175,9 @@ describe(&#039;BarChartView&#039;, function(){
 		});
 
 		it(&#039;default works fine&#039;, function() {
+			scope.barChart.updateParameters(info);
+			scope.changedP = !scope.changedP;
+    		scope.$digest();
 			var barChart = element.find(&#039;bar-chart&#039;);
 			expect(barChart).toBeDefined();
 			var nvd3H = element.find(&#039;nvd3-multi-bar-horizontal-chart&#039;);
@@ -205,6 +206,7 @@ describe(&#039;BarChartView&#039;, function(){
 	describe(&#039;#setData&#039;, function() {
 
   		var json = {
+  			&#039;title&#039; : &#039;json&#039;,
 			&#039;enableLegend&#039; : true,
 			&#039;legend&#039; : {position: &#039;N&#039;},
 			&#039;flows&#039; : [{&#039;ID&#039; : &#039;f1&#039;},{ &#039;ID&#039; : &#039;f2&#039;},{&#039;ID&#039; : &#039;f3&#039;}]
@@ -221,35 +223,41 @@ describe(&#039;BarChartView&#039;, function(){
 	describe(&#039;#setLegend&#039;, function() {
 
   		var json1 = {
+  			&#039;title&#039; : &#039;json1&#039;,
 			&#039;enableLegend&#039; : true,
 			&#039;legend&#039; : {position: &#039;S&#039;},
 			&#039;flows&#039; : [{&#039;ID&#039; : &#039;f1&#039;},{ &#039;ID&#039; : &#039;f2&#039;},{&#039;ID&#039; : &#039;f3&#039;}]
 		};
 
 		var json2 = {
+			&#039;title&#039; : &#039;json2&#039;,
 			&#039;enableLegend&#039; : true,
 			&#039;legend&#039; : {position: &#039;SE&#039;},
 			&#039;flows&#039; : [{&#039;ID&#039; : &#039;f1&#039;},{ &#039;ID&#039; : &#039;f2&#039;},{&#039;ID&#039; : &#039;f3&#039;}]
 		};
 
 		var json3 = {
+			&#039;title&#039; : &#039;json3&#039;,
 			&#039;enableLegend&#039; : true,
 			&#039;legend&#039; : {position: &#039;SW&#039;},
 			&#039;flows&#039; : [{&#039;ID&#039; : &#039;f1&#039;},{ &#039;ID&#039; : &#039;f2&#039;},{&#039;ID&#039; : &#039;f3&#039;}]
 		};
 
 		var json4 = {
+			&#039;title&#039; : &#039;json4&#039;,
 			&#039;enableLegend&#039; : true,
 			&#039;legend&#039; : {position: &#039;NW&#039;},
 			&#039;flows&#039; : [{&#039;ID&#039; : &#039;f1&#039;},{ &#039;ID&#039; : &#039;f2&#039;},{&#039;ID&#039; : &#039;f3&#039;}]
 		};
 		var json5 = {
+			&#039;title&#039; : &#039;json5&#039;,
 			&#039;enableLegend&#039; : true,
 			&#039;legend&#039; : {position: &#039;W&#039;},
 			&#039;flows&#039; : [{&#039;ID&#039; : &#039;f1&#039;},{ &#039;ID&#039; : &#039;f2&#039;},{&#039;ID&#039; : &#039;f3&#039;}]
 		};
 
 		var json6 = {
+			&#039;title&#039; : &#039;json6&#039;,
 			&#039;enableLegend&#039; : true,
 			&#039;legend&#039; : {position: &#039;NE&#039;},
 			&#039;flows&#039; : [{&#039;ID&#039; : &#039;f1&#039;},{ &#039;ID&#039; : &#039;f2&#039;},{&#039;ID&#039; : &#039;f3&#039;}]
