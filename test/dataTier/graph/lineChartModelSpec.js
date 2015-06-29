@@ -51,8 +51,8 @@ describe('LineChartModel', function() {
         assert.strictEqual(graph1._legendOnPoint, false);
         assert.strictEqual(graph1._viewFinder, false);
         assert.strictEqual(graph1._interpolation, 'linear');
-        assert.strictEqual(graph1._horizontalGrid, false);
-        assert.strictEqual(graph1._verticalGrid, false);
+        assert.strictEqual(graph1._horizontalGrid, true);
+        assert.strictEqual(graph1._verticalGrid, true);
     });
 
     it('set default values to wrong properties', function() {
@@ -85,8 +85,8 @@ describe('LineChartModel', function() {
         assert.strictEqual(graph1._legendOnPoint, false);
         assert.strictEqual(graph1._viewFinder, false);
         assert.strictEqual(graph1._interpolation, 'linear');
-        assert.strictEqual(graph1._horizontalGrid, false);
-        assert.strictEqual(graph1._verticalGrid, false);
+        assert.strictEqual(graph1._horizontalGrid, true);
+        assert.strictEqual(graph1._verticalGrid, true);
     });
 
     var legend1 = new LegendModel();
@@ -231,8 +231,8 @@ describe('LineChartModel', function() {
             assert.strictEqual(graph1._legendOnPoint, false);
             assert.strictEqual(graph1._viewFinder, false);
             assert.strictEqual(graph1._interpolation, 'linear');
-            assert.strictEqual(graph1._horizontalGrid, false);
-            assert.strictEqual(graph1._verticalGrid, false);
+            assert.strictEqual(graph1._horizontalGrid, true);
+            assert.strictEqual(graph1._verticalGrid, true);
         });
     });
     describe('#addFlow', function() {
