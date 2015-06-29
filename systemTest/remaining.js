@@ -2,9 +2,6 @@
 * Requirements:
 
 
-*	FBOB3.2.2 			Il framework deve dare la possibilità all'utente sviluppatore di aggiornare i dati del line chart.
-*	FBOB3.2.2.1 		Il framework deve dare la possibilità all'utente sviluppatore di aggiornare i dati del line chartcon il metodo di aggiornamento in place.
-*	FBOB3.2.2.2 		Il framework deve dare la possibilità all'utente sviluppatore di aggiornare i dati del line chartcon il metodo stream.
 *	FBOB3.2.3 			Il framework deve dare la possibilità all'utente sviluppatore di aggiornare i dati del map chart.
 *	FBOB3.2.3.1 		Il framework deve dare la possibilità all'utente sviluppatore di aggiornare i dati del map chart con il metodo di aggiornamento in place.
 *	FBDE3.2.3.2 		Il framework deve dare la possibilità all'utente sviluppatore di aggiornare i dati del map chart con il metodo di aggiornamento stream.

@@ -50,20 +50,31 @@ var page2=norris.createPage({
     graphsPerCol: 10
 });*/
 
-var barChart2=page2.createBarChart({
+var barChart=page2.createBarChart({
 	ID: 'barChart',
-	title: 'Bar aggiornamento Bar Chart',
+	title: 'Test aggiornamento dati Bar Chart',
     xAxis:{name: 'tempo'},
     yAxis:{name: 'pressione'},
     headers: ['h1','h2','h3','h4','h5'],
 });
-/*var lineChart2=page2.createLineChart({
+var lineChart=page2.createLineChart({
     ID: 'lineChart',
-    title: 'Line aggiornamento Line Chart',
+    title: 'Test aggiornamento Line Chart',
     xAxis:{name: 'tempo'},
     yAxis:{name: 'temperatura'}
+});
+/*var mapChart=page2.createMapChart({
+    ID: 'mapChart',
+    title: 'Test aggiornamento Map Chart',
+    latitude: 45.4113311,
+    longitude: 11.8876318
 });*/
-
+/*var table=page2.createTable({
+    ID: 'table',
+    title: 'Test aggiornamento Table',
+    maxItemsPage: 20,
+    headers: ['1', '2', '3'],
+});*/
 
 var TS1 = require('./TS1.js');
 var TS2 = require('./TS2.js');
@@ -71,7 +82,7 @@ var TS3 = require('./TS3.js');
 var TS4 = require('./TS4.js');
 var TS5 = require('./TS5.js');
 var TS6 = require('./TS6.js');
-//var TS7 = require('./TS7.js');
+var TS7 = require('./TS7.js');
 //var TS8 = require('./TS8.js');
 //var TS9 = require('./TS9.js');
 
@@ -80,10 +91,10 @@ TS2(page1);
 TS3(page1);
 TS4(page1);
 TS5(page1);
-TS6(barChart2);
-//TS7(lineChart2);
-//TS8(mapChart2);
-//TS9(table2);
+TS6(barChart);
+TS7(lineChart);
+//TS8(mapChart);
+//TS9(table);
 
 /////////////////////////////////////////////
 app.get('/', function (req, res) {
