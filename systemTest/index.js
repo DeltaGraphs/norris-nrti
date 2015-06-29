@@ -13,6 +13,7 @@
 * 0.0.1     2015-06-27   Filippo Rampado    Initial code
 * =========================================================
 */
+var Helper=require('./helper.js');
 
 console.log('Hello Norris');
 
@@ -26,29 +27,8 @@ var io = require('socket.io')(server);
 var Norris = require('../norris-nrti.js');
 var norris = new Norris(app,io,'/norris','http://norris-nrti-dev.herokuapp.com');
 
-var page1=norris.createPage({
-    ID:'page1',
-    name: 'Pagina creazione grafici',
-    description: 'Qui viene testata la creazione di grafici e flussi',
-    graphsPerRow: 2,
-    graphsPerCol: 10
-});
-
-var page2=norris.createPage({
-    ID:'page2',
-    name: 'Pagina aggiornamento dati',
-    description: 'Qui vengono testati i vari aggiornamenti sui dati',
-    graphsPerRow: 2,
-    graphsPerCol: 10
-});
-
-/*var page3=norris.createPage({
-    ID:'page3',
-    name: 'Pagina aggiornamento parametri',
-    description: 'Qui vengono testati i vari aggiornamenti sui parametri',
-    graphsPerRow: 2,
-    graphsPerCol: 10
-});*/
+var page1=Helper.newPage(norris, 'Pagina creazione grafici');
+var page2=Helper.newPage(norris, 'Pagina aggiornamento grafici');
 
 /*var barChart=page2.createBarChart({
 	ID: 'barChart',
@@ -65,7 +45,7 @@ var page2=norris.createPage({
 });*/
 
 var lineChart=page2.createLineChart({
-    ID: 'lineChartPage2',
+    ID: 'lineChart',
     title: 'UGUALE A PAGE 1 - Test aggiornamento dati Line Chart',
     height: 600,
     width: 1000,
@@ -82,7 +62,7 @@ var lineChart=page2.createLineChart({
     viewFinder: true
 });
 var lineChartFlow=lineChart.createLineChartFlow({
-    ID:'flow1Page2',
+    ID:'flow1',
     name: 'grafico tempo-temperatura',
     xKey: 'tempo',
     yKey: 'temperatura',
