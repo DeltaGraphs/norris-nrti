@@ -8325,16 +8325,16 @@ return i.size=function(n){return arguments.length?(l=n,i):l},i.padding=function(
 
 var norrisConfig = function($routeProvider) {
     $routeProvider /* inizio definizione di routeProvider */
-        .when('/norris', {
+        .when('/', {
             //controller: 'PagesListController',
             template: '<pages-list></pages-list>'
         })
-        .when('/norris/page/:pageId', {
+        .when('/page/:pageId', {
         	//controller : 'PageController',
         	template: '<page></page>'
         })
         .otherwise({
-            redirectTo: '/norris'
+            redirectTo: '/'
         })
     ; /* fine definizione di routeProvider */
 };
@@ -12439,7 +12439,7 @@ angular.module('norris-nrti')
 		template: '<div id="pagesList">' + 
 					'<ul>' +
 					'<li ng-repeat="page in pagesList">' +
-						'<a ng-href="/#/norris/page/{{$index}}"> {{ page.page.getName() }} </a>' +
+						'<a ng-href="/page/{{$index}}"> {{ page.page.getName() }} </a>' +
 						'<p> {{ page.page.getDescription() }} </p>' +
 					'</li>' +
 					'</ul>' +
