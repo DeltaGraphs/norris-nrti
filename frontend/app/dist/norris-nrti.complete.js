@@ -8330,7 +8330,7 @@ var norrisConfig = function($routeProvider) {
             template: '<pages-list></pages-list>'
         })
         .when('/page/:pageId', {
-        	controller : 'PageController',
+        	//controller : 'PageController',
         	template: '<page></page>'
         })
         .otherwise({
@@ -12314,7 +12314,7 @@ angular.module('norris-nrti')
 .directive('page', function($compile, $routeParams){
 	return {
 		restrict: 'E', // direttiva di tipo elemento (tag)
-		//controller : 'PageController',
+		controller : 'PageController',
 		replace: false,
 		scope: {},
 		template: '<div id="page" style="width: 100%;"></div>', // template HTML inserito dalla direttiva
