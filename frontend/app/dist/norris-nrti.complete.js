@@ -10946,6 +10946,7 @@ angular.module('norris-nrti')
 		if (count1 === 0) {
 			socket = SocketServicesFactory.build(url);
 			$scope.socket = socket;
+      console.log('socketConnection MapChartController');
 			this.listenOnEvents();
 			count1++;
 		}
@@ -10958,15 +10959,16 @@ angular.module('norris-nrti')
 
 	// funzione che mette in ascolto il socket su alcuni eventi
 	this.listenOnEvents = function(){
+    console.log('listenOnEvents MapChartController');
 		socket.on('configGraph', function(info){ // ascolta sull'evento 'configGraph' (ricevuto come risposta alla connessione)
 			if (count === 0) {
-				console.log('configGraph mapChart');
 				count++;
 				$scope.mapChart.updateParameters(info.properties); // aggiorna le proprietà del map chart di default con i dati appena ricevuti
 				$scope.mapChart.initializeData(info.data); // inizializza i flussi con i dati
 				$scope.changedP = !$scope.changedP; // 'notifica' cambiamento proprietà
 				$scope.changedD = !$scope.changedD; // 'notifica' cambiamento dati
-	        }
+        console.log('configGraph mapChart ' + JSON.stringify($scope.mapChart));
+	    }
 		});
 		socket.on('updateGraphProp', function(info){ // ascolta sull'evento 'updateGraphProp'
 			$scope.mapChart.updateParameters(info); // aggiorna le proprietà del map chart con i dati appena ricevuti
@@ -11154,15 +11156,18 @@ angular.module('norris-nrti')
 	// funzione che connette il socket all'url e chiama la funzione listenOnEvent
 	this.socketConnection = function(){
 		socket = SocketServicesFactory.build($scope.url);
+    console.log('socketConnectio PageController');
 		$scope.socket = socket;
 		this.listenOnEvents();
 	};
 
 	// funzione che mette in ascolto il socket su alcuni eventi
 	this.listenOnEvents = function(){
+    console.log('listenOnEvents PageController');
 		socket.on('configPage', function(info){ // ascolta sull'evento 'configPage' (ricevuto come risposta alla connessione)
 			$scope.page.updateParameters(info.properties); // modifica i campi di default con i valori esatti della pagina
 			$scope.page.initializeData(info.data); // inizializza i dati della pagina (aggiunge i grafici presenti in essa)
+      console.log('configGraph ' + JSON.stringify($scope.page));
 			$scope.graphs = matrix($scope.page.getGraphsList());
 		});
 		/*socket.on('updatePageProp', function(info){ // ascolta sull'evento 'updatePageProp'
