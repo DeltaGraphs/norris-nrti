@@ -45,13 +45,13 @@ var TS7 = require('./TS7.js');
 var TS8 = require('./TS8.js');
 var TS9 = require('./TS9.js');
 
-TS1(norris);
-/*TS2(page1);
+/*TS1(norris);
+TS2(page1);
 TS3(page1);
 TS4(page1);
-TS5(page1);*/
-//TS6(barChart);
-//TS7(lineChart);
+TS5(page1);
+TS6(barChart);
+TS7(lineChart);*/
 TS8(mapChart);
 //TS9(table);
 
