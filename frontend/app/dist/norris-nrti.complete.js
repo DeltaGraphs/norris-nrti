@@ -8325,16 +8325,16 @@ return i.size=function(n){return arguments.length?(l=n,i):l},i.padding=function(
 
 var norrisConfig = function($routeProvider) {
     $routeProvider /* inizio definizione di routeProvider */
-        .when('/norris', {
+        .when('/', {
             //controller: 'PagesListController',
             template: '<pages-list></pages-list>'
         })
         .when('/page/:pageId', {
-        	//controller : 'PageController',
+        	controller : 'PageController',
         	template: '<page></page>'
         })
         .otherwise({
-            redirectTo: '/norris'
+            redirectTo: '/'
         })
     ; /* fine definizione di routeProvider */
 };
@@ -12314,7 +12314,7 @@ angular.module('norris-nrti')
 .directive('page', function($compile, $routeParams){
 	return {
 		restrict: 'E', // direttiva di tipo elemento (tag)
-		controller : 'PageController',
+		//controller : 'PageController',
 		replace: false,
 		scope: {},
 		template: '<div id="page" style="width: 100%;"></div>', // template HTML inserito dalla direttiva
@@ -12346,7 +12346,7 @@ angular.module('norris-nrti')
 					commands.appendChild(next);
 				}*/
 				var list = document.createElement('div');
-				list.innerHTML = '<a ng-href="#/" target="_self">RETURN TO PAGES LIST</a>';
+				list.innerHTML = '<a ng-href="/" target="_self">RETURN TO PAGES LIST</a>';
 				commands.appendChild(list);
 				parent.appendChild(commands);
 
