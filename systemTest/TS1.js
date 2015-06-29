@@ -27,6 +27,8 @@
 *   FBOB2.1     Il framework deve dare la possibilità all'utente sviluppatore di impostare un titolo nella creazione del grafico.
 *   FBDE2.2     Il framework deve dare la possibilità all'utente sviluppatore di creare un grafico senza impostare dati iniziali.
 *
+* <<Requirements into brackets are not satisfied>>
+*
 * History :
 * 
 * Version   Date         Programmer         Description

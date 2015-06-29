@@ -63,12 +63,12 @@ var lineChart=page2.createLineChart({
     xAxis:{name: 'tempo'},
     yAxis:{name: 'temperatura'}
 });
-/*var mapChart=page2.createMapChart({
+var mapChart=page2.createMapChart({
     ID: 'mapChart',
     title: 'Test aggiornamento Map Chart',
     latitude: 45.4113311,
     longitude: 11.8876318
-});*/
+});
 /*var table=page2.createTable({
     ID: 'table',
     title: 'Test aggiornamento Table',
@@ -83,7 +83,7 @@ var TS4 = require('./TS4.js');
 var TS5 = require('./TS5.js');
 var TS6 = require('./TS6.js');
 var TS7 = require('./TS7.js');
-//var TS8 = require('./TS8.js');
+var TS8 = require('./TS8.js');
 //var TS9 = require('./TS9.js');
 
 TS1(norris);
@@ -93,7 +93,7 @@ TS4(page1);
 TS5(page1);
 TS6(barChart);
 TS7(lineChart);
-//TS8(mapChart);
+TS8(mapChart);
 //TS9(table);
 
 /////////////////////////////////////////////
