@@ -37,6 +37,7 @@ angular.module('norris-nrti')
 	this.listenOnEvents = function(){
 		socket.on('configGraph', function(info){ // ascolta sull'evento 'configGraph' (ricevuto come risposta alla connessione)
 			if (count === 0){
+				console.log('configGraph lineChart');
 				$scope.lineChart.updateParameters(info.properties); // aggiorna le proprietà del line chart di default con i dati appena ricevuti
 				$scope.lineChart.initializeData(info.data); // inizializza i flussi con i dati
 				$scope.changedD = !$scope.changedD; // 'notifica' cambiamento dati
