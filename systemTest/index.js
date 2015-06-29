@@ -51,8 +51,8 @@ TS3(page1);
 TS4(page1);
 TS5(page1);
 //TS6(barChart);
-TS7(lineChart);
-//TS8(mapChart);
+//TS7(lineChart);
+TS8(mapChart);
 //TS9(table);
 
 ///////////////////////////////////////////// 
