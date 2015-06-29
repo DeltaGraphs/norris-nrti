@@ -8314,7 +8314,7 @@ return i.size=function(n){return arguments.length?(l=n,i):l},i.padding=function(
 * History :
 * Version       Date        Programmer                  Description
 * ===============================================================================================================
-* 0.1.0			2015-05-31	Rossetto Francesco			Modified structure of appConfig
+* 0.1.0			    2015-05-31	Rossetto Francesco			Modified structure of appConfig
 *
 * 0.0.2         2015-05-15  Maria Giovanna Chinellato   Add code of config file
 *
@@ -8325,7 +8325,7 @@ return i.size=function(n){return arguments.length?(l=n,i):l},i.padding=function(
 
 var norrisConfig = function($routeProvider) {
     $routeProvider /* inizio definizione di routeProvider */
-        .when('/', {
+        .when('/norris', {
             //controller: 'PagesListController',
             template: '<pages-list></pages-list>'
         })
@@ -8334,7 +8334,7 @@ var norrisConfig = function($routeProvider) {
         	template: '<page></page>'
         })
         .otherwise({
-            redirectTo: '/'
+            redirectTo: '/norris'
         })
     ; /* fine definizione di routeProvider */
 };
