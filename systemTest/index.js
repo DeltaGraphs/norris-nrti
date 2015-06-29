@@ -54,14 +54,20 @@ var TS2 = require('./TS2.js');
 var TS3 = require('./TS3.js');
 var TS4 = require('./TS4.js');
 var TS5 = require('./TS5.js');
+//var TS6 = require('./TS6.js');
+//var TS7 = require('./TS7.js');
+//var TS8 = require('./TS8.js');
+//var TS9 = require('./TS9.js');
 
 TS1(norris);
 TS2(page);
 TS3(page);
 TS4(page);
 TS5(page);
-
-
+//TS6(barChart);
+//TS7(lineChart);
+//TS8(mapChart);
+//TS9(table);
 
 /////////////////////////////////////////////
 app.get('/', function (req, res) {
