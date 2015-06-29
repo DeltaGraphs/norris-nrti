@@ -11945,7 +11945,11 @@ angular.module('norris-nrti')
                         }));
                         polylines[i].setMap(map);
                     }
-                }                
+                }
+
+                var mapCanvas = document.getElementById('map-canvas');
+                mapCanvas.setAttribute('style', 'height:'+ scope.$parent.mapChart.getHeight() +'px; width:'+ scope.$parent.mapChart.getWidth() +'px;');
+     
             };
 
             // inizializza i dati sulla mappa
@@ -12013,9 +12017,6 @@ angular.module('norris-nrti')
                         markers.push(marker);
 
                     }
-
-                    var mapCanvas = document.getElementById('map-canvas');
-                    mapCanvas.setAttribute('style','overflow: visible;');
                     
                 }
 
