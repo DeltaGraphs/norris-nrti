@@ -50,13 +50,13 @@ var page2=norris.createPage({
     graphsPerCol: 10
 });*/
 
-var barChart=page2.createBarChart({
+/*var barChart=page2.createBarChart({
 	ID: 'barChart',
 	title: 'Test aggiornamento dati Bar Chart',
     xAxis:{name: 'tempo'},
     yAxis:{name: 'pressione'},
     headers: ['h1','h2','h3','h4','h5']
-});
+});*/
 /*var lineChart=page2.createLineChart({
     ID: 'lineChart',
     title: 'Test aggiornamento dati Line Chart',
@@ -98,12 +98,12 @@ lineChartFlow.addRecord({'tempo': 3, 'temperatura': 2});
 lineChartFlow.addRecord({'tempo': 4, 'temperatura': 1});
 lineChartFlow.addRecord({'tempo': 5, 'temperatura': 16});
 
-var mapChart=page2.createMapChart({
+/*var mapChart=page2.createMapChart({
     ID: 'mapChart',
     title: 'Test aggiornamento Map Chart',
     latitude: 45.4113311,
     longitude: 11.8876318
-});
+});*/
 /*var table=page2.createTable({
     ID: 'table',
     title: 'Test aggiornamento Table',
