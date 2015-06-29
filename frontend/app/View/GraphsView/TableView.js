@@ -107,7 +107,7 @@ angular.module('norris-nrti')
                 table = table + '</tr></thead>';
 
                 // controlla se è abilitato qualche ordinamento da parte dello sviluppatore e ordina i record
-                if (scope.$parent.table.getSort().column.length > 0){
+                if (scope.$parent.table.getSort() !== null){
                     if (scope.$parent.table.getSort().column.length === 1){
                         table = table + '<tbody><tr ng-repeat="line in displayed | orderBy:\''+ scope.$parent.table.getSort().column[0] +'\'">';
                     }
