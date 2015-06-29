@@ -12014,6 +12014,8 @@ angular.module('norris-nrti')
 
                     }
 
+                    var mapCanvas = document.getElementById('map-canvas');
+                    mapCanvas.setAttribute('style','overflow: visible;');
                     
                 }
 
