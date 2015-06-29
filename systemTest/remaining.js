@@ -3,10 +3,6 @@
 
 
 
-*	FBOB3.2.4 			Il framework deve dare la possibilità all'utente sviluppatore di aggiornare i dati della table.
-*	FBOB3.2.4.1 		Il framework deve dare la possibilità all'utente sviluppatore di aggiornare i dati della table con il metodo di aggiornamento in place.
-*	FBOB3.2.4.2 		Il framework deve dare la possibilità all'utente sviluppatore di aggiornare i dati della table con il metodo di aggiornamento stream.
-*	FBDE3.2.5 			Il framework deve dare la possibilità all'utente sviluppatore di eliminare flussi di dati dai grafici.
 *	FBDE3.3 			Il framework deve permettere all'utente sviluppatore di aggiornare i parametri dei grafici.
 *	FBDE3.3.1 			Il framework deve permettere all'utente sviluppatore di aggiornare il titolo del grafico.
 *	FBDE3.3.2 			Il framework deve permettere all'utente sviluppatore di aggiornare le dimensioni del grafico.
