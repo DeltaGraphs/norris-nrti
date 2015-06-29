@@ -26,7 +26,17 @@
 *	FBOB2.6.7 		Il framework deve permettere all'utente sviluppatore di specificare il colore del testo all'interno delle celle della table, al momento della creazione.
 *	FBOB2.6.7.1 	Il framework deve permettere all'utente sviluppatore di specificare il colore del testo all'interno di una singola cella della table, al momento della creazione.
 *	FBOB2.6.7.2 	Il framework deve permettere all'utente sviluppatore di specificare il colore del testo all'interno di più celle della table, al momento della creazione.
-*
+*	FBDE2.7 		Il framework deve dare la possibilità all'utente sviluppatore di impostare le dimensioni del grafico, al momento della creazione.
+*	FBOB2.9 		Il framework deve dare la possibilità all'utente sviluppatore di impostare la legenda nel grafico, al momento della creazione.
+*	FBOB2.9.1 		Il framework deve dare la possibilità all'utente sviluppatore di impostare, al momento della creazione, la possibilità di abilitare e disabilitare la legenda nel grafico.
+*	FBOB2.9.2 		Il framework deve dare la possibilità all'utente sviluppatore di impostare la posizione della legenda nel grafico, al momento della creazione.
+*	FBDE2.9.3 		Il framework deve dare la possibilità all'utente sviluppatore di impostare l'aspetto della legenda nel grafico, al momento della creazione.
+*	FBOB3.1.4 		Il framework deve dare la possibilità all'utente sviluppatore di aggiungere flussi di dati alla table.
+*	FBOB3.1.4.1 	Il framework deve dare la possibilità all'utente sviluppatore di impostare il nome del set dei dati, nella table.
+*	FBOB3.1.4.2 	Il framework deve dare la possibilità all'utente sviluppatore di impostare massimo numero di elementi visualizzabili, nella table.
+*	FBOB3.1.4.3 	Il framework deve dare la possibilità all'utente sviluppatore di impostare l'array iniziale che costituirà il set dei dati della table.
+*	FBOB3.1.4.4 	Il framework deve dare la possibilità all'utente sviluppatore di impostare il formato di interpretazione dei dati contenuti nell'array, nella table.
+*	FBOB3.1.4.5 	Il framework deve dare la possibilità all'utente sviluppatore di applicare filtri dinamici ai dati nella table.
 * <<Requirements into brackets are not satisfied>>
 *
 * History :
@@ -41,6 +51,8 @@ var TS=function(page){
 	var table=page.createTable({
 	    ID: 'TSTable',
 	    title: 'Test Table',
+	    height: 600,
+    	width: 1000,
 	    sortable: true,
 	    maxItemsPage: 20,
 	    addRowOn: 'top',	//or bottom
@@ -48,6 +60,12 @@ var TS=function(page){
 	    sort: {
 	        column: ['IDMezzo','WGS84Fi'],
 	        ordering: ['DESC','ASC']
+	    },
+	    enableLegend: true,
+	    legend: {
+	        position: 'NW',
+	        fontColor: '#00AA00',
+	        backgroundColor: '#FFAAFF'
 	    },
 	    appearance: {
 	        horizontalGrid: {
@@ -71,6 +89,7 @@ var TS=function(page){
 	            backgroundColor: ['#2FBA38', '#2F3ABA']
 	        }
 	    },
+
 	});
 
 	//just to show parameters
@@ -78,7 +97,10 @@ var TS=function(page){
 	var tableFlow1=table.createTableFlow({
         ID:'flow1',
         name: 'autobus',
-        columnKeys: ['0','1','2']
+        columnKeys: ['0','1','2'],
+        columnFormats: ['toInt', 'toFloat'],
+        filters: 'IdMezzo>806',
+        maxItems: 50
     });
 	tableFlow1.addRecord({'0':875,'IdMezzo':875,'1':45.42533493042,'WGS84Fi':45.42533493042,'2':11.902134895325,'WGS84La':11.902134895325,'3':14,'Girometro':14,'4':0,'StatoPorte':0,'capolinea':'Capolinea Torre',appearance:[{bg: '#FFAAFF',text: '#FFAAAA'},{bg: '#FFAAFF',text: '#FFABBA'},{bg: '#FFAAFF',text: '#FFAACC'}]});
 	tableFlow1.addRecord({'0':805,'IdMezzo':805,'1':45.385223388672,'WGS84Fi':45.385223388672,'2':11.862413406372,'WGS84La':11.862413406372,'3':14,'Girometro':14,'4':0,'StatoPorte':0,'capolinea':'Codalunga 8b'});

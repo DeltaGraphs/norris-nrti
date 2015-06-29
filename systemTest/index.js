@@ -34,18 +34,36 @@ var page=norris.createPage({
     graphsPerCol: 10
 });
 
+var barChart=page.createBarChart({
+	ID: 'barChart',
+	title: 'Bar Chart',
+    xAxis:{name: 'tempo'},
+    yAxis:{name: 'pressione'},
+    headers: ['h1','h2','h3','h4','h5'],
+});
+var lineChart=page.createLineChart({
+    ID: 'lineChart',
+    title: 'Line Chart',
+    xAxis:{name: 'tempo'},
+    yAxis:{name: 'temperatura'}
+});
+
 
 var TS1 = require('./TS1.js');
 var TS2 = require('./TS2.js');
 var TS3 = require('./TS3.js');
 var TS4 = require('./TS4.js');
 var TS5 = require('./TS5.js');
+var TS6 = require('./TS6.js');
+var TS7 = require('./TS7.js');
 
 TS1(norris);
 TS2(page);
 TS3(page);
 TS4(page);
 TS5(page);
+TS6(barChart);
+TS7(lineChart);
 
 
 

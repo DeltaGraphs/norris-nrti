@@ -28,6 +28,16 @@
 *	(FBDE2.3.5) 	Il framework deve dare la possibilità all'utente sviluppatore di impostare la possibilità di ordinamento delle barre del bar chart al momento della creazione.
 *	FBDE2.3.6 		Il framework deve dare la possibilità all'utente sviluppatore di impostare la visualizzazione stacked delle barre del bar chart al momento della creazione.
 *	FBDE2.3.7 		Il framework deve dare la possibilità all'utente sviluppatore di impostare la visualizzazione grouped delle barre del bar chart al momento della creazione.
+*	FBOB2.8 		Il framework deve dare la possibilità all'utente sviluppatore di impostare il formato di stampa dei dati nel grafico, al momento della creazione.
+*	FBOB3 			Il framework deve permettere all'utente sviluppatore di aggiornare il contenuto dei grafici.
+*	FBOB3.1 		Il framework deve dare la possibilità all'utente sviluppatore di aggiungere flussi di dati ai grafici.
+*	FBOB3.1.1 		Il framework deve dare la possibilità all'utente sviluppatore di aggiungere flussi di dati al bar chart.
+*	FBOB3.1.1.1 	Il framework deve dare la possibilità all'utente sviluppatore di impostare il colore del set dei dati del bar chart.
+*	FBOB3.1.1.2 	Il framework deve dare la possibilità all'utente sviluppatore di impostare il nome del set dei dati del bar chart.
+*	FBOB3.1.1.3 	Il framework deve dare la possibilità all'utente sviluppatore di impostare il tipo di legenda che appare sopra un punto selezionato del bar chart. 
+*	FBOB3.1.1.4 	Il framework deve dare la possibilità all'utente sviluppatore di impostare l'array di dati iniziale che costituirà il set dei dati del bar chart.
+*	FBOB3.1.1.5 	Il framework deve dare la possibilità all'utente sviluppatore di impostare il formato di interpretazione dei dati contenuti nell'array del bar chart.
+*	FBOB3.1.1.6 	Il framework deve dare la possibilità all'utente sviluppatore di impostare il filtro dinamico da applicare ai dati contenuti nell'array del bar chart.
 *
 * <<Requirements into brackets are not satisfied>>
 *
@@ -45,13 +55,13 @@ var TS=function(page){
 	    title: 'Test Bar Chart',
 	    enableLegend: true,
 	    legend: {
-	        position: 'NE',
+	        position: 'NE'
 	    },
 	    xAxis:{
-	        name: 'tempo',
+	        name: 'tempo'
 	    },
 	    yAxis:{
-	        name: 'pressione',
+	        name: 'pressione'
 	    },
 	    headers: [
 	        'h1',
@@ -61,15 +71,17 @@ var TS=function(page){
 	        'h5'
 	    ],
 	    barOrientation: 'V',	//or H
-	    groupingControl: true	//equals 
+	    groupingControl: true
 	});
 
-	//just to show parameters
 	barChart.createBarChartFlow({
         ID:'flow1',
         name: 'grafico tempo-pressione',
         indexKey: 'tempo',
-        valueKey: 'pressione'
+        valueKey: 'pressione',
+        flowColor: '#33AAFF',
+        valueFormat: 'toInt',
+        filters: 'pressione>3'
     },[
         {tempo: 1, pressione: 3},
         {tempo: 2, pressione: 10},

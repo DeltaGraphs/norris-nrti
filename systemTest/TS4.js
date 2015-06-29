@@ -18,6 +18,17 @@
 *	(FBDE2.5.6.2) 	Il framework deve permettere all'utente sviluppatore di abilitare la griglia verticale del map chart, al momento della creazione.
 *	(FBDE2.5.6.3) 	Il framework deve permettere all'utente sviluppatore di disabilitare la griglia orizzontale del map chart, al momento della creazione.
 *	(FBDE2.5.6.4) 	Il framework deve permettere all'utente sviluppatore di disabilitare la griglia verticale del map chart, al momento della creazione.
+*	FBOB3.1.3 		Il framework deve dare la possibilità all'utente sviluppatore di aggiungere flussi di dati al map chart.
+*	FBOB3.1.3.1 	Il framework deve dare la possibilità all'utente sviluppatore di impostare il nome del set dei dati del map chart.
+*	FBOB3.1.3.2 	Il framework deve dare la possibilità all'utente sviluppatore di impostare il colore del set dei dati del map chart.
+*	FBOB3.1.3.3 	Il framework deve dare la possibilità all'utente sviluppatore di impostare la tipologia dei marker per un set di dati e il colore degli stessi, nel map chart.
+*	FBOB3.1.3.4 	Il framework deve dare la possibilità all'utente sviluppatore di impostare l'aspetto della linea del tracciato, nel map chart.
+*	FBOB3.1.3.5 	Il framework deve dare la possibilità all'utente sviluppatore di impostare il tipo di legenda che appare sopra un punto selezionato del map chart.
+*	FBOB3.1.3.6 	Il framework deve dare la possibilità all'utente sviluppatore di impostare il massimo numero di elementi visualizzabili nel map chart.
+*	FBOB3.1.3.7 	Il framework deve dare la possibilità all'utente sviluppatore di impostare l'array di dati iniziale che costituirà il set dei dati del map chart.
+*	FBOB3.1.3.8 	Il framework deve dare la possibilità all'utente sviluppatore di impostare formato di interpretazione dei dati contenuti nell'array del map chart.
+*	FBOB3.1.3.9 	Il framework deve dare la possibilità all'utente sviluppatore di impostare l'elemento di background, ossia tracciato o area di sfondo, relativa all'uso dei dati del mapchart.
+*	FBOB3.1.3.10 	Il framework deve dare la possibilità all'utente sviluppatore di impostare il filtro dinamico da applicare ai dati contenuti nell'array del map chart.
 *
 * <<Requirements into brackets are not satisfied>>
 *
@@ -66,7 +77,10 @@ var TS=function(page){
 		},
 	    latitudeKey: '1',
 	    longitudeKey: '2',
-	    objectKey: '0'
+	    latitudeFormat: 'toFloat',
+	    objectKey: '0',
+	    filters:'IdMezzo>806',
+	    maxItems: 50
 	});
 	mapChartFlow.updateMovie(
 		[{'0':875,'IdMezzo':875,'1':45.42533493042,'WGS84Fi':45.42533493042,'2':11.902134895325,'WGS84La':11.902134895325,'3':14,'Girometro':14,'4':0,'StatoPorte':0,'capolinea':'Capolinea Torre'},
