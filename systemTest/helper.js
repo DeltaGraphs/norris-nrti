@@ -44,20 +44,20 @@ module.exports.newLineChart=function(page, title){
     return lineChart;
 };
 module.exports.newMapChart=function(page, title){
-    var lineChart=page.createLineChart({
+    var mapChart=page.createMapChart({
         ID: 'mapChart',
         title: title,
         latitude: 45.4113311,
         longitude: 11.8876318
     });
-    return lineChart;
+    return mapChart;
 };
 module.exports.newTable=function(page, title){
-    var lineChart=page.createLineChart({
+    var table=page.createTable({
         ID: 'table',
         title: title,
         maxItemsPage: 20,
         headers: ['1', '2', '3'],
     });
-    return lineChart;
+    return table;
 };
