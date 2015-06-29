@@ -51,20 +51,19 @@ var TS=function(lineChart){
 	    maxItems: 4,
 	    filters: 'temperatura>2'
 	});
-	var IDs2=[];
-	IDs2.push(lineChart.addRecord('flow2',{'tempo': 1, 'temperatura': 15}));
-	IDs2.push(lineChart.addRecord('flow2',{'tempo': 2, 'temperatura': 10}));
-	IDs2.push(lineChart.addRecord('flow2',{'tempo': 3, 'temperatura': 2}));
-	IDs2.push(lineChart.addRecord('flow2',{'tempo': 4, 'temperatura': 1}));
-	IDs2.push(lineChart.addRecord('flow2',{'tempo': 5, 'temperatura': 16}));
+	lineChart.addRecord('flow2',{'tempo': 1, 'temperatura': 15});
+	lineChart.addRecord('flow2',{'tempo': 2, 'temperatura': 10});
+	lineChart.addRecord('flow2',{'tempo': 3, 'temperatura': 2});
+	lineChart.addRecord('flow2',{'tempo': 4, 'temperatura': 1});
+	lineChart.addRecord('flow2',{'tempo': 5, 'temperatura': 16});
 	var index=0;
 
 	var repeat=function(){
 		if (index>=5){
 			index=0;
 		}
-		lineChart.updateRecord('flow1', IDs[index], {tempo: index, pressione: index*2});
-		lineChart.addRecord('flow2', {tempo: index, pressione: index*2+4});
+		console.log('updateRecord: '+lineChart.updateRecord('flow1', IDs[index], {tempo: index, pressione: index*2}));
+		console.log('addRecord: '+lineChart.addRecord('flow2', {tempo: index, pressione: index*2+4}));
 		index++;
 	};
 	setInterval(function () {repeat();}, 5000);

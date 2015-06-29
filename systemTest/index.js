@@ -59,7 +59,7 @@ var barChart=page2.createBarChart({
 });
 var lineChart=page2.createLineChart({
     ID: 'lineChart',
-    title: 'Test aggiornamento Line Chart',
+    title: 'Test aggiornamento dati Line Chart',
     xAxis:{name: 'tempo'},
     yAxis:{name: 'temperatura'}
 });
