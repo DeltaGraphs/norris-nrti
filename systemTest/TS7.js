@@ -27,11 +27,8 @@ var TS=function(lineChart){
 	    name: 'grafico tempo-temperatura',
 	    xKey: 'tempo',
 	    yKey: 'temperatura',
-	    flowColor: '#B9D3EE',
-	    marker: 'triangle',
-	    xFormat: 'toFloat',
 	    maxItems: 5,
-	    filters: 'temperatura>2'
+	    //filters: 'temperatura>3'
 	});
 	var IDs=[];
 	IDs.push(lineChart.addRecord('flow1',{'tempo': 1, 'temperatura': 15}));
@@ -45,11 +42,8 @@ var TS=function(lineChart){
 	    name: 'grafico tempo-temperatura',
 	    xKey: 'tempo',
 	    yKey: 'temperatura',
-	    flowColor: '#B9D3EE',
-	    marker: 'triangle',
-	    xFormat: 'toFloat',
 	    maxItems: 4,
-	    filters: 'temperatura>2'
+	    //filters: 'temperatura>3'
 	});
 	lineChart.addRecord('flow2',{'tempo': 1, 'temperatura': 15});
 	lineChart.addRecord('flow2',{'tempo': 2, 'temperatura': 10});
@@ -62,8 +56,8 @@ var TS=function(lineChart){
 		if (index>=5){
 			index=0;
 		}
-		console.log('updateRecord: '+lineChart.updateRecord('flow1', IDs[index], {tempo: index, pressione: index*2}));
-		console.log('addRecord: '+lineChart.addRecord('flow2', {tempo: index, pressione: index*2+4}));
+		lineChart.updateRecord('flow1', IDs[index], {tempo: index, temperatura: index*2});
+		lineChart.addRecord('flow2', {tempo: index, temperatura: index*2+4});
 		index++;
 	};
 	setInterval(function () {repeat();}, 5000);
