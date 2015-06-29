@@ -30,7 +30,7 @@ angular.module('norris-nrti')
 		template: '<div id="pagesList">' + 
 					'<ul>' +
 					'<li ng-repeat="page in pagesList">' +
-						'<a ng-href="#/page/{{$index}}"> {{ page.page.getName() }} </a>' +
+						'<a ng-href="/#/norris/page/{{$index}}"> {{ page.page.getName() }} </a>' +
 						'<p> {{ page.page.getDescription() }} </p>' +
 					'</li>' +
 					'</ul>' +
