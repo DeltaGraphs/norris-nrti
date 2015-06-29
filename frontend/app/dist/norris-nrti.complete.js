@@ -12263,7 +12263,12 @@ angular.module('norris-nrti')
                     } else {
                         table = table + noBorder + cellStyle;
                     }
-                    table = table + '>{{line.record.'+ scope.$parent.table.getHeaders()[j] +'}}</td>';
+                    if(isNaN(scope.$parent.table.getHeaders()[j])){
+                      table = table + '>{{line.record.'+ scope.$parent.table.getHeaders()[j] +'}}</td>';
+                    }
+                    else{
+                      table = table + '>{{line.record['+ scope.$parent.table.getHeaders()[j] +']}}</td>';
+                    }
                 }
                 table = table + '</tr></tbody>';
 
