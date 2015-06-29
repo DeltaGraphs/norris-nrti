@@ -37,14 +37,9 @@ var page2=Helper.newPage(norris, 'page2', 'Pagina aggiornamento grafici');
     yAxis:{name: 'pressione'},
     headers: ['h1','h2','h3','h4','h5']
 });*/
-/*var lineChart=page2.createLineChart({
-    ID: 'lineChart',
-    title: 'Test aggiornamento dati Line Chart',
-    xAxis:{name: 'tempo'},
-    yAxis:{name: 'temperatura'}
-});*/
+var lineChart=Helper.newLineChart(page2, 'Test aggiornamento dati Line Chart');
 
-var lineChart=page2.createLineChart({
+/*var lineChart=page2.createLineChart({
     ID: 'lineChart',
     title: 'UGUALE A PAGE 1 - Test aggiornamento dati Line Chart',
     height: 600,
@@ -60,7 +55,7 @@ var lineChart=page2.createLineChart({
         name: 'temperatura'
     },
     viewFinder: true
-});
+});*/
 var lineChartFlow=lineChart.createLineChartFlow({
     ID:'flow1',
     name: 'grafico tempo-temperatura',
