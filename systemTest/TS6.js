@@ -51,8 +51,8 @@ var TS=function(barChart){
     	if (index>=5){
     		index=0;
     	}
-		barChartFlow.updateRecord(index, {tempo: index, pressione: index*2});
-		barChart.updateRecord('flow2', index, {tempo: index, pressione: index*2+4});
+		barChartFlow.updateRecord(index, {tempo: index, pressione: Math.floor((Math.random() * 10) + 1)});
+		barChart.updateRecord('flow2', index, {tempo: index, pressione: Math.floor((Math.random() * 10) + 1)});
 		index++;
     };
     setInterval(function () {repeat();}, 5000);

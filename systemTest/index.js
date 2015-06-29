@@ -55,7 +55,7 @@ var barChart=page2.createBarChart({
 	title: 'Test aggiornamento dati Bar Chart',
     xAxis:{name: 'tempo'},
     yAxis:{name: 'pressione'},
-    headers: ['h1','h2','h3','h4','h5'],
+    headers: ['h1','h2','h3','h4','h5']
 });
 var lineChart=page2.createLineChart({
     ID: 'lineChart',

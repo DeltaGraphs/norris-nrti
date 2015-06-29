@@ -50,14 +50,14 @@ var TS=function(lineChart){
 	lineChart.addRecord('flow2',{'tempo': 3, 'temperatura': 2});
 	lineChart.addRecord('flow2',{'tempo': 4, 'temperatura': 1});
 	lineChart.addRecord('flow2',{'tempo': 5, 'temperatura': 16});
+	
 	var index=0;
-
 	var repeat=function(){
 		if (index>=5){
 			index=0;
 		}
-		lineChart.updateRecord('flow1', IDs[index], {tempo: index, temperatura: index*2});
-		lineChart.addRecord('flow2', {tempo: index, temperatura: index*2+4});
+		lineChart.updateRecord('flow1', IDs[index], {tempo: index, temperatura: Math.floor((Math.random() * 10) + 1)});
+		lineChart.addRecord('flow2', {tempo: index, temperatura: Math.floor((Math.random() * 10) + 1)});
 		index++;
 	};
 	setInterval(function () {repeat();}, 5000);
