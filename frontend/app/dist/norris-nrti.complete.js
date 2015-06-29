@@ -12248,13 +12248,15 @@ angular.module('norris-nrti')
                 }
                 //i = 0;
                 for (var j=0; j<scope.$parent.table.getHeaders().length; j++){
+                  var cellBG;
+                  var cellText;
                   if(isNaN(scope.$parent.table.getHeaders()[j])){
-                    var cellBG = 'background-color: {{line.appearance.' + scope.$parent.table.getHeaders()[j] + '.bg}};';
-                    var cellText = 'color: {{line.appearance.' + scope.$parent.table.getHeaders()[j] + '.text}};';
+                    cellBG = 'background-color: {{line.appearance.' + scope.$parent.table.getHeaders()[j] + '.bg}};';
+                    cellText = 'color: {{line.appearance.' + scope.$parent.table.getHeaders()[j] + '.text}};';
                   }
                   else{
-                    var cellBG = 'background-color: {{line.appearance[' + scope.$parent.table.getHeaders()[j] + '].bg}};';
-                    var cellText = 'color: {{line.appearance[' + scope.$parent.table.getHeaders()[j] + '].text}};';
+                    cellBG = 'background-color: {{line.appearance[' + scope.$parent.table.getHeaders()[j] + '].bg}};';
+                    cellText = 'color: {{line.appearance[' + scope.$parent.table.getHeaders()[j] + '].text}};';
                   }
                     var cellStyle = 'style="' + border + cellBG + cellText + '"';
                     table = table + '<td ';
