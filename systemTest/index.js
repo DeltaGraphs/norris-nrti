@@ -51,26 +51,26 @@ var page2=norris.createPage({
 });*/
 
 var barChart=page2.createBarChart({
-	ID: 'barChart',
+	ID: 'barChart2',
 	title: 'Test aggiornamento dati Bar Chart',
     xAxis:{name: 'tempo'},
     yAxis:{name: 'pressione'},
     headers: ['h1','h2','h3','h4','h5'],
 });
 var lineChart=page2.createLineChart({
-    ID: 'lineChart',
+    ID: 'lineChart2',
     title: 'Test aggiornamento dati Line Chart',
     xAxis:{name: 'tempo'},
     yAxis:{name: 'temperatura'}
 });
 var mapChart=page2.createMapChart({
-    ID: 'mapChart',
+    ID: 'mapChart2',
     title: 'Test aggiornamento Map Chart',
     latitude: 45.4113311,
     longitude: 11.8876318
 });
 /*var table=page2.createTable({
-    ID: 'table',
+    ID: 'table2',
     title: 'Test aggiornamento Table',
     maxItemsPage: 20,
     headers: ['1', '2', '3'],
