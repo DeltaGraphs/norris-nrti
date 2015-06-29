@@ -57,12 +57,47 @@ var barChart=page2.createBarChart({
     yAxis:{name: 'pressione'},
     headers: ['h1','h2','h3','h4','h5']
 });
-var lineChart=page2.createLineChart({
+/*var lineChart=page2.createLineChart({
     ID: 'lineChart',
     title: 'Test aggiornamento dati Line Chart',
     xAxis:{name: 'tempo'},
     yAxis:{name: 'temperatura'}
+});*/
+
+ var lineChart=page2.createLineChart({
+    ID: 'lineChart',
+    title: 'UGUALE A PAGE 1 - Test aggiornamento dati Line Chart',
+    height: 600,
+    width: 1000,
+    enableLegend: true,
+    legend: {
+        position: 'NE'
+    },
+    xAxis:{
+        name: 'tempo'
+    },
+    yAxis:{
+        name: 'temperatura'
+    },
+    viewFinder: true
 });
+var lineChartFlow=lineChart.createLineChartFlow({
+    ID:'flow1',
+    name: 'grafico tempo-temperatura',
+    xKey: 'tempo',
+    yKey: 'temperatura',
+    flowColor: '#B9D3EE',
+    marker: 'triangle',
+    xFormat: 'toFloat',
+    maxItemsSaved: 50,
+    filters: 'temperatura>2'
+});
+lineChartFlow.addRecord({'tempo': 1, 'temperatura': 15});
+lineChartFlow.addRecord({'tempo': 2, 'temperatura': 10});
+lineChartFlow.addRecord({'tempo': 3, 'temperatura': 2});
+lineChartFlow.addRecord({'tempo': 4, 'temperatura': 1});
+lineChartFlow.addRecord({'tempo': 5, 'temperatura': 16});
+
 var mapChart=page2.createMapChart({
     ID: 'mapChart',
     title: 'Test aggiornamento Map Chart',
@@ -82,7 +117,7 @@ var TS3 = require('./TS3.js');
 var TS4 = require('./TS4.js');
 var TS5 = require('./TS5.js');
 var TS6 = require('./TS6.js');
-var TS7 = require('./TS7.js');
+//var TS7 = require('./TS7.js');
 var TS8 = require('./TS8.js');
 //var TS9 = require('./TS9.js');
 
@@ -92,7 +127,7 @@ TS3(page1);
 TS4(page1);
 TS5(page1);
 TS6(barChart);
-TS7(lineChart);
+//TS7(lineChart);
 TS8(mapChart);
 //TS9(table);
 
