@@ -11826,14 +11826,17 @@ angular.module('norris-nrti')
 
             scope.$parent.$watch('changedP', function(newValue, oldValue){
                 if (newValue !== oldValue) {
+                    console.log('changedP MapChartView');
                     scope.title = scope.$parent.mapChart.getTitle(); // inserisce il titolo
                     scope.init(); // crea la mappa
                 }
             }, true);
 
             scope.$parent.$watch('changedD', function(newValue, oldValue){
-                if(newValue !== oldValue){                
+                if(newValue !== oldValue){
+                    console.log('changedP MapChartView');   
                     if (scope.$parent.mapChart.getLegend() !== null){
+                        console.log('changedP legend MapChartView');
                         scope.legend();  // richiama la funzione che crea la legenda relativa al grafico
                     }
                     scope.render(); // inserisce i dati sulla mappa
@@ -12353,7 +12356,7 @@ angular.module('norris-nrti')
 					commands.appendChild(next);
 				}*/
 				var list = document.createElement('div');
-				list.innerHTML = '<a ng-href="/" target="_self">RETURN TO PAGES LIST</a>';
+				list.innerHTML = '<a ng-href="/norris" target="_self">RETURN TO PAGES LIST</a>';
 				commands.appendChild(list);
 				parent.appendChild(commands);
 
