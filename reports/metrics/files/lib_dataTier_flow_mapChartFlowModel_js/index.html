@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">54.23</p>
+      <p class="stat">53.98</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">210</p>
+      <p class="stat">214</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">63.25</p>
+      <p class="stat">63.88</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">2.25</p>
+      <p class="stat">2.28</p>
     </div>
   </div>
 </div>
@@ -182,7 +182,7 @@ MapChartFlowModel.prototype.updateProperties = function(params){
 
 MapChartFlowModel.prototype.addRecord = function(record){
 	if(record!==undefined &amp;&amp; record!==null &amp;&amp; typeof record === &#039;object&#039;){
-		if (this._records.length===this._maxItemsSaved){
+		if (this._records.length&gt;=this._maxItemsSaved){
 			//delete first element
 			this._records.splice(0, 1);
 		}
@@ -235,6 +235,10 @@ MapChartFlowModel.prototype.updateMovie = function(par){
 	var recordsID=[];
 	var i=0;
 	for (var keyParam in params) {
+		if (this._records.length&gt;=this._maxItemsSaved){
+			//too many records		
+			break;
+		}
 		if(params[keyParam][this._latitudeKey] === undefined ||
 			params[keyParam][this._longitudeKey] === undefined ||
 			params[keyParam][this._objectKey] === undefined){

@@ -175,7 +175,7 @@ TableFlowModel.prototype.addRecord = function (rec) {
             __cov_0emQq92o0tj$ktVQ0Lhymw.b['19'][1]++;
         }
         __cov_0emQq92o0tj$ktVQ0Lhymw.s['55']++;
-        if (this._records.length === this._maxItemsSaved) {
+        if (this._records.length >= this._maxItemsSaved) {
             __cov_0emQq92o0tj$ktVQ0Lhymw.b['24'][0]++;
             __cov_0emQq92o0tj$ktVQ0Lhymw.s['56']++;
             this._records.splice(0, 1);
