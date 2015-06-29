@@ -50,10 +50,10 @@ TS2(page1);
 TS3(page1);
 TS4(page1);
 TS5(page1);
-TS6(barChart);
+//TS6(barChart);
 TS7(lineChart);
-TS8(mapChart);
-TS9(table);
+//TS8(mapChart);
+//TS9(table);
 
 ///////////////////////////////////////////// 
 app.get('/', function (req, res) {
