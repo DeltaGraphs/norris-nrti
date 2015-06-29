@@ -47,8 +47,8 @@
 
 var TS=function(page){
     var lineChart=page.createLineChart({
-	    ID: 'TSLineChart',
-	    title: 'Test Line Chart',
+	    ID: 'lineChart',
+	    title: 'Test creazione Line Chart',
 	    height: 600,
 	    width: 1000,
 	    enableLegend: true,

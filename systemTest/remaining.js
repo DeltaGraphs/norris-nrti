@@ -2,9 +2,6 @@
 * Requirements:
 
 
-*	FBOB3.2 			Il framework deve dare la possibilità all'utente sviluppatore di aggiornare i dati dei grafici.
-*	FBOB3.2.1 			Il framework deve dare la possibilità all'utente sviluppatore di aggiornare i dati del bar chart.
-*	FBOB3.2.1.1 		Il framework deve dare la possibilità all'utente sviluppatore di aggiornare i dati del bar chartcon il metodo di aggiornamento in place.
 *	FBOB3.2.2 			Il framework deve dare la possibilità all'utente sviluppatore di aggiornare i dati del line chart.
 *	FBOB3.2.2.1 		Il framework deve dare la possibilità all'utente sviluppatore di aggiornare i dati del line chartcon il metodo di aggiornamento in place.
 *	FBOB3.2.2.2 		Il framework deve dare la possibilità all'utente sviluppatore di aggiornare i dati del line chartcon il metodo stream.

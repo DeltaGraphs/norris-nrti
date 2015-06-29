@@ -49,8 +49,8 @@
 
 var TS=function(page){
 	var table=page.createTable({
-	    ID: 'TSTable',
-	    title: 'Test Table',
+	    ID: 'table',
+	    title: 'Test creazione Table',
 	    height: 600,
     	width: 1000,
 	    sortable: true,
