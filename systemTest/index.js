@@ -56,7 +56,7 @@ var lineChart=Helper.newLineChart(page2, 'Test aggiornamento dati Line Chart');
     },
     viewFinder: true
 });*/
-var lineChartFlow=lineChart.createLineChartFlow({
+/*var lineChartFlow=lineChart.createLineChartFlow({
     ID:'flow1',
     name: 'grafico tempo-temperatura',
     xKey: 'tempo',
@@ -71,7 +71,7 @@ lineChartFlow.addRecord({'tempo': 1, 'temperatura': 15});
 lineChartFlow.addRecord({'tempo': 2, 'temperatura': 10});
 lineChartFlow.addRecord({'tempo': 3, 'temperatura': 2});
 lineChartFlow.addRecord({'tempo': 4, 'temperatura': 1});
-lineChartFlow.addRecord({'tempo': 5, 'temperatura': 16});
+lineChartFlow.addRecord({'tempo': 5, 'temperatura': 16});*/
 
 /*var mapChart=page2.createMapChart({
     ID: 'mapChart',
@@ -92,7 +92,7 @@ var TS3 = require('./TS3.js');
 var TS4 = require('./TS4.js');
 var TS5 = require('./TS5.js');
 //var TS6 = require('./TS6.js');
-//var TS7 = require('./TS7.js');
+var TS7 = require('./TS7.js');
 //var TS8 = require('./TS8.js');
 //var TS9 = require('./TS9.js');
 
@@ -102,7 +102,7 @@ TS3(page1);
 TS4(page1);
 TS5(page1);
 //TS6(barChart);
-//TS7(lineChart);
+TS7(lineChart);
 //TS8(mapChart);
 //TS9(table);
 
