@@ -96,7 +96,7 @@ TS7(lineChart);
 TS8(mapChart);
 //TS9(table);
 
-/////////////////////////////////////////////
+///////////////////////////////////////////// 
 app.get('/', function (req, res) {
 	var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
 	console.log(' Test di sistema '+ fullUrl);
