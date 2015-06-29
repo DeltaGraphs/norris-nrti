@@ -76,14 +76,14 @@ var TS=function(mapChart){
 		if (index>=5){
 			index=0;
 		}
-		mapChart.updateRecord('flow1', IDs[index], {'0':875,'1':45.4+(Math.random() * 0.1),'2':11.9+(Math.random() * 0.1)});
-		mapChart.addRecord('flow2', {'0':875,'1':45.5+(Math.random() * 0.1),'2':11.8+(Math.random() * 0.1)});
+		mapChart.updateRecord('flow1', IDs[index], {'0':875,'1':45.41+(Math.random() * 0.01),'2':11.9+(Math.random() * 0.01)});
+		mapChart.addRecord('flow2', {'0':875,'1':45.44+(Math.random() * 0.01),'2':11.93+(Math.random() * 0.01)});
 		mapChart.updateMovie('flow3',[
-			{'0':875,'1':45.3+(Math.random() * 0.1),'2':11.7+(Math.random() * 0.1)},
-			{'0':875,'1':45.3+(Math.random() * 0.1),'2':11.7+(Math.random() * 0.1)},
-			{'0':875,'1':45.3+(Math.random() * 0.1),'2':11.7+(Math.random() * 0.1)},
-			{'0':875,'1':45.3+(Math.random() * 0.1),'2':11.7+(Math.random() * 0.1)},
-			{'0':875,'1':45.3+(Math.random() * 0.1),'2':11.7+(Math.random() * 0.1)}
+			{'0':875,'1':45.4+(Math.random() * 0.1),'2':11.92+(Math.random() * 0.1)},
+			{'0':875,'1':45.4+(Math.random() * 0.1),'2':11.92+(Math.random() * 0.1)},
+			{'0':875,'1':45.4+(Math.random() * 0.1),'2':11.92+(Math.random() * 0.1)},
+			{'0':875,'1':45.4+(Math.random() * 0.1),'2':11.92+(Math.random() * 0.1)},
+			{'0':875,'1':45.4+(Math.random() * 0.1),'2':11.92+(Math.random() * 0.1)}
 		]);
 		index++;
 	};

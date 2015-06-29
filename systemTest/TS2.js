@@ -63,13 +63,7 @@ var TS=function(page){
 	    yAxis:{
 	        name: 'pressione'
 	    },
-	    headers: [
-	        'h1',
-	        'h2',
-	        'h3',
-	        'h4',
-	        'h5'
-	    ],
+	    headers: ['h1','h2','h3','h4','h5'],
 	    barOrientation: 'V',	//or H
 	    groupingControl: true
 	});
