@@ -10965,8 +10965,10 @@ angular.module('norris-nrti')
 				count++;
 				$scope.mapChart.updateParameters(info.properties); // aggiorna le proprietà del map chart di default con i dati appena ricevuti
 				$scope.mapChart.initializeData(info.data); // inizializza i flussi con i dati
+        console.log('changedP e changedD ' + $scope.changedP + ' ' + $scope.changedD)
 				$scope.changedP = !$scope.changedP; // 'notifica' cambiamento proprietà
 				$scope.changedD = !$scope.changedD; // 'notifica' cambiamento dati
+        console.log('changedP e changedD ' + $scope.changedP + ' ' + $scope.changedD)
         console.log('configGraph mapChart ' + JSON.stringify($scope.mapChart));
 	    }
 		});
@@ -11167,7 +11169,7 @@ angular.module('norris-nrti')
 		socket.on('configPage', function(info){ // ascolta sull'evento 'configPage' (ricevuto come risposta alla connessione)
 			$scope.page.updateParameters(info.properties); // modifica i campi di default con i valori esatti della pagina
 			$scope.page.initializeData(info.data); // inizializza i dati della pagina (aggiunge i grafici presenti in essa)
-      console.log('configGraph ' + JSON.stringify($scope.page));
+      console.log('configPage ' + JSON.stringify($scope.page));
 			$scope.graphs = matrix($scope.page.getGraphsList());
 		});
 		/*socket.on('updatePageProp', function(info){ // ascolta sull'evento 'updatePageProp'
