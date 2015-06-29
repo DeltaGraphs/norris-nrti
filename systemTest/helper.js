@@ -14,9 +14,9 @@
 * =========================================================
 */
 
-module.exports.newPage=function(norris, title){
+module.exports.newPage=function(norris, ID, title){
     var page=norris.createPage({
-        ID:'page1',
+        ID: ID,
         name: title,
         description: 'Test Page',
         graphsPerRow: 2,

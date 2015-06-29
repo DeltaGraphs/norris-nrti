@@ -27,8 +27,8 @@ var io = require('socket.io')(server);
 var Norris = require('../norris-nrti.js');
 var norris = new Norris(app,io,'/norris','http://norris-nrti-dev.herokuapp.com');
 
-var page1=Helper.newPage(norris, 'Pagina creazione grafici');
-var page2=Helper.newPage(norris, 'Pagina aggiornamento grafici');
+var page1=Helper.newPage(norris, 'page1', 'Pagina creazione grafici');
+var page2=Helper.newPage(norris, 'page2', 'Pagina aggiornamento grafici');
 
 /*var barChart=page2.createBarChart({
 	ID: 'barChart',
