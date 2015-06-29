@@ -51,7 +51,7 @@ describe('BarChartModel', function() {
         assert.strictEqual(graph1._legendOnPoint, false);
         assert.strictEqual(graph1._headers.length, 0);
         assert.strictEqual(graph1._barOrientation, 'V');
-        assert.strictEqual(graph1._grid, false);
+        assert.strictEqual(graph1._grid, true);
         assert.strictEqual(graph1._sortable, false);
     });
 
@@ -85,7 +85,7 @@ describe('BarChartModel', function() {
         assert.strictEqual(graph1._legendOnPoint, false);
         assert.strictEqual(graph1._headers.length, 0);
         assert.strictEqual(graph1._barOrientation, 'V');
-        assert.strictEqual(graph1._grid, false);
+        assert.strictEqual(graph1._grid, true);
         assert.strictEqual(graph1._sortable, false);
     });
 
@@ -234,7 +234,7 @@ describe('BarChartModel', function() {
             assert.strictEqual(graph1._legendOnPoint, false);
             assert.strictEqual(graph1._headers.length, 0);
             assert.strictEqual(graph1._barOrientation, 'V');
-            assert.strictEqual(graph1._grid, false);
+            assert.strictEqual(graph1._grid, true);
             assert.strictEqual(graph1._sortable, false);
         });
     });

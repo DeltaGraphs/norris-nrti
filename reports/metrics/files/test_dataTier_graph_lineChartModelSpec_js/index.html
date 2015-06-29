@@ -142,8 +142,8 @@ describe(&#039;LineChartModel&#039;, function() {
         assert.strictEqual(graph1._legendOnPoint, false);
         assert.strictEqual(graph1._viewFinder, false);
         assert.strictEqual(graph1._interpolation, &#039;linear&#039;);
-        assert.strictEqual(graph1._horizontalGrid, false);
-        assert.strictEqual(graph1._verticalGrid, false);
+        assert.strictEqual(graph1._horizontalGrid, true);
+        assert.strictEqual(graph1._verticalGrid, true);
     });
 
     it(&#039;set default values to wrong properties&#039;, function() {
@@ -176,8 +176,8 @@ describe(&#039;LineChartModel&#039;, function() {
         assert.strictEqual(graph1._legendOnPoint, false);
         assert.strictEqual(graph1._viewFinder, false);
         assert.strictEqual(graph1._interpolation, &#039;linear&#039;);
-        assert.strictEqual(graph1._horizontalGrid, false);
-        assert.strictEqual(graph1._verticalGrid, false);
+        assert.strictEqual(graph1._horizontalGrid, true);
+        assert.strictEqual(graph1._verticalGrid, true);
     });
 
     var legend1 = new LegendModel();
@@ -322,8 +322,8 @@ describe(&#039;LineChartModel&#039;, function() {
             assert.strictEqual(graph1._legendOnPoint, false);
             assert.strictEqual(graph1._viewFinder, false);
             assert.strictEqual(graph1._interpolation, &#039;linear&#039;);
-            assert.strictEqual(graph1._horizontalGrid, false);
-            assert.strictEqual(graph1._verticalGrid, false);
+            assert.strictEqual(graph1._horizontalGrid, true);
+            assert.strictEqual(graph1._verticalGrid, true);
         });
     });
     describe(&#039;#addFlow&#039;, function() {
