@@ -72,7 +72,7 @@ var TS=function(page){
         flowColor: '#B9D3EE',
         marker: 'triangle',
         xFormat: 'toFloat',
-        maxItems: 50,
+        maxItemsSaved: 50,
         filters: 'temperatura>2'
     });
     lineChartFlow.addRecord({'tempo': 1, 'temperatura': 15});

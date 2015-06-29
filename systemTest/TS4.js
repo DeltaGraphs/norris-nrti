@@ -80,7 +80,7 @@ var TS=function(page){
 	    latitudeFormat: 'toFloat',
 	    objectKey: '0',
 	    filters:'IdMezzo>806',
-	    maxItems: 50
+	    maxItemsSaved: 50
 	});
 	mapChartFlow.updateMovie(
 		[{'0':875,'IdMezzo':875,'1':45.42533493042,'WGS84Fi':45.42533493042,'2':11.902134895325,'WGS84La':11.902134895325,'3':14,'Girometro':14,'4':0,'StatoPorte':0,'capolinea':'Capolinea Torre'},
