@@ -56,7 +56,7 @@ angular.module('norris-nrti')
 					commands.appendChild(next);
 				}*/
 				var list = document.createElement('div');
-				list.innerHTML = '<a ng-href="#/" target="_self">RETURN TO PAGES LIST</a>';
+				list.innerHTML = '<a ng-href="#" target="_self">RETURN TO PAGES LIST</a>';
 				commands.appendChild(list);
 				parent.appendChild(commands);
 
