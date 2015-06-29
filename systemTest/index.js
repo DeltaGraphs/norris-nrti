@@ -64,8 +64,8 @@ var barChart=page2.createBarChart({
     yAxis:{name: 'temperatura'}
 });*/
 
- var lineChart=page2.createLineChart({
-    ID: 'lineChart',
+var lineChart=page2.createLineChart({
+    ID: 'lineChartPage2',
     title: 'UGUALE A PAGE 1 - Test aggiornamento dati Line Chart',
     height: 600,
     width: 1000,
@@ -82,7 +82,7 @@ var barChart=page2.createBarChart({
     viewFinder: true
 });
 var lineChartFlow=lineChart.createLineChartFlow({
-    ID:'flow1',
+    ID:'flow1Page2',
     name: 'grafico tempo-temperatura',
     xKey: 'tempo',
     yKey: 'temperatura',
@@ -116,9 +116,9 @@ var TS2 = require('./TS2.js');
 var TS3 = require('./TS3.js');
 var TS4 = require('./TS4.js');
 var TS5 = require('./TS5.js');
-var TS6 = require('./TS6.js');
+//var TS6 = require('./TS6.js');
 //var TS7 = require('./TS7.js');
-var TS8 = require('./TS8.js');
+//var TS8 = require('./TS8.js');
 //var TS9 = require('./TS9.js');
 
 TS1(norris);
@@ -126,9 +126,9 @@ TS2(page1);
 TS3(page1);
 TS4(page1);
 TS5(page1);
-TS6(barChart);
+//TS6(barChart);
 //TS7(lineChart);
-TS8(mapChart);
+//TS8(mapChart);
 //TS9(table);
 
 ///////////////////////////////////////////// 
