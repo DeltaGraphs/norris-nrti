@@ -41,7 +41,7 @@ var TS=function(norris){
     var page=norris.createPage({
         ID:'testPage',
         name: 'Test aggiunta grafici',
-        description: 'Qui viene testata l`aggiunta di grafici a una pagina',
+        description: 'Qui viene testata l\'aggiunta di grafici a una pagina',
         graphsPerRow: 2,
         graphsPerCol: 10
     });
@@ -80,7 +80,7 @@ var TS=function(norris){
         if (change){
             page.updateProperties({
                 name: 'Cambiato - Test aggiunta grafici',
-                description: 'Cambiato - Qui viene testata l`aggiunta di grafici a una pagina',
+                description: 'Cambiato - Qui viene testata l\'aggiunta di grafici a una pagina',
                 graphsPerRow: 5,
                 graphsPerCol: 5
             });

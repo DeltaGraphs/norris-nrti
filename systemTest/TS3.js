@@ -61,7 +61,8 @@ var TS=function(page){
 	    yAxis:{
 	        name: 'temperatura'
 	    },
-	    viewFinder: true
+	    viewFinder: true,
+	    interpolation: 'basis'
 	});
 
 	var lineChartFlow=lineChart.createLineChartFlow({
@@ -81,7 +82,7 @@ var TS=function(page){
     lineChartFlow.addRecord({'tempo': 4, 'temperatura': 1});
     lineChartFlow.addRecord({'tempo': 5, 'temperatura': 16});
     var lineChartFlow2=lineChart.createLineChartFlow({
-        ID:'flow1',
+        ID:'flow2',
         name: 'grafico tempo-temperatura 2',
         xKey: 'tempo',
         yKey: 'temperatura',
