@@ -49,7 +49,6 @@ var TS=function(table){
 		        ID:'flow2',
 		        name: 'flusso 2',
 		        columnKeys: ['0','1','2'],
-		        filters: 'IdMezzo>806',
 		        maxItemsSaved: 5
 		    });
 			index=0;
