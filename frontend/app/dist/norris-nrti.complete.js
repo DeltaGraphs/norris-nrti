@@ -12110,7 +12110,7 @@ angular.module('norris-nrti')
                           }
                           var spanText = document.createElement('div');
                           var text = document.createTextNode('\u00A0\u00A0\u00A0\u00A0' + scope.$parent.mapChart.getFlowList()[i].flow.getName());
-                          spanText.setAttribute('style', 'width: 100px; color: '+ scope.$parent.mapChart.getLegend().getFontColor() + ';');
+                          spanText.setAttribute('style', 'width: 80px; color: '+ scope.$parent.mapChart.getLegend().getFontColor() + ';');
                           spanText.appendChild(text);
                           div.appendChild(square);
                           div.appendChild(spanText);
