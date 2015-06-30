@@ -96,6 +96,7 @@ angular.module('norris-nrti')
             } 
             if (Object.keys(tJson).length !== 0) {
                 if (tJson.headers !== undefined) {
+                    this._headers = [];
                     for (var z=0; z<tJson.headers.length; z++) { 
                         this._headers.push(tJson.headers[z]);
                     }

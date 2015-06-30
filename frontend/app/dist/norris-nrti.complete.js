@@ -12176,7 +12176,6 @@ angular.module('norris-nrti')
                 if (newValue !== oldValue) {
                     scope.setData(); // chiama la funzione che organizza i dati da visualizzare
                     if (scope.$parent.changedP === true) {
-                        scope.displayed = [];
                         scope.init(); // chiama la funzione init che crea la tabella
                         scope.$parent.changedP = false;
                     }
