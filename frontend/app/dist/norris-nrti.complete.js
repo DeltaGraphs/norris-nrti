@@ -11518,8 +11518,10 @@ angular.module('norris-nrti')
                 var str = scope.url.split('/');
                 var id = str[str.length-1];
                 var legend = document.getElementById(id).getElementsByClassName('nv-legendWrap');
-                console.dir(legend);
-                legend[0].setAttribute('transform', 'translate(0,40)');
+                //console.dir(legend);
+                var div = document.createElement('div');
+                legend[0].appendChild(div);
+                //legend[0].setAttribute('transform', 'translate(0,40);');
 
                 if (element.children()[2]){
                     element.children()[2].remove();
