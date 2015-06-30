@@ -12332,7 +12332,7 @@ angular.module('norris-nrti')
 		controller : 'PageController',
 		replace: false,
 		scope: {},
-		template: '<div id="page"></div>', // template HTML inserito dalla direttiva
+		template: '<div id="page" style="width: 100%"></div>', // template HTML inserito dalla direttiva
 		link: function (scope, element, attrs) {
 			scope.socketConnection(); // richiama la funzione del controller che permette di connettersi al server
 
