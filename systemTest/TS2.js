@@ -19,10 +19,10 @@
 *	FBOB2.3.2 		Il framework deve permettere all'utente sviluppatore di scegliere l'orientamento delle barre del bar chart, al momento della creazione.
 *	FBOB2.3.2.1 	Il framework deve permettere all'utente sviluppatore di scegliere l'orientamento orizzontale delle barre del bar chart, al momento della creazione.
 *	FBOB2.3.2.2 	Il framework deve permettere all'utente sviluppatore di scegliere l'orientamento verticale delle barre del bar chart, al momento della creazione.
-*	(FBDE2.3.3)		Il framework deve permettere all'utente sviluppatore di aggiungere una griglia al bar chart, al momento della creazione.
-*	(FBDE2.3.3.1) 	Il framework deve permettere all'utente sviluppatore di abilitare la griglia orizzontale del bar chart, al momento della creazione.
+*	FBOB2.3.3		Il framework deve permettere all'utente sviluppatore di aggiungere una griglia al bar chart, al momento della creazione.
+*	FBOB2.3.3.1 	Il framework deve permettere all'utente sviluppatore di abilitare la griglia orizzontale del bar chart, al momento della creazione.
 *	(FBDE2.3.3.2) 	Il framework deve permettere all'utente sviluppatore di disabilitare la griglia orizzontale del bar chart, al momento della creazione.
-*	(FBDE2.3.3.3) 	Il framework deve permettere all'utente sviluppatore di abilitare la griglia verticale del bar chart, al momento della creazione.
+*	FBOB2.3.3.3 	Il framework deve permettere all'utente sviluppatore di abilitare la griglia verticale del bar chart, al momento della creazione.
 *	(FBDE2.3.3.4) 	Il framework deve permettere all'utente sviluppatore di disabilitare la griglia verticale del bar chart, al momento della creazione.
 *	(FBDE2.3.4)	 	Il framework deve permettere all'utente sviluppatore di aggiungere un background al bar chart, al momento della creazione.
 *	(FBDE2.3.5) 	Il framework deve dare la possibilità all'utente sviluppatore di impostare la possibilità di ordinamento delle barre del bar chart al momento della creazione.

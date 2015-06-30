@@ -26,7 +26,7 @@
 *	FBOB2.6.7 		Il framework deve permettere all'utente sviluppatore di specificare il colore del testo all'interno delle celle della table, al momento della creazione.
 *	FBOB2.6.7.1 	Il framework deve permettere all'utente sviluppatore di specificare il colore del testo all'interno di una singola cella della table, al momento della creazione.
 *	FBOB2.6.7.2 	Il framework deve permettere all'utente sviluppatore di specificare il colore del testo all'interno di più celle della table, al momento della creazione.
-*	FBDE2.7 		Il framework deve dare la possibilità all'utente sviluppatore di impostare le dimensioni del grafico, al momento della creazione.
+*	FBOB2.7 		Il framework deve dare la possibilità all'utente sviluppatore di impostare le dimensioni del grafico, al momento della creazione.
 *	FBOB2.9 		Il framework deve dare la possibilità all'utente sviluppatore di impostare la legenda nel grafico, al momento della creazione.
 *	FBOB2.9.1 		Il framework deve dare la possibilità all'utente sviluppatore di impostare, al momento della creazione, la possibilità di abilitare e disabilitare la legenda nel grafico.
 *	FBOB2.9.2 		Il framework deve dare la possibilità all'utente sviluppatore di impostare la posizione della legenda nel grafico, al momento della creazione.

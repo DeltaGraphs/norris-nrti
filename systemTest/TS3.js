@@ -8,9 +8,9 @@
 *
 * Requirements tested:
 *	FBOB2.4 		Il framework deve dare la possibilità all'utente sviluppatore di creare un linechart.
-*	(FBDE2.4.1)		Il framework deve dare la possibilità all'utente sviluppatore di aggiungere la griglia del line chart, al momento della creazione.
-*	(FBDE2.4.1.1) 	Il framework deve permettere all'utente sviluppatore di abilitare la griglia orizzontale del line chart, al momento della creazione.
-*	(FBDE2.4.1.2) 	Il framework deve permettere all'utente sviluppatore di abilitare la griglia verticale del line chart , al momento della creazione.
+*	FBOB2.4.1		Il framework deve dare la possibilità all'utente sviluppatore di aggiungere la griglia del line chart, al momento della creazione.
+*	FBOB2.4.1.1 	Il framework deve permettere all'utente sviluppatore di abilitare la griglia orizzontale del line chart, al momento della creazione.
+*	FBOB2.4.1.2 	Il framework deve permettere all'utente sviluppatore di abilitare la griglia verticale del line chart , al momento della creazione.
 *	(FBDE2.4.1.3) 	Il framework deve permettere all'utente sviluppatore di disabilitare la griglia orizzontale del line chart, al momento della creazione.
 *	(FBDE2.4.1.4) 	Il framework deve permettere all'utente sviluppatore di disabilitare la griglia verticale del line chart , al momento della creazione.
 *	(FBDE2.4.2)		Il framework deve dare la possibilità all'utente sviluppatore di aggiungere un background al line chart, al momento della creazione.
@@ -26,11 +26,11 @@
 *   FBOB3.1.2       Il framework deve dare la possibilità all'utente sviluppatore di aggiungere flussi di dati al line chart.
 *   FBOB3.1.2.1     Il framework deve dare la possibilità all'utente sviluppatore di impostare il nome dei flussi di dati del line chart.
 *   FBOB3.1.2.2     Il framework deve dare la possibilità all'utente sviluppatore di impostare il colore del set dei dati al line chart.
-*   FBOB3.1.2.3     Il framework deve dare la possibilità all'utente sviluppatore di impostare la tipologia dei marker per un set di dati e il colore degli stessi, nel line chart.
-*   FBOB3.1.2.4     Il framework deve dare la possibilità all'utente sviluppatore di impostare l'interpolazione del set dei dati del line chart.
-*   FBOB3.1.2.5     Il framework deve dare la possibilità all'utente sviluppatore di impostare il colore dell'area sottesa da un set di dati del line chart.
-*   FBOB3.1.2.6     Il framework deve dare la possibilità all'utente sviluppatore di impostare il tipo di legenda che appare sopra un punto selezionato del line chart.
-*   FBOB3.1.2.7     Il framework deve dare la possibilità all'utente sviluppatore di impostare il massimo numero di elementi visualizzabili nel line chart.
+*   FBDE3.1.2.3     Il framework deve dare la possibilità all'utente sviluppatore di impostare la visualizzazione della legenda del marker per un set di dati e il colore degli stessi, nel line chart.
+*   FBDE3.1.2.4     Il framework deve dare la possibilità all'utente sviluppatore di impostare l'interpolazione del set dei dati del line chart.
+*   FBDE3.1.2.5     Il framework deve dare la possibilità all'utente sviluppatore di impostare il colore dell'area sottesa da un set di dati del line chart.
+*   FBDE3.1.2.6     Il framework deve dare la possibilità all'utente sviluppatore di impostare il tipo di legenda che appare sopra un punto selezionato del line chart.
+*   FBDE3.1.2.7     Il framework deve dare la possibilità all'utente sviluppatore di impostare il massimo numero di elementi visualizzabili nel line chart.
 *   FBOB3.1.2.8     Il framework deve dare la possibilità all'utente sviluppatore di impostare l'array di dati iniziale che costituirà il set dei dati del line chart.
 *   FBOB3.1.2.9     Il framework deve dare la possibilità all'utente sviluppatore di impostare formato di interpretazione dei dati contenuti nell'array del line chart.
 *   FBOB3.1.2.10    Il framework deve dare la possibilità all'utente sviluppatore di impostare il filtro dinamico da applicare ai dati contenuti nell'array del line chart.
@@ -74,7 +74,6 @@ var TS=function(page){
         xKey: 'tempo',
         yKey: 'temperatura',
         flowColor: '#B9D3EE',
-        marker: 'triangle',
         xFormat: 'toFloat',
         maxItemsSaved: 50,
         maxItems: 4,
@@ -94,7 +93,6 @@ var TS=function(page){
         xKey: 'tempo',
         yKey: 'temperatura',
         flowColor: '#FFD3EE',
-        marker: 'square',
         xFormat: 'toFloat',
         maxItemsSaved: 50,
         maxItems: 4,
