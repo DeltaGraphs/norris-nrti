@@ -54,7 +54,7 @@ var TS=function(table){
 			index=0;
 		}
 		table.updateRecord('flow1', IDs[index], {'0':Math.floor((Math.random() * 10) + 1), '1':Math.floor((Math.random() * 10) + 1), '2':Math.floor((Math.random() * 10) + 1)});
-		table.addRecord('flow2', {'0':Math.floor((Math.random() * 10) + 1), '1':Math.floor((Math.random() * 10) + 1), '2':Math.floor((Math.random() * 10) + 1)});
+		table.addRecord('flow2', {'0':Math.floor((Math.random() * 10) + 1), '1':Math.floor((Math.random() * 10) + 1), '2':Math.floor((Math.random() * 10) + 1),appearance:[{bg: '#FFFFFA',text: '#000000'},{bg: '#FFFFFA',text: '#000000'},{bg: '#FFFFFA',text: '#000000'}]});
 		index++;
 	};
 	setInterval(function () {repeat();}, 5000);

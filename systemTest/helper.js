@@ -51,7 +51,9 @@ module.exports.newMapChart=function(page, title){
         title: title,
         latitude: 45.417467,
         longitude: 11.907246,
-        enableLegend: true
+        enableLegend: true,
+        mapWidth: 5000,
+        mapHeight: 5000,
     });
     return mapChart;
 };
