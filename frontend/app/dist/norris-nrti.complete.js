@@ -12106,7 +12106,7 @@ angular.module('norris-nrti')
                                   type = scope.$parent.mapChart.getFlowList()[i].flow.getMarker().icon;
                                   break;
                               }
-                                square.setAttribute('style', 'float: left; height: 25px; width: 25px; background: url("' + type + '") no-repeat;');
+                                square.setAttribute('style', 'float: left; height: 25px; width: 18px; background: url("' + type + '") no-repeat;');
                             }
                             var spanText = document.createElement('div');
                             var text = document.createTextNode('\u00A0\u00A0\u00A0\u00A0' + scope.$parent.mapChart.getFlowList()[i].flow.getName());
