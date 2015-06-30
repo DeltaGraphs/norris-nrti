@@ -77,11 +77,11 @@ var TS=function(page){
         valueFormat: 'toInt',
         filters: 'pressione>3'
     },[
-        {tempo: 1, pressione: 3},
-        {tempo: 2, pressione: 10},
-        {tempo: 3, pressione: 1},
-        {tempo: 4, pressione: 5},
-        {tempo: 5, pressione: 7}
+        {tempo: 0, pressione: 3},
+        {tempo: 1, pressione: 10},
+        {tempo: 2, pressione: 1},
+        {tempo: 3, pressione: 5},
+        {tempo: 4, pressione: 7}
     ]);
 };
 

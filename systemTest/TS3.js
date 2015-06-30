@@ -62,6 +62,7 @@ var TS=function(page){
 	        name: 'temperatura'
 	    },
 	    viewFinder: true,
+        legendOnPoint: true,
 	    interpolation: 'basis'
 	});
 
@@ -74,6 +75,7 @@ var TS=function(page){
         marker: 'triangle',
         xFormat: 'toFloat',
         maxItemsSaved: 50,
+        maxItems: 4,
         filters: 'temperatura>2'
     });
     lineChartFlow.addRecord({'tempo': 1, 'temperatura': 15});
@@ -81,6 +83,9 @@ var TS=function(page){
     lineChartFlow.addRecord({'tempo': 3, 'temperatura': 2});
     lineChartFlow.addRecord({'tempo': 4, 'temperatura': 1});
     lineChartFlow.addRecord({'tempo': 5, 'temperatura': 16});
+    lineChartFlow.addRecord({'tempo': 6, 'temperatura': 18});
+    lineChartFlow.addRecord({'tempo': 7, 'temperatura': 19});
+    lineChartFlow.addRecord({'tempo': 8, 'temperatura': 20});
     var lineChartFlow2=lineChart.createLineChartFlow({
         ID:'flow2',
         name: 'grafico tempo-temperatura 2',
@@ -90,6 +95,7 @@ var TS=function(page){
         marker: 'square',
         xFormat: 'toFloat',
         maxItemsSaved: 50,
+        maxItems: 4,
         filters: 'temperatura>2'
     });
     lineChartFlow2.addRecord({'tempo': 1, 'temperatura': 5});
