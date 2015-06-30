@@ -79,16 +79,7 @@ var TS=function(table){
 			        column: ['CHANGE-1'],
 			        ordering: ['DESC']
 			    },
-			    appearance: {
-			        horizontalGrid: {
-			            color: '#00AA00', //#xxxxxx,
-			            width: 0 // > 0
-			        },
-			        verticalGrid: {
-			            color: '#00AA00', //#xxxxxx,
-			            width: 0 // > 0
-			        }
-			    }
+			    appearance: {}
 			});
         }
         change=!change;
