@@ -11806,7 +11806,7 @@ angular.module('norris-nrti')
         scope: { // attributo della direttiva
             url: '@'
 		},
-        template: '<div>{{title}}</div><div id="map-canvas"></div><div></div>', // template HTML inserito dalla direttiva
+        template: '<div>{{title}}</div><div></div><div></div>', // template HTML inserito dalla direttiva
         //bindToController: true,
     	link: function (scope, element, attrs) {
 
@@ -11936,7 +11936,7 @@ angular.module('norris-nrti')
                     }
                 }
 
-                var mapCanvas = document.getElementById('map-canvas');
+                var mapCanvas = element.children()[1];
                 mapCanvas.setAttribute('style', 'height:'+ scope.$parent.mapChart.getHeight() +'px; width:'+ scope.$parent.mapChart.getWidth() +'px;');
      
             };
