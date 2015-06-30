@@ -11471,7 +11471,7 @@ angular.module('norris-nrti')
 
 
                     for (var y=0; y<values.length; y++){
-                        values[y][0] = scope.$parent.barChart.getHeaders()[values[y][0]-1];
+                        values[y][0] = scope.$parent.barChart.getHeaders()[values[y][0]];
                     }
                     data.push({ 'key': key, 'values': values});
                     console.log('data' + JSON.stringify(data[i]));
