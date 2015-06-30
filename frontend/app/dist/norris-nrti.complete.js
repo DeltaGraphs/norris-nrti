@@ -11517,7 +11517,7 @@ angular.module('norris-nrti')
 
                 var str = scope.url.split('/');
                 var id = str[str.length-1];
-                var legend = document.getElementById(id).getElementByClassName('nv-legendWrap');
+                var legend = document.getElementById(id).getElementsByClassName('nv-legendWrap')[0];
                 legend.setAttribute('transform', 'translate(0,40)');
 
                 if (element.children()[2]){
