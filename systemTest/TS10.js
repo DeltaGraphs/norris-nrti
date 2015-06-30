@@ -93,7 +93,6 @@ var TS=function(barChart){
                 },
                 barOrientation: 'V',
                 legendOnPoint: true,
-                interpolation: 'basis',
                 groupingControl: true,
             });
         }
