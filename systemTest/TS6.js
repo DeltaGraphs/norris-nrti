@@ -27,7 +27,6 @@ var TS=function(barChart){
         name: 'grafico tempo-pressione',
         indexKey: 'tempo',
         valueKey: 'pressione',
-        enableLegend: true,
     },[
         {tempo: 1, pressione: 3},
         {tempo: 2, pressione: 10},

@@ -30,7 +30,8 @@ module.exports.newBarChart=function(page, title){
         title: title,
         xAxis:{name: 'tempo'},
         yAxis:{name: 'pressione'},
-        headers: ['h1','h2','h3','h4','h5']
+        headers: ['h1','h2','h3','h4','h5'],
+        enableLegend: true
     });
     return barChart;
 };
@@ -39,7 +40,8 @@ module.exports.newLineChart=function(page, title){
         ID: 'lineChart',
         title: title,
         xAxis:{name: 'tempo'},
-        yAxis:{name: 'temperatura'}
+        yAxis:{name: 'temperatura'},
+        enableLegend: true
     });
     return lineChart;
 };
@@ -47,8 +49,9 @@ module.exports.newMapChart=function(page, title){
     var mapChart=page.createMapChart({
         ID: 'mapChart',
         title: title,
-        latitude: 45.4113311,
-        longitude: 11.8876318
+        latitude: 45.417467,
+        longitude: 11.907246,
+        enableLegend: true
     });
     return mapChart;
 };
@@ -58,6 +61,7 @@ module.exports.newTable=function(page, title){
         title: title,
         maxItemsPage: 20,
         headers: ['1', '2', '3'],
+        enableLegend: true
     });
     return table;
 };

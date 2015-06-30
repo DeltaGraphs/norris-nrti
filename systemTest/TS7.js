@@ -28,7 +28,6 @@ var TS=function(lineChart){
 	    xKey: 'tempo',
 	    yKey: 'temperatura',
 	    maxItemsSaved: 5,
-	    //filters: 'temperatura>3'
 	});
 	var IDs=[];
 	IDs.push(lineChart.addRecord('flow1',{'tempo': 1, 'temperatura': 15}));
@@ -39,11 +38,10 @@ var TS=function(lineChart){
 
 	lineChart.createLineChartFlow({
 	    ID:'flow2',
-	    name: 'grafico tempo-temperatura',
+	    name: 'grafico tempo-temperatura2',
 	    xKey: 'tempo',
 	    yKey: 'temperatura',
 	    maxItemsSaved: 4,
-	    //filters: 'temperatura>3'
 	});
 	lineChart.addRecord('flow2',{'tempo': 1, 'temperatura': 15});
 	lineChart.addRecord('flow2',{'tempo': 2, 'temperatura': 10});

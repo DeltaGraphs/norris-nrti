@@ -33,7 +33,6 @@ var TS=function(mapChart){
 	    latitudeKey: '1',
 	    longitudeKey: '2',
 	    objectKey: '0',
-	    //filters:'IdMezzo>806',
 	    maxItemsSaved: 5
 	});
 	mapChart.createMapChartFlow({
@@ -46,7 +45,6 @@ var TS=function(mapChart){
 	    latitudeKey: '1',
 	    longitudeKey: '2',
 	    objectKey: '0',
-	    //filters:'IdMezzo>806',
 	    maxItemsSaved: 5
 	});
 	mapChart.createMapChartFlow({
@@ -59,7 +57,6 @@ var TS=function(mapChart){
 	    latitudeKey: '1',
 	    longitudeKey: '2',
 	    objectKey: '0',
-	    //filters:'IdMezzo>806',
 	    maxItemsSaved: 5
 	});
 	var IDs=mapChartFlow1.updateMovie([
