@@ -12329,7 +12329,6 @@ angular.module('norris-nrti')
                         scope.rowCollection.push({'appearance': appearance, 'record': record});
                     }
                 }
-                //$filter('orderBy')(scope.rowCollection,);
                 scope.itemsByPage = scope.$parent.table.getMaxItemsPage();
             };
         }
