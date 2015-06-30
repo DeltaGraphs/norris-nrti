@@ -95,19 +95,19 @@ angular.module('norris-nrti')
                 }
                 if (scope.$parent.barChart.getBarOrientation() === 'V'){
                     barchart = '<div class="graphtitle">'+ scope.$parent.barChart.getTitle() +'</div>' +
-                                '<nvd3-multi-bar-chart data="data" nodata=" " id="'+ id +'" ' +
+                                '<nvd3-multi-bar-chart data="data" nodata=" " id="'+ id +'" ' + ' width="'+ scope.$parent.barChart.getWidth() +'" height="'+ scope.$parent.barChart.getHeight() +'" '+
                                 'xaxisticksformat="xAxisTickFormatFunction()" yaxistickformat="yAxisTickFormatFunction()" showxaxis="true" showyaxis="true" ' +
                                 'rotatelabels="-90" interactive="true" tooltips="'+ onPoint +'" showlegend="' + legend + '" ' +
-                                'xaxislabel="'+ scope.$parent.barChart.getX().getName() +'" ';
-                    barchart = barchart + 'color="colorFunction()" showcontrols="'+ control +'">' +
+                                'xaxislabel="'+ scope.$parent.barChart.getX().getName() +'" yaxislabel="'+ scope.$parent.barChart.getY().getName() +'" ' +
+                                'color="colorFunction()" showcontrols="'+ control +'">' +
                                 '<svg style="width: '+ scope.$parent.barChart.getWidth() +'; height: '+ scope.$parent.barChart.getHeight() +';"></svg></nvd3-multi-bar-chart>';
                 }else if(scope.$parent.barChart.getBarOrientation() === 'H'){
                     barchart = '<div class="graphtitle">'+ scope.$parent.barChart.getTitle() +'</div>' +
-                                '<nvd3-multi-bar-horizontal-chart data="data" nodata=" " id="'+ id +'" ' +
+                                '<nvd3-multi-bar-horizontal-chart data="data" nodata=" " id="'+ id +'" ' + ' width="'+ scope.$parent.barChart.getWidth() +'" height="'+ scope.$parent.barChart.getHeight() +'" '+
                                 'xaxisticksformat="xAxisTickFormatFunction()" yaxistickformat="yAxisTickFormatFunction()" showxaxis="true" showyaxis="true" ' +
                                 'rotatelabels="-90" interactive="true" tooltips="'+ onPoint +'" showlegend="' + legend + '" ' +
-                                'xaxislabel="'+ scope.$parent.barChart.getX().getName() + '" ';
-                    barchart = barchart + 'color="colorFunction()" showcontrols="'+ control +'">' +
+                                'xaxislabel="'+ scope.$parent.barChart.getX().getName() + '" yaxislabel="'+ scope.$parent.barChart.getY().getName() +'" ' +
+                                'color="colorFunction()" showcontrols="'+ control +'">' +
                                 '<svg style="width: '+ scope.$parent.barChart.getWidth() +'; height: '+ scope.$parent.barChart.getHeight() +';"></svg></nvd3-multi-bar-horizontal-chart>';
                 }
                 
@@ -211,6 +211,11 @@ angular.module('norris-nrti')
             // crea la legenda del grafico
             scope.legend = function() {
                 var chart = element.children()[1];
+
+                var str = scope.url.split('/');
+                var id = str[str.length-1];
+                var legend = document.getElementById(id).getElementsByClassName('nv-legendWrap');
+                (legend[0]).children[0].children[0].setAttribute('transform', 'translate(0,40);');
 
                 if (element.children()[2]){
                     element.children()[2].remove();
