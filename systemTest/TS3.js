@@ -53,7 +53,9 @@ var TS=function(page){
 	    width: 1000,
 	    enableLegend: true,
 	    legend: {
-	        position: 'NE'
+	        position: 'NE',
+            fontColor: '#00AA00',
+            backgroundColor: '#FFAAFF'
 	    },
 	    xAxis:{
 	        name: 'tempo'
