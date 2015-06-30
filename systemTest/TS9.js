@@ -26,7 +26,6 @@ var TS=function(table){
         ID:'flow1',
         name: 'flusso 1',
         columnKeys: ['0','1','2'],
-        headers: ['Col1', 'Col2', 'Col3'],
         maxItemsSaved: 5
     });
     var IDs=[];
@@ -40,7 +39,6 @@ var TS=function(table){
         ID:'flow2',
         name: 'flusso 2',
         columnKeys: ['0','1','2'],
-        headers: ['Col4', 'Col5', 'Col6'],
         maxItemsSaved: 5
     });
 	var index=0;
@@ -51,7 +49,6 @@ var TS=function(table){
 		        ID:'flow2',
 		        name: 'flusso 2',
 		        columnKeys: ['0','1','2'],
-		        headers: ['Col4', 'Col5', 'Col6'],
 		        maxItemsSaved: 5
 		    });
 			index=0;

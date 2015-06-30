@@ -60,7 +60,7 @@ module.exports.newTable=function(page, title){
         ID: 'table',
         title: title,
         maxItemsPage: 20,
-        headers: ['1', '2', '3'],
+        headers: ['Col1', 'Col2', 'Col3'],
         enableLegend: true
     });
     return table;
