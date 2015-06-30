@@ -11938,7 +11938,7 @@ angular.module('norris-nrti')
                 }
 
                 var mapCanvas = element.children()[1];
-                mapCanvas.setAttribute('style', 'height:'+ scope.$parent.mapChart.getHeight() +'px; width:'+ scope.$parent.mapChart.getWidth() +'px;');
+                mapCanvas.setAttribute('style', 'height:'+ scope.$parent.mapChart.getHeight() +'px; width:'+ scope.$parent.mapChart.getWidth() +'px; position: relative;');
      
             };
 
