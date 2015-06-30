@@ -12076,45 +12076,45 @@ angular.module('norris-nrti')
                     var div = document.createElement('div');
                     for (var i=0; i<scope.$parent.mapChart.getFlowList().length; i++) {
                         if (scope.$parent.mapChart.getFlowList()[i].flow.getData().length){
-                            var square = document.createElement('div');
-                            if (scope.$parent.mapChart.getFlowList()[i].flow.getTrace() !== undefined && scope.$parent.mapChart.getFlowList()[i].flow.getTrace() !== null && scope.$parent.mapChart.getFlowList()[i].flow.getTrace().strokeColor !== undefined ){
-                                square.setAttribute('style', 'float: left; height: 15px; width: 15px; background-color: ' + scope.$parent.mapChart.getFlowList()[i].flow.getTrace().strokeColor);
+                          var square = document.createElement('div');
+                          if (scope.$parent.mapChart.getFlowList()[i].flow.getTrace() !== undefined && scope.$parent.mapChart.getFlowList()[i].flow.getTrace() !== null && scope.$parent.mapChart.getFlowList()[i].flow.getTrace().strokeColor !== undefined ){
+                              square.setAttribute('style', 'float: left; height: 15px; width: 15px; background-color: ' + scope.$parent.mapChart.getFlowList()[i].flow.getTrace().strokeColor);
+                          }
+                          else{
+                            var type;
+                            switch (scope.$parent.mapChart.getFlowList()[i].flow.getMarker().type) {
+                              case 'shape':
+                                switch (scope.$parent.mapChart.getFlowList()[i].flow.getMarker().shape) { //circle, triangle, square, diamond, bus
+                                  case 'circle':
+                                    type = attrs.url + '/img/c.png';
+                                    break;
+                                  case 'triangle':
+                                    type = attrs.url + '/img/t.png';
+                                    break;
+                                  case 'square':
+                                    type = attrs.url + '/img/s.png';
+                                    break;
+                                  case 'diamond':
+                                    type = attrs.url + '/img/d.png';
+                                    break;
+                                  case 'bus':
+                                    type = attrs.url + '/img/b.png';
+                                    break;
+                                }
+                                break;
+                              case 'icon':
+                                type = scope.$parent.mapChart.getFlowList()[i].flow.getMarker().icon;
+                                break;
                             }
-                            else{
-                              var type;
-                              switch (scope.$parent.mapChart.getFlowList()[i].flow.getMarker().type) {
-                                case 'shape':
-                                  switch (scope.$parent.mapChart.getFlowList()[i].flow.getMarker().shape) { //circle, triangle, square, diamond, bus
-                                    case 'circle':
-                                      type = attrs.url + '/img/c.png';
-                                      break;
-                                    case 'triangle':
-                                      type = attrs.url + '/img/t.png';
-                                      break;
-                                    case 'square':
-                                      type = attrs.url + '/img/s.png';
-                                      break;
-                                    case 'diamond':
-                                      type = attrs.url + '/img/d.png';
-                                      break;
-                                    case 'bus':
-                                      type = attrs.url + '/img/b.png';
-                                      break;
-                                  }
-                                  break;
-                                case 'icon':
-                                  type = scope.$parent.mapChart.getFlowList()[i].flow.getMarker().icon;
-                                  break;
-                              }
-                                square.setAttribute('style', 'float: left; height: 25px; width: 18px; background: url("' + type + '") no-repeat;');
-                            }
-                            var spanText = document.createElement('div');
-                            var text = document.createTextNode('\u00A0\u00A0\u00A0\u00A0' + scope.$parent.mapChart.getFlowList()[i].flow.getName());
-                            spanText.setAttribute('style', 'width: 100px; color: '+ scope.$parent.mapChart.getLegend().getFontColor() + ';');
-                            spanText.appendChild(text);
-                            div.appendChild(square);
-                            div.appendChild(spanText);
-                            parent.appendChild(div);
+                              square.setAttribute('style', 'float: left; height: 20px; width: 20px; background: url("' + type + '") no-repeat;');
+                          }
+                          var spanText = document.createElement('div');
+                          var text = document.createTextNode('\u00A0\u00A0\u00A0\u00A0' + scope.$parent.mapChart.getFlowList()[i].flow.getName());
+                          spanText.setAttribute('style', 'width: 100px; color: '+ scope.$parent.mapChart.getLegend().getFontColor() + ';');
+                          spanText.appendChild(text);
+                          div.appendChild(square);
+                          div.appendChild(spanText);
+                          parent.appendChild(div);
                         }
                     }
                 }
