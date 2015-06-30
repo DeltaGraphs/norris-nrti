@@ -41,7 +41,8 @@ module.exports.newLineChart=function(page, title){
         title: title,
         xAxis:{name: 'tempo'},
         yAxis:{name: 'temperatura'},
-        enableLegend: true
+        enableLegend: true,
+        viewFinder: true
     });
     return lineChart;
 };
@@ -52,8 +53,8 @@ module.exports.newMapChart=function(page, title){
         latitude: 45.417467,
         longitude: 11.907246,
         enableLegend: true,
-        mapWidth: 5000,
-        mapHeight: 5000,
+        mapWidth: 15000,
+        mapHeight: 15000,
     });
     return mapChart;
 };

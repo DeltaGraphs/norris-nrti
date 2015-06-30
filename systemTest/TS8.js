@@ -45,7 +45,7 @@ var TS=function(mapChart){
 	    latitudeKey: '1',
 	    longitudeKey: '2',
 	    objectKey: '0',
-	    trailLength: 2,
+	    trailLength: 4,
 	    maxItemsSaved: 5
 	});
 	mapChart.createMapChartFlow({
@@ -77,11 +77,11 @@ var TS=function(mapChart){
 		mapChart.updateRecord('flow1', IDs[index], {'0':875,'1':45.41+(Math.random() * 0.01),'2':11.9+(Math.random() * 0.01)});
 		mapChart.addRecord('flow2', {'0':875,'1':45.44+(Math.random() * 0.01),'2':11.93+(Math.random() * 0.01)});
 		mapChart.updateMovie('flow3',[
-			{'0':875,'1':45.4+(Math.random() * 0.1),'2':11.92+(Math.random() * 0.1)},
-			{'0':875,'1':45.4+(Math.random() * 0.1),'2':11.92+(Math.random() * 0.1)},
-			{'0':875,'1':45.4+(Math.random() * 0.1),'2':11.92+(Math.random() * 0.1)},
-			{'0':875,'1':45.4+(Math.random() * 0.1),'2':11.92+(Math.random() * 0.1)},
-			{'0':875,'1':45.4+(Math.random() * 0.1),'2':11.92+(Math.random() * 0.1)}
+			{'0':875,'1':45.4+(Math.random() * 0.01),'2':11.92+(Math.random() * 0.01)},
+			{'0':875,'1':45.4+(Math.random() * 0.01),'2':11.92+(Math.random() * 0.01)},
+			{'0':875,'1':45.4+(Math.random() * 0.01),'2':11.92+(Math.random() * 0.01)},
+			{'0':875,'1':45.4+(Math.random() * 0.01),'2':11.92+(Math.random() * 0.01)},
+			{'0':875,'1':45.4+(Math.random() * 0.01),'2':11.92+(Math.random() * 0.01)}
 		]);
 		index++;
 	};
