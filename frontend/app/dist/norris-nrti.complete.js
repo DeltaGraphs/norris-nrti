@@ -11402,18 +11402,18 @@ angular.module('norris-nrti')
                                 'xaxisticksformat="xAxisTickFormatFunction()" yaxistickformat="yAxisTickFormatFunction()" showxaxis="true" showyaxis="true" ' +
                                 'rotatelabels="-90" interactive="true" tooltips="'+ onPoint +'" showlegend="' + legend + '" ' +
                                 'xaxislabel="'+ scope.$parent.barChart.getX().getName() +'" yaxislabel="'+ scope.$parent.barChart.getY().getName() +'" ' +
-                                'style="width: '+ scope.$parent.barChart.getWidth() +'; height: '+ scope.$parent.barChart.getHeight() +';" ' +
                                 'color="colorFunction()" showcontrols="'+ control +'">' +
-                                '<svg></svg></nvd3-multi-bar-chart>';
+                                '<svg style="width: '+ scope.$parent.barChart.getWidth() +'; height: '+ scope.$parent.barChart.getHeight() +';" ' +
+                                ' width="'+ scope.$parent.barChart.getWidth() +'" height="'+ scope.$parent.barChart.getHeight() +'"></svg></nvd3-multi-bar-chart>';
                 }else if(scope.$parent.barChart.getBarOrientation() === 'H'){
                     barchart = '<div class="graphtitle">'+ scope.$parent.barChart.getTitle() +'</div>' +
                                 '<nvd3-multi-bar-horizontal-chart data="data" nodata=" " id="'+ id +'" ' +
                                 'xaxisticksformat="xAxisTickFormatFunction()" yaxistickformat="yAxisTickFormatFunction()" showxaxis="true" showyaxis="true" ' +
                                 'rotatelabels="-90" interactive="true" tooltips="'+ onPoint +'" showlegend="' + legend + '" ' +
-                                'style="width: '+ scope.$parent.barChart.getWidth() +'; height: '+ scope.$parent.barChart.getHeight() +';" ' +
                                 'xaxislabel="'+ scope.$parent.barChart.getX().getName() + '" yaxislabel="'+ scope.$parent.barChart.getY().getName() +'" ' +
                                 'color="colorFunction()" showcontrols="'+ control +'">' +
-                                '<svg></svg></nvd3-multi-bar-horizontal-chart>';
+                                '<svg style="width: '+ scope.$parent.barChart.getWidth() +'; height: '+ scope.$parent.barChart.getHeight() +';" ' +
+                                ' width="'+ scope.$parent.barChart.getWidth() +'" height="'+ scope.$parent.barChart.getHeight() +'"></svg></nvd3-multi-bar-horizontal-chart>';
                 }
                 
                 var compiled = $compile(barchart)(scope);
