@@ -30,10 +30,10 @@ var norris = new Norris(app,io,'/norris','http://norris-nrti-dev.herokuapp.com')
 var page1=Helper.newPage(norris, 'page1', 'Pagina creazione grafici');
 var page2=Helper.newPage(norris, 'page2', 'Pagina aggiornamento grafici');
 
-//var barChart=Helper.newBarChart(page2, 'Test aggiornamento dati Bar Chart');
-//var lineChart=Helper.newLineChart(page2, 'Test aggiornamento dati Line Chart');
+var barChart=Helper.newBarChart(page2, 'Test aggiornamento dati Bar Chart');
+var lineChart=Helper.newLineChart(page2, 'Test aggiornamento dati Line Chart');
 var mapChart=Helper.newMapChart(page2, 'Test aggiornamento dati Map Chart');
-//var table=Helper.newTable(page2, 'Test aggiornamento dati Table');
+var table=Helper.newTable(page2, 'Test aggiornamento dati Table');
 
 var TS1 = require('./TS1.js');
 var TS2 = require('./TS2.js');
@@ -45,15 +45,15 @@ var TS7 = require('./TS7.js');
 var TS8 = require('./TS8.js');
 var TS9 = require('./TS9.js');
 
-/*TS1(norris);
+TS1(norris);
 TS2(page1);
 TS3(page1);
 TS4(page1);
 TS5(page1);
 TS6(barChart);
-TS7(lineChart);*/
+TS7(lineChart);
 TS8(mapChart);
-//TS9(table);
+TS9(table);
 
 ///////////////////////////////////////////// 
 app.get('/', function (req, res) {
