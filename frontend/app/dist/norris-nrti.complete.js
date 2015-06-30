@@ -12086,19 +12086,19 @@ angular.module('norris-nrti')
                               case 'shape':
                                 switch (scope.$parent.mapChart.getFlowList()[i].flow.getMarker().shape) { //circle, triangle, square, diamond, bus
                                   case 'circle':
-                                    type = attrs.url + '/img/c.png';
+                                    type = attrs.url + '/img/ic.png';
                                     break;
                                   case 'triangle':
-                                    type = attrs.url + '/img/t.png';
+                                    type = attrs.url + '/img/it.png';
                                     break;
                                   case 'square':
-                                    type = attrs.url + '/img/s.png';
+                                    type = attrs.url + '/img/is.png';
                                     break;
                                   case 'diamond':
-                                    type = attrs.url + '/img/d.png';
+                                    type = attrs.url + '/img/id.png';
                                     break;
                                   case 'bus':
-                                    type = attrs.url + '/img/b.png';
+                                    type = attrs.url + '/img/ib.png';
                                     break;
                                 }
                                 break;
@@ -12110,7 +12110,7 @@ angular.module('norris-nrti')
                           }
                           var spanText = document.createElement('div');
                           var text = document.createTextNode('\u00A0\u00A0\u00A0\u00A0' + scope.$parent.mapChart.getFlowList()[i].flow.getName());
-                          spanText.setAttribute('style', 'width: 80px; color: '+ scope.$parent.mapChart.getLegend().getFontColor() + ';');
+                          spanText.setAttribute('style', 'width: 100px; color: '+ scope.$parent.mapChart.getLegend().getFontColor() + ';');
                           spanText.appendChild(text);
                           div.appendChild(square);
                           div.appendChild(spanText);
