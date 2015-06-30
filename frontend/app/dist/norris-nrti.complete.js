@@ -11515,6 +11515,11 @@ angular.module('norris-nrti')
             scope.legend = function() {
                 var chart = element.children()[1];
 
+                var str = scope.url.split('/');
+                var id = str[str.length-1];
+                var legend = document.getElementById(id).getElementByClassName('nv-legendWrap');
+                legend.setAttribute('transform', 'translate(0,40)');
+
                 if (element.children()[2]){
                     element.children()[2].remove();
                 }
