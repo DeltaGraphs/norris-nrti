@@ -55,7 +55,7 @@ var TS=function(norris){
     });
     page.createMapChart({
         ID: 'testMapChart',
-        title: 'Empty Chart'
+        title: 'Empty Map Chart'
     });
     page.createTable({
         ID: 'testTable',

@@ -80,6 +80,22 @@ var TS=function(page){
     lineChartFlow.addRecord({'tempo': 3, 'temperatura': 2});
     lineChartFlow.addRecord({'tempo': 4, 'temperatura': 1});
     lineChartFlow.addRecord({'tempo': 5, 'temperatura': 16});
+    var lineChartFlow2=lineChart.createLineChartFlow({
+        ID:'flow1',
+        name: 'grafico tempo-temperatura 2',
+        xKey: 'tempo',
+        yKey: 'temperatura',
+        flowColor: '#FFD3EE',
+        marker: 'square',
+        xFormat: 'toFloat',
+        maxItemsSaved: 50,
+        filters: 'temperatura>2'
+    });
+    lineChartFlow2.addRecord({'tempo': 1, 'temperatura': 5});
+    lineChartFlow2.addRecord({'tempo': 2, 'temperatura': 0});
+    lineChartFlow2.addRecord({'tempo': 3, 'temperatura': 12});
+    lineChartFlow2.addRecord({'tempo': 4, 'temperatura': 11});
+    lineChartFlow2.addRecord({'tempo': 5, 'temperatura': 6});
 };
 
 module.exports=TS;

@@ -41,7 +41,6 @@ module.exports.newLineChart=function(page, title){
         title: title,
         xAxis:{name: 'tempo'},
         yAxis:{name: 'temperatura'},
-        enableLegend: true,
         viewFinder: true
     });
     return lineChart;
