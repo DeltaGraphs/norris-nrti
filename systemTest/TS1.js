@@ -88,7 +88,7 @@ var TS=function(norris){
         else{
             page.updateProperties({
                 name: 'Test aggiunta grafici',
-                description: 'Questa è una bella pagina',
+                description: 'Qui viene testata l`aggiunta di grafici a una pagina',
                 graphsPerRow: 2,
                 graphsPerCol: 10
             });

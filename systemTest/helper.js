@@ -18,7 +18,7 @@ module.exports.newPage=function(norris, ID, title){
     var page=norris.createPage({
         ID: ID,
         name: title,
-        description: 'Test Page',
+        description: title,
         graphsPerRow: 2,
         graphsPerCol: 10
     });

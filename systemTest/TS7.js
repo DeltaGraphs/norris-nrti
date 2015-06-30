@@ -24,7 +24,7 @@
 var TS=function(lineChart){
 	lineChart.createLineChartFlow({
 	    ID:'flow1',
-	    name: 'grafico tempo-temperatura',
+	    name: 'In place',
 	    xKey: 'tempo',
 	    yKey: 'temperatura',
 	    maxItems: 5,
@@ -39,7 +39,7 @@ var TS=function(lineChart){
 
 	lineChart.createLineChartFlow({
 	    ID:'flow2',
-	    name: 'grafico tempo-temperatura2',
+	    name: 'Stream',
 	    xKey: 'tempo',
 	    yKey: 'temperatura',
 	    maxItems: 4,
