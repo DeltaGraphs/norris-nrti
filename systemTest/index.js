@@ -53,7 +53,7 @@ var TS9 = require('./TS9.js');
 var TS10 = require('./TS10.js');
 var TS11 = require('./TS11.js');
 var TS12 = require('./TS12.js');
-//var TS13 = require('./TS13.js');
+var TS13 = require('./TS13.js');
 
 TS1(norris);
 TS2(page1);
@@ -67,7 +67,7 @@ TS9(table1);
 TS10(barChart2);
 TS11(lineChart2);
 TS12(mapChart2);
-//TS13(table2);
+TS13(table2);
 
 ///////////////////////////////////////////// 
 app.get('/', function (req, res) {

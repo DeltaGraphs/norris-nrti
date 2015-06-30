@@ -54,7 +54,6 @@ var TS=function(page){
 	    height: 600,
     	width: 1000,
 	    sortable: true,
-	    maxItemsPage: 20,
 	    addRowOn: 'top',	//or bottom
 	    headers: ['IDMezzo', 'WGS84Fi', 'WGS84La'],
 	    sort: {

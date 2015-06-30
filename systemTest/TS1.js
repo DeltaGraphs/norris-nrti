@@ -26,6 +26,9 @@
 *   FBOB2       Il framework deve dare la possibilità all'utente sviluppatore di creare grafici. 
 *   FBOB2.1     Il framework deve dare la possibilità all'utente sviluppatore di impostare un titolo nella creazione del grafico.
 *   FBDE2.2     Il framework deve dare la possibilità all'utente sviluppatore di creare un grafico senza impostare dati iniziali.
+*   FBOB4       Le comunicazioni tra le componenti del framework avverranno tramite scambio di dati in formato JSON.
+*   FBOB5       È richiesta l'implementazione di un meccanismo di routing su cui si appoggerà il framework.
+*   FBOB6       I dati verranno visualizzati in formato HTML dal front end.
 *
 * <<Requirements into brackets are not satisfied>>
 *
