@@ -28,16 +28,16 @@
 
 angular.module('norris-nrti')
 .directive('tableChart', function($compile){
-	return { // attributo della direttiva
-		restrict: 'E', // direttiva di tipo elemento (tag)
-		replace: false,
-		scope: {
+    return { // attributo della direttiva
+        restrict: 'E', // direttiva di tipo elemento (tag)
+        replace: false,
+        scope: {
             url: '@'
-		},
-		//bindToController: true,
+        },
+        //bindToController: true,
         link: function(scope, element, attrs){
 
-        	attrs.$observe('url', function(value) {
+            attrs.$observe('url', function(value) {
                 if (value) {
                     scope.$parent.socketConnection(value); // richiama la funzione del controller che permette di connettersi al server
                 }
@@ -55,7 +55,7 @@ angular.module('norris-nrti')
 
             // crea il codice HTML da inserire nella pagina per creare la tabella
             scope.init = function(){
-            	element.empty();
+                element.empty();
                 var border;
                 var noBorder = 'class="table-condensed table-striped"';
                 var headers = 'color: #000; background-color: #FFF;';
@@ -139,8 +139,16 @@ angular.module('norris-nrti')
                 }
                 //i = 0;
                 for (var j=0; j<scope.$parent.table.getHeaders().length; j++){
-                    var cellBG = 'background-color: {{line.appearance.' + scope.$parent.table.getHeaders()[j] + '.bg}};';
-                    var cellText = 'color: {{line.appearance' + scope.$parent.table.getHeaders()[j] + '.text}};';
+                  var cellBG;
+                  var cellText;
+                  if(isNaN(scope.$parent.table.getHeaders()[j])){
+                    cellBG = 'background-color: {{line.appearance.' + scope.$parent.table.getHeaders()[j] + '.bg}};';
+                    cellText = 'color: {{line.appearance.' + scope.$parent.table.getHeaders()[j] + '.text}};';
+                  }
+                  else{
+                    cellBG = 'background-color: {{line.appearance[' + scope.$parent.table.getHeaders()[j] + '].bg}};';
+                    cellText = 'color: {{line.appearance[' + scope.$parent.table.getHeaders()[j] + '].text}};';
+                  }
                     var cellStyle = 'style="' + border + cellBG + cellText + '"';
                     table = table + '<td ';
                     if ((scope.$parent.table.getAppearance().horizontalGrid !== undefined && scope.$parent.table.getAppearance().horizontalGrid !== null) || (scope.$parent.table.getAppearance().verticalGrid !== undefined && scope.$parent.table.getAppearance().verticalGrid !== undefined)) {
@@ -148,7 +156,12 @@ angular.module('norris-nrti')
                     } else {
                         table = table + noBorder + cellStyle;
                     }
-                    table = table + '>{{line.record.'+ scope.$parent.table.getHeaders()[j] +'}}</td>';
+                    if(isNaN(scope.$parent.table.getHeaders()[j])){
+                      table = table + '>{{line.record.'+ scope.$parent.table.getHeaders()[j] +'}}</td>';
+                    }
+                    else{
+                      table = table + '>{{line.record['+ scope.$parent.table.getHeaders()[j] +']}}</td>';
+                    }
                 }
                 table = table + '</tr></tbody>';
 
@@ -160,7 +173,7 @@ angular.module('norris-nrti')
 
                 table = table + '</table>';
                 
-            	var compiled = $compile(table)(scope);
+                var compiled = $compile(table)(scope);
                 element.append(compiled);
             };
 

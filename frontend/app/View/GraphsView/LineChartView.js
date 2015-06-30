@@ -28,17 +28,17 @@
 
 angular.module('norris-nrti')
 .directive('lineChart', function($compile){
-	return {
-		restrict: 'E', // direttiva di tipo elemento (tag)
-		replace: false,
+    return {
+        restrict: 'E', // direttiva di tipo elemento (tag)
+        replace: false,
         scope: { // attributo della direttiva
             url: '@'
-		},
+        },
         //bindToController: true,
         link: function(scope, element, attrs){
 
             element.empty();
-        	attrs.$observe('url', function(value) {
+            attrs.$observe('url', function(value) {
                 if (value) {
                     scope.$parent.socketConnection(value); // richiama la funzione del controller che permette di connettersi al server
                 }
@@ -95,7 +95,7 @@ angular.module('norris-nrti')
                                 '<nvd3-line-with-focus-chart data="data" nodata=" " id="'+ id +'" ' +
                                 'yaxistickformat="yAxisTickFormatFunction()" xaxistickformat="xAxisTickFormatFunction()" x2axistickformat="xAxisTickFormatFunction()" ' +
                                 'margin="{left:30,top:30,bottom:30,right:30}" margin2="{left:30,top:30,bottom:30,right:30}" xaxisticks="' + ticks + '" x2axisticks="' + ticks + '" interactive="true" tooltips="'+ onPoint +'" ' +
-                                'showlegend="' + legend + '" color="colorFunction()" ' + 
+                                'showlegend="' + legend + '" color="colorFunction()" xaxislabel="' + scope.$parent.lineChart.getX().getName() + '" yaxislabel="' + scope.$parent.lineChart.getY().getName() + '" ' + 
                                 'xaxisrotatelabels="-90" x2axisrotatelables="-90" interpolate="' + scope.$parent.lineChart.getInterpolation() +'">' + // perchè colorFunction ritorna null per adesso
                                 '<svg style="width:'+ scope.$parent.lineChart.getWidth() +'px; height:'+ scope.$parent.lineChart.getHeight() +'px;"></svg></nvd3-line-with-focus-chart>';
                 } else {
@@ -104,7 +104,7 @@ angular.module('norris-nrti')
                                 'yaxistickformat="yAxisTickFormatFunction()" xaxistickformat="xAxisTickFormatFunction()" ' +
                                 'margin="{left:30,top:30,bottom:30,right:30}" interactive="true" tooltips="'+ onPoint +'" showlegend="' + legend + '" ' +
                                 'xaxisrotatelabels="-90" interpolate="' + scope.$parent.lineChart.getInterpolation() +'" ' +
-                                'color="colorFunction()" ' +
+                                'color="colorFunction()" x2axislabel="' + scope.$parent.lineChart.getX().getName() + '" yaxislabel="' + scope.$parent.lineChart.getY().getName() + '" ' +
                                 'showxaxis="true" showyaxis="true" xaxisticks="' + ticks + '">' +
                                 '<svg style="width:'+ scope.$parent.lineChart.getWidth() +'px; height:'+ scope.$parent.lineChart.getHeight() +'px;"></svg></nvd3-line-chart>';
                 }
@@ -170,7 +170,7 @@ angular.module('norris-nrti')
                         parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.lineChart.getHeight() + 'px; right: -' + (scope.$parent.lineChart.getWidth()/2) + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'E':
-                        parent.setAttribute('style', 'float: left; position: relative; top: -' + (scope.$parent.lineChart.getHeight()/2) + 'px; right: -' + scope.$parent.lineChart.getWidth() + 'px;  background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + (scope.$parent.lineChart.getHeight()/2) + 'px; right: -' + (scope.$parent.lineChart.getWidth()+50) + 'px;  background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'S':
                         parent.setAttribute('style', 'float: left; position: relative; right: -' + (scope.$parent.lineChart.getWidth()/2) + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
@@ -179,13 +179,13 @@ angular.module('norris-nrti')
                         parent.setAttribute('style', 'float: left; position: relative; top: -' + (scope.$parent.lineChart.getHeight()/2) + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'NE':
-                        parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.lineChart.getHeight() + 'px; right: -' + scope.$parent.lineChart.getWidth() + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.lineChart.getHeight() + 'px; right: -' + (scope.$parent.lineChart.getWidth()+50) + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'NW':
                         parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.lineChart.getHeight() + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'SE':
-                        parent.setAttribute('style', 'float: left; position: relative; right: -' + scope.$parent.lineChart.getWidth() + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
+                        parent.setAttribute('style', 'float: left; position: relative; right: -' + (scope.$parent.lineChart.getWidth()+50) + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'SW':
                         parent.setAttribute('style', 'float: left; position: relative; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
