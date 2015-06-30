@@ -31,7 +31,8 @@ module.exports.newBarChart=function(page, title){
         xAxis:{name: 'tempo'},
         yAxis:{name: 'pressione'},
         headers: ['h1','h2','h3','h4','h5'],
-        enableLegend: true
+        enableLegend: true,
+        legendOnPoing: true
     });
     return barChart;
 };
@@ -41,6 +42,7 @@ module.exports.newLineChart=function(page, title){
         title: title,
         xAxis:{name: 'tempo'},
         yAxis:{name: 'temperatura'},
+        legendOnPoing: true,
         enableLegend: true
     });
     return lineChart;
@@ -52,6 +54,7 @@ module.exports.newMapChart=function(page, title){
         latitude: 45.417467,
         longitude: 11.907246,
         enableLegend: true,
+        legendOnPoing: true,
         mapWidth: 15000,
         mapHeight: 15000,
     });

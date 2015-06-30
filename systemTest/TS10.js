@@ -54,11 +54,11 @@ var TS=function(barChart){
         indexKey: 'tempo',
         valueKey: 'pressione',
     },[
-        {tempo: 1, pressione: 3},
-        {tempo: 2, pressione: 10},
-        {tempo: 3, pressione: 1},
-        {tempo: 4, pressione: 5},
-        {tempo: 5, pressione: 7}
+        {tempo: 0, pressione: 3},
+        {tempo: 1, pressione: 10},
+        {tempo: 2, pressione: 1},
+        {tempo: 3, pressione: 5},
+        {tempo: 4, pressione: 7}
     ]);
     barChart.createBarChartFlow({
         ID:'flow2',
@@ -66,11 +66,11 @@ var TS=function(barChart){
         indexKey: 'tempo',
         valueKey: 'pressione',
     },[
-        {tempo: 1, pressione: 5},
-        {tempo: 2, pressione: 1},
-        {tempo: 3, pressione: 2},
-        {tempo: 4, pressione: 5},
-        {tempo: 5, pressione: 9}
+        {tempo: 0, pressione: 5},
+        {tempo: 1, pressione: 1},
+        {tempo: 2, pressione: 2},
+        {tempo: 3, pressione: 5},
+        {tempo: 4, pressione: 9}
     ]);
     var change=true;
     var repeat=function(){
@@ -92,7 +92,6 @@ var TS=function(barChart){
                     name: 'Cambiato - temperatura'
                 },
                 barOrientation: 'V',
-                viewFinder: true,
                 legendOnPoint: true,
                 interpolation: 'basis',
                 groupingControl: true,
@@ -111,7 +110,6 @@ var TS=function(barChart){
                     name: 'Temperatura'
                 },
                 barOrientation: 'H',
-                viewFinder: false,
                 legendOnPoint: false,
                 interpolation: 'linear',
                 groupingControl: false,
@@ -119,7 +117,7 @@ var TS=function(barChart){
         }
         change=!change;
     };
-    setInterval(function () {repeat();}, 8000);
+    setInterval(function () {repeat();}, 10000);
 };
 
 module.exports=TS;
