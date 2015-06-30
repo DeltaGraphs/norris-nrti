@@ -8744,8 +8744,8 @@ angular.module('norris-nrti')
 	        if (json.marker !== undefined) {
 	            mapFlowJson.marker = json.marker;
 	        }
-	        if (json.maxItemsSaved !== undefined) {
-	            mapFlowJson.maxItem = json.maxItemsSaved;
+	        if (json.trailLength !== undefined) {
+	            mapFlowJson.trailLength = json.trailLength;
 	        }
 	        if (json.trace !== undefined) {
 	            mapFlowJson.trace = json.trace;
