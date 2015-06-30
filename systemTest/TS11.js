@@ -47,20 +47,6 @@ var TS=function(lineChart){
 	IDs.push(lineChart.addRecord('flow1',{'tempo': 3, 'temperatura': 2}));
 	IDs.push(lineChart.addRecord('flow1',{'tempo': 4, 'temperatura': 1}));
 	IDs.push(lineChart.addRecord('flow1',{'tempo': 5, 'temperatura': 16}));
-
-	lineChart.createLineChartFlow({
-	    ID:'flow2',
-	    name: 'Stream',
-	    xKey: 'tempo',
-	    yKey: 'temperatura',
-	    maxItems: 4,
-	    maxItemsSaved: 4,
-	});
-	lineChart.addRecord('flow2',{'tempo': 1, 'temperatura': 15});
-	lineChart.addRecord('flow2',{'tempo': 2, 'temperatura': 10});
-	lineChart.addRecord('flow2',{'tempo': 3, 'temperatura': 2});
-	lineChart.addRecord('flow2',{'tempo': 4, 'temperatura': 1});
-	lineChart.addRecord('flow2',{'tempo': 5, 'temperatura': 16});
 	
 	var change=true;
     var repeat=function(){
