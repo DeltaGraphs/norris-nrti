@@ -57,7 +57,7 @@ module.exports.newTable=function(page, title){
         ID: 'table',
         title: title,
         maxItemsPage: 20,
-        headers: ['h1', 'h2', 'h3'],
+        headers: ['1', '2', '3'],
     });
     return table;
 };
