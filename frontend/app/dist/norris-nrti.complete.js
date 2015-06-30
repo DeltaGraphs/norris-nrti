@@ -11060,14 +11060,14 @@ angular.module('norris-nrti')
 				count++;
 				$scope.table.updateParameters(info.properties); // aggiorna le proprietà della table di default con i dati appena ricevuti
 				$scope.table.initializeData(info.data); // inizializza i flussi con i dati
+        $scope.changedP = true;
 				$scope.changed = !$scope.changed; // 'notifica' cambiamento dati e proprietà
-				$scope.changedP = true;
-	        }
+      }
 		});
 		socket.on('updateGraphProp', function(info){ // ascolta sull'evento 'updateGraphProp'
 			$scope.table.updateParameters(info); // aggiorna le proprietà della table con i dati appena ricevuti
+      $scope.changedP = true;
 			$scope.changed = !$scope.changed; // 'notifica' cambiamento proprietà
-			$scope.changedP = true;
 		});
 		socket.on('insertFlow', function(info){ // ascolta sull'evento 'insertFlow'
 			var flow = TableFlowFactory.build(info.properties); // crea un flusso di default
