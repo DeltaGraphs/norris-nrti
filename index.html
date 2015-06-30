@@ -32,7 +32,7 @@
 <a id="welcome-to-norris-nrti" class="anchor" href="#welcome-to-norris-nrti" aria-hidden="true"><span class="octicon octicon-link"></span></a>Welcome to Norris-nrti.</h3>
 
 <p>Norris is a powerful and easy-to-use framework that allows a developer to generate and run an instance where he can create several types of charts and arrange them in different pages.<br />
-The charts and pages can be accessed to by clients through either a browser-based or an Android application, and the chart properties and data can be updated at any moment; each of the clients connected will receive the update in real time.</p>
+The charts and pages can be accessed by clients through either a browser-based or an Android application, and the chart properties and data can be updated at any moment; each of the clients connected will receive the update in real time without any further effort needed.</p>
 <p>The types of graphs available in the framework are the following:</p>
 <ul>
   <li>Bar Chart</li>
@@ -60,19 +60,21 @@ In order to use the framework, you first need to install it from the npm platfor
   var io = require('socket.io')(server);
 </code></pre>
 
-<p>Here's where you can finally create your Norris object, that represents the actual framework instance:</p>
+<p>Here's when you can finally create your Norris object, that represents the actual framework instance:</p>
 
 <pre><code>
   var Norris = require('norris-nrti.js');
   var norris = new Norris(app,io,'/norris','http://norris-example.com');
 </code></pre>
 
-<p>From this moment, you can proceed to create the objects of your Norris instance.</p>
+<p>From now on, you can proceed to create the objects of your Norris instance.</p>
 
 <h3>
 <a id="norris-features" class="anchor" href="#norris-features" aria-hidden="true"><span class="octicon octicon-link"></span></a>The Norris framework features</h3>
 
 <p>Each of the Norris objects, especially the graphs, offer a handful of features regarding appearance, data management and filtering and real-time updating.</p>
+
+<p>I will now overview the main functionalities provided by the four types of graphs, to broaden the reader's understanding over the framework. Further and more specific information can be found in the Developer Manual, which can be obtained here</p>
 
 
 <h3>
