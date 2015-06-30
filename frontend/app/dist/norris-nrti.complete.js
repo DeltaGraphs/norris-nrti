@@ -12103,7 +12103,7 @@ angular.module('norris-nrti')
                                   }
                                   break;
                                 case 'icon':
-                                  type = scope.$parent.mapChart.getFlowList()[i].flow.getMarker().icon
+                                  type = scope.$parent.mapChart.getFlowList()[i].flow.getMarker().icon;
                                   break;
                               }
                                 square.setAttribute('style', 'float: left; height: 15px; width: 15px; background: url("' + type + '") no-repeat;');
