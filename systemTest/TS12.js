@@ -55,8 +55,8 @@ var TS=function(mapChart){
     var repeat=function(){
 	    if (change){
 	    	mapChart.updateProperties({
-				latitude: 45.0113311,
-				longitude: 11.0876318,
+				latitude: 45.42533493042,
+				longitude: 11.902134895325,
 				mapType: 'roadmap',
 				mapWidth: 2000,
 				mapHeight: 2000,
@@ -64,8 +64,8 @@ var TS=function(mapChart){
 		}
         else{
 			mapChart.updateProperties({
-				latitude: 45.3113311,
-				longitude: 11.7876318,
+				latitude: 45.43533493042,
+				longitude: 11.902134895325,
 				mapType: 'hybrid',
 				mapWidth: 10000,
 				mapHeight: 10000,
