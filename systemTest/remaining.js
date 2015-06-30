@@ -2,20 +2,7 @@
 * Requirements:
 
 
-*	FBDE3.3.6 			Il framework deve dare la possibilità all'utente sviluppatore di aggiornare i parametri di un line chart.
-*	FBDE3.3.6.1 		Il framework deve permettere all'utente sviluppatore di aggiornare le impostazioni della griglia del line chart.
-*	FBDE3.3.6.1.1 		Il framework deve permettere all'utente sviluppatore di abilitare/disabilitare la griglia orizzontale del line chart.
-*	FBDE3.3.6.1.2 		Il framework deve permettere all'utente sviluppatore di abilitare/disabilitare la griglia verticale del line chart.
-*	FBDE3.3.6.2 		Il framework deve permettere all'utente sviluppatore di modificare il background al line chart.
-*	FBDE3.3.6.3 		Il framework deve dare la possibilità all'utente sviluppatore di aggiornare le proprietà degli assi di un line chart.
-*	FBDE3.3.6.3.1 		Il framework deve dare la possibilità all'utente sviluppatore di modificare il nome degli assi di un line chart. 
-*	FBDE3.3.6.3.1.11	Il framework deve dare la possibilità all'utente sviluppatore di modificare il nome delle ascisse dei line chart.
-*	FBDE3.3.6.3.1.2 	Il framework deve dare la possibilità all'utente sviluppatore di modificare il nome delle ordinate dei line chart.
-*	FBDE3.3.6.3.2 		Il framework deve dare la possibilità all'utente sviluppatore di aggiornare l'aspetto degli assi di un line chart.
-*	FBDE3.3.6.3.3 		Il framework deve dare la possibilità all'utente sviluppatore di modificare il range degli assi di un line chart.
-*	FBDE3.3.6.3.4 		Il framework deve dare la possibilità all'utente sviluppatore di modificare i tick degli assi di un line chart.
-*	FBDE3.3.6.3.5 		Il framework deve dare la possibilità all'utente sviluppatore di modificare la scala degli assi di un line chart.
-*	FBDE3.3.6.4 		Il framework deve dare la possibilità all'utente sviluppatore di modificare la visibilità del view finder del line chart.
+
 *	FBDE3.3.7 			Il framework deve dare la possibilità all'utente sviluppatore di aggiornare i parametri di un map chart.
 *	FBDE3.3.7.1 		Il framework deve consentire all'utente sviluppatore di aggiornare il punto centrale del map chart.
 *	FBDE3.3.7.2 		Il framework deve consentire all'utente sviluppatore di aggiornare la scala del map chart.

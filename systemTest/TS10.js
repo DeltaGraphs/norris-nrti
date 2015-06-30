@@ -77,8 +77,8 @@ var TS=function(barChart){
     	if (change){
             barChart.updateProperties({
                 title: 'CAMBIATO - Test aggiornamento parametri Bar Chart',
-                width: 1000,
-                height: 1000,
+                width: 800,
+                height: 600,
                 enableLegend: true,
                 legend: {
                     position: 'NW',
@@ -99,7 +99,7 @@ var TS=function(barChart){
         else{
             barChart.updateProperties({
                 title: 'Test aggiornamento parametri Bar Chart',
-                width: 800,
+                width: 500,
                 height: 800,
                 enableLegend: false,
                 xAxis:{
