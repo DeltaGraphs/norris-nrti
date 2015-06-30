@@ -74,7 +74,7 @@ var TS=function(table){
 				sortable: false,
 			    maxItemsPage: 10,
 			    addRowOn: 'bottom',
-			    headers: ['CHANGE-1', 'CHANGE-2', 'CHANGE-3'],
+			    headers: ['CHANGE1', 'CHANGE2', 'CHANGE3'],
 			    sort: {
 			        column: ['CHANGE-1'],
 			        ordering: ['DESC']
