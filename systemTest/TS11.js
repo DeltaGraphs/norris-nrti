@@ -16,10 +16,10 @@
 *	FBDE3.3.6.3.1 		Il framework deve dare la possibilità all'utente sviluppatore di modificare il nome degli assi di un line chart. 
 *	FBDE3.3.6.3.1.11	Il framework deve dare la possibilità all'utente sviluppatore di modificare il nome delle ascisse dei line chart.
 *	FBDE3.3.6.3.1.2 	Il framework deve dare la possibilità all'utente sviluppatore di modificare il nome delle ordinate dei line chart.
-*	FBDE3.3.6.3.2 		Il framework deve dare la possibilità all'utente sviluppatore di aggiornare l'aspetto degli assi di un line chart.
-*	FBDE3.3.6.3.3 		Il framework deve dare la possibilità all'utente sviluppatore di modificare il range degli assi di un line chart.
-*	FBDE3.3.6.3.4 		Il framework deve dare la possibilità all'utente sviluppatore di modificare i tick degli assi di un line chart.
-*	FBDE3.3.6.3.5 		Il framework deve dare la possibilità all'utente sviluppatore di modificare la scala degli assi di un line chart.
+*	(FBDE3.3.6.3.2)		Il framework deve dare la possibilità all'utente sviluppatore di aggiornare l'aspetto degli assi di un line chart.
+*	(FBDE3.3.6.3.3)		Il framework deve dare la possibilità all'utente sviluppatore di modificare il range degli assi di un line chart.
+*	(FBDE3.3.6.3.4)		Il framework deve dare la possibilità all'utente sviluppatore di modificare i tick degli assi di un line chart.
+*	(FBDE3.3.6.3.5)		Il framework deve dare la possibilità all'utente sviluppatore di modificare la scala degli assi di un line chart.
 *	FBDE3.3.6.4 		Il framework deve dare la possibilità all'utente sviluppatore di modificare la visibilità del view finder del line chart.
 *
 * <<Requirements into brackets are not satisfied>>
@@ -62,16 +62,33 @@ var TS=function(lineChart){
 	lineChart.addRecord('flow2',{'tempo': 4, 'temperatura': 1});
 	lineChart.addRecord('flow2',{'tempo': 5, 'temperatura': 16});
 	
-	var index=0;
-	var repeat=function(){
-		if (index>=5){
-			index=0;
+	var change=true;
+    var repeat=function(){
+	    if (change){
+	    	lineChart.updateProperties({
+				xAxis:{
+			        name: 'CAMBIATO - tempo'
+			    },
+			    yAxis:{
+			        name: 'CAMBIATO - temperatura'
+			    },
+			    viewFinder: false,
+			});
 		}
-		lineChart.updateRecord('flow1', IDs[index], {tempo: index, temperatura: Math.floor((Math.random() * 10) + 1)});
-		lineChart.addRecord('flow2', {tempo: index, temperatura: Math.floor((Math.random() * 10) + 1)});
-		index++;
+        else{
+			lineChart.updateProperties({
+				xAxis:{
+			        name: 'tempo'
+			    },
+			    yAxis:{
+			        name: 'temperatura'
+			    },
+			    viewFinder: true,
+			});
+        }
+        change=!change;
 	};
-	setInterval(function () {repeat();}, 5000);
+	setInterval(function () {repeat();}, 8000);
     
 };
 
