@@ -11403,7 +11403,7 @@ angular.module('norris-nrti')
                                 'rotatelabels="-90" interactive="true" tooltips="'+ onPoint +'" showlegend="' + legend + '" ' +
                                 'xaxislabel="'+ scope.$parent.barChart.getX().getName() +'" ';
                     barchart = barchart + 'color="colorFunction()" showcontrols="'+ control +'">' +
-                                '<svg style="width: '+ scope.$parent.barChart.getWidth() +'; height: '+ scope.$parent.barChart.getHeight() +';"></svg></nvd3-multi-bar-chart>';
+                                '<svg width="'+ scope.$parent.barChart.getWidth() +'" height="'+ scope.$parent.barChart.getHeight() +'"></svg></nvd3-multi-bar-chart>';
                 }else if(scope.$parent.barChart.getBarOrientation() === 'H'){
                     barchart = '<div class="graphtitle">'+ scope.$parent.barChart.getTitle() +'</div>' +
                                 '<nvd3-multi-bar-horizontal-chart data="data" nodata=" " id="'+ id +'" ' +
@@ -11411,7 +11411,7 @@ angular.module('norris-nrti')
                                 'rotatelabels="-90" interactive="true" tooltips="'+ onPoint +'" showlegend="' + legend + '" ' +
                                 'xaxislabel="'+ scope.$parent.barChart.getX().getName() +'" ';
                     barchart = barchart + 'color="colorFunction()" showcontrols="'+ control +'">' +
-                                '<svg style="width: '+ scope.$parent.barChart.getWidth() +'; height: '+ scope.$parent.barChart.getHeight() +';"></svg></nvd3-multi-bar-horizontal-chart>';
+                                '<svg width="'+ scope.$parent.barChart.getWidth() +'" height="'+ scope.$parent.barChart.getHeight() +'"></svg></nvd3-multi-bar-horizontal-chart>';
                 }
                 
                 var compiled = $compile(barchart)(scope);
@@ -11820,6 +11820,7 @@ angular.module('norris-nrti')
                 if (newValue !== oldValue) {
                     scope.title = scope.$parent.mapChart.getTitle(); // inserisce il titolo
                     scope.init(); // crea la mappa
+
                 }
             }, true);
 
@@ -12078,8 +12079,8 @@ angular.module('norris-nrti')
                             var square = document.createElement('div');
                             //if (scope.$parent.mapChart.getFlowList()[i].flow.getTrace() !== undefined && scope.$parent.mapChart.getFlowList()[i].flow.getTrace() !== null){
                                 square.setAttribute('style', 'float: left; height: 15px; width: 15px; background-color: ' + scope.$parent.mapChart.getFlowList()[i].flow.getTrace().strokeColor);
-                            //}
-                            /*else{
+                            /*}
+                            else{
                                 square.setAttribute('style', 'float: left; height: 15px; width: 15px; background-color: ' + scope.$parent.mapChart.getFlowList()[i].flow.getFlowColor();
                             }*/
                             var spanText = document.createElement('div');
