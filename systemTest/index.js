@@ -31,8 +31,8 @@ var page1=Helper.newPage(norris, 'page1', 'Pagina creazione grafici');
 var page2=Helper.newPage(norris, 'page2', 'Pagina aggiornamento grafici');
 
 //var barChart=Helper.newBarChart(page2, 'Test aggiornamento dati Bar Chart');
-//var lineChart=Helper.newLineChart(page2, 'Test aggiornamento dati Line Chart');
-var mapChart=Helper.newMapChart(page2, 'Test aggiornamento dati Map Chart');
+var lineChart=Helper.newLineChart(page2, 'Test aggiornamento dati Line Chart');
+//var mapChart=Helper.newMapChart(page2, 'Test aggiornamento dati Map Chart');
 var table=Helper.newTable(page2, 'Test aggiornamento dati Table');
 
 var TS1 = require('./TS1.js');
@@ -50,10 +50,10 @@ TS2(page1);
 TS3(page1);
 TS4(page1);
 TS5(page1);
-TS6(barChart);
-TS7(lineChart);*/
+TS6(barChart);*/
+TS7(lineChart);
 TS8(mapChart);
-TS9(table);
+//TS9(table);
 
 ///////////////////////////////////////////// 
 app.get('/', function (req, res) {
