@@ -8692,7 +8692,7 @@ angular.module('norris-nrti')
 		return this._area;
 	};
 	LineChartFlow.prototype.getMaxItem = function() {
-		return this._maxItem;
+		return this._maxItems;
 	};
 
 	function LineChartFlowFactory() {}
@@ -8763,7 +8763,7 @@ angular.module('norris-nrti')
     function MapChartFlow(info) {
     	this._data = [];
 		this._marker = null;
-		this._maxItem = null;
+		this._trailLength = null;
 		this._trace = null;
 
 		var json = split(info);
@@ -8776,8 +8776,8 @@ angular.module('norris-nrti')
 	        if (mfJson.marker !== undefined) {
 	            this._marker = mfJson.marker;
 	        }
-	        if (mfJson.maxItem !== undefined) {
-	            this._maxItem = mfJson.maxItem;
+	        if (mfJson.trailLength !== undefined) {
+	            this._trailLength = mfJson.trailLength;
 	        }
 	        if (mfJson.trace !== undefined) {
 	        	this._trace = mfJson.trace;
@@ -8798,8 +8798,8 @@ angular.module('norris-nrti')
 				if (mfJson.marker !== undefined) {
 		            this._marker = mfJson.marker;
 		        }
-		        if (mfJson.maxItem !== undefined) {
-		            this._maxItem = mfJson.maxItem;
+		        if (mfJson.trailLength !== undefined) {
+		            this._trailLength = mfJson.trailLength;
 		        }
 		        if (mfJson.trace !== undefined) {
 	        		this._trace = mfJson.trace;
@@ -8810,7 +8810,7 @@ angular.module('norris-nrti')
 
 	MapChartFlow.prototype.initializeData = function(newData) {
 		for (var i=0; i<newData.records.length; i++) {
-			if (this._maxItem === null || this._data.length < this._maxItem){
+			if (this._trailLength === null || this._data.length < this._trailLength){
 				this._data.push(newData.records[i]);
 			}
 			else{
@@ -8851,7 +8851,7 @@ angular.module('norris-nrti')
 		return this._marker;
 	};
 	MapChartFlow.prototype.getMaxItem = function() {
-		return this._maxItem;
+		return this._trailLength;
 	};
 	MapChartFlow.prototype.getTrace = function() {
 		return this._trace;
