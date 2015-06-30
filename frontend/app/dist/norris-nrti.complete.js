@@ -11401,7 +11401,7 @@ angular.module('norris-nrti')
                                 '<nvd3-multi-bar-chart data="data" nodata=" " id="'+ id +'" ' +
                                 'xaxisticksformat="xAxisTickFormatFunction()" yaxistickformat="yAxisTickFormatFunction()" showxaxis="true" showyaxis="true" ' +
                                 'rotatelabels="-90" interactive="true" tooltips="'+ onPoint +'" showlegend="' + legend + '" ' +
-                                'xaxislabel="'+ scope.$parent.barChart.getX().getName() +'" yaxislabel="' + scope.$parent.lineChart.getY().getName() + '" ' +
+                                'xaxislabel="'+ scope.$parent.barChart.getX().getName() +'" yaxislabel="' + scope.$parent.lineChart.getY().getName() + '" ';
                     barchart = barchart + 'color="colorFunction()" showcontrols="'+ control +'">' +
                                 '<svg style="width: '+ scope.$parent.barChart.getWidth() +'; height: '+ scope.$parent.barChart.getHeight() +';"></svg></nvd3-multi-bar-chart>';
                 }else if(scope.$parent.barChart.getBarOrientation() === 'H'){
@@ -11409,7 +11409,7 @@ angular.module('norris-nrti')
                                 '<nvd3-multi-bar-horizontal-chart data="data" nodata=" " id="'+ id +'" ' +
                                 'xaxisticksformat="xAxisTickFormatFunction()" yaxistickformat="yAxisTickFormatFunction()" showxaxis="true" showyaxis="true" ' +
                                 'rotatelabels="-90" interactive="true" tooltips="'+ onPoint +'" showlegend="' + legend + '" ' +
-                                'xaxislabel="'+ scope.$parent.barChart.getX().getName() + '" yaxislabel="' + scope.$parent.lineChart.getY().getName() + '" ' +
+                                'xaxislabel="'+ scope.$parent.barChart.getX().getName() + '" yaxislabel="' + scope.$parent.lineChart.getY().getName() + '" ';
                     barchart = barchart + 'color="colorFunction()" showcontrols="'+ control +'">' +
                                 '<svg style="width: '+ scope.$parent.barChart.getWidth() +'; height: '+ scope.$parent.barChart.getHeight() +';"></svg></nvd3-multi-bar-horizontal-chart>';
                 }
@@ -12077,12 +12077,37 @@ angular.module('norris-nrti')
                     for (var i=0; i<scope.$parent.mapChart.getFlowList().length; i++) {
                         if (scope.$parent.mapChart.getFlowList()[i].flow.getData().length){
                             var square = document.createElement('div');
-                            //if (scope.$parent.mapChart.getFlowList()[i].flow.getTrace() !== undefined && scope.$parent.mapChart.getFlowList()[i].flow.getTrace() !== null){
+                            if (scope.$parent.mapChart.getFlowList()[i].flow.getTrace() !== undefined && scope.$parent.mapChart.getFlowList()[i].flow.getTrace() !== null){
                                 square.setAttribute('style', 'float: left; height: 15px; width: 15px; background-color: ' + scope.$parent.mapChart.getFlowList()[i].flow.getTrace().strokeColor);
-                            //}
-                            /*else{
-                                square.setAttribute('style', 'float: left; height: 15px; width: 15px; background-color: ' + scope.$parent.mapChart.getFlowList()[i].flow.getFlowColor();
-                            }*/
+                            }
+                            else{
+                              var type;
+                              switch (scope.$parent.mapChart.getFlowList()[i].flow.getMarker().type) {
+                                case 'shape':
+                                  switch (scope.$parent.mapChart.getFlowList()[i].flow.getMarker().shape) { //circle, triangle, square, diamond, bus
+                                    case 'circle':
+                                      type = attrs.url + '/img/c.png';
+                                      break;
+                                    case 'triangle':
+                                      type = attrs.url + '/img/t.png';
+                                      break;
+                                    case 'square':
+                                      type = attrs.url + '/img/s.png';
+                                      break;
+                                    case 'diamond':
+                                      type = attrs.url + '/img/d.png';
+                                      break;
+                                    case 'bus':
+                                      type = attrs.url + '/img/b.png';
+                                      break;
+                                  }
+                                  break;
+                                case 'icon':
+                                  type = scope.$parent.mapChart.getFlowList()[i].flow.getMarker().icon
+                                  break;
+                              }
+                                square.setAttribute('style', 'float: left; height: 15px; width: 15px; background: ' + type + ';');
+                            }
                             var spanText = document.createElement('div');
                             var text = document.createTextNode('\u00A0\u00A0\u00A0\u00A0' + scope.$parent.mapChart.getFlowList()[i].flow.getName());
                             spanText.setAttribute('style', 'width: 100px; color: '+ scope.$parent.mapChart.getLegend().getFontColor() + ';');
