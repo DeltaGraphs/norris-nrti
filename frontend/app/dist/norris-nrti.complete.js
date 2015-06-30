@@ -12367,7 +12367,7 @@ angular.module('norris-nrti')
 
 				var table = document.createElement('table');
 				table.className = 'graphstable';
-				table.setAttribute('style', 'width: 100%;');
+				//table.setAttribute('style', 'width: 100%;');
 				parent.appendChild(table);
 
 				// crea la tabella con i grafici
