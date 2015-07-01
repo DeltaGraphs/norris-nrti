@@ -12127,23 +12127,29 @@ angular.module('norris-nrti')
 
             // posiziona la legenda a nord, est, sud, ovest, nord-est, nosrd-ovest, sud-est o sud-ovest del grafico
             function changePosition(map,parent){
+                var mapCanvas = element.children()[1];
+
                 var width;
                 var height;
                 if (scope.$parent.mapChart.getWidth() !== 0){
+                    mapCanvas.setAttribute('class', 'mapChartCanvas');
                     width = scope.$parent.mapChart.getWidth() + 'px';
                 }
                 else{
-                    width = '100%';
+                    mapCanvas.setAttribute('class', 'mapChartAuto');
+                    width = '200px';
                 }
                 if (scope.$parent.mapChart.getHeight() !== 0){
+                    mapCanvas.setAttribute('class', 'mapChartCanvas');
                     height = scope.$parent.mapChart.getHeight() + 'px';
                 }
                 else{
-                    height = '100%';
+                    mapCanvas.setAttribute('class', 'mapChartAuto');
+                    height = '200px';
                 }
 
-                var mapCanvas = element.children()[1];
                 mapCanvas.setAttribute('style', 'height:'+ height +'; width:'+ width +'; position: relative;');
+                
                 switch (scope.$parent.mapChart.getLegend().getPosition()) {
                     case 'N':
                         map.setAttribute('style', 'height:'+ height +'; width:'+ width +'; position: relative; bottom: -30px;');
