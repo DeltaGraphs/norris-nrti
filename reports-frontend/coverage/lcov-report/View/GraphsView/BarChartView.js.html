@@ -15,10 +15,10 @@
 <div class="header high">
     <h1>Code coverage report for <span class="entity">View/GraphsView/BarChartView.js</span></h1>
     <h2>
-        Statements: <span class="metric">88.52% <small>(108 / 122)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Branches: <span class="metric">79.55% <small>(35 / 44)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">88.98% <small>(113 / 127)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">78.85% <small>(41 / 52)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Functions: <span class="metric">58.82% <small>(10 / 17)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">88.52% <small>(108 / 122)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">88.98% <small>(113 / 127)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
     <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">View/GraphsView/</a> &#187; BarChartView.js</div>
@@ -284,7 +284,14 @@
 257
 258
 259
-260</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+260
+261
+262
+263
+264
+265
+266
+267</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -366,6 +373,14 @@
 <span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -476,7 +491,6 @@
 <span class="cline-any cline-yes">24</span>
 <span class="cline-any cline-yes">3</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">24</span>
 <span class="cline-any cline-yes">24</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">8</span>
@@ -625,6 +639,14 @@ angular.module('norris-nrti')
                 var id = str[str.length-1];
                 var width;
                 var height;
+                var xLabel = 'X axis';
+                var yLabel = 'Y axis';
+                <span class="missing-if-branch" title="else path not taken" >E</span>if (scope.$parent.barChart.getX() !== undefined &amp;&amp; scope.$parent.barChart.getX().getName() !== null){
+                    xLabel = scope.$parent.barChart.getX().getName();
+                }
+                <span class="missing-if-branch" title="else path not taken" >E</span>if (scope.$parent.barChart.getY() !== undefined &amp;&amp; scope.$parent.barChart.getY().getName() !== null){
+                    xLabel = scope.$parent.barChart.getY().getName();
+                }
                 <span class="missing-if-branch" title="else path not taken" >E</span>if (scope.$parent.barChart.getWidth() !== 0){
                     width = scope.$parent.barChart.getWidth() + 'px';
                 }
@@ -660,7 +682,7 @@ angular.module('norris-nrti')
                                 '&lt;nvd3-multi-bar-chart data="data" nodata=" " '+
                                 'xaxisticksformat="xAxisTickFormatFunction()" yaxistickformat="yAxisTickFormatFunction()" showxaxis="true" showyaxis="true" ' +
                                 'rotatelabels="-90" interactive="true" tooltips="'+ onPoint +'" showlegend="' + legend + '" ' +
-                                'xaxislabel="'+ scope.$parent.barChart.getX().getName() +'" yaxislabel="'+ scope.$parent.barChart.getY().getName() +'" ' +
+                                'xaxislabel="'+ xLabel +'" yaxislabel="'+ yLabel +'" ' +
                                 'color="colorFunction()" showcontrols="'+ control +'"&gt;' +
                                 '&lt;svg id="'+ id +'" ' + ' style="width: '+ width +'; height: '+ height +';"&gt;&lt;/svg&gt;&lt;/nvd3-multi-bar-chart&gt;';
                 }else <span class="missing-if-branch" title="else path not taken" >E</span>if(scope.$parent.barChart.getBarOrientation() === 'H'){
@@ -668,7 +690,7 @@ angular.module('norris-nrti')
                                 '&lt;nvd3-multi-bar-horizontal-chart data="data" nodata=" " '+
                                 'xaxisticksformat="xAxisTickFormatFunction()" yaxistickformat="yAxisTickFormatFunction()" showxaxis="true" showyaxis="true" ' +
                                 'rotatelabels="-90" interactive="true" tooltips="'+ onPoint +'" showlegend="' + legend + '" ' +
-                                'xaxislabel="'+ scope.$parent.barChart.getX().getName() + '" yaxislabel="'+ scope.$parent.barChart.getY().getName() +'" ' +
+                                'xaxislabel="'+ xLabel + '" yaxislabel="'+ yLabel +'" ' +
                                 'color="colorFunction()" showcontrols="'+ control +'"&gt;' +
                                 '&lt;svg id="'+ id +'" ' + ' style="width: '+ width +'; height: '+ height +';"&gt;&lt;/svg&gt;&lt;/nvd3-multi-bar-horizontal-chart&gt;';
                 }
@@ -736,7 +758,6 @@ angular.module('norris-nrti')
                         values[y][0] = scope.$parent.barChart.getHeaders()[values[y][0]];
                     }
                     data.push({ 'key': key, 'values': values});
-                    console.log('data' + JSON.stringify(data[i]));
                 }
                 scope.colorArray = colorArray;
                 scope.data = data;
@@ -807,7 +828,7 @@ angular.module('norris-nrti')
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Jul 01 2015 20:12:47 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Jul 01 2015 20:41:04 GMT+0000 (UTC)</div>
 </div>
 <script src="../../prettify.js"></script>
 <script>

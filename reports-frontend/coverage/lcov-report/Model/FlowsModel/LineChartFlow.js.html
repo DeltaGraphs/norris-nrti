@@ -15,10 +15,10 @@
 <div class="header high">
     <h1>Code coverage report for <span class="entity">Model/FlowsModel/LineChartFlow.js</span></h1>
     <h2>
-        Statements: <span class="metric">94.19% <small>(81 / 86)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Branches: <span class="metric">70.45% <small>(31 / 44)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">100% <small>(86 / 86)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">81.82% <small>(36 / 44)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Functions: <span class="metric">94.12% <small>(16 / 17)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">94.19% <small>(81 / 86)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">100% <small>(86 / 86)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
     <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">Model/FlowsModel/</a> &#187; LineChartFlow.js</div>
@@ -256,7 +256,7 @@
 <span class="cline-any cline-yes">11</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">76</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">12</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -283,17 +283,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">95</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">11</span>
 <span class="cline-any cline-yes">9</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">11</span>
 <span class="cline-any cline-yes">7</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">11</span>
 <span class="cline-any cline-yes">7</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-yes">8</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -317,7 +317,7 @@
 <span class="cline-any cline-yes">4</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -326,11 +326,11 @@
 <span class="cline-any cline-yes">86</span>
 <span class="cline-any cline-yes">17</span>
 <span class="cline-any cline-yes">31</span>
-<span class="cline-any cline-yes">31</span>
+<span class="cline-any cline-yes">29</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -433,8 +433,8 @@ angular.module('norris-nrti')
 	        if (json.area !== undefined) {
 	            lineFlowJson.area = json.area;
 	        }
-	        <span class="missing-if-branch" title="if path not taken" >I</span>if (json.maxItems !== undefined) {
-<span class="cstat-no" title="statement not covered" >	            lineFlowJson.maxItems = json.maxItems;</span>
+	        if (json.maxItems !== undefined) {
+	            lineFlowJson.maxItems = json.maxItems;
 	        }
 	    }
 &nbsp;
@@ -461,7 +461,7 @@ angular.module('norris-nrti')
 &nbsp;
 		if (Object.keys(lfJson).length !== 0) {
 		
-			<span class="missing-if-branch" title="else path not taken" >E</span>if (lfJson.flowColor !== undefined) {
+			if (lfJson.flowColor !== undefined) {
 	            this._flowColor = lfJson.flowColor;
 	        }
 	        if (lfJson.marker !== undefined) {
@@ -470,8 +470,8 @@ angular.module('norris-nrti')
 	        if (lfJson.area !== undefined) {
 	            this._area = lfJson.area;
 	        }
-	        <span class="missing-if-branch" title="if path not taken" >I</span>if (lfJson.maxItems !== undefined) {
-<span class="cstat-no" title="statement not covered" >	            this._maxItems = lfJson.maxItems;</span>
+	        if (lfJson.maxItems !== undefined) {
+	            this._maxItems = lfJson.maxItems;
 	        }
 	    }
 	}
@@ -494,8 +494,8 @@ angular.module('norris-nrti')
 		        <span class="missing-if-branch" title="else path not taken" >E</span>if (lfJson.area !== undefined) {
 		            this._area = lfJson.area;
 		        }
-		        <span class="missing-if-branch" title="if path not taken" >I</span>if (lfJson.maxItems !== undefined) {
-<span class="cstat-no" title="statement not covered" >		            this._maxItems = lfJson.maxItems;</span>
+		        <span class="missing-if-branch" title="else path not taken" >E</span>if (lfJson.maxItems !== undefined) {
+		            this._maxItems = lfJson.maxItems;
 		        }
 		    }
 		}
@@ -503,12 +503,12 @@ angular.module('norris-nrti')
 &nbsp;
 	LineChartFlow.prototype.initializeData = function(newData) {
 		for (var i=0; i&lt;newData.records.length; i++) {
-			<span class="missing-if-branch" title="else path not taken" >E</span>if (this._maxItems === null || <span class="branch-1 cbranch-no" title="branch not covered" >this._data.length &lt; this._maxItems)</span>{
+			if (this._maxItems === null || this._data.length &lt; this._maxItems){
 				this._data.push(newData.records[i]);
 			}
 			else{
-<span class="cstat-no" title="statement not covered" >				this._data.splice(0,1);</span>
-<span class="cstat-no" title="statement not covered" >				this._data.push(newData.records[i]);</span>
+				this._data.splice(0,1);
+				this._data.push(newData.records[i]);
 			}
 		}
 	};
@@ -564,7 +564,7 @@ angular.module('norris-nrti')
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Jul 01 2015 20:12:47 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Jul 01 2015 20:41:04 GMT+0000 (UTC)</div>
 </div>
 <script src="../../prettify.js"></script>
 <script>

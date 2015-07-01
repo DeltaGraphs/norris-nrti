@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">24.18</p>
+      <p class="stat">24.47</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">2.08</p>
+      <p class="stat">2.07</p>
     </div>
   </div>
 </div>
@@ -158,7 +158,7 @@ describe(&#039;MapChartFlow&#039;, function(){
 		var json = {
 			&#039;name&#039; : &#039;flusso1&#039;,
 			&#039;marker&#039; : &#039;furly&#039;,
-			&#039;maxItemsSaved&#039; : 20,
+			&#039;trailLength&#039; : 20,
 			&#039;trace&#039; : &#039;bubu&#039;
 		};
 
@@ -232,7 +232,7 @@ describe(&#039;MapChartFlow&#039;, function(){
 		var json = {
 			&#039;name&#039; : &#039;flusso2&#039;,
 			&#039;marker&#039; : &#039;furly1&#039;,
-			&#039;maxItemsSaved&#039; : 45,
+			&#039;trailLength&#039; : 45,
 			&#039;trace&#039; : &#039;flow&#039;
 		};
 		var MapChartFlow;
@@ -310,7 +310,7 @@ describe(&#039;MapChartFlow&#039;, function(){
 		var MapChartFlow;
 
 		beforeEach(function(){
-			MapChartFlow = MapChartFlowFactory.build({ &#039;maxItem&#039; : 3 });
+			MapChartFlow = MapChartFlowFactory.build({ &#039;trailLength&#039; : 3 });
 			MapChartFlow.initializeData(data);
 		});
 
@@ -346,7 +346,7 @@ describe(&#039;MapChartFlow&#039;, function(){
 		var MapChartFlow;
 
 		beforeEach(function(){
-			MapChartFlow = MapChartFlowFactory.build({ &#039;maxItemsSaved&#039; : 1 });
+			MapChartFlow = MapChartFlowFactory.build({ &#039;trailLength&#039; : 1 });
 			MapChartFlow.initializeData(data);
 		});
 

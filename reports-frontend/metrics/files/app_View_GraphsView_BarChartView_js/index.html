@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">61.34</p>
+      <p class="stat">60.91</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">259</p>
+      <p class="stat">266</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">55.32</p>
+      <p class="stat">56.90</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">3.47</p>
+      <p class="stat">3.54</p>
     </div>
   </div>
 </div>
@@ -171,6 +171,14 @@ angular.module(&#039;norris-nrti&#039;)
                 var id = str[str.length-1];
                 var width;
                 var height;
+                var xLabel = &#039;X axis&#039;;
+                var yLabel = &#039;Y axis&#039;;
+                if (scope.$parent.barChart.getX() !== undefined &amp;&amp; scope.$parent.barChart.getX().getName() !== null){
+                    xLabel = scope.$parent.barChart.getX().getName();
+                }
+                if (scope.$parent.barChart.getY() !== undefined &amp;&amp; scope.$parent.barChart.getY().getName() !== null){
+                    xLabel = scope.$parent.barChart.getY().getName();
+                }
                 if (scope.$parent.barChart.getWidth() !== 0){
                     width = scope.$parent.barChart.getWidth() + &#039;px&#039;;
                 }
@@ -206,7 +214,7 @@ angular.module(&#039;norris-nrti&#039;)
                                 &#039;&lt;nvd3-multi-bar-chart data=&quot;data&quot; nodata=&quot; &quot; &#039;+
                                 &#039;xaxisticksformat=&quot;xAxisTickFormatFunction()&quot; yaxistickformat=&quot;yAxisTickFormatFunction()&quot; showxaxis=&quot;true&quot; showyaxis=&quot;true&quot; &#039; +
                                 &#039;rotatelabels=&quot;-90&quot; interactive=&quot;true&quot; tooltips=&quot;&#039;+ onPoint +&#039;&quot; showlegend=&quot;&#039; + legend + &#039;&quot; &#039; +
-                                &#039;xaxislabel=&quot;&#039;+ scope.$parent.barChart.getX().getName() +&#039;&quot; yaxislabel=&quot;&#039;+ scope.$parent.barChart.getY().getName() +&#039;&quot; &#039; +
+                                &#039;xaxislabel=&quot;&#039;+ xLabel +&#039;&quot; yaxislabel=&quot;&#039;+ yLabel +&#039;&quot; &#039; +
                                 &#039;color=&quot;colorFunction()&quot; showcontrols=&quot;&#039;+ control +&#039;&quot;&gt;&#039; +
                                 &#039;&lt;svg id=&quot;&#039;+ id +&#039;&quot; &#039; + &#039; style=&quot;width: &#039;+ width +&#039;; height: &#039;+ height +&#039;;&quot;&gt;&lt;/svg&gt;&lt;/nvd3-multi-bar-chart&gt;&#039;;
                 }else if(scope.$parent.barChart.getBarOrientation() === &#039;H&#039;){
@@ -214,7 +222,7 @@ angular.module(&#039;norris-nrti&#039;)
                                 &#039;&lt;nvd3-multi-bar-horizontal-chart data=&quot;data&quot; nodata=&quot; &quot; &#039;+
                                 &#039;xaxisticksformat=&quot;xAxisTickFormatFunction()&quot; yaxistickformat=&quot;yAxisTickFormatFunction()&quot; showxaxis=&quot;true&quot; showyaxis=&quot;true&quot; &#039; +
                                 &#039;rotatelabels=&quot;-90&quot; interactive=&quot;true&quot; tooltips=&quot;&#039;+ onPoint +&#039;&quot; showlegend=&quot;&#039; + legend + &#039;&quot; &#039; +
-                                &#039;xaxislabel=&quot;&#039;+ scope.$parent.barChart.getX().getName() + &#039;&quot; yaxislabel=&quot;&#039;+ scope.$parent.barChart.getY().getName() +&#039;&quot; &#039; +
+                                &#039;xaxislabel=&quot;&#039;+ xLabel + &#039;&quot; yaxislabel=&quot;&#039;+ yLabel +&#039;&quot; &#039; +
                                 &#039;color=&quot;colorFunction()&quot; showcontrols=&quot;&#039;+ control +&#039;&quot;&gt;&#039; +
                                 &#039;&lt;svg id=&quot;&#039;+ id +&#039;&quot; &#039; + &#039; style=&quot;width: &#039;+ width +&#039;; height: &#039;+ height +&#039;;&quot;&gt;&lt;/svg&gt;&lt;/nvd3-multi-bar-horizontal-chart&gt;&#039;;
                 }
@@ -282,7 +290,6 @@ angular.module(&#039;norris-nrti&#039;)
                         values[y][0] = scope.$parent.barChart.getHeaders()[values[y][0]];
                     }
                     data.push({ &#039;key&#039;: key, &#039;values&#039;: values});
-                    console.log(&#039;data&#039; + JSON.stringify(data[i]));
                 }
                 scope.colorArray = colorArray;
                 scope.data = data;
