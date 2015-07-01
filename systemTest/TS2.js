@@ -64,6 +64,8 @@ var TS=function(page){
 	    ID: 'barChart',
 	    title: 'Test creazione Bar Chart',
 	    enableLegend: true,
+	    height: 600,
+	    width: 1000,
 	    legend: {
 	        position: 'NE'
 	    },
