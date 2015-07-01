@@ -19,10 +19,10 @@
 *   FBDE3.3.5.1         Il framework deve consentire all'utente sviluppatore di aggiornare l'orientamento delle barre di un bar chart.
 *   FBDE3.3.5.1.1       Il framework deve consentire all'utente sviluppatore di aggiornare l'orientamento orizzontale delle barre di un bar chart.
 *   FBDE3.3.5.1.2       Il framework deve consentire all'utente sviluppatore di aggiornare l'orientamento verticale delle barre di un bar chart.
-*   (FBDE3.3.5.2)       Il framework deve permettere all'utente sviluppatore di aggiornare le impostazioni della griglia del bar chart.
-*   (FBDE3.3.5.2.1)     Il framework deve permettere all'utente sviluppatore di abilitare la griglia orizzontale del bar chart.
+*   FBDE3.3.5.2         Il framework deve permettere all'utente sviluppatore di aggiornare le impostazioni della griglia del bar chart.
+*   FBDE3.3.5.2.1       Il framework deve permettere all'utente sviluppatore di abilitare la griglia orizzontale del bar chart.
 *   (FBDE3.3.5.2.2)     Il framework deve permettere all'utente sviluppatore di disabilitare la griglia orizzontale del bar chart.
-*   (FBDE3.3.5.2.3)     Il framework deve permettere all'utente sviluppatore di abilitare la griglia verticale del bar chart.
+*   FBDE3.3.5.2.3       Il framework deve permettere all'utente sviluppatore di abilitare la griglia verticale del bar chart.
 *   (FBDE3.3.5.2.4)     Il framework deve permettere all'utente sviluppatore di disabilitare la griglia verticale del bar chart.
 *   (FBDE3.3.5.3)       Il framework deve permettere all'utente sviluppatore di modificare il background al bar chart.
 *   (FBDE3.3.5.4)       Il framework deve dare la possibilità all'utente sviluppatore di modificare la possibilità di ordinamento delle barre del bar chart.

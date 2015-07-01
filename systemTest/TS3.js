@@ -33,7 +33,7 @@
 *   FBDE3.1.2.7     Il framework deve dare la possibilità all'utente sviluppatore di impostare il massimo numero di elementi visualizzabili nel line chart.
 *   FBOB3.1.2.8     Il framework deve dare la possibilità all'utente sviluppatore di impostare l'array di dati iniziale che costituirà il set dei dati del line chart.
 *   FBOB3.1.2.9     Il framework deve dare la possibilità all'utente sviluppatore di impostare formato di interpretazione dei dati contenuti nell'array del line chart.
-*   FBOB3.1.2.10    Il framework deve dare la possibilità all'utente sviluppatore di impostare il filtro dinamico da applicare ai dati contenuti nell'array del line chart.
+*   FBDE3.1.2.10    Il framework deve dare la possibilità all'utente sviluppatore di impostare il filtro dinamico da applicare ai dati contenuti nell'array del line chart.
 *
 * <<Requirements into brackets are not satisfied>>
 *

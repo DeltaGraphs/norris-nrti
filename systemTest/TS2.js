@@ -34,10 +34,10 @@
 *	FBOB3.1.1 		Il framework deve dare la possibilità all'utente sviluppatore di aggiungere flussi di dati al bar chart.
 *	FBOB3.1.1.1 	Il framework deve dare la possibilità all'utente sviluppatore di impostare il colore del set dei dati del bar chart.
 *	FBOB3.1.1.2 	Il framework deve dare la possibilità all'utente sviluppatore di impostare il nome del set dei dati del bar chart.
-*	FBOB3.1.1.3 	Il framework deve dare la possibilità all'utente sviluppatore di impostare il tipo di legenda che appare sopra un punto selezionato del bar chart. 
+*	FBDE3.1.1.3 	Il framework deve dare la possibilità all'utente sviluppatore di impostare il tipo di legenda che appare sopra un punto selezionato del bar chart. 
 *	FBOB3.1.1.4 	Il framework deve dare la possibilità all'utente sviluppatore di impostare l'array di dati iniziale che costituirà il set dei dati del bar chart.
 *	FBOB3.1.1.5 	Il framework deve dare la possibilità all'utente sviluppatore di impostare il formato di interpretazione dei dati contenuti nell'array del bar chart.
-*	FBOB3.1.1.6 	Il framework deve dare la possibilità all'utente sviluppatore di impostare il filtro dinamico da applicare ai dati contenuti nell'array del bar chart.
+*	FBDE3.1.1.6 	Il framework deve dare la possibilità all'utente sviluppatore di impostare il filtro dinamico da applicare ai dati contenuti nell'array del bar chart.
 *
 * <<Requirements into brackets are not satisfied>>
 *

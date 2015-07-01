@@ -11,13 +11,13 @@
 *	FBDE3.3.7.1 		Il framework deve consentire all'utente sviluppatore di aggiornare il punto centrale del map chart.
 *	FBDE3.3.7.2 		Il framework deve consentire all'utente sviluppatore di aggiornare la scala del map chart.
 *	FBDE3.3.7.3 		Il framework deve consentire all'utente sviluppatore di modificare il tipo della mappa del map chart. 
-*	(FBDE3.3.7.4) 		Il framework deve consentire all'utente sviluppatore di modificare la possibilità di zoomare nel map chart.
-*	(FBDE3.3.7.5) 		Il framework deve consentire all'utente sviluppatore di modificare la possibilità di effettuare il trascinamento nel map chart.
-*	(FBDE3.3.7.6) 		Il framework deve consentire all'utente sviluppatore di modificare le impostazioni della griglia nel map chart.
+*	FBDE3.3.7.4 		Il framework deve consentire all'utente sviluppatore di modificare la possibilità di zoomare nel map chart.
+*	FBDE3.3.7.5 		Il framework deve consentire all'utente sviluppatore di modificare la possibilità di effettuare il trascinamento nel map chart.
+*	FBDE3.3.7.6 		Il framework deve consentire all'utente sviluppatore di modificare le impostazioni della griglia nel map chart.
 *	(FBDE3.3.7.6.1) 	Il framework deve permettere all'utente sviluppatore di abilitare la griglia orizzontale del map chart.
 *	(FBDE3.3.7.6.2)		Il framework deve permettere all'utente sviluppatore di abilitare la griglia verticale del map chart.
-*	(FBDE3.3.7.6.3) 	Il framework deve permettere all'utente sviluppatore di disabilitare la griglia orizzontale del map chart.
-*	(FBDE3.3.7.6.4)		Il framework deve permettere all'utente sviluppatore di disabilitare la griglia verticale del map chart.
+*	FBDE3.3.7.6.3	 	Il framework deve permettere all'utente sviluppatore di disabilitare la griglia orizzontale del map chart.
+*	FBDE3.3.7.6.4		Il framework deve permettere all'utente sviluppatore di disabilitare la griglia verticale del map chart.
 *
 * <<Requirements into brackets are not satisfied>>
 *

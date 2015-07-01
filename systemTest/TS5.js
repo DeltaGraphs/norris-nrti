@@ -36,7 +36,7 @@
 *	FBOB3.1.4.2 	Il framework deve dare la possibilità all'utente sviluppatore di impostare massimo numero di elementi visualizzabili, nella table.
 *	FBOB3.1.4.3 	Il framework deve dare la possibilità all'utente sviluppatore di impostare l'array iniziale che costituirà il set dei dati della table.
 *	FBOB3.1.4.4 	Il framework deve dare la possibilità all'utente sviluppatore di impostare il formato di interpretazione dei dati contenuti nell'array, nella table.
-*	FBOB3.1.4.5 	Il framework deve dare la possibilità all'utente sviluppatore di applicare filtri dinamici ai dati nella table.
+*	FBDE3.1.4.5 	Il framework deve dare la possibilità all'utente sviluppatore di applicare filtri dinamici ai dati nella table.
 * <<Requirements into brackets are not satisfied>>
 *
 * History :

@@ -8,27 +8,27 @@
 *
 * Requirements tested:
 *	FBOB2.5 		Il framework deve dare la possibilità all'utente sviluppatore di creare un map chart.
-*	(FBDE2.5.1) 	Il framework deve consentire all'utente sviluppatore di impostare la possibilità di effettuare il trascinamento nel map chart, al momento della creazione.
+*	FBDE2.5.1 		Il framework deve consentire all'utente sviluppatore di impostare la possibilità di effettuare il trascinamento nel map chart, al momento della creazione.
 * 	FBOB2.5.2 		Il framework deve consentire all'utente sviluppatore di impostare il punto centrale del map chart, nel momento della creazione.
 *	FBOB2.5.3 		Il framework deve consentire all'utente sviluppatore di impostare la scala dell'area visualizzata nel map chart, al momento della creazione.
 * 	FBDE2.5.4 		Il framework deve consentire all'utente sviluppatore di impostare il tipo della mappa del map chart, al momento della creazione.
-*	(FBDE2.5.5) 	Il framework deve consentire all'utente sviluppatore di impostare la possibilità di zoomare nel map chart, al momento della creazione.
-*	(FBDE2.5.6) 	Il framework deve consentire all'utente sviluppatore di impostare la griglia nel map chart, al momento della creazione.
+*	FBDE2.5.5 		Il framework deve consentire all'utente sviluppatore di impostare la possibilità di zoomare nel map chart, al momento della creazione.
+*	FBDE2.5.6 		Il framework deve consentire all'utente sviluppatore di impostare la griglia nel map chart, al momento della creazione.
 *	(FBDE2.5.6.1)	Il framework deve permettere all'utente sviluppatore di abilitare la griglia orizzontale del map chart, al momento della creazione.
 *	(FBDE2.5.6.2) 	Il framework deve permettere all'utente sviluppatore di abilitare la griglia verticale del map chart, al momento della creazione.
-*	(FBDE2.5.6.3) 	Il framework deve permettere all'utente sviluppatore di disabilitare la griglia orizzontale del map chart, al momento della creazione.
-*	(FBDE2.5.6.4) 	Il framework deve permettere all'utente sviluppatore di disabilitare la griglia verticale del map chart, al momento della creazione.
+*	FBDE2.5.6.3 	Il framework deve permettere all'utente sviluppatore di disabilitare la griglia orizzontale del map chart, al momento della creazione.
+*	FBDE2.5.6.4 	Il framework deve permettere all'utente sviluppatore di disabilitare la griglia verticale del map chart, al momento della creazione.
 *	FBOB3.1.3 		Il framework deve dare la possibilità all'utente sviluppatore di aggiungere flussi di dati al map chart.
 *	FBOB3.1.3.1 	Il framework deve dare la possibilità all'utente sviluppatore di impostare il nome del set dei dati del map chart.
 *	FBOB3.1.3.2 	Il framework deve dare la possibilità all'utente sviluppatore di impostare il colore del set dei dati del map chart.
-*	FBOB3.1.3.3 	Il framework deve dare la possibilità all'utente sviluppatore di impostare la tipologia dei marker per un set di dati e il colore degli stessi, nel map chart.
+*	FBDE3.1.3.3 	Il framework deve dare la possibilità all'utente sviluppatore di impostare la tipologia dei marker per un set di dati e il colore degli stessi, nel map chart.
 *	FBOB3.1.3.4 	Il framework deve dare la possibilità all'utente sviluppatore di impostare l'aspetto della linea del tracciato, nel map chart.
-*	FBOB3.1.3.5 	Il framework deve dare la possibilità all'utente sviluppatore di impostare il tipo di legenda che appare sopra un punto selezionato del map chart.
-*	FBOB3.1.3.6 	Il framework deve dare la possibilità all'utente sviluppatore di impostare il massimo numero di elementi visualizzabili nel map chart.
+*	FBDE3.1.3.5 	Il framework deve dare la possibilità all'utente sviluppatore di impostare il tipo di legenda che appare sopra un punto selezionato del map chart.
+*	FBDE3.1.3.6 	Il framework deve dare la possibilità all'utente sviluppatore di impostare il massimo numero di elementi visualizzabili nel map chart.
 *	FBOB3.1.3.7 	Il framework deve dare la possibilità all'utente sviluppatore di impostare l'array di dati iniziale che costituirà il set dei dati del map chart.
 *	FBOB3.1.3.8 	Il framework deve dare la possibilità all'utente sviluppatore di impostare formato di interpretazione dei dati contenuti nell'array del map chart.
-*	FBOB3.1.3.9 	Il framework deve dare la possibilità all'utente sviluppatore di impostare l'elemento di background, ossia tracciato o area di sfondo, relativa all'uso dei dati del mapchart.
-*	FBOB3.1.3.10 	Il framework deve dare la possibilità all'utente sviluppatore di impostare il filtro dinamico da applicare ai dati contenuti nell'array del map chart.
+*	FBDE3.1.3.9 	Il framework deve dare la possibilità all'utente sviluppatore di impostare l'elemento di background, ossia tracciato o area di sfondo, relativa all'uso dei dati del mapchart.
+*	FBDE3.1.3.10 	Il framework deve dare la possibilità all'utente sviluppatore di impostare il filtro dinamico da applicare ai dati contenuti nell'array del map chart.
 *
 * <<Requirements into brackets are not satisfied>>
 *
