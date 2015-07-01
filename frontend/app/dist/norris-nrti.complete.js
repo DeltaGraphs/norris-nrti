@@ -11388,10 +11388,10 @@ angular.module('norris-nrti')
                 var height;
                 var xLabel = 'X axis';
                 var yLabel = 'Y axis';
-                if (scope.$parent.barChart.getX() !== undefined && scope.$parent.barChart.getX().getName() !== null){
+                if (scope.$parent.barChart.getX() !== null && scope.$parent.barChart.getX().getName() !== null){
                     xLabel = scope.$parent.barChart.getX().getName();
                 }
-                if (scope.$parent.barChart.getY() !== undefined && scope.$parent.barChart.getY().getName() !== null){
+                if (scope.$parent.barChart.getY() !== null && scope.$parent.barChart.getY().getName() !== null){
                     xLabel = scope.$parent.barChart.getY().getName();
                 }
                 if (scope.$parent.barChart.getWidth() !== 0){
@@ -11653,10 +11653,10 @@ angular.module('norris-nrti')
                 var height;
                 var xLabel = 'X axis';
                 var yLabel = 'Y axis';
-                if (scope.$parent.lineChart.getX() !== undefined && scope.$parent.lineChart.getX().getName() !== null){
+                if (scope.$parent.lineChart.getX() !== null && scope.$parent.lineChart.getX().getName() !== null){
                     xLabel = scope.$parent.lineChart.getX().getName();
                 }
-                if (scope.$parent.lineChart.getY() !== undefined && scope.$parent.lineChart.getY().getName() !== null){
+                if (scope.$parent.lineChart.getY() !== null && scope.$parent.lineChart.getY().getName() !== null){
                     xLabel = scope.$parent.lineChart.getY().getName();
                 }
                 if (scope.$parent.lineChart.getWidth() !== 0){

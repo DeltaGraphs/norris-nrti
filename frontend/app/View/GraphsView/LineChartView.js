@@ -80,10 +80,10 @@ angular.module('norris-nrti')
                 var height;
                 var xLabel = 'X axis';
                 var yLabel = 'Y axis';
-                if (scope.$parent.lineChart.getX() !== undefined && scope.$parent.lineChart.getX().getName() !== null){
+                if (scope.$parent.lineChart.getX() !== null && scope.$parent.lineChart.getX().getName() !== null){
                     xLabel = scope.$parent.lineChart.getX().getName();
                 }
-                if (scope.$parent.lineChart.getY() !== undefined && scope.$parent.lineChart.getY().getName() !== null){
+                if (scope.$parent.lineChart.getY() !== null && scope.$parent.lineChart.getY().getName() !== null){
                     xLabel = scope.$parent.lineChart.getY().getName();
                 }
                 if (scope.$parent.lineChart.getWidth() !== 0){
