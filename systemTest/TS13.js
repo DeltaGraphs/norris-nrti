@@ -44,9 +44,12 @@ var TS=function(table){
 	IDs.push(tableFlow1.addRecord({'0':4, '1':4, '2':4}));
 	IDs.push(tableFlow1.addRecord({'0':5, '1':5, '2':5}));
 
-
+	var index=0;
 	var change=true;
     var repeat=function(){
+    	if (index=1000){
+    		index=0;
+    	}
 	    if (change){
 	    	table.updateProperties({
 				sortable: true,
@@ -68,7 +71,7 @@ var TS=function(table){
 			        }
 			    }
 			});
-			table.addRecord('flow1', {'0':Math.floor((Math.random() * 10) + 1), '1':Math.floor((Math.random() * 10) + 1), '2':Math.floor((Math.random() * 10) + 1)});
+			table.addRecord('flow1', {'0':index, '1':index, '2':Math.floor((Math.random() * 10) + 1)});
 		}
         else{
 			table.updateProperties({
@@ -82,9 +85,10 @@ var TS=function(table){
 			    },
 			    appearance: {}
 			});
-			table.addRecord('flow1', {'0':Math.floor((Math.random() * 10) + 1), '1':Math.floor((Math.random() * 10) + 1), '2':Math.floor((Math.random() * 10) + 1)});
+			table.addRecord('flow1', {'0':index, '1':index, '2':index});
         }
         change=!change;
+        index++;
 	};
 	setInterval(function () {repeat();}, 8000);
 };
