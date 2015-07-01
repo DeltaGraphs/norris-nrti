@@ -49,6 +49,16 @@
 * =========================================================
 */
 
+var data=[];
+var headers=[];
+for (var i=0; i<200; i++){
+	data.push({
+		tempo: i,
+		pressione: Math.floor((Math.random() * 20) + 1)
+	});
+	headers.push('h'+i);
+}
+
 var TS=function(page){
     var barChart=page.createBarChart({
 	    ID: 'barChart',
@@ -63,7 +73,7 @@ var TS=function(page){
 	    yAxis:{
 	        name: 'pressione'
 	    },
-	    headers: ['h1','h2','h3','h4','h5'],
+	    headers: headers,
 	    barOrientation: 'V',	//or H
 	    groupingControl: true
 	});
@@ -76,13 +86,7 @@ var TS=function(page){
         flowColor: '#33AAFF',
         valueFormat: 'toInt',
         filters: 'pressione>3'
-    },[
-        {tempo: 0, pressione: 3},
-        {tempo: 1, pressione: 10},
-        {tempo: 2, pressione: 1},
-        {tempo: 3, pressione: 5},
-        {tempo: 4, pressione: 7}
-    ]);
+    },data);
 };
 
 module.exports=TS;
