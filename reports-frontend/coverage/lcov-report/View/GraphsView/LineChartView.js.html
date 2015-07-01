@@ -15,10 +15,10 @@
 <div class="header high">
     <h1>Code coverage report for <span class="entity">View/GraphsView/LineChartView.js</span></h1>
     <h2>
-        Statements: <span class="metric">89.22% <small>(91 / 102)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Branches: <span class="metric">86.11% <small>(31 / 36)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">88.18% <small>(97 / 110)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">82.5% <small>(33 / 40)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Functions: <span class="metric">56.25% <small>(9 / 16)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">89.22% <small>(91 / 102)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">88.18% <small>(97 / 110)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
     <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">View/GraphsView/</a> &#187; LineChartView.js</div>
@@ -250,7 +250,21 @@
 223
 224
 225
-226</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -307,6 +321,9 @@
 <span class="cline-any cline-yes">18</span>
 <span class="cline-any cline-yes">8</span>
 <span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8</span>
 <span class="cline-any cline-yes">8</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -325,6 +342,19 @@
 <span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-yes">1</span>
@@ -361,8 +391,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -448,8 +478,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">10</span>
 <span class="cline-any cline-yes">8</span>
-<span class="cline-any cline-yes">8</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">8</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -505,17 +533,17 @@
 &nbsp;
 angular.module('norris-nrti')
 .directive('lineChart', function($compile){
-	return {
-		restrict: 'E', // direttiva di tipo elemento (tag)
-		replace: false,
+    return {
+        restrict: 'E', // direttiva di tipo elemento (tag)
+        replace: false,
         scope: { // attributo della direttiva
             url: '@'
-		},
+        },
         //bindToController: true,
         link: function(scope, element, attrs){
 &nbsp;
             element.empty();
-        	attrs.$observe('url', function(value) {
+            attrs.$observe('url', function(value) {
                 <span class="missing-if-branch" title="else path not taken" >E</span>if (value) {
                     scope.$parent.socketConnection(value); // richiama la funzione del controller che permette di connettersi al server
                 }
@@ -531,6 +559,9 @@ angular.module('norris-nrti')
             scope.$parent.$watch('changedD', function(newValue, oldValue){
                 if(newValue !== oldValue){
                     scope.setData(); // richiama la funzione che imposta i dati ad ogni cambiamento dei dati dei flussi del grafico
+                    <span class="missing-if-branch" title="if path not taken" >I</span>if (element.children()[2]){
+<span class="cstat-no" title="statement not covered" >                      element.children()[2].remove();</span>
+                    }
                     <span class="missing-if-branch" title="else path not taken" >E</span>if (scope.$parent.lineChart.getLegend() !== null){
                         scope.legend();  // richiama la funzione che crea la legenda relativa al grafico
                     }
@@ -550,7 +581,20 @@ angular.module('norris-nrti')
                 var linechart, legend, onPoint, ticks;
                 var str = scope.url.split('/');
                 var id = str[str.length-1];
-&nbsp;
+                var width;
+                var height;
+                <span class="missing-if-branch" title="else path not taken" >E</span>if (scope.$parent.lineChart.getWidth() !== 0){
+                    width = scope.$parent.lineChart.getWidth() + 'px';
+                }
+                else{
+<span class="cstat-no" title="statement not covered" >                    width = '100%';</span>
+                }
+                <span class="missing-if-branch" title="else path not taken" >E</span>if (scope.$parent.lineChart.getHeight() !== 0){
+                    height = scope.$parent.lineChart.getHeight() + 'px';
+                }
+                else{
+<span class="cstat-no" title="statement not covered" >                    height = '100%';</span>
+                }
                 if (scope.$parent.lineChart.getLegend() !== null){
                     legend = true;
                 } else {
@@ -571,19 +615,19 @@ angular.module('norris-nrti')
                     linechart = '&lt;div class="graphtitle"&gt;'+ scope.$parent.lineChart.getTitle() +'&lt;/div&gt;' +
                                 '&lt;nvd3-line-with-focus-chart data="data" nodata=" " id="'+ id +'" ' +
                                 'yaxistickformat="yAxisTickFormatFunction()" xaxistickformat="xAxisTickFormatFunction()" x2axistickformat="xAxisTickFormatFunction()" ' +
-                                'margin="{left:30,top:30,bottom:30,right:30}" margin2="{left:30,top:30,bottom:30,right:30}" xaxisticks="' + ticks + '" x2axisticks="' + ticks + '" interactive="true" tooltips="'+ onPoint +'" ' +
-                                'showlegend="' + legend + '" color="colorFunction()" ' + 
+                                'margin="{left:50,top:50,bottom:50,right:50}" margin2="{left:50,top:50,bottom:50,right:50}" xaxisticks="' + ticks + '" x2axisticks="' + ticks + '" interactive="true" tooltips="'+ onPoint +'" ' +
+                                'showlegend="' + legend + '" color="colorFunction()" xaxislabel="' + scope.$parent.lineChart.getX().getName() + '" yaxislabel="' + scope.$parent.lineChart.getY().getName() + '" ' + 
                                 'xaxisrotatelabels="-90" x2axisrotatelables="-90" interpolate="' + scope.$parent.lineChart.getInterpolation() +'"&gt;' + // perchè colorFunction ritorna null per adesso
-                                '&lt;svg style="width:'+ scope.$parent.lineChart.getWidth() +'px; height:'+ scope.$parent.lineChart.getHeight() +'px;"&gt;&lt;/svg&gt;&lt;/nvd3-line-with-focus-chart&gt;';
+                                '&lt;svg style="width:'+ width +'; height:'+ height +';"&gt;&lt;/svg&gt;&lt;/nvd3-line-with-focus-chart&gt;';
                 } else {
                     linechart = '&lt;div class="graphtitle"&gt;'+ scope.$parent.lineChart.getTitle() +'&lt;/div&gt;' +
                                 '&lt;nvd3-line-chart data="data" nodata=" " id="'+ id +'" ' +
                                 'yaxistickformat="yAxisTickFormatFunction()" xaxistickformat="xAxisTickFormatFunction()" ' +
-                                'margin="{left:30,top:30,bottom:30,right:30}" interactive="true" tooltips="'+ onPoint +'" showlegend="' + legend + '" ' +
+                                'margin="{left:50,top:50,bottom:50,right:50}" interactive="true" tooltips="'+ onPoint +'" showlegend="' + legend + '" ' +
                                 'xaxisrotatelabels="-90" interpolate="' + scope.$parent.lineChart.getInterpolation() +'" ' +
-                                'color="colorFunction()" ' +
+                                'color="colorFunction()" x2axislabel="' + scope.$parent.lineChart.getX().getName() + '" yaxislabel="' + scope.$parent.lineChart.getY().getName() + '" ' +
                                 'showxaxis="true" showyaxis="true" xaxisticks="' + ticks + '"&gt;' +
-                                '&lt;svg style="width:'+ scope.$parent.lineChart.getWidth() +'px; height:'+ scope.$parent.lineChart.getHeight() +'px;"&gt;&lt;/svg&gt;&lt;/nvd3-line-chart&gt;';
+                                '&lt;svg style="width:'+ width +'; height:'+ height +';"&gt;&lt;/svg&gt;&lt;/nvd3-line-chart&gt;';
                 }
 &nbsp;
                 var compiled = $compile(linechart)(scope);
@@ -647,7 +691,7 @@ angular.module('norris-nrti')
                         parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.lineChart.getHeight() + 'px; right: -' + (scope.$parent.lineChart.getWidth()/2) + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'E':
-                        parent.setAttribute('style', 'float: left; position: relative; top: -' + (scope.$parent.lineChart.getHeight()/2) + 'px; right: -' + scope.$parent.lineChart.getWidth() + 'px;  background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + (scope.$parent.lineChart.getHeight()/2) + 'px; right: -' + (scope.$parent.lineChart.getWidth()+50) + 'px;  background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'S':
                         parent.setAttribute('style', 'float: left; position: relative; right: -' + (scope.$parent.lineChart.getWidth()/2) + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
@@ -656,13 +700,13 @@ angular.module('norris-nrti')
                         parent.setAttribute('style', 'float: left; position: relative; top: -' + (scope.$parent.lineChart.getHeight()/2) + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'NE':
-                        parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.lineChart.getHeight() + 'px; right: -' + scope.$parent.lineChart.getWidth() + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.lineChart.getHeight() + 'px; right: -' + (scope.$parent.lineChart.getWidth()+50) + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'NW':
                         parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.lineChart.getHeight() + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'SE':
-                        parent.setAttribute('style', 'float: left; position: relative; right: -' + scope.$parent.lineChart.getWidth() + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
+                        parent.setAttribute('style', 'float: left; position: relative; right: -' + (scope.$parent.lineChart.getWidth()+50) + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'SW':
                         parent.setAttribute('style', 'float: left; position: relative; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
@@ -673,9 +717,7 @@ angular.module('norris-nrti')
             // crea la legenda del grafico
             scope.legend = function() {
                 var chart = element.children()[1];
-                <span class="missing-if-branch" title="if path not taken" >I</span>if (element.children()[2]){
-<span class="cstat-no" title="statement not covered" >                    element.children()[2].remove();</span>
-                }
+&nbsp;
                 var parent = document.createElement('div');
 &nbsp;
                 changePosition(chart,parent);
@@ -705,7 +747,7 @@ angular.module('norris-nrti')
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Jun 28 2015 17:01:44 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Jul 01 2015 20:12:47 GMT+0000 (UTC)</div>
 </div>
 <script src="../../prettify.js"></script>
 <script>
