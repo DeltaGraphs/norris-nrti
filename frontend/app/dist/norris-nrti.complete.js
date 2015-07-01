@@ -11420,8 +11420,18 @@ angular.module('norris-nrti')
                                 '<svg style="width: '+ scope.$parent.barChart.getWidth() +'; height: '+ scope.$parent.barChart.getHeight() +';"></svg></nvd3-multi-bar-horizontal-chart>';
                 }
                 
+
+
+
                 var compiled = $compile(barchart)(scope);
                 element.append(compiled);
+
+                if (legend){
+                  var str = scope.url.split('/');
+                  var id = str[str.length-1];
+                  var legend = document.getElementById(id).getElementsByClassName('nv-legendWrap');
+                  (legend[0]).children[0].children[0].setAttribute('transform', 'translate(-100,-30)');
+                }
                 
             };
             
@@ -11519,13 +11529,12 @@ angular.module('norris-nrti')
 
             // crea la legenda del grafico
             scope.legend = function() {
+
+
                 var chart = element.children()[1];
                 var parent = document.createElement('div');
 
-                var str = scope.url.split('/');
-                var id = str[str.length-1];
-                var legend = document.getElementById(id).getElementsByClassName('nv-legendWrap');
-                (legend[0]).children[0].children[0].setAttribute('transform', 'translate(-100,-30)');
+                
 
                 changePosition(chart,parent);
                 parent.setAttribute('class','barChartLegend');
