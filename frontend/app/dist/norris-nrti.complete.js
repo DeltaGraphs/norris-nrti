@@ -8314,7 +8314,7 @@ return i.size=function(n){return arguments.length?(l=n,i):l},i.padding=function(
 * History :
 * Version       Date        Programmer                  Description
 * ===============================================================================================================
-* 0.1.0			    2015-05-31	Rossetto Francesco			Modified structure of appConfig
+* 0.1.0			2015-05-31	Rossetto Francesco			Modified structure of appConfig
 *
 * 0.0.2         2015-05-15  Maria Giovanna Chinellato   Add code of config file
 *
@@ -10272,7 +10272,7 @@ angular.module('norris-nrti')
             } 
             if (Object.keys(tJson).length !== 0) {
                 if (tJson.headers !== undefined) {
-                  this._headers = [];
+                    this._headers = [];
                     for (var z=0; z<tJson.headers.length; z++) { 
                         this._headers.push(tJson.headers[z]);
                     }
@@ -10961,12 +10961,13 @@ angular.module('norris-nrti')
 	this.listenOnEvents = function(){
 		socket.on('configGraph', function(info){ // ascolta sull'evento 'configGraph' (ricevuto come risposta alla connessione)
 			if (count === 0) {
+				console.log('configGraph mapChart');
 				count++;
 				$scope.mapChart.updateParameters(info.properties); // aggiorna le proprietà del map chart di default con i dati appena ricevuti
 				$scope.mapChart.initializeData(info.data); // inizializza i flussi con i dati
 				$scope.changedP = !$scope.changedP; // 'notifica' cambiamento proprietà
 				$scope.changedD = !$scope.changedD; // 'notifica' cambiamento dati
-	    }
+	        }
 		});
 		socket.on('updateGraphProp', function(info){ // ascolta sull'evento 'updateGraphProp'
 			$scope.mapChart.updateParameters(info); // aggiorna le proprietà del map chart con i dati appena ricevuti
@@ -11056,18 +11057,19 @@ angular.module('norris-nrti')
 	this.listenOnEvents = function(){
 		socket.on('configGraph', function(info){ // ascolta sull'evento 'configGraph' (ricevuto come risposta alla connessione)
 			if (count === 0) {
-        console.log('configGraph table');
+				console.log('configGraph table');
 				count++;
 				$scope.table.updateParameters(info.properties); // aggiorna le proprietà della table di default con i dati appena ricevuti
 				$scope.table.initializeData(info.data); // inizializza i flussi con i dati
-        $scope.changedP = true;
+				$scope.changedP = true;
 				$scope.changed = !$scope.changed; // 'notifica' cambiamento dati e proprietà
-      }
+	        }
 		});
 		socket.on('updateGraphProp', function(info){ // ascolta sull'evento 'updateGraphProp'
+			$scope.changedP = true;
 			$scope.table.updateParameters(info); // aggiorna le proprietà della table con i dati appena ricevuti
-      $scope.changedP = true;
 			$scope.changed = !$scope.changed; // 'notifica' cambiamento proprietà
+			console.log('changedP controller');
 		});
 		socket.on('insertFlow', function(info){ // ascolta sull'evento 'insertFlow'
 			var flow = TableFlowFactory.build(info.properties); // crea un flusso di default
@@ -11334,16 +11336,16 @@ angular.module('norris-nrti')
 
 angular.module('norris-nrti')
 .directive('barChart', function($compile){
-	return {
-		restrict: 'E', // direttiva di tipo elemento (tag)
-		replace: false,
-		scope: { // attributo della direttiva
+    return {
+        restrict: 'E', // direttiva di tipo elemento (tag)
+        replace: false,
+        scope: { // attributo della direttiva
             url: '@'
-		},
+        },
         //bindToController: true,
         link: function(scope, element, attrs){
             element.empty();
-        	attrs.$observe('url', function(value) {
+            attrs.$observe('url', function(value) {
                 if (value) {
                     scope.$parent.socketConnection(value); // richiama la funzione del controller che permette di connettersi al server
                 }
@@ -11580,17 +11582,17 @@ angular.module('norris-nrti')
 
 angular.module('norris-nrti')
 .directive('lineChart', function($compile){
-	return {
-		restrict: 'E', // direttiva di tipo elemento (tag)
-		replace: false,
+    return {
+        restrict: 'E', // direttiva di tipo elemento (tag)
+        replace: false,
         scope: { // attributo della direttiva
             url: '@'
-		},
+        },
         //bindToController: true,
         link: function(scope, element, attrs){
 
             element.empty();
-        	attrs.$observe('url', function(value) {
+            attrs.$observe('url', function(value) {
                 if (value) {
                     scope.$parent.socketConnection(value); // richiama la funzione del controller che permette di connettersi al server
                 }
@@ -11806,15 +11808,15 @@ angular.module('norris-nrti')
 
 angular.module('norris-nrti')
 .directive('mapChart', function(){
-	return {
-		restrict: 'E', // direttiva di tipo elemento (tag)
+    return {
+        restrict: 'E', // direttiva di tipo elemento (tag)
         replace: false,
         scope: { // attributo della direttiva
             url: '@'
-		},
+        },
         template: '<div>{{title}}</div><div></div><div></div>', // template HTML inserito dalla direttiva
         //bindToController: true,
-    	link: function (scope, element, attrs) {
+        link: function (scope, element, attrs) {
 
             attrs.$observe('url', function(value) {
                 if (value) {
@@ -12125,8 +12127,8 @@ angular.module('norris-nrti')
                     }
                 }
             };
-		}
-	};
+        }
+    };
 });
 /*jshint node: true */
 'use strict';
@@ -12158,16 +12160,16 @@ angular.module('norris-nrti')
 
 angular.module('norris-nrti')
 .directive('tableChart', function($compile){
-	return { // attributo della direttiva
-		restrict: 'E', // direttiva di tipo elemento (tag)
-		replace: false,
-		scope: {
+    return { // attributo della direttiva
+        restrict: 'E', // direttiva di tipo elemento (tag)
+        replace: false,
+        scope: {
             url: '@'
-		},
-		//bindToController: true,
+        },
+        //bindToController: true,
         link: function(scope, element, attrs){
 
-        	attrs.$observe('url', function(value) {
+            attrs.$observe('url', function(value) {
                 if (value) {
                     scope.$parent.socketConnection(value); // richiama la funzione del controller che permette di connettersi al server
                 }
@@ -12185,7 +12187,7 @@ angular.module('norris-nrti')
 
             // crea il codice HTML da inserire nella pagina per creare la tabella
             scope.init = function(){
-            	element.empty();
+                element.empty();
                 var border;
                 var noBorder = 'class="table-condensed table-striped"';
                 var headers = 'color: #000; background-color: #FFF;';
@@ -12287,7 +12289,6 @@ angular.module('norris-nrti')
                         table = table + noBorder + cellStyle;
                     }
                     if(isNaN(scope.$parent.table.getHeaders()[j])){
-                      console.log('scrivo td');
                       table = table + '>{{line.record.'+ scope.$parent.table.getHeaders()[j] +'}}</td>';
                     }
                     else{
@@ -12304,7 +12305,7 @@ angular.module('norris-nrti')
 
                 table = table + '</table>';
                 
-            	var compiled = $compile(table)(scope);
+                var compiled = $compile(table)(scope);
                 element.append(compiled);
             };
 
@@ -12319,7 +12320,6 @@ angular.module('norris-nrti')
                 //var appearance = ;
                 for (var k=0; k<scope.$parent.table.getFlowList().length; k++) {
                     for (var i=0; i<scope.$parent.table.getFlowList()[k].flow.getData().length; i++) {
-                      console.log('setData table');
                         var appearance = {};
                         var record = {};
                         for (var j=0; j<scope.$parent.table.getHeaders().length; j++) {
@@ -12331,7 +12331,6 @@ angular.module('norris-nrti')
                         scope.rowCollection.push({'appearance': appearance, 'record': record});
                     }
                 }
-                console.log(JSON.stringify(scope.rowCollection));
                 scope.itemsByPage = scope.$parent.table.getMaxItemsPage();
             };
         }
@@ -16473,7 +16472,7 @@ nv.models.axis = function() {
           .filter(function(d) { return !parseFloat(Math.round(d.__data__*100000)/1000000) && (d.__data__ !== undefined) }) //this is because sometimes the 0 tick is a very small fraction, TODO: think of cleaner technique
             .classed('zero', true);
       */
-      //store old scales for use in transitions on update
+    //store old scales for use in transitions on update
       scale0 = scale.copy();
 
     });
