@@ -11433,7 +11433,7 @@ angular.module('norris-nrti')
                   (legend[0]).children[0].children[0].setAttribute('style', 'transform: translate(-100,-30);');
                 }
 
-                //$compile(element.contents());
+                $compile(element.contents());
                 
             };
             
