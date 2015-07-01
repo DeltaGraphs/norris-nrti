@@ -11432,9 +11432,6 @@ angular.module('norris-nrti')
                   var legend = document.getElementById(id).getElementsByClassName('nv-legendWrap');
                   (legend[0]).children[0].children[0].setAttribute('style', 'transform: translate(-100,-30);');
                 }
-
-                $compile(element.contents());
-                
             };
             
             // imposta il colore dei flussi
