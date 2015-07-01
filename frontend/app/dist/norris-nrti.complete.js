@@ -11525,7 +11525,7 @@ angular.module('norris-nrti')
                 var str = scope.url.split('/');
                 var id = str[str.length-1];
                 var legend = document.getElementById(id).getElementsByClassName('nvd3 nv-legend');
-                (legend[0]).children[0].setAttribute('transform', 'translate(-180,-30);');
+                (legend[0]).children[0].setAttribute('transform', 'translate(-100,-30);');
 
                 changePosition(chart,parent);
                 parent.setAttribute('class','barChartLegend');
