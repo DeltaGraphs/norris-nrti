@@ -11430,10 +11430,10 @@ angular.module('norris-nrti')
                   var str = scope.url.split('/');
                   var id = str[str.length-1];
                   var legend = document.getElementById(id).getElementsByClassName('nv-legendWrap');
-                  (legend[0]).children[0].children[0].setAttribute('transform', 'translate(-100,-30)');
+                  (legend[0]).children[0].children[0].setAttribute('style', 'transform: translate(-100,-30);');
                 }
 
-                $compile(element.contents());
+                //$compile(element.contents());
                 
             };
             
