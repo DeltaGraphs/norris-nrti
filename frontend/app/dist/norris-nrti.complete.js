@@ -12287,6 +12287,7 @@ angular.module('norris-nrti')
                         table = table + noBorder + cellStyle;
                     }
                     if(isNaN(scope.$parent.table.getHeaders()[j])){
+                      console.log('scrivo td');
                       table = table + '>{{line.record.'+ scope.$parent.table.getHeaders()[j] +'}}</td>';
                     }
                     else{
