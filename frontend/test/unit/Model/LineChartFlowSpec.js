@@ -75,7 +75,7 @@ describe('LineChartFlow', function(){
 			'marker' : 'furly',
 			'interpolation' : 'single',
 			'area' : true,
-			'maxItem' : 20
+			'maxItems' : 20
 		};
 
 		var LineChartFlow;
@@ -155,7 +155,7 @@ describe('LineChartFlow', function(){
 			'flowColor' : '#F1F',
 			'marker' : 'furly1',
 			'area' : false,
-			'maxItem' : 15
+			'maxItems' : 15
 		};
 		var LineChartFlow;
 
@@ -237,7 +237,7 @@ describe('LineChartFlow', function(){
 		var LineChartFlow;
 
 		beforeEach(function(){
-			LineChartFlow = LineChartFlowFactory.build({ 'maxItem' : 3 });
+			LineChartFlow = LineChartFlowFactory.build({ 'maxItems' : 3 });
 			LineChartFlow.initializeData(data);
 		});
 
@@ -273,7 +273,7 @@ describe('LineChartFlow', function(){
 		var LineChartFlow;
 
 		beforeEach(function(){
-			LineChartFlow = LineChartFlowFactory.build({ 'maxItem' : 1 });
+			LineChartFlow = LineChartFlowFactory.build({ 'maxItems' : 1 });
 			LineChartFlow.initializeData(data);
 		});
 

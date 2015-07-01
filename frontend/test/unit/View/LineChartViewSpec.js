@@ -42,8 +42,6 @@ describe('LineChartView', function(){
 
   		var info = {
 			'title' : 'graficonuovo',
-			'height' : 400,
-			'width' : 400,
 			'enableLegend' : false,
 			'socketURL' : 'http://example.com',
 			'viewFinder' : true,

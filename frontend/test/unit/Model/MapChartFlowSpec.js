@@ -67,7 +67,7 @@ describe('MapChartFlow', function(){
 		var json = {
 			'name' : 'flusso1',
 			'marker' : 'furly',
-			'maxItemsSaved' : 20,
+			'trailLength' : 20,
 			'trace' : 'bubu'
 		};
 
@@ -141,7 +141,7 @@ describe('MapChartFlow', function(){
 		var json = {
 			'name' : 'flusso2',
 			'marker' : 'furly1',
-			'maxItemsSaved' : 45,
+			'trailLength' : 45,
 			'trace' : 'flow'
 		};
 		var MapChartFlow;
@@ -219,7 +219,7 @@ describe('MapChartFlow', function(){
 		var MapChartFlow;
 
 		beforeEach(function(){
-			MapChartFlow = MapChartFlowFactory.build({ 'maxItem' : 3 });
+			MapChartFlow = MapChartFlowFactory.build({ 'trailLength' : 3 });
 			MapChartFlow.initializeData(data);
 		});
 
@@ -255,7 +255,7 @@ describe('MapChartFlow', function(){
 		var MapChartFlow;
 
 		beforeEach(function(){
-			MapChartFlow = MapChartFlowFactory.build({ 'maxItemsSaved' : 1 });
+			MapChartFlow = MapChartFlowFactory.build({ 'trailLength' : 1 });
 			MapChartFlow.initializeData(data);
 		});
 
