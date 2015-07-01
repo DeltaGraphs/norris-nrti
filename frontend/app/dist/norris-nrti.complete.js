@@ -11524,8 +11524,8 @@ angular.module('norris-nrti')
 
                 var str = scope.url.split('/');
                 var id = str[str.length-1];
-                var legend = document.getElementById(id).getElementsByClassName('nv-legendWrap');
-                (legend[0]).children[0].children[0].setAttribute('transform', 'translate(-180,-30);');
+                var legend = document.getElementById(id).getElementsByClassName('nvd3 nv-legend');
+                (legend[0]).children[0].setAttribute('transform', 'translate(-180,-30);');
 
                 changePosition(chart,parent);
                 parent.setAttribute('class','barChartLegend');
@@ -20037,7 +20037,7 @@ nv.models.legend = function() {
       var gEnter = wrap.enter().append('g').attr('class', 'nvd3 nv-legend').append('g');
       var g = wrap.select('g');
 
-      //wrap.attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+      wrap.attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
       //------------------------------------------------------------
 
