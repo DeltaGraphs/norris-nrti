@@ -11222,14 +11222,14 @@ nv.models.scatter = function() {
           pointPaths.enter().append('path')
               .attr('class', function(d,i) { return 'nv-path-'+i; });
           pointPaths.exit().remove();
-          pointPaths
+          /*pointPaths
               .attr('d', function(d) {
                 if (d.data.length === 0)
                     return 'M 0 0'
                 else
                     return 'M' + d.data.join('L') + 'Z';
               });
-
+          */
           var mouseEventCallback = function(d,mDispatch) {
                 if (needsUpdate) return 0;
                 var series = data[d.series];

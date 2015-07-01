@@ -59,6 +59,21 @@ angular.module('norris-nrti')
                 var border;
                 var noBorder = 'class="table-condensed table-striped"';
                 var headers = 'color: #000; background-color: #FFF;';
+
+                var width;
+                var height;
+                if (scope.$parent.table.getWidth() !== 0){
+                    width = ' ' + scope.$parent.table.getWidth() + 'px';
+                }
+                else{
+                    width = '100%';
+                }
+                if (scope.$parent.table.getHeight() !== 0){
+                    height = ' ' + scope.$parent.table.getHeight() + 'px';
+                }
+                else{
+                    height = '100%';
+                }
                 
                 if (scope.$parent.table.getAppearance().horizontalGrid !== undefined && scope.$parent.table.getAppearance().horizontalGrid !== null) {
                     border = 'border-top:' + scope.$parent.table.getAppearance().horizontalGrid.width + 'px solid ' + scope.$parent.table.getAppearance().horizontalGrid.color + ';';
@@ -69,6 +84,7 @@ angular.module('norris-nrti')
                     border = border + 'border-right:' + scope.$parent.table.getAppearance().verticalGrid.width + 'px solid ' + scope.$parent.table.getAppearance().verticalGrid.color + ';';
                 }
                 var tableStyle = 'style="' + border + ' ';
+                var dim = 'style="width:' + width + '; height:' + height + ';"';
                 var str = scope.url.split('/');
                 var id = str[str.length-1];
                 var table = '<style>';
@@ -83,7 +99,7 @@ angular.module('norris-nrti')
                     }
                 }
 
-                table = table + '</style><div class="graphtitle">'+ scope.$parent.table.getTitle() +'</div><table id="' + id + '" st-table="displayed" st-safe-src="rowCollection" ';
+                table = table + '</style><div class="graphtitle">'+ scope.$parent.table.getTitle() +'</div><table id="' + id + '" ' + dim + ' st-table="displayed" st-safe-src="rowCollection" ';
 
                 table = table + '<thead><tr>';
                 for (var i=0; i<scope.$parent.table.getHeaders().length; i++) {

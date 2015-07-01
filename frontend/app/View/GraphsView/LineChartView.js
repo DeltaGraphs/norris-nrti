@@ -54,6 +54,9 @@ angular.module('norris-nrti')
             scope.$parent.$watch('changedD', function(newValue, oldValue){
                 if(newValue !== oldValue){
                     scope.setData(); // richiama la funzione che imposta i dati ad ogni cambiamento dei dati dei flussi del grafico
+                    if (element.children()[2]){
+                      element.children()[2].remove();
+                    }
                     if (scope.$parent.lineChart.getLegend() !== null){
                         scope.legend();  // richiama la funzione che crea la legenda relativa al grafico
                     }
@@ -73,7 +76,20 @@ angular.module('norris-nrti')
                 var linechart, legend, onPoint, ticks;
                 var str = scope.url.split('/');
                 var id = str[str.length-1];
-
+                var width;
+                var height;
+                if (scope.$parent.lineChart.getWidth() !== 0){
+                    width = scope.$parent.lineChart.getWidth() + 'px';
+                }
+                else{
+                    width = '100%';
+                }
+                if (scope.$parent.lineChart.getHeight() !== 0){
+                    height = scope.$parent.lineChart.getHeight() + 'px';
+                }
+                else{
+                    height = '100%';
+                }
                 if (scope.$parent.lineChart.getLegend() !== null){
                     legend = true;
                 } else {
@@ -97,7 +113,7 @@ angular.module('norris-nrti')
                                 'margin="{left:50,top:50,bottom:50,right:50}" margin2="{left:50,top:50,bottom:50,right:50}" xaxisticks="' + ticks + '" x2axisticks="' + ticks + '" interactive="true" tooltips="'+ onPoint +'" ' +
                                 'showlegend="' + legend + '" color="colorFunction()" xaxislabel="' + scope.$parent.lineChart.getX().getName() + '" yaxislabel="' + scope.$parent.lineChart.getY().getName() + '" ' + 
                                 'xaxisrotatelabels="-90" x2axisrotatelables="-90" interpolate="' + scope.$parent.lineChart.getInterpolation() +'">' + // perchè colorFunction ritorna null per adesso
-                                '<svg style="width:'+ scope.$parent.lineChart.getWidth() +'px; height:'+ scope.$parent.lineChart.getHeight() +'px;"></svg></nvd3-line-with-focus-chart>';
+                                '<svg style="width:'+ width +'; height:'+ height +';"></svg></nvd3-line-with-focus-chart>';
                 } else {
                     linechart = '<div class="graphtitle">'+ scope.$parent.lineChart.getTitle() +'</div>' +
                                 '<nvd3-line-chart data="data" nodata=" " id="'+ id +'" ' +
@@ -106,7 +122,7 @@ angular.module('norris-nrti')
                                 'xaxisrotatelabels="-90" interpolate="' + scope.$parent.lineChart.getInterpolation() +'" ' +
                                 'color="colorFunction()" x2axislabel="' + scope.$parent.lineChart.getX().getName() + '" yaxislabel="' + scope.$parent.lineChart.getY().getName() + '" ' +
                                 'showxaxis="true" showyaxis="true" xaxisticks="' + ticks + '">' +
-                                '<svg style="width:'+ scope.$parent.lineChart.getWidth() +'px; height:'+ scope.$parent.lineChart.getHeight() +'px;"></svg></nvd3-line-chart>';
+                                '<svg style="width:'+ width +'; height:'+ height +';"></svg></nvd3-line-chart>';
                 }
 
                 var compiled = $compile(linechart)(scope);
@@ -196,9 +212,7 @@ angular.module('norris-nrti')
             // crea la legenda del grafico
             scope.legend = function() {
                 var chart = element.children()[1];
-                if (element.children()[2]){
-                    element.children()[2].remove();
-                }
+
                 var parent = document.createElement('div');
 
                 changePosition(chart,parent);

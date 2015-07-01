@@ -55,6 +55,9 @@ angular.module('norris-nrti')
             scope.$parent.$watch('changedD', function(newValue, oldValue){
                 if(newValue !== oldValue){
                     scope.setData(); // richiama la funzione che imposta i dati ad ogni cambiamento dei dati dei flussi del grafico
+                    if (element.children()[2]){
+                      element.children()[2].remove();
+                    }
                     if (scope.$parent.barChart.getLegend() !== null){
                         scope.legend();  // richiama la funzione che crea la legenda relativa al grafico
                     }
@@ -75,6 +78,20 @@ angular.module('norris-nrti')
                 var legend, onPoint, control;
                 var str = scope.url.split('/');
                 var id = str[str.length-1];
+                var width;
+                var height;
+                if (scope.$parent.barChart.getWidth() !== 0){
+                    width = scope.$parent.barChart.getWidth() + 'px';
+                }
+                else{
+                    width = '100%';
+                }
+                if (scope.$parent.barChart.getHeight() !== 0){
+                    height = scope.$parent.barChart.getHeight() + 'px';
+                }
+                else{
+                    height = '100%';
+                }
                 if (scope.$parent.barChart.getLegend() !== null){
                     legend = true;
                 }
@@ -95,25 +112,28 @@ angular.module('norris-nrti')
                 }
                 if (scope.$parent.barChart.getBarOrientation() === 'V'){
                     barchart = '<div class="graphtitle">'+ scope.$parent.barChart.getTitle() +'</div>' +
-                                '<nvd3-multi-bar-chart data="data" nodata=" " id="'+ id +'" ' + ' width="'+ scope.$parent.barChart.getWidth() +'" height="'+ scope.$parent.barChart.getHeight() +'" '+
+                                '<nvd3-multi-bar-chart data="data" nodata=" " '+
                                 'xaxisticksformat="xAxisTickFormatFunction()" yaxistickformat="yAxisTickFormatFunction()" showxaxis="true" showyaxis="true" ' +
                                 'rotatelabels="-90" interactive="true" tooltips="'+ onPoint +'" showlegend="' + legend + '" ' +
                                 'xaxislabel="'+ scope.$parent.barChart.getX().getName() +'" yaxislabel="'+ scope.$parent.barChart.getY().getName() +'" ' +
                                 'color="colorFunction()" showcontrols="'+ control +'">' +
-                                '<svg style="width: '+ scope.$parent.barChart.getWidth() +'; height: '+ scope.$parent.barChart.getHeight() +';"></svg></nvd3-multi-bar-chart>';
+                                '<svg id="'+ id +'" ' + ' style="width: '+ width +'; height: '+ height +';"></svg></nvd3-multi-bar-chart>';
                 }else if(scope.$parent.barChart.getBarOrientation() === 'H'){
                     barchart = '<div class="graphtitle">'+ scope.$parent.barChart.getTitle() +'</div>' +
-                                '<nvd3-multi-bar-horizontal-chart data="data" nodata=" " id="'+ id +'" ' + ' width="'+ scope.$parent.barChart.getWidth() +'" height="'+ scope.$parent.barChart.getHeight() +'" '+
+                                '<nvd3-multi-bar-horizontal-chart data="data" nodata=" " '+
                                 'xaxisticksformat="xAxisTickFormatFunction()" yaxistickformat="yAxisTickFormatFunction()" showxaxis="true" showyaxis="true" ' +
                                 'rotatelabels="-90" interactive="true" tooltips="'+ onPoint +'" showlegend="' + legend + '" ' +
                                 'xaxislabel="'+ scope.$parent.barChart.getX().getName() + '" yaxislabel="'+ scope.$parent.barChart.getY().getName() +'" ' +
                                 'color="colorFunction()" showcontrols="'+ control +'">' +
-                                '<svg style="width: '+ scope.$parent.barChart.getWidth() +'; height: '+ scope.$parent.barChart.getHeight() +';"></svg></nvd3-multi-bar-horizontal-chart>';
+                                '<svg id="'+ id +'" ' + ' style="width: '+ width +'; height: '+ height +';"></svg></nvd3-multi-bar-horizontal-chart>';
                 }
                 
+
+
+
                 var compiled = $compile(barchart)(scope);
                 element.append(compiled);
-                
+
             };
             
             // imposta il colore dei flussi
@@ -210,16 +230,8 @@ angular.module('norris-nrti')
 
             // crea la legenda del grafico
             scope.legend = function() {
+
                 var chart = element.children()[1];
-
-                var str = scope.url.split('/');
-                var id = str[str.length-1];
-                var legend = document.getElementById(id).getElementsByClassName('nv-legendWrap');
-                (legend[0]).children[0].children[0].setAttribute('transform', 'translate(0,40);');
-
-                if (element.children()[2]){
-                    element.children()[2].remove();
-                }
                 var parent = document.createElement('div');
 
                 changePosition(chart,parent);
