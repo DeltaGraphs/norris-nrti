@@ -12182,7 +12182,6 @@ angular.module('norris-nrti')
 
             // crea il codice HTML da inserire nella pagina per creare la tabella
             scope.init = function(){
-                element.empty();
                 var border;
                 var noBorder = 'class="table-condensed table-striped"';
                 var headers = 'color: #000; background-color: #FFF;';
