@@ -12318,6 +12318,7 @@ angular.module('norris-nrti')
                 //var appearance = ;
                 for (var k=0; k<scope.$parent.table.getFlowList().length; k++) {
                     for (var i=0; i<scope.$parent.table.getFlowList()[k].flow.getData().length; i++) {
+                      console.log('setData table');
                         var appearance = {};
                         var record = {};
                         for (var j=0; j<scope.$parent.table.getHeaders().length; j++) {
