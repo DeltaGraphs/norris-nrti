@@ -11973,19 +11973,46 @@ angular.module('norris-nrti')
                                 var type;
                                 switch (scope.$parent.mapChart.getFlowList()[i].flow.getMarker().shape) { //circle, triangle, square, diamond, bus
                                     case 'circle':
-                                        type = attrs.url + '/img/c.png';
-                                        break;
-                                    case 'triangle':
-                                        type = attrs.url + '/img/t.png';
+                                        type = attrs.url + '/img/circle.png';
                                         break;
                                     case 'square':
-                                        type = attrs.url + '/img/s.png';
+                                        type = attrs.url + '/img/square.png';
                                         break;
                                     case 'diamond':
-                                        type = attrs.url + '/img/d.png';
+                                        type = attrs.url + '/img/diamond.png';
+                                        break;
+                                    case 'triangle':
+                                        type = attrs.url + '/img/triangle.png';
                                         break;
                                     case 'bus':
-                                        type = attrs.url + '/img/b.png';
+                                        type = attrs.url + '/img/bus.png';
+                                        break;
+                                    case 'car':
+                                        type = attrs.url + '/img/car.png';
+                                        break;
+                                    case 'plane':
+                                        type = attrs.url + '/img/plane.png';
+                                        break;
+                                    case 'man':
+                                        type = attrs.url + '/img/man.png';
+                                        break;
+                                    case 'woman':
+                                        type = attrs.url + '/img/woman.png';
+                                        break;
+                                    case 'chuck':
+                                        type = attrs.url + '/img/chuck.png';
+                                        break;
+                                    case 'ship':
+                                        type = attrs.url + '/img/ship.png';
+                                        break;
+                                    case 'flag':
+                                        type = attrs.url + '/img/flag.png';
+                                        break;
+                                    case 'truck':
+                                        type = attrs.url + '/img/truck.png';
+                                        break;
+                                    case 'house':
+                                        type = attrs.url + '/img/house.png';
                                         break;
                                 }
                                 marker = new google.maps.Marker({
@@ -12094,21 +12121,48 @@ angular.module('norris-nrti')
                             switch (scope.$parent.mapChart.getFlowList()[i].flow.getMarker().type) {
                               case 'shape':
                                 switch (scope.$parent.mapChart.getFlowList()[i].flow.getMarker().shape) { //circle, triangle, square, diamond, bus
-                                  case 'circle':
-                                    type = attrs.url + '/img/ic.png';
-                                    break;
-                                  case 'triangle':
-                                    type = attrs.url + '/img/it.png';
-                                    break;
-                                  case 'square':
-                                    type = attrs.url + '/img/is.png';
-                                    break;
-                                  case 'diamond':
-                                    type = attrs.url + '/img/id.png';
-                                    break;
-                                  case 'bus':
-                                    type = attrs.url + '/img/ib.png';
-                                    break;
+                                    case 'circle':
+                                        type = attrs.url + '/img/circleI.png';
+                                        break;
+                                    case 'square':
+                                        type = attrs.url + '/img/squareI.png';
+                                        break;
+                                    case 'diamond':
+                                        type = attrs.url + '/img/diamondI.png';
+                                        break;
+                                    case 'triangle':
+                                        type = attrs.url + '/img/triangleI.png';
+                                        break;
+                                    case 'bus':
+                                        type = attrs.url + '/img/busI.png';
+                                        break;
+                                    case 'car':
+                                        type = attrs.url + '/img/carI.png';
+                                        break;
+                                    case 'plane':
+                                        type = attrs.url + '/img/planeI.png';
+                                        break;
+                                    case 'man':
+                                        type = attrs.url + '/img/manI.png';
+                                        break;
+                                    case 'woman':
+                                        type = attrs.url + '/img/womanI.png';
+                                        break;
+                                    case 'chuck':
+                                        type = attrs.url + '/img/chuckI.png';
+                                        break;
+                                    case 'ship':
+                                        type = attrs.url + '/img/shipI.png';
+                                        break;
+                                    case 'flag':
+                                        type = attrs.url + '/img/flagI.png';
+                                        break;
+                                    case 'truck':
+                                        type = attrs.url + '/img/truckI.png';
+                                        break;
+                                    case 'house':
+                                        type = attrs.url + '/img/houseI.png';
+                                        break;
                                 }
                                 break;
                               case 'icon':
