@@ -12292,13 +12292,13 @@ angular.module('norris-nrti')
                 var width;
                 var height;
                 if (scope.$parent.table.getWidth() !== 0){
-                    width = scope.$parent.table.getWidth() + 'px';
+                    width = ' ' + scope.$parent.table.getWidth() + 'px';
                 }
                 else{
                     width = '100%';
                 }
                 if (scope.$parent.table.getHeight() !== 0){
-                    height = scope.$parent.table.getHeight() + 'px';
+                    height = ' ' + scope.$parent.table.getHeight() + 'px';
                 }
                 else{
                     height = '100%';
@@ -12313,7 +12313,7 @@ angular.module('norris-nrti')
                     border = border + 'border-right:' + scope.$parent.table.getAppearance().verticalGrid.width + 'px solid ' + scope.$parent.table.getAppearance().verticalGrid.color + ';';
                 }
                 var tableStyle = 'style="' + border + ' ';
-                var dim = 'style="width: ' + width + '; height: ' + height ';"';
+                var dim = 'style="width:' + width + '; height:' + height ';"';
                 var str = scope.url.split('/');
                 var id = str[str.length-1];
                 var table = '<style>';
