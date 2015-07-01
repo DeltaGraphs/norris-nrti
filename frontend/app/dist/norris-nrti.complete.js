@@ -11404,7 +11404,7 @@ angular.module('norris-nrti')
                     height = scope.$parent.barChart.getHeight() + 'px';
                 }
                 else{
-                    height = '';
+                    height = '100%';
                 }
                 if (scope.$parent.barChart.getLegend() !== null){
                     legend = true;
