@@ -28,7 +28,7 @@ describe('PageView', function(){
 
 	var html, info, element, scope, controller, PageFactory;
 
-	beforeEach(inject(function($rootScope, $compile, $controller, $injector, $routeParams) {
+	beforeEach(inject(function($rootScope, $compile, $controller, $injector) {
     	scope = $rootScope.$new();
     	PageFactory = $injector.get('PageFactory');
 
@@ -36,12 +36,12 @@ describe('PageView', function(){
 			'properties': {
 				'ID':'page1',
 				'name':'Pagina 1 Last Sync: 25/6/2015 @ 19:21:56',
-				'description':'Questa è una bella pagina Last Sync: 25/6/2015 @ 19:21:56',
+				'description':'Questa è una bella pagina Last Sync: 25/6/2015 19:21:56',
 				'socketURL':'http://norris-nrti-dev.herokuapp.com/norris/page1'
 			}
     	};
     	
-    	controller = $controller('PageController', { $scope : scope, $routeParams : { pageId: '0' } });
+    	controller = $controller('PageController', { $scope : scope });
     	scope.page = PageFactory.build(info);
 
     	html = angular.element('<page></page>');

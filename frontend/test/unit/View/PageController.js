@@ -40,7 +40,7 @@ angular.module('mockPageController')
 
 	// funzione che mette in ascolto il socket su alcuni eventi
 	this.listenOnEvents = function(){
-		socket.on('configGraph', function(){
+		socket.on('configPage', function(){
 			flag++;
 		});
 	};
