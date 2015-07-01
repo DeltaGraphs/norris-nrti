@@ -11384,6 +11384,20 @@ angular.module('norris-nrti')
                 var legend, onPoint, control;
                 var str = scope.url.split('/');
                 var id = str[str.length-1];
+                var width;
+                var height;
+                if (scope.$parent.barChart.getWidth() !== 0){
+                    width = scope.$parent.barChart.getWidth() + 'px';
+                }
+                else{
+                    width = '100%';
+                }
+                if (scope.$parent.barChart.getHeight() !== 0){
+                    height = scope.$parent.barChart.getHeight() + 'px';
+                }
+                else{
+                    height = '100%';
+                }
                 if (scope.$parent.barChart.getLegend() !== null){
                     legend = true;
                 }
@@ -11404,20 +11418,20 @@ angular.module('norris-nrti')
                 }
                 if (scope.$parent.barChart.getBarOrientation() === 'V'){
                     barchart = '<div class="graphtitle">'+ scope.$parent.barChart.getTitle() +'</div>' +
-                                '<nvd3-multi-bar-chart data="data" nodata=" " width="'+ scope.$parent.barChart.getWidth() +'" height="'+ scope.$parent.barChart.getHeight() +'" '+
+                                '<nvd3-multi-bar-chart data="data" nodata=" " '+
                                 'xaxisticksformat="xAxisTickFormatFunction()" yaxistickformat="yAxisTickFormatFunction()" showxaxis="true" showyaxis="true" ' +
                                 'rotatelabels="-90" interactive="true" tooltips="'+ onPoint +'" showlegend="' + legend + '" ' +
                                 'xaxislabel="'+ scope.$parent.barChart.getX().getName() +'" yaxislabel="'+ scope.$parent.barChart.getY().getName() +'" ' +
                                 'color="colorFunction()" showcontrols="'+ control +'">' +
-                                '<svg id="'+ id +'" ' + ' style="width: '+ scope.$parent.barChart.getWidth() +'; height: '+ scope.$parent.barChart.getHeight() +';"></svg></nvd3-multi-bar-chart>';
+                                '<svg id="'+ id +'" ' + ' style="width: '+ width +'; height: '+ height +';"></svg></nvd3-multi-bar-chart>';
                 }else if(scope.$parent.barChart.getBarOrientation() === 'H'){
                     barchart = '<div class="graphtitle">'+ scope.$parent.barChart.getTitle() +'</div>' +
-                                '<nvd3-multi-bar-horizontal-chart data="data" nodata=" " width="'+ scope.$parent.barChart.getWidth() +'" height="'+ scope.$parent.barChart.getHeight() +'" '+
+                                '<nvd3-multi-bar-horizontal-chart data="data" nodata=" " '+
                                 'xaxisticksformat="xAxisTickFormatFunction()" yaxistickformat="yAxisTickFormatFunction()" showxaxis="true" showyaxis="true" ' +
                                 'rotatelabels="-90" interactive="true" tooltips="'+ onPoint +'" showlegend="' + legend + '" ' +
                                 'xaxislabel="'+ scope.$parent.barChart.getX().getName() + '" yaxislabel="'+ scope.$parent.barChart.getY().getName() +'" ' +
                                 'color="colorFunction()" showcontrols="'+ control +'">' +
-                                '<svg id="'+ id +'" ' + ' style="width: '+ scope.$parent.barChart.getWidth() +'; height: '+ scope.$parent.barChart.getHeight() +';"></svg></nvd3-multi-bar-horizontal-chart>';
+                                '<svg id="'+ id +'" ' + ' style="width: '+ width +'; height: '+ height +';"></svg></nvd3-multi-bar-horizontal-chart>';
                 }
                 
 
@@ -11628,7 +11642,20 @@ angular.module('norris-nrti')
                 var linechart, legend, onPoint, ticks;
                 var str = scope.url.split('/');
                 var id = str[str.length-1];
-
+                var width;
+                var height;
+                if (scope.$parent.lineChart.getWidth() !== 0){
+                    width = scope.$parent.lineChart.getWidth() + 'px';
+                }
+                else{
+                    width = '100%';
+                }
+                if (scope.$parent.lineChart.getHeight() !== 0){
+                    height = scope.$parent.lineChart.getHeight() + 'px';
+                }
+                else{
+                    height = '100%';
+                }
                 if (scope.$parent.lineChart.getLegend() !== null){
                     legend = true;
                 } else {
@@ -11652,7 +11679,7 @@ angular.module('norris-nrti')
                                 'margin="{left:50,top:50,bottom:50,right:50}" margin2="{left:50,top:50,bottom:50,right:50}" xaxisticks="' + ticks + '" x2axisticks="' + ticks + '" interactive="true" tooltips="'+ onPoint +'" ' +
                                 'showlegend="' + legend + '" color="colorFunction()" xaxislabel="' + scope.$parent.lineChart.getX().getName() + '" yaxislabel="' + scope.$parent.lineChart.getY().getName() + '" ' + 
                                 'xaxisrotatelabels="-90" x2axisrotatelables="-90" interpolate="' + scope.$parent.lineChart.getInterpolation() +'">' + // perchè colorFunction ritorna null per adesso
-                                '<svg style="width:'+ scope.$parent.lineChart.getWidth() +'px; height:'+ scope.$parent.lineChart.getHeight() +'px;"></svg></nvd3-line-with-focus-chart>';
+                                '<svg style="width:'+ width +'; height:'+ height +';"></svg></nvd3-line-with-focus-chart>';
                 } else {
                     linechart = '<div class="graphtitle">'+ scope.$parent.lineChart.getTitle() +'</div>' +
                                 '<nvd3-line-chart data="data" nodata=" " id="'+ id +'" ' +
@@ -11661,7 +11688,7 @@ angular.module('norris-nrti')
                                 'xaxisrotatelabels="-90" interpolate="' + scope.$parent.lineChart.getInterpolation() +'" ' +
                                 'color="colorFunction()" x2axislabel="' + scope.$parent.lineChart.getX().getName() + '" yaxislabel="' + scope.$parent.lineChart.getY().getName() + '" ' +
                                 'showxaxis="true" showyaxis="true" xaxisticks="' + ticks + '">' +
-                                '<svg style="width:'+ scope.$parent.lineChart.getWidth() +'px; height:'+ scope.$parent.lineChart.getHeight() +'px;"></svg></nvd3-line-chart>';
+                                '<svg style="width:'+ width +'; height:'+ height +';"></svg></nvd3-line-chart>';
                 }
 
                 var compiled = $compile(linechart)(scope);
@@ -11948,8 +11975,23 @@ angular.module('norris-nrti')
                     }
                 }
 
+                var width;
+                var height;
+                if (scope.$parent.mapChart.getWidth() !== 0){
+                    width = scope.$parent.mapChart.getWidth() + 'px';
+                }
+                else{
+                    width = '100%';
+                }
+                if (scope.$parent.mapChart.getHeight() !== 0){
+                    height = scope.$parent.mapChart.getHeight() + 'px';
+                }
+                else{
+                    height = '100%';
+                }
+
                 var mapCanvas = element.children()[1];
-                mapCanvas.setAttribute('style', 'height:'+ scope.$parent.mapChart.getHeight() +'px; width:'+ scope.$parent.mapChart.getWidth() +'px; position: relative;');
+                mapCanvas.setAttribute('style', 'height:'+ height +'; width:'+ width +'; position: relative;');
      
             };
 
@@ -12246,6 +12288,21 @@ angular.module('norris-nrti')
                 var border;
                 var noBorder = 'class="table-condensed table-striped"';
                 var headers = 'color: #000; background-color: #FFF;';
+
+                var width;
+                var height;
+                if (scope.$parent.table.getWidth() !== 0){
+                    width = scope.$parent.table.getWidth() + 'px';
+                }
+                else{
+                    width = '100%';
+                }
+                if (scope.$parent.table.getHeight() !== 0){
+                    height = scope.$parent.table.getHeight() + 'px';
+                }
+                else{
+                    height = '100%';
+                }
                 
                 if (scope.$parent.table.getAppearance().horizontalGrid !== undefined && scope.$parent.table.getAppearance().horizontalGrid !== null) {
                     border = 'border-top:' + scope.$parent.table.getAppearance().horizontalGrid.width + 'px solid ' + scope.$parent.table.getAppearance().horizontalGrid.color + ';';
@@ -12256,6 +12313,7 @@ angular.module('norris-nrti')
                     border = border + 'border-right:' + scope.$parent.table.getAppearance().verticalGrid.width + 'px solid ' + scope.$parent.table.getAppearance().verticalGrid.color + ';';
                 }
                 var tableStyle = 'style="' + border + ' ';
+                var dim = 'style="width: ' + width + '; height: ' + height ';"';
                 var str = scope.url.split('/');
                 var id = str[str.length-1];
                 var table = '<style>';
@@ -12270,7 +12328,7 @@ angular.module('norris-nrti')
                     }
                 }
 
-                table = table + '</style><div class="graphtitle">'+ scope.$parent.table.getTitle() +'</div><table id="' + id + '" st-table="displayed" st-safe-src="rowCollection" ';
+                table = table + '</style><div class="graphtitle">'+ scope.$parent.table.getTitle() +'</div><table id="' + id + '" ' + dim + ' st-table="displayed" st-safe-src="rowCollection" ';
 
                 table = table + '<thead><tr>';
                 for (var i=0; i<scope.$parent.table.getHeaders().length; i++) {
@@ -12455,7 +12513,7 @@ angular.module('norris-nrti')
 
 				var table = document.createElement('table');
 				table.className = 'graphstable';
-				//table.setAttribute('style', 'width: 100%;');
+				table.setAttribute('style', 'width: 100%;');
 				parent.appendChild(table);
 
 				// crea la tabella con i grafici
