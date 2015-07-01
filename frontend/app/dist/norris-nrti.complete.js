@@ -12330,6 +12330,7 @@ angular.module('norris-nrti')
                         scope.rowCollection.push({'appearance': appearance, 'record': record});
                     }
                 }
+                console.log(JSON.stringify(scope.rowCollection));
                 scope.itemsByPage = scope.$parent.table.getMaxItemsPage();
             };
         }
