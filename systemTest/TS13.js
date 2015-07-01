@@ -60,11 +60,11 @@ var TS=function(table){
 			    appearance: {
 			        horizontalGrid: {
 			            color: '#00AA00', //#xxxxxx,
-			            width: 1 // > 0
+			            width: 1
 			        },
 			        verticalGrid: {
 			            color: '#00AA00', //#xxxxxx,
-			            width: 1 // > 0
+			            width: 1
 			        }
 			    }
 			});
@@ -80,7 +80,16 @@ var TS=function(table){
 			        column: ['CHANGE1'],
 			        ordering: ['DESC']
 			    },
-			    appearance: {}
+			    appearance: {
+			    	horizontalGrid: {
+			            color: '#00AA00', //#xxxxxx,
+			            width: 0
+			        },
+			        verticalGrid: {
+			            color: '#00AA00', //#xxxxxx,
+			            width: 0
+			        }
+			    }
 			});
 			table.addRecord('flow1', {'0':Math.floor((Math.random() * 10) + 1), '1':Math.floor((Math.random() * 10) + 1), '2':Math.floor((Math.random() * 10) + 1)});
         }
