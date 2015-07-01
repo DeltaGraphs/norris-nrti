@@ -11996,13 +11996,13 @@ angular.module('norris-nrti')
                     width = scope.$parent.mapChart.getWidth() + 'px';
                 }
                 else{
-                    width = '100%';
+                    width = '100% !important';
                 }
                 if (scope.$parent.mapChart.getHeight() !== 0){
                     height = scope.$parent.mapChart.getHeight() + 'px';
                 }
                 else{
-                    height = '100%';
+                    height = '100% !important';
                 }
 
                 var mapCanvas = element.children()[1];
