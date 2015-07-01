@@ -87,8 +87,8 @@ var TS=function(barChart){
         else{
             barChart.updateProperties({
                 title: 'Test aggiornamento parametri Bar Chart',
-                width: 500,
-                height: 800,
+                width: 800,
+                height: 600,
                 enableLegend: false,
                 xAxis:{
                     name: 'Tempo'
