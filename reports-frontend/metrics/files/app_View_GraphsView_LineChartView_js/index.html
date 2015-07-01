@@ -171,10 +171,10 @@ angular.module(&#039;norris-nrti&#039;)
                 var height;
                 var xLabel = &#039;X axis&#039;;
                 var yLabel = &#039;Y axis&#039;;
-                if (scope.$parent.lineChart.getX() !== undefined &amp;&amp; scope.$parent.lineChart.getX().getName() !== null){
+                if (scope.$parent.lineChart.getX() !== null &amp;&amp; scope.$parent.lineChart.getX().getName() !== null){
                     xLabel = scope.$parent.lineChart.getX().getName();
                 }
-                if (scope.$parent.lineChart.getY() !== undefined &amp;&amp; scope.$parent.lineChart.getY().getName() !== null){
+                if (scope.$parent.lineChart.getY() !== null &amp;&amp; scope.$parent.lineChart.getY().getName() !== null){
                     xLabel = scope.$parent.lineChart.getY().getName();
                 }
                 if (scope.$parent.lineChart.getWidth() !== 0){
