@@ -12136,7 +12136,7 @@ angular.module('norris-nrti')
                 }
                 else{
                     map.setAttribute('class', 'mapChartAuto');
-                    width = '200px';
+                    width = 200 + 'px';
                 }
                 if (scope.$parent.mapChart.getHeight() !== 0){
                     map.setAttribute('class', 'mapChartCanvas');
@@ -12144,7 +12144,7 @@ angular.module('norris-nrti')
                 }
                 else{
                     map.setAttribute('class', 'mapChartAuto');
-                    height = '200px';
+                    height = 200 + 'px';
                 }
 
                 switch (scope.$parent.mapChart.getLegend().getPosition()) {
