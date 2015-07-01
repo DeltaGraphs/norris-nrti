@@ -11990,22 +11990,28 @@ angular.module('norris-nrti')
                     }
                 }
 
+                var mapCanvas = element.children()[1];
+
                 var width;
                 var height;
                 if (scope.$parent.mapChart.getWidth() !== 0){
+                    mapCanvas.setAttribute('class', 'mapChartCanvas');
                     width = scope.$parent.mapChart.getWidth() + 'px';
                 }
                 else{
-                    width = '100% !important';
+                    mapCanvas.setAttribute('class', 'mapChartAuto');
+                    width = '200px';
                 }
                 if (scope.$parent.mapChart.getHeight() !== 0){
+                    mapCanvas.setAttribute('class', 'mapChartCanvas');
                     height = scope.$parent.mapChart.getHeight() + 'px';
                 }
                 else{
-                    height = '100% !important';
+                    mapCanvas.setAttribute('class', 'mapChartAuto');
+                    height = '200px';
                 }
 
-                var mapCanvas = element.children()[1];
+                
                 mapCanvas.setAttribute('style', 'height:'+ height +'; width:'+ width +'; position: relative;');
      
             };
