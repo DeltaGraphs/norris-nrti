@@ -303,7 +303,7 @@ TableModel.prototype.updateProperties = function(params) {
 					this._appearance.headers.backgroundColor = params.appearance.headers.backgroundColor;
 				}
 			}
-			prop.appearance=params.appearance;
+			prop.appearance=this._appearance;
 		}
 		if(params.addRowOn!==undefined &amp;&amp; typeof params.addRowOn === &#039;string&#039; &amp;&amp; (params.addRowOn===&#039;bottom&#039; || params.addRowOn===&#039;top&#039;)){
 			this._addRowOn=prop.addRowOn=params.addRowOn;

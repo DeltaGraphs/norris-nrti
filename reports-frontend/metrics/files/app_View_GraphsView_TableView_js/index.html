@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">50.49</p>
+      <p class="stat">48.74</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">193</p>
+      <p class="stat">221</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">49.73</p>
+      <p class="stat">46.77</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">3.40</p>
+      <p class="stat">3.83</p>
     </div>
   </div>
 </div>
@@ -119,16 +119,16 @@
 
 angular.module(&#039;norris-nrti&#039;)
 .directive(&#039;tableChart&#039;, function($compile){
-	return { // attributo della direttiva
-		restrict: &#039;E&#039;, // direttiva di tipo elemento (tag)
-		replace: false,
-		scope: {
+    return { // attributo della direttiva
+        restrict: &#039;E&#039;, // direttiva di tipo elemento (tag)
+        replace: false,
+        scope: {
             url: &#039;@&#039;
-		},
-		//bindToController: true,
+        },
+        //bindToController: true,
         link: function(scope, element, attrs){
 
-        	attrs.$observe(&#039;url&#039;, function(value) {
+            attrs.$observe(&#039;url&#039;, function(value) {
                 if (value) {
                     scope.$parent.socketConnection(value); // richiama la funzione del controller che permette di connettersi al server
                 }
@@ -137,7 +137,7 @@ angular.module(&#039;norris-nrti&#039;)
             scope.$parent.$watch(&#039;changed&#039;, function(newValue, oldValue){
                 if (newValue !== oldValue) {
                     scope.setData(); // chiama la funzione che organizza i dati da visualizzare
-                    if (scope.displayed.length &gt; 0 &amp;&amp; scope.$parent.changedP === true) {
+                    if (scope.$parent.changedP === true) {
                         scope.init(); // chiama la funzione init che crea la tabella
                         scope.$parent.changedP = false;
                     }
@@ -146,10 +146,25 @@ angular.module(&#039;norris-nrti&#039;)
 
             // crea il codice HTML da inserire nella pagina per creare la tabella
             scope.init = function(){
-            	element.empty();
+                element.empty();
                 var border;
                 var noBorder = &#039;class=&quot;table-condensed table-striped&quot;&#039;;
                 var headers = &#039;color: #000; background-color: #FFF;&#039;;
+
+                var width;
+                var height;
+                if (scope.$parent.table.getWidth() !== 0){
+                    width = &#039; &#039; + scope.$parent.table.getWidth() + &#039;px&#039;;
+                }
+                else{
+                    width = &#039;100%&#039;;
+                }
+                if (scope.$parent.table.getHeight() !== 0){
+                    height = &#039; &#039; + scope.$parent.table.getHeight() + &#039;px&#039;;
+                }
+                else{
+                    height = &#039;100%&#039;;
+                }
                 
                 if (scope.$parent.table.getAppearance().horizontalGrid !== undefined &amp;&amp; scope.$parent.table.getAppearance().horizontalGrid !== null) {
                     border = &#039;border-top:&#039; + scope.$parent.table.getAppearance().horizontalGrid.width + &#039;px solid &#039; + scope.$parent.table.getAppearance().horizontalGrid.color + &#039;;&#039;;
@@ -160,6 +175,7 @@ angular.module(&#039;norris-nrti&#039;)
                     border = border + &#039;border-right:&#039; + scope.$parent.table.getAppearance().verticalGrid.width + &#039;px solid &#039; + scope.$parent.table.getAppearance().verticalGrid.color + &#039;;&#039;;
                 }
                 var tableStyle = &#039;style=&quot;&#039; + border + &#039; &#039;;
+                var dim = &#039;style=&quot;width:&#039; + width + &#039;; height:&#039; + height + &#039;;&quot;&#039;;
                 var str = scope.url.split(&#039;/&#039;);
                 var id = str[str.length-1];
                 var table = &#039;&lt;style&gt;&#039;;
@@ -174,7 +190,7 @@ angular.module(&#039;norris-nrti&#039;)
                     }
                 }
 
-                table = table + &#039;&lt;/style&gt;&lt;div class=&quot;graphtitle&quot;&gt;&#039;+ scope.$parent.table.getTitle() +&#039;&lt;/div&gt;&lt;table id=&quot;&#039; + id + &#039;&quot; st-table=&quot;displayed&quot; st-safe-src=&quot;rowCollection&quot; &#039;;
+                table = table + &#039;&lt;/style&gt;&lt;div class=&quot;graphtitle&quot;&gt;&#039;+ scope.$parent.table.getTitle() +&#039;&lt;/div&gt;&lt;table id=&quot;&#039; + id + &#039;&quot; &#039; + dim + &#039; st-table=&quot;displayed&quot; st-safe-src=&quot;rowCollection&quot; &#039;;
 
                 table = table + &#039;&lt;thead&gt;&lt;tr&gt;&#039;;
                 for (var i=0; i&lt;scope.$parent.table.getHeaders().length; i++) {
@@ -198,7 +214,7 @@ angular.module(&#039;norris-nrti&#039;)
                 table = table + &#039;&lt;/tr&gt;&lt;/thead&gt;&#039;;
 
                 // controlla se è abilitato qualche ordinamento da parte dello sviluppatore e ordina i record
-                if (scope.$parent.table.getSort().column.length &gt; 0){
+                if (scope.$parent.table.getSort() !== null){
                     if (scope.$parent.table.getSort().column.length === 1){
                         table = table + &#039;&lt;tbody&gt;&lt;tr ng-repeat=&quot;line in displayed | orderBy:\&#039;&#039;+ scope.$parent.table.getSort().column[0] +&#039;\&#039;&quot;&gt;&#039;;
                     }
@@ -230,8 +246,16 @@ angular.module(&#039;norris-nrti&#039;)
                 }
                 //i = 0;
                 for (var j=0; j&lt;scope.$parent.table.getHeaders().length; j++){
-                    var cellBG = &#039;background-color: {{line.appearance.&#039; + scope.$parent.table.getHeaders()[j] + &#039;.bg}};&#039;;
-                    var cellText = &#039;color: {{line.appearance&#039; + scope.$parent.table.getHeaders()[j] + &#039;.text}};&#039;;
+                  var cellBG;
+                  var cellText;
+                  if(isNaN(scope.$parent.table.getHeaders()[j])){
+                    cellBG = &#039;background-color: {{line.appearance.&#039; + scope.$parent.table.getHeaders()[j] + &#039;.bg}};&#039;;
+                    cellText = &#039;color: {{line.appearance.&#039; + scope.$parent.table.getHeaders()[j] + &#039;.text}};&#039;;
+                  }
+                  else{
+                    cellBG = &#039;background-color: {{line.appearance[&#039; + scope.$parent.table.getHeaders()[j] + &#039;].bg}};&#039;;
+                    cellText = &#039;color: {{line.appearance[&#039; + scope.$parent.table.getHeaders()[j] + &#039;].text}};&#039;;
+                  }
                     var cellStyle = &#039;style=&quot;&#039; + border + cellBG + cellText + &#039;&quot;&#039;;
                     table = table + &#039;&lt;td &#039;;
                     if ((scope.$parent.table.getAppearance().horizontalGrid !== undefined &amp;&amp; scope.$parent.table.getAppearance().horizontalGrid !== null) || (scope.$parent.table.getAppearance().verticalGrid !== undefined &amp;&amp; scope.$parent.table.getAppearance().verticalGrid !== undefined)) {
@@ -239,7 +263,12 @@ angular.module(&#039;norris-nrti&#039;)
                     } else {
                         table = table + noBorder + cellStyle;
                     }
-                    table = table + &#039;&gt;{{line.record.&#039;+ scope.$parent.table.getHeaders()[j] +&#039;}}&lt;/td&gt;&#039;;
+                    if(isNaN(scope.$parent.table.getHeaders()[j])){
+                      table = table + &#039;&gt;{{line.record.&#039;+ scope.$parent.table.getHeaders()[j] +&#039;}}&lt;/td&gt;&#039;;
+                    }
+                    else{
+                      table = table + &#039;&gt;{{line.record[&#039;+ scope.$parent.table.getHeaders()[j] +&#039;]}}&lt;/td&gt;&#039;;
+                    }
                 }
                 table = table + &#039;&lt;/tr&gt;&lt;/tbody&gt;&#039;;
 
@@ -251,7 +280,7 @@ angular.module(&#039;norris-nrti&#039;)
 
                 table = table + &#039;&lt;/table&gt;&#039;;
                 
-            	var compiled = $compile(table)(scope);
+                var compiled = $compile(table)(scope);
                 element.append(compiled);
             };
 
@@ -277,7 +306,6 @@ angular.module(&#039;norris-nrti&#039;)
                         scope.rowCollection.push({&#039;appearance&#039;: appearance, &#039;record&#039;: record});
                     }
                 }
-                //$filter(&#039;orderBy&#039;)(scope.rowCollection,);
                 scope.itemsByPage = scope.$parent.table.getMaxItemsPage();
             };
         }

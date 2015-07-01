@@ -101,8 +101,14 @@ describe('FlowModel', function() {
 		});
 		it('returns the right data', function() {
 			var flow1=new FlowModel({ID: 'flow1'});
-			flow1._records=[1,2];
-			assert.deepEqual(flow1.getData(), [1,2]);
+			flow1._records=[
+                {temperature: 4},
+                {temperature: 1},
+            ];
+            flow1.validateData();
+            var recs=flow1.getData();
+			assert.strictEqual(recs[0].temperature, 4);
+            assert.strictEqual(recs[1].temperature, 1);
 		});
     });
 

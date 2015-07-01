@@ -384,7 +384,7 @@ Page.prototype.graphChanged = function (params) {
     __cov_3lcmDxeukeGn43y_$VaRGg.s['117']++;
     var norrisData = {
         ID: this._page._ID,
-        data: params
+        data: params.params
     };
     __cov_3lcmDxeukeGn43y_$VaRGg.s['118']++;
     this._norris.pageChanged({

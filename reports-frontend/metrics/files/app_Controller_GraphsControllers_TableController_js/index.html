@@ -132,15 +132,15 @@ angular.module(&#039;norris-nrti&#039;)
 				count++;
 				$scope.table.updateParameters(info.properties); // aggiorna le proprietà della table di default con i dati appena ricevuti
 				$scope.table.initializeData(info.data); // inizializza i flussi con i dati
-				$scope.changed = !$scope.changed; // &#039;notifica&#039; cambiamento dati e proprietà
 				$scope.changedP = true;
+				$scope.changed = !$scope.changed; // &#039;notifica&#039; cambiamento dati e proprietà
 	        }
 		});
 		socket.on(&#039;updateGraphProp&#039;, function(info){ // ascolta sull&#039;evento &#039;updateGraphProp&#039;
+			$scope.changedP = true;
 			$scope.table.updateParameters(info); // aggiorna le proprietà della table con i dati appena ricevuti
 			$scope.changed = !$scope.changed; // &#039;notifica&#039; cambiamento proprietà
 			console.log(&#039;changedP controller&#039;);
-			$scope.changedP = true;
 		});
 		socket.on(&#039;insertFlow&#039;, function(info){ // ascolta sull&#039;evento &#039;insertFlow&#039;
 			var flow = TableFlowFactory.build(info.properties); // crea un flusso di default

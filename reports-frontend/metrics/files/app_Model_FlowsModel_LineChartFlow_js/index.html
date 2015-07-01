@@ -141,8 +141,8 @@ angular.module(&#039;norris-nrti&#039;)
 	        if (json.area !== undefined) {
 	            lineFlowJson.area = json.area;
 	        }
-	        if (json.maxItem !== undefined) {
-	            lineFlowJson.maxItem = json.maxItem;
+	        if (json.maxItems !== undefined) {
+	            lineFlowJson.maxItems = json.maxItems;
 	        }
 	    }
 
@@ -159,7 +159,7 @@ angular.module(&#039;norris-nrti&#039;)
 		this._flowColor = &#039;#000&#039;;
 		this._marker = &#039;square&#039;;
 		this._area = false;
-		this._maxItem = null;
+		this._maxItems = null;
 
 		var json = split(info);
 		var fJson = json.flowJson;
@@ -178,8 +178,8 @@ angular.module(&#039;norris-nrti&#039;)
 	        if (lfJson.area !== undefined) {
 	            this._area = lfJson.area;
 	        }
-	        if (lfJson.maxItem !== undefined) {
-	            this._maxItem = lfJson.maxItem;
+	        if (lfJson.maxItems !== undefined) {
+	            this._maxItems = lfJson.maxItems;
 	        }
 	    }
 	}
@@ -202,8 +202,8 @@ angular.module(&#039;norris-nrti&#039;)
 		        if (lfJson.area !== undefined) {
 		            this._area = lfJson.area;
 		        }
-		        if (lfJson.maxItem !== undefined) {
-		            this._maxItem = lfJson.maxItem;
+		        if (lfJson.maxItems !== undefined) {
+		            this._maxItems = lfJson.maxItems;
 		        }
 		    }
 		}
@@ -211,7 +211,7 @@ angular.module(&#039;norris-nrti&#039;)
 
 	LineChartFlow.prototype.initializeData = function(newData) {
 		for (var i=0; i&lt;newData.records.length; i++) {
-			if (this._maxItem === null || this._data.length &lt; this._maxItem){
+			if (this._maxItems === null || this._data.length &lt; this._maxItems){
 				this._data.push(newData.records[i]);
 			}
 			else{
@@ -257,7 +257,7 @@ angular.module(&#039;norris-nrti&#039;)
 		return this._area;
 	};
 	LineChartFlow.prototype.getMaxItem = function() {
-		return this._maxItem;
+		return this._maxItems;
 	};
 
 	function LineChartFlowFactory() {}
