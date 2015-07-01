@@ -64,9 +64,10 @@ module.exports.newTable=function(page, title){
     var table=page.createTable({
         ID: 'table',
         title: title,
-        maxItemsPage: 20,
+        maxItemsPage: 10,
         headers: ['Col1', 'Col2', 'Col3'],
-        enableLegend: true
+        enableLegend: true,
+        addRowOn: 'bottom',
     });
     return table;
 };

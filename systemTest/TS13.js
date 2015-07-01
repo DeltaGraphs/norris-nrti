@@ -50,7 +50,7 @@ var TS=function(table){
 	    if (change){
 	    	table.updateProperties({
 				sortable: true,
-			    maxItemsPage: 20,
+			    maxItemsPage: 7,
 			    addRowOn: 'top',
 			    headers: ['IDMezzo', 'WGS84Fi', 'WGS84La'],
 			    sort: {
@@ -68,6 +68,7 @@ var TS=function(table){
 			        }
 			    }
 			});
+			table.addRecord('flow1', {'0':Math.floor((Math.random() * 10) + 1), '1':Math.floor((Math.random() * 10) + 1), '2':Math.floor((Math.random() * 10) + 1)});
 		}
         else{
 			table.updateProperties({
@@ -81,6 +82,7 @@ var TS=function(table){
 			    },
 			    appearance: {}
 			});
+			table.addRecord('flow1', {'0':Math.floor((Math.random() * 10) + 1), '1':Math.floor((Math.random() * 10) + 1), '2':Math.floor((Math.random() * 10) + 1)});
         }
         change=!change;
 	};
