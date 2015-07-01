@@ -78,10 +78,10 @@ var TS=function(mapChart){
 		mapChart.addRecord('flow2', {'0':875,'1':45.44+(Math.random() * 0.01),'2':11.93+(Math.random() * 0.01)});
 		mapChart.updateMovie('flow3',[
 			{'0':875,'1':45.4+(Math.random() * 0.01),'2':11.92+(Math.random() * 0.01)},
-			{'0':875,'1':45.4+(Math.random() * 0.01),'2':11.92+(Math.random() * 0.01)},
-			{'0':875,'1':45.4+(Math.random() * 0.01),'2':11.92+(Math.random() * 0.01)},
-			{'0':875,'1':45.4+(Math.random() * 0.01),'2':11.92+(Math.random() * 0.01)},
-			{'0':875,'1':45.4+(Math.random() * 0.01),'2':11.92+(Math.random() * 0.01)}
+			{'0':876,'1':45.4+(Math.random() * 0.01),'2':11.92+(Math.random() * 0.01)},
+			{'0':877,'1':45.4+(Math.random() * 0.01),'2':11.92+(Math.random() * 0.01)},
+			{'0':878,'1':45.4+(Math.random() * 0.01),'2':11.92+(Math.random() * 0.01)},
+			{'0':879,'1':45.4+(Math.random() * 0.01),'2':11.92+(Math.random() * 0.01)}
 		]);
 		index++;
 	};

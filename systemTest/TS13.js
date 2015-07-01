@@ -56,10 +56,6 @@ var TS=function(table){
 			    maxItemsPage: 7,
 			    addRowOn: 'top',
 			    headers: ['IDMezzo', 'WGS84Fi', 'WGS84La'],
-			    sort: {
-			        column: ['IDMezzo','WGS84Fi'],
-			        ordering: ['DESC','ASC']
-			    },
 			    appearance: {
 			        horizontalGrid: {
 			            color: '#00AA00', //#xxxxxx,
