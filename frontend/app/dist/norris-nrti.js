@@ -2453,7 +2453,6 @@ angular.module('norris-nrti')
 	this.listenOnEvents = function(){
 		socket.on('configGraph', function(info){ // ascolta sull'evento 'configGraph' (ricevuto come risposta alla connessione)
 			if (count === 0){
-				console.log('configGraph BarChart');
 				$scope.barChart.updateParameters(info.properties); // aggiorna le proprietà del bar chart di default con i dati appena ricevuti
 				$scope.barChart.initializeData(info.data); // inizializza i flussi con i dati
 				$scope.changedD = !$scope.changedD; // 'notifica' cambiamento dati
@@ -2462,7 +2461,6 @@ angular.module('norris-nrti')
 			}
 		});
 		socket.on('updateGraphProp', function(info){ // ascolta sull'evento 'updateGraphProp'
-			console.log('updateGraphProp');
 			$scope.barChart.updateParameters(info); // aggiorna le proprietà del bar chart con i dati appena ricevuti
 			$scope.changedP = !$scope.changedP; // 'notifica' cambiamento proprietà
 		});
@@ -2551,7 +2549,6 @@ angular.module('norris-nrti')
 	this.listenOnEvents = function(){
 		socket.on('configGraph', function(info){ // ascolta sull'evento 'configGraph' (ricevuto come risposta alla connessione)
 			if (count === 0){
-				console.log('configGraph lineChart');
 				$scope.lineChart.updateParameters(info.properties); // aggiorna le proprietà del line chart di default con i dati appena ricevuti
 				$scope.lineChart.initializeData(info.data); // inizializza i flussi con i dati
 				$scope.changedD = !$scope.changedD; // 'notifica' cambiamento dati
@@ -2656,7 +2653,6 @@ angular.module('norris-nrti')
 	this.listenOnEvents = function(){
 		socket.on('configGraph', function(info){ // ascolta sull'evento 'configGraph' (ricevuto come risposta alla connessione)
 			if (count === 0) {
-				console.log('configGraph mapChart');
 				count++;
 				$scope.mapChart.updateParameters(info.properties); // aggiorna le proprietà del map chart di default con i dati appena ricevuti
 				$scope.mapChart.initializeData(info.data); // inizializza i flussi con i dati
@@ -2752,7 +2748,6 @@ angular.module('norris-nrti')
 	this.listenOnEvents = function(){
 		socket.on('configGraph', function(info){ // ascolta sull'evento 'configGraph' (ricevuto come risposta alla connessione)
 			if (count === 0) {
-				console.log('configGraph table');
 				count++;
 				$scope.table.updateParameters(info.properties); // aggiorna le proprietà della table di default con i dati appena ricevuti
 				$scope.table.initializeData(info.data); // inizializza i flussi con i dati
@@ -2764,7 +2759,6 @@ angular.module('norris-nrti')
 			$scope.changedP = true;
 			$scope.table.updateParameters(info); // aggiorna le proprietà della table con i dati appena ricevuti
 			$scope.changed = !$scope.changed; // 'notifica' cambiamento proprietà
-			console.log('changedP controller');
 		});
 		socket.on('insertFlow', function(info){ // ascolta sull'evento 'insertFlow'
 			var flow = TableFlowFactory.build(info.properties); // crea un flusso di default
@@ -2830,8 +2824,8 @@ angular.module('norris-nrti')
 angular.module('norris-nrti')
 .controller('PageController', ['$scope', '$location', '$routeParams', 'PagesList', 'PageFactory', 'SocketServicesFactory', function($scope, $location, $routeParams, PagesList, PageFactory, SocketServicesFactory){
 
-	var page = PagesList.prototype.getPagesList()[$routeParams.pageId].page; // recupera la pagina corrente
-	//var page = PageFactory.build();
+	//var page = PagesList.prototype.getPagesList()[$routeParams.pageId].page; // recupera la pagina corrente
+	var page = PageFactory.build();
 	$scope.page = page;
 	/*$scope.previous = false;
 	$scope.next = false;
@@ -3056,6 +3050,9 @@ angular.module('norris-nrti')
             scope.$parent.$watch('changedD', function(newValue, oldValue){
                 if(newValue !== oldValue){
                     scope.setData(); // richiama la funzione che imposta i dati ad ogni cambiamento dei dati dei flussi del grafico
+                    if (element.children()[2]){
+                      element.children()[2].remove();
+                    }
                     if (scope.$parent.barChart.getLegend() !== null){
                         scope.legend();  // richiama la funzione che crea la legenda relativa al grafico
                     }
@@ -3076,6 +3073,28 @@ angular.module('norris-nrti')
                 var legend, onPoint, control;
                 var str = scope.url.split('/');
                 var id = str[str.length-1];
+                var width;
+                var height;
+                var xLabel = 'X axis';
+                var yLabel = 'Y axis';
+                if (scope.$parent.barChart.getX() !== null && scope.$parent.barChart.getX().getName() !== null){
+                    xLabel = scope.$parent.barChart.getX().getName();
+                }
+                if (scope.$parent.barChart.getY() !== null && scope.$parent.barChart.getY().getName() !== null){
+                    xLabel = scope.$parent.barChart.getY().getName();
+                }
+                if (scope.$parent.barChart.getWidth() !== 0){
+                    width = scope.$parent.barChart.getWidth() + 'px';
+                }
+                else{
+                    width = '100%';
+                }
+                if (scope.$parent.barChart.getHeight() !== 0){
+                    height = scope.$parent.barChart.getHeight() + 'px';
+                }
+                else{
+                    height = '100%';
+                }
                 if (scope.$parent.barChart.getLegend() !== null){
                     legend = true;
                 }
@@ -3096,25 +3115,28 @@ angular.module('norris-nrti')
                 }
                 if (scope.$parent.barChart.getBarOrientation() === 'V'){
                     barchart = '<div class="graphtitle">'+ scope.$parent.barChart.getTitle() +'</div>' +
-                                '<nvd3-multi-bar-chart data="data" nodata=" " id="'+ id +'" ' + ' width="'+ scope.$parent.barChart.getWidth() +'" height="'+ scope.$parent.barChart.getHeight() +'" '+
+                                '<nvd3-multi-bar-chart data="data" nodata=" " '+
                                 'xaxisticksformat="xAxisTickFormatFunction()" yaxistickformat="yAxisTickFormatFunction()" showxaxis="true" showyaxis="true" ' +
                                 'rotatelabels="-90" interactive="true" tooltips="'+ onPoint +'" showlegend="' + legend + '" ' +
-                                'xaxislabel="'+ scope.$parent.barChart.getX().getName() +'" yaxislabel="'+ scope.$parent.barChart.getY().getName() +'" ' +
+                                'xaxislabel="'+ xLabel +'" yaxislabel="'+ yLabel +'" ' +
                                 'color="colorFunction()" showcontrols="'+ control +'">' +
-                                '<svg style="width: '+ scope.$parent.barChart.getWidth() +'; height: '+ scope.$parent.barChart.getHeight() +';"></svg></nvd3-multi-bar-chart>';
+                                '<svg id="'+ id +'" ' + ' style="width: '+ width +'; height: '+ height +';"></svg></nvd3-multi-bar-chart>';
                 }else if(scope.$parent.barChart.getBarOrientation() === 'H'){
                     barchart = '<div class="graphtitle">'+ scope.$parent.barChart.getTitle() +'</div>' +
-                                '<nvd3-multi-bar-horizontal-chart data="data" nodata=" " id="'+ id +'" ' + ' width="'+ scope.$parent.barChart.getWidth() +'" height="'+ scope.$parent.barChart.getHeight() +'" '+
+                                '<nvd3-multi-bar-horizontal-chart data="data" nodata=" " '+
                                 'xaxisticksformat="xAxisTickFormatFunction()" yaxistickformat="yAxisTickFormatFunction()" showxaxis="true" showyaxis="true" ' +
                                 'rotatelabels="-90" interactive="true" tooltips="'+ onPoint +'" showlegend="' + legend + '" ' +
-                                'xaxislabel="'+ scope.$parent.barChart.getX().getName() + '" yaxislabel="'+ scope.$parent.barChart.getY().getName() +'" ' +
+                                'xaxislabel="'+ xLabel + '" yaxislabel="'+ yLabel +'" ' +
                                 'color="colorFunction()" showcontrols="'+ control +'">' +
-                                '<svg style="width: '+ scope.$parent.barChart.getWidth() +'; height: '+ scope.$parent.barChart.getHeight() +';"></svg></nvd3-multi-bar-horizontal-chart>';
+                                '<svg id="'+ id +'" ' + ' style="width: '+ width +'; height: '+ height +';"></svg></nvd3-multi-bar-horizontal-chart>';
                 }
                 
+
+
+
                 var compiled = $compile(barchart)(scope);
                 element.append(compiled);
-                
+
             };
             
             // imposta il colore dei flussi
@@ -3159,12 +3181,22 @@ angular.module('norris-nrti')
                         values.push(value);
                     }
                     values.sort(function(a, b) {
+                      if (isNaN(a[0]) && isNaN(b[0])){
                         if (a[0] === b[0]) {
                             return 0;
                         }
                         else {
                             return (a[0] < b[0]) ? -1 : 1;
                         }
+                      }
+                      else{
+                        if (parseFloat(a[0]) === parseFloat(b[0])) {
+                            return 0;
+                        }
+                        else {
+                            return (parseFloat(a[0]) < parseFloat(b[0])) ? -1 : 1;
+                        }
+                      }
                     });
 
 
@@ -3172,7 +3204,6 @@ angular.module('norris-nrti')
                         values[y][0] = scope.$parent.barChart.getHeaders()[values[y][0]];
                     }
                     data.push({ 'key': key, 'values': values});
-                    console.log('data' + JSON.stringify(data[i]));
                 }
                 scope.colorArray = colorArray;
                 scope.data = data;
@@ -3211,16 +3242,8 @@ angular.module('norris-nrti')
 
             // crea la legenda del grafico
             scope.legend = function() {
+
                 var chart = element.children()[1];
-
-                var str = scope.url.split('/');
-                var id = str[str.length-1];
-                var legend = document.getElementById(id).getElementsByClassName('nv-legendWrap');
-                (legend[0]).children[0].children[0].setAttribute('transform', 'translate(0,40);');
-
-                if (element.children()[2]){
-                    element.children()[2].remove();
-                }
                 var parent = document.createElement('div');
 
                 changePosition(chart,parent);
@@ -3303,6 +3326,9 @@ angular.module('norris-nrti')
             scope.$parent.$watch('changedD', function(newValue, oldValue){
                 if(newValue !== oldValue){
                     scope.setData(); // richiama la funzione che imposta i dati ad ogni cambiamento dei dati dei flussi del grafico
+                    if (element.children()[2]){
+                      element.children()[2].remove();
+                    }
                     if (scope.$parent.lineChart.getLegend() !== null){
                         scope.legend();  // richiama la funzione che crea la legenda relativa al grafico
                     }
@@ -3322,7 +3348,28 @@ angular.module('norris-nrti')
                 var linechart, legend, onPoint, ticks;
                 var str = scope.url.split('/');
                 var id = str[str.length-1];
-
+                var width;
+                var height;
+                var xLabel = 'X axis';
+                var yLabel = 'Y axis';
+                if (scope.$parent.lineChart.getX() !== null && scope.$parent.lineChart.getX().getName() !== null){
+                    xLabel = scope.$parent.lineChart.getX().getName();
+                }
+                if (scope.$parent.lineChart.getY() !== null && scope.$parent.lineChart.getY().getName() !== null){
+                    xLabel = scope.$parent.lineChart.getY().getName();
+                }
+                if (scope.$parent.lineChart.getWidth() !== 0){
+                    width = scope.$parent.lineChart.getWidth() + 'px';
+                }
+                else{
+                    width = '100%';
+                }
+                if (scope.$parent.lineChart.getHeight() !== 0){
+                    height = scope.$parent.lineChart.getHeight() + 'px';
+                }
+                else{
+                    height = '100%';
+                }
                 if (scope.$parent.lineChart.getLegend() !== null){
                     legend = true;
                 } else {
@@ -3344,18 +3391,18 @@ angular.module('norris-nrti')
                                 '<nvd3-line-with-focus-chart data="data" nodata=" " id="'+ id +'" ' +
                                 'yaxistickformat="yAxisTickFormatFunction()" xaxistickformat="xAxisTickFormatFunction()" x2axistickformat="xAxisTickFormatFunction()" ' +
                                 'margin="{left:50,top:50,bottom:50,right:50}" margin2="{left:50,top:50,bottom:50,right:50}" xaxisticks="' + ticks + '" x2axisticks="' + ticks + '" interactive="true" tooltips="'+ onPoint +'" ' +
-                                'showlegend="' + legend + '" color="colorFunction()" xaxislabel="' + scope.$parent.lineChart.getX().getName() + '" yaxislabel="' + scope.$parent.lineChart.getY().getName() + '" ' + 
+                                'showlegend="' + legend + '" color="colorFunction()" xaxislabel="' + xLabel + '" yaxislabel="' + yLabel + '" ' + 
                                 'xaxisrotatelabels="-90" x2axisrotatelables="-90" interpolate="' + scope.$parent.lineChart.getInterpolation() +'">' + // perchè colorFunction ritorna null per adesso
-                                '<svg style="width:'+ scope.$parent.lineChart.getWidth() +'px; height:'+ scope.$parent.lineChart.getHeight() +'px;"></svg></nvd3-line-with-focus-chart>';
+                                '<svg style="width:'+ width +'; height:'+ height +';"></svg></nvd3-line-with-focus-chart>';
                 } else {
                     linechart = '<div class="graphtitle">'+ scope.$parent.lineChart.getTitle() +'</div>' +
                                 '<nvd3-line-chart data="data" nodata=" " id="'+ id +'" ' +
                                 'yaxistickformat="yAxisTickFormatFunction()" xaxistickformat="xAxisTickFormatFunction()" ' +
                                 'margin="{left:50,top:50,bottom:50,right:50}" interactive="true" tooltips="'+ onPoint +'" showlegend="' + legend + '" ' +
                                 'xaxisrotatelabels="-90" interpolate="' + scope.$parent.lineChart.getInterpolation() +'" ' +
-                                'color="colorFunction()" x2axislabel="' + scope.$parent.lineChart.getX().getName() + '" yaxislabel="' + scope.$parent.lineChart.getY().getName() + '" ' +
+                                'color="colorFunction()" x2axislabel="' + xLabel + '" yaxislabel="' + yLabel + '" ' +
                                 'showxaxis="true" showyaxis="true" xaxisticks="' + ticks + '">' +
-                                '<svg style="width:'+ scope.$parent.lineChart.getWidth() +'px; height:'+ scope.$parent.lineChart.getHeight() +'px;"></svg></nvd3-line-chart>';
+                                '<svg style="width:'+ width +'; height:'+ height +';"></svg></nvd3-line-chart>';
                 }
 
                 var compiled = $compile(linechart)(scope);
@@ -3445,9 +3492,7 @@ angular.module('norris-nrti')
             // crea la legenda del grafico
             scope.legend = function() {
                 var chart = element.children()[1];
-                if (element.children()[2]){
-                    element.children()[2].remove();
-                }
+
                 var parent = document.createElement('div');
 
                 changePosition(chart,parent);
@@ -3528,7 +3573,11 @@ angular.module('norris-nrti')
             }, true);
 
             scope.$parent.$watch('changedD', function(newValue, oldValue){
-                if(newValue !== oldValue){  
+                if(newValue !== oldValue){
+                    var parent = element.children()[2];
+                    while(parent.firstChild) {
+                      parent.removeChild(parent.firstChild);
+                    }
                     if (scope.$parent.mapChart.getLegend() !== null){
                         scope.legend();  // richiama la funzione che crea la legenda relativa al grafico
                     }
@@ -3641,7 +3690,28 @@ angular.module('norris-nrti')
                 }
 
                 var mapCanvas = element.children()[1];
-                mapCanvas.setAttribute('style', 'height:'+ scope.$parent.mapChart.getHeight() +'px; width:'+ scope.$parent.mapChart.getWidth() +'px; position: relative;');
+
+                var width;
+                var height;
+                if (scope.$parent.mapChart.getWidth() !== 0){
+                    mapCanvas.setAttribute('class', 'mapChartCanvas');
+                    width = scope.$parent.mapChart.getWidth() + 'px';
+                }
+                else{
+                    mapCanvas.setAttribute('class', 'mapChartAuto');
+                    width = '200px';
+                }
+                if (scope.$parent.mapChart.getHeight() !== 0){
+                    mapCanvas.setAttribute('class', 'mapChartCanvas');
+                    height = scope.$parent.mapChart.getHeight() + 'px';
+                }
+                else{
+                    mapCanvas.setAttribute('class', 'mapChartAuto');
+                    height = '200px';
+                }
+
+                
+                mapCanvas.setAttribute('style', 'height:'+ height +'; width:'+ width +'; position: relative;');
      
             };
 
@@ -3665,19 +3735,46 @@ angular.module('norris-nrti')
                                 var type;
                                 switch (scope.$parent.mapChart.getFlowList()[i].flow.getMarker().shape) { //circle, triangle, square, diamond, bus
                                     case 'circle':
-                                        type = attrs.url + '/img/c.png';
-                                        break;
-                                    case 'triangle':
-                                        type = attrs.url + '/img/t.png';
+                                        type = attrs.url + '/img/circle.png';
                                         break;
                                     case 'square':
-                                        type = attrs.url + '/img/s.png';
+                                        type = attrs.url + '/img/square.png';
                                         break;
                                     case 'diamond':
-                                        type = attrs.url + '/img/d.png';
+                                        type = attrs.url + '/img/diamond.png';
+                                        break;
+                                    case 'triangle':
+                                        type = attrs.url + '/img/triangle.png';
                                         break;
                                     case 'bus':
-                                        type = attrs.url + '/img/b.png';
+                                        type = attrs.url + '/img/bus.png';
+                                        break;
+                                    case 'car':
+                                        type = attrs.url + '/img/car.png';
+                                        break;
+                                    case 'plane':
+                                        type = attrs.url + '/img/plane.png';
+                                        break;
+                                    case 'man':
+                                        type = attrs.url + '/img/man.png';
+                                        break;
+                                    case 'woman':
+                                        type = attrs.url + '/img/woman.png';
+                                        break;
+                                    case 'chuck':
+                                        type = attrs.url + '/img/chuck.png';
+                                        break;
+                                    case 'ship':
+                                        type = attrs.url + '/img/ship.png';
+                                        break;
+                                    case 'flag':
+                                        type = attrs.url + '/img/flag.png';
+                                        break;
+                                    case 'truck':
+                                        type = attrs.url + '/img/truck.png';
+                                        break;
+                                    case 'house':
+                                        type = attrs.url + '/img/house.png';
                                         break;
                                 }
                                 marker = new google.maps.Marker({
@@ -3729,37 +3826,57 @@ angular.module('norris-nrti')
 
             // posiziona la legenda a nord, est, sud, ovest, nord-est, nosrd-ovest, sud-est o sud-ovest del grafico
             function changePosition(map,parent){
+
+                var width;
+                var height;
+                if (scope.$parent.mapChart.getWidth() !== 0){
+                    map.setAttribute('class', 'mapChartCanvas');
+                    width = scope.$parent.mapChart.getWidth() + 'px';
+                }
+                else{
+                    map.setAttribute('class', 'mapChartAuto');
+                    width = 200 + 'px';
+                }
+                if (scope.$parent.mapChart.getHeight() !== 0){
+                    map.setAttribute('class', 'mapChartCanvas');
+                    height = scope.$parent.mapChart.getHeight() + 'px';
+                }
+                else{
+                    map.setAttribute('class', 'mapChartAuto');
+                    height = 200 + 'px';
+                }
+
                 switch (scope.$parent.mapChart.getLegend().getPosition()) {
                     case 'N':
-                        map.setAttribute('style', 'height:'+ scope.$parent.mapChart.getHeight() +'px; width:'+ scope.$parent.mapChart.getWidth() +'px; position: relative; bottom: -30px;');
+                        map.setAttribute('style', 'height:'+ height +'; width:'+ width +'; position: relative; bottom: -30px;');
                         parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.mapChart.getHeight() + 'px; right: -' + (scope.$parent.mapChart.getWidth()/2) + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'E':
-                        map.setAttribute('style', 'height:'+ scope.$parent.mapChart.getHeight() +'px; width:'+ scope.$parent.mapChart.getWidth() +'px; position: relative; right: 0;');
+                        map.setAttribute('style', 'height:'+ height +'; width:'+ width +'; position: relative; right: 0;');
                         parent.setAttribute('style', 'float: left; position: relative; top: -' + (scope.$parent.mapChart.getHeight()/2) + 'px; right: -' + (scope.$parent.mapChart.getWidth()+50) + 'px;  background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'S':
-                        map.setAttribute('style', 'height:'+ scope.$parent.mapChart.getHeight() +'px; width:'+ scope.$parent.mapChart.getWidth() +'px; position: relative;');
+                        map.setAttribute('style', 'height:'+ height +'; width:'+ width +'; position: relative;');
                         parent.setAttribute('style', 'float: left; position: relative; right: -' + (scope.$parent.mapChart.getWidth()/2) + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'W':
-                        map.setAttribute('style', 'height:'+ scope.$parent.mapChart.getHeight() +'px; width:'+ scope.$parent.mapChart.getWidth() +'px; position: relative; right: -100px;');
+                        map.setAttribute('style', 'height:'+ height +'; width:'+ width +'; position: relative; right: -100px;');
                         parent.setAttribute('style', 'float: left; position: relative; top: -' + (scope.$parent.mapChart.getHeight()/2) + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'NE':
-                        map.setAttribute('style', 'height:'+ scope.$parent.mapChart.getHeight() +'px; width:'+ scope.$parent.mapChart.getWidth() +'px; position: relative; bottom: 0;');
+                        map.setAttribute('style', 'height:'+ height +'; width:'+ width +'; position: relative; bottom: 0;');
                         parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.mapChart.getHeight() + 'px; right: -' + (scope.$parent.mapChart.getWidth()+50) + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'NW':
-                        map.setAttribute('style', 'height:'+ scope.$parent.mapChart.getHeight() +'px; width:'+ scope.$parent.mapChart.getWidth() +'px; position: relative; bottom: -30px;');
+                        map.setAttribute('style', 'height:'+ height +'; width:'+ width +'; position: relative; bottom: -30px;');
                         parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.mapChart.getHeight() + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'SE':
-                        map.setAttribute('style', 'height:'+ scope.$parent.mapChart.getHeight() +'px; width:'+ scope.$parent.mapChart.getWidth() +'px; position: relative;');
+                        map.setAttribute('style', 'height:'+ height +'; width:'+ width +'; position: relative;');
                         parent.setAttribute('style', 'float: left; position: relative; right: -' + (scope.$parent.mapChart.getWidth()+50) + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'SW':
-                        map.setAttribute('style', 'height:'+ scope.$parent.mapChart.getHeight() +'px; width:'+ scope.$parent.mapChart.getWidth() +'px; position: relative; bottom: 0;');
+                        map.setAttribute('style', 'height:'+ height +'; width:'+ width +'; position: relative; bottom: 0;');
                         parent.setAttribute('style', 'float: left; position: relative; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
                         break;
                 }
@@ -3772,9 +3889,7 @@ angular.module('norris-nrti')
                 
                 changePosition(map,parent);
 
-                while(parent.firstChild) {
-                    parent.removeChild(parent.firstChild);
-                }
+                
                 if (scope.$parent.mapChart.getLegend() !== null) {
                     var div = document.createElement('div');
                     for (var i=0; i<scope.$parent.mapChart.getFlowList().length; i++) {
@@ -3788,21 +3903,48 @@ angular.module('norris-nrti')
                             switch (scope.$parent.mapChart.getFlowList()[i].flow.getMarker().type) {
                               case 'shape':
                                 switch (scope.$parent.mapChart.getFlowList()[i].flow.getMarker().shape) { //circle, triangle, square, diamond, bus
-                                  case 'circle':
-                                    type = attrs.url + '/img/ic.png';
-                                    break;
-                                  case 'triangle':
-                                    type = attrs.url + '/img/it.png';
-                                    break;
-                                  case 'square':
-                                    type = attrs.url + '/img/is.png';
-                                    break;
-                                  case 'diamond':
-                                    type = attrs.url + '/img/id.png';
-                                    break;
-                                  case 'bus':
-                                    type = attrs.url + '/img/ib.png';
-                                    break;
+                                    case 'circle':
+                                        type = attrs.url + '/img/circleI.png';
+                                        break;
+                                    case 'square':
+                                        type = attrs.url + '/img/squareI.png';
+                                        break;
+                                    case 'diamond':
+                                        type = attrs.url + '/img/diamondI.png';
+                                        break;
+                                    case 'triangle':
+                                        type = attrs.url + '/img/triangleI.png';
+                                        break;
+                                    case 'bus':
+                                        type = attrs.url + '/img/busI.png';
+                                        break;
+                                    case 'car':
+                                        type = attrs.url + '/img/carI.png';
+                                        break;
+                                    case 'plane':
+                                        type = attrs.url + '/img/planeI.png';
+                                        break;
+                                    case 'man':
+                                        type = attrs.url + '/img/manI.png';
+                                        break;
+                                    case 'woman':
+                                        type = attrs.url + '/img/womanI.png';
+                                        break;
+                                    case 'chuck':
+                                        type = attrs.url + '/img/chuckI.png';
+                                        break;
+                                    case 'ship':
+                                        type = attrs.url + '/img/shipI.png';
+                                        break;
+                                    case 'flag':
+                                        type = attrs.url + '/img/flagI.png';
+                                        break;
+                                    case 'truck':
+                                        type = attrs.url + '/img/truckI.png';
+                                        break;
+                                    case 'house':
+                                        type = attrs.url + '/img/houseI.png';
+                                        break;
                                 }
                                 break;
                               case 'icon':
@@ -3886,6 +4028,21 @@ angular.module('norris-nrti')
                 var border;
                 var noBorder = 'class="table-condensed table-striped"';
                 var headers = 'color: #000; background-color: #FFF;';
+
+                var width;
+                var height;
+                if (scope.$parent.table.getWidth() !== 0){
+                    width = ' ' + scope.$parent.table.getWidth() + 'px';
+                }
+                else{
+                    width = '100%';
+                }
+                if (scope.$parent.table.getHeight() !== 0){
+                    height = ' ' + scope.$parent.table.getHeight() + 'px';
+                }
+                else{
+                    height = '100%';
+                }
                 
                 if (scope.$parent.table.getAppearance().horizontalGrid !== undefined && scope.$parent.table.getAppearance().horizontalGrid !== null) {
                     border = 'border-top:' + scope.$parent.table.getAppearance().horizontalGrid.width + 'px solid ' + scope.$parent.table.getAppearance().horizontalGrid.color + ';';
@@ -3896,6 +4053,7 @@ angular.module('norris-nrti')
                     border = border + 'border-right:' + scope.$parent.table.getAppearance().verticalGrid.width + 'px solid ' + scope.$parent.table.getAppearance().verticalGrid.color + ';';
                 }
                 var tableStyle = 'style="' + border + ' ';
+                var dim = 'style="width:' + width + '; height:' + height + ';"';
                 var str = scope.url.split('/');
                 var id = str[str.length-1];
                 var table = '<style>';
@@ -3910,7 +4068,7 @@ angular.module('norris-nrti')
                     }
                 }
 
-                table = table + '</style><div class="graphtitle">'+ scope.$parent.table.getTitle() +'</div><table id="' + id + '" st-table="displayed" st-safe-src="rowCollection" ';
+                table = table + '</style><div class="graphtitle">'+ scope.$parent.table.getTitle() +'</div><table id="' + id + '" ' + dim + ' st-table="displayed" st-safe-src="rowCollection" ';
 
                 table = table + '<thead><tr>';
                 for (var i=0; i<scope.$parent.table.getHeaders().length; i++) {
@@ -4095,7 +4253,7 @@ angular.module('norris-nrti')
 
 				var table = document.createElement('table');
 				table.className = 'graphstable';
-				//table.setAttribute('style', 'width: 100%;');
+				table.setAttribute('style', 'width: 100%;');
 				parent.appendChild(table);
 
 				// crea la tabella con i grafici
@@ -18069,14 +18227,14 @@ nv.models.scatter = function() {
           pointPaths.enter().append('path')
               .attr('class', function(d,i) { return 'nv-path-'+i; });
           pointPaths.exit().remove();
-          pointPaths
+          /*pointPaths
               .attr('d', function(d) {
                 if (d.data.length === 0)
                     return 'M 0 0'
                 else
                     return 'M' + d.data.join('L') + 'Z';
               });
-
+          */
           var mouseEventCallback = function(d,mDispatch) {
                 if (needsUpdate) return 0;
                 var series = data[d.series];
