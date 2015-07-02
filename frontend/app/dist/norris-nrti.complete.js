@@ -11965,7 +11965,7 @@ angular.module('norris-nrti')
                 map = new google.maps.Map(element.children()[1], mapOptions);
 
                 // impostazione del tipo di mappa da visualizzare
-                switch (scope.$parent.mapChart.getMapType()) {
+                /*switch (scope.$parent.mapChart.getMapType()) {
                     case 'roadmap':
                         map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
                         break;
@@ -11978,7 +11978,7 @@ angular.module('norris-nrti')
                     case 'terrain':
                         map.setMapTypeId(google.maps.MapTypeId.TERRAIN);
                         break;
-                }
+                }*/
                 // inserimento del tracciato (se presente)
                 for (var i=0; i<scope.$parent.mapChart.getFlowList().length; i++){
                     if (scope.$parent.mapChart.getFlowList()[i].flow.getTrace().type === 'poly'){
