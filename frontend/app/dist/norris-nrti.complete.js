@@ -11945,6 +11945,31 @@ angular.module('norris-nrti')
             // crea la mappa da visualizzare
             scope.init = function(){
 
+                var mapCanvas = element.children()[1];
+
+                var width = scope.$parent.mapChart.getWidth();
+                var height = scope.$parent.mapChart.getHeight();
+                /*var width;
+                var height;
+                if (scope.$parent.mapChart.getWidth() !== 0){
+                    mapCanvas.setAttribute('class', 'mapChartCanvas');
+                    width = scope.$parent.mapChart.getWidth() + 'px';
+                }
+                else{
+                    mapCanvas.setAttribute('class', 'mapChartAuto');
+                    width = '200px';
+                }
+                if (scope.$parent.mapChart.getHeight() !== 0){
+                    mapCanvas.setAttribute('class', 'mapChartCanvas');
+                    height = scope.$parent.mapChart.getHeight() + 'px';
+                }
+                else{
+                    mapCanvas.setAttribute('class', 'mapChartAuto');
+                    height = '200px';
+                }*/
+
+                mapCanvas.setAttribute('style', 'height:'+ height +'px; width:'+ width +'px; position: relative;');
+
                 var zoom = setZoom();
 
                 // opzioni iniziali della mappa
@@ -11997,32 +12022,8 @@ angular.module('norris-nrti')
                         polylines[i].setMap(map);
                     }
                 }
-
-                var mapCanvas = element.children()[1];
-
-                var width = scope.$parent.mapChart.getWidth();
-                var height = scope.$parent.mapChart.getHeight();
-                /*var width;
-                var height;
-                if (scope.$parent.mapChart.getWidth() !== 0){
-                    mapCanvas.setAttribute('class', 'mapChartCanvas');
-                    width = scope.$parent.mapChart.getWidth() + 'px';
-                }
-                else{
-                    mapCanvas.setAttribute('class', 'mapChartAuto');
-                    width = '200px';
-                }
-                if (scope.$parent.mapChart.getHeight() !== 0){
-                    mapCanvas.setAttribute('class', 'mapChartCanvas');
-                    height = scope.$parent.mapChart.getHeight() + 'px';
-                }
-                else{
-                    mapCanvas.setAttribute('class', 'mapChartAuto');
-                    height = '200px';
-                }*/
-
+              
                 
-                mapCanvas.setAttribute('style', 'height:'+ height +'px; width:'+ width +'px; position: relative;');
      
             };
 
