@@ -11495,7 +11495,7 @@ angular.module('norris-nrti')
                         }
                       }
                       else{
-                        if (parseFloat(a[0]) === parseFloat(b[0]) {
+                        if (parseFloat(a[0]) === parseFloat(b[0])) {
                             return 0;
                         }
                         else {
