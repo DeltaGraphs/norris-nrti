@@ -186,12 +186,22 @@ angular.module('norris-nrti')
                         values.push(value);
                     }
                     values.sort(function(a, b) {
+                      if (isNaN(a[0]) && isNaN(b[0])){
                         if (a[0] === b[0]) {
                             return 0;
                         }
                         else {
                             return (a[0] < b[0]) ? -1 : 1;
                         }
+                      }
+                      else{
+                        if (parseFloat(a[0]) === parseFloat(b[0])) {
+                            return 0;
+                        }
+                        else {
+                            return (parseFloat(a[0]) < parseFloat(b[0])) ? -1 : 1;
+                        }
+                      }
                     });
 
 

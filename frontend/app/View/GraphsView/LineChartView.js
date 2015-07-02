@@ -120,7 +120,7 @@ angular.module('norris-nrti')
                                 'yaxistickformat="yAxisTickFormatFunction()" xaxistickformat="xAxisTickFormatFunction()" x2axistickformat="xAxisTickFormatFunction()" ' +
                                 'margin="{left:50,top:50,bottom:50,right:50}" margin2="{left:50,top:50,bottom:50,right:50}" xaxisticks="' + ticks + '" x2axisticks="' + ticks + '" interactive="true" tooltips="'+ onPoint +'" ' +
                                 'showlegend="' + legend + '" color="colorFunction()" xaxislabel="' + xLabel + '" yaxislabel="' + yLabel + '" ' + 
-                                'xaxisrotatelabels="-90" x2axisrotatelables="-90" interpolate="' + scope.$parent.lineChart.getInterpolation() +'">' +
+                                'xaxisrotatelabels="-90" x2axisrotatelables="-90" interpolate="' + scope.$parent.lineChart.getInterpolation() +'">' + // perchè colorFunction ritorna null per adesso
                                 '<svg style="width:'+ width +'; height:'+ height +';"></svg></nvd3-line-with-focus-chart>';
                 } else {
                     linechart = '<div class="graphtitle">'+ scope.$parent.lineChart.getTitle() +'</div>' +

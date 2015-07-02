@@ -37,7 +37,6 @@ angular.module('norris-nrti')
 	this.listenOnEvents = function(){
 		socket.on('configGraph', function(info){ // ascolta sull'evento 'configGraph' (ricevuto come risposta alla connessione)
 			if (count === 0) {
-				console.log('configGraph table');
 				count++;
 				$scope.table.updateParameters(info.properties); // aggiorna le proprietà della table di default con i dati appena ricevuti
 				$scope.table.initializeData(info.data); // inizializza i flussi con i dati
@@ -49,7 +48,6 @@ angular.module('norris-nrti')
 			$scope.changedP = true;
 			$scope.table.updateParameters(info); // aggiorna le proprietà della table con i dati appena ricevuti
 			$scope.changed = !$scope.changed; // 'notifica' cambiamento proprietà
-			console.log('changedP controller');
 		});
 		socket.on('insertFlow', function(info){ // ascolta sull'evento 'insertFlow'
 			var flow = TableFlowFactory.build(info.properties); // crea un flusso di default
