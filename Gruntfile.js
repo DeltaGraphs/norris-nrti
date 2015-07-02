@@ -49,6 +49,9 @@ module.exports = function(grunt) {
             }
         },
         uglify: {
+            options: {
+                mangle: false
+            },
             build: {
                 files: {
                     'frontend/app/dist/norris-nrti.min.js': ['frontend/app/dist/norris-nrti.js'],
