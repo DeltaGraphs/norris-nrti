@@ -207,4 +207,20 @@ describe('LineChartFlow', function() {
             assert.strictEqual(result.maxItemsSaved, prop.maxItemsSaved);
         });
     });
+
+	describe('#getData', function() {
+		it('returns empty array if there is no data', function() {
+			var flow1=new LineChartFlow({ID: 'flow1'}, new socketMock());
+			assert.strictEqual(flow1.getData().length, 0);
+		});
+		it('returns the right data', function() {
+			var flow1=new LineChartFlow({ID: 'flow1'}, new socketMock());
+			flow1.addRecord({temperature: 2, pressure: 4});
+            flow1.addRecord({temperature: 2, pressure: 4});
+            flow1.validateData();
+            var recs=flow1.getData();
+			assert.strictEqual(recs[0].temperature, 4);
+            assert.strictEqual(recs[1].temperature, 1);
+		});
+    });
 });

@@ -191,4 +191,21 @@ describe('BarChartFlow', function() {
             assert.strictEqual(result.flowColor, prop.flowColor);
         });
     });
+
+	describe('#getData', function() {
+		it('returns empty array if there is no data', function() {
+			var flow1=new BarChartFlow({ID: 'flow1'}, new socketMock(),[]);
+			assert.strictEqual(flow1.getData().length, 0);
+		});
+		it('returns the right data', function() {
+			var flow1=new BarChartFlow({ID: 'flow1'}, new socketMock(),[
+                {temperature: 2, pressure: 4},
+                {temperature: 2, pressure: 4}
+            ]);
+            flow1.validateData();
+            var recs=flow1.getData();
+			assert.strictEqual(recs[0].temperature, 4);
+            assert.strictEqual(recs[1].temperature, 1);
+		});
+    });
 });
