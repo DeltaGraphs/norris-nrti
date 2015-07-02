@@ -11427,7 +11427,7 @@ angular.module('norris-nrti')
                                 'rotatelabels="-90" interactive="true" tooltips="'+ onPoint +'" showlegend="' + legend + '" ' +
                                 'xaxislabel="'+ xLabel +'" yaxislabel="'+ yLabel +'" ' +
                                 'color="colorFunction()" showcontrols="'+ control +'">' +
-                                '<svg id="'+ id +'" ' + ' style="width: '+ width +'; height: '+ height +';"></svg></nvd3-multi-bar-chart>';
+                                '<svg id="'+ id +'" ' + ' style="width: '+ width +'px; height: '+ height +'px;"></svg></nvd3-multi-bar-chart>';
                 }else if(scope.$parent.barChart.getBarOrientation() === 'H'){
                     barchart = '<div class="graphtitle">'+ scope.$parent.barChart.getTitle() +'</div>' +
                                 '<nvd3-multi-bar-horizontal-chart data="data" nodata=" " '+
@@ -11435,7 +11435,7 @@ angular.module('norris-nrti')
                                 'rotatelabels="-90" interactive="true" tooltips="'+ onPoint +'" showlegend="' + legend + '" ' +
                                 'xaxislabel="'+ xLabel + '" yaxislabel="'+ yLabel +'" ' +
                                 'color="colorFunction()" showcontrols="'+ control +'">' +
-                                '<svg id="'+ id +'" ' + ' style="width: '+ width +'; height: '+ height +';"></svg></nvd3-multi-bar-horizontal-chart>';
+                                '<svg id="'+ id +'" ' + ' style="width: '+ width +'px; height: '+ height +'px;"></svg></nvd3-multi-bar-horizontal-chart>';
                 }
                 
 
@@ -11702,7 +11702,7 @@ angular.module('norris-nrti')
                                 'margin="{left:50,top:50,bottom:50,right:50}" margin2="{left:50,top:50,bottom:50,right:50}" xaxisticks="' + ticks + '" x2axisticks="' + ticks + '" interactive="true" tooltips="'+ onPoint +'" ' +
                                 'showlegend="' + legend + '" color="colorFunction()" xaxislabel="' + xLabel + '" yaxislabel="' + yLabel + '" ' + 
                                 'xaxisrotatelabels="-90" x2axisrotatelables="-90" interpolate="' + scope.$parent.lineChart.getInterpolation() +'">' + // perchè colorFunction ritorna null per adesso
-                                '<svg style="width:'+ width +'; height:'+ height +';"></svg></nvd3-line-with-focus-chart>';
+                                '<svg style="width:'+ width +'px; height:'+ height +'px;"></svg></nvd3-line-with-focus-chart>';
                 } else {
                     linechart = '<div class="graphtitle">'+ scope.$parent.lineChart.getTitle() +'</div>' +
                                 '<nvd3-line-chart data="data" nodata=" " id="'+ id +'" ' +
@@ -11711,7 +11711,7 @@ angular.module('norris-nrti')
                                 'xaxisrotatelabels="-90" interpolate="' + scope.$parent.lineChart.getInterpolation() +'" ' +
                                 'color="colorFunction()" x2axislabel="' + xLabel + '" yaxislabel="' + yLabel + '" ' +
                                 'showxaxis="true" showyaxis="true" xaxisticks="' + ticks + '">' +
-                                '<svg style="width:'+ width +'; height:'+ height +';"></svg></nvd3-line-chart>';
+                                '<svg style="width:'+ width +'px; height:'+ height +'px;"></svg></nvd3-line-chart>';
                 }
 
                 var compiled = $compile(linechart)(scope);
@@ -12022,7 +12022,7 @@ angular.module('norris-nrti')
                 }*/
 
                 
-                mapCanvas.setAttribute('style', 'height:'+ height +'; width:'+ width +'; position: relative;');
+                mapCanvas.setAttribute('style', 'height:'+ height +'px; width:'+ width +'px; position: relative;');
      
             };
 
@@ -12138,8 +12138,8 @@ angular.module('norris-nrti')
             // posiziona la legenda a nord, est, sud, ovest, nord-est, nosrd-ovest, sud-est o sud-ovest del grafico
             function changePosition(map,parent){
 
-                var width = scope.$parent.mapChart.getWidth();
-                var height = scope.$parent.mapChart.getHeight();
+                var width = scope.$parent.mapChart.getWidth() + 'px';
+                var height = scope.$parent.mapChart.getHeight() + 'px';
                 /*var width;
                 var height;
                 if (scope.$parent.mapChart.getWidth() !== 0){
