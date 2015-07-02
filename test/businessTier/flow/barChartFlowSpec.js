@@ -202,7 +202,6 @@ describe('BarChartFlow', function() {
                 {temperature: 2, pressure: 4},
                 {temperature: 2, pressure: 4}
             ]);
-            flow1.validateData();
             var recs=flow1.getData();
 			assert.strictEqual(recs[0].temperature, 4);
             assert.strictEqual(recs[1].temperature, 1);

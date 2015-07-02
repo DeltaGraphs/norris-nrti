@@ -260,7 +260,7 @@ describe('MapChart', function() {
             assert.deepEqual(mapChart.getProperties(),{
                 'ID': 'dada',
                 'enableLegend': false,
-                'height': 400,
+                'height': 500,
                 'legend': {
                     'backgroundColor': '#FFFFFF',
                     'fontColor': '#000000',
@@ -316,7 +316,7 @@ describe('MapChart', function() {
                         },
                         'trailLength':3,
                     }],
-                    'height':400,
+                    'height':500,
                     'latitude':0,
                     'legend':{
                         'backgroundColor':'#FFFFFF',

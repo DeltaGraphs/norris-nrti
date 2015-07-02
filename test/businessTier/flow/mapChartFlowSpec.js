@@ -333,7 +333,6 @@ describe('MapChartFlow', function() {
 			var flow1=new MapChartFlow({ID: 'flow1'}, new socketMock());
 			flow1.addRecord({temperature: 2, pressure: 4});
             flow1.addRecord({temperature: 2, pressure: 4});
-            flow1.validateData();
             var recs=flow1.getData();
 			assert.strictEqual(recs[0].temperature, 4);
             assert.strictEqual(recs[1].temperature, 1);
