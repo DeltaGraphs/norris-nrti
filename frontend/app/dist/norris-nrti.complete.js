@@ -11521,28 +11521,39 @@ angular.module('norris-nrti')
 
                 switch (scope.$parent.barChart.getLegend().getPosition()) {
                     case 'N':
-                        parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.barChart.getHeight() + 'px; right: -' + (scope.$parent.barChart.getWidth()/2) + 'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.barChart.getHeight() + 
+                          'px; right: -' + (scope.$parent.barChart.getWidth()/2) + 'px; background-color: ' +
+                          scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'E':
-                        parent.setAttribute('style', 'float: left; position: relative; top: -' + ((scope.$parent.barChart.getHeight()/2)+25 + 'px; right: -' + scope.$parent.barChart.getWidth() + 'px;  background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + ((scope.$parent.barChart.getHeight()/2)+25 + 
+                          'px; right: -' + scope.$parent.barChart.getWidth() + 'px;  background-color: ' + 
+                          scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'S':
-                        parent.setAttribute('style', 'float: left; position: relative; right: -' + (scope.$parent.barChart.getWidth()/2) + 'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
+                        parent.setAttribute('style', 'float: left; position: relative; right: -' + (scope.$parent.barChart.getWidth()/2) +
+                          'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'W':
-                        parent.setAttribute('style', 'float: left; position: relative; top: -' + (scope.$parent.barChart.getHeight()/2) + 'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + (scope.$parent.barChart.getHeight()/2) + 
+                          'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'NE':
-                        parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.barChart.getHeight() + 'px; right: -' + (scope.$parent.barChart.getWidth()+25) + 'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.barChart.getHeight() + 
+                          'px; right: -' + (scope.$parent.barChart.getWidth()+25) + 'px; background-color: ' + 
+                          scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'NW':
-                        parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.barChart.getHeight() + 'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.barChart.getHeight() + 
+                          'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'SE':
-                        parent.setAttribute('style', 'float: left; position: relative; right: -' + (scope.$parent.barChart.getWidth()+25) + 'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
+                        parent.setAttribute('style', 'float: left; position: relative; right: -' + (scope.$parent.barChart.getWidth()+25) + 
+                          'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'SW':
-                        parent.setAttribute('style', 'float: left; position: relative; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
+                        parent.setAttribute('style', 'float: left; position: relative; background-color: ' + 
+                          scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
                         break;
                 }
             }
