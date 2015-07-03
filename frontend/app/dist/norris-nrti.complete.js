@@ -11526,7 +11526,7 @@ angular.module('norris-nrti')
                           scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'E':
-                        parent.setAttribute('style', 'float: left; position: relative; top: -' + ((scope.$parent.barChart.getHeight()/2)+25 + 
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + ((scope.$parent.barChart.getHeight()/2)+25) + 
                           'px; right: -' + scope.$parent.barChart.getWidth() + 'px;  background-color: ' + 
                           scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
                         break;
