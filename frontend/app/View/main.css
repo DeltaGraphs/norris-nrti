@@ -13,6 +13,10 @@ table {
 }
 
 /*Styling for the page list*/
+
+#page-list-title {
+  margin: 20px 0 20px 15px;
+}
  
 #pagesList {
   margin: 20px;
@@ -21,6 +25,7 @@ table {
 #pagesList ul {
   list-style-type: none;
   width: 500px;
+  padding: 0;
 }
  
 .page-link {
@@ -29,7 +34,7 @@ table {
  
 .page-li span {
   float: left;
-  margin: 0 15px 0 0;
+  margin: 6px 15px 0 0;
 }
  
 .page-li p {
