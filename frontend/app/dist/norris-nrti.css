@@ -1,9 +1,17 @@
 /* norris-nrti CSS */
-
 .mapChartAuto{
-	width: 100% !important;
-    height: 100% !important;
+  width: 100% !important;
+  height: 100% !important;
 }
+
+table {
+  border-collapse: collapse;
+}
+
+.graphstable{
+  width: 100%;
+}
+
 
 /********************
  * HTML CSS

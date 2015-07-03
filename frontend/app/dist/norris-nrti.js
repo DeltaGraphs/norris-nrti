@@ -4339,9 +4339,9 @@ angular.module('norris-nrti')
 		scope: {},
 		template: '<div id="pagesList">' + 
 					'<ul>' +
-					'<li ng-repeat="page in pagesList">' +
-						'<a ng-href="#/page/{{$index}}"> {{ page.page.getName() }} </a>' +
-						'<p> {{ page.page.getDescription() }} </p>' +
+					'<li class="page-li" ng-repeat="page in pagesList">' +
+						'<a class="page-link" ng-href="#/page/{{$index}}"> {{ page.page.getName() }} </a>' +
+						'<p class="page-link-desc"> {{ page.page.getDescription() }} </p>' +
 					'</li>' +
 					'</ul>' +
 			'</div>', // template HTML inserito dalla direttiva
@@ -4351,6 +4351,7 @@ angular.module('norris-nrti')
 
 	};
 });
+
 /*! angularjs-nvd3-directives - v0.0.2-beta - 2013-11-09
 * http://cmaurer.github.io/angularjs-nvd3-directives
 * Copyright (c) 2013 Christian Maurer; Licensed Apache License, v2.0 */

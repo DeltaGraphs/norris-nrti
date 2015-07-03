@@ -10,7 +10,12 @@ module.exports = function(grunt) {
                 dest: 'frontend/app/dist/norris-nrti.css'
             },
             cssComplete: {
-                src: ['frontend/app/View/**/*.css','frontend/app/bower_components/bootstrap/dist/css/bootstrap.min.css','frontend/app/bower_components/bootstrap/dist/css/bootstrap-theme.min.css'], // array of folders
+                src: [
+                'frontend/app/bower_components/bootstrap/dist/css/bootstrap.min.css',
+                'frontend/app/bower_components/bootstrap/dist/css/bootstrap-theme.min.css',
+                'frontend/app/View/nv.d3.css',
+                'frontend/app/View/main.css'
+                ], // array of folders
                 dest: 'frontend/app/dist/norris-nrti.complete.css'
             },
             js: {

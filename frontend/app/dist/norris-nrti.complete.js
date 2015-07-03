@@ -12658,24 +12658,24 @@ angular.module('norris-nrti')
 
 angular.module('norris-nrti')
 .directive('pagesList', function(){
-	return {
-		restrict: 'E', // direttiva di tipo elemento (tag)
-		replace: false,
-		controller: 'PagesListController', // controller associato
-		scope: {},
-		template: '<div id="pagesList">' + 
-					'<ul>' +
-					'<li ng-repeat="page in pagesList">' +
-						'<a ng-href="#/page/{{$index}}"> {{ page.page.getName() }} </a>' +
-						'<p> {{ page.page.getDescription() }} </p>' +
-					'</li>' +
-					'</ul>' +
-			'</div>', // template HTML inserito dalla direttiva
-		link: function (scope, element, attrs) {
-			scope.socketConnection(); // richiama la funzione del controller che permette di connettersi al server
-		}
+  return {
+    restrict: 'E', // direttiva di tipo elemento (tag)
+    replace: false,
+    controller: 'PagesListController', // controller associato
+    scope: {},
+    template: '<div id="pagesList">' + 
+          '<ul>' +
+          '<li class="page-li" ng-repeat="page in pagesList">' +
+            '<a class="page-link" ng-href="#/page/{{$index}}"> {{ page.page.getName() }} </a>' +
+            '<p class="page-link-desc"> {{ page.page.getDescription() }} </p>' +
+          '</li>' +
+          '</ul>' +
+      '</div>', // template HTML inserito dalla direttiva
+    link: function (scope, element, attrs) {
+      scope.socketConnection(); // richiama la funzione del controller che permette di connettersi al server
+    }
 
-	};
+  };
 });
 /*! angularjs-nvd3-directives - v0.0.2-beta - 2013-11-09
 * http://cmaurer.github.io/angularjs-nvd3-directives
