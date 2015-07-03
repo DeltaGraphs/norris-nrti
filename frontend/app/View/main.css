@@ -11,3 +11,37 @@ table {
 .graphstable{
   width: 100%;
 }
+
+/*Styling for the page list*/
+ 
+#pagesList {
+  margin: 20px;
+}
+ 
+#pagesList ul {
+  list-style-type: none;
+  width: 500px;
+}
+ 
+.page-link {
+  font: bold 20px/1.5 Helvetica, Verdana, sans-serif;
+}
+ 
+.page-li span {
+  float: left;
+  margin: 0 15px 0 0;
+}
+ 
+.page-li p {
+  font: 200 12px/1.5 Georgia, Times New Roman, serif;
+}
+ 
+.page-li {
+  padding: 10px;
+  overflow: auto;
+}
+ 
+.page-li:hover {
+  background: #eee;
+  cursor: pointer;
+}
