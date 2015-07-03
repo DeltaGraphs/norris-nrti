@@ -51,6 +51,20 @@ table {
   cursor: pointer;
 }
 
+/* Legend styling */
+
+.text-flow-legend-chart {
+  width: 120px;
+  float: left;
+}
+
+.square-flow-legend-chart{
+  float: left;
+  clear: left;
+  height: 15px;
+  width: 15px;
+}
+
 
 /********************
  * HTML CSS

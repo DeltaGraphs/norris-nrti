@@ -269,13 +269,16 @@ angular.module('norris-nrti')
 
                 if (scope.$parent.barChart.getLegend() !== null) {
                     var div = document.createElement('div');
+                    div.setAttribute('class','legend-chart');
                     for (var i=0; i<scope.$parent.barChart.getFlowList().length; i++) {
                         if (scope.$parent.barChart.getFlowList()[i].flow.getData().length){
                             var square = document.createElement('div');
                             square.setAttribute('style', 'float: left; height: 15px; width: 15px; background-color: ' + scope.colorArray[i] + ';');
+                            square.setAttribute('class', 'square-flow-legend-chart');
                             var spanText = document.createElement('div');
-                            var text = document.createTextNode('\u00A0\u00A0\u00A0\u00A0' + scope.$parent.barChart.getFlowList()[i].flow.getName());
-                            spanText.setAttribute('style', 'width: 100px; color: '+ scope.$parent.barChart.getLegend().getFontColor() + ';');
+                            var text = document.createTextNode(scope.$parent.barChart.getFlowList()[i].flow.getName());
+                            spanText.setAttribute('style', 'color: '+ scope.$parent.barChart.getLegend().getFontColor() + ';');
+                            spanText.setAttribute('class', 'text-flow-legend-chart');
                             spanText.appendChild(text);
                             div.appendChild(square);
                             div.appendChild(spanText);
