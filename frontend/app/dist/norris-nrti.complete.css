@@ -792,6 +792,9 @@ table {
 }
 
 /*Styling for the page list*/
+
+.page-list-title {
+}
  
 #pagesList {
   margin: 20px;
@@ -800,6 +803,7 @@ table {
 #pagesList ul {
   list-style-type: none;
   width: 500px;
+  padding: 0;
 }
  
 .page-link {
