@@ -56,7 +56,7 @@ angular.module('norris-nrti')
 					commands.appendChild(next);
 				}*/
 				var list = document.createElement('div');
-				list.innerHTML = '<a class="btn btn-info" ng-href="/norris" target="_self">Return to page list</a>';
+				list.innerHTML = '<a class="btn btn-info" ng-href="/norris" target="_self"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>&nbsp;Return to page list</a>';
 				commands.appendChild(list);
 				parent.appendChild(commands);
 
