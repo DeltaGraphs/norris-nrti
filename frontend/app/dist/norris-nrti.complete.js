@@ -12178,8 +12178,8 @@ angular.module('norris-nrti')
                     map.setAttribute('class', 'mapChartAuto');
                     height = '500';
                 }*/
-                width = '500';
-                height = '500';
+                width = '500px';
+                height = '500px';
                 switch (scope.$parent.mapChart.getLegend().getPosition()) {
                     case 'N':
                         map.setAttribute('style', 'height:'+ height +'; width:'+ width +'; position: relative; bottom: -30px;');
