@@ -11565,7 +11565,7 @@ angular.module('norris-nrti')
                 var chart = element.children()[1];
                 var parent = document.createElement('div');
 
-                changePosition(chart,parent);
+                //changePosition(chart,parent);
                 parent.setAttribute('class','barChartLegend');
 
                 if (scope.$parent.barChart.getLegend() !== null) {
@@ -11969,7 +11969,7 @@ angular.module('norris-nrti')
                 }
                 else{
                     mapCanvas.setAttribute('class', 'mapChartAuto');
-                    width = '200px';
+                    width = '425px';
                 }
                 if (scope.$parent.mapChart.getHeight() !== 0){
                     mapCanvas.setAttribute('class', 'mapChartCanvas');
@@ -11977,7 +11977,7 @@ angular.module('norris-nrti')
                 }
                 else{
                     mapCanvas.setAttribute('class', 'mapChartAuto');
-                    height = '200px';
+                    height = '425px';
                 }
 
                 mapCanvas.setAttribute('style', 'height:'+ height +'px; width:'+ width +'px; position: relative;');
