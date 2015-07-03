@@ -9,6 +9,10 @@ table {
   border-collapse: collapse;
 }
 
+.graphstable{
+  width: 100%;
+}
+
 
 /********************
  * HTML CSS
