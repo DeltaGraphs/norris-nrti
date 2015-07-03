@@ -36,7 +36,7 @@ angular.module('norris-nrti')
 		socket.on('configPageList', function(info){ // ascolta sull'evento 'configPageList' (ricevuto come risposta alla connessione)
 			pagesList = new PagesList(info); // crea una nuova PagesList
 			$scope.pagesList = pagesList.getPagesList(); // rende disponibile la lista delle pagine sullo scope
-			$scope.name = info.name;
+      $scope.name = info.name;
 		});
 		socket.on('insertPage', function(info) { // ascolta sull'evento 'insertPage'
 			pagesList.addPage(info); // aggiunge una pagina alla lista

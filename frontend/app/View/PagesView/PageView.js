@@ -62,7 +62,7 @@ angular.module('norris-nrti')
 
 				var table = document.createElement('table');
 				table.className = 'graphstable';
-				table.setAttribute('style', 'width: 100%;');
+				//table.setAttribute('style', 'width: 100%;');
 				parent.appendChild(table);
 
 				// crea la tabella con i grafici
@@ -76,22 +76,22 @@ angular.module('norris-nrti')
 						switch (graph.type) {
 							case 'BarChart' : 
 								div.setAttribute('ng-controller', 'BarChartController');
-								div.setAttribute('style', 'margin: 50px; width: 100%;');
+								div.setAttribute('style', 'margin: 50px;');
 								div.innerHTML = '<bar-chart url="'+ graph.url +'"></bar-chart>';
 								break;
 							case 'LineChart' : 
 								div.setAttribute('ng-controller', 'LineChartController');
-								div.setAttribute('style', 'margin: 50px; width: 100%;');
+								div.setAttribute('style', 'margin: 50px;');
 								div.innerHTML = '<line-chart url="'+ graph.url +'"></line-chart>';
 								break;
 							case 'MapChart' : 
 								div.setAttribute('ng-controller', 'MapChartController');
-								div.setAttribute('style', 'margin: 50px; width: 100%;');
+								div.setAttribute('style', 'margin: 50px;');
 								div.innerHTML = '<map-chart url="'+ graph.url +'"></map-chart>';
 								break;
 							case 'Table' :
 								div.setAttribute('ng-controller', 'TableController');
-								div.setAttribute('style', 'margin: 50px; width: 100%;');
+								div.setAttribute('style', 'margin: 50px;');
 								div.innerHTML = '<table-chart url="'+ graph.url +'"></table-chart>';
 								break;
 						}

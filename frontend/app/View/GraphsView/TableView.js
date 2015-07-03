@@ -84,6 +84,7 @@ angular.module('norris-nrti')
                     border = border + 'border-right:' + scope.$parent.table.getAppearance().verticalGrid.width + 'px solid ' + scope.$parent.table.getAppearance().verticalGrid.color + ';';
                 }
                 var tableStyle = 'style="' + border + ' ';
+                //var dim;
                 var dim = 'style="width:' + width + '; height:' + height + ';"';
                 var str = scope.url.split('/');
                 var id = str[str.length-1];
