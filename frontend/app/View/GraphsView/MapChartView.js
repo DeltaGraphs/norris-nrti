@@ -128,7 +128,7 @@ angular.module('norris-nrti')
                 }
                 else{
                     mapCanvas.setAttribute('class', 'mapChartAuto');
-                    //width = '430';
+                    //width = '500';
                 }
                 if (scope.$parent.mapChart.getHeight() !== 0){
                     mapCanvas.setAttribute('class', 'mapChartCanvas');
@@ -136,10 +136,10 @@ angular.module('norris-nrti')
                 }
                 else{
                     mapCanvas.setAttribute('class', 'mapChartAuto');
-                    //height = '430';
+                    //height = '500';
                 }
 
-                mapCanvas.setAttribute('style', 'height:430px; width:430px; position: relative;');
+                mapCanvas.setAttribute('style', 'height:500px; width:500px; position: relative;');
 
                 var zoom = setZoom();
 
@@ -320,7 +320,7 @@ angular.module('norris-nrti')
                 }
                 else{
                     map.setAttribute('class', 'mapChartAuto');
-                    width = '430';
+                    width = '500';
                 }
                 if (scope.$parent.mapChart.getHeight() !== 0){
                     map.setAttribute('class', 'mapChartCanvas');
@@ -328,10 +328,10 @@ angular.module('norris-nrti')
                 }
                 else{
                     map.setAttribute('class', 'mapChartAuto');
-                    height = '430';
+                    height = '500';
                 }*/
-                width = '430';
-                height = '430';
+                width = '500';
+                height = '500';
                 switch (scope.$parent.mapChart.getLegend().getPosition()) {
                     case 'N':
                         map.setAttribute('style', 'height:'+ height +'; width:'+ width +'; position: relative; bottom: -30px;');
