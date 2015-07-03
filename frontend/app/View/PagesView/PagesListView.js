@@ -31,7 +31,7 @@ angular.module('norris-nrti')
 					'<ul>' +
 					'<li class="page-li" ng-repeat="page in pagesList">' +
 						'<a class="page-link" ng-href="#/page/{{$index}}"> {{ page.page.getName() }} </a>' +
-						'<p class="page-link-desc> {{ page.page.getDescription() }} </p>' +
+						'<p class="page-link-desc"> {{ page.page.getDescription() }} </p>' +
 					'</li>' +
 					'</ul>' +
 			'</div>', // template HTML inserito dalla direttiva
