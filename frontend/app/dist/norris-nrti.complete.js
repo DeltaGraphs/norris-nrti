@@ -11401,7 +11401,7 @@ angular.module('norris-nrti')
                     height = scope.$parent.barChart.getHeight() + 'px';
                 }
                 else{
-                    height = '100%';
+                    height = '430px';
                 }
                 if (scope.$parent.barChart.getLegend() !== null){
                     legend = true;
@@ -11692,7 +11692,7 @@ angular.module('norris-nrti')
                     height = scope.$parent.lineChart.getHeight() + 'px';
                 }
                 else{
-                    height = '100%';
+                    height = '430px';
                 }
                 if (scope.$parent.lineChart.getLegend() !== null){
                     legend = true;
