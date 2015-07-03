@@ -3664,7 +3664,7 @@ angular.module('norris-nrti')
                 }
                 else{
                     mapCanvas.setAttribute('class', 'mapChartAuto');
-                    width = '425px';
+                    width = '430';
                 }
                 if (scope.$parent.mapChart.getHeight() !== 0){
                     mapCanvas.setAttribute('class', 'mapChartCanvas');
@@ -3672,7 +3672,7 @@ angular.module('norris-nrti')
                 }
                 else{
                     mapCanvas.setAttribute('class', 'mapChartAuto');
-                    height = '425px';
+                    height = '430';
                 }
 
                 mapCanvas.setAttribute('style', 'height:'+ height +'px; width:'+ width +'px; position: relative;');
@@ -3856,7 +3856,7 @@ angular.module('norris-nrti')
                 }
                 else{
                     map.setAttribute('class', 'mapChartAuto');
-                    width = '200px';
+                    width = '430';
                 }
                 if (scope.$parent.mapChart.getHeight() !== 0){
                     map.setAttribute('class', 'mapChartCanvas');
@@ -3864,7 +3864,7 @@ angular.module('norris-nrti')
                 }
                 else{
                     map.setAttribute('class', 'mapChartAuto');
-                    height = '200px';
+                    height = '430';
                 }
 
                 switch (scope.$parent.mapChart.getLegend().getPosition()) {
@@ -3898,7 +3898,7 @@ angular.module('norris-nrti')
                         break;
                     case 'SW':
                         map.setAttribute('style', 'height:'+ height +'; width:'+ width +'; position: relative; bottom: 0;');
-                        parent.setAttribute('style', 'float: left; position: relative; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
+                        parent.setAttribute('style', 'background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
                         break;
                 }
             }
@@ -3913,6 +3913,7 @@ angular.module('norris-nrti')
                 
                 if (scope.$parent.mapChart.getLegend() !== null) {
                     var div = document.createElement('div');
+                        div.setAttribute('class','legend-chart');
                     for (var i=0; i<scope.$parent.mapChart.getFlowList().length; i++) {
                         if (scope.$parent.mapChart.getFlowList()[i].flow.getData().length){
                           var square = document.createElement('div');
@@ -3973,10 +3974,12 @@ angular.module('norris-nrti')
                                 break;
                             }
                               square.setAttribute('style', 'float: left; height: 18px; width: 18px; background: url("' + type + '") no-repeat;');
+                              square.setAttribute('class', 'square-flow-legend-chart');
                           }
                           var spanText = document.createElement('div');
-                          var text = document.createTextNode('\u00A0\u00A0\u00A0\u00A0' + scope.$parent.mapChart.getFlowList()[i].flow.getName());
-                          spanText.setAttribute('style', 'width: 100px; color: '+ scope.$parent.mapChart.getLegend().getFontColor() + ';');
+                          var text = document.createTextNode(scope.$parent.mapChart.getFlowList()[i].flow.getName());
+                          spanText.setAttribute('style', 'color: '+ scope.$parent.mapChart.getLegend().getFontColor() + ';');
+                          spanText.setAttribute('class', 'text-flow-legend-chart');
                           spanText.appendChild(text);
                           div.appendChild(square);
                           div.appendChild(spanText);
