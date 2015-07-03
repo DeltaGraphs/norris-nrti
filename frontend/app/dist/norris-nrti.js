@@ -2824,8 +2824,8 @@ angular.module('norris-nrti')
 angular.module('norris-nrti')
 .controller('PageController', ['$scope', '$location', '$routeParams', 'PagesList', 'PageFactory', 'SocketServicesFactory', function($scope, $location, $routeParams, PagesList, PageFactory, SocketServicesFactory){
 
-	//var page = PagesList.prototype.getPagesList()[$routeParams.pageId].page; // recupera la pagina corrente
-	var page = PageFactory.build();
+	var page = PagesList.prototype.getPagesList()[$routeParams.pageId].page; // recupera la pagina corrente
+	//var page = PageFactory.build();
 	$scope.page = page;
 	/*$scope.previous = false;
 	$scope.next = false;
@@ -2947,6 +2947,7 @@ angular.module('norris-nrti')
 		socket.on('configPageList', function(info){ // ascolta sull'evento 'configPageList' (ricevuto come risposta alla connessione)
 			pagesList = new PagesList(info); // crea una nuova PagesList
 			$scope.pagesList = pagesList.getPagesList(); // rende disponibile la lista delle pagine sullo scope
+      $scope.name = info.name;
 		});
 		socket.on('insertPage', function(info) { // ascolta sull'evento 'insertPage'
 			pagesList.addPage(info); // aggiunge una pagina alla lista
@@ -3075,6 +3076,8 @@ angular.module('norris-nrti')
                 var id = str[str.length-1];
                 var width;
                 var height;
+                //var width = scope.$parent.barChart.getWidth();
+                //var height = scope.$parent.barChart.getHeight();
                 var xLabel = 'X axis';
                 var yLabel = 'Y axis';
                 if (scope.$parent.barChart.getX() !== null && scope.$parent.barChart.getX().getName() !== null){
@@ -3214,28 +3217,39 @@ angular.module('norris-nrti')
 
                 switch (scope.$parent.barChart.getLegend().getPosition()) {
                     case 'N':
-                        parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.barChart.getHeight() + 'px; right: -' + (scope.$parent.barChart.getWidth()/2) + 'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.barChart.getHeight() + 
+                          'px; right: -' + (scope.$parent.barChart.getWidth()/2) + 'px; background-color: ' +
+                          scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'E':
-                        parent.setAttribute('style', 'float: left; position: relative; top: -' + ((scope.$parent.barChart.getHeight()/2)+50) + 'px; right: -' + scope.$parent.barChart.getWidth() + 'px;  background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + ((scope.$parent.barChart.getHeight()/2)+25) + 
+                          'px; right: -' + scope.$parent.barChart.getWidth() + 'px;  background-color: ' + 
+                          scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'S':
-                        parent.setAttribute('style', 'float: left; position: relative; right: -' + (scope.$parent.barChart.getWidth()/2) + 'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
+                        parent.setAttribute('style', 'float: left; position: relative; right: -' + (scope.$parent.barChart.getWidth()/2) +
+                          'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'W':
-                        parent.setAttribute('style', 'float: left; position: relative; top: -' + (scope.$parent.barChart.getHeight()/2) + 'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + (scope.$parent.barChart.getHeight()/2) + 
+                          'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'NE':
-                        parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.barChart.getHeight() + 'px; right: -' + (scope.$parent.barChart.getWidth()+50) + 'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.barChart.getHeight() + 
+                          'px; right: -' + (scope.$parent.barChart.getWidth()+25) + 'px; background-color: ' + 
+                          scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'NW':
-                        parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.barChart.getHeight() + 'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.barChart.getHeight() + 
+                          'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'SE':
-                        parent.setAttribute('style', 'float: left; position: relative; right: -' + (scope.$parent.barChart.getWidth()+50) + 'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
+                        parent.setAttribute('style', 'float: left; position: relative; right: -' + (scope.$parent.barChart.getWidth()+25) + 
+                          'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'SW':
-                        parent.setAttribute('style', 'float: left; position: relative; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
+                        parent.setAttribute('style', 'float: left; position: relative; background-color: ' + 
+                          scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
                         break;
                 }
             }
@@ -3350,6 +3364,8 @@ angular.module('norris-nrti')
                 var id = str[str.length-1];
                 var width;
                 var height;
+                //var width = scope.$parent.lineChart.getWidth();
+                //var height = scope.$parent.lineChart.getHeight();
                 var xLabel = 'X axis';
                 var yLabel = 'Y axis';
                 if (scope.$parent.lineChart.getX() !== null && scope.$parent.lineChart.getX().getName() !== null){
@@ -3393,7 +3409,7 @@ angular.module('norris-nrti')
                                 'margin="{left:50,top:50,bottom:50,right:50}" margin2="{left:50,top:50,bottom:50,right:50}" xaxisticks="' + ticks + '" x2axisticks="' + ticks + '" interactive="true" tooltips="'+ onPoint +'" ' +
                                 'showlegend="' + legend + '" color="colorFunction()" xaxislabel="' + xLabel + '" yaxislabel="' + yLabel + '" ' + 
                                 'xaxisrotatelabels="-90" x2axisrotatelables="-90" interpolate="' + scope.$parent.lineChart.getInterpolation() +'">' + // perchè colorFunction ritorna null per adesso
-                                '<svg style="width:'+ width +'; height:'+ height +';"></svg></nvd3-line-with-focus-chart>';
+                                '<svg style="width:'+ width +'px; height:'+ height +'px;"></svg></nvd3-line-with-focus-chart>';
                 } else {
                     linechart = '<div class="graphtitle">'+ scope.$parent.lineChart.getTitle() +'</div>' +
                                 '<nvd3-line-chart data="data" nodata=" " id="'+ id +'" ' +
@@ -3402,7 +3418,7 @@ angular.module('norris-nrti')
                                 'xaxisrotatelabels="-90" interpolate="' + scope.$parent.lineChart.getInterpolation() +'" ' +
                                 'color="colorFunction()" x2axislabel="' + xLabel + '" yaxislabel="' + yLabel + '" ' +
                                 'showxaxis="true" showyaxis="true" xaxisticks="' + ticks + '">' +
-                                '<svg style="width:'+ width +'; height:'+ height +';"></svg></nvd3-line-chart>';
+                                '<svg style="width:'+ width +'px; height:'+ height +'px;"></svg></nvd3-line-chart>';
                 }
 
                 var compiled = $compile(linechart)(scope);
@@ -3466,7 +3482,7 @@ angular.module('norris-nrti')
                         parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.lineChart.getHeight() + 'px; right: -' + (scope.$parent.lineChart.getWidth()/2) + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'E':
-                        parent.setAttribute('style', 'float: left; position: relative; top: -' + (scope.$parent.lineChart.getHeight()/2) + 'px; right: -' + (scope.$parent.lineChart.getWidth()+50) + 'px;  background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + (scope.$parent.lineChart.getHeight()/2) + 'px; right: -' + (scope.$parent.lineChart.getWidth()+25) + 'px;  background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'S':
                         parent.setAttribute('style', 'float: left; position: relative; right: -' + (scope.$parent.lineChart.getWidth()/2) + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
@@ -3475,13 +3491,13 @@ angular.module('norris-nrti')
                         parent.setAttribute('style', 'float: left; position: relative; top: -' + (scope.$parent.lineChart.getHeight()/2) + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'NE':
-                        parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.lineChart.getHeight() + 'px; right: -' + (scope.$parent.lineChart.getWidth()+50) + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.lineChart.getHeight() + 'px; right: -' + (scope.$parent.lineChart.getWidth()+25) + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'NW':
                         parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.lineChart.getHeight() + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'SE':
-                        parent.setAttribute('style', 'float: left; position: relative; right: -' + (scope.$parent.lineChart.getWidth()+50) + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
+                        parent.setAttribute('style', 'float: left; position: relative; right: -' + (scope.$parent.lineChart.getWidth()+25) + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'SW':
                         parent.setAttribute('style', 'float: left; position: relative; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
@@ -3636,6 +3652,31 @@ angular.module('norris-nrti')
             // crea la mappa da visualizzare
             scope.init = function(){
 
+                var mapCanvas = element.children()[1];
+
+                //var width = scope.$parent.mapChart.getWidth();
+                //var height = scope.$parent.mapChart.getHeight();
+                var width;
+                var height;
+                if (scope.$parent.mapChart.getWidth() !== 0){
+                    mapCanvas.setAttribute('class', 'mapChartCanvas');
+                    width = scope.$parent.mapChart.getWidth() + 'px';
+                }
+                else{
+                    mapCanvas.setAttribute('class', 'mapChartAuto');
+                    width = '200px';
+                }
+                if (scope.$parent.mapChart.getHeight() !== 0){
+                    mapCanvas.setAttribute('class', 'mapChartCanvas');
+                    height = scope.$parent.mapChart.getHeight() + 'px';
+                }
+                else{
+                    mapCanvas.setAttribute('class', 'mapChartAuto');
+                    height = '200px';
+                }
+
+                mapCanvas.setAttribute('style', 'height:'+ height +'px; width:'+ width +'px; position: relative;');
+
                 var zoom = setZoom();
 
                 // opzioni iniziali della mappa
@@ -3656,7 +3697,7 @@ angular.module('norris-nrti')
                 map = new google.maps.Map(element.children()[1], mapOptions);
 
                 // impostazione del tipo di mappa da visualizzare
-                switch (scope.$parent.mapChart.getMapType()) {
+                /*switch (scope.$parent.mapChart.getMapType()) {
                     case 'roadmap':
                         map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
                         break;
@@ -3669,7 +3710,7 @@ angular.module('norris-nrti')
                     case 'terrain':
                         map.setMapTypeId(google.maps.MapTypeId.TERRAIN);
                         break;
-                }
+                }*/
                 // inserimento del tracciato (se presente)
                 for (var i=0; i<scope.$parent.mapChart.getFlowList().length; i++){
                     if (scope.$parent.mapChart.getFlowList()[i].flow.getTrace().type === 'poly'){
@@ -3688,30 +3729,8 @@ angular.module('norris-nrti')
                         polylines[i].setMap(map);
                     }
                 }
-
-                var mapCanvas = element.children()[1];
-
-                var width;
-                var height;
-                if (scope.$parent.mapChart.getWidth() !== 0){
-                    mapCanvas.setAttribute('class', 'mapChartCanvas');
-                    width = scope.$parent.mapChart.getWidth() + 'px';
-                }
-                else{
-                    mapCanvas.setAttribute('class', 'mapChartAuto');
-                    width = '200px';
-                }
-                if (scope.$parent.mapChart.getHeight() !== 0){
-                    mapCanvas.setAttribute('class', 'mapChartCanvas');
-                    height = scope.$parent.mapChart.getHeight() + 'px';
-                }
-                else{
-                    mapCanvas.setAttribute('class', 'mapChartAuto');
-                    height = '200px';
-                }
-
+              
                 
-                mapCanvas.setAttribute('style', 'height:'+ height +'; width:'+ width +'; position: relative;');
      
             };
 
@@ -3827,6 +3846,8 @@ angular.module('norris-nrti')
             // posiziona la legenda a nord, est, sud, ovest, nord-est, nosrd-ovest, sud-est o sud-ovest del grafico
             function changePosition(map,parent){
 
+                //var width = scope.$parent.mapChart.getWidth() + 'px';
+                //var height = scope.$parent.mapChart.getHeight() + 'px';
                 var width;
                 var height;
                 if (scope.$parent.mapChart.getWidth() !== 0){
@@ -3835,7 +3856,7 @@ angular.module('norris-nrti')
                 }
                 else{
                     map.setAttribute('class', 'mapChartAuto');
-                    width = 200 + 'px';
+                    width = '200px';
                 }
                 if (scope.$parent.mapChart.getHeight() !== 0){
                     map.setAttribute('class', 'mapChartCanvas');
@@ -3843,7 +3864,7 @@ angular.module('norris-nrti')
                 }
                 else{
                     map.setAttribute('class', 'mapChartAuto');
-                    height = 200 + 'px';
+                    height = '200px';
                 }
 
                 switch (scope.$parent.mapChart.getLegend().getPosition()) {
@@ -3853,7 +3874,7 @@ angular.module('norris-nrti')
                         break;
                     case 'E':
                         map.setAttribute('style', 'height:'+ height +'; width:'+ width +'; position: relative; right: 0;');
-                        parent.setAttribute('style', 'float: left; position: relative; top: -' + (scope.$parent.mapChart.getHeight()/2) + 'px; right: -' + (scope.$parent.mapChart.getWidth()+50) + 'px;  background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + (scope.$parent.mapChart.getHeight()/2) + 'px; right: -' + (scope.$parent.mapChart.getWidth()+25) + 'px;  background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'S':
                         map.setAttribute('style', 'height:'+ height +'; width:'+ width +'; position: relative;');
@@ -3865,7 +3886,7 @@ angular.module('norris-nrti')
                         break;
                     case 'NE':
                         map.setAttribute('style', 'height:'+ height +'; width:'+ width +'; position: relative; bottom: 0;');
-                        parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.mapChart.getHeight() + 'px; right: -' + (scope.$parent.mapChart.getWidth()+50) + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.mapChart.getHeight() + 'px; right: -' + (scope.$parent.mapChart.getWidth()+25) + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'NW':
                         map.setAttribute('style', 'height:'+ height +'; width:'+ width +'; position: relative; bottom: -30px;');
@@ -3873,7 +3894,7 @@ angular.module('norris-nrti')
                         break;
                     case 'SE':
                         map.setAttribute('style', 'height:'+ height +'; width:'+ width +'; position: relative;');
-                        parent.setAttribute('style', 'float: left; position: relative; right: -' + (scope.$parent.mapChart.getWidth()+50) + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
+                        parent.setAttribute('style', 'float: left; position: relative; right: -' + (scope.$parent.mapChart.getWidth()+25) + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'SW':
                         map.setAttribute('style', 'height:'+ height +'; width:'+ width +'; position: relative; bottom: 0;');
@@ -4053,6 +4074,7 @@ angular.module('norris-nrti')
                     border = border + 'border-right:' + scope.$parent.table.getAppearance().verticalGrid.width + 'px solid ' + scope.$parent.table.getAppearance().verticalGrid.color + ';';
                 }
                 var tableStyle = 'style="' + border + ' ';
+                //var dim;
                 var dim = 'style="width:' + width + '; height:' + height + ';"';
                 var str = scope.url.split('/');
                 var id = str[str.length-1];
@@ -4247,13 +4269,13 @@ angular.module('norris-nrti')
 					commands.appendChild(next);
 				}*/
 				var list = document.createElement('div');
-				list.innerHTML = '<a ng-href="/norris" target="_self">RETURN TO PAGES LIST</a>';
+				list.innerHTML = '<a class="btn btn-info" ng-href="/norris" target="_self"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>&nbsp;Return to page list</a>';
 				commands.appendChild(list);
 				parent.appendChild(commands);
 
 				var table = document.createElement('table');
 				table.className = 'graphstable';
-				table.setAttribute('style', 'width: 100%;');
+				//table.setAttribute('style', 'width: 100%;');
 				parent.appendChild(table);
 
 				// crea la tabella con i grafici
@@ -4267,22 +4289,22 @@ angular.module('norris-nrti')
 						switch (graph.type) {
 							case 'BarChart' : 
 								div.setAttribute('ng-controller', 'BarChartController');
-								div.setAttribute('style', 'margin: 50px; width: 100%;');
+								div.setAttribute('style', 'margin: 50px;');
 								div.innerHTML = '<bar-chart url="'+ graph.url +'"></bar-chart>';
 								break;
 							case 'LineChart' : 
 								div.setAttribute('ng-controller', 'LineChartController');
-								div.setAttribute('style', 'margin: 50px; width: 100%;');
+								div.setAttribute('style', 'margin: 50px;');
 								div.innerHTML = '<line-chart url="'+ graph.url +'"></line-chart>';
 								break;
 							case 'MapChart' : 
 								div.setAttribute('ng-controller', 'MapChartController');
-								div.setAttribute('style', 'margin: 50px; width: 100%;');
+								div.setAttribute('style', 'margin: 50px;');
 								div.innerHTML = '<map-chart url="'+ graph.url +'"></map-chart>';
 								break;
 							case 'Table' :
 								div.setAttribute('ng-controller', 'TableController');
-								div.setAttribute('style', 'margin: 50px; width: 100%;');
+								div.setAttribute('style', 'margin: 50px;');
 								div.innerHTML = '<table-chart url="'+ graph.url +'"></table-chart>';
 								break;
 						}
@@ -4337,9 +4359,12 @@ angular.module('norris-nrti')
 		replace: false,
 		controller: 'PagesListController', // controller associato
 		scope: {},
-		template: '<div id="pagesList">' + 
+		template: 
+				'<div id="pagesListTitle"><h1 id="page-list-title" class="page-header">{{name}}</h1></div>' +
+				'<div id="pagesList">' + 
 					'<ul>' +
 					'<li class="page-li" ng-repeat="page in pagesList">' +
+						'<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>' +
 						'<a class="page-link" ng-href="#/page/{{$index}}"> {{ page.page.getName() }} </a>' +
 						'<p class="page-link-desc"> {{ page.page.getDescription() }} </p>' +
 					'</li>' +
