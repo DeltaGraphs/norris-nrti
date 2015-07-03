@@ -123,7 +123,7 @@ angular.module('norris-nrti')
                                 'margin="{left:50,top:50,bottom:50,right:50}" margin2="{left:50,top:50,bottom:50,right:50}" xaxisticks="' + ticks + '" x2axisticks="' + ticks + '" interactive="true" tooltips="'+ onPoint +'" ' +
                                 'showlegend="' + legend + '" color="colorFunction()" xaxislabel="' + xLabel + '" yaxislabel="' + yLabel + '" ' + 
                                 'xaxisrotatelabels="-90" x2axisrotatelables="-90" interpolate="' + scope.$parent.lineChart.getInterpolation() +'">' + // perchè colorFunction ritorna null per adesso
-                                '<svg style="width:'+ width +'px; height:'+ height +'px;"></svg></nvd3-line-with-focus-chart>';
+                                '<svg style="width:'+ width +'; height:'+ height +';"></svg></nvd3-line-with-focus-chart>';
                 } else {
                     linechart = '<div class="graphtitle">'+ scope.$parent.lineChart.getTitle() +'</div>' +
                                 '<nvd3-line-chart data="data" nodata=" " id="'+ id +'" ' +
@@ -132,7 +132,7 @@ angular.module('norris-nrti')
                                 'xaxisrotatelabels="-90" interpolate="' + scope.$parent.lineChart.getInterpolation() +'" ' +
                                 'color="colorFunction()" x2axislabel="' + xLabel + '" yaxislabel="' + yLabel + '" ' +
                                 'showxaxis="true" showyaxis="true" xaxisticks="' + ticks + '">' +
-                                '<svg style="width:'+ width +'px; height:'+ height +'px;"></svg></nvd3-line-chart>';
+                                '<svg style="width:'+ width +'; height:'+ height +';"></svg></nvd3-line-chart>';
                 }
 
                 var compiled = $compile(linechart)(scope);
