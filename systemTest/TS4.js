@@ -50,8 +50,6 @@ var TS=function(page){
 		    fontColor: '#00AA00',
 		    backgroundColor: '#FFAAFF'
 		},
-		width: 600,
-		height: 600,
 		latitude: 45.4113311,
 		longitude: 11.8876318,
 		mapType: 'roadmap',
