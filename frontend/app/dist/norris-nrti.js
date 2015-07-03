@@ -3663,8 +3663,8 @@ angular.module('norris-nrti')
 
                 //var width = scope.$parent.mapChart.getWidth();
                 //var height = scope.$parent.mapChart.getHeight();
-                var width;
-                var height;
+                var width=500;
+                var height=500;
                 if (scope.$parent.mapChart.getWidth() !== 0){
                     mapCanvas.setAttribute('class', 'mapChartCanvas');
                     //width = scope.$parent.mapChart.getWidth() + 'px';
