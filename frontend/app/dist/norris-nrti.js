@@ -3074,8 +3074,7 @@ angular.module('norris-nrti')
                 var legend, onPoint, control;
                 var str = scope.url.split('/');
                 var id = str[str.length-1];
-                var width;
-                var height;
+                
                 //var width = scope.$parent.barChart.getWidth();
                 //var height = scope.$parent.barChart.getHeight();
                 var xLabel = 'X axis';
@@ -3086,6 +3085,9 @@ angular.module('norris-nrti')
                 if (scope.$parent.barChart.getY() !== null && scope.$parent.barChart.getY().getName() !== null){
                     xLabel = scope.$parent.barChart.getY().getName();
                 }
+
+                var width;
+                var height;
                 if (scope.$parent.barChart.getWidth() !== 0){
                     width = scope.$parent.barChart.getWidth() + 'px';
                 }
@@ -3098,6 +3100,7 @@ angular.module('norris-nrti')
                 else{
                     height = '430px';
                 }
+
                 if (scope.$parent.barChart.getLegend() !== null){
                     legend = true;
                 }
@@ -3214,37 +3217,51 @@ angular.module('norris-nrti')
 
             // posiziona la legenda a nord, est, sud, ovest, nord-est, nord-ovest, sud-est o sud-ovest del grafico
             function changePosition(chart,parent){
+                var width;
+                var height;
+                if (scope.$parent.barChart.getWidth() !== 0){
+                    width = scope.$parent.barChart.getWidth();
+                }
+                else{
+                    width = '430';
+                }
+                if (scope.$parent.barChart.getHeight() !== 0){
+                    height = scope.$parent.barChart.getHeight();
+                }
+                else{
+                    height = '430';
+                }
 
                 switch (scope.$parent.barChart.getLegend().getPosition()) {
                     case 'N':
-                        parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.barChart.getHeight() + 
-                          'px; right: -' + (scope.$parent.barChart.getWidth()/2) + 'px; background-color: ' +
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + height + 
+                          'px; right: -' + (width()/2) + 'px; background-color: ' +
                           scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'E':
-                        parent.setAttribute('style', 'float: left; position: relative; top: -' + ((scope.$parent.barChart.getHeight()/2)+25) + 
-                          'px; right: -' + scope.$parent.barChart.getWidth() + 'px;  background-color: ' + 
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + ((height/2)+25) + 
+                          'px; right: -' + width + 'px;  background-color: ' + 
                           scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'S':
-                        parent.setAttribute('style', 'float: left; position: relative; right: -' + (scope.$parent.barChart.getWidth()/2) +
+                        parent.setAttribute('style', 'float: left; position: relative; right: -' + (width/2) +
                           'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'W':
-                        parent.setAttribute('style', 'float: left; position: relative; top: -' + (scope.$parent.barChart.getHeight()/2) + 
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + (height/2) + 
                           'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'NE':
-                        parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.barChart.getHeight() + 
-                          'px; right: -' + (scope.$parent.barChart.getWidth()+25) + 'px; background-color: ' + 
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + height + 
+                          'px; right: -' + (width+25) + 'px; background-color: ' + 
                           scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'NW':
-                        parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.barChart.getHeight() + 
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + height + 
                           'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'SE':
-                        parent.setAttribute('style', 'float: left; position: relative; right: -' + (scope.$parent.barChart.getWidth()+25) + 
+                        parent.setAttribute('style', 'float: left; position: relative; right: -' + (width()+25) + 
                           'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'SW':
@@ -3365,8 +3382,7 @@ angular.module('norris-nrti')
                 var linechart, legend, onPoint, ticks;
                 var str = scope.url.split('/');
                 var id = str[str.length-1];
-                var width;
-                var height;
+                
                 //var width = scope.$parent.lineChart.getWidth();
                 //var height = scope.$parent.lineChart.getHeight();
                 var xLabel = 'X axis';
@@ -3377,6 +3393,9 @@ angular.module('norris-nrti')
                 if (scope.$parent.lineChart.getY() !== null && scope.$parent.lineChart.getY().getName() !== null){
                     xLabel = scope.$parent.lineChart.getY().getName();
                 }
+
+                var width;
+                var height;
                 if (scope.$parent.lineChart.getWidth() !== 0){
                     width = scope.$parent.lineChart.getWidth() + 'px';
                 }
@@ -3389,6 +3408,7 @@ angular.module('norris-nrti')
                 else{
                     height = '430px';
                 }
+
                 if (scope.$parent.lineChart.getLegend() !== null){
                     legend = true;
                 } else {
@@ -3480,27 +3500,42 @@ angular.module('norris-nrti')
 
             // posiziona la legenda a nord, est, sud, ovest, nord-est, nosrd-ovest, sud-est o sud-ovest del grafico
             function changePosition(chart,parent){
+                var width;
+                var height;
+                if (scope.$parent.lineChart.getWidth() !== 0){
+                    width = scope.$parent.lineChart.getWidth();
+                }
+                else{
+                    width = '430';
+                }
+                if (scope.$parent.lineChart.getHeight() !== 0){
+                    height = scope.$parent.lineChart.getHeight();
+                }
+                else{
+                    height = '430';
+                }
+                
                 switch (scope.$parent.lineChart.getLegend().getPosition()) {
                     case 'N':
-                        parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.lineChart.getHeight() + 'px; right: -' + (scope.$parent.lineChart.getWidth()/2) + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + height + 'px; right: -' + (width/2) + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'E':
-                        parent.setAttribute('style', 'float: left; position: relative; top: -' + (scope.$parent.lineChart.getHeight()/2) + 'px; right: -' + (scope.$parent.lineChart.getWidth()+25) + 'px;  background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + (height/2) + 'px; right: -' + (width+25) + 'px;  background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'S':
-                        parent.setAttribute('style', 'float: left; position: relative; right: -' + (scope.$parent.lineChart.getWidth()/2) + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
+                        parent.setAttribute('style', 'float: left; position: relative; right: -' + (width/2) + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'W':
-                        parent.setAttribute('style', 'float: left; position: relative; top: -' + (scope.$parent.lineChart.getHeight()/2) + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + (height/2) + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'NE':
-                        parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.lineChart.getHeight() + 'px; right: -' + (scope.$parent.lineChart.getWidth()+25) + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + height + 'px; right: -' + (width+25) + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'NW':
-                        parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.lineChart.getHeight() + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + height + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'SE':
-                        parent.setAttribute('style', 'float: left; position: relative; right: -' + (scope.$parent.lineChart.getWidth()+25) + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
+                        parent.setAttribute('style', 'float: left; position: relative; right: -' + (width+25) + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'SW':
                         parent.setAttribute('style', 'float: left; position: relative; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
