@@ -29,7 +29,7 @@ angular.module('norris-nrti')
 		scope: {},
 		template: '<div id="pagesList">' + 
 					'<ul>' +
-					'<li ng-repeat="page in pagesList">' +
+					'<li class="page-li" ng-repeat="page in pagesList">' +
 						'<a class="page-link" ng-href="#/page/{{$index}}"> {{ page.page.getName() }} </a>' +
 						'<p class="page-link-desc> {{ page.page.getDescription() }} </p>' +
 					'</li>' +
