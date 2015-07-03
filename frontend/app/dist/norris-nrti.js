@@ -3667,22 +3667,22 @@ angular.module('norris-nrti')
                 var height;
                 if (scope.$parent.mapChart.getWidth() !== 0){
                     mapCanvas.setAttribute('class', 'mapChartCanvas');
-                    width = scope.$parent.mapChart.getWidth() + 'px';
+                    //width = scope.$parent.mapChart.getWidth() + 'px';
                 }
                 else{
                     mapCanvas.setAttribute('class', 'mapChartAuto');
-                    width = '430';
+                    //width = '430';
                 }
                 if (scope.$parent.mapChart.getHeight() !== 0){
                     mapCanvas.setAttribute('class', 'mapChartCanvas');
-                    height = scope.$parent.mapChart.getHeight() + 'px';
+                    //height = scope.$parent.mapChart.getHeight() + 'px';
                 }
                 else{
                     mapCanvas.setAttribute('class', 'mapChartAuto');
-                    height = '430';
+                    //height = '430';
                 }
 
-                mapCanvas.setAttribute('style', 'height:'+ height +'px; width:'+ width +'px; position: relative;');
+                mapCanvas.setAttribute('style', 'height:430px; width:430px; position: relative;');
 
                 var zoom = setZoom();
 
@@ -3857,7 +3857,7 @@ angular.module('norris-nrti')
                 //var height = scope.$parent.mapChart.getHeight() + 'px';
                 var width;
                 var height;
-                if (scope.$parent.mapChart.getWidth() !== 0){
+                /*if (scope.$parent.mapChart.getWidth() !== 0){
                     map.setAttribute('class', 'mapChartCanvas');
                     width = scope.$parent.mapChart.getWidth() + 'px';
                 }
@@ -3872,8 +3872,9 @@ angular.module('norris-nrti')
                 else{
                     map.setAttribute('class', 'mapChartAuto');
                     height = '430';
-                }
-
+                }*/
+                width = '430';
+                height = '430';
                 switch (scope.$parent.mapChart.getLegend().getPosition()) {
                     case 'N':
                         map.setAttribute('style', 'height:'+ height +'; width:'+ width +'; position: relative; bottom: -30px;');
