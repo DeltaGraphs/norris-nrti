@@ -3641,13 +3641,13 @@ angular.module('norris-nrti')
             }
 
             // imposta lo zoom dinamicamente (in base all'altezza e larghezza che si desidera visualizzare)
-            function setZoom(){
+            function setZoom(width,height){
                 var latLng = new google.maps.LatLng(scope.$parent.mapChart.getLatitude(), scope.$parent.mapChart.getLongitude());
-                var mapDim = { height: scope.$parent.mapChart.getHeight(), width: scope.$parent.mapChart.getWidth() };
+                var mapDim = { height: height, width: width };
                 
                 var spherical = google.maps.geometry.spherical; 
-                var west  = spherical.computeOffset(latLng, scope.$parent.mapChart.getMapWidth()/2, -90);
-                var east  = spherical.computeOffset(latLng, scope.$parent.mapChart.getMapWidth()/2, 90);
+                var west  = spherical.computeOffset(latLng, width/2, -90);
+                var east  = spherical.computeOffset(latLng, width/2, 90);
 
                 var bounds = new google.maps.LatLngBounds();
                 bounds.extend(west);
@@ -3684,7 +3684,7 @@ angular.module('norris-nrti')
 
                 mapCanvas.setAttribute('style', 'height:500px; width:500px; position: relative;');
 
-                var zoom = setZoom();
+                var zoom = setZoom(width,height);
 
                 // opzioni iniziali della mappa
                 var mapOptions = {
