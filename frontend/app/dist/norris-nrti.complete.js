@@ -11565,7 +11565,7 @@ angular.module('norris-nrti')
                 var chart = element.children()[1];
                 var parent = document.createElement('div');
 
-                //changePosition(chart,parent);
+                changePosition(chart,parent);
                 parent.setAttribute('class','barChartLegend');
 
                 if (scope.$parent.barChart.getLegend() !== null) {
@@ -11969,10 +11969,12 @@ angular.module('norris-nrti')
                 //var width = scope.$parent.mapChart.getWidth();
                 //var height = scope.$parent.mapChart.getHeight();
                 var width=430;
+                var widthDIM='100%';
                 var height=430;
                 if (scope.$parent.mapChart.getWidth() !== 0){
                     mapCanvas.setAttribute('class', 'mapChartCanvas');
                     width = scope.$parent.mapChart.getWidth();
+                    widthDIM = scope.$parent.mapChart.getWidth()+'px';
                 }
                 else{
                     mapCanvas.setAttribute('class', 'mapChartAuto');
@@ -11987,7 +11989,7 @@ angular.module('norris-nrti')
                     //height = '430';
                 }
 
-                mapCanvas.setAttribute('style', 'height:'+height+'px; width:'+width+'px; position: relative;');
+                mapCanvas.setAttribute('style', 'height:'+height+'px; width:'+widthDIM+'; position: relative;');
 
                 var zoom = setZoom(width,height);
 
@@ -12160,11 +12162,15 @@ angular.module('norris-nrti')
 
                 //var width = scope.$parent.mapChart.getWidth() + 'px';
                 //var height = scope.$parent.mapChart.getHeight() + 'px';
-                var width=430;
-                var height=430;
+                var width='100%';
+                var height='430px';
+
+                var widthUNIT='430';
+                var heightUNIT='430';
                 if (scope.$parent.mapChart.getWidth() !== 0){
                     map.setAttribute('class', 'mapChartCanvas');
-                    width = scope.$parent.mapChart.getWidth();
+                    width = scope.$parent.mapChart.getWidth()+'px';
+                    widthUNIT = scope.$parent.mapChart.getWidth();
                 }
                 else{
                     map.setAttribute('class', 'mapChartAuto');
@@ -12172,7 +12178,8 @@ angular.module('norris-nrti')
                 }
                 if (scope.$parent.mapChart.getHeight() !== 0){
                     map.setAttribute('class', 'mapChartCanvas');
-                    height = scope.$parent.mapChart.getHeight();
+                    height = scope.$parent.mapChart.getHeight()+'px';
+                    heightUNIT = scope.$parent.mapChart.getHeight();
                 }
                 else{
                     map.setAttribute('class', 'mapChartAuto');
@@ -12182,35 +12189,35 @@ angular.module('norris-nrti')
                 //height = '430px';
                 switch (scope.$parent.mapChart.getLegend().getPosition()) {
                     case 'N':
-                        map.setAttribute('style', 'height:'+ height +'px; width:'+ width +'px; position: relative; bottom: -30px;');
-                        parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.mapChart.getHeight() + 'px; right: -' + (scope.$parent.mapChart.getWidth()/2) + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
+                        map.setAttribute('style', 'height:'+ height +'; width:'+ width +'; position: relative; bottom: -30px;');
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + heightUNIT + 'px; right: -' + (widthUNIT/2) + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'E':
-                        map.setAttribute('style', 'height:'+ height +'px; width:'+ width +'px; position: relative; right: 0;');
-                        parent.setAttribute('style', 'float: left; position: relative; top: -' + (scope.$parent.mapChart.getHeight()/2) + 'px; right: -' + (scope.$parent.mapChart.getWidth()+25) + 'px;  background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
+                        map.setAttribute('style', 'height:'+ height +'; width:'+ width +'; position: relative; right: 0;');
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + (heightUNIT/2) + 'px; right: -' + (widthUNIT+25) + 'px;  background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'S':
-                        map.setAttribute('style', 'height:'+ height +'px; width:'+ width +'px; position: relative;');
-                        parent.setAttribute('style', 'float: left; position: relative; right: -' + (scope.$parent.mapChart.getWidth()/2) + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
+                        map.setAttribute('style', 'height:'+ height +'; width:'+ width +'; position: relative;');
+                        parent.setAttribute('style', 'float: left; position: relative; right: -' + (widthUNIT/2) + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'W':
-                        map.setAttribute('style', 'height:'+ height +'px; width:'+ width +'px; position: relative; right: -100px;');
-                        parent.setAttribute('style', 'float: left; position: relative; top: -' + (scope.$parent.mapChart.getHeight()/2) + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
+                        map.setAttribute('style', 'height:'+ height +'; width:'+ width +'; position: relative; right: -100px;');
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + (heightUNIT/2) + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'NE':
-                        map.setAttribute('style', 'height:'+ height +'px; width:'+ width +'px; position: relative; bottom: 0;');
-                        parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.mapChart.getHeight() + 'px; right: -' + (scope.$parent.mapChart.getWidth()+25) + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
+                        map.setAttribute('style', 'height:'+ height +'; width:'+ width +'; position: relative; bottom: 0;');
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + heightUNIT + 'px; right: -' + (widthUNIT+25) + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'NW':
-                        map.setAttribute('style', 'height:'+ height +'px; width:'+ width +'px; position: relative; bottom: -30px;');
-                        parent.setAttribute('style', 'float: left; position: relative; top: -' + scope.$parent.mapChart.getHeight() + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
+                        map.setAttribute('style', 'height:'+ height +'; width:'+ width +'; position: relative; bottom: -30px;');
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + heightUNIT + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'SE':
-                        map.setAttribute('style', 'height:'+ height +'px; width:'+ width +'px; position: relative;');
-                        parent.setAttribute('style', 'float: left; position: relative; right: -' + (scope.$parent.mapChart.getWidth()+25) + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
+                        map.setAttribute('style', 'height:'+ height +'; width:'+ width +'; position: relative;');
+                        parent.setAttribute('style', 'float: left; position: relative; right: -' + (widthUNIT+25) + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'SW':
-                        map.setAttribute('style', 'height:'+ height +'px; width:'+ width +'px; position: relative; bottom: 0;');
+                        map.setAttribute('style', 'height:'+ height +'; width:'+ width +'; position: relative; bottom: 0;');
                         parent.setAttribute('style', 'background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
                         break;
                 }
