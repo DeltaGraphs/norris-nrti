@@ -27,7 +27,9 @@ angular.module('norris-nrti')
 		replace: false,
 		controller: 'PagesListController', // controller associato
 		scope: {},
-		template: '<div id="pagesList">' + 
+		template: 
+				'<div id="pagesListTitle"><h1 id="page-list-title" class="page-header">{{name}}</h1></div>' +
+				'<div id="pagesList">' + 
 					'<ul>' +
 					'<li class="page-li" ng-repeat="page in pagesList">' +
 						'<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>' +

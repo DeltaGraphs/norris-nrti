@@ -11252,6 +11252,7 @@ angular.module('norris-nrti')
 		socket.on('configPageList', function(info){ // ascolta sull'evento 'configPageList' (ricevuto come risposta alla connessione)
 			pagesList = new PagesList(info); // crea una nuova PagesList
 			$scope.pagesList = pagesList.getPagesList(); // rende disponibile la lista delle pagine sullo scope
+      $scope.name = info.name;
 		});
 		socket.on('insertPage', function(info) { // ascolta sull'evento 'insertPage'
 			pagesList.addPage(info); // aggiunge una pagina alla lista
@@ -12654,8 +12655,6 @@ angular.module('norris-nrti')
 * 0.0.1         2015-05-30  Maria Giovanna Chinellato   Initial code      
 * =================================================================================================
 */
-
-
 angular.module('norris-nrti')
 .directive('pagesList', function(){
   return {
@@ -12663,7 +12662,9 @@ angular.module('norris-nrti')
     replace: false,
     controller: 'PagesListController', // controller associato
     scope: {},
-    template: '<div id="pagesList">' + 
+    template: 
+        '<div id="pagesListTitle"><h1 id="page-list-title" class="page-header">{{name}}</h1></div>' +
+        '<div id="pagesList">' + 
           '<ul>' +
           '<li class="page-li" ng-repeat="page in pagesList">' +
             '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>' +
