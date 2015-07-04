@@ -1,6 +1,6 @@
 {
   "name": "norris-nrti",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Norris - Node Real-Time Intelligence [stay tuned] (Credits CoffeeStrap)",
   "main": "norris-nrti.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/matfur92/norris-nrti"
+    "url": "https://github.com/DeltaGraphs/norris-nrti"
   },
   "keywords": [
     "norris",
@@ -31,14 +31,26 @@
     "express": "^4.12.3"
   },
   "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-uglify": "^0.9.1",
+    "grunt-contrib-cssmin": "^0.12.3",
     "jshint": "^2.7.0",
     "mocha": "^2.2.4",
     "istanbul": "^0.3.13",
     "coveralls": "^2.11.2",
-    "mocha-lcov-reporter": "0.0.2"
+    "mocha-lcov-reporter": "^0.0.2",
+    "mocha-istanbul": "^0.2.0",
+    "plato": "^1.4.0",
+    "complexity-report": "^1.4.0",
+    "xunit-file": "^0.0.6",
+    "socket.io": "^1.3.5",
+    "socket.io-client":"^1.3.5",
+    "supertest": "^1.0.1",
+    "superagent": "^1.2.0"
   },
   "scripts": {
-    "test": "make",
-    "test-travis": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- -R spec ./test/*"
+    "test-travis-backend": "make test --always-make --ignore-errors",
+    "test-travis-frontend": "cd frontend && make test --always-make --ignore-errors"
   }
 }

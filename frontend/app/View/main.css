@@ -1,0 +1,66 @@
+/* norris-nrti CSS */
+/*.mapChartAuto{
+  width: 100% !important;
+  height: 100% !important;
+}
+*/
+table {
+  border-collapse: collapse;
+}
+
+.graphstable{
+  width: 100%;
+}
+
+/*Styling for the page list*/
+
+#page-list-title {
+  margin: 20px 0 20px 15px;
+}
+ 
+#pagesList {
+  margin: 20px;
+}
+ 
+#pagesList ul {
+  list-style-type: none;
+  width: 500px;
+  padding: 0;
+}
+ 
+.page-link {
+  font: bold 20px/1.5 Helvetica, Verdana, sans-serif;
+}
+ 
+.page-li span {
+  float: left;
+  margin: 6px 15px 0 0;
+}
+ 
+.page-li p {
+  font: 200 12px/1.5 Georgia, Times New Roman, serif;
+}
+ 
+.page-li {
+  padding: 10px;
+  overflow: auto;
+}
+ 
+.page-li:hover {
+  background: #eee;
+  cursor: pointer;
+}
+
+/* Legend styling */
+
+.text-flow-legend-chart {
+  width: 120px;
+  float: left;
+}
+
+.square-flow-legend-chart{
+  float: left;
+  clear: left;
+  height: 15px;
+  width: 15px;
+}

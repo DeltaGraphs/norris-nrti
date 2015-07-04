@@ -1,0 +1,27 @@
+{
+  "name": "angular-socket.io-mock",
+  "description": "Drop in Mock replacement for angular-socket-io",
+  "version": "1.0.0",
+  "authors": [
+    {
+      "name": "Bryan Tong",
+      "email": "contact@nullivex.com",
+      "homepage": "http://bryantong.com"
+    }
+  ],
+  "keywords": [
+    "angular",
+    "socket.io",
+    "mock",
+    "test"
+  ],
+  "devDependencies": {
+    "jasmine-core": "^2.1.3",
+    "karma": "^0.12.9",
+    "karma-jasmine": "^0.3.2",
+    "karma-phantomjs-launcher": "^0.1.4"
+  },
+  "scripts": {
+    "test": "karma start --single-run --browsers PhantomJS"
+  }
+}

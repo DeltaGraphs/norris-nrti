@@ -1,0 +1,32 @@
+{
+  "name": "norris-nrti-frontend",
+  "description": "Frontend of norris-nrti",
+  "version": "0.0.1",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "test": "./node_modules/.bin/karma start --single-run",
+    "postinstall": "bower cache clean && bower install"
+  },
+  "dependencies": {
+    "bower": "^1.4.1"
+  },
+  "devDependencies": {
+    "jshint": "^2.7.0",
+    "plato": "^1.4.0",
+    "complexity-report": "^1.4.0",
+    "karma": "^0.12.31",
+    "karma-jasmine": "^0.3.5",
+    "karma-junit-reporter": "^0.2.2",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "karma-coverage": "^0.3.1",
+    "karma-chrome-launcher": "^0.1.12",
+    "karma-firefox-launcher": "^0.1.6",
+    "karma-html2js-preprocessor": "^0.1.0",
+    "karma-script-launcher": "^0.1.0",
+    "karma-coffee-preprocessor": "^0.2.1",
+    "requirejs": "^2.1.17",
+    "karma-requirejs": "^0.2.2",
+    "nodemon": "^1.3.7"
+  }
+}

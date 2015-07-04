@@ -1,0 +1,18 @@
+{
+  "name": "angular-socket.io-mock",
+  "version": "1.0.0",
+  "dependencies": {
+    "angular": "latest",
+    "angular-socket-io": "latest"
+  },
+  "homepage": "https://github.com/nullivex/angular-socket.io-mock",
+  "_release": "1.0.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.0.0",
+    "commit": "206f964594108f5bffc0a7470f0a0283431b986a"
+  },
+  "_source": "git://github.com/nullivex/angular-socket.io-mock.git",
+  "_target": "*",
+  "_originalSource": "angular-socket.io-mock"
+}

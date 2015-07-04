@@ -35,5 +35,6 @@
     "beforeEach",
     "after",
     "afterEach"
-  ]
+  ],
+  "-W099": true
 }
