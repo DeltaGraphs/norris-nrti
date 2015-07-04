@@ -35,7 +35,7 @@ var TS=function(mapChart){
 	    name: 'Linea 22',
 	    marker:{
 			'type': 'shape',
-	        'shape': 'car'
+	        'shape': 'triangle'
 	    },
 	    latitudeKey: '1',
 	    longitudeKey: '2',
