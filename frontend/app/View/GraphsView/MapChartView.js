@@ -350,7 +350,7 @@ angular.module('norris-nrti')
                         break;
                     case 'S':
                         map.setAttribute('style', 'height:'+ height +'; width:'+ width +'; position: relative;');
-                        parent.setAttribute('style', 'float: left; position: relative; right: -' + (parseInt(widthUNIT)/2) + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
+                        parent.setAttribute('style', 'float: left; position: relative; right: -' + (parseInt(widthUNIT)/2)-25 + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'W':
                         map.setAttribute('style', 'height:'+ height +'; width:'+ width +'; position: relative; right: -100px;');

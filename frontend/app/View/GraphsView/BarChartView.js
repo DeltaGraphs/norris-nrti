@@ -58,7 +58,7 @@ angular.module('norris-nrti')
                     if (element.children()[2]){
                       element.children()[2].remove();
                     }
-                    if (scope.$parent.barChart.getLegend() !== null){
+                    if (scope.$parent.barChart.getLegend() !== null && scope.$parent.barChart.getLegend().getPosition() !== 'NE'){
                         scope.legend();  // richiama la funzione che crea la legenda relativa al grafico
                     }
                 }
@@ -255,11 +255,11 @@ angular.module('norris-nrti')
                         parent.setAttribute('style', 'float: left; position: relative; top: -' + (parseInt(height)/2) + 
                           'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
                         break;
-                    case 'NE':
+                    /*case 'NE':
                         parent.setAttribute('style', 'float: left; position: relative; top: -' + height + 
                           'px; right: -' + (parseInt(width)+25) + 'px; background-color: ' + 
                           scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
-                        break;
+                        break;*/
                     case 'NW':
                         parent.setAttribute('style', 'float: left; position: relative; top: -' + height + 
                           'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
