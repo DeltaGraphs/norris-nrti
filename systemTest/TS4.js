@@ -55,6 +55,7 @@ var TS=function(page){
 		mapType: 'roadmap',
 		mapWidth: 2000,
 		mapHeight: 2000,
+		legendOnPoint: true
 	});
 
 	//just to show parameters
