@@ -60,6 +60,18 @@ var TS=function(barChart){
         {tempo: 3, pressione: 5},
         {tempo: 4, pressione: 7}
     ]);
+    barChart.createBarChartFlow({
+        ID:'flow2',
+        name: 'grafico tempo-pressione 2 ',
+        indexKey: 'tempo',
+        valueKey: 'pressione',
+    },[
+        {tempo: 0, pressione: 2},
+        {tempo: 1, pressione: 1},
+        {tempo: 2, pressione: 6},
+        {tempo: 3, pressione: 2},
+        {tempo: 4, pressione: 9}
+    ]);
     var change=true;
     var repeat=function(){
     	if (change){
@@ -104,7 +116,7 @@ var TS=function(barChart){
         }
         change=!change;
     };
-    setInterval(function () {repeat();}, 10000);
+    setInterval(function () {repeat();}, 8000);
 };
 
 module.exports=TS;
