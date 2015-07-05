@@ -77,8 +77,7 @@ var TS=function(page){
         xFormat: 'toFloat',
         maxItemsSaved: 50,
         maxItems: 4,
-        filters: 'temperatura>1',
-        marker: 'circle'
+        //filters: 'temperatura>1'
     });
     lineChartFlow.addRecord({'tempo': 1, 'temperatura': 15});
     lineChartFlow.addRecord({'tempo': 2, 'temperatura': 10});
@@ -97,7 +96,7 @@ var TS=function(page){
         xFormat: 'toFloat',
         maxItemsSaved: 50,
         maxItems: 4,
-        filters: 'temperatura>2'
+        //filters: 'temperatura>2'
     });
     lineChartFlow2.addRecord({'tempo': 1, 'temperatura': 5});
     lineChartFlow2.addRecord({'tempo': 2, 'temperatura': 0});
