@@ -1,6 +1,6 @@
 {
   "name": "norris-nrti",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "description": "Norris - Node Real-Time Intelligence [stay tuned] (Credits CoffeeStrap)",
   "main": "norris-nrti.js",
   "scripts": {

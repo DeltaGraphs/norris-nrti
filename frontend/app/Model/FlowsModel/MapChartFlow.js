@@ -86,7 +86,7 @@ angular.module('norris-nrti')
 			var fJson = json.flowJson;
 			var mfJson = json.mapFlowJson;
 
-			this._flow = FlowFactory.build(fJson);
+			this._flow = FlowFactory.updateParameters(fJson);
 			this._flow.updateParameters(fJson);
 	
 			if (Object.keys(mfJson).length !== 0) {

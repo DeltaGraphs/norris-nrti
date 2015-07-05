@@ -51,7 +51,7 @@
 
 var data=[];
 var headers=[];
-for (var i=0; i<200; i++){
+for (var i=0; i<50; i++){
 	data.push({
 		tempo: i,
 		pressione: Math.floor((Math.random() * 20) + 1)
