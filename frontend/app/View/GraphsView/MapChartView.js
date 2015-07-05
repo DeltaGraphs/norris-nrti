@@ -103,8 +103,8 @@ angular.module('norris-nrti')
                 var mapDim = { height: height, width: width };
                 
                 var spherical = google.maps.geometry.spherical; 
-                var west  = spherical.computeOffset(latLng, width/2, -90);
-                var east  = spherical.computeOffset(latLng, width/2, 90);
+                var west  = spherical.computeOffset(latLng, scope.$parent.mapChart.getMapWidth()/2, -90);
+                var east  = spherical.computeOffset(latLng, scope.$parent.mapChart.getMapWidth()/2, 90);
 
                 var bounds = new google.maps.LatLngBounds();
                 bounds.extend(west);
