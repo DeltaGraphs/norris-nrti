@@ -27,8 +27,8 @@ var TS=function(lineChart){
 	    name: 'Place',
 	    xKey: 'tempo',
 	    yKey: 'temperatura',
-	    maxItems: 5,
-	    maxItemsSaved: 5,
+	    maxItems: 20,
+	    maxItemsSaved: 20,
 	});
 	var IDs=[];
 	IDs.push(lineChart.addRecord('flow1',{'tempo': 1, 'temperatura': 15}));
@@ -36,6 +36,21 @@ var TS=function(lineChart){
 	IDs.push(lineChart.addRecord('flow1',{'tempo': 3, 'temperatura': 2}));
 	IDs.push(lineChart.addRecord('flow1',{'tempo': 4, 'temperatura': 1}));
 	IDs.push(lineChart.addRecord('flow1',{'tempo': 5, 'temperatura': 16}));
+	IDs.push(lineChart.addRecord('flow1',{'tempo': 6, 'temperatura': 15}));
+	IDs.push(lineChart.addRecord('flow1',{'tempo': 7, 'temperatura': 10}));
+	IDs.push(lineChart.addRecord('flow1',{'tempo': 8, 'temperatura': 2}));
+	IDs.push(lineChart.addRecord('flow1',{'tempo': 9, 'temperatura': 1}));
+	IDs.push(lineChart.addRecord('flow1',{'tempo': 10, 'temperatura': 16}));
+	IDs.push(lineChart.addRecord('flow1',{'tempo': 11, 'temperatura': 15}));
+	IDs.push(lineChart.addRecord('flow1',{'tempo': 12, 'temperatura': 10}));
+	IDs.push(lineChart.addRecord('flow1',{'tempo': 13, 'temperatura': 2}));
+	IDs.push(lineChart.addRecord('flow1',{'tempo': 14, 'temperatura': 1}));
+	IDs.push(lineChart.addRecord('flow1',{'tempo': 15, 'temperatura': 16}));
+	IDs.push(lineChart.addRecord('flow1',{'tempo': 16, 'temperatura': 15}));
+	IDs.push(lineChart.addRecord('flow1',{'tempo': 17, 'temperatura': 10}));
+	IDs.push(lineChart.addRecord('flow1',{'tempo': 18, 'temperatura': 2}));
+	IDs.push(lineChart.addRecord('flow1',{'tempo': 19, 'temperatura': 1}));
+	IDs.push(lineChart.addRecord('flow1',{'tempo': 20, 'temperatura': 16}));
 
 	lineChart.createLineChartFlow({
 	    ID:'flow2',
@@ -45,15 +60,10 @@ var TS=function(lineChart){
 	    maxItems: 4,
 	    maxItemsSaved: 4,
 	});
-	lineChart.addRecord('flow2',{'tempo': 1, 'temperatura': 15});
-	lineChart.addRecord('flow2',{'tempo': 2, 'temperatura': 10});
-	lineChart.addRecord('flow2',{'tempo': 3, 'temperatura': 2});
-	lineChart.addRecord('flow2',{'tempo': 4, 'temperatura': 1});
-	lineChart.addRecord('flow2',{'tempo': 5, 'temperatura': 16});
 	
 	var index=0;
 	var repeat=function(){
-		if (index>=5){
+		if (index>=20){
 			index=0;
 		}
 		lineChart.updateRecord('flow1', IDs[index], {tempo: index, temperatura: Math.floor((Math.random() * 10) + 1)});
