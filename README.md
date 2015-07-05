@@ -16,4 +16,4 @@ npm install norris-nrti
 ```
 
 To get further information regarding, please follow the link to our github page [here](http://deltagraphs.github.io/norris-nrti/).
-Furthermore, you can download the [developer manual](manual/DeveloperManual.pdf) and the [user manual](manual/UserManual.pdf) to get a thorough overview of the framework.
+Furthermore, you can download the [developer manual](manual/DeveloperManual.pdf), the [android user manual](manual/AndroidManual.pdf) and the [front end user manual](manual/FrontEndManual.pdf) to get a thorough overview of the framework.
