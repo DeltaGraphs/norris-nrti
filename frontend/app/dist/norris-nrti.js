@@ -3051,9 +3051,6 @@ angular.module('norris-nrti')
             scope.$parent.$watch('changedD', function(newValue, oldValue){
                 if(newValue !== oldValue){
                     scope.setData(); // richiama la funzione che imposta i dati ad ogni cambiamento dei dati dei flussi del grafico
-                    if (element.children()[2]){
-                      element.children()[2].remove();
-                    }
                     if (scope.$parent.barChart.getLegend() !== null && scope.$parent.barChart.getLegend().getPosition() !== 'NE'){
                         scope.legend();  // richiama la funzione che crea la legenda relativa al grafico
                     }
@@ -3360,9 +3357,6 @@ angular.module('norris-nrti')
             scope.$parent.$watch('changedD', function(newValue, oldValue){
                 if(newValue !== oldValue){
                     scope.setData(); // richiama la funzione che imposta i dati ad ogni cambiamento dei dati dei flussi del grafico
-                    if (element.children()[2]){
-                      element.children()[2].remove();
-                    }
                     if (scope.$parent.lineChart.getLegend() !== null && scope.$parent.lineChart.getLegend() !== 'NE'){
                         scope.legend();  // richiama la funzione che crea la legenda relativa al grafico
                     }
@@ -18306,14 +18300,14 @@ nv.models.scatter = function() {
           pointPaths.enter().append('path')
               .attr('class', function(d,i) { return 'nv-path-'+i; });
           pointPaths.exit().remove();
-          /*pointPaths
+          pointPaths
               .attr('d', function(d) {
                 if (d.data.length === 0)
                     return 'M 0 0'
                 else
                     return 'M' + d.data.join('L') + 'Z';
               });
-          */
+          
           var mouseEventCallback = function(d,mDispatch) {
                 if (needsUpdate) return 0;
                 var series = data[d.series];
