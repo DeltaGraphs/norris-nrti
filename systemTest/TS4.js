@@ -47,7 +47,7 @@ var TS=function(page){
 		enableLegend: true,
 		legend: {
 		    position: 'NW',
-		    fontColor: '#00AA00',
+		    fontColor: '#000000',
 		    backgroundColor: '#FFAAFF'
 		},
 		latitude: 45.4113311,
