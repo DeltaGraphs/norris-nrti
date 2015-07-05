@@ -3054,7 +3054,7 @@ angular.module('norris-nrti')
                     if (element.children()[2]){
                       element.children()[2].remove();
                     }
-                    if (scope.$parent.barChart.getLegend() !== null){
+                    if (scope.$parent.barChart.getLegend() !== null && scope.$parent.barChart.getLegend().getPosition() !== 'NE'){
                         scope.legend();  // richiama la funzione che crea la legenda relativa al grafico
                     }
                 }
@@ -3251,11 +3251,11 @@ angular.module('norris-nrti')
                         parent.setAttribute('style', 'float: left; position: relative; top: -' + (parseInt(height)/2) + 
                           'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
                         break;
-                    case 'NE':
+                    /*case 'NE':
                         parent.setAttribute('style', 'float: left; position: relative; top: -' + height + 
                           'px; right: -' + (parseInt(width)+25) + 'px; background-color: ' + 
                           scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
-                        break;
+                        break;*/
                     case 'NW':
                         parent.setAttribute('style', 'float: left; position: relative; top: -' + height + 
                           'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
@@ -3363,7 +3363,7 @@ angular.module('norris-nrti')
                     if (element.children()[2]){
                       element.children()[2].remove();
                     }
-                    if (scope.$parent.lineChart.getLegend() !== null){
+                    if (scope.$parent.lineChart.getLegend() !== null && scope.$parent.lineChart.getLegend() !== 'NE'){
                         scope.legend();  // richiama la funzione che crea la legenda relativa al grafico
                     }
                 }
@@ -3528,9 +3528,9 @@ angular.module('norris-nrti')
                     case 'W':
                         parent.setAttribute('style', 'float: left; position: relative; top: -' + (parseInt(height)/2) + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
                         break;
-                    case 'NE':
+                    /*case 'NE':
                         parent.setAttribute('style', 'float: left; position: relative; top: -' + height + 'px; right: -' + (parseInt(width)+25) + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
-                        break;
+                        break;*/
                     case 'NW':
                         parent.setAttribute('style', 'float: left; position: relative; top: -' + height + 'px; background-color: ' + scope.$parent.lineChart.getLegend().getBackgroundColor() + ';');
                         break;
@@ -3681,8 +3681,8 @@ angular.module('norris-nrti')
                 var mapDim = { height: height, width: width };
                 
                 var spherical = google.maps.geometry.spherical; 
-                var west  = spherical.computeOffset(latLng, width/2, -90);
-                var east  = spherical.computeOffset(latLng, width/2, 90);
+                var west  = spherical.computeOffset(latLng, scope.$parent.mapChart.getMapWidth()/2, -90);
+                var east  = spherical.computeOffset(latLng, scope.$parent.mapChart.getMapWidth()/2, 90);
 
                 var bounds = new google.maps.LatLngBounds();
                 bounds.extend(west);
@@ -3928,7 +3928,7 @@ angular.module('norris-nrti')
                         break;
                     case 'S':
                         map.setAttribute('style', 'height:'+ height +'; width:'+ width +'; position: relative;');
-                        parent.setAttribute('style', 'float: left; position: relative; right: -' + (parseInt(widthUNIT)/2) + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
+                        parent.setAttribute('style', 'float: left; position: relative; right: -' + (parseInt(widthUNIT)/2)-25 + 'px; background-color: ' + scope.$parent.mapChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'W':
                         map.setAttribute('style', 'height:'+ height +'; width:'+ width +'; position: relative; right: -100px;');
