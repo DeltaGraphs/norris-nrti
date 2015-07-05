@@ -239,25 +239,25 @@ angular.module('norris-nrti')
                 switch (scope.$parent.barChart.getLegend().getPosition()) {
                     case 'N':
                         parent.setAttribute('style', 'float: left; position: relative; top: -' + height + 
-                          'px; right: -' + (width()/2) + 'px; background-color: ' +
+                          'px; right: -' + (parseInt(width)/2) + 'px; background-color: ' +
                           scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'E':
-                        parent.setAttribute('style', 'float: left; position: relative; top: -' + ((height/2)+25) + 
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + ((parseInt(height)/2)+25) + 
                           'px; right: -' + width + 'px;  background-color: ' + 
                           scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'S':
-                        parent.setAttribute('style', 'float: left; position: relative; right: -' + (width/2) +
+                        parent.setAttribute('style', 'float: left; position: relative; right: -' + (parseInt(width)/2) +
                           'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'W':
-                        parent.setAttribute('style', 'float: left; position: relative; top: -' + (height/2) + 
+                        parent.setAttribute('style', 'float: left; position: relative; top: -' + (parseInt(height)/2) + 
                           'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'NE':
                         parent.setAttribute('style', 'float: left; position: relative; top: -' + height + 
-                          'px; right: -' + (width+25) + 'px; background-color: ' + 
+                          'px; right: -' + (parseInt(width)+25) + 'px; background-color: ' + 
                           scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'NW':
@@ -265,7 +265,7 @@ angular.module('norris-nrti')
                           'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'SE':
-                        parent.setAttribute('style', 'float: left; position: relative; right: -' + (width()+25) + 
+                        parent.setAttribute('style', 'float: left; position: relative; right: -' + (parseInt(width)+25) + 
                           'px; background-color: ' + scope.$parent.barChart.getLegend().getBackgroundColor() + ';');
                         break;
                     case 'SW':
