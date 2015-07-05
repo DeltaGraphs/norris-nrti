@@ -71,9 +71,10 @@ TS13(table2);
 
 ///////////////////////////////////////////// 
 app.get('/', function (req, res) {
-	var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
-	console.log(' Test di sistema '+ fullUrl);
-	res.send(' Test di sistema '+ fullUrl);
+	//var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+	//console.log(' Test di sistema '+ fullUrl);
+	//res.send(' Test di sistema '+ fullUrl);
+	res.redirect('/norris');
 });
 
 var port = process.env.PORT || 3000;
