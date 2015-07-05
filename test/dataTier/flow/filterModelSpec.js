@@ -24,10 +24,6 @@ describe('FilterModel', function() {
 		assert.strictEqual(filters.hasOwnProperty('_filterText'), false);
 		assert.strictEqual(filters2.hasOwnProperty('_filterText'), false);
     });
-	it('returns 622 if filterText is not valid', function() {
-		var filters=new FilterModel('asd');
-		assert.strictEqual(filters.hasOwnProperty('_filterText'), false);
-    });
     it('returns the right object if filterText is valid', function() {
 		var filters=new FilterModel('temperature>2');
 		var filters2=new FilterModel('temperature>2, pressure!=2');
