@@ -65,7 +65,7 @@ var TS=function(page){
 	    },
 	    viewFinder: true,
         legendOnPoint: true,
-	    interpolation: 'basis'
+	    //interpolation: 'basis'
 	});
 
 	var lineChartFlow=lineChart.createLineChartFlow({
@@ -77,7 +77,7 @@ var TS=function(page){
         xFormat: 'toFloat',
         maxItemsSaved: 50,
         maxItems: 4,
-        filters: 'temperatura>2'
+        filters: 'temperatura>1'
     });
     lineChartFlow.addRecord({'tempo': 1, 'temperatura': 15});
     lineChartFlow.addRecord({'tempo': 2, 'temperatura': 10});
