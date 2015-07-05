@@ -51,8 +51,8 @@ var TS=function(page){
 	var table=page.createTable({
 	    ID: 'table',
 	    title: 'Test creazione Table',
-	    height: 600,
-    	width: 1000,
+	    height: 0,
+    	width: 0,
 	    sortable: true,
 	    addRowOn: 'top',	//or bottom
 	    headers: ['IDMezzo', 'WGS84Fi', 'WGS84La'],

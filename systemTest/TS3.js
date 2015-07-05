@@ -64,7 +64,7 @@ var TS=function(page){
 	        name: 'temperatura'
 	    },
 	    viewFinder: true,
-        legendOnPoint: true,
+        legendOnPoint: true
 	    //interpolation: 'basis'
 	});
 
@@ -77,7 +77,8 @@ var TS=function(page){
         xFormat: 'toFloat',
         maxItemsSaved: 50,
         maxItems: 4,
-        filters: 'temperatura>1'
+        filters: 'temperatura>1',
+        marker: 'circle'
     });
     lineChartFlow.addRecord({'tempo': 1, 'temperatura': 15});
     lineChartFlow.addRecord({'tempo': 2, 'temperatura': 10});

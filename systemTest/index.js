@@ -41,7 +41,7 @@ var lineChart2=Helper.newLineChart(page3, 'Test aggiornamento parametri Line Cha
 var mapChart2=Helper.newMapChart(page3, 'Test aggiornamento parametri Map Chart');
 var table2=Helper.newTable(page3, 'Test aggiornamento parametri Table');
 
-var TS1 = require('./TS1.js');
+//var TS1 = require('./TS1.js');
 var TS2 = require('./TS2.js');
 var TS3 = require('./TS3.js');
 var TS4 = require('./TS4.js');
@@ -55,7 +55,7 @@ var TS11 = require('./TS11.js');
 var TS12 = require('./TS12.js');
 var TS13 = require('./TS13.js');
 
-TS1(norris);
+//TS1(norris);
 TS2(page1);
 TS3(page1);
 TS4(page1);
