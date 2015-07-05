@@ -4,7 +4,7 @@ var http = require('http');
 var server = http.createServer(app);
 var io = require('socket.io')(server);
 
-var Norris = require('../norris-nrti.js');
+var Norris = require('norris-nrti');
 var norris = new Norris(app,io,'/norris','localhost:3000');
 
 
@@ -17,14 +17,7 @@ var page1 = norris.createPage({
 var line1 = page1.createLineChart({
     ID: 'line1',
     title: 'Example line chart',
-    xAxis:{
-        name: 'time'
-    },
-    yAxis:{
-        name: 'temperature'
-    },
-    horizontalGrid: true,
-    verticalGrid: true
+	viewFinder: true
 });
 
 var lineflow1 = line1.createLineChartFlow({
@@ -36,14 +29,16 @@ var lineflow1 = line1.createLineChartFlow({
 	marker: 'triangle'
 });
 
-lineflow1.addRecord({time:1, temperature: 21});
-lineflow1.addRecord({time:2, temperature: 18});
-lineflow1.addRecord({time:3, temperature: 25});
+var rec1 = lineflow1.addRecord({time:1, temperature:21});
 
-app.get('/', function (req, res) {
-	var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
-	console.log(' HOME APS - expressEsempio.js '+ fullUrl);
-	res.send('HOME APS - expressEsempio.js '+ fullUrl);
-});
+for(var i=2; i < 25; i++) {
+	var value = Math.round(Math.random()*20 + 10);
+	lineflow1.addRecord({time:i, temperature:value});
+}
+
+line1.updateProperties({viewFinder: false});
+
+lineflow1.updateRecord(rec1, {time:1, temperature: 10});
+
 var port = process.env.PORT || 3000;
 server.listen(port);
