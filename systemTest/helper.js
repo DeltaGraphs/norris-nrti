@@ -19,7 +19,7 @@ module.exports.newPage=function(norris, ID, title){
         ID: ID,
         name: title,
         description: title,
-        graphsPerRow: 2,
+        graphsPerRow: 1,
         graphsPerCol: 10
     });
     return page;
